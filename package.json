@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src",
+    "start": "start-storybook -p 8000 --no-manager-cache",
+    "build": "",
+    "build:storybook": "build-storybook",
+    "lint": "npm run lint:eslint && npm run lint:stylelint",
+    "lint:eslint": "eslint src",
+    "lint:stylelint": "stylelint src/**/*.{ts,tsx}",
     "prepare": "husky install"
   },
   "repository": {
@@ -18,12 +23,24 @@
   },
   "homepage": "https://github.com/Elonsoft/elonkit-react#readme",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^5.0.0-alpha.33",
+    "@storybook/addon-a11y": "^6.2.9",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/addons": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "@storybook/theming": "^6.2.9",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -32,6 +49,10 @@
     "prettier": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
     "typescript": "^4.2.4"
-  }
+  },
+  "dependencies": {}
 }
