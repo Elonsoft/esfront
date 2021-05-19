@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { EmptyState } from './EmptyState';
+
+<Meta
+  title="UI/EmptyState"
+  component={EmptyState}
+  argTypes={{
+    heading: {
+      control: {
+        type: 'text'
+      }
+    },
+    subheading: {
+      control: {
+        type: 'text'
+      }
+    }
+  }}
+/>
+
+# EmptyState
+
+<Canvas>
+  <Story name="Default">{(args) => <EmptyState {...args} />}</Story>
+</Canvas>
+
+<ArgsTable />
