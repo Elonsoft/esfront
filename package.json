@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "start-storybook -p 8000 --no-manager-cache",
+    "start": "start-storybook -p 8000",
     "build": "",
     "build:storybook": "build-storybook",
     "test": "jest",
