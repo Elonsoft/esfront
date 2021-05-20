@@ -1,0 +1,1 @@
+export { createTypography } from './typography';

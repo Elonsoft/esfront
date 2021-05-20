@@ -3,5 +3,8 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
-  "editor.rulers": [120]
+  "editor.rulers": [
+    120
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
