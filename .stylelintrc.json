@@ -4,6 +4,10 @@
   "rules": {
     "declaration-block-trailing-semicolon": null,
     "max-nesting-depth": null,
+    "rule-empty-line-before": null,
+    "function-name-case": null,
+    "value-keyword-case": null,
+    "selector-type-case": null,
     "selector-type-no-unknown": null,
     "order/properties-alphabetical-order": true
   }

@@ -1,16 +1,10 @@
-import React, { useMemo } from 'react';
-
-import CssBaseline from '@material-ui/core/CssBaseline';
-import GlobalStyles from '@material-ui/core/GlobalStyles';
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
-import { enUS, ruRU } from '@material-ui/core/locale';
+import React from 'react';
 
 import { useDarkMode } from 'storybook-dark-mode';
 
 import { themeLight, themeDark } from './themes';
 
-// @elonkit/react
-import { breakpoints, createTypography } from '../src';
+import { Theme } from '../src/helpers';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -31,49 +25,10 @@ export const decorators = [
     const locale = context.globals.locale;
     const isDarkMode = useDarkMode();
 
-    const theme = useMemo(() => {
-      const theme = createTheme({
-        breakpoints: {
-          values: {
-            ...breakpoints
-          }
-        }
-      });
-
-      const typography = createTypography(theme);
-
-      return createTheme(
-        {
-          breakpoints: {
-            values: {
-              ...theme.breakpoints.values
-            }
-          },
-          palette: {
-            mode: isDarkMode ? 'dark' : 'light'
-          },
-          typography: {
-            fontFamily: "'Roboto', sans-serif",
-            ...typography
-          },
-          components: {
-            MuiButton: {
-              defaultProps: {
-                disableElevation: true
-              }
-            }
-          }
-        },
-        locale === 'ru' ? ruRU : enUS
-      );
-    }, [isDarkMode, locale]);
-
     return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <GlobalStyles styles={{ body: { fontFamily: theme.typography.fontFamily } }} />
+      <Theme isDarkMode={isDarkMode} locale={locale}>
         <Story />
-      </ThemeProvider>
+      </Theme>
     );
   }
 ];
