@@ -11,6 +11,11 @@ import {
 } from '@material-ui/core/styles';
 import { CommonColors } from '@material-ui/core/styles/createPalette';
 import { TypographyPropsVariantOverrides } from '@material-ui/core/Typography';
+import { Components } from '@material-ui/core/styles/components';
+import { ComponentsOverrides, ComponentNameToClassKey } from '@material-ui/core/styles/overrides';
+import { ComponentsProps, ComponentsPropsList } from '@material-ui/core/styles/props';
+
+import { ESEmptyStateProps, ESEmptyStateClassKey } from './ui/EmptyState';
 
 export interface ISurfacePalette {
   0: string;
@@ -24,6 +29,27 @@ export interface ISurfacePalette {
   16: string;
   24: string;
   on: string;
+}
+
+declare module '@material-ui/core/styles/props' {
+  interface ComponentsPropsList {
+    ESEmptyState: ESEmptyStateProps;
+  }
+}
+
+declare module '@material-ui/core/styles/overrides' {
+  interface ComponentNameToClassKey {
+    ESEmptyState: ESEmptyStateClassKey;
+  }
+}
+
+declare module '@material-ui/core/styles/components' {
+  interface Components {
+    ESEmptyState?: {
+      defaultProps?: ComponentsProps['ESEmptyState'];
+      styleOverrides?: ComponentsOverrides['ESEmptyState'];
+    };
+  }
 }
 
 declare module '@material-ui/core' {
