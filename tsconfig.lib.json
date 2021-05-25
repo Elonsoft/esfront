@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "rootDir": "src"
+  },
+  "exclude": [
+    "node_modules",
+    "./*.js",
+    "./*.ts",
+    "src/helpers",
+    "src/theming/palettes/PalettesDemo.styles.ts",
+    "src/theming/palettes/PalettesDemo.tsx",
+    "src/theming/typography/TypographyDemo.tsx",
+    "src/**/*.spec.tsx"
+  ]
+}
