@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { enUS, ruRU } from '@material-ui/core/locale';
 
 import { breakpoints, palettes, createTypography } from '../../theming';
+import { en, ru } from '../../ui';
 
 export const Theme: React.FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
   const theme = useMemo(() => {
@@ -44,7 +45,8 @@ export const Theme: React.FC<IThemeProps> = ({ children, isDarkMode, locale }) =
           }
         }
       },
-      locale === 'ru' ? ruRU : enUS
+      locale === 'ru' ? ruRU : enUS,
+      locale === 'ru' ? ru : en
     );
   }, [isDarkMode, locale]);
 
