@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useStyles } from './PalettesDemo.styles';
 
 import { useTheme } from '@material-ui/core/styles';
@@ -29,7 +29,7 @@ export const PalettesDemo = () => {
   return (
     <div className={styles.palettes}>
       {PALETTES.map((palette) => (
-        <>
+        <Fragment key={palette}>
           <Typography className={styles.palettesPalette} component="div" variant="body100">
             <code>{palette}</code>
           </Typography>
@@ -48,7 +48,7 @@ export const PalettesDemo = () => {
                 ></div>
               </div>
             ))}
-        </>
+        </Fragment>
       ))}
     </div>
   );

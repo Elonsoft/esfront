@@ -1,29 +1,47 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs/blocks';
 import { EmptyState } from './EmptyState';
 
 <Meta
   title="UI/EmptyState"
   component={EmptyState}
+  parameters={{
+    options: { showPanel: true }
+  }}
   argTypes={{
-    heading: {
-      control: {
-        type: 'text'
-      },
-      defaultValue: 'Heading'
+    classes: {
+      table: {
+        disable: true
+      }
     },
-    subheading: {
-      control: {
-        type: 'text'
-      },
-      defaultValue: 'Subheading'
+    className: {
+      table: {
+        disable: true
+      }
     }
   }}
 />
 
+export const getHeading = (args, context) => {
+  return args.heading || (context.globals.locale === 'en' ? 'There are no entities yet' : 'Здесь пока нет сущностей');
+};
+
+export const getSubheading = (args, context) => {
+  return (
+    args.subheading ||
+    (context.globals.locale === 'en'
+      ? 'There are no entities yet. Do you want to create the first entity?'
+      : 'Здесь пока нет сущностей. Хотите создать первую сущность?')
+  );
+};
+
 # EmptyState
 
 <Canvas>
-  <Story name="Default">{(args) => <EmptyState {...args} />}</Story>
+  <Story name="Default">
+    {(args, context) => (
+      <EmptyState {...args} heading={getHeading(args, context)} subheading={getSubheading(args, context)} />
+    )}
+  </Story>
 </Canvas>
 
-<ArgsTable />
+<ArgsTable story="Default" />

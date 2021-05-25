@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "allowJs": true,
     "esModuleInterop": true,
     "jsx": "react",
     "module": "esnext",
@@ -12,5 +11,5 @@
     "target": "es5",
     "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "commitlint.config.js", "jest.config.js"]
 }
