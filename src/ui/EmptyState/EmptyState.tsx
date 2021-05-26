@@ -10,25 +10,27 @@ import Typography from '@material-ui/core/Typography';
 
 export const EmptyState: React.FC<ESEmptyStateProps> = (inProps) => {
   const styles = useStyles();
-  const { classes, className, children, heading, subheading, labelImage } = useThemeProps({
+  const { children, classes, className, icon, heading, subheading } = useThemeProps({
     props: inProps,
     name: 'ESEmptyState'
   });
 
   return (
     <div className={clsx(styles.root, classes?.root, className)}>
-      <div>{labelImage}</div>
-      {!!heading && (
-        <Typography className={clsx(styles.heading, classes?.heading)} component="div" variant="body400">
-          {heading}
-        </Typography>
-      )}
-      {!!subheading && (
-        <Typography component="div" variant="body300">
-          {subheading}
-        </Typography>
-      )}
-      <div>{children}</div>
+      {!!icon && <div className={clsx(styles.icon, classes?.icon)}>{icon}</div>}
+      <div className={clsx(styles.text, classes?.text)}>
+        {!!heading && (
+          <Typography className={clsx(styles.heading, classes?.heading)} component="div" variant="body200">
+            {heading}
+          </Typography>
+        )}
+        {!!subheading && (
+          <Typography className={clsx(styles.subheading, classes?.subheading)} component="div" variant="caption">
+            {subheading}
+          </Typography>
+        )}
+      </div>
+      {children}
     </div>
   );
 };

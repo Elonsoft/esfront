@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs/blocks';
 import { EmptyState } from './EmptyState';
+import { BoxIcon } from '../icons';
 
 <Meta
   title="UI/EmptyState"
@@ -9,11 +10,21 @@ import { EmptyState } from './EmptyState';
   }}
   argTypes={{
     classes: {
-      table: {
+      control: {
         disable: true
       }
     },
     className: {
+      control: {
+        disable: true
+      }
+    },
+    icon: {
+      control: {
+        disable: true
+      }
+    },
+    iconText: {
       table: {
         disable: true
       }
@@ -39,7 +50,12 @@ export const getSubheading = (args, context) => {
 <Canvas>
   <Story name="Default">
     {(args, context) => (
-      <EmptyState {...args} heading={getHeading(args, context)} subheading={getSubheading(args, context)} />
+      <EmptyState
+        {...args}
+        icon={<BoxIcon />}
+        heading={getHeading(args, context)}
+        subheading={getSubheading(args, context)}
+      />
     )}
   </Story>
 </Canvas>

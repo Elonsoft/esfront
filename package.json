@@ -7,9 +7,9 @@
   "jsnext:main": "lib/index.es.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "start": "start-storybook -p 8000",
+    "start": "start-storybook -s .storybook/assets -p 8000",
     "build": "rimraf ./lib && rollup -c rollup.config.js",
-    "build:storybook": "build-storybook",
+    "build:storybook": "build-storybook -s .storybook/assets",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
