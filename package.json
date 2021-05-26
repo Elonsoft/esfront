@@ -15,7 +15,7 @@
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint src",
     "lint:stylelint": "stylelint src/**/*.{ts,tsx}",
-    "prepare": "husky install"
+    "husky": "husky install"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,7 @@
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "babel-loader": "^8.2.2",
+    "chromatic": "^5.8.3",
     "clsx": "^1.1.1",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",

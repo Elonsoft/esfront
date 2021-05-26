@@ -1,0 +1,27 @@
+name: Release
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  storybook:
+    name: Storybook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn install
+      - name: Lint code
+        run: yarn run lint:eslint
+      - name: Lint styles
+        run: yarn run lint:stylelint
+      - name: Test
+        run: yarn run test
+      - name: Build
+        run: yarn build:storybook
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          BRANCH: gh-pages
+          FOLDER: storybook-static
