@@ -1,4 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs/blocks';
+
+import Button from '@material-ui/core/Button';
+
 import { EmptyState } from './EmptyState';
 import { BoxIcon } from '../icons';
 
@@ -45,7 +48,15 @@ export const getSubheading = (args, context) => {
   );
 };
 
+export const getAction = (args, context) => {
+  return context.globals.locale === 'en' ? 'Create entity' : 'Создать сущность';
+};
+
 # EmptyState
+
+This component is a placeholder to use on pages without content.
+
+## Demos
 
 <Canvas>
   <Story name="Default">
@@ -61,3 +72,36 @@ export const getSubheading = (args, context) => {
 </Canvas>
 
 <ArgsTable story="Default" />
+
+<br />
+
+We can use `children` prop to add action button.
+
+<Canvas>
+  <Story name="Action">
+    {(args, context) => (
+      <EmptyState
+        {...args}
+        icon={<BoxIcon />}
+        heading={getHeading(args, context)}
+        subheading={getSubheading(args, context)}
+      >
+        <Button variant="outlined" color="primary">
+          {getAction(args, context)}
+        </Button>
+      </EmptyState>
+    )}
+  </Story>
+</Canvas>
+
+## CSS
+
+```ts
+type ESEmptyStateClasses = {
+  root: string;
+  icon: string;
+  text: string;
+  heading: string;
+  subheading: string;
+};
+```

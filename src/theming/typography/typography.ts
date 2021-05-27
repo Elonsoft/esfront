@@ -130,8 +130,7 @@ export const createTypography = (theme: Theme) => {
     button: {
       fontSize: pxToRem(14),
       fontWeight: 500,
-      letterSpacing: pxToRem(0.5),
-      lineHeight: pxToRem(16)
+      letterSpacing: pxToRem(0.5)
     },
     caption: {
       fontSize: pxToRem(12),
