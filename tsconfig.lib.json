@@ -8,7 +8,7 @@
     "node_modules",
     "./*.js",
     "./*.ts",
-    "src/helpers",
+    "src/testing",
     "src/theming/palettes/PalettesDemo.styles.ts",
     "src/theming/palettes/PalettesDemo.tsx",
     "src/theming/typography/TypographyDemo.tsx",

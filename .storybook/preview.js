@@ -4,7 +4,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 import { themeLight, themeDark } from './themes';
 
-import { Theme } from '../src/helpers';
+import { Theme } from '../src/testing';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

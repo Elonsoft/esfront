@@ -17,7 +17,11 @@ export const EmptyState: React.FC<ESEmptyStateProps> = (inProps) => {
 
   return (
     <div className={clsx(styles.root, classes?.root, className)}>
-      {!!icon && <div className={clsx(styles.icon, classes?.icon)}>{icon}</div>}
+      {!!icon && (
+        <div className={clsx(styles.icon, classes?.icon)} data-testid="icon">
+          {icon}
+        </div>
+      )}
       <div className={clsx(styles.text, classes?.text)}>
         {!!heading && (
           <Typography className={clsx(styles.heading, classes?.heading)} component="div" variant="body200">
