@@ -35,7 +35,8 @@ yarn
 
 ### Development Workflow
 
-After cloning Elonkit, run `yarn` to fetch its dependencies. Then, you can run several commands:
+After cloning Elonkit, run `yarn install` to fetch its dependencies and then run `yarn husky` in order to install git
+hooks. Then, you can run several commands:
 
 - `yarn start` starts the storybook.
 - `yarn test` runs the complete test suite.
