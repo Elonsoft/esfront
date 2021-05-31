@@ -15,7 +15,8 @@
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint src",
     "lint:stylelint": "stylelint src/**/*.{ts,tsx}",
-    "husky": "husky install"
+    "husky": "husky install",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -68,6 +69,7 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.30.0",
+    "standard-version": "^9.3.0",
     "storybook-dark-mode": "^1.0.8",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
