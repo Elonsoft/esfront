@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { useStyles } from './PalettesDemo.styles';
 
 import { useTheme } from '@material-ui/core/styles';

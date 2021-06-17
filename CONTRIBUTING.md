@@ -79,8 +79,8 @@ refactor!: drop support for Node 6
 Another examples of a valid commit message:
 
 ```
-feat(paginator): introduce new component
-fix(paginator): fix some bug
+feat(Paginator): introduce new component
+fix(Paginator): fix some bug
 docs: update LICENSE date
 ```
 

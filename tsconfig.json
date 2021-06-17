@@ -9,7 +9,10 @@
     "moduleResolution": "node",
     "strict": true,
     "target": "es5",
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "~storybook/*": [".storybook/*"]
+    }
   },
   "exclude": ["node_modules", "lib", "./*.js"]
 }

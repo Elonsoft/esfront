@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import { IThemeProps } from './Theme.types';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,7 +9,7 @@ import { enUS, ruRU } from '@material-ui/core/locale';
 import { breakpoints, palettes, createTypography } from '../../theming';
 import { en, ru } from '../../ui';
 
-export const Theme: React.FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
+export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
   const theme = useMemo(() => {
     const theme = createTheme({
       breakpoints: {

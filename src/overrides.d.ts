@@ -17,7 +17,15 @@ import { ComponentsOverrides, ComponentNameToClassKey } from '@material-ui/core/
 import { ComponentsProps, ComponentsPropsList } from '@material-ui/core/styles/props';
 import { DefaultTheme } from '@material-ui/styles/defaultTheme';
 
-import { ESEmptyStateProps, ESEmptyStateClassKey } from './ui/EmptyState';
+import { EmptyStateProps, EmptyStateClassKey } from './ui/EmptyState';
+import {
+  SwiperProps,
+  SwiperPaginationBaseProps,
+  SwiperClassKey,
+  SwiperButtonClassKey,
+  SwiperPaginationProps,
+  SwiperPaginationClassKey
+} from './ui/Swiper';
 
 export interface ISurfacePalette {
   0: string;
@@ -35,13 +43,18 @@ export interface ISurfacePalette {
 
 declare module '@material-ui/core/styles/props' {
   interface ComponentsPropsList {
-    ESEmptyState: ESEmptyStateProps;
+    ESEmptyState: EmptyStateProps;
+    ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
+    ESSwiperPagination: SwiperPaginationProps;
   }
 }
 
 declare module '@material-ui/core/styles/overrides' {
   interface ComponentNameToClassKey {
-    ESEmptyState: ESEmptyStateClassKey;
+    ESEmptyState: EmptyStateClassKey;
+    ESSwiper: SwiperClassKey;
+    ESSwiperButton: SwiperButtonClassKey;
+    ESSwiperPagination: SwiperPaginationClassKey;
   }
 }
 
@@ -50,6 +63,17 @@ declare module '@material-ui/core/styles/components' {
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];
       styleOverrides?: ComponentsOverrides['ESEmptyState'];
+    };
+    ESSwiper?: {
+      defaultProps?: ComponentsProps['ESSwiper'];
+      styleOverrides?: ComponentsOverrides['ESSwiper'];
+    };
+    ESSwiperButton?: {
+      styleOverrides?: ComponentsOverrides['ESSwiperButton'];
+    };
+    ESSwiperPagination?: {
+      defaultProps?: ComponentsProps['ESSwiperPagination'];
+      styleOverrides?: ComponentsOverrides['ESSwiperPagination'];
     };
   }
 }
