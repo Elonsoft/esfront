@@ -1,0 +1,211 @@
+import { Meta, Story, Preview, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { Swiper } from './Swiper';
+import * as stories from './Swiper.stories';
+
+<Meta
+  title="Components/Swiper"
+  component={Swiper}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    direction: {
+      table: {
+        disable: true
+      }
+    },
+    alignment: {
+      table: {
+        category: 'General'
+      },
+      options: ['center', 'start'],
+      control: { type: 'select' }
+    },
+    snap: {
+      table: {
+        category: 'General'
+      },
+      defaultValue: true
+    },
+    draggable: {
+      table: {
+        category: 'General'
+      },
+      defaultValue: true
+    },
+    gap: {
+      table: {
+        category: 'General'
+      }
+    },
+    loop: {
+      table: {
+        category: 'Loop'
+      }
+    },
+    loopCount: {
+      table: {
+        category: 'Loop'
+      }
+    },
+    buttonPrev: {
+      table: {
+        disable: true
+      }
+    },
+    buttonPrevLabel: {
+      table: {
+        category: 'Buttons'
+      }
+    },
+    buttonNext: {
+      table: {
+        disable: true
+      }
+    },
+    buttonNextLabel: {
+      table: {
+        category: 'Buttons'
+      }
+    },
+    buttonScrollDistance: {
+      table: {
+        category: 'Buttons'
+      }
+    },
+    pagination: {
+      table: {
+        disable: true
+      }
+    },
+    PaginationProps: {
+      table: {
+        disable: true
+      }
+    },
+    PaginationPropsPosition: {
+      name: 'PaginationProps.position',
+      description: 'The position of the `SwiperPagination` component.',
+      table: {
+        category: 'Pagination',
+        defaultValue: { summary: 'end' }
+      },
+      options: ['start', 'end'],
+      control: { type: 'select' }
+    },
+    PaginationPropsVariant: {
+      name: 'PaginationProps.variant',
+      description: 'The variant of the `SwiperPagination` component.',
+      table: {
+        category: 'Pagination',
+        defaultValue: { summary: 'small' }
+      },
+      options: ['small', 'long', 'big'],
+      control: { type: 'select' }
+    },
+    PaginationPropsSiblingCount: {
+      name: 'PaginationProps.siblingCount',
+      description: 'Number of always visible items before and after active slide.',
+      table: {
+        category: 'Pagination'
+      },
+      control: { type: 'number' }
+    },
+    PaginationPropsTransitionDuration: {
+      name: 'PaginationProps.transitionDuration',
+      description: 'The length of time in ms a transition animation should take to complete.',
+      table: {
+        category: 'Pagination',
+        defaultValue: { summary: 'theme.transitions.duration.shortest' }
+      },
+      control: { type: 'number' }
+    },
+    onActiveSlideChange: {
+      table: {
+        disable: true
+      }
+    },
+    onPaginationRangeChange: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    },
+    actions: {
+      table: {
+        disable: true
+      }
+    }
+  }}
+/>
+
+# Swiper
+
+`Swiper` is a component for cycling through elements - images or slides of text - like a carousel.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+<br />
+
+Swiper is highly customizable. We can adjust `gap` between slides, override styles for swiper, swiper buttons and
+pagination, or provide our own components via `buttonPrev`, `buttonNext` and `pagination` props.
+
+<Canvas>
+  <Story
+    story={stories.Customization}
+    name="Customization"
+    argTypes={{
+      gap: {
+        defaultValue: 8
+      }
+    }}
+  />
+</Canvas>
+
+<br />
+
+We can create vertical swiper.
+
+<Canvas>
+  <Story story={stories.Vertical} name="Vertical" />
+</Canvas>
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-swiper" story="page">
+      <code>Swiper</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-swiperbutton" story="page">
+      <code>SwiperButton</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-swiperpagination" story="page">
+      <code>SwiperPagination</code>
+    </LinkTo>
+  </li>
+</ul>

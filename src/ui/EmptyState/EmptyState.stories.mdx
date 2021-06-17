@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
 
 import Button from '@material-ui/core/Button';
 
@@ -6,30 +7,35 @@ import { EmptyState } from './EmptyState';
 import { BoxIcon } from '../icons';
 
 <Meta
-  title="UI/EmptyState"
+  title="Components/EmptyState"
   component={EmptyState}
   parameters={{
     options: { showPanel: true }
   }}
   argTypes={{
     classes: {
-      control: {
+      table: {
         disable: true
       }
     },
     className: {
-      control: {
+      table: {
         disable: true
       }
     },
     icon: {
-      control: {
+      table: {
         disable: true
       }
     },
-    iconText: {
+    heading: {
       table: {
-        disable: true
+        category: 'General'
+      }
+    },
+    subheading: {
+      table: {
+        category: 'General'
       }
     }
   }}
@@ -56,10 +62,8 @@ export const getAction = (args, context) => {
 
 This component is a placeholder to use on pages without content.
 
-## Demos
-
 <Canvas>
-  <Story name="Default">
+  <Story name="Demo">
     {(args, context) => (
       <EmptyState
         {...args}
@@ -71,7 +75,7 @@ This component is a placeholder to use on pages without content.
   </Story>
 </Canvas>
 
-<ArgsTable story="Default" />
+<ArgsTable story="Demo" />
 
 <br />
 
@@ -94,14 +98,12 @@ We can use `children` prop to add action button.
   </Story>
 </Canvas>
 
-## CSS
+## API
 
-```ts
-type ESEmptyStateClasses = {
-  root: string;
-  icon: string;
-  text: string;
-  heading: string;
-  subheading: string;
-};
-```
+<ul>
+  <li>
+    <LinkTo kind="components-api-emptystate" story="page">
+      <code>EmptyState</code>
+    </LinkTo>
+  </li>
+</ul>

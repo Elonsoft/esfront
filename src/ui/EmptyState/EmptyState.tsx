@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { useStyles } from './EmptyState.styles';
 
-import { ESEmptyStateProps } from './EmptyState.types';
+import { EmptyStateProps } from './EmptyState.types';
 
 import useThemeProps from '@material-ui/core/styles/useThemeProps';
 import Typography from '@material-ui/core/Typography';
 
-export const EmptyState: React.FC<ESEmptyStateProps> = (inProps) => {
+export const EmptyState: React.FC<EmptyStateProps> = (inProps) => {
   const styles = useStyles();
   const { children, classes, className, icon, heading, subheading } = useThemeProps({
     props: inProps,

@@ -1,18 +1,19 @@
-import { ESEmptyStateProps } from '../EmptyState';
+import { SwiperProps } from '../Swiper';
 
 export interface Localization {
   components?: {
-    ESEmptyState?: {
-      defaultProps: Pick<ESEmptyStateProps, 'iconText'>;
+    ESSwiper?: {
+      defaultProps: Pick<SwiperProps<any>, 'buttonPrevLabel' | 'buttonNextLabel'>;
     };
   };
 }
 
 export const en: Localization = {
   components: {
-    ESEmptyState: {
+    ESSwiper: {
       defaultProps: {
-        iconText: 'Image'
+        buttonPrevLabel: 'Previous slide',
+        buttonNextLabel: 'Next slide'
       }
     }
   }
@@ -20,9 +21,10 @@ export const en: Localization = {
 
 export const ru: Localization = {
   components: {
-    ESEmptyState: {
+    ESSwiper: {
       defaultProps: {
-        iconText: 'Изображение'
+        buttonPrevLabel: 'Предыдущий слайд',
+        buttonNextLabel: 'Следующий слайд'
       }
     }
   }

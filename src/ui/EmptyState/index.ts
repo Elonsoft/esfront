@@ -1,3 +1,3 @@
 export { EmptyState } from './EmptyState';
-export { ESEmptyStateProps } from './EmptyState.types';
-export { ESEmptyStateClasses, ESEmptyStateClassKey } from './EmptyState.styles';
+export { EmptyStateProps } from './EmptyState.types';
+export { EmptyStateClasses, EmptyStateClassKey } from './EmptyState.styles';

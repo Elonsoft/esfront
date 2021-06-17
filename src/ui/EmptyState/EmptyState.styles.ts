@@ -32,11 +32,16 @@ export const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export type ESEmptyStateClasses = {
+export type EmptyStateClasses = {
+  /** Styles applied to the root element. */
   root: string;
+  /** Styles applied to the icon element. */
   icon: string;
+  /** Styles applied to the text element. */
   text: string;
+  /** Styles applied to the heading element. */
   heading: string;
+  /** Styles applied to the subheading element. */
   subheading: string;
 };
-export type ESEmptyStateClassKey = keyof ESEmptyStateClasses;
+export type EmptyStateClassKey = keyof EmptyStateClasses;

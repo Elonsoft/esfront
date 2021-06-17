@@ -1,8 +1,7 @@
-import React from 'react';
-
 import { useDarkMode } from 'storybook-dark-mode';
 
 import { themeLight, themeDark } from './themes';
+import { DocsContainer } from './components/DocsContainer';
 
 import { Theme } from '../src/testing';
 
@@ -17,6 +16,14 @@ export const parameters = {
   darkMode: {
     light: themeLight,
     dark: themeDark
+  },
+  docs: {
+    container: DocsContainer
+  },
+  options: {
+    storySort: {
+      order: ['Guides', 'Components', 'Components API']
+    }
   }
 };
 
