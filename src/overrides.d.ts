@@ -18,6 +18,7 @@ import { ComponentsProps, ComponentsPropsList } from '@material-ui/core/styles/p
 import { DefaultTheme } from '@material-ui/styles/defaultTheme';
 
 import { EmptyStateProps, EmptyStateClassKey } from './ui/EmptyState';
+import { DropzoneProps, DropzoneClassKey } from './ui/Dropzone';
 import {
   SwiperProps,
   SwiperPaginationBaseProps,
@@ -48,6 +49,7 @@ declare module '@material-ui/core/styles/props' {
     ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
     ESSwiperPagination: SwiperPaginationProps;
     ESTableActions: TableActionsProps;
+    ESDropzone: DropzoneProps;
   }
 }
 
@@ -58,6 +60,7 @@ declare module '@material-ui/core/styles/overrides' {
     ESSwiperButton: SwiperButtonClassKey;
     ESSwiperPagination: SwiperPaginationClassKey;
     ESTableActions: TableActionsClassKey;
+    ESDropzone: DropzoneClassKey;
   }
 }
 
@@ -81,6 +84,10 @@ declare module '@material-ui/core/styles/components' {
     ESTableActions?: {
       defaultProps?: ComponentsProps['ESTableActions'];
       styleOverrides?: ComponentsOverrides['ESTableActions'];
+    };
+    ESDropzone?: {
+      defaultProps?: ComponentsProps['ESDropzone'];
+      styleOverrides?: ComponentsOverrides['ESDropzone'];
     };
   }
 }
