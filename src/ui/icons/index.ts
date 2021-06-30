@@ -5,3 +5,4 @@ export { ArrowUpIcon } from './ArrowUpIcon';
 export { BoxIcon } from './BoxIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
 export { ChevronRightIcon } from './ChevronRightIcon';
+export { UploadIcon } from './UploadIcon';
