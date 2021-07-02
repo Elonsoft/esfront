@@ -34,7 +34,8 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@material-ui/core": "^5.0.0-alpha.33",
+    "@material-ui/core": "^5.0.0-beta.0",
+    "@material-ui/styles": "^5.0.0-beta.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@storybook/addon-a11y": "^6.3.2",
@@ -77,9 +78,10 @@
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.5"
   },
-  "dependencies": {},
   "peerDependencies": {
-    "@material-ui/core": "5.0.0-alpha.33",
+    "@material-ui/core": "^5.0.0-beta.0",
+    "@material-ui/styles": "^5.0.0-beta.0",
+    "clsx": "^1.1.1",
     "react": "^17.0.0"
   },
   "files": [

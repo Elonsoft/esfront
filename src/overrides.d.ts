@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars */
 
 import { Color } from '@material-ui/core';
 import {
+  Theme,
   BreakpointOverrides,
   Palette,
   PaletteColor,
@@ -14,6 +15,7 @@ import { TypographyPropsVariantOverrides } from '@material-ui/core/Typography';
 import { Components } from '@material-ui/core/styles/components';
 import { ComponentsOverrides, ComponentNameToClassKey } from '@material-ui/core/styles/overrides';
 import { ComponentsProps, ComponentsPropsList } from '@material-ui/core/styles/props';
+import { DefaultTheme } from '@material-ui/styles/defaultTheme';
 
 import { ESEmptyStateProps, ESEmptyStateClassKey } from './ui/EmptyState';
 
@@ -177,4 +179,8 @@ declare module '@material-ui/core/Typography' {
     body1: false;
     body2: false;
   }
+}
+
+declare module '@material-ui/styles/defaultTheme' {
+  interface DefaultTheme extends Theme {}
 }
