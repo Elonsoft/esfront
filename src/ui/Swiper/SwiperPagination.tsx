@@ -17,7 +17,6 @@ const PAGINATION_ITEM_HIDDEN = {
 };
 
 export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number } = (inProps) => {
-  const styles = useStyles();
   const {
     className,
     classes,
@@ -34,6 +33,7 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
     props: inProps,
     name: 'ESSwiperPagination'
   });
+  const styles = useStyles({ classes });
 
   const name = useMemo(() => `pagination-${SwiperPagination.count++}`, []);
   const transition =
@@ -68,28 +68,16 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
   }
 
   return (
-    <div
-      className={clsx(
-        styles.root,
-        styles[direction],
-        styles[position],
-        styles[variant],
-        classes?.root,
-        classes?.[direction],
-        classes?.[position],
-        classes?.[variant],
-        className
-      )}
-    >
+    <div className={clsx(styles.root, styles[direction], styles[position], styles[variant], className)}>
       {bullets.map((index) => (
         <label
           key={index}
-          className={clsx(styles.item, classes?.item, index === active && [styles.itemActive, classes?.itemActive])}
+          className={clsx(styles.item, { [styles.itemActive]: index === active })}
           style={index < siblingFrom || index > siblingTo ? { ...PAGINATION_ITEM_HIDDEN, ...transition } : transition}
           aria-label={`${index}`}
         >
           <input
-            className={clsx(styles.input, classes?.input)}
+            className={styles.input}
             type="radio"
             name={name}
             value={index}
@@ -99,12 +87,11 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
           <div
             className={clsx(
               styles.bullet,
-              classes?.bullet,
-              index === active && [styles.bulletActive, classes?.bulletActive],
-              ((index === siblingFrom && siblingFrom > from) || (index === siblingTo && siblingTo < to)) && [
-                styles.bulletSmall,
-                classes?.bulletSmall
-              ]
+              { [styles.bulletActive]: index === active },
+              {
+                [styles.bulletSmall]:
+                  (index === siblingFrom && siblingFrom > from) || (index === siblingTo && siblingTo < to)
+              }
             )}
             style={transition}
           ></div>

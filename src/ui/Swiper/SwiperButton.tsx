@@ -12,7 +12,7 @@ const createSwiperButtonComponent = (Icon: React.ComponentType) => {
     const styles = useStyles();
 
     return (
-      <IconButton className={clsx(className, styles.root)} onClick={onClick} aria-label={label}>
+      <IconButton className={clsx(styles.root, className)} onClick={onClick} aria-label={label}>
         <Icon />
       </IconButton>
     );
