@@ -12,8 +12,6 @@ import { usePropertiesMapping } from './usePropertiesMapping';
 import { useDocumentEventListener, useResizeObserver } from '../hooks';
 
 export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps<P>) => {
-  const styles = useStyles();
-
   const {
     children,
     ref,
@@ -40,6 +38,7 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
     props: inProps,
     name: 'ESSwiper'
   });
+  const styles = useStyles({ classes });
 
   const ButtonPrev = buttonPrev ?? (direction === 'horizontal' ? SwiperButtonLeft : SwiperButtonUp);
   const ButtonNext = buttonNext ?? (direction === 'horizontal' ? SwiperButtonRight : SwiperButtonDown);
@@ -331,34 +330,31 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
 
   return (
     <div
-      className={clsx(styles.root, styles[direction], classes?.root, className)}
+      className={clsx(styles.root, styles[direction], className)}
       ref={ref}
       role="group"
       aria-roledescription="carousel"
     >
-      <div className={clsx(styles.wrapper, classes?.wrapper)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <div className={styles.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         {isPrevVisible && !!ButtonPrev && (
           <ButtonPrev
             onClick={onPrevClick}
             label={buttonPrevLabel}
-            className={clsx(styles.button, styles.buttonPrev, classes?.button, classes?.buttonPrev)}
+            className={clsx(styles.button, styles.buttonPrev)}
           />
         )}
         {isNextVisible && !!ButtonNext && (
           <ButtonNext
             onClick={onNextClick}
             label={buttonNextLabel}
-            className={clsx(styles.button, styles.buttonNext, classes?.button, classes?.buttonNext)}
+            className={clsx(styles.button, styles.buttonNext)}
           />
         )}
         <div
           className={clsx(
             styles.container,
-            classes?.container,
-            snap && !isMouseDown && [styles.containerSnap, classes?.containerSnap],
-            alignment === 'center'
-              ? [styles.containerSnapAlignCenter, classes?.containerSnapAlignCenter]
-              : [styles.containerSnapAlignStart, classes?.containerSnapAlignStart]
+            { [styles.containerSnap]: snap && !isMouseDown },
+            alignment === 'center' ? styles.containerSnapAlignCenter : styles.containerSnapAlignStart
           )}
           style={{ gap: `${gap}px`, cursor: draggable ? (isMouseDown ? 'grabbing' : 'grab') : 'unset' }}
           ref={container}
