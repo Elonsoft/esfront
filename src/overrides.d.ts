@@ -26,6 +26,7 @@ import {
   SwiperPaginationProps,
   SwiperPaginationClassKey
 } from './ui/Swiper';
+import { TableActionsProps, TableActionsClassKey } from './ui/TableActions';
 
 export interface ISurfacePalette {
   0: string;
@@ -46,6 +47,7 @@ declare module '@material-ui/core/styles/props' {
     ESEmptyState: EmptyStateProps;
     ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
     ESSwiperPagination: SwiperPaginationProps;
+    ESTableActions: TableActionsProps;
   }
 }
 
@@ -55,6 +57,7 @@ declare module '@material-ui/core/styles/overrides' {
     ESSwiper: SwiperClassKey;
     ESSwiperButton: SwiperButtonClassKey;
     ESSwiperPagination: SwiperPaginationClassKey;
+    ESTableActions: TableActionsClassKey;
   }
 }
 
@@ -74,6 +77,10 @@ declare module '@material-ui/core/styles/components' {
     ESSwiperPagination?: {
       defaultProps?: ComponentsProps['ESSwiperPagination'];
       styleOverrides?: ComponentsOverrides['ESSwiperPagination'];
+    };
+    ESTableActions?: {
+      defaultProps?: ComponentsProps['ESTableActions'];
+      styleOverrides?: ComponentsOverrides['ESTableActions'];
     };
   }
 }
