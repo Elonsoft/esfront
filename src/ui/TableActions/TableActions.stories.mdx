@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { TableActions } from './TableActions';
+import * as stories from './TableActions.stories';
+
+<Meta
+  title="Components/TableActions"
+  component={TableActions}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    count: {
+      defaultValue: 10
+    }
+  }}
+/>
+
+# TableActions
+
+This component displays actions for the selected table rows.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+<br />
+
+Here is how we can intergrate `TableActions` with `Table` component.
+
+<Canvas>
+  <Story story={stories.Usage} name="Usage" height="270px" />
+</Canvas>
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-tableactions" story="page">
+      <code>TableActions</code>
+    </LinkTo>
+  </li>
+</ul>
