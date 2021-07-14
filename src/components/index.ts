@@ -1,3 +1,4 @@
+export * from './AudioPlayer';
 export * from './DateAdapter';
 export * from './Dialog';
 export * from './Dropzone';

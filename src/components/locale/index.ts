@@ -1,3 +1,4 @@
+import { AudioPlayerProps } from '../AudioPlayer';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
@@ -7,6 +8,22 @@ import { TableActionsProps } from '../TableActions';
 
 export interface Localization {
   components: {
+    ESAudioPlayer: {
+      defaultProps: Pick<
+        AudioPlayerProps,
+        | 'labelBack'
+        | 'labelCurrent'
+        | 'labelDownload'
+        | 'labelMute'
+        | 'labelOptions'
+        | 'labelPause'
+        | 'labelPlay'
+        | 'labelRate'
+        | 'labelRateNormal'
+        | 'labelUnmute'
+        | 'labelVolume'
+      >;
+    };
     ESDialogArrow: {
       defaultProps: Pick<DialogArrowProps, 'labelPrev' | 'labelNext'>;
     };
@@ -36,6 +53,21 @@ export interface Localization {
 
 export const en: Localization = {
   components: {
+    ESAudioPlayer: {
+      defaultProps: {
+        labelBack: 'Back',
+        labelCurrent: 'Current playback time',
+        labelDownload: 'Download',
+        labelMute: 'Mute',
+        labelOptions: 'Options',
+        labelPause: 'Pause',
+        labelPlay: 'Play',
+        labelRate: 'Rate',
+        labelRateNormal: 'Normal',
+        labelUnmute: 'Unmute',
+        labelVolume: 'Volume'
+      }
+    },
     ESDialogArrow: {
       defaultProps: {
         labelPrev: 'Previous',
@@ -87,6 +119,21 @@ export const en: Localization = {
 
 export const ru: Localization = {
   components: {
+    ESAudioPlayer: {
+      defaultProps: {
+        labelBack: 'Назад',
+        labelCurrent: 'Текущее время воспроизведения',
+        labelDownload: 'Скачать',
+        labelMute: 'Выключить звук',
+        labelOptions: 'Опции',
+        labelPause: 'Остановить воспроизведение',
+        labelPlay: 'Начать воспроизведение',
+        labelRate: 'Скорость',
+        labelRateNormal: 'Обычная',
+        labelUnmute: 'Включить звук',
+        labelVolume: 'Громкость'
+      }
+    },
     ESDialogArrow: {
       defaultProps: {
         labelPrev: 'Назад',

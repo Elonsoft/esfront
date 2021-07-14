@@ -21,6 +21,7 @@ import { InputBasePropsSizeOverrides } from '@mui/material/InputBase';
 import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography';
 
+import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
 import { DropzoneClassKey, DropzoneProps } from './components/Dropzone';
 import { EmptyStateClassKey, EmptyStateProps } from './components/EmptyState';
 import {
@@ -107,6 +108,7 @@ export interface IOverlayPalette {
 
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
+    ESAudioPlayer: AudioPlayerProps;
     ESDropzone: DropzoneProps;
     ESEmptyState: EmptyStateProps;
     ESFileIcon: FileIconProps;
@@ -136,6 +138,7 @@ declare module '@mui/material/styles/props' {
 
 declare module '@mui/material/styles/overrides' {
   interface ComponentNameToClassKey {
+    ESAudioPlayer: AudioPlayerClassKey;
     ESDropzone: DropzoneClassKey;
     ESEmptyState: EmptyStateClassKey;
     ESFileIcon: FileIconClassKey;
@@ -164,6 +167,10 @@ declare module '@mui/material/styles/overrides' {
 
 declare module '@mui/material/styles/components' {
   interface Components {
+    ESAudioPlayer?: {
+      defaultProps?: ComponentsProps['ESAudioPlayer'];
+      styleOverrides?: ComponentsOverrides['ESAudioPlayer'];
+    };
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];
       styleOverrides?: ComponentsOverrides['ESEmptyState'];

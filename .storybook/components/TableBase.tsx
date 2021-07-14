@@ -39,7 +39,7 @@ export const TableCode = styled('code')(({ theme }) => ({
 }));
 
 export const getDescription = (c) => {
-  return c.comment?.shortText || c.type?.declaration?.signatures?.[0]?.comment?.shortText || null;
+  return c.comment?.shortText || c.signatures?.[0]?.comment?.shortText || null;
 };
 
 export const getMethod = (m) => {
