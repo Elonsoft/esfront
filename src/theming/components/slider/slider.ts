@@ -8,6 +8,26 @@ export const createSlider: Component<'MuiSlider'> = (theme, typography) => {
     styleOverrides: {
       root: {
         borderRadius: '8px',
+        '& .MuiSlider-rail': {
+          transform: 'translateX(-3px) translateY(-50%)',
+          width: 'calc(100% + 6px)'
+        },
+        '& .MuiSlider-track': {
+          transform: 'translateX(-3px) translateY(-50%)',
+          paddingRight: '3px'
+        },
+        '&.MuiSlider-vertical': {
+          '& .MuiSlider-rail': {
+            transform: 'translateY(-3px) translateX(-50%)',
+            height: 'calc(100% + 6px)',
+            width: 'inherit'
+          },
+          '& .MuiSlider-track': {
+            transform: 'translateY(3px) translateX(-50%)',
+            paddingRight: 0,
+            paddingTop: '3px'
+          }
+        },
         '&.MuiSlider-colorPrimary': {
           color: theme.palette.primary[300],
           '& .MuiSlider-thumb': {
@@ -55,7 +75,7 @@ export const createSlider: Component<'MuiSlider'> = (theme, typography) => {
       thumb: {
         height: '12px',
         transitionDuration: `${theme.transitions.duration.shortest}ms`,
-        transitionProperty: 'box-shadow, left, bottom, width, height',
+        transitionProperty: 'box-shadow, left, bottom, width, height, opacity',
         transitionTimingFunction: 'linear',
         width: '12px',
         '&::before': {
@@ -84,13 +104,10 @@ export const createSlider: Component<'MuiSlider'> = (theme, typography) => {
       },
       rail: {
         backgroundColor: theme.palette.monoA.A400,
-        opacity: 1,
-        transform: 'translateX(-3px) translateY(-50%)',
-        width: 'calc(100% + 6px)'
+        opacity: 1
       },
       track: {
         border: 0,
-        transform: 'translateX(-3px) translateY(-50%)',
         transitionTimingFunction: 'linear'
       },
       mark: {

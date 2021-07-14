@@ -22,13 +22,13 @@ export interface PaginationPagesProps {
   labelPage?: string;
 
   /** Icon for the previous page button. */
-  iconPrevPage?: string;
+  iconPrevPage?: React.ReactNode;
   /** Icon for the next page button. */
-  iconNextPage?: string;
+  iconNextPage?: React.ReactNode;
   /** Icon for the pagination ellipsis. */
-  iconEllipsis?: string;
+  iconEllipsis?: React.ReactNode;
   /** Icon for the previous page hint in tooltip. */
-  iconTooltipPrevPage?: string;
+  iconTooltipPrevPage?: React.ReactNode;
   /** Icon for the next page hint in tooltip. */
-  iconTooltipNextPage?: string;
+  iconTooltipNextPage?: React.ReactNode;
 }

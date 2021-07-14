@@ -13,13 +13,29 @@ export const Demo: Story = ({ height, ...args }) => {
     setValue(newValue as number[]);
   };
 
-  const style = { height: `${height}px` };
+  const styleHorizonatal = { height: `${height}px` };
+  const styleVertical = { height: '100%', width: `${height}px` };
 
   return (
     <div style={{ display: 'grid', gap: '24px', gridAutoFlow: 'row', maxWidth: '400px', paddingTop: '16px' }}>
-      <Slider min={0} max={100} style={style} {...args} />
-      <Slider min={0} max={50} step={null} marks={MARKS} style={style} {...args} />
-      <Slider min={0} max={100} value={value} onChange={onChange} style={style} {...args} />
+      <Slider min={0} max={100} style={styleHorizonatal} {...args} />
+      <Slider min={0} max={50} step={null} marks={MARKS} style={styleHorizonatal} {...args} />
+      <Slider min={0} max={100} value={value} onChange={onChange} style={styleHorizonatal} {...args} />
+      <div
+        style={{ display: 'grid', gap: '24px', gridAutoFlow: 'column', justifyContent: 'flex-start', height: '150px' }}
+      >
+        <Slider min={0} max={100} orientation="vertical" style={styleVertical} {...args} />
+        <Slider min={0} max={50} step={null} marks={MARKS} orientation="vertical" style={styleVertical} {...args} />
+        <Slider
+          min={0}
+          max={100}
+          value={value}
+          onChange={onChange}
+          orientation="vertical"
+          style={styleVertical}
+          {...args}
+        />
+      </div>
     </div>
   );
 };
