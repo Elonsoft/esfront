@@ -11,7 +11,11 @@ import {
   TypographyVariantsOptions
 } from '@material-ui/core/styles';
 import { CommonColors } from '@material-ui/core/styles/createPalette';
+
+import { ButtonPropsSizeOverrides } from '@material-ui/core/Button';
+import { IconButtonPropsSizeOverrides } from '@material-ui/core/IconButton';
 import { TypographyPropsVariantOverrides } from '@material-ui/core/Typography';
+
 import { Components } from '@material-ui/core/styles/components';
 import { ComponentsOverrides, ComponentNameToClassKey } from '@material-ui/core/styles/overrides';
 import { ComponentsProps, ComponentsPropsList } from '@material-ui/core/styles/props';
@@ -202,6 +206,32 @@ declare module '@material-ui/core/styles/createPalette' {
     link: string;
     linkVisited: string;
     switch: string;
+  }
+}
+
+declare module '@material-ui/core/Button' {
+  interface ButtonPropsSizeOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    small: false;
+    medium: false;
+    large: false;
+  }
+}
+
+declare module '@material-ui/core/IconButton' {
+  interface IconButtonPropsSizeOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    small: false;
+    medium: false;
+    large: false;
   }
 }
 

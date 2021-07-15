@@ -6,7 +6,7 @@ import GlobalStyles from '@material-ui/core/GlobalStyles';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { enUS, ruRU } from '@material-ui/core/locale';
 
-import { breakpoints, palettes, createTypography } from '../../theming';
+import { breakpoints, createComponents, palettes, createTypography } from '../../theming';
 import { en, ru } from '../../ui';
 
 export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
@@ -16,10 +16,16 @@ export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
         values: {
           ...breakpoints
         }
+      },
+      palette: {
+        mode: isDarkMode ? 'dark' : 'light',
+        ...palettes.common,
+        ...(isDarkMode ? palettes.dark : palettes.light)
       }
     });
 
     const typography = createTypography(theme);
+    const components = createComponents(theme, typography);
 
     return createTheme(
       {
@@ -28,22 +34,12 @@ export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
             ...theme.breakpoints.values
           }
         },
-        palette: {
-          mode: isDarkMode ? 'dark' : 'light',
-          ...palettes.common,
-          ...(isDarkMode ? palettes.dark : palettes.light)
-        },
+        palette: theme.palette,
         typography: {
           fontFamily: "'Roboto', sans-serif",
           ...typography
         },
-        components: {
-          MuiButton: {
-            defaultProps: {
-              disableElevation: true
-            }
-          }
-        }
+        components
       },
       locale === 'ru' ? ruRU : enUS,
       locale === 'ru' ? ru : en
