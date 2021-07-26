@@ -1,0 +1,100 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Icon from '@material-ui/core/Icon';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+
+<Meta
+  title="Overrides/TextField"
+  parameters={{
+    viewMode: 'canvas',
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    disabled: {
+      control: { type: 'boolean' }
+    },
+    required: {
+      control: { type: 'boolean' }
+    },
+    size: {
+      options: ['56', '48', '40', '32'],
+      control: { type: 'select' }
+    },
+    placeholder: {
+      control: { type: 'text' }
+    },
+    startAdornment: {
+      control: { type: 'boolean' }
+    },
+    endAdornment: {
+      control: { type: 'boolean' }
+    }
+  }}
+/>
+
+export const getLabel = (context) => {
+  return context.globals.locale === 'en' ? 'Input' : 'Инпут';
+};
+
+export const getLabelPassword = (context) => {
+  return context.globals.locale === 'en' ? 'Password' : 'Пароль';
+};
+
+export const getLabelNumber = (context) => {
+  return context.globals.locale === 'en' ? 'Number' : 'Число';
+};
+
+export const getLabelTextArea = (context) => {
+  return context.globals.locale === 'en' ? 'Text area' : 'Текстовое поле';
+};
+
+export const getLabelSelect = (context) => {
+  return context.globals.locale === 'en' ? 'Select' : 'Селект';
+};
+
+export const getHelperText = (context) => {
+  return context.globals.locale === 'en' ? 'Helper text' : 'Текст подсказки';
+};
+
+export const getHelperTextError = (context) => {
+  return context.globals.locale === 'en' ? 'Error text' : 'Текст ошибки';
+};
+
+<Canvas>
+  <Story name="TextField">
+    {({ startAdornment, endAdornment, ...args }, context) => {
+      const label = getLabel(context);
+      const StartAdornment = startAdornment ? (
+        <InputAdornment position="start">
+          <Icon>search</Icon>
+        </InputAdornment>
+      ) : null;
+      const EndAdornment = endAdornment ? (
+        <InputAdornment position="end">
+          <Icon>search</Icon>
+        </InputAdornment>
+      ) : null;
+      args.InputProps = { startAdornment: StartAdornment, endAdornment: EndAdornment };
+      return (
+        <div style={{ display: 'grid', gap: '16px', gridAutoFlow: 'row' }}>
+          <TextField id="text-field-base" label={label} {...args} />
+          <TextField id="text-field-password" type="password" label={getLabelPassword(context)} {...args} />
+          <TextField id="text-field-number" type="number" label={getLabelNumber(context)} {...args} />
+          <TextField id="text-field-helper" label={label} helperText={getHelperText(context)} {...args} />
+          <TextField id="text-field-error" label={label} error helperText={getHelperTextError(context)} {...args} />
+          <TextField id="text-field-multiline" label={getLabelTextArea(context)} multiline minRows={1} {...args} />
+          <TextField id="text-field-select" label={getLabelSelect(context)} select {...args}>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+          </TextField>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

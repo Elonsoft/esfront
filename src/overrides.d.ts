@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars */
 
-import { Color } from '@material-ui/core';
+import { Color, ComponentsVariants } from '@material-ui/core';
 import {
   Theme,
   BreakpointOverrides,
@@ -14,6 +14,9 @@ import { CommonColors } from '@material-ui/core/styles/createPalette';
 
 import { ButtonPropsSizeOverrides } from '@material-ui/core/Button';
 import { IconButtonPropsSizeOverrides } from '@material-ui/core/IconButton';
+import { FormControlPropsSizeOverrides } from '@material-ui/core/FormControl';
+import { InputBasePropsSizeOverrides } from '@material-ui/core/InputBase';
+import { TextFieldPropsSizeOverrides } from '@material-ui/core/TextField';
 import { TypographyPropsVariantOverrides } from '@material-ui/core/Typography';
 
 import { Components } from '@material-ui/core/styles/components';
@@ -231,6 +234,36 @@ declare module '@material-ui/core/IconButton' {
     small: false;
     medium: false;
     large: false;
+  }
+}
+
+declare module '@material-ui/core/FormControl' {
+  interface FormControlPropsSizeOverrides {
+    '56': true;
+    '48': true;
+    '40': true;
+    '32': true;
+    small: false;
+  }
+}
+
+declare module '@material-ui/core/InputBase' {
+  interface InputBasePropsSizeOverrides {
+    '56': true;
+    '48': true;
+    '40': true;
+    '32': true;
+    small: false;
+  }
+}
+
+declare module '@material-ui/core/TextField' {
+  interface TextFieldPropsSizeOverrides {
+    '56': true;
+    '48': true;
+    '40': true;
+    '32': true;
+    small: false;
   }
 }
 
