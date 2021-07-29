@@ -8,6 +8,9 @@ export { createButton } from './button';
 import { createIconButton } from './icon-button';
 export { createIconButton } from './icon-button';
 
+import { createSlider } from './slider';
+export { createSlider } from './slider';
+
 import {
   createFormControl,
   createFormHelperText,
@@ -36,18 +39,20 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
   const MuiInputAdornment = createInputAdornment(theme, typography);
   const MuiOutlinedInput = createOutlinedInput(theme, typography);
   const MuiSelect = createSelect(theme, typography);
+  const MuiSlider = createSlider(theme, typography);
   const MuiTextField = createTextField(theme, typography);
 
   const components: Components = {
     MuiButton,
-    MuiIconButton,
+    MuiFormControl,
     MuiFormHelperText,
     MuiFormLabel,
+    MuiIconButton,
     MuiInputAdornment,
-    MuiSelect,
     MuiOutlinedInput,
-    MuiTextField,
-    MuiFormControl
+    MuiSelect,
+    MuiSlider,
+    MuiTextField
   };
   return components;
 };
