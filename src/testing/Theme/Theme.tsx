@@ -1,57 +1,26 @@
 import { FC, useMemo } from 'react';
 import { IThemeProps } from './Theme.types';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import GlobalStyles from '@material-ui/core/GlobalStyles';
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { enUS, ruRU } from '@material-ui/core/locale';
 
-import { breakpoints, createComponents, palettes, createTypography } from '../../theming';
+import { ThemeProvider, palettes } from '../../theming';
 import { en, ru } from '../../ui';
 
 export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
-  const theme = useMemo(() => {
-    const theme = createTheme({
-      breakpoints: {
-        values: {
-          ...breakpoints
-        }
-      },
-      palette: {
-        mode: isDarkMode ? 'dark' : 'light',
-        ...palettes.common,
-        ...(isDarkMode ? palettes.dark : palettes.light)
-      }
-    });
+  const palette = useMemo(() => {
+    return {
+      mode: isDarkMode ? ('dark' as const) : ('light' as const),
+      ...palettes.common,
+      ...(isDarkMode ? palettes.dark : palettes.light)
+    };
+  }, [isDarkMode]);
 
-    const typography = createTypography(theme);
-    const components = createComponents(theme, typography);
-
-    return createTheme(
-      {
-        breakpoints: {
-          values: {
-            ...theme.breakpoints.values
-          }
-        },
-        palette: theme.palette,
-        typography: {
-          fontFamily: "'Roboto', sans-serif",
-          ...typography
-        },
-        components: {
-          ...components
-        }
-      },
-      locale === 'ru' ? ruRU : enUS,
-      locale === 'ru' ? ru : en
-    );
-  }, [isDarkMode, locale]);
+  const args = useMemo(() => {
+    return locale === 'ru' ? { ...ruRU, ...ru } : { ...enUS, ...en };
+  }, [locale]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <GlobalStyles styles={{ body: { fontFamily: theme.typography.fontFamily } }} />
+    <ThemeProvider palette={palette} args={args}>
       {children}
     </ThemeProvider>
   );
