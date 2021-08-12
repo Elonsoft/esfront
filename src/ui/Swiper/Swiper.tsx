@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef, useImperativeHandle } from 'react';
-import { SwiperProps, SwiperPaginationBaseProps } from './Swiper.types';
+import { SwiperProps, SwiperAlignment, SwiperDirection, SwiperPaginationBaseProps } from './Swiper.types';
 
 import clsx from 'clsx';
-import { useStyles } from './Swiper.styles';
+import { styled } from '@material-ui/core/styles';
+import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { swiperClasses, getSwiperUtilityClass } from './Swiper.classes';
 
 import { SwiperButtonDown, SwiperButtonLeft, SwiperButtonRight, SwiperButtonUp } from './SwiperButton';
 
@@ -11,11 +13,137 @@ import useThemeProps from '@material-ui/core/styles/useThemeProps';
 import { usePropertiesMapping } from './usePropertiesMapping';
 import { useDocumentEventListener, useResizeObserver } from '../hooks';
 
+type SwiperStyleProps = {
+  classes?: SwiperProps<any>['classes'];
+  alignment: SwiperAlignment;
+  direction: SwiperDirection;
+  snap: boolean;
+};
+
+const useUtilityClasses = (styleProps: SwiperStyleProps) => {
+  const { classes, alignment, direction, snap } = styleProps;
+
+  const slots = {
+    root: ['root', direction],
+    wrapper: ['wrapper'],
+    container: [
+      'container',
+      snap && 'containerSnap',
+      snap && alignment == 'center' && 'containerSnapAlignCenter',
+      snap && alignment == 'start' && 'containerSnapAlignStart'
+    ],
+    button: ['button'],
+    buttonPrev: ['buttonPrev'],
+    buttonNext: ['buttonNext']
+  };
+
+  return composeClasses(slots, getSwiperUtilityClass, classes);
+};
+
+const SwiperRoot = styled('div', {
+  name: 'ESSwiper',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      styleProps: { direction }
+    } = props;
+    return [styles.root, styles[direction]];
+  }
+})<{ styleProps: SwiperStyleProps }>(({ styleProps }) => ({
+  display: 'flex',
+  position: 'relative',
+
+  ...(styleProps.direction === 'horizontal' && {
+    flexDirection: 'column',
+    [`& .${swiperClasses.container}`]: {
+      gridAutoFlow: 'column'
+    },
+    [`& .${swiperClasses.button}.MuiIconButton-root`]: {
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)'
+    },
+    [`& .${swiperClasses.buttonPrev}`]: {
+      left: 16
+    },
+    [`& .${swiperClasses.buttonNext}`]: {
+      right: 16
+    }
+  }),
+
+  ...(styleProps.direction === 'vertical' && {
+    flexDirection: 'row',
+    height: '100%',
+    width: 'max-content',
+    [`& .${swiperClasses.container}`]: {
+      gridAutoFlow: 'row',
+      height: '100%'
+    },
+    [`& .${swiperClasses.button}.MuiIconButton-root`]: {
+      position: 'absolute',
+      left: '50%',
+      transform: 'translateX(-50%)'
+    },
+    [`& .${swiperClasses.buttonPrev}`]: {
+      top: 16
+    },
+    [`& .${swiperClasses.buttonNext}`]: {
+      bottom: 16
+    }
+  })
+}));
+
+const SwiperWrapper = styled('div', {
+  name: 'ESSwiper',
+  slot: 'Wrapper',
+  overridesResolver: (props, styles) => styles.wrapper
+})(() => ({
+  position: 'relative'
+}));
+
+const SwiperContainer = styled('div', {
+  name: 'ESSwiper',
+  slot: 'Container',
+  overridesResolver: (props, styles) => {
+    const {
+      styleProps: { snap, alignment }
+    } = props;
+    return [
+      styles.container,
+      snap && styles.containerSnap,
+      snap && alignment == 'center' && styles.containerSnapAlignCenter,
+      snap && alignment == 'start' && styles.containerSnapAlignStart
+    ];
+  }
+})<{ styleProps: SwiperStyleProps }>(({ styleProps }) => ({
+  display: 'grid',
+  justifyContent: 'flex-start',
+  overflow: 'scroll',
+  msOverflowStyle: 'none',
+  scrollbarWidth: 'none',
+  '&::-webkit-scrollbar': {
+    display: 'none'
+  },
+  '& > *': {
+    scrollSnapAlign: styleProps.alignment,
+    ...(styleProps.snap && {
+      '&:first-child': {
+        scrollSnapAlign: 'start'
+      },
+      '&:last-child': {
+        scrollSnapAlign: 'end'
+      }
+    })
+  },
+  ...(styleProps.snap && {
+    scrollSnapType: 'x mandatory'
+  })
+}));
+
 export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps<P>) => {
   const {
     children,
     ref,
-    classes,
     className,
     direction = 'horizontal',
     alignment = 'center',
@@ -33,12 +161,12 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
     buttonNextLabel,
     buttonScrollDistance = 1,
     pagination: Pagination,
-    PaginationProps
+    PaginationProps,
+    ...props
   } = useThemeProps({
     props: inProps,
     name: 'ESSwiper'
   });
-  const styles = useStyles({ classes });
 
   const ButtonPrev = buttonPrev ?? (direction === 'horizontal' ? SwiperButtonLeft : SwiperButtonUp);
   const ButtonNext = buttonNext ?? (direction === 'horizontal' ? SwiperButtonRight : SwiperButtonDown);
@@ -328,34 +456,35 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
     }
   }, [loop, loopCount, isMouseDown, isMouseOver, isTouchDown, direction, alignment]);
 
+  const styleProps = { ...props, alignment, direction, snap: !!(snap && !isMouseDown) };
+  const classes = useUtilityClasses(styleProps);
+
   return (
-    <div
-      className={clsx(styles.root, styles[direction], className)}
+    <SwiperRoot
+      className={clsx(classes.root, className)}
+      styleProps={styleProps}
       ref={ref}
       role="group"
       aria-roledescription="carousel"
     >
-      <div className={styles.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <SwiperWrapper className={classes.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         {isPrevVisible && !!ButtonPrev && (
           <ButtonPrev
             onClick={onPrevClick}
             label={buttonPrevLabel}
-            className={clsx(styles.button, styles.buttonPrev)}
+            className={clsx(classes.button, classes.buttonPrev)}
           />
         )}
         {isNextVisible && !!ButtonNext && (
           <ButtonNext
             onClick={onNextClick}
             label={buttonNextLabel}
-            className={clsx(styles.button, styles.buttonNext)}
+            className={clsx(classes.button, classes.buttonNext)}
           />
         )}
-        <div
-          className={clsx(
-            styles.container,
-            { [styles.containerSnap]: snap && !isMouseDown },
-            alignment === 'center' ? styles.containerSnapAlignCenter : styles.containerSnapAlignStart
-          )}
+        <SwiperContainer
+          className={classes.container}
+          styleProps={styleProps}
           style={{ gap: `${gap}px`, cursor: draggable ? (isMouseDown ? 'grabbing' : 'grab') : 'unset' }}
           ref={container}
           tabIndex={-1}
@@ -368,8 +497,8 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
           onTouchStart={onTouchStart}
         >
           {children}
-        </div>
-      </div>
+        </SwiperContainer>
+      </SwiperWrapper>
       {!!Pagination && (
         <Pagination
           {...(PaginationProps as P)}
@@ -380,6 +509,6 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
           onChange={setActiveSlide}
         />
       )}
-    </div>
+    </SwiperRoot>
   );
 };

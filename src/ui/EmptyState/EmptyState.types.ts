@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { EmptyStateClasses } from './EmptyState.styles';
+import { EmptyStateClasses } from './EmptyState.classes';
 
 export interface EmptyStateProps {
   /** Override or extend the styles applied to the component. */

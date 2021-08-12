@@ -1,6 +1,6 @@
 import { Ref, ComponentType, ReactNode } from 'react';
-import { SwiperClasses } from './Swiper.styles';
-import { SwiperPaginationClasses } from './SwiperPagination.styles';
+import { SwiperClasses } from './Swiper.classes';
+import { SwiperPaginationClasses } from './SwiperPagination.classes';
 
 export type SwiperDirection = 'horizontal' | 'vertical';
 export type SwiperAlignment = 'center' | 'start';

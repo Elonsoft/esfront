@@ -19,7 +19,6 @@ import { TypographyPropsVariantOverrides } from '@material-ui/core/Typography';
 import { Components } from '@material-ui/core/styles/components';
 import { ComponentsOverrides, ComponentNameToClassKey } from '@material-ui/core/styles/overrides';
 import { ComponentsProps, ComponentsPropsList } from '@material-ui/core/styles/props';
-import { DefaultTheme } from '@material-ui/styles/defaultTheme';
 
 import { EmptyStateProps, EmptyStateClassKey } from './ui/EmptyState';
 import { DropzoneProps, DropzoneClassKey } from './ui/Dropzone';
@@ -247,8 +246,4 @@ declare module '@material-ui/core/Typography' {
     body1: false;
     body2: false;
   }
-}
-
-declare module '@material-ui/styles/defaultTheme' {
-  interface DefaultTheme extends Theme {}
 }

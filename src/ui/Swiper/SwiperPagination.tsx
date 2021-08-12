@@ -1,25 +1,100 @@
 import { useMemo } from 'react';
 
 import clsx from 'clsx';
-import { useStyles } from './SwiperPagination.styles';
+import { styled } from '@material-ui/core/styles';
+import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { swiperPaginationClasses, getSwiperPaginationUtilityClass } from './SwiperPagination.classes';
+
 import { SwiperPaginationProps } from './SwiperPagination.types';
+import { SwiperPaginationItem } from './SwiperPaginationItem';
 
 import useThemeProps from '@material-ui/core/styles/useThemeProps';
 
-const PAGINATION_ITEM_HIDDEN = {
-  height: 0,
-  margin: 0,
-  minHeight: 0,
-  minWidth: 0,
-  opacity: 0,
-  padding: 0,
-  width: 0
+type SwiperPaginationStyleProps = {
+  classes?: SwiperPaginationProps['classes'];
+  direction: SwiperPaginationProps['direction'];
+  position: SwiperPaginationProps['position'];
+  variant: SwiperPaginationProps['variant'];
 };
+
+const useUtilityClasses = (styleProps: SwiperPaginationStyleProps) => {
+  const { classes, direction, position, variant } = styleProps;
+
+  const slots = {
+    root: ['root', direction, position, variant]
+  };
+
+  return composeClasses(slots, getSwiperPaginationUtilityClass, classes);
+};
+
+const SwiperPaginationRoot = styled('div', {
+  name: 'ESSwiperPagination',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      styleProps: { direction, position, variant }
+    } = props;
+    return [styles.root, styles[direction], styles[position], styles[variant]];
+  }
+})<{ styleProps: SwiperPaginationStyleProps }>(({ styleProps }) => ({
+  alignItems: 'center',
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+
+  ...(styleProps.direction === 'horizontal' && {
+    flexDirection: 'row',
+    width: '100%',
+    [`&.${swiperPaginationClasses.start}`]: {
+      marginBottom: 14,
+      marginTop: -2
+    },
+    [`&.${swiperPaginationClasses.end}`]: {
+      marginBottom: -2,
+      marginTop: 14
+    }
+  }),
+
+  ...(styleProps.direction === 'vertical' && {
+    flexDirection: 'column',
+    height: '100%',
+    [`&.${swiperPaginationClasses.start}`]: {
+      marginLeft: -2,
+      marginRight: 14
+    },
+    [`&.${swiperPaginationClasses.end}`]: {
+      marginLeft: 14,
+      marginRight: -2
+    }
+  }),
+
+  ...(styleProps.position === 'start' && {
+    order: -1
+  }),
+
+  ...(styleProps.variant === 'long' && {
+    [`&.${swiperPaginationClasses.horizontal} .${swiperPaginationClasses.bulletActive}`]: {
+      width: 16
+    },
+    [`&.${swiperPaginationClasses.vertical} .${swiperPaginationClasses.bulletActive}`]: {
+      height: 16
+    }
+  }),
+
+  ...(styleProps.variant === 'big' && {
+    [`& .${swiperPaginationClasses.itemActive}`]: {
+      padding: 2
+    },
+    [`& .${swiperPaginationClasses.bulletActive}`]: {
+      height: 12,
+      width: 12
+    }
+  })
+}));
 
 export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number } = (inProps) => {
   const {
     className,
-    classes,
     direction,
     from,
     to,
@@ -28,15 +103,15 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
     position = 'end',
     variant = 'small',
     siblingCount,
-    transitionDuration
+    transitionDuration,
+    ...props
   } = useThemeProps({
     props: inProps,
     name: 'ESSwiperPagination'
   });
-  const styles = useStyles({ classes });
 
   const name = useMemo(() => `pagination-${SwiperPagination.count++}`, []);
-  const transition =
+  const transition: { transitionDuration?: string } =
     !!transitionDuration || transitionDuration === 0 ? { transitionDuration: `${transitionDuration}ms` } : {};
 
   const bullets = useMemo(() => {
@@ -67,37 +142,26 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
     return null;
   }
 
+  const styleProps = { ...props, direction, position, variant };
+  const classes = useUtilityClasses(styleProps);
+
   return (
-    <div className={clsx(styles.root, styles[direction], styles[position], styles[variant], className)}>
+    <SwiperPaginationRoot className={clsx(classes.root, className)} styleProps={styleProps}>
       {bullets.map((index) => (
-        <label
+        <SwiperPaginationItem
           key={index}
-          className={clsx(styles.item, { [styles.itemActive]: index === active })}
-          style={index < siblingFrom || index > siblingTo ? { ...PAGINATION_ITEM_HIDDEN, ...transition } : transition}
-          aria-label={`${index}`}
-        >
-          <input
-            className={styles.input}
-            type="radio"
-            name={name}
-            value={index}
-            checked={index === active}
-            onChange={onSlideChange}
-          ></input>
-          <div
-            className={clsx(
-              styles.bullet,
-              { [styles.bulletActive]: index === active },
-              {
-                [styles.bulletSmall]:
-                  (index === siblingFrom && siblingFrom > from) || (index === siblingTo && siblingTo < to)
-              }
-            )}
-            style={transition}
-          ></div>
-        </label>
+          index={index}
+          active={active}
+          from={from}
+          to={to}
+          siblingFrom={siblingFrom}
+          siblingTo={siblingTo}
+          name={name}
+          transition={transition}
+          onSlideChange={onSlideChange}
+        />
       ))}
-    </div>
+    </SwiperPaginationRoot>
   );
 };
 

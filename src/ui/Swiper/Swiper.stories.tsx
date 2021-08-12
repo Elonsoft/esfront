@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react';
 
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/styles';
+import { styled } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 
 import { Swiper } from './Swiper';
@@ -85,48 +84,37 @@ export const Vertical: Story = ({
   );
 };
 
-const useButtonStyles = makeStyles((theme) => ({
-  button: {
-    '&.MuiIconButton-root': {
-      backdropFilter: 'blur(10px)',
-      backgroundColor: theme.palette.white.A600,
-      color: theme.palette.black[500],
-      padding: 4,
+const CustomizationButton = styled(IconButton)<{ prev?: boolean; next?: boolean }>(({ theme, prev, next }) => ({
+  backdropFilter: 'blur(10px)',
+  backgroundColor: theme.palette.white.A600,
+  color: theme.palette.black[500],
+  padding: 4,
 
-      '&:hover': {
-        backgroundColor: theme.palette.white.A600
-      }
-    }
+  '&:hover': {
+    backgroundColor: theme.palette.white.A600
   },
-  buttonPrev: {
-    '&.MuiIconButton-root': {
-      left: 8
-    }
-  },
-  buttonNext: {
-    '&.MuiIconButton-root': {
-      right: 8
-    }
-  }
+
+  ...(prev && {
+    left: 8
+  }),
+  ...(next && {
+    right: 8
+  })
 }));
 
 const CustomizationButtonPrev: React.FC<SwiperButtonProps> = ({ className, label, onClick }) => {
-  const styles = useButtonStyles();
-
   return (
-    <IconButton className={clsx(className, styles.button, styles.buttonPrev)} onClick={onClick} aria-label={label}>
+    <CustomizationButton className={className} prev onClick={onClick} aria-label={label}>
       <ChevronLeftIcon />
-    </IconButton>
+    </CustomizationButton>
   );
 };
 
 const CustomizationButtonNext: React.FC<SwiperButtonProps> = ({ className, label, onClick }) => {
-  const styles = useButtonStyles();
-
   return (
-    <IconButton className={clsx(className, styles.button, styles.buttonNext)} onClick={onClick} aria-label={label}>
+    <CustomizationButton className={className} next onClick={onClick} aria-label={label}>
       <ChevronRightIcon />
-    </IconButton>
+    </CustomizationButton>
   );
 };
 
