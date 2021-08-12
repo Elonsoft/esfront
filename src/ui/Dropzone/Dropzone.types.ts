@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DropzoneClasses } from './Dropzone.styles';
+import { DropzoneClasses } from './Dropzone.classes';
 
 export type FileError = 'file-too-large' | 'file-invalid-type' | 'too-many-files';
 

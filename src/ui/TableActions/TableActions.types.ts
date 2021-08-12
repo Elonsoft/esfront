@@ -1,4 +1,4 @@
-import { TableActionsClasses } from './TableActions.styles';
+import { TableActionsClasses } from './TableActions.classes';
 
 export interface TableActionsProps {
   /** Override or extend the styles applied to the component. */

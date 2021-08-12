@@ -1,20 +1,58 @@
-import { SwiperButtonProps } from './Swiper.types';
-
 import clsx from 'clsx';
-import { useStyles } from './SwiperButton.styles';
+import { styled } from '@material-ui/core/styles';
+import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { getSwiperButtonUtilityClass } from './SwiperButton.classes';
+
+import { SwiperButtonProps } from './Swiper.types';
 
 import IconButton from '@material-ui/core/IconButton';
 
 import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '../icons';
 
+const useUtilityClasses = () => {
+  const slots = {
+    root: ['root']
+  };
+
+  return composeClasses(slots, getSwiperButtonUtilityClass, {});
+};
+
+const SwiperButtonRoot = styled(IconButton, {
+  name: 'ESSwiperButton',
+  slot: 'Root',
+  overridesResolver: (props, styles) => styles.root
+})(({ theme }) => ({
+  '&.MuiIconButton-root': {
+    backdropFilter: 'blur(10px)',
+    backgroundColor: theme.palette.black.A600,
+    borderRadius: 4,
+    color: theme.palette.white[500],
+    padding: 8,
+    '& .MuiTouchRipple-root': {
+      color: theme.palette.white.A150
+    },
+    '&:hover': {
+      backgroundColor: theme.palette.black.A600,
+      '& .MuiTouchRipple-root': {
+        backgroundColor: theme.palette.white.A50
+      }
+    },
+    '&:focus-visible': {
+      '& .MuiTouchRipple-root': {
+        color: theme.palette.white.A200
+      }
+    }
+  }
+}));
+
 const createSwiperButtonComponent = (Icon: React.ComponentType) => {
   const Button: React.FC<SwiperButtonProps> = ({ className, label, onClick }) => {
-    const styles = useStyles();
+    const classes = useUtilityClasses();
 
     return (
-      <IconButton className={clsx(styles.root, className)} onClick={onClick} aria-label={label}>
+      <SwiperButtonRoot className={clsx(classes.root, className)} onClick={onClick} aria-label={label}>
         <Icon />
-      </IconButton>
+      </SwiperButtonRoot>
     );
   };
 

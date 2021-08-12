@@ -39,7 +39,9 @@ export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
           fontFamily: "'Roboto', sans-serif",
           ...typography
         },
-        components
+        components: {
+          ...components
+        }
       },
       locale === 'ru' ? ruRU : enUS,
       locale === 'ru' ? ru : en

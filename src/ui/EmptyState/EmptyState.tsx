@@ -1,38 +1,111 @@
 import clsx from 'clsx';
-import { useStyles } from './EmptyState.styles';
+import { styled } from '@material-ui/core/styles';
+import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { getEmptyStateUtilityClass } from './EmptyState.classes';
 
 import { EmptyStateProps } from './EmptyState.types';
 
 import useThemeProps from '@material-ui/core/styles/useThemeProps';
 import Typography from '@material-ui/core/Typography';
 
+type EmptyStateStyleProps = {
+  classes?: EmptyStateProps['classes'];
+};
+
+const useUtilityClasses = (styleProps: EmptyStateStyleProps) => {
+  const { classes } = styleProps;
+
+  const slots = {
+    root: ['root'],
+    icon: ['icon'],
+    text: ['text'],
+    heading: ['heading'],
+    subheading: ['subheading']
+  };
+
+  return composeClasses(slots, getEmptyStateUtilityClass, classes);
+};
+
+const EmptyStateRoot = styled('div', {
+  name: 'ESEmptyState',
+  slot: 'Root',
+  overridesResolver: (props, styles) => styles.root
+})(() => ({
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  textAlign: 'center'
+}));
+
+const EmptyStateIcon = styled('div', {
+  name: 'ESEmptyState',
+  slot: 'Icon',
+  overridesResolver: (props, styles) => styles.icon
+})(({ theme }) => ({
+  color: theme.palette.monoA.A150,
+  marginBottom: 12
+}));
+
+const EmptyStateText = styled('div', {
+  name: 'ESEmptyState',
+  slot: 'Text',
+  overridesResolver: (props, styles) => styles.text
+})(() => ({
+  '&:not(:last-child)': {
+    marginBottom: 20
+  }
+}));
+
+const EmptyStateHeading = styled(Typography, {
+  name: 'ESEmptyState',
+  slot: 'Heading',
+  overridesResolver: (props, styles) => styles.heading
+})(({ theme }) => ({
+  color: theme.palette.monoA.A900,
+  display: 'block',
+  '&:not(:last-child)': {
+    marginBottom: 2
+  }
+}));
+
+const EmptyStateSubheading = styled(Typography, {
+  name: 'ESEmptyState',
+  slot: 'Subheading',
+  overridesResolver: (props, styles) => styles.subheading
+})(({ theme }) => ({
+  color: theme.palette.monoA.A600,
+  display: 'block'
+}));
+
 export const EmptyState: React.FC<EmptyStateProps> = (inProps) => {
-  const { children, classes, className, icon, heading, subheading } = useThemeProps({
+  const { children, className, icon, heading, subheading, ...props } = useThemeProps({
     props: inProps,
     name: 'ESEmptyState'
   });
-  const styles = useStyles({ classes });
+
+  const styleProps = { ...props };
+  const classes = useUtilityClasses(styleProps);
 
   return (
-    <div className={clsx(styles.root, className)}>
+    <EmptyStateRoot className={clsx(classes.root, className)}>
       {!!icon && (
-        <div className={styles.icon} data-testid="icon">
+        <EmptyStateIcon className={classes.icon} data-testid="icon">
           {icon}
-        </div>
+        </EmptyStateIcon>
       )}
-      <div className={styles.text}>
+      <EmptyStateText className={classes.text}>
         {!!heading && (
-          <Typography className={styles.heading} component="div" variant="body200">
+          <EmptyStateHeading className={classes.heading} variant="body200">
             {heading}
-          </Typography>
+          </EmptyStateHeading>
         )}
         {!!subheading && (
-          <Typography className={styles.subheading} component="div" variant="caption">
+          <EmptyStateSubheading className={classes.subheading} variant="caption">
             {subheading}
-          </Typography>
+          </EmptyStateSubheading>
         )}
-      </div>
+      </EmptyStateText>
       {children}
-    </div>
+    </EmptyStateRoot>
   );
 };

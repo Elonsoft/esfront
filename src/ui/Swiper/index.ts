@@ -7,10 +7,10 @@ export {
   SwiperButtonProps,
   SwiperPaginationBaseProps
 } from './Swiper.types';
-export { SwiperClasses, SwiperClassKey } from './Swiper.styles';
+export { SwiperClasses, SwiperClassKey } from './Swiper.classes';
 
-export { SwiperButtonClasses, SwiperButtonClassKey } from './SwiperButton.styles';
+export { SwiperButtonClasses, SwiperButtonClassKey } from './SwiperButton.classes';
 
 export { SwiperPagination } from './SwiperPagination';
-export { SwiperPaginationClasses, SwiperPaginationClassKey } from './SwiperPagination.styles';
+export { SwiperPaginationClasses, SwiperPaginationClassKey } from './SwiperPagination.classes';
 export { SwiperPaginationProps } from './SwiperPagination.types';
