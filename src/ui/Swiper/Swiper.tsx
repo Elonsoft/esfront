@@ -2,13 +2,11 @@ import { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import { SwiperProps, SwiperAlignment, SwiperDirection, SwiperPaginationBaseProps } from './Swiper.types';
 
 import clsx from 'clsx';
-import { styled } from '@material-ui/core/styles';
+import { styled, useThemeProps } from '@material-ui/core/styles';
 import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
 import { swiperClasses, getSwiperUtilityClass } from './Swiper.classes';
 
 import { SwiperButtonDown, SwiperButtonLeft, SwiperButtonRight, SwiperButtonUp } from './SwiperButton';
-
-import useThemeProps from '@material-ui/core/styles/useThemeProps';
 
 import { usePropertiesMapping } from './usePropertiesMapping';
 import { useDocumentEventListener, useResizeObserver } from '../hooks';

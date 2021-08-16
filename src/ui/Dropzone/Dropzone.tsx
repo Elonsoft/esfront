@@ -1,13 +1,12 @@
 import React, { useRef } from 'react';
 
 import clsx from 'clsx';
-import { styled } from '@material-ui/core/styles';
+import { styled, useThemeProps } from '@material-ui/core/styles';
 import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
 import { getDropzoneUtilityClass } from './Dropzone.classes';
 
 import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 
-import useThemeProps from '@material-ui/core/styles/useThemeProps';
 import { ButtonBase, Typography } from '@material-ui/core';
 
 import { useDragOver } from './useDragOver';
