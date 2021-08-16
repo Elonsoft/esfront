@@ -6,13 +6,11 @@ import GlobalStyles from '@material-ui/core/GlobalStyles';
 import { ThemeProvider as MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import { enUS } from '@material-ui/core/locale';
 
-import {
-  breakpoints as defaultBreakpoints,
-  palettes as defaultPalettes,
-  createTypography as createDefaultTypography,
-  createComponents as createDefaultComponents
-} from '../../theming';
-import { en } from '../../ui';
+import { breakpoints as defaultBreakpoints } from '../breakpoints';
+import { palettes as defaultPalettes } from '../palettes';
+import { createTypography as createDefaultTypography } from '../typography';
+import { createComponents as createDefaultComponents } from '../components';
+import { en } from '../../ui/locale';
 
 const defaultPalette = {
   mode: 'light' as const,

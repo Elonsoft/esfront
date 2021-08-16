@@ -81,7 +81,10 @@
     "typescript": "^4.3.5"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^5.0.0-beta.3",
+    "@material-ui/unstyled": "^5.0.0-alpha.43",
     "clsx": "^1.1.1",
     "react": "^17.0.0"
   },
