@@ -1,13 +1,12 @@
 import { FC } from 'react';
 
 import clsx from 'clsx';
-import { styled } from '@material-ui/core/styles';
+import { styled, useThemeProps } from '@material-ui/core/styles';
 import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
 import { getTableActionsUtilityClass } from './TableActions.classes';
 
 import { TableActionsProps } from './TableActions.types';
 
-import useThemeProps from '@material-ui/core/styles/useThemeProps';
 import Typography from '@material-ui/core/Typography';
 
 type TableActionsStyleProps = {
