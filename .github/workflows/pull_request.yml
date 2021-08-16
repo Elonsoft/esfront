@@ -2,11 +2,11 @@ name: Pull Request
 on:
   push:
     branches-ignore:
-      - develop
+      - master
   pull_request:
     types: [opened reopened syncronize]
     branches-ignore:
-      - develop
+      - master
 jobs:
   lint:
     name: Lint
