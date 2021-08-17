@@ -34,6 +34,14 @@ import {
   SwiperPaginationClassKey
 } from './ui/Swiper';
 import { TableActionsProps, TableActionsClassKey } from './ui/TableActions';
+import {
+  FileIconBadgeClassKey,
+  FileIconClassKey,
+  FileIconBadgeProps,
+  FileIconProps,
+  FileIconTextProps,
+  FileIconTextClassKey
+} from './ui/FileIcon';
 
 export interface ISurfacePalette {
   0: string;
@@ -56,6 +64,9 @@ declare module '@material-ui/core/styles/props' {
     ESSwiperPagination: SwiperPaginationProps;
     ESTableActions: TableActionsProps;
     ESDropzone: DropzoneProps;
+    ESFileIcon: FileIconProps;
+    ESFileIconBadge: FileIconBadgeProps;
+    ESFileIconText: FileIconTextProps;
   }
 }
 
@@ -67,6 +78,9 @@ declare module '@material-ui/core/styles/overrides' {
     ESSwiperPagination: SwiperPaginationClassKey;
     ESTableActions: TableActionsClassKey;
     ESDropzone: DropzoneClassKey;
+    ESFileIcon: FileIconClassKey;
+    ESFileIconBadge: FileIconBadgeClassKey;
+    ESFileIconText: FileIconTextClassKey;
   }
 }
 
@@ -94,6 +108,18 @@ declare module '@material-ui/core/styles/components' {
     ESDropzone?: {
       defaultProps?: ComponentsProps['ESDropzone'];
       styleOverrides?: ComponentsOverrides['ESDropzone'];
+    };
+    ESFileIcon?: {
+      defaultProps?: ComponentsProps['ESFileIcon'];
+      styleOverrides?: ComponentsProps['ESFileIcon'];
+    };
+    ESFileIconBadge?: {
+      defaultProps?: ComponentsProps['ESFileIconBadge'];
+      styleOverrides?: ComponentsProps['ESFileIconBadge'];
+    };
+    ESFileIconText?: {
+      defaultProps?: ComponentsProps['ESFileIconText'];
+      styleOverrides?: ComponentsProps['ESFileIconText'];
     };
   }
 }

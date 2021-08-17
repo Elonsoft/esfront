@@ -6,3 +6,5 @@ export { BoxIcon } from './BoxIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
 export { ChevronRightIcon } from './ChevronRightIcon';
 export { UploadIcon } from './UploadIcon';
+export { IconFile } from './IconFile';
+export { IconFileVariant } from './IconFileVariant';

@@ -1,0 +1,160 @@
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { FileIcon } from './FileIcon';
+import { FileIconBadge } from './FileIconBadge';
+import { FileIconText } from './FileIconText';
+import { IconFile } from '../icons';
+import { IconFileVariant } from '../icons';
+
+<Meta
+  title="Components/FileIcon"
+  component={FileIcon}
+  argTypes={{
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    textChildren: {
+      description: 'Text in text component.',
+      name: 'FileIconText.children',
+      defaultValue: 'DOCX',
+      control: { type: 'text' }
+    },
+    badgeChildren: {
+      description: 'Text in badge component.',
+      name: 'FileIconBadge.children',
+      defaultValue: 'RAR',
+      control: { type: 'text' }
+    },
+    badgeColor: {
+      name: 'FileIconBadge.color',
+      defaultValue: '#ff0000',
+      control: { type: 'color' },
+      description: 'The badge component backgound color.'
+    },
+    badgeSize: {
+      name: 'FileIconBadge.size',
+      defaultValue: 'md',
+      control: { type: 'select' },
+      options: ['md', 'sm'],
+      description: 'The badge component size.'
+    }
+  }}
+/>
+
+# FileIcon
+
+`FileIcon` is a component for displaying file extensions.
+
+<Canvas>
+  <Story name="Demo">
+    {(args, context) => (
+      <div style={{ 
+        display: 'flex',
+        alignItems: 'center',
+        gap: '16px'
+       }}>
+        <FileIcon icon={IconFileVariant} width={args.width} height={args.height}/>
+        <FileIcon icon={IconFileVariant} width={args.width} height={args.height}>
+          <FileIconText>{args.textChildren}</FileIconText>  
+        </FileIcon>
+        <FileIcon width={args.width} height={args.height}/>
+        <FileIcon width={args.width} height={args.height}>
+          <FileIconText>{args.textChildren}</FileIconText>  
+        </FileIcon>
+        <FileIcon icon={IconFileVariant} width={args.width} height={args.height}>
+          <FileIconBadge children={args.badgeChildren} size={args.badgeSize} color={args.badgeColor}/>
+        </FileIcon>
+        <FileIcon width={args.width} height={args.height}>
+          <FileIconBadge children={args.badgeChildren} size={args.badgeSize} color={args.badgeColor}/>
+        </FileIcon>
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+<br />
+
+Children element automatically positioned in visual center depending on component size.
+
+<Canvas>
+  <Story name="Sizes" argTypes={{
+      width: {
+        table: {
+          disable: true
+        }
+      },
+      height: {
+        table: {
+          disable: true
+        }
+      },
+      children: {
+        table: {
+          disable: true
+        }
+      }
+    }}>
+    {(args, context) => (
+      <div style={{ 
+        display: 'flex',
+        alignItems: 'center',
+        gap: '16px'
+       }}>
+        <FileIcon>
+          <FileIconBadge color="red" size="md" children="ZIP"/>
+        </FileIcon>
+        <FileIcon width={33} height={44}>
+          <FileIconBadge color="purple" size="sm" children="RAR"/>
+        </FileIcon>
+        <FileIcon width={30} height={40}>
+          <FileIconBadge color="#9672FF" size="sm" children="RAR"/>
+        </FileIcon>
+        <FileIcon width={27} height={36}>
+          <FileIconBadge color="#9672FF" size="sm" children="RAR"/>
+        </FileIcon>
+        <FileIcon icon={IconFileVariant}>
+          <FileIconBadge color="red" size="md" children="ZIP"/>
+        </FileIcon>
+        <FileIcon icon={IconFileVariant} width={33} height={44}>
+          <FileIconBadge color="purple" size="sm" children="RAR"/>
+        </FileIcon>
+        <FileIcon icon={IconFileVariant} width={30} height={40}>
+          <FileIconBadge color="#9672FF" size="sm" children="RAR"/>
+        </FileIcon>
+        <FileIcon icon={IconFileVariant} width={27} height={36}>
+          <FileIconBadge color="#9672FF" size="sm" children="RAR"/>
+        </FileIcon>
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-FileIcon" story="page">
+      <code>FileIcon</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-FileIconBadge" story="page">
+      <code>FileIconBadge</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-FileIconText" story="page">
+      <code>FileIconText</code>
+    </LinkTo>
+  </li>
+</ul>
