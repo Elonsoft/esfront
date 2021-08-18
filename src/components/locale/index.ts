@@ -6,6 +6,7 @@ import { CalendarHeadProps } from '../Calendar';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
+import { GalleryActionsProps, GalleryDescriptionProps, GalleryMetaProps, GallerySwiperProps } from '../Gallery';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
 import { SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
@@ -54,6 +55,18 @@ export interface Localization {
     };
     ESFileInfoName: {
       defaultProps: Pick<FileInfoNameProps, 'labelDelete'>;
+    };
+    ESGalleryActions: {
+      defaultProps: Pick<GalleryActionsProps, 'labelClose' | 'labelThumbnails'>;
+    };
+    ESGalleryDescription: {
+      defaultProps: Pick<GalleryDescriptionProps, 'labelCollapse' | 'labelExpand'>;
+    };
+    ESGalleryMeta: {
+      defaultProps: Pick<GalleryMetaProps, 'labelClose'>;
+    };
+    ESGallerySwiper: {
+      defaultProps: Pick<GallerySwiperProps, 'labelNext' | 'labelPrev'>;
     };
     ESPaginationPages: {
       defaultProps: Pick<PaginationPagesProps, 'labelPrevPage' | 'labelNextPage' | 'labelPage'>;
@@ -167,6 +180,29 @@ export const en: Localization = {
       defaultProps: {
         metricUnits: ['B', 'KB', 'MB', 'GB', 'TB'],
         binaryUnits: ['B', 'KiB', 'MiB', 'GiB', 'TiB']
+      }
+    },
+    ESGalleryActions: {
+      defaultProps: {
+        labelClose: 'Close',
+        labelThumbnails: 'Thumbnails'
+      }
+    },
+    ESGalleryDescription: {
+      defaultProps: {
+        labelCollapse: 'Collapse description',
+        labelExpand: 'Expand description'
+      }
+    },
+    ESGalleryMeta: {
+      defaultProps: {
+        labelClose: 'Close'
+      }
+    },
+    ESGallerySwiper: {
+      defaultProps: {
+        labelNext: 'Next photo',
+        labelPrev: 'Previous photo'
       }
     },
     ESPaginationPages: {
@@ -309,6 +345,29 @@ export const ru: Localization = {
       defaultProps: {
         metricUnits: ['Б', 'КБ', 'МБ', 'ГБ', 'ТБ'],
         binaryUnits: ['Б', 'КиБ', 'МиБ', 'ГиБ', 'ТиБ']
+      }
+    },
+    ESGalleryActions: {
+      defaultProps: {
+        labelClose: 'Закрыть',
+        labelThumbnails: 'Миниатюры'
+      }
+    },
+    ESGalleryDescription: {
+      defaultProps: {
+        labelCollapse: 'Свернуть описание',
+        labelExpand: 'Развернуть описание'
+      }
+    },
+    ESGalleryMeta: {
+      defaultProps: {
+        labelClose: 'Закрыть'
+      }
+    },
+    ESGallerySwiper: {
+      defaultProps: {
+        labelNext: 'Следующее фото',
+        labelPrev: 'Предыдущее фото'
       }
     },
     ESPaginationPages: {
