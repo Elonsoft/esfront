@@ -40,7 +40,7 @@ export interface SwiperProps {
   /**
    * Alignment of the slides.
    * @default 'center'
-   **/
+   */
   alignment?: SwiperAlignment;
 
   /**

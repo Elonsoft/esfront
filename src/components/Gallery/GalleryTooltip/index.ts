@@ -1,0 +1,1 @@
+export { GalleryTooltip } from './GalleryTooltip';

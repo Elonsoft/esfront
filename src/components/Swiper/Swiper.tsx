@@ -106,10 +106,13 @@ const SwiperContainer = styled('div', {
   justifyContent: 'flex-start',
   msOverflowStyle: 'none',
   overflow: 'scroll',
+  outline: 'none',
   scrollbarWidth: 'none',
+
   '&::-webkit-scrollbar': {
     display: 'none'
   },
+
   '& > *': {
     scrollSnapAlign: ownerState.alignment,
     ...(ownerState.snap && {
@@ -121,6 +124,7 @@ const SwiperContainer = styled('div', {
       }
     })
   },
+
   scrollSnapType: ownerState.snap ? 'x mandatory' : 'none'
 }));
 
