@@ -42,6 +42,7 @@ import {
   FileIconTextProps,
   FileIconTextClassKey
 } from './ui/FileIcon';
+import { FormatSizeProps } from './ui/FormatSize';
 
 export interface ISurfacePalette {
   0: string;
@@ -67,6 +68,7 @@ declare module '@material-ui/core/styles/props' {
     ESFileIcon: FileIconProps;
     ESFileIconBadge: FileIconBadgeProps;
     ESFileIconText: FileIconTextProps;
+    ESFormatSize: FormatSizeProps;
   }
 }
 
@@ -120,6 +122,9 @@ declare module '@material-ui/core/styles/components' {
     ESFileIconText?: {
       defaultProps?: ComponentsProps['ESFileIconText'];
       styleOverrides?: ComponentsProps['ESFileIconText'];
+    };
+    ESFormatSize?: {
+      defaultProps?: ComponentsProps['ESFormatSize'];
     };
   }
 }
