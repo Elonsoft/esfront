@@ -3,3 +3,4 @@ node_modules/
 storybook-static/
 typedoc.json
 .env
+yarn-error.log
