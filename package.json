@@ -11,8 +11,8 @@
     "start:typedoc": "yarn run typedoc && yarn run start",
     "build": "rimraf ./lib && rollup -c rollup.config.js",
     "build:storybook": "yarn run typedoc && build-storybook -s .storybook/assets",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "cross-env TZ=utc jest",
+    "test:watch": "cross-env TZ=utc jest --watch",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint src",
     "lint:stylelint": "stylelint src/**/*.{ts,tsx}",
@@ -34,6 +34,7 @@
     "@babel/core": "^7.15.0",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@date-io/date-fns": "^2.11.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^5.0.0-beta.3",
@@ -56,6 +57,8 @@
     "babel-loader": "^8.2.2",
     "chromatic": "^5.9.2",
     "clsx": "^1.1.1",
+    "cross-env": "^7.0.3",
+    "date-fns": "^2.23.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -80,7 +83,11 @@
     "typedoc": "0.21.2",
     "typescript": "^4.3.5"
   },
+  "dependencies": {
+    "@date-io/core": "^2.11.0"
+  },
   "peerDependencies": {
+    "@date-io/core": "^2.11.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^5.0.0-beta.3",

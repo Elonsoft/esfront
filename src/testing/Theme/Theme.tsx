@@ -3,8 +3,11 @@ import { IThemeProps } from './Theme.types';
 
 import { enUS, ruRU } from '@material-ui/core/locale';
 
+import DateFnsAdapter from '@date-io/date-fns';
+import { ru as dateRU, enUS as dateEN } from 'date-fns/locale';
+
 import { ThemeProvider, palettes } from '../../theming';
-import { en, ru } from '../../ui';
+import { en, ru, DateAdapterProvider } from '../../ui';
 
 export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
   const palette = useMemo(() => {
@@ -21,7 +24,9 @@ export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
 
   return (
     <ThemeProvider palette={palette} args={args}>
-      {children}
+      <DateAdapterProvider adapter={DateFnsAdapter} locale={locale === 'ru' ? dateRU : dateEN}>
+        {children}
+      </DateAdapterProvider>
     </ThemeProvider>
   );
 };
