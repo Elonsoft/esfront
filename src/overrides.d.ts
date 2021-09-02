@@ -42,6 +42,7 @@ import {
   FileIconTextProps,
   FileIconTextClassKey
 } from './ui/FileIcon';
+import { FormatDateProps } from './ui/FormatDate';
 import { FormatSizeProps } from './ui/FormatSize';
 
 export interface ISurfacePalette {
@@ -68,6 +69,7 @@ declare module '@material-ui/core/styles/props' {
     ESFileIcon: FileIconProps;
     ESFileIconBadge: FileIconBadgeProps;
     ESFileIconText: FileIconTextProps;
+    ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
   }
 }
@@ -122,6 +124,9 @@ declare module '@material-ui/core/styles/components' {
     ESFileIconText?: {
       defaultProps?: ComponentsProps['ESFileIconText'];
       styleOverrides?: ComponentsProps['ESFileIconText'];
+    };
+    ESFormatDate?: {
+      defaultProps?: ComponentsProps['ESFormatDate'];
     };
     ESFormatSize?: {
       defaultProps?: ComponentsProps['ESFormatSize'];
