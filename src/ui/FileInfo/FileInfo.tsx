@@ -1,0 +1,40 @@
+import { FC } from 'react';
+
+import clsx from 'clsx';
+import { styled, useThemeProps } from '@mui/material';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { getFileInfoUtilityClass } from './FileInfo.classes';
+
+import { FileInfoProps } from './FileInfo.types';
+
+type FileInfoOwnerState = {
+  classes?: FileInfoProps['classes'];
+};
+
+const useUtilityClasses = (ownerState: FileInfoOwnerState) => {
+  const { classes } = ownerState;
+
+  const slots = {
+    root: ['root']
+  };
+
+  return composeClasses(slots, getFileInfoUtilityClass, classes);
+};
+
+const FileInfoRoot = styled('div', {
+  name: 'ESFileInfo',
+  slot: 'Root',
+  overridesResolver: (props, styles) => styles.root
+})(() => ({
+  display: 'flex',
+  alignItems: 'center'
+}));
+
+export const FileInfo: FC<FileInfoProps> = (inProps) => {
+  const { children, className, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfo' });
+  const ownerState = { ...props };
+
+  const classes = useUtilityClasses(ownerState);
+
+  return <FileInfoRoot className={clsx(classes.root, className)}>{children}</FileInfoRoot>;
+};

@@ -1,9 +1,13 @@
 import { SwiperProps } from '../Swiper';
 import { TableActionsProps } from '../TableActions';
 import { FormatSizeProps } from '../FormatSize';
+import { FileInfoNameProps } from '../FileInfo';
 
 export interface Localization {
   components: {
+    ESFileInfoName: {
+      defaultProps: Pick<FileInfoNameProps, 'deleteLabel'>;
+    };
     ESFormatSize: {
       defaultProps: Pick<FormatSizeProps, 'metricUnits' | 'binaryUnits'>;
     };
@@ -18,6 +22,11 @@ export interface Localization {
 
 export const en: Localization = {
   components: {
+    ESFileInfoName: {
+      defaultProps: {
+        deleteLabel: 'Delete'
+      }
+    },
     ESFormatSize: {
       defaultProps: {
         metricUnits: ['B', 'KB', 'MB', 'GB', 'TB'],
@@ -40,6 +49,11 @@ export const en: Localization = {
 
 export const ru: Localization = {
   components: {
+    ESFileInfoName: {
+      defaultProps: {
+        deleteLabel: 'Удалить'
+      }
+    },
     ESFormatSize: {
       defaultProps: {
         metricUnits: ['Б', 'КБ', 'МБ', 'ГБ', 'ТБ'],
