@@ -44,6 +44,20 @@ import {
 } from './ui/FileIcon';
 import { FormatDateProps } from './ui/FormatDate';
 import { FormatSizeProps } from './ui/FormatSize';
+import {
+  SpinnerFadingRingClassKey,
+  SpinnerFadingDotsClassKey,
+  SpinnerFadingDotsProps,
+  SpinnerFadingRingProps,
+  SpinnerFadingBarsProps,
+  SpinnerFadingBarsClassKey,
+  SpinnerRingProps,
+  SpinnerRingClassKey,
+  SpinnerDashRingClassKey,
+  SpinnerDashRingProps,
+  SpinnerFadingDoubleRingClassKey,
+  SpinnerFadingDoubleRingProps
+} from './ui/Spinner';
 
 export interface ISurfacePalette {
   0: string;
@@ -71,6 +85,12 @@ declare module '@mui/material/styles/props' {
     ESFileIconText: FileIconTextProps;
     ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
+    ESSpinnerDashRing: SpinnerDashRingProps;
+    ESSpinnerFadingBars: SpinnerFadingBarsProps;
+    ESSpinnerFadingDots: SpinnerFadingDotsProps;
+    ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingProps;
+    ESSpinnerFadingRing: SpinnerFadingRingProps;
+    ESSpinnerRing: SpinnerRingProps;
   }
 }
 
@@ -85,6 +105,12 @@ declare module '@mui/material/styles/overrides' {
     ESFileIcon: FileIconClassKey;
     ESFileIconBadge: FileIconBadgeClassKey;
     ESFileIconText: FileIconTextClassKey;
+    ESSpinnerDashRing: SpinnerDashRingClassKey;
+    ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
+    ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
+    ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingClassKey;
+    ESSpinnerFadingRing: SpinnerFadingRingClassKey;
+    ESSpinnerRing: SpinnerRingClassKey;
   }
 }
 
@@ -130,6 +156,30 @@ declare module '@mui/material/styles/components' {
     };
     ESFormatSize?: {
       defaultProps?: ComponentsProps['ESFormatSize'];
+    };
+    ESSpinnerDashRing?: {
+      defaultProps?: ComponentsProps['ESSpinnerDashRing'];
+      styleOverrides?: ComponentsOverrides['ESSpinnerDashRing'];
+    };
+    ESSpinnerFadingBars?: {
+      defaultProps?: ComponentsProps['ESSpinnerFadingBars'];
+      styleOverrides?: ComponentsOverrides['ESSpinnerFadingBars'];
+    };
+    ESSpinnerFadingDots?: {
+      defaultProps?: ComponentsProps['ESSpinnerFadingDots'];
+      styleOverrides?: ComponentsOverrides['ESSpinnerFadingDots'];
+    };
+    ESSpinnerFadingDoubleRing?: {
+      defaultProps?: ComponentsProps['ESSpinnerFadingDoubleRing'];
+      styleOverrides?: ComponentsOverrides['ESSpinnerFadingDoubleRing'];
+    };
+    ESSpinnerFadingRing?: {
+      defaultProps?: ComponentsProps['ESSpinnerFadingRing'];
+      styleOverrides?: ComponentsOverrides['ESSpinnerFadingRing'];
+    };
+    ESSpinnerRing?: {
+      defaultProps?: ComponentsProps['ESSpinnerRing'];
+      styleOverrides?: ComponentsOverrides['ESSpinnerRing'];
     };
   }
 }
