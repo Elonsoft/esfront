@@ -7,6 +7,7 @@ export * from './Dropzone';
 export * from './FileIcon';
 export * from './FormatDate';
 export * from './FormatSize';
+export * from './Spinner';
 
 export * from './hooks';
 export * from './icons';
