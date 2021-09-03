@@ -3,6 +3,7 @@ export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
 export { BoxIcon } from './BoxIcon';
+export { CloseSmIcon } from './CloseSmIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
 export { ChevronRightIcon } from './ChevronRightIcon';
 export { UploadIcon } from './UploadIcon';
