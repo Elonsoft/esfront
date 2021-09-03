@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Story } from '@storybook/react';
 
-import Slider from '@material-ui/core/Slider';
+import Slider from '@mui/material/Slider';
 
 const MARKS = [{ value: 0 }, { value: 10 }, { value: 20 }, { value: 30 }, { value: 40 }, { value: 50 }];
 

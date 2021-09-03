@@ -1,27 +1,27 @@
 import React, { useRef } from 'react';
 
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@material-ui/core/styles';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { styled, useThemeProps } from '@mui/material/styles';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { getDropzoneUtilityClass } from './Dropzone.classes';
 
 import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 
-import { ButtonBase, Typography } from '@material-ui/core';
+import { ButtonBase, Typography } from '@mui/material';
 
 import { useDragOver } from './useDragOver';
 import { useDocumentEventListener } from '../hooks';
 import { validateFileType } from '../utils';
 
-type DropzoneStyleProps = {
+type DropzoneOwnerState = {
   classes?: DropzoneProps['classes'];
   error: boolean;
   isDragOver: boolean;
   isDragOverDocument: boolean;
 };
 
-const useUtilityClasses = (styleProps: DropzoneStyleProps) => {
-  const { classes, error, isDragOver, isDragOverDocument } = styleProps;
+const useUtilityClasses = (ownerState: DropzoneOwnerState) => {
+  const { classes, error, isDragOver, isDragOverDocument } = ownerState;
 
   const slots = {
     root: ['root'],
@@ -57,7 +57,7 @@ const DropzoneDropzone = styled(ButtonBase, {
   slot: 'Dropzone',
   overridesResolver: (props, styles) => {
     const {
-      styleProps: { error, isDragOver, isDragOverDocument }
+      ownerState: { error, isDragOver, isDragOverDocument }
     } = props;
     return [
       styles.dropzone,
@@ -66,7 +66,7 @@ const DropzoneDropzone = styled(ButtonBase, {
       isDragOverDocument && styles.dropzoneDragOverDocument
     ];
   }
-})<{ styleProps: DropzoneStyleProps }>(({ theme, styleProps }) => ({
+})<{ ownerState: DropzoneOwnerState }>(({ theme, ownerState }) => ({
   width: '100%',
   backgroundColor: theme.palette.monoA.A50,
   border: `1px dashed ${theme.palette.monoA.A200}`,
@@ -77,7 +77,7 @@ const DropzoneDropzone = styled(ButtonBase, {
   transitionDuration: `${theme.transitions.duration.short}ms`,
   transitionProperty: 'background-color, border',
   transitionTimingFunction: theme.transitions.easing.easeInOut,
-  ...(styleProps.isDragOverDocument && {
+  ...(ownerState.isDragOverDocument && {
     backgroundColor: theme.palette.primary.A50,
     border: `1px dashed ${theme.palette.primary.A500}`
   }),
@@ -85,10 +85,10 @@ const DropzoneDropzone = styled(ButtonBase, {
     transitionDuration: `${theme.transitions.duration.short}ms`,
     transitionProperty: 'background-color, border',
     transitionTimingFunction: theme.transitions.easing.easeInOut,
-    ...(styleProps.isDragOver && {
+    ...(ownerState.isDragOver && {
       backgroundColor: theme.palette.primary.A100
     }),
-    ...(styleProps.error && {
+    ...(ownerState.error && {
       backgroundColor: theme.palette.error.A50,
       border: `1px dashed ${theme.palette.error.A800}`
     })
@@ -153,13 +153,13 @@ const DropzoneHelperText = styled(Typography, {
   slot: 'HelperText',
   overridesResolver: (props, styles) => {
     const {
-      styleProps: { error }
+      ownerState: { error }
     } = props;
     return [styles.helperText, error && styles.helperTextError];
   }
-})<{ styleProps: DropzoneStyleProps }>(({ theme, styleProps }) => ({
+})<{ ownerState: DropzoneOwnerState }>(({ theme, ownerState }) => ({
   color: theme.palette.monoA.A700,
-  ...(styleProps.error && {
+  ...(ownerState.error && {
     color: theme.palette.error.A800
   })
 }));
@@ -258,15 +258,15 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   useDocumentEventListener('dragleave', callbacks.onDragLeave);
   useDocumentEventListener('drop', callbacks.onDrop);
 
-  const styleProps = { ...props, error, isDragOver, isDragOverDocument };
-  const classes = useUtilityClasses(styleProps);
+  const ownerState = { ...props, error, isDragOver, isDragOverDocument };
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <DropzoneRoot ref={ref} className={clsx(classes.root, className)}>
       <DropzoneDropzone
         data-testid="dropzone"
         className={clsx(classes.dropzone)}
-        styleProps={styleProps}
+        ownerState={ownerState}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         onDragOver={onDragOver}
@@ -307,7 +307,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
       </DropzoneDropzone>
 
       {!!helperText && (
-        <DropzoneHelperText className={classes.helperText} styleProps={styleProps} variant="caption">
+        <DropzoneHelperText className={classes.helperText} ownerState={ownerState} variant="caption">
           {helperText}
         </DropzoneHelperText>
       )}

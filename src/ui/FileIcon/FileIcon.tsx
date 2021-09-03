@@ -1,19 +1,19 @@
 import { useRef, useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
-import { styled, useThemeProps } from '@material-ui/core/styles';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { styled, useThemeProps } from '@mui/material/styles';
 
 import { IconFile } from '../icons';
 
 import { FileIconProps } from './FileIcon.types';
 import { getFileIconUtilityClass } from './FileIcon.classes';
 
-type FileIconStyleProps = {
+type FileIconOwnerState = {
   classes?: FileIconProps['classes'];
 };
 
-const useUtilityClasses = (styleProps: FileIconStyleProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: FileIconOwnerState) => {
+  const { classes } = ownerState;
 
   const slots = {
     root: ['root'],
@@ -63,8 +63,8 @@ export const FileIcon: React.FC<FileIconProps> = (inProps) => {
     name: 'ESFileIcon'
   });
 
-  const styleProps = { ...props };
-  const classes = useUtilityClasses(styleProps);
+  const ownerState = { ...props };
+  const classes = useUtilityClasses(ownerState);
 
   const iconRef = useRef<SVGPathElement>(null);
   const rootIconRef = useRef<HTMLDivElement>(null);

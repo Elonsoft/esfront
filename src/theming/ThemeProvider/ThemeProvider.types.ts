@@ -1,6 +1,6 @@
-import { Theme, Breakpoint, PaletteOptions } from '@material-ui/core/styles';
-import { TypographyOptions } from '@material-ui/core/styles/createTypography';
-import { Components } from '@material-ui/core/styles/components';
+import { Theme, Breakpoint, PaletteOptions } from '@mui/material/styles';
+import { TypographyOptions } from '@mui/material/styles/createTypography';
+import { Components } from '@mui/material/styles/components';
 
 export interface ThemeProviderProps {
   /** Breakpoints provided to the theme. */

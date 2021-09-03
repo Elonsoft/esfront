@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import { FormatDateProps } from './FormatDate.types';
-import { useThemeProps } from '@material-ui/core';
+import { useThemeProps } from '@mui/material';
 
 import { useDateAdapterContext } from '../DateAdapter';
 

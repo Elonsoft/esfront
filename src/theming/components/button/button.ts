@@ -1,5 +1,5 @@
 import { Component } from '../component';
-import { keyframes } from '@material-ui/system';
+import { keyframes } from '@mui/system';
 
 const enterKeyframe = keyframes`
   0% {
