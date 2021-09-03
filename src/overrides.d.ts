@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars */
 
-import { Color, ComponentsVariants } from '@material-ui/core';
+import { Color, ComponentsVariants } from '@mui/material';
 import {
   Theme,
   BreakpointOverrides,
@@ -9,19 +9,19 @@ import {
   PaletteColorOptions,
   TypographyVariants,
   TypographyVariantsOptions
-} from '@material-ui/core/styles';
-import { CommonColors } from '@material-ui/core/styles/createPalette';
+} from '@mui/material/styles';
+import { CommonColors } from '@mui/material/styles/createPalette';
 
-import { ButtonPropsSizeOverrides } from '@material-ui/core/Button';
-import { IconButtonPropsSizeOverrides } from '@material-ui/core/IconButton';
-import { FormControlPropsSizeOverrides } from '@material-ui/core/FormControl';
-import { InputBasePropsSizeOverrides } from '@material-ui/core/InputBase';
-import { TextFieldPropsSizeOverrides } from '@material-ui/core/TextField';
-import { TypographyPropsVariantOverrides } from '@material-ui/core/Typography';
+import { ButtonPropsSizeOverrides } from '@mui/material/Button';
+import { IconButtonPropsSizeOverrides } from '@mui/material/IconButton';
+import { FormControlPropsSizeOverrides } from '@mui/material/FormControl';
+import { InputBasePropsSizeOverrides } from '@mui/material/InputBase';
+import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
+import { TypographyPropsVariantOverrides } from '@mui/material/Typography';
 
-import { Components } from '@material-ui/core/styles/components';
-import { ComponentsOverrides, ComponentNameToClassKey } from '@material-ui/core/styles/overrides';
-import { ComponentsProps, ComponentsPropsList } from '@material-ui/core/styles/props';
+import { Components } from '@mui/material/styles/components';
+import { ComponentsOverrides, ComponentNameToClassKey } from '@mui/material/styles/overrides';
+import { ComponentsProps, ComponentsPropsList } from '@mui/material/styles/props';
 
 import { EmptyStateProps, EmptyStateClassKey } from './ui/EmptyState';
 import { DropzoneProps, DropzoneClassKey } from './ui/Dropzone';
@@ -59,7 +59,7 @@ export interface ISurfacePalette {
   on: string;
 }
 
-declare module '@material-ui/core/styles/props' {
+declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
     ESEmptyState: EmptyStateProps;
     ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
@@ -74,7 +74,7 @@ declare module '@material-ui/core/styles/props' {
   }
 }
 
-declare module '@material-ui/core/styles/overrides' {
+declare module '@mui/material/styles/overrides' {
   interface ComponentNameToClassKey {
     ESEmptyState: EmptyStateClassKey;
     ESSwiper: SwiperClassKey;
@@ -88,7 +88,7 @@ declare module '@material-ui/core/styles/overrides' {
   }
 }
 
-declare module '@material-ui/core/styles/components' {
+declare module '@mui/material/styles/components' {
   interface Components {
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];
@@ -134,7 +134,7 @@ declare module '@material-ui/core/styles/components' {
   }
 }
 
-declare module '@material-ui/core' {
+declare module '@mui/material' {
   interface Color {
     50: string;
     100: string;
@@ -161,7 +161,7 @@ declare module '@material-ui/core' {
   }
 }
 
-declare module '@material-ui/core/styles' {
+declare module '@mui/material/styles' {
   interface PaletteColor {
     50: string;
     100: string;
@@ -234,7 +234,7 @@ declare module '@material-ui/core/styles' {
   }
 }
 
-declare module '@material-ui/core/styles/createPalette' {
+declare module '@mui/material/styles/createPalette' {
   interface CommonColors {
     background: string;
     background2: string;
@@ -247,7 +247,7 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
-declare module '@material-ui/core/Button' {
+declare module '@mui/material/Button' {
   interface ButtonPropsSizeOverrides {
     xs: true;
     sm: true;
@@ -260,7 +260,7 @@ declare module '@material-ui/core/Button' {
   }
 }
 
-declare module '@material-ui/core/IconButton' {
+declare module '@mui/material/IconButton' {
   interface IconButtonPropsSizeOverrides {
     xs: true;
     sm: true;
@@ -273,7 +273,7 @@ declare module '@material-ui/core/IconButton' {
   }
 }
 
-declare module '@material-ui/core/FormControl' {
+declare module '@mui/material/FormControl' {
   interface FormControlPropsSizeOverrides {
     '56': true;
     '48': true;
@@ -283,7 +283,7 @@ declare module '@material-ui/core/FormControl' {
   }
 }
 
-declare module '@material-ui/core/InputBase' {
+declare module '@mui/material/InputBase' {
   interface InputBasePropsSizeOverrides {
     '56': true;
     '48': true;
@@ -293,7 +293,7 @@ declare module '@material-ui/core/InputBase' {
   }
 }
 
-declare module '@material-ui/core/TextField' {
+declare module '@mui/material/TextField' {
   interface TextFieldPropsSizeOverrides {
     '56': true;
     '48': true;
@@ -303,7 +303,7 @@ declare module '@material-ui/core/TextField' {
   }
 }
 
-declare module '@material-ui/core/Typography' {
+declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     body400: true;
     body300: true;

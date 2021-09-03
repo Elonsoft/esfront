@@ -1,20 +1,20 @@
 import { FC } from 'react';
 
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@material-ui/core/styles';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { styled, useThemeProps } from '@mui/material/styles';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { getTableActionsUtilityClass } from './TableActions.classes';
 
 import { TableActionsProps } from './TableActions.types';
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
-type TableActionsStyleProps = {
+type TableActionsOwnerState = {
   classes?: TableActionsProps['classes'];
 };
 
-const useUtilityClasses = (styleProps: TableActionsStyleProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: TableActionsOwnerState) => {
+  const { classes } = ownerState;
 
   const slots = {
     root: ['root'],
@@ -73,8 +73,8 @@ export const TableActions: FC<TableActionsProps> = (inProps) => {
     name: 'ESTableActions'
   });
 
-  const styleProps = { ...props };
-  const classes = useUtilityClasses(styleProps);
+  const ownerState = { ...props };
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <TableActionsRoot className={clsx(classes.root, className)}>

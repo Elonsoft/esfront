@@ -1,18 +1,18 @@
 import clsx from 'clsx';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
-import Typography from '@material-ui/core/Typography';
-import { styled, useThemeProps } from '@material-ui/core/styles';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+import Typography from '@mui/material/Typography';
+import { styled, useThemeProps } from '@mui/material/styles';
 
 import { FileIconBadgeProps } from './FileIconBadge.types';
 import { getFileIconBadgeUtilityClass } from './FileIconBadge.classes';
 
-type FileIconBadgeStyleProps = {
+type FileIconBadgeOwnerState = {
   classes?: FileIconBadgeProps['classes'];
   size: 'md' | 'sm';
 };
 
-const useUtilityClasses = (styleProps: FileIconBadgeStyleProps) => {
-  const { classes, size } = styleProps;
+const useUtilityClasses = (ownerState: FileIconBadgeOwnerState) => {
+  const { classes, size } = ownerState;
 
   const slots = {
     root: ['root', size]
@@ -26,11 +26,11 @@ const FileIconBadgeRoot = styled(Typography, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      styleProps: { size }
+      ownerState: { size }
     } = props;
     return [styles.root, styles[size]];
   }
-})<{ styleProps: FileIconBadgeStyleProps }>(({ theme, styleProps }) => ({
+})<{ ownerState: FileIconBadgeOwnerState }>(({ theme, ownerState }) => ({
   alignSelf: 'flex-start',
   borderRadius: '3px',
   display: 'block',
@@ -39,13 +39,13 @@ const FileIconBadgeRoot = styled(Typography, {
   position: 'relative',
   textAlign: 'center',
 
-  ...(styleProps.size === 'md' && {
+  ...(ownerState.size === 'md' && {
     minWidth: '32px',
     padding: '1px 2px',
     top: '-3px'
   }),
 
-  ...(styleProps.size === 'sm' && {
+  ...(ownerState.size === 'sm' && {
     minWidth: '30px',
     padding: '0 2px',
     top: '-2px'
@@ -64,12 +64,12 @@ export const FileIconBadge: React.FC<FileIconBadgeProps> = (inProps) => {
     name: 'ESFileIconBadge'
   });
 
-  const styleProps = { ...props, size };
-  const classes = useUtilityClasses(styleProps);
+  const ownerState = { ...props, size };
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <FileIconBadgeRoot
-      styleProps={styleProps}
+      ownerState={ownerState}
       className={clsx(classes.root, className)}
       style={{ backgroundColor: color }}
       variant="mini2"

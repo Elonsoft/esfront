@@ -1,18 +1,18 @@
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@material-ui/core/styles';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { styled, useThemeProps } from '@mui/material/styles';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { getEmptyStateUtilityClass } from './EmptyState.classes';
 
 import { EmptyStateProps } from './EmptyState.types';
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
-type EmptyStateStyleProps = {
+type EmptyStateOwnerState = {
   classes?: EmptyStateProps['classes'];
 };
 
-const useUtilityClasses = (styleProps: EmptyStateStyleProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: EmptyStateOwnerState) => {
+  const { classes } = ownerState;
 
   const slots = {
     root: ['root'],
@@ -82,8 +82,8 @@ export const EmptyState: React.FC<EmptyStateProps> = (inProps) => {
     name: 'ESEmptyState'
   });
 
-  const styleProps = { ...props };
-  const classes = useUtilityClasses(styleProps);
+  const ownerState = { ...props };
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <EmptyStateRoot className={clsx(classes.root, className)}>

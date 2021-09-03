@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 
-import { styled } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
 
 import { Swiper } from './Swiper';
 import { SwiperButtonProps } from './Swiper.types';

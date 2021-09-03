@@ -1,0 +1,7 @@
+{
+  "types": [
+    { "type": "feat", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "build", "section": "Build Changes", "hidden": true }
+  ]
+}

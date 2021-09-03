@@ -1,10 +1,10 @@
 import { FC, useMemo } from 'react';
 import { ThemeProviderProps } from './ThemeProvider.types';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import GlobalStyles from '@material-ui/core/GlobalStyles';
-import { ThemeProvider as MuiThemeProvider, createTheme } from '@material-ui/core/styles';
-import { enUS } from '@material-ui/core/locale';
+import CssBaseline from '@mui/material/CssBaseline';
+import GlobalStyles from '@mui/material/GlobalStyles';
+import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
+import { enUS } from '@mui/material/locale';
 
 import { breakpoints as defaultBreakpoints } from '../breakpoints';
 import { palettes as defaultPalettes } from '../palettes';

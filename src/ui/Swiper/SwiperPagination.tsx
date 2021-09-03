@@ -1,22 +1,22 @@
 import { useMemo } from 'react';
 
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@material-ui/core/styles';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { styled, useThemeProps } from '@mui/material/styles';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { swiperPaginationClasses, getSwiperPaginationUtilityClass } from './SwiperPagination.classes';
 
 import { SwiperPaginationProps } from './SwiperPagination.types';
 import { SwiperPaginationItem } from './SwiperPaginationItem';
 
-type SwiperPaginationStyleProps = {
+type SwiperPaginationOwnerState = {
   classes?: SwiperPaginationProps['classes'];
   direction: SwiperPaginationProps['direction'];
   position: SwiperPaginationProps['position'];
   variant: SwiperPaginationProps['variant'];
 };
 
-const useUtilityClasses = (styleProps: SwiperPaginationStyleProps) => {
-  const { classes, direction, position, variant } = styleProps;
+const useUtilityClasses = (ownerState: SwiperPaginationOwnerState) => {
+  const { classes, direction, position, variant } = ownerState;
 
   const slots = {
     root: ['root', direction, position, variant]
@@ -30,17 +30,17 @@ const SwiperPaginationRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      styleProps: { direction, position, variant }
+      ownerState: { direction, position, variant }
     } = props;
     return [styles.root, styles[direction], styles[position], styles[variant]];
   }
-})<{ styleProps: SwiperPaginationStyleProps }>(({ styleProps }) => ({
+})<{ ownerState: SwiperPaginationOwnerState }>(({ ownerState }) => ({
   alignItems: 'center',
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
 
-  ...(styleProps.direction === 'horizontal' && {
+  ...(ownerState.direction === 'horizontal' && {
     flexDirection: 'row',
     width: '100%',
     [`&.${swiperPaginationClasses.start}`]: {
@@ -53,7 +53,7 @@ const SwiperPaginationRoot = styled('div', {
     }
   }),
 
-  ...(styleProps.direction === 'vertical' && {
+  ...(ownerState.direction === 'vertical' && {
     flexDirection: 'column',
     height: '100%',
     [`&.${swiperPaginationClasses.start}`]: {
@@ -66,11 +66,11 @@ const SwiperPaginationRoot = styled('div', {
     }
   }),
 
-  ...(styleProps.position === 'start' && {
+  ...(ownerState.position === 'start' && {
     order: -1
   }),
 
-  ...(styleProps.variant === 'long' && {
+  ...(ownerState.variant === 'long' && {
     [`&.${swiperPaginationClasses.horizontal} .${swiperPaginationClasses.bulletActive}`]: {
       width: 16
     },
@@ -79,7 +79,7 @@ const SwiperPaginationRoot = styled('div', {
     }
   }),
 
-  ...(styleProps.variant === 'big' && {
+  ...(ownerState.variant === 'big' && {
     [`& .${swiperPaginationClasses.itemActive}`]: {
       padding: 2
     },
@@ -140,11 +140,11 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
     return null;
   }
 
-  const styleProps = { ...props, direction, position, variant };
-  const classes = useUtilityClasses(styleProps);
+  const ownerState = { ...props, direction, position, variant };
+  const classes = useUtilityClasses(ownerState);
 
   return (
-    <SwiperPaginationRoot className={clsx(classes.root, className)} styleProps={styleProps}>
+    <SwiperPaginationRoot className={clsx(classes.root, className)} ownerState={ownerState}>
       {bullets.map((index) => (
         <SwiperPaginationItem
           key={index}

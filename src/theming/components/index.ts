@@ -1,6 +1,6 @@
-import { Theme } from '@material-ui/core/styles';
-import { Components } from '@material-ui/core/styles/components';
-import { TypographyOptions } from '@material-ui/core/styles/createTypography';
+import { Theme } from '@mui/material/styles';
+import { Components } from '@mui/material/styles/components';
+import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 import { createButton } from './button';
 export { createButton } from './button';

@@ -1,4 +1,4 @@
-import { generateUtilityClass, generateUtilityClasses } from '@material-ui/unstyled';
+import { generateUtilityClass, generateUtilityClasses } from '@mui/core';
 
 export type TableActionsClasses = {
   /** Styles applied to the root element. */
