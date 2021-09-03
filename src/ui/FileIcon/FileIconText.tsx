@@ -1,17 +1,17 @@
 import clsx from 'clsx';
-import Typography from '@material-ui/core/Typography';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
-import { styled, useThemeProps } from '@material-ui/core/styles';
+import Typography from '@mui/material/Typography';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { styled, useThemeProps } from '@mui/material/styles';
 
 import { getFileIconTextUtilityClass } from './FileIconText.classes';
 import { FileIconTextProps } from './FileIconText.types';
 
-type FileIconTextStyleProps = {
+type FileIconTextOwnerState = {
   classes?: FileIconTextProps['classes'];
 };
 
-const useUtilityClasses = (styleProps: FileIconTextStyleProps) => {
-  const { classes } = styleProps;
+const useUtilityClasses = (ownerState: FileIconTextOwnerState) => {
+  const { classes } = ownerState;
 
   const slots = {
     root: ['root']
@@ -35,8 +35,8 @@ export const FileIconText: React.FC<FileIconTextProps> = (inProps) => {
     name: 'ESFileIconText'
   });
 
-  const styleProps = { ...props };
-  const styles = useUtilityClasses(styleProps);
+  const ownerState = { ...props };
+  const styles = useUtilityClasses(ownerState);
 
   return (
     <FileIconTextRoot className={clsx(styles.root, className)} component="div" variant="mini2">

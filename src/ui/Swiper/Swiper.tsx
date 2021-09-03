@@ -2,8 +2,8 @@ import { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import { SwiperProps, SwiperAlignment, SwiperDirection, SwiperPaginationBaseProps } from './Swiper.types';
 
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@material-ui/core/styles';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { styled, useThemeProps } from '@mui/material/styles';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { swiperClasses, getSwiperUtilityClass } from './Swiper.classes';
 
 import { SwiperButtonDown, SwiperButtonLeft, SwiperButtonRight, SwiperButtonUp } from './SwiperButton';
@@ -11,15 +11,15 @@ import { SwiperButtonDown, SwiperButtonLeft, SwiperButtonRight, SwiperButtonUp }
 import { usePropertiesMapping } from './usePropertiesMapping';
 import { useDocumentEventListener, useResizeObserver } from '../hooks';
 
-type SwiperStyleProps = {
+type SwiperOwnerState = {
   classes?: SwiperProps<any>['classes'];
   alignment: SwiperAlignment;
   direction: SwiperDirection;
   snap: boolean;
 };
 
-const useUtilityClasses = (styleProps: SwiperStyleProps) => {
-  const { classes, alignment, direction, snap } = styleProps;
+const useUtilityClasses = (ownerState: SwiperOwnerState) => {
+  const { classes, alignment, direction, snap } = ownerState;
 
   const slots = {
     root: ['root', direction],
@@ -43,15 +43,15 @@ const SwiperRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      styleProps: { direction }
+      ownerState: { direction }
     } = props;
     return [styles.root, styles[direction]];
   }
-})<{ styleProps: SwiperStyleProps }>(({ styleProps }) => ({
+})<{ ownerState: SwiperOwnerState }>(({ ownerState }) => ({
   display: 'flex',
   position: 'relative',
 
-  ...(styleProps.direction === 'horizontal' && {
+  ...(ownerState.direction === 'horizontal' && {
     flexDirection: 'column',
     [`& .${swiperClasses.container}`]: {
       gridAutoFlow: 'column'
@@ -69,7 +69,7 @@ const SwiperRoot = styled('div', {
     }
   }),
 
-  ...(styleProps.direction === 'vertical' && {
+  ...(ownerState.direction === 'vertical' && {
     flexDirection: 'row',
     height: '100%',
     width: 'max-content',
@@ -104,7 +104,7 @@ const SwiperContainer = styled('div', {
   slot: 'Container',
   overridesResolver: (props, styles) => {
     const {
-      styleProps: { snap, alignment }
+      ownerState: { snap, alignment }
     } = props;
     return [
       styles.container,
@@ -113,7 +113,7 @@ const SwiperContainer = styled('div', {
       snap && alignment == 'start' && styles.containerSnapAlignStart
     ];
   }
-})<{ styleProps: SwiperStyleProps }>(({ styleProps }) => ({
+})<{ ownerState: SwiperOwnerState }>(({ ownerState }) => ({
   display: 'grid',
   justifyContent: 'flex-start',
   overflow: 'scroll',
@@ -123,8 +123,8 @@ const SwiperContainer = styled('div', {
     display: 'none'
   },
   '& > *': {
-    scrollSnapAlign: styleProps.alignment,
-    ...(styleProps.snap && {
+    scrollSnapAlign: ownerState.alignment,
+    ...(ownerState.snap && {
       '&:first-child': {
         scrollSnapAlign: 'start'
       },
@@ -133,7 +133,7 @@ const SwiperContainer = styled('div', {
       }
     })
   },
-  ...(styleProps.snap && {
+  ...(ownerState.snap && {
     scrollSnapType: 'x mandatory'
   })
 }));
@@ -454,13 +454,13 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
     }
   }, [loop, loopCount, isMouseDown, isMouseOver, isTouchDown, direction, alignment]);
 
-  const styleProps = { ...props, alignment, direction, snap: !!(snap && !isMouseDown) };
-  const classes = useUtilityClasses(styleProps);
+  const ownerState = { ...props, alignment, direction, snap: !!(snap && !isMouseDown) };
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <SwiperRoot
       className={clsx(classes.root, className)}
-      styleProps={styleProps}
+      ownerState={ownerState}
       ref={ref}
       role="group"
       aria-roledescription="carousel"
@@ -482,7 +482,7 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
         )}
         <SwiperContainer
           className={classes.container}
-          styleProps={styleProps}
+          ownerState={ownerState}
           style={{ gap: `${gap}px`, cursor: draggable ? (isMouseDown ? 'grabbing' : 'grab') : 'unset' }}
           ref={container}
           tabIndex={-1}

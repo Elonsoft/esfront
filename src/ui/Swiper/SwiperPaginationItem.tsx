@@ -1,19 +1,19 @@
-import { styled } from '@material-ui/core/styles';
-import { unstable_composeClasses as composeClasses } from '@material-ui/unstyled';
+import { styled } from '@mui/material/styles';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { swiperPaginationClasses, getSwiperPaginationUtilityClass } from './SwiperPagination.classes';
 
 import { SwiperPaginationProps } from './SwiperPagination.types';
 import { SwiperPaginationItemProps } from './SwiperPaginationItem.types';
 
-type SwiperPaginationItemStyleProps = {
+type SwiperPaginationItemOwnerState = {
   classes?: SwiperPaginationProps['classes'];
   index: number;
   active: number;
   small: boolean;
 };
 
-const useUtilityClasses = (styleProps: SwiperPaginationItemStyleProps) => {
-  const { classes, index, active, small } = styleProps;
+const useUtilityClasses = (ownerState: SwiperPaginationItemOwnerState) => {
+  const { classes, index, active, small } = ownerState;
 
   const slots = {
     item: ['item', index === active && 'itemActive'],
@@ -39,11 +39,11 @@ const SwiperPaginationItemRoot = styled('label', {
   slot: 'Item',
   overridesResolver: (props, styles) => {
     const {
-      styleProps: { index, active }
+      ownerState: { index, active }
     } = props;
     return [styles.item, index === active && styles.itemActive];
   }
-})<{ styleProps: SwiperPaginationItemStyleProps }>(({ theme, styleProps }) => ({
+})<{ ownerState: SwiperPaginationItemOwnerState }>(({ theme, ownerState }) => ({
   alignItems: 'center',
   border: 0,
   cursor: 'pointer',
@@ -66,7 +66,7 @@ const SwiperPaginationItemRoot = styled('label', {
     backgroundColor: theme.palette.secondary.A800
   },
 
-  ...(styleProps.index === styleProps.active && {
+  ...(ownerState.index === ownerState.active && {
     [`&:hover .${swiperPaginationClasses.bullet}, &:active .${swiperPaginationClasses.bullet}`]: {
       backgroundColor: theme.palette.secondary[300]
     }
@@ -78,11 +78,11 @@ const SwiperPaginationItemBullet = styled('div', {
   slot: 'Bullet',
   overridesResolver: (props, styles) => {
     const {
-      styleProps: { index, active, small }
+      ownerState: { index, active, small }
     } = props;
     return [styles.bullet, index === active && styles.bulletActive, small && styles.bulletSmall];
   }
-})<{ styleProps: SwiperPaginationItemStyleProps }>(({ theme, styleProps }) => ({
+})<{ ownerState: SwiperPaginationItemOwnerState }>(({ theme, ownerState }) => ({
   backgroundColor: theme.palette.secondary.A400,
   borderRadius: '16px',
   height: 8,
@@ -90,11 +90,11 @@ const SwiperPaginationItemBullet = styled('div', {
   transitionTimingFunction: 'linear',
   width: 8,
 
-  ...(styleProps.index === styleProps.active && {
+  ...(ownerState.index === ownerState.active && {
     backgroundColor: theme.palette.secondary[300]
   }),
 
-  ...(styleProps.small && {
+  ...(ownerState.small && {
     height: 4,
     width: 4
   })
@@ -131,14 +131,14 @@ export const SwiperPaginationItem: React.FC<SwiperPaginationItemProps> = ({
   ...props
 }) => {
   const small = (index === siblingFrom && siblingFrom > from) || (index === siblingTo && siblingTo < to);
-  const styleProps = { ...props, index, active, small };
-  const classes = useUtilityClasses(styleProps);
+  const ownerState = { ...props, index, active, small };
+  const classes = useUtilityClasses(ownerState);
 
   return (
     <SwiperPaginationItemRoot
       key={index}
       className={classes.item}
-      styleProps={styleProps}
+      ownerState={ownerState}
       style={index < siblingFrom || index > siblingTo ? { ...PAGINATION_ITEM_HIDDEN, ...transition } : transition}
       aria-label={`${index}`}
     >
@@ -152,7 +152,7 @@ export const SwiperPaginationItem: React.FC<SwiperPaginationItemProps> = ({
       />
       <SwiperPaginationItemBullet
         className={classes.bullet}
-        styleProps={styleProps}
+        ownerState={ownerState}
         style={transition}
       ></SwiperPaginationItemBullet>
     </SwiperPaginationItemRoot>
