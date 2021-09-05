@@ -8,6 +8,7 @@ import { spinnerRotateAnimation } from '../Spinner.animations';
 import { SpinnerFadingRingProps } from './SpinnerFadingRing.types';
 import { getSpinnerFadingRingUtilityClass } from './SpinnerFadingRing.classes';
 import { useSpinnerColor } from '../useSpinnerColor';
+import { isSafari, setGradient } from '../Spinner.utils';
 
 type SpinnerFadingRingOwnerState = {
   classes?: SpinnerFadingRingProps['classes'];
@@ -17,15 +18,6 @@ type SpinnerFadingRingOwnerState = {
   ease: string;
   size: number;
 };
-
-const isSafari = () =>
-  navigator.vendor &&
-  navigator.vendor.indexOf('Apple') > -1 &&
-  navigator.userAgent &&
-  navigator.userAgent.indexOf('CriOS') == -1 &&
-  navigator.userAgent.indexOf('FxiOS') == -1;
-
-const setGradient = (mode: 'light' | 'dark') => (isSafari() ? (mode === 'dark' ? 0 : 0.5) : 0);
 
 const useUtilityClasses = (ownerState: SpinnerFadingRingOwnerState) => {
   const { classes, color } = ownerState;
@@ -66,9 +58,10 @@ const SpinnerFadingRingCircle = styled('div', {
   width: '100%',
   height: '100%',
 
-  background: `conic-gradient(from 187deg at 50% 50%, rgba(255, 255, 255, ${setGradient(theme.palette.mode)}) 61deg, ${
-    ownerState.spinnerColor
-  } 360deg)`
+  background: `conic-gradient(from 187deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
+    theme.palette.mode,
+    0.5
+  )}) 61deg, ${ownerState.spinnerColor} 360deg)`
 }));
 
 export const SpinnerFadingRing: React.FC<SpinnerFadingRingProps> & { count: number } = (inProps) => {

@@ -3,8 +3,6 @@ import { generateUtilityClass, generateUtilityClasses } from '@mui/core';
 export type SpinnerFadingDoubleRingClasses = {
   /** Styles applied to the root element. */
   root: string;
-  /** Styles applied to the svg element. */
-  svg: string;
   /** Styles applied to the bottom animate element. */
   lowerPath: string;
   /** Styles applied to the top animate element. */
@@ -26,5 +24,5 @@ export function getSpinnerFadingDoubleRingUtilityClass(slot: string): string {
 
 export const spinnerFadingDoubleRingClasses: SpinnerFadingDoubleRingClasses = generateUtilityClasses(
   'ESSpinnerFadingDoubleRing',
-  ['root', 'svg', 'lowerPath', 'upperPath', 'primary', 'secondary', 'monoA', 'inherit']
+  ['root', 'lowerPath', 'upperPath', 'primary', 'secondary', 'monoA', 'inherit']
 );
