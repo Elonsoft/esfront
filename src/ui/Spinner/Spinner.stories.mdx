@@ -31,8 +31,8 @@ import { SpinnerFadingDoubleRing } from './SpinnerFadingDoubleRing';
       description: 'Easing function for spinner dashStroke animation.',
       control: { type: 'text' },
       table: {
-        type: { 
-          summary: 'string', 
+        type: {
+          summary: 'string'
         },
         defaultValue: {
           summary: 'ease-in-out'
@@ -49,12 +49,14 @@ import { SpinnerFadingDoubleRing } from './SpinnerFadingDoubleRing';
 <Canvas>
   <Story name="Demo">
     {(args, context) => (
-      <div style={{
-        display: 'grid',
-        gap: '24px',
-        gridAutoFlow: 'column',
-        justifyContent: 'flex-start'
-      }}>
+      <div
+        style={{
+          display: 'grid',
+          gap: '24px',
+          gridAutoFlow: 'column',
+          justifyContent: 'flex-start'
+        }}
+      >
         <SpinnerFadingRing size={args.size} duration={args.duration} color={args.color} ease={args.ease} />
         <SpinnerFadingDots size={args.size} duration={args.duration} color={args.color} ease={args.ease} />
         <SpinnerFadingBars size={args.size} duration={args.duration} color={args.color} ease={args.ease} />
@@ -74,32 +76,32 @@ import { SpinnerFadingDoubleRing } from './SpinnerFadingDoubleRing';
 
 <ul>
   <li>
-    <LinkTo kind="components-api-SpinnerDashRing" story="page">
+    <LinkTo kind="components-api-spinnerdashring" story="page">
       <code>SpinnerDashRing</code>
     </LinkTo>
   </li>
   <li>
-    <LinkTo kind="components-api-SpinnerFadingBars" story="page">
+    <LinkTo kind="components-api-spinnerfadingbars" story="page">
       <code>SpinnerFadingBars</code>
     </LinkTo>
   </li>
   <li>
-    <LinkTo kind="components-api-SpinnerFadingDots" story="page">
+    <LinkTo kind="components-api-spinnerfadingdots" story="page">
       <code>SpinnerFadingDots</code>
     </LinkTo>
   </li>
   <li>
-    <LinkTo kind="components-api-SpinnerFadingDoubleRing" story="page">
+    <LinkTo kind="components-api-spinnerfadingdoublering" story="page">
       <code>SpinnerFadingDoubleRing</code>
     </LinkTo>
   </li>
   <li>
-    <LinkTo kind="components-api-SpinnerFadingRing" story="page">
+    <LinkTo kind="components-api-spinnerfadingring" story="page">
       <code>SpinnerFadingRing</code>
     </LinkTo>
   </li>
   <li>
-    <LinkTo kind="components-api-SpinnerRing" story="page">
+    <LinkTo kind="components-api-spinnerring" story="page">
       <code>SpinnerRing</code>
     </LinkTo>
   </li>

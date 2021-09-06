@@ -1,4 +1,4 @@
-# Elonkit
+# Elonkit React
 
 [![npm package](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://elonsoft.github.io/elonkit-react)
 [![npm package](https://img.shields.io/npm/v/@elonkit/react)](https://www.npmjs.com/package/@elonkit/react)

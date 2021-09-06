@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+<Meta
+  title="Getting Started/Localization"
+  parameters={{
+    viewMode: 'docs',
+    options: { showPanel: false }
+  }}
+/>
+
+# Localization
+
+The default locale is English. If you want to use other locales, use the theme to configure the locale text globally:
+
+```tsx
+import { useMemo } from 'react';
+
+import { ThemeProvider, FormatSize, ru } from '@elonkit/react';
+import { ruRU } from '@mui/material/locale';
+
+const Application = () => {
+  const agrs = useMemo(() => {
+    return { ...ruRU, ...ru };
+  }, []);
+
+  return (
+    <ThemeProvider args={args}>
+      <FormatSize>1024</FormatSize>
+    </ThemeProvider>
+  );
+};
+```
+
+You can [find the source](https://github.com/Elonsoft/elonkit-react/blob/develop/src/ui/locale/index.ts) in the GitHub
+repository.
+
+To create your own translation, or to customize the English text, copy this file to your project, make any changes
+needed and import the locale from there.

@@ -1,0 +1,45 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import { PaletteDemo } from './components/PaletteDemo';
+import { TypographyDemo } from './components/TypographyDemo';
+
+<Meta
+  title="Getting Started/Theming"
+  parameters={{
+    viewMode: 'docs',
+    options: { showPanel: false }
+  }}
+/>
+
+## Palette
+
+Our design system build upon Material-UI palette and introduces new colors and hues. Palette can be customized via
+`palette` prop in `ThemeProvider`:
+
+```tsx
+// Default palette
+import { palettes } from '@elonkit/react';
+
+<ThemeProvider palette={palettes}>...</ThemeProvider>;
+```
+
+<Story name="Palette">
+  <PaletteDemo />
+</Story>
+
+## Typography
+
+Typography is based on the guidelines from the Material Design spec and is arranged into typography levels. Each level
+has a font-size, line-height, font-weight and letter-spacing. Typography can be customized via `createTypography` prop
+in `ThemeProvider`:
+
+```tsx
+// Default typography
+import { createTypography } from '@elonkit/react';
+
+<ThemeProvider createTypography={createTypography}>...</ThemeProvider>;
+```
+
+<Story name="Typography">
+  <TypographyDemo />
+</Story>
