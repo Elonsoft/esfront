@@ -23,7 +23,7 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Guides', 'Components', 'Components API']
+      order: ['Getting Started', ['Installation', 'Usage', 'Theming', 'Localization'], 'Components', 'Components API']
     }
   }
 };

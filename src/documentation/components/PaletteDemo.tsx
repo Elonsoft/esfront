@@ -21,13 +21,13 @@ const PALETTES = [
 
 const COLOR_IGNORE = ['contrastText'];
 
-const PalettesDemoRoot = styled('div')(() => ({
+const PaletteDemoRoot = styled('div')(() => ({
   display: 'grid',
   gap: 4,
   gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))'
 }));
 
-const PalettesDemoPalette = styled(Typography)(({ theme }) => ({
+const PaletteDemoPalette = styled(Typography)(({ theme }) => ({
   backgroundColor: theme.palette.monoA.A50,
   borderRadius: 2,
   display: 'block',
@@ -40,7 +40,7 @@ const PalettesDemoPalette = styled(Typography)(({ theme }) => ({
   }
 }));
 
-const PalettesDemoColorName = styled(Typography)(({ theme }) => ({
+const PaletteDemoColorName = styled(Typography)(({ theme }) => ({
   backgroundColor: theme.palette.monoA.A50,
   borderTopLeftRadius: 2,
   borderTopRightRadius: 2,
@@ -48,7 +48,7 @@ const PalettesDemoColorName = styled(Typography)(({ theme }) => ({
   padding: '8px 16px'
 }));
 
-const PalettesDemoColorBackground = styled('div')(({ theme }) => ({
+const PaletteDemoColorBackground = styled('div')(({ theme }) => ({
   border: `1px solid ${theme.palette.monoA.A50}`,
   borderBottomLeftRadius: 2,
   borderBottomRightRadius: 2,
@@ -56,32 +56,32 @@ const PalettesDemoColorBackground = styled('div')(({ theme }) => ({
   padding: 16
 }));
 
-export const PalettesDemo = () => {
+export const PaletteDemo = () => {
   const theme = useTheme();
 
   return (
-    <PalettesDemoRoot>
+    <PaletteDemoRoot>
       {PALETTES.map((palette) => (
         <Fragment key={palette}>
-          <PalettesDemoPalette variant="body100">
+          <PaletteDemoPalette variant="body100">
             <code>{palette}</code>
-          </PalettesDemoPalette>
+          </PaletteDemoPalette>
           {Object.keys((theme.palette as any)[palette])
             .filter((color) => !COLOR_IGNORE.includes(color))
             .map((color) => (
               <div key={color}>
-                <PalettesDemoColorName variant="caption">
+                <PaletteDemoColorName variant="caption">
                   <code>{color}</code>
-                </PalettesDemoColorName>
-                <PalettesDemoColorBackground
+                </PaletteDemoColorName>
+                <PaletteDemoColorBackground
                   style={{
                     backgroundColor: (theme.palette as any)[palette][color] as string
                   }}
-                ></PalettesDemoColorBackground>
+                ></PaletteDemoColorBackground>
               </div>
             ))}
         </Fragment>
       ))}
-    </PalettesDemoRoot>
+    </PaletteDemoRoot>
   );
 };

@@ -56,24 +56,26 @@ import { IconFileVariant } from '../icons';
 <Canvas>
   <Story name="Demo">
     {(args, context) => (
-      <div style={{ 
-        display: 'flex',
-        alignItems: 'center',
-        gap: '16px'
-       }}>
-        <FileIcon icon={IconFileVariant} width={args.width} height={args.height}/>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px'
+        }}
+      >
+        <FileIcon icon={IconFileVariant} width={args.width} height={args.height} />
         <FileIcon icon={IconFileVariant} width={args.width} height={args.height}>
-          <FileIconText>{args.textChildren}</FileIconText>  
+          <FileIconText>{args.textChildren}</FileIconText>
         </FileIcon>
-        <FileIcon width={args.width} height={args.height}/>
+        <FileIcon width={args.width} height={args.height} />
         <FileIcon width={args.width} height={args.height}>
-          <FileIconText>{args.textChildren}</FileIconText>  
+          <FileIconText>{args.textChildren}</FileIconText>
         </FileIcon>
         <FileIcon icon={IconFileVariant} width={args.width} height={args.height}>
-          <FileIconBadge children={args.badgeChildren} size={args.badgeSize} color={args.badgeColor}/>
+          <FileIconBadge children={args.badgeChildren} size={args.badgeSize} color={args.badgeColor} />
         </FileIcon>
         <FileIcon width={args.width} height={args.height}>
-          <FileIconBadge children={args.badgeChildren} size={args.badgeSize} color={args.badgeColor}/>
+          <FileIconBadge children={args.badgeChildren} size={args.badgeSize} color={args.badgeColor} />
         </FileIcon>
       </div>
     )}
@@ -87,7 +89,9 @@ import { IconFileVariant } from '../icons';
 Children element automatically positioned in visual center depending on component size.
 
 <Canvas>
-  <Story name="Sizes" argTypes={{
+  <Story
+    name="Sizes"
+    argTypes={{
       width: {
         table: {
           disable: true
@@ -103,36 +107,39 @@ Children element automatically positioned in visual center depending on componen
           disable: true
         }
       }
-    }}>
+    }}
+  >
     {(args, context) => (
-      <div style={{ 
-        display: 'flex',
-        alignItems: 'center',
-        gap: '16px'
-       }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px'
+        }}
+      >
         <FileIcon>
-          <FileIconBadge color="red" size="md" children="ZIP"/>
+          <FileIconBadge color="red" size="md" children="ZIP" />
         </FileIcon>
         <FileIcon width={33} height={44}>
-          <FileIconBadge color="purple" size="sm" children="RAR"/>
+          <FileIconBadge color="purple" size="sm" children="RAR" />
         </FileIcon>
         <FileIcon width={30} height={40}>
-          <FileIconBadge color="#9672FF" size="sm" children="RAR"/>
+          <FileIconBadge color="#9672FF" size="sm" children="RAR" />
         </FileIcon>
         <FileIcon width={27} height={36}>
-          <FileIconBadge color="#9672FF" size="sm" children="RAR"/>
+          <FileIconBadge color="#9672FF" size="sm" children="RAR" />
         </FileIcon>
         <FileIcon icon={IconFileVariant}>
-          <FileIconBadge color="red" size="md" children="ZIP"/>
+          <FileIconBadge color="red" size="md" children="ZIP" />
         </FileIcon>
         <FileIcon icon={IconFileVariant} width={33} height={44}>
-          <FileIconBadge color="purple" size="sm" children="RAR"/>
+          <FileIconBadge color="purple" size="sm" children="RAR" />
         </FileIcon>
         <FileIcon icon={IconFileVariant} width={30} height={40}>
-          <FileIconBadge color="#9672FF" size="sm" children="RAR"/>
+          <FileIconBadge color="#9672FF" size="sm" children="RAR" />
         </FileIcon>
         <FileIcon icon={IconFileVariant} width={27} height={36}>
-          <FileIconBadge color="#9672FF" size="sm" children="RAR"/>
+          <FileIconBadge color="#9672FF" size="sm" children="RAR" />
         </FileIcon>
       </div>
     )}
@@ -143,17 +150,17 @@ Children element automatically positioned in visual center depending on componen
 
 <ul>
   <li>
-    <LinkTo kind="components-api-FileIcon" story="page">
+    <LinkTo kind="components-api-fileicon" story="page">
       <code>FileIcon</code>
     </LinkTo>
   </li>
   <li>
-    <LinkTo kind="components-api-FileIconBadge" story="page">
+    <LinkTo kind="components-api-fileiconbadge" story="page">
       <code>FileIconBadge</code>
     </LinkTo>
   </li>
   <li>
-    <LinkTo kind="components-api-FileIconText" story="page">
+    <LinkTo kind="components-api-fileicontext" story="page">
       <code>FileIconText</code>
     </LinkTo>
   </li>

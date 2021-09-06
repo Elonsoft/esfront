@@ -4,14 +4,5 @@
     "declaration": true,
     "rootDir": "src"
   },
-  "exclude": [
-    "node_modules",
-    "./*.js",
-    "./*.ts",
-    "src/testing",
-    "src/theming/palettes/PalettesDemo.styles.ts",
-    "src/theming/palettes/PalettesDemo.tsx",
-    "src/theming/typography/TypographyDemo.tsx",
-    "src/**/*.spec.tsx"
-  ]
+  "exclude": ["node_modules", "./*.js", "./*.ts", "src/documentation", "src/testing", "src/**/*.spec.tsx"]
 }
