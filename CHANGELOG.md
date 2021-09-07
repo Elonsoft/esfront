@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/Elonsoft/elonkit-react/compare/v0.0.2...v0.1.0) (2021-09-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade and rename material-ui packages
+
+### Features
+
+* **FileIcon:** add new component ([9a0dc3a](https://github.com/Elonsoft/elonkit-react/commit/9a0dc3afd6ffba36f0f64ca54910ebec66e22dae))
+* **FileInfo:** add new component ([4f0e48c](https://github.com/Elonsoft/elonkit-react/commit/4f0e48cab0e767c22546e26cff6140c1c386b3d4))
+* **FormatDate:** add new component ([b60ab1e](https://github.com/Elonsoft/elonkit-react/commit/b60ab1e3e87c87161f1ccfaa81430a0e78655ce1))
+* **FormatSize:** add new component ([c1aced7](https://github.com/Elonsoft/elonkit-react/commit/c1aced7f0d18f043d583db2daa372c48baa395bc))
+* **Slider:** add style overrides ([7b6ceaa](https://github.com/Elonsoft/elonkit-react/commit/7b6ceaa7544a0c02ade24728b53e9f191a80c0d9))
+* **Spinner:** add new component ([fa251e3](https://github.com/Elonsoft/elonkit-react/commit/fa251e3564cbba049f909d9e3ad6a73d384a6d21))
+* add missing exports for utility classes ([a1bf8e5](https://github.com/Elonsoft/elonkit-react/commit/a1bf8e5af66abc7ff0c334220dfa45fe97a635d5))
+
+
+### Build Changes
+
+* upgrade and rename material-ui packages ([4c888a5](https://github.com/Elonsoft/elonkit-react/commit/4c888a5801c2f49a705041586ecde06b3dce6995))
+
 ### [0.0.2](https://github.com/Elonsoft/elonkit-react/compare/v0.0.1...v0.0.2) (2021-08-16)
 
 
