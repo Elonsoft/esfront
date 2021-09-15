@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { DialogClose } from './DialogClose';
+import * as stories from './DialogClose.stories';
+
+<Meta
+  title="Components/DialogClose"
+  component={DialogClose}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    onClick: {
+      table: {
+        disable: true
+      }
+    }
+  }}
+/>
+
+# DialogClose
+
+This component adds the close button on the right side of the dialog window.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-dialogclose" story="page">
+      <code>DialogClose</code>
+    </LinkTo>
+  </li>
+</ul>

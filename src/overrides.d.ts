@@ -23,8 +23,9 @@ import { Components } from '@mui/material/styles/components';
 import { ComponentsOverrides, ComponentNameToClassKey } from '@mui/material/styles/overrides';
 import { ComponentsProps, ComponentsPropsList } from '@mui/material/styles/props';
 
-import { EmptyStateProps, EmptyStateClassKey } from './ui/EmptyState';
+import { DialogCloseProps, DialogCloseClassKey } from './ui/DialogClose';
 import { DropzoneProps, DropzoneClassKey } from './ui/Dropzone';
+import { EmptyStateProps, EmptyStateClassKey } from './ui/EmptyState';
 import {
   SwiperProps,
   SwiperPaginationBaseProps,
@@ -100,11 +101,9 @@ export interface IShadowPalette {
 
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
-    ESEmptyState: EmptyStateProps;
-    ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
-    ESSwiperPagination: SwiperPaginationProps;
-    ESTableActions: TableActionsProps;
+    ESDialogClose: DialogCloseProps;
     ESDropzone: DropzoneProps;
+    ESEmptyState: EmptyStateProps;
     ESFileIcon: FileIconProps;
     ESFileIconBadge: FileIconBadgeProps;
     ESFileIconText: FileIconTextProps;
@@ -121,36 +120,44 @@ declare module '@mui/material/styles/props' {
     ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingProps;
     ESSpinnerFadingRing: SpinnerFadingRingProps;
     ESSpinnerRing: SpinnerRingProps;
+    ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
+    ESSwiperPagination: SwiperPaginationProps;
+    ESTableActions: TableActionsProps;
   }
 }
 
 declare module '@mui/material/styles/overrides' {
   interface ComponentNameToClassKey {
-    ESEmptyState: EmptyStateClassKey;
-    ESSwiper: SwiperClassKey;
-    ESSwiperButton: SwiperButtonClassKey;
-    ESSwiperPagination: SwiperPaginationClassKey;
-    ESTableActions: TableActionsClassKey;
+    ESDialogClose: DialogCloseClassKey;
     ESDropzone: DropzoneClassKey;
+    ESEmptyState: EmptyStateClassKey;
     ESFileIcon: FileIconClassKey;
     ESFileIconBadge: FileIconBadgeClassKey;
     ESFileIconText: FileIconTextClassKey;
+    ESFileInfo: FileInfoClassKey;
+    ESFileInfoContent: FileInfoContentClassKey;
+    ESFileInfoMeta: FileInfoMetaClassKey;
+    ESFileInfoMetaSeparator: FileInfoMetaSeparatorClassKey;
+    ESFileInfoName: FileInfoNameClassKey;
     ESSpinnerDashRing: SpinnerDashRingClassKey;
     ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
     ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
     ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingClassKey;
     ESSpinnerFadingRing: SpinnerFadingRingClassKey;
     ESSpinnerRing: SpinnerRingClassKey;
-    ESFileInfo: FileInfoClassKey;
-    ESFileInfoContent: FileInfoContentClassKey;
-    ESFileInfoMeta: FileInfoMetaClassKey;
-    ESFileInfoMetaSeparator: FileInfoMetaSeparatorClassKey;
-    ESFileInfoName: FileInfoNameClassKey;
+    ESSwiper: SwiperClassKey;
+    ESSwiperButton: SwiperButtonClassKey;
+    ESSwiperPagination: SwiperPaginationClassKey;
+    ESTableActions: TableActionsClassKey;
   }
 }
 
 declare module '@mui/material/styles/components' {
   interface Components {
+    ESDialogClose?: {
+      defaultProps?: ComponentsProps['ESDialogClose'];
+      styleOverrides?: ComponentsOverrides['ESDialogClose'];
+    };
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];
       styleOverrides?: ComponentsOverrides['ESEmptyState'];

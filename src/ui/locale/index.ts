@@ -1,10 +1,14 @@
+import { DialogCloseProps } from '../DialogClose';
+import { FileInfoNameProps } from '../FileInfo';
+import { FormatSizeProps } from '../FormatSize';
 import { SwiperProps } from '../Swiper';
 import { TableActionsProps } from '../TableActions';
-import { FormatSizeProps } from '../FormatSize';
-import { FileInfoNameProps } from '../FileInfo';
 
 export interface Localization {
   components: {
+    ESDialogClose: {
+      defaultProps: Pick<DialogCloseProps, 'label'>;
+    };
     ESFileInfoName: {
       defaultProps: Pick<FileInfoNameProps, 'deleteLabel'>;
     };
@@ -22,6 +26,11 @@ export interface Localization {
 
 export const en: Localization = {
   components: {
+    ESDialogClose: {
+      defaultProps: {
+        label: 'Close'
+      }
+    },
     ESFileInfoName: {
       defaultProps: {
         deleteLabel: 'Delete'
@@ -49,6 +58,11 @@ export const en: Localization = {
 
 export const ru: Localization = {
   components: {
+    ESDialogClose: {
+      defaultProps: {
+        label: 'Закрыть'
+      }
+    },
     ESFileInfoName: {
       defaultProps: {
         deleteLabel: 'Удалить'

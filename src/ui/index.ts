@@ -1,4 +1,5 @@
 export * from './DateAdapter';
+export * from './DialogClose';
 export * from './Dropzone';
 export * from './EmptyState';
 export * from './Swiper';
