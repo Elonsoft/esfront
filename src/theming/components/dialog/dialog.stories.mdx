@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
+
+<Meta
+  title="Overrides/Dialog"
+  parameters={{
+    viewMode: 'canvas',
+    options: { showPanel: true }
+  }}
+/>
+
+<Canvas>
+  <Story name="Dialog">
+    {(args, context) => {
+      return (
+        <Dialog open>
+          <DialogTitle>Заголовок</DialogTitle>
+          <DialogContent>
+            <Typography variant="body200">
+              Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+              quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button variant="outlined" color="inherit" size="lg">
+              Отмена
+            </Button>
+            <Button variant="contained" color="primary" size="lg" autoFocus>
+              Создать
+            </Button>
+          </DialogActions>
+        </Dialog>
+      );
+    }}
+  </Story>
+</Canvas>
