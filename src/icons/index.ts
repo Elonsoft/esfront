@@ -10,6 +10,7 @@ export { IconCheckboxIndetereminate } from './IconCheckboxIndeterminate';
 export { IconCheckSm } from './IconCheckSm';
 export { IconChevronLeft } from './IconChevronLeft';
 export { IconChevronRight } from './IconChevronRight';
+export { IconClose } from './IconClose';
 export { IconCloseSm } from './IconCloseSm';
 export { IconDotsHorizontal } from './IconDotsHorizontal';
 export { IconOpenInNew } from './IconOpenInNew';

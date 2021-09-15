@@ -1,5 +1,5 @@
 export * from './DateAdapter';
-export * from './Dropzone';
+export * from './Dialog';
 export * from './Dropzone';
 export * from './EmptyState';
 export * from './FileIcon';

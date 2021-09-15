@@ -1,0 +1,81 @@
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import * as stories from './Dialog.stories';
+
+<Meta
+  title="Components/Dialog"
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    DialogTitleSticky: {
+      name: 'sticky',
+      description: 'Whether the actions should be sticky.',
+      table: {
+        category: 'DialogTitle'
+      },
+      defaultValue: true,
+      control: {
+        type: 'boolean'
+      }
+    },
+    DialogActionsSticky: {
+      name: 'sticky',
+      description: 'Whether the title should be sticky.',
+      table: {
+        category: 'DialogActions'
+      },
+      defaultValue: true,
+      control: {
+        type: 'boolean'
+      }
+    }
+  }}
+/>
+
+# Dialog
+
+Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+Dialogs can be aligned to the top of the screen.
+
+<Canvas>
+  <Story story={stories.Alignment} name="Alignment" />
+</Canvas>
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-dialog" story="page">
+      <code>Dialog</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-dialogactions" story="page">
+      <code>DialogActions</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-dialogarrow" story="page">
+      <code>DialogArrow</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-dialogclose" story="page">
+      <code>DialogClose</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-dialogtitle" story="page">
+      <code>DialogTitle</code>
+    </LinkTo>
+  </li>
+</ul>

@@ -1,3 +1,4 @@
+import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
@@ -6,6 +7,12 @@ import { TableActionsProps } from '../TableActions';
 
 export interface Localization {
   components: {
+    ESDialogArrow: {
+      defaultProps: Pick<DialogArrowProps, 'labelPrev' | 'labelNext'>;
+    };
+    ESDialogClose: {
+      defaultProps: Pick<DialogCloseProps, 'label'>;
+    };
     ESFileInfoName: {
       defaultProps: Pick<FileInfoNameProps, 'labelDelete'>;
     };
@@ -29,6 +36,17 @@ export interface Localization {
 
 export const en: Localization = {
   components: {
+    ESDialogArrow: {
+      defaultProps: {
+        labelPrev: 'Previous',
+        labelNext: 'Next'
+      }
+    },
+    ESDialogClose: {
+      defaultProps: {
+        label: 'Close'
+      }
+    },
     ESFileInfoName: {
       defaultProps: {
         labelDelete: 'Delete'
@@ -69,6 +87,17 @@ export const en: Localization = {
 
 export const ru: Localization = {
   components: {
+    ESDialogArrow: {
+      defaultProps: {
+        labelPrev: 'Назад',
+        labelNext: 'Вперёд'
+      }
+    },
+    ESDialogClose: {
+      defaultProps: {
+        label: 'Закрыть'
+      }
+    },
     ESFileInfoName: {
       defaultProps: {
         labelDelete: 'Удалить'
