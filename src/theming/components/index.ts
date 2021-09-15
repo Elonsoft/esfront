@@ -39,29 +39,36 @@ export { createTooltip } from './tooltip';
 export const createComponents = (theme: Theme, typography: TypographyOptions) => {
   const MuiButton = createButton(theme, typography);
   const MuiCheckbox = createCheckbox(theme, typography);
+
+  const MuiIconButton = createIconButton(theme, typography);
+
+  const MuiSlider = createSlider(theme, typography);
+
   const MuiFormControl = createFormControl(theme, typography);
   const MuiFormHelperText = createFormHelperText(theme, typography);
   const MuiFormLabel = createFormLabel(theme, typography);
-  const MuiIconButton = createIconButton(theme, typography);
   const MuiInputAdornment = createInputAdornment(theme, typography);
   const MuiOutlinedInput = createOutlinedInput(theme, typography);
   const MuiSelect = createSelect(theme, typography);
-  const MuiSlider = createSlider(theme, typography);
   const MuiTextField = createTextField(theme, typography);
   const MuiTooltip = createTooltip(theme, typography);
 
   const components: Components = {
     MuiButton,
     MuiCheckbox,
+
+    MuiIconButton,
+
+    MuiSlider,
+
     MuiFormControl,
     MuiFormHelperText,
     MuiFormLabel,
-    MuiIconButton,
     MuiInputAdornment,
     MuiOutlinedInput,
     MuiSelect,
-    MuiSlider,
     MuiTextField,
+
     MuiTooltip
   };
   return components;
