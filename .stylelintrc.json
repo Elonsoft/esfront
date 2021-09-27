@@ -4,13 +4,24 @@
   "rules": {
     "block-no-empty": null,
     "declaration-block-trailing-semicolon": null,
+    "declaration-colon-newline-after": null,
+    "function-comma-newline-after": null,
     "function-name-case": null,
+    "function-parentheses-newline-inside": null,
+    "function-whitespace-after": null,
+    "indentation": null,
     "max-nesting-depth": null,
+    "no-empty-source": null,
+    "no-missing-end-of-source-newline": null,
+    "property-no-unknown": [true, { "ignoreProperties": ["name", "slot", "overrides-resolver"] }],
+    "property-no-vendor-prefix": true,
     "rule-empty-line-before": null,
     "selector-list-comma-newline-after": "never-multi-line",
     "selector-type-case": null,
     "selector-type-no-unknown": null,
     "value-keyword-case": null,
+    "value-list-comma-newline-after": null,
+    "value-no-vendor-prefix": true,
     "order/properties-alphabetical-order": true
   }
 }

@@ -48,8 +48,8 @@ const SwiperRoot = styled('div', {
     return [styles.root, styles[direction]];
   }
 })<{ ownerState: SwiperOwnerState }>(({ ownerState }) => ({
-  display: 'flex',
   position: 'relative',
+  display: 'flex',
 
   ...(ownerState.direction === 'horizontal' && {
     flexDirection: 'column',
@@ -116,8 +116,8 @@ const SwiperContainer = styled('div', {
 })<{ ownerState: SwiperOwnerState }>(({ ownerState }) => ({
   display: 'grid',
   justifyContent: 'flex-start',
-  overflow: 'scroll',
   msOverflowStyle: 'none',
+  overflow: 'scroll',
   scrollbarWidth: 'none',
   '&::-webkit-scrollbar': {
     display: 'none'

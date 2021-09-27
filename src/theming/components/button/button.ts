@@ -3,12 +3,12 @@ import { keyframes } from '@mui/system';
 
 const enterKeyframe = keyframes`
   0% {
-    transform: scale(0);
     opacity: 0.1;
+    transform: scale(0);
   }
   100% {
-    transform: scale(1);
     opacity: 1;
+    transform: scale(1);
   }
 `;
 

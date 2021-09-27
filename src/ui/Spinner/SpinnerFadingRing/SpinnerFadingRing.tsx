@@ -44,6 +44,7 @@ const SpinnerFadingRingRoot = styled('svg', {
     '& > *': {
       fill: 'currentColor'
     },
+
     color: ownerState.spinnerColor
   }),
   ({ ownerState }) =>
@@ -57,7 +58,6 @@ const SpinnerFadingRingCircle = styled('div', {
 })<{ ownerState: SpinnerFadingRingOwnerState }>(({ theme, ownerState }) => ({
   width: '100%',
   height: '100%',
-
   background: `conic-gradient(from 187deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
     theme.palette.mode,
     0.5

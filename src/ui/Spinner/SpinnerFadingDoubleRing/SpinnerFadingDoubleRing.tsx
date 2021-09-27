@@ -58,7 +58,7 @@ const SpinnerFadingDoubleRingSpinnerLowerPath = styled('div', {
   background: `conic-gradient(from 180deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
     theme.palette.mode,
     1
-  )}) 246deg, ${ownerState.spinnerColor} 360deg);`,
+  )}) 246deg, ${ownerState.spinnerColor} 360deg)`,
   width: '100%',
   height: '100%'
 }));
@@ -71,7 +71,7 @@ const SpinnerFadingDoubleRingSpinnerUpperPath = styled('div', {
   background: `conic-gradient(from 0deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
     theme.palette.mode,
     1
-  )}) 246deg, ${ownerState.spinnerColor} 360deg);`,
+  )}) 246deg, ${ownerState.spinnerColor} 360deg)`,
   width: '100%',
   height: '100%'
 }));

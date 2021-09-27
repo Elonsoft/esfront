@@ -39,8 +39,8 @@ const SpinnerFadingBarsRoot = styled('svg', {
     color: ownerState.spinnerColor,
     '& > *': {
       fill: 'currentColor',
-      width: '4px',
-      height: '10px'
+      height: '10px',
+      width: '4px'
     }
   }),
   ({ ownerState }) => ({
