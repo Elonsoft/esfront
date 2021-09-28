@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import SvgIcon from '@mui/material/SvgIcon';
+import { Checkbox } from '@mui/material';
+
+<Meta
+  title="Overrides/Checkbox"
+  parameters={{
+    viewMode: 'canvas',
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    color: {
+      options: ['primary', 'secondary', 'error'],
+      control: { type: 'select' }
+    },
+    disabled: {
+      control: { type: 'boolean' }
+    },
+    indeterminate: {
+      control: { type: 'boolean' }
+    }
+  }}
+/>
+
+<Canvas>
+  <Story name="Checkbox">
+    {(args) => {
+      return (
+        <div>
+          <Checkbox {...args} />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

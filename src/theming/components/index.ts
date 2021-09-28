@@ -5,6 +5,9 @@ import { TypographyOptions } from '@mui/material/styles/createTypography';
 import { createButton } from './button';
 export { createButton } from './button';
 
+import { createCheckbox } from './checkbox';
+export { createCheckbox } from './checkbox';
+
 import { createIconButton } from './icon-button';
 export { createIconButton } from './icon-button';
 
@@ -35,6 +38,7 @@ export { createTooltip } from './tooltip';
 
 export const createComponents = (theme: Theme, typography: TypographyOptions) => {
   const MuiButton = createButton(theme, typography);
+  const MuiCheckbox = createCheckbox(theme, typography);
   const MuiFormControl = createFormControl(theme, typography);
   const MuiFormHelperText = createFormHelperText(theme, typography);
   const MuiFormLabel = createFormLabel(theme, typography);
@@ -48,6 +52,7 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
 
   const components: Components = {
     MuiButton,
+    MuiCheckbox,
     MuiFormControl,
     MuiFormHelperText,
     MuiFormLabel,
