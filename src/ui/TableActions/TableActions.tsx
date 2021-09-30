@@ -1,12 +1,13 @@
 import { FC } from 'react';
 
-import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
-import { getTableActionsUtilityClass } from './TableActions.classes';
-
 import { TableActionsProps } from './TableActions.types';
 
+import clsx from 'clsx';
+import { getTableActionsUtilityClass } from './TableActions.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
 type TableActionsOwnerState = {

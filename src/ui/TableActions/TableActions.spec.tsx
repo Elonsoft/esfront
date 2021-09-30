@@ -1,6 +1,7 @@
 import { render, screen } from '../../testing';
 
 import { TableActions } from './TableActions';
+
 import { en } from '../locale';
 
 describe('TabelActions', () => {

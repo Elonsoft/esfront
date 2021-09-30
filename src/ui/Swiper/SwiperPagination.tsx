@@ -1,11 +1,14 @@
 import { useMemo } from 'react';
 
-import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
-import { swiperPaginationClasses, getSwiperPaginationUtilityClass } from './SwiperPagination.classes';
-
 import { SwiperPaginationProps } from './SwiperPagination.types';
+
+import clsx from 'clsx';
+import { getSwiperPaginationUtilityClass, swiperPaginationClasses } from './SwiperPagination.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled, useThemeProps } from '@mui/material/styles';
+
 import { SwiperPaginationItem } from './SwiperPaginationItem';
 
 type SwiperPaginationOwnerState = {

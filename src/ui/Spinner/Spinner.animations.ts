@@ -1,5 +1,4 @@
-/* eslint-disable prettier/prettier */
-import { keyframes, css } from '@mui/system';
+import { css, keyframes } from '@mui/system';
 
 const DOTS_AMOUNT = 8;
 
@@ -42,7 +41,7 @@ const spinnerOpacityDelay = (duration: number) => {
   const animationDelay: Record<string, { animationDelay: string }> = {};
   for (let i = DOTS_AMOUNT - 1; i > 0; i--) {
     animationDelay[`& > *:nth-child(${DOTS_AMOUNT - i})`] = {
-      animationDelay: `${-i / DOTS_AMOUNT * duration}ms`
+      animationDelay: `${(-i / DOTS_AMOUNT) * duration}ms`
     };
   }
 
@@ -51,24 +50,18 @@ const spinnerOpacityDelay = (duration: number) => {
 
 export const spinnerOpacityAnimation = (animatedElement: string, duration: number, ease: string) => ({
   ...spinnerOpacityDelay(duration),
-  ...{
-    [animatedElement]: css`
-      animation: ${opacityKeyframe} ${duration}ms ${ease} infinite;
-`
+  // prettier-ignore
+  ...{[animatedElement]: css`animation: ${opacityKeyframe} ${duration}ms ${ease} infinite;`
   }
 });
 
 export const spinnerRotateAnimation = (animatedElement: string, duration: number, ease: string) => ({
-  [animatedElement]: css`
-      animation: ${rotateKeyframe} ${duration}ms ${ease} infinite;
-      transform-origin: center;
-`
+  // prettier-ignore
+  [animatedElement]: css`animation: ${rotateKeyframe} ${duration}ms ${ease} infinite; transform-origin: center;`
 });
 
-// use only for <circle> element
+// Use only for <circle> element.
 export const spinnerDashAnimation = (duration: number, ease: string, dashEase: string) => css`
-    animation:
-      ${strokeArrayKeyframe} ${duration}ms ${dashEase} infinite,
-      ${rotateKeyframe} ${duration}ms ${ease} infinite;
-    transform-origin: center;
+  animation: ${strokeArrayKeyframe} ${duration}ms ${dashEase} infinite, ${rotateKeyframe} ${duration}ms ${ease} infinite;
+  transform-origin: center;
 `;

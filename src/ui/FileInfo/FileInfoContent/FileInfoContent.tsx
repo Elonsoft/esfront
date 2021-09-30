@@ -1,11 +1,13 @@
 import { FC } from 'react';
 
+import { FileInfoContentProps } from './FileInfoContent.types';
+
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { getFileInfoContentUtilityClass } from './FileInfoContent.classes';
 
-import { FileInfoContentProps } from './FileInfoContent.types';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled, useThemeProps } from '@mui/material/styles';
 
 type FileInfoContentOwnerState = {
   classes?: FileInfoContentProps['classes'];

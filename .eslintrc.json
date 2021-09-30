@@ -1,5 +1,5 @@
 {
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "simple-import-sort"],
   "extends": ["plugin:@typescript-eslint/recommended", "plugin:react/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -18,6 +18,22 @@
     "@typescript-eslint/no-var-requires": "off",
     "prettier/prettier": "error",
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^react"],
+          ["^\\.\\./\\.\\./testing"],
+          ["^.+\\.types$"],
+          ["^(@testing-library|@storybook|@date-io|date-fns)"],
+          ["^clsx", "^.+\\.classes$"],
+          ["^@mui/core"],
+          ["^@mui/material/styles", "^@mui/system", "^@mui/material"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"]
+        ]
+      }
+    ]
   }
 }

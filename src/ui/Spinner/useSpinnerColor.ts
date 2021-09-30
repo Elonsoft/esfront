@@ -1,5 +1,6 @@
-import { useTheme } from '@mui/material/styles';
 import { SpinnerColor } from './Spinner.types';
+
+import { useTheme } from '@mui/material/styles';
 
 export const useSpinnerColor = (color: SpinnerColor) => {
   const theme = useTheme();

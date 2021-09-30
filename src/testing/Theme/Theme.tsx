@@ -1,13 +1,14 @@
 import { FC, useMemo } from 'react';
+
 import { IThemeProps } from './Theme.types';
+
+import DateFnsAdapter from '@date-io/date-fns';
+import { enUS as dateEN, ru as dateRU } from 'date-fns/locale';
 
 import { enUS, ruRU } from '@mui/material/locale';
 
-import DateFnsAdapter from '@date-io/date-fns';
-import { ru as dateRU, enUS as dateEN } from 'date-fns/locale';
-
-import { ThemeProvider, palettes } from '../../theming';
-import { en, ru, DateAdapterProvider } from '../../ui';
+import { palettes, ThemeProvider } from '../../theming';
+import { DateAdapterProvider, en, ru } from '../../ui';
 
 export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
   const palette = useMemo(() => {

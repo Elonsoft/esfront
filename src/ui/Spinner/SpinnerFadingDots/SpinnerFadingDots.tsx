@@ -1,9 +1,12 @@
+import { SpinnerFadingDotsProps } from './SpinnerFadingDots.types';
+
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
+import { getSpinnerFadingDotsUtilityClass } from './SpinnerFadingDots.classes';
+
 import { unstable_composeClasses as composeClasses } from '@mui/core';
 
-import { SpinnerFadingDotsProps } from './SpinnerFadingDots.types';
-import { getSpinnerFadingDotsUtilityClass } from './SpinnerFadingDots.classes';
+import { styled, useThemeProps } from '@mui/material/styles';
+
 import { spinnerOpacityAnimation } from '../Spinner.animations';
 import { useSpinnerColor } from '../useSpinnerColor';
 

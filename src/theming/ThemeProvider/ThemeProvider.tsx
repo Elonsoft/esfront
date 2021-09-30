@@ -1,16 +1,17 @@
 import { FC, useMemo } from 'react';
+
 import { ThemeProviderProps } from './ThemeProvider.types';
 
+import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
 import { enUS } from '@mui/material/locale';
 
+import { en } from '../../ui/locale';
 import { breakpoints as defaultBreakpoints } from '../breakpoints';
+import { createComponents as createDefaultComponents } from '../components';
 import { palettes as defaultPalettes } from '../palettes';
 import { createTypography as createDefaultTypography } from '../typography';
-import { createComponents as createDefaultComponents } from '../components';
-import { en } from '../../ui/locale';
 
 const defaultPalette = {
   mode: 'light' as const,

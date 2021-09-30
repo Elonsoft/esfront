@@ -1,9 +1,11 @@
-import { styled } from '@mui/material/styles';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
-import { swiperPaginationClasses, getSwiperPaginationUtilityClass } from './SwiperPagination.classes';
-
 import { SwiperPaginationProps } from './SwiperPagination.types';
 import { SwiperPaginationItemProps } from './SwiperPaginationItem.types';
+
+import { getSwiperPaginationUtilityClass, swiperPaginationClasses } from './SwiperPagination.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled } from '@mui/material/styles';
 
 type SwiperPaginationItemOwnerState = {
   classes?: SwiperPaginationProps['classes'];

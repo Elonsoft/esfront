@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { useTheme, styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
 const PALETTES = [

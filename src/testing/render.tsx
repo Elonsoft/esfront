@@ -1,4 +1,5 @@
 import { FC, ReactElement } from 'react';
+
 import { render, RenderOptions } from '@testing-library/react';
 
 import { Theme } from './Theme';

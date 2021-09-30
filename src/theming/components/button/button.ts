@@ -1,5 +1,6 @@
-import { Component } from '../component';
 import { keyframes } from '@mui/system';
+
+import { Component } from '../component';
 
 const enterKeyframe = keyframes`
   0% {

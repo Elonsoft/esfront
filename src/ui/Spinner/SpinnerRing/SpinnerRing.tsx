@@ -1,9 +1,12 @@
+import { SpinnerRingProps } from './SpinnerRing.types';
+
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
+import { getSpinnerRingUtilityClass } from './SpinnerRing.classes';
+
 import { unstable_composeClasses as composeClasses } from '@mui/core';
 
-import { SpinnerRingProps } from './SpinnerRing.types';
-import { getSpinnerRingUtilityClass } from './SpinnerRing.classes';
+import { styled, useThemeProps } from '@mui/material/styles';
+
 import { spinnerRotateAnimation } from '../Spinner.animations';
 import { useSpinnerColor } from '../useSpinnerColor';
 

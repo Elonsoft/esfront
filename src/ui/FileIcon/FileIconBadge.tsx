@@ -1,10 +1,12 @@
-import clsx from 'clsx';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
-import Typography from '@mui/material/Typography';
-import { styled, useThemeProps } from '@mui/material/styles';
-
 import { FileIconBadgeProps } from './FileIconBadge.types';
+
+import clsx from 'clsx';
 import { getFileIconBadgeUtilityClass } from './FileIconBadge.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled, useThemeProps } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 type FileIconBadgeOwnerState = {
   classes?: FileIconBadgeProps['classes'];

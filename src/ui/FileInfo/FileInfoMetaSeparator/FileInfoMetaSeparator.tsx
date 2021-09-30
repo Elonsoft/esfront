@@ -1,11 +1,11 @@
-import React from 'react';
+import { FileInfoMetaSeparatorProps } from './FileInfoMetaSeparator.types';
 
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { getFileInfoMetaSeparatorUtilityClass } from './FileInfoMetaSeparator.classes';
 
-import { FileInfoMetaSeparatorProps } from './FileInfoMetaSeparator.types';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled, useThemeProps } from '@mui/material/styles';
 
 type FileInfoMetaSeparatorOwnerState = {
   classes?: FileInfoMetaSeparatorProps['classes'];

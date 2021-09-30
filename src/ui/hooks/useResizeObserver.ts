@@ -1,4 +1,5 @@
-import { useEffect, RefObject } from 'react';
+import { RefObject, useEffect } from 'react';
+
 import { useLatest } from './useLatest';
 
 export const useResizeObserver = (element: RefObject<Element>, callback: (entries: ResizeObserverEntry[]) => void) => {
