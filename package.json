@@ -16,6 +16,8 @@
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint src",
     "lint:stylelint": "stylelint 'src/**/*.{ts,tsx}'",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
     "husky": "husky install",
     "release": "standard-version",
     "release:dry-run": "standard-version --dry-run",
