@@ -22,6 +22,8 @@ jobs:
         run: yarn run lint:eslint
       - name: Lint styles
         run: yarn run lint:stylelint
+      - name: Check formatting
+        run: yarn run prettier:check
   test:
     name: Test
     runs-on: ubuntu-latest
