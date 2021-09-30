@@ -1,14 +1,17 @@
 import { useMemo } from 'react';
 
+import { SpinnerFadingDoubleRingProps } from './SpinnerFadingDoubleRing.types';
+
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
+import { getSpinnerFadingDoubleRingUtilityClass } from './SpinnerFadingDoubleRing.classes';
+
 import { unstable_composeClasses as composeClasses } from '@mui/core';
 
-import { SpinnerFadingDoubleRingProps } from './SpinnerFadingDoubleRing.types';
-import { getSpinnerFadingDoubleRingUtilityClass } from './SpinnerFadingDoubleRing.classes';
+import { styled, useThemeProps } from '@mui/material/styles';
+
 import { spinnerRotateAnimation } from '../Spinner.animations';
-import { useSpinnerColor } from '../useSpinnerColor';
 import { setGradient } from '../Spinner.utils';
+import { useSpinnerColor } from '../useSpinnerColor';
 
 type SpinnerFadingDoubleRingPropsOwnerState = {
   classes?: SpinnerFadingDoubleRingProps['classes'];

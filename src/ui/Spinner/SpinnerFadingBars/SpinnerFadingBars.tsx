@@ -1,9 +1,12 @@
+import { SpinnerFadingBarsProps } from './SpinnerFadingBars.types';
+
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
+import { getSpinnerFadingBarsUtilityClass } from './SpinnerFadingBars.classes';
+
 import { unstable_composeClasses as composeClasses } from '@mui/core';
 
-import { SpinnerFadingBarsProps } from './SpinnerFadingBars.types';
-import { getSpinnerFadingBarsUtilityClass } from './SpinnerFadingBars.classes';
+import { styled, useThemeProps } from '@mui/material/styles';
+
 import { spinnerOpacityAnimation } from '../Spinner.animations';
 import { useSpinnerColor } from '../useSpinnerColor';
 

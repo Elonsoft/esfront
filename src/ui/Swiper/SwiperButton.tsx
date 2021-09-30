@@ -1,10 +1,11 @@
-import clsx from 'clsx';
-import { styled } from '@mui/material/styles';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
-import { getSwiperButtonUtilityClass } from './SwiperButton.classes';
-
 import { SwiperButtonProps } from './Swiper.types';
 
+import clsx from 'clsx';
+import { getSwiperButtonUtilityClass } from './SwiperButton.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
 import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '../icons';

@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 import React from 'react';
-import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
+
 import { useTheme } from '@mui/material/styles';
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
 export const IconFile = React.forwardRef<SVGPathElement, SvgIconProps>((props, ref) => {
   const theme = useTheme();

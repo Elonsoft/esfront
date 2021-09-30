@@ -1,6 +1,7 @@
 import { render, screen } from '../../testing';
 
 import { EmptyState } from './EmptyState';
+
 import { BoxIcon } from '../icons';
 
 const TEXT_HEADING = 'HEADING';

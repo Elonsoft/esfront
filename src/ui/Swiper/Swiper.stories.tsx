@@ -1,10 +1,11 @@
+import { SwiperButtonProps } from './Swiper.types';
+
 import { Story } from '@storybook/react';
 
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
 import { Swiper } from './Swiper';
-import { SwiperButtonProps } from './Swiper.types';
 import { SwiperPagination } from './SwiperPagination';
 
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons';

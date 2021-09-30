@@ -1,6 +1,6 @@
-import { render, screen, fireEvent } from '../../testing';
+import { fireEvent, render, screen } from '../../testing';
 
-import { FileInfo, FileInfoContent, FileInfoName, FileInfoMeta } from '.';
+import { FileInfo, FileInfoContent, FileInfoMeta, FileInfoName } from '.';
 
 import { en } from '../locale';
 

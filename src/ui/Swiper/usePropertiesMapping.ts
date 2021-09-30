@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { SwiperDirection } from './Swiper.types';
 
 export const usePropertiesMapping = (direction: SwiperDirection) => {

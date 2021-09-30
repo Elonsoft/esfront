@@ -1,4 +1,5 @@
-import { Ref, ComponentType, ReactNode } from 'react';
+import { ComponentType, ReactNode, Ref } from 'react';
+
 import { SwiperClasses } from './Swiper.classes';
 import { SwiperPaginationClasses } from './SwiperPagination.classes';
 

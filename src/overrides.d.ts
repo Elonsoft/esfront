@@ -1,75 +1,73 @@
 /* eslint-disable @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars */
 
-import { Color, ComponentsVariants } from '@mui/material';
 import {
-  Theme,
   BreakpointOverrides,
   Palette,
   PaletteColor,
   PaletteColorOptions,
+  Theme,
   TypographyVariants,
   TypographyVariantsOptions
 } from '@mui/material/styles';
+import { Components } from '@mui/material/styles/components';
 import { CommonColors } from '@mui/material/styles/createPalette';
-
+import { ComponentNameToClassKey, ComponentsOverrides } from '@mui/material/styles/overrides';
+import { ComponentsProps, ComponentsPropsList } from '@mui/material/styles/props';
+import { Color, ComponentsVariants } from '@mui/material';
 import { ButtonPropsSizeOverrides } from '@mui/material/Button';
-import { IconButtonPropsSizeOverrides } from '@mui/material/IconButton';
 import { FormControlPropsSizeOverrides } from '@mui/material/FormControl';
+import { IconButtonPropsSizeOverrides } from '@mui/material/IconButton';
 import { InputBasePropsSizeOverrides } from '@mui/material/InputBase';
 import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography';
 
-import { Components } from '@mui/material/styles/components';
-import { ComponentsOverrides, ComponentNameToClassKey } from '@mui/material/styles/overrides';
-import { ComponentsProps, ComponentsPropsList } from '@mui/material/styles/props';
-
-import { EmptyStateProps, EmptyStateClassKey } from './ui/EmptyState';
-import { DropzoneProps, DropzoneClassKey } from './ui/Dropzone';
-import {
-  SwiperProps,
-  SwiperPaginationBaseProps,
-  SwiperClassKey,
-  SwiperButtonClassKey,
-  SwiperPaginationProps,
-  SwiperPaginationClassKey
-} from './ui/Swiper';
-import { TableActionsProps, TableActionsClassKey } from './ui/TableActions';
+import { DropzoneClassKey, DropzoneProps } from './ui/Dropzone';
+import { EmptyStateClassKey, EmptyStateProps } from './ui/EmptyState';
 import {
   FileIconBadgeClassKey,
-  FileIconClassKey,
   FileIconBadgeProps,
+  FileIconClassKey,
   FileIconProps,
-  FileIconTextProps,
-  FileIconTextClassKey
+  FileIconTextClassKey,
+  FileIconTextProps
 } from './ui/FileIcon';
 import {
-  FileInfoProps,
   FileInfoClassKey,
-  FileInfoContentProps,
   FileInfoContentClassKey,
-  FileInfoMetaProps,
+  FileInfoContentProps,
   FileInfoMetaClassKey,
-  FileInfoMetaSeparatorProps,
+  FileInfoMetaProps,
   FileInfoMetaSeparatorClassKey,
+  FileInfoMetaSeparatorProps,
+  FileInfoNameClassKey,
   FileInfoNameProps,
-  FileInfoNameClassKey
+  FileInfoProps
 } from './ui/FileInfo';
 import { FormatDateProps } from './ui/FormatDate';
 import { FormatSizeProps } from './ui/FormatSize';
 import {
-  SpinnerFadingRingClassKey,
-  SpinnerFadingDotsClassKey,
-  SpinnerFadingDotsProps,
-  SpinnerFadingRingProps,
-  SpinnerFadingBarsProps,
-  SpinnerFadingBarsClassKey,
-  SpinnerRingProps,
-  SpinnerRingClassKey,
   SpinnerDashRingClassKey,
   SpinnerDashRingProps,
+  SpinnerFadingBarsClassKey,
+  SpinnerFadingBarsProps,
+  SpinnerFadingDotsClassKey,
+  SpinnerFadingDotsProps,
   SpinnerFadingDoubleRingClassKey,
-  SpinnerFadingDoubleRingProps
+  SpinnerFadingDoubleRingProps,
+  SpinnerFadingRingClassKey,
+  SpinnerFadingRingProps,
+  SpinnerRingClassKey,
+  SpinnerRingProps
 } from './ui/Spinner';
+import {
+  SwiperButtonClassKey,
+  SwiperClassKey,
+  SwiperPaginationBaseProps,
+  SwiperPaginationClassKey,
+  SwiperPaginationProps,
+  SwiperProps
+} from './ui/Swiper';
+import { TableActionsClassKey, TableActionsProps } from './ui/TableActions';
 
 export interface ISurfacePalette {
   0: string;

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '../../testing';
 
 import { Dropzone } from './Dropzone';
+
 import { UploadIcon } from '../icons';
 
 const TEXT_HEADING = 'HEADING';

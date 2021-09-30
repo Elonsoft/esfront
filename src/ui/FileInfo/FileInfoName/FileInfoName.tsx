@@ -1,11 +1,13 @@
 import { FC } from 'react';
 
+import { FileInfoNameProps } from './FileInfoName.types';
+
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
 import { getFileInfoNameUtilityClass } from './FileInfoName.classes';
 
-import { FileInfoNameProps } from './FileInfoName.types';
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled, useThemeProps } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
 import { CloseSmIcon } from '../../icons';

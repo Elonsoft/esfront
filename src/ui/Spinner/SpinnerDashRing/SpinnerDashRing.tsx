@@ -1,9 +1,12 @@
+import { SpinnerDashRingProps } from './SpinnerDashRing.types';
+
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
+import { getSpinnerDashRingUtilityClass } from './SpinnerDashRing.classes';
+
 import { unstable_composeClasses as composeClasses } from '@mui/core';
 
-import { SpinnerDashRingProps } from './SpinnerDashRing.types';
-import { getSpinnerDashRingUtilityClass } from './SpinnerDashRing.classes';
+import { styled, useThemeProps } from '@mui/material/styles';
+
 import { spinnerDashAnimation } from '../Spinner.animations';
 import { useSpinnerColor } from '../useSpinnerColor';
 

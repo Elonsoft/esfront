@@ -1,6 +1,6 @@
 // https://github.com/jaredLunde/react-hook/tree/master/packages/latest
 
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const useLatest = <T extends any>(current: T) => {
   const storedValue = useRef(current);

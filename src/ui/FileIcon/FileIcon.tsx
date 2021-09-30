@@ -1,12 +1,15 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+import { FileIconProps } from './FileIcon.types';
+
 import clsx from 'clsx';
+import { getFileIconUtilityClass } from './FileIcon.classes';
+
 import { unstable_composeClasses as composeClasses } from '@mui/core';
+
 import { styled, useThemeProps } from '@mui/material/styles';
 
 import { IconFile } from '../icons';
-
-import { FileIconProps } from './FileIcon.types';
-import { getFileIconUtilityClass } from './FileIcon.classes';
 
 type FileIconOwnerState = {
   classes?: FileIconProps['classes'];

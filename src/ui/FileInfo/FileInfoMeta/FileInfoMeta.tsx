@@ -1,12 +1,13 @@
 import { FC } from 'react';
 
-import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
-import { getFileInfoMetaUtilityClass } from './FileInfoMeta.classes';
-
 import { FileInfoMetaProps } from './FileInfoMeta.types';
 
+import clsx from 'clsx';
+import { getFileInfoMetaUtilityClass } from './FileInfoMeta.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
 type FileInfoMetaOwnerState = {

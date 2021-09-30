@@ -1,7 +1,7 @@
+import { FileInfoNameProps } from '../FileInfo';
+import { FormatSizeProps } from '../FormatSize';
 import { SwiperProps } from '../Swiper';
 import { TableActionsProps } from '../TableActions';
-import { FormatSizeProps } from '../FormatSize';
-import { FileInfoNameProps } from '../FileInfo';
 
 export interface Localization {
   components: {

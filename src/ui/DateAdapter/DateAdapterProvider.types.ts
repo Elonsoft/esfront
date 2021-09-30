@@ -1,4 +1,4 @@
-import { IUtils, DateIOFormats } from '@date-io/core/IUtils';
+import { DateIOFormats, IUtils } from '@date-io/core/IUtils';
 
 interface DateAdapterProviderAdapater {
   new (options?: { formats?: DateIOFormats; locale?: any; instance?: any }): IUtils<Date>;

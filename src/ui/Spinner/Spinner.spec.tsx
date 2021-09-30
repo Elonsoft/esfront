@@ -1,8 +1,7 @@
 import { render, screen } from '../../testing';
 
-import { palettes } from '../../theming/palettes';
-
 import { SpinnerColor } from './Spinner.types';
+
 import {
   SpinnerDashRing,
   SpinnerFadingBars,
@@ -11,6 +10,8 @@ import {
   SpinnerFadingRing,
   SpinnerRing
 } from '.';
+
+import { palettes } from '../../theming/palettes';
 
 const COLORS = {
   inherit: 'currentColor',

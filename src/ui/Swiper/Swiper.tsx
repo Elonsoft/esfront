@@ -1,14 +1,17 @@
-import { useState, useEffect, useRef, useImperativeHandle } from 'react';
-import { SwiperProps, SwiperAlignment, SwiperDirection, SwiperPaginationBaseProps } from './Swiper.types';
+import { useEffect, useImperativeHandle, useRef, useState } from 'react';
+
+import { SwiperAlignment, SwiperDirection, SwiperPaginationBaseProps, SwiperProps } from './Swiper.types';
 
 import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
+import { getSwiperUtilityClass, swiperClasses } from './Swiper.classes';
+
 import { unstable_composeClasses as composeClasses } from '@mui/core';
-import { swiperClasses, getSwiperUtilityClass } from './Swiper.classes';
+
+import { styled, useThemeProps } from '@mui/material/styles';
 
 import { SwiperButtonDown, SwiperButtonLeft, SwiperButtonRight, SwiperButtonUp } from './SwiperButton';
-
 import { usePropertiesMapping } from './usePropertiesMapping';
+
 import { useDocumentEventListener, useResizeObserver } from '../hooks';
 
 type SwiperOwnerState = {

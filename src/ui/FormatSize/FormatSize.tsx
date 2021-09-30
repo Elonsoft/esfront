@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 
 import { FormatSizeProps } from './FormatSize.types';
-import { useThemeProps } from '@mui/material';
+
+import { useThemeProps } from '@mui/material/styles';
 
 export const FormatSize = (inProps: FormatSizeProps) => {
   const {

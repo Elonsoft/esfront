@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { Story } from '@storybook/react';
 
 import Slider from '@mui/material/Slider';

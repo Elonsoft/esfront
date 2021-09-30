@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { EmptyStateClasses } from './EmptyState.classes';
 
 export interface EmptyStateProps {

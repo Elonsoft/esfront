@@ -1,15 +1,17 @@
 import React, { useRef } from 'react';
 
-import clsx from 'clsx';
-import { styled, useThemeProps } from '@mui/material/styles';
-import { unstable_composeClasses as composeClasses } from '@mui/core';
-import { getDropzoneUtilityClass } from './Dropzone.classes';
-
 import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 
+import clsx from 'clsx';
+import { getDropzoneUtilityClass } from './Dropzone.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/core';
+
+import { styled, useThemeProps } from '@mui/material/styles';
 import { ButtonBase, Typography } from '@mui/material';
 
 import { useDragOver } from './useDragOver';
+
 import { useDocumentEventListener } from '../hooks';
 import { validateFileType } from '../utils';
 
