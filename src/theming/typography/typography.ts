@@ -11,6 +11,8 @@ export const createTypography = (theme: Theme) => {
       fontWeight: 500,
       letterSpacing: pxToRem(0.2),
       lineHeight: pxToRem(36),
+      textDecorationThickness: pxToRem(3),
+      textUnderlineOffset: pxToRem(2),
 
       [tabletXS]: {
         fontSize: pxToRem(34),
@@ -19,7 +21,8 @@ export const createTypography = (theme: Theme) => {
 
       [desktopXS]: {
         fontSize: pxToRem(40),
-        lineHeight: pxToRem(48)
+        lineHeight: pxToRem(48),
+        textUnderlineOffset: pxToRem(3)
       }
     },
     h2: {
@@ -27,15 +30,19 @@ export const createTypography = (theme: Theme) => {
       fontWeight: 500,
       letterSpacing: pxToRem(0.1),
       lineHeight: pxToRem(32),
+      textDecorationThickness: pxToRem(2),
+      textUnderlineOffset: pxToRem(2),
 
       [tabletXS]: {
         fontSize: pxToRem(30),
-        lineHeight: pxToRem(36)
+        lineHeight: pxToRem(36),
+        textDecorationThickness: pxToRem(3)
       },
 
       [desktopXS]: {
         fontSize: pxToRem(34),
-        lineHeight: pxToRem(40)
+        lineHeight: pxToRem(40),
+        textUnderlineOffset: pxToRem(3)
       }
     },
     h3: {
@@ -43,6 +50,8 @@ export const createTypography = (theme: Theme) => {
       fontWeight: 500,
       letterSpacing: 0,
       lineHeight: pxToRem(28),
+      textDecorationThickness: pxToRem(2),
+      textUnderlineOffset: pxToRem(2),
 
       [tabletXS]: {
         fontSize: pxToRem(26),
@@ -51,7 +60,8 @@ export const createTypography = (theme: Theme) => {
 
       [desktopXS]: {
         fontSize: pxToRem(28),
-        lineHeight: pxToRem(36)
+        lineHeight: pxToRem(36),
+        textUnderlineOffset: pxToRem(3)
       }
     },
     h4: {
@@ -59,6 +69,8 @@ export const createTypography = (theme: Theme) => {
       fontWeight: 500,
       letterSpacing: pxToRem(0.15),
       lineHeight: pxToRem(28),
+      textDecorationThickness: pxToRem(2),
+      textUnderlineOffset: pxToRem(2),
 
       [tabletXS]: {
         fontSize: pxToRem(24),
@@ -69,79 +81,107 @@ export const createTypography = (theme: Theme) => {
       fontSize: pxToRem(20),
       fontWeight: 500,
       letterSpacing: pxToRem(0.2),
-      lineHeight: pxToRem(24)
+      lineHeight: pxToRem(24),
+      textDecorationThickness: pxToRem(2),
+      textUnderlineOffset: pxToRem(2)
     },
     h6: {
       fontSize: pxToRem(18),
       fontWeight: 500,
       letterSpacing: pxToRem(0.15),
-      lineHeight: pxToRem(24)
+      lineHeight: pxToRem(24),
+      textDecorationThickness: pxToRem(2),
+      textUnderlineOffset: pxToRem(2)
     },
     subtitle1: {
       fontSize: pxToRem(16),
       fontWeight: 400,
       letterSpacing: pxToRem(0.15),
-      lineHeight: pxToRem(20)
+      lineHeight: pxToRem(20),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     subtitle2: {
       fontSize: pxToRem(14),
       fontWeight: 500,
       letterSpacing: pxToRem(0.1),
-      lineHeight: pxToRem(16)
+      lineHeight: pxToRem(16),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     body400: {
       fontSize: pxToRem(20),
       letterSpacing: pxToRem(0.5),
-      lineHeight: pxToRem(32)
+      lineHeight: pxToRem(32),
+      textDecorationThickness: pxToRem(2),
+      textUnderlineOffset: pxToRem(2)
     },
     body300: {
       fontSize: pxToRem(18),
       letterSpacing: pxToRem(0.1),
-      lineHeight: pxToRem(28)
+      lineHeight: pxToRem(28),
+      textDecorationThickness: pxToRem(2),
+      textUnderlineOffset: pxToRem(2)
     },
     body200: {
       fontSize: pxToRem(16),
       letterSpacing: pxToRem(0.5),
-      lineHeight: pxToRem(24)
+      lineHeight: pxToRem(24),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(2)
     },
     body100: {
       fontSize: pxToRem(14),
       letterSpacing: pxToRem(0.25),
-      lineHeight: pxToRem(20)
+      lineHeight: pxToRem(20),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     mini1: {
       fontSize: pxToRem(11),
       fontWeight: 600,
       letterSpacing: 0,
-      lineHeight: pxToRem(16)
+      lineHeight: pxToRem(16),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     mini2: {
       fontSize: pxToRem(9),
       fontWeight: 500,
       letterSpacing: pxToRem(0.6),
-      lineHeight: pxToRem(14)
+      lineHeight: pxToRem(14),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     micro: {
       fontSize: pxToRem(9),
       fontWeight: 500,
       letterSpacing: 0,
-      lineHeight: pxToRem(12)
+      lineHeight: pxToRem(12),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     button: {
       fontSize: pxToRem(14),
       fontWeight: 500,
-      letterSpacing: pxToRem(0.5)
+      letterSpacing: pxToRem(0.5),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     caption: {
       fontSize: pxToRem(12),
       letterSpacing: pxToRem(0.4),
-      lineHeight: pxToRem(16)
+      lineHeight: pxToRem(16),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     overline: {
       fontSize: pxToRem(10),
       fontWeight: 500,
       letterSpacing: pxToRem(1.2),
-      lineHeight: pxToRem(16)
+      lineHeight: pxToRem(16),
+      textDecorationThickness: pxToRem(1),
+      textUnderlineOffset: pxToRem(1)
     },
     body1: undefined,
     body2: undefined

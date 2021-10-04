@@ -46,6 +46,7 @@ import {
 import { FormatDateProps } from './ui/FormatDate';
 import { FormatSizeProps } from './ui/FormatSize';
 import { KbdClassKey, KbdProps } from './ui/Kbd';
+import { LinkClassKey, LinkProps } from './ui/Link';
 import {
   SpinnerDashRingClassKey,
   SpinnerDashRingProps,
@@ -99,11 +100,8 @@ export interface IShadowPalette {
 
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
-    ESEmptyState: EmptyStateProps;
-    ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
-    ESSwiperPagination: SwiperPaginationProps;
-    ESTableActions: TableActionsProps;
     ESDropzone: DropzoneProps;
+    ESEmptyState: EmptyStateProps;
     ESFileIcon: FileIconProps;
     ESFileIconBadge: FileIconBadgeProps;
     ESFileIconText: FileIconTextProps;
@@ -115,38 +113,43 @@ declare module '@mui/material/styles/props' {
     ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
     ESKbd: KbdProps;
+    ESLink: LinkProps;
     ESSpinnerDashRing: SpinnerDashRingProps;
     ESSpinnerFadingBars: SpinnerFadingBarsProps;
     ESSpinnerFadingDots: SpinnerFadingDotsProps;
     ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingProps;
     ESSpinnerFadingRing: SpinnerFadingRingProps;
     ESSpinnerRing: SpinnerRingProps;
+    ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
+    ESSwiperPagination: SwiperPaginationProps;
+    ESTableActions: TableActionsProps;
   }
 }
 
 declare module '@mui/material/styles/overrides' {
   interface ComponentNameToClassKey {
-    ESEmptyState: EmptyStateClassKey;
-    ESSwiper: SwiperClassKey;
-    ESSwiperButton: SwiperButtonClassKey;
-    ESSwiperPagination: SwiperPaginationClassKey;
-    ESTableActions: TableActionsClassKey;
     ESDropzone: DropzoneClassKey;
+    ESEmptyState: EmptyStateClassKey;
     ESFileIcon: FileIconClassKey;
     ESFileIconBadge: FileIconBadgeClassKey;
     ESFileIconText: FileIconTextClassKey;
-    ESSpinnerDashRing: SpinnerDashRingClassKey;
-    ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
-    ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
-    ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingClassKey;
-    ESSpinnerFadingRing: SpinnerFadingRingClassKey;
-    ESSpinnerRing: SpinnerRingClassKey;
     ESFileInfo: FileInfoClassKey;
     ESFileInfoContent: FileInfoContentClassKey;
     ESFileInfoMeta: FileInfoMetaClassKey;
     ESFileInfoMetaSeparator: FileInfoMetaSeparatorClassKey;
     ESFileInfoName: FileInfoNameClassKey;
     ESKbd: KbdClassKey;
+    ESLink: LinkClassKey;
+    ESSpinnerDashRing: SpinnerDashRingClassKey;
+    ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
+    ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
+    ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingClassKey;
+    ESSpinnerFadingRing: SpinnerFadingRingClassKey;
+    ESSpinnerRing: SpinnerRingClassKey;
+    ESSwiper: SwiperClassKey;
+    ESSwiperButton: SwiperButtonClassKey;
+    ESSwiperPagination: SwiperPaginationClassKey;
+    ESTableActions: TableActionsClassKey;
   }
 }
 
@@ -215,6 +218,10 @@ declare module '@mui/material/styles/components' {
     };
     ESKbd?: {
       defaultProps?: ComponentsProps['ESKbd'];
+    };
+    ESLink?: {
+      defaultProps?: ComponentsProps['ESLink'];
+      styleOverrides?: ComponentsOverrides['ESLink'];
     };
     ESSpinnerDashRing?: {
       defaultProps?: ComponentsProps['ESSpinnerDashRing'];
