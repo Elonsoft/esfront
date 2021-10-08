@@ -8,6 +8,7 @@ export * from './FileIcon';
 export * from './FileInfo';
 export * from './FormatDate';
 export * from './FormatSize';
+export * from './Kbd';
 export * from './Spinner';
 
 export * from './hooks';
