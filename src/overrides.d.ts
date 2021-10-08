@@ -45,6 +45,7 @@ import {
 } from './ui/FileInfo';
 import { FormatDateProps } from './ui/FormatDate';
 import { FormatSizeProps } from './ui/FormatSize';
+import { KbdClassKey, KbdProps } from './ui/Kbd';
 import {
   SpinnerDashRingClassKey,
   SpinnerDashRingProps,
@@ -100,6 +101,7 @@ declare module '@mui/material/styles/props' {
     ESFileInfoName: FileInfoNameProps;
     ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
+    ESKbd: KbdProps;
     ESSpinnerDashRing: SpinnerDashRingProps;
     ESSpinnerFadingBars: SpinnerFadingBarsProps;
     ESSpinnerFadingDots: SpinnerFadingDotsProps;
@@ -131,6 +133,7 @@ declare module '@mui/material/styles/overrides' {
     ESFileInfoMeta: FileInfoMetaClassKey;
     ESFileInfoMetaSeparator: FileInfoMetaSeparatorClassKey;
     ESFileInfoName: FileInfoNameClassKey;
+    ESKbd: KbdClassKey;
   }
 }
 
@@ -196,6 +199,9 @@ declare module '@mui/material/styles/components' {
     };
     ESFormatSize?: {
       defaultProps?: ComponentsProps['ESFormatSize'];
+    };
+    ESKbd?: {
+      defaultProps?: ComponentsProps['ESKbd'];
     };
     ESSpinnerDashRing?: {
       defaultProps?: ComponentsProps['ESSpinnerDashRing'];
