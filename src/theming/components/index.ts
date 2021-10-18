@@ -30,6 +30,9 @@ export {
   createTextField
 } from './text-field';
 
+import { createTooltip } from './tooltip';
+export { createTooltip } from './tooltip';
+
 export const createComponents = (theme: Theme, typography: TypographyOptions) => {
   const MuiButton = createButton(theme, typography);
   const MuiFormControl = createFormControl(theme, typography);
@@ -41,6 +44,7 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
   const MuiSelect = createSelect(theme, typography);
   const MuiSlider = createSlider(theme, typography);
   const MuiTextField = createTextField(theme, typography);
+  const MuiTooltip = createTooltip(theme, typography);
 
   const components: Components = {
     MuiButton,
@@ -52,7 +56,8 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
     MuiOutlinedInput,
     MuiSelect,
     MuiSlider,
-    MuiTextField
+    MuiTextField,
+    MuiTooltip
   };
   return components;
 };

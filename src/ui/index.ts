@@ -9,6 +9,7 @@ export * from './FileInfo';
 export * from './FormatDate';
 export * from './FormatSize';
 export * from './Kbd';
+export * from './Pagination';
 export * from './Spinner';
 
 export * from './hooks';
