@@ -12,11 +12,24 @@ const PALETTES = [
   'warning',
   'monoA',
   'monoB',
-  'grey',
+  'greyscale',
   'surface',
   'common',
   'black',
-  'white'
+  'white',
+  'red',
+  'brown',
+  'orange',
+  'yellow',
+  'green',
+  'marine',
+  'sky',
+  'blue',
+  'violet',
+  'purple',
+  'pink',
+  'teal',
+  'grey'
 ];
 
 const COLOR_IGNORE = ['contrastText'];
