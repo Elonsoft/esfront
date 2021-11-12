@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/Elonsoft/elonkit-react/compare/v0.2.0...v0.2.1) (2021-11-12)
+
+
+### Bug Fixes
+
+* add new palettes to overrides ([19c489a](https://github.com/Elonsoft/elonkit-react/commit/19c489a3b06f16a87ad7de55cf7bc4e0ff8c95c5))
+
 ## [0.2.0](https://github.com/Elonsoft/elonkit-react/compare/v0.1.0...v0.2.0) (2021-11-12)
 
 
