@@ -289,6 +289,20 @@ declare module '@mui/material/styles' {
     white: PaletteColor;
     black: PaletteColor;
     surface: ISurfacePalette;
+    red: PaletteColor;
+    brown: PaletteColor;
+    orange: PaletteColor;
+    yellow: PaletteColor;
+    green: PaletteColor;
+    marine: PaletteColor;
+    sky: PaletteColor;
+    blue: PaletteColor;
+    violet: PaletteColor;
+    purple: PaletteColor;
+    pink: PaletteColor;
+    teal: PaletteColor;
+    grey: Color;
+    greyscale: PaletteColor;
   }
 
   interface PaletteOptions {
@@ -297,6 +311,20 @@ declare module '@mui/material/styles' {
     white?: PaletteColorOptions;
     black?: PaletteColorOptions;
     surface?: Partial<ISurfacePalette>;
+    red?: PaletteColorOptions;
+    brown?: PaletteColorOptions;
+    orange?: PaletteColorOptions;
+    yellow?: PaletteColorOptions;
+    green?: PaletteColorOptions;
+    marine?: PaletteColorOptions;
+    sky?: PaletteColorOptions;
+    blue?: PaletteColorOptions;
+    violet?: PaletteColorOptions;
+    purple?: PaletteColorOptions;
+    pink?: PaletteColorOptions;
+    teal?: PaletteColorOptions;
+    grey?: Partial<Color>;
+    greyscale?: PaletteColorOptions;
   }
 
   interface BreakpointOverrides {
