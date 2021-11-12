@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/Elonsoft/elonkit-react/compare/v0.1.0...v0.2.0) (2021-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* add new palettes
+* upgrade dependencies
+
+### Features
+
+* add new palettes ([285d3dc](https://github.com/Elonsoft/elonkit-react/commit/285d3dc168567cb0eb5c2c5d71c0ab18a50bb79f))
+* **Kbd:** add new component ([f9dec1b](https://github.com/Elonsoft/elonkit-react/commit/f9dec1bd635872beffc692ba0ddfe04606510048))
+
+
+### Build Changes
+
+* upgrade dependencies ([34b993c](https://github.com/Elonsoft/elonkit-react/commit/34b993c043407499bb0d7f439c0eab0ad1808c41))
+
 ## [0.1.0](https://github.com/Elonsoft/elonkit-react/compare/v0.0.2...v0.1.0) (2021-09-07)
 
 
