@@ -1,8 +1,7 @@
-import { render, screen } from '../../testing';
-
 import { TableActions } from './TableActions';
 
-import { en } from '../locale';
+import { render, screen } from '../../../testing';
+import { en } from '../../locale';
 
 describe('TabelActions', () => {
   it('Should display the number of selected rows', async () => {

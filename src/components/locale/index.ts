@@ -5,7 +5,7 @@ import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { SwiperButtonProps } from '../Swiper';
-import { TableActionsProps } from '../TableActions';
+import { TableActionsProps } from '../Table';
 
 export interface Localization {
   components: {

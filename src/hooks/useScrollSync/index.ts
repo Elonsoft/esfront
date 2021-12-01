@@ -1,0 +1,1 @@
+export { useScrollSync } from './useScrollSync';

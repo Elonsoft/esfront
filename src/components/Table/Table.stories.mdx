@@ -1,0 +1,102 @@
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import Typography from '@mui/material/Typography';
+
+import { Table } from './Table';
+import * as stories from './Table.stories';
+
+<Meta
+  title="Components/Table"
+  component={Table}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    sx: {
+      table: {
+        disable: true
+      }
+    },
+    columns: {
+      table: {
+        disable: true
+      }
+    }
+  }}
+/>
+
+## Table
+
+Tables display information in a way that's easy to scan, so that users can look for patterns and insights.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-table" story="page">
+      <code>Table</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tableactions" story="page">
+      <code>TableActions</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tablebody" story="page">
+      <code>TableBody</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tablecell" story="page">
+      <code>TableCell</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tablefoot" story="page">
+      <code>TableFoot</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tablehead" story="page">
+      <code>TableHead</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tablerow" story="page">
+      <code>TableRow</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tablescrollable" story="page">
+      <code>TableScrollable</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tablescrollbar" story="page">
+      <code>TableScrollbar</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-tabletext" story="page">
+      <code>TableText</code>
+    </LinkTo>
+  </li>
+</ul>

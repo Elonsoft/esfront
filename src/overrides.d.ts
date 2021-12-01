@@ -106,7 +106,28 @@ import {
   SwiperProps
 } from './components/Swiper';
 import { SwitchClassKey, SwitchProps } from './components/Switch';
-import { TableActionsClassKey, TableActionsProps } from './components/TableActions';
+import {
+  TableActionsClassKey,
+  TableActionsProps,
+  TableBodyClassKey,
+  TableBodyProps,
+  TableCellClassKey,
+  TableCellProps,
+  TableClassKey,
+  TableFootClassKey,
+  TableFootProps,
+  TableHeadClassKey,
+  TableHeadProps,
+  TableProps,
+  TableRowClassKey,
+  TableRowProps,
+  TableScrollableClassKey,
+  TableScrollableProps,
+  TableScrollbarClassKey,
+  TableScrollbarProps,
+  TableTextClassKey,
+  TableTextProps
+} from './components/Table';
 
 export interface ISurfacePalette {
   50: string;
@@ -185,7 +206,16 @@ declare module '@mui/material/styles/props' {
     ESSwitch: SwitchProps;
     ESSwiperButton: SwiperButtonProps;
     ESSwiperPagination: SwiperPaginationProps;
+    ESTable: TableProps;
     ESTableActions: TableActionsProps;
+    ESTableBody: TableBodyProps;
+    ESTableCell: TableCellProps;
+    ESTableFoot: TableFootProps;
+    ESTableHead: TableHeadProps;
+    ESTableRow: TableRowProps;
+    ESTableScrollable: TableScrollableProps;
+    ESTableScrollbar: TableScrollbarProps;
+    ESTableText: TableTextProps;
   }
 }
 
@@ -230,7 +260,16 @@ declare module '@mui/material/styles/overrides' {
     ESSwitch: SwitchClassKey;
     ESSwiperButton: SwiperButtonClassKey;
     ESSwiperPagination: SwiperPaginationClassKey;
+    ESTable: TableClassKey;
     ESTableActions: TableActionsClassKey;
+    ESTableBody: TableBodyClassKey;
+    ESTableCell: TableCellClassKey;
+    ESTableFoot: TableFootClassKey;
+    ESTableHead: TableHeadClassKey;
+    ESTableRow: TableRowClassKey;
+    ESTableScrollable: TableScrollableClassKey;
+    ESTableScrollbar: TableScrollbarClassKey;
+    ESTableText: TableTextClassKey;
   }
 }
 
@@ -303,10 +342,6 @@ declare module '@mui/material/styles/components' {
     ESSwiperPagination?: {
       defaultProps?: ComponentsProps['ESSwiperPagination'];
       styleOverrides?: ComponentsOverrides['ESSwiperPagination'];
-    };
-    ESTableActions?: {
-      defaultProps?: ComponentsProps['ESTableActions'];
-      styleOverrides?: ComponentsOverrides['ESTableActions'];
     };
     ESDropzone?: {
       defaultProps?: ComponentsProps['ESDropzone'];
@@ -399,6 +434,46 @@ declare module '@mui/material/styles/components' {
     ESSpinnerRing?: {
       defaultProps?: ComponentsProps['ESSpinnerRing'];
       styleOverrides?: ComponentsOverrides['ESSpinnerRing'];
+    };
+    ESTable?: {
+      defaultProps?: ComponentsProps['ESTable'];
+      styleOverrides?: ComponentsOverrides['ESTable'];
+    };
+    ESTableActions?: {
+      defaultProps?: ComponentsProps['ESTableActions'];
+      styleOverrides?: ComponentsOverrides['ESTableActions'];
+    };
+    ESTableBody?: {
+      defaultProps?: ComponentsProps['ESTableBody'];
+      styleOverrides?: ComponentsOverrides['ESTableBody'];
+    };
+    ESTableCell?: {
+      defaultProps?: ComponentsProps['ESTableCell'];
+      styleOverrides?: ComponentsOverrides['ESTableCell'];
+    };
+    ESTableFoot?: {
+      defaultProps?: ComponentsProps['ESTableFoot'];
+      styleOverrides?: ComponentsOverrides['ESTableFoot'];
+    };
+    ESTableHead?: {
+      defaultProps?: ComponentsProps['ESTableHead'];
+      styleOverrides?: ComponentsOverrides['ESTableHead'];
+    };
+    ESTableRow?: {
+      defaultProps?: ComponentsProps['ESTableRow'];
+      styleOverrides?: ComponentsOverrides['ESTableRow'];
+    };
+    ESTableScrollable?: {
+      defaultProps?: ComponentsProps['ESTableScrollable'];
+      styleOverrides?: ComponentsOverrides['ESTableScrollable'];
+    };
+    ESTableScrollbar?: {
+      defaultProps?: ComponentsProps['ESTableScrollbar'];
+      styleOverrides?: ComponentsOverrides['ESTableScrollbar'];
+    };
+    ESTableText?: {
+      defaultProps?: ComponentsProps['ESTableText'];
+      styleOverrides?: ComponentsOverrides['ESTableText'];
     };
   }
 }
