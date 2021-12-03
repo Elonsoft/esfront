@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/Elonsoft/elonkit-react/compare/v0.2.1...v0.2.2) (2021-12-03)
+
+
+### Features
+
+* **Pagination:** add new component ([1cda548](https://github.com/Elonsoft/elonkit-react/commit/1cda54895f11cda5837b2f6891e0d7cb3155a665))
+
+
+### Bug Fixes
+
+* **TextField:** make input element to take all of the parent's height ([d15231e](https://github.com/Elonsoft/elonkit-react/commit/d15231e5f11e998ebe2c08bf8d8cb0414c4f0493))
+
 ### [0.2.1](https://github.com/Elonsoft/elonkit-react/compare/v0.2.0...v0.2.1) (2021-11-12)
 
 
