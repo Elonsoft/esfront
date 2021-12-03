@@ -11,8 +11,7 @@ export const createFormControl: Component<'MuiFormControl'> = () => {
           minHeight: '56px',
 
           '& .MuiOutlinedInput-input': {
-            height: 'auto',
-            padding: '0 12px',
+            padding: '16.5px 12px',
 
             '&.MuiSelect-select': {
               paddingRight: '32px'
@@ -70,6 +69,10 @@ export const createFormControl: Component<'MuiFormControl'> = () => {
           '& .MuiOutlinedInput-root': {
             minHeight: '48px',
 
+            '& .MuiOutlinedInput-input': {
+              padding: '12.5px 12px'
+            },
+
             '&.MuiInputBase-multiline .MuiOutlinedInput-input': {
               padding: '8px 0'
             },
@@ -89,6 +92,10 @@ export const createFormControl: Component<'MuiFormControl'> = () => {
           '& .MuiOutlinedInput-root': {
             minHeight: '40px',
 
+            '& .MuiOutlinedInput-input': {
+              padding: '8.5px 12px'
+            },
+
             '&.MuiInputBase-multiline .MuiOutlinedInput-input': {
               padding: '4px 0'
             },
@@ -107,6 +114,10 @@ export const createFormControl: Component<'MuiFormControl'> = () => {
         style: {
           '& .MuiOutlinedInput-root': {
             minHeight: '32px',
+
+            '& .MuiOutlinedInput-input': {
+              padding: '4.5px 12px'
+            },
 
             '&.MuiInputBase-multiline .MuiOutlinedInput-input': {
               padding: '4px 0'
