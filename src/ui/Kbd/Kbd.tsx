@@ -5,7 +5,7 @@ import { KbdProps } from './Kbd.types';
 import clsx from 'clsx';
 import { getKbdUtilityClass } from './Kbd.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
@@ -36,8 +36,8 @@ const KbdRoot = styled('kbd', {
 })<{ ownerState: KbdOwnerState }>(({ theme, ownerState }) => ({
   ...theme.typography.body100,
 
-  padding: '0 4px',
   color: theme.palette.monoA.A900,
+  padding: '0 4px',
   display: 'inline-block',
   borderRadius: '4px',
   fontFamily: 'inherit',

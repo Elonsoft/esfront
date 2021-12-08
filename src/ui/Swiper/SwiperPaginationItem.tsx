@@ -3,7 +3,7 @@ import { SwiperPaginationItemProps } from './SwiperPaginationItem.types';
 
 import { getSwiperPaginationUtilityClass, swiperPaginationClasses } from './SwiperPagination.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled } from '@mui/material/styles';
 

@@ -3,7 +3,7 @@ import { SpinnerFadingDotsProps } from './SpinnerFadingDots.types';
 import clsx from 'clsx';
 import { getSpinnerFadingDotsUtilityClass } from './SpinnerFadingDots.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 

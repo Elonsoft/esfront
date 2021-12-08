@@ -3,7 +3,7 @@ import { EmptyStateProps } from './EmptyState.types';
 import clsx from 'clsx';
 import { getEmptyStateUtilityClass } from './EmptyState.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';

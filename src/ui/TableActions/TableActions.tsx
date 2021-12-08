@@ -5,7 +5,7 @@ import { TableActionsProps } from './TableActions.types';
 import clsx from 'clsx';
 import { getTableActionsUtilityClass } from './TableActions.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
