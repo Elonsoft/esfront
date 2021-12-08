@@ -1,9 +1,9 @@
-import { useDarkMode } from 'storybook-dark-mode';
-
-import { themeLight, themeDark } from './themes';
 import { DocsContainer } from './components/DocsContainer';
+import { themeDark, themeLight } from './themes';
 
 import { Theme } from '../src/testing';
+
+import { useDarkMode } from 'storybook-dark-mode';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

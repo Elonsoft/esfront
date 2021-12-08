@@ -3,7 +3,7 @@ import { SwiperButtonProps } from './Swiper.types';
 import clsx from 'clsx';
 import { getSwiperButtonUtilityClass } from './SwiperButton.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';

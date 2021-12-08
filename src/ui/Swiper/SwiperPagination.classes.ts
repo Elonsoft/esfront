@@ -1,4 +1,4 @@
-import { generateUtilityClass, generateUtilityClasses } from '@mui/core';
+import { generateUtilityClass, generateUtilityClasses } from '@mui/base';
 
 export type SwiperPaginationClasses = {
   /** Styles applied to the root element. */

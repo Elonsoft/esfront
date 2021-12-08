@@ -3,6 +3,7 @@ const toPath = (filePath) => path.join(process.cwd(), filePath);
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx'],
+  staticDirs: ['./assets'],
   addons: [
     '@storybook/addon-links',
     {

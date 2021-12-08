@@ -5,7 +5,7 @@ import { PaginationProps } from './Pagination.types';
 import clsx from 'clsx';
 import { getPaginationUtilityClass } from './Pagination.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 

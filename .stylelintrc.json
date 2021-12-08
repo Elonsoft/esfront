@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard"],
+  "customSyntax": "@stylelint/postcss-css-in-js",
   "plugins": ["stylelint-order"],
   "rules": {
     "block-no-empty": null,

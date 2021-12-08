@@ -1,4 +1,4 @@
-import { generateUtilityClass, generateUtilityClasses } from '@mui/core';
+import { generateUtilityClass, generateUtilityClasses } from '@mui/base';
 
 export type DropzoneClasses = {
   /** Styles applied to the root element. */

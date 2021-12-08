@@ -5,7 +5,7 @@ import { SpinnerFadingDoubleRingProps } from './SpinnerFadingDoubleRing.types';
 import clsx from 'clsx';
 import { getSpinnerFadingDoubleRingUtilityClass } from './SpinnerFadingDoubleRing.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 

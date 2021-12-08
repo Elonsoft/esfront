@@ -5,7 +5,7 @@ import { FileInfoContentProps } from './FileInfoContent.types';
 import clsx from 'clsx';
 import { getFileInfoContentUtilityClass } from './FileInfoContent.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/core';
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
