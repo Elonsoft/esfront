@@ -6,8 +6,6 @@
 
 import { FC, useMemo } from 'react';
 
-import { useDarkMode } from 'storybook-dark-mode';
-
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,39 +18,65 @@ import Typography from '@mui/material/Typography';
 import { Theme } from '../../src/testing';
 import json from '../../src/typedoc.json';
 
+import { useDarkMode } from 'storybook-dark-mode';
+
 const getDescription = (c) => {
   return c.comment?.shortText || c.type?.declaration?.signatures?.[0]?.comment?.shortText || null;
 };
 
-const getType = (t) => {
-  if (t.type === 'intrinsic') {
-    return t.name;
+const getMethod = (m) => {
+  const signature = m?.signatures?.[0];
+  if (signature) {
+    const parameters = signature.parameters
+      ? signature.parameters.map((p) => `${p.name}: ${getProperty(p.type)}`).join(', ')
+      : '';
+    return `(${parameters}) => ${getProperty(signature.type)}`;
   }
-  if (t.type === 'literal') {
-    if (t.value === null) {
-      return `${t.value}`;
+  return '';
+};
+
+const getProperty = (p) => {
+  switch (p.type) {
+    case 'intrinsic': {
+      return p.name;
     }
-    return `'${t.value}'`;
-  }
-  if (t.type === 'union') {
-    return t.types.map(getType).join(' | ');
-  }
-  if (t.type === 'reference') {
-    const reference = json.children.find((e) => e.id === t.id);
-    if (reference && reference.type && reference.type.type !== 'reflection') {
-      return getType(reference.type);
+    case 'literal': {
+      if (p.value === null) {
+        return `${p.value}`;
+      }
+      return `'${p.value}'`;
     }
-    return `${t.name}${t.typeArguments ? `<${t.typeArguments.map(getType).join(', ')}>` : ''}`;
-  }
-  if (t.type === 'reflection') {
-    const signature = t.declaration?.signatures?.[0];
-    if (signature) {
-      const parameters = signature.parameters
-        ? signature.parameters.map((p) => `${p.name}: ${getType(p.type)}`).join(', ')
-        : '';
-      return `(${parameters}) => ${getType(signature.type)}`;
+    case 'union': {
+      return p.types.map(getProperty).join(' | ');
     }
-    return '';
+    case 'array': {
+      return `Array<${getProperty(p.elementType)}>`;
+    }
+    case 'reference': {
+      const reference = json.children.find((e) => e.id === p.id);
+      if (reference && reference.type && reference.type.type !== 'reflection') {
+        return getProperty(reference.type);
+      }
+      return `${p.name}${p.typeArguments ? `<${p.typeArguments.map(getProperty).join(', ')}>` : ''}`;
+    }
+    case 'typeOperator': {
+      return `${p.operator} ${getProperty(p.target)}`;
+    }
+    case 'reflection': {
+      return getMethod(p.declaration);
+    }
+    default: {
+      return '';
+    }
+  }
+};
+
+const getField = (t) => {
+  if (t.kindString === 'Method') {
+    return getMethod(t);
+  }
+  if (t.kindString === 'Property') {
+    return getProperty(t.type);
   }
   return '';
 };
@@ -109,7 +133,7 @@ const InterfaceTableBase: FC<InterfaceTableProps> = ({ name, variant }) => {
           id: child.id,
           name: child.name,
           isOptional: !!child.flags.isOptional,
-          type: getType(child.type),
+          type: getField(child),
           default: child.comment?.tags?.find((tag) => tag.tag === 'default')?.text,
           description: getDescription(child)
         }))

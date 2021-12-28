@@ -1,7 +1,8 @@
 import { DocsContainer as BaseContainer } from '@storybook/addon-docs/blocks';
-import { useDarkMode } from 'storybook-dark-mode';
 
-import { themeLight, themeDark } from '../themes';
+import { themeDark, themeLight } from '../themes';
+
+import { useDarkMode } from 'storybook-dark-mode';
 
 export const DocsContainer = ({ children, context }) => {
   const isDarkMode = useDarkMode();
