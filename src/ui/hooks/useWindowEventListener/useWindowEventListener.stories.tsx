@@ -13,5 +13,9 @@ export const Demo: Story = () => {
     setCount(count + 1);
   });
 
-  return <Typography variant="body100">Count of clicks on this page: {count}</Typography>;
+  return (
+    <Typography variant="body100">
+      Count of clicks on this page: <b>{count}</b>.
+    </Typography>
+  );
 };

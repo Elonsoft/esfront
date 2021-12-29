@@ -30,20 +30,25 @@ const TableFunctionBase: FC<TableFunctionProps> = ({ name }) => {
       default: string | null;
       description: string | null;
     }>;
-    returns: string;
+    returns: {
+      type: string;
+      description: string | null;
+    };
   } | null = useMemo(() => {
     const entry = json.children.find((e) => e.name === name);
     const signature = entry?.signatures?.[0];
     if (signature) {
-      const params = (signature as any).parameters.map((child) => ({
-        id: child.id,
-        name: child.name,
-        isOptional: !!child.flags.isOptional,
-        type: getProperty(child.type),
-        default: child.comment?.tags?.find((tag) => tag.tag === 'default')?.text,
-        description: getDescription(child)
-      }));
-      const returns = getProperty(signature.type);
+      const params = (signature as any).parameters
+        ? (signature as any).parameters.map((child) => ({
+            id: child.id,
+            name: child.name,
+            isOptional: !!child.flags.isOptional,
+            type: getProperty(child.type),
+            default: child.comment?.tags?.find((tag) => tag.tag === 'default')?.text,
+            description: getDescription(child)
+          }))
+        : [];
+      const returns = { type: getProperty(signature.type), description: (signature as any)?.comment?.returns || null };
       return { params, returns };
     }
     return null;
@@ -59,37 +64,41 @@ const TableFunctionBase: FC<TableFunctionProps> = ({ name }) => {
   return (
     <TableContainer>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={3}>
-              <Typography component="code" variant="body100">
-                Arguments
-              </Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell style={{ width: '200px' }}>Name</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>Default</TableCell>
-          </TableRow>
-          {data.params.map((e) => (
-            <TableRow key={e.id}>
-              <TableCell>
-                <Typography component="code" variant="body100">
-                  {e.name}
-                  {e.isOptional && '*'}
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <TableDescription>{e.description}</TableDescription>
-                <TableCode>{e.type}</TableCode>
-              </TableCell>
-              <TableCell>{!!e.default && <TableCode>{e.default}</TableCode>}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        {!!data.params.length && (
+          <>
+            <TableHead>
+              <TableRow>
+                <TableCell colSpan={3}>
+                  <Typography component="code" variant="body100">
+                    Arguments
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell style={{ width: '200px' }}>Name</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Default</TableCell>
+              </TableRow>
+              {data.params.map((e) => (
+                <TableRow key={e.id}>
+                  <TableCell>
+                    <Typography component="code" variant="body100">
+                      {e.name}
+                      {e.isOptional && '*'}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <TableDescription>{e.description}</TableDescription>
+                    <TableCode>{e.type}</TableCode>
+                  </TableCell>
+                  <TableCell>{!!e.default && <TableCode>{e.default}</TableCode>}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
         <TableHead>
           <TableRow>
             <TableCell colSpan={3}>
@@ -102,7 +111,8 @@ const TableFunctionBase: FC<TableFunctionProps> = ({ name }) => {
         <TableBody>
           <TableRow>
             <TableCell colSpan={3}>
-              <TableCode>{data.returns}</TableCode>
+              <TableDescription>{data.returns.description}</TableDescription>
+              <TableCode>{data.returns.type}</TableCode>
             </TableCell>
           </TableRow>
         </TableBody>
