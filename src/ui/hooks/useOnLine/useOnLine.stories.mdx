@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import * as stories from './useOnLine.stories';
+
+<Meta
+  title="Hooks/useOnLine"
+  parameters={{
+    docs: {
+      source: {
+        type: 'code'
+      }
+    }
+  }}
+/>
+
+# useOnLine
+
+The hook that watches the online status of the browser.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="hooks-api-useOnLine" story="page">
+      <code>useOnLine</code>
+    </LinkTo>
+  </li>
+</ul>
