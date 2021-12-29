@@ -1,1 +1,0 @@
-export { validateFileType } from './validateFileType';
