@@ -71,16 +71,16 @@ import {
 import { TableActionsClassKey, TableActionsProps } from './ui/TableActions';
 
 export interface ISurfacePalette {
-  0: string;
-  1: string;
-  2: string;
-  3: string;
-  4: string;
-  6: string;
-  8: string;
-  12: string;
-  16: string;
-  24: string;
+  50: string;
+  100: string;
+  200: string;
+  300: string;
+  400: string;
+  500: string;
+  600: string;
+  700: string;
+  800: string;
+  900: string;
   on: string;
 }
 
