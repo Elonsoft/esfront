@@ -1,7 +1,7 @@
 import { themes } from '@storybook/theming';
 
-import logoLight from './assets/logo-light.svg';
 import logoDark from './assets/logo-dark.svg';
+import logoLight from './assets/logo-light.svg';
 
 const themeCommon = {
   brandTitle: 'Elonsoft',
