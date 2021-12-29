@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import * as stories from './useWindowEventListener.stories';
+
+<Meta
+  title="Hooks/useWindowEventListener"
+  parameters={{
+    docs: {
+      source: {
+        type: 'code'
+      }
+    }
+  }}
+/>
+
+# useWindowEventListener
+
+The hook that sets up a function that will be called whenever the specified event is delivered to the `window`.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="hooks-api-useWindowEventListener" story="page">
+      <code>useWindowEventListener</code>
+    </LinkTo>
+  </li>
+</ul>
