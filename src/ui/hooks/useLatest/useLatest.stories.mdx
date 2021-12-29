@@ -1,0 +1,25 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import * as stories from './useLatest.stories';
+
+<Meta title="Hooks/useLatest" />
+
+# useLatest
+
+The hook that returns the latest value. This is mostly useful to get access to the latest value of some props or state
+inside an asynchronous callback, instead of that value at the time the callback was created from.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="hooks-api-useLatest" story="page">
+      <code>useLatest</code>
+    </LinkTo>
+  </li>
+</ul>

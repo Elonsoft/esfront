@@ -11,9 +11,9 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import { ButtonBase, Typography } from '@mui/material';
 
 import { useDragOver } from './useDragOver';
+import { validateFileType } from './validateFileType';
 
 import { useDocumentEventListener } from '../hooks';
-import { validateFileType } from '../utils';
 
 type DropzoneOwnerState = {
   classes?: DropzoneProps['classes'];
