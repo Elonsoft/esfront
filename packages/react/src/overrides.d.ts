@@ -228,6 +228,7 @@ import {
   SidebarToggleProps,
 } from './components/Sidebar';
 import { SidenavClassKey, SidenavItemClassKey, SidenavItemProps, SidenavProps } from './components/Sidenav';
+import { SnackbarClassKey, SnackbarProps, SnackbarCloseProps, SnackbarCloseClassKey } from './components/Snackbar';
 import { SortingMenuClassKey, SortingMenuProps } from './components/SortingMenu';
 import {
   SpinnerDashRingClassKey,
@@ -466,6 +467,8 @@ declare module '@mui/material/styles/props' {
     ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingProps;
     ESSpinnerFadingRing: SpinnerFadingRingProps;
     ESSpinnerRing: SpinnerRingProps;
+    ESSnackbar: SnackbarProps;
+    ESSnackbarClose: SnackbarCloseProps;
     ESSortingMenu: SortingMenuProps;
     ESSvgIcon: SvgIconProps;
     ESSwiper: SwiperProps;
@@ -612,6 +615,8 @@ declare module '@mui/material/styles/overrides' {
     ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingClassKey;
     ESSpinnerFadingRing: SpinnerFadingRingClassKey;
     ESSpinnerRing: SpinnerRingClassKey;
+    ESSnackbar: SnackbarClassKey;
+    ESSnackbarClose: SnackbarCloseClassKey;
     ESSortingMenu: SortingMenuClassKey;
     ESSvgIcon: SvgIconClassKey;
     ESSwiper: SwiperClassKey;
@@ -1090,6 +1095,14 @@ declare module '@mui/material/styles/components' {
     ESSpinnerRing?: {
       defaultProps?: ComponentsProps['ESSpinnerRing'];
       styleOverrides?: ComponentsOverrides['ESSpinnerRing'];
+    };
+    ESSnackbar?: {
+      defaultProps?: ComponentsProps['ESSnackbar'];
+      styleOverrides?: ComponentsOverrides['ESSnackbar'];
+    };
+    ESSnackbarClose?: {
+      defaultProps?: ComponentsProps['ESSnackbarClose'];
+      styleOverrides?: ComponentsOverrides['ESSnackbarClose'];
     };
     ESSortingMenu?: {
       defaultProps?: ComponentsProps['ESSortingMenu'];

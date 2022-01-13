@@ -13,6 +13,7 @@ import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
 import { SFSChipsProps, SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
+import { SnackbarCloseProps } from '../Snackbar';
 import { SortingMenuProps } from '../SortingMenu';
 import { SwiperButtonProps } from '../Swiper';
 import { TableActionsProps, TableCellProps } from '../Table';
@@ -100,6 +101,9 @@ export interface Localization {
     };
     ESSFSChips: {
       defaultProps: Pick<SFSChipsProps, 'labelDelete'>;
+    };
+    ESSnackbarClose: {
+      defaultProps: Pick<SnackbarCloseProps, 'label'>;
     };
     ESSortingMenu: {
       defaultProps: Pick<
@@ -280,6 +284,11 @@ export const en: Localization = {
     ESSFSChips: {
       defaultProps: {
         labelDelete: 'Reset all filters',
+      },
+    },
+    ESSnackbarClose: {
+      defaultProps: {
+        label: 'Close',
       },
     },
     ESSortingMenu: {
@@ -466,6 +475,11 @@ export const ru: Localization = {
     ESSFSChips: {
       defaultProps: {
         labelDelete: 'Сбросить все фильтры',
+      },
+    },
+    ESSnackbarClose: {
+      defaultProps: {
+        label: 'Закрыть',
       },
     },
     ESSortingMenu: {
