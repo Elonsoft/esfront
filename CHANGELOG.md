@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/Elonsoft/elonkit-react/compare/v0.2.2...v0.3.0) (2022-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename surface palette hues
+* upgrade dependencies
+
+### Features
+
+* **Checkbox:** add style overrides ([8e03fe8](https://github.com/Elonsoft/elonkit-react/commit/8e03fe88c10cce5acd1d715113c9be79a3e34bc9))
+* rename surface palette hues ([716e63d](https://github.com/Elonsoft/elonkit-react/commit/716e63dbb75ad86dc2769bddac553c02b9694554))
+* **useOnLine:** add new hook ([4e53ee7](https://github.com/Elonsoft/elonkit-react/commit/4e53ee770fb73b48ebb1e9ae6522cf3db1704845))
+* **useWindowEventListener:** add new hook ([449146b](https://github.com/Elonsoft/elonkit-react/commit/449146b5c9e67e41f0aaf5e63a5b937d4a86e9a3))
+
+
+### Build Changes
+
+* upgrade dependencies ([7814547](https://github.com/Elonsoft/elonkit-react/commit/7814547f11d7930fa72a870e321c2eff39d7ef1d))
+
 ### [0.2.2](https://github.com/Elonsoft/elonkit-react/compare/v0.2.1...v0.2.2) (2021-12-03)
 
 
