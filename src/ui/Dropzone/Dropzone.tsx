@@ -168,6 +168,8 @@ const DropzoneHelperText = styled(Typography, {
 
 export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   const {
+    className,
+    sx,
     heading,
     subheading,
     dragHeading,
@@ -178,7 +180,6 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
     multiple,
     accept = '*',
     maxSize,
-    className,
     ref,
     onChange,
     onReject,
@@ -264,7 +265,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <DropzoneRoot ref={ref} className={clsx(classes.root, className)}>
+    <DropzoneRoot ref={ref} className={clsx(classes.root, className)} sx={sx}>
       <DropzoneDropzone
         data-testid="dropzone"
         className={clsx(classes.dropzone)}

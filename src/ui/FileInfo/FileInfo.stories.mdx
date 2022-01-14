@@ -7,7 +7,30 @@ import { FileIcon, FileIconBadge } from '../FileIcon';
 import { FormatDate } from '../FormatDate';
 import { FormatSize } from '../FormatSize';
 
-<Meta title="Components/FileInfo" component={FileInfo} />
+<Meta
+  title="Components/FileInfo"
+  component={FileInfo}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    sx: {
+      table: {
+        disable: true
+      }
+    }
+  }}
+/>
 
 # FileInfo
 

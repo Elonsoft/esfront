@@ -96,6 +96,7 @@ const SwiperPaginationRoot = styled('div', {
 export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number } = (inProps) => {
   const {
     className,
+    sx,
     direction,
     from,
     to,
@@ -147,7 +148,7 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <SwiperPaginationRoot className={clsx(classes.root, className)} ownerState={ownerState}>
+    <SwiperPaginationRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {bullets.map((index) => (
         <SwiperPaginationItem
           key={index}

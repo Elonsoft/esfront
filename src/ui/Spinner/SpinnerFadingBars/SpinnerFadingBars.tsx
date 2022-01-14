@@ -53,11 +53,12 @@ const SpinnerFadingBarsRoot = styled('svg', {
 
 export const SpinnerFadingBars: React.FC<SpinnerFadingBarsProps> = (inProps) => {
   const {
+    className,
+    sx,
     size = 40,
     color = 'primary',
     duration = 1000,
     ease = 'linear',
-    className,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -70,13 +71,14 @@ export const SpinnerFadingBars: React.FC<SpinnerFadingBarsProps> = (inProps) => 
 
   return (
     <SpinnerFadingBarsRoot
-      data-testid="svg"
       className={clsx(classes.root, className)}
       ownerState={ownerState}
+      sx={sx}
       width={size}
       height={size}
       viewBox="0 0 40 40"
       fill="none"
+      data-testid="svg"
     >
       <rect x="18" rx="2" />
       <rect transform="rotate(45 32.7285 4.44336)" x="32.7285" y="4.44336" rx="2" />
