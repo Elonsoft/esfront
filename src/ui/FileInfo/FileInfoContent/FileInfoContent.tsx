@@ -32,10 +32,14 @@ const FileInfoContentRoot = styled('div', {
 }));
 
 export const FileInfoContent: FC<FileInfoContentProps> = (inProps) => {
-  const { children, className, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoContent' });
+  const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoContent' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return <FileInfoContentRoot className={clsx(classes.root, className)}>{children}</FileInfoContentRoot>;
+  return (
+    <FileInfoContentRoot className={clsx(classes.root, className)} sx={sx}>
+      {children}
+    </FileInfoContentRoot>
+  );
 };

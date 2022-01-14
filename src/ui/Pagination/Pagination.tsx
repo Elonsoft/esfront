@@ -38,7 +38,7 @@ const PaginationRoot = styled('div', {
 }));
 
 export const Pagination: FC<PaginationProps> = (inProps) => {
-  const { className, children, count, itemsPerPage, page, onPageChange, onItemsPerPageChange, ...props } =
+  const { className, sx, children, count, itemsPerPage, page, onPageChange, onItemsPerPageChange, ...props } =
     useThemeProps({
       props: inProps,
       name: 'ESPagination'
@@ -59,7 +59,9 @@ export const Pagination: FC<PaginationProps> = (inProps) => {
 
   return (
     <PaginationContext.Provider value={value}>
-      <PaginationRoot className={clsx(classes.root, className)}>{children}</PaginationRoot>
+      <PaginationRoot className={clsx(classes.root, className)} sx={sx}>
+        {children}
+      </PaginationRoot>
     </PaginationContext.Provider>
   );
 };

@@ -56,6 +56,7 @@ const FileIconChildren = styled('div', {
 export const FileIcon: React.FC<FileIconProps> = (inProps) => {
   const {
     className,
+    sx,
     icon = IconFile,
     width = 36,
     height = 48,
@@ -84,7 +85,7 @@ export const FileIcon: React.FC<FileIconProps> = (inProps) => {
   }, [iconRef.current, rootIconRef.current, width, height]);
 
   return (
-    <FileIconRoot ref={rootIconRef} className={clsx(classes.root, className)}>
+    <FileIconRoot ref={rootIconRef} className={clsx(classes.root, className)} sx={sx}>
       <Icon ref={iconRef} className={classes.icon} width={width} height={height} />
       {!!children && (
         <FileIconChildren style={{ paddingTop: `${Math.round(paddingTop)}px` }} className={classes.children}>

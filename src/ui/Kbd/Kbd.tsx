@@ -57,13 +57,13 @@ const KbdRoot = styled('kbd', {
 }));
 
 export const Kbd: FC<KbdProps> = (inProps) => {
-  const { children, className, variant = 'raised', ...props } = useThemeProps({ props: inProps, name: 'ESKbd' });
+  const { children, className, sx, variant = 'raised', ...props } = useThemeProps({ props: inProps, name: 'ESKbd' });
 
   const ownerState = { ...props, variant };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <KbdRoot ownerState={ownerState} className={clsx(classes.root, className)}>
+    <KbdRoot ownerState={ownerState} className={clsx(classes.root, className)} sx={sx}>
       {children}
     </KbdRoot>
   );

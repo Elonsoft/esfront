@@ -81,11 +81,12 @@ const SpinnerFadingDoubleRingSpinnerUpperPath = styled('div', {
 
 export const SpinnerFadingDoubleRing: React.FC<SpinnerFadingDoubleRingProps> & { count: number } = (inProps) => {
   const {
+    className,
+    sx,
     size = 40,
     color = 'primary',
     duration = 1000,
     ease = 'linear',
-    className,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -100,12 +101,13 @@ export const SpinnerFadingDoubleRing: React.FC<SpinnerFadingDoubleRingProps> & {
   return (
     <SpinnerFadingDoubleRingSpinnerRoot
       className={clsx(classes.root, className)}
-      data-testid="svg"
       ownerState={ownerState}
+      sx={sx}
       width={size}
       height={size}
       viewBox="0 0 40 40"
       fill="none"
+      data-testid="svg"
     >
       <clipPath id={id}>
         <path d="M35.5886 11.0002C36.5452 10.4479 37.7785 10.7724 38.2325 11.7794C39.3801 14.3245 39.9852 17.0889 39.9999 19.8955C40.0181 23.3707 39.1305 26.7906 37.4245 29.8183C35.7185 32.8459 33.253 35.3768 30.271 37.1615C27.8627 38.6028 25.1847 39.5173 22.4132 39.8541C21.3167 39.9874 20.4003 39.1006 20.3772 37.9962C20.354 36.8919 21.2342 35.9907 22.3271 35.8301C24.403 35.525 26.4053 34.8134 28.2169 33.7292C30.6024 32.3015 32.5748 30.2768 33.9396 27.8547C35.3044 25.4325 36.0145 22.6966 36 19.9164C35.9889 17.8052 35.5603 15.7239 34.7459 13.7902C34.3172 12.7722 34.6321 11.5525 35.5886 11.0002Z" />

@@ -31,10 +31,14 @@ const FileInfoMetaSeparatorRoot = styled('div', {
 }));
 
 export const FileInfoMetaSeparator = (inProps: FileInfoMetaSeparatorProps) => {
-  const { className, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoMetaSeparator' });
+  const { className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoMetaSeparator' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return <FileInfoMetaSeparatorRoot className={clsx(classes.root, className)}>•</FileInfoMetaSeparatorRoot>;
+  return (
+    <FileInfoMetaSeparatorRoot className={clsx(classes.root, className)} sx={sx}>
+      •
+    </FileInfoMetaSeparatorRoot>
+  );
 };

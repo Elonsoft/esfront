@@ -58,6 +58,7 @@ export const FileIconBadge: React.FC<FileIconBadgeProps> = (inProps) => {
   const {
     className,
     children,
+    sx,
     color,
     size = 'md',
     ...props
@@ -73,6 +74,7 @@ export const FileIconBadge: React.FC<FileIconBadgeProps> = (inProps) => {
     <FileIconBadgeRoot
       ownerState={ownerState}
       className={clsx(classes.root, className)}
+      sx={sx}
       style={{ backgroundColor: color }}
       variant="mini2"
     >

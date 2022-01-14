@@ -69,7 +69,7 @@ const TableActionsChildren = styled('div', {
 }));
 
 export const TableActions: FC<TableActionsProps> = (inProps) => {
-  const { className, label, count, children, ...props } = useThemeProps({
+  const { className, sx, label, count, children, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableActions'
   });
@@ -78,7 +78,7 @@ export const TableActions: FC<TableActionsProps> = (inProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableActionsRoot className={clsx(classes.root, className)}>
+    <TableActionsRoot className={clsx(classes.root, className)} sx={sx}>
       <TableActionsText className={classes.text} variant="body200">
         {label} {count}
       </TableActionsText>

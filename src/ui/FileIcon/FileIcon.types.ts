@@ -1,6 +1,15 @@
 import { FileIconClasses } from './FileIcon.classes';
 
+import { SxProps, Theme } from '@mui/material/styles';
+
 export interface FileIconProps {
+  /** Class applied to the root element. */
+  className?: string;
+  /** Override or extend the styles applied to the component. */
+  classes?: Partial<FileIconClasses>;
+  /** The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx?: SxProps<Theme>;
+
   /**
    * The icon's width.
    * @default 36
@@ -13,20 +22,6 @@ export interface FileIconProps {
    */
   height?: number;
 
-  /**
-   * The background icon component.
-   */
+  /** The background icon component. */
   icon?: React.FC;
-
-  /**
-   * Class applied to the root element.
-   */
-  className?: string;
-
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<FileIconClasses>;
 }
-
-// React.ForwardRefRenderFunction<React.ForwardedRef<any>, React.PropsWithChildren<SvgIconProps<'svg', any>>>

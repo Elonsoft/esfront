@@ -35,13 +35,13 @@ const FileInfoMetaRoot = styled(Typography, {
 }));
 
 export const FileInfoMeta: FC<FileInfoMetaProps> = (inProps) => {
-  const { children, className, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoMeta' });
+  const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoMeta' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <FileInfoMetaRoot className={clsx(classes.root, className)} variant="caption">
+    <FileInfoMetaRoot className={clsx(classes.root, className)} sx={sx} variant="caption">
       {children}
     </FileInfoMetaRoot>
   );

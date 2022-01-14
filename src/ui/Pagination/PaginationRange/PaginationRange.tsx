@@ -85,6 +85,7 @@ export const PaginationRange: FC<PaginationRangeProps> = (inProps) => {
 
   const {
     className,
+    sx,
     labelItemsPerPage,
     labelOf,
     options = OPTIONS,
@@ -115,7 +116,7 @@ export const PaginationRange: FC<PaginationRangeProps> = (inProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <PaginationRangeRoot className={clsx(classes.root, className)}>
+    <PaginationRangeRoot className={clsx(classes.root, className)} sx={sx}>
       <PaginationRangeLabel variant="caption">{labelItemsPerPage}</PaginationRangeLabel>
 
       <PaginationRangeButton

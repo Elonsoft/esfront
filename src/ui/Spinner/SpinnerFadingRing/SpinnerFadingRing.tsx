@@ -69,11 +69,12 @@ const SpinnerFadingRingCircle = styled('div', {
 
 export const SpinnerFadingRing: React.FC<SpinnerFadingRingProps> & { count: number } = (inProps) => {
   const {
+    className,
+    sx,
     size = 40,
     color = 'primary',
     duration = 1000,
     ease = 'linear',
-    className,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -87,13 +88,14 @@ export const SpinnerFadingRing: React.FC<SpinnerFadingRingProps> & { count: numb
 
   return (
     <SpinnerFadingRingRoot
-      data-testid="svg"
       className={clsx(classes.root, className)}
       ownerState={ownerState}
+      sx={sx}
       width={size}
       height={size}
       viewBox="0 0 40 40"
       fill="none"
+      data-testid="svg"
     >
       <clipPath id={id}>
         <path

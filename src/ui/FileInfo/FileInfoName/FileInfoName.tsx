@@ -45,7 +45,7 @@ const FileInfoNameButton = styled(IconButton, {
 }));
 
 export const FileInfoName: FC<FileInfoNameProps> = (inProps) => {
-  const { children, className, deleteLabel, onDelete, ...props } = useThemeProps({
+  const { children, className, sx, deleteLabel, onDelete, ...props } = useThemeProps({
     props: inProps,
     name: 'ESFileInfoName'
   });
@@ -57,7 +57,7 @@ export const FileInfoName: FC<FileInfoNameProps> = (inProps) => {
     <FileInfoNameRoot className={clsx(classes.root, className)}>
       {children}
       {!!onDelete && (
-        <FileInfoNameButton className={classes.button} size="xs" onClick={onDelete} aria-label={deleteLabel}>
+        <FileInfoNameButton className={classes.button} sx={sx} size="xs" onClick={onDelete} aria-label={deleteLabel}>
           <CloseSmIcon />
         </FileInfoNameButton>
       )}

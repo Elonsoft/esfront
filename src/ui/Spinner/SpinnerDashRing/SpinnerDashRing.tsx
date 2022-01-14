@@ -59,12 +59,13 @@ const SpinnerDashRingCircle = styled('circle', {
 
 export const SpinnerDashRing: React.FC<SpinnerDashRingProps> = (inProps) => {
   const {
+    className,
+    sx,
     size = 40,
     color = 'primary',
     duration = 1400,
     ease = 'linear',
     dashEase = 'ease-in-out',
-    className,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -77,13 +78,14 @@ export const SpinnerDashRing: React.FC<SpinnerDashRingProps> = (inProps) => {
 
   return (
     <SpinnerDashRingRoot
-      data-testid="svg"
       className={clsx(classes.root, className)}
       ownerState={ownerState}
+      sx={sx}
       width={size}
       height={size}
       viewBox="0 0 40 40"
       fill="none"
+      data-testid="svg"
     >
       <circle opacity="0.3" cx="20" cy="20" r="18" strokeWidth="4" />
       <SpinnerDashRingCircle

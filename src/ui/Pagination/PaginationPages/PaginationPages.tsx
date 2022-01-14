@@ -210,10 +210,11 @@ const PaginationPagesTooltip = styled(
 const REGEX = /^[0-9]*$/;
 
 export const PaginationPages: FC<PaginationPagesProps> = (inProps) => {
-  const { className, boundaryCount, siblingCount, prevPageLabel, nextPageLabel, labelPage, ...props } = useThemeProps({
-    props: inProps,
-    name: 'ESPaginationPages'
-  });
+  const { className, sx, boundaryCount, siblingCount, prevPageLabel, nextPageLabel, labelPage, ...props } =
+    useThemeProps({
+      props: inProps,
+      name: 'ESPaginationPages'
+    });
 
   const { count, itemsPerPage, page, onPageChange } = usePaginationContext();
 
@@ -254,7 +255,7 @@ export const PaginationPages: FC<PaginationPagesProps> = (inProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <PaginationPagesRoot className={clsx(classes.root, className)}>
+    <PaginationPagesRoot className={clsx(classes.root, className)} sx={sx}>
       <PaginationPagesPagination
         className={clsx(classes.pagination, className)}
         count={Math.ceil(count / itemsPerPage)}

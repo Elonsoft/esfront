@@ -78,7 +78,7 @@ const EmptyStateSubheading = styled(Typography, {
 }));
 
 export const EmptyState: React.FC<EmptyStateProps> = (inProps) => {
-  const { children, className, icon, heading, subheading, ...props } = useThemeProps({
+  const { children, className, sx, icon, heading, subheading, ...props } = useThemeProps({
     props: inProps,
     name: 'ESEmptyState'
   });
@@ -87,7 +87,7 @@ export const EmptyState: React.FC<EmptyStateProps> = (inProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <EmptyStateRoot className={clsx(classes.root, className)}>
+    <EmptyStateRoot className={clsx(classes.root, className)} sx={sx}>
       {!!icon && (
         <EmptyStateIcon className={classes.icon} data-testid="icon">
           {icon}

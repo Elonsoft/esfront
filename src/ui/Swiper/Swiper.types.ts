@@ -3,6 +3,8 @@ import { ComponentType, ReactNode, Ref } from 'react';
 import { SwiperClasses } from './Swiper.classes';
 import { SwiperPaginationClasses } from './SwiperPagination.classes';
 
+import { SxProps, Theme } from '@mui/material/styles';
+
 export type SwiperDirection = 'horizontal' | 'vertical';
 export type SwiperAlignment = 'center' | 'start';
 
@@ -20,6 +22,8 @@ export type SwiperPaginationBaseProps = {
   className?: string;
   /** Override or extend the styles applied to the component. */
   classes?: Partial<SwiperPaginationClasses>;
+  /** The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx?: SxProps<Theme>;
   /** The swiper direction. */
   direction: SwiperDirection;
   /** Index of active slide. */
@@ -45,6 +49,8 @@ export interface SwiperProps<P extends SwiperPaginationBaseProps> {
   className?: string;
   /** Override or extend the styles applied to the component. */
   classes?: Partial<SwiperClasses>;
+  /** The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx?: SxProps<Theme>;
 
   /**
    * The swiper direction.
