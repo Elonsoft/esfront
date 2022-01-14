@@ -71,7 +71,6 @@ const PaletteDemoColorBackground = styled('div')(({ theme }) => ({
 
 export const PaletteDemo = () => {
   const theme = useTheme();
-
   return (
     <PaletteDemoRoot>
       {PALETTES.map((palette) => (
@@ -87,7 +86,7 @@ export const PaletteDemo = () => {
                   <code>{color}</code>
                 </PaletteDemoColorName>
                 <PaletteDemoColorBackground
-                  style={{
+                  sx={{
                     backgroundColor: (theme.palette as any)[palette][color] as string
                   }}
                 ></PaletteDemoColorBackground>
@@ -95,6 +94,27 @@ export const PaletteDemo = () => {
             ))}
         </Fragment>
       ))}
+      <PaletteDemoPalette variant="body100">
+        <code>shadow</code>
+      </PaletteDemoPalette>
+      {Object.keys(theme.palette.shadow).map((direction) =>
+        Object.keys((theme.palette.shadow as any)[direction]).map((level) => (
+          <div key={`${direction}-${level}`}>
+            <PaletteDemoColorName
+              variant="caption"
+              sx={{
+                boxShadow: (theme.palette.shadow as any)[direction][level],
+                margin: '24px',
+                borderRadius: '2px'
+              }}
+            >
+              <code>
+                {direction.toUpperCase()} {level}
+              </code>
+            </PaletteDemoColorName>
+          </div>
+        ))
+      )}
     </PaletteDemoRoot>
   );
 };

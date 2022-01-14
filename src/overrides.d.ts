@@ -84,6 +84,19 @@ export interface ISurfacePalette {
   on: string;
 }
 
+export interface IShadowPalette {
+  50: string;
+  100: string;
+  200: string;
+  300: string;
+  400: string;
+  500: string;
+  600: string;
+  700: string;
+  800: string;
+  900: string;
+}
+
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
     ESEmptyState: EmptyStateProps;
@@ -288,7 +301,6 @@ declare module '@mui/material/styles' {
     monoB: PaletteColor;
     white: PaletteColor;
     black: PaletteColor;
-    surface: ISurfacePalette;
     red: PaletteColor;
     brown: PaletteColor;
     orange: PaletteColor;
@@ -303,6 +315,13 @@ declare module '@mui/material/styles' {
     teal: PaletteColor;
     grey: Color;
     greyscale: PaletteColor;
+    surface: ISurfacePalette;
+    shadow: {
+      down: IShadowPalette;
+      up: IShadowPalette;
+      left: IShadowPalette;
+      right: IShadowPalette;
+    };
   }
 
   interface PaletteOptions {
@@ -310,7 +329,6 @@ declare module '@mui/material/styles' {
     monoB?: PaletteColorOptions;
     white?: PaletteColorOptions;
     black?: PaletteColorOptions;
-    surface?: Partial<ISurfacePalette>;
     red?: PaletteColorOptions;
     brown?: PaletteColorOptions;
     orange?: PaletteColorOptions;
@@ -325,6 +343,13 @@ declare module '@mui/material/styles' {
     teal?: PaletteColorOptions;
     grey?: Partial<Color>;
     greyscale?: PaletteColorOptions;
+    surface?: Partial<ISurfacePalette>;
+    shadow?: Partial<{
+      down: IShadowPalette;
+      up: IShadowPalette;
+      left: IShadowPalette;
+      right: IShadowPalette;
+    }>;
   }
 
   interface BreakpointOverrides {

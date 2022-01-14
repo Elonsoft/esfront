@@ -15,6 +15,7 @@ import { primary } from './primary';
 import { purple } from './purple';
 import { red } from './red';
 import { secondary } from './secondary';
+import { shadow } from './shadow';
 import { sky } from './sky';
 import { success } from './success';
 import { surface } from './surface';
@@ -47,5 +48,6 @@ export const light = {
   purple,
   pink,
   teal,
-  grey
+  grey,
+  shadow
 };
