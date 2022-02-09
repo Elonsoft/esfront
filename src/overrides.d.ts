@@ -371,9 +371,19 @@ declare module '@mui/material/styles' {
 
   interface TypographyVariants {
     body400: React.CSSProperties;
+    body400Medium: React.CSSProperties;
+    body400Bold: React.CSSProperties;
     body300: React.CSSProperties;
+    body300Medium: React.CSSProperties;
+    body300Bold: React.CSSProperties;
     body200: React.CSSProperties;
+    body200Medium: React.CSSProperties;
+    body200Bold: React.CSSProperties;
     body100: React.CSSProperties;
+    body100Medium: React.CSSProperties;
+    body100Bold: React.CSSProperties;
+    captionMedium: React.CSSProperties;
+    captionBold: React.CSSProperties;
     mini1: React.CSSProperties;
     mini2: React.CSSProperties;
     micro: React.CSSProperties;
@@ -381,9 +391,19 @@ declare module '@mui/material/styles' {
 
   interface TypographyVariantsOptions {
     body400?: React.CSSProperties;
+    body400Medium?: React.CSSProperties;
+    body400Bold?: React.CSSProperties;
     body300?: React.CSSProperties;
+    body300Medium?: React.CSSProperties;
+    body300Bold?: React.CSSProperties;
     body200?: React.CSSProperties;
+    body200Medium?: React.CSSProperties;
+    body200Bold?: React.CSSProperties;
     body100?: React.CSSProperties;
+    body100Medium?: React.CSSProperties;
+    body100Bold?: React.CSSProperties;
+    captionMedium?: React.CSSProperties;
+    captionBold?: React.CSSProperties;
     mini1?: React.CSSProperties;
     mini2?: React.CSSProperties;
     micro?: React.CSSProperties;
@@ -462,9 +482,19 @@ declare module '@mui/material/TextField' {
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     body400: true;
+    body400Medium: true;
+    body400Bold: true;
     body300: true;
+    body300Medium: true;
+    body300Bold: true;
     body200: true;
+    body200Medium: true;
+    body200Bold: true;
     body100: true;
+    body100Medium: true;
+    body100Bold: true;
+    captionMedium: true;
+    captionBold: true;
     mini1: true;
     mini2: true;
     micro: true;
