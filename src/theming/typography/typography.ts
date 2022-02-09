@@ -5,6 +5,46 @@ export const createTypography = (theme: Theme) => {
   const tabletXS = theme.breakpoints.up('tabletXS');
   const desktopXS = theme.breakpoints.up('desktopXS');
 
+  const body400 = {
+    fontSize: pxToRem(20),
+    letterSpacing: pxToRem(0.5),
+    lineHeight: pxToRem(32),
+    textDecorationThickness: pxToRem(2),
+    textUnderlineOffset: pxToRem(2)
+  };
+
+  const body300 = {
+    fontSize: pxToRem(18),
+    letterSpacing: pxToRem(0.1),
+    lineHeight: pxToRem(28),
+    textDecorationThickness: pxToRem(2),
+    textUnderlineOffset: pxToRem(2)
+  };
+
+  const body200 = {
+    fontSize: pxToRem(16),
+    letterSpacing: pxToRem(0.5),
+    lineHeight: pxToRem(24),
+    textDecorationThickness: pxToRem(1),
+    textUnderlineOffset: pxToRem(2)
+  };
+
+  const body100 = {
+    fontSize: pxToRem(14),
+    letterSpacing: pxToRem(0.25),
+    lineHeight: pxToRem(20),
+    textDecorationThickness: pxToRem(1),
+    textUnderlineOffset: pxToRem(1)
+  };
+
+  const caption = {
+    fontSize: pxToRem(12),
+    letterSpacing: pxToRem(0.4),
+    lineHeight: pxToRem(16),
+    textDecorationThickness: pxToRem(1),
+    textUnderlineOffset: pxToRem(1)
+  };
+
   return {
     h1: {
       fontSize: pxToRem(30),
@@ -109,33 +149,41 @@ export const createTypography = (theme: Theme) => {
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1)
     },
-    body400: {
-      fontSize: pxToRem(20),
-      letterSpacing: pxToRem(0.5),
-      lineHeight: pxToRem(32),
-      textDecorationThickness: pxToRem(2),
-      textUnderlineOffset: pxToRem(2)
+    body400,
+    body400Medium: {
+      ...body400,
+      fontWeight: 500
     },
-    body300: {
-      fontSize: pxToRem(18),
-      letterSpacing: pxToRem(0.1),
-      lineHeight: pxToRem(28),
-      textDecorationThickness: pxToRem(2),
-      textUnderlineOffset: pxToRem(2)
+    body400Bold: {
+      ...body400,
+      fontWeight: 700
     },
-    body200: {
-      fontSize: pxToRem(16),
-      letterSpacing: pxToRem(0.5),
-      lineHeight: pxToRem(24),
-      textDecorationThickness: pxToRem(1),
-      textUnderlineOffset: pxToRem(2)
+    body300,
+    body300Medium: {
+      ...body300,
+      fontWeight: 500
     },
-    body100: {
-      fontSize: pxToRem(14),
-      letterSpacing: pxToRem(0.25),
-      lineHeight: pxToRem(20),
-      textDecorationThickness: pxToRem(1),
-      textUnderlineOffset: pxToRem(1)
+    body300Bold: {
+      ...body300,
+      fontWeight: 700
+    },
+    body200,
+    body200Medium: {
+      ...body200,
+      fontWeight: 500
+    },
+    body200Bold: {
+      ...body200,
+      fontWeight: 700
+    },
+    body100,
+    body100Medium: {
+      ...body100,
+      fontWeight: 500
+    },
+    body100Bold: {
+      ...body100,
+      fontWeight: 700
     },
     mini1: {
       fontSize: pxToRem(11),
@@ -168,12 +216,14 @@ export const createTypography = (theme: Theme) => {
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1)
     },
-    caption: {
-      fontSize: pxToRem(12),
-      letterSpacing: pxToRem(0.4),
-      lineHeight: pxToRem(16),
-      textDecorationThickness: pxToRem(1),
-      textUnderlineOffset: pxToRem(1)
+    caption,
+    captionMedium: {
+      ...caption,
+      fontWeight: 500
+    },
+    captionBold: {
+      ...caption,
+      fontWeight: 700
     },
     overline: {
       fontSize: pxToRem(10),

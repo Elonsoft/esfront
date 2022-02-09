@@ -108,11 +108,51 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
+              <code>body400Medium</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="body400Medium">
+                Body 400 | Medium
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>body400Bold</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="body400Bold">
+                Body 400 | Bold
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
               <code>body300</code>
             </TableCell>
             <TableCell>
               <Typography component="div" variant="body300">
                 Body 300
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>body300Medium</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="body300Medium">
+                Body 300 | Medium
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>body300Bold</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="body300Bold">
+                Body 300 | Bold
               </Typography>
             </TableCell>
           </TableRow>
@@ -128,11 +168,51 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
+              <code>body200Medium</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="body200Medium">
+                Body 200 | Medium
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>body200Bold</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="body200Bold">
+                Body 200 | Bold
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
               <code>body100</code>
             </TableCell>
             <TableCell>
               <Typography component="div" variant="body100">
                 Body 100
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>body100Medium</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="body100Medium">
+                Body 100 | Medium
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>body100Bold</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="body100Bold">
+                Body 100 | Bold
               </Typography>
             </TableCell>
           </TableRow>
@@ -183,6 +263,26 @@ export const TypographyDemo = () => {
             <TableCell>
               <Typography component="div" variant="caption">
                 Caption
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>captionMedium</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="captionMedium">
+                Caption | Medium
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>captionBold</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="captionBold">
+                Caption | Bold
               </Typography>
             </TableCell>
           </TableRow>
