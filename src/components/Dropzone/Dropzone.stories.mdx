@@ -1,0 +1,160 @@
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { Dropzone } from '.';
+import { IconUpload } from '../../icons';
+
+<Meta
+  title="Components/Dropzone"
+  component={Dropzone}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    heading: {
+      table: {
+        category: 'General'
+      }
+    },
+    subheading: {
+      table: {
+        category: 'General'
+      }
+    },
+    dragHeading: {
+      table: {
+        category: 'General'
+      }
+    },
+    dragSubheading: {
+      table: {
+        category: 'General'
+      }
+    },
+    helperText: {
+      table: {
+        category: 'General'
+      }
+    },
+    error: {
+      table: {
+        category: 'General'
+      }
+    },
+    accept: {
+      table: {
+        category: 'General',
+        defaultValue: { summary: '*' }
+      }
+    },
+    maxSize: {
+      table: {
+        category: 'General'
+      }
+    },
+    multiple: {
+      table: {
+        category: 'General'
+      }
+    },
+    icon: {
+      table: {
+        disable: true
+      }
+    },
+    onChange: {
+      table: {
+        disable: true
+      }
+    },
+    onReject: {
+      table: {
+        disable: true
+      }
+    },
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    sx: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }}
+/>
+
+export const getHeading = (args, context) => {
+  return args.heading || (context.globals.locale === 'en' ? 'Choose files' : 'Выберите файлы');
+};
+
+export const getSubheading = (args, context) => {
+  return (
+    args.subheading ||
+    (context.globals.locale === 'en'
+      ? 'or drag files in this area (max size: 50 MB)'
+      : 'или перетащите файлы в эту область (не более 50 мб)')
+  );
+};
+
+export const getDragHeading = (args, context) => {
+  return args.dragHeading || (context.globals.locale === 'en' ? 'Drag files here' : 'Перетащите файлы сюда');
+};
+
+export const getDragSubheading = (args, context) => {
+  return (
+    args.dragSubheading ||
+    (context.globals.locale === 'en'
+      ? 'release files in this area (max size: 50 MB)'
+      : 'отпустите файл в этой области (не более 50 мб)')
+  );
+};
+
+export const getHelperText = (args, context) => {
+  return args.helperText || (context.globals.locale === 'en' ? 'Some important text' : 'Какой-то важный текст');
+};
+
+# Dropzone
+
+This component allows to select files on click or by drag and drop.
+
+## Demos
+
+<Canvas>
+  <Story name="Demo">
+    {(args, context) => (
+      <Dropzone
+        {...args}
+        icon={<IconUpload />}
+        heading={getHeading(args, context)}
+        dragHeading={getDragHeading(args, context)}
+        subheading={getSubheading(args, context)}
+        dragSubheading={getDragSubheading(args, context)}
+        helperText={getHelperText(args, context)}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-dropzone" story="page">
+      <code>Dropzone</code>
+    </LinkTo>
+  </li>
+</ul>

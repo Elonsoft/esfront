@@ -7,7 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { enUS } from '@mui/material/locale';
 
-import { en } from '../../ui/locale';
+import { en } from '../../components/locale';
 import { breakpoints as defaultBreakpoints } from '../breakpoints';
 import { createComponents as createDefaultComponents } from '../components';
 import { palettes as defaultPalettes } from '../palettes';

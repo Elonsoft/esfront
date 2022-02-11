@@ -7,8 +7,8 @@ import { enUS as dateEN, ru as dateRU } from 'date-fns/locale';
 
 import { enUS, ruRU } from '@mui/material/locale';
 
+import { DateAdapterProvider, en, ru } from '../../components';
 import { palettes, ThemeProvider } from '../../theming';
-import { DateAdapterProvider, en, ru } from '../../ui';
 
 export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
   const palette = useMemo(() => {
