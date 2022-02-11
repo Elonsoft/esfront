@@ -21,8 +21,8 @@ import { InputBasePropsSizeOverrides } from '@mui/material/InputBase';
 import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography';
 
-import { DropzoneClassKey, DropzoneProps } from './ui/Dropzone';
-import { EmptyStateClassKey, EmptyStateProps } from './ui/EmptyState';
+import { DropzoneClassKey, DropzoneProps } from './components/Dropzone';
+import { EmptyStateClassKey, EmptyStateProps } from './components/EmptyState';
 import {
   FileIconBadgeClassKey,
   FileIconBadgeProps,
@@ -30,7 +30,7 @@ import {
   FileIconProps,
   FileIconTextClassKey,
   FileIconTextProps
-} from './ui/FileIcon';
+} from './components/FileIcon';
 import {
   FileInfoClassKey,
   FileInfoContentClassKey,
@@ -42,11 +42,11 @@ import {
   FileInfoNameClassKey,
   FileInfoNameProps,
   FileInfoProps
-} from './ui/FileInfo';
-import { FormatDateProps } from './ui/FormatDate';
-import { FormatSizeProps } from './ui/FormatSize';
-import { KbdClassKey, KbdProps } from './ui/Kbd';
-import { LinkClassKey, LinkProps } from './ui/Link';
+} from './components/FileInfo';
+import { FormatDateProps } from './components/FormatDate';
+import { FormatSizeProps } from './components/FormatSize';
+import { KbdClassKey, KbdProps } from './components/Kbd';
+import { LinkClassKey, LinkProps } from './components/Link';
 import {
   SpinnerDashRingClassKey,
   SpinnerDashRingProps,
@@ -60,7 +60,7 @@ import {
   SpinnerFadingRingProps,
   SpinnerRingClassKey,
   SpinnerRingProps
-} from './ui/Spinner';
+} from './components/Spinner';
 import {
   SwiperButtonClassKey,
   SwiperClassKey,
@@ -68,8 +68,8 @@ import {
   SwiperPaginationClassKey,
   SwiperPaginationProps,
   SwiperProps
-} from './ui/Swiper';
-import { TableActionsClassKey, TableActionsProps } from './ui/TableActions';
+} from './components/Swiper';
+import { TableActionsClassKey, TableActionsProps } from './components/TableActions';
 
 export interface ISurfacePalette {
   50: string;
