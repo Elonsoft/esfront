@@ -1,14 +1,11 @@
 export { Swiper } from './Swiper';
 export { SwiperClasses, swiperClasses, SwiperClassKey } from './Swiper.classes';
+export { SwiperAlignment, SwiperDirection, SwiperImperativeActions, SwiperProps } from './Swiper.types';
+export * from './SwiperButton';
 export {
-  SwiperAlignment,
-  SwiperButtonProps,
-  SwiperDirection,
-  SwiperImperativeActions,
-  SwiperPaginationBaseProps,
-  SwiperProps
-} from './Swiper.types';
-export { SwiperButtonClasses, swiperButtonClasses, SwiperButtonClassKey } from './SwiperButton.classes';
-export { SwiperPagination } from './SwiperPagination';
-export { SwiperPaginationClasses, swiperPaginationClasses, SwiperPaginationClassKey } from './SwiperPagination.classes';
-export { SwiperPaginationProps } from './SwiperPagination.types';
+  SwiperPagination,
+  SwiperPaginationClasses,
+  swiperPaginationClasses,
+  SwiperPaginationClassKey,
+  SwiperPaginationProps
+} from './SwiperPagination';

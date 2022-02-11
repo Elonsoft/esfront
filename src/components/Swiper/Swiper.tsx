@@ -1,6 +1,6 @@
-import { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 
-import { SwiperAlignment, SwiperDirection, SwiperPaginationBaseProps, SwiperProps } from './Swiper.types';
+import { SwiperAlignment, SwiperDirection, SwiperProps } from './Swiper.types';
 
 import clsx from 'clsx';
 import { getSwiperUtilityClass, swiperClasses } from './Swiper.classes';
@@ -9,13 +9,14 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
-import { SwiperButtonDown, SwiperButtonLeft, SwiperButtonRight, SwiperButtonUp } from './SwiperButton';
+import { SwiperContext } from './Swiper.context';
+import { SwiperButton } from './SwiperButton';
 import { usePropertiesMapping } from './usePropertiesMapping';
 
-import { useDocumentEventListener, useResizeObserver } from '../../hooks';
+import { useDocumentEventListener, useLatest, useResizeObserver } from '../../hooks';
 
 type SwiperOwnerState = {
-  classes?: SwiperProps<any>['classes'];
+  classes?: SwiperProps['classes'];
   alignment: SwiperAlignment;
   direction: SwiperDirection;
   snap: boolean;
@@ -58,17 +59,6 @@ const SwiperRoot = styled('div', {
     flexDirection: 'column',
     [`& .${swiperClasses.container}`]: {
       gridAutoFlow: 'column'
-    },
-    [`& .${swiperClasses.button}.MuiIconButton-root`]: {
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)'
-    },
-    [`& .${swiperClasses.buttonPrev}`]: {
-      left: 16
-    },
-    [`& .${swiperClasses.buttonNext}`]: {
-      right: 16
     }
   }),
 
@@ -84,12 +74,6 @@ const SwiperRoot = styled('div', {
       position: 'absolute',
       left: '50%',
       transform: 'translateX(-50%)'
-    },
-    [`& .${swiperClasses.buttonPrev}`]: {
-      top: 16
-    },
-    [`& .${swiperClasses.buttonNext}`]: {
-      bottom: 16
     }
   })
 }));
@@ -141,11 +125,12 @@ const SwiperContainer = styled('div', {
   })
 }));
 
-export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps<P>) => {
+export const Swiper = (inProps: SwiperProps) => {
   const {
     children,
     ref,
     className,
+    sx,
     direction = 'horizontal',
     alignment = 'center',
     gap = 16,
@@ -156,21 +141,14 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
     actions,
     onActiveSlideChange,
     onPaginationRangeChange,
-    buttonPrev,
-    labelButtonPrev,
-    buttonNext,
-    labelButtonNext,
-    buttonScrollDistance = 1,
-    pagination: Pagination,
-    PaginationProps,
+    buttonPrev = <SwiperButton step={-1} />,
+    buttonNext = <SwiperButton step={1} />,
+    pagination,
     ...props
   } = useThemeProps({
     props: inProps,
     name: 'ESSwiper'
   });
-
-  const ButtonPrev = buttonPrev ?? (direction === 'horizontal' ? SwiperButtonLeft : SwiperButtonUp);
-  const ButtonNext = buttonNext ?? (direction === 'horizontal' ? SwiperButtonRight : SwiperButtonDown);
 
   const mapping = usePropertiesMapping(direction);
 
@@ -215,16 +193,21 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
    * Scroll to the slide by its index.
    * @param index Index of the slide.
    */
-  const setActiveSlide = (index: number) => {
-    if (container.current) {
-      const children = container.current.children[index] as HTMLElement;
-      if (children) {
-        const start =
-          children[mapping.offset] - container.current[mapping.clientSize] / 2 + children[mapping.clientSize] / 2;
-        container.current.scrollTo({ [mapping.start]: start, behavior: 'smooth' });
+  const setActiveSlide = useCallback(
+    (index: number) => {
+      if (container.current) {
+        const children = container.current.children[
+          Math.max(0, Math.min(index, container.current.children.length - 1))
+        ] as HTMLElement;
+        if (children) {
+          const start =
+            children[mapping.offset] - container.current[mapping.clientSize] / 2 + children[mapping.clientSize] / 2;
+          container.current.scrollTo({ [mapping.start]: start, behavior: 'smooth' });
+        }
       }
-    }
-  };
+    },
+    [container, mapping]
+  );
 
   /**
    * @param direction -1 for the previous slide(s) or 1 for the next slide(s).
@@ -329,19 +312,21 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
     }
   };
 
-  const onPrevClick = () => {
-    if (container.current) {
-      const step = getStep(-1, buttonScrollDistance);
-      container.current.scrollBy({ [mapping.start]: -step, behavior: 'smooth' });
-    }
-  };
+  const latestGetStep = useLatest(getStep);
 
-  const onNextClick = () => {
-    if (container.current) {
-      const step = getStep(1, buttonScrollDistance);
-      container.current.scrollBy({ [mapping.start]: step, behavior: 'smooth' });
-    }
-  };
+  /**
+   * Scroll container by the given number of slides.
+   * @param step Number of slides.
+   */
+  const setActiveSlideByStep = useCallback(
+    (step: number) => {
+      if (container.current) {
+        const s = latestGetStep.current(Math.sign(step) as 1 | -1, Math.abs(step));
+        container.current.scrollBy({ [mapping.start]: Math.sign(step) * s, behavior: 'smooth' });
+      }
+    },
+    [container, mapping, latestGetStep]
+  );
 
   const onDragStart = (event: React.DragEvent) => {
     event.preventDefault();
@@ -460,56 +445,49 @@ export const Swiper = <P extends SwiperPaginationBaseProps>(inProps: SwiperProps
   const ownerState = { ...props, alignment, direction, snap: !!(snap && !isMouseDown) };
   const classes = useUtilityClasses(ownerState);
 
+  const value = useMemo(() => {
+    return {
+      direction,
+      active,
+      from,
+      to,
+      setActiveSlide,
+      setActiveSlideByStep
+    };
+  }, [direction, active, from, to, setActiveSlide, setActiveSlideByStep]);
+
   return (
-    <SwiperRoot
-      className={clsx(classes.root, className)}
-      ownerState={ownerState}
-      ref={ref}
-      role="group"
-      aria-roledescription="carousel"
-    >
-      <SwiperWrapper className={classes.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        {isPrevVisible && !!ButtonPrev && (
-          <ButtonPrev
-            onClick={onPrevClick}
-            label={labelButtonPrev}
-            className={clsx(classes.button, classes.buttonPrev)}
-          />
-        )}
-        {isNextVisible && !!ButtonNext && (
-          <ButtonNext
-            onClick={onNextClick}
-            label={labelButtonNext}
-            className={clsx(classes.button, classes.buttonNext)}
-          />
-        )}
-        <SwiperContainer
-          className={classes.container}
-          ownerState={ownerState}
-          style={{ gap: `${gap}px`, cursor: draggable ? (isMouseDown ? 'grabbing' : 'grab') : 'unset' }}
-          ref={container}
-          tabIndex={-1}
-          onScroll={onScroll}
-          onDragStart={onDragStart}
-          onMouseDown={onMouseDown}
-          onMouseUp={onMouseUp}
-          onMouseLeave={onMouseUp}
-          onMouseMove={onMouseMove}
-          onTouchStart={onTouchStart}
-        >
-          {children}
-        </SwiperContainer>
-      </SwiperWrapper>
-      {!!Pagination && (
-        <Pagination
-          {...(PaginationProps as P)}
-          direction={direction}
-          active={active}
-          from={from}
-          to={to}
-          onChange={setActiveSlide}
-        />
-      )}
-    </SwiperRoot>
+    <SwiperContext.Provider value={value}>
+      <SwiperRoot
+        className={clsx(classes.root, className)}
+        ownerState={ownerState}
+        sx={sx}
+        ref={ref}
+        role="group"
+        aria-roledescription="carousel"
+      >
+        <SwiperWrapper className={classes.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+          {isPrevVisible && !!buttonPrev && buttonPrev}
+          {isNextVisible && !!buttonNext && buttonNext}
+          <SwiperContainer
+            className={classes.container}
+            ownerState={ownerState}
+            style={{ gap: `${gap}px`, cursor: draggable ? (isMouseDown ? 'grabbing' : 'grab') : 'unset' }}
+            ref={container}
+            tabIndex={-1}
+            onScroll={onScroll}
+            onDragStart={onDragStart}
+            onMouseDown={onMouseDown}
+            onMouseUp={onMouseUp}
+            onMouseLeave={onMouseUp}
+            onMouseMove={onMouseMove}
+            onTouchStart={onTouchStart}
+          >
+            {children}
+          </SwiperContainer>
+        </SwiperWrapper>
+        {!!pagination && pagination}
+      </SwiperRoot>
+    </SwiperContext.Provider>
   );
 };

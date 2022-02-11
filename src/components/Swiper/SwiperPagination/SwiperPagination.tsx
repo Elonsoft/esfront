@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 
+import { SwiperDirection } from '../Swiper.types';
 import { SwiperPaginationProps } from './SwiperPagination.types';
 
 import clsx from 'clsx';
@@ -9,11 +10,12 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
-import { SwiperPaginationItem } from './SwiperPaginationItem';
+import { useSwiperContext } from '../Swiper.context';
+import { SwiperPaginationItem } from '../SwiperPaginationItem';
 
 type SwiperPaginationOwnerState = {
   classes?: SwiperPaginationProps['classes'];
-  direction: SwiperPaginationProps['direction'];
+  direction: SwiperDirection;
   position: SwiperPaginationProps['position'];
   variant: SwiperPaginationProps['variant'];
 };
@@ -97,11 +99,6 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
   const {
     className,
     sx,
-    direction,
-    from,
-    to,
-    active,
-    onChange,
     position = 'end',
     variant = 'small',
     siblingCount,
@@ -111,6 +108,8 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
     props: inProps,
     name: 'ESSwiperPagination'
   });
+
+  const { direction, from, to, active, setActiveSlide } = useSwiperContext();
 
   const name = useMemo(() => `pagination-${SwiperPagination.count++}`, []);
   const transition: { transitionDuration?: string } =
@@ -135,9 +134,7 @@ export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number
   }, [from, to, active, siblingCount]);
 
   const onSlideChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(+event.target.value);
-    }
+    setActiveSlide(+event.target.value);
   };
 
   if (to <= from) {

@@ -63,8 +63,8 @@ import {
 } from './components/Spinner';
 import {
   SwiperButtonClassKey,
+  SwiperButtonProps,
   SwiperClassKey,
-  SwiperPaginationBaseProps,
   SwiperPaginationClassKey,
   SwiperPaginationProps,
   SwiperProps
@@ -120,7 +120,8 @@ declare module '@mui/material/styles/props' {
     ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingProps;
     ESSpinnerFadingRing: SpinnerFadingRingProps;
     ESSpinnerRing: SpinnerRingProps;
-    ESSwiper: SwiperProps<SwiperPaginationBaseProps>;
+    ESSwiper: SwiperProps;
+    ESSwiperButton: SwiperButtonProps;
     ESSwiperPagination: SwiperPaginationProps;
     ESTableActions: TableActionsProps;
   }
@@ -164,6 +165,7 @@ declare module '@mui/material/styles/components' {
       styleOverrides?: ComponentsOverrides['ESSwiper'];
     };
     ESSwiperButton?: {
+      defaultProps?: ComponentsProps['ESSwiperButton'];
       styleOverrides?: ComponentsOverrides['ESSwiperButton'];
     };
     ESSwiperPagination?: {

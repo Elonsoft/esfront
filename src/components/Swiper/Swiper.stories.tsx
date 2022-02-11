@@ -1,10 +1,9 @@
-import { SwiperButtonProps } from './Swiper.types';
-
 import { Story } from '@storybook/react';
 
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
+import { useSwiperContext } from './Swiper.context';
 import { Swiper, SwiperPagination } from '.';
 
 import { IconChevronLeft, IconChevronRight } from '../../icons';
@@ -14,22 +13,23 @@ const Image: React.FC<{ src: string; width?: string }> = ({ src, width }) => {
 };
 
 export const Demo: Story = ({
-  PaginationPropsPosition,
-  PaginationPropsVariant,
-  PaginationPropsSiblingCount,
-  PaginationPropsTransitionDuration,
+  SwiperPaginationPosition,
+  SwiperPaginationVariant,
+  SwiperPaginationSiblingCount,
+  SwiperPaginationTransitionDuration,
   ...args
 }) => {
   return (
     <Swiper
       {...args}
-      pagination={SwiperPagination}
-      PaginationProps={{
-        position: PaginationPropsPosition,
-        variant: PaginationPropsVariant,
-        siblingCount: PaginationPropsSiblingCount,
-        transitionDuration: PaginationPropsTransitionDuration
-      }}
+      pagination={
+        <SwiperPagination
+          position={SwiperPaginationPosition}
+          variant={SwiperPaginationVariant}
+          siblingCount={SwiperPaginationSiblingCount}
+          transitionDuration={SwiperPaginationTransitionDuration}
+        />
+      }
     >
       <Image src="/swiper/1.png" />
       <Image src="/swiper/2.png" width="320px" />
@@ -48,10 +48,10 @@ export const Demo: Story = ({
 };
 
 export const Vertical: Story = ({
-  PaginationPropsPosition,
-  PaginationPropsVariant,
-  PaginationPropsSiblingCount,
-  PaginationPropsTransitionDuration,
+  SwiperPaginationPosition,
+  SwiperPaginationVariant,
+  SwiperPaginationSiblingCount,
+  SwiperPaginationTransitionDuration,
   ...args
 }) => {
   return (
@@ -59,13 +59,14 @@ export const Vertical: Story = ({
       <Swiper
         {...args}
         direction="vertical"
-        pagination={SwiperPagination}
-        PaginationProps={{
-          position: PaginationPropsPosition,
-          variant: PaginationPropsVariant,
-          siblingCount: PaginationPropsSiblingCount,
-          transitionDuration: PaginationPropsTransitionDuration
-        }}
+        pagination={
+          <SwiperPagination
+            position={SwiperPaginationPosition}
+            variant={SwiperPaginationVariant}
+            siblingCount={SwiperPaginationSiblingCount}
+            transitionDuration={SwiperPaginationTransitionDuration}
+          />
+        }
       >
         <Image src="/swiper/1.png" />
         <Image src="/swiper/2.png" />
@@ -85,34 +86,52 @@ export const Vertical: Story = ({
 };
 
 const CustomizationButton = styled(IconButton)<{ prev?: boolean; next?: boolean }>(({ theme, prev, next }) => ({
-  backdropFilter: 'blur(10px)',
-  backgroundColor: theme.palette.white.A600,
-  color: theme.palette.black[500],
-  padding: 4,
-
-  '&:hover': {
-    backgroundColor: theme.palette.white.A600
-  },
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
 
   ...(prev && {
     left: 8
   }),
   ...(next && {
     right: 8
-  })
+  }),
+
+  '&.MuiIconButton-root': {
+    backdropFilter: 'blur(10px)',
+    backgroundColor: theme.palette.white.A600,
+    color: theme.palette.black[500],
+    padding: 4,
+
+    '&:hover': {
+      backgroundColor: theme.palette.white.A600
+    }
+  }
 }));
 
-const CustomizationButtonPrev: React.FC<SwiperButtonProps> = ({ className, label, onClick }) => {
+const CustomizationButtonPrev: React.FC = () => {
+  const { active, setActiveSlide } = useSwiperContext();
+
+  const onClick = () => {
+    setActiveSlide(active - 1);
+  };
+
   return (
-    <CustomizationButton className={className} prev onClick={onClick} aria-label={label}>
+    <CustomizationButton prev onClick={onClick}>
       <IconChevronLeft />
     </CustomizationButton>
   );
 };
 
-const CustomizationButtonNext: React.FC<SwiperButtonProps> = ({ className, label, onClick }) => {
+const CustomizationButtonNext: React.FC = () => {
+  const { active, setActiveSlide } = useSwiperContext();
+
+  const onClick = () => {
+    setActiveSlide(active + 1);
+  };
+
   return (
-    <CustomizationButton className={className} next onClick={onClick} aria-label={label}>
+    <CustomizationButton next onClick={onClick}>
       <IconChevronRight />
     </CustomizationButton>
   );
@@ -124,7 +143,7 @@ export const Customization: Story = (args) => {
   };
 
   return (
-    <Swiper {...args} buttonPrev={CustomizationButtonPrev} buttonNext={CustomizationButtonNext} gap={8}>
+    <Swiper {...args} buttonPrev={<CustomizationButtonPrev />} buttonNext={<CustomizationButtonNext />} gap={8}>
       <Image src="/swiper/2-1.png" />
       <Image src="/swiper/2-2.png" />
       <Image src="/swiper/2-3.png" />
