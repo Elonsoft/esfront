@@ -1,47 +1,18 @@
-import { ComponentType, ReactNode, Ref } from 'react';
+import React, { ReactNode, Ref } from 'react';
 
 import { SwiperClasses } from './Swiper.classes';
-import { SwiperPaginationClasses } from './SwiperPagination.classes';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
 export type SwiperDirection = 'horizontal' | 'vertical';
 export type SwiperAlignment = 'center' | 'start';
 
-export interface SwiperButtonProps {
-  /** Class applied to the root element. */
-  className?: string;
-  /** Text for the aria-label. */
-  label?: string;
-  /** Callback fired when the button is clicked.*/
-  onClick: () => void;
-}
-
-export type SwiperPaginationBaseProps = {
-  /** Class applied to the root element. */
-  className?: string;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<SwiperPaginationClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
-  /** The swiper direction. */
-  direction: SwiperDirection;
-  /** Index of active slide. */
-  active: number;
-  /** Start index for pagination. */
-  from: number;
-  /** End index for pagination. */
-  to: number;
-  /** Callback fired when active slide changes through pagination. */
-  onChange?: (index: number) => void;
-};
-
 export interface SwiperImperativeActions {
   /** Set active slide by its index. */
   setActiveSlide: (index: number) => void;
 }
 
-export interface SwiperProps<P extends SwiperPaginationBaseProps> {
+export interface SwiperProps {
   children: ReactNode;
   ref?: Ref<HTMLDivElement>;
 
@@ -92,22 +63,9 @@ export interface SwiperProps<P extends SwiperPaginationBaseProps> {
   onPaginationRangeChange?: (from: number, to: number) => void;
 
   /** The component used for the prev button. */
-  buttonPrev?: ComponentType<SwiperButtonProps> | null;
-  /** Text for the prev button aria-label. */
-  labelButtonPrev?: string;
+  buttonPrev?: React.ReactNode | null;
   /** The component used for the next button. */
-  buttonNext?: ComponentType<SwiperButtonProps> | null;
-  /** Text for the next button aria-label. */
-  labelButtonNext?: string;
-
-  /**
-   * Count of slides to scroll when pressing a button.
-   * @default 1
-   */
-  buttonScrollDistance?: number;
-
+  buttonNext?: React.ReactNode | null;
   /** The component used for the pagination. */
-  pagination?: ComponentType<P> | null;
-  /** Props applied to the pagination component. */
-  PaginationProps?: Partial<P>;
+  pagination?: React.ReactNode | null;
 }

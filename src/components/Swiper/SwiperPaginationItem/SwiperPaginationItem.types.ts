@@ -1,7 +1,8 @@
-import { SwiperPaginationProps } from './SwiperPagination.types';
+import { SwiperPaginationProps } from '../SwiperPagination';
 
 export interface SwiperPaginationItemProps {
   classes?: SwiperPaginationProps['classes'];
+
   index: number;
   active: number;
   from: number;

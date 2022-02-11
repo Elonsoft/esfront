@@ -30,6 +30,7 @@ export type SwiperPaginationClasses = {
   /** Styles applied to the bullet element if it is at the end of visible siblings. */
   bulletSmall: string;
 };
+
 export type SwiperPaginationClassKey = keyof SwiperPaginationClasses;
 
 export function getSwiperPaginationUtilityClass(slot: string): string {

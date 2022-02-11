@@ -1,7 +1,7 @@
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
-import { SwiperProps } from '../Swiper';
+import { SwiperButtonProps } from '../Swiper';
 import { TableActionsProps } from '../TableActions';
 
 export interface Localization {
@@ -18,8 +18,8 @@ export interface Localization {
     ESFormatSize: {
       defaultProps: Pick<FormatSizeProps, 'metricUnits' | 'binaryUnits'>;
     };
-    ESSwiper: {
-      defaultProps: Pick<SwiperProps<any>, 'labelButtonPrev' | 'labelButtonNext'>;
+    ESSwiperButton: {
+      defaultProps: Pick<SwiperButtonProps, 'labelPrev' | 'labelNext'>;
     };
     ESTableActions: {
       defaultProps: Pick<TableActionsProps, 'label'>;
@@ -53,10 +53,10 @@ export const en: Localization = {
         labelOf: 'of'
       }
     },
-    ESSwiper: {
+    ESSwiperButton: {
       defaultProps: {
-        labelButtonPrev: 'Previous slide',
-        labelButtonNext: 'Next slide'
+        labelPrev: 'Previous slide',
+        labelNext: 'Next slide'
       }
     },
     ESTableActions: {
@@ -93,10 +93,10 @@ export const ru: Localization = {
         labelOf: 'из'
       }
     },
-    ESSwiper: {
+    ESSwiperButton: {
       defaultProps: {
-        labelButtonPrev: 'Предыдущий слайд',
-        labelButtonNext: 'Следующий слайд'
+        labelPrev: 'Предыдущий слайд',
+        labelNext: 'Следующий слайд'
       }
     },
     ESTableActions: {

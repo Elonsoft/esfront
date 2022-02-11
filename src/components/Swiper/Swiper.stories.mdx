@@ -55,24 +55,9 @@ import * as stories from './Swiper.stories';
         disable: true
       }
     },
-    buttonPrevLabel: {
-      table: {
-        category: 'Buttons'
-      }
-    },
     buttonNext: {
       table: {
         disable: true
-      }
-    },
-    buttonNextLabel: {
-      table: {
-        category: 'Buttons'
-      }
-    },
-    buttonScrollDistance: {
-      table: {
-        category: 'Buttons'
       }
     },
     pagination: {
@@ -80,13 +65,8 @@ import * as stories from './Swiper.stories';
         disable: true
       }
     },
-    PaginationProps: {
-      table: {
-        disable: true
-      }
-    },
-    PaginationPropsPosition: {
-      name: 'PaginationProps.position',
+    SwiperPaginationPosition: {
+      name: 'SwiperPagination.position',
       description: 'The position of the `SwiperPagination` component.',
       table: {
         category: 'Pagination',
@@ -95,8 +75,8 @@ import * as stories from './Swiper.stories';
       options: ['start', 'end'],
       control: { type: 'select' }
     },
-    PaginationPropsVariant: {
-      name: 'PaginationProps.variant',
+    SwiperPaginationVariant: {
+      name: 'SwiperPagination.variant',
       description: 'The variant of the `SwiperPagination` component.',
       table: {
         category: 'Pagination',
@@ -105,16 +85,16 @@ import * as stories from './Swiper.stories';
       options: ['small', 'long', 'big'],
       control: { type: 'select' }
     },
-    PaginationPropsSiblingCount: {
-      name: 'PaginationProps.siblingCount',
+    SwiperPaginationSiblingCount: {
+      name: 'SwiperPagination.siblingCount',
       description: 'Number of always visible items before and after active slide.',
       table: {
         category: 'Pagination'
       },
       control: { type: 'number' }
     },
-    PaginationPropsTransitionDuration: {
-      name: 'PaginationProps.transitionDuration',
+    SwiperPaginationTransitionDuration: {
+      name: 'SwiperPagination.transitionDuration',
       description: 'The length of time in ms a transition animation should take to complete.',
       table: {
         category: 'Pagination',
