@@ -16,53 +16,40 @@ const enterKeyframe = keyframes`
 export const createIconButton: Component<'MuiIconButton'> = (theme) => {
   return {
     defaultProps: {
-      size: 'md',
-      color: 'default'
+      size: '40',
+      color: 'monoA'
     },
     styleOverrides: {
       root: {
         padding: 0,
-        '& .MuiTouchRipple-root': {
-          transitionDuration: `${theme.transitions.duration.short}ms`,
-          color: theme.palette.monoA.A150
+        '&:not(.MuiIconButton-colorInherit)': {
+          '& .MuiTouchRipple-root': {
+            transitionDuration: `${theme.transitions.duration.short}ms`
+          },
+          '& .MuiTouchRipple-rippleVisible': {
+            animationName: `${enterKeyframe} !important`,
+            opacity: '1 !important'
+          }
         },
-        '& .MuiTouchRipple-rippleVisible': {
-          animationName: `${enterKeyframe} !important`,
-          opacity: '1 !important'
-        },
-        '&.MuiIconButton-sizeXs': {
+        '&.MuiIconButton-size24': {
           height: 24,
           width: 24
         },
-        '&.MuiIconButton-sizeSm': {
+        '&.MuiIconButton-size32': {
           height: 32,
           width: 32
         },
-        '&.MuiIconButton-sizeMd': {
+        '&.MuiIconButton-size40': {
           height: 40,
           width: 40
         },
-        '&.MuiIconButton-sizeLg': {
+        '&.MuiIconButton-size48': {
           height: 48,
           width: 48
         },
-        '&.MuiIconButton-sizeXl': {
+        '&.MuiIconButton-size56': {
           height: 56,
           width: 56
-        },
-        '&, &:hover, &:active': {
-          backgroundColor: 'transparent',
-          color: theme.palette.monoA.A700
-        },
-        '&:hover': {
-          '& .MuiTouchRipple-root': {
-            backgroundColor: theme.palette.monoA.A50
-          }
-        },
-        '&:focus-visible': {
-          '& .MuiTouchRipple-root': {
-            color: theme.palette.monoA.A200
-          }
         },
         '&.MuiIconButton-colorPrimary': {
           '&, &:hover, &:active': {
@@ -115,6 +102,25 @@ export const createIconButton: Component<'MuiIconButton'> = (theme) => {
           '&:focus-visible': {
             '& .MuiTouchRipple-root': {
               color: theme.palette.error.A200
+            }
+          }
+        },
+        '&.MuiIconButton-colorMonoA': {
+          '&, &:hover, &:active': {
+            backgroundColor: 'transparent',
+            color: theme.palette.monoA.A700
+          },
+          '& .MuiTouchRipple-root': {
+            color: theme.palette.monoA.A150
+          },
+          '&:hover': {
+            '& .MuiTouchRipple-root': {
+              backgroundColor: theme.palette.monoA.A50
+            }
+          },
+          '&:focus-visible': {
+            '& .MuiTouchRipple-root': {
+              color: theme.palette.monoA.A200
             }
           }
         },
