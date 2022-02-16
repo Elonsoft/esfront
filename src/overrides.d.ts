@@ -43,6 +43,7 @@ import {
   FileInfoNameProps,
   FileInfoProps
 } from './components/FileInfo';
+import { FlagClassKey } from './components/Flags';
 import { FormatDateProps } from './components/FormatDate';
 import { FormatSizeProps } from './components/FormatSize';
 import { KbdClassKey, KbdProps } from './components/Kbd';
@@ -139,6 +140,7 @@ declare module '@mui/material/styles/overrides' {
     ESFileInfoMeta: FileInfoMetaClassKey;
     ESFileInfoMetaSeparator: FileInfoMetaSeparatorClassKey;
     ESFileInfoName: FileInfoNameClassKey;
+    ESFlag: FlagClassKey;
     ESKbd: KbdClassKey;
     ESLink: LinkClassKey;
     ESSpinnerDashRing: SpinnerDashRingClassKey;
@@ -182,35 +184,38 @@ declare module '@mui/material/styles/components' {
     };
     ESFileIcon?: {
       defaultProps?: ComponentsProps['ESFileIcon'];
-      styleOverrides?: ComponentsProps['ESFileIcon'];
+      styleOverrides?: ComponentsOverrides['ESFileIcon'];
     };
     ESFileIconBadge?: {
       defaultProps?: ComponentsProps['ESFileIconBadge'];
-      styleOverrides?: ComponentsProps['ESFileIconBadge'];
+      styleOverrides?: ComponentsOverrides['ESFileIconBadge'];
     };
     ESFileIconText?: {
       defaultProps?: ComponentsProps['ESFileIconText'];
-      styleOverrides?: ComponentsProps['ESFileIconText'];
+      styleOverrides?: ComponentsOverrides['ESFileIconText'];
     };
     ESFileInfo?: {
       defaultProps?: ComponentsProps['ESFileInfo'];
-      styleOverrides?: ComponentsProps['ESFileInfo'];
+      styleOverrides?: ComponentsOverrides['ESFileInfo'];
     };
     ESFileInfoContent?: {
       defaultProps?: ComponentsProps['ESFileInfoContent'];
-      styleOverrides?: ComponentsProps['ESFileInfoContent'];
+      styleOverrides?: ComponentsOverrides['ESFileInfoContent'];
     };
     ESFileInfoMeta?: {
       defaultProps?: ComponentsProps['ESFileInfoMeta'];
-      styleOverrides?: ComponentsProps['ESFileInfoMeta'];
+      styleOverrides?: ComponentsOverrides['ESFileInfoMeta'];
     };
     ESFileInfoMetaSeparator?: {
       defaultProps?: ComponentsProps['ESFileInfoMetaSeparator'];
-      styleOverrides?: ComponentsProps['ESFileInfoMetaSeparator'];
+      styleOverrides?: ComponentsOverrides['ESFileInfoMetaSeparator'];
     };
     ESFileInfoName?: {
       defaultProps?: ComponentsProps['ESFileInfoName'];
-      styleOverrides?: ComponentsProps['ESFileInfoName'];
+      styleOverrides?: ComponentsOverrides['ESFileInfoName'];
+    };
+    ESFlag?: {
+      styleOverrides?: ComponentsOverrides['ESFlag'];
     };
     ESFormatDate?: {
       defaultProps?: ComponentsProps['ESFormatDate'];
