@@ -4,6 +4,7 @@ export * from './Dropzone';
 export * from './EmptyState';
 export * from './FileIcon';
 export * from './FileInfo';
+export * from './Flags';
 export * from './FormatDate';
 export * from './FormatSize';
 export * from './Kbd';
