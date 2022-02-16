@@ -17,17 +17,19 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
   return {
     defaultProps: {
       disableElevation: true,
-      size: 'md'
+      size: '40'
     },
     styleOverrides: {
       root: {
         minWidth: 0,
-        '& .MuiTouchRipple-root': {
-          transitionDuration: `${theme.transitions.duration.short}ms`
-        },
-        '& .MuiTouchRipple-rippleVisible': {
-          animationName: `${enterKeyframe} !important`,
-          opacity: '1 !important'
+        '&:not(.MuiButton-colorInherit)': {
+          '& .MuiTouchRipple-root': {
+            transitionDuration: `${theme.transitions.duration.short}ms`
+          },
+          '& .MuiTouchRipple-rippleVisible': {
+            animationName: `${enterKeyframe} !important`,
+            opacity: '1 !important'
+          }
         },
         '&.Mui-disabled': {
           '&.MuiButton-text, &.MuiButton-outlined, &.MuiButton-contained': {
@@ -41,7 +43,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             backgroundColor: theme.palette.monoA.A75
           }
         },
-        '&.MuiButton-sizeXs': {
+        '&.MuiButton-size24': {
           ...typography.body100,
           fontWeight: 400,
           height: 24,
@@ -59,7 +61,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             margin: '0 -4px'
           }
         },
-        '&.MuiButton-sizeSm': {
+        '&.MuiButton-size32': {
           height: 32,
           padding: '0 12px',
           '& .MuiButton-startIcon': {
@@ -74,7 +76,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             margin: '0 -8px'
           }
         },
-        '&.MuiButton-sizeMd': {
+        '&.MuiButton-size40': {
           height: 40,
           padding: '0 16px',
           '& .MuiButton-startIcon': {
@@ -101,7 +103,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             }
           }
         },
-        '&.MuiButton-sizeLg': {
+        '&.MuiButton-size48': {
           height: 48,
           padding: '0 16px',
           '& .MuiButton-startIcon': {
@@ -128,7 +130,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             }
           }
         },
-        '&.MuiButton-sizeXl': {
+        '&.MuiButton-size56': {
           height: 56,
           padding: '0 20px',
           '& .MuiButton-startIcon': {
@@ -157,10 +159,12 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
         }
       },
       text: {
-        '&, &:hover, &:active': {
-          backgroundColor: 'transparent'
+        '&:not(.MuiButton-colorInherit)': {
+          '&, &:hover, &:active': {
+            backgroundColor: 'transparent'
+          }
         },
-        '&.MuiButton-textInherit': {
+        '&.MuiButton-textMonoA': {
           '&, &:hover, &:active': {
             color: theme.palette.monoA.A700
           },
@@ -234,13 +238,16 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
         }
       },
       outlined: {
-        '&, &:hover, &:active': {
-          backgroundColor: 'transparent'
+        border: 0,
+        '&:not(.MuiButton-colorInherit)': {
+          '&, &:hover, &:active': {
+            backgroundColor: 'transparent'
+          }
         },
         '&, &:hover, &:active, &:focus': {
           boxShadow: `inset 0px 0px 0px 1px ${theme.palette.monoA.A200}`
         },
-        '&.MuiButton-outlinedInherit': {
+        '&.MuiButton-outlinedMonoA': {
           border: 0,
           '&, &:hover, &:active': {
             color: theme.palette.monoA.A700
@@ -318,20 +325,22 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
         }
       },
       contained: {
-        '& .MuiTouchRipple-root': {
-          color: theme.palette.monoB.A150
-        },
-        '&:hover': {
+        '&:not(.MuiButton-colorInherit)': {
           '& .MuiTouchRipple-root': {
-            backgroundColor: theme.palette.monoB.A50
+            color: theme.palette.monoB.A150
+          },
+          '&:hover': {
+            '& .MuiTouchRipple-root': {
+              backgroundColor: theme.palette.monoB.A50
+            }
+          },
+          '&:focus-visible': {
+            '& .MuiTouchRipple-root': {
+              color: theme.palette.monoB.A200
+            }
           }
         },
-        '&:focus-visible': {
-          '& .MuiTouchRipple-root': {
-            color: theme.palette.monoB.A200
-          }
-        },
-        '&.MuiButton-containedInherit': {
+        '&.MuiButton-containedMonoA': {
           '&, &:hover, &:active': {
             backgroundColor: theme.palette.monoA.A100,
             color: theme.palette.monoA.A800

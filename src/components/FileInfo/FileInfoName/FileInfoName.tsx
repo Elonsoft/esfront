@@ -65,7 +65,7 @@ export const FileInfoName: FC<FileInfoNameProps> = (inProps) => {
     <FileInfoNameRoot className={clsx(classes.root, className)}>
       {children}
       {!!onDelete && (
-        <FileInfoNameButton className={classes.button} sx={sx} size="xs" onClick={onDelete} aria-label={labelDelete}>
+        <FileInfoNameButton className={classes.button} sx={sx} size="24" onClick={onDelete} aria-label={labelDelete}>
           {iconDelete}
         </FileInfoNameButton>
       )}

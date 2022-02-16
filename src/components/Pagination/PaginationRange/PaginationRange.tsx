@@ -122,8 +122,8 @@ export const PaginationRange: FC<PaginationRangeProps> = (inProps) => {
 
       <PaginationRangeButton
         className={clsx(classes.button, className)}
-        color="inherit"
-        size="sm"
+        color="monoA"
+        size="32"
         aria-expanded={open ? 'true' : undefined}
         endIcon={iconItemsPerPage}
         onClick={onClickListItem}

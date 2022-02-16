@@ -285,7 +285,7 @@ export const PaginationPages: FC<PaginationPagesProps> = (inProps) => {
                   className={classes.button}
                   onClick={item.onClick}
                   disabled={item.disabled}
-                  size="sm"
+                  size="32"
                   aria-label={`${item.type === 'next' ? labelNextPage : labelPrevPage}`}
                 >
                   {item.type === 'previous' ? iconPrevPage : iconNextPage}
