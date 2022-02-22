@@ -31,10 +31,17 @@ const PaginationRoot = styled('div', {
   overridesResolver: (props, styles) => styles.root
 })(() => ({
   display: 'flex',
-  justifyContent: 'space-between',
   alignItems: 'center',
   flexWrap: 'wrap',
-  gap: 12
+  gap: 12,
+  '& > *:first-of-type': {
+    flexGrow: 0.5,
+    marginLeft: 'auto'
+  },
+  '& > *:last-of-type': {
+    flexGrow: 0.5,
+    justifyContent: 'flex-end'
+  }
 }));
 
 export const Pagination: FC<PaginationProps> = (inProps) => {
