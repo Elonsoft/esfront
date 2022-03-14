@@ -10,6 +10,7 @@ import { marine } from './marine';
 import { monoA } from './monoA';
 import { monoB } from './monoB';
 import { orange } from './orange';
+import { overlay } from './overlay';
 import { pink } from './pink';
 import { primary } from './primary';
 import { purple } from './purple';
@@ -26,6 +27,7 @@ import { yellow } from './yellow';
 
 export const dark = {
   common,
+  overlay,
   error,
   greyscale,
   info,
