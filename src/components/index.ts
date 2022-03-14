@@ -12,6 +12,7 @@ export * from './FormatSize';
 export * from './Kbd';
 export * from './Link';
 export * from './locale';
+export * from './MenuItem';
 export * from './Pagination';
 export * from './Spinner';
 export * from './Swiper';

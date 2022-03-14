@@ -7,6 +7,7 @@ export const createTypography = (theme: Theme) => {
 
   const body400 = {
     fontSize: pxToRem(20),
+    fontWeight: 400,
     letterSpacing: pxToRem(0.5),
     lineHeight: pxToRem(32),
     textDecorationThickness: pxToRem(2),
@@ -15,6 +16,7 @@ export const createTypography = (theme: Theme) => {
 
   const body300 = {
     fontSize: pxToRem(18),
+    fontWeight: 400,
     letterSpacing: pxToRem(0.1),
     lineHeight: pxToRem(28),
     textDecorationThickness: pxToRem(2),
@@ -23,6 +25,7 @@ export const createTypography = (theme: Theme) => {
 
   const body200 = {
     fontSize: pxToRem(16),
+    fontWeight: 400,
     letterSpacing: pxToRem(0.5),
     lineHeight: pxToRem(24),
     textDecorationThickness: pxToRem(1),
@@ -31,6 +34,7 @@ export const createTypography = (theme: Theme) => {
 
   const body100 = {
     fontSize: pxToRem(14),
+    fontWeight: 400,
     letterSpacing: pxToRem(0.25),
     lineHeight: pxToRem(20),
     textDecorationThickness: pxToRem(1),
@@ -39,6 +43,7 @@ export const createTypography = (theme: Theme) => {
 
   const caption = {
     fontSize: pxToRem(12),
+    fontWeight: 400,
     letterSpacing: pxToRem(0.4),
     lineHeight: pxToRem(16),
     textDecorationThickness: pxToRem(1),
