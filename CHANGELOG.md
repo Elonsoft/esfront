@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/Elonsoft/elonkit-react/compare/v0.3.0...v0.4.0) (2022-03-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* move overlay hues to separate palette
+* **Button:** change size and color props
+* **Swiper:** change interaction with subcomponents
+* add props for icons customization
+
+### Features
+
+* **AudioPlayer:** add new component ([60050d4](https://github.com/Elonsoft/elonkit-react/commit/60050d491938ec87a7803fc47632d36e67342543))
+* **Dialog:** add new component ([8aa01b9](https://github.com/Elonsoft/elonkit-react/commit/8aa01b9b99f5e231e08359596b4c11331010499f))
+* add A25 hues ([f4982dc](https://github.com/Elonsoft/elonkit-react/commit/f4982dc5cf14a6a428d5e263217f34f6f7797652))
+* move overlay hues to separate palette ([587fa10](https://github.com/Elonsoft/elonkit-react/commit/587fa10987fe027340d0b4e9986c93c9fa559453))
+* **Button:** change size and color props ([9134313](https://github.com/Elonsoft/elonkit-react/commit/91343131e80155bf67bfc93ecdf832122463dbb7))
+* **Flags:** add new components ([74d1a7d](https://github.com/Elonsoft/elonkit-react/commit/74d1a7d3decd09ef21a9d0aafc6d92222b2653db))
+* **Pagination:** horizontally center subcomponents on small screen ([da10d5c](https://github.com/Elonsoft/elonkit-react/commit/da10d5cbc678483466bb3e0d70ca416d825d0f36))
+* **Swiper:** change interaction with subcomponents ([87686d4](https://github.com/Elonsoft/elonkit-react/commit/87686d4a35bd9b229aa93eabbcbf3e4b36fe0798))
+* add medium and bold variants for body and caption typography ([313805b](https://github.com/Elonsoft/elonkit-react/commit/313805b66640e0e4380fb8ffa063915ff78e243f))
+* add props for icons customization ([cf2a976](https://github.com/Elonsoft/elonkit-react/commit/cf2a97666893fdc0a2383109a32f6e6d4cd4de9b))
+* **Link:** add new component ([9d9bf08](https://github.com/Elonsoft/elonkit-react/commit/9d9bf08c944fce9d80b47379be4f01af3841a78b))
+* add shadow palette ([ac75b6e](https://github.com/Elonsoft/elonkit-react/commit/ac75b6e33c0704d67a6d7d3b9c632aaa7c0488e1))
+* add sx prop support ([9c2a82c](https://github.com/Elonsoft/elonkit-react/commit/9c2a82c16476d76238e92e4d231d6e0588ee380a))
+
 ## [0.3.0](https://github.com/Elonsoft/elonkit-react/compare/v0.2.2...v0.3.0) (2022-01-13)
 
 
