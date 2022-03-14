@@ -1,5 +1,6 @@
-export const successPalette = {
+export const success = {
   500: '#47d6a3',
+  A25: 'rgba(71, 214, 163, 0.02)',
   A50: 'rgba(71, 214, 163, 0.04)',
   A75: 'rgba(71, 214, 163, 0.06)',
   A100: 'rgba(71, 214, 163, 0.08)',
@@ -12,9 +13,4 @@ export const successPalette = {
   A700: 'rgba(71, 214, 163, 0.58)',
   A800: 'rgba(71, 214, 163, 0.7)',
   A900: 'rgba(71, 214, 163, 0.86)'
-};
-
-export const success = {
-  ...successPalette,
-  main: successPalette[500]
 };
