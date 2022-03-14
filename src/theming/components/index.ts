@@ -36,6 +36,17 @@ export {
 import { createTooltip } from './tooltip';
 export { createTooltip } from './tooltip';
 
+import {
+  createList,
+  createListItem,
+  createListItemButton,
+  createListItemIcon,
+  createListItemText,
+  createMenu,
+  createMenuItem
+} from './menu';
+export { createMenu } from './menu';
+
 export const createComponents = (theme: Theme, typography: TypographyOptions) => {
   const MuiButton = createButton(theme, typography);
   const MuiCheckbox = createCheckbox(theme, typography);
@@ -53,6 +64,14 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
   const MuiTextField = createTextField(theme, typography);
   const MuiTooltip = createTooltip(theme, typography);
 
+  const MuiMenu = createMenu(theme, typography);
+  const MuiMenuItem = createMenuItem(theme, typography);
+  const MuiList = createList(theme, typography);
+  const MuiListItem = createListItem(theme, typography);
+  const MuiListItemIcon = createListItemIcon(theme, typography);
+  const MuiListItemText = createListItemText(theme, typography);
+  const MuiListItemButton = createListItemButton(theme, typography);
+
   const components: Components = {
     MuiButton,
     MuiCheckbox,
@@ -68,8 +87,15 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
     MuiOutlinedInput,
     MuiSelect,
     MuiTextField,
+    MuiTooltip,
 
-    MuiTooltip
+    MuiMenu,
+    MuiMenuItem,
+    MuiList,
+    MuiListItem,
+    MuiListItemButton,
+    MuiListItemIcon,
+    MuiListItemText
   };
   return components;
 };

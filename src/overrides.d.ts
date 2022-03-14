@@ -73,6 +73,7 @@ import { FormatDateProps } from './components/FormatDate';
 import { FormatSizeProps } from './components/FormatSize';
 import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinkClassKey, LinkProps } from './components/Link';
+import { MenuItemClassKey, MenuItemProps } from './components/MenuItem';
 import {
   PaginationClassKey,
   PaginationPagesClassKey,
@@ -166,6 +167,7 @@ declare module '@mui/material/styles/props' {
     ESFormatSize: FormatSizeProps;
     ESKbd: KbdProps;
     ESLink: LinkProps;
+    ESMenuItem: MenuItemProps;
     ESPagination: PaginationProps;
     ESPaginationPages: PaginationPagesProps;
     ESPaginationRange: PaginationRangeProps;
@@ -209,6 +211,7 @@ declare module '@mui/material/styles/overrides' {
     ESFlag: FlagClassKey;
     ESKbd: KbdClassKey;
     ESLink: LinkClassKey;
+    ESMenuItem: MenuItemClassKey;
     ESPagination: PaginationClassKey;
     ESPaginationPages: PaginationPagesClassKey;
     ESPaginationRange: PaginationRangeClassKey;
@@ -347,6 +350,10 @@ declare module '@mui/material/styles/components' {
     ESLink?: {
       defaultProps?: ComponentsProps['ESLink'];
       styleOverrides?: ComponentsOverrides['ESLink'];
+    };
+    ESMenuItem?: {
+      defaultProps?: ComponentsProps['ESMenuItem'];
+      styleOverrides?: ComponentsOverrides['ESMenuItem'];
     };
     ESPagination?: {
       defaultProps?: ComponentsProps['ESPagination'];
