@@ -15,6 +15,7 @@ const PALETTES = [
   'greyscale',
   'surface',
   'common',
+  'overlay',
   'black',
   'white',
   'red',

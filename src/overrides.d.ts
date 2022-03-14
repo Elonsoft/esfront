@@ -99,6 +99,12 @@ export interface IShadowPalette {
   900: string;
 }
 
+export interface IOverlayPalette {
+  modal: string;
+  filter: string;
+  gallery: string;
+}
+
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
     ESDropzone: DropzoneProps;
@@ -338,6 +344,7 @@ declare module '@mui/material/styles' {
       left: IShadowPalette;
       right: IShadowPalette;
     };
+    overlay: IOverlayPalette;
   }
 
   interface PaletteOptions {
@@ -366,6 +373,7 @@ declare module '@mui/material/styles' {
       left: IShadowPalette;
       right: IShadowPalette;
     }>;
+    overlay?: IOverlayPalette;
   }
 
   interface BreakpointOverrides {
@@ -423,9 +431,6 @@ declare module '@mui/material/styles/createPalette' {
   interface CommonColors {
     background: string;
     background2: string;
-    overlayModal: string;
-    overlayFilter: string;
-    overlayGallery: string;
     link: string;
     linkVisited: string;
     switch: string;
