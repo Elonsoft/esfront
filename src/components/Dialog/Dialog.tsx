@@ -200,16 +200,17 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
 
   const classes = useUtilityClasses(ownerState);
 
-  const paperRef = useRef<HTMLDivElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const backdropClick = useRef<boolean | null>(null);
 
   const onMouseDown = (event: React.MouseEvent<HTMLElement>) => {
     // We don't want to close the dialog when clicking the dialog content.
     // Make sure the event starts and ends on the same DOM element.
-    if (paperRef.current && paperRef.current.contains(event.target as HTMLElement)) {
-      backdropClick.current = false;
-    } else {
+
+    if (wrapperRef.current && wrapperRef.current === event.target) {
       backdropClick.current = true;
+    } else {
+      backdropClick.current = false;
     }
   };
 
@@ -250,6 +251,7 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
       <TransitionComponent appear in={open} timeout={transitionDuration} role="presentation" {...TransitionProps}>
         <DialogContainer className={classes.container} onMouseDown={onMouseDown}>
           <DialogWrapper
+            ref={wrapperRef}
             className={classes.wrapper}
             ownerState={ownerState}
             role="dialog"
@@ -258,7 +260,7 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
           >
             <DialogContent className={classes.content} ownerState={ownerState} style={{ maxWidth }}>
               {before}
-              <DialogPaper ref={paperRef} className={classes.paper} ownerState={ownerState}>
+              <DialogPaper className={classes.paper} ownerState={ownerState}>
                 {children}
               </DialogPaper>
               {after}
