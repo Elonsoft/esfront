@@ -1,4 +1,5 @@
 export { useDocumentEventListener } from './useDocumentEventListener';
+export { useDragOver } from './useDragOver';
 export { useIntersectionObserver } from './useIntersectionObserver';
 export { useLatest } from './useLatest';
 export { useOnLine } from './useOnLine';
