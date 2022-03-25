@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+/**
+ * @returns Event handlers for the target element and `isDragOver` state.
+ */
 export const useDragOver = () => {
   const [count, setCount] = useState(0);
 

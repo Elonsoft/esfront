@@ -10,10 +10,9 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { ButtonBase, Typography } from '@mui/material';
 
-import { useDragOver } from './useDragOver';
 import { validateFileType } from './validateFileType';
 
-import { useDocumentEventListener } from '../../hooks';
+import { useDocumentEventListener, useDragOver } from '../../hooks';
 
 type DropzoneOwnerState = {
   classes?: DropzoneProps['classes'];
