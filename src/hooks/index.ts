@@ -1,3 +1,4 @@
+export { useControlled } from './useControlled';
 export { useDocumentEventListener } from './useDocumentEventListener';
 export { useDragOver } from './useDragOver';
 export { useIntersectionObserver } from './useIntersectionObserver';
