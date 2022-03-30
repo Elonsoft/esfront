@@ -14,4 +14,5 @@ export * from './locale';
 export * from './Pagination';
 export * from './Spinner';
 export * from './Swiper';
+export * from './Switch';
 export * from './TableActions';

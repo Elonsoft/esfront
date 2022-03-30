@@ -79,6 +79,7 @@ import {
   SwiperPaginationProps,
   SwiperProps
 } from './components/Swiper';
+import { SwitchClassKey, SwitchProps } from './components/Switch';
 import { TableActionsClassKey, TableActionsProps } from './components/TableActions';
 
 export interface ISurfacePalette {
@@ -141,6 +142,7 @@ declare module '@mui/material/styles/props' {
     ESSpinnerFadingRing: SpinnerFadingRingProps;
     ESSpinnerRing: SpinnerRingProps;
     ESSwiper: SwiperProps;
+    ESSwitch: SwitchProps;
     ESSwiperButton: SwiperButtonProps;
     ESSwiperPagination: SwiperPaginationProps;
     ESTableActions: TableActionsProps;
@@ -173,6 +175,7 @@ declare module '@mui/material/styles/overrides' {
     ESSpinnerFadingRing: SpinnerFadingRingClassKey;
     ESSpinnerRing: SpinnerRingClassKey;
     ESSwiper: SwiperClassKey;
+    ESSwitch: SwitchClassKey;
     ESSwiperButton: SwiperButtonClassKey;
     ESSwiperPagination: SwiperPaginationClassKey;
     ESTableActions: TableActionsClassKey;
@@ -192,6 +195,10 @@ declare module '@mui/material/styles/components' {
     ESSwiper?: {
       defaultProps?: ComponentsProps['ESSwiper'];
       styleOverrides?: ComponentsOverrides['ESSwiper'];
+    };
+    ESSwitch?: {
+      defaultProps?: ComponentsProps['ESSwitch'];
+      styleOverrides?: ComponentsOverrides['ESSwitch'];
     };
     ESSwiperButton?: {
       defaultProps?: ComponentsProps['ESSwiperButton'];

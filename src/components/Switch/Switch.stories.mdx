@@ -1,0 +1,86 @@
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { Switch } from '.';
+
+<Meta
+  title="Components/Switch"
+  component={Switch}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    sx: {
+      table: {
+        disable: true
+      }
+    },
+    value: {
+      table: {
+        disable: true
+      }
+    },
+    name: {
+      table: {
+        disable: true
+      }
+    },
+    id: {
+      table: {
+        disable: true
+      }
+    },
+    autoFocus: {
+      table: {
+        disable: true
+      }
+    },
+    checked: {
+      table: {
+        disable: true
+      }
+    },
+    defaultChecked: {
+      table: {
+        disable: true
+      }
+    },
+    onChange: {
+      table: {
+        disable: true
+      }
+    }
+  }}
+/>
+
+# Switch
+
+Switches toggle the state of a single setting on or off.
+
+## Demos
+
+<Canvas>
+  <Story name="Demo">{(args, context) => <Switch {...args} />}</Story>
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-switch" story="page">
+      <code>Switch</code>
+    </LinkTo>
+  </li>
+</ul>
