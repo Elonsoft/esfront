@@ -461,6 +461,12 @@ declare module '@mui/material/Button' {
   }
 }
 
+declare module '@mui/material/Alert' {
+  interface AlertPropsColorOverrides {
+    monoA: true;
+  }
+}
+
 declare module '@mui/material/IconButton' {
   interface IconButtonPropsSizeOverrides {
     '24': true;

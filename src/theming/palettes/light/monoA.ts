@@ -13,5 +13,6 @@ export const monoA = {
   A700: 'rgba(0, 0, 0, 0.6)',
   A800: 'rgba(0, 0, 0, 0.72)',
   A900: 'rgba(0, 0, 0, 0.88)',
-  main: '#000'
+  main: '#000',
+  light: '#000'
 };

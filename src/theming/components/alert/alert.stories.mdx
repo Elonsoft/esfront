@@ -1,0 +1,107 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+
+import Button from '@mui/material/Button';
+
+import { IconCloseMd } from '../../../icons';
+
+<Meta
+  title="Overrides/Alert"
+  parameters={{
+    viewMode: 'canvas',
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    severity: {
+      options: ['success', 'warning', 'info', 'error'],
+      control: { type: 'select' }
+    },
+    color: {
+      options: ['monoA', 'success', 'warning', 'info', 'error'],
+      control: { type: 'select' }
+    },
+    title: {
+      defaultValue: '',
+      control: {
+        type: 'text'
+      }
+    },
+    text: {
+      control: {
+        type: 'text'
+      }
+    },
+    icon: {
+      defaultValue: true,
+      control: {
+        type: 'boolean'
+      }
+    },
+    action: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
+    closeButton: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    }
+  }}
+/>
+
+export const getText = (text, context) => {
+  return context.globals.locale === 'en' ? 'This is an alert' : 'Это предупреждение';
+};
+
+<Canvas>
+  <Story name="Alert">
+    {(args, context) => (
+      <Alert
+        color={args.color}
+        icon={args.icon ? undefined : false}
+        variant="standard"
+        severity={args.severity}
+        action={
+          args.closeButton ? (
+            <Button
+              disableFocus
+              color="inherit"
+              size="24"
+              sx={{
+                transitionDuration: '150ms',
+                '&.Mui-focusVisible .MuiTouchRipple-child': {
+                  borderRadius: '4px!important'
+                }
+              }}
+            >
+              <IconCloseMd />
+            </Button>
+          ) : null
+        }
+      >
+        {args.title && <AlertTitle>{args.title}</AlertTitle>}
+        {args.text || getText(args, context)}
+        {args.action && (
+          <div style={{ marginTop: '12px', paddingBottom: '8px' }}>
+            <Button
+              variant="contained"
+              size="32"
+              sx={{ mr: '8px', padding: '0 8px!important', color: 'monoA.A700' }}
+              color="monoA"
+            >
+              Кнопка
+            </Button>
+            <Button variant="text" size="32" sx={{ padding: '0 8px!important', color: 'monoA.A700' }} color="monoA">
+              Отмена
+            </Button>
+          </div>
+        )}
+      </Alert>
+    )}
+  </Story>
+</Canvas>

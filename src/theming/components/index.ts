@@ -2,6 +2,9 @@ import { Theme } from '@mui/material/styles';
 import { Components } from '@mui/material/styles/components';
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
+import { createAlert, createAlertTitle } from './alert';
+export { createAlert, createAlertTitle } from './alert';
+
 import { createButton } from './button';
 export { createButton } from './button';
 
@@ -37,6 +40,8 @@ import { createTooltip } from './tooltip';
 export { createTooltip } from './tooltip';
 
 export const createComponents = (theme: Theme, typography: TypographyOptions) => {
+  const MuiAlert = createAlert(theme, typography);
+  const MuiAlertTitle = createAlertTitle(theme, typography);
   const MuiButton = createButton(theme, typography);
   const MuiCheckbox = createCheckbox(theme, typography);
 
@@ -54,6 +59,8 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
   const MuiTooltip = createTooltip(theme, typography);
 
   const components: Components = {
+    MuiAlert,
+    MuiAlertTitle,
     MuiButton,
     MuiCheckbox,
 
