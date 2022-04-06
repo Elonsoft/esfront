@@ -50,6 +50,14 @@ import { FormatSizeProps } from './components/FormatSize';
 import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinkClassKey, LinkProps } from './components/Link';
 import {
+  PaginationClassKey,
+  PaginationPagesClassKey,
+  PaginationPagesProps,
+  PaginationProps,
+  PaginationRangeClassKey,
+  PaginationRangeProps
+} from './components/Pagination';
+import {
   SpinnerDashRingClassKey,
   SpinnerDashRingProps,
   SpinnerFadingBarsClassKey,
@@ -123,6 +131,9 @@ declare module '@mui/material/styles/props' {
     ESFormatSize: FormatSizeProps;
     ESKbd: KbdProps;
     ESLink: LinkProps;
+    ESPagination: PaginationProps;
+    ESPaginationPages: PaginationPagesProps;
+    ESPaginationRange: PaginationRangeProps;
     ESSpinnerDashRing: SpinnerDashRingProps;
     ESSpinnerFadingBars: SpinnerFadingBarsProps;
     ESSpinnerFadingDots: SpinnerFadingDotsProps;
@@ -152,6 +163,9 @@ declare module '@mui/material/styles/overrides' {
     ESFlag: FlagClassKey;
     ESKbd: KbdClassKey;
     ESLink: LinkClassKey;
+    ESPagination: PaginationClassKey;
+    ESPaginationPages: PaginationPagesClassKey;
+    ESPaginationRange: PaginationRangeClassKey;
     ESSpinnerDashRing: SpinnerDashRingClassKey;
     ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
     ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
@@ -242,6 +256,18 @@ declare module '@mui/material/styles/components' {
     ESLink?: {
       defaultProps?: ComponentsProps['ESLink'];
       styleOverrides?: ComponentsOverrides['ESLink'];
+    };
+    ESPagination?: {
+      defaultProps?: ComponentsProps['ESPagination'];
+      styleOverrides?: ComponentsOverrides['ESPagination'];
+    };
+    ESPaginationPages?: {
+      defaultProps?: ComponentsProps['ESPaginationPages'];
+      styleOverrides?: ComponentsOverrides['ESPaginationPages'];
+    };
+    ESPaginationRange?: {
+      defaultProps?: ComponentsProps['ESPaginationRange'];
+      styleOverrides?: ComponentsOverrides['ESPaginationRange'];
     };
     ESSpinnerDashRing?: {
       defaultProps?: ComponentsProps['ESSpinnerDashRing'];
