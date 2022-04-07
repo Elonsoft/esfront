@@ -22,6 +22,20 @@ import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography';
 
 import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
+import {
+  DialogActionsClassKey,
+  DialogActionsProps,
+  DialogArrowClassKey,
+  DialogArrowProps,
+  DialogClassKey,
+  DialogCloseClassKey,
+  DialogCloseProps,
+  DialogContentClassKey,
+  DialogContentProps,
+  DialogProps,
+  DialogTitleClassKey,
+  DialogTitleProps
+} from './components/Dialog';
 import { DropzoneClassKey, DropzoneProps } from './components/Dropzone';
 import { EmptyStateClassKey, EmptyStateProps } from './components/EmptyState';
 import {
@@ -118,6 +132,12 @@ export interface IOverlayPalette {
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
     ESAudioPlayer: AudioPlayerProps;
+    ESDialog: DialogProps;
+    ESDialogActions: DialogActionsProps;
+    ESDialogArrow: DialogArrowProps;
+    ESDialogClose: DialogCloseProps;
+    ESDialogContent: DialogContentProps;
+    ESDialogTitle: DialogTitleProps;
     ESDropzone: DropzoneProps;
     ESEmptyState: EmptyStateProps;
     ESFileIcon: FileIconProps;
@@ -152,6 +172,12 @@ declare module '@mui/material/styles/props' {
 declare module '@mui/material/styles/overrides' {
   interface ComponentNameToClassKey {
     ESAudioPlayer: AudioPlayerClassKey;
+    ESDialog: DialogClassKey;
+    ESDialogActions: DialogActionsClassKey;
+    ESDialogArrow: DialogArrowClassKey;
+    ESDialogClose: DialogCloseClassKey;
+    ESDialogContent: DialogContentClassKey;
+    ESDialogTitle: DialogTitleClassKey;
     ESDropzone: DropzoneClassKey;
     ESEmptyState: EmptyStateClassKey;
     ESFileIcon: FileIconClassKey;
@@ -187,6 +213,30 @@ declare module '@mui/material/styles/components' {
     ESAudioPlayer?: {
       defaultProps?: ComponentsProps['ESAudioPlayer'];
       styleOverrides?: ComponentsOverrides['ESAudioPlayer'];
+    };
+    ESDialog?: {
+      defaultProps?: ComponentsProps['ESDialog'];
+      styleOverrides?: ComponentsOverrides['ESDialog'];
+    };
+    ESDialogActions?: {
+      defaultProps?: ComponentsProps['ESDialogActions'];
+      styleOverrides?: ComponentsOverrides['ESDialogActions'];
+    };
+    ESDialogArrow?: {
+      defaultProps?: ComponentsProps['ESDialogArrow'];
+      styleOverrides?: ComponentsOverrides['ESDialogArrow'];
+    };
+    ESDialogClose?: {
+      defaultProps?: ComponentsProps['ESDialogClose'];
+      styleOverrides?: ComponentsOverrides['ESDialogClose'];
+    };
+    ESDialogContent?: {
+      defaultProps?: ComponentsProps['ESDialogContent'];
+      styleOverrides?: ComponentsOverrides['ESDialogContent'];
+    };
+    ESDialogTitle?: {
+      defaultProps?: ComponentsProps['ESDialogTitle'];
+      styleOverrides?: ComponentsOverrides['ESDialogTitle'];
     };
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];
