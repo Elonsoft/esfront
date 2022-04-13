@@ -1,0 +1,167 @@
+import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import Button from '@mui/material/Button';
+
+import { Alert } from '.';
+import { AlertClose } from '.';
+import { AlertTitle } from '.';
+import { AlertActions } from '.';
+
+<Meta
+  title="Components/Alert"
+  component={Alert}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    color: {
+      options: ['success', 'warning', 'error', 'info', 'monoA'],
+      control: { type: 'select' }
+    },
+    severity: {
+      options: ['success', 'warning', 'error', 'info'],
+      control: { type: 'select' }
+    },
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    children: {
+      table: {
+        disable: true
+      }
+    },
+    iconMapping: {
+      table: {
+        disable: true
+      }
+    },
+    action: {
+      table: {
+        disable: true
+      }
+    },
+    variant: {
+      table: {
+        disable: true
+      }
+    },
+    sx: {
+      table: {
+        disable: true
+      }
+    },
+    icon: {
+      defaultValue: true,
+      control: {
+        type: 'boolean'
+      }
+    },
+    title: {
+      control: {
+        type: 'text'
+      }
+    },
+    text: {
+      control: {
+        type: 'text'
+      }
+    },
+    action: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
+    actions: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    }
+  }}
+/>
+
+export const getText = (context) => {
+  return context.globals.locale === 'en' ? 'This is an alert' : 'Это предупреждение';
+};
+
+export const getButtonText = (context) => {
+  return context.globals.locale === 'en' ? 'Button' : 'Кнопка';
+};
+
+export const getCancelButtonText = (context) => {
+  return context.globals.locale === 'en' ? 'Cancel' : 'Отмена';
+};
+
+# Alert
+
+An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's
+task.
+
+## Alert
+
+<Canvas>
+  <Story name="Demo">
+    {(args, context) => (
+      <Alert
+        color={args.color}
+        icon={args.icon ? undefined : false}
+        severity={args.severity}
+        action={args.action ? <AlertClose /> : null}
+      >
+        {!!args.title && <AlertTitle>{args.title}</AlertTitle>}
+        {args.text || getText(context)}
+        {!!args.actions && (
+          <AlertActions>
+            <Button
+              variant="contained"
+              size="32"
+              sx={{ mr: '8px', padding: '0 8px!important', color: 'monoA.A700' }}
+              color="monoA"
+            >
+              {getButtonText(context)}
+            </Button>
+            <Button variant="text" size="32" sx={{ padding: '0 8px!important', color: 'monoA.A700' }} color="monoA">
+              {getCancelButtonText(context)}
+            </Button>
+          </AlertActions>
+        )}
+      </Alert>
+    )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-alert" story="page">
+      <code>Alert</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-alertActions" story="page">
+      <code>AlertActions</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-alertClose" story="page">
+      <code>AlertClose</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-alertTitle" story="page">
+      <code>AlertTitle</code>
+    </LinkTo>
+  </li>
+</ul>

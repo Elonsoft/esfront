@@ -21,6 +21,16 @@ import { InputBasePropsSizeOverrides } from '@mui/material/InputBase';
 import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography';
 
+import {
+  AlertActionsClassKey,
+  AlertActionsProps,
+  AlertClassKey,
+  AlertCloseClassKey,
+  AlertCloseProps,
+  AlertProps,
+  AlertTitleClassKey,
+  AlertTitleProps
+} from './components/Alert';
 import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
 import {
   DialogActionsClassKey,
@@ -131,6 +141,10 @@ export interface IOverlayPalette {
 
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
+    ESAlert: AlertProps;
+    ESAlertActions: AlertActionsProps;
+    ESAlertClose: AlertCloseProps;
+    ESAlertTitle: AlertTitleProps;
     ESAudioPlayer: AudioPlayerProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
@@ -171,6 +185,10 @@ declare module '@mui/material/styles/props' {
 
 declare module '@mui/material/styles/overrides' {
   interface ComponentNameToClassKey {
+    ESAlert: AlertClassKey;
+    ESAlertActions: AlertActionsClassKey;
+    ESAlertClose: AlertCloseClassKey;
+    ESAlertTitle: AlertTitleClassKey;
     ESAudioPlayer: AudioPlayerClassKey;
     ESDialog: DialogClassKey;
     ESDialogActions: DialogActionsClassKey;
@@ -210,6 +228,22 @@ declare module '@mui/material/styles/overrides' {
 
 declare module '@mui/material/styles/components' {
   interface Components {
+    ESAlert?: {
+      defaultProps?: ComponentsProps['ESAlert'];
+      styleOverrides?: ComponentsOverrides['ESAlert'];
+    };
+    ESAlertClose?: {
+      defaultProps?: ComponentsProps['ESAlertClose'];
+      styleOverrides?: ComponentsOverrides['ESAlertClose'];
+    };
+    ESAlertActions?: {
+      defaultProps?: ComponentsProps['ESAlertActions'];
+      styleOverrides?: ComponentsOverrides['ESAlertActions'];
+    };
+    ESAlertTitle?: {
+      defaultProps?: ComponentsProps['ESAlertTitle'];
+      styleOverrides?: ComponentsOverrides['ESAlertTitle'];
+    };
     ESAudioPlayer?: {
       defaultProps?: ComponentsProps['ESAudioPlayer'];
       styleOverrides?: ComponentsOverrides['ESAudioPlayer'];

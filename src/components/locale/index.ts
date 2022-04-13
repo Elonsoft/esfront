@@ -1,3 +1,4 @@
+import { AlertCloseProps } from '../Alert';
 import { AudioPlayerProps } from '../AudioPlayer';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
@@ -8,6 +9,9 @@ import { TableActionsProps } from '../TableActions';
 
 export interface Localization {
   components: {
+    ESAlertClose: {
+      defaultProps: Pick<AlertCloseProps, 'label'>;
+    };
     ESAudioPlayer: {
       defaultProps: Pick<
         AudioPlayerProps,
@@ -53,6 +57,11 @@ export interface Localization {
 
 export const en: Localization = {
   components: {
+    ESAlertClose: {
+      defaultProps: {
+        label: 'Close'
+      }
+    },
     ESAudioPlayer: {
       defaultProps: {
         labelBack: 'Back',
@@ -119,6 +128,11 @@ export const en: Localization = {
 
 export const ru: Localization = {
   components: {
+    ESAlertClose: {
+      defaultProps: {
+        label: 'Закрыть'
+      }
+    },
     ESAudioPlayer: {
       defaultProps: {
         labelBack: 'Назад',
