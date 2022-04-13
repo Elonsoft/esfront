@@ -1,3 +1,4 @@
+export * from './Alert';
 export * from './AudioPlayer';
 export * from './DateAdapter';
 export * from './Dialog';
