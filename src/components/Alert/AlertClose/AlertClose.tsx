@@ -10,7 +10,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
-import { IconCloseMd } from '../../../icons/IconCloseMd';
+import { IconClose } from '../../../icons';
 
 type AlertCloseOwnerState = {
   classes?: AlertCloseProps['classes'];
@@ -47,7 +47,7 @@ export const AlertClose: React.FC<AlertCloseProps> = (inProps) => {
     className,
     sx,
     label,
-    icon = IconCloseMd,
+    icon = IconClose,
     onClick,
     ...props
   } = useThemeProps({

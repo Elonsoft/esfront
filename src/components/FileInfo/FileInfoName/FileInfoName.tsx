@@ -10,7 +10,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
-import { IconCloseSm } from '../../../icons';
+import { IconCloseSmall } from '../../../icons';
 
 type FileInfoNameOwnerState = {
   classes?: FileInfoNameProps['classes'];
@@ -51,7 +51,7 @@ export const FileInfoName: FC<FileInfoNameProps> = (inProps) => {
     sx,
     onDelete,
     labelDelete,
-    iconDelete = <IconCloseSm />,
+    iconDelete = <IconCloseSmall />,
     ...props
   } = useThemeProps({
     props: inProps,

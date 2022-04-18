@@ -9,7 +9,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 
-import { IconAlert, IconCheckCircle, IconCloseOctagon, IconInfo } from '../../icons';
+import { IconAlert, IconCheckCircle, IconError, IconInformationLarge } from '../../icons';
 
 type AlertOwnerState = {
   classes?: AlertProps['classes'];
@@ -107,8 +107,8 @@ const AlertAction = styled('div', {
 const defaultIconMapping = {
   success: <IconCheckCircle />,
   warning: <IconAlert />,
-  error: <IconCloseOctagon />,
-  info: <IconInfo />
+  error: <IconError />,
+  info: <IconInformationLarge />
 };
 
 export const Alert: React.FC<AlertProps> = (inProps) => {
