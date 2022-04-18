@@ -597,6 +597,10 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   };
 
   const onTimeChange = (event: Event, value: number | number[]) => {
+    if (isMenuOpen) {
+      setMenuOpen(!isMenuOpen);
+    }
+
     if (onSeeking && !isChanging) {
       onSeeking();
     }
