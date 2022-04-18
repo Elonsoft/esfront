@@ -21,7 +21,7 @@ import {
   IconArrowRightBold,
   IconChevronLeft,
   IconChevronRight,
-  IconDotsHorizontal
+  IconDotsHorizontalSmall
 } from '../../../icons';
 import { usePaginationContext } from '../Pagination.context';
 
@@ -220,7 +220,7 @@ export const PaginationPages: FC<PaginationPagesProps> = (inProps) => {
     labelPage,
     iconPrevPage = <IconChevronLeft />,
     iconNextPage = <IconChevronRight />,
-    iconEllipsis = <IconDotsHorizontal />,
+    iconEllipsis = <IconDotsHorizontalSmall />,
     iconTooltipPrevPage = <IconArrowLeftBold />,
     iconTooltipNextPage = <IconArrowRightBold />,
     ...props

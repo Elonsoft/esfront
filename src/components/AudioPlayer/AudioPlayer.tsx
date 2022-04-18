@@ -26,14 +26,14 @@ import {
   IconArrowLeft,
   IconCheck,
   IconChevronRight,
-  IconDotsVertical,
-  IconDownload,
-  IconPause,
-  IconPlay,
+  IconDotsVerticalMediumBold,
+  IconDownloadOutline,
+  IconPauseMedium,
+  IconPlayMedium,
   IconSpeedometer,
   IconVolumeHigh,
   IconVolumeLow,
-  IconVolumeOff
+  IconVolumeMute
 } from '../../icons';
 
 import { Instance } from '@popperjs/core';
@@ -451,16 +451,16 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     labelVolume,
 
     iconBack = <IconArrowLeft />,
-    iconDownload = <IconDownload />,
-    iconOptions = <IconDotsVertical />,
-    iconPause = <IconPause />,
-    iconPlay = <IconPlay />,
+    iconDownload = <IconDownloadOutline />,
+    iconOptions = <IconDotsVerticalMediumBold />,
+    iconPause = <IconPauseMedium />,
+    iconPlay = <IconPlayMedium />,
     iconRate = <IconSpeedometer />,
     iconRateOpen = <IconChevronRight />,
     iconRateCheck = <IconCheck />,
     iconVolumeHigh = <IconVolumeHigh />,
     iconVolumeLow = <IconVolumeLow />,
-    iconVolumeOff = <IconVolumeOff />,
+    iconVolumeOff = <IconVolumeMute />,
 
     TooltipProps,
     ...props
