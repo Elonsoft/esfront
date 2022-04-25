@@ -1,5 +1,6 @@
 import { AlertCloseProps } from '../Alert';
 import { AudioPlayerProps } from '../AudioPlayer';
+import { AutocompleteProps } from '../Autocomplete';
 import { BreadcrumbsProps } from '../Breadcrumbs';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
@@ -30,6 +31,12 @@ export interface Localization {
         | 'labelRateNormal'
         | 'labelUnmute'
         | 'labelVolume'
+      >;
+    };
+    ESAutocomplete: {
+      defaultProps: Pick<
+        AutocompleteProps<unknown>,
+        'labelNoOptions' | 'labelNoMatches' | 'labelLoading' | 'labelSearch' | 'labelSearchClear'
       >;
     };
     ESBreadcrumbs: {
@@ -115,6 +122,15 @@ export const en: Localization = {
         labelRateNormal: 'Normal',
         labelUnmute: 'Unmute',
         labelVolume: 'Volume'
+      }
+    },
+    ESAutocomplete: {
+      defaultProps: {
+        labelNoOptions: 'No options',
+        labelNoMatches: 'No matches',
+        labelLoading: 'Loading',
+        labelSearch: 'Search',
+        labelSearchClear: 'Reset'
       }
     },
     ESBreadcrumbs: {
@@ -243,6 +259,15 @@ export const ru: Localization = {
         labelRateNormal: 'Обычная',
         labelUnmute: 'Включить звук',
         labelVolume: 'Громкость'
+      }
+    },
+    ESAutocomplete: {
+      defaultProps: {
+        labelNoOptions: 'Ничего нет',
+        labelNoMatches: 'Совпадений нет',
+        labelLoading: 'Загрузка',
+        labelSearch: 'Поиск по списку',
+        labelSearchClear: 'Сбросить'
       }
     },
     ESBreadcrumbs: {

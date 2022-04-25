@@ -33,6 +33,7 @@ import {
   AlertTitleProps
 } from './components/Alert';
 import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
+import { AutocompleteClassKey, AutocompleteProps } from './components/Autocomplete';
 import { AvatarGroupClassKey, AvatarGroupProps } from './components/AvatarGroup';
 import { BreadcrumbClassKey, BreadcrumbProps, BreadcrumbsClassKey, BreadcrumbsProps } from './components/Breadcrumbs';
 import {
@@ -226,6 +227,7 @@ declare module '@mui/material/styles/props' {
     ESAvatarGroup: AvatarGroupProps;
     ESAlertTitle: AlertTitleProps;
     ESAudioPlayer: AudioPlayerProps;
+    ESAutocomplete: AutocompleteProps<any>;
     ESBreadcrumbs: BreadcrumbsProps;
     ESBreadcrumb: BreadcrumbProps;
     ESDialog: DialogProps;
@@ -300,6 +302,7 @@ declare module '@mui/material/styles/overrides' {
     ESAvatarGroup: AvatarGroupClassKey;
     ESAlertTitle: AlertTitleClassKey;
     ESAudioPlayer: AudioPlayerClassKey;
+    ESAutocomplete: AutocompleteClassKey;
     ESBreadcrumbs: BreadcrumbsClassKey;
     ESBreadcrumb: BreadcrumbClassKey;
     ESDialog: DialogClassKey;
@@ -390,6 +393,10 @@ declare module '@mui/material/styles/components' {
     ESAudioPlayer?: {
       defaultProps?: ComponentsProps['ESAudioPlayer'];
       styleOverrides?: ComponentsOverrides['ESAudioPlayer'];
+    };
+    ESAutocomplete?: {
+      defaultProps?: ComponentsProps['ESAutocomplete'];
+      styleOverrides?: ComponentsOverrides['ESAutocomplete'];
     };
     ESBreadcrumbs?: {
       defaultProps?: ComponentsProps['ESBreadcrumbs'];
