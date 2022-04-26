@@ -31,18 +31,18 @@ export const Demo: Story = ({
         />
       }
     >
-      <Image src="/swiper/1.png" />
-      <Image src="/swiper/2.png" width="320px" />
-      <Image src="/swiper/3.png" />
-      <Image src="/swiper/4.png" />
-      <Image src="/swiper/1.png" />
-      <Image src="/swiper/2.png" width="320px" />
-      <Image src="/swiper/3.png" />
-      <Image src="/swiper/4.png" />
-      <Image src="/swiper/1.png" />
-      <Image src="/swiper/2.png" />
-      <Image src="/swiper/3.png" />
-      <Image src="/swiper/4.png" />
+      <Image src="./swiper/1.png" />
+      <Image src="./swiper/2.png" width="320px" />
+      <Image src="./swiper/3.png" />
+      <Image src="./swiper/4.png" />
+      <Image src="./swiper/1.png" />
+      <Image src="./swiper/2.png" width="320px" />
+      <Image src="./swiper/3.png" />
+      <Image src="./swiper/4.png" />
+      <Image src="./swiper/1.png" />
+      <Image src="./swiper/2.png" />
+      <Image src="./swiper/3.png" />
+      <Image src="./swiper/4.png" />
     </Swiper>
   );
 };
@@ -68,18 +68,18 @@ export const Vertical: Story = ({
           />
         }
       >
-        <Image src="/swiper/1.png" />
-        <Image src="/swiper/2.png" />
-        <Image src="/swiper/3.png" />
-        <Image src="/swiper/4.png" />
-        <Image src="/swiper/1.png" />
-        <Image src="/swiper/2.png" />
-        <Image src="/swiper/3.png" />
-        <Image src="/swiper/4.png" />
-        <Image src="/swiper/1.png" />
-        <Image src="/swiper/2.png" />
-        <Image src="/swiper/3.png" />
-        <Image src="/swiper/4.png" />
+        <Image src="./swiper/1.png" />
+        <Image src="./swiper/2.png" />
+        <Image src="./swiper/3.png" />
+        <Image src="./swiper/4.png" />
+        <Image src="./swiper/1.png" />
+        <Image src="./swiper/2.png" />
+        <Image src="./swiper/3.png" />
+        <Image src="./swiper/4.png" />
+        <Image src="./swiper/1.png" />
+        <Image src="./swiper/2.png" />
+        <Image src="./swiper/3.png" />
+        <Image src="./swiper/4.png" />
       </Swiper>
     </div>
   );
@@ -144,33 +144,33 @@ export const Customization: Story = (args) => {
 
   return (
     <Swiper {...args} buttonPrev={<CustomizationButtonPrev />} buttonNext={<CustomizationButtonNext />} gap={8}>
-      <Image src="/swiper/2-1.png" />
-      <Image src="/swiper/2-2.png" />
-      <Image src="/swiper/2-3.png" />
-      <Image src="/swiper/2-4.png" />
-      <Image src="/swiper/2-5.png" />
-      <Image src="/swiper/2-6.png" />
-      <Image src="/swiper/2-7.png" />
-      <Image src="/swiper/2-8.png" />
-      <Image src="/swiper/2-9.png" />
-      <Image src="/swiper/2-1.png" />
-      <Image src="/swiper/2-2.png" />
-      <Image src="/swiper/2-3.png" />
-      <Image src="/swiper/2-4.png" />
-      <Image src="/swiper/2-5.png" />
-      <Image src="/swiper/2-6.png" />
-      <Image src="/swiper/2-7.png" />
-      <Image src="/swiper/2-8.png" />
-      <Image src="/swiper/2-9.png" />
-      <Image src="/swiper/2-1.png" />
-      <Image src="/swiper/2-2.png" />
-      <Image src="/swiper/2-3.png" />
-      <Image src="/swiper/2-4.png" />
-      <Image src="/swiper/2-5.png" />
-      <Image src="/swiper/2-6.png" />
-      <Image src="/swiper/2-7.png" />
-      <Image src="/swiper/2-8.png" />
-      <Image src="/swiper/2-9.png" />
+      <Image src="./swiper/2-1.png" />
+      <Image src="./swiper/2-2.png" />
+      <Image src="./swiper/2-3.png" />
+      <Image src="./swiper/2-4.png" />
+      <Image src="./swiper/2-5.png" />
+      <Image src="./swiper/2-6.png" />
+      <Image src="./swiper/2-7.png" />
+      <Image src="./swiper/2-8.png" />
+      <Image src="./swiper/2-9.png" />
+      <Image src="./swiper/2-1.png" />
+      <Image src="./swiper/2-2.png" />
+      <Image src="./swiper/2-3.png" />
+      <Image src="./swiper/2-4.png" />
+      <Image src="./swiper/2-5.png" />
+      <Image src="./swiper/2-6.png" />
+      <Image src="./swiper/2-7.png" />
+      <Image src="./swiper/2-8.png" />
+      <Image src="./swiper/2-9.png" />
+      <Image src="./swiper/2-1.png" />
+      <Image src="./swiper/2-2.png" />
+      <Image src="./swiper/2-3.png" />
+      <Image src="./swiper/2-4.png" />
+      <Image src="./swiper/2-5.png" />
+      <Image src="./swiper/2-6.png" />
+      <Image src="./swiper/2-7.png" />
+      <Image src="./swiper/2-8.png" />
+      <Image src="./swiper/2-9.png" />
     </Swiper>
   );
 };
