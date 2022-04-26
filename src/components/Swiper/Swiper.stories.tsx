@@ -97,7 +97,7 @@ const CustomizationButton = styled(IconButton)<{ prev?: boolean; next?: boolean 
     right: 8
   }),
 
-  '&.MuiIconButton-root': {
+  '&.MuiIconButton-root.MuiIconButton-root': {
     backdropFilter: 'blur(10px)',
     backgroundColor: theme.palette.white.A600,
     color: theme.palette.black[500],
