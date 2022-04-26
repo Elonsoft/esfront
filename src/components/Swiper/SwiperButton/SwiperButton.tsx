@@ -66,7 +66,7 @@ const SwiperButtonRoot = styled(IconButton, {
     })
   }),
 
-  '&.MuiIconButton-root': {
+  '&.MuiIconButton-root.MuiIconButton-root': {
     backdropFilter: 'blur(10px)',
     backgroundColor: theme.palette.black.A600,
     borderRadius: 4,
