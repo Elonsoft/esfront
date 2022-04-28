@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react';
 
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { useForceUpdate } from './useForceUpdate';
@@ -9,10 +10,12 @@ export const Demo: Story = () => {
 
   return (
     <>
-      <Typography component="div" variant="body100">
+      <Button variant="contained" onClick={update} size="32">
+        Update
+      </Button>
+      <Typography component="div" variant="body200" sx={{ marginTop: '8px' }}>
         Time: {Date.now()}
       </Typography>
-      <button onClick={update}>Update</button>
     </>
   );
 };
