@@ -1,5 +1,6 @@
 export { useClipboard } from './useClipboard';
 export { useControlled } from './useControlled';
+export { useCookie } from './useCookie';
 export { useDebounce } from './useDebounce';
 export { useDocumentEventListener } from './useDocumentEventListener';
 export { useDragOver } from './useDragOver';
