@@ -1,0 +1,24 @@
+import { useCallback } from 'react';
+
+/**
+ * @returns The methods for reading from and writing to clipboard.
+ */
+export const useClipboard = () => {
+  const writeText = useCallback((data: string) => {
+    return window.navigator.clipboard.writeText(data);
+  }, []);
+
+  const write = useCallback((data: ClipboardItems) => {
+    return window.navigator.clipboard.write(data);
+  }, []);
+
+  const readText = useCallback(() => {
+    return window.navigator.clipboard.readText();
+  }, []);
+
+  const read = useCallback(() => {
+    return window.navigator.clipboard.read();
+  }, []);
+
+  return { writeText, write, readText, read, isReadSupported: !!window?.navigator?.clipboard?.readText };
+};

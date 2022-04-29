@@ -1,3 +1,4 @@
+export { useClipboard } from './useClipboard';
 export { useControlled } from './useControlled';
 export { useDebounce } from './useDebounce';
 export { useDocumentEventListener } from './useDocumentEventListener';
