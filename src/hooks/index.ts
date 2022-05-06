@@ -8,6 +8,7 @@ export { useForceUpdate } from './useForceUpdate';
 export { useGeolocation } from './useGeolocation';
 export { useIntersectionObserver } from './useIntersectionObserver';
 export { useLatest } from './useLatest';
+export { useLocalStorage } from './useLocalStorage';
 export { useOnLine } from './useOnLine';
 export { useResizeObserver } from './useResizeObserver';
 export { useUpdateEffect } from './useUpdateEffect';
