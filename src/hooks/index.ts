@@ -1,3 +1,4 @@
+export { useBoolean } from './useBoolean';
 export { useClipboard } from './useClipboard';
 export { useControlled } from './useControlled';
 export { useCookie } from './useCookie';
