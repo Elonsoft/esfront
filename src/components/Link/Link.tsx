@@ -172,6 +172,9 @@ const LinkChildren = styled('span', {
   textDecorationThickness: 'inherit'
 }));
 
+/**
+ * The Link component allows you to easily customize anchor elements with your theme colors and typography styles.
+ */
 export const Link: OverridableComponent<LinkTypeMap> = (inProps: LinkProps) => {
   const {
     children,

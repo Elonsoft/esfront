@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 
 import { Dropzone } from '.';
@@ -127,9 +127,7 @@ export const getHelperText = (args, context) => {
 
 # Dropzone
 
-This component allows to select files on click or by drag and drop.
-
-## Demos
+<Description of={Dropzone} />
 
 <Canvas>
   <Story name="Demo">

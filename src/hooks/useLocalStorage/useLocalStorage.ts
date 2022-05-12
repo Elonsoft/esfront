@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
 /**
+ * The hook that manages a single `localStorage` key.
  * @param key The key of the localStorage.
  * @param initialValue The initial value to set, if value in `localStorage` is empty.
  * @param {Object} options The options object.

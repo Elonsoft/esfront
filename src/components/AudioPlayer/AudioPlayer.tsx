@@ -404,6 +404,9 @@ const AudioPlayerTimeValue = ({ time }: { time: number }) => {
   return <>{getTimeValue(time)}</>;
 };
 
+/**
+ * This component is used to embed sound content in documents.
+ */
 export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const {
     className,

@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useLatest } from '../useLatest';
 
 /**
+ * The hook that creates a debounced function.
  * @param callback The callback to debounce.
  * @param delay The number of milliseconds to delay.
  * @param options The options object.

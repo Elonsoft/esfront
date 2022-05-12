@@ -77,6 +77,9 @@ const EmptyStateSubheading = styled(Typography, {
   display: 'block'
 }));
 
+/**
+ * This component is a placeholder to use on pages without content.
+ */
 export const EmptyState: React.FC<EmptyStateProps> = (inProps) => {
   const { children, className, sx, icon, heading, subheading, ...props } = useThemeProps({
     props: inProps,

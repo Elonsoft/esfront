@@ -24,6 +24,7 @@ export type IPermissionDescriptor =
   | IDevicePermissionDescriptor;
 
 /**
+ * The hook that queries permission status of browser APIs.
  * @param permissionDesc The PermissionDescriptor object.
  * @returns The PermissionStatus.
  */

@@ -1,6 +1,7 @@
-import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 
+import { Dialog } from './Dialog.tsx';
 import * as stories from './Dialog.stories';
 
 <Meta
@@ -36,7 +37,7 @@ import * as stories from './Dialog.stories';
 
 # Dialog
 
-Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+<Description of={Dialog} />
 
 <Canvas>
   <Story story={stories.Demo} name="Demo" />

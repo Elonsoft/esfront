@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 
 import Button from '@mui/material/Button';
@@ -103,10 +103,7 @@ export const getCancelButtonText = (context) => {
 
 # Alert
 
-An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's
-task.
-
-## Alert
+<Description of={Alert} />
 
 <Canvas>
   <Story name="Demo">

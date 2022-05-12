@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
+import { Description } from '~storybook/components/Description';
 
 import * as stories from './useClipboard.stories';
 
@@ -7,7 +8,7 @@ import * as stories from './useClipboard.stories';
 
 # useClipboard
 
-The hook that wraps a Clipboard API and exposes read and write methods.
+<Description name="useClipboard" />
 
 <Canvas>
   <Story story={stories.Demo} name="Demo" />

@@ -167,6 +167,9 @@ const DialogPaper = styled('div', {
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
 
+/**
+ * Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+ */
 export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Dialog(inProps, ref) {
   const props = useThemeProps({ props: inProps, name: 'MuiDialog' });
   const {

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
+ * The hook that debounces a given value.
  * @param value The value to debounce.
  * @param delay The number of milliseconds to delay.
  * @param options The options object.

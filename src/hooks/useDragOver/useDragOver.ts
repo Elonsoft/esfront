@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 /**
+ * The hook that allows to watch over the drag over state.
  * @returns Event handlers for the target element and `isDragOver` state.
  */
 export const useDragOver = () => {

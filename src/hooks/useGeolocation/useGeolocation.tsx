@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 /**
+ * The hook that that tracks user's geographic location.
  * @param options An optional object that provides configuration options for the location watch.
  * @returns Current position or position error and loading state.
  */

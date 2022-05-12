@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 /**
+ * The hook that wraps a Clipboard API and exposes read and write methods.
  * @returns The methods for reading from and writing to clipboard.
  */
 export const useClipboard = () => {

@@ -68,6 +68,9 @@ const TableActionsChildren = styled('div', {
   }
 }));
 
+/**
+ * This component displays actions for the selected table rows.
+ */
 export const TableActions: FC<TableActionsProps> = (inProps) => {
   const { className, sx, label, count, children, ...props } = useThemeProps({
     props: inProps,

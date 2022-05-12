@@ -165,6 +165,9 @@ const DropzoneHelperText = styled(Typography, {
   })
 }));
 
+/**
+ * This component allows to select files on click or by drag and drop.
+ */
 export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   const {
     className,

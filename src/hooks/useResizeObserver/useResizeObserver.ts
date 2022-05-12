@@ -3,6 +3,7 @@ import { RefObject, useEffect } from 'react';
 import { useLatest } from '../useLatest';
 
 /**
+ * The hook that reports changes to the dimensions of an `Element`'s content or border box.
  * @param element A reference to an Element to be observed.
  * @param callback The function called whenever an observed resize occurs.
  * @param options An options object allowing you to set options for the observation.

@@ -32,6 +32,9 @@ const FileInfoRoot = styled('div', {
   alignItems: 'center'
 }));
 
+/**
+ * This component displays file information.
+ */
 export const FileInfo: FC<FileInfoProps> = (inProps) => {
   const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfo' });
   const ownerState = { ...props };

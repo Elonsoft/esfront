@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
 /**
+ * The hook that manages a single `sessionStorage` key.
  * @param key The key of the sessionStorage.
  * @param initialValue The initial value to set, if value in `sessionStorage` is empty.
  * @param {Object} options The options object.

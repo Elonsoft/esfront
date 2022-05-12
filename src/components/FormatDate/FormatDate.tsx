@@ -6,6 +6,9 @@ import { useThemeProps } from '@mui/material/styles';
 
 import { useDateAdapterContext } from '../DateAdapter';
 
+/**
+ * This component formats the date with the format string.
+ */
 export const FormatDate = (inProps: FormatDateProps) => {
   const { children, format, formatString } = useThemeProps({
     props: inProps,
