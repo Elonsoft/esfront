@@ -125,6 +125,9 @@ const SwiperContainer = styled('div', {
   })
 }));
 
+/**
+ * `Swiper` is a component for cycling through elements - images or slides of text - like a carousel.
+ */
 export const Swiper = (inProps: SwiperProps) => {
   const {
     children,

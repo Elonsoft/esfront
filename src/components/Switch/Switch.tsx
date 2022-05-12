@@ -177,6 +177,9 @@ const SwitchInput = styled('input', {
   zIndex: 1
 }));
 
+/**
+ * Switches toggle the state of a single setting on or off.
+ */
 export const Switch: React.FC<SwitchProps> = (inProps) => {
   const {
     className,

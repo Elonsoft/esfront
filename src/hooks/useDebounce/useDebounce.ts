@@ -3,6 +3,7 @@ import { DependencyList, useEffect, useRef } from 'react';
 import { useLatest } from '../useLatest';
 
 /**
+ * The hook that debounces invoking a given callback.
  * @param callback The callback to call.
  * @param delay The number of milliseconds to delay.
  * @param dependencies Debounce will activate if the values in the list change.

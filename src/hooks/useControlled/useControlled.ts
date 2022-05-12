@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 
 /**
+ * The hook that allows to have controlled internal state inside the uncontrolled component.
  * @returns The value and setState function.
  */
 export const useControlled = <T>(defaultValue?: T, controlled?: T): [T | undefined, (value: T) => void] => {

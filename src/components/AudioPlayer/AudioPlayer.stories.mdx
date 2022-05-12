@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 
 import { AudioPlayer } from './AudioPlayer';
@@ -279,7 +279,7 @@ import * as stories from './AudioPlayer.stories';
 
 # AudioPlayer
 
-This component is used to embed sound content in documents.
+<Description of={AudioPlayer} />
 
 <Canvas>
   <Story story={stories.Demo} name="Demo" />

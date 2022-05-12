@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useLatest } from '../useLatest';
 
 /**
+ * The hook that sets up a function that will be called whenever the specified event is delivered to the `window`.
  * @param type A case-sensitive string representing the event type to listen for.
  * @param callback The function that receives a notification when an event of the specified type occurs.
  * @param options An object that specifies characteristics about the event listener.

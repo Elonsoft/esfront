@@ -34,6 +34,9 @@ export class AudioPlayerProviderVolumeStorageMemory implements AudioPlayerProvid
 
 const DEFAULT_VOLUME_STORAGE = new AudioPlayerProviderVolumeStorageLocal();
 
+/**
+ * The provider for the audio player volume storage.
+ */
 export const AudioPlayerProvider: FC<AudioPlayerProviderProps> = ({
   children,
   volumeStorage = DEFAULT_VOLUME_STORAGE

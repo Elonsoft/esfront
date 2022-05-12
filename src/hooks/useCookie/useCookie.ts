@@ -10,6 +10,7 @@ interface Attributes {
 }
 
 /**
+ * The hook that returns the current value of a cookie, a callback to update the cookie and a callback to remove the cookie.
  * @param name The name of the cookie.
  * @returns The current value of a cookie, a callback to update the cookie and a callback to remove the cookie.
  */

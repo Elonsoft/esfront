@@ -4,6 +4,9 @@ import { FormatSizeProps } from './FormatSize.types';
 
 import { useThemeProps } from '@mui/material/styles';
 
+/**
+ * This component formats the size based on the metric or binary unit prefix.
+ */
 export const FormatSize = (inProps: FormatSizeProps) => {
   const {
     children,

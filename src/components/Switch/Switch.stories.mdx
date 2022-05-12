@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, ArgsTable, Props } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 
 import { Switch } from '.';
@@ -65,9 +65,7 @@ import { Switch } from '.';
 
 # Switch
 
-Switches toggle the state of a single setting on or off.
-
-## Demos
+<Description of={Switch} />
 
 <Canvas>
   <Story name="Demo">{(args, context) => <Switch {...args} />}</Story>
