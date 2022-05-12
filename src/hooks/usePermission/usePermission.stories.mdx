@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import * as stories from './usePermission.stories';
+
+<Meta title="Hooks/usePermission" />
+
+# usePermission
+
+The hook that queries permission status of browser APIs.
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="hooks-api-usePermission" story="page">
+      <code>usePermission</code>
+    </LinkTo>
+  </li>
+</ul>
