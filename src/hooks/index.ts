@@ -1,4 +1,5 @@
 export { useBoolean } from './useBoolean';
+export { useCallbackDebounce } from './useCallbackDebounce';
 export { useClipboard } from './useClipboard';
 export { useControlled } from './useControlled';
 export { useCookie } from './useCookie';
