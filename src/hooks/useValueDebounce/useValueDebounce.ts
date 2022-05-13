@@ -1,43 +1,42 @@
-import { DependencyList, useEffect, useRef } from 'react';
-
-import { useLatest } from '../useLatest';
+import { useEffect, useRef, useState } from 'react';
 
 /**
- * @param callback The callback to call.
+ * @param value The value to debounce.
  * @param delay The number of milliseconds to delay.
- * @param dependencies Debounce will activate if the values in the list change.
  * @param options The options object.
  * @param options.leading Specify updating on the leading edge of the timeout.
  * @param options.trailing Specify updating on the trailing edge of the timeout.
+ * @returns The debounced value.
  */
-export const useDebounce = (
-  callback: () => void,
+export const useValueDebounce = <T>(
+  value: T,
   delay: number,
-  dependencies: DependencyList,
   options: { leading?: boolean; trailing?: boolean } = { leading: false, trailing: true }
 ) => {
   const { leading = false, trailing = true } = options;
 
   const isLeading = useRef(true);
-  const latestCallback = useLatest(callback);
+  const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
     if (isLeading.current) {
       isLeading.current = false;
       if (leading) {
-        latestCallback.current();
+        setDebouncedValue(value);
       }
     }
 
     const id = setTimeout(() => {
       isLeading.current = true;
       if (trailing) {
-        latestCallback.current();
+        setDebouncedValue(value);
       }
     }, delay);
 
     return () => {
       clearTimeout(id);
     };
-  }, dependencies);
+  }, [value, delay, leading, trailing]);
+
+  return debouncedValue;
 };
