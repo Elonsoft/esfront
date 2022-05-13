@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
+import { Radio } from '@mui/material';
+
+<Meta
+  title="Overrides/Radio"
+  parameters={{
+    viewMode: 'canvas',
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    color: {
+      options: ['primary', 'secondary', 'error'],
+      control: { type: 'select' }
+    },
+    disabled: {
+      control: { type: 'boolean' }
+    }
+  }}
+/>
+
+<Canvas>
+  <Story name="Radio">
+    {(args) => {
+      return (
+        <RadioGroup defaultValue="One">
+          <FormControlLabel value="One" control={<Radio {...args} />} label="One" />
+          <FormControlLabel value="Two" control={<Radio {...args} />} label="Two" />
+        </RadioGroup>
+      );
+    }}
+  </Story>
+</Canvas>

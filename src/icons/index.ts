@@ -126,6 +126,7 @@ export { IconPlusLarge } from './IconPlusLarge';
 export { IconPlusMedium } from './IconPlusMedium';
 export { IconPlusSmall } from './IconPlusSmall';
 export { IconQuestion } from './IconQuestion';
+export { IconRadio } from './IconRadio';
 export { IconReplace } from './IconReplace';
 export { IconResizeBottomRight } from './IconResizeBottomRight';
 export { IconSend } from './IconSend';
