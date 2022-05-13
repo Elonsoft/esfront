@@ -8,23 +8,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
-import { useDebounce } from './useDebounce';
+import { useValueDebounce } from './useValueDebounce';
 
 export const Demo: Story = () => {
   const [value, setValue] = useState('');
   const [leading, setLeading] = useState(false);
   const [trailing, setTrailing] = useState(true);
 
-  const [debouncedValue, setDebouncedValue] = useState('');
-
-  useDebounce(
-    () => {
-      setDebouncedValue(value);
-    },
-    1000,
-    [value],
-    { leading, trailing }
-  );
+  const debouncedValue = useValueDebounce(value, 1000, { leading, trailing });
 
   return (
     <div>

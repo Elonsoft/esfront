@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-import { useLatest } from '..';
+import { useLatest } from '../useLatest';
 
 /**
  * @param callback The callback to debounce.
@@ -8,7 +8,7 @@ import { useLatest } from '..';
  * @param options The options object.
  * @param options.leading Specify updating on the leading edge of the timeout.
  * @param options.trailing Specify updating on the trailing edge of the timeout.
- * @returns The debounced value.
+ * @returns The debounced callback.
  */
 export const useCallbackDebounce = <T extends any[]>(
   callback: (...args: T) => void,

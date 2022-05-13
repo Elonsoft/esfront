@@ -15,4 +15,5 @@ export { useOnLine } from './useOnLine';
 export { useResizeObserver } from './useResizeObserver';
 export { useSessionStorage } from './useSessionStorage';
 export { useUpdateEffect } from './useUpdateEffect';
+export { useValueDebounce } from './useValueDebounce';
 export { useWindowEventListener } from './useWindowEventListener';
