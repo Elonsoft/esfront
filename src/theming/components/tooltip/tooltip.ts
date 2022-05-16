@@ -2,7 +2,7 @@ import Fade from '@mui/material/Fade';
 
 import { Component } from '../component';
 
-export const createTooltip: Component<'MuiTooltip'> = (theme) => {
+export const createTooltip: Component<'MuiTooltip'> = (theme, typography) => {
   return {
     styleOverrides: {
       popper: {
@@ -20,6 +20,7 @@ export const createTooltip: Component<'MuiTooltip'> = (theme) => {
         }
       },
       tooltip: {
+        ...typography.caption,
         color: theme.palette.monoB[500],
         backgroundColor: theme.palette.monoA.A600,
         backdropFilter: 'blur(40px)',
@@ -32,6 +33,7 @@ export const createTooltip: Component<'MuiTooltip'> = (theme) => {
       }
     },
     defaultProps: {
+      arrow: true,
       TransitionComponent: Fade
     }
   };
