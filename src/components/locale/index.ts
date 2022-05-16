@@ -2,6 +2,7 @@ import { AlertCloseProps } from '../Alert';
 import { AudioPlayerProps } from '../AudioPlayer';
 import { AutocompleteProps } from '../Autocomplete';
 import { BreadcrumbsProps } from '../Breadcrumbs';
+import { CalendarHeadProps } from '../Calendar';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
@@ -41,6 +42,9 @@ export interface Localization {
     };
     ESBreadcrumbs: {
       defaultProps: Pick<BreadcrumbsProps, 'labelButtonMore'>;
+    };
+    ESCalendarHead: {
+      defaultProps: Pick<CalendarHeadProps, 'getWeekDays'>;
     };
     ESDialogArrow: {
       defaultProps: Pick<DialogArrowProps, 'labelPrev' | 'labelNext'>;
@@ -136,6 +140,11 @@ export const en: Localization = {
     ESBreadcrumbs: {
       defaultProps: {
         labelButtonMore: 'More'
+      }
+    },
+    ESCalendarHead: {
+      defaultProps: {
+        getWeekDays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S']
       }
     },
     ESDialogArrow: {
@@ -273,6 +282,11 @@ export const ru: Localization = {
     ESBreadcrumbs: {
       defaultProps: {
         labelButtonMore: 'Ещё'
+      }
+    },
+    ESCalendarHead: {
+      defaultProps: {
+        getWeekDays: () => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
       }
     },
     ESDialogArrow: {

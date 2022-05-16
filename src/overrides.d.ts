@@ -47,6 +47,14 @@ import { AvatarGroupClassKey, AvatarGroupProps } from './components/AvatarGroup'
 import { BottomSheetClassKey, BottomSheetProps } from './components/BottomSheet';
 import { BreadcrumbClassKey, BreadcrumbProps, BreadcrumbsClassKey, BreadcrumbsProps } from './components/Breadcrumbs';
 import {
+  CalendarButtonClassKey,
+  CalendarButtonProps,
+  CalendarClassKey,
+  CalendarHeadClassKey,
+  CalendarHeadProps,
+  CalendarProps
+} from './components/Calendar';
+import {
   DialogActionsClassKey,
   DialogActionsProps,
   DialogArrowClassKey,
@@ -263,6 +271,9 @@ declare module '@mui/material/styles/props' {
     ESBreadcrumbs: BreadcrumbsProps;
     ESBreadcrumb: BreadcrumbProps;
     ESBottomSheet: BottomSheetProps;
+    ESCalendar: CalendarProps;
+    ESCalendarButton: CalendarButtonProps;
+    ESCalendarHead: CalendarHeadProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
     ESDialogArrow: DialogArrowProps;
@@ -354,6 +365,9 @@ declare module '@mui/material/styles/overrides' {
     ESBreadcrumbs: BreadcrumbsClassKey;
     ESBreadcrumb: BreadcrumbClassKey;
     ESBottomSheet: BottomSheetClassKey;
+    ESCalendar: CalendarClassKey;
+    ESCalendarButton: CalendarButtonClassKey;
+    ESCalendarHead: CalendarHeadClassKey;
     ESDialog: DialogClassKey;
     ESDialogActions: DialogActionsClassKey;
     ESDialogArrow: DialogArrowClassKey;
@@ -485,6 +499,18 @@ declare module '@mui/material/styles/components' {
     ESBottomSheet?: {
       defaultProps?: ComponentsProps['ESBottomSheet'];
       styleOverrides?: ComponentsOverrides['ESBottomSheet'];
+    };
+    ESCalendar?: {
+      defaultProps?: ComponentsProps['ESCalendar'];
+      styleOverrides?: ComponentsOverrides['ESCalendar'];
+    };
+    ESCalendarButton?: {
+      defaultProps?: ComponentsProps['ESCalendarButton'];
+      styleOverrides?: ComponentsOverrides['ESCalendarButton'];
+    };
+    ESCalendarHead?: {
+      defaultProps?: ComponentsProps['ESCalendarHead'];
+      styleOverrides?: ComponentsOverrides['ESCalendarHead'];
     };
     ESDialog?: {
       defaultProps?: ComponentsProps['ESDialog'];
