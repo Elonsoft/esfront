@@ -11,7 +11,6 @@ import { duration, styled, useThemeProps } from '@mui/material/styles';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
-import Paper from '@mui/material/Paper';
 
 import { unstable_useId as useId } from '@mui/utils';
 
@@ -146,7 +145,7 @@ const DialogContent = styled('div', {
   })
 }));
 
-const DialogPaper = styled(Paper, {
+const DialogPaper = styled('div', {
   name: 'ESDialog',
   slot: 'Paper',
   overridesResolver: (props, styles) => {
@@ -159,6 +158,7 @@ const DialogPaper = styled(Paper, {
   borderRadius: 8,
   width: '100%',
   boxShadow: theme.palette.shadow.down[900],
+  backgroundColor: theme.palette.surface[600],
 
   '@media print': {
     boxShadow: 'none'
