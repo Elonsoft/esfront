@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/Elonsoft/elonkit-react/compare/v0.4.0...v0.4.1) (2022-05-19)
+
+
+### Features
+
+* **Alert:** add new component ([61baf45](https://github.com/Elonsoft/elonkit-react/commit/61baf454cecb9804cfd7a08db86022556d4fe9f1))
+* **List:** add style overrides ([15a8da0](https://github.com/Elonsoft/elonkit-react/commit/15a8da0e8479a87e47c47879d3a0f7b0d651c3f1))
+* **Switch:** add new component ([8829888](https://github.com/Elonsoft/elonkit-react/commit/8829888918df1f9f6cadcddbfa8a07e6dd73c387))
+* **useBoolean:** add new hook ([4b33007](https://github.com/Elonsoft/elonkit-react/commit/4b33007d166da5414e5f32b583ad1685a7f20bb0))
+* **useCallbackDebounce:** add new hook ([582de6d](https://github.com/Elonsoft/elonkit-react/commit/582de6d1f980688af1497fc000060c52fbbba02c))
+* **useClipboard:** add new hook ([ab480c4](https://github.com/Elonsoft/elonkit-react/commit/ab480c4dd6b5d2be3d3b62dc99ebfef379726ec5))
+* **useCookie:** add new hook ([ca2c1a9](https://github.com/Elonsoft/elonkit-react/commit/ca2c1a9fc6137ed8a5ca1c323387ff6b9ad35a59))
+* **useDebounce:** add new hook ([82b87f1](https://github.com/Elonsoft/elonkit-react/commit/82b87f15e21f6998116a4a765a79b7d6b0c0361f))
+* **useDragOver:** add new hook ([8ac42c6](https://github.com/Elonsoft/elonkit-react/commit/8ac42c6d6a1082dbbb014806352746a6ade990aa))
+* **useForceUpdate:** add new hook ([0cd5e55](https://github.com/Elonsoft/elonkit-react/commit/0cd5e559c2f2a2786168c473d2df3b4e886d7ab1))
+* **useGeolocation:** add new hook ([1ba7741](https://github.com/Elonsoft/elonkit-react/commit/1ba77414b8507e7c87c9d1d10754e4b1a672d168))
+* **useLocalStorage:** add new hook ([85f855f](https://github.com/Elonsoft/elonkit-react/commit/85f855f284dc97eaeb0afe478acb49cb61ef750f))
+* **usePermission:** add new hook ([bcc47ea](https://github.com/Elonsoft/elonkit-react/commit/bcc47eacabfb0cc2c5e3b60183732e302e749868))
+* **useUpdateEffect:** add new hook ([1125e63](https://github.com/Elonsoft/elonkit-react/commit/1125e63db5f9dcfe2410bb4e229a9e7e752395ec))
+* **useValueDebounce:** add new hook ([be7d176](https://github.com/Elonsoft/elonkit-react/commit/be7d1763e1505b927237a39380534e08881d9df6))
+* add new icons ([afd9aac](https://github.com/Elonsoft/elonkit-react/commit/afd9aacd884ace82791526ad7b4761e9f9130713))
+* **useSessionStorage:** add new hook ([85c9699](https://github.com/Elonsoft/elonkit-react/commit/85c9699282e22b2ad7a31d5dbc83b75b46f2d2c0))
+* add missing hues to info, success and warning palettes ([5306c66](https://github.com/Elonsoft/elonkit-react/commit/5306c66e209b40749e644e1049722dbf686f7c40))
+* change alpha, surface and background hues ([177ebcf](https://github.com/Elonsoft/elonkit-react/commit/177ebcf4d203e425ff68dc287251f0cd3e5510b3))
+* change switch hue ([65a2be3](https://github.com/Elonsoft/elonkit-react/commit/65a2be3d2c5300a74967e420227b3f2852b84936))
+
+
+### Bug Fixes
+
+* **AudioPlayer:** close menu on current time slider click ([566b2c6](https://github.com/Elonsoft/elonkit-react/commit/566b2c61fa72fd27e56000a455e5160fa337f769))
+* **Dialog:** add missing types ([976e0cb](https://github.com/Elonsoft/elonkit-react/commit/976e0cb0f706a416e0ba6b67f916abe1493eeeea))
+* **Dialog:** fix close by backdrop click ([89222d4](https://github.com/Elonsoft/elonkit-react/commit/89222d47df182cf48975b364d7dd5a1aac0e4691))
+* **Pagination:** add missing types ([8213e2e](https://github.com/Elonsoft/elonkit-react/commit/8213e2e64f66bf3751b2af99920391c025d5d5d0))
+* **SwiperButton:** increase styles specificity ([8a29d2c](https://github.com/Elonsoft/elonkit-react/commit/8a29d2c2727301f1669342812ca1b4024ceeb9a9))
+
 ## [0.4.0](https://github.com/Elonsoft/elonkit-react/compare/v0.3.0...v0.4.0) (2022-03-14)
 
 
