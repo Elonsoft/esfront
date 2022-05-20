@@ -649,8 +649,9 @@ declare module '@mui/material/Typography' {
     body100Bold: true;
     captionMedium: true;
     captionBold: true;
-    mini1: true;
-    mini2: true;
+    mini200: true;
+    mini100: true;
+    mini100Bold: true;
     micro: true;
     body1: false;
     body2: false;
