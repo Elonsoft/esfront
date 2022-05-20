@@ -41,6 +41,15 @@ export const createTypography = (theme: Theme) => {
     textUnderlineOffset: pxToRem(1)
   };
 
+  const mini100 = {
+    fontSize: pxToRem(9),
+    fontWeight: 500,
+    letterSpacing: pxToRem(0.6),
+    lineHeight: pxToRem(14),
+    textDecorationThickness: pxToRem(1),
+    textUnderlineOffset: pxToRem(1)
+  };
+
   const caption = {
     fontSize: pxToRem(12),
     fontWeight: 400,
@@ -190,21 +199,18 @@ export const createTypography = (theme: Theme) => {
       ...body100,
       fontWeight: 700
     },
-    mini1: {
+    mini200: {
       fontSize: pxToRem(11),
-      fontWeight: 600,
+      fontWeight: 700,
       letterSpacing: 0,
       lineHeight: pxToRem(16),
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1)
     },
-    mini2: {
-      fontSize: pxToRem(9),
-      fontWeight: 500,
-      letterSpacing: pxToRem(0.6),
-      lineHeight: pxToRem(14),
-      textDecorationThickness: pxToRem(1),
-      textUnderlineOffset: pxToRem(1)
+    mini100,
+    mini100Bold: {
+      ...mini100,
+      fontWeight: 700
     },
     micro: {
       fontSize: pxToRem(9),

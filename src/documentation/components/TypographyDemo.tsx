@@ -218,21 +218,31 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>mini1</code>
+              <code>mini200</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="mini1">
-                Mini 1
+              <Typography component="div" variant="mini200">
+                Mini 200
               </Typography>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>mini2</code>
+              <code>mini100</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="mini2">
-                Mini 2
+              <Typography component="div" variant="mini100">
+                Mini 100
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <code>mini100Bold</code>
+            </TableCell>
+            <TableCell>
+              <Typography component="div" variant="mini100Bold">
+                Mini 100 | Bold
               </Typography>
             </TableCell>
           </TableRow>

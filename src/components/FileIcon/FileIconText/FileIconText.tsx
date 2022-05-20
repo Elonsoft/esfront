@@ -41,7 +41,7 @@ export const FileIconText: React.FC<FileIconTextProps> = (inProps) => {
   const styles = useUtilityClasses(ownerState);
 
   return (
-    <FileIconTextRoot className={clsx(styles.root, className)} sx={sx} component="div" variant="mini2">
+    <FileIconTextRoot className={clsx(styles.root, className)} sx={sx} component="div" variant="mini100">
       {children}
     </FileIconTextRoot>
   );
