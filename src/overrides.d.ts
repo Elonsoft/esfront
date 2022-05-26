@@ -32,6 +32,7 @@ import {
   AlertTitleProps
 } from './components/Alert';
 import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
+import { AvatarGroupClassKey, AvatarGroupProps } from './components/AvatarGroup';
 import {
   DialogActionsClassKey,
   DialogActionsProps,
@@ -145,6 +146,7 @@ declare module '@mui/material/styles/props' {
     ESAlert: AlertProps;
     ESAlertActions: AlertActionsProps;
     ESAlertClose: AlertCloseProps;
+    ESAvatarGroup: AvatarGroupProps;
     ESAlertTitle: AlertTitleProps;
     ESAudioPlayer: AudioPlayerProps;
     ESDialog: DialogProps;
@@ -190,6 +192,7 @@ declare module '@mui/material/styles/overrides' {
     ESAlert: AlertClassKey;
     ESAlertActions: AlertActionsClassKey;
     ESAlertClose: AlertCloseClassKey;
+    ESAvatarGroup: AvatarGroupClassKey;
     ESAlertTitle: AlertTitleClassKey;
     ESAudioPlayer: AudioPlayerClassKey;
     ESDialog: DialogClassKey;
@@ -234,6 +237,10 @@ declare module '@mui/material/styles/components' {
     ESAlert?: {
       defaultProps?: ComponentsProps['ESAlert'];
       styleOverrides?: ComponentsOverrides['ESAlert'];
+    };
+    ESAvatarGroup?: {
+      defaultProps?: ComponentsProps['ESAvatarGroup'];
+      styleOverrides?: ComponentsOverrides['ESAvatarGroup'];
     };
     ESAlertClose?: {
       defaultProps?: ComponentsProps['ESAlertClose'];

@@ -1,0 +1,24 @@
+import { generateUtilityClass, generateUtilityClasses } from '@mui/base';
+
+export type AvatarGroupClasses = {
+  /** Styles applied to the root element. */
+  root: string;
+  /** Styles applied to the avatar elements. */
+  avatar: string;
+  /** Styles applied to the root elemnt if direction="rtl". */
+  rtl: string;
+  /** Styles applied to the root elemnt if direction="ltr". */
+  ltr: string;
+};
+export type AvatarGroupClassKey = keyof AvatarGroupClasses;
+
+export function getAlertUtilityClass(slot: string): string {
+  return generateUtilityClass('ESAvatarGroup', slot);
+}
+
+export const avatarGroupClasses: AvatarGroupClasses = generateUtilityClasses('ESAvatarGroup', [
+  'root',
+  'avatar',
+  'rtl',
+  'ltr'
+]);
