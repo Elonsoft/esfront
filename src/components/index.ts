@@ -1,5 +1,6 @@
 export * from './Alert';
 export * from './AudioPlayer';
+export * from './AvatarGroup';
 export * from './DateAdapter';
 export * from './Dialog';
 export * from './Dropzone';
