@@ -34,6 +34,7 @@ import {
 } from './components/Alert';
 import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
 import { AvatarGroupClassKey, AvatarGroupProps } from './components/AvatarGroup';
+import { BottomSheetClassKey, BottomSheetProps } from './components/BottomSheet';
 import { BreadcrumbClassKey, BreadcrumbProps, BreadcrumbsClassKey, BreadcrumbsProps } from './components/Breadcrumbs';
 import {
   DialogActionsClassKey,
@@ -228,6 +229,7 @@ declare module '@mui/material/styles/props' {
     ESAudioPlayer: AudioPlayerProps;
     ESBreadcrumbs: BreadcrumbsProps;
     ESBreadcrumb: BreadcrumbProps;
+    ESBottomSheet: BottomSheetProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
     ESDialogArrow: DialogArrowProps;
@@ -302,6 +304,7 @@ declare module '@mui/material/styles/overrides' {
     ESAudioPlayer: AudioPlayerClassKey;
     ESBreadcrumbs: BreadcrumbsClassKey;
     ESBreadcrumb: BreadcrumbClassKey;
+    ESBottomSheet: BottomSheetClassKey;
     ESDialog: DialogClassKey;
     ESDialogActions: DialogActionsClassKey;
     ESDialogArrow: DialogArrowClassKey;
@@ -398,6 +401,10 @@ declare module '@mui/material/styles/components' {
     ESBreadcrumb?: {
       defaultProps?: ComponentsProps['ESBreadcrumb'];
       styleOverrides?: ComponentsOverrides['ESBreadcrumb'];
+    };
+    ESBottomSheet?: {
+      defaultProps?: ComponentsProps['ESBottomSheet'];
+      styleOverrides?: ComponentsOverrides['ESBottomSheet'];
     };
     ESDialog?: {
       defaultProps?: ComponentsProps['ESDialog'];
