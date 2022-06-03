@@ -41,12 +41,14 @@ const DialogTitleRoot = styled('div', {
   color: theme.palette.monoA.A900,
   padding: 24,
   paddingBottom: 6,
+
   ...(ownerState.sticky && {
     position: 'sticky',
     top: -1,
     backgroundColor: theme.palette.surface[600],
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
+    zIndex: 1,
 
     ...(ownerState.isStuck && {
       borderRadius: 0,

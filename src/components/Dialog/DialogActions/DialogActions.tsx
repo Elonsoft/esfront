@@ -51,6 +51,7 @@ const DialogActionsRoot = styled('div', {
     backgroundColor: theme.palette.surface[600],
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
+    zIndex: 1,
 
     ...(ownerState.isStuck && {
       borderTop: `1px solid ${theme.palette.monoA.A100}`,

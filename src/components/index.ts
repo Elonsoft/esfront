@@ -1,6 +1,7 @@
 export * from './Alert';
 export * from './AudioPlayer';
 export * from './AvatarGroup';
+export * from './BottomSheet';
 export * from './Breadcrumbs';
 export * from './DateAdapter';
 export * from './Dialog';
