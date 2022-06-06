@@ -1,0 +1,100 @@
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { TimePicker } from './TimePicker';
+import * as stories from './TimePicker.stories';
+
+<Meta
+  title="Components/TimePicker"
+  component={TimePicker}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    value: {
+      table: {
+        disable: true
+      }
+    },
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    renderInput: {
+      table: {
+        disable: true
+      }
+    },
+    onChange: {
+      table: {
+        disable: true
+      }
+    },
+    minTime: {
+      table: {
+        disable: true
+      }
+    },
+    maxTime: {
+      table: {
+        disable: true
+      }
+    },
+    inputFormat: {
+      table: {
+        disable: true
+      }
+    },
+    disabled: {
+      table: {
+        disable: true
+      }
+    },
+    label: {
+      table: {
+        disable: true
+      }
+    },
+    inputProps: {
+      table: {
+        disable: true
+      }
+    }
+  }}
+/>
+
+# TimePicker
+
+<Description of={TimePicker} />
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-timepicker" story="page">
+      <code>TimePicker</code>
+    </LinkTo>
+  </li>
+  {/* <li>
+    <LinkTo kind="components-api-timepickermenu" story="page">
+      <code>TimePickerMenu</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-timepickermenuitem" story="page">
+      <code>TimePickerMenuItem</code>
+    </LinkTo>
+  </li> */}
+</ul>
