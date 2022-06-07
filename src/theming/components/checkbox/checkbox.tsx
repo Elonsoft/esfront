@@ -1,6 +1,6 @@
 import { keyframes } from '@mui/system';
 
-import { IconCheckbox, IconCheckboxChecked, IconCheckboxIndetereminate } from '../../../icons';
+import { IconCheckbox, IconCheckboxIndetereminate } from '../../../icons';
 import { Component } from '../component';
 
 const enterKeyframe = keyframes`
@@ -19,7 +19,7 @@ export const createCheckbox: Component<'MuiCheckbox'> = (theme) => {
     defaultProps: {
       size: 'small',
       icon: <IconCheckbox />,
-      checkedIcon: <IconCheckboxChecked />,
+      checkedIcon: <IconCheckbox />,
       indeterminateIcon: <IconCheckboxIndetereminate />
     },
     styleOverrides: {
@@ -29,6 +29,29 @@ export const createCheckbox: Component<'MuiCheckbox'> = (theme) => {
           fill: 'none',
           '&.MuiSvgIcon-fontSizeSmall': {
             fontSize: '18px'
+          }
+        },
+        '& svg': {
+          borderRadius: '4px',
+          '& path': {
+            strokeDasharray: '15',
+            strokeDashoffset: '18px',
+            transitionDelay: '150ms',
+            transitionDuration: '200ms'
+          },
+          '& circle': {
+            transition: '200ms'
+          }
+        },
+        '&.Mui-checked': {
+          '& svg': {
+            '& circle': {
+              strokeWidth: '20px',
+              stroke: 'currentColor'
+            },
+            '& path': {
+              strokeDashoffset: '30px'
+            }
           }
         },
         '& .MuiTouchRipple-rippleVisible': {
