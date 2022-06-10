@@ -19,3 +19,4 @@ export * from './Spinner';
 export * from './Swiper';
 export * from './Switch';
 export * from './TableActions';
+export * from './TimePicker';

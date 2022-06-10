@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars */
-
 import {
   BreakpointOverrides,
   Palette,
@@ -107,6 +106,13 @@ import {
 } from './components/Swiper';
 import { SwitchClassKey, SwitchProps } from './components/Switch';
 import { TableActionsClassKey, TableActionsProps } from './components/TableActions';
+import {
+  TimePickerClassKey,
+  TimePickerMenuItemClassKey,
+  TimePickerMenuItemProps,
+  TimePickerMenuProps,
+  TimePickerProps
+} from './components/TimePicker';
 
 export interface ISurfacePalette {
   50: string;
@@ -184,6 +190,9 @@ declare module '@mui/material/styles/props' {
     ESSwiperButton: SwiperButtonProps;
     ESSwiperPagination: SwiperPaginationProps;
     ESTableActions: TableActionsProps;
+    ESTimePicker: TimePickerProps;
+    ESTimePickerMenu: TimePickerMenuProps;
+    ESTimePickerMenuItem: TimePickerMenuItemProps;
   }
 }
 
@@ -229,6 +238,8 @@ declare module '@mui/material/styles/overrides' {
     ESSwiperButton: SwiperButtonClassKey;
     ESSwiperPagination: SwiperPaginationClassKey;
     ESTableActions: TableActionsClassKey;
+    ESTimePicker: TimePickerClassKey;
+    ESTimePickerMenuItem: TimePickerMenuItemClassKey;
   }
 }
 
