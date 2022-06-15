@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { ThemeProviderProps } from './ThemeProvider.types';
 
@@ -19,14 +19,14 @@ const defaultPalette = {
   ...defaultPalettes.light
 };
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({
+export const ThemeProvider = ({
   children,
   breakpoints = defaultBreakpoints,
   palette = defaultPalette,
   createTypography = createDefaultTypography,
   createComponents = createDefaultComponents,
   args = {}
-}) => {
+}: ThemeProviderProps) => {
   const theme = useMemo(() => {
     const theme = createTheme({
       breakpoints: {

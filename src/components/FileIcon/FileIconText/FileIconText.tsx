@@ -31,7 +31,7 @@ const FileIconTextRoot = styled(Typography, {
   top: '-2px'
 })) as typeof Typography;
 
-export const FileIconText: React.FC<FileIconTextProps> = (inProps) => {
+export const FileIconText = (inProps: FileIconTextProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESFileIconText'

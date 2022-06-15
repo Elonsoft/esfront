@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { IThemeProps } from './Theme.types';
 
@@ -10,7 +10,7 @@ import { enUS, ruRU } from '@mui/material/locale';
 import { DateAdapterProvider, en, ru } from '../../components';
 import { palettes, ThemeProvider } from '../../theming';
 
-export const Theme: FC<IThemeProps> = ({ children, isDarkMode, locale }) => {
+export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
   const palette = useMemo(() => {
     return {
       mode: isDarkMode ? ('dark' as const) : ('light' as const),

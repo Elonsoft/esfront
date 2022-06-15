@@ -8,8 +8,15 @@ import { Swiper, SwiperPagination } from '.';
 
 import { IconChevronLeft, IconChevronRight } from '../../icons';
 
-const Image: React.FC<{ src: string; width?: string }> = ({ src, width }) => {
-  return <img src={src} width={width || '160px'} height="160px" style={{ objectFit: 'cover', borderRadius: '8px' }} />;
+const Image = (props: { src: string; width?: string }) => {
+  return (
+    <img
+      src={props.src}
+      width={props.width || '160px'}
+      height="160px"
+      style={{ objectFit: 'cover', borderRadius: '8px' }}
+    />
+  );
 };
 
 export const Demo: Story = ({
@@ -109,7 +116,7 @@ const CustomizationButton = styled(IconButton)<{ prev?: boolean; next?: boolean 
   }
 }));
 
-const CustomizationButtonPrev: React.FC = () => {
+const CustomizationButtonPrev = () => {
   const { active, setActiveSlide } = useSwiperContext();
 
   const onClick = () => {
@@ -123,7 +130,7 @@ const CustomizationButtonPrev: React.FC = () => {
   );
 };
 
-const CustomizationButtonNext: React.FC = () => {
+const CustomizationButtonNext = () => {
   const { active, setActiveSlide } = useSwiperContext();
 
   const onClick = () => {
@@ -138,8 +145,8 @@ const CustomizationButtonNext: React.FC = () => {
 };
 
 export const Customization: Story = (args) => {
-  const Image: React.FC<{ src: string }> = ({ src }) => {
-    return <img src={src} width="56px" height="56px" />;
+  const Image = (props: { src: string }) => {
+    return <img src={props.src} width="56px" height="56px" />;
   };
 
   return (

@@ -1,8 +1,11 @@
+import { ReactNode } from 'react';
+
 import { FileInfoNameClasses } from './FileInfoName.classes';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
 export interface FileInfoNameProps {
+  children?: ReactNode;
   /** Override or extend the styles applied to the component. */
   classes?: FileInfoNameClasses;
   /** Class applied to the root element. */

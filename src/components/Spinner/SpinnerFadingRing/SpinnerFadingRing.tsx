@@ -67,7 +67,7 @@ const SpinnerFadingRingCircle = styled('div', {
   )}) 61deg, ${ownerState.spinnerColor} 360deg)`
 }));
 
-export const SpinnerFadingRing: React.FC<SpinnerFadingRingProps> & { count: number } = (inProps) => {
+export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
   const {
     className,
     sx,

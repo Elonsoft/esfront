@@ -1,8 +1,11 @@
+import { ReactNode } from 'react';
+
 import { KbdClasses } from './Kbd.classes';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
 export interface KbdProps {
+  children?: ReactNode;
   /** Override or extend the styles applied to the component. */
   classes?: Partial<KbdClasses>;
   /** Class applied to the root element. */

@@ -120,7 +120,7 @@ const SwiperPaginationItemInput = styled('input', {
   }
 }));
 
-export const SwiperPaginationItem: React.FC<SwiperPaginationItemProps> = ({
+export const SwiperPaginationItem = ({
   index,
   active,
   from,
@@ -131,7 +131,7 @@ export const SwiperPaginationItem: React.FC<SwiperPaginationItemProps> = ({
   transition,
   onSlideChange,
   ...props
-}) => {
+}: SwiperPaginationItemProps) => {
   const small = (index === siblingFrom && siblingFrom > from) || (index === siblingTo && siblingTo < to);
   const ownerState = { ...props, index, active, small };
   const classes = useUtilityClasses(ownerState);

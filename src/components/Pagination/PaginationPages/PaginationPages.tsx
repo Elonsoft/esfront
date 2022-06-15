@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
 import { PaginationPagesProps } from './PaginationPages.types';
 
@@ -209,7 +209,7 @@ const PaginationPagesTooltip = styled(
 
 const REGEX = /^[0-9]*$/;
 
-export const PaginationPages: FC<PaginationPagesProps> = (inProps) => {
+export const PaginationPages = (inProps: PaginationPagesProps) => {
   const {
     className,
     sx,

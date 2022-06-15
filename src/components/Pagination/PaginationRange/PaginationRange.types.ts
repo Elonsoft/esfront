@@ -1,8 +1,11 @@
+import { ReactNode } from 'react';
+
 import { PaginationRangeClasses } from './PaginationRange.classes';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
 export interface PaginationRangeProps {
+  children?: ReactNode;
   /** Override or extend the styles applied to the component. */
   classes?: Partial<PaginationRangeClasses>;
   /** Class applied to the root element. */

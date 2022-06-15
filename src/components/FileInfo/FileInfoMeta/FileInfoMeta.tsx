@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { FileInfoMetaProps } from './FileInfoMeta.types';
 
 import clsx from 'clsx';
@@ -34,7 +32,7 @@ const FileInfoMetaRoot = styled(Typography, {
   alignItems: 'center'
 }));
 
-export const FileInfoMeta: FC<FileInfoMetaProps> = (inProps) => {
+export const FileInfoMeta = (inProps: FileInfoMetaProps) => {
   const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoMeta' });
 
   const ownerState = { ...props };

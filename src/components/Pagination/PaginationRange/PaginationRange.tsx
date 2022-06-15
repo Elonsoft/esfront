@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
 import { PaginationRangeProps } from './PaginationRange.types';
 
@@ -79,7 +79,7 @@ const PaginationRangeValue = styled(Typography, {
 
 const OPTIONS = [10, 25, 100];
 
-export const PaginationRange: FC<PaginationRangeProps> = (inProps) => {
+export const PaginationRange = (inProps: PaginationRangeProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 

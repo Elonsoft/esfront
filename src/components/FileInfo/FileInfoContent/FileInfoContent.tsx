@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { FileInfoContentProps } from './FileInfoContent.types';
 
 import clsx from 'clsx';
@@ -31,7 +29,7 @@ const FileInfoContentRoot = styled('div', {
   marginLeft: '12px'
 }));
 
-export const FileInfoContent: FC<FileInfoContentProps> = (inProps) => {
+export const FileInfoContent = (inProps: FileInfoContentProps) => {
   const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoContent' });
 
   const ownerState = { ...props };

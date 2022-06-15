@@ -54,7 +54,7 @@ const FileIconBadgeRoot = styled(Typography, {
   })
 }));
 
-export const FileIconBadge: React.FC<FileIconBadgeProps> = (inProps) => {
+export const FileIconBadge = (inProps: FileIconBadgeProps) => {
   const {
     className,
     children,

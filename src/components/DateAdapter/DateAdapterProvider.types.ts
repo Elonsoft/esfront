@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { DateIOFormats, IUtils } from '@date-io/core/IUtils';
 
 interface DateAdapterProviderAdapater {
@@ -5,6 +7,7 @@ interface DateAdapterProviderAdapater {
 }
 
 export interface DateAdapterProviderProps {
+  children?: ReactNode;
   /** Date adapter. */
   adapter: DateAdapterProviderAdapater;
   /** Map of predefined format strings. */

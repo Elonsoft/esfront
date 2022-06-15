@@ -56,7 +56,7 @@ const FileIconChildren = styled('div', {
 /**
  * This component is for displaying file extensions.
  */
-export const FileIcon: React.FC<FileIconProps> = (inProps) => {
+export const FileIcon = (inProps: FileIconProps) => {
   const {
     className,
     sx,

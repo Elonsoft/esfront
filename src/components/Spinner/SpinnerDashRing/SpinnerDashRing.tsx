@@ -57,7 +57,7 @@ const SpinnerDashRingCircle = styled('circle', {
   spinnerDashAnimation(ownerState.duration, ownerState.ease, ownerState.dashEase)
 );
 
-export const SpinnerDashRing: React.FC<SpinnerDashRingProps> = (inProps) => {
+export const SpinnerDashRing = (inProps: SpinnerDashRingProps) => {
   const {
     className,
     sx,

@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { KbdProps } from './Kbd.types';
 
 import clsx from 'clsx';
@@ -59,7 +57,7 @@ const KbdRoot = styled('kbd', {
 /**
  * Display keyboard button or keys combination.
  */
-export const Kbd: FC<KbdProps> = (inProps) => {
+export const Kbd = (inProps: KbdProps) => {
   const { children, className, sx, variant = 'raised', ...props } = useThemeProps({ props: inProps, name: 'ESKbd' });
 
   const ownerState = { ...props, variant };

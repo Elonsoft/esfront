@@ -96,7 +96,7 @@ const AvatarGroupRoot = styled('div', {
 /**
  * AvatarGroup renders its children as a stack.
  */
-export const AvatarGroup: React.FC<AvatarGroupProps> = (inProps) => {
+export const AvatarGroup = (inProps: AvatarGroupProps) => {
   const {
     className,
     children,

@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { FileInfoNameProps } from './FileInfoName.types';
 
 import clsx from 'clsx';
@@ -44,7 +42,7 @@ const FileInfoNameButton = styled(IconButton, {
   marginLeft: 4
 }));
 
-export const FileInfoName: FC<FileInfoNameProps> = (inProps) => {
+export const FileInfoName = (inProps: FileInfoNameProps) => {
   const {
     children,
     className,

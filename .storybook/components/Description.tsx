@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import json from '../../src/typedoc.json';
 
@@ -6,7 +6,7 @@ interface DescriptionProps {
   name: string;
 }
 
-export const Description: React.FC<DescriptionProps> = ({ name }) => {
+export const Description = ({ name }: DescriptionProps) => {
   const description = useMemo(() => {
     const entry = json.children.find((e) => e.name === name);
     const signature = entry?.signatures?.[0];

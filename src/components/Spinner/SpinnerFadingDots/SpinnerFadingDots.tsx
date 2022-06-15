@@ -51,7 +51,7 @@ const SpinnerFadingDotsRoot = styled('svg', {
   })
 );
 
-export const SpinnerFadingDots: React.FC<SpinnerFadingDotsProps> = (inProps) => {
+export const SpinnerFadingDots = (inProps: SpinnerFadingDotsProps) => {
   const {
     className,
     sx,

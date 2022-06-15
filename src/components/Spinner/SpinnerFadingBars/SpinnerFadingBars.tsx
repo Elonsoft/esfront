@@ -51,7 +51,7 @@ const SpinnerFadingBarsRoot = styled('svg', {
   })
 );
 
-export const SpinnerFadingBars: React.FC<SpinnerFadingBarsProps> = (inProps) => {
+export const SpinnerFadingBars = (inProps: SpinnerFadingBarsProps) => {
   const {
     className,
     sx,

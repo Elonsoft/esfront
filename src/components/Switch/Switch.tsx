@@ -180,7 +180,7 @@ const SwitchInput = styled('input', {
 /**
  * Switches toggle the state of a single setting on or off.
  */
-export const Switch: React.FC<SwitchProps> = (inProps) => {
+export const Switch = (inProps: SwitchProps) => {
   const {
     className,
     checked: checkedProp,
