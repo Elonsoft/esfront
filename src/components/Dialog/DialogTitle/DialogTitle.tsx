@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { DialogTitleProps } from './DialogTitle.types';
 
@@ -66,7 +66,7 @@ const DialogTitleRoot = styled('div', {
   })
 }));
 
-export const DialogTitle: FC<DialogTitleProps> = (inProps) => {
+export const DialogTitle = (inProps: DialogTitleProps) => {
   const { className, sx, sticky, children, ...props } = useThemeProps({
     props: inProps,
     name: 'ESDialogTitle'

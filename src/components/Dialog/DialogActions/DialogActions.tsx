@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { DialogActionsProps } from './DialogActions.types';
 
@@ -59,7 +59,7 @@ const DialogActionsRoot = styled('div', {
   })
 }));
 
-export const DialogActions: FC<DialogActionsProps> = (inProps) => {
+export const DialogActions = (inProps: DialogActionsProps) => {
   const { className, sx, sticky, children, ...props } = useThemeProps({
     props: inProps,
     name: 'ESDialogActions'

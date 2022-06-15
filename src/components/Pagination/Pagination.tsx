@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { PaginationProps } from './Pagination.types';
 
@@ -47,7 +47,7 @@ const PaginationRoot = styled('div', {
 /**
  * The Pagination component enables the user to select a specific page from a range of pages.
  */
-export const Pagination: FC<PaginationProps> = (inProps) => {
+export const Pagination = (inProps: PaginationProps) => {
   const { className, sx, children, count, itemsPerPage, page, onPageChange, onItemsPerPageChange, ...props } =
     useThemeProps({
       props: inProps,

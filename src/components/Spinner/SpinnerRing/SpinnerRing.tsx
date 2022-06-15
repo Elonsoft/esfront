@@ -50,7 +50,7 @@ const SpinnerRingRoot = styled('svg', {
   ({ ownerState }) => spinnerRotateAnimation('& > *', ownerState.duration, ownerState.ease)
 );
 
-export const SpinnerRing: React.FC<SpinnerRingProps> = (inProps) => {
+export const SpinnerRing = (inProps: SpinnerRingProps) => {
   const {
     className,
     sx,

@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { DateAdapterProviderProps } from './DateAdapterProvider.types';
 
@@ -7,7 +7,7 @@ import { DateAdapterContext } from './DateAdapter.context';
 /**
  * The provider for the date-engine that is used in variuos components.
  */
-export const DateAdapterProvider: FC<DateAdapterProviderProps> = ({ children, adapter, formats, locale }) => {
+export const DateAdapterProvider = ({ children, adapter, formats, locale }: DateAdapterProviderProps) => {
   const value = useMemo(() => {
     return { adapter: new adapter({ formats, locale }) };
   }, [adapter, formats, locale]);

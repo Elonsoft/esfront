@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { AudioPlayerProviderProps, AudioPlayerProviderVolumeStorage } from './AudioPlayerProvider.types';
 
@@ -37,10 +37,7 @@ const DEFAULT_VOLUME_STORAGE = new AudioPlayerProviderVolumeStorageLocal();
 /**
  * The provider for the audio player volume storage.
  */
-export const AudioPlayerProvider: FC<AudioPlayerProviderProps> = ({
-  children,
-  volumeStorage = DEFAULT_VOLUME_STORAGE
-}) => {
+export const AudioPlayerProvider = ({ children, volumeStorage = DEFAULT_VOLUME_STORAGE }: AudioPlayerProviderProps) => {
   const [volume, setVolumeState] = useState(+volumeStorage.get() || 100);
 
   const setVolume = useCallback(

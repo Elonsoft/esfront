@@ -95,7 +95,7 @@ const SwiperPaginationRoot = styled('div', {
   })
 }));
 
-export const SwiperPagination: React.FC<SwiperPaginationProps> & { count: number } = (inProps) => {
+export const SwiperPagination = (inProps: SwiperPaginationProps) => {
   const {
     className,
     sx,

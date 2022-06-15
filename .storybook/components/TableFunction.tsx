@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../src/overrides.d.ts" />
 
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,7 +20,7 @@ interface TableFunctionProps {
   name: string;
 }
 
-const TableFunctionBase: FC<TableFunctionProps> = ({ name }) => {
+const TableFunctionBase = ({ name }: TableFunctionProps) => {
   const data: {
     params: Array<{
       id: number;
@@ -121,7 +121,7 @@ const TableFunctionBase: FC<TableFunctionProps> = ({ name }) => {
   );
 };
 
-export const TableFunction: React.FC<TableFunctionProps> = (props) => {
+export const TableFunction = (props: TableFunctionProps) => {
   const isDarkMode = useDarkMode();
 
   return (

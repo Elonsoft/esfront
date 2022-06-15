@@ -28,7 +28,7 @@ const AlertTitleRoot = styled(Typography, {
   overridesResolver: (props, styles) => styles.root
 })(() => ({}));
 
-export const AlertTitle: React.FC<AlertTitleProps> = (inProps) => {
+export const AlertTitle = (inProps: AlertTitleProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESAlertTitle'

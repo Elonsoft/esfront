@@ -79,7 +79,7 @@ const SpinnerFadingDoubleRingSpinnerUpperPath = styled('div', {
   height: '100%'
 }));
 
-export const SpinnerFadingDoubleRing: React.FC<SpinnerFadingDoubleRingProps> & { count: number } = (inProps) => {
+export const SpinnerFadingDoubleRing = (inProps: SpinnerFadingDoubleRingProps) => {
   const {
     className,
     sx,

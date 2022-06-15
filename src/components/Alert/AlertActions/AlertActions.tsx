@@ -30,7 +30,7 @@ const AlertActionsRoot = styled('div', {
   padding: '4px 0'
 }));
 
-export const AlertActions: React.FC<AlertActionsProps> = (inProps) => {
+export const AlertActions = (inProps: AlertActionsProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESAlertActions'

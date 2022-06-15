@@ -1,8 +1,11 @@
+import { ReactNode } from 'react';
+
 import { Breakpoint, PaletteOptions, Theme } from '@mui/material/styles';
 import { Components } from '@mui/material/styles/components';
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 export interface ThemeProviderProps {
+  children?: ReactNode;
   /** Breakpoints provided to the theme. */
   breakpoints?: { [key in Breakpoint]: number };
   /** Palette provided to thetheme. */

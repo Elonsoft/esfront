@@ -1,8 +1,11 @@
+import { ReactNode } from 'react';
+
 import { FileIconTextClasses } from './FileIconText.classes';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
 export interface FileIconTextProps {
+  children?: ReactNode;
   /** Class applied to the root element. */
   className?: string;
   /** Override or extend the styles applied to the component. */

@@ -53,7 +53,7 @@ const MenuItemRoot = styled(MuiMenuItem, {
 /**
  * Wrapper aroud MenuItem from MUI with color prop.
  */
-export const MenuItem: React.FC<MenuItemProps> = (inProps) => {
+export const MenuItem = (inProps: MenuItemProps) => {
   const { className, color, ...props } = useThemeProps({
     props: inProps,
     name: 'ESMenuItem'

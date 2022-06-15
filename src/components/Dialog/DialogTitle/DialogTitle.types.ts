@@ -1,8 +1,11 @@
+import { ReactNode } from 'react';
+
 import { DialogTitleClasses } from './DialogTitle.classes';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
 export interface DialogTitleProps {
+  children?: ReactNode;
   /** Override or extend the styles applied to the component. */
   classes?: Partial<DialogTitleClasses>;
   /** Class applied to the root element. */

@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { DialogContentProps } from './DialogContent.types';
 
 import clsx from 'clsx';
@@ -36,7 +34,7 @@ const DialogContentRoot = styled('div', {
   padding: '0 24px'
 }));
 
-export const DialogContent: FC<DialogContentProps> = (inProps) => {
+export const DialogContent = (inProps: DialogContentProps) => {
   const { className, sx, children, ...props } = useThemeProps({
     props: inProps,
     name: 'ESDialogContent'

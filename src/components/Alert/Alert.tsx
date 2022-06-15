@@ -114,7 +114,7 @@ const defaultIconMapping = {
 /**
  * An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task.
  */
-export const Alert: React.FC<AlertProps> = (inProps) => {
+export const Alert = (inProps: AlertProps) => {
   const {
     className,
     children,

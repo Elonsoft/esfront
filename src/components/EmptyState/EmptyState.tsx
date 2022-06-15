@@ -80,7 +80,7 @@ const EmptyStateSubheading = styled(Typography, {
 /**
  * This component is a placeholder to use on pages without content.
  */
-export const EmptyState: React.FC<EmptyStateProps> = (inProps) => {
+export const EmptyState = (inProps: EmptyStateProps) => {
   const { children, className, sx, icon, heading, subheading, ...props } = useThemeProps({
     props: inProps,
     name: 'ESEmptyState'

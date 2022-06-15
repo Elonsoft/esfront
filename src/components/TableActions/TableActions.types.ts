@@ -1,8 +1,11 @@
+import { ReactNode } from 'react';
+
 import { TableActionsClasses } from './TableActions.classes';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
 export interface TableActionsProps {
+  children?: ReactNode;
   /** Override or extend the styles applied to the component. */
   classes?: Partial<TableActionsClasses>;
   /** Class applied to the root element. */

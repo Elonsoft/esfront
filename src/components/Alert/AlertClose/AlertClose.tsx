@@ -42,7 +42,7 @@ const AlertCloseRoot = styled(Button, {
   }
 }));
 
-export const AlertClose: React.FC<AlertCloseProps> = (inProps) => {
+export const AlertClose = (inProps: AlertCloseProps) => {
   const {
     className,
     sx,
