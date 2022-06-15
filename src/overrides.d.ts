@@ -136,9 +136,11 @@ export interface IShadowPalette {
 }
 
 export interface IOverlayPalette {
-  modal: string;
-  filter: string;
-  gallery: string;
+  900: string;
+  700: string;
+  300: string;
+  200: string;
+  100: string;
 }
 
 declare module '@mui/material/styles/props' {
