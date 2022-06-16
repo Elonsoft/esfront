@@ -1,21 +1,23 @@
 import { ReactNode } from 'react';
 
-import { Breakpoint, PaletteOptions, Theme } from '@mui/material/styles';
-import { Components } from '@mui/material/styles/components';
+import { Breakpoint, Components, PaletteOptions, Theme } from '@mui/material/styles';
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 export interface ThemeProviderProps {
-  children?: ReactNode;
+  children: ReactNode;
+  /** A theme object, usually the result of `createTheme()`. */
+  theme: Theme;
+}
+
+export interface ThemeOptions {
   /** Breakpoints provided to the theme. */
   breakpoints?: { [key in Breakpoint]: number };
-  /** Palette provided to thetheme. */
+  /** Palette provided to the theme. */
   palette?: PaletteOptions;
-  /** Function to create a scrollbars object from the theme with breakpoints and palette. */
-  createScrollbars?: (theme: Theme) => any;
-  /** Function to create a typography object from the theme with breakpoints and palette. */
-  createTypography?: (theme: Theme) => TypographyOptions;
   /** Function to create a components object from the typography and the theme with breakpoints and palette. */
-  createComponents?: (theme: Theme, typography: TypographyOptions) => Components;
-  /** Deep merge the arguments with the about to be returned theme. */
-  args?: Record<string, unknown>;
+  components?: (theme: Theme, typography: TypographyOptions) => Components;
+  /** Function to create a scrollbars object from the theme with breakpoints and palette. */
+  scrollbars?: (theme: Theme) => any;
+  /** Function to create a typography object from the theme with breakpoints and palette. */
+  typography?: (theme: Theme) => TypographyOptions;
 }

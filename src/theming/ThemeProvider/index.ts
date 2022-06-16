@@ -1,2 +1,3 @@
+export { createTheme } from './createTheme';
 export { ThemeProvider } from './ThemeProvider';
-export { ThemeProviderProps } from './ThemeProvider.types';
+export { ThemeOptions, ThemeProviderProps } from './ThemeProvider.types';

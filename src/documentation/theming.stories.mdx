@@ -13,14 +13,20 @@ import { TypographyDemo } from './components/TypographyDemo';
 
 ## Palette
 
-Our design system build upon MUI palette and introduces new colors and hues. Palette can be customized via `palette`
-prop in `ThemeProvider`:
+Our design system build upon MUI palette and introduces new colors and hues. Palette can be customized via `theme` prop
+in `ThemeProvider`:
 
 ```tsx
-// Default palette
-import { palettes } from '@elonkit/react';
+import { createTheme, palettes } from '@elonkit/react';
 
-<ThemeProvider palette={palettes}>...</ThemeProvider>;
+const theme = createTheme({
+  palette: {
+    ...palettes.common,
+    ...palettes.light
+  }
+});
+
+<ThemeProvider theme={theme}>...</ThemeProvider>;
 ```
 
 <Story name="Palette">
