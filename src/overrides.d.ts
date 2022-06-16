@@ -165,6 +165,23 @@ export interface IOverlayPalette {
   100: string;
 }
 
+interface IAlphaPalette {
+  A25: number;
+  A50: number;
+  A75: number;
+  A100: number;
+  A150: number;
+  A200: number;
+  A300: number;
+  A400: number;
+  A500: number;
+  A550: number;
+  A600: number;
+  A700: number;
+  A800: number;
+  A900: number;
+}
+
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
     ESAlert: AlertProps;
@@ -561,6 +578,7 @@ declare module '@mui/material/styles' {
       right: IShadowPalette;
     };
     overlay: IOverlayPalette;
+    alpha: IAlphaPalette;
   }
 
   interface PaletteOptions {
@@ -590,6 +608,7 @@ declare module '@mui/material/styles' {
       right: IShadowPalette;
     }>;
     overlay?: IOverlayPalette;
+    alpha?: IAlphaPalette;
   }
 
   interface BreakpointOverrides {
