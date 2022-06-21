@@ -4,6 +4,7 @@ import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
+import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
 import { SwiperButtonProps } from '../Swiper';
 import { TableActionsProps, TableCellProps } from '../Table';
 
@@ -42,6 +43,12 @@ export interface Localization {
     };
     ESPaginationRange: {
       defaultProps: Pick<PaginationRangeProps, 'labelItemsPerPage' | 'labelOf'>;
+    };
+    ESSidebarToggle: {
+      defaultProps: Pick<SidebarToggleProps, 'labelOpen' | 'labelHide'>;
+    };
+    ESSidebarItem: {
+      defaultProps: Pick<SidebarItemProps, 'labelOpen' | 'labelHide'>;
     };
     ESFormatSize: {
       defaultProps: Pick<FormatSizeProps, 'metricUnits' | 'binaryUnits'>;
@@ -113,6 +120,18 @@ export const en: Localization = {
       defaultProps: {
         labelItemsPerPage: 'Per:',
         labelOf: 'of'
+      }
+    },
+    ESSidebarToggle: {
+      defaultProps: {
+        labelOpen: 'Expand',
+        labelHide: 'Collapse'
+      }
+    },
+    ESSidebarItem: {
+      defaultProps: {
+        labelOpen: 'Show nested list',
+        labelHide: 'Hide nested list'
       }
     },
     ESSwiperButton: {
@@ -189,6 +208,18 @@ export const ru: Localization = {
       defaultProps: {
         labelItemsPerPage: 'По:',
         labelOf: 'из'
+      }
+    },
+    ESSidebarToggle: {
+      defaultProps: {
+        labelOpen: 'Полный вид',
+        labelHide: 'Компактный вид'
+      }
+    },
+    ESSidebarItem: {
+      defaultProps: {
+        labelOpen: 'Показать вложенный список',
+        labelHide: 'Скрыть вложенный список'
       }
     },
     ESSwiperButton: {
