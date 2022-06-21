@@ -101,6 +101,7 @@ import {
   SidebarToggleClassKey,
   SidebarToggleProps
 } from './components/Sidebar';
+import { SidenavClassKey, SidenavItemClassKey, SidenavItemProps, SidenavProps } from './components/Sidenav';
 import {
   SpinnerDashRingClassKey,
   SpinnerDashRingProps,
@@ -239,6 +240,8 @@ declare module '@mui/material/styles/props' {
     ESSidebarDivider: SidebarDividerProps;
     ESSidebarMenu: SidebarMenuProps;
     ESSidebarScrollable: SidebarScrollableProps;
+    ESSidenav: SidenavProps;
+    ESSidenavItem: SidenavItemProps;
     ESSpinnerDashRing: SpinnerDashRingProps;
     ESSpinnerFadingBars: SpinnerFadingBarsProps;
     ESSpinnerFadingDots: SpinnerFadingDotsProps;
@@ -300,6 +303,8 @@ declare module '@mui/material/styles/overrides' {
     ESSidebarDivider: SidebarDividerClassKey;
     ESSidebarSpacer: SidebarSpacerClassKey;
     ESSidebarScrollable: SidebarScrollableClassKey;
+    ESSidenav: SidenavClassKey;
+    ESSidenavItem: SidenavItemClassKey;
     ESSpinnerDashRing: SpinnerDashRingClassKey;
     ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
     ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
@@ -552,6 +557,14 @@ declare module '@mui/material/styles/components' {
     ESSidebarScrollable?: {
       defaultProps?: ComponentsProps['ESSidebarScrollable'];
       styleOverrides?: ComponentsOverrides['ESSidebarScrollable'];
+    };
+    ESSidenav?: {
+      defaultProps?: ComponentsProps['ESSidenav'];
+      styleOverrides?: ComponentsOverrides['ESSidenav'];
+    };
+    ESSidenavItem?: {
+      defaultProps?: ComponentsProps['ESSidenavItem'];
+      styleOverrides?: ComponentsOverrides['ESSidenavItem'];
     };
   }
 }

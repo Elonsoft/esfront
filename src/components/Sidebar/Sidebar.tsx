@@ -47,10 +47,8 @@ const SidebarRoot = styled('div', {
     return [styles.root, open && styles.rootOpen];
   }
 })<{ ownerState: SidebarOwnerState }>(({ ownerState }) => ({
-  height: '100%',
   display: 'flex',
-  position: 'sticky',
-  top: 0,
+  height: '100%',
 
   ...(ownerState.isMouseMove &&
     ownerState.open && {
@@ -153,6 +151,7 @@ export const Sidebar = (inProps: SidebarProps) => {
     minWidth = 220,
     maxWidth = 400,
     onWidthChange,
+    onWidthChangeCommit,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -171,10 +170,16 @@ export const Sidebar = (inProps: SidebarProps) => {
   const isActive = useRef<boolean | null>(null);
   const onMouseMove = useRef<((event: any) => void) | null>(null);
 
-  const onWidthChangeLatest = useLatest(() => {
-    if (onWidthChange && ref.current) {
+  const onWidthChangeLatest = useLatest((value: number) => {
+    if (onWidthChange) {
+      onWidthChange(value);
+    }
+  });
+
+  const onWidthChangeCommitLatest = useLatest(() => {
+    if (onWidthChangeCommit && ref.current) {
       if (screenX.current !== null) {
-        onWidthChange(ref.current.getBoundingClientRect().width);
+        onWidthChangeCommit(Math.ceil(ref.current.getBoundingClientRect().width));
       }
     }
   });
@@ -201,7 +206,7 @@ export const Sidebar = (inProps: SidebarProps) => {
 
   useDocumentEventListener('touchend', () => {
     if (onMouseMove.current) {
-      onWidthChangeLatest.current();
+      onWidthChangeCommitLatest.current();
       setMouseMove(false);
       setMouseDown(false);
 
@@ -219,9 +224,9 @@ export const Sidebar = (inProps: SidebarProps) => {
 
       onMouseMove.current = (event: MouseEvent) => {
         if (ref.current && screenX.current !== null) {
-          ref.current.style.width = `${
-            ref.current.getBoundingClientRect().width + (event.screenX - screenX.current)
-          }px`;
+          const width = ref.current.getBoundingClientRect().width + (event.screenX - screenX.current);
+          ref.current.style.width = `${width}px`;
+          onWidthChangeLatest.current(width);
           screenX.current = event.screenX;
         }
 
@@ -233,7 +238,7 @@ export const Sidebar = (inProps: SidebarProps) => {
 
   useDocumentEventListener('mouseup', () => {
     if (onMouseMove.current) {
-      onWidthChangeLatest.current();
+      onWidthChangeCommitLatest.current();
       setMouseMove(false);
       setMouseDown(false);
 
@@ -251,7 +256,7 @@ export const Sidebar = (inProps: SidebarProps) => {
   return (
     <SidebarContext.Provider value={value}>
       <SidebarRoot className={clsx(classes.root, className)} sx={sx} ownerState={ownerState}>
-        {onWidthChange && (
+        {(onWidthChange || onWidthChangeCommitLatest) && (
           <SidebarHandler
             className={clsx(classes.handler)}
             ownerState={ownerState}

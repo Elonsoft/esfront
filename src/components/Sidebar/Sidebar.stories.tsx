@@ -35,7 +35,13 @@ export const Demo: Story = ({ color, behaviour, exclusive }, { globals: { locale
 
   return (
     <Box sx={{ height: '100vh', m: '-16px', display: 'flex', gap: '20px', overflow: 'auto' }}>
-      <Sidebar open={isOpen} color={color} onWidthChange={(value) => setWidth(value)} width={width}>
+      <Sidebar
+        open={isOpen}
+        color={color}
+        width={width}
+        sx={{ position: 'sticky', top: '0' }}
+        onWidthChangeCommit={(value: number) => setWidth(value)}
+      >
         <ListItem
           sx={{ padding: '16px 16px 15px', overflow: 'hidden', flexShrink: '0' }}
           component="div"
@@ -44,7 +50,6 @@ export const Demo: Story = ({ color, behaviour, exclusive }, { globals: { locale
           <ListItemIcon>
             <IconAt sx={{ color: color === 'primary' ? 'monoB.A800' : 'monoA.A500' }} />
           </ListItemIcon>
-
           <ListItemText
             sx={{ my: '0', display: `${isOpen ? 'block' : 'none'}` }}
             primary="CRM"

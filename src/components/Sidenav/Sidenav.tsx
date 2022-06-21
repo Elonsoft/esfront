@@ -1,0 +1,258 @@
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+
+import { SidenavProps } from './Sidenav.types';
+
+import clsx from 'clsx';
+import { getSidenavUtilityClass } from './Sidenav.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/base';
+
+import { styled, useThemeProps } from '@mui/material/styles';
+
+import { SidenavContext } from './Sidenav.context';
+
+import { useLatest, useMenuAim, useWindowEventListener } from '../../hooks';
+
+type SidenavOwnerState = {
+  classes?: SidenavProps['classes'];
+  hover?: boolean;
+  open?: boolean;
+};
+
+const useUtilityClasses = (ownerState: SidenavOwnerState) => {
+  const { classes } = ownerState;
+
+  const slots = {
+    root: ['root'],
+    container: ['container'],
+    rail: ['rail'],
+    drawer: ['drawer'],
+    overlay: ['overlay']
+  };
+
+  return composeClasses(slots, getSidenavUtilityClass, classes);
+};
+
+const SidenavRoot = styled('div', {
+  name: 'ESSidenav',
+  slot: 'Root',
+  overridesResolver: (props, styles) => styles.root
+})(() => ({
+  zIndex: '100'
+}));
+
+const SidenavContainer = styled('div', {
+  name: 'ESSidenav',
+  slot: 'Container',
+  overridesResolver: (props, styles) => styles.container
+})(() => ({
+  display: 'flex',
+  height: '100%'
+}));
+
+const SidenavOverlay = styled('div', {
+  name: 'ESSidenav',
+  slot: 'Overlay',
+  overridesResolver: (props, styles) => styles.overlay
+})<{ ownerState: SidenavOwnerState }>(({ ownerState, theme }) => ({
+  opacity: '0',
+  userSelect: 'none',
+  top: '0',
+  left: '0',
+  position: 'fixed',
+  height: '100%',
+  width: '100%',
+  backgroundColor: theme.palette.overlay[200],
+  transition: 'opacity 0.3s',
+
+  ...(ownerState.hover && {
+    opacity: '1'
+  }),
+
+  [theme.breakpoints.down('desktopXS')]: {
+    ...(ownerState.open && {
+      opacity: '1'
+    })
+  }
+}));
+
+const SidenavRail = styled('div', {
+  name: 'ESSidenav',
+  slot: 'Rail',
+  overridesResolver: (props, styles) => styles.rail
+})(({ theme }) => ({
+  display: 'flex',
+  height: '100%',
+  width: '57px',
+  zIndex: '99',
+
+  '& .ESSidebar-handler': {
+    display: 'none'
+  },
+
+  [theme.breakpoints.down('desktopXS')]: {
+    '& .ESSidebarToggle-button': {
+      display: 'none'
+    }
+  }
+}));
+
+const SidenavDrawer = styled('div', {
+  name: 'ESSidenav',
+  slot: 'Drawer',
+  overridesResolver: (props, styles) => styles.drawer
+})<{ ownerState: SidenavOwnerState }>(({ ownerState, theme }) => ({
+  position: 'absolute',
+  top: '0',
+  left: '-57px',
+  transform: 'translateX(-100%)',
+  zIndex: '98',
+  height: '100%',
+  transition: 'all 0.2s',
+
+  ...((ownerState.hover || ownerState.open) && {
+    left: '57px',
+    transform: 'translateX(0)'
+  }),
+
+  [theme.breakpoints.down('desktopXS')]: {
+    ...(ownerState.open && {
+      position: 'absolute'
+    })
+  }
+}));
+
+/**
+ * The Sidenav component is a fixed-position toggleable slide out box.
+ */
+export const Sidenav = (inProps: SidenavProps) => {
+  const { className, children, open, sx, disableEscapeKeyDown, onClose, ...props } = useThemeProps({
+    props: inProps,
+    name: 'ESSidenav'
+  });
+
+  const [hover, setHover] = useState(false);
+  const [itemId, setItemId] = useState<string | null>(null);
+  const [isMouseDown, setMouseDown] = useState(false);
+
+  const root = useRef<HTMLDivElement | null>(null);
+  const sidenavRef = useRef<HTMLDivElement | null>(null);
+  const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const onCloseLatest = useLatest(() => {
+    if (onClose) {
+      onClose();
+    }
+  });
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && onClose) {
+        onCloseLatest.current();
+      }
+    };
+
+    if (open && onClose && !disableEscapeKeyDown) {
+      document.addEventListener('keydown', onKeyDown);
+    }
+
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open, disableEscapeKeyDown]);
+
+  const onHoverItem = (id?: string) => {
+    timeout.current && clearTimeout(timeout.current);
+    timeout.current = setTimeout(() => {
+      if (id) {
+        setItemId(id);
+        setHover(true);
+      }
+    }, 90);
+  };
+
+  const activate = (target: HTMLElement) => {
+    if (open) {
+      return;
+    }
+
+    const item = target.closest('.ESSidenavItem-wrapper') as HTMLElement | null;
+
+    if (item && item.dataset.id) {
+      onHoverItem(item.dataset.id);
+    } else if (
+      target.className.toString().includes('ESSidebarMenu-root') ||
+      target.className.toString().includes('ESSidebar-content')
+    ) {
+      onHoverItem();
+    } else {
+      onMouseLeaveSidenav();
+      timeout.current && clearTimeout(timeout.current);
+    }
+  };
+
+  const onCloseSidenav = () => {
+    onClose && onClose();
+    setHover(false);
+    setMouseDown(false);
+  };
+
+  const onMouseLeaveSidenav = () => {
+    timeout.current && clearTimeout(timeout.current);
+
+    const activeItem = document.activeElement;
+    const sidenavDrawer = document.querySelector('.ESSidenav-drawer');
+    const isContainsActiveItems = sidenavDrawer?.contains(activeItem);
+
+    if (!isContainsActiveItems || activeItem?.tagName !== 'INPUT') {
+      !isMouseDown && setHover(false);
+    }
+  };
+
+  useWindowEventListener('resize', () => open && onClose && onClose());
+
+  const { onMouseMove, onMouseOver, onMouseLeave } = useMenuAim(root, 'left', hover, activate);
+
+  const value = useMemo(() => {
+    return { open, hover, setHover, setItemId, itemId, onClose };
+  }, [open, hover, setHover, setItemId, itemId]);
+
+  const ownerState = { open, hover, ...props };
+  const classes = useUtilityClasses(ownerState);
+
+  return (
+    <SidenavContext.Provider value={value}>
+      <SidenavRoot className={clsx(classes.root, className)} sx={sx}>
+        <SidenavContainer className={clsx(classes.container)} onMouseLeave={onMouseLeaveSidenav}>
+          {React.Children.map(children as React.ReactElement[], (child, idx: number) => {
+            if (idx) {
+              return (
+                <SidenavDrawer
+                  className={clsx(classes.drawer)}
+                  ownerState={ownerState}
+                  ref={sidenavRef}
+                  onMouseUp={() => setMouseDown(false)}
+                  onMouseDown={() => setMouseDown(true)}
+                >
+                  {React.cloneElement(child, { open: open || hover, hover })}
+                </SidenavDrawer>
+              );
+            }
+            return (
+              <SidenavRail
+                className={clsx(classes.rail)}
+                ref={root}
+                onMouseMove={onMouseMove}
+                onMouseOver={onMouseOver}
+                onMouseLeave={onMouseLeave}
+              >
+                {React.cloneElement(child)}
+              </SidenavRail>
+            );
+          })}
+        </SidenavContainer>
+        {!open && hover && (
+          <SidenavOverlay className={clsx(classes.overlay)} ownerState={ownerState} onClick={onCloseSidenav} />
+        )}
+      </SidenavRoot>
+    </SidenavContext.Provider>
+  );
+};

@@ -85,7 +85,6 @@ const SidebarItemButton = styled(ListItemButton, {
         transitionDuration: `${theme.transitions.duration.short}ms`
       }
     },
-
     ...(ownerState.color === 'default' && {
       ...theme.mixins.listItem({
         background: 'transparent',
@@ -95,7 +94,6 @@ const SidebarItemButton = styled(ListItemButton, {
         focus: theme.palette.monoA.A200,
         active: theme.palette.monoA.A150
       }),
-
       '&.Mui-selected': {
         ...theme.mixins.listItem({
           background: theme.palette.monoA.A100,
@@ -106,7 +104,6 @@ const SidebarItemButton = styled(ListItemButton, {
         })
       }
     }),
-
     ...(ownerState.color === 'primary' && {
       ...theme.mixins.listItem({
         background: 'transparent',
@@ -116,7 +113,6 @@ const SidebarItemButton = styled(ListItemButton, {
         focus: theme.palette.monoB.A200,
         active: theme.palette.monoB.A150
       }),
-
       '&.Mui-selected': {
         ...theme.mixins.listItem({
           background: theme.palette.monoB.A100,
@@ -480,8 +476,8 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
             )}
           </SidebarItemWrapper>
 
-          {open && (
-            <Collapse in={!!isNestedMenuOpen} timeout="auto">
+          {open && !!children && (
+            <Collapse in={!!isNestedMenuOpen} timeout="auto" unmountOnExit>
               <SidebarItemNestedMenu className={clsx(classes.nestedMenu)}>{children}</SidebarItemNestedMenu>
             </Collapse>
           )}
