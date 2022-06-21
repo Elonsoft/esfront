@@ -86,6 +86,22 @@ import {
   PaginationRangeProps
 } from './components/Pagination';
 import {
+  SidebarClassKey,
+  SidebarDividerClassKey,
+  SidebarDividerProps,
+  SidebarItemClassKey,
+  SidebarItemProps,
+  SidebarMenuClassKey,
+  SidebarMenuProps,
+  SidebarProps,
+  SidebarScrollableClassKey,
+  SidebarScrollableProps,
+  SidebarSpacerClassKey,
+  SidebarSpacerProps,
+  SidebarToggleClassKey,
+  SidebarToggleProps
+} from './components/Sidebar';
+import {
   SpinnerDashRingClassKey,
   SpinnerDashRingProps,
   SpinnerFadingBarsClassKey,
@@ -216,6 +232,13 @@ declare module '@mui/material/styles/props' {
     ESPagination: PaginationProps;
     ESPaginationPages: PaginationPagesProps;
     ESPaginationRange: PaginationRangeProps;
+    ESSidebar: SidebarProps;
+    ESSidebarSpacer: SidebarSpacerProps;
+    ESSidebarToggle: SidebarToggleProps;
+    ESSidebarItem: SidebarItemProps;
+    ESSidebarDivider: SidebarDividerProps;
+    ESSidebarMenu: SidebarMenuProps;
+    ESSidebarScrollable: SidebarScrollableProps;
     ESSpinnerDashRing: SpinnerDashRingProps;
     ESSpinnerFadingBars: SpinnerFadingBarsProps;
     ESSpinnerFadingDots: SpinnerFadingDotsProps;
@@ -270,6 +293,13 @@ declare module '@mui/material/styles/overrides' {
     ESPagination: PaginationClassKey;
     ESPaginationPages: PaginationPagesClassKey;
     ESPaginationRange: PaginationRangeClassKey;
+    ESSidebar: SidebarClassKey;
+    ESSidebarItem: SidebarItemClassKey;
+    ESSidebarToggle: SidebarToggleClassKey;
+    ESSidebarMenu: SidebarMenuClassKey;
+    ESSidebarDivider: SidebarDividerClassKey;
+    ESSidebarSpacer: SidebarSpacerClassKey;
+    ESSidebarScrollable: SidebarScrollableClassKey;
     ESSpinnerDashRing: SpinnerDashRingClassKey;
     ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
     ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
@@ -494,6 +524,34 @@ declare module '@mui/material/styles/components' {
     ESTableText?: {
       defaultProps?: ComponentsProps['ESTableText'];
       styleOverrides?: ComponentsOverrides['ESTableText'];
+    };
+    ESSidebar?: {
+      defaultProps?: ComponentsProps['ESSidebar'];
+      styleOverrides?: ComponentsOverrides['ESSidebar'];
+    };
+    ESSidebarMenu?: {
+      defaultProps?: ComponentsProps['ESSidebarMenu'];
+      styleOverrides?: ComponentsOverrides['ESSidebarMenu'];
+    };
+    ESSidebarItem?: {
+      defaultProps?: ComponentsProps['ESSidebarItem'];
+      styleOverrides?: ComponentsOverrides['ESSidebarItem'];
+    };
+    ESSidebarToggle?: {
+      defaultProps?: ComponentsProps['ESSidebarToggle'];
+      styleOverrides?: ComponentsOverrides['ESSidebarToggle'];
+    };
+    ESSidebarDivider?: {
+      defaultProps?: ComponentsProps['ESSidebarDivider'];
+      styleOverrides?: ComponentsOverrides['ESSidebarDivider'];
+    };
+    ESSidebarSpace?: {
+      defaultProps?: ComponentsProps['ESSidebarSpacer'];
+      styleOverrides?: ComponentsOverrides['ESSidebarSpacer'];
+    };
+    ESSidebarScrollable?: {
+      defaultProps?: ComponentsProps['ESSidebarScrollable'];
+      styleOverrides?: ComponentsOverrides['ESSidebarScrollable'];
     };
   }
 }

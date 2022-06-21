@@ -11,6 +11,7 @@ export { useGeolocation } from './useGeolocation';
 export { useIntersectionObserver } from './useIntersectionObserver';
 export { useLatest } from './useLatest';
 export { useLocalStorage } from './useLocalStorage';
+export { useMenuAim } from './useMenuAim';
 export { useOnLine } from './useOnLine';
 export { useResizeObserver } from './useResizeObserver';
 export { useScrollSync } from './useScrollSync';
