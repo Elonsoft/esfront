@@ -31,6 +31,8 @@ export interface SidebarProps {
    * @default 400
    */
   maxWidth?: number;
-  /** Callback fired when the width has been changed. */
+  /** Callback function that is fired when the cell's width changed. */
   onWidthChange?: (width: number) => void;
+  /** Callback function that is fired when the cell's width finished changing. */
+  onWidthChangeCommit?: (width: number) => void;
 }
