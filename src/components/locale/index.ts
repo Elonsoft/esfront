@@ -4,6 +4,7 @@ import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
+import { SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
 import { SwiperButtonProps } from '../Swiper';
 import { TableActionsProps, TableCellProps } from '../Table';
@@ -49,6 +50,24 @@ export interface Localization {
     };
     ESSidebarItem: {
       defaultProps: Pick<SidebarItemProps, 'labelOpen' | 'labelHide'>;
+    };
+    ESSFSSearch: {
+      defaultProps: Pick<SFSSearchProps, 'ariaLabel' | 'placeholder' | 'labelClear'>;
+    };
+    ESSFSSorting: {
+      defaultProps: Pick<
+        SFSSortingProps,
+        | 'labelAsc'
+        | 'labelDesc'
+        | 'labelResetButton'
+        | 'labelButton'
+        | 'labelSortOrder'
+        | 'labelSortTooltip'
+        | 'labelMultisortTitle'
+        | 'labelMultisortLMB'
+        | 'labelMultisortMobileOn'
+        | 'labelMultisortMobileOff'
+      >;
     };
     ESFormatSize: {
       defaultProps: Pick<FormatSizeProps, 'metricUnits' | 'binaryUnits'>;
@@ -132,6 +151,27 @@ export const en: Localization = {
       defaultProps: {
         labelOpen: 'Show nested list',
         labelHide: 'Hide nested list'
+      }
+    },
+    ESSFSSearch: {
+      defaultProps: {
+        ariaLabel: 'Search',
+        placeholder: 'Search',
+        labelClear: 'Clear'
+      }
+    },
+    ESSFSSorting: {
+      defaultProps: {
+        labelAsc: 'Ascending',
+        labelDesc: 'Descending',
+        labelResetButton: 'Reset',
+        labelButton: 'Sorting',
+        labelSortOrder: 'The sort order',
+        labelSortTooltip: 'Sort by properties',
+        labelMultisortTitle: 'Multisort',
+        labelMultisortLMB: 'LMB',
+        labelMultisortMobileOn: 'Multisort enabled',
+        labelMultisortMobileOff: 'Hold to multisort'
       }
     },
     ESSwiperButton: {
@@ -220,6 +260,27 @@ export const ru: Localization = {
       defaultProps: {
         labelOpen: 'Показать вложенный список',
         labelHide: 'Скрыть вложенный список'
+      }
+    },
+    ESSFSSearch: {
+      defaultProps: {
+        ariaLabel: 'Поиск',
+        placeholder: 'Поиск',
+        labelClear: 'Сбросить'
+      }
+    },
+    ESSFSSorting: {
+      defaultProps: {
+        labelAsc: 'По возрастанию',
+        labelDesc: 'По убыванию',
+        labelResetButton: 'Сбросить',
+        labelButton: 'Сортировка',
+        labelSortOrder: 'Порядок сортировки',
+        labelSortTooltip: 'Сортировка по свойствам',
+        labelMultisortTitle: 'Мультисортировка',
+        labelMultisortLMB: 'ЛКМ',
+        labelMultisortMobileOn: 'Мультисортировка включена',
+        labelMultisortMobileOff: 'Удерживайте для мультисортировки'
       }
     },
     ESSwiperButton: {

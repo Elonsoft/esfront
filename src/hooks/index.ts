@@ -19,4 +19,5 @@ export { useSessionStorage } from './useSessionStorage';
 export { useSticky } from './useSticky';
 export { useUpdateEffect } from './useUpdateEffect';
 export { useValueDebounce } from './useValueDebounce';
+export { useVibration } from './useVibration';
 export { useWindowEventListener } from './useWindowEventListener';
