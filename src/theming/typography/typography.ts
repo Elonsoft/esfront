@@ -45,7 +45,7 @@ export const createTypography = (theme: Theme) => {
     fontSize: pxToRem(9),
     fontWeight: 500,
     letterSpacing: pxToRem(0.6),
-    lineHeight: pxToRem(14),
+    lineHeight: pxToRem(12),
     textDecorationThickness: pxToRem(1),
     textUnderlineOffset: pxToRem(1)
   };
@@ -207,7 +207,6 @@ export const createTypography = (theme: Theme) => {
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1)
     },
-    mini100,
     mini100Bold: {
       ...mini100,
       fontWeight: 700

@@ -1,0 +1,70 @@
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { SFS } from '.';
+import * as stories from './SFS.stories';
+
+<Meta
+  title="Components/SFS"
+  component={SFS}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    sx: {
+      table: {
+        disable: true
+      }
+    },
+    multiple: {
+      description: 'Easing function for spinner dashStroke animation.',
+      control: { type: 'boolean' },
+      defaultValue: true
+    }
+  }}
+/>
+
+# SFS
+
+<Description of={SFS} />
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-sfs" story="page">
+      <code>SFS</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-sfs-row" story="page">
+      <code>SFSRow</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-sfsSearch" story="page">
+      <code>SFSSearch</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-api-sfsSorting" story="page">
+      <code>SFSSorting</code>
+    </LinkTo>
+  </li>
+</ul>

@@ -86,6 +86,16 @@ import {
   PaginationRangeProps
 } from './components/Pagination';
 import {
+  SFSClassKey,
+  SFSProps,
+  SFSRowClassKey,
+  SFSRowProps,
+  SFSSearchClassKey,
+  SFSSearchProps,
+  SFSSortingClassKey,
+  SFSSortingProps
+} from './components/SFS';
+import {
   SidebarClassKey,
   SidebarDividerClassKey,
   SidebarDividerProps,
@@ -242,6 +252,10 @@ declare module '@mui/material/styles/props' {
     ESSidebarScrollable: SidebarScrollableProps;
     ESSidenav: SidenavProps;
     ESSidenavItem: SidenavItemProps;
+    ESSFS: SFSProps;
+    ESSFSSearch: SFSSearchProps;
+    ESSFSSorting: SFSSortingProps;
+    ESSFSRow: SFSRowProps;
     ESSpinnerDashRing: SpinnerDashRingProps;
     ESSpinnerFadingBars: SpinnerFadingBarsProps;
     ESSpinnerFadingDots: SpinnerFadingDotsProps;
@@ -305,6 +319,10 @@ declare module '@mui/material/styles/overrides' {
     ESSidebarScrollable: SidebarScrollableClassKey;
     ESSidenav: SidenavClassKey;
     ESSidenavItem: SidenavItemClassKey;
+    ESSFS: SFSClassKey;
+    ESSFSSearch: SFSSearchClassKey;
+    ESSFSSorting: SFSSortingClassKey;
+    ESSFSRow: SFSRowClassKey;
     ESSpinnerDashRing: SpinnerDashRingClassKey;
     ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
     ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
@@ -465,6 +483,22 @@ declare module '@mui/material/styles/components' {
     ESPaginationRange?: {
       defaultProps?: ComponentsProps['ESPaginationRange'];
       styleOverrides?: ComponentsOverrides['ESPaginationRange'];
+    };
+    ESSFS?: {
+      defaultProps?: ComponentsProps['ESSFS'];
+      styleOverrides?: ComponentsOverrides['ESSFS'];
+    };
+    ESSFSSearch?: {
+      defaultProps?: ComponentsProps['ESSFSSearch'];
+      styleOverrides?: ComponentsOverrides['ESSFSSearch'];
+    };
+    ESSFSSorting?: {
+      defaultProps?: ComponentsProps['ESSFSSorting'];
+      styleOverrides?: ComponentsOverrides['ESSFSSorting'];
+    };
+    ESSFSRow?: {
+      defaultProps?: ComponentsProps['ESSFSRow'];
+      styleOverrides?: ComponentsOverrides['ESSFSRow'];
     };
     ESSpinnerDashRing?: {
       defaultProps?: ComponentsProps['ESSpinnerDashRing'];
