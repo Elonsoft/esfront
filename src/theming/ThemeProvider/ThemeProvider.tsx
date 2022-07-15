@@ -11,6 +11,7 @@ import { en } from '../../components/locale';
 import { breakpoints as defaultBreakpoints } from '../breakpoints';
 import { createComponents as createDefaultComponents } from '../components';
 import { palettes as defaultPalettes } from '../palettes';
+import { createScrollbars as createDefaultScrollbars } from '../scrollbars';
 import { createTypography as createDefaultTypography } from '../typography';
 
 const defaultPalette = {
@@ -23,6 +24,7 @@ export const ThemeProvider = ({
   children,
   breakpoints = defaultBreakpoints,
   palette = defaultPalette,
+  createScrollbars = createDefaultScrollbars,
   createTypography = createDefaultTypography,
   createComponents = createDefaultComponents,
   args = {}
@@ -37,6 +39,7 @@ export const ThemeProvider = ({
       palette
     });
 
+    const scrollbars = createScrollbars(theme);
     const typography = createTypography(theme);
     const components = createComponents(theme, typography);
 
@@ -48,6 +51,7 @@ export const ThemeProvider = ({
           }
         },
         palette,
+        scrollbars,
         typography: {
           fontFamily: "'Roboto', sans-serif",
           ...typography

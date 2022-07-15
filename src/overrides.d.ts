@@ -6,6 +6,7 @@ import {
   PaletteColor,
   PaletteColorOptions,
   Theme,
+  ThemeOptions,
   TypographyVariants,
   TypographyVariantsOptions
 } from '@mui/material/styles';
@@ -639,6 +640,24 @@ declare module '@mui/material/styles' {
     mini1?: React.CSSProperties;
     mini2?: React.CSSProperties;
     micro?: React.CSSProperties;
+  }
+}
+
+declare module '@mui/material/styles/createTheme' {
+  interface ThemeOptions {
+    scrollbars?: {
+      normal?: React.CSSProperties;
+      thin?: React.CSSProperties;
+      overlay?: React.CSSProperties;
+    };
+  }
+
+  interface Theme {
+    scrollbars: {
+      normal: React.CSSProperties;
+      thin: React.CSSProperties;
+      overlay: React.CSSProperties;
+    };
   }
 }
 

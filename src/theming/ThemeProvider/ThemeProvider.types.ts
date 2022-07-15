@@ -10,6 +10,8 @@ export interface ThemeProviderProps {
   breakpoints?: { [key in Breakpoint]: number };
   /** Palette provided to thetheme. */
   palette?: PaletteOptions;
+  /** Function to create a scrollbars object from the theme with breakpoints and palette. */
+  createScrollbars?: (theme: Theme) => any;
   /** Function to create a typography object from the theme with breakpoints and palette. */
   createTypography?: (theme: Theme) => TypographyOptions;
   /** Function to create a components object from the typography and the theme with breakpoints and palette. */
