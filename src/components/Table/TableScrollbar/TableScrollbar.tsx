@@ -27,7 +27,8 @@ const TableScrollbarRoot = styled('div', {
   name: 'ESTableScrollbar',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
-})(() => ({
+})(({ theme }) => ({
+  ...theme.scrollbars.thin,
   overflowX: 'auto'
 }));
 
