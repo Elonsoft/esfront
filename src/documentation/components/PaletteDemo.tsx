@@ -33,7 +33,7 @@ const PALETTES = [
   'grey'
 ];
 
-const COLOR_IGNORE = ['main', 'light', 'dark', 'contrastText', 'alpha'];
+const COLOR_IGNORE = ['main', 'light', 'dark', 'contrastText', 'alpha', 'white', 'black'];
 
 const PaletteDemoRoot = styled('div')(() => ({
   display: 'grid',
