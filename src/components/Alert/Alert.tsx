@@ -44,7 +44,7 @@ const AlertRoot = styled('div', {
   }
 })<{ ownerState: AlertOwnerState }>(({ ownerState: { isWithActions }, theme }) => ({
   display: 'flex',
-  borderRadius: '6px',
+  borderRadius: '4px',
   padding: `${isWithActions ? '11px' : '7px'} 15px`,
 
   [`&.${alertClasses.standardSuccess}`]: {
