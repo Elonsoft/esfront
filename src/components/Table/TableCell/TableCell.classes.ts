@@ -15,10 +15,22 @@ export type TableCellClasses = {
   paddingCheckbox: string;
   /** Styles applied to the root element if overlap="true". */
   overlap: string;
+  /** Styles applied to the root element if cell is resizing. */
+  resizing: string;
   /** Styles applied to the container element. */
   container: string;
   /** Styles applied to the content element. */
   content: string;
+  /** Styles applied to the content element if align="flex-start". */
+  contentAlignFlexStart: string;
+  /** Styles applied to the content element if align="center". */
+  contentAlignCenter: string;
+  /** Styles applied to the content element if align="flex-end". */
+  contentAlignFlexEnd: string;
+  /** Styles applied to the resize element. */
+  resize: string;
+  /** Styles applied to the resize element if cell is resizing. */
+  resizeResizing: string;
 };
 export type TableCellClassKey = keyof TableCellClasses;
 
@@ -34,6 +46,12 @@ export const tableCellClasses: TableCellClasses = generateUtilityClasses('ESTabl
   'paddingNormal',
   'paddingCheckbox',
   'overlap',
+  'resizing',
   'container',
-  'content'
+  'content',
+  'contentAlignFlexStart',
+  'contentAlignCenter',
+  'contentAlignFlexEnd',
+  'resize',
+  'resizeResizing'
 ]);
