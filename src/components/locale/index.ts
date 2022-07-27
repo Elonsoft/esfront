@@ -5,7 +5,7 @@ import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { SwiperButtonProps } from '../Swiper';
-import { TableActionsProps } from '../Table';
+import { TableActionsProps, TableCellProps } from '../Table';
 
 export interface Localization {
   components: {
@@ -51,6 +51,9 @@ export interface Localization {
     };
     ESTableActions: {
       defaultProps: Pick<TableActionsProps, 'label'>;
+    };
+    ESTableCell: {
+      defaultProps: Pick<TableCellProps, 'labelResize'>;
     };
   };
 }
@@ -122,6 +125,11 @@ export const en: Localization = {
       defaultProps: {
         label: 'Selected'
       }
+    },
+    ESTableCell: {
+      defaultProps: {
+        labelResize: 'Resize'
+      }
     }
   }
 };
@@ -192,6 +200,11 @@ export const ru: Localization = {
     ESTableActions: {
       defaultProps: {
         label: 'Выбрано'
+      }
+    },
+    ESTableCell: {
+      defaultProps: {
+        labelResize: 'Изменить ширину'
       }
     }
   }

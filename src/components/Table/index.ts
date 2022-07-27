@@ -11,3 +11,4 @@ export * from './TableRow';
 export * from './TableScrollable';
 export * from './TableScrollbar';
 export * from './TableText';
+export { useTableResize } from './useTableResize';
