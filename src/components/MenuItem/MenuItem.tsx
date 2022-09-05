@@ -33,10 +33,8 @@ const MenuItemRoot = styled(MuiMenuItem, {
       '& .MuiTouchRipple-root': {
         color: theme.palette.error.A150
       },
-      '&:hover': {
-        '& .MuiTouchRipple-root': {
-          backgroundColor: theme.palette.error.A50
-        }
+      '&:not(.Mui-focusVisible):hover': {
+        backgroundColor: theme.palette.error.A50
       },
       '&.Mui-focusVisible': {
         '& .MuiTouchRipple-root': {

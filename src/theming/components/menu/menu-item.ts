@@ -21,6 +21,7 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
 
         padding: '4px 16px',
         minHeight: '40px',
+        transitionDuration: `${theme.transitions.duration.short}ms`,
 
         '& .MuiIconButton-root': {
           marginRight: '-8px'
@@ -38,10 +39,8 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
           '&, &:hover, &:active': {
             backgroundColor: 'transparent'
           },
-          '&:hover': {
-            '& .MuiTouchRipple-root': {
-              backgroundColor: theme.palette.monoA.A50
-            }
+          '&:not(.Mui-focusVisible):hover': {
+            backgroundColor: theme.palette.monoA.A50
           },
           '&.Mui-focusVisible': {
             '& .MuiTouchRipple-root': {
