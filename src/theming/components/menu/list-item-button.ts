@@ -19,6 +19,7 @@ export const createListItemButton: Component<'MuiListItemButton'> = (theme) => {
       root: {
         padding: '4px 16px',
         minHeight: '40px',
+        transitionDuration: `${theme.transitions.duration.short}ms`,
 
         '& .MuiIconButton-root': {
           marginRight: '-8px'
@@ -37,10 +38,8 @@ export const createListItemButton: Component<'MuiListItemButton'> = (theme) => {
             backgroundColor: 'transparent',
             color: theme.palette.monoA.A700
           },
-          '&:hover': {
-            '& .MuiTouchRipple-root': {
-              backgroundColor: theme.palette.monoA.A50
-            }
+          '&:not(.Mui-focusVisible):hover': {
+            backgroundColor: theme.palette.monoA.A50
           },
           '&.Mui-focusVisible': {
             '& .MuiTouchRipple-root': {
