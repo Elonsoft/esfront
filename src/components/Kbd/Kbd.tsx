@@ -41,15 +41,14 @@ const KbdRoot = styled('kbd', {
   fontFamily: 'inherit',
 
   ...(ownerState.variant === 'raised' && {
-    background: theme.palette.monoA.A50,
+    backgroundColor: theme.palette.monoA.A75,
     boxShadow: `0 1px 0 1px ${theme.palette.monoA.A300}`
   }),
   ...(ownerState.variant === 'contained' && {
-    background: theme.palette.monoA.A50,
-    boxShadow: `0 1px 0 ${theme.palette.monoA.A300}, inset 0 0 0 1px ${theme.palette.monoA.A75}`
+    backgroundColor: theme.palette.monoA.A75,
+    boxShadow: `0 1px 0 ${theme.palette.monoA.A300}, inset 0 0 0 1px ${theme.palette.monoA.A50}`
   }),
   ...(ownerState.variant === 'outlined' && {
-    background: theme.palette.monoB[500],
     boxShadow: `inset 0 0 0 1px ${theme.palette.monoA.A200}`
   })
 }));
