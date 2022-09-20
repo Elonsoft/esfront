@@ -39,8 +39,10 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
           '&, &:hover, &:active': {
             backgroundColor: 'transparent'
           },
-          '&:not(.Mui-focusVisible):hover': {
-            backgroundColor: theme.palette.monoA.A50
+          '@media (hover: hover)': {
+            '&:not(.Mui-focusVisible):hover': {
+              backgroundColor: theme.palette.monoA.A50
+            }
           },
           '&.Mui-focusVisible': {
             '& .MuiTouchRipple-root': {
