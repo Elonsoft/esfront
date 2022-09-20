@@ -38,8 +38,10 @@ export const createListItemButton: Component<'MuiListItemButton'> = (theme) => {
             backgroundColor: 'transparent',
             color: theme.palette.monoA.A700
           },
-          '&:not(.Mui-focusVisible):hover': {
-            backgroundColor: theme.palette.monoA.A50
+          '@media (hover: hover)': {
+            '&:not(.Mui-focusVisible):hover': {
+              backgroundColor: theme.palette.monoA.A50
+            }
           },
           '&.Mui-focusVisible': {
             '& .MuiTouchRipple-root': {
