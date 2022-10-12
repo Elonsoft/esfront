@@ -6,7 +6,7 @@ import { SxProps, Theme } from '@mui/material/styles';
 
 export type FileError = 'file-too-large' | 'file-invalid-type' | 'too-many-files';
 
-export type DropzoneProps = {
+export interface DropzoneProps {
   ref?: React.Ref<HTMLDivElement>;
   /** Class applied to the root element. */
   className?: string;
@@ -40,7 +40,7 @@ export type DropzoneProps = {
   onChange?: (event: React.ChangeEvent<unknown>, files: File[]) => void;
   /** Callback fired when files were rejected. */
   onReject?: (event: React.ChangeEvent<unknown>, rejections: FileRejection[]) => void;
-};
+}
 
 export type FileRejection = {
   file: File;
