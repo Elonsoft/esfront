@@ -23,7 +23,6 @@ export const createRadio: Component<'MuiRadio'> = (theme) => {
     },
     styleOverrides: {
       root: {
-        color: theme.palette.monoA.A500,
         '& .MuiSvgIcon-root': {
           fill: 'none',
 
@@ -50,23 +49,19 @@ export const createRadio: Component<'MuiRadio'> = (theme) => {
           animationName: `${enterKeyframe} !important`,
           opacity: '1!important'
         },
-        '& .MuiTouchRipple-root': {
-          transitionDuration: `${theme.transitions.duration.short}ms`,
-          color: theme.palette.monoA.A150
-        },
-        '&, &:hover, &:active': {
-          backgroundColor: 'transparent'
-        },
-        '&:hover': {
+        '&.MuiButtonBase-root': {
           '& .MuiTouchRipple-root': {
-            backgroundColor: theme.palette.monoA.A50
+            transitionDuration: `${theme.transitions.duration.short}ms`
           }
         },
-        '&.Mui-focusVisible': {
-          '& .MuiTouchRipple-root': {
-            color: theme.palette.monoA.A200
-          }
-        },
+        ...theme.mixins.button({
+          background: 'transparent',
+          color: theme.palette.monoA.A500,
+          hover: theme.palette.monoA.A50,
+          focus: theme.palette.monoA.A200,
+          active: theme.palette.monoA.A150
+        }),
+
         '&.MuiRadio-root.Mui-disabled': {
           cursor: 'not-allowed',
           pointerEvents: 'auto'
@@ -74,66 +69,56 @@ export const createRadio: Component<'MuiRadio'> = (theme) => {
         '&.MuiRadio-colorPrimary': {
           '&.Mui-checked': {
             '&.Mui-disabled': {
-              color: theme.palette.primary.A500
-            },
-            '& .MuiTouchRipple-root': {
-              color: theme.palette.primary.A150
-            },
-            '&:hover': {
-              '& .MuiTouchRipple-root': {
-                backgroundColor: theme.palette.primary.A50
+              '&, &:hover': {
+                color: theme.palette.primary.A500
               }
             },
-            '&.Mui-focusVisible': {
-              '& .MuiTouchRipple-root': {
-                color: theme.palette.primary.A200
-              }
-            }
+            ...theme.mixins.button({
+              background: 'transparent',
+              color: theme.palette.primary[300],
+              hover: theme.palette.primary.A50,
+              focus: theme.palette.primary.A200,
+              active: theme.palette.primary.A150
+            })
           }
         },
         '&.MuiRadio-colorSecondary': {
           '&.Mui-checked': {
             '&.Mui-disabled': {
-              color: theme.palette.secondary.A500
-            },
-            '& .MuiTouchRipple-root': {
-              color: theme.palette.secondary.A150
-            },
-            '&:hover': {
-              '& .MuiTouchRipple-root': {
-                backgroundColor: theme.palette.secondary.A50
+              '&, &:hover': {
+                color: theme.palette.secondary.A500
               }
             },
-            '&.Mui-focusVisible': {
-              '& .MuiTouchRipple-root': {
-                color: theme.palette.secondary.A200
-              }
-            }
+            ...theme.mixins.button({
+              background: 'transparent',
+              color: theme.palette.secondary[300],
+              hover: theme.palette.secondary.A50,
+              focus: theme.palette.secondary.A200,
+              active: theme.palette.secondary.A150
+            })
           }
         },
         '&.MuiRadio-colorError': {
           color: theme.palette.error[300],
           '&.Mui-checked': {
             '&.Mui-disabled': {
-              color: theme.palette.error.A500
+              '&, &:hover': {
+                color: theme.palette.error.A500
+              }
             }
           },
-          '& .MuiTouchRipple-root': {
-            color: theme.palette.error.A150
-          },
-          '&:hover': {
-            '& .MuiTouchRipple-root': {
-              backgroundColor: theme.palette.error.A50
-            }
-          },
-          '&.Mui-focusVisible': {
-            '& .MuiTouchRipple-root': {
-              color: theme.palette.error.A200
-            }
-          }
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.error[300],
+            hover: theme.palette.error.A50,
+            focus: theme.palette.error.A200,
+            active: theme.palette.error.A150
+          })
         },
         '&.Mui-disabled': {
-          color: theme.palette.monoA.A400
+          '&, &:hover': {
+            color: theme.palette.monoA.A400
+          }
         }
       }
     }

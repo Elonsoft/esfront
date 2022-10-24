@@ -68,24 +68,16 @@ const SwiperButtonRoot = styled(IconButton, {
 
   '&.MuiIconButton-root.MuiIconButton-root': {
     backdropFilter: 'blur(10px)',
-    backgroundColor: theme.palette.black.A600,
     borderRadius: 4,
-    color: theme.palette.white[500],
     padding: 8,
-    '& .MuiTouchRipple-root': {
-      color: theme.palette.white.A150
-    },
-    '&:hover': {
-      backgroundColor: theme.palette.black.A600,
-      '& .MuiTouchRipple-root': {
-        backgroundColor: theme.palette.white.A50
-      }
-    },
-    '&:focus-visible': {
-      '& .MuiTouchRipple-root': {
-        color: theme.palette.white.A200
-      }
-    }
+
+    ...theme.mixins.button({
+      background: theme.palette.black.A600,
+      color: theme.palette.white[500],
+      hover: theme.palette.white.A50,
+      focus: theme.palette.white.A200,
+      active: theme.palette.white.A150
+    })
   }
 }));
 

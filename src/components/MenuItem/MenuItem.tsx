@@ -30,22 +30,14 @@ const MenuItemRoot = styled(MuiMenuItem, {
 })<{ ownerState: MenuItemOwnerState }>(({ theme, ownerState }) => ({
   ...(ownerState.color === 'error' && {
     '&.MuiMenuItem-root': {
-      '& .MuiTouchRipple-root': {
-        color: theme.palette.error.A150
-      },
-      '&.Mui-focusVisible': {
-        '& .MuiTouchRipple-root': {
-          backgroundColor: theme.palette.error.A200
-        }
-      },
-      '@media (hover: hover)': {
-        '&:not(.Mui-focusVisible):hover': {
-          backgroundColor: theme.palette.error.A50
-        }
-      }
-    },
-    '& .MuiListItemText-root, & .MuiListItemIcon-root': {
-      color: theme.palette.error[300]
+      ...theme.mixins.listItem({
+        background: 'transparent',
+        color: theme.palette.error[300],
+        icon: theme.palette.error[300],
+        hover: theme.palette.error.A50,
+        active: theme.palette.error.A150,
+        focus: theme.palette.error.A200
+      })
     }
   })
 }));
