@@ -19,53 +19,40 @@ export const createListItemButton: Component<'MuiListItemButton'> = (theme) => {
       root: {
         padding: '4px 16px',
         minHeight: '40px',
-        transitionDuration: `${theme.transitions.duration.short}ms`,
+        transition: `${theme.transitions.duration.short}ms`,
 
         '& .MuiIconButton-root': {
           marginRight: '-8px'
         },
 
         '&.MuiListItemButton-root': {
-          '& .MuiTouchRipple-root': {
-            transitionDuration: `${theme.transitions.duration.short}ms`,
-            color: theme.palette.monoA.A150
+          '&.MuiButtonBase-root': {
+            '& .MuiTouchRipple-root': {
+              transitionDuration: `${theme.transitions.duration.short}ms`
+            }
           },
+
           '& .MuiTouchRipple-rippleVisible': {
             animationName: `${enterKeyframe} !important`,
             opacity: '1 !important'
           },
-          '&, &:hover, &:active': {
-            backgroundColor: 'transparent',
-            color: theme.palette.monoA.A700
-          },
-          '@media (hover: hover)': {
-            '&:not(.Mui-focusVisible):hover': {
-              backgroundColor: theme.palette.monoA.A50
-            }
-          },
-          '&.Mui-focusVisible': {
-            '& .MuiTouchRipple-root': {
-              backgroundColor: theme.palette.monoA.A200
-            }
-          },
+
+          ...theme.mixins.listItem({
+            background: 'transparent',
+            color: theme.palette.monoA.A900,
+            hover: theme.palette.monoA.A50,
+            focus: theme.palette.monoA.A200,
+            active: theme.palette.monoA.A150
+          }),
 
           '&.Mui-selected': {
-            '& .MuiTouchRipple-root': {
-              color: theme.palette.monoA.A150
-            },
-            '&, &:hover, &:active': {
-              backgroundColor: theme.palette.secondary.A100
-            },
-            '&:hover': {
-              '& .MuiTouchRipple-root': {
-                backgroundColor: theme.palette.monoA.A50
-              }
-            },
-            '&.Mui-focusVisible': {
-              '& .MuiTouchRipple-root': {
-                backgroundColor: theme.palette.monoA.A200
-              }
-            }
+            ...theme.mixins.listItem({
+              background: theme.palette.secondary.A100,
+              color: theme.palette.monoA.A700,
+              hover: theme.palette.monoA.A50,
+              focus: theme.palette.monoA.A200,
+              active: theme.palette.monoA.A150
+            })
           }
         }
       }

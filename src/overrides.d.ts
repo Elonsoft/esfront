@@ -11,6 +11,7 @@ import {
   TypographyVariantsOptions
 } from '@mui/material/styles';
 import { Components } from '@mui/material/styles/components';
+import { Mixins } from '@mui/material/styles/createMixins';
 import { CommonColors } from '@mui/material/styles/createPalette';
 import { ComponentNameToClassKey, ComponentsOverrides } from '@mui/material/styles/overrides';
 import { ComponentsProps, ComponentsPropsList } from '@mui/material/styles/props';
@@ -129,6 +130,7 @@ import {
   TableTextClassKey,
   TableTextProps
 } from './components/Table';
+import { buttonMixin, listItemMixin } from './theming/mixins';
 
 export interface ISurfacePalette {
   50: string;
@@ -679,6 +681,13 @@ declare module '@mui/material/styles/createTheme' {
       thin: React.CSSProperties;
       overlay: React.CSSProperties;
     };
+  }
+}
+
+declare module '@mui/material/styles/createMixins' {
+  interface Mixins {
+    button: typeof buttonMixin;
+    listItem: typeof listItemMixin;
   }
 }
 

@@ -52,77 +52,40 @@ export const createIconButton: Component<'MuiIconButton'> = (theme) => {
           width: 56
         },
         '&.MuiIconButton-colorPrimary': {
-          '&, &:hover, &:active': {
-            color: theme.palette.primary[300]
-          },
-          '& .MuiTouchRipple-root': {
-            color: theme.palette.primary.A150
-          },
-          '&:hover': {
-            '& .MuiTouchRipple-root': {
-              backgroundColor: theme.palette.primary.A50
-            }
-          },
-          '&:focus-visible': {
-            '& .MuiTouchRipple-root': {
-              color: theme.palette.primary.A200
-            }
-          }
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.primary[300],
+            hover: theme.palette.primary.A50,
+            focus: theme.palette.primary.A200,
+            active: theme.palette.primary.A150
+          })
         },
         '&.MuiIconButton-colorSecondary': {
-          '&, &:hover, &:active': {
-            color: theme.palette.secondary[300]
-          },
-          '& .MuiTouchRipple-root': {
-            color: theme.palette.secondary.A150
-          },
-          '&:hover': {
-            '& .MuiTouchRipple-root': {
-              backgroundColor: theme.palette.secondary.A50
-            }
-          },
-          '&:focus-visible': {
-            '& .MuiTouchRipple-root': {
-              color: theme.palette.secondary.A200
-            }
-          }
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.secondary[300],
+            hover: theme.palette.secondary.A50,
+            focus: theme.palette.secondary.A200,
+            active: theme.palette.secondary.A150
+          })
         },
         '&.MuiIconButton-colorError': {
-          '&, &:hover, &:active': {
-            color: theme.palette.error[300]
-          },
-          '& .MuiTouchRipple-root': {
-            color: theme.palette.error.A150
-          },
-          '&:hover': {
-            '& .MuiTouchRipple-root': {
-              backgroundColor: theme.palette.error.A50
-            }
-          },
-          '&:focus-visible': {
-            '& .MuiTouchRipple-root': {
-              color: theme.palette.error.A200
-            }
-          }
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.error[300],
+            hover: theme.palette.error.A50,
+            focus: theme.palette.error.A200,
+            active: theme.palette.error.A150
+          })
         },
         '&.MuiIconButton-colorMonoA': {
-          '&, &:hover, &:active': {
-            backgroundColor: 'transparent',
-            color: theme.palette.monoA.A700
-          },
-          '& .MuiTouchRipple-root': {
-            color: theme.palette.monoA.A150
-          },
-          '&:hover': {
-            '& .MuiTouchRipple-root': {
-              backgroundColor: theme.palette.monoA.A50
-            }
-          },
-          '&:focus-visible': {
-            '& .MuiTouchRipple-root': {
-              color: theme.palette.monoA.A200
-            }
-          }
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.monoA.A700,
+            hover: theme.palette.monoA.A50,
+            focus: theme.palette.monoA.A200,
+            active: theme.palette.monoA.A150
+          })
         },
         '&.Mui-disabled': {
           color: theme.palette.monoA.A400

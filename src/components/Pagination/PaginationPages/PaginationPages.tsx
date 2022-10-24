@@ -9,6 +9,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { keyframes } from '@mui/system';
+import ButtonBase from '@mui/material/ButtonBase';
 import IconButton from '@mui/material/IconButton';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
@@ -112,55 +113,38 @@ const PaginationPagesPaginationItem = styled(PaginationItem, {
     margin: 0,
     padding: '0 4px',
 
-    '& .MuiTouchRipple-root': {
-      color: theme.palette.monoA.A150,
-      transitionDuration: `${theme.transitions.duration.short}ms`
+    '&.MuiPaginationItem-root': {
+      '& .MuiTouchRipple-root': {
+        transitionDuration: `${theme.transitions.duration.short}ms`
+      }
     },
+
     '& .MuiTouchRipple-rippleVisible': {
       animationName: `${enterKeyframe} !important`,
       opacity: '1 !important'
     },
-    '&, &:hover, &:active': {
-      backgroundColor: 'transparent',
-      color: theme.palette.monoA.A600
-    },
-    '&:hover': {
-      '& .MuiTouchRipple-root': {
-        backgroundColor: theme.palette.monoA.A50
-      }
-    },
-    '&.Mui-focusVisible': {
-      backgroundColor: 'transparent',
 
-      '& .MuiTouchRipple-root': {
-        backgroundColor: theme.palette.monoA.A200
-      }
-    },
+    ...theme.mixins.button({
+      background: 'transparent',
+      color: theme.palette.monoA.A600,
+      hover: theme.palette.monoA.A50,
+      focus: theme.palette.monoA.A200,
+      active: theme.palette.monoA.A150
+    }),
+
     '&.Mui-selected': {
       fontWeight: 700,
 
-      '&, &:hover, &:active': {
-        color: theme.palette.secondary[300]
-      },
-      '& .MuiTouchRipple-root': {
-        backgroundColor: theme.palette.secondary.A100,
-        color: theme.palette.secondary.A150
-      },
-      '&:hover': {
-        '& .MuiTouchRipple-root': {
-          backgroundColor: theme.palette.secondary.A100
-        }
-      },
-      '&.Mui-focusVisible': {
-        backgroundColor: 'transparent',
-
-        '& .MuiTouchRipple-root': {
-          backgroundColor: theme.palette.secondary.A200
-        }
-      }
+      ...theme.mixins.button({
+        background: theme.palette.secondary.A100,
+        color: theme.palette.secondary[300],
+        hover: theme.palette.secondary.A100,
+        focus: theme.palette.secondary.A200,
+        active: theme.palette.secondary.A150
+      })
     }
   }
-}));
+})) as typeof ButtonBase;
 
 const PaginationPagesTextField = styled(TextField, {
   name: 'ESPaginationPages',
@@ -270,7 +254,7 @@ export const PaginationPages = (inProps: PaginationPagesProps) => {
   return (
     <PaginationPagesRoot className={clsx(classes.root, className)} sx={sx}>
       <PaginationPagesPagination
-        className={clsx(classes.pagination, className)}
+        className={clsx(classes.pagination)}
         count={Math.ceil(count / itemsPerPage)}
         page={page}
         onChange={onPaginationPageChange}
@@ -306,14 +290,19 @@ export const PaginationPages = (inProps: PaginationPagesProps) => {
                   placement="top"
                   arrow
                 >
-                  <PaginationPagesPaginationItem className={clsx(classes.paginationItem, className)} {...item} />
+                  <PaginationPagesPaginationItem
+                    className={clsx(classes.paginationItem)}
+                    component="div"
+                    focusRipple
+                    {...item}
+                  />
                 </PaginationPagesTooltip>
               );
           }
         }}
       />
       <PaginationPagesTextField
-        className={clsx(classes.textField, className)}
+        className={clsx(classes.textField)}
         type="text"
         placeholder={`${page} ${labelPage}`}
         onChange={onChange}

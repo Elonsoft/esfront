@@ -106,13 +106,15 @@ const CustomizationButton = styled(IconButton)<{ prev?: boolean; next?: boolean 
 
   '&.MuiIconButton-root.MuiIconButton-root': {
     backdropFilter: 'blur(10px)',
-    backgroundColor: theme.palette.white.A600,
-    color: theme.palette.black[500],
     padding: 4,
 
-    '&:hover': {
-      backgroundColor: theme.palette.white.A600
-    }
+    ...theme.mixins.button({
+      background: theme.palette.white.A600,
+      color: theme.palette.black[500],
+      hover: theme.palette.black.A50,
+      focus: theme.palette.black.A200,
+      active: theme.palette.black.A150
+    })
   }
 }));
 
