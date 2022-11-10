@@ -640,8 +640,9 @@ declare module '@mui/material/styles' {
     body100Bold: React.CSSProperties;
     captionMedium: React.CSSProperties;
     captionBold: React.CSSProperties;
-    mini1: React.CSSProperties;
-    mini2: React.CSSProperties;
+    mini200: React.CSSProperties;
+    mini100: React.CSSProperties;
+    mini100Bold: React.CSSProperties;
     micro: React.CSSProperties;
   }
 
@@ -660,8 +661,9 @@ declare module '@mui/material/styles' {
     body100Bold?: React.CSSProperties;
     captionMedium?: React.CSSProperties;
     captionBold?: React.CSSProperties;
-    mini1?: React.CSSProperties;
-    mini2?: React.CSSProperties;
+    mini200?: React.CSSProperties;
+    mini100?: React.CSSProperties;
+    mini100Bold?: React.CSSProperties;
     micro?: React.CSSProperties;
   }
 }

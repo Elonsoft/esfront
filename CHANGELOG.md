@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/Elonsoft/elonkit-react/compare/v0.4.1...v0.5.0) (2022-11-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* change primary and secondary palettes
+* rework theme creation
+* change overlay palette
+* rename mini typography
+
+### Features
+
+* add button and listItem mixins ([e970422](https://github.com/Elonsoft/elonkit-react/commit/e970422635768ce39f8c47b4227e681c117eb6aa))
+* **Alert:** change border radius ([3a152cb](https://github.com/Elonsoft/elonkit-react/commit/3a152cb54a23161fcff944399675e5fcfcca1a56))
+* **Kbd:** update styles ([15cf928](https://github.com/Elonsoft/elonkit-react/commit/15cf9280b89976a7ce0a86dec815787d63c3b64a))
+* **List:** disable hover on touch devices ([ae1766d](https://github.com/Elonsoft/elonkit-react/commit/ae1766dadcf8250c27c9a04b1a067fce52812f13))
+* **Table:** add column resize ([997e6ce](https://github.com/Elonsoft/elonkit-react/commit/997e6ce47632dd111c703b1c1c86eaa13e58bb57))
+* add custom scrollbars styles ([5fc1889](https://github.com/Elonsoft/elonkit-react/commit/5fc1889ef47a3d4cd7ba95f13bdc5dd2202b3693))
+* change overlay palette ([de03158](https://github.com/Elonsoft/elonkit-react/commit/de031583c65e14d5511a19e44bd3ab6527299b25))
+* change primary and secondary palettes ([78485cc](https://github.com/Elonsoft/elonkit-react/commit/78485cc467fa35a82ab2082bb61f04dac28d6a45))
+* rework theme creation ([de4a28b](https://github.com/Elonsoft/elonkit-react/commit/de4a28b892d29482319542c7e8f57276e53e38e9))
+* **AvatarGroup:** add new component ([b434fd9](https://github.com/Elonsoft/elonkit-react/commit/b434fd9c6e72ba51a201819775eba23957c6970b))
+* **Checkbox:** add check state animation ([87da01c](https://github.com/Elonsoft/elonkit-react/commit/87da01c5ea1b44f000e8b6245c97ec31a7a3e3a5))
+* **Radio:** add style overrides ([e90286e](https://github.com/Elonsoft/elonkit-react/commit/e90286e2c1dc70454ce1c4e9b418d79f53a34df1))
+* **Table:** add new component ([227153d](https://github.com/Elonsoft/elonkit-react/commit/227153d537adaa38b8ba212a63b275a9871dc78c))
+* rename mini typography ([a1ba7dc](https://github.com/Elonsoft/elonkit-react/commit/a1ba7dca752c591044696eb6cfd4c402b4d037b6))
+
+
+### Bug Fixes
+
+* **List:** fix ripple effect on safari ([be6be43](https://github.com/Elonsoft/elonkit-react/commit/be6be435944cd7062e1f0ee9c82cb26b860df8bc))
+* add mising ')' in orange color ([e9d7195](https://github.com/Elonsoft/elonkit-react/commit/e9d71955bc34650974d1b756b84677e1939b5bef))
+* replace FC with children prop ([46351ea](https://github.com/Elonsoft/elonkit-react/commit/46351ea0b957ebcc90a25f6279ad94e6d79edf7b))
+* **Dialog:** change paper background color ([d44f1e2](https://github.com/Elonsoft/elonkit-react/commit/d44f1e257323b0544f940e78d3c894e8fe466def))
+
 ### [0.4.1](https://github.com/Elonsoft/elonkit-react/compare/v0.4.0...v0.4.1) (2022-05-19)
 
 
