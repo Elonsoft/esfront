@@ -128,7 +128,7 @@ export const DemoList: Story = (args, context) => {
         <Divider />
         <ListItem>
           <ListItemText>{getActionText(args, context)}</ListItemText>
-          <IconButton size="32" color="monoA">
+          <IconButton size="32" color="tertiary">
             <IconDotsVerticalLarge />
           </IconButton>
         </ListItem>

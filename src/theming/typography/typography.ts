@@ -224,6 +224,7 @@ export const createTypography = (theme: Theme) => {
       fontSize: pxToRem(14),
       fontWeight: 500,
       letterSpacing: pxToRem(0.5),
+      lineHeight: pxToRem(16),
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1)
     },

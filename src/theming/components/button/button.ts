@@ -17,6 +17,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
   return {
     defaultProps: {
       disableElevation: true,
+      disableFocusRipple: true,
       size: '40'
     },
     styleOverrides: {
@@ -32,6 +33,8 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
           }
         },
         '&.Mui-disabled': {
+          cursor: 'not-allowed',
+          pointerEvents: 'auto',
           '&.MuiButton-text, &.MuiButton-outlined, &.MuiButton-contained': {
             color: theme.palette.monoA.A400
           },
@@ -41,6 +44,42 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
           },
           '&.MuiButton-contained': {
             backgroundColor: theme.palette.monoA.A75
+          }
+        },
+        '&.MuiButton-size16': {
+          ...typography.mini100,
+          fontWeight: 400,
+          height: 16,
+          padding: '0 6px',
+          textTransform: 'none',
+          '& .MuiButton-startIcon': {
+            marginLeft: -2,
+            marginRight: 2
+          },
+          '& .MuiButton-endIcon': {
+            marginLeft: 2,
+            marginRight: -2
+          },
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+            margin: '0 -4px'
+          }
+        },
+        '&.MuiButton-size20': {
+          ...typography.caption,
+          fontWeight: 400,
+          height: 20,
+          padding: '0 6px',
+          textTransform: 'none',
+          '& .MuiButton-startIcon': {
+            marginLeft: -2,
+            marginRight: 2
+          },
+          '& .MuiButton-endIcon': {
+            marginLeft: 2,
+            marginRight: -2
+          },
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+            margin: '0 -4px'
           }
         },
         '&.MuiButton-size24': {
@@ -74,6 +113,18 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
           },
           '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
             margin: '0 -8px'
+          },
+          '&.MuiButton-text': {
+            padding: '0 8px',
+            '& .MuiButton-startIcon': {
+              marginLeft: -4
+            },
+            '& .MuiButton-endIcon': {
+              marginRight: -4
+            },
+            '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+              margin: -4
+            }
           }
         },
         '&.MuiButton-size40': {
@@ -159,16 +210,6 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
         }
       },
       text: {
-        '&.MuiButton-textMonoA': {
-          ...theme.mixins.button({
-            background: 'transparent',
-            color: theme.palette.monoA.A700,
-            hover: theme.palette.monoA.A50,
-            focus: theme.palette.monoA.A200,
-            active: theme.palette.monoA.A150
-          })
-        },
-
         '&.MuiButton-textPrimary': {
           ...theme.mixins.button({
             background: 'transparent',
@@ -181,7 +222,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
         '&.MuiButton-textSecondary': {
           ...theme.mixins.button({
             background: 'transparent',
-            color: theme.palette.secondary[300],
+            color: theme.palette.secondary[400],
             hover: theme.palette.secondary.A50,
             focus: theme.palette.secondary.A200,
             active: theme.palette.secondary.A150
@@ -195,16 +236,8 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             focus: theme.palette.error.A200,
             active: theme.palette.error.A150
           })
-        }
-      },
-      outlined: {
-        border: 0,
-        '&, &:hover, &:active, &:focus': {
-          boxShadow: `inset 0px 0px 0px 1px ${theme.palette.monoA.A200}`
         },
-        '&.MuiButton-outlinedMonoA': {
-          border: 0,
-
+        '&.MuiButton-textTertiary': {
           ...theme.mixins.button({
             background: 'transparent',
             color: theme.palette.monoA.A700,
@@ -213,6 +246,62 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             active: theme.palette.monoA.A150
           })
         },
+        '&.MuiButton-textMonoA': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.monoA[500],
+            hover: theme.palette.monoA.A50,
+            focus: theme.palette.monoA.A200,
+            active: theme.palette.monoA.A150
+          })
+        },
+        '&.MuiButton-textMonoB': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.monoB[500],
+            hover: theme.palette.monoB.A50,
+            focus: theme.palette.monoB.A200,
+            active: theme.palette.monoB.A150
+          }),
+
+          '&.Mui-disabled': {
+            color: theme.palette.monoB.A400
+          }
+        },
+        '&.MuiButton-textWhite': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.white[500],
+            hover: theme.palette.white.A50,
+            focus: theme.palette.white.A200,
+            active: theme.palette.white.A150
+          }),
+
+          '&.Mui-disabled': {
+            color: theme.palette.white.A400
+          }
+        },
+        '&.MuiButton-textBlack': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.black[500],
+            hover: theme.palette.black.A50,
+            focus: theme.palette.black.A200,
+            active: theme.palette.black.A150
+          }),
+
+          '&.Mui-disabled': {
+            color: theme.palette.black.A400
+          }
+        }
+      },
+      outlined: {
+        border: 0,
+
+        '&, &:not(:disabled):hover, &:not(:disabled):active, &:focus': {
+          boxShadow: `inset 0px 0px 0px 1px ${theme.palette.monoA.A200}`
+        },
+
         '&.MuiButton-outlinedPrimary': {
           border: 0,
 
@@ -229,10 +318,21 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
 
           ...theme.mixins.button({
             background: 'transparent',
-            color: theme.palette.secondary[300],
+            color: theme.palette.secondary[400],
             hover: theme.palette.secondary.A50,
             focus: theme.palette.secondary.A200,
             active: theme.palette.secondary.A150
+          })
+        },
+        '&.MuiButton-outlinedTertiary': {
+          border: 0,
+
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.monoA.A700,
+            hover: theme.palette.monoA.A50,
+            focus: theme.palette.monoA.A200,
+            active: theme.palette.monoA.A150
           })
         },
         '&.MuiButton-outlinedError': {
@@ -245,19 +345,81 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             focus: theme.palette.error.A200,
             active: theme.palette.error.A150
           })
-        }
-      },
-      contained: {
-        '&:not(.MuiButton-colorInherit)': {
+        },
+        '&.MuiButton-outlinedMonoA': {
+          border: 0,
+
           ...theme.mixins.button({
             background: 'transparent',
-            color: theme.palette.monoA.A800,
+            color: theme.palette.monoA[500],
+            hover: theme.palette.monoA.A50,
+            focus: theme.palette.monoA.A200,
+            active: theme.palette.monoA.A150
+          })
+        },
+        '&.MuiButton-outlinedMonoB': {
+          border: 0,
+
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.monoB[500],
             hover: theme.palette.monoB.A50,
             focus: theme.palette.monoB.A200,
             active: theme.palette.monoB.A150
-          })
+          }),
+
+          '&, &:not(:disabled):hover, &:not(:disabled):active, &:focus': {
+            boxShadow: `inset 0px 0px 0px 1px ${theme.palette.monoB.A200}`
+          },
+
+          '&.Mui-disabled.MuiButton-outlined': {
+            color: theme.palette.monoB.A400,
+            boxShadow: `inset 0px 0px 0px 1px ${theme.palette.monoB.A150}`
+          }
         },
-        '&.MuiButton-containedMonoA': {
+        '&.MuiButton-outlinedWhite': {
+          border: 0,
+
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.white[500],
+            hover: theme.palette.white.A50,
+            focus: theme.palette.white.A200,
+            active: theme.palette.white.A150
+          }),
+
+          '&, &:not(:disabled):hover, &:not(:disabled):active, &:focus': {
+            boxShadow: `inset 0px 0px 0px 1px ${theme.palette.white.A200}`
+          },
+
+          '&.Mui-disabled.MuiButton-outlined': {
+            color: theme.palette.white.A400,
+            boxShadow: `inset 0px 0px 0px 1px ${theme.palette.white.A150}`
+          }
+        },
+        '&.MuiButton-outlinedBlack': {
+          border: 0,
+
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.black[500],
+            hover: theme.palette.black.A50,
+            focus: theme.palette.black.A200,
+            active: theme.palette.black.A150
+          }),
+
+          '&, &:not(:disabled):hover, &:not(:disabled):active, &:focus': {
+            boxShadow: `inset 0px 0px 0px 1px ${theme.palette.black.A200}`
+          },
+
+          '&.Mui-disabled.MuiButton-outlined': {
+            color: theme.palette.black.A400,
+            boxShadow: `inset 0px 0px 0px 1px ${theme.palette.black.A150}`
+          }
+        }
+      },
+      contained: {
+        '&.MuiButton-containedTertiary': {
           ...theme.mixins.button({
             background: theme.palette.monoA.A100,
             color: theme.palette.monoA.A800,
@@ -267,21 +429,81 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
           })
         },
         '&.MuiButton-containedPrimary': {
-          '&, &:hover, &:active': {
-            backgroundColor: theme.palette.primary[300],
-            color: theme.palette.monoB[500]
-          }
+          ...theme.mixins.button({
+            background: theme.palette.primary[300],
+            color: theme.palette.monoB[500],
+            hover: theme.palette.monoB.A50,
+            focus: theme.palette.monoB.A200,
+            active: theme.palette.monoB.A150
+          })
         },
         '&.MuiButton-containedSecondary': {
-          '&, &:hover, &:active': {
-            backgroundColor: theme.palette.secondary[300],
-            color: theme.palette.monoB[500]
-          }
+          ...theme.mixins.button({
+            background: theme.palette.secondary[300],
+            color: theme.palette.black[500],
+            hover: theme.palette.black.A50,
+            focus: theme.palette.black.A200,
+            active: theme.palette.black.A150
+          })
         },
         '&.MuiButton-containedError': {
-          '&, &:hover, &:active': {
-            backgroundColor: theme.palette.error[300],
-            color: theme.palette.monoB[500]
+          ...theme.mixins.button({
+            background: theme.palette.error[300],
+            color: theme.palette.monoB[500],
+            hover: theme.palette.monoB.A50,
+            focus: theme.palette.monoB.A200,
+            active: theme.palette.monoB.A150
+          })
+        },
+        '&.MuiButton-containedMonoA': {
+          ...theme.mixins.button({
+            background: theme.palette.monoA[500],
+            color: theme.palette.monoB[500],
+            hover: theme.palette.monoB.A50,
+            focus: theme.palette.monoB.A200,
+            active: theme.palette.monoB.A150
+          })
+        },
+        '&.MuiButton-containedMonoB': {
+          ...theme.mixins.button({
+            background: theme.palette.monoB[500],
+            color: theme.palette.monoA[500],
+            hover: theme.palette.monoA.A50,
+            focus: theme.palette.monoA.A200,
+            active: theme.palette.monoA.A150
+          }),
+
+          '&.Mui-disabled.MuiButton-contained': {
+            backgroundColor: theme.palette.monoB.A75,
+            color: theme.palette.monoA.A400
+          }
+        },
+        '&.MuiButton-containedWhite': {
+          ...theme.mixins.button({
+            background: theme.palette.white[500],
+            color: theme.palette.black[500],
+            hover: theme.palette.black.A50,
+            focus: theme.palette.black.A200,
+            active: theme.palette.black.A150
+          }),
+
+          '&.Mui-disabled.MuiButton-contained': {
+            backgroundColor: theme.palette.white.A75,
+            color: theme.palette.black.A400
+          }
+        },
+        '&.MuiButton-containedBlack': {
+          ...theme.mixins.button({
+            background: theme.palette.black[500],
+            color: theme.palette.white[500],
+            hover: theme.palette.white.A50,
+            focus: theme.palette.white.A200,
+            active: theme.palette.white.A150
+          }),
+
+          '&.Mui-disabled.MuiButton-contained': {
+            backgroundColor: theme.palette.black.A75,
+            color: theme.palette.black.A400
           }
         }
       }

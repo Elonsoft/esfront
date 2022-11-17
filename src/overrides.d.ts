@@ -705,6 +705,8 @@ declare module '@mui/material/styles/createPalette' {
 
 declare module '@mui/material/Button' {
   interface ButtonPropsSizeOverrides {
+    '16': true;
+    '20': true;
     '24': true;
     '32': true;
     '40': true;
@@ -716,12 +718,18 @@ declare module '@mui/material/Button' {
   }
 
   interface ButtonPropsColorOverrides {
+    tertiary: true;
     monoA: true;
+    monoB: true;
+    white: true;
+    black: true;
   }
 }
 
 declare module '@mui/material/IconButton' {
   interface IconButtonPropsSizeOverrides {
+    '16': true;
+    '20': true;
     '24': true;
     '32': true;
     '40': true;
@@ -733,7 +741,11 @@ declare module '@mui/material/IconButton' {
   }
 
   interface IconButtonPropsColorOverrides {
+    tertiary: true;
     monoA: true;
+    monoB: true;
+    white: true;
+    black: true;
     default: false;
   }
 }

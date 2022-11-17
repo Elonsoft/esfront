@@ -18,21 +18,21 @@ export const buttonMixin = (states: ButtonMixinStates) => {
   const { background, color, hover, active, focus } = states;
 
   return {
-    '&, &:hover, &:active': {
+    '&, &:not(:disabled):hover, &:not(:disabled):active': {
       backgroundColor: background,
       color: color
     },
     '& .MuiTouchRipple-root': {
       color: active
     },
-    '&:hover': {
-      '& .MuiTouchRipple-root': {
+    '@media (hover: hover)': {
+      '&:not(.Mui-focusVisible):not(:disabled):hover .MuiTouchRipple-root': {
         backgroundColor: hover
       }
     },
     '&.Mui-focusVisible': {
       '& .MuiTouchRipple-root': {
-        color: focus
+        backgroundColor: focus
       }
     }
   } as React.CSSProperties;
