@@ -16,8 +16,9 @@ const enterKeyframe = keyframes`
 export const createIconButton: Component<'MuiIconButton'> = (theme) => {
   return {
     defaultProps: {
+      disableFocusRipple: true,
       size: '40',
-      color: 'monoA'
+      color: 'tertiary'
     },
     styleOverrides: {
       root: {
@@ -30,6 +31,14 @@ export const createIconButton: Component<'MuiIconButton'> = (theme) => {
             animationName: `${enterKeyframe} !important`,
             opacity: '1 !important'
           }
+        },
+        '&.MuiIconButton-size16': {
+          height: 16,
+          width: 16
+        },
+        '&.MuiIconButton-size20': {
+          height: 20,
+          width: 20
         },
         '&.MuiIconButton-size24': {
           height: 24,
@@ -63,10 +72,19 @@ export const createIconButton: Component<'MuiIconButton'> = (theme) => {
         '&.MuiIconButton-colorSecondary': {
           ...theme.mixins.button({
             background: 'transparent',
-            color: theme.palette.secondary[300],
+            color: theme.palette.secondary[400],
             hover: theme.palette.secondary.A50,
             focus: theme.palette.secondary.A200,
             active: theme.palette.secondary.A150
+          })
+        },
+        '&.MuiIconButton-colorTertiary': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.monoA.A700,
+            hover: theme.palette.monoA.A50,
+            focus: theme.palette.monoA.A200,
+            active: theme.palette.monoA.A150
           })
         },
         '&.MuiIconButton-colorError': {
@@ -81,13 +99,54 @@ export const createIconButton: Component<'MuiIconButton'> = (theme) => {
         '&.MuiIconButton-colorMonoA': {
           ...theme.mixins.button({
             background: 'transparent',
-            color: theme.palette.monoA.A700,
+            color: theme.palette.monoA[500],
             hover: theme.palette.monoA.A50,
             focus: theme.palette.monoA.A200,
             active: theme.palette.monoA.A150
           })
         },
+        '&.MuiIconButton-colorMonoB': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.monoB[500],
+            hover: theme.palette.monoB.A50,
+            focus: theme.palette.monoB.A200,
+            active: theme.palette.monoB.A150
+          }),
+
+          '&.Mui-disabled': {
+            color: theme.palette.monoB.A400
+          }
+        },
+        '&.MuiIconButton-colorWhite': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.white[500],
+            hover: theme.palette.white.A50,
+            focus: theme.palette.white.A200,
+            active: theme.palette.white.A150
+          }),
+
+          '&.Mui-disabled': {
+            color: theme.palette.white.A400
+          }
+        },
+        '&.MuiIconButton-colorBlack': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.black[500],
+            hover: theme.palette.black.A50,
+            focus: theme.palette.black.A200,
+            active: theme.palette.black.A150
+          }),
+
+          '&.Mui-disabled': {
+            color: theme.palette.black.A400
+          }
+        },
         '&.Mui-disabled': {
+          cursor: 'not-allowed',
+          pointerEvents: 'auto',
           color: theme.palette.monoA.A400
         }
       }

@@ -55,9 +55,7 @@ const DialogCloseButton = styled(IconButton, {
   },
   '&.MuiIconButton-root': {
     backdropFilter: 'blur(10px)',
-    backgroundColor: theme.palette.white.A200,
     borderRadius: 4,
-    color: theme.palette.white[500],
     padding: 8,
     width: 32,
     height: 32,
@@ -67,24 +65,13 @@ const DialogCloseButton = styled(IconButton, {
       height: 40
     },
 
-    '& .MuiTouchRipple-root': {
-      color: theme.palette.white.A150
-    },
-    '&:hover': {
+    ...theme.mixins.button({
+      background: theme.palette.white.A200,
       color: theme.palette.white[500],
-      backgroundColor: theme.palette.white.A200,
-      '& .MuiTouchRipple-root': {
-        backgroundColor: theme.palette.white.A50
-      }
-    },
-    '&:active': {
-      color: theme.palette.white[500]
-    },
-    '&:focus-visible': {
-      '& .MuiTouchRipple-root': {
-        color: theme.palette.white.A200
-      }
-    }
+      hover: theme.palette.white.A50,
+      focus: theme.palette.white.A200,
+      active: theme.palette.white.A150
+    })
   }
 }));
 
@@ -106,7 +93,7 @@ export const DialogClose = (inProps: DialogCloseProps) => {
 
   return (
     <DialogCloseRoot className={clsx(classes.root, className)} sx={sx}>
-      <DialogCloseButton className={classes.button} onClick={onClick} aria-label={label}>
+      <DialogCloseButton className={classes.button} onClick={onClick} aria-label={label} color="white">
         {icon}
       </DialogCloseButton>
     </DialogCloseRoot>

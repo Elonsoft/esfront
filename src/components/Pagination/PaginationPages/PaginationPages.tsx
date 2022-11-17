@@ -81,7 +81,7 @@ const PaginationPagesButton = styled(IconButton, {
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
 })(({ theme }) => ({
-  '&, &:hover, &:active': {
+  '&, &:not(:disabled):hover, &:not(:disabled):active': {
     color: theme.palette.monoA.A500
   },
   '&.Mui-disabled': {
@@ -290,12 +290,7 @@ export const PaginationPages = (inProps: PaginationPagesProps) => {
                   placement="top"
                   arrow
                 >
-                  <PaginationPagesPaginationItem
-                    className={clsx(classes.paginationItem)}
-                    component="div"
-                    focusRipple
-                    {...item}
-                  />
+                  <PaginationPagesPaginationItem className={clsx(classes.paginationItem)} component="div" {...item} />
                 </PaginationPagesTooltip>
               );
           }

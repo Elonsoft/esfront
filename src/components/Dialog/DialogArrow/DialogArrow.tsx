@@ -62,31 +62,17 @@ const DialogArrowButton = styled(Button, {
   top: 0,
 
   '&.MuiButton-root': {
-    backgroundColor: 'transparent',
     borderRadius: 0,
     color: theme.palette.white.A700,
-    transitionDuration: `${theme.transitions.duration.short}ms`,
     padding: 8,
     width: 72,
     height: '100vh',
 
-    '& .MuiTouchRipple-root': {
-      color: theme.palette.white.A150
+    '&:not(:disabled):hover, &.Mui-focusVisible': {
+      color: theme.palette.white.A900
     },
-    '&:hover': {
-      color: theme.palette.white.A900,
-      '& .MuiTouchRipple-root': {
-        backgroundColor: theme.palette.white.A50
-      }
-    },
-    '&:active': {
+    '&:not(:disabled):active': {
       color: theme.palette.white[500]
-    },
-    '&:focus-visible': {
-      color: theme.palette.white.A900,
-      '& .MuiTouchRipple-root': {
-        color: theme.palette.white.A200
-      }
     }
   }
 }));
@@ -116,6 +102,8 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
         className={classes.button}
         onClick={onClick}
         aria-label={direction === 'prev' ? labelPrev : labelNext}
+        variant="text"
+        color="white"
       >
         {direction === 'prev' ? iconPrev : iconNext}
       </DialogArrowButton>

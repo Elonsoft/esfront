@@ -97,7 +97,7 @@ export const Demo: Story = (args, context) => {
           </Typography>
         </DialogContent>
         <DialogActions sticky={args.DialogActionsSticky}>
-          <Button variant="outlined" color="monoA" size="48" onClick={onClose}>
+          <Button variant="outlined" color="tertiary" size="48" onClick={onClose}>
             {getCancelButtonText(args, context)}
           </Button>
           <Button variant="contained" color="primary" size="48" onClick={onClose}>
@@ -136,7 +136,7 @@ export const Alignment: Story = (args, context) => {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" color="monoA" size="48" onClick={onClose}>
+          <Button variant="outlined" color="tertiary" size="48" onClick={onClose}>
             {getCancelButtonText(args, context)}
           </Button>
           <Button variant="contained" color="primary" size="48" onClick={onClose}>

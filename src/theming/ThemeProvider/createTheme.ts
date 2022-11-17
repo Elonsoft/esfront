@@ -33,6 +33,9 @@ const createPalette = ({
     }
   }
 
+  // FIXME: Remove after introduction of our own buttons.
+  (palette as any).tertiary = { main: '#fff' };
+
   return palette as Palette;
 };
 

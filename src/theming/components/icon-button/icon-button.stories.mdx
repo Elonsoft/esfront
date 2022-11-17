@@ -2,6 +2,9 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
 import IconButton from '@mui/material/IconButton';
 import Icon from '@mui/material/Icon';
+import SvgIcon from '@mui/material/SvgIcon';
+
+import { IconChevronDown } from '../../../icons';
 
 <Meta
   title="Overrides/IconButton"
@@ -11,11 +14,11 @@ import Icon from '@mui/material/Icon';
   }}
   argTypes={{
     color: {
-      options: ['inherit', 'primary', 'secondary', 'error', 'monoA'],
+      options: ['inherit', 'primary', 'secondary', 'tertiary', 'error', 'monoA', 'monoB', 'white', 'black'],
       control: { type: 'select' }
     },
     size: {
-      options: ['24', '32', '40', '48', '56'],
+      options: ['16', '20', '24', '32', '40', '48', '56'],
       control: { type: 'select' }
     },
     disabled: {
@@ -24,12 +27,74 @@ import Icon from '@mui/material/Icon';
   }}
 />
 
+export const IconChevronDown20 = () => (
+  <SvgIcon
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    sx={{ fontSize: 20 }}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M9.29297 13.7073L4.29297 8.7073L5.70718 7.29309L10.0001 11.586L14.293 7.29309L15.7072 8.7073L10.7072 13.7073L10.0001 14.4144L9.29297 13.7073Z"
+      fill="currentColor"
+    />
+  </SvgIcon>
+);
+
+export const IconChevronDown16 = () => (
+  <SvgIcon
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    sx={{ fontSize: 16 }}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.46875 10.5304L3.46875 6.53039L4.52941 5.46973L7.99908 8.9394L11.4688 5.46973L12.5294 6.53039L8.52941 10.5304L7.99908 11.0607L7.46875 10.5304Z"
+      fill="currentColor"
+    />
+  </SvgIcon>
+);
+
+export const IconChevronDown12 = () => (
+  <SvgIcon
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    sx={{ fontSize: 12 }}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M5.46875 8.53051L1.46875 4.53051L2.52941 3.46985L5.99908 6.93952L9.46875 3.46985L10.5294 4.53051L6.52941 8.53051L5.99908 9.06084L5.46875 8.53051Z"
+      fill="currentColor"
+    />
+  </SvgIcon>
+);
+
 <Canvas>
   <Story name="IconButton">
     {(args, context) => {
+      const Icon =
+        args.size === '16'
+          ? IconChevronDown12
+          : args.size === '20'
+          ? IconChevronDown16
+          : args.size === '24'
+          ? IconChevronDown20
+          : IconChevronDown;
       return (
         <IconButton {...args}>
-          <Icon fontSize={args.size === 'xs' ? 'small' : 'medium'}>menu</Icon>
+          <Icon />
         </IconButton>
       );
     }}

@@ -58,8 +58,11 @@ const PaginationRangeButton = styled(Button, {
 })(({ theme }) => ({
   '&.MuiButton-root': {
     '&.MuiButton-text': {
-      color: theme.palette.monoA.A900,
-      padding: '0 6px 0 4px'
+      padding: '0 6px 0 4px',
+
+      '&, &:not(:disabled):hover, &:not(:disabled):active': {
+        color: theme.palette.monoA.A900
+      }
     },
     '& .MuiButton-endIcon': {
       color: theme.palette.monoA.A500,
@@ -122,7 +125,7 @@ export const PaginationRange = (inProps: PaginationRangeProps) => {
 
       <PaginationRangeButton
         className={clsx(classes.button, className)}
-        color="monoA"
+        color="tertiary"
         size="32"
         aria-expanded={open ? 'true' : undefined}
         endIcon={iconItemsPerPage}
