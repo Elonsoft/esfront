@@ -44,7 +44,7 @@ const TableHeadRoot = styled('div', {
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
 
 export const TableHead = (inProps: TableHeadProps) => {
-  const { children, className, sticky, relativeTo, ...props } = useThemeProps({
+  const { children, className, sticky, relativeTo, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableHead'
   });
@@ -57,7 +57,13 @@ export const TableHead = (inProps: TableHeadProps) => {
 
   return (
     <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
-      <TableHeadRoot ref={ref} className={clsx(classes.root, className)} ownerState={ownerState} role="rowgroup">
+      <TableHeadRoot
+        ref={ref}
+        className={clsx(classes.root, className)}
+        sx={sx}
+        ownerState={ownerState}
+        role="rowgroup"
+      >
         {children}
       </TableHeadRoot>
     </TableCellContext.Provider>

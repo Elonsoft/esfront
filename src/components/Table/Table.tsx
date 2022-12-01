@@ -41,7 +41,7 @@ const TableRoot = styled('div', {
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
 export const Table = forwardRef<HTMLDivElement, TableProps>((inProps, ref) => {
-  const { children, className, columns, ...props } = useThemeProps({
+  const { children, className, columns, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTable'
   });
@@ -64,7 +64,7 @@ export const Table = forwardRef<HTMLDivElement, TableProps>((inProps, ref) => {
     <TableContext.Provider value={value}>
       <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
         <TableScrollbarContext.Provider value={scrollbarValue}>
-          <TableRoot ref={ref} className={clsx(classes.root, className)} role="table">
+          <TableRoot ref={ref} className={clsx(classes.root, className)} sx={sx} role="table">
             {children}
           </TableRoot>
         </TableScrollbarContext.Provider>
