@@ -221,6 +221,7 @@ export const TableCell = (inProps: TableCellProps) => {
     onResizeCommit,
     minWidth,
     labelResize,
+    sx,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -310,6 +311,7 @@ export const TableCell = (inProps: TableCellProps) => {
       className={clsx(classes.root, className)}
       ownerState={ownerState}
       id={id}
+      sx={sx}
       role={variant === 'head' ? 'columnheader' : 'cell'}
       data-minwidth={minWidth}
     >

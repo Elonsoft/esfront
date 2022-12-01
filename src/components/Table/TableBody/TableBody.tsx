@@ -35,7 +35,7 @@ const TableBodyRoot = styled('div', {
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
 export const TableBody = (inProps: TableBodyProps) => {
-  const { children, className, ...props } = useThemeProps({
+  const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableBody'
   });
@@ -45,7 +45,7 @@ export const TableBody = (inProps: TableBodyProps) => {
 
   return (
     <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
-      <TableBodyRoot className={clsx(classes.root, className)} role="rowgroup">
+      <TableBodyRoot className={clsx(classes.root, className)} sx={sx} role="rowgroup">
         {children}
       </TableBodyRoot>
     </TableCellContext.Provider>

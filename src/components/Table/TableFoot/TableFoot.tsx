@@ -41,7 +41,7 @@ const TableFootRoot = styled('div', {
 }));
 
 export const TableFoot = (inProps: TableFootProps) => {
-  const { children, className, sticky, relativeTo, ...props } = useThemeProps({
+  const { children, className, sticky, relativeTo, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableFoot'
   });
@@ -53,7 +53,7 @@ export const TableFoot = (inProps: TableFootProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableFootRoot ref={ref} className={clsx(classes.root, className)} ownerState={ownerState}>
+    <TableFootRoot ref={ref} className={clsx(classes.root, className)} sx={sx} ownerState={ownerState}>
       {children}
     </TableFootRoot>
   );
