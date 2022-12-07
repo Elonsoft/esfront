@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/Elonsoft/elonkit-react/compare/v0.5.0...v0.6.0) (2022-12-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Button:** change button colors and sizes
+
+### Features
+
+* **Button:** change button colors and sizes ([c3e6b30](https://github.com/Elonsoft/elonkit-react/commit/c3e6b30033e8008b5392b81b67e04214227f0014))
+* **Sidebar:** add new component ([40a7f61](https://github.com/Elonsoft/elonkit-react/commit/40a7f61b8e968d884f45ee033ca5e1867aa483ee))
+* **Sidenav:** add new component ([e570cbe](https://github.com/Elonsoft/elonkit-react/commit/e570cbe3e67e1036abd37a8a54fce2cb2b95f410))
+
+
+### Bug Fixes
+
+* **Table:** add resize observer for the scrolling ancestor ([82138a1](https://github.com/Elonsoft/elonkit-react/commit/82138a1493aa579a7fdfdcf15fc53b6c5646a1df))
+* **Table:** propagate sx prop ([9c3453e](https://github.com/Elonsoft/elonkit-react/commit/9c3453e4715ade8f81d14b0e2cae296dc9724bd7))
+
 ## [0.5.0](https://github.com/Elonsoft/elonkit-react/compare/v0.4.1...v0.5.0) (2022-11-10)
 
 
