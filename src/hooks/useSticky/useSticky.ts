@@ -2,7 +2,6 @@ import { MutableRefObject, useEffect, useLayoutEffect } from 'react';
 
 import { useLatest } from '../useLatest';
 import { useResizeObserver } from '../useResizeObserver';
-import { useWindowEventListener } from '../useWindowEventListener';
 
 /**
  * The hook that mimics postion sticky via transform.
@@ -56,25 +55,10 @@ export const useSticky = (
     };
   }, [options.relativeTo]);
 
-  useEffect(() => {
-    if (options.relativeTo) {
-      const onEvent = () => {
-        return latestUpdate.current();
-      };
-
-      const resizeObserver = new ResizeObserver(onEvent);
-      resizeObserver.observe(options.relativeTo);
-
-      return () => {
-        resizeObserver.disconnect();
-      };
-    }
-  }, [options.relativeTo]);
-
   useLayoutEffect(() => {
     update();
   }, [options.top, options.bottom]);
 
-  useWindowEventListener('resize', update);
-  useResizeObserver(ref, update);
+  useResizeObserver(ref, update, { box: 'border-box' });
+  useResizeObserver({ current: options.relativeTo || document.body }, update, { box: 'border-box' });
 };
