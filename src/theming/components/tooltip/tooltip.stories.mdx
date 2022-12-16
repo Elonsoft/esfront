@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import SvgIcon from '@mui/material/SvgIcon';
+import { Tooltip, Button, Typography } from '@mui/material';
+
+<Meta
+  title="Overrides/Tooltip"
+  parameters={{
+    viewMode: 'canvas',
+    options: { showPanel: true }
+  }}
+  argTypes={{}}
+/>
+
+<Canvas>
+  <Story name="Tooltip">
+    {(args, { globals: { locale } }) => {
+      return (
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <Tooltip arrow title={locale === 'en' ? 'Tooltip' : 'Подсказка'} placement="right" {...args}>
+            <Button variant="contained">{locale === 'en' ? 'Button' : 'Кнопка'}</Button>
+          </Tooltip>
+          <Button variant="contained">{locale === 'en' ? 'Button' : 'Кнопка'}</Button>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
