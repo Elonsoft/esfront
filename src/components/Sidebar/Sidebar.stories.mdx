@@ -31,6 +31,12 @@ import * as stories from './Sidebar.stories';
         type: 'boolean'
       }
     },
+    minWidth: {
+      defaultValue: 220
+    },
+    maxWidth: {
+      defaultValue: 400
+    },
     open: {
       table: {
         disable: true
@@ -57,6 +63,11 @@ import * as stories from './Sidebar.stories';
       }
     },
     onWidthChange: {
+      table: {
+        disable: true
+      }
+    },
+    onWidthChangeCommit: {
       table: {
         disable: true
       }

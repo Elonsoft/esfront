@@ -29,7 +29,7 @@ import {
   IconZap
 } from '../../icons';
 
-export const Demo: Story = ({ color, behaviour, exclusive }, { globals: { locale } }) => {
+export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth }, { globals: { locale } }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [width, setWidth] = useState(280);
 
@@ -39,6 +39,8 @@ export const Demo: Story = ({ color, behaviour, exclusive }, { globals: { locale
         open={isOpen}
         color={color}
         width={width}
+        minWidth={minWidth}
+        maxWidth={maxWidth}
         sx={{ position: 'sticky', top: '0' }}
         onWidthChangeCommit={(value: number) => setWidth(value)}
       >
