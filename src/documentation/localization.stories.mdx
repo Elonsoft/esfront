@@ -19,12 +19,18 @@ import { ThemeProvider, FormatSize, ru } from '@elonkit/react';
 import { ruRU } from '@mui/material/locale';
 
 const Application = () => {
-  const agrs = useMemo(() => {
-    return { ...ruRU, ...ru };
-  }, []);
+  const theme = createTheme(
+    {
+      palette: {
+        ...palettes.common,
+        ...palettes.light
+      }
+    },
+    { ...ruRU, ru }
+  );
 
   return (
-    <ThemeProvider args={args}>
+    <ThemeProvider theme={theme}>
       <FormatSize>1024</FormatSize>
     </ThemeProvider>
   );
