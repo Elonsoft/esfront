@@ -1,4 +1,4 @@
-import { MenuItemProps } from './MenuItem.types';
+import { MenuItemProps, MenuItemTypeMap } from './MenuItem.types';
 
 import clsx from 'clsx';
 import { getMenuItemUtilityClass } from './MenuItem.classes';
@@ -7,6 +7,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import MuiMenuItem, { menuItemClasses } from '@mui/material/MenuItem';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 type MenuItemOwnerState = {
   classes?: MenuItemProps['classes'];
@@ -45,7 +46,7 @@ const MenuItemRoot = styled(MuiMenuItem, {
 /**
  * Wrapper aroud MenuItem from MUI with color prop.
  */
-export const MenuItem = (inProps: MenuItemProps) => {
+export const MenuItem: OverridableComponent<MenuItemTypeMap> = (inProps: MenuItemProps) => {
   const { className, color, ...props } = useThemeProps({
     props: inProps,
     name: 'ESMenuItem'
