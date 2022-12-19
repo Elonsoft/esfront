@@ -36,14 +36,22 @@ const theme = createTheme({
 ## Typography
 
 Typography is based on the guidelines from the Material Design spec and is arranged into typography levels. Each level
-has a font-size, line-height, font-weight and letter-spacing. Typography can be customized via `createTypography` prop
-in `ThemeProvider`:
+has a font-size, line-height, font-weight and letter-spacing. Typography can be customized via `typography` key in
+`createTheme` options.
 
 ```tsx
 // Default typography
 import { createTypography } from '@elonkit/react';
 
-<ThemeProvider createTypography={createTypography}>...</ThemeProvider>;
+const theme = createTheme({
+  palette: {
+    ...palettes.common,
+    ...palettes.light
+  },
+  typography: createTypography
+});
+
+<ThemeProvider theme={theme}>...</ThemeProvider>;
 ```
 
 <Story name="Typography">
