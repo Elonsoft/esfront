@@ -147,6 +147,8 @@ export { IconSend } from './IconSend';
 export { IconShareOutline } from './IconShareOutline';
 export { IconSkipBackMedium } from './IconSkipBackMedium';
 export { IconSkipForwardMedium } from './IconSkipForwardMedium';
+export { IconSortDirectionDown } from './IconSortDirectionDown';
+export { IconSortDirectionUp } from './IconSortDirectionUp';
 export { IconSortSmallCustom } from './IconSortSmallCustom';
 export { IconSpeedometer } from './IconSpeedometer';
 export { IconStar } from './IconStar';

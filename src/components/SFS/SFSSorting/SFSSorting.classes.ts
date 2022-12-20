@@ -3,24 +3,28 @@ import { generateUtilityClass, generateUtilityClasses } from '@mui/base';
 export type SFSSortingClasses = {
   /** Styled applied to the root element. */
   root: string;
-  /** Styles applied to the open sorting menu button. */
-  openMenuButton: string;
-  /** Styles applied to the open sorting menu button badge. */
-  openMenuButtonBadge: string;
-  /** Styles applied to the root popover element. */
-  sortingMenuRoot: string;
-  /** Styles applied to the sorting menu item element. */
-  sortingMenuItem: string;
-  /** Styles applied to the menu header. */
+  /** Styles applied to the menu open button. */
+  menuButton: string;
+  /** Styles applied to the menu open button badge. */
+  menuButtonBadge: string;
+  /** Styles applied to the root menu element. */
+  menu: string;
+  /** Styles applied to the menu item element. */
+  menuItem: string;
+  /** Styles applied to the menu header element. */
   menuHeader: string;
-  /** Styles applied to the menu footer. */
+  /** Styles applied to the menu footer element. */
   menuFooter: string;
-  /** Styles applied to the change sort direction button. */
-  changeSortDirectionButton: string;
-  /** Styles applied to the reset sort button. */
-  resetSortButton: string;
-  /** Styles applied to the sorting menu item sorting menu item badge. */
-  sortingOptionBadge: string;
+  /** Styles applied to the reset button. */
+  resetButton: string;
+  /** Styles applied to the direction button. */
+  directionButton: string;
+  /** Styles applied to the direction button badge. */
+  directionButtonBadge: string;
+  /** Styles applied to the plus sign element. */
+  plusSign: string;
+  /** Styles applied to the caption elements. */
+  caption: string;
 };
 
 export type SFSSortingClassKey = keyof SFSSortingClasses;
@@ -31,13 +35,15 @@ export function getSFSSortingUtilityClass(slot: string) {
 
 export const sfsSortingClasses: SFSSortingClasses = generateUtilityClasses('ESSFSSorting', [
   'root',
-  'openMenuButton',
-  'openMenuButtonBadge',
-  'sortingMenuRoot',
-  'sortingMenuItem',
+  'menuButton',
+  'menuButtonBadge',
+  'menu',
+  'menuItem',
   'menuHeader',
   'menuFooter',
-  'resetSortButton',
-  'changeSortDirectionButton',
-  'sortingOptionBadge'
+  'resetButton',
+  'directionButton',
+  'directionButtonBadge',
+  'plusSign',
+  'caption'
 ]);

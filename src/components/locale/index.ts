@@ -52,7 +52,7 @@ export interface Localization {
       defaultProps: Pick<SidebarItemProps, 'labelOpen' | 'labelHide'>;
     };
     ESSFSSearch: {
-      defaultProps: Pick<SFSSearchProps, 'ariaLabel' | 'placeholder'>;
+      defaultProps: Pick<SFSSearchProps, 'ariaLabel' | 'placeholder' | 'labelClear'>;
     };
     ESSFSSorting: {
       defaultProps: Pick<
@@ -156,7 +156,8 @@ export const en: Localization = {
     ESSFSSearch: {
       defaultProps: {
         ariaLabel: 'Search',
-        placeholder: 'Search'
+        placeholder: 'Search',
+        labelClear: 'Clear'
       }
     },
     ESSFSSorting: {
@@ -264,7 +265,8 @@ export const ru: Localization = {
     ESSFSSearch: {
       defaultProps: {
         ariaLabel: 'Поиск',
-        placeholder: 'Поиск'
+        placeholder: 'Поиск',
+        labelClear: 'Сбросить'
       }
     },
     ESSFSSorting: {

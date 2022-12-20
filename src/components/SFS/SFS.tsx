@@ -21,6 +21,9 @@ const useUtilityClasses = (ownerState: SFSOwnerState) => {
   return composeClasses(slots, getSFSUtilityClass, classes);
 };
 
+/**
+ * The set of component for searching, filtering and sorting.
+ */
 const SFSRoot = styled('div', {
   name: 'ESSFS',
   slot: 'Root',

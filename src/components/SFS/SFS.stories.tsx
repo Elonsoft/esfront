@@ -28,7 +28,9 @@ const sortingOptionsEn = [
 
 export const Demo: Story<Args> = (args, { globals: { locale } }) => {
   const [search, setSearch] = useState('');
-  const [values, setValues] = useState<SFSSortingValue | null>(null);
+
+  const [value, setValue] = useState<SFSSortingValue | null>(null);
+  const [values, setValues] = useState<SFSSortingValue[]>([]);
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSearch(e.currentTarget.value);
@@ -38,19 +40,27 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
     setSearch('');
   };
 
-  console.log(args);
-
   return (
     <SFS>
       <SFSRow>
         <SFSSearch onChange={onSearchChange} onClear={search ? onClearSearch : undefined} value={search} />
         {!!search && <Divider flexItem orientation="vertical" sx={{ color: 'monoA.A200', margin: '8px 0' }} />}
-        <SFSSorting
-          multiple={args.multiple}
-          values={values}
-          onChange={setValues}
-          options={locale == 'ru' ? sortingOptionsRu : sortingOptionsEn}
-        />
+        {args.SFSSortingMultiple ? (
+          <SFSSorting
+            key="1"
+            multiple
+            value={values}
+            onChange={setValues}
+            options={locale == 'ru' ? sortingOptionsRu : sortingOptionsEn}
+          />
+        ) : (
+          <SFSSorting
+            key="2"
+            value={value}
+            onChange={setValue}
+            options={locale == 'ru' ? sortingOptionsRu : sortingOptionsEn}
+          />
+        )}
       </SFSRow>
     </SFS>
   );

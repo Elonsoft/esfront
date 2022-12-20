@@ -1,6 +1,22 @@
+import { ReactNode } from 'react';
+
 import { SFSSortingClasses } from './SFSSorting.classes';
 
 import { SxProps, Theme } from '@mui/material';
+
+export type SFSSortingDirection = 'asc' | 'desc';
+
+export type SFSSortingValue = {
+  value: string;
+  direction: SFSSortingDirection;
+};
+
+export interface SFSSortingOptionMap {
+  value: string;
+  label: string;
+  direction: SFSSortingDirection;
+  i: number;
+}
 
 export type SFSSortingProps = {
   /** Override or extend the styles applied to the component. */
@@ -11,44 +27,53 @@ export type SFSSortingProps = {
   className?: string;
   /** The sorting options. */
   options: { value: string; label: string }[];
-  /** The `asc` sorting label. */
+
+  /** Text for the ascending label. */
   labelAsc?: string;
-  /** The `desc` sorting label. */
+  /** Text for the descending label. */
   labelDesc?: string;
-  /** The reset sort button label. */
+  /** Text for the reset button. */
   labelResetButton?: string;
-  /** The open sorting menu button label. */
+  /** Text for the menu open button. */
   labelButton?: string;
-  /** The open sorting menu button label when multisort is enabled. */
+  /** Text for the sorting menu button label when multisort is enabled. */
   labelSortOrder?: string;
+  /** Text for the menu title. */
   labelSortTooltip?: string;
+  /** Text for the left mouse button. */
   labelMultisortLMB?: string;
+  /** Text for the switch label. */
   labelMultisortTitle?: string;
+  /** Text for the switch label. */
   labelMultisortMobileOn?: string;
+  /** Text for the switch label. */
   labelMultisortMobileOff?: string;
+
+  /** Icon for the menu button. */
+  iconSort?: ReactNode;
+  /** Icon for the ascending badge. */
+  iconAsc?: ReactNode;
+  /** Icon for the descending badge. */
+  iconDesc?: ReactNode;
+  /** Icon for the ascending item direction. */
+  iconItemAsc?: ReactNode;
+  /** Icon for the descending item direction. */
+  iconItemDesc?: ReactNode;
 } & (
   | {
+      /** If `true`, multiple options can be selected. */
       multiple: true;
-      values: SFSSortingValue[];
+      /** The selected options with directions. */
+      value: SFSSortingValue[];
+      /** Callback fired when user changes sorting. */
       onChange: (value: SFSSortingValue[]) => void;
     }
   | {
+      /** If `true`, multiple options can be selected. */
       multiple?: false;
-      values: SFSSortingValue | null;
+      /** The selected option with direction. */
+      value: SFSSortingValue | null;
+      /** Callback fired when user changes sorting. */
       onChange: (value: SFSSortingValue | null) => void;
     }
 );
-
-export interface SFSSortingOptionMap {
-  value: string;
-  label: string;
-  direction: SFSSortingDirection;
-  i: number;
-}
-
-export type SFSSortingDirection = 'asc' | 'desc';
-export type SFSSortingValue = {
-  value: string;
-  direction: SFSSortingDirection;
-};
-export type SFSSortingValues = SFSSortingValue[];
