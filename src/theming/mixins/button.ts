@@ -1,3 +1,5 @@
+import { touchRippleClasses } from '@mui/material';
+import { buttonClasses } from '@mui/material/Button';
 export interface ButtonMixinStates {
   /** The background color of the element. */
   background: string;
@@ -22,16 +24,16 @@ export const buttonMixin = (states: ButtonMixinStates) => {
       backgroundColor: background,
       color: color
     },
-    '& .MuiTouchRipple-root': {
+    [`& .${touchRippleClasses.root}`]: {
       color: active
     },
     '@media (hover: hover)': {
-      '&:not(.Mui-focusVisible):not(:disabled):hover .MuiTouchRipple-root': {
+      [`&:not(.${buttonClasses.focusVisible}):not(:disabled):hover .${touchRippleClasses.root}`]: {
         backgroundColor: hover
       }
     },
-    '&.Mui-focusVisible': {
-      '& .MuiTouchRipple-root': {
+    [`&.${buttonClasses.focusVisible}`]: {
+      [`& .${touchRippleClasses.root}`]: {
         backgroundColor: focus
       }
     }

@@ -9,10 +9,10 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { TypographyProps } from '@mui/material';
-import ListItemButton from '@mui/material/ListItemButton';
+import ListItemButton, { listItemButtonClasses } from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { useSidebarContext } from '../../Sidebar/Sidebar.context';
 import { useSidenavContext } from '../Sidenav.context';
@@ -38,7 +38,7 @@ const SidenavItemRoot = styled(ListItemButton, {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
 })<{ ownerState: SidenavItemOwnerState }>(({ theme, ownerState }) => ({
-  '&.MuiListItemButton-root': {
+  [`&.${listItemButtonClasses.root}`]: {
     borderRadius: '6px',
     padding: '0 4px',
     margin: '0 8px',
@@ -53,7 +53,7 @@ const SidenavItemRoot = styled(ListItemButton, {
         focus: theme.palette.monoA.A200,
         active: theme.palette.monoA.A150
       }),
-      '&.Mui-selected': {
+      [`&.${listItemButtonClasses.selected}`]: {
         ...theme.mixins.listItem({
           background: theme.palette.monoA.A100,
           hover: theme.palette.monoA.A50,
@@ -72,7 +72,7 @@ const SidenavItemRoot = styled(ListItemButton, {
         focus: theme.palette.monoB.A200,
         active: theme.palette.monoB.A150
       }),
-      '&.Mui-selected': {
+      [`&.${listItemButtonClasses.selected}`]: {
         ...theme.mixins.listItem({
           background: theme.palette.monoB.A100,
           color: theme.palette.monoB[500],
@@ -94,7 +94,7 @@ const SidenavItemTooltip = styled(
     overridesResolver: (props, styles) => styles.tooltip
   }
 )(({ theme }) => ({
-  '&[data-popper-placement*="right"] .MuiTooltip-tooltip': {
+  [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
     maxWidth: '288px',
     background: theme.palette.surface[400],
     boxShadow: theme.palette.shadow.down[600],
@@ -106,7 +106,7 @@ const SidenavItemTooltip = styled(
 
     ...theme.typography.body100,
 
-    '& .MuiTooltip-arrow': {
+    [`& .${tooltipClasses.arrow}`]: {
       color: theme.palette.surface[400],
       backdropFilter: 'none'
     }

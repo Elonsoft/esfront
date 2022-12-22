@@ -8,7 +8,7 @@ import { getPaginationRangeUtilityClass } from './PaginationRange.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button from '@mui/material/Button';
+import Button, { buttonClasses } from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
@@ -56,15 +56,15 @@ const PaginationRangeButton = styled(Button, {
   slot: 'Button',
   overridesResolver: (props, styles) => styles.root
 })(({ theme }) => ({
-  '&.MuiButton-root': {
-    '&.MuiButton-text': {
+  [`&.${buttonClasses.root}`]: {
+    [`&.${buttonClasses.text}`]: {
       padding: '0 6px 0 4px',
 
       '&, &:not(:disabled):hover, &:not(:disabled):active': {
         color: theme.palette.monoA.A900
       }
     },
-    '& .MuiButton-endIcon': {
+    [`& .${buttonClasses.endIcon}`]: {
       color: theme.palette.monoA.A500,
       marginLeft: '2px'
     }

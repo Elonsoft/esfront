@@ -11,6 +11,9 @@ import { styled, useThemeProps } from '@mui/material/styles';
 
 import { useResizeObserver, useScrollSync } from '../../../hooks';
 import { useTableContext } from '../Table.context';
+import { tableBodyClasses } from '../TableBody';
+import { tableCellClasses } from '../TableCell';
+import { tableRowClasses } from '../TableRow';
 import { useTableScrollbarContext } from '../TableScrollbar';
 
 type TableOwnerState = {
@@ -40,8 +43,8 @@ const TableScrollableRoot = styled('div', {
     display: 'none'
   },
 
-  '& > .ESTableBody-root > .ESTableRow-root:last-of-type ': {
-    '& .ESTableCell-container': {
+  [`& > .${tableBodyClasses.root} > .${tableRowClasses.root}:last-of-type`]: {
+    [`& .${tableCellClasses.container}`]: {
       borderBottom: 0
     }
   }

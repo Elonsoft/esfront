@@ -3,7 +3,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import { SidebarProps } from './Sidebar.types';
 
 import clsx from 'clsx';
-import { getSidebarUtilityClass } from './Sidebar.classes';
+import { getSidebarUtilityClass, sidebarClasses } from './Sidebar.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -106,7 +106,7 @@ const SidebarHandler = styled('div', {
     '&:hover': {
       backgroundColor: theme.palette.monoA.A50,
 
-      '& .ESSidebar-handlerLine': {
+      [`& .${sidebarClasses.handlerLine}`]: {
         backgroundColor: theme.palette.monoA.A150
       }
     },
@@ -114,11 +114,11 @@ const SidebarHandler = styled('div', {
     ...(ownerState.isMouseDown && {
       backgroundColor: 'transparent !important',
 
-      '& + .ESSidebar-content': {
+      [`& + .${sidebarClasses.content}`]: {
         borderColor: 'transparent'
       },
 
-      '& .ESSidebar-handlerLine': {
+      [`& .${sidebarClasses.handlerLine}`]: {
         width: '3px',
         backgroundColor: `${theme.palette.info.A600} !important`,
         backdropFilter: 'blur(20px)'

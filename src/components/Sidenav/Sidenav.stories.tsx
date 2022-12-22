@@ -3,10 +3,11 @@ import { useRef, useState } from 'react';
 import { Story } from '@storybook/react';
 
 import { styled } from '@mui/material/styles';
+import { listItemButtonClasses, outlinedInputClasses, svgIconClasses } from '@mui/material';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
+import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
+import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
+import TextField, { textFieldClasses } from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 import { Sidenav } from './Sidenav';
@@ -16,26 +17,27 @@ import { SidenavItem } from './SidenavItem';
 import { IconAccount, IconCloseSmall, IconFileDocument, IconHome, IconMagnifyVariantSmall, IconZap } from '../../icons';
 import { Sidebar } from '../Sidebar';
 import { SidebarDivider } from '../Sidebar/SidebarDivider';
-import { SidebarItem } from '../Sidebar/SidebarItem';
+import { SidebarItem, sidebarItemClasses } from '../Sidebar/SidebarItem';
 import { SidebarMenu } from '../Sidebar/SidebarMenu';
 import { SidebarScrollable } from '../Sidebar/SidebarScrollable';
 import { SidebarSpacer } from '../Sidebar/SidebarSpacer';
 import { SidebarToggle } from '../Sidebar/SidebarToggle';
 
 const SearchField = styled(TextField)(({ theme }) => ({
-  '&.MuiTextField-root': {
+  [`&.${textFieldClasses.root}`]: {
     margin: '12px 16px 16px',
 
-    '& .MuiOutlinedInput-root': {
+    [`& .${outlinedInputClasses.root}`]: {
       padding: '0 4px',
 
-      '& .MuiIconButton-root': {
+      [`& .${iconButtonClasses.root}`]: {
         color: theme.palette.monoA.A500
       },
-      '& .MuiInputAdornment-positionStart': {
+
+      [`& .${inputAdornmentClasses.positionStart}`]: {
         marginRight: '4px',
 
-        '& .MuiSvgIcon-root': {
+        [`& .${svgIconClasses.root}`]: {
           color: theme.palette.monoA.A400
         }
       }
@@ -61,7 +63,7 @@ const SidebarCaption = (props: { title: string }) => (
 const SidebarMenuItem = styled(SidebarItem)(() => ({
   margin: '0 16px',
 
-  '& .MuiListItemButton-root.ESSidebarItem-button': {
+  [`& .${listItemButtonClasses.root}.${sidebarItemClasses.button}`]: {
     padding: '4px'
   }
 }));

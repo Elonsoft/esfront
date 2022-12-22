@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { SidenavProps } from './Sidenav.types';
 
 import clsx from 'clsx';
-import { getSidenavUtilityClass } from './Sidenav.classes';
+import { getSidenavUtilityClass, sidenavClasses } from './Sidenav.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -12,6 +12,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import { SidenavContext } from './Sidenav.context';
 
 import { useLatest, useMenuAim, useWindowEventListener } from '../../hooks';
+import { sidebarClasses, sidebarMenuClasses, sidebarToggleClasses } from '../Sidebar';
 
 type SidenavOwnerState = {
   classes?: SidenavProps['classes'];
@@ -86,12 +87,12 @@ const SidenavRail = styled('div', {
   width: '57px',
   zIndex: '99',
 
-  '& .ESSidebar-handler': {
+  [`& .${sidebarClasses.handler}`]: {
     display: 'none'
   },
 
   [theme.breakpoints.down('desktopXS')]: {
-    '& .ESSidebarToggle-button': {
+    [`& .${sidebarToggleClasses.button}`]: {
       display: 'none'
     }
   }
@@ -179,8 +180,8 @@ export const Sidenav = (inProps: SidenavProps) => {
     if (item && item.dataset.id) {
       onHoverItem(item.dataset.id);
     } else if (
-      target.className.toString().includes('ESSidebarMenu-root') ||
-      target.className.toString().includes('ESSidebar-content')
+      target.className.toString().includes(sidebarMenuClasses.root) ||
+      target.className.toString().includes(sidebarClasses.content)
     ) {
       onHoverItem();
     } else {
@@ -199,7 +200,7 @@ export const Sidenav = (inProps: SidenavProps) => {
     timeout.current && clearTimeout(timeout.current);
 
     const activeItem = document.activeElement;
-    const sidenavDrawer = document.querySelector('.ESSidenav-drawer');
+    const sidenavDrawer = document.querySelector(`.${sidenavClasses.drawer}`);
     const isContainsActiveItems = sidenavDrawer?.contains(activeItem);
 
     if (!isContainsActiveItems || activeItem?.tagName !== 'INPUT') {

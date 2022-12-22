@@ -3,21 +3,22 @@ import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'reac
 import { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';
 
 import clsx from 'clsx';
-import { getSidebarItemUtilityClass } from './SidebarItem.classes';
+import { getSidebarItemUtilityClass, sidebarItemClasses } from './SidebarItem.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { Typography, TypographyProps } from '@mui/material';
+import { buttonBaseClasses, svgIconClasses, touchRippleClasses } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
-import IconButton from '@mui/material/IconButton';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MenuItem from '@mui/material/MenuItem';
+import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
+import ListItemButton, { listItemButtonClasses } from '@mui/material/ListItemButton';
+import ListItemIcon, { listItemIconClasses } from '@mui/material/ListItemIcon';
+import ListItemText, { listItemTextClasses } from '@mui/material/ListItemText';
+import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import Typography, { TypographyProps } from '@mui/material/Typography';
 
 import { useResizeObserver } from '../../../hooks';
 import { IconChevronLeftSmall } from '../../../icons';
@@ -75,13 +76,13 @@ const SidebarItemButton = styled(ListItemButton, {
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
-  '&.MuiListItemButton-root': {
+  [`&.${listItemButtonClasses.root}`]: {
     borderRadius: '4px',
     width: '100%',
     padding: '6px 8px',
 
-    '&.MuiButtonBase-root': {
-      '& .MuiTouchRipple-root': {
+    [`&.${buttonBaseClasses.root}`]: {
+      [`& .${touchRippleClasses.root}`]: {
         transitionDuration: `${theme.transitions.duration.short}ms`
       }
     },
@@ -94,7 +95,7 @@ const SidebarItemButton = styled(ListItemButton, {
         focus: theme.palette.monoA.A200,
         active: theme.palette.monoA.A150
       }),
-      '&.Mui-selected': {
+      [`&.${listItemButtonClasses.selected}`]: {
         ...theme.mixins.listItem({
           background: theme.palette.monoA.A100,
           hover: theme.palette.monoA.A50,
@@ -113,7 +114,7 @@ const SidebarItemButton = styled(ListItemButton, {
         focus: theme.palette.monoB.A200,
         active: theme.palette.monoB.A150
       }),
-      '&.Mui-selected': {
+      [`&.${listItemButtonClasses.selected}`]: {
         ...theme.mixins.listItem({
           background: theme.palette.monoB.A100,
           color: theme.palette.monoB[500],
@@ -132,14 +133,14 @@ const SidebarItemSecondaryAction = styled(IconButton, {
   slot: 'SecondaryAction',
   overridesResolver: (props, styles) => styles.secondaryAction
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
-  '&.MuiIconButton-root': {
+  [`&.${iconButtonClasses.root}`]: {
     position: 'absolute',
     left: `${ownerState.width}px`,
     top: '8px',
     zIndex: '5',
 
     ...(ownerState.behaviour === 'hover' && {
-      '&.Mui-disabled': {
+      [`&.${iconButtonClasses.disabled}`]: {
         opacity: '1'
       }
     }),
@@ -164,7 +165,7 @@ const SidebarItemSecondaryAction = styled(IconButton, {
       })
     }),
 
-    '& .MuiSvgIcon-root': {
+    [`& .${svgIconClasses.root}`]: {
       transform: `${ownerState.isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`
     }
   }
@@ -178,7 +179,7 @@ const SidebarItemText = styled(ListItemText, {
   whiteSpace: 'nowrap',
   display: `${open ? 'block' : 'none'}`,
 
-  '&.MuiListItemText-inset': {
+  [`&.${listItemTextClasses.inset}`]: {
     paddingLeft: '36px'
   }
 }));
@@ -192,7 +193,7 @@ const SidebarItemIcon = styled(ListItemIcon, {
     marginLeft: '4px'
   },
 
-  '& .MuiSvgIcon-root': {
+  [`& .${svgIconClasses.root}`]: {
     transform: `${isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`
   }
 }));
@@ -205,7 +206,7 @@ const SidebarItemContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
 
-  '& .MuiListItemIcon-root:first-of-type': {
+  [`& .${listItemIconClasses.root}:first-of-type`]: {
     marginRight: '12px'
   }
 }));
@@ -220,7 +221,7 @@ const SidebarItemNestedMenu = styled('div', {
   gap: '2px',
   marginTop: '2px',
 
-  '& .ESSidebarItem-root': {
+  [`& .${sidebarItemClasses.root}`]: {
     margin: '0'
   }
 }));
@@ -233,7 +234,7 @@ const SidebarItemTooltip = styled(
     overridesResolver: (props, styles) => styles.tooltip
   }
 )(() => ({
-  '&[data-popper-placement*="right"] .MuiTooltip-tooltip': {
+  [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
     padding: '0',
     maxWidth: '288px'
   },
@@ -257,12 +258,12 @@ const SidebarItemTooltipItem = styled(MenuItem, {
   slot: 'TooltipItem',
   overridesResolver: (props, styles) => styles.tooltipItem
 })(({ theme }) => ({
-  '&.MuiMenuItem-root': {
+  [`&.${menuItemClasses.root}`]: {
     width: '100%',
     minHeight: '24px',
     color: theme.palette.monoB[500],
 
-    '&.Mui-disabled': {
+    [`&.${menuItemClasses.disabled}`]: {
       opacity: '1'
     }
   }

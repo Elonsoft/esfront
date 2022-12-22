@@ -6,7 +6,7 @@ import { getDialogArrowUtilityClass } from './DialogArrow.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button from '@mui/material/Button';
+import Button, { buttonClasses } from '@mui/material/Button';
 
 import { IconArrowLeft, IconArrowRight } from '../../../icons';
 
@@ -61,14 +61,14 @@ const DialogArrowButton = styled(Button, {
   position: 'sticky',
   top: 0,
 
-  '&.MuiButton-root': {
+  [`&.${buttonClasses.root}`]: {
     borderRadius: 0,
     color: theme.palette.white.A700,
     padding: 8,
     width: 72,
     height: '100vh',
 
-    '&:not(:disabled):hover, &.Mui-focusVisible': {
+    [`&:not(:disabled):hover, &.${buttonClasses.focusVisible}`]: {
       color: theme.palette.white.A900
     },
     '&:not(:disabled):active': {

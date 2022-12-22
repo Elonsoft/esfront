@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { AlertCloseProps } from './AlertClose.types';
 
 import clsx from 'clsx';
@@ -8,7 +6,8 @@ import { getAlertCloseUtilityClass } from './AlertClose.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button from '@mui/material/Button';
+import { svgIconClasses, touchRippleClasses } from '@mui/material';
+import Button, { buttonClasses } from '@mui/material/Button';
 
 import { IconClose } from '../../../icons';
 
@@ -31,13 +30,13 @@ const AlertCloseRoot = styled(Button, {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
 })(({ theme }) => ({
-  '&.MuiButton-root': {
+  [`&.${buttonClasses.root}`]: {
     padding: '0 4px'
   },
-  '&.Mui-focusVisible .MuiTouchRipple-child': {
+  [`&.${buttonClasses.focusVisible} .${touchRippleClasses.child}`]: {
     borderRadius: '4px'
   },
-  '& .MuiSvgIcon-root': {
+  [`& .${svgIconClasses.root}`]: {
     color: theme.palette.monoA.A500
   }
 }));

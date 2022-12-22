@@ -8,7 +8,7 @@ import { getDropzoneUtilityClass } from './Dropzone.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { ButtonBase, Typography } from '@mui/material';
+import { ButtonBase, touchRippleClasses, Typography } from '@mui/material';
 
 import { validateFileType } from './validateFileType';
 
@@ -82,7 +82,7 @@ const DropzoneDropzone = styled(ButtonBase, {
     backgroundColor: theme.palette.primary.A50,
     border: `1px dashed ${theme.palette.primary.A500}`
   }),
-  '& .MuiTouchRipple-root': {
+  [`& .${touchRippleClasses.root}`]: {
     transitionDuration: `${theme.transitions.duration.short}ms`,
     transitionProperty: 'background-color, border',
     transitionTimingFunction: theme.transitions.easing.easeInOut,
@@ -94,7 +94,7 @@ const DropzoneDropzone = styled(ButtonBase, {
       border: `1px dashed ${theme.palette.error.A800}`
     })
   },
-  '&:hover .MuiTouchRipple-root, &:focus-visible .MuiTouchRipple-root': {
+  [`&:hover .${touchRippleClasses.root}, &:focus-visible .${touchRippleClasses.root}`]: {
     backgroundColor: theme.palette.monoA.A50
   }
 }));

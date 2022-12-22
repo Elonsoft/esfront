@@ -2,8 +2,9 @@
 /// <reference path="../../src/overrides.d.ts" />
 
 import { styled } from '@mui/material/styles';
+import { tableCellClasses } from '@mui/material';
 import MuiTableContainer from '@mui/material/TableContainer';
-import MuiTableRow from '@mui/material/TableRow';
+import MuiTableRow, { tableRowClasses } from '@mui/material/TableRow';
 
 import json from '../../src/typedoc.json';
 
@@ -15,13 +16,13 @@ export const TableContainer = styled(MuiTableContainer)(({ theme }) => ({
 }));
 
 export const TableRow = styled(MuiTableRow)(({ theme }) => ({
-  '&.MuiTableRow-head': {
+  [`&.${tableRowClasses.head}`]: {
     backgroundColor: theme.palette.monoA.A50
   },
-  '& .MuiTableCell-root': {
+  [`& .${tableCellClasses.root}`]: {
     borderBottom: `1px solid ${theme.palette.monoA.A150}`
   },
-  '&.MuiTableRow-head:last-child .MuiTableCell-root': {
+  [`&.${tableRowClasses.head}:last-child .${tableCellClasses.root}`]: {
     borderBottom: `1px solid ${theme.palette.monoA.A150}`
   }
 }));

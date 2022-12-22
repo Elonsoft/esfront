@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 
 import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
+import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { useSwiperContext } from './Swiper.context';
 import { Swiper, SwiperPagination } from '.';
@@ -104,7 +104,7 @@ const CustomizationButton = styled(IconButton)<{ prev?: boolean; next?: boolean 
     right: 8
   }),
 
-  '&.MuiIconButton-root.MuiIconButton-root': {
+  [`&.${iconButtonClasses.root}.${iconButtonClasses.root}`]: {
     backdropFilter: 'blur(10px)',
     padding: 4,
 

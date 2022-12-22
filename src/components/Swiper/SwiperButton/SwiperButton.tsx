@@ -7,7 +7,7 @@ import { getSwiperButtonUtilityClass } from './SwiperButton.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
+import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { IconArrowDown, IconArrowLeft, IconArrowRight, IconArrowUp } from '../../../icons';
 import { useSwiperContext } from '../Swiper.context';
@@ -66,7 +66,7 @@ const SwiperButtonRoot = styled(IconButton, {
     })
   }),
 
-  '&.MuiIconButton-root.MuiIconButton-root': {
+  [`&.${iconButtonClasses.root}.${iconButtonClasses.root}`]: {
     backdropFilter: 'blur(10px)',
     borderRadius: 4,
     padding: 8,

@@ -8,7 +8,7 @@ import { getSwitchUtilityClass, switchClasses } from './Switch.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import ButtonBase from '@mui/material/ButtonBase';
+import ButtonBase, { buttonBaseClasses } from '@mui/material/ButtonBase';
 
 import { useControlled } from '../../hooks/useControlled';
 
@@ -67,7 +67,7 @@ const SwitchRoot = styled('div', {
       '&:active': {
         backgroundColor: theme.palette[color].A150
       },
-      '&.Mui-focusVisible': {
+      [`&.${buttonBaseClasses.focusVisible}`]: {
         backgroundColor: theme.palette[color].A200
       }
     }
@@ -156,7 +156,7 @@ const SwitchButton = styled(ButtonBase, {
   '&:active': {
     backgroundColor: theme.palette.monoA.A150
   },
-  '&.Mui-focusVisible': {
+  [`&.${buttonBaseClasses.focusVisible}`]: {
     backgroundColor: theme.palette.monoA.A200
   }
 })) as typeof ButtonBase;

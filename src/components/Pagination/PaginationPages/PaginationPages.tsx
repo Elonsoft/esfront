@@ -9,12 +9,13 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { keyframes } from '@mui/system';
-import ButtonBase from '@mui/material/ButtonBase';
-import IconButton from '@mui/material/IconButton';
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
+import { outlinedInputClasses } from '@mui/material';
+import ButtonBase, { buttonBaseClasses, touchRippleClasses } from '@mui/material/ButtonBase';
+import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
+import Pagination, { paginationClasses } from '@mui/material/Pagination';
+import PaginationItem, { paginationItemClasses } from '@mui/material/PaginationItem';
 import TextField from '@mui/material/TextField';
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { useDocumentEventListener } from '../../../hooks';
 import {
@@ -71,7 +72,7 @@ const PaginationPagesPagination = styled(Pagination, {
   slot: 'Pagination',
   overridesResolver: (props, styles) => styles.pagination
 })(() => ({
-  '& .MuiPagination-ul': {
+  [`& .${paginationClasses.ul}`]: {
     flexWrap: 'nowrap'
   }
 }));
@@ -84,7 +85,7 @@ const PaginationPagesButton = styled(IconButton, {
   '&, &:not(:disabled):hover, &:not(:disabled):active': {
     color: theme.palette.monoA.A500
   },
-  '&.Mui-disabled': {
+  [`&.${iconButtonClasses.disabled}`]: {
     color: theme.palette.monoA.A300
   }
 }));
@@ -107,19 +108,19 @@ const PaginationPagesPaginationItem = styled(PaginationItem, {
   slot: 'PaginationItem',
   overridesResolver: (props, styles) => styles.paginationItem
 })(({ theme }) => ({
-  '&.MuiButtonBase-root': {
+  [`&.${buttonBaseClasses.root}`]: {
     ...theme.typography.caption,
 
     margin: 0,
     padding: '0 4px',
 
-    '&.MuiPaginationItem-root': {
-      '& .MuiTouchRipple-root': {
+    [`&.${paginationItemClasses.root}`]: {
+      [`& .${touchRippleClasses.root}`]: {
         transitionDuration: `${theme.transitions.duration.short}ms`
       }
     },
 
-    '& .MuiTouchRipple-rippleVisible': {
+    [`& .${touchRippleClasses.rippleVisible}`]: {
       animationName: `${enterKeyframe} !important`,
       opacity: '1 !important'
     },
@@ -132,7 +133,7 @@ const PaginationPagesPaginationItem = styled(PaginationItem, {
       active: theme.palette.monoA.A150
     }),
 
-    '&.Mui-selected': {
+    [`&.${paginationItemClasses.selected}`]: {
       fontWeight: 700,
 
       ...theme.mixins.button({
@@ -151,10 +152,10 @@ const PaginationPagesTextField = styled(TextField, {
   slot: 'TextField',
   overridesResolver: (props, styles) => styles.textField
 })(({ theme }) => ({
-  '& .MuiOutlinedInput-root': {
+  [`& .${outlinedInputClasses.root}`]: {
     marginLeft: '16px',
     width: '64px',
-    '& .MuiOutlinedInput-input': {
+    [`& .${outlinedInputClasses.input}`]: {
       ...theme.typography.caption,
 
       color: theme.palette.monoA.A600,
@@ -181,7 +182,7 @@ const PaginationPagesTooltip = styled(
     overridesResolver: (props, styles) => styles.tooltip
   }
 )(({ theme }) => ({
-  '& .MuiTooltip-tooltip': {
+  [`& .${tooltipClasses.tooltip}`]: {
     ...theme.typography.caption,
 
     alignItems: 'center',
