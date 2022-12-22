@@ -1,3 +1,8 @@
+import { touchRippleClasses } from '@mui/material';
+import { listItemButtonClasses } from '@mui/material/ListItemButton';
+import { listItemIconClasses } from '@mui/material/ListItemIcon';
+import { listItemTextClasses } from '@mui/material/ListItemText';
+
 export interface ListItemMixinStates {
   /** The background color of the element. */
   background: string;
@@ -24,26 +29,26 @@ export const listItemMixin = (states: ListItemMixinStates) => {
       backgroundColor: background
     },
     ...(color && {
-      '&, & .MuiListItemText-root': {
+      [`&, & .${listItemTextClasses.root}`]: {
         color: color
       }
     }),
     ...(icon && {
-      '& .MuiListItemIcon-root': {
+      [`& .${listItemIconClasses.root}`]: {
         color: icon
       }
     }),
-    '& .MuiTouchRipple-root': {
+    [`& .${touchRippleClasses.root}`]: {
       color: active,
       transform: 'translateZ(0)'
     },
     '@media (hover: hover)': {
-      '&:not(.Mui-focusVisible):hover .MuiTouchRipple-root': {
+      [`&:not(.${listItemButtonClasses.focusVisible}):hover .${touchRippleClasses.root}`]: {
         backgroundColor: hover
       }
     },
-    '&.Mui-focusVisible': {
-      '& .MuiTouchRipple-root': {
+    [`&.${listItemButtonClasses.focusVisible}`]: {
+      [`& .${touchRippleClasses.root}`]: {
         backgroundColor: focus
       }
     }

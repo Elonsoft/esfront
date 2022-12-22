@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TableCellProps } from './TableCell.types';
 
 import clsx from 'clsx';
-import { getTableCellUtilityClass } from './TableCell.classes';
+import { getTableCellUtilityClass, tableCellClasses } from './TableCell.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -98,36 +98,38 @@ const TableCellRoot = styled('div', {
   }),
 
   ...(ownerState.padding === 'normal' && {
-    '& .ESTableCell-content': {
+    [`& .${tableCellClasses.content}`]: {
       padding: '0 16px'
     }
   }),
   ...(ownerState.padding === 'checkbox' && {
-    '& .ESTableCell-content': {
+    [`& .${tableCellClasses.content}`]: {
       padding: '0 4px'
     },
-    '&:first-of-type .ESTableCell-content': {
+    [`&:first-of-type .${tableCellClasses.content}`]: {
       paddingLeft: '16px'
     },
-    '&:last-of-type .ESTableCell-content': {
+    [`&:last-of-type .${tableCellClasses.content}`]: {
       paddingRight: '16px'
     }
   }),
 
-  '&:hover .ESTableCell-resize::after': {
+  [`&:hover .${tableCellClasses.resize}::after`]: {
     width: '1px',
     backgroundColor: theme.palette.monoA.A200
   },
-  '.ESTableCell-resize:hover::after': {
+
+  [`.${tableCellClasses.resize}:hover::after`]: {
     width: '3px',
     backgroundColor: theme.palette.monoA.A400
   },
-  '.ESTableCell-resize:focus-visible::after': {
+
+  [`.${tableCellClasses.resize}:focus-visible::after`]: {
     width: '3px',
     backgroundColor: theme.palette.info.A600
   },
   ...(ownerState.isResizing && {
-    '.ESTableCell-resize.ESTableCell-resize::after': {
+    [`.${tableCellClasses.resize}.${tableCellClasses.resize}::after`]: {
       width: '3px',
       backgroundColor: theme.palette.info.A600
     }
@@ -288,7 +290,7 @@ export const TableCell = (inProps: TableCellProps) => {
       };
 
       const style = document.createElement('STYLE');
-      style.textContent = '* { cursor: col-resize !important; } .ESTableCell-resize::after { display: none; }';
+      style.textContent = `* { cursor: col-resize !important; } .${tableCellClasses.resize}::after { display: none; }`;
 
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);

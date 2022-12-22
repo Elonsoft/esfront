@@ -1,7 +1,7 @@
 import { LinkProps, LinkTypeMap } from './Link.types';
 
 import clsx from 'clsx';
-import { getLinkUtilityClass } from './Link.classes';
+import { getLinkUtilityClass, linkClasses } from './Link.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -93,13 +93,13 @@ const LinkRoot = styled(Typography, {
       '&:visited': {
         color: theme.palette.common.linkVisited,
 
-        '& .ESLink-children': {
+        [`& .${linkClasses.children}`]: {
           textDecorationColor: alpha(theme.palette.common.linkVisited, 0.4)
         }
       }
     }),
 
-    '& .ESLink-children': {
+    [`& .${linkClasses.children}`]: {
       textDecorationStyle: 'solid',
       textDecorationColor: color !== 'inherit' ? alpha(color, 0.4) : undefined,
 
@@ -109,7 +109,7 @@ const LinkRoot = styled(Typography, {
     },
 
     '&:hover': {
-      '& .ESLink-children': {
+      [`& .${linkClasses.children}`]: {
         ...(ownerState.underline === 'hover' && {
           textDecorationLine: 'underline'
         }),
@@ -134,13 +134,13 @@ const LinkRoot = styled(Typography, {
         zIndex: 1
       },
 
-      '& .ESLink-children': {
+      [`& .${linkClasses.children}`]: {
         textDecorationLine: 'none'
       }
     },
 
     '&:active': {
-      '& .ESLink-children': {
+      [`& .${linkClasses.children}`]: {
         textDecorationLine: 'none'
       }
     },
@@ -148,7 +148,7 @@ const LinkRoot = styled(Typography, {
     '&:disabled': {
       color: theme.palette.monoA.A400,
       cursor: 'not-allowed',
-      '& .ESLink-children': {
+      [`& .${linkClasses.children}`]: {
         textDecorationLine: 'none'
       }
     }

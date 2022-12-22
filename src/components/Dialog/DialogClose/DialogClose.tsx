@@ -6,7 +6,7 @@ import { getDialogCloseUtilityClass } from './DialogClose.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
+import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { IconClose } from '../../../icons';
 
@@ -53,7 +53,7 @@ const DialogCloseButton = styled(IconButton, {
     top: 0,
     marginBottom: 0
   },
-  '&.MuiIconButton-root': {
+  [`&.${iconButtonClasses.root}`]: {
     backdropFilter: 'blur(10px)',
     borderRadius: 4,
     padding: 8,

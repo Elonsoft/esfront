@@ -6,6 +6,7 @@ import { getTableActionsUtilityClass } from './TableActions.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+import { dividerClasses, iconButtonClasses } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 type TableActionsOwnerState = {
@@ -57,10 +58,10 @@ const TableActionsChildren = styled('div', {
   gap: 2,
   gridAutoFlow: 'column',
 
-  '& .MuiIconButton-root': {
+  [`& .${iconButtonClasses.root}`]: {
     color: theme.palette.monoA.A700
   },
-  '& .MuiDivider-root': {
+  [`& .${dividerClasses.root}`]: {
     backgroundColor: theme.palette.monoA.A200,
     margin: '0 6px'
   }

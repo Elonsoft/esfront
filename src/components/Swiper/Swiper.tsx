@@ -8,6 +8,7 @@ import { getSwiperUtilityClass, swiperClasses } from './Swiper.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+import { iconButtonClasses } from '@mui/material';
 
 import { SwiperContext } from './Swiper.context';
 import { SwiperButton } from './SwiperButton';
@@ -70,7 +71,7 @@ const SwiperRoot = styled('div', {
       gridAutoFlow: 'row',
       height: '100%'
     },
-    [`& .${swiperClasses.button}.MuiIconButton-root`]: {
+    [`& .${swiperClasses.button}.${iconButtonClasses.root}`]: {
       position: 'absolute',
       left: '50%',
       transform: 'translateX(-50%)'

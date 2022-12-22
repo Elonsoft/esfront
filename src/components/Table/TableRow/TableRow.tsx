@@ -3,7 +3,7 @@ import { Children, forwardRef, isValidElement, useMemo } from 'react';
 import { TableRowProps, TableRowTypeMap } from './TableRow.types';
 
 import clsx from 'clsx';
-import { getTableRowUtilityClass } from './TableRow.classes';
+import { getTableRowUtilityClass, tableRowClasses } from './TableRow.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 import { useTableContext } from '../Table.context';
+import { tableCellClasses } from '../TableCell';
 
 type TableRowOwnerState = {
   classes?: TableRowProps['classes'];
@@ -54,14 +55,14 @@ const TableRowRoot = styled('div', {
   }
 })<{ ownerState: TableRowOwnerState }>(({ theme, ownerState }) => ({
   ...(ownerState.selected && {
-    '& .ESTableCell-container': {
+    [`& .${tableCellClasses.container}`]: {
       backgroundColor: theme.palette.secondary.A100
     }
   }),
 
   ...(ownerState.hover && {
     '&:hover': {
-      '& .ESTableCell-content': {
+      [`& .${tableCellClasses.content}`]: {
         backgroundColor: theme.palette.monoA.A50
       }
     }
@@ -87,16 +88,16 @@ const TableRowContent = styled(Box, {
     cursor: 'pointer',
 
     '&:focus-visible': {
-      '&, & + .ESTableRow-overlap': {
-        '& .ESTableCell-content.ESTableCell-content': {
+      [`&, & + .${tableRowClasses.overlap}`]: {
+        [`& .${tableCellClasses.content}.${tableCellClasses.content}`]: {
           backgroundColor: theme.palette.monoA.A50
         }
       }
     },
 
     '&:active': {
-      '&, & + .ESTableRow-overlap': {
-        '& .ESTableCell-content.ESTableCell-content': {
+      [`&, & + .${tableRowClasses.overlap}`]: {
+        [`& .${tableCellClasses.content}.${tableCellClasses.content}`]: {
           backgroundColor: theme.palette.monoA.A100
         }
       }

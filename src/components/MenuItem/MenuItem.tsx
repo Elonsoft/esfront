@@ -6,7 +6,7 @@ import { getMenuItemUtilityClass } from './MenuItem.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import MuiMenuItem from '@mui/material/MenuItem';
+import MuiMenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 
 type MenuItemOwnerState = {
   classes?: MenuItemProps['classes'];
@@ -29,7 +29,7 @@ const MenuItemRoot = styled(MuiMenuItem, {
   overridesResolver: (props, styles) => styles.root
 })<{ ownerState: MenuItemOwnerState }>(({ theme, ownerState }) => ({
   ...(ownerState.color === 'error' && {
-    '&.MuiMenuItem-root': {
+    [`&.${menuItemClasses.root}`]: {
       ...theme.mixins.listItem({
         background: 'transparent',
         color: theme.palette.error[300],

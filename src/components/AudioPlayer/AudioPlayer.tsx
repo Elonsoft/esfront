@@ -8,14 +8,14 @@ import { getAudioPlayerUtilityClass } from './AudioPlayer.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
+import Divider, { dividerClasses } from '@mui/material/Divider';
+import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MenuItem from '@mui/material/MenuItem';
+import ListItemText, { listItemTextClasses } from '@mui/material/ListItemText';
+import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
@@ -89,7 +89,7 @@ const AudioPlayerRoot = styled('div', {
   padding: '0 4px',
 
   '&:hover': {
-    '& .MuiSlider-thumb': {
+    [`& .${sliderClasses.thumb}`]: {
       opacity: 1
     }
   }
@@ -100,7 +100,7 @@ const AudioPlayerIconButton = styled(IconButton, {
   slot: 'IconButton',
   overridesResolver: (props, styles) => styles.iconButton
 })(({ theme }) => ({
-  '&.MuiIconButton-root': {
+  [`&.${iconButtonClasses.root}`]: {
     color: theme.palette.monoA.A600
   }
 }));
@@ -139,12 +139,12 @@ const AudioPlayerCurrentTooltip = styled(
 )<{ ownerState: AudioPlayerOwnerState }>(({ theme, ownerState }) => ({
   pointerEvents: 'none',
 
-  '&[data-popper-placement*="top"] .MuiTooltip-arrow': {
+  [`&[data-popper-placement*="top"] .${tooltipClasses.arrow}`]: {
     height: 7.8,
     marginBottom: '-8px'
   },
 
-  '& .MuiTooltip-tooltip': {
+  [`& .${tooltipClasses.tooltip}`]: {
     ...theme.typography.caption,
     color: theme.palette.monoB[500],
 
@@ -177,22 +177,22 @@ const AudioPlayerCurrentSlider = styled(Slider, {
     return [styles.currentSlider, isPlaying && styles.currentSliderPlaying, !isPlaying && styles.currentSliderPaused];
   }
 })<{ ownerState: AudioPlayerOwnerState }>(({ theme, ownerState }) => ({
-  '&.MuiSlider-colorPrimary': {
+  [`&.${sliderClasses.colorPrimary}`]: {
     padding: '18px 0',
 
-    '& .MuiSlider-thumb': {
+    [`& .${sliderClasses.thumb}`]: {
       '&:hover': {
         height: 8,
         width: 8,
         boxShadow: `0 0 0 10px ${theme.palette.primary.A150}`
       },
-      '&.Mui-focusVisible': {
+      [`&.${sliderClasses.focusVisible}`]: {
         opacity: 1,
         height: 10,
         width: 10,
         boxShadow: `0 0 0 9px ${theme.palette.primary.A400}`
       },
-      '&.Mui-active': {
+      [`&.${sliderClasses.active}`]: {
         height: 10,
         width: 10,
         boxShadow: `0 0 0 9px ${theme.palette.primary.A300}`
@@ -200,11 +200,11 @@ const AudioPlayerCurrentSlider = styled(Slider, {
     },
     ...(!ownerState.isPlaying && {
       color: theme.palette.monoA.A600,
-      '& .MuiSlider-thumb': {
+      [`& .${sliderClasses.thumb}`]: {
         opacity: 0,
         backdropFilter: 'blur(40px)',
 
-        '&.Mui-focusVisible': {
+        [`&.${sliderClasses.focusVisible}`]: {
           opacity: 1,
           height: 10,
           width: 10,
@@ -213,7 +213,7 @@ const AudioPlayerCurrentSlider = styled(Slider, {
       }
     })
   },
-  '& .MuiSlider-thumb': {
+  [`& .${sliderClasses.thumb}`]: {
     opacity: 0,
     height: 8,
     width: 8,
@@ -224,7 +224,7 @@ const AudioPlayerCurrentSlider = styled(Slider, {
       borderRadius: 0
     }
   },
-  '& .MuiSlider-rail': {
+  [`& .${sliderClasses.rail}`]: {
     backgroundColor: theme.palette.monoA.A100
   }
 }));
@@ -247,7 +247,7 @@ const AudioPlayerTooltip = styled(
     overridesResolver: (props, styles) => styles.tooltip
   }
 )(() => ({
-  '& .MuiTooltip-tooltip': {
+  [`& .${tooltipClasses.tooltip}`]: {
     padding: 0
   }
 }));
@@ -267,7 +267,7 @@ const AudioPlayerMenuItem = styled(MenuItem, {
   slot: 'MenuItem',
   overridesResolver: (props, styles) => styles.menuItem
 })(() => ({
-  '&.MuiMenuItem-root': {
+  [`&.${menuItemClasses.root}`]: {
     minHeight: 40,
     padding: '0 16px'
   }
@@ -278,7 +278,7 @@ const AudioPlayerMainMenuItem = styled(AudioPlayerMenuItem, {
   slot: 'MainMenuItem',
   overridesResolver: (props, styles) => styles.mainMenuItem
 })(() => ({
-  '&.MuiMenuItem-root.MuiMenuItem-root': {
+  [`&.${menuItemClasses.root}.${menuItemClasses.root}`]: {
     minHeight: 48
   }
 }));
@@ -299,12 +299,12 @@ const AudioPlayerListItemText = styled(ListItemText, {
   overridesResolver: (props, styles) => styles.listItemText
 })(({ theme }) => ({
   margin: 0,
-  '& .MuiListItemText-primary': {
+  [`& .${listItemTextClasses.primary}`]: {
     color: theme.palette.monoB[500],
     fontWeight: 400,
     ...theme.typography.body100
   },
-  '& .MuiListItemText-secondary': {
+  [`& .${listItemTextClasses.secondary}`]: {
     color: theme.palette.monoB.A600,
     marginTop: 2,
     ...theme.typography.caption
@@ -316,7 +316,7 @@ const AudioPlayerListDivider = styled(Divider, {
   slot: 'ListDivider',
   overridesResolver: (props, styles) => styles.listDivider
 })(({ theme }) => ({
-  '&.MuiDivider-root': {
+  [`&.${dividerClasses.root}`]: {
     borderColor: theme.palette.monoB.A100,
     margin: '4px 0'
   }
@@ -373,21 +373,22 @@ const AudioPlayerVolumeSlider = styled(Slider, {
 })(({ theme }) => ({
   margin: '3px 0',
   height: 86,
-  '&.MuiSlider-colorPrimary': {
+  [`&.${sliderClasses.colorPrimary}`]: {
     color: theme.palette.monoB[500],
-    '& .MuiSlider-thumb': {
+
+    [`& .${sliderClasses.thumb}`]: {
       '&:hover': {
         boxShadow: `0 0 0 8px ${theme.palette.monoB.A50}`
       },
-      '&.Mui-focusVisible': {
+      [`&.${sliderClasses.focusVisible}`]: {
         boxShadow: `0 0 0 7px ${theme.palette.monoB.A150}`
       },
-      '&.Mui-active': {
+      [`&.${sliderClasses.active}`]: {
         boxShadow: `0 0 0 6px ${theme.palette.monoB.A200}`
       }
     }
   },
-  '& .MuiSlider-rail': {
+  [`& .${sliderClasses.rail}`]: {
     backgroundColor: theme.palette.monoB.A400
   }
 }));

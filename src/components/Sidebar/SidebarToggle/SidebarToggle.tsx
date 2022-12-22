@@ -8,8 +8,9 @@ import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
+import { svgIconClasses } from '@mui/material';
+import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { IconChevronLeftMedium } from '../../../icons';
 import { useSidebarContext } from '../Sidebar.context';
@@ -50,7 +51,7 @@ const SidebarToggleTooltip = styled(
     overridesResolver: (props, styles) => styles.tooltip
   }
 )(({ theme }) => ({
-  '& .MuiTooltip-tooltip': {
+  [`& .${tooltipClasses.tooltip}`]: {
     ...theme.typography.caption
   }
 }));
@@ -60,7 +61,7 @@ const SidebarToggleButton = styled(IconButton, {
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
 })<{ ownerState: SidebarToggleOwnerState }>(({ theme, ownerState }) => ({
-  '&.MuiIconButton-root': {
+  [`&.${iconButtonClasses.root}`]: {
     transition: 'none',
     width: '20px',
     height: '20px',
@@ -73,7 +74,7 @@ const SidebarToggleButton = styled(IconButton, {
     right: '-11px',
     top: '-9px',
 
-    '& .MuiSvgIcon-root': {
+    [`& .${svgIconClasses.root}`]: {
       transform: `rotate(${ownerState.open ? '' : '18'}0deg)`
     },
 
