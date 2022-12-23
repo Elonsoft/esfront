@@ -26,6 +26,7 @@ export const parameters = {
       order: [
         'Getting Started',
         ['Installation', 'Usage', 'Theming', 'Localization', 'Icons', 'Scrollbars'],
+        'Discover More',
         'Components',
         'Hooks',
         'Overrides',
