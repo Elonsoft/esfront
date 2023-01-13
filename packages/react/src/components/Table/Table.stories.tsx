@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { ComponentProps, useCallback, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -82,7 +82,13 @@ for (let i = 0; i < 50; i++) {
   });
 }
 
-const meta: Meta<typeof Table> = {
+type Args = ComponentProps<typeof Table> & {
+  colDividers?: boolean;
+  rowDividers?: boolean;
+  striped?: boolean;
+};
+
+const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Table,
   parameters: {
@@ -106,13 +112,19 @@ const meta: Meta<typeof Table> = {
       },
     },
   },
+  args: {
+    rowDividers: true,
+    colDividers: false,
+    striped: false,
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Table>;
+type Story = StoryObj<Args>;
 
 export const Demo: Story = {
-  render: function Render(_args, context) {
+  render: function Render(args, context) {
+    const { striped, colDividers, rowDividers } = args;
     const locale = (context.globals.locale || 'en') as 'en' | 'ru';
 
     const ref = useRef<HTMLDivElement | null>(null);
@@ -145,7 +157,7 @@ export const Demo: Story = {
 
     return (
       <Table ref={ref} columns={columns}>
-        <TableHead sticky={0}>
+        <TableHead colDividers={colDividers} sticky={0}>
           <TableRow>
             <TableCell padding="checkbox">
               <Checkbox
@@ -181,7 +193,7 @@ export const Demo: Story = {
             <TableCell />
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody colDividers={colDividers} rowDividers={rowDividers} striped={striped}>
           {DATA[locale].map((row) => {
             const isSelected = selected.indexOf(row.id) !== -1;
             const labelId = `story-usage-checkbox-${row.id}`;
@@ -272,7 +284,8 @@ export const Demo: Story = {
 that the table can accommodate properly, at least, these columns.
  */
 export const ColumnPinning: Story = {
-  render: function Render(_args, context) {
+  render: function Render(args, context) {
+    const { striped, colDividers, rowDividers } = args;
     const locale = (context.globals.locale || 'en') as 'en' | 'ru';
 
     const ref = useRef<HTMLDivElement | null>(null);
@@ -377,7 +390,7 @@ export const ColumnPinning: Story = {
           </TextField>
         </Box>
         <Table ref={ref} columns={columns}>
-          <TableHead sticky={0}>
+          <TableHead colDividers={colDividers} sticky={0}>
             <TableRow ref={rowRef}>
               <TableCell padding="checkbox" pin={getPin('checkbox')}>
                 <Checkbox
@@ -412,7 +425,7 @@ export const ColumnPinning: Story = {
               <TableCell pin={getPin('menu')} />
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody colDividers={colDividers} rowDividers={rowDividers} striped={striped}>
             {DATA[locale].map((row) => {
               const isSelected = selected.indexOf(row.id) !== -1;
               const labelId = `story-usage-checkbox-${row.id}`;

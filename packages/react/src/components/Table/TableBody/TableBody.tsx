@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 import { TableBodyProps } from './TableBody.types';
 
@@ -16,13 +16,14 @@ import { tableRowClasses } from '../TableRow';
 
 type TableBodyOwnerState = {
   classes?: TableBodyProps['classes'];
+  striped?: boolean;
 };
 
 const useUtilityClasses = (ownerState: TableBodyOwnerState) => {
-  const { classes } = ownerState;
+  const { classes, striped } = ownerState;
 
   const slots = {
-    root: ['root'],
+    root: ['root', striped && 'striped'],
     container: ['container'],
   };
 
@@ -32,8 +33,12 @@ const useUtilityClasses = (ownerState: TableBodyOwnerState) => {
 const TableBodyRoot = styled('div', {
   name: 'ESTableBody',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({
+  overridesResolver: (props, styles) => {
+    const { ownerState } = props;
+
+    return [styles.root, ownerState.striped && styles.striped];
+  },
+})<{ ownerState: TableBodyOwnerState }>(({ theme }) => ({
   overflow: 'auto',
   position: 'relative',
   width: '100%',
@@ -51,6 +56,21 @@ const TableBodyRoot = styled('div', {
       borderBottom: 0,
     },
   },
+
+  variants: [
+    {
+      props: {
+        striped: true,
+      },
+      style: {
+        [`& .${tableRowClasses.root}:nth-of-type(odd)`]: {
+          [`.${tableCellClasses.wrapper}`]: {
+            backgroundColor: theme.vars.palette.monoA.A25,
+          },
+        },
+      },
+    },
+  ],
 }));
 
 const TableBodyContainer = styled('div', {
@@ -65,19 +85,37 @@ const TableBodyContainer = styled('div', {
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
 export const TableBody = memo(function TableBody(inProps: TableBodyProps) {
-  const { children, className, sx, ...props } = useThemeProps({
+  const {
+    children,
+    className,
+    sx,
+    rowDividers = true,
+    colDividers = false,
+    striped,
+    ...props
+  } = useThemeProps({
     props: inProps,
     name: 'ESTableBody',
   });
 
   const { setRef } = useTableBodyContext();
 
-  const ownerState = { ...props };
+  const value = useMemo(() => {
+    return { ...TABLE_CELL_CONTEXT_VALUE, rowDividers, colDividers };
+  }, [rowDividers, colDividers]);
+
+  const ownerState = { striped, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
-      <TableBodyRoot ref={setRef} className={clsx(classes.root, className)} role="rowgroup" sx={sx}>
+    <TableCellContext.Provider value={value}>
+      <TableBodyRoot
+        ref={setRef}
+        className={clsx(classes.root, className)}
+        ownerState={ownerState}
+        role="rowgroup"
+        sx={sx}
+      >
         <TableBodyContainer className={classes.container}>{children}</TableBodyContainer>
       </TableBodyRoot>
     </TableCellContext.Provider>

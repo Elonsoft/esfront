@@ -13,4 +13,16 @@ export interface TableBodyProps {
   className?: string;
   /** The system prop that allows defining system overrides as well as additional CSS styles. */
   sx?: SxProps<Theme>;
+  /** If `true`, the table row dividers are shown.
+   * @default true
+   */
+  rowDividers?: boolean;
+  /** If `true`, the table col dividers are shown.
+   * @default false
+   */
+  colDividers?: boolean;
+  /** If `true`, the table has zebra-striping variant.
+   * @default false
+   */
+  striped?: boolean;
 }
