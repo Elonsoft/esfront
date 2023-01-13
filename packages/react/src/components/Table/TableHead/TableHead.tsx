@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 
 import { TableHeadProps } from './TableHead.types';
 
@@ -90,7 +90,15 @@ const TableHeadContainer = styled('div', {
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
 
 export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
-  const { children, className, sticky, sx, ...props } = useThemeProps({
+  const {
+    children,
+    className,
+    sticky,
+    sx,
+    rowDividers = true,
+    colDividers = false,
+    ...props
+  } = useThemeProps({
     props: inProps,
     name: 'ESTableHead',
   });
@@ -107,11 +115,15 @@ export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
     { threshold: [1], rootMargin: `-${(sticky || 0) + 1}px 0px 0px` }
   );
 
+  const value = useMemo(() => {
+    return { ...TABLE_CELL_CONTEXT_VALUE, rowDividers, colDividers };
+  }, [rowDividers, colDividers]);
+
   const ownerState = { isSticky: sticky !== undefined, isStuck: sticky !== undefined && isStuck, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
+    <TableCellContext.Provider value={value}>
       <TableHeadRoot
         ref={setRef}
         className={clsx(classes.root, className)}

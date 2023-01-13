@@ -22,10 +22,12 @@ type TableCellOwnerState = {
   colSpan?: number;
   overlap?: boolean;
   isResizing?: boolean;
+  rowDivider?: boolean;
+  colDivider?: boolean;
 };
 
 const useUtilityClasses = (ownerState: TableCellOwnerState) => {
-  const { classes, variant, padding, align, pin, overlap, isResizing } = ownerState;
+  const { classes, variant, padding, align, pin, overlap, isResizing, rowDivider, colDivider } = ownerState;
 
   const slots = {
     root: [
@@ -38,7 +40,10 @@ const useUtilityClasses = (ownerState: TableCellOwnerState) => {
       pin === 'right' && 'pinRight',
       overlap && 'overlap',
       isResizing && 'resizing',
+      rowDivider && 'rowDivider',
+      colDivider && 'colDivider',
     ],
+    wrapper: ['wrapper'],
     container: ['container'],
     content: [
       'content',
@@ -65,6 +70,8 @@ const TableCellRoot = styled('div', {
       ownerState.padding === 'checkbox' && styles.paddingCheckbox,
       ownerState.overlap && styles.overlap,
       ownerState.isResizing && styles.resizing,
+      ownerState.rowDivider && styles.rowDivider,
+      ownerState.colDivider && styles.colDivider,
     ];
   },
 })<{ ownerState: TableCellOwnerState }>(({ theme }) => ({
@@ -97,6 +104,13 @@ const TableCellRoot = styled('div', {
   [`&.${tableCellClasses.pinRight}:not(:nth-child(1 of .${tableCellClasses.pinRight}))`]: {
     boxShadow: 'none',
   },
+
+  [`&.${tableCellClasses.pinLeft}:nth-last-child(1 of .${tableCellClasses.pinLeft}) + .${tableCellClasses.colDivider}`]:
+    {
+      [`& .${tableCellClasses.container}`]: {
+        borderLeft: 0,
+      },
+    },
 
   [`&:hover .${tableCellClasses.resize}::after`]: {
     width: '1px',
@@ -176,7 +190,38 @@ const TableCellRoot = styled('div', {
         },
       },
     },
+    {
+      props: {
+        rowDivider: true,
+      },
+      style: {
+        [`& .${tableCellClasses.container}`]: {
+          borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
+        },
+      },
+    },
+    {
+      props: {
+        colDivider: true,
+      },
+      style: {
+        '&:not(:first-of-type)': {
+          [`& .${tableCellClasses.container}`]: {
+            borderLeft: `1px solid ${theme.vars.palette.monoA.A100}`,
+          },
+        },
+      },
+    },
   ],
+}));
+
+const TableCellWrapper = styled('div', {
+  name: 'ESTableCell',
+  slot: 'Wrapper',
+  overridesResolver: (props, styles) => styles.wrapper,
+})(() => ({
+  width: '100%',
+  height: '100%',
 }));
 
 const TableCellContainer = styled('div', {
@@ -184,7 +229,7 @@ const TableCellContainer = styled('div', {
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container,
 })(({ theme }) => ({
-  borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
+  borderBottom: 0,
   transition: `${theme.transitions.duration.short}ms, border-bottom 0ms`,
   width: '100%',
   height: '100%',
@@ -283,6 +328,8 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
     children,
     className,
     variant = context.variant,
+    rowDivider = context.rowDividers,
+    colDivider = context.colDividers,
     padding = 'normal',
     align = 'flex-start',
     id,
@@ -381,7 +428,7 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
     }
   }, [isResizing]);
 
-  const ownerState = { variant, padding, align, pin, isResizing, ...props };
+  const ownerState = { variant, padding, align, pin, isResizing, rowDivider, colDivider, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
@@ -396,21 +443,23 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
       sx={sx}
       onClick={onClick}
     >
-      <TableCellContainer className={classes.container}>
-        <TableCellContent className={classes.content} ownerState={ownerState}>
-          {children}
-        </TableCellContent>
-        {!!onResize && (
-          <TableCellResize
-            aria-label={labelResize}
-            className={classes.resize}
-            ownerState={ownerState}
-            onKeyDown={onKeyDown}
-            onKeyUp={onKeyUp}
-            onMouseDown={onMouseDown}
-          />
-        )}
-      </TableCellContainer>
+      <TableCellWrapper className={classes.wrapper}>
+        <TableCellContainer className={classes.container}>
+          <TableCellContent className={classes.content} ownerState={ownerState}>
+            {children}
+          </TableCellContent>
+          {!!onResize && (
+            <TableCellResize
+              aria-label={labelResize}
+              className={classes.resize}
+              ownerState={ownerState}
+              onKeyDown={onKeyDown}
+              onKeyUp={onKeyUp}
+              onMouseDown={onMouseDown}
+            />
+          )}
+        </TableCellContainer>
+      </TableCellWrapper>
     </TableCellRoot>
   );
 });

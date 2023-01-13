@@ -15,4 +15,12 @@ export interface TableHeadProps {
   sx?: SxProps<Theme>;
   /** If present, makes element sticky and specifies a threshold for sticky positioning. */
   sticky?: number;
+  /** If `true`, the table row dividers are shown.
+   * @default true
+   */
+  rowDividers?: boolean;
+  /** If `true`, the table col dividers are shown.
+   * @default false
+   */
+  colDividers?: boolean;
 }
