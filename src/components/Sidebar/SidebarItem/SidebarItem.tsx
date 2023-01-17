@@ -80,6 +80,7 @@ const SidebarItemButton = styled(ListItemButton, {
     borderRadius: '4px',
     width: '100%',
     padding: '6px 8px',
+    fontFamily: 'inherit',
 
     [`&.${buttonBaseClasses.root}`]: {
       [`& .${touchRippleClasses.root}`]: {
@@ -134,6 +135,7 @@ const SidebarItemSecondaryAction = styled(IconButton, {
   overridesResolver: (props, styles) => styles.secondaryAction
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
   [`&.${iconButtonClasses.root}`]: {
+    cursor: 'pointer',
     position: 'absolute',
     left: `${ownerState.width}px`,
     top: '8px',
@@ -190,7 +192,7 @@ const SidebarItemIcon = styled(ListItemIcon, {
   overridesResolver: (props, styles) => styles.icon
 })<{ ownerState: SidebarItemOwnerState }>(({ ownerState: { isNestedMenuOpen } }) => ({
   '&:last-of-type': {
-    marginLeft: '4px'
+    marginLeft: '3.5px'
   },
 
   [`& .${svgIconClasses.root}`]: {
