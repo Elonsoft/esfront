@@ -192,9 +192,9 @@ export const Sidebar = (inProps: SidebarProps) => {
 
       onMouseMove.current = (event: React.TouchEvent) => {
         if (ref.current && screenX.current !== null) {
-          ref.current.style.width = `${
-            ref.current.getBoundingClientRect().width + (event.touches[0].screenX - screenX.current)
-          }px`;
+          const width = ref.current.getBoundingClientRect().width + (event.touches[0].screenX - screenX.current);
+          ref.current.style.width = `${Math.min(maxWidth, Math.max(width, minWidth))}px`;
+          onWidthChangeLatest.current(width);
           screenX.current = event.touches[0].screenX;
         }
 
@@ -225,7 +225,7 @@ export const Sidebar = (inProps: SidebarProps) => {
       onMouseMove.current = (event: MouseEvent) => {
         if (ref.current && screenX.current !== null) {
           const width = ref.current.getBoundingClientRect().width + (event.screenX - screenX.current);
-          ref.current.style.width = `${width}px`;
+          ref.current.style.width = `${Math.min(maxWidth, Math.max(width, minWidth))}px`;
           onWidthChangeLatest.current(width);
           screenX.current = event.screenX;
         }
