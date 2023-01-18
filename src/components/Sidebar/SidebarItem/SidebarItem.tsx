@@ -33,6 +33,7 @@ type SidebarItemOwnerState = {
   width: number;
   isNestedMenuOpen?: boolean | null;
   behaviour?: 'click' | 'hover';
+  children?: React.ReactNode;
 };
 
 const useUtilityClasses = (ownerState: SidebarItemOwnerState) => {
@@ -45,6 +46,7 @@ const useUtilityClasses = (ownerState: SidebarItemOwnerState) => {
     tooltip: ['tooltip'],
     tooltipItem: ['tooltipItem'],
     tooltipTitle: ['tooltipTitle'],
+    tooltipDivider: ['tooltipDivider'],
     text: ['text'],
     icon: ['icon'],
     nestedMenu: ['nestedMenu'],
@@ -235,10 +237,20 @@ const SidebarItemTooltip = styled(
     slot: 'Tooltip',
     overridesResolver: (props, styles) => styles.tooltip
   }
-)(() => ({
+)(({ theme }) => ({
   [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
     padding: '0',
-    maxWidth: '288px'
+    maxWidth: '288px',
+    background: theme.palette.surface[400],
+    boxShadow: theme.palette.shadow.down[600],
+    marginLeft: '10px !important',
+    color: theme.palette.monoA.A900,
+    borderRadius: '4px',
+
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.surface[400],
+      backdropFilter: 'none'
+    }
   },
   '&[data-popper-reference-hidden]': {
     pointerEvents: 'none',
@@ -250,26 +262,44 @@ const SidebarItemTooltipTitle = styled(MenuList, {
   name: 'ESSidebarItem',
   slot: 'TooltipTitle',
   overridesResolver: (props, styles) => styles.tooltipTitle
-})(({ theme }) => ({
+})<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
   maxHeight: '100vh',
-  ...theme.scrollbars.overlay
+  ...theme.scrollbars.overlay,
+
+  ...(ownerState.children && {
+    paddingBottom: '8px'
+  })
 }));
 
 const SidebarItemTooltipItem = styled(MenuItem, {
   name: 'ESSidebarItem',
   slot: 'TooltipItem',
   overridesResolver: (props, styles) => styles.tooltipItem
-})(({ theme }) => ({
+})(() => ({
   [`&.${menuItemClasses.root}`]: {
     width: '100%',
-    minHeight: '24px',
-    color: theme.palette.monoB[500],
+    minHeight: '32px',
+    padding: '6px 16px',
+
+    '&:first-child': {
+      margin: '4px 0'
+    },
 
     [`&.${menuItemClasses.disabled}`]: {
       opacity: '1'
     }
   }
 })) as typeof MenuItem;
+
+const SidebarItemTooltipDivider = styled('div', {
+  name: 'ESSidebarItem',
+  slot: 'TooltipDivider',
+  overridesResolver: (props, styles) => styles.tooltipDivider
+})(({ theme }) => ({
+  height: '1px',
+  marginBottom: '8px',
+  backgroundColor: theme.palette.monoA.A100
+}));
 
 export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: SidebarItemProps) => {
   const {
@@ -400,6 +430,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
             ref={refTooltip}
             disablePadding
             className={clsx(classes.tooltipTitle)}
+            ownerState={ownerState}
             onKeyDown={onKeyDownItem}
             onMouseDown={onMouseDown}
           >
@@ -407,22 +438,22 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
               className={clsx(classes.tooltipItem)}
               component={component}
               disabled={!onClick}
-              divider={!!children}
               tabIndex={-1}
               onClick={onClick}
               {...props}
             >
-              <Typography variant="caption">{text}</Typography>
+              <Typography variant="body100">{text}</Typography>
             </SidebarItemTooltipItem>
 
-            {children &&
+            {!!children && <SidebarItemTooltipDivider />}
+            {!!children &&
               React.Children.map(children, (child: any, idx: number) => {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const { text, inset, ...rest } = child.props;
 
                 return (
                   <SidebarItemTooltipItem key={idx} className={clsx(classes.tooltipItem)} tabIndex={idx} {...rest}>
-                    <Typography variant="caption">{text}</Typography>
+                    <Typography variant="body100">{text}</Typography>
                   </SidebarItemTooltipItem>
                 );
               })}

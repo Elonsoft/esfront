@@ -11,8 +11,10 @@ export type SidebarItemClasses = {
   tooltip: string;
   /** Styles applied to the tooltip item element. */
   tooltipItem: string;
-  /** Styles applied to the tooltip item title. */
+  /** Styles applied to the tooltip title. */
   tooltipTitle: string;
+  /** Styles applied to the tooltip divider. */
+  tooltipDivider: string;
   /** Styles applied to the item text element. */
   text: string;
   /** Styles applied to the item icon element. */
