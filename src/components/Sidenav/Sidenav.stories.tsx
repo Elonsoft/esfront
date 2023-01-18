@@ -78,7 +78,7 @@ const Content = styled('div')<{ ownerState: { isOpen?: boolean; width?: number }
 const MIN_WIDTH = 220;
 const MAX_WIDTH = 300;
 
-export const Demo: Story = ({ disableEscapeKeyDown }, { globals: { locale } }) => {
+export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale } }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [width, setWidth] = useState(287);
   const [searchValue, setSearch] = useState('');
@@ -95,7 +95,7 @@ export const Demo: Story = ({ disableEscapeKeyDown }, { globals: { locale } }) =
         sx={{ position: 'sticky', top: '0' }}
         onClose={() => setIsOpen(false)}
       >
-        <Sidebar color="primary">
+        <Sidebar color={color}>
           <SidebarMenu>
             <SidenavItem icon={<IconHome />} />
           </SidebarMenu>

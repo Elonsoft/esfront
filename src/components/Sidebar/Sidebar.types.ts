@@ -15,7 +15,7 @@ export interface SidebarProps {
   /** Whether the sidebar should be displayed. */
   open?: boolean;
   /** The color of the component. */
-  color?: 'default' | 'primary';
+  color?: 'default' | 'primary' | 'secondary';
   /**
    * The width of the component.
    * @default 280

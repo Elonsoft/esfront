@@ -87,7 +87,7 @@ const SidebarItemButton = styled(ListItemButton, {
         transitionDuration: `${theme.transitions.duration.short}ms`
       }
     },
-    ...(ownerState.color === 'default' && {
+    ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
       ...theme.mixins.listItem({
         background: 'transparent',
         color: theme.palette.monoA.A800,
@@ -147,7 +147,7 @@ const SidebarItemSecondaryAction = styled(IconButton, {
       }
     }),
 
-    ...(ownerState.color === 'default' && {
+    ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
       ...theme.mixins.button({
         background: 'transparent',
         color: theme.palette.monoA.A500,

@@ -14,7 +14,7 @@ import { SidebarContext } from './Sidebar.context';
 import { useDocumentEventListener, useLatest, useWindowEventListener } from '../../hooks';
 
 type SidebarOwnerState = {
-  color?: 'default' | 'primary';
+  color?: 'default' | 'primary' | 'secondary';
   width?: number;
   minWidth?: number;
   maxWidth?: number;
@@ -72,6 +72,10 @@ const SidebarContent = styled('aside', {
 
   ...(ownerState.color === 'primary' && {
     backgroundColor: theme.palette.primary[300]
+  }),
+
+  ...(ownerState.color === 'secondary' && {
+    backgroundColor: theme.palette.common.background2
   }),
 
   ...(ownerState.open && {
