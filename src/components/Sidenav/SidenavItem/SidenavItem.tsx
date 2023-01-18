@@ -95,21 +95,15 @@ const SidenavItemTooltip = styled(
   }
 )(({ theme }) => ({
   [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
+    padding: '4px 8px',
+    marginLeft: '1px !important',
     maxWidth: '288px',
-    background: theme.palette.surface[400],
-    boxShadow: theme.palette.shadow.down[600],
-    marginLeft: '8px !important',
-    color: theme.palette.monoA.A900,
-    borderRadius: '4px',
-    minHeight: '40px',
-    padding: '10px 16px',
 
-    ...theme.typography.body100,
-
-    [`& .${tooltipClasses.arrow}`]: {
-      color: theme.palette.surface[400],
-      backdropFilter: 'none'
-    }
+    ...theme.typography.caption
+  },
+  '&[data-popper-reference-hidden]': {
+    pointerEvents: 'none',
+    opacity: '0'
   }
 }));
 
@@ -150,10 +144,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
   const onTooltipOpen = () => {
     const activeItem = document.activeElement;
     const isContainsActiveItem = activeItem?.classList?.contains('Mui-focusVisible');
-
-    if ((text && open) || isContainsActiveItem) {
-      setTooltipOpen(true);
-    }
+    text && (open || isContainsActiveItem) && setTooltipOpen(true);
   };
 
   const ownerState = { color, open, ...props };
