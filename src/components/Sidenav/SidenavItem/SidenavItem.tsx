@@ -44,7 +44,7 @@ const SidenavItemRoot = styled(ListItemButton, {
     margin: '0 8px',
     justifyContent: 'center',
 
-    ...(ownerState.color === 'default' && {
+    ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
       ...theme.mixins.listItem({
         background: 'transparent',
         color: theme.palette.monoA.A800,

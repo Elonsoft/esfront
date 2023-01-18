@@ -17,7 +17,7 @@ import { useSidebarContext } from '../Sidebar.context';
 import { SidebarDivider } from '../SidebarDivider';
 
 type SidebarToggleOwnerState = {
-  color?: 'default' | 'primary';
+  color?: 'default' | 'primary' | 'secondary';
   classes?: SidebarToggleProps['classes'];
   open?: boolean;
 };
@@ -78,7 +78,7 @@ const SidebarToggleButton = styled(IconButton, {
       transform: `rotate(${ownerState.open ? '' : '18'}0deg)`
     },
 
-    ...(ownerState.color === 'default' && {
+    ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
       ...theme.mixins.button({
         background: theme.palette.common.background2,
         color: theme.palette.monoA.A500,
