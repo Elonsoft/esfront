@@ -121,6 +121,7 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
             />
           </SidebarMenu>
         </SidebarScrollable>
+
         <SidebarSpacer />
 
         <SidebarMenu>

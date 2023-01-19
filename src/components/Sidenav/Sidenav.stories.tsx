@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 
 import { Story } from '@storybook/react';
 
@@ -82,6 +82,7 @@ export const Demo: Story = ({ disableEscapeKeyDown }, { globals: { locale } }) =
   const [isOpen, setIsOpen] = useState(false);
   const [width, setWidth] = useState(287);
   const [searchValue, setSearch] = useState('');
+  const [itemID, setItemID] = useState(1);
 
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -103,8 +104,18 @@ export const Demo: Story = ({ disableEscapeKeyDown }, { globals: { locale } }) =
           <SidebarToggle open={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
           <SidebarMenu>
-            <SidenavItem id="1" icon={<IconZap />} text={locale === 'en' ? 'Projects' : 'Проекты'} />
-            <SidenavItem id="2" icon={<IconFileDocument />} text={locale === 'en' ? 'Reports' : 'Отчеты'} />
+            <SidenavItem
+              id="1"
+              icon={<IconZap />}
+              text={locale === 'en' ? 'Projects' : 'Проекты'}
+              onClick={() => setItemID(1)}
+            />
+            <SidenavItem
+              id="2"
+              icon={<IconFileDocument />}
+              text={locale === 'en' ? 'Reports' : 'Отчеты'}
+              onClick={() => setItemID(2)}
+            />
           </SidebarMenu>
 
           <SidebarSpacer />
@@ -139,7 +150,7 @@ export const Demo: Story = ({ disableEscapeKeyDown }, { globals: { locale } }) =
                 default:
                 case '1':
                   return (
-                    <>
+                    <Fragment key="1">
                       <SidebarHeading title={locale === 'en' ? 'Projects' : 'Проекты'} />
                       <SearchField
                         placeholder={locale === 'en' ? 'Search' : 'Поиск'}
@@ -199,27 +210,27 @@ export const Demo: Story = ({ disableEscapeKeyDown }, { globals: { locale } }) =
                             ))}
                           </SidebarMenuItem>
                         </SidebarMenu>
-                      </SidebarScrollable>
 
-                      <SidebarCaption title={locale === 'en' ? 'Current projects' : 'Текущие проекты'} />
-                      <SidebarMenu>
-                        {[...Array(5)].map((_, idx) => (
-                          <SidebarMenuItem
-                            key={idx}
-                            text={(locale === 'en' ? 'Current project' : 'Текущий проект') + ' №' + idx}
-                            icon={<IconFileDocument />}
-                          />
-                        ))}
-                      </SidebarMenu>
-                    </>
+                        <SidebarCaption title={locale === 'en' ? 'Current projects' : 'Текущие проекты'} />
+                        <SidebarMenu>
+                          {[...Array(5)].map((_, idx) => (
+                            <SidebarMenuItem
+                              key={idx}
+                              text={(locale === 'en' ? 'Current project' : 'Текущий проект') + ' №' + idx}
+                              icon={<IconFileDocument />}
+                            />
+                          ))}
+                        </SidebarMenu>
+                      </SidebarScrollable>
+                    </Fragment>
                   );
                 case '2':
                   return (
-                    <>
+                    <Fragment key="2">
                       <SidebarHeading title={locale === 'en' ? 'Reports' : 'Отчеты'} />
                       <SearchField
                         size="32"
-                        placeholder="Search"
+                        placeholder={locale === 'en' ? 'Search' : 'Поиск'}
                         value={searchValue}
                         onChange={(e) => setSearch(e.target.value)}
                         InputProps={{
@@ -276,19 +287,19 @@ export const Demo: Story = ({ disableEscapeKeyDown }, { globals: { locale } }) =
                             ))}
                           </SidebarMenuItem>
                         </SidebarMenu>
-                      </SidebarScrollable>
 
-                      <SidebarCaption title={locale === 'en' ? 'Current reports' : 'Текущие отчеты'} />
-                      <SidebarMenu>
-                        {[...Array(5)].map((_, idx) => (
-                          <SidebarMenuItem
-                            key={idx}
-                            text={(locale === 'en' ? 'Current report' : 'Текущий отчет') + ' №' + idx}
-                            icon={<IconFileDocument />}
-                          />
-                        ))}
-                      </SidebarMenu>
-                    </>
+                        <SidebarCaption title={locale === 'en' ? 'Current reports' : 'Текущие отчеты'} />
+                        <SidebarMenu>
+                          {[...Array(5)].map((_, idx) => (
+                            <SidebarMenuItem
+                              key={idx}
+                              text={(locale === 'en' ? 'Current report' : 'Текущий отчет') + ' №' + idx}
+                              icon={<IconFileDocument />}
+                            />
+                          ))}
+                        </SidebarMenu>
+                      </SidebarScrollable>
+                    </Fragment>
                   );
               }
             }}
@@ -297,7 +308,7 @@ export const Demo: Story = ({ disableEscapeKeyDown }, { globals: { locale } }) =
       </Sidenav>
 
       <Content ref={ref} ownerState={ownerState}>
-        <h2>Lorem ipsum</h2>
+        <h2>{itemID < 2 ? 'Lorem ipsum' : 'Perferendis inventore'}</h2>
 
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nostrum veniam fugit fugiat nihil possimus
