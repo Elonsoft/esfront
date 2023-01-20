@@ -1,8 +1,9 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SidenavItemProps, SidenavItemTypeMap } from './SidenavItem.types';
 
 import clsx from 'clsx';
+import { sidenavClasses } from '../Sidenav.classes';
 import { getSidenavItemUtilityClass } from './SidenavItem.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
@@ -110,30 +111,79 @@ const SidenavItemTooltip = styled(
 export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: SidenavItemProps) => {
   const {
     className,
+    sx,
     id = null,
     icon,
     text,
-    sx,
+    selected,
     onClick,
+    onTouchStart,
+    onKeyDown,
+    onFocus,
     ...props
   } = useThemeProps({
     props: inProps,
     name: 'ESSidenavItem'
   });
 
-  const [isTooltipOpen, setTooltipOpen] = useState(false);
-
-  const { open, setHover, itemId, setItemId, onClose } = useSidenavContext();
+  const { open, hover, itemId, setHover, setItemId, disableItemHover } = useSidenavContext();
   const { color } = useSidebarContext();
 
-  const onClickItem = () => {
+  const [isTooltipOpen, setTooltipOpen] = useState(false);
+
+  const ref = useRef<HTMLDivElement | null>(null);
+  const shouldSkipClick = useRef(false);
+
+  const onItemTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    onTouchStart && onTouchStart(event);
+
+    if (id && !open && (!hover || id !== itemId)) {
+      shouldSkipClick.current = true;
+    }
+  };
+
+  const onItemClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (id) {
       setItemId(id);
-      onClick && onClick();
       !open && setHover(true);
     } else {
       setHover(false);
-      !open && onClose && onClose();
+    }
+
+    if (shouldSkipClick.current) {
+      shouldSkipClick.current = false;
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    onClick && onClick(event);
+  };
+
+  const onItemFocus = (event: React.FocusEvent<HTMLDivElement>) => {
+    onFocus && onFocus(event);
+
+    if (id) {
+      setItemId(id);
+      !open && setHover(true);
+    } else {
+      setHover(false);
+    }
+  };
+
+  const onItemKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    onKeyDown && onKeyDown(event);
+
+    if (ref.current && event.key === 'ArrowRight') {
+      const sidenav = ref.current.closest(`.${sidenavClasses.root}`) as HTMLElement;
+      const sidebar = sidenav.querySelector(`.${sidenavClasses.drawer}`) as HTMLElement;
+      const element = sidebar.querySelector(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ) as HTMLElement | null;
+
+      if (element) {
+        element.focus();
+      }
     }
   };
 
@@ -142,10 +192,14 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
   }, []);
 
   const onTooltipOpen = () => {
-    const activeItem = document.activeElement;
-    const isContainsActiveItem = activeItem?.classList?.contains('Mui-focusVisible');
-    text && (open || isContainsActiveItem) && setTooltipOpen(true);
+    text && (!id || (id !== itemId && open && disableItemHover)) && setTooltipOpen(true);
   };
+
+  useEffect(() => {
+    if (isTooltipOpen && id && id === itemId) {
+      setTooltipOpen(false);
+    }
+  }, [isTooltipOpen, id, itemId]);
 
   const ownerState = { color, open, ...props };
   const classes = useUtilityClasses(ownerState);
@@ -154,7 +208,6 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     <>
       <SidenavItemTooltip
         disableInteractive
-        disableTouchListener
         arrow={!!text}
         className={clsx(classes.tooltip)}
         enterNextDelay={200}
@@ -167,11 +220,16 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
       >
         <div className="ESSidenavItem-wrapper" data-id={id}>
           <SidenavItemRoot
+            ref={ref}
             className={clsx(classes.root, className)}
+            data-id={id}
             ownerState={ownerState}
-            selected={!!(id && id === itemId)}
+            selected={selected}
             sx={sx}
-            onClick={onClickItem}
+            onClick={onItemClick}
+            onFocus={onItemFocus}
+            onKeyDown={onItemKeyDown}
+            onTouchStart={onItemTouchStart}
             {...props}
           >
             <ListItemIcon>{icon}</ListItemIcon>

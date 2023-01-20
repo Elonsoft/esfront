@@ -16,6 +16,8 @@ export interface SidenavProps {
   open?: boolean;
   /** If true, hitting escape will not fire the onClose callback. */
   disableEscapeKeyDown?: boolean;
+  /** If true, hovering over `SidenavItem` won't change the selected element when open=true. */
+  disableItemHover?: boolean;
   /** Callback fired when the component requests to be closed. */
   onClose?: () => void;
 }

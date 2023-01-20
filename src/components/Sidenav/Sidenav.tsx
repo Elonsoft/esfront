@@ -10,6 +10,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 
 import { SidenavContext } from './Sidenav.context';
+import { sidenavItemClasses } from './SidenavItem';
 
 import { useLatest, useMenuAim, useWindowEventListener } from '../../hooks';
 import { sidebarClasses, sidebarMenuClasses, sidebarToggleClasses } from '../Sidebar';
@@ -127,7 +128,7 @@ const SidenavDrawer = styled('div', {
  * The Sidenav component is a fixed-position toggleable slide out box.
  */
 export const Sidenav = (inProps: SidenavProps) => {
-  const { className, children, open, sx, disableEscapeKeyDown, onClose, ...props } = useThemeProps({
+  const { className, children, open, sx, disableEscapeKeyDown, disableItemHover, onClose, ...props } = useThemeProps({
     props: inProps,
     name: 'ESSidenav'
   });
@@ -165,13 +166,13 @@ export const Sidenav = (inProps: SidenavProps) => {
     timeout.current = setTimeout(() => {
       if (id) {
         setItemId(id);
-        setHover(true);
+        !open && setHover(true);
       }
     }, 90);
   };
 
   const activate = (target: HTMLElement) => {
-    if (open) {
+    if (open && disableItemHover) {
       return;
     }
 
@@ -208,13 +209,25 @@ export const Sidenav = (inProps: SidenavProps) => {
     }
   };
 
+  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (root.current && event.key === 'ArrowLeft') {
+      const element = root.current.querySelector(
+        `.${sidenavItemClasses.root}[data-id="${itemId}"]`
+      ) as HTMLElement | null;
+
+      if (element) {
+        element.focus();
+      }
+    }
+  };
+
   useWindowEventListener('resize', () => open && onClose && onClose());
 
   const { onMouseMove, onMouseOver, onMouseLeave } = useMenuAim(root, 'left', hover, activate);
 
   const value = useMemo(() => {
-    return { open, hover, setHover, setItemId, itemId, onClose };
-  }, [open, hover, setHover, setItemId, itemId]);
+    return { open, hover, setHover, setItemId, itemId, disableItemHover, onClose };
+  }, [open, hover, setHover, setItemId, itemId, disableItemHover]);
 
   const ownerState = { open, hover, ...props };
   const classes = useUtilityClasses(ownerState);
@@ -230,6 +243,7 @@ export const Sidenav = (inProps: SidenavProps) => {
                   ref={sidenavRef}
                   className={clsx(classes.drawer)}
                   ownerState={ownerState}
+                  onKeyDown={onKeyDown}
                   onMouseDown={() => setMouseDown(true)}
                   onMouseUp={() => setMouseDown(false)}
                 >
@@ -245,7 +259,7 @@ export const Sidenav = (inProps: SidenavProps) => {
                 onMouseMove={onMouseMove}
                 onMouseOver={onMouseOver}
               >
-                {React.cloneElement(child)}
+                {child}
               </SidenavRail>
             );
           })}

@@ -17,10 +17,16 @@ import * as stories from './Sidenav.stories';
         type: 'boolean'
       }
     },
+    disableItemHover: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
     color: {
       type: 'select',
       options: ['default', 'primary', 'secondary'],
-      defaultValue: 'primary'
+      defaultValue: 'secondary'
     },
     sx: {
       table: {

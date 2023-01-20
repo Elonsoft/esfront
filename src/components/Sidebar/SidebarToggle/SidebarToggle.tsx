@@ -53,6 +53,9 @@ const SidebarToggleTooltip = styled(
 )(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     ...theme.typography.caption
+  },
+  [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
+    marginLeft: '9px !important'
   }
 }));
 
@@ -71,7 +74,7 @@ const SidebarToggleButton = styled(IconButton, {
     zIndex: '4',
     overflow: 'hidden',
     position: 'absolute',
-    right: '-11px',
+    right: '-10px',
     top: '-9px',
 
     [`& .${svgIconClasses.root}`]: {
