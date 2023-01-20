@@ -1,11 +1,11 @@
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 
 import { Story } from '@storybook/react';
 
 import { styled } from '@mui/material/styles';
 import { listItemButtonClasses, outlinedInputClasses } from '@mui/material';
 import Box from '@mui/material/Box';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
+import { iconButtonClasses } from '@mui/material/IconButton';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -79,33 +79,59 @@ const Content = styled('div')<{ ownerState: { isOpen?: boolean; width?: number }
 const MIN_WIDTH = 220;
 const MAX_WIDTH = 300;
 
-export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale } }) => {
+export const Demo: Story = ({ disableEscapeKeyDown, disableItemHover, color }, { globals: { locale } }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [width, setWidth] = useState(287);
-  const [searchValue, setSearch] = useState('');
+
+  const [page, setPage] = useState(1);
 
   const ref = useRef<HTMLDivElement | null>(null);
 
   const ownerState = { isOpen, width };
 
+  const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if ((event.target as HTMLInputElement).selectionStart !== 0) {
+      event.stopPropagation();
+    }
+  };
+
   return (
     <Box sx={{ height: '100vh', margin: '-1rem', display: 'flex', gap: '20px', overflow: 'auto' }}>
       <Sidenav
         disableEscapeKeyDown={disableEscapeKeyDown}
+        disableItemHover={disableItemHover}
         open={isOpen}
         sx={{ position: 'sticky', top: '0' }}
         onClose={() => setIsOpen(false)}
       >
         <Sidebar color={color}>
           <SidebarMenu>
-            <SidenavItem icon={<IconAt />} />
+            <SidenavItem icon={<IconAt />} selected={page === 1} onClick={() => setPage(1)} />
           </SidebarMenu>
 
           <SidebarToggle open={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
           <SidebarMenu>
-            <SidenavItem icon={<IconAt />} id="1" text={locale === 'en' ? 'Projects' : 'Проекты'} />
-            <SidenavItem icon={<IconAt />} id="2" text={locale === 'en' ? 'Reports' : 'Отчеты'} />
+            <SidenavItem
+              icon={<IconAt />}
+              id="1"
+              selected={page === 2}
+              text={locale === 'en' ? 'Projects' : 'Проекты'}
+              onClick={() => {
+                setPage(2);
+                console.log('Projects');
+              }}
+            />
+            <SidenavItem
+              icon={<IconAt />}
+              id="2"
+              selected={page === 3}
+              text={locale === 'en' ? 'Reports' : 'Отчеты'}
+              onClick={() => {
+                setPage(3);
+                console.log('Reports');
+              }}
+            />
           </SidebarMenu>
 
           <SidebarSpacer />
@@ -142,8 +168,13 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
               switch (value?.itemId) {
                 default:
                 case '1':
+                  const onProjectClick = (callback: () => void) => () => {
+                    setPage(2);
+                    callback();
+                  };
+
                   return (
-                    <>
+                    <Fragment key="1">
                       <SidebarHeading title={locale === 'en' ? 'Projects' : 'Проекты'} />
                       <SearchField
                         InputProps={{
@@ -151,17 +182,11 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                             <InputAdornment position="start">
                               <IconAt />
                             </InputAdornment>
-                          ),
-                          endAdornment: searchValue && (
-                            <IconButton disableRipple size="24" onClick={() => setSearch('')}>
-                              <IconAt />
-                            </IconButton>
                           )
                         }}
                         placeholder={locale === 'en' ? 'Search' : 'Поиск'}
                         size="32"
-                        value={searchValue}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onKeyDown={onInputKeyDown}
                       />
 
                       <SidebarScrollable>
@@ -170,20 +195,20 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                           <SidebarMenuItem
                             icon={<IconAt />}
                             text={locale === 'en' ? 'All projects' : 'Все проекты'}
-                            onClick={() => console.log(`All projects`)}
+                            onClick={onProjectClick(() => console.log(`All projects`))}
                           />
                           <SidebarMenuItem
                             icon={<IconAt />}
                             id="1"
                             text={locale === 'en' ? 'Documents' : 'Документы'}
-                            onClick={() => console.log(`Selected`)}
+                            onClick={onProjectClick(() => console.log(`Selected`))}
                           >
                             {[...Array(10)].map((_, idx) => (
                               <SidebarMenuItem
                                 key={idx}
                                 inset={true}
                                 text={(locale === 'en' ? 'Document' : 'Документ') + ' №' + idx}
-                                onClick={() => console.log(`Project ${idx}`)}
+                                onClick={onProjectClick(() => console.log(`Project ${idx}`))}
                               />
                             ))}
                           </SidebarMenuItem>
@@ -198,28 +223,34 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                                 key={idx}
                                 inset={true}
                                 text={(locale === 'en' ? 'New project' : 'Новый проект') + ' №' + idx}
-                                onClick={() => console.log(`Project ${idx}`)}
+                                onClick={onProjectClick(() => console.log(`Project ${idx}`))}
                               />
                             ))}
                           </SidebarMenuItem>
                         </SidebarMenu>
-                      </SidebarScrollable>
 
-                      <SidebarCaption title={locale === 'en' ? 'Current projects' : 'Текущие проекты'} />
-                      <SidebarMenu>
-                        {[...Array(5)].map((_, idx) => (
-                          <SidebarMenuItem
-                            key={idx}
-                            icon={<IconAt />}
-                            text={(locale === 'en' ? 'Current project' : 'Текущий проект') + ' №' + idx}
-                          />
-                        ))}
-                      </SidebarMenu>
-                    </>
+                        <SidebarCaption title={locale === 'en' ? 'Current projects' : 'Текущие проекты'} />
+                        <SidebarMenu>
+                          {[...Array(5)].map((_, idx) => (
+                            <SidebarMenuItem
+                              key={idx}
+                              icon={<IconAt />}
+                              text={(locale === 'en' ? 'Current project' : 'Текущий проект') + ' №' + idx}
+                              onClick={onProjectClick(() => console.log(`Current project ${idx}`))}
+                            />
+                          ))}
+                        </SidebarMenu>
+                      </SidebarScrollable>
+                    </Fragment>
                   );
                 case '2':
+                  const onReportClick = (callback: () => void) => () => {
+                    setPage(3);
+                    callback();
+                  };
+
                   return (
-                    <>
+                    <Fragment key="2">
                       <SidebarHeading title={locale === 'en' ? 'Reports' : 'Отчеты'} />
                       <SearchField
                         InputProps={{
@@ -227,17 +258,11 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                             <InputAdornment position="start">
                               <IconAt />
                             </InputAdornment>
-                          ),
-                          endAdornment: searchValue && (
-                            <IconButton disableRipple size="24" onClick={() => setSearch('')}>
-                              <IconAt />
-                            </IconButton>
                           )
                         }}
-                        placeholder="Search"
+                        placeholder={locale === 'en' ? 'Search' : 'Поиск'}
                         size="32"
-                        value={searchValue}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onKeyDown={onInputKeyDown}
                       />
 
                       <SidebarScrollable>
@@ -247,20 +272,20 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                             icon={<IconAt />}
                             id="1"
                             text={locale === 'en' ? 'All reports' : 'Все отчеты'}
-                            onClick={() => console.log(`All reports`)}
+                            onClick={onReportClick(() => console.log(`All reports`))}
                           />
                           <SidebarMenuItem
                             icon={<IconAt />}
                             id="2"
                             text={locale === 'en' ? 'Saved reports' : 'Сохраненные отчеты'}
-                            onClick={() => console.log(`Saved reports`)}
+                            onClick={onReportClick(() => console.log(`Saved reports`))}
                           >
                             {[...Array(5)].map((_, idx) => (
                               <SidebarMenuItem
                                 key={idx}
                                 inset={true}
                                 text={(locale === 'en' ? 'Saved report' : 'Сохраненный отчет') + ' №' + idx}
-                                onClick={() => console.log(`Saved report ${idx}`)}
+                                onClick={onReportClick(() => console.log(`Saved report ${idx}`))}
                               />
                             ))}
                           </SidebarMenuItem>
@@ -275,24 +300,25 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                                 key={idx}
                                 inset={true}
                                 text={(locale === 'en' ? 'Scheduled report' : 'Запланированный отчет') + ' №' + idx}
-                                onClick={() => console.log(`Report ${idx}`)}
+                                onClick={onReportClick(() => console.log(`Report ${idx}`))}
                               />
                             ))}
                           </SidebarMenuItem>
                         </SidebarMenu>
-                      </SidebarScrollable>
 
-                      <SidebarCaption title={locale === 'en' ? 'Current reports' : 'Текущие отчеты'} />
-                      <SidebarMenu>
-                        {[...Array(5)].map((_, idx) => (
-                          <SidebarMenuItem
-                            key={idx}
-                            icon={<IconAt />}
-                            text={(locale === 'en' ? 'Current report' : 'Текущий отчет') + ' №' + idx}
-                          />
-                        ))}
-                      </SidebarMenu>
-                    </>
+                        <SidebarCaption title={locale === 'en' ? 'Current reports' : 'Текущие отчеты'} />
+                        <SidebarMenu>
+                          {[...Array(5)].map((_, idx) => (
+                            <SidebarMenuItem
+                              key={idx}
+                              icon={<IconAt />}
+                              text={(locale === 'en' ? 'Current report' : 'Текущий отчет') + ' №' + idx}
+                              onClick={onReportClick(() => console.log(`Current report ${idx}`))}
+                            />
+                          ))}
+                        </SidebarMenu>
+                      </SidebarScrollable>
+                    </Fragment>
                   );
               }
             }}
@@ -301,7 +327,7 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
       </Sidenav>
 
       <Content ref={ref} ownerState={ownerState}>
-        <h2>Lorem ipsum</h2>
+        <h2>{page}</h2>
 
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nostrum veniam fugit fugiat nihil possimus

@@ -13,6 +13,8 @@ export interface SidenavContextValue {
   setItemId: Dispatch<React.SetStateAction<string | null>>;
   /** Callback fired when the component requests to be closed. */
   onClose?: () => void;
+  /** If true, hovering over `SidenavItem` won't change the selected element when open=true. */
+  disableItemHover?: boolean;
 }
 
 export const SidenavContext = createContext<SidenavContextValue | null>(null);

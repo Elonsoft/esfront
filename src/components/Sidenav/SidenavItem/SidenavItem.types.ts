@@ -21,8 +21,8 @@ export interface SidenavItemTypeMap<P = {}, D extends ElementType = 'div'> {
     icon?: ReactNode;
     /** Text for the element. */
     text?: ReactNode;
-    /** Callback fired when the element is clicked. */
-    onClick?: () => void;
+    /** If true, the component is selected. */
+    selected?: boolean;
   };
   defaultComponent: D;
 }
