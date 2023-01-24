@@ -1,5 +1,6 @@
 import { AlertCloseProps } from '../Alert';
 import { AudioPlayerProps } from '../AudioPlayer';
+import { BreadcrumbsProps } from '../Breadcrumbs';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
@@ -29,6 +30,9 @@ export interface Localization {
         | 'labelUnmute'
         | 'labelVolume'
       >;
+    };
+    ESBreadcrumbs: {
+      defaultProps: Pick<BreadcrumbsProps, 'labelButtonMore'>;
     };
     ESDialogArrow: {
       defaultProps: Pick<DialogArrowProps, 'labelPrev' | 'labelNext'>;
@@ -104,6 +108,11 @@ export const en: Localization = {
         labelRateNormal: 'Normal',
         labelUnmute: 'Unmute',
         labelVolume: 'Volume'
+      }
+    },
+    ESBreadcrumbs: {
+      defaultProps: {
+        labelButtonMore: 'More'
       }
     },
     ESDialogArrow: {
@@ -213,6 +222,11 @@ export const ru: Localization = {
         labelRateNormal: 'Обычная',
         labelUnmute: 'Включить звук',
         labelVolume: 'Громкость'
+      }
+    },
+    ESBreadcrumbs: {
+      defaultProps: {
+        labelButtonMore: 'Ещё'
       }
     },
     ESDialogArrow: {

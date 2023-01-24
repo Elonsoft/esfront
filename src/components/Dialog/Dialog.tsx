@@ -11,7 +11,6 @@ import { duration, styled, useThemeProps } from '@mui/material/styles';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
-
 import { unstable_useId as useId } from '@mui/utils';
 
 type DialogOwnerState = {

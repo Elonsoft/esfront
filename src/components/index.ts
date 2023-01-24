@@ -1,6 +1,7 @@
 export * from './Alert';
 export * from './AudioPlayer';
 export * from './AvatarGroup';
+export * from './Breadcrumbs';
 export * from './DateAdapter';
 export * from './Dialog';
 export * from './Dropzone';
@@ -24,3 +25,4 @@ export * from './Swiper';
 export * from './Swiper';
 export * from './Switch';
 export * from './Table';
+export * from './TooltipEllipsis';
