@@ -35,6 +35,7 @@ export { IconChevronLeftMedium } from './IconChevronLeftMedium';
 export { IconChevronLeftSmall } from './IconChevronLeftSmall';
 export { IconChevronRight } from './IconChevronRight';
 export { IconChevronRightMedium } from './IconChevronRightMedium';
+export { IconChevronRightSeparator } from './IconChevronRightSeparator';
 export { IconChevronRightSmall } from './IconChevronRightSmall';
 export { IconChevronUp } from './IconChevronUp';
 export { IconCircleLarge } from './IconCircleLarge';
