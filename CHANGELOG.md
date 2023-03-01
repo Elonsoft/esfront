@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/Elonsoft/elonkit-react/compare/v0.6.0...v0.6.1) (2023-03-01)
+
+
+### Features
+
+* **Breadcrumbs:** add new component ([d7bb9f7](https://github.com/Elonsoft/elonkit-react/commit/d7bb9f760e364455c774beb5cab41d58a07d3ac6))
+* **SFS:** add new component ([2fecfc4](https://github.com/Elonsoft/elonkit-react/commit/2fecfc4484c5141ce35f3bcaa5eb9726c1dd10fc))
+
+
+### Bug Fixes
+
+* **MenuItem:** add overridable props ([036a32e](https://github.com/Elonsoft/elonkit-react/commit/036a32e72d17853ce0e9d4ef57631c9d514dc7c2))
+* **Sidebar:** clamp width on resize ([fe075ea](https://github.com/Elonsoft/elonkit-react/commit/fe075eae1b2cc42fc2e650923b3e22e7f7b9c0a3))
+* **SidebarItem:** update chevron styles ([bc16aaa](https://github.com/Elonsoft/elonkit-react/commit/bc16aaa53aee4e6592383436fbc5f03d2074e62c))
+
 ## [0.6.0](https://github.com/Elonsoft/elonkit-react/compare/v0.5.0...v0.6.0) (2022-12-07)
 
 
