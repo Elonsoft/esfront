@@ -1,47 +1,21 @@
 # Contributing to Elonkit
 
-## Workflow
-
-This project uses Gitflow Workflow.
-
-### Feature branches
-
-Each new feature should reside in its own branch. But, instead of branching off of master, feature branches use
-`develop` as their parent branch. When a feature is complete, it gets merged back into develop. Features should never
-interact directly with master.
-
-```bash
-git checkout -b feature/branch-name
-```
-
-### Bugfix branches
-
-Similar to feature branches but, instead of introducing a new feature, they are used for bugfixes.
-
-```bash
-git checkout -b bugfix/branch-name
-```
-
 ## Development Guide
 
 ### Prerequisites
 
-Please have the latest stable versions of the following on your machine:
+Please have the following versions of the required tools on your machine:
 
 ```
-node
-yarn
+node ^16.0.0
+yarn ^1.22.0
 ```
 
 ### Development Workflow
 
 After cloning Elonkit, run `yarn install` to fetch its dependencies and then run `yarn husky` in order to install git
-hooks. Then, you can run several commands:
-
-- `yarn start` starts the storybook.
-- `yarn test` runs the complete test suite.
-- `yarn test:watch` runs an interactive test watcher.
-- `yarn lint` checks the code style.
+hooks. Make sure to run `yarn typedoc` before the first start - this will generate API documentation for the components
+and hooks. Then, you can run `yarn start` in order to start storybook.
 
 ### Components requirements
 
@@ -49,7 +23,6 @@ Follow this requirements when building new or updating existing components.
 
 - Add new components to `overrides.d.ts`.
 - Include a storybook demonstration.
-- Write unit tests with `react-testing-library`.
 - Document props in JSDoc format.
 - Include RU and EN localization if the component contains any text.
 - Use colors from the theme instead of hard coded colors.
@@ -59,8 +32,28 @@ Follow this requirements when building new or updating existing components.
 ### Coding style
 
 Please follow the coding style of the project. We use eslint, prettier and stylelint, so if possible, enable linting in
-your editor to get real-time feedback. When you submit a Pull Request, they are run again by our continuous integration
-tools.
+your editor to get real-time feedback.
+
+- `yarn lint` checks the code style.
+- `yarn prettier:check` checks the code formatting.
+- `yarn prettier:write` reformats the code.
+
+When you submit a Pull Request, they are run again by our continuous integration tools.
+
+## Branching
+
+Each new feature should reside in its own branch. Feature branches use `master` as their parent branch. When a feature
+is complete, it gets merged back into `master`.
+
+```bash
+git checkout -b feature/branch-name
+```
+
+Similar to feature branches but, instead of introducing a new feature, they are used for bugfixes.
+
+```bash
+git checkout -b bugfix/branch-name
+```
 
 ## Commit Message Guidelines
 
