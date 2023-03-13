@@ -207,6 +207,7 @@ export const createTypography = (theme: Theme) => {
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1)
     },
+    mini100,
     mini100Bold: {
       ...mini100,
       fontWeight: 700
