@@ -237,6 +237,15 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             active: theme.palette.error.A150
           })
         },
+        '&.MuiButton-textSuccess': {
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.success[300],
+            hover: theme.palette.success.A50,
+            focus: theme.palette.success.A200,
+            active: theme.palette.success.A150
+          })
+        },
         '&.MuiButton-textTertiary': {
           ...theme.mixins.button({
             background: 'transparent',
@@ -346,6 +355,17 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             active: theme.palette.error.A150
           })
         },
+        '&.MuiButton-outlinedSuccess': {
+          border: 0,
+
+          ...theme.mixins.button({
+            background: 'transparent',
+            color: theme.palette.success[300],
+            hover: theme.palette.success.A50,
+            focus: theme.palette.success.A200,
+            active: theme.palette.success.A150
+          })
+        },
         '&.MuiButton-outlinedMonoA': {
           border: 0,
 
@@ -449,6 +469,15 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
         '&.MuiButton-containedError': {
           ...theme.mixins.button({
             background: theme.palette.error[300],
+            color: theme.palette.monoB[500],
+            hover: theme.palette.monoB.A50,
+            focus: theme.palette.monoB.A200,
+            active: theme.palette.monoB.A150
+          })
+        },
+        '&.MuiButton-containedSuccess': {
+          ...theme.mixins.button({
+            background: theme.palette.success[300],
             color: theme.palette.monoB[500],
             hover: theme.palette.monoB.A50,
             focus: theme.palette.monoB.A200,

@@ -837,6 +837,7 @@ declare module '@mui/material/Button' {
 
   interface ButtonPropsColorOverrides {
     tertiary: true;
+    success: true;
     monoA: true;
     monoB: true;
     white: true;
