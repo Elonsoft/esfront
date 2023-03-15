@@ -9,8 +9,12 @@ const SFSButtonRoot = styled(Button)(({ theme }) => ({
         color: theme.palette.monoA.A600
       },
 
-    '& .MuiTypography-root, & .MuiSvgIcon-root': {
+    '& .MuiTypography-root': {
       color: theme.palette.monoA.A550
+    },
+
+    '& .MuiSvgIcon-root': {
+      color: theme.palette.monoA.A500
     }
   }
 }));

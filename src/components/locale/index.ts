@@ -5,7 +5,7 @@ import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
-import { SFSSearchProps, SFSSortingProps } from '../SFS';
+import { SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
 import { SwiperButtonProps } from '../Swiper';
 import { TableActionsProps, TableCellProps } from '../Table';
@@ -72,6 +72,9 @@ export interface Localization {
         | 'labelMultisortMobileOn'
         | 'labelMultisortMobileOff'
       >;
+    };
+    ESSFSFilters: {
+      defaultProps: Pick<SFSFiltersProps, 'labelButton' | 'labelHeader' | 'labelClose' | 'labelReset'>;
     };
     ESFormatSize: {
       defaultProps: Pick<FormatSizeProps, 'metricUnits' | 'binaryUnits'>;
@@ -181,6 +184,14 @@ export const en: Localization = {
         labelMultisortLMB: 'LMB',
         labelMultisortMobileOn: 'Multisort enabled',
         labelMultisortMobileOff: 'Hold to multisort'
+      }
+    },
+    ESSFSFilters: {
+      defaultProps: {
+        labelButton: 'Filters',
+        labelHeader: 'Filters',
+        labelClose: 'Close',
+        labelReset: 'Reset all filters'
       }
     },
     ESSwiperButton: {
@@ -295,6 +306,14 @@ export const ru: Localization = {
         labelMultisortLMB: 'ЛКМ',
         labelMultisortMobileOn: 'Мультисортировка включена',
         labelMultisortMobileOff: 'Удерживайте для мультисортировки'
+      }
+    },
+    ESSFSFilters: {
+      defaultProps: {
+        labelButton: 'Фильтры',
+        labelHeader: 'Фильтры',
+        labelClose: 'Закрыть',
+        labelReset: 'Сбросить все фильтры'
       }
     },
     ESSwiperButton: {
