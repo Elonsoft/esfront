@@ -29,7 +29,8 @@ const SFSRowRoot = styled('div', {
   display: 'flex',
 
   '& .MuiDivider-root': {
-    margin: '8px 2px'
+    margin: '8px 2px',
+    height: '16px'
   }
 }));
 

@@ -68,11 +68,12 @@ const SFSSortingMenuButton = styled(SFSButton, {
 })<{ ownerState: SFSSortingOwnerState }>(({ ownerState, theme }) => ({
   gap: '4px',
 
-  [`&:hover .${sfsSortingClasses.menuButtonBadge}, & .${sfsSortingClasses.menuButtonBadge}`]: {
-    '&.MuiTypography-root, & .MuiSvgIcon-root': {
-      color: `${theme.palette.black.A800}`
-    }
-  },
+  [`&:hover .${sfsSortingClasses.menuButtonBadge}, &:focus-visible .${sfsSortingClasses.menuButtonBadge},, & .${sfsSortingClasses.menuButtonBadge}`]:
+    {
+      '&.MuiTypography-root, & .MuiSvgIcon-root': {
+        color: `${theme.palette.black.A800}`
+      }
+    },
   [theme.breakpoints.up('tabletXS')]: {
     '& > .MuiSvgIcon-root': {
       display: ownerState.isWithValue && 'none'
@@ -109,6 +110,7 @@ const SFSSortingMenu = styled(Popover, {
     ...theme.scrollbars.overlay,
     marginTop: '4px',
     paddingBottom: '6px',
+    backgroundImage: 'none',
     backgroundColor: theme.palette.surface[400],
     boxShadow: theme.palette.shadow.down[600],
     userSelect: 'none',

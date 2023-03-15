@@ -88,6 +88,10 @@ import {
 } from './components/Pagination';
 import {
   SFSClassKey,
+  SFSFiltersClassKey,
+  SFSFiltersGroupClassKey,
+  SFSFiltersGroupProps,
+  SFSFiltersProps,
   SFSProps,
   SFSRowClassKey,
   SFSRowProps,
@@ -258,6 +262,8 @@ declare module '@mui/material/styles/props' {
     ESSFS: SFSProps;
     ESSFSSearch: SFSSearchProps;
     ESSFSSorting: SFSSortingProps;
+    ESSFSFilters: SFSFiltersProps;
+    ESSFSFiltersGroup: SFSFiltersGroupProps;
     ESSFSRow: SFSRowProps;
     ESSpinnerDashRing: SpinnerDashRingProps;
     ESSpinnerFadingBars: SpinnerFadingBarsProps;
@@ -327,6 +333,8 @@ declare module '@mui/material/styles/overrides' {
     ESSFS: SFSClassKey;
     ESSFSSearch: SFSSearchClassKey;
     ESSFSSorting: SFSSortingClassKey;
+    ESSFSFilters: SFSFiltersClassKey;
+    ESSFSFiltersGroup: SFSFiltersGroupClassKey;
     ESSFSRow: SFSRowClassKey;
     ESSpinnerDashRing: SpinnerDashRingClassKey;
     ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
@@ -508,6 +516,14 @@ declare module '@mui/material/styles/components' {
     ESSFSSorting?: {
       defaultProps?: ComponentsProps['ESSFSSorting'];
       styleOverrides?: ComponentsOverrides['ESSFSSorting'];
+    };
+    ESSFSFilters?: {
+      defaultProps?: ComponentsProps['ESSFSFilters'];
+      styleOverrides?: ComponentsOverrides['ESSFSFilters'];
+    };
+    ESSFSFiltersGroup?: {
+      defaultProps?: ComponentsProps['ESSFSFiltersGroup'];
+      styleOverrides?: ComponentsOverrides['ESSFSFiltersGroup'];
     };
     ESSFSRow?: {
       defaultProps?: ComponentsProps['ESSFSRow'];
