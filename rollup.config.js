@@ -1,34 +1,38 @@
 import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
 import external from 'rollup-plugin-peer-deps-external';
-import resolve from '@rollup/plugin-node-resolve';
+import progress from 'rollup-plugin-progress';
 import typescript from 'rollup-plugin-typescript2';
-
-import pkg from './package.json';
 
 export default {
   input: './src/index.ts',
   output: [
     {
-      file: pkg.main,
+      dir: 'lib/node',
       format: 'cjs',
       exports: 'named',
-      sourcemap: true
+      sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: 'src'
     },
     {
-      file: pkg.module,
+      dir: 'lib',
       format: 'es',
       exports: 'named',
-      sourcemap: true
+      sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: 'src'
     }
   ],
   plugins: [
     external(),
     resolve(),
-    typescript({ tsconfig: './tsconfig.lib.json' }),
+    typescript({ tsconfig: './tsconfig.lib.json', useTsconfigDeclarationDir: true }),
     commonjs(),
     copy({
       targets: [{ src: ['./src/overrides.d.ts'], dest: './lib/' }]
-    })
+    }),
+    progress()
   ]
 };
