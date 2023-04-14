@@ -245,7 +245,7 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
       BackdropComponent={DialogBackdrop}
       disableEscapeKeyDown={disableEscapeKeyDown}
       onClose={onClose}
-      open={open}
+      open={open || false}
       ref={ref}
       onClick={onDialogBackdropClick}
       {...other}
