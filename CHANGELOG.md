@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/Elonsoft/elonkit-react/compare/v0.6.1...v0.6.2) (2023-04-14)
+
+
+### Features
+
+* **Button:** add success color ([b7bbe83](https://github.com/Elonsoft/elonkit-react/commit/b7bbe83c31044fa2c3f650bdccbe7d548734b085))
+* **SFSFilters:** add new component ([6833ed2](https://github.com/Elonsoft/elonkit-react/commit/6833ed24f5afe1a581713e776a5f7c7a73bb1319))
+
+
+### Bug Fixes
+
+* add missing mini100 font ([e25b86e](https://github.com/Elonsoft/elonkit-react/commit/e25b86e092cb1e059b7b0342388941e46d94082d))
+
 ### [0.6.1](https://github.com/Elonsoft/elonkit-react/compare/v0.6.0...v0.6.1) (2023-03-01)
 
 
