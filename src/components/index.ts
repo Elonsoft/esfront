@@ -4,6 +4,7 @@ export * from './AvatarGroup';
 export * from './Breadcrumbs';
 export * from './DateAdapter';
 export * from './Dialog';
+export * from './DialogStack';
 export * from './Dropzone';
 export * from './EmptyState';
 export * from './FileIcon';

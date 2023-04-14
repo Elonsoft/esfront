@@ -54,6 +54,8 @@ export interface DialogProps {
   align?: 'flex-start' | 'center';
   /** Callback fired when the backdrop is clicked. */
   onBackdropClick?: ModalProps['onBackdropClick'];
+  /** If true, the backdrop is not rendered. */
+  hideBackdrop?: ModalProps['hideBackdrop'];
   /**
    * Callback fired when the component requests to be closed.
    *
@@ -64,7 +66,7 @@ export interface DialogProps {
   /**
    * If `true`, the component is shown.
    */
-  open: ModalProps['open'];
+  open?: ModalProps['open'];
   /** The component used for the transition. */
   TransitionComponent?: React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
   /** Props applied to the transition element. */
