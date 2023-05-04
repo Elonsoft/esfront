@@ -57,7 +57,7 @@ export const createFormControl: Component<'MuiFormControl'> = () => {
         '& .MuiInputLabel-outlined': {
           transform: 'translate(12px, 16px) scale(1)',
           '&.MuiInputLabel-shrink': {
-            transform: 'translate(12px, -9px) scale(0.75)'
+            transform: 'translate(12px, -8.5px) scale(0.75)'
           }
         }
       }

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars */
-
 import {
   BreakpointOverrides,
   Palette,
@@ -162,6 +161,7 @@ import {
   TableTextClassKey,
   TableTextProps
 } from './components/Table';
+import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { buttonMixin, listItemMixin } from './theming/mixins';
 
 export interface ISurfacePalette {
@@ -285,6 +285,7 @@ declare module '@mui/material/styles/props' {
     ESTableScrollable: TableScrollableProps;
     ESTableScrollbar: TableScrollbarProps;
     ESTableText: TableTextProps;
+    ESTextFieldGroup: TextFieldGroupProps;
   }
 }
 
@@ -356,6 +357,7 @@ declare module '@mui/material/styles/overrides' {
     ESTableScrollable: TableScrollableClassKey;
     ESTableScrollbar: TableScrollbarClassKey;
     ESTableText: TableTextClassKey;
+    ESTextFieldGroup: TextFieldGroupClassKey;
   }
 }
 
@@ -628,6 +630,10 @@ declare module '@mui/material/styles/components' {
     ESSidenavItem?: {
       defaultProps?: ComponentsProps['ESSidenavItem'];
       styleOverrides?: ComponentsOverrides['ESSidenavItem'];
+    };
+    ESTextFieldGroup?: {
+      defaultProps?: ComponentsProps['ESTextFieldGroup'];
+      styleOverrides?: ComponentsProps['ESTextFieldGroup'];
     };
   }
 }
