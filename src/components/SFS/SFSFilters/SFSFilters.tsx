@@ -153,7 +153,7 @@ const SFSFiltersResetButton = styled(Button, {
   name: 'ESSFSFilters',
   slot: 'ResetButton',
   overridesResolver: (_, styles) => styles.resetButton
-})();
+})({});
 
 export const SFSFilters = (inProps: SFSFiltersProps) => {
   const {
