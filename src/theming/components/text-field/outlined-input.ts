@@ -7,7 +7,8 @@ export const createOutlinedInput: Component<'MuiOutlinedInput'> = (theme, typogr
         color: theme.palette.monoA.A900,
         '&:hover .MuiOutlinedInput-notchedOutline': {
           borderWidth: '2px',
-          borderColor: theme.palette.monoA.A200
+          borderColor: theme.palette.monoA.A200,
+          top: '-4.5px'
         },
         '&.Mui-disabled': {
           color: theme.palette.monoA.A500,
@@ -20,11 +21,13 @@ export const createOutlinedInput: Component<'MuiOutlinedInput'> = (theme, typogr
           }
         },
         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.palette.primary[300]
+          borderColor: theme.palette.primary[300],
+          top: '-4.5px'
         },
         '&.Mui-error .MuiOutlinedInput-notchedOutline': {
           borderColor: theme.palette.error[300],
-          borderWidth: '2px'
+          borderWidth: '2px',
+          top: '-4.5px'
         }
       },
       input: {
