@@ -21,6 +21,8 @@ jobs:
         run: yarn run lint:stylelint
       - name: Check formatting
         run: yarn run prettier:check
+      - name: Check spelling
+        run: yarn run cspell
       - name: Test
         run: yarn run test
       - name: Build

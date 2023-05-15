@@ -94,7 +94,7 @@ const BreadcrumbsTooltip = styled(
   [`&[data-popper-placement*="left"] .${tooltipClasses.tooltip}`]: {
     marginLeft: '10px !important'
   },
-  [`&[data-popper-placement*="rigt"] .${tooltipClasses.tooltip}`]: {
+  [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
     marginRight: '10px !important'
   }
 }));

@@ -44,7 +44,7 @@ const MenuItemRoot = styled(MuiMenuItem, {
 }));
 
 /**
- * Wrapper aroud MenuItem from MUI with color prop.
+ * Wrapper around MenuItem from MUI with color prop.
  */
 export const MenuItem: OverridableComponent<MenuItemTypeMap> = (inProps: MenuItemProps) => {
   const { className, color, ...props } = useThemeProps({

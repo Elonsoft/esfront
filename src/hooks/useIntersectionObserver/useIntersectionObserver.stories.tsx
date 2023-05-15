@@ -8,11 +8,11 @@ import Typography from '@mui/material/Typography';
 import { useIntersectionObserver } from './useIntersectionObserver';
 
 export const Demo: Story = () => {
-  const [isIntersecting, setIntesecting] = useState(false);
+  const [isIntersecting, setIntersecting] = useState(false);
   const ref = useRef<HTMLElement | null>(null);
 
   useIntersectionObserver(ref, (entries) => {
-    setIntesecting(entries[0].isIntersecting);
+    setIntersecting(entries[0].isIntersecting);
   });
 
   return (

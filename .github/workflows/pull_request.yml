@@ -20,6 +20,8 @@ jobs:
         run: yarn run lint:stylelint
       - name: Check formatting
         run: yarn run prettier:check
+      - name: Check spelling
+        run: yarn run cspell
   test:
     name: Test
     runs-on: ubuntu-latest

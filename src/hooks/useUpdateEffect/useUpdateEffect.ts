@@ -1,7 +1,7 @@
 import { DependencyList, EffectCallback, useEffect, useRef } from 'react';
 
 /**
- * The hook that is simmilar to `useEffect` but ignores the first invocation.
+ * The hook that is similar to `useEffect` but ignores the first invocation.
  * @param effect Imperative function that can return a cleanup function.
  * @param deps If present, effect will only activate if the values in the list change.
  */

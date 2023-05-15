@@ -22,7 +22,7 @@ export const Demo: Story = () => {
       <details ref={ref}>
         <summary>Click here in order to change element&apos;s height.</summary>
         <div>
-          <code>ResizeObserver</code> is trigerred upon this text&apos;s visibility change.
+          <code>ResizeObserver</code> is triggered upon this text&apos;s visibility change.
         </div>
       </details>
     </Typography>

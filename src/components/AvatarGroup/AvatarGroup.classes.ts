@@ -5,9 +5,9 @@ export type AvatarGroupClasses = {
   root: string;
   /** Styles applied to the avatar elements. */
   avatar: string;
-  /** Styles applied to the root elemnt if direction="rtl". */
+  /** Styles applied to the root element if direction="rtl". */
   rtl: string;
-  /** Styles applied to the root elemnt if direction="ltr". */
+  /** Styles applied to the root element if direction="ltr". */
   ltr: string;
 };
 export type AvatarGroupClassKey = keyof AvatarGroupClasses;

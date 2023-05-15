@@ -5,7 +5,7 @@ import { DateAdapterProviderProps } from './DateAdapterProvider.types';
 import { DateAdapterContext } from './DateAdapter.context';
 
 /**
- * The provider for the date-engine that is used in variuos components.
+ * The provider for the date-engine that is used in various components.
  */
 export const DateAdapterProvider = ({ children, adapter, formats, locale }: DateAdapterProviderProps) => {
   const value = useMemo(() => {

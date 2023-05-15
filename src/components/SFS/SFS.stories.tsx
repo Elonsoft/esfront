@@ -13,7 +13,7 @@ const sortingOptionsRu = [
   { label: 'Кол-во квартир', value: 'byCount' },
   { label: 'Площадь', value: 'bySquare' },
   { label: 'Срок сдачи', value: 'byRent' },
-  { label: 'Старт продаж', value: 'bySaledStart' },
+  { label: 'Старт продаж', value: 'bySalesStart' },
   { label: 'Дата создания', value: 'byCreationDate' },
   { label: 'Новизна', value: 'byNewest' }
 ];
@@ -22,7 +22,7 @@ const sortingOptionsEn = [
   { label: 'Number of apartments', value: 'byCount' },
   { label: 'Square', value: 'bySquare' },
   { label: 'Deadline', value: 'byRent' },
-  { label: 'Start of sales', value: 'bySaledStart' },
+  { label: 'Start of sales', value: 'bySalesStart' },
   { label: 'Date of creation', value: 'byCreationDate' },
   { label: 'Novelty', value: 'byNewest' }
 ];

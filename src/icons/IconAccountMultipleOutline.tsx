@@ -1,6 +1,6 @@
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
-export const IconAccountMultipeOutline = (props: SvgIconProps) => {
+export const IconAccountMultipleOutline = (props: SvgIconProps) => {
   return (
     <SvgIcon {...props} width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path

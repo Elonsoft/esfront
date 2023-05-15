@@ -4,7 +4,7 @@ import { useLatest } from '../useLatest';
 import { useResizeObserver } from '../useResizeObserver';
 
 /**
- * The hook that mimics postion sticky via transform.
+ * The hook that mimics position sticky via transform.
  * @param ref The ref of the elements.
  * @param options The options object.
  * @param options.top The top offset.

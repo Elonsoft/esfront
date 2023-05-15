@@ -12,8 +12,8 @@ export interface SidebarScrollableProps {
   className?: string;
   /** The system prop that allows defining system overrides as well as additional CSS styles. */
   sx?: SxProps<Theme>;
-  /** Сontent before scrollbar. */
+  /** Content before scrollbar. */
   beforeScroll?: ReactNode;
-  /** Сontent after scrollbar. */
+  /** Content after scrollbar. */
   afterScroll?: ReactNode;
 }

@@ -9,7 +9,7 @@ export interface SwiperPaginationProps {
   classes?: Partial<SwiperPaginationClasses>;
   /** The system prop that allows defining system overrides as well as additional CSS styles. */
   sx?: SxProps<Theme>;
-  /** The pagination postion. */
+  /** The pagination position. */
   position?: 'start' | 'end';
   /** The pagination variant. */
   variant?: 'small' | 'long' | 'big';

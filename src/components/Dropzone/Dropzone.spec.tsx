@@ -6,8 +6,8 @@ import { IconUpload } from '../../icons';
 
 const TEXT_HEADING = 'HEADING';
 const TEXT_SUBHEADING = 'SUBHEADING';
-const TEXT_DRAGHEADING = 'DRAGHEADING';
-const TEXT_DRAGSUBHEADING = 'DRAGSUBHEADING';
+const TEXT_DRAG_HEADING = 'DRAG_HEADING';
+const TEXT_DRAG_SUBHEADING = 'DRAG_SUBHEADING';
 const TEXT_HELPER = 'HELPER';
 
 const FILE_FIXTURE_1 = {
@@ -49,8 +49,8 @@ describe('Dropzone', () => {
         icon={<IconUpload />}
         heading={TEXT_HEADING}
         subheading={TEXT_SUBHEADING}
-        dragHeading={TEXT_DRAGHEADING}
-        dragSubheading={TEXT_DRAGSUBHEADING}
+        dragHeading={TEXT_DRAG_HEADING}
+        dragSubheading={TEXT_DRAG_SUBHEADING}
         onChange={() => null}
         onReject={() => null}
       />
@@ -58,8 +58,8 @@ describe('Dropzone', () => {
     expect(screen.queryByText(TEXT_HEADING)).toBeInTheDocument();
     expect(screen.queryByText(TEXT_SUBHEADING)).toBeInTheDocument();
     fireEvent.dragEnter(document);
-    expect(screen.queryByText(TEXT_DRAGHEADING)).toBeInTheDocument();
-    expect(screen.queryByText(TEXT_DRAGSUBHEADING)).toBeInTheDocument();
+    expect(screen.queryByText(TEXT_DRAG_HEADING)).toBeInTheDocument();
+    expect(screen.queryByText(TEXT_DRAG_SUBHEADING)).toBeInTheDocument();
     fireEvent.dragLeave(document);
     expect(screen.queryByText(TEXT_HEADING)).toBeInTheDocument();
     expect(screen.queryByText(TEXT_SUBHEADING)).toBeInTheDocument();

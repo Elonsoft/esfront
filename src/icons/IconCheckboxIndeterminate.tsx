@@ -1,7 +1,7 @@
 import { useTheme } from '@mui/material/styles';
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
-export const IconCheckboxIndetereminate = (props: SvgIconProps) => {
+export const IconCheckboxIndeterminate = (props: SvgIconProps) => {
   const theme = useTheme();
   return (
     <SvgIcon
