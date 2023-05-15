@@ -1,6 +1,6 @@
 import { ThemeOptions } from './ThemeProvider.types';
 
-import { alpha as gerenateAlpha, createTheme as createMUITheme, Palette, PaletteOptions } from '@mui/material/styles';
+import { alpha as generateAlpha, createTheme as createMUITheme, Palette, PaletteOptions } from '@mui/material/styles';
 import { enUS } from '@mui/material/locale';
 
 import { en } from '../../components/locale';
@@ -26,7 +26,7 @@ const createPalette = ({
       const paletteWithAlpha: Record<string, string> = {};
 
       for (const a in alpha) {
-        paletteWithAlpha[a] = gerenateAlpha((palette as any)[p][(palette as any)[p].alpha], (alpha as any)[a]);
+        paletteWithAlpha[a] = generateAlpha((palette as any)[p][(palette as any)[p].alpha], (alpha as any)[a]);
       }
 
       (palette as any)[p] = { ...paletteWithAlpha, ...(palette as any)[p] };

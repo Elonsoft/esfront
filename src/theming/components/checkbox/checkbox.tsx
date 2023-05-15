@@ -1,6 +1,6 @@
 import { keyframes } from '@mui/system';
 
-import { IconCheckbox, IconCheckboxIndetereminate } from '../../../icons';
+import { IconCheckbox, IconCheckboxIndeterminate } from '../../../icons';
 import { Component } from '../component';
 
 const enterKeyframe = keyframes`
@@ -20,7 +20,7 @@ export const createCheckbox: Component<'MuiCheckbox'> = (theme) => {
       size: 'small',
       icon: <IconCheckbox />,
       checkedIcon: <IconCheckbox />,
-      indeterminateIcon: <IconCheckboxIndetereminate />
+      indeterminateIcon: <IconCheckboxIndeterminate />
     },
     styleOverrides: {
       root: {

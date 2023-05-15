@@ -382,14 +382,15 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
     onSortChange(newValues);
   };
 
-  const onHadleSort = (value: string) => (e?: React.MouseEvent<HTMLLIElement> | React.KeyboardEvent<HTMLLIElement>) => {
-    const isMultipleSort = props.multiple && (isMultiple || e?.metaKey || e?.ctrlKey);
+  const onHandleSort =
+    (value: string) => (e?: React.MouseEvent<HTMLLIElement> | React.KeyboardEvent<HTMLLIElement>) => {
+      const isMultipleSort = props.multiple && (isMultiple || e?.metaKey || e?.ctrlKey);
 
-    isMultipleSort
-      ? toggleMultiSort(value)
-      : onSortChange(values[sortMap[value].i] ? [] : [{ value, direction: 'asc' }]);
-    setFocusOnLastPressedElement(sortMap[value].label, e as React.KeyboardEvent<HTMLLIElement>);
-  };
+      isMultipleSort
+        ? toggleMultiSort(value)
+        : onSortChange(values[sortMap[value].i] ? [] : [{ value, direction: 'asc' }]);
+      setFocusOnLastPressedElement(sortMap[value].label, e as React.KeyboardEvent<HTMLLIElement>);
+    };
 
   const onChangeSortDirection = (value: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -436,7 +437,7 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
       key={item.value}
       className={classes.menuItem}
       disableTouchRipple={isMultiple}
-      onClick={onHadleSort(item.value)}
+      onClick={onHandleSort(item.value)}
       onKeyDown={onKeyDownControl}
       selected={!!item.direction}
     >

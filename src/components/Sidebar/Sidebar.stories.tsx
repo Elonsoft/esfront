@@ -106,7 +106,7 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
             />
             <SidebarItem
               icon={<IconCalendarMonth />}
-              text={locale === 'en' ? 'Schedule' : 'Раписание'}
+              text={locale === 'en' ? 'Schedule' : 'Расписание'}
               onClick={() => console.log(`Schedule`)}
             />
             <SidebarItem

@@ -3,7 +3,7 @@ import { TableActions } from './TableActions';
 import { render, screen } from '../../../testing';
 import { en } from '../../locale';
 
-describe('TabelActions', () => {
+describe('TableActions', () => {
   it('Should display the number of selected rows', async () => {
     const LABEL = en.components.ESTableActions.defaultProps.label;
     const COUNT = 10;
@@ -11,7 +11,7 @@ describe('TabelActions', () => {
     expect(screen.queryByText(`${LABEL} ${COUNT}`)).toBeInTheDocument();
   });
 
-  it('Should render childred', async () => {
+  it('Should render children', async () => {
     render(
       <TableActions>
         <button>close</button>

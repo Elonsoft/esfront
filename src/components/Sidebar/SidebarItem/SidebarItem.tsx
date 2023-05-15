@@ -48,7 +48,7 @@ const useUtilityClasses = (ownerState: SidebarItemOwnerState) => {
     text: ['text'],
     icon: ['icon'],
     nestedMenu: ['nestedMenu'],
-    container: ['icontainer'],
+    container: ['container'],
     secondaryAction: ['secondaryAction']
   };
 

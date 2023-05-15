@@ -23,6 +23,6 @@ export interface SFSSearchProps {
   placeholder?: string;
   /** The icon placed in clear button. */
   iconClear?: ReactNode;
-  /** The icon placed in before seraching input. */
+  /** The icon placed in before the search input. */
   iconSearch?: ReactNode;
 }

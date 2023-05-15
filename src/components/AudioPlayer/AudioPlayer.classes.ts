@@ -9,9 +9,9 @@ export type AudioPlayerClasses = {
   current: string;
   /** Styles applied to the time tooltip. */
   currentTooltip: string;
-  /** Styles applied to the time tooltip if audioplayer is playing. */
+  /** Styles applied to the time tooltip if audio player is playing. */
   currentTooltipPlaying: string;
-  /** Styles applied to the time tooltip if audioplayer is paused. */
+  /** Styles applied to the time tooltip if audio player is paused. */
   currentTooltipPaused: string;
   /** Styles applied to the time tooltip if mouse is over time slider track. */
   currentTooltipOverTrack: string;
@@ -19,9 +19,9 @@ export type AudioPlayerClasses = {
   currentTooltipOverThumb: string;
   /** Styles applied to the time slider. */
   currentSlider: string;
-  /** Styles applied to the time slider if audioplayer is playing. */
+  /** Styles applied to the time slider if audio player is playing. */
   currentSliderPlaying: string;
-  /** Styles applied to the time slider if audioplayer is paused. */
+  /** Styles applied to the time slider if audio player is paused. */
   currentSliderPaused: string;
   /** Styles applied to the current time element. */
   time: string;

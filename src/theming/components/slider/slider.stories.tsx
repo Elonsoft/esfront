@@ -13,14 +13,14 @@ export const Demo: Story = ({ height, ...args }) => {
     setValue(newValue as number[]);
   };
 
-  const styleHorizonatal = { height: `${height}px` };
+  const styleHorizontal = { height: `${height}px` };
   const styleVertical = { height: '100%', width: `${height}px` };
 
   return (
     <div style={{ display: 'grid', gap: '24px', gridAutoFlow: 'row', maxWidth: '400px', paddingTop: '16px' }}>
-      <Slider min={0} max={100} style={styleHorizonatal} {...args} />
-      <Slider min={0} max={50} step={null} marks={MARKS} style={styleHorizonatal} {...args} />
-      <Slider min={0} max={100} value={value} onChange={onChange} style={styleHorizonatal} {...args} />
+      <Slider min={0} max={100} style={styleHorizontal} {...args} />
+      <Slider min={0} max={50} step={null} marks={MARKS} style={styleHorizontal} {...args} />
+      <Slider min={0} max={100} value={value} onChange={onChange} style={styleHorizontal} {...args} />
       <div
         style={{ display: 'grid', gap: '24px', gridAutoFlow: 'column', justifyContent: 'flex-start', height: '150px' }}
       >

@@ -135,7 +135,7 @@ const BreadcrumbContent = styled(Button, {
   }
 })) as typeof Button;
 
-const BreadcrumbSeperator = styled('div', {
+const BreadcrumbSeparator = styled('div', {
   name: 'ESBreadcrumb',
   slot: 'Separator',
   overridesResolver: (props, styles) => styles.separator
@@ -210,7 +210,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
             </div>
 
             {!!position && <meta itemProp="position" content={position} />}
-            <BreadcrumbSeperator className={clsx(classes.separator)}>{separator}</BreadcrumbSeperator>
+            <BreadcrumbSeparator className={clsx(classes.separator)}>{separator}</BreadcrumbSeparator>
           </BreadcrumbRoot>
         )}
       </BreadcrumbTooltip>
