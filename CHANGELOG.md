@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.3](https://github.com/Elonsoft/elonkit-react/compare/v0.6.2...v0.6.3) (2023-05-19)
+
+
+### Features
+
+* **DialogStack:** add new component ([87b7ca8](https://github.com/Elonsoft/elonkit-react/commit/87b7ca8916541c1b088e5f8d31ca27fcdf993c24))
+* **TextFieldGroup:** add new component ([a846f0a](https://github.com/Elonsoft/elonkit-react/commit/a846f0a8aa3f5013a248aad6ebf1f79b103a344c))
+
+
+### Bug Fixes
+
+* **SFSFilters:** add missing styled arg ([34a77c1](https://github.com/Elonsoft/elonkit-react/commit/34a77c1cc3bb272ef0ac359b7f0fb73d805a8922))
+
 ### [0.6.2](https://github.com/Elonsoft/elonkit-react/compare/v0.6.1...v0.6.2) (2023-04-14)
 
 
