@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/Elonsoft/elonkit-react/compare/v0.6.3...v0.6.4) (2023-05-22)
+
+
+### Bug Fixes
+
+* **TextFieldGroup:** fix styleOverrides typing ([3123f73](https://github.com/Elonsoft/elonkit-react/commit/3123f73fa58a51b0731736fbd9ab13edbf7a3dfd))
+
 ### [0.6.3](https://github.com/Elonsoft/elonkit-react/compare/v0.6.2...v0.6.3) (2023-05-19)
 
 
