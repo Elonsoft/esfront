@@ -3,6 +3,7 @@ import { AudioPlayerProps } from '../AudioPlayer';
 import { AutocompleteMenuProps } from '../AutocompleteMenu';
 import { BreadcrumbsProps } from '../Breadcrumbs';
 import { CalendarHeadProps } from '../Calendar';
+import { ChipsProps } from '../Chips';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
@@ -48,6 +49,9 @@ export interface Localization {
     };
     ESCalendarHead: {
       defaultProps: Pick<CalendarHeadProps, 'getWeekDays'>;
+    };
+    ESChips: {
+      defaultProps: Pick<ChipsProps, 'labelHide' | 'labelShow'>;
     };
     ESDialogArrow: {
       defaultProps: Pick<DialogArrowProps, 'labelPrev' | 'labelNext'>;
@@ -165,6 +169,12 @@ export const en: Localization = {
     ESCalendarHead: {
       defaultProps: {
         getWeekDays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+      },
+    },
+    ESChips: {
+      defaultProps: {
+        labelHide: 'Hide',
+        labelShow: 'More',
       },
     },
     ESDialogArrow: {
@@ -340,6 +350,12 @@ export const ru: Localization = {
     ESCalendarHead: {
       defaultProps: {
         getWeekDays: () => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+      },
+    },
+    ESChips: {
+      defaultProps: {
+        labelHide: 'Скрыть',
+        labelShow: 'Ещё',
       },
     },
     ESDialogArrow: {

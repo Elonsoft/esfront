@@ -74,7 +74,7 @@ export const ChipRoot = styled('div', {
 })(({ theme }) => ({
   alignItems: 'center',
   border: 0,
-  borderRadius: '100px',
+  borderRadius: '1000px',
   boxSizing: 'border-box',
   color: theme.vars.palette.monoA.A400,
   cursor: 'default',
