@@ -633,7 +633,7 @@ declare module '@mui/material/styles/components' {
     };
     ESTextFieldGroup?: {
       defaultProps?: ComponentsProps['ESTextFieldGroup'];
-      styleOverrides?: ComponentsProps['ESTextFieldGroup'];
+      styleOverrides?: ComponentsOverrides['ESTextFieldGroup'];
     };
   }
 }
