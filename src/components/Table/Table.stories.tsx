@@ -17,26 +17,27 @@ import { TableScrollable } from './TableScrollable';
 import { TableScrollbar } from './TableScrollbar';
 import { TableText } from './TableText';
 import { useTableResize } from './useTableResize';
+import { useTableSelection } from './useTableSelection';
 
 import { IconCloseW600, IconDotsVerticalW500, IconPencilW500 } from '../../icons';
 import { Pagination, PaginationPages, PaginationRange } from '../Pagination';
 
-const DATA: Array<{
-  en: {
+const DATA: {
+  en: Array<{
     id: number;
     name: string;
     age: number;
     status: string;
     city: string;
-  };
-  ru: {
+  }>;
+  ru: Array<{
     id: number;
     name: string;
     age: number;
     status: string;
     city: string;
-  };
-}> = [];
+  }>;
+} = { en: [], ru: [] };
 
 const NAMES = {
   en: {
@@ -56,21 +57,20 @@ const NAMES = {
 };
 
 for (let i = 0; i < 50; i++) {
-  DATA.push({
-    en: {
-      id: i + 1,
-      name: 'John Doe',
-      age: 25,
-      status: 'Active',
-      city: 'New York City'
-    },
-    ru: {
-      id: i + 1,
-      name: 'Иванов Иван Иванович',
-      age: 25,
-      status: 'Активен',
-      city: 'Иваново'
-    }
+  DATA.en.push({
+    id: i + 1,
+    name: 'John Doe',
+    age: 25,
+    status: 'Active',
+    city: 'New York City'
+  });
+
+  DATA.ru.push({
+    id: i + 1,
+    name: 'Иванов Иван Иванович',
+    age: 25,
+    status: 'Активен',
+    city: 'Иваново'
   });
 }
 
@@ -80,7 +80,7 @@ export const Demo: Story = (args, context) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const rowRef = useRef<HTMLDivElement | null>(null);
 
-  const [fields] = useState<Array<keyof typeof DATA[0]['en']>>(['id', 'name', 'age', 'status', 'city']);
+  const [fields] = useState<Array<keyof typeof DATA['en'][0]>>(['id', 'name', 'age', 'status', 'city']);
   const [columns, setColumns] = useState([
     '56px',
     'minmax(50px, 1fr)',
@@ -93,26 +93,9 @@ export const Demo: Story = (args, context) => {
 
   const { onResize, onResizeCommit } = useTableResize(ref, rowRef, columns, setColumns);
 
-  const [selected, setSelected] = useState<number[]>([]);
-
-  const onSelectAll = () => {
-    if (selected.length === DATA.length) {
-      setSelected([]);
-    } else {
-      setSelected(DATA.map((row) => row[locale].id));
-    }
-  };
-
-  const onSelect = (id: number) => () => {
-    const index = selected.indexOf(id);
-    if (index === -1) {
-      setSelected(selected.concat(id));
-    } else {
-      const newSelected = selected.slice();
-      newSelected.splice(index, 1);
-      setSelected(newSelected);
-    }
-  };
+  const { selected, setSelected, isAllSelected, isSomeSelected, toggle, toggleAll } = useTableSelection(DATA[locale], {
+    key: 'id'
+  });
 
   const onClose = () => {
     setSelected([]);
@@ -125,11 +108,11 @@ export const Demo: Story = (args, context) => {
           <TableRow>
             <TableCell padding="checkbox">
               <Checkbox
-                checked={selected.length > 0 && selected.length === DATA.length}
+                checked={isAllSelected}
                 color="secondary"
-                indeterminate={selected.length > 0 && selected.length < DATA.length}
-                inputProps={{ 'aria-label': selected.length === DATA.length ? 'Unselect all' : 'Select all' }}
-                onChange={onSelectAll}
+                indeterminate={isSomeSelected}
+                inputProps={{ 'aria-label': isAllSelected ? 'Unselect all' : 'Select all' }}
+                onChange={() => toggleAll()}
               />
             </TableCell>
             <TableCell colSpan={3} onResize={onResize(1, 3)} onResizeCommit={onResizeCommit(1, 3)}>
@@ -156,23 +139,23 @@ export const Demo: Story = (args, context) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {DATA.map((row) => {
-            const isSelected = selected.indexOf(row[locale].id) !== -1;
-            const labelId = `story-usage-checkbox-${row[locale].id}`;
+          {DATA[locale].map((row) => {
+            const isSelected = selected.indexOf(row.id) !== -1;
+            const labelId = `story-usage-checkbox-${row.id}`;
 
             return (
-              <TableRow key={row[locale].id} hover component="button" selected={isSelected}>
+              <TableRow key={row.id} hover component="button" selected={isSelected}>
                 <TableCell overlap padding="checkbox">
                   <Checkbox
                     checked={isSelected}
                     color="secondary"
                     inputProps={{ 'aria-labelledby': labelId }}
-                    onChange={onSelect(row[locale].id)}
+                    onChange={() => toggle(row.id)}
                   />
                 </TableCell>
                 {fields.map((field) => (
                   <TableCell key={field} id={field === 'name' ? labelId : undefined}>
-                    <TableText>{row[locale][field]}</TableText>
+                    <TableText>{row[field]}</TableText>
                   </TableCell>
                 ))}
                 <TableCell overlap align="flex-end">
