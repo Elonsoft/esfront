@@ -12,3 +12,4 @@ export * from './TableScrollable';
 export * from './TableScrollbar';
 export * from './TableText';
 export { useTableResize } from './useTableResize';
+export { useTableSelection } from './useTableSelection';
