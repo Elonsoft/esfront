@@ -5,6 +5,7 @@ import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
+import { PasswordFieldProps } from '../PasswordField';
 import { SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
 import { SwiperButtonProps } from '../Swiper';
@@ -48,6 +49,9 @@ export interface Localization {
     };
     ESPaginationRange: {
       defaultProps: Pick<PaginationRangeProps, 'labelItemsPerPage' | 'labelOf'>;
+    };
+    ESPasswordField: {
+      defaultProps: Pick<PasswordFieldProps, 'labelHidePassword' | 'labelShowPassword'>;
     };
     ESSidebarToggle: {
       defaultProps: Pick<SidebarToggleProps, 'labelOpen' | 'labelHide'>;
@@ -151,6 +155,12 @@ export const en: Localization = {
       defaultProps: {
         labelItemsPerPage: 'Per:',
         labelOf: 'of'
+      }
+    },
+    ESPasswordField: {
+      defaultProps: {
+        labelHidePassword: 'Hide password',
+        labelShowPassword: 'Show password'
       }
     },
     ESSidebarToggle: {
@@ -273,6 +283,12 @@ export const ru: Localization = {
       defaultProps: {
         labelItemsPerPage: 'По:',
         labelOf: 'из'
+      }
+    },
+    ESPasswordField: {
+      defaultProps: {
+        labelHidePassword: 'Скрыть пароль',
+        labelShowPassword: 'Показать пароль'
       }
     },
     ESSidebarToggle: {
