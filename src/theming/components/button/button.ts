@@ -60,7 +60,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             marginLeft: 2,
             marginRight: -2
           },
-          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
             margin: '0 -4px'
           }
         },
@@ -78,7 +78,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             marginLeft: 2,
             marginRight: -2
           },
-          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
             margin: '0 -4px'
           }
         },
@@ -96,7 +96,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             marginLeft: 2,
             marginRight: -2
           },
-          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
             margin: '0 -4px'
           }
         },
@@ -111,7 +111,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             marginLeft: 4,
             marginRight: -4
           },
-          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
             margin: '0 -8px'
           },
           '&.MuiButton-text': {
@@ -122,7 +122,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             '& .MuiButton-endIcon': {
               marginRight: -4
             },
-            '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+            '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
               margin: -4
             }
           }
@@ -138,7 +138,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             marginLeft: 8,
             marginRight: -4
           },
-          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
             margin: '0 -8px'
           },
           '&.MuiButton-text': {
@@ -149,7 +149,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             '& .MuiButton-endIcon': {
               marginRight: 0
             },
-            '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+            '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
               margin: 0
             }
           }
@@ -165,7 +165,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             marginLeft: 8,
             marginRight: -4
           },
-          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
             margin: '0 -4px'
           },
           '&.MuiButton-text': {
@@ -176,7 +176,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             '& .MuiButton-endIcon': {
               marginRight: 0
             },
-            '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+            '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
               margin: '0 4px'
             }
           }
@@ -192,7 +192,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             marginLeft: 8,
             marginRight: -4
           },
-          '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+          '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
             margin: '0 -4px'
           },
           '&.MuiButton-text': {
@@ -203,7 +203,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
             '& .MuiButton-endIcon': {
               marginRight: 0
             },
-            '& > .MuiIcon-root, & > .MuiSvgIcon-root': {
+            '& > .MuiIcon-root, & > .MuiSvgIcon-root, & > .ESSvgIcon-root': {
               margin: '0 4px'
             }
           }

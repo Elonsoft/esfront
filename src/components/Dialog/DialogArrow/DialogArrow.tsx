@@ -8,7 +8,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import Button, { buttonClasses } from '@mui/material/Button';
 
-import { IconArrowLeft, IconArrowRight } from '../../../icons';
+import { IconArrowLeftW500, IconArrowRightW500 } from '../../../icons';
 
 type DialogArrowOwnerState = {
   classes?: DialogArrowProps['classes'];
@@ -85,8 +85,8 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
     onClick,
     labelPrev,
     labelNext,
-    iconPrev = <IconArrowLeft />,
-    iconNext = <IconArrowRight />,
+    iconPrev = <IconArrowLeftW500 />,
+    iconNext = <IconArrowRightW500 />,
     ...props
   } = useThemeProps({
     props: inProps,

@@ -8,11 +8,11 @@ import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
-import { svgIconClasses } from '@mui/material';
 import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
-import { IconChevronLeftMedium } from '../../../icons';
+import { IconChevronLeftW300 } from '../../../icons';
+import { svgIconClasses } from '../../SvgIcon';
 import { useSidebarContext } from '../Sidebar.context';
 import { SidebarDivider } from '../SidebarDivider';
 
@@ -105,7 +105,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
     className,
     sx,
     open,
-    icon = <IconChevronLeftMedium />,
+    icon = <IconChevronLeftW300 container containerSize="20px" />,
     labelOpen,
     labelHide,
     onClick,

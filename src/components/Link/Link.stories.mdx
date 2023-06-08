@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 
 import { Link } from '.';
 
-import { IconCheckSmall, IconOpenInNew } from '../../icons';
+import { IconBookmark } from '../../icons';
 
 <Meta
   title="Components/Link"
@@ -98,7 +98,13 @@ export const getLinkIcon = (args, context) => {
         <Link {...args} component="a" href="https://google.com" target="_blank" color="secondary.300">
           {getLinkColor(args, context)}
         </Link>
-        <Link {...args} component="a" href="https://google.com" target="_blank" endIcon={<IconOpenInNew />}>
+        <Link
+          {...args}
+          component="a"
+          href="https://google.com"
+          target="_blank"
+          endIcon={<IconBookmark container containerSize="20px" />}
+        >
           {getLinkIcon(args, context)}
         </Link>
       </Typography>
@@ -115,7 +121,7 @@ Links are aligned within the text.
     {() => (
       <Typography component="div" variant="body100">
         Lorem ipsum dolor sit amet,{' '}
-        <Link component="a" href="#" target="_blank" endIcon={<IconOpenInNew />}>
+        <Link component="a" href="#" target="_blank" endIcon={<IconBookmark container containerSize="20px" />}>
           consectetur
         </Link>{' '}
         adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -124,7 +130,7 @@ Links are aligned within the text.
           reprehenderit
         </Link>{' '}
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat{' '}
-        <Link component="button" disabled variant="body100" startIcon={<IconCheckSmall />}>
+        <Link component="button" disabled variant="body100" startIcon={<IconBookmark container containerSize="20px" />}>
           non proident
         </Link>
         , sunt in culpa qui officia deserunt mollit anim id est laborum.

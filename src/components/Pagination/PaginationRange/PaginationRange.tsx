@@ -13,7 +13,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
-import { IconTriangleArrowDown } from '../../../icons';
+import { IconMenuDownW300 } from '../../../icons';
 import { usePaginationContext } from '../Pagination.context';
 
 type PaginationRangeOwnerState = {
@@ -92,7 +92,7 @@ export const PaginationRange = (inProps: PaginationRangeProps) => {
     options = OPTIONS,
     labelItemsPerPage,
     labelOf,
-    iconItemsPerPage = <IconTriangleArrowDown />,
+    iconItemsPerPage = <IconMenuDownW300 container containerSize="16px" />,
     ...props
   } = useThemeProps({
     props: inProps,

@@ -6,7 +6,7 @@ import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import { useSwiperContext } from './Swiper.context';
 import { Swiper, SwiperPagination } from '.';
 
-import { IconChevronLeft, IconChevronRight } from '../../icons';
+import { IconChevronLeftW400, IconChevronRightW400 } from '../../icons';
 
 const Image = (props: { src: string; width?: string }) => {
   return (
@@ -127,7 +127,7 @@ const CustomizationButtonPrev = () => {
 
   return (
     <CustomizationButton prev onClick={onClick}>
-      <IconChevronLeft />
+      <IconChevronLeftW400 />
     </CustomizationButton>
   );
 };
@@ -141,7 +141,7 @@ const CustomizationButtonNext = () => {
 
   return (
     <CustomizationButton next onClick={onClick}>
-      <IconChevronRight />
+      <IconChevronRightW400 />
     </CustomizationButton>
   );
 };

@@ -7,12 +7,13 @@ import { breadcrumbClasses, getBreadcrumbUtilityClass } from './Breadcrumb.class
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { buttonBaseClasses, svgIconClasses, tooltipClasses } from '@mui/material';
+import { buttonBaseClasses, tooltipClasses } from '@mui/material';
 import Button from '@mui/material/Button';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 
-import { IconChevronRightSeparator } from '../../../icons';
+import { IconBreadcrumbArrowRight } from '../../../icons';
+import { svgIconClasses } from '../../SvgIcon';
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../TooltipEllipsis';
 
 type BreadcrumbOwnerState = {
@@ -156,7 +157,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
     className,
     sx,
     style,
-    separator = <IconChevronRightSeparator />,
+    separator = <IconBreadcrumbArrowRight container containerWidth="16px" />,
     disabled,
     position,
     shouldFirstShrink,

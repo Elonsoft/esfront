@@ -6,10 +6,11 @@ import { getAlertCloseUtilityClass } from './AlertClose.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { svgIconClasses, touchRippleClasses } from '@mui/material';
+import { touchRippleClasses } from '@mui/material';
 import Button, { buttonClasses } from '@mui/material/Button';
 
-import { IconClose } from '../../../icons';
+import { IconCloseW500 } from '../../../icons';
+import { svgIconClasses } from '../../SvgIcon';
 
 type AlertCloseOwnerState = {
   classes?: AlertCloseProps['classes'];
@@ -46,7 +47,7 @@ export const AlertClose = (inProps: AlertCloseProps) => {
     className,
     sx,
     label,
-    icon = IconClose,
+    icon = IconCloseW500,
     onClick,
     ...props
   } = useThemeProps({

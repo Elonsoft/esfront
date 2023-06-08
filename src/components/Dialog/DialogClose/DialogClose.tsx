@@ -8,7 +8,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
-import { IconClose } from '../../../icons';
+import { IconCloseW600 } from '../../../icons';
 
 type DialogCloseOwnerState = {
   classes?: DialogCloseProps['classes'];
@@ -81,7 +81,7 @@ export const DialogClose = (inProps: DialogCloseProps) => {
     sx,
     onClick,
     label,
-    icon = <IconClose />,
+    icon = <IconCloseW600 />,
     ...props
   } = useThemeProps({
     props: inProps,

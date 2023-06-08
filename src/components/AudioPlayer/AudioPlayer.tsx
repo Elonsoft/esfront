@@ -23,13 +23,13 @@ import { useAudioPlayerContext } from './AudioPlayer.context';
 
 import { useLatest, useWindowEventListener } from '../../hooks';
 import {
-  IconArrowLeft,
-  IconCheck,
-  IconChevronRight,
-  IconDotsVerticalMediumBold,
-  IconDownloadOutline,
-  IconPauseMedium,
-  IconPlayMedium,
+  IconArrowLeftW500,
+  IconCheckW400,
+  IconChevronRightW400,
+  IconDotsVerticalW400,
+  IconDownloadW400,
+  IconPauseW400,
+  IconPlayW400,
   IconSpeedometer,
   IconVolumeHigh,
   IconVolumeLow,
@@ -336,6 +336,7 @@ const AudioPlayerRateCheck = styled('div', {
   slot: 'RateCheck',
   overridesResolver: (props, styles) => styles.rateCheck
 })(({ theme }) => ({
+  display: 'flex',
   color: theme.palette.monoB[500]
 }));
 
@@ -454,14 +455,14 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     labelCurrent,
     labelVolume,
 
-    iconBack = <IconArrowLeft />,
-    iconDownload = <IconDownloadOutline />,
-    iconOptions = <IconDotsVerticalMediumBold />,
-    iconPause = <IconPauseMedium />,
-    iconPlay = <IconPlayMedium />,
+    iconBack = <IconArrowLeftW500 />,
+    iconDownload = <IconDownloadW400 />,
+    iconOptions = <IconDotsVerticalW400 />,
+    iconPause = <IconPauseW400 />,
+    iconPlay = <IconPlayW400 />,
     iconRate = <IconSpeedometer />,
-    iconRateOpen = <IconChevronRight />,
-    iconRateCheck = <IconCheck />,
+    iconRateOpen = <IconChevronRightW400 />,
+    iconRateCheck = <IconCheckW400 />,
     iconVolumeHigh = <IconVolumeHigh />,
     iconVolumeLow = <IconVolumeLow />,
     iconVolumeOff = <IconVolumeMute />,

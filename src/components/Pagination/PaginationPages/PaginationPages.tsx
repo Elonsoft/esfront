@@ -19,11 +19,11 @@ import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { useDocumentEventListener } from '../../../hooks';
 import {
-  IconArrowLeftBold,
-  IconArrowRightBold,
-  IconChevronLeft,
-  IconChevronRight,
-  IconDotsHorizontalSmall
+  IconArrowLeft2W300,
+  IconArrowRight2W300,
+  IconChevronLeftW400,
+  IconChevronRightW400,
+  IconDotsHorizontalW100
 } from '../../../icons';
 import { usePaginationContext } from '../Pagination.context';
 
@@ -205,11 +205,11 @@ export const PaginationPages = (inProps: PaginationPagesProps) => {
     labelPrevPage,
     labelNextPage,
     labelPage,
-    iconPrevPage = <IconChevronLeft />,
-    iconNextPage = <IconChevronRight />,
-    iconEllipsis = <IconDotsHorizontalSmall />,
-    iconTooltipPrevPage = <IconArrowLeftBold />,
-    iconTooltipNextPage = <IconArrowRightBold />,
+    iconPrevPage = <IconChevronLeftW400 />,
+    iconNextPage = <IconChevronRightW400 />,
+    iconEllipsis = <IconDotsHorizontalW100 />,
+    iconTooltipPrevPage = <IconArrowLeft2W300 />,
+    iconTooltipNextPage = <IconArrowRight2W300 />,
     ...props
   } = useThemeProps({
     props: inProps,

@@ -8,7 +8,7 @@ import { getSidebarItemUtilityClass, sidebarItemClasses } from './SidebarItem.cl
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { buttonBaseClasses, svgIconClasses, touchRippleClasses } from '@mui/material';
+import { buttonBaseClasses, touchRippleClasses } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import ListItemButton, { listItemButtonClasses } from '@mui/material/ListItemButton';
@@ -21,7 +21,8 @@ import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 
 import { useResizeObserver } from '../../../hooks';
-import { IconChevronLeftSmall } from '../../../icons';
+import { IconChevronLeftW200 } from '../../../icons';
+import { svgIconClasses } from '../../SvgIcon';
 import { useSidebarContext } from '../Sidebar.context';
 import { useSidebarMenuContext } from '../SidebarMenu/SidebarMenu.context';
 
@@ -306,7 +307,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     children,
     className,
     icon,
-    iconToggle = <IconChevronLeftSmall />,
+    iconToggle = <IconChevronLeftW200 container containerSize="16px" />,
     inset,
     onClick,
     onTouchStart,

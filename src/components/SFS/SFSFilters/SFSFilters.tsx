@@ -12,10 +12,10 @@ import { backdropClasses } from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import { paperClasses } from '@mui/material/Paper';
-import { svgIconClasses } from '@mui/material/SvgIcon';
 import Typography, { typographyClasses } from '@mui/material/Typography';
 
-import { IconCloseLarge, IconFilterVariantSmall } from '../../../icons';
+import { IconCloseW600, IconFilter } from '../../../icons';
+import { svgIconClasses } from '../../SvgIcon';
 import { SFSButton } from '../SFSButton';
 
 type SFSFiltersOwnerState = {
@@ -169,8 +169,8 @@ export const SFSFilters = (inProps: SFSFiltersProps) => {
     labelClose,
     labelReset,
 
-    iconFilters = <IconFilterVariantSmall />,
-    iconClose = <IconCloseLarge />,
+    iconFilters = <IconFilter />,
+    iconClose = <IconCloseW600 />,
 
     ...props
   } = useThemeProps({

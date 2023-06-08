@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { Story } from '@storybook/react';
 
 import { styled } from '@mui/material/styles';
-import { listItemButtonClasses, outlinedInputClasses, svgIconClasses } from '@mui/material';
+import { listItemButtonClasses, outlinedInputClasses } from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
@@ -14,7 +14,7 @@ import { Sidenav } from './Sidenav';
 import { SidenavContext } from './Sidenav.context';
 import { SidenavItem } from './SidenavItem';
 
-import { IconAccount, IconCloseSmall, IconFileDocument, IconHome, IconMagnifyVariantSmall, IconZap } from '../../icons';
+import { IconAccountLc, IconAt } from '../../icons';
 import { Sidebar } from '../Sidebar';
 import { SidebarDivider } from '../Sidebar/SidebarDivider';
 import { SidebarItem, sidebarItemClasses } from '../Sidebar/SidebarItem';
@@ -22,6 +22,7 @@ import { SidebarMenu } from '../Sidebar/SidebarMenu';
 import { SidebarScrollable } from '../Sidebar/SidebarScrollable';
 import { SidebarSpacer } from '../Sidebar/SidebarSpacer';
 import { SidebarToggle } from '../Sidebar/SidebarToggle';
+import { svgIconClasses } from '../SvgIcon';
 
 const SearchField = styled(TextField)(({ theme }) => ({
   [`&.${textFieldClasses.root}`]: {
@@ -97,21 +98,24 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
       >
         <Sidebar color={color}>
           <SidebarMenu>
-            <SidenavItem icon={<IconHome />} />
+            <SidenavItem icon={<IconAt />} />
           </SidebarMenu>
 
           <SidebarToggle open={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
           <SidebarMenu>
-            <SidenavItem icon={<IconZap />} id="1" text={locale === 'en' ? 'Projects' : 'Проекты'} />
-            <SidenavItem icon={<IconFileDocument />} id="2" text={locale === 'en' ? 'Reports' : 'Отчеты'} />
+            <SidenavItem icon={<IconAt />} id="1" text={locale === 'en' ? 'Projects' : 'Проекты'} />
+            <SidenavItem icon={<IconAt />} id="2" text={locale === 'en' ? 'Reports' : 'Отчеты'} />
           </SidebarMenu>
 
           <SidebarSpacer />
           <SidebarDivider />
 
           <SidebarMenu>
-            <SidenavItem icon={<IconAccount />} text={locale === 'en' ? 'Profile' : 'Профиль'} />
+            <SidenavItem
+              icon={<IconAccountLc container containerSize="24px" />}
+              text={locale === 'en' ? 'Profile' : 'Профиль'}
+            />
           </SidebarMenu>
         </Sidebar>
 
@@ -145,12 +149,12 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <IconMagnifyVariantSmall />
+                              <IconAt />
                             </InputAdornment>
                           ),
                           endAdornment: searchValue && (
                             <IconButton disableRipple size="24" onClick={() => setSearch('')}>
-                              <IconCloseSmall />
+                              <IconAt />
                             </IconButton>
                           )
                         }}
@@ -164,12 +168,12 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                         <SidebarCaption title={locale === 'en' ? 'Favorites' : 'Избранное'} />
                         <SidebarMenu>
                           <SidebarMenuItem
-                            icon={<IconFileDocument />}
+                            icon={<IconAt />}
                             text={locale === 'en' ? 'All projects' : 'Все проекты'}
                             onClick={() => console.log(`All projects`)}
                           />
                           <SidebarMenuItem
-                            icon={<IconFileDocument />}
+                            icon={<IconAt />}
                             id="1"
                             text={locale === 'en' ? 'Documents' : 'Документы'}
                             onClick={() => console.log(`Selected`)}
@@ -184,7 +188,7 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                             ))}
                           </SidebarMenuItem>
                           <SidebarMenuItem
-                            icon={<IconFileDocument />}
+                            icon={<IconAt />}
                             id="2"
                             text={locale === 'en' ? 'New projects' : 'Новые проекты'}
                             onClick={() => console.log(`Projects`)}
@@ -206,7 +210,7 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                         {[...Array(5)].map((_, idx) => (
                           <SidebarMenuItem
                             key={idx}
-                            icon={<IconFileDocument />}
+                            icon={<IconAt />}
                             text={(locale === 'en' ? 'Current project' : 'Текущий проект') + ' №' + idx}
                           />
                         ))}
@@ -221,12 +225,12 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <IconMagnifyVariantSmall />
+                              <IconAt />
                             </InputAdornment>
                           ),
                           endAdornment: searchValue && (
                             <IconButton disableRipple size="24" onClick={() => setSearch('')}>
-                              <IconCloseSmall />
+                              <IconAt />
                             </IconButton>
                           )
                         }}
@@ -240,13 +244,13 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                         <SidebarCaption title={locale === 'en' ? 'Favorites' : 'Избранное'} />
                         <SidebarMenu>
                           <SidebarMenuItem
-                            icon={<IconFileDocument />}
+                            icon={<IconAt />}
                             id="1"
                             text={locale === 'en' ? 'All reports' : 'Все отчеты'}
                             onClick={() => console.log(`All reports`)}
                           />
                           <SidebarMenuItem
-                            icon={<IconFileDocument />}
+                            icon={<IconAt />}
                             id="2"
                             text={locale === 'en' ? 'Saved reports' : 'Сохраненные отчеты'}
                             onClick={() => console.log(`Saved reports`)}
@@ -262,7 +266,7 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                           </SidebarMenuItem>
 
                           <SidebarMenuItem
-                            icon={<IconFileDocument />}
+                            icon={<IconAt />}
                             id="3"
                             text={locale === 'en' ? 'Scheduled reports' : 'Запланированные отчеты'}
                           >
@@ -283,7 +287,7 @@ export const Demo: Story = ({ disableEscapeKeyDown, color }, { globals: { locale
                         {[...Array(5)].map((_, idx) => (
                           <SidebarMenuItem
                             key={idx}
-                            icon={<IconFileDocument />}
+                            icon={<IconAt />}
                             text={(locale === 'en' ? 'Current report' : 'Текущий отчет') + ' №' + idx}
                           />
                         ))}

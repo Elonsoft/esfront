@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 const SFSButtonRoot = styled(Button)(({ theme }) => ({
   textTransform: 'inherit',
   '&.MuiButton-root': {
-    '&:hover .MuiSvgIcon-root, &:hover .MuiTypography-root, &:focus-visible .MuiSvgIcon-root, &:focus-visible .MuiTypography-root':
+    '&:hover .ESSvgIcon-root, &:hover .MuiTypography-root, &:focus-visible .ESSvgIcon-root, &:focus-visible .MuiTypography-root':
       {
         color: theme.palette.monoA.A600
       },
@@ -13,7 +13,7 @@ const SFSButtonRoot = styled(Button)(({ theme }) => ({
       color: theme.palette.monoA.A550
     },
 
-    '& .MuiSvgIcon-root': {
+    '& .ESSvgIcon-root': {
       color: theme.palette.monoA.A500
     }
   }

@@ -18,7 +18,7 @@ import { TableScrollbar } from './TableScrollbar';
 import { TableText } from './TableText';
 import { useTableResize } from './useTableResize';
 
-import { IconClose, IconDotsVerticalLarge, IconPencilOutline } from '../../icons';
+import { IconCloseW600, IconDotsVerticalW500, IconPencilW500 } from '../../icons';
 import { Pagination, PaginationPages, PaginationRange } from '../Pagination';
 
 const DATA: Array<{
@@ -177,7 +177,7 @@ export const Demo: Story = (args, context) => {
                 ))}
                 <TableCell overlap align="flex-end">
                   <IconButton aria-label={locale === 'en' ? 'More' : 'Ещё'}>
-                    <IconDotsVerticalLarge />
+                    <IconDotsVerticalW500 />
                   </IconButton>
                 </TableCell>
               </TableRow>
@@ -193,11 +193,11 @@ export const Demo: Story = (args, context) => {
             sx={(theme) => ({ borderBottom: `1px solid ${theme.palette.monoA.A100}` })}
           >
             <IconButton aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
-              <IconPencilOutline />
+              <IconPencilW500 />
             </IconButton>
             <Divider flexItem orientation="vertical" />
             <IconButton aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
-              <IconClose />
+              <IconCloseW600 />
             </IconButton>
           </TableActions>
         )}

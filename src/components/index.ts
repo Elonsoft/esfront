@@ -23,6 +23,7 @@ export * from './Sidebar';
 export * from './Sidenav';
 export * from './Spinner';
 export * from './Spinner';
+export * from './SvgIcon';
 export * from './Swiper';
 export * from './Swiper';
 export * from './Switch';

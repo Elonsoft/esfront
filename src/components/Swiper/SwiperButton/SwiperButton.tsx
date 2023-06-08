@@ -9,7 +9,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
-import { IconArrowDown, IconArrowLeft, IconArrowRight, IconArrowUp } from '../../../icons';
+import { IconArrowDownW500, IconArrowLeftW500, IconArrowRightW500, IconArrowUpW500 } from '../../../icons';
 import { useSwiperContext } from '../Swiper.context';
 
 type SwiperButtonOwnerState = {
@@ -88,10 +88,10 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
     step,
     labelPrev,
     labelNext,
-    iconUp = <IconArrowUp />,
-    iconDown = <IconArrowDown />,
-    iconLeft = <IconArrowLeft />,
-    iconRight = <IconArrowRight />,
+    iconUp = <IconArrowUpW500 />,
+    iconDown = <IconArrowDownW500 />,
+    iconLeft = <IconArrowLeftW500 />,
+    iconRight = <IconArrowRightW500 />,
     ...props
   } = useThemeProps({
     props: inProps,

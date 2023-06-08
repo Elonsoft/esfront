@@ -15,7 +15,7 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
 
 import { useControlled } from '../../hooks';
-import { IconEyeOffOutline, IconEyeOutline } from '../../icons';
+import { IconEye, IconEyeOff } from '../../icons';
 
 type PasswordFieldOwnerState = {
   classes?: PasswordFieldProps['classes'];
@@ -64,8 +64,8 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
     labelHidePassword,
     labelShowPassword,
 
-    iconHidePassword = <IconEyeOffOutline />,
-    iconShowPassword = <IconEyeOutline />,
+    iconHidePassword = <IconEyeOff />,
+    iconShowPassword = <IconEye />,
 
     InputProps,
     ...props

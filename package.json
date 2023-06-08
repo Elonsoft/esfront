@@ -23,7 +23,8 @@
     "husky": "husky install",
     "release": "standard-version",
     "release:dry-run": "standard-version --dry-run",
-    "typedoc": "typedoc src/index.ts --json src/typedoc.json"
+    "typedoc": "typedoc src/index.ts --json src/typedoc.json",
+    "import-icons": "node ./import-icons.js"
   },
   "repository": {
     "type": "git",
@@ -97,7 +98,8 @@
     "stylelint-config-standard": "^24.0.0",
     "stylelint-order": "^5.0.0",
     "typedoc": "0.22.10",
-    "typescript": "~4.5.4"
+    "typescript": "~4.5.4",
+    "yargs": "^17.7.2"
   },
   "dependencies": {
     "@date-io/core": "^2.11.0"
