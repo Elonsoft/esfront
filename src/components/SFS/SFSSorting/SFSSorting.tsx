@@ -17,14 +17,15 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 
 import {
-  IconArrowDownRounded,
-  IconArrowUpRounded,
-  IconSortDirectionDown,
-  IconSortDirectionUp,
-  IconSortSmallCustom
+  IconSortAscending,
+  IconSortAscending2,
+  IconSortDescending,
+  IconSortDescending2,
+  IconSortOff
 } from '../../../icons';
 import { Kbd, kbdClasses } from '../../Kbd';
 import { Link } from '../../Link';
+import { svgIconClasses } from '../../SvgIcon';
 import { Switch, switchClasses } from '../../Switch';
 import { SFSButton } from '../SFSButton';
 
@@ -70,12 +71,12 @@ const SFSSortingMenuButton = styled(SFSButton, {
 
   [`&:hover .${sfsSortingClasses.menuButtonBadge}, &:focus-visible .${sfsSortingClasses.menuButtonBadge},, & .${sfsSortingClasses.menuButtonBadge}`]:
     {
-      '&.MuiTypography-root, & .MuiSvgIcon-root': {
+      [`&.MuiTypography-root, & .${svgIconClasses.root}`]: {
         color: `${theme.palette.black.A800}`
       }
     },
   [theme.breakpoints.up('tabletXS')]: {
-    '& > .MuiSvgIcon-root': {
+    [`& > .${svgIconClasses.root}`]: {
       display: ownerState.isWithValue && 'none'
     }
   },
@@ -297,11 +298,11 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
     labelMultisortMobileOn,
     labelMultisortMobileOff,
 
-    iconSort = <IconSortSmallCustom />,
-    iconAsc = <IconArrowUpRounded />,
-    iconDesc = <IconArrowDownRounded />,
-    iconItemAsc = <IconSortDirectionUp />,
-    iconItemDesc = <IconSortDirectionDown />,
+    iconSort = <IconSortOff />,
+    iconAsc = <IconSortAscending2 container containerSize="16px" />,
+    iconDesc = <IconSortDescending2 container containerSize="16px" />,
+    iconItemAsc = <IconSortAscending container containerHeight="12px" containerWidth="8px" />,
+    iconItemDesc = <IconSortDescending container containerHeight="12px" containerWidth="8px" />,
 
     ...props
   } = useThemeProps({

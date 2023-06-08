@@ -1,11 +1,11 @@
-import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
+import { SvgIcon, SvgIconProps } from '../components/SvgIcon';
 
 export const IconVolumeLow = (props: SvgIconProps) => {
   return (
-    <SvgIcon {...props}>
+    <SvgIcon size="24px" viewBox="0 0 24 24" {...props}>
       <path
         clipRule="evenodd"
-        d="M3 10.001C3 9.44874 3.44772 9.00102 4 9.00102H7L10.293 5.70931C10.9231 5.07954 12 5.52575 12 6.41656V17.5839C12 18.4747 10.9231 18.9209 10.293 18.2911L7 14.9994H4C3.44772 14.9994 3 14.5517 3 13.9994V10.001ZM13 13.9999C14.1046 13.9999 15 13.1044 15 11.9999C15 10.8953 14.1046 9.99988 13 9.99988V13.9999Z"
+        d="M3 10.0005C3 9.44825 3.44772 9.00053 4 9.00053H7L10.293 5.70882C10.9231 5.07905 12 5.52526 12 6.41607V17.5834C12 18.4742 10.9231 18.9204 10.293 18.2907L7 14.9989H4C3.44772 14.9989 3 14.5512 3 13.9989V10.0005ZM13 13.9994C14.1046 13.9994 15 13.104 15 11.9994C15 10.8948 14.1046 9.99939 13 9.99939V13.9994Z"
         fill="currentColor"
         fillRule="evenodd"
       />

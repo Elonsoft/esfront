@@ -19,7 +19,7 @@ import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 
 import { useResizeObserver } from '../../hooks';
-import { IconDotsHorizontalSmall } from '../../icons';
+import { IconDotsHorizontal2W300 } from '../../icons';
 import { TooltipEllipsis, TooltipEllipsisProps } from '../TooltipEllipsis';
 
 type BreadcrumbsOwnerState = {
@@ -119,7 +119,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
   const {
     children,
     className,
-    iconButtonMore = <IconDotsHorizontalSmall />,
+    iconButtonMore = <IconDotsHorizontal2W300 />,
     labelButtonMore,
     sx,
     ...props

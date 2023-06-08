@@ -15,19 +15,7 @@ import { SidebarScrollable } from './SidebarScrollable';
 import { SidebarSpacer } from './SidebarSpacer';
 import { SidebarToggle } from './SidebarToggle';
 
-import {
-  IconAccount,
-  IconAt,
-  IconBell,
-  IconCalendarMonth,
-  IconChartPie,
-  IconEmail,
-  IconFileDocument,
-  IconInboxFull,
-  IconMagnifyVariant,
-  IconPlusCircle,
-  IconZap
-} from '../../icons';
+import { IconAccountLc, IconAt, IconBellFill, IconMagnify } from '../../icons';
 
 export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth }, { globals: { locale } }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +51,7 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
 
         <SidebarMenu>
           <SidebarItem
-            icon={<IconPlusCircle />}
+            icon={<IconAt />}
             text={locale === 'en' ? 'Time tracking' : 'Рабочее время'}
             onClick={() => console.log(`Time tracking`)}
           />
@@ -75,7 +63,7 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
           <SidebarMenu behaviour={behaviour} exclusive={exclusive}>
             <SidebarItem
               component="button"
-              icon={<IconZap />}
+              icon={<IconAt />}
               id="0"
               text={locale === 'en' ? 'Projects' : 'Проекты'}
               onClick={() => console.log(`Projects`)}
@@ -89,7 +77,7 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
                 />
               ))}
             </SidebarItem>
-            <SidebarItem icon={<IconFileDocument />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
+            <SidebarItem icon={<IconAt />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
               {[...Array(8)].map((_, i) => (
                 <SidebarItem
                   key={i}
@@ -100,22 +88,22 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
               ))}
             </SidebarItem>
             <SidebarItem
-              icon={<IconChartPie />}
+              icon={<IconAt />}
               text={locale === 'en' ? 'Infographic' : 'Инфографика'}
               onClick={() => console.log(`Infographic`)}
             />
             <SidebarItem
-              icon={<IconCalendarMonth />}
+              icon={<IconAt />}
               text={locale === 'en' ? 'Schedule' : 'Расписание'}
               onClick={() => console.log(`Schedule`)}
             />
             <SidebarItem
-              icon={<IconEmail />}
+              icon={<IconAt />}
               text={locale === 'en' ? 'Messages' : 'Сообщения'}
               onClick={() => console.log(`Messages`)}
             />
             <SidebarItem
-              icon={<IconInboxFull />}
+              icon={<IconAt />}
               text={locale === 'en' ? 'Inbox' : 'Входящие'}
               onClick={() => console.log(`Inbox`)}
             />
@@ -125,12 +113,12 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
 
         <SidebarMenu>
           <SidebarItem
-            icon={<IconMagnifyVariant />}
+            icon={<IconMagnify />}
             text={locale === 'en' ? 'Search' : 'Поиск'}
             onClick={() => console.log(`Search`)}
           />
           <SidebarItem
-            icon={<IconBell />}
+            icon={<IconBellFill />}
             text={locale === 'en' ? 'Notifications' : 'Уведомления'}
             onClick={() => console.log(`Notifications`)}
           />
@@ -139,7 +127,10 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
         <SidebarDivider />
 
         <SidebarMenu>
-          <SidebarItem icon={<IconAccount />} text={locale === 'en' ? 'Name' : 'Имя'} />
+          <SidebarItem
+            icon={<IconAccountLc container containerSize="24px" />}
+            text={locale === 'en' ? 'Name' : 'Имя'}
+          />
         </SidebarMenu>
       </Sidebar>
 

@@ -131,6 +131,7 @@ import {
   SpinnerRingClassKey,
   SpinnerRingProps
 } from './components/Spinner';
+import { SvgIconClassKey, SvgIconProps } from './components/SvgIcon';
 import {
   SwiperButtonClassKey,
   SwiperButtonProps,
@@ -275,6 +276,7 @@ declare module '@mui/material/styles/props' {
     ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingProps;
     ESSpinnerFadingRing: SpinnerFadingRingProps;
     ESSpinnerRing: SpinnerRingProps;
+    ESSvgIcon: SvgIconProps;
     ESSwiper: SwiperProps;
     ESSwitch: SwitchProps;
     ESSwiperButton: SwiperButtonProps;
@@ -348,6 +350,7 @@ declare module '@mui/material/styles/overrides' {
     ESSpinnerFadingDoubleRing: SpinnerFadingDoubleRingClassKey;
     ESSpinnerFadingRing: SpinnerFadingRingClassKey;
     ESSpinnerRing: SpinnerRingClassKey;
+    ESSvgIcon: SvgIconClassKey;
     ESSwiper: SwiperClassKey;
     ESSwitch: SwitchClassKey;
     ESSwiperButton: SwiperButtonClassKey;
@@ -563,6 +566,10 @@ declare module '@mui/material/styles/components' {
     ESSpinnerRing?: {
       defaultProps?: ComponentsProps['ESSpinnerRing'];
       styleOverrides?: ComponentsOverrides['ESSpinnerRing'];
+    };
+    ESSvgIcon?: {
+      defaultProps?: ComponentsProps['ESSvgIcon'];
+      styleOverrides?: ComponentsOverrides['ESSvgIcon'];
     };
     ESTable?: {
       defaultProps?: ComponentsProps['ESTable'];

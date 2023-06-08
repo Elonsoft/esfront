@@ -9,7 +9,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 
-import { IconAlert, IconCheckCircle, IconError, IconInformationLarge } from '../../icons';
+import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500 } from '../../icons';
 
 type AlertOwnerState = {
   classes?: AlertProps['classes'];
@@ -105,10 +105,10 @@ const AlertAction = styled('div', {
 }));
 
 const defaultIconMapping = {
-  success: <IconCheckCircle />,
-  warning: <IconAlert />,
-  error: <IconError />,
-  info: <IconInformationLarge />
+  success: <IconCheckCircleW500 />,
+  warning: <IconAlertW500 />,
+  error: <IconErrorW500 />,
+  info: <IconInformation2W500 />
 };
 
 /**

@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
 
 import { MenuItem } from '../../../components/MenuItem';
-import { IconDotsVerticalLarge, IconUpload } from '../../../icons';
+import { IconDotsVerticalW400, IconUpload } from '../../../icons';
 
 const getButtonText = (args: Args, context: StoryContext<ReactFramework>) => {
   return context.globals.locale === 'en' ? 'Open menu' : 'Открыть меню';
@@ -129,7 +129,7 @@ export const DemoList: Story = (args, context) => {
         <ListItem>
           <ListItemText>{getActionText(args, context)}</ListItemText>
           <IconButton color="tertiary" size="32">
-            <IconDotsVerticalLarge />
+            <IconDotsVerticalW400 />
           </IconButton>
         </ListItem>
         <ListItem>

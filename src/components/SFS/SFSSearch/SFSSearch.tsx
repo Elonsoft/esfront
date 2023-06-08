@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 
-import { IconCloseSmall, IconMagnifyVariantSmall } from '../../../icons';
+import { IconCloseW350, IconMagnify2W400 } from '../../../icons';
 
 type SFSSearchOwnerState = {
   classes?: SFSSearchProps['classes'];
@@ -56,7 +56,7 @@ const SFSSearchInput = styled(TextField, {
       paddingLeft: '2px',
 
       '&.Mui-focused': {
-        '& .MuiInputAdornment-positionStart .MuiSvgIcon-root': {
+        '& .MuiInputAdornment-positionStart .ESSvgIcon-root': {
           color: theme.palette.monoA.A600
         }
       }
@@ -87,11 +87,11 @@ const SFSSearchInput = styled(TextField, {
     justifyContent: 'center'
   },
 
-  '& .MuiInputAdornment-positionStart .MuiSvgIcon-root': {
+  '& .MuiInputAdornment-positionStart .ESSvgIcon-root': {
     color: theme.palette.monoA.A500
   },
 
-  '&:hover .MuiInputAdornment-positionStart .MuiSvgIcon-root': {
+  '&:hover .MuiInputAdornment-positionStart .ESSvgIcon-root': {
     color: theme.palette.monoA.A600
   }
 }));
@@ -107,7 +107,7 @@ const SFSSearchClear = styled(Button, {
     flexShrink: 0,
 
     '&:hover ': {
-      '& .MuiSvgIcon-root': {
+      '& .ESSvgIcon-root': {
         color: theme.palette.monoA.A500
       },
 
@@ -116,12 +116,12 @@ const SFSSearchClear = styled(Button, {
       }
     },
 
-    '&:active .MuiSvgIcon-root': {
+    '&:active .ESSvgIcon-root': {
       color: theme.palette.monoA.A600
     }
   },
 
-  '& .MuiSvgIcon-root': {
+  '& .ESSvgIcon-root': {
     color: theme.palette.monoA.A400
   },
 
@@ -138,8 +138,8 @@ export const SFSSearch = (inProps: SFSSearchProps) => {
     ariaLabel,
     labelClear,
     placeholder,
-    iconClear = <IconCloseSmall />,
-    iconSearch = <IconMagnifyVariantSmall />,
+    iconClear = <IconCloseW350 />,
+    iconSearch = <IconMagnify2W400 />,
     ...props
   } = useThemeProps({
     props: inProps,
