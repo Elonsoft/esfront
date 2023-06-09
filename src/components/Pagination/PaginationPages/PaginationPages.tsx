@@ -82,8 +82,10 @@ const PaginationPagesButton = styled(IconButton, {
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
 })(({ theme }) => ({
-  '&, &:not(:disabled):hover, &:not(:disabled):active': {
-    color: theme.palette.monoA.A500
+  [`&.${iconButtonClasses.root}`]: {
+    '&, &:not(:disabled):hover, &:not(:disabled):active': {
+      color: theme.palette.monoA.A500
+    }
   },
   [`&.${iconButtonClasses.disabled}`]: {
     color: theme.palette.monoA.A300
@@ -138,7 +140,7 @@ const PaginationPagesPaginationItem = styled(PaginationItem, {
 
       ...theme.mixins.button({
         background: theme.palette.secondary.A100,
-        color: theme.palette.secondary[300],
+        color: theme.palette.monoA.A800,
         hover: theme.palette.secondary.A100,
         focus: theme.palette.secondary.A200,
         active: theme.palette.secondary.A150
