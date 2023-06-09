@@ -23,7 +23,7 @@ const useUtilityClasses = (ownerState: KbdOwnerState) => {
 };
 
 const KbdRoot = styled('kbd', {
-  name: 'ESKbdRoot',
+  name: 'ESKbd',
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
