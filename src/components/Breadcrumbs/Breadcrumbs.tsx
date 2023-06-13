@@ -217,7 +217,10 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
       </BreadcrumbsList>
 
       <BreadcrumbsMenu className={clsx(classes.menu)} open={open} anchorEl={anchorEl} onClose={onCloseMenu}>
-        {Children.map(children, (child: any, idx: number) => {
+        {Children.map(children, (child, idx) => {
+          if (!isValidElement(child)) {
+            return null;
+          }
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { children, ...rest } = child.props;
 
