@@ -86,10 +86,10 @@ export const Demo: Story = (args, context) => {
             </Typography>
           </DialogContent>
           <DialogActions sticky={args.DialogActionsSticky}>
-            <Button variant="outlined" color="tertiary" size="48" onClick={() => close()}>
+            <Button variant="outlined" color="tertiary" size="40" onClick={() => close()}>
               {getCancelButtonText(args, context)}
             </Button>
-            <Button variant="contained" color="primary" size="48" onClick={() => close(true)}>
+            <Button variant="contained" color="primary" size="40" onClick={() => close(true)}>
               {getCreateButtonText(args, context)}
             </Button>
           </DialogActions>
@@ -124,10 +124,10 @@ export const Alignment: Story = (args, context) => {
             </Typography>
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" color="tertiary" size="48" onClick={() => close()}>
+            <Button variant="outlined" color="tertiary" size="40" onClick={() => close()}>
               {getCancelButtonText(args, context)}
             </Button>
-            <Button variant="contained" color="primary" size="48" onClick={() => close(true)}>
+            <Button variant="contained" color="primary" size="40" onClick={() => close(true)}>
               {getCreateButtonText(args, context)}
             </Button>
           </DialogActions>
@@ -163,10 +163,10 @@ export const Stack: Story = (args, context) => {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" color="tertiary" size="48" onClick={() => close()}>
+          <Button variant="outlined" color="tertiary" size="40" onClick={() => close()}>
             {getCancelButtonText(args, context)}
           </Button>
-          <Button variant="contained" color="primary" size="48" onClick={onOpen(i + 1)}>
+          <Button variant="contained" color="primary" size="40" onClick={onOpen(i + 1)}>
             {getOpenButtonText(args, context)}
           </Button>
         </DialogActions>
