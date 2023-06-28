@@ -39,7 +39,7 @@ const DialogActionsRoot = styled('div', {
 })<{ ownerState: DialogActionsOwnerState }>(({ theme, ownerState }) => ({
   display: 'flex',
   justifyContent: 'flex-end',
-  padding: 24,
+  padding: '16px 24px 24px',
 
   '> :not(:first-of-type)': {
     marginLeft: 16
@@ -47,7 +47,7 @@ const DialogActionsRoot = styled('div', {
 
   ...(ownerState.sticky && {
     position: 'sticky',
-    bottom: -1,
+    bottom: -8,
     backgroundColor: theme.palette.surface[600],
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
