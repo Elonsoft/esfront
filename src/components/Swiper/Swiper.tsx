@@ -416,6 +416,12 @@ export const Swiper = (inProps: SwiperProps) => {
   useResizeObserver(container, () => {
     onScroll();
     getPaginationRange();
+
+    setTimeout(() => {
+      if (container.current) {
+        container.current.scrollBy({ [mapping.start]: 0, behavior: 'smooth' });
+      }
+    });
   });
 
   useEffect(() => {
