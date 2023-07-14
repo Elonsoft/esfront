@@ -8,8 +8,16 @@ export type SwiperDirection = 'horizontal' | 'vertical';
 export type SwiperAlignment = 'center' | 'start';
 
 export interface SwiperImperativeActions {
-  /** Set active slide by its index. */
-  setActiveSlide: (index: number) => void;
+  /**
+   * Scroll to the slide by its index.
+   * @param index Index of the slide.
+   */
+  setActiveSlide: (index: number, options?: { smooth?: boolean }) => void;
+  /**
+   * Scroll container by the given number of slides.
+   * @param step Number of slides.
+   */
+  setActiveSlideByStep: (step: number, options?: { smooth?: boolean }) => void;
 }
 
 export interface SwiperProps {

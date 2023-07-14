@@ -15,12 +15,12 @@ export interface SwiperContextValue {
    * Scroll to the slide by its index.
    * @param index Index of the slide.
    */
-  setActiveSlide: (index: number) => void;
+  setActiveSlide: (index: number, options?: { smooth?: boolean }) => void;
   /**
    * Scroll container by the given number of slides.
    * @param step Number of slides.
    */
-  setActiveSlideByStep: (step: number) => void;
+  setActiveSlideByStep: (step: number, options?: { smooth?: boolean }) => void;
 }
 
 export const SwiperContext = createContext<SwiperContextValue | null>(null);

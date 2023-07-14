@@ -198,7 +198,7 @@ export const Swiper = (inProps: SwiperProps) => {
    * @param index Index of the slide.
    */
   const setActiveSlide = useCallback(
-    (index: number) => {
+    (index: number, options?: { smooth?: boolean }) => {
       if (container.current) {
         const children = container.current.children[
           Math.max(0, Math.min(index, container.current.children.length - 1))
@@ -206,7 +206,7 @@ export const Swiper = (inProps: SwiperProps) => {
         if (children) {
           const start =
             children[mapping.offset] - container.current[mapping.clientSize] / 2 + children[mapping.clientSize] / 2;
-          container.current.scrollTo({ [mapping.start]: start, behavior: 'smooth' });
+          container.current.scrollTo({ [mapping.start]: start, behavior: options?.smooth ?? true ? 'smooth' : 'auto' });
         }
       }
     },
@@ -323,10 +323,13 @@ export const Swiper = (inProps: SwiperProps) => {
    * @param step Number of slides.
    */
   const setActiveSlideByStep = useCallback(
-    (step: number) => {
+    (step: number, options?: { smooth?: boolean }) => {
       if (container.current) {
         const s = latestGetStep.current(Math.sign(step) as 1 | -1, Math.abs(step));
-        container.current.scrollBy({ [mapping.start]: Math.sign(step) * s, behavior: 'smooth' });
+        container.current.scrollBy({
+          [mapping.start]: Math.sign(step) * s,
+          behavior: options?.smooth ?? true ? 'smooth' : 'auto'
+        });
       }
     },
     [container, mapping, latestGetStep]
@@ -403,7 +406,7 @@ export const Swiper = (inProps: SwiperProps) => {
     }
   };
 
-  useImperativeHandle(actions, () => ({ setActiveSlide }), [container.current]);
+  useImperativeHandle(actions, () => ({ setActiveSlide, setActiveSlideByStep }), [container.current]);
 
   useEffect(() => {
     onScroll();
