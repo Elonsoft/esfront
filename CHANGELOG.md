@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.5](https://github.com/Elonsoft/elonkit-react/compare/v0.6.4...v0.6.5) (2023-07-14)
+
+
+### Features
+
+* **DialogActions:** change styles ([c7ffa91](https://github.com/Elonsoft/elonkit-react/commit/c7ffa913454122570f8ca3064e12d710b344e7ba))
+* **PaginationPages:** change button styles ([60353a1](https://github.com/Elonsoft/elonkit-react/commit/60353a19ae695e9ffac4f1b784d8b2d6810a593c))
+* **PasswordField:** add new component ([4902840](https://github.com/Elonsoft/elonkit-react/commit/4902840873a9b8e0ae8d8034ec849245d23aff4d))
+* **Sidebar:** add secondary color ([2c93adf](https://github.com/Elonsoft/elonkit-react/commit/2c93adf8cd800511c2fe315ff1b6e6f8fd690c57))
+* **Swiper:** add options for setActiveSlide method ([b9bc27c](https://github.com/Elonsoft/elonkit-react/commit/b9bc27c2409af134ddb8168fe04916626002d617))
+
+
+### Bug Fixes
+
+* **Breadcrumbs:** add child validity check ([450de1d](https://github.com/Elonsoft/elonkit-react/commit/450de1d58a27d63534634aa76c11e7cb47094d35))
+* **Kbd:** change root element name ([25ddfa7](https://github.com/Elonsoft/elonkit-react/commit/25ddfa708c8534dd94cf28d335338cd955a405df))
+* **Swiper:** add missing context exports ([72eeafa](https://github.com/Elonsoft/elonkit-react/commit/72eeafa3b90014de72d4ffe123479866b9c7ff37))
+* **Swiper:** add snap on resize ([f78d08d](https://github.com/Elonsoft/elonkit-react/commit/f78d08dcf09a32ef83a6b46545a8807e51e6e4cb))
+
 ### [0.6.4](https://github.com/Elonsoft/elonkit-react/compare/v0.6.3...v0.6.4) (2023-05-22)
 
 
