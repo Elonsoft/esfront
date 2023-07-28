@@ -65,7 +65,7 @@ const SidebarContent = styled('aside', {
   order: '1',
   flexDirection: 'column',
   width: '57px',
-  backgroundColor: theme.palette.common.background,
+  backgroundColor: theme.palette.surface.background,
   borderRight: `1px solid ${theme.palette.monoA.A100}`,
   maxWidth: `${ownerState.maxWidth}px`,
   transition: 'width 0.2s',
@@ -75,7 +75,7 @@ const SidebarContent = styled('aside', {
   }),
 
   ...(ownerState.color === 'secondary' && {
-    backgroundColor: theme.palette.common.background2
+    backgroundColor: theme.palette.surface.background2
   }),
 
   ...(ownerState.open && {

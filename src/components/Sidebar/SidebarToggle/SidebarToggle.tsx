@@ -80,7 +80,7 @@ const SidebarToggleButton = styled(IconButton, {
 
     ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
       ...theme.mixins.button({
-        background: theme.palette.common.background2,
+        background: theme.palette.surface.background2,
         color: theme.palette.monoA.A500,
         hover: theme.palette.monoA.A50,
         focus: theme.palette.monoA.A150,

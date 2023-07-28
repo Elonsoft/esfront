@@ -166,6 +166,8 @@ import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFi
 import { buttonMixin, listItemMixin } from './theming/mixins';
 
 export interface ISurfacePalette {
+  background: string;
+  background2: string;
   50: string;
   100: string;
   200: string;
@@ -842,8 +844,6 @@ declare module '@mui/material/styles/createMixins' {
 
 declare module '@mui/material/styles/createPalette' {
   interface CommonColors {
-    background: string;
-    background2: string;
     link: string;
     linkVisited: string;
     switch: string;

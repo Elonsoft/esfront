@@ -1,4 +1,6 @@
 export const surface = {
+  background: '#1C1C1F',
+  background2: '#111314',
   50: '#1C1C1F',
   100: '#27272A',
   200: '#2C2C2F',
