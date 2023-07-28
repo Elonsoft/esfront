@@ -17,7 +17,7 @@ describe('Link', () => {
 
   it('Should render icons', () => {
     render(
-      <Link startIcon={<span>start</span>} endIcon={<span>end</span>}>
+      <Link endIcon={<span>end</span>} startIcon={<span>start</span>}>
         Link
       </Link>
     );

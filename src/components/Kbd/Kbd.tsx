@@ -63,7 +63,7 @@ export const Kbd = (inProps: KbdProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <KbdRoot ownerState={ownerState} className={clsx(classes.root, className)} sx={sx}>
+    <KbdRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {children}
     </KbdRoot>
   );

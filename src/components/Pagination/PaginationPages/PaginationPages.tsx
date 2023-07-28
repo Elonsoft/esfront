@@ -257,23 +257,21 @@ export const PaginationPages = (inProps: PaginationPagesProps) => {
   return (
     <PaginationPagesRoot className={clsx(classes.root, className)} sx={sx}>
       <PaginationPagesPagination
+        boundaryCount={boundaryCount}
         className={clsx(classes.pagination)}
         count={Math.ceil(count / itemsPerPage)}
         page={page}
-        onChange={onPaginationPageChange}
-        boundaryCount={boundaryCount}
-        siblingCount={siblingCount}
         renderItem={(item) => {
           switch (item.type) {
             case 'previous':
             case 'next':
               return (
                 <PaginationPagesButton
+                  aria-label={`${item.type === 'next' ? labelNextPage : labelPrevPage}`}
                   className={classes.button}
-                  onClick={item.onClick}
                   disabled={item.disabled}
                   size="32"
-                  aria-label={`${item.type === 'next' ? labelNextPage : labelPrevPage}`}
+                  onClick={item.onClick}
                 >
                   {item.type === 'previous' ? iconPrevPage : iconNextPage}
                 </PaginationPagesButton>
@@ -284,29 +282,31 @@ export const PaginationPages = (inProps: PaginationPagesProps) => {
             default:
               return (
                 <PaginationPagesTooltip
+                  arrow
                   className={classes.tooltip}
+                  placement="top"
                   title={
                     <>
                       {iconTooltipPrevPage} Ctrl {iconTooltipNextPage}
                     </>
                   }
-                  placement="top"
-                  arrow
                 >
                   <PaginationPagesPaginationItem className={clsx(classes.paginationItem)} component="div" {...item} />
                 </PaginationPagesTooltip>
               );
           }
         }}
+        siblingCount={siblingCount}
+        onChange={onPaginationPageChange}
       />
       <PaginationPagesTextField
         className={clsx(classes.textField)}
-        type="text"
         placeholder={`${page} ${labelPage}`}
+        size="32"
+        type="text"
+        value={state}
         onChange={onChange}
         onKeyPress={onKeyPress}
-        value={state}
-        size="32"
       />
     </PaginationPagesRoot>
   );

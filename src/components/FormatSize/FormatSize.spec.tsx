@@ -28,7 +28,7 @@ describe('FormatSize', () => {
 
   it('Should format to PB', () => {
     render(
-      <FormatSize prefix="metric" metricUnits={METRIC_UNITS}>
+      <FormatSize metricUnits={METRIC_UNITS} prefix="metric">
         {10 ** 15}
       </FormatSize>
     );
@@ -52,7 +52,7 @@ describe('FormatSize', () => {
 
   it('Should format to PiB', () => {
     render(
-      <FormatSize prefix="binary" binaryUnits={BINARY_UNITS}>
+      <FormatSize binaryUnits={BINARY_UNITS} prefix="binary">
         {2 ** 50}
       </FormatSize>
     );

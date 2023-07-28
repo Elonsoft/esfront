@@ -142,23 +142,23 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
       <SidebarDivider />
 
       <SidebarToggleTooltip
+        arrow
+        disableInteractive
+        TransitionProps={{ timeout: { enter: theme.transitions.duration.enteringScreen, exit: 0 } }}
         className={clsx(classes.tooltip)}
         enterDelay={100}
         enterNextDelay={200}
         open={isTooltipOpen}
-        onOpen={() => setTooltipOpen(true)}
-        onClose={onCloseTooltip}
-        disableInteractive
-        arrow
-        title={<>{open ? labelHide : labelOpen}</>}
         placement="right"
-        TransitionProps={{ timeout: { enter: theme.transitions.duration.enteringScreen, exit: 0 } }}
+        title={<>{open ? labelHide : labelOpen}</>}
+        onClose={onCloseTooltip}
+        onOpen={() => setTooltipOpen(true)}
       >
         <SidebarToggleButton
-          className={clsx(classes.button)}
-          onClick={onClickToggle}
-          ownerState={ownerState}
           aria-label={open ? labelHide : labelOpen}
+          className={clsx(classes.button)}
+          ownerState={ownerState}
+          onClick={onClickToggle}
         >
           {icon}
         </SidebarToggleButton>

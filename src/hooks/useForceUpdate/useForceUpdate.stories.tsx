@@ -21,10 +21,10 @@ export const Demo: Story = () => {
 
   return (
     <>
-      <Button variant="contained" onClick={update} size="32">
+      <Button size="32" variant="contained" onClick={update}>
         Update
       </Button>
-      <Typography component="div" variant="body200" sx={{ marginTop: '8px' }}>
+      <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">
         Time: {date.current}
       </Typography>
     </>

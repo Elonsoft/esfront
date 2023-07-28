@@ -17,10 +17,10 @@ export const FlagVg = (props: SvgIconProps) => {
         fill="#D80027"
       />
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M15.565 8.174V4.348h4.869v3.826c0 1.864-2.435 2.435-2.435 2.435s-2.434-.571-2.434-2.435Zm2.434-1.565a.522.522 0 0 0 .522-.522v2.782h-1.044V6.087c0 .288.234.522.522.522Z"
         fill="#6DA544"
+        fillRule="evenodd"
       />
       <path d="M18 6.609a.522.522 0 1 0 0-1.044.522.522 0 0 0 0 1.044Z" fill="#A2001D" />
       <path

@@ -77,11 +77,11 @@ export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
     <>
       {isScrollable && beforeScroll}
       <SidebarScrollableRoot
-        className={clsx(classes.root, className)}
-        tabIndex={-1}
-        sx={sx}
         ref={ref}
+        className={clsx(classes.root, className)}
         ownerState={ownerState}
+        sx={sx}
+        tabIndex={-1}
         onScroll={onScroll}
       >
         {children}

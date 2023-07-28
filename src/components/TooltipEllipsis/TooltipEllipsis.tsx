@@ -23,8 +23,8 @@ export const TooltipEllipsis = ({ children, ...props }: TooltipEllipsisProps) =>
   return (
     <Tooltip
       {...props}
-      disableHoverListener={!overflow}
       disableFocusListener={!overflow}
+      disableHoverListener={!overflow}
       disableTouchListener={!overflow}
     >
       {children({ ref, childrenRef })}

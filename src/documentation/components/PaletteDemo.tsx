@@ -102,12 +102,12 @@ export const PaletteDemo = () => {
         Object.keys((theme.palette.shadow as any)[direction]).map((level) => (
           <div key={`${direction}-${level}`}>
             <PaletteDemoColorName
-              variant="caption"
               sx={{
                 boxShadow: (theme.palette.shadow as any)[direction][level],
                 margin: '24px',
                 borderRadius: '2px'
               }}
+              variant="caption"
             >
               <code>
                 {direction.toUpperCase()} {level}

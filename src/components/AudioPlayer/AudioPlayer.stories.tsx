@@ -45,15 +45,15 @@ export const ImperativeActions: Story = () => {
     <Box paddingTop="16px">
       <AudioPlayerProvider>
         <AudioPlayer
-          src="https://www.fesliyanstudios.com/musicfiles/2019-06-12_-_Homework_-_David_Fesliyan.mp3"
           audioRef={firstAudioRef}
-          onPlay={onFirstPlay}
+          src="https://www.fesliyanstudios.com/musicfiles/2019-06-12_-_Homework_-_David_Fesliyan.mp3"
           onEnded={onFirstEnded}
+          onPlay={onFirstPlay}
         />
         <br />
         <AudioPlayer
-          src="https://www.fesliyanstudios.com/musicfiles/2020-11-16_-_Down_Days_-_www.FesliyanStudios.com_David_Renda/2020-11-16_-_Down_Days_-_www.FesliyanStudios.com_David_Renda.mp3"
           audioRef={secondAudioRef}
+          src="https://www.fesliyanstudios.com/musicfiles/2020-11-16_-_Down_Days_-_www.FesliyanStudios.com_David_Renda/2020-11-16_-_Down_Days_-_www.FesliyanStudios.com_David_Renda.mp3"
           onPlay={onSecondPlay}
         />
       </AudioPlayerProvider>

@@ -170,33 +170,33 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
   return (
     <>
       <BreadcrumbTooltip
-        className={clsx(classes.tooltip)}
         arrow
+        disableInteractive
+        className={clsx(classes.tooltip)}
         placement="top"
         title={<Typography variant="caption">{children}</Typography>}
-        disableInteractive
         {...(!position ? { disableHoverListener: true, disableFocusListener: true, disableTouchListener: true } : {})}
       >
         {({ ref, childrenRef }) => (
           <BreadcrumbRoot
-            className={clsx(classes.root, className)}
-            sx={sx}
-            style={style}
-            component="li"
-            align="center"
-            ownerState={ownerState}
             noWrap
+            align="center"
+            className={clsx(classes.root, className)}
+            component="li"
             itemProp={position ? 'itemListElement' : undefined}
             itemScope={position ? '' : undefined}
             itemType={position ? 'https://schema.org/ListItem' : undefined}
+            ownerState={ownerState}
+            style={style}
+            sx={sx}
           >
             <div ref={ref as never} style={{ minWidth: 0 }}>
               <BreadcrumbContent
                 className={clsx(classes.content)}
-                size="24"
                 color="monoA"
                 disabled={disabled}
                 itemProp={position ? 'item' : undefined}
+                size="24"
                 {...props}
               >
                 {position ? (
@@ -209,7 +209,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
               </BreadcrumbContent>
             </div>
 
-            {!!position && <meta itemProp="position" content={position} />}
+            {!!position && <meta content={position} itemProp="position" />}
             <BreadcrumbSeparator className={clsx(classes.separator)}>{separator}</BreadcrumbSeparator>
           </BreadcrumbRoot>
         )}

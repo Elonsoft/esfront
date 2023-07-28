@@ -18,21 +18,21 @@ export const Demo: Story = ({ height, ...args }) => {
 
   return (
     <div style={{ display: 'grid', gap: '24px', gridAutoFlow: 'row', maxWidth: '400px', paddingTop: '16px' }}>
-      <Slider min={0} max={100} style={styleHorizontal} {...args} />
-      <Slider min={0} max={50} step={null} marks={MARKS} style={styleHorizontal} {...args} />
-      <Slider min={0} max={100} value={value} onChange={onChange} style={styleHorizontal} {...args} />
+      <Slider max={100} min={0} style={styleHorizontal} {...args} />
+      <Slider marks={MARKS} max={50} min={0} step={null} style={styleHorizontal} {...args} />
+      <Slider max={100} min={0} style={styleHorizontal} value={value} onChange={onChange} {...args} />
       <div
         style={{ display: 'grid', gap: '24px', gridAutoFlow: 'column', justifyContent: 'flex-start', height: '150px' }}
       >
-        <Slider min={0} max={100} orientation="vertical" style={styleVertical} {...args} />
-        <Slider min={0} max={50} step={null} marks={MARKS} orientation="vertical" style={styleVertical} {...args} />
+        <Slider max={100} min={0} orientation="vertical" style={styleVertical} {...args} />
+        <Slider marks={MARKS} max={50} min={0} orientation="vertical" step={null} style={styleVertical} {...args} />
         <Slider
-          min={0}
           max={100}
-          value={value}
-          onChange={onChange}
+          min={0}
           orientation="vertical"
           style={styleVertical}
+          value={value}
+          onChange={onChange}
           {...args}
         />
       </div>

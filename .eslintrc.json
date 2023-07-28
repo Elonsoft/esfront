@@ -19,6 +19,14 @@
     "prettier/prettier": "error",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "reservedFirst": true,
+        "shorthandFirst": true,
+        "callbacksLast": true
+      }
+    ],
     "simple-import-sort/imports": [
       "error",
       {

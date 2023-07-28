@@ -93,7 +93,7 @@ export const DialogClose = (inProps: DialogCloseProps) => {
 
   return (
     <DialogCloseRoot className={clsx(classes.root, className)} sx={sx}>
-      <DialogCloseButton className={classes.button} onClick={onClick} aria-label={label} color="white">
+      <DialogCloseButton aria-label={label} className={classes.button} color="white" onClick={onClick}>
         {icon}
       </DialogCloseButton>
     </DialogCloseRoot>

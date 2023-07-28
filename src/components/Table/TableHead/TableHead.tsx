@@ -60,9 +60,9 @@ export const TableHead = (inProps: TableHeadProps) => {
       <TableHeadRoot
         ref={ref}
         className={clsx(classes.root, className)}
-        sx={sx}
         ownerState={ownerState}
         role="rowgroup"
+        sx={sx}
       >
         {children}
       </TableHeadRoot>

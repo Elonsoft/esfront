@@ -969,7 +969,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
   return (
     <AudioPlayerRoot className={clsx(classes.root, className)} sx={sx}>
-      <AudioPlayerIconButton onClick={onTogglePlay} size="32" aria-label={isPlaying ? labelPause : labelPlay}>
+      <AudioPlayerIconButton aria-label={isPlaying ? labelPause : labelPlay} size="32" onClick={onTogglePlay}>
         {isPlaying ? iconPause : iconPlay}
       </AudioPlayerIconButton>
       <AudioPlayerTime className={classes.time} variant="caption">
@@ -977,12 +977,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
       </AudioPlayerTime>
       <AudioPlayerCurrent className={classes.current}>
         <AudioPlayerCurrentTooltip
-          className={classes.currentTooltip}
-          ownerState={ownerState}
-          open={isFocused || isOverRail}
-          title={<AudioPlayerTimeValue time={isChanging ? currentChanging : isOverRail ? duration * hover : current} />}
           arrow
-          placement="top"
           PopperProps={{
             popperRef,
             anchorEl: {
@@ -991,65 +986,76 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
               }
             }
           }}
+          className={classes.currentTooltip}
+          open={isFocused || isOverRail}
+          ownerState={ownerState}
+          placement="top"
+          title={<AudioPlayerTimeValue time={isChanging ? currentChanging : isOverRail ? duration * hover : current} />}
         >
           <AudioPlayerCurrentSlider
+            ref={sliderRef}
+            aria-label={labelCurrent}
             className={classes.currentSlider}
-            ownerState={ownerState}
-            value={isChanging ? currentChanging : current}
-            min={0}
+            color="primary"
             max={duration}
+            min={0}
+            ownerState={ownerState}
             step={step}
+            value={isChanging ? currentChanging : current}
+            onBlur={onBlur}
             onChange={onTimeChange}
             onChangeCommitted={onTimeChangeCommitted}
-            color="primary"
-            aria-label={labelCurrent}
+            onFocus={onFocus}
             onPointerEnter={onPointerEnter}
             onPointerLeave={onPointerLeave}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            ref={sliderRef}
           />
         </AudioPlayerCurrentTooltip>
       </AudioPlayerCurrent>
       <AudioPlayerTooltip
+        arrow
+        disableFocusListener
+        disableTouchListener
         className={classes.tooltip}
+        placement="top"
         title={
           <AudioPlayerVolume>
             <AudioPlayerVolumeSlider
+              aria-label={labelVolume}
+              color="primary"
+              max={100}
+              min={0}
+              orientation="vertical"
               value={isMuted ? 0 : volume}
               onChange={onVolumeInputChange}
-              min={0}
-              max={100}
-              orientation="vertical"
-              color="primary"
-              aria-label={labelVolume}
             />
             <Typography variant="body100">{isMuted ? 0 : volume}</Typography>
           </AudioPlayerVolume>
         }
-        disableTouchListener
-        disableFocusListener
-        placement="top"
-        arrow
         {...TooltipProps}
       >
         <AudioPlayerVolumeButton
-          className={classes.iconButton}
-          onClick={onToggleMute}
-          size="32"
           aria-label={isMuted || volume === 0 ? labelUnmute : labelMute}
+          className={classes.iconButton}
+          size="32"
+          onClick={onToggleMute}
         >
           {isMuted || volume === 0 ? iconVolumeOff : volume <= 50 ? iconVolumeLow : iconVolumeHigh}
         </AudioPlayerVolumeButton>
       </AudioPlayerTooltip>
       <AudioPlayerTooltip
+        arrow
+        disableHoverListener
+        disableTouchListener
+        TransitionProps={{ onExited: onMenuExited }}
         className={classes.tooltip}
+        open={isMenuOpen}
+        placement="top"
         title={
           isRateMenuOpen ? (
             <TrapFocus open={isMenuOpen}>
-              <div onMouseDown={onMouseDown} onKeyDown={onRateMenuKeyDown} tabIndex={-1} style={{ outline: 'none' }}>
+              <div style={{ outline: 'none' }} tabIndex={-1} onKeyDown={onRateMenuKeyDown} onMouseDown={onMouseDown}>
                 <AudioPlayerMenuList className={classes.menuList}>
-                  <AudioPlayerMenuItem className={classes.menuItem} onClick={onRateMenuClose} autoFocus>
+                  <AudioPlayerMenuItem autoFocus className={classes.menuItem} onClick={onRateMenuClose}>
                     <AudioPlayerListItemIcon className={classes.listItemIcon}>{iconBack}</AudioPlayerListItemIcon>
                     <AudioPlayerListItemText className={classes.listItemText} primary={labelBack} />
                   </AudioPlayerMenuItem>
@@ -1070,12 +1076,12 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
             </TrapFocus>
           ) : (
             <TrapFocus open={isMenuOpen}>
-              <AudioPlayerMenuList className={classes.menuList} onMouseDown={onMouseDown} tabIndex={-1}>
+              <AudioPlayerMenuList className={classes.menuList} tabIndex={-1} onMouseDown={onMouseDown}>
                 <AudioPlayerMainMenuItem
+                  autoFocus
                   className={classes.mainMenuItem}
                   onClick={onRateMenuClick}
                   onKeyDown={onRateMenuKeyDown}
-                  autoFocus
                 >
                   <AudioPlayerListItemIcon className={classes.listItemIcon}>{iconRate}</AudioPlayerListItemIcon>
                   <AudioPlayerListItemText
@@ -1095,21 +1101,15 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
             </TrapFocus>
           )
         }
-        open={isMenuOpen}
         onClose={onMenuClose}
-        disableHoverListener
-        disableTouchListener
-        placement="top"
-        arrow
-        TransitionProps={{ onExited: onMenuExited }}
         {...TooltipProps}
       >
         <AudioPlayerIconButton
           ref={menuButtonRef}
+          aria-label={labelOptions}
           className={classes.iconButton}
           size="32"
           onClick={onMenuClick}
-          aria-label={labelOptions}
         >
           {iconOptions}
         </AudioPlayerIconButton>

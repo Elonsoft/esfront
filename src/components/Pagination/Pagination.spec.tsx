@@ -9,10 +9,10 @@ describe('Pagination', () => {
     render(
       <Pagination
         count={100}
-        page={1}
-        onPageChange={onPageChange}
         itemsPerPage={10}
+        page={1}
         onItemsPerPageChange={onItemsPerPageChange}
+        onPageChange={onPageChange}
       >
         <PaginationPages />
       </Pagination>
@@ -27,10 +27,10 @@ describe('Pagination', () => {
     render(
       <Pagination
         count={100}
-        page={1}
-        onPageChange={onPageChange}
         itemsPerPage={10}
+        page={1}
         onItemsPerPageChange={onItemsPerPageChange}
+        onPageChange={onPageChange}
       >
         <PaginationPages />
       </Pagination>
@@ -56,10 +56,10 @@ describe('Pagination', () => {
     render(
       <Pagination
         count={100}
-        page={1}
-        onPageChange={onPageChange}
         itemsPerPage={10}
+        page={1}
         onItemsPerPageChange={onItemsPerPageChange}
+        onPageChange={onPageChange}
       >
         <PaginationPages />
       </Pagination>
@@ -79,10 +79,10 @@ describe('Pagination', () => {
     render(
       <Pagination
         count={100}
-        page={1}
-        onPageChange={onPageChange}
         itemsPerPage={10}
+        page={1}
         onItemsPerPageChange={onItemsPerPageChange}
+        onPageChange={onPageChange}
       >
         <PaginationRange />
       </Pagination>

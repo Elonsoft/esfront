@@ -472,28 +472,28 @@ export const Swiper = (inProps: SwiperProps) => {
   return (
     <SwiperContext.Provider value={value}>
       <SwiperRoot
+        ref={ref}
+        aria-roledescription="carousel"
         className={clsx(classes.root, className)}
         ownerState={ownerState}
-        sx={sx}
-        ref={ref}
         role="group"
-        aria-roledescription="carousel"
+        sx={sx}
       >
         <SwiperWrapper className={classes.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           {isPrevVisible && !!buttonPrev && buttonPrev}
           {isNextVisible && !!buttonNext && buttonNext}
           <SwiperContainer
+            ref={container}
             className={classes.container}
             ownerState={ownerState}
             style={{ gap: `${gap}px`, cursor: draggable ? (isMouseDown ? 'grabbing' : 'grab') : 'unset' }}
-            ref={container}
             tabIndex={-1}
-            onScroll={onScroll}
             onDragStart={onDragStart}
             onMouseDown={onMouseDown}
-            onMouseUp={onMouseUp}
             onMouseLeave={onMouseUp}
             onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
+            onScroll={onScroll}
             onTouchStart={onTouchStart}
           >
             {children}

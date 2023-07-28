@@ -139,17 +139,17 @@ export const SwiperPaginationItem = ({
   return (
     <SwiperPaginationItemRoot
       key={index}
+      aria-label={`${index}`}
       className={classes.item}
       ownerState={ownerState}
       style={index < siblingFrom || index > siblingTo ? { ...PAGINATION_ITEM_HIDDEN, ...transition } : transition}
-      aria-label={`${index}`}
     >
       <SwiperPaginationItemInput
-        className={classes.input}
-        type="radio"
-        name={name}
-        value={index}
         checked={index === active}
+        className={classes.input}
+        name={name}
+        type="radio"
+        value={index}
         onChange={onSlideChange}
       />
       <SwiperPaginationItemBullet

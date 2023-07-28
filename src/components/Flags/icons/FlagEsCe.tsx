@@ -7,16 +7,16 @@ export const FlagEsCe = (props: SvgIconProps) => {
     <FlagRoot {...props} viewBox="0 0 24 16">
       <path d="M24 0H0v16h24V0Z" fill="#F0F0F0" />
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M10.608 6.608 4 0h8v6.608h-1.392ZM10.261 8H0v8h4l6.29-6.29c-.019-.104-.029-.21-.029-.32V8Zm3.449 1.71c-.15.807-.86 1.42-1.71 1.42V16h8l-6.29-6.29Zm-.319-3.102h.348V8H24V0h-4l-6.608 6.608Z"
         fill="#000"
+        fillRule="evenodd"
       />
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M9.217 9.39a2.786 2.786 0 0 0 2.782 2.784 2.786 2.786 0 0 0 2.783-2.783V6.608l-1.043-1.043H10.26L9.217 6.608v2.783Zm1.043 0c0 .96.78 1.74 1.74 1.74.959 0 1.739-.78 1.739-1.74V6.609H10.26v2.783Z"
         fill="#D80027"
+        fillRule="evenodd"
       />
       <path d="M9.217 5.565h5.565v-1.67l-1.113.557-1.67-1.67-1.67 1.67-1.112-.557v1.67Z" fill="#FFDA44" />
       <path

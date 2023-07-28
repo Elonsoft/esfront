@@ -53,10 +53,10 @@ export const Demo: Story = (args, context) => {
 
   return (
     <div>
-      <Button onClick={onClick} variant="contained">
+      <Button variant="contained" onClick={onClick}>
         {getButtonText(args, context)}
       </Button>
-      <Menu open={!!anchorEl} anchorEl={anchorEl} onClose={onClose}>
+      <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={onClose}>
         <MenuItem>
           <ListItemIcon>
             <IconUpload />
@@ -128,7 +128,7 @@ export const DemoList: Story = (args, context) => {
         <Divider />
         <ListItem>
           <ListItemText>{getActionText(args, context)}</ListItemText>
-          <IconButton size="32" color="tertiary">
+          <IconButton color="tertiary" size="32">
             <IconDotsVerticalLarge />
           </IconButton>
         </ListItem>

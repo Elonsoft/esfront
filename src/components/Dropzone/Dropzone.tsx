@@ -269,14 +269,14 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   return (
     <DropzoneRoot ref={ref} className={clsx(classes.root, className)} sx={sx}>
       <DropzoneDropzone
-        data-testid="dropzone"
         className={clsx(classes.dropzone)}
+        data-testid="dropzone"
         ownerState={ownerState}
+        onClick={onClick}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         onDragOver={onDragOver}
         onDrop={onDropzoneDrop}
-        onClick={onClick}
       >
         <DropzoneHeading className={classes.heading}>
           {!!icon && !(isDragOverDocument && !!dragHeading) && (
@@ -317,12 +317,12 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
         </DropzoneHelperText>
       )}
       <DropzoneInput
-        data-testid="input"
         ref={inputRef}
-        className={classes.input}
-        type="file"
         accept={accept}
+        className={classes.input}
+        data-testid="input"
         multiple={multiple}
+        type="file"
         onChange={onInputChange}
       />
     </DropzoneRoot>

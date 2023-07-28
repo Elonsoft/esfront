@@ -72,22 +72,22 @@ export const SpinnerFadingBars = (inProps: SpinnerFadingBarsProps) => {
   return (
     <SpinnerFadingBarsRoot
       className={clsx(classes.root, className)}
+      data-testid="svg"
+      fill="none"
+      height={size}
       ownerState={ownerState}
       sx={sx}
-      width={size}
-      height={size}
       viewBox="0 0 40 40"
-      fill="none"
-      data-testid="svg"
+      width={size}
     >
-      <rect x="18" rx="2" />
-      <rect transform="rotate(45 32.7285 4.44336)" x="32.7285" y="4.44336" rx="2" />
-      <rect transform="rotate(90 40 18)" x="40" y="18" rx="2" />
-      <rect transform="rotate(135 35.5566 32.7275)" x="35.5566" y="32.7275" rx="2" />
-      <rect transform="rotate(-180 22 40)" x="22" y="40" rx="2" />
-      <rect transform="rotate(-135 7.27148 35.5566)" x="7.27148" y="35.5566" rx="2" />
-      <rect transform="rotate(-90 0 22)" y="22" rx="2" />
-      <rect transform="rotate(-45 4.44336 7.27246)" x="4.44336" y="7.27246" rx="2" />
+      <rect rx="2" x="18" />
+      <rect rx="2" transform="rotate(45 32.7285 4.44336)" x="32.7285" y="4.44336" />
+      <rect rx="2" transform="rotate(90 40 18)" x="40" y="18" />
+      <rect rx="2" transform="rotate(135 35.5566 32.7275)" x="35.5566" y="32.7275" />
+      <rect rx="2" transform="rotate(-180 22 40)" x="22" y="40" />
+      <rect rx="2" transform="rotate(-135 7.27148 35.5566)" x="7.27148" y="35.5566" />
+      <rect rx="2" transform="rotate(-90 0 22)" y="22" />
+      <rect rx="2" transform="rotate(-45 4.44336 7.27246)" x="4.44336" y="7.27246" />
     </SpinnerFadingBarsRoot>
   );
 };

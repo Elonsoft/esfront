@@ -141,13 +141,13 @@ export const Alert = (inProps: AlertProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <AlertRoot className={clsx(classes.root, className)} sx={sx} ownerState={ownerState}>
+    <AlertRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {icon !== false && <AlertIcon className={classes.icon}>{icon || iconMapping[severity]}</AlertIcon>}
-      <AlertContent className={classes.content} component="div" variant="body100" color="monoA.A900">
+      <AlertContent className={classes.content} color="monoA.A900" component="div" variant="body100">
         {children}
       </AlertContent>
       {!!action && (
-        <AlertAction ownerState={ownerState} className={classes.action}>
+        <AlertAction className={classes.action} ownerState={ownerState}>
           {action}
         </AlertAction>
       )}

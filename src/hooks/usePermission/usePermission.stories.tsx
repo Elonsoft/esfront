@@ -20,7 +20,7 @@ export const Demo: Story = () => {
   return (
     <>
       <Box sx={{ maxWidth: '320px' }}>
-        <TextField size="40" fullWidth onChange={onChange} label="Permission" value={permission} select>
+        <TextField fullWidth select label="Permission" size="40" value={permission} onChange={onChange}>
           <MenuItem value="camera">camera</MenuItem>
           <MenuItem value="geolocation">geolocation</MenuItem>
           <MenuItem value="microphone">microphone</MenuItem>
@@ -33,7 +33,7 @@ export const Demo: Story = () => {
           <MenuItem value="xr-spatial-tracking">xr-spatial-tracking</MenuItem>
         </TextField>
       </Box>
-      <Typography component="div" variant="body200" sx={{ marginTop: '8px' }}>
+      <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">
         Permission status: {JSON.stringify(state, null, 2)}
       </Typography>
     </>

@@ -12,14 +12,14 @@ export const Demo: Story = () => {
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '360px' }}>
       <TextField
-        value={value || ''}
-        onChange={(event) => update(event.target.value)}
-        size="40"
         fullWidth
         aria-label="SessionStorage"
         helperText="This input's value is saved inside the sessionStorage in 'useSessionStorage' key."
+        size="40"
+        value={value || ''}
+        onChange={(event) => update(event.target.value)}
       />
-      <Button variant="contained" size="32" onClick={() => remove()}>
+      <Button size="32" variant="contained" onClick={() => remove()}>
         Remove
       </Button>
     </Box>

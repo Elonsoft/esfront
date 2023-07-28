@@ -7,10 +7,10 @@ export const FlagEc = (props: SvgIconProps) => {
     <FlagRoot {...props} viewBox="0 0 24 16">
       <path d="M24 0H0v16h24V0Z" fill="#FFDA44" />
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M14.782 8a2.782 2.782 0 1 1-5.564 0H0v4h24V8h-9.218Z"
         fill="#0052B4"
+        fillRule="evenodd"
       />
       <path d="M24 12H0v4h24v-4Z" fill="#D80027" />
       <path

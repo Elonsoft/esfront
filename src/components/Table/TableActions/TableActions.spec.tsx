@@ -7,7 +7,7 @@ describe('TableActions', () => {
   it('Should display the number of selected rows', async () => {
     const LABEL = en.components.ESTableActions.defaultProps.label;
     const COUNT = 10;
-    render(<TableActions label={LABEL} count={COUNT} />);
+    render(<TableActions count={COUNT} label={LABEL} />);
     expect(screen.queryByText(`${LABEL} ${COUNT}`)).toBeInTheDocument();
   });
 

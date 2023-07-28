@@ -89,9 +89,9 @@ export const FileIcon = (inProps: FileIconProps) => {
 
   return (
     <FileIconRoot ref={rootIconRef} className={clsx(classes.root, className)} sx={sx}>
-      <Icon ref={iconRef} className={classes.icon} width={width} height={height} />
+      <Icon ref={iconRef} className={classes.icon} height={height} width={width} />
       {!!children && (
-        <FileIconChildren style={{ paddingTop: `${Math.round(paddingTop)}px` }} className={classes.children}>
+        <FileIconChildren className={classes.children} style={{ paddingTop: `${Math.round(paddingTop)}px` }}>
           {children}
         </FileIconChildren>
       )}

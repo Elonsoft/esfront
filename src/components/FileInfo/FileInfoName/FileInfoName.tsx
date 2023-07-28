@@ -63,7 +63,7 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
     <FileInfoNameRoot className={clsx(classes.root, className)}>
       {children}
       {!!onDelete && (
-        <FileInfoNameButton className={classes.button} sx={sx} size="24" onClick={onDelete} aria-label={labelDelete}>
+        <FileInfoNameButton aria-label={labelDelete} className={classes.button} size="24" sx={sx} onClick={onDelete}>
           {iconDelete}
         </FileInfoNameButton>
       )}

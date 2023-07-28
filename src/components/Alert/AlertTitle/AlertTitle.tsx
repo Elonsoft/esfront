@@ -38,7 +38,7 @@ export const AlertTitle = (inProps: AlertTitleProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <AlertTitleRoot variant="body100Bold" color="monoA.A800" className={clsx(classes.root, className)} sx={sx}>
+    <AlertTitleRoot className={clsx(classes.root, className)} color="monoA.A800" sx={sx} variant="body100Bold">
       {children}
     </AlertTitleRoot>
   );

@@ -237,28 +237,28 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
 
   return (
     <DialogRoot
-      className={clsx(classes.root, className)}
+      ref={ref}
+      closeAfterTransition
+      BackdropComponent={DialogBackdrop}
       BackdropProps={{
         transitionDuration
       }}
-      closeAfterTransition
-      BackdropComponent={DialogBackdrop}
+      className={clsx(classes.root, className)}
       disableEscapeKeyDown={disableEscapeKeyDown}
-      onClose={onClose}
       open={open || false}
-      ref={ref}
       onClick={onDialogBackdropClick}
+      onClose={onClose}
       {...other}
     >
-      <TransitionComponent appear in={open} timeout={transitionDuration} role="presentation" {...TransitionProps}>
+      <TransitionComponent appear in={open} role="presentation" timeout={transitionDuration} {...TransitionProps}>
         <DialogContainer className={classes.container} onMouseDown={onMouseDown}>
           <DialogWrapper
             ref={wrapperRef}
+            aria-describedby={ariaDescribedby}
+            aria-labelledby={ariaLabelledby}
             className={classes.wrapper}
             ownerState={ownerState}
             role="dialog"
-            aria-describedby={ariaDescribedby}
-            aria-labelledby={ariaLabelledby}
           >
             <DialogContent className={classes.content} ownerState={ownerState} style={{ maxWidth }}>
               {before}

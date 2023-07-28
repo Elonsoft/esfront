@@ -87,7 +87,7 @@ export const DialogTitle = (inProps: DialogTitleProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <DialogTitleRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx} ref={root}>
+    <DialogTitleRoot ref={root} className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {children}
     </DialogTitleRoot>
   );

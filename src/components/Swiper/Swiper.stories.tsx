@@ -11,10 +11,10 @@ import { IconChevronLeft, IconChevronRight } from '../../icons';
 const Image = (props: { src: string; width?: string }) => {
   return (
     <img
-      src={props.src}
-      width={props.width || '160px'}
       height="160px"
+      src={props.src}
       style={{ objectFit: 'cover', borderRadius: '8px' }}
+      width={props.width || '160px'}
     />
   );
 };
@@ -32,9 +32,9 @@ export const Demo: Story = ({
       pagination={
         <SwiperPagination
           position={SwiperPaginationPosition}
-          variant={SwiperPaginationVariant}
           siblingCount={SwiperPaginationSiblingCount}
           transitionDuration={SwiperPaginationTransitionDuration}
+          variant={SwiperPaginationVariant}
         />
       }
     >
@@ -69,9 +69,9 @@ export const Vertical: Story = ({
         pagination={
           <SwiperPagination
             position={SwiperPaginationPosition}
-            variant={SwiperPaginationVariant}
             siblingCount={SwiperPaginationSiblingCount}
             transitionDuration={SwiperPaginationTransitionDuration}
+            variant={SwiperPaginationVariant}
           />
         }
       >
@@ -148,11 +148,11 @@ const CustomizationButtonNext = () => {
 
 export const Customization: Story = (args) => {
   const Image = (props: { src: string }) => {
-    return <img src={props.src} width="56px" height="56px" />;
+    return <img height="56px" src={props.src} width="56px" />;
   };
 
   return (
-    <Swiper {...args} buttonPrev={<CustomizationButtonPrev />} buttonNext={<CustomizationButtonNext />} gap={8}>
+    <Swiper {...args} buttonNext={<CustomizationButtonNext />} buttonPrev={<CustomizationButtonPrev />} gap={8}>
       <Image src="./swiper/2-1.png" />
       <Image src="./swiper/2-2.png" />
       <Image src="./swiper/2-3.png" />

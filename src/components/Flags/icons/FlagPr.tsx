@@ -11,10 +11,10 @@ export const FlagPr = (props: SvgIconProps) => {
         fill="#D80027"
       />
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="m0 16 12-8L0 0v16Zm4.621-8.674-.708-2.18-.708 2.18H.913l1.854 1.347-.708 2.18 1.854-1.347 1.854 1.347-.708-2.18 1.854-1.347H4.621Z"
         fill="#0052B4"
+        fillRule="evenodd"
       />
     </FlagRoot>
   );

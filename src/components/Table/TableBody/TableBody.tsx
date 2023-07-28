@@ -45,7 +45,7 @@ export const TableBody = (inProps: TableBodyProps) => {
 
   return (
     <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
-      <TableBodyRoot className={clsx(classes.root, className)} sx={sx} role="rowgroup">
+      <TableBodyRoot className={clsx(classes.root, className)} role="rowgroup" sx={sx}>
         {children}
       </TableBodyRoot>
     </TableCellContext.Provider>

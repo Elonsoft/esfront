@@ -36,30 +36,30 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
   return (
     <Box sx={{ height: '100vh', m: '-16px', display: 'flex', gap: '20px', overflow: 'auto' }}>
       <Sidebar
-        open={isOpen}
         color={color}
-        width={width}
-        minWidth={minWidth}
         maxWidth={maxWidth}
+        minWidth={minWidth}
+        open={isOpen}
         sx={{ position: 'sticky', top: '0' }}
+        width={width}
         onWidthChangeCommit={(value: number) => setWidth(value)}
       >
         <ListItem
-          sx={{ padding: '16px 16px 15px', overflow: 'hidden', flexShrink: '0' }}
-          component="div"
           disableGutters
+          component="div"
+          sx={{ padding: '16px 16px 15px', overflow: 'hidden', flexShrink: '0' }}
         >
           <ListItemIcon>
             <IconAt sx={{ color: color === 'primary' ? 'monoB.A800' : 'monoA.A500' }} />
           </ListItemIcon>
           <ListItemText
-            sx={{ my: '0', display: `${isOpen ? 'block' : 'none'}` }}
             primary="CRM"
             primaryTypographyProps={{ variant: 'h6', color: color === 'primary' ? 'monoB.A800' : 'monoA.A900' }}
+            sx={{ my: '0', display: `${isOpen ? 'block' : 'none'}` }}
           />
         </ListItem>
 
-        <SidebarToggle onClick={() => setIsOpen(!isOpen)} open={isOpen} />
+        <SidebarToggle open={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
         <SidebarMenu>
           <SidebarItem
@@ -75,26 +75,26 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
           <SidebarMenu behaviour={behaviour} exclusive={exclusive}>
             <SidebarItem
               component="button"
-              id="0"
               icon={<IconZap />}
+              id="0"
               text={locale === 'en' ? 'Projects' : 'Проекты'}
               onClick={() => console.log(`Projects`)}
             >
               {[...Array(5)].map((_, i) => (
                 <SidebarItem
                   key={i}
-                  text={(locale === 'en' ? 'Project' : 'Проект') + ' №' + i}
                   inset
+                  text={(locale === 'en' ? 'Project' : 'Проект') + ' №' + i}
                   onClick={() => console.log(`Project ${i}`)}
                 />
               ))}
             </SidebarItem>
-            <SidebarItem id="1" icon={<IconFileDocument />} text={locale === 'en' ? 'Files' : 'Файлы'}>
+            <SidebarItem icon={<IconFileDocument />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
               {[...Array(8)].map((_, i) => (
                 <SidebarItem
                   key={i}
-                  text={(locale === 'en' ? 'File' : 'Файл') + ' №' + i}
                   inset
+                  text={(locale === 'en' ? 'File' : 'Файл') + ' №' + i}
                   onClick={() => console.log(`File ${i}`)}
                 />
               ))}

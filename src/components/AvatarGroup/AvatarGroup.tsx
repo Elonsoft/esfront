@@ -115,9 +115,9 @@ export const AvatarGroup = (inProps: AvatarGroupProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <AvatarGroupRoot ownerState={ownerState} className={clsx(classes.root, className)} sx={sx}>
+    <AvatarGroupRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {React.Children.map(children, (child: any, i: number) => (
-        <div className={avatarGroupClasses.avatar} key={i}>
+        <div key={i} className={avatarGroupClasses.avatar}>
           {child}
         </div>
       ))}

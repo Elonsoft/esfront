@@ -192,7 +192,7 @@ export const SFSFilters = (inProps: SFSFiltersProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <SFSFiltersRoot className={clsx(className, classes.root)} sx={sx} color="tertiary" {...props}>
+    <SFSFiltersRoot className={clsx(className, classes.root)} color="tertiary" sx={sx} {...props}>
       <SFSFiltersButton className={classes.button} ownerState={ownerState} onClick={onOpen}>
         <Typography component="div" variant="body100">
           {labelButton}
@@ -204,15 +204,15 @@ export const SFSFilters = (inProps: SFSFiltersProps) => {
           </SFSFiltersButtonBadge>
         )}
       </SFSFiltersButton>
-      <SFSFiltersDrawer className={classes.drawer} anchor={'right'} open={isOpen} onClose={onClose}>
-        <SFSFiltersHeader variant="h5" className={classes.header}>
+      <SFSFiltersDrawer anchor={'right'} className={classes.drawer} open={isOpen} onClose={onClose}>
+        <SFSFiltersHeader className={classes.header} variant="h5">
           {labelHeader}
           <SFSFiltersCloseButton
-            className={classes.closeButton}
-            size="40"
-            color="tertiary"
-            onClick={onClose}
             aria-label={labelClose}
+            className={classes.closeButton}
+            color="tertiary"
+            size="40"
+            onClick={onClose}
           >
             {iconClose}
           </SFSFiltersCloseButton>
@@ -223,11 +223,11 @@ export const SFSFilters = (inProps: SFSFiltersProps) => {
         {count ? (
           <SFSFiltersFooter className={classes.footer}>
             <SFSFiltersResetButton
-              size="48"
               fullWidth
-              variant="outlined"
               className={classes.resetButton}
               color="error"
+              size="48"
+              variant="outlined"
               onClick={onReset}
             >
               {labelReset}

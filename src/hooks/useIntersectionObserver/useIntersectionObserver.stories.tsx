@@ -25,8 +25,8 @@ export const Demo: Story = () => {
       }}
     >
       <Typography
-        sx={{ position: 'sticky', top: 0, backgroundColor: 'monoB.500', padding: '4px 8px' }}
         component="div"
+        sx={{ position: 'sticky', top: 0, backgroundColor: 'monoB.500', padding: '4px 8px' }}
         variant="body100"
       >
         Bottom element is intersecting: {isIntersecting.toString()}

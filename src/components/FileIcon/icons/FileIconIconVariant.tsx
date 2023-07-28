@@ -8,10 +8,10 @@ export const FileIconIconVariant = React.forwardRef<SVGPathElement, SvgIconProps
   const theme = useTheme();
   return (
     <SvgIcon
-      width={props.width}
       height={props.height}
-      viewBox="0 0 36 48"
       style={{ width: `${props.width}px`, height: `${props.height}px`, fill: 'none', overflow: 'visible' }}
+      viewBox="0 0 36 48"
+      width={props.width}
       {...props}
     >
       <path
@@ -21,10 +21,10 @@ export const FileIconIconVariant = React.forwardRef<SVGPathElement, SvgIconProps
       />
       <path
         ref={ref}
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M24.5 0H24V8.45455C24 10.4126 25.5874 12 27.5455 12L36 12V11.5L24.5 0Z"
         fill={theme.palette.monoA.A150}
+        fillRule="evenodd"
       />
     </SvgIcon>
   );

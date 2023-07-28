@@ -149,13 +149,13 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
       {bullets.map((index) => (
         <SwiperPaginationItem
           key={index}
-          index={index}
           active={active}
           from={from}
-          to={to}
+          index={index}
+          name={name}
           siblingFrom={siblingFrom}
           siblingTo={siblingTo}
-          name={name}
+          to={to}
           transition={transition}
           onSlideChange={onSlideChange}
         />
