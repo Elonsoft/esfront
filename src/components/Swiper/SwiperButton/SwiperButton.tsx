@@ -109,11 +109,11 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
 
   return (
     <SwiperButtonRoot
+      aria-label={step < 0 ? labelPrev : labelNext}
       className={clsx(classes.root, className)}
       ownerState={ownerState}
       sx={sx}
       onClick={onClick}
-      aria-label={step < 0 ? labelPrev : labelNext}
     >
       {direction === 'vertical' ? (step < 0 ? iconUp : iconDown) : step < 0 ? iconLeft : iconRight}
     </SwiperButtonRoot>

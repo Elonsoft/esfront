@@ -385,31 +385,30 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
   return (
     <>
       <SidebarItemTooltip
-        className={clsx(classes.tooltip)}
-        open={isTooltipOpen}
-        onClose={onTooltipClose}
-        onOpen={onTooltipOpen}
-        enterTouchDelay={0}
-        leaveTouchDelay={Infinity}
         arrow={!!text}
+        className={clsx(classes.tooltip)}
+        disableInteractive={!children}
         enterDelay={100}
         enterNextDelay={200}
+        enterTouchDelay={0}
         leaveDelay={120}
-        disableInteractive={!children}
+        leaveTouchDelay={Infinity}
+        open={isTooltipOpen}
+        placement={children ? 'right-start' : 'right'}
         title={
           <SidebarItemTooltipTitle
-            className={clsx(classes.tooltipTitle)}
+            ref={refTooltip}
             disablePadding
+            className={clsx(classes.tooltipTitle)}
             onKeyDown={onKeyDownItem}
             onMouseDown={onMouseDown}
-            ref={refTooltip}
           >
             <SidebarItemTooltipItem
               className={clsx(classes.tooltipItem)}
               component={component}
               disabled={!onClick}
-              tabIndex={-1}
               divider={!!children}
+              tabIndex={-1}
               onClick={onClick}
               {...props}
             >
@@ -422,40 +421,41 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
                 const { text, inset, ...rest } = child.props;
 
                 return (
-                  <SidebarItemTooltipItem className={clsx(classes.tooltipItem)} key={idx} tabIndex={idx} {...rest}>
+                  <SidebarItemTooltipItem key={idx} className={clsx(classes.tooltipItem)} tabIndex={idx} {...rest}>
                     <Typography variant="caption">{text}</Typography>
                   </SidebarItemTooltipItem>
                 );
               })}
           </SidebarItemTooltipTitle>
         }
-        placement={children ? 'right-start' : 'right'}
+        onClose={onTooltipClose}
+        onOpen={onTooltipOpen}
       >
         <SidebarItemRoot
           className={clsx(classes.root, className)}
+          sx={sx}
           onMouseEnter={onNestedMenuHover}
           onMouseLeave={onNestedMenuHover}
-          sx={sx}
         >
           <SidebarItemWrapper className={clsx(classes.wrapper)}>
             <SidebarItemButton
+              ref={refItem}
               className={clsx(classes.button)}
               ownerState={ownerState}
-              onTouchStart={onItemTouchStart}
               onClick={onItemClick}
               onKeyDown={onKeyDownItem}
-              ref={refItem}
+              onTouchStart={onItemTouchStart}
               {...props}
             >
-              <SidebarItemContainer className={clsx(classes.container)} ref={ref}>
+              <SidebarItemContainer ref={ref} className={clsx(classes.container)}>
                 {!!icon && <ListItemIcon>{icon}</ListItemIcon>}
 
                 <SidebarItemText
                   className={clsx(classes.text)}
+                  inset={inset}
                   ownerState={ownerState}
                   primary={text}
                   primaryTypographyProps={{ variant: 'body100' }}
-                  inset={inset}
                 />
                 {children && open && !component && (
                   <SidebarItemIcon className={clsx(classes.icon)} ownerState={ownerState}>
@@ -467,12 +467,12 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
 
             {children && open && component && (
               <SidebarItemSecondaryAction
-                className={clsx(classes.secondaryAction)}
-                onClick={onNestedMenuClick}
                 aria-label={!isNestedMenuOpen ? labelOpen : labelHide}
+                className={clsx(classes.secondaryAction)}
                 disabled={behaviour === 'hover'}
                 ownerState={ownerState}
                 size="24"
+                onClick={onNestedMenuClick}
               >
                 {iconToggle}
               </SidebarItemSecondaryAction>
@@ -480,7 +480,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
           </SidebarItemWrapper>
 
           {open && !!children && (
-            <Collapse in={!!isNestedMenuOpen} timeout="auto" unmountOnExit>
+            <Collapse unmountOnExit in={!!isNestedMenuOpen} timeout="auto">
               <SidebarItemNestedMenu className={clsx(classes.nestedMenu)}>{children}</SidebarItemNestedMenu>
             </Collapse>
           )}

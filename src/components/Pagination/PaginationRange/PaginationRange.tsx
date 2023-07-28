@@ -124,11 +124,11 @@ export const PaginationRange = (inProps: PaginationRangeProps) => {
       <PaginationRangeLabel variant="caption">{labelItemsPerPage}</PaginationRangeLabel>
 
       <PaginationRangeButton
+        aria-expanded={open ? 'true' : undefined}
         className={clsx(classes.button, className)}
         color="tertiary"
-        size="32"
-        aria-expanded={open ? 'true' : undefined}
         endIcon={iconItemsPerPage}
+        size="32"
         onClick={onClickListItem}
       >
         <Typography variant="caption">{itemsPerPage}</Typography>

@@ -27,8 +27,8 @@ describe('Dropzone', () => {
     render(
       <Dropzone
         heading={TEXT_HEADING}
-        subheading={TEXT_SUBHEADING}
         helperText={TEXT_HELPER}
+        subheading={TEXT_SUBHEADING}
         onChange={() => null}
         onReject={() => null}
       />
@@ -39,18 +39,18 @@ describe('Dropzone', () => {
   });
 
   it('Should render icon', () => {
-    render(<Dropzone icon={<IconUpload />} heading={TEXT_HEADING} onChange={() => null} onReject={() => null} />);
+    render(<Dropzone heading={TEXT_HEADING} icon={<IconUpload />} onChange={() => null} onReject={() => null} />);
     expect(screen.queryByTestId('icon')).toBeInTheDocument();
   });
 
   it('Should render dragHeading and dragSubheading on document drag events', () => {
     render(
       <Dropzone
-        icon={<IconUpload />}
-        heading={TEXT_HEADING}
-        subheading={TEXT_SUBHEADING}
         dragHeading={TEXT_DRAG_HEADING}
         dragSubheading={TEXT_DRAG_SUBHEADING}
+        heading={TEXT_HEADING}
+        icon={<IconUpload />}
+        subheading={TEXT_SUBHEADING}
         onChange={() => null}
         onReject={() => null}
       />
@@ -71,10 +71,10 @@ describe('Dropzone', () => {
 
     render(
       <Dropzone
+        accept="image/png"
         heading={TEXT_HEADING}
         maxSize={5}
         multiple={false}
-        accept="image/png"
         onChange={handleChange}
         onReject={handleReject}
       />
@@ -125,10 +125,10 @@ describe('Dropzone', () => {
 
     render(
       <Dropzone
+        accept="image/png"
         heading={TEXT_HEADING}
         maxSize={5}
         multiple={false}
-        accept="image/png"
         onChange={handleChange}
         onReject={handleReject}
       />

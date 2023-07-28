@@ -64,7 +64,7 @@ export const Table = forwardRef<HTMLDivElement, TableProps>((inProps, ref) => {
     <TableContext.Provider value={value}>
       <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
         <TableScrollbarContext.Provider value={scrollbarValue}>
-          <TableRoot ref={ref} className={clsx(classes.root, className)} sx={sx} role="table">
+          <TableRoot ref={ref} className={clsx(classes.root, className)} role="table" sx={sx}>
             {children}
           </TableRoot>
         </TableScrollbarContext.Provider>

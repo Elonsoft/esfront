@@ -13,7 +13,7 @@ describe('EmptyState', () => {
   });
 
   it('Should display icon', async () => {
-    render(<EmptyState icon={<EmptyStateIconBox />} heading={TEXT_HEADING} subheading={TEXT_SUBHEADING} />);
+    render(<EmptyState heading={TEXT_HEADING} icon={<EmptyStateIconBox />} subheading={TEXT_SUBHEADING} />);
     expect(screen.queryByTestId('icon')).toBeInTheDocument();
   });
 });

@@ -155,11 +155,11 @@ export const SFSSearch = (inProps: SFSSearchProps) => {
         InputProps={{
           startAdornment: <InputAdornment position="start">{iconSearch}</InputAdornment>,
           endAdornment: onClear && (
-            <InputAdornment onClick={onClear} position="end">
+            <InputAdornment position="end" onClick={onClear}>
               <SFSSearchClear
-                aria-label={labelClear}
                 disableFocusRipple
                 disableRipple
+                aria-label={labelClear}
                 className={classes.clear}
                 color="monoA"
                 size="24"
@@ -171,10 +171,10 @@ export const SFSSearch = (inProps: SFSSearchProps) => {
         }}
         {...props}
         fullWidth
-        className={classes.input}
-        size="32"
         aria-label={ariaLabel}
+        className={classes.input}
         placeholder={placeholder}
+        size="32"
       />
     </SFSSearchRoot>
   );

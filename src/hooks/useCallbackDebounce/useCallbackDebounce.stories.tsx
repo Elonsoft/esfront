@@ -27,7 +27,7 @@ export const Demo: Story = () => {
   return (
     <div>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
-        <TextField label="Value" onChange={onChange} size="40" fullWidth />
+        <TextField fullWidth label="Value" size="40" onChange={onChange} />
 
         <FormControlLabel
           control={<Checkbox checked={leading} onChange={(event) => setLeading(event.target.checked)} />}
@@ -40,7 +40,7 @@ export const Demo: Story = () => {
         />
       </Box>
 
-      <Typography component="div" variant="body200" sx={{ marginTop: '8px' }}>
+      <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">
         Debounced value: {debouncedValue}
       </Typography>
     </div>

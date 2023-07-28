@@ -78,7 +78,7 @@ export const TableScrollable = (inProps: TableScrollableProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableScrollableRoot className={clsx(className, classes.root)} sx={sx} ref={ref}>
+    <TableScrollableRoot ref={ref} className={clsx(className, classes.root)} sx={sx}>
       {children}
     </TableScrollableRoot>
   );

@@ -72,10 +72,10 @@ export const FileIconBadge = (inProps: FileIconBadgeProps) => {
 
   return (
     <FileIconBadgeRoot
-      ownerState={ownerState}
       className={clsx(classes.root, className)}
-      sx={sx}
+      ownerState={ownerState}
       style={{ backgroundColor: color }}
+      sx={sx}
       variant="mini100"
     >
       {children}

@@ -44,7 +44,7 @@ export const TableScrollbar = (inProps: TableScrollbarProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableScrollbarRoot className={clsx(className, classes.root)} sx={sx} ref={setRef}>
+    <TableScrollbarRoot ref={setRef} className={clsx(className, classes.root)} sx={sx}>
       <div style={{ width: `${width}px`, height: '0.1px' }}></div>
     </TableScrollbarRoot>
   );

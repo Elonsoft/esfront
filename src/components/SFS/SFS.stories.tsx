@@ -56,22 +56,22 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
   return (
     <SFS>
       <SFSRow>
-        <SFSSearch onChange={onSearchChange} onClear={search ? onClearSearch : undefined} value={search} />
+        <SFSSearch value={search} onChange={onSearchChange} onClear={search ? onClearSearch : undefined} />
         {!!search && <Divider flexItem orientation="vertical" sx={{ color: 'monoA.A200', margin: '8px 0' }} />}
         {args.SFSSortingMultiple ? (
           <SFSSorting
             key="1"
             multiple
+            options={locale == 'ru' ? sortingOptionsRu : sortingOptionsEn}
             value={values}
             onChange={setValues}
-            options={locale == 'ru' ? sortingOptionsRu : sortingOptionsEn}
           />
         ) : (
           <SFSSorting
             key="2"
+            options={locale == 'ru' ? sortingOptionsRu : sortingOptionsEn}
             value={value}
             onChange={setValue}
-            options={locale == 'ru' ? sortingOptionsRu : sortingOptionsEn}
           />
         )}
         <Divider orientation="vertical" />
@@ -90,48 +90,48 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
         >
           <SFSFiltersGroup title={locale === 'ru' ? 'Основное' : 'General'}>
             <TextField
-              size="48"
-              name="1"
-              onChange={onFiltersChange}
               label={locale === 'ru' ? 'Ответственный' : 'Responsible'}
+              name="1"
+              size="48"
               value={filters['1']}
+              onChange={onFiltersChange}
             />
             <TextField
-              size="48"
-              name="2"
-              onChange={onFiltersChange}
               label={locale === 'ru' ? 'Создатель' : 'Author'}
+              name="2"
+              size="48"
               value={filters['2']}
+              onChange={onFiltersChange}
             />
             <TextField
-              size="48"
-              name="3"
-              onChange={onFiltersChange}
               label={locale === 'ru' ? 'Статус задачи' : 'Task status'}
+              name="3"
+              size="48"
               value={filters['3']}
+              onChange={onFiltersChange}
             />
             <TextField
-              size="48"
-              name="4"
-              onChange={onFiltersChange}
               label={locale === 'ru' ? 'Этап выполнения' : 'Execution stage'}
+              name="4"
+              size="48"
               value={filters['4']}
+              onChange={onFiltersChange}
             />
           </SFSFiltersGroup>
           <SFSFiltersGroup title={locale === 'ru' ? 'Другое' : 'Other'}>
             <TextField
-              size="48"
-              name="5"
-              onChange={onFiltersChange}
               label={locale === 'ru' ? 'Срок выполнения' : 'Deadline'}
+              name="5"
+              size="48"
               value={filters['5']}
+              onChange={onFiltersChange}
             />
             <TextField
-              size="48"
-              name="6"
-              onChange={onFiltersChange}
               label={locale === 'ru' ? 'Закрытие' : 'Closure'}
+              name="6"
+              size="48"
               value={filters['6']}
+              onChange={onFiltersChange}
             />
           </SFSFiltersGroup>
         </SFSFilters>

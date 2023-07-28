@@ -227,11 +227,11 @@ export const Sidenav = (inProps: SidenavProps) => {
             if (idx) {
               return (
                 <SidenavDrawer
+                  ref={sidenavRef}
                   className={clsx(classes.drawer)}
                   ownerState={ownerState}
-                  ref={sidenavRef}
-                  onMouseUp={() => setMouseDown(false)}
                   onMouseDown={() => setMouseDown(true)}
+                  onMouseUp={() => setMouseDown(false)}
                 >
                   {React.cloneElement(child, { open: open || hover, hover })}
                 </SidenavDrawer>
@@ -239,11 +239,11 @@ export const Sidenav = (inProps: SidenavProps) => {
             }
             return (
               <SidenavRail
-                className={clsx(classes.rail)}
                 ref={root}
+                className={clsx(classes.rail)}
+                onMouseLeave={onMouseLeave}
                 onMouseMove={onMouseMove}
                 onMouseOver={onMouseOver}
-                onMouseLeave={onMouseLeave}
               >
                 {React.cloneElement(child)}
               </SidenavRail>

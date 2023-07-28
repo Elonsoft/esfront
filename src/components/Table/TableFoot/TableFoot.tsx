@@ -53,7 +53,7 @@ export const TableFoot = (inProps: TableFootProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableFootRoot ref={ref} className={clsx(classes.root, className)} sx={sx} ownerState={ownerState}>
+    <TableFootRoot ref={ref} className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {children}
     </TableFootRoot>
   );

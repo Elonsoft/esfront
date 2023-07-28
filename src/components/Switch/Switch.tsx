@@ -228,28 +228,28 @@ export const Switch = (inProps: SwitchProps) => {
   };
 
   return (
-    <SwitchRoot className={clsx(classes.root, className)} sx={sx} ownerState={ownerState}>
+    <SwitchRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       <SwitchButton
-        component="span"
         disableRipple
         disableTouchRipple
         className={classes.button}
+        component="span"
         disabled={disabled}
         tabIndex={-1}
       >
         <SwitchInput
-          type="checkbox"
-          onChange={onSwitchChange}
-          onKeyDown={type === 'button' ? onKeyDown : undefined}
           autoFocus={autoFocus}
           checked={!!checked}
-          defaultChecked={defaultChecked}
           className={classes.input}
+          defaultChecked={defaultChecked}
           disabled={disabled}
           id={id}
           name={name}
           readOnly={readOnly}
+          type="checkbox"
           value={value}
+          onChange={onSwitchChange}
+          onKeyDown={type === 'button' ? onKeyDown : undefined}
         />
         <SwitchThumb className={classes.thumb} />
       </SwitchButton>

@@ -80,7 +80,7 @@ export const DialogActions = (inProps: DialogActionsProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <DialogActionsRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx} ref={root}>
+    <DialogActionsRoot ref={root} className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {children}
     </DialogActionsRoot>
   );

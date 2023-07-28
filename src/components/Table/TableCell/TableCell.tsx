@@ -311,11 +311,11 @@ export const TableCell = (inProps: TableCellProps) => {
     <TableCellRoot
       ref={ref}
       className={clsx(classes.root, className)}
-      ownerState={ownerState}
-      id={id}
-      sx={sx}
-      role={variant === 'head' ? 'columnheader' : 'cell'}
       data-minwidth={minWidth}
+      id={id}
+      ownerState={ownerState}
+      role={variant === 'head' ? 'columnheader' : 'cell'}
+      sx={sx}
     >
       <TableCellContainer className={classes.container}>
         <TableCellContent className={classes.content} ownerState={ownerState}>
@@ -323,12 +323,12 @@ export const TableCell = (inProps: TableCellProps) => {
         </TableCellContent>
         {!!onResize && (
           <TableCellResize
+            aria-label={labelResize}
             className={classes.resize}
             ownerState={ownerState}
-            onMouseDown={onMouseDown}
             onKeyDown={onKeyDown}
             onKeyUp={onKeyUp}
-            aria-label={labelResize}
+            onMouseDown={onMouseDown}
           />
         )}
       </TableCellContainer>

@@ -12,14 +12,14 @@ export const Demo: Story = () => {
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '360px' }}>
       <TextField
-        value={cookie}
-        onChange={(event) => updateCookie(event.target.value)}
-        size="40"
         fullWidth
         aria-label="Cookie"
         helperText="This input's value is saved inside the 'useCookie' cookie."
+        size="40"
+        value={cookie}
+        onChange={(event) => updateCookie(event.target.value)}
       />
-      <Button variant="contained" size="32" onClick={removeCookie}>
+      <Button size="32" variant="contained" onClick={removeCookie}>
         Remove cookie
       </Button>
     </Box>

@@ -61,12 +61,12 @@ export const AlertClose = (inProps: AlertCloseProps) => {
 
   return (
     <AlertCloseRoot
+      aria-label={label}
       className={clsx(classes.root, className)}
-      sx={sx}
       color="tertiary"
       size="24"
+      sx={sx}
       onClick={onClick}
-      aria-label={label}
     >
       <Icon />
     </AlertCloseRoot>

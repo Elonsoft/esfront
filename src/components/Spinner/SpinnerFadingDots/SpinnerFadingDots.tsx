@@ -72,13 +72,13 @@ export const SpinnerFadingDots = (inProps: SpinnerFadingDotsProps) => {
   return (
     <SpinnerFadingDotsRoot
       className={clsx(classes.root, className)}
+      data-testid="svg"
+      fill="none"
+      height={size}
       ownerState={ownerState}
       sx={sx}
-      width={size}
-      height={size}
       viewBox="0 0 40 40"
-      fill="none"
-      data-testid="svg"
+      width={size}
     >
       <circle cx="19" cy="3" r="3" />
       <circle cx="30.3145" cy="7.68652" r="3" />

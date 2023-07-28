@@ -259,7 +259,7 @@ export const Sidebar = (inProps: SidebarProps) => {
 
   return (
     <SidebarContext.Provider value={value}>
-      <SidebarRoot className={clsx(classes.root, className)} sx={sx} ownerState={ownerState}>
+      <SidebarRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
         {(onWidthChange || onWidthChangeCommitLatest) && (
           <SidebarHandler
             className={clsx(classes.handler)}
@@ -272,8 +272,8 @@ export const Sidebar = (inProps: SidebarProps) => {
         )}
 
         <SidebarContent
-          className={clsx(classes.content)}
           ref={ref}
+          className={clsx(classes.content)}
           ownerState={ownerState}
           style={{ width: !open ? undefined : `${width}px` }}
         >

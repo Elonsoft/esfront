@@ -10,9 +10,9 @@ export const Demo: Story = ({ breakpoint }, context) => {
   return (
     <>
       <TextFieldGroup breakpoint={breakpoint}>
-        <TextField label={locale === 'en' ? 'First name' : 'Имя'} required />
-        <TextField label={locale === 'en' ? 'Second name' : 'Фамилия'} required />
-        <TextField error label={locale === 'en' ? 'Patronymic' : 'Отчество'} required />
+        <TextField required label={locale === 'en' ? 'First name' : 'Имя'} />
+        <TextField required label={locale === 'en' ? 'Second name' : 'Фамилия'} />
+        <TextField error required label={locale === 'en' ? 'Patronymic' : 'Отчество'} />
       </TextFieldGroup>
     </>
   );

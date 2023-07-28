@@ -125,11 +125,11 @@ export const Demo: Story = (args, context) => {
           <TableRow>
             <TableCell padding="checkbox">
               <Checkbox
-                indeterminate={selected.length > 0 && selected.length < DATA.length}
                 checked={selected.length > 0 && selected.length === DATA.length}
-                onChange={onSelectAll}
-                inputProps={{ 'aria-label': selected.length === DATA.length ? 'Unselect all' : 'Select all' }}
                 color="secondary"
+                indeterminate={selected.length > 0 && selected.length < DATA.length}
+                inputProps={{ 'aria-label': selected.length === DATA.length ? 'Unselect all' : 'Select all' }}
+                onChange={onSelectAll}
               />
             </TableCell>
             <TableCell colSpan={3} onResize={onResize(1, 3)} onResizeCommit={onResizeCommit(1, 3)}>
@@ -145,9 +145,9 @@ export const Demo: Story = (args, context) => {
             {fields.map((field, index) => (
               <TableCell
                 key={field}
+                minWidth={100}
                 onResize={onResize(index + 1)}
                 onResizeCommit={onResizeCommit(index + 1)}
-                minWidth={100}
               >
                 <TableText>{NAMES[locale][field]}</TableText>
               </TableCell>
@@ -161,13 +161,13 @@ export const Demo: Story = (args, context) => {
             const labelId = `story-usage-checkbox-${row[locale].id}`;
 
             return (
-              <TableRow key={row[locale].id} hover selected={isSelected} component="button">
-                <TableCell padding="checkbox" overlap>
+              <TableRow key={row[locale].id} hover component="button" selected={isSelected}>
+                <TableCell overlap padding="checkbox">
                   <Checkbox
                     checked={isSelected}
-                    onChange={onSelect(row[locale].id)}
-                    inputProps={{ 'aria-labelledby': labelId }}
                     color="secondary"
+                    inputProps={{ 'aria-labelledby': labelId }}
+                    onChange={onSelect(row[locale].id)}
                   />
                 </TableCell>
                 {fields.map((field) => (
@@ -188,29 +188,29 @@ export const Demo: Story = (args, context) => {
       <TableFoot sticky={0}>
         {!!selected.length && (
           <TableActions
-            sx={(theme) => ({ borderBottom: `1px solid ${theme.palette.monoA.A100}` })}
-            label={locale === 'en' ? 'Selected' : 'Выбрано'}
             count={selected.length}
+            label={locale === 'en' ? 'Selected' : 'Выбрано'}
+            sx={(theme) => ({ borderBottom: `1px solid ${theme.palette.monoA.A100}` })}
           >
             <IconButton aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
               <IconPencilOutline />
             </IconButton>
-            <Divider orientation="vertical" flexItem />
-            <IconButton onClick={onClose} aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'}>
+            <Divider flexItem orientation="vertical" />
+            <IconButton aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
               <IconClose />
             </IconButton>
           </TableActions>
         )}
         <TableScrollbar />
         <Pagination
-          sx={{ padding: '12px', paddingLeft: '16px' }}
           count={100}
+          itemsPerPage={10}
           page={1}
-          onPageChange={() => {
+          sx={{ padding: '12px', paddingLeft: '16px' }}
+          onItemsPerPageChange={() => {
             /* */
           }}
-          itemsPerPage={10}
-          onItemsPerPageChange={() => {
+          onPageChange={() => {
             /* */
           }}
         >

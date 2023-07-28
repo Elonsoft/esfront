@@ -79,20 +79,20 @@ export const SpinnerDashRing = (inProps: SpinnerDashRingProps) => {
   return (
     <SpinnerDashRingRoot
       className={clsx(classes.root, className)}
+      data-testid="svg"
+      fill="none"
+      height={size}
       ownerState={ownerState}
       sx={sx}
-      width={size}
-      height={size}
       viewBox="0 0 40 40"
-      fill="none"
-      data-testid="svg"
+      width={size}
     >
-      <circle opacity="0.3" cx="20" cy="20" r="18" strokeWidth="4" />
+      <circle cx="20" cy="20" opacity="0.3" r="18" strokeWidth="4" />
       <SpinnerDashRingCircle
         className={classes.circle}
-        ownerState={ownerState}
         cx="20"
         cy="20"
+        ownerState={ownerState}
         r="18"
         strokeWidth="4"
       />

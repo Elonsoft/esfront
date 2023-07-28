@@ -99,11 +99,11 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
   return (
     <DialogArrowRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       <DialogArrowButton
-        className={classes.button}
-        onClick={onClick}
         aria-label={direction === 'prev' ? labelPrev : labelNext}
-        variant="text"
+        className={classes.button}
         color="white"
+        variant="text"
+        onClick={onClick}
       >
         {direction === 'prev' ? iconPrev : iconNext}
       </DialogArrowButton>

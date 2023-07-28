@@ -99,9 +99,6 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
 
   return (
     <PasswordFieldRoot
-      className={clsx(classes.root, className)}
-      classes={inClasses}
-      type={visible ? 'text' : 'password'}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -117,6 +114,9 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
         ),
         ...InputProps
       }}
+      className={clsx(classes.root, className)}
+      classes={inClasses}
+      type={visible ? 'text' : 'password'}
       {...props}
     />
   );

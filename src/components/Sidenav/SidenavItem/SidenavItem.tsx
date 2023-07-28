@@ -162,25 +162,25 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
   return (
     <>
       <SidenavItemTooltip
-        className={clsx(classes.tooltip)}
+        disableInteractive
         disableTouchListener
-        open={isTooltipOpen}
-        onOpen={onTooltipOpen}
-        onClose={onTooltipClose}
         arrow={!!text}
+        className={clsx(classes.tooltip)}
         enterNextDelay={200}
         leaveDelay={120}
-        disableInteractive
-        title={<>{text}</>}
+        open={isTooltipOpen}
         placement="right"
+        title={<>{text}</>}
+        onClose={onTooltipClose}
+        onOpen={onTooltipOpen}
       >
         <div className="ESSidenavItem-wrapper" data-id={id}>
           <SidenavItemRoot
             className={clsx(classes.root, className)}
-            selected={!!(id && id === itemId)}
             ownerState={ownerState}
-            onClick={onClickItem}
+            selected={!!(id && id === itemId)}
             sx={sx}
+            onClick={onClickItem}
             {...props}
           >
             <ListItemIcon>{icon}</ListItemIcon>

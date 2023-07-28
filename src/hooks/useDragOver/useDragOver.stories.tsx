@@ -10,13 +10,13 @@ export const Demo: Story = () => {
   return (
     <Typography
       component="div"
-      variant="body100"
       sx={(theme) => ({
         padding: '16px',
         border: `1px dashed ${theme.palette.monoA.A500}`,
         borderRadius: '2px',
         backgroundColor: isDragOver ? theme.palette.monoA.A50 : 'transparent'
       })}
+      variant="body100"
       {...props}
     >
       Drag&apos;n&apos;Drop

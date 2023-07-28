@@ -8,10 +8,10 @@ export const FlagSx = (props: SvgIconProps) => {
       <path d="M24 0H0v16h24V0Z" fill="#D80027" />
       <path d="M24 0v8.008H12L0 0h24Z" fill="#0052B4" />
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="m0 16 12-8L0 0v16Zm3.643-7.572V5.643H7.5v2.785c0 1.477-1.929 1.929-1.929 1.929s-1.928-.452-1.928-1.929Z"
         fill="#F0F0F0"
+        fillRule="evenodd"
       />
       <path
         d="M4.741 5.643h1.66a.858.858 0 0 0-1.66 0ZM3.642 8h-.848a2.786 2.786 0 1 0 5.553 0H7.5v.429c0 1.476-1.929 1.928-1.929 1.928S3.642 9.905 3.642 8.43v-.43Z"

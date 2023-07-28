@@ -178,12 +178,12 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <BreadcrumbsRoot className={clsx(classes.root, className)} sx={sx} component="nav" {...props}>
+    <BreadcrumbsRoot className={clsx(classes.root, className)} component="nav" sx={sx} {...props}>
       <BreadcrumbsList
-        itemScope
-        itemType="https://schema.org/BreadcrumbList"
-        className={clsx(classes.list)}
         ref={ref}
+        itemScope
+        className={clsx(classes.list)}
+        itemType="https://schema.org/BreadcrumbList"
         ownerState={ownerState}
       >
         {Children.map(children, (child, idx) => {
@@ -203,10 +203,10 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
 
               {idx === 0 && (
                 <Breadcrumb
-                  className={clsx(classes.buttonMore)}
-                  onClick={onOpenMenu}
                   aria-label={labelButtonMore}
+                  className={clsx(classes.buttonMore)}
                   style={{ display: lastIndex > 1 ? 'flex' : 'none' }}
+                  onClick={onOpenMenu}
                 >
                   {iconButtonMore}
                 </Breadcrumb>
@@ -216,7 +216,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
         })}
       </BreadcrumbsList>
 
-      <BreadcrumbsMenu className={clsx(classes.menu)} open={open} anchorEl={anchorEl} onClose={onCloseMenu}>
+      <BreadcrumbsMenu anchorEl={anchorEl} className={clsx(classes.menu)} open={open} onClose={onCloseMenu}>
         {Children.map(children, (child, idx) => {
           if (!isValidElement(child)) {
             return null;
@@ -227,14 +227,14 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
           if (idx >= 1 && idx < lastIndex) {
             return (
               <BreadcrumbsTooltip
-                className={clsx(classes.tooltip)}
                 arrow
-                title={<Typography variant="caption">{children}</Typography>}
                 disableInteractive
+                className={clsx(classes.tooltip)}
+                title={<Typography variant="caption">{children}</Typography>}
               >
                 {({ ref, childrenRef }) => (
-                  <BreadcrumbsMenuItem className={clsx(classes.menuItem)} ref={ref} {...rest}>
-                    <Typography noWrap ref={childrenRef}>
+                  <BreadcrumbsMenuItem ref={ref} className={clsx(classes.menuItem)} {...rest}>
+                    <Typography ref={childrenRef} noWrap>
                       {children}
                     </Typography>
                   </BreadcrumbsMenuItem>

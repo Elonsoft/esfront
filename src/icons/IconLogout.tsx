@@ -2,12 +2,12 @@ import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
 export const IconLogout = (props: SvgIconProps) => {
   return (
-    <SvgIcon {...props} width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <SvgIcon fill="none" height="24" viewBox="0 0 24 24" width="24" {...props}>
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M6 3C4.89543 3 4 3.89543 4 5V19C4 20.1046 4.89543 21 6 21H14C15.1046 21 16 20.1046 16 19V17C16 16.4477 15.5523 16 15 16C14.4477 16 14 16.4477 14 17V19H6V5H14V7C14 7.55228 14.4477 8 15 8C15.5523 8 16 7.55228 16 7V5C16 3.89543 15.1046 3 14 3H6ZM19.7071 8.29289C19.3166 7.90237 18.6834 7.90237 18.2929 8.29289C17.9024 8.68342 17.9024 9.31658 18.2929 9.70711L19.5858 11H11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13H19.5858L18.2929 14.2929C17.9024 14.6834 17.9024 15.3166 18.2929 15.7071C18.6834 16.0976 19.3166 16.0976 19.7071 15.7071L22.7071 12.7071L23.4142 12L22.7071 11.2929L19.7071 8.29289Z"
         fill="currentColor"
+        fillRule="evenodd"
       />
     </SvgIcon>
   );

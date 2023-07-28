@@ -26,8 +26,8 @@ export const Demo: Story<PaginationProps> = ({ count }) => {
       count={count}
       itemsPerPage={itemsPerPage}
       page={page}
-      onPageChange={onPageChange}
       onItemsPerPageChange={onItemsPerPageChange}
+      onPageChange={onPageChange}
     >
       <PaginationRange />
       <PaginationPages />

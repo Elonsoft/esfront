@@ -35,11 +35,11 @@ export const Demo: Story = (args, context) => {
     dialogStack
       .open(({ close }) => (
         <Dialog
-          onClose={() => close()}
           fullWidth
-          maxWidth="700px"
           align="center"
           before={<DialogClose onClick={() => close()} />}
+          maxWidth="700px"
+          onClose={() => close()}
         >
           <DialogArrow direction="prev" />
           <DialogArrow direction="next" />
@@ -86,10 +86,10 @@ export const Demo: Story = (args, context) => {
             </Typography>
           </DialogContent>
           <DialogActions sticky={args.DialogActionsSticky}>
-            <Button variant="outlined" color="tertiary" size="40" onClick={() => close()}>
+            <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
               {getCancelButtonText(args, context)}
             </Button>
-            <Button variant="contained" color="primary" size="40" onClick={() => close(true)}>
+            <Button color="primary" size="40" variant="contained" onClick={() => close(true)}>
               {getCreateButtonText(args, context)}
             </Button>
           </DialogActions>
@@ -113,7 +113,7 @@ export const Alignment: Story = (args, context) => {
   const onOpen = () => {
     dialogStack
       .open(({ close }) => (
-        <Dialog onClose={() => close()} fullWidth maxWidth="700px" align="flex-start">
+        <Dialog fullWidth align="flex-start" maxWidth="700px" onClose={() => close()}>
           <DialogTitle>{getHeadingText(args, context)}</DialogTitle>
           <DialogContent>
             <Typography variant="body200">
@@ -124,10 +124,10 @@ export const Alignment: Story = (args, context) => {
             </Typography>
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" color="tertiary" size="40" onClick={() => close()}>
+            <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
               {getCancelButtonText(args, context)}
             </Button>
-            <Button variant="contained" color="primary" size="40" onClick={() => close(true)}>
+            <Button color="primary" size="40" variant="contained" onClick={() => close(true)}>
               {getCreateButtonText(args, context)}
             </Button>
           </DialogActions>
@@ -150,7 +150,7 @@ export const Stack: Story = (args, context) => {
 
   const onOpen = (i: number) => () => {
     dialogStack.open(({ close }) => (
-      <Dialog onClose={() => close()} fullWidth maxWidth="700px">
+      <Dialog fullWidth maxWidth="700px" onClose={() => close()}>
         <DialogTitle>
           {getHeadingText(args, context)} {i}
         </DialogTitle>
@@ -163,10 +163,10 @@ export const Stack: Story = (args, context) => {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" color="tertiary" size="40" onClick={() => close()}>
+          <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
             {getCancelButtonText(args, context)}
           </Button>
-          <Button variant="contained" color="primary" size="40" onClick={onOpen(i + 1)}>
+          <Button color="primary" size="40" variant="contained" onClick={onOpen(i + 1)}>
             {getOpenButtonText(args, context)}
           </Button>
         </DialogActions>

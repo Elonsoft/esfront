@@ -433,25 +433,25 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
 
   const renderItem = (item: SFSSortingValue, i: number, isCalcTabIndex = false) => (
     <SFSSortingMenuItem
-      tabIndex={isCalcTabIndex ? (i === 0 ? 0 : -1) : -1}
       key={item.value}
       className={classes.menuItem}
       disableTouchRipple={isMultiple}
+      selected={!!item.direction}
+      tabIndex={isCalcTabIndex ? (i === 0 ? 0 : -1) : -1}
       onClick={onHandleSort(item.value)}
       onKeyDown={onKeyDownControl}
-      selected={!!item.direction}
     >
       <ListItemText>{sortMap[item.value].label}</ListItemText>
       {!!item.direction && (
         <SFSSortingDirectionButton
-          tabIndex={-1}
-          className={classes.directionButton}
           disableRipple
+          className={classes.directionButton}
           color="tertiary"
           size="32"
+          tabIndex={-1}
+          onClick={onChangeSortDirection(item.value)}
           onMouseDown={onStopRipple}
           onTouchStart={onStopRipple}
-          onClick={onChangeSortDirection(item.value)}
         >
           <SFSSortingCaption className={classes.caption} variant="caption">
             {item.direction === 'asc' ? labelAsc : labelDesc}
@@ -466,8 +466,8 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
   );
 
   return (
-    <SFSSortingRoot sx={sx} className={clsx(classes.root, className)}>
-      <SFSSortingMenuButton ownerState={ownerState} onClick={onMenuOpen} className={classes.menuButton}>
+    <SFSSortingRoot className={clsx(classes.root, className)} sx={sx}>
+      <SFSSortingMenuButton className={classes.menuButton} ownerState={ownerState} onClick={onMenuOpen}>
         <Typography component="div" variant="body100">
           {values.length === 1 ? sortMap[values[0].value].label : labelButton}
         </Typography>
@@ -484,21 +484,21 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
         )}
       </SFSSortingMenuButton>
       <SFSSortingMenu
-        className={classes.menu}
-        open={!!menuAnchor}
+        TransitionProps={{
+          onExited: () => isMultiple && values.length === 1 && setMultiple(false)
+        }}
         anchorEl={menuAnchor}
-        onClose={onMenuClose}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right'
         }}
+        className={classes.menu}
+        open={!!menuAnchor}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right'
         }}
-        TransitionProps={{
-          onExited: () => isMultiple && values.length === 1 && setMultiple(false)
-        }}
+        onClose={onMenuClose}
       >
         <SFSSortingMenuHeader className={classes.menuHeader}>
           <SFSSortingCaption className={classes.caption} variant="caption">
@@ -506,9 +506,9 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
           </SFSSortingCaption>
           {!!values.length && (
             <SFSSortingResetButton
+              autoFocus
               className={classes.resetButton}
               component="button"
-              autoFocus
               underline="hover"
               variant="caption"
               onClick={onResetSort}
@@ -517,12 +517,12 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
             </SFSSortingResetButton>
           )}
         </SFSSortingMenuHeader>
-        <MenuList autoFocusItem={!values.length} ref={menuListRef}>
+        <MenuList ref={menuListRef} autoFocusItem={!values.length}>
           {isMultiple && values.map((item, i) => renderItem(sortMap[item.value], i, true))}
           {isMultiple && !!values.length && values.length !== options.length && (
             <SFSSortingMenuItem key="middleSortingDivider" disabled>
               <Divider />
-              <SFSSortingCaption className={classes.caption} component="div" variant="caption" marginTop="14px">
+              <SFSSortingCaption className={classes.caption} component="div" marginTop="14px" variant="caption">
                 {labelSortTooltip}
               </SFSSortingCaption>
             </SFSSortingMenuItem>
@@ -549,7 +549,7 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
                 </SFSSortingCaption>
               </>
             )}
-            <Switch checked={isMultiple} type="button" onChange={onChangeSortMode} size="small" />
+            <Switch checked={isMultiple} size="small" type="button" onChange={onChangeSortMode} />
           </SFSSortingMenuFooter>
         )}
       </SFSSortingMenu>

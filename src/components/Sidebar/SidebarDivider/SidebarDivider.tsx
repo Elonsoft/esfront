@@ -58,7 +58,7 @@ export const SidebarDivider = (inProps: SidebarDividerProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <SidebarDividerRoot className={clsx(className, classes.root)} sx={sx} ownerState={ownerState}>
+    <SidebarDividerRoot className={clsx(className, classes.root)} ownerState={ownerState} sx={sx}>
       <SidebarDividerLine className={clsx(className)} ownerState={ownerState} />
     </SidebarDividerRoot>
   );

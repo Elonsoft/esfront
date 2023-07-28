@@ -156,19 +156,19 @@ export const TableRow = forwardRef((inProps: TableRowProps, ref) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableRowRoot ownerState={ownerState} className={clsx(classes.root, className)} sx={sx}>
+    <TableRowRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       <TableRowContent
         ref={ref}
-        ownerState={ownerState}
         className={classes.content}
-        style={{ gridTemplateColumns: columns.join(' ') }}
+        ownerState={ownerState}
         role="row"
+        style={{ gridTemplateColumns: columns.join(' ') }}
         {...props}
       >
         {content}
       </TableRowContent>
       {!!overlapCount && (
-        <TableRowOverlap className={classes.overlap} style={{ gridTemplateColumns: columns.join(' ') }} role="row">
+        <TableRowOverlap className={classes.overlap} role="row" style={{ gridTemplateColumns: columns.join(' ') }}>
           {overlap}
         </TableRowOverlap>
       )}
