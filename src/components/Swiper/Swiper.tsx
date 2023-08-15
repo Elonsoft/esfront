@@ -121,9 +121,7 @@ const SwiperContainer = styled('div', {
       }
     })
   },
-  ...(ownerState.snap && {
-    scrollSnapType: 'x mandatory'
-  })
+  scrollSnapType: ownerState.snap ? 'x mandatory' : 'none'
 }));
 
 /**
@@ -168,6 +166,7 @@ export const Swiper = (inProps: SwiperProps) => {
   const [isMouseDown, setMouseDown] = useState(false);
   const [isMouseOver, setMouseOver] = useState(false);
   const [isTouchDown, setTouchDown] = useState(false);
+  const [isSnapDisabled, setSnapDisabled] = useState(false);
 
   /**
    * @returns Index of the slide closest to the center of the container.
@@ -340,22 +339,32 @@ export const Swiper = (inProps: SwiperProps) => {
     return false;
   };
 
+  const snapEnableTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const onMouseDown = () => {
     setMouseDown(true);
+    setSnapDisabled(true);
+
+    if (snapEnableTimeout.current) {
+      clearTimeout(snapEnableTimeout.current);
+      snapEnableTimeout.current = null;
+    }
   };
 
   const onMouseUp = () => {
     if (isMouseDown) {
       setMouseDown(false);
 
-      // Manually trigger scroll snap.
-      setTimeout(() => {
-        if (container.current) {
-          // There is a smooth behavior issue in chromium.
-          // https://bugs.chromium.org/p/chromium/issues/detail?id=1136958
-          container.current.scrollBy({ [mapping.start]: 0, behavior: 'smooth' });
+      snapEnableTimeout.current = setTimeout(() => {
+        setSnapDisabled(false);
+      }, 500);
+
+      if (snap) {
+        const index = getActiveSlide();
+        if (index !== null) {
+          setActiveSlide(index, { smooth: true });
         }
-      });
+      }
     }
   };
 
@@ -455,7 +464,7 @@ export const Swiper = (inProps: SwiperProps) => {
     }
   }, [loop, loopCount, isMouseDown, isMouseOver, isTouchDown, direction, alignment]);
 
-  const ownerState = { ...props, alignment, direction, snap: !!(snap && !isMouseDown) };
+  const ownerState = { ...props, alignment, direction, snap: !!(snap && !isSnapDisabled) };
   const classes = useUtilityClasses(ownerState);
 
   const value = useMemo(() => {
