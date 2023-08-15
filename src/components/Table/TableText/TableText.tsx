@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { MutableRefObject } from 'react';
 
 import { TableTextProps } from './TableText.types';
 
@@ -9,6 +9,8 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
+import { TooltipEllipsis, TooltipEllipsisProps } from '../../TooltipEllipsis';
+
 type TableTextOwnerState = {
   classes?: TableTextProps['classes'];
 };
@@ -17,7 +19,8 @@ const useUtilityClasses = (ownerState: TableTextOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
+    tooltip: ['tooltip']
   };
 
   return composeClasses(slots, getTableTextUtilityClass, classes);
@@ -30,22 +33,60 @@ const TableTextRoot = styled('div', {
 })(() => ({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
+  minWidth: 0
 }));
 
+const TableTextTooltip = styled(
+  ({ className, ...props }: TooltipEllipsisProps) => <TooltipEllipsis {...props} classes={{ popper: className }} />,
+  {
+    name: 'ESTableText',
+    slot: 'Tooltip',
+    overridesResolver: (props, styles) => styles.tooltip
+  }
+)({});
+
 export const TableText = (inProps: TableTextProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const {
+    children,
+    className,
+    sx,
+    tooltip = true,
+    TooltipProps,
+    ...props
+  } = useThemeProps({
     props: inProps,
     name: 'ESTableText'
   });
 
-  const ref = useRef<HTMLDivElement | null>(null);
-
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
+  if (tooltip) {
+    return (
+      <TableTextTooltip
+        arrow
+        disableInteractive
+        className={clsx(classes.tooltip)}
+        placement="top"
+        title={children || false}
+        {...TooltipProps}
+      >
+        {({ ref }) => (
+          <TableTextRoot
+            ref={ref as MutableRefObject<HTMLDivElement | null>}
+            className={clsx(classes.root, className)}
+            sx={sx}
+          >
+            {children}
+          </TableTextRoot>
+        )}
+      </TableTextTooltip>
+    );
+  }
+
   return (
-    <TableTextRoot ref={ref} className={clsx(classes.root, className)} sx={sx}>
+    <TableTextRoot className={clsx(classes.root, className)} sx={sx}>
       {children}
     </TableTextRoot>
   );

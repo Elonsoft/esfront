@@ -1,4 +1,4 @@
-import { Children, forwardRef, isValidElement, useMemo } from 'react';
+import { Children, forwardRef, isValidElement, memo, useMemo } from 'react';
 
 import { TableRowProps, TableRowTypeMap } from './TableRow.types';
 
@@ -116,65 +116,67 @@ const TableRowOverlap = styled('div', {
   height: 0
 }));
 
-export const TableRow = forwardRef((inProps: TableRowProps, ref) => {
-  const { children, className, sx, selected, hover, ...props } = useThemeProps({
-    props: inProps,
-    name: 'ESTableRow'
-  });
-
-  const { columns } = useTableContext();
-
-  const { content, overlap, overlapCount } = useMemo(() => {
-    const content: Array<JSX.Element | null> = [];
-    const overlap: Array<JSX.Element | null> = [];
-    let overlapCount = 0;
-
-    Children.forEach(children, (child) => {
-      if (!isValidElement(child) || child.props.overlap) {
-        content.push(null);
-      } else {
-        content.push(child);
-      }
+export const TableRow = memo(
+  forwardRef((inProps: TableRowProps, ref) => {
+    const { children, className, sx, selected, hover, ...props } = useThemeProps({
+      props: inProps,
+      name: 'ESTableRow'
     });
 
-    Children.forEach(children, (child) => {
-      if (!isValidElement(child) || !child.props.overlap) {
-        overlap.push(null);
-      } else {
-        overlap.push(child);
-        overlapCount += 1;
-      }
-    });
+    const { columns } = useTableContext();
 
-    merge(content);
-    merge(overlap);
+    const { content, overlap, overlapCount } = useMemo(() => {
+      const content: Array<JSX.Element | null> = [];
+      const overlap: Array<JSX.Element | null> = [];
+      let overlapCount = 0;
 
-    return { content, overlap, overlapCount };
-  }, [children]);
+      Children.forEach(children, (child) => {
+        if (!isValidElement(child) || child.props.overlap) {
+          content.push(null);
+        } else {
+          content.push(child);
+        }
+      });
 
-  const ownerState = { selected, hover, ...props };
-  const classes = useUtilityClasses(ownerState);
+      Children.forEach(children, (child) => {
+        if (!isValidElement(child) || !child.props.overlap) {
+          overlap.push(null);
+        } else {
+          overlap.push(child);
+          overlapCount += 1;
+        }
+      });
 
-  return (
-    <TableRowRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
-      <TableRowContent
-        ref={ref}
-        className={classes.content}
-        ownerState={ownerState}
-        role="row"
-        style={{ gridTemplateColumns: columns.join(' ') }}
-        {...props}
-      >
-        {content}
-      </TableRowContent>
-      {!!overlapCount && (
-        <TableRowOverlap className={classes.overlap} role="row" style={{ gridTemplateColumns: columns.join(' ') }}>
-          {overlap}
-        </TableRowOverlap>
-      )}
-    </TableRowRoot>
-  );
-}) as OverridableComponent<TableRowTypeMap>;
+      merge(content);
+      merge(overlap);
+
+      return { content, overlap, overlapCount };
+    }, [children]);
+
+    const ownerState = { selected, hover, ...props };
+    const classes = useUtilityClasses(ownerState);
+
+    return (
+      <TableRowRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+        <TableRowContent
+          ref={ref}
+          className={classes.content}
+          ownerState={ownerState}
+          role="row"
+          style={{ gridTemplateColumns: columns.join(' ') }}
+          {...props}
+        >
+          {content}
+        </TableRowContent>
+        {!!overlapCount && (
+          <TableRowOverlap className={classes.overlap} role="row" style={{ gridTemplateColumns: columns.join(' ') }}>
+            {overlap}
+          </TableRowOverlap>
+        )}
+      </TableRowRoot>
+    );
+  })
+) as OverridableComponent<TableRowTypeMap>;
 
 // eslint-disable-next-line
 // @ts-ignore
