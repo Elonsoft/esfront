@@ -84,7 +84,7 @@ export const Demo: Story = (args, context) => {
   const [columns, setColumns] = useState([
     '56px',
     'minmax(50px, 1fr)',
-    'minmax(200px, 2fr)',
+    'minmax(150px, 2fr)',
     '150px',
     'minmax(100px, 2fr)',
     'minmax(100px, 1fr)',
