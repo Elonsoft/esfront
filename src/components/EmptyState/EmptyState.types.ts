@@ -15,7 +15,7 @@ export interface EmptyStateProps {
   /** Icon to display above the text. */
   icon?: ReactNode;
   /** Heading text. */
-  heading?: string;
+  heading?: ReactNode;
   /** Subheading text. */
-  subheading?: string;
+  subheading?: ReactNode;
 }
