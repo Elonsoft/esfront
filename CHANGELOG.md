@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/Elonsoft/elonkit-react/compare/v0.6.5...v0.7.0) (2023-08-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **SvgIcon:** add new component
+* move background colors to surface palette
+
+### Features
+
+* **SidebarItem:** change tooltip styles ([846c58a](https://github.com/Elonsoft/elonkit-react/commit/846c58abb54054fa386f3aa61c2b58db4cd3821c))
+* **SvgIcon:** add new component ([08b962c](https://github.com/Elonsoft/elonkit-react/commit/08b962cbe3f378b364f2b27a944e567de6a1abae))
+* **TableText:** add tooltip for truncated text ([b3eafc6](https://github.com/Elonsoft/elonkit-react/commit/b3eafc6942b3b4d9de016559dfbd505e87208b2a))
+* **useTableSelection:** add new hook ([25c1b74](https://github.com/Elonsoft/elonkit-react/commit/25c1b74152ade0fdfc7c9b8e3bea0ee78e6ff9d5))
+* move background colors to surface palette ([75b9584](https://github.com/Elonsoft/elonkit-react/commit/75b9584e5d3c81e3ea1682b2343be94f78827f94))
+
+
+### Bug Fixes
+
+* **EmptyState:** change heading and subheading types to ReactNode ([e13913d](https://github.com/Elonsoft/elonkit-react/commit/e13913d1a916adb8fbb7f092729f23d912998286))
+* **SidenavItem:** change item selection ([f556835](https://github.com/Elonsoft/elonkit-react/commit/f55683513ef87070ef7709b83886e646e09fcd83))
+* **Swiper:** add smooth snap after mouse drag ([38ee777](https://github.com/Elonsoft/elonkit-react/commit/38ee7776ba91eff82aa9fae7eaaf2376b220f9bd))
+
 ### [0.6.5](https://github.com/Elonsoft/elonkit-react/compare/v0.6.4...v0.6.5) (2023-07-14)
 
 
