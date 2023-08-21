@@ -3,8 +3,7 @@ import { cloneElement, Fragment, isValidElement, ReactElement, useMemo, useState
 import { DialogStackProviderComponentInterface, DialogStackProviderProps } from './DialogStackProvider.types';
 
 import { DialogStackContext } from './DialogStack.context';
-
-import { DialogStackStateContext } from '..';
+import { DialogStackStateContext } from './DialogStackState.context';
 
 export const DialogStackProvider = ({ children }: DialogStackProviderProps) => {
   const [dialogs, setDialogs] = useState<
