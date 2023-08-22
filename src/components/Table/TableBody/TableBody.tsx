@@ -7,7 +7,10 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
-import { TableCellContext } from '../TableCell';
+import { useTableBodyContext } from './TableBody.context';
+
+import { tableCellClasses, TableCellContext } from '../TableCell';
+import { tableRowClasses } from '../TableRow';
 
 type TableBodyOwnerState = {
   classes?: TableBodyProps['classes'];
@@ -28,8 +31,20 @@ const TableBodyRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
 })(() => ({
-  minWidth: '100%',
-  width: 'fit-content'
+  overflow: 'auto',
+  position: 'relative',
+  zIndex: 1,
+  scrollbarWidth: 'none',
+
+  '&::-webkit-scrollbar': {
+    display: 'none'
+  },
+
+  [`& >  .${tableRowClasses.root}:last-of-type`]: {
+    [`& .${tableCellClasses.container}`]: {
+      borderBottom: 0
+    }
+  }
 }));
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
@@ -40,12 +55,14 @@ export const TableBody = (inProps: TableBodyProps) => {
     name: 'ESTableBody'
   });
 
+  const { setRef } = useTableBodyContext();
+
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
-      <TableBodyRoot className={clsx(classes.root, className)} role="rowgroup" sx={sx}>
+      <TableBodyRoot ref={setRef} className={clsx(classes.root, className)} role="rowgroup" sx={sx}>
         {children}
       </TableBodyRoot>
     </TableCellContext.Provider>
