@@ -156,8 +156,6 @@ import {
   TableProps,
   TableRowClassKey,
   TableRowProps,
-  TableScrollableClassKey,
-  TableScrollableProps,
   TableScrollbarClassKey,
   TableScrollbarProps,
   TableTextClassKey,
@@ -288,7 +286,6 @@ declare module '@mui/material/styles/props' {
     ESTableFoot: TableFootProps;
     ESTableHead: TableHeadProps;
     ESTableRow: TableRowProps;
-    ESTableScrollable: TableScrollableProps;
     ESTableScrollbar: TableScrollbarProps;
     ESTableText: TableTextProps;
     ESTextFieldGroup: TextFieldGroupProps;
@@ -362,7 +359,6 @@ declare module '@mui/material/styles/overrides' {
     ESTableFoot: TableFootClassKey;
     ESTableHead: TableHeadClassKey;
     ESTableRow: TableRowClassKey;
-    ESTableScrollable: TableScrollableClassKey;
     ESTableScrollbar: TableScrollbarClassKey;
     ESTableText: TableTextClassKey;
     ESTextFieldGroup: TextFieldGroupClassKey;
@@ -598,10 +594,6 @@ declare module '@mui/material/styles/components' {
     ESTableRow?: {
       defaultProps?: ComponentsProps['ESTableRow'];
       styleOverrides?: ComponentsOverrides['ESTableRow'];
-    };
-    ESTableScrollable?: {
-      defaultProps?: ComponentsProps['ESTableScrollable'];
-      styleOverrides?: ComponentsOverrides['ESTableScrollable'];
     };
     ESTableScrollbar?: {
       defaultProps?: ComponentsProps['ESTableScrollbar'];

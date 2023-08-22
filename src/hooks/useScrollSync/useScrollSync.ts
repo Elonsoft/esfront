@@ -7,41 +7,48 @@ import { useLatest } from '../useLatest';
  * @param ...refs The refs of the elements.
  */
 export const useScrollSync = (...refs: Array<{ current?: HTMLElement | null }>) => {
-  const ignoreScroll = useRef(false);
+  const ignoreScroll = useRef(0);
 
   const onScrollLatest = useLatest((event: Event) => {
-    const ignore = ignoreScroll.current;
-    ignoreScroll.current = false;
-    if (ignore) return;
-    ignoreScroll.current = true;
+    if (ignoreScroll.current > 0) {
+      ignoreScroll.current -= 1;
+      return;
+    }
+
+    ignoreScroll.current = refs.length - 1;
 
     const syncedRefs = refs.filter((ref) => ref.current !== event.target);
     const targetScrollLeft = (event.target as HTMLElement).scrollLeft;
 
-    syncedRefs.forEach((ref) => {
-      if (ref.current) {
-        ref.current.scrollLeft = targetScrollLeft;
-      }
+    requestAnimationFrame(() => {
+      syncedRefs.forEach((ref) => {
+        if (ref.current) {
+          ref.current.scrollLeft = targetScrollLeft;
+        }
+      });
     });
   });
 
-  useLayoutEffect(() => {
-    const onScroll = (event: Event) => {
-      onScrollLatest.current(event);
-    };
+  useLayoutEffect(
+    () => {
+      const onScroll = (event: Event) => {
+        onScrollLatest.current(event);
+      };
 
-    refs.forEach((ref) => {
-      if (ref.current) {
-        ref.current.addEventListener('scroll', onScroll);
-      }
-    });
-
-    return () => {
       refs.forEach((ref) => {
         if (ref.current) {
-          ref.current.removeEventListener('scroll', onScroll);
+          ref.current.addEventListener('scroll', onScroll);
         }
       });
-    };
-  }, refs);
+
+      return () => {
+        refs.forEach((ref) => {
+          if (ref.current) {
+            ref.current.removeEventListener('scroll', onScroll);
+          }
+        });
+      };
+    },
+    refs.map((ref) => ref.current)
+  );
 };

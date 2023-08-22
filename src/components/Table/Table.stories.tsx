@@ -13,7 +13,6 @@ import { TableCell } from './TableCell';
 import { TableFoot } from './TableFoot';
 import { TableHead } from './TableHead';
 import { TableRow } from './TableRow';
-import { TableScrollable } from './TableScrollable';
 import { TableScrollbar } from './TableScrollbar';
 import { TableText } from './TableText';
 import { useTableResize } from './useTableResize';
@@ -102,8 +101,8 @@ export const Demo: Story = (args, context) => {
   };
 
   return (
-    <Table ref={ref} columns={columns}>
-      <TableScrollable>
+    <>
+      <Table ref={ref} columns={columns}>
         <TableHead sticky={0}>
           <TableRow>
             <TableCell padding="checkbox">
@@ -167,40 +166,40 @@ export const Demo: Story = (args, context) => {
             );
           })}
         </TableBody>
-      </TableScrollable>
-      <TableFoot sticky={0}>
-        {!!selected.length && (
-          <TableActions
-            count={selected.length}
-            label={locale === 'en' ? 'Selected' : 'Выбрано'}
-            sx={(theme) => ({ borderBottom: `1px solid ${theme.palette.monoA.A100}` })}
+        <TableFoot sticky={0}>
+          {!!selected.length && (
+            <TableActions
+              count={selected.length}
+              label={locale === 'en' ? 'Selected' : 'Выбрано'}
+              sx={(theme) => ({ borderBottom: `1px solid ${theme.palette.monoA.A100}` })}
+            >
+              <IconButton aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
+                <IconPencilW500 />
+              </IconButton>
+              <Divider flexItem orientation="vertical" />
+              <IconButton aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
+                <IconCloseW600 />
+              </IconButton>
+            </TableActions>
+          )}
+          <TableScrollbar />
+          <Pagination
+            count={100}
+            itemsPerPage={10}
+            page={1}
+            sx={{ padding: '12px', paddingLeft: '16px' }}
+            onItemsPerPageChange={() => {
+              /* */
+            }}
+            onPageChange={() => {
+              /* */
+            }}
           >
-            <IconButton aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
-              <IconPencilW500 />
-            </IconButton>
-            <Divider flexItem orientation="vertical" />
-            <IconButton aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
-              <IconCloseW600 />
-            </IconButton>
-          </TableActions>
-        )}
-        <TableScrollbar />
-        <Pagination
-          count={100}
-          itemsPerPage={10}
-          page={1}
-          sx={{ padding: '12px', paddingLeft: '16px' }}
-          onItemsPerPageChange={() => {
-            /* */
-          }}
-          onPageChange={() => {
-            /* */
-          }}
-        >
-          <PaginationRange />
-          <PaginationPages />
-        </Pagination>
-      </TableFoot>
-    </Table>
+            <PaginationRange />
+            <PaginationPages boundaryCount={0} siblingCount={0} />
+          </Pagination>
+        </TableFoot>
+      </Table>
+    </>
   );
 };

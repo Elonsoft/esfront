@@ -15,9 +15,4 @@ export interface TableHeadProps {
   sx?: SxProps<Theme>;
   /** If present, makes element sticky and specifies a threshold for sticky positioning. */
   sticky?: number;
-  /**
-   * The scrolling ancestor for the sticky element.
-   * @default document
-   */
-  relativeTo?: HTMLElement | null;
 }
