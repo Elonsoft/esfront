@@ -1,4 +1,4 @@
-import { Children, forwardRef, isValidElement, memo, useMemo } from 'react';
+import { forwardRef, memo } from 'react';
 
 import { TableRowProps, TableRowTypeMap } from './TableRow.types';
 
@@ -30,20 +30,6 @@ const useUtilityClasses = (ownerState: TableRowOwnerState) => {
   };
 
   return composeClasses(slots, getTableRowUtilityClass, classes);
-};
-
-const merge = (array: Array<JSX.Element | null>) => {
-  let index = array.indexOf(null);
-  while (index >= 0) {
-    let endIndex = index + 1;
-    while (array[endIndex] === null) {
-      endIndex += 1;
-    }
-    const count = endIndex - index;
-    const gridColumnEnd = count > 1 ? `span ${count}` : undefined;
-    array.splice(index, count, <div key={`placeholder-${index}`} style={{ height: '0', gridColumnEnd }} />);
-    index = array.indexOf(null);
-  }
 };
 
 const TableRowRoot = styled('div', {
@@ -105,17 +91,6 @@ const TableRowContent = styled(Box, {
   })
 }));
 
-const TableRowOverlap = styled('div', {
-  name: 'ESTableRow',
-  slot: 'Overlap',
-  overridesResolver: (props, styles) => styles.overlap
-})(() => ({
-  display: 'grid',
-  gridAutoRows: 'max-content',
-  minWidth: '100%',
-  height: 0
-}));
-
 export const TableRow = memo(
   forwardRef((inProps: TableRowProps, ref) => {
     const { children, className, sx, selected, hover, ...props } = useThemeProps({
@@ -124,34 +99,6 @@ export const TableRow = memo(
     });
 
     const { columns } = useTableContext();
-
-    const { content, overlap, overlapCount } = useMemo(() => {
-      const content: Array<JSX.Element | null> = [];
-      const overlap: Array<JSX.Element | null> = [];
-      let overlapCount = 0;
-
-      Children.forEach(children, (child) => {
-        if (!isValidElement(child) || child.props.overlap) {
-          content.push(null);
-        } else {
-          content.push(child);
-        }
-      });
-
-      Children.forEach(children, (child) => {
-        if (!isValidElement(child) || !child.props.overlap) {
-          overlap.push(null);
-        } else {
-          overlap.push(child);
-          overlapCount += 1;
-        }
-      });
-
-      merge(content);
-      merge(overlap);
-
-      return { content, overlap, overlapCount };
-    }, [children]);
 
     const ownerState = { selected, hover, ...props };
     const classes = useUtilityClasses(ownerState);
@@ -166,13 +113,8 @@ export const TableRow = memo(
           style={{ gridTemplateColumns: columns.join(' ') }}
           {...props}
         >
-          {content}
+          {children}
         </TableRowContent>
-        {!!overlapCount && (
-          <TableRowOverlap className={classes.overlap} role="row" style={{ gridTemplateColumns: columns.join(' ') }}>
-            {overlap}
-          </TableRowOverlap>
-        )}
       </TableRowRoot>
     );
   })

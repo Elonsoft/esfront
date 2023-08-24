@@ -18,13 +18,14 @@ type TableCellOwnerState = {
   variant: NonNullable<TableCellProps['variant']>;
   padding: NonNullable<TableCellProps['padding']>;
   align?: TableCellProps['align'];
+  pin?: TableCellProps['pin'];
   colSpan?: number;
   overlap?: boolean;
   isResizing?: boolean;
 };
 
 const useUtilityClasses = (ownerState: TableCellOwnerState) => {
-  const { classes, variant, padding, align, overlap, isResizing } = ownerState;
+  const { classes, variant, padding, align, pin, overlap, isResizing } = ownerState;
 
   const slots = {
     root: [
@@ -33,6 +34,8 @@ const useUtilityClasses = (ownerState: TableCellOwnerState) => {
       padding === 'none' && 'paddingNone',
       padding === 'normal' && 'paddingNormal',
       padding === 'checkbox' && 'paddingCheckbox',
+      pin === 'left' && 'pinLeft',
+      pin === 'right' && 'pinRight',
       overlap && 'overlap',
       isResizing && 'resizing'
     ],
@@ -75,23 +78,31 @@ const TableCellRoot = styled('div', {
     position: 'relative',
     zIndex: 1,
     userSelect: 'none',
-    height: '49px',
-
-    ...(ownerState.overlap && {
-      transform: 'translateY(-48px)'
-    })
+    height: '49px'
   }),
 
   ...(ownerState.variant === 'body' && {
     ...theme.typography.body100,
     color: theme.palette.monoA.A900,
     backgroundColor: theme.palette.surface[100],
-    height: '57px',
-
-    ...(ownerState.overlap && {
-      transform: 'translateY(-57px)'
-    })
+    height: '57px'
   }),
+
+  ...(ownerState.pin && {
+    position: 'sticky',
+    boxShadow: `${ownerState.pin === 'left' ? '2px' : '-2px'} 0 0 0 ${theme.palette.monoA.A100}`,
+    zIndex: ownerState.variant === 'body' ? 2 : 3
+  }),
+
+  [`&.${tableCellClasses.pinRight} + .${tableCellClasses.pinRight}`]: {
+    boxShadow: 'none'
+  },
+  [`&.${tableCellClasses.pinLeft}:not(:nth-last-child(1 of .${tableCellClasses.pinLeft}))`]: {
+    boxShadow: 'none'
+  },
+  [`&.${tableCellClasses.pinRight}:not(:nth-child(1 of .${tableCellClasses.pinRight}))`]: {
+    boxShadow: 'none'
+  },
 
   ...(ownerState.colSpan && {
     gridColumnEnd: `span ${ownerState.colSpan}`
@@ -224,6 +235,7 @@ export const TableCell = (inProps: TableCellProps) => {
     minWidth,
     labelResize,
     sx,
+    pin,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -274,6 +286,12 @@ export const TableCell = (inProps: TableCellProps) => {
     }
   };
 
+  const onClick = (event: React.MouseEvent) => {
+    if (props.overlap) {
+      event.stopPropagation();
+    }
+  };
+
   useEffect(() => {
     if (isResizing) {
       const onMouseMove = (event: MouseEvent) => {
@@ -304,7 +322,7 @@ export const TableCell = (inProps: TableCellProps) => {
     }
   }, [isResizing]);
 
-  const ownerState = { variant, padding, align, isResizing, ...props };
+  const ownerState = { variant, padding, align, pin, isResizing, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
@@ -316,6 +334,7 @@ export const TableCell = (inProps: TableCellProps) => {
       ownerState={ownerState}
       role={variant === 'head' ? 'columnheader' : 'cell'}
       sx={sx}
+      onClick={onClick}
     >
       <TableCellContainer className={classes.container}>
         <TableCellContent className={classes.content} ownerState={ownerState}>

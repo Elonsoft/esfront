@@ -29,6 +29,8 @@ export interface TableCellProps {
    * @default 'flex-start'
    */
   align?: 'flex-start' | 'center' | 'flex-end';
+  /** Pin the cell to the left or right side. */
+  pin?: 'left' | 'right';
 
   /** The id attribute passed to root element. */
   id?: string;

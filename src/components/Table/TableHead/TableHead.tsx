@@ -24,7 +24,8 @@ const useUtilityClasses = (ownerState: TableHeadOwnerState) => {
   const { classes, sticky, isStuck } = ownerState;
 
   const slots = {
-    root: ['root', sticky !== undefined && 'sticky', sticky !== undefined && isStuck && 'stuck']
+    root: ['root', sticky !== undefined && 'sticky', sticky !== undefined && isStuck && 'stuck'],
+    container: ['container']
   };
 
   return composeClasses(slots, getTableHeadUtilityClass, classes);
@@ -42,6 +43,9 @@ const TableHeadRoot = styled('div', {
 })<{ ownerState: TableHeadOwnerState }>(({ ownerState }) => ({
   overflow: 'auto',
   position: 'relative',
+  width: '100%',
+  minWidth: '100%',
+  maxWidth: '100%',
   zIndex: 2,
   borderTopLeftRadius: ownerState.isStuck ? 0 : '6px',
   borderTopRightRadius: ownerState.isStuck ? 0 : '6px',
@@ -55,6 +59,15 @@ const TableHeadRoot = styled('div', {
     position: 'sticky',
     top: ownerState.sticky || 0
   })
+}));
+
+const TableHeadContainer = styled('div', {
+  name: 'ESTableBody',
+  slot: 'Container',
+  overridesResolver: (props, styles) => styles.container
+})(() => ({
+  minWidth: '100%',
+  width: 'fit-content'
 }));
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
@@ -89,7 +102,7 @@ export const TableHead = (inProps: TableHeadProps) => {
         role="rowgroup"
         sx={sx}
       >
-        {children}
+        <TableHeadContainer className={classes.container}>{children}</TableHeadContainer>
       </TableHeadRoot>
     </TableCellContext.Provider>
   );

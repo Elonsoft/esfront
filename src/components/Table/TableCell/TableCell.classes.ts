@@ -13,6 +13,10 @@ export type TableCellClasses = {
   paddingNormal: string;
   /** Styles applied to the root element if padding="checkbox". */
   paddingCheckbox: string;
+  /** Styles applied to the root element if pin="left". */
+  pinLeft: string;
+  /** Styles applied to the root element if pin="right". */
+  pinRight: string;
   /** Styles applied to the root element if overlap="true". */
   overlap: string;
   /** Styles applied to the root element if cell is resizing. */
@@ -45,6 +49,8 @@ export const tableCellClasses: TableCellClasses = generateUtilityClasses('ESTabl
   'paddingNone',
   'paddingNormal',
   'paddingCheckbox',
+  'pinLeft',
+  'pinRight',
   'overlap',
   'resizing',
   'container',
