@@ -20,7 +20,8 @@ const useUtilityClasses = (ownerState: TableBodyOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
+    container: ['container']
   };
 
   return composeClasses(slots, getTableBodyUtilityClass, classes);
@@ -33,6 +34,9 @@ const TableBodyRoot = styled('div', {
 })(() => ({
   overflow: 'auto',
   position: 'relative',
+  width: '100%',
+  minWidth: '100%',
+  maxWidth: '100%',
   zIndex: 1,
   scrollbarWidth: 'none',
 
@@ -40,11 +44,20 @@ const TableBodyRoot = styled('div', {
     display: 'none'
   },
 
-  [`& >  .${tableRowClasses.root}:last-of-type`]: {
+  [`& .${tableRowClasses.root}:last-of-type`]: {
     [`& .${tableCellClasses.container}`]: {
       borderBottom: 0
     }
   }
+}));
+
+const TableBodyContainer = styled('div', {
+  name: 'ESTableBody',
+  slot: 'Container',
+  overridesResolver: (props, styles) => styles.container
+})(() => ({
+  minWidth: '100%',
+  width: 'fit-content'
 }));
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
@@ -63,7 +76,7 @@ export const TableBody = (inProps: TableBodyProps) => {
   return (
     <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
       <TableBodyRoot ref={setRef} className={clsx(classes.root, className)} role="rowgroup" sx={sx}>
-        {children}
+        <TableBodyContainer className={classes.container}>{children}</TableBodyContainer>
       </TableBodyRoot>
     </TableCellContext.Provider>
   );

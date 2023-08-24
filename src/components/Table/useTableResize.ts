@@ -2,7 +2,6 @@ import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
 import { tableCellClasses } from './TableCell/TableCell.classes';
 import { tableRowClasses } from './TableRow/TableRow.classes';
-import { tableScrollbarClasses } from './TableScrollbar/TableScrollbar.classes';
 
 /**
  * The hook that manages resizing of the table columns.
@@ -42,11 +41,6 @@ export const useTableResize = (
         rows.forEach((row) => {
           (row as HTMLElement).style.gridTemplateColumns = newColumns.join(' ');
         });
-
-        const scrollbarDiv = ref.current.querySelector(`.${tableScrollbarClasses.root} div`);
-        if (scrollbarDiv) {
-          (scrollbarDiv as HTMLElement).style.width = `${rows[0].scrollWidth}px`;
-        }
       }
     };
 

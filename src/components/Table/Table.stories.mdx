@@ -44,6 +44,18 @@ Tables display information in a way that's easy to scan, so that users can look 
   <Story story={stories.Demo} name="Demo" />
 </Canvas>
 
+### Column pinning
+
+Pinned (or frozen, locked, or sticky) columns are columns that are visible at all time while the user scrolls the data
+grid horizontally. They can be pinned either to the left or right side.
+
+You may encounter issues if the sum of the widths of the pinned columns is larger than the width of the table. Make sure
+that the table can accommodate properly, at least, these columns.
+
+<Canvas>
+  <Story story={stories.ColumnPinning} name="Column pinning" />
+</Canvas>
+
 <ArgsTable story="Demo" />
 
 ## API
