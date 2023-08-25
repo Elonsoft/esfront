@@ -62,6 +62,7 @@ const useUtilityClasses = (ownerState: AudioPlayerOwnerState) => {
     ],
     currentSlider: ['currentSlider', isPlaying && 'currentSliderPlaying', !isPlaying && 'currentSliderPaused'],
     tooltip: ['tooltip'],
+    menu: ['menu'],
     menuList: ['menuList'],
     menuItem: ['menuItem'],
     mainMenuItem: ['mainMenuItem'],
@@ -252,13 +253,41 @@ const AudioPlayerTooltip = styled(
   }
 }));
 
+const AudioPlayerMenu = styled(
+  ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
+  {
+    name: 'ESAudioPlayer',
+    slot: 'Menu',
+    overridesResolver: (props, styles) => styles.menu
+  }
+)(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    padding: 0,
+    backgroundColor: theme.palette.surface[400],
+    boxShadow: theme.palette.shadow.down[600],
+    backdropFilter: 'none',
+    borderRadius: '6px',
+
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.surface[400],
+      backdropFilter: 'none'
+    }
+  },
+  [`&[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]: {
+    boxShadow: theme.palette.shadow.down[600]
+  },
+  [`&[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]: {
+    boxShadow: theme.palette.shadow.up[600]
+  }
+}));
+
 const AudioPlayerMenuList = styled(MenuList, {
   name: 'ESAudioPlayer',
   slot: 'MenuList',
   overridesResolver: (props, styles) => styles.menuList
 })(() => ({
-  padding: '4px 0',
-  width: 186,
+  padding: '8px 0',
+  width: 168,
   outline: 'none'
 }));
 
@@ -268,7 +297,7 @@ const AudioPlayerMenuItem = styled(MenuItem, {
   overridesResolver: (props, styles) => styles.menuItem
 })(() => ({
   [`&.${menuItemClasses.root}`]: {
-    minHeight: 40,
+    minHeight: 32,
     padding: '0 16px'
   }
 }));
@@ -288,9 +317,11 @@ const AudioPlayerListItemIcon = styled(ListItemIcon, {
   slot: 'ListItemIcon',
   overridesResolver: (props, styles) => styles.listItemIcon
 })(({ theme }) => ({
-  color: theme.palette.monoB.A900,
-  marginRight: 16,
-  minWidth: 24
+  color: theme.palette.monoA.A500,
+
+  '&, &:first-of-type': {
+    marginRight: '12px'
+  }
 }));
 
 const AudioPlayerListItemText = styled(ListItemText, {
@@ -300,12 +331,12 @@ const AudioPlayerListItemText = styled(ListItemText, {
 })(({ theme }) => ({
   margin: 0,
   [`& .${listItemTextClasses.primary}`]: {
-    color: theme.palette.monoB[500],
+    color: theme.palette.monoA.A900,
     fontWeight: 400,
     ...theme.typography.body100
   },
   [`& .${listItemTextClasses.secondary}`]: {
-    color: theme.palette.monoB.A600,
+    color: theme.palette.monoA.A600,
     marginTop: 2,
     ...theme.typography.caption
   }
@@ -317,8 +348,8 @@ const AudioPlayerListDivider = styled(Divider, {
   overridesResolver: (props, styles) => styles.listDivider
 })(({ theme }) => ({
   [`&.${dividerClasses.root}`]: {
-    borderColor: theme.palette.monoB.A100,
-    margin: '4px 0'
+    borderColor: theme.palette.monoA.A100,
+    margin: '8px 0'
   }
 }));
 
@@ -327,8 +358,9 @@ const AudioPlayerRateOpen = styled('div', {
   slot: 'RateOpen',
   overridesResolver: (props, styles) => styles.rateOpen
 })(({ theme }) => ({
-  marginLeft: 16,
-  color: theme.palette.monoB.A600
+  display: 'inline-flex',
+  marginLeft: 12,
+  color: theme.palette.monoA.A500
 }));
 
 const AudioPlayerRateCheck = styled('div', {
@@ -337,7 +369,8 @@ const AudioPlayerRateCheck = styled('div', {
   overridesResolver: (props, styles) => styles.rateCheck
 })(({ theme }) => ({
   display: 'flex',
-  color: theme.palette.monoB[500]
+  color: theme.palette.monoA.A500,
+  marginRight: '-4px'
 }));
 
 const AudioPlayerVolume = styled(Typography, {
@@ -455,7 +488,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     labelCurrent,
     labelVolume,
 
-    iconBack = <IconArrowLeftW500 />,
+    iconBack = <IconArrowLeftW500 container containerWidth="16px" />,
     iconDownload = <IconDownloadW400 />,
     iconOptions = <IconDotsVerticalW400 />,
     iconPause = <IconPauseW400 />,
@@ -1043,12 +1076,12 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
           {isMuted || volume === 0 ? iconVolumeOff : volume <= 50 ? iconVolumeLow : iconVolumeHigh}
         </AudioPlayerVolumeButton>
       </AudioPlayerTooltip>
-      <AudioPlayerTooltip
+      <AudioPlayerMenu
         arrow
         disableHoverListener
         disableTouchListener
         TransitionProps={{ onExited: onMenuExited }}
-        className={classes.tooltip}
+        className={classes.menu}
         open={isMenuOpen}
         placement="top"
         title={
@@ -1062,7 +1095,12 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
                   </AudioPlayerMenuItem>
                   <AudioPlayerListDivider className={classes.listDivider} />
                   {rates.map((r) => (
-                    <AudioPlayerMenuItem key={r} className={classes.menuItem} onClick={onRateInputChange(r)}>
+                    <AudioPlayerMenuItem
+                      key={r}
+                      className={classes.menuItem}
+                      selected={r === rate}
+                      onClick={onRateInputChange(r)}
+                    >
                       <AudioPlayerListItemText
                         className={classes.listItemText}
                         primary={r === 1 ? labelRateNormal : r}
@@ -1114,7 +1152,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
         >
           {iconOptions}
         </AudioPlayerIconButton>
-      </AudioPlayerTooltip>
+      </AudioPlayerMenu>
     </AudioPlayerRoot>
   );
 };
