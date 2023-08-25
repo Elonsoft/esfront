@@ -25,8 +25,10 @@ export type AudioPlayerClasses = {
   currentSliderPaused: string;
   /** Styles applied to the current time element. */
   time: string;
-  /** Styles applied to the volume and menu tooltips. */
+  /** Styles applied to the volume tooltip. */
   tooltip: string;
+  /** Styles applied to the menu tooltip. */
+  menu: string;
   /** Styles applied to the main menu list. */
   menuList: string;
   /** Styles applied to the menu items. */
@@ -68,6 +70,7 @@ export const audioPlayerClasses: AudioPlayerClasses = generateUtilityClasses('ES
   'currentSliderPaused',
   'time',
   'tooltip',
+  'menu',
   'menuList',
   'menuItem',
   'mainMenuItem',
