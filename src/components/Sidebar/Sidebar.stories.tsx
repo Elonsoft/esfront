@@ -62,6 +62,7 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
         <SidebarScrollable afterScroll={<SidebarDivider />}>
           <SidebarMenu behaviour={behaviour} exclusive={exclusive}>
             <SidebarItem
+              selected
               component="button"
               icon={<IconAt />}
               id="0"
@@ -72,6 +73,7 @@ export const Demo: Story = ({ color, behaviour, exclusive, minWidth, maxWidth },
                 <SidebarItem
                   key={i}
                   inset
+                  selected={i === 2}
                   text={(locale === 'en' ? 'Project' : 'Проект') + ' №' + i}
                   onClick={() => console.log(`Project ${i}`)}
                 />

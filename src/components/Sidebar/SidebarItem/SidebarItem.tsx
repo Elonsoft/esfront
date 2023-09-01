@@ -442,6 +442,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
               tabIndex={-1}
               onClick={onClick}
               {...props}
+              selected={false}
             >
               <Typography variant="body100">{text}</Typography>
             </SidebarItemTooltipItem>
