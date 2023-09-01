@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/Elonsoft/elonkit-react/compare/v0.7.0...v0.8.0) (2023-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Table:** change sticky implementation
+
+### Features
+
+* **AudioPlayer:** change menu styles ([6525cac](https://github.com/Elonsoft/elonkit-react/commit/6525cac7c41af7ebae6873531413a3252dd43a05))
+
+
+### Bug Fixes
+
+* **Sidebar:** add missing context exports ([c80878e](https://github.com/Elonsoft/elonkit-react/commit/c80878e9ccb193d5c117f85459e7962bb44e36cf))
+* **SidebarItem:** remove selected styles from first tooltip item ([477be43](https://github.com/Elonsoft/elonkit-react/commit/477be438632dac2f3ca601a5672e30d6df461f55))
+* **Table:** change sticky implementation ([18938ce](https://github.com/Elonsoft/elonkit-react/commit/18938cebd12b5aa1f9b0cd7532359753972f6e90))
+
 ## [0.7.0](https://github.com/Elonsoft/elonkit-react/compare/v0.6.5...v0.7.0) (2023-08-21)
 
 
