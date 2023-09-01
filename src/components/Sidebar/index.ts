@@ -1,5 +1,6 @@
 export { Sidebar } from './Sidebar';
 export { SidebarClasses, sidebarClasses, SidebarClassKey } from './Sidebar.classes';
+export { SidebarContext, SidebarContextValue, useSidebarContext } from './Sidebar.context';
 export { SidebarProps } from './Sidebar.types';
 export * from './SidebarDivider';
 export * from './SidebarItem';
