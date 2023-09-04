@@ -310,6 +310,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     iconToggle = <IconChevronLeftW200 container containerSize="16px" />,
     inset,
     onClick,
+    onKeyDown,
     onTouchStart,
     labelOpen,
     labelHide,
@@ -358,18 +359,22 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     setTooltipOpen(false);
   }, []);
 
-  const onKeyDownItem = (event: React.KeyboardEvent) => {
-    if (children) {
-      event.key === 'ArrowLeft' && refItem.current?.focus();
-
-      if (refTooltip.current && event.key === 'ArrowRight') {
-        let element = refTooltip.current.firstChild as HTMLElement;
-        if (element.getAttribute('aria-disabled')) {
-          element = element.nextSibling as HTMLElement;
-        }
-        element.focus();
-      }
+  const onTooltipKeyDown = (event: React.KeyboardEvent) => {
+    if (children && refItem.current && event.key === 'ArrowLeft') {
+      refItem.current.focus();
     }
+  };
+
+  const onItemKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (children && refTooltip.current && event.key === 'ArrowRight') {
+      let element = refTooltip.current.firstChild as HTMLElement;
+      if (element.getAttribute('aria-disabled')) {
+        element = element.nextSibling as HTMLElement;
+      }
+      element.focus();
+    }
+
+    onKeyDown && onKeyDown(event);
   };
 
   const onNestedMenuHover = (e: React.MouseEvent) => {
@@ -386,22 +391,22 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     }
   };
 
-  const onItemTouchStart = () => {
-    onTouchStart && onTouchStart();
+  const onItemTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    onTouchStart && onTouchStart(e);
 
     if (!open && !isTooltipOpen && children) {
       shouldSkipClick.current = true;
     }
   };
 
-  const onItemClick = (e: React.MouseEvent) => {
+  const onItemClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (shouldSkipClick.current) {
       shouldSkipClick.current = false;
       e.preventDefault();
       return;
     }
 
-    onClick && onClick();
+    onClick && onClick(e);
     !component && onNestedMenuClick(e);
   };
 
@@ -432,7 +437,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
             disablePadding
             className={clsx(classes.tooltipTitle)}
             ownerState={ownerState}
-            onKeyDown={onKeyDownItem}
+            onKeyDown={onTooltipKeyDown}
             onMouseDown={onMouseDown}
           >
             <SidebarItemTooltipItem
@@ -476,7 +481,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
               className={clsx(classes.button)}
               ownerState={ownerState}
               onClick={onItemClick}
-              onKeyDown={onKeyDownItem}
+              onKeyDown={onItemKeyDown}
               onTouchStart={onItemTouchStart}
               {...props}
             >

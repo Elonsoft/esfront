@@ -33,12 +33,6 @@ export interface SidebarItemTypeMap<P = {}, D extends ElementType = `div`> {
     labelOpen?: string;
     /** Text for the secondary action aria-label. */
     labelHide?: string;
-    /** Callback fired when user click. */
-    onClick?: () => void;
-    /** Callback fired when the mouse enters an element. */
-    onMouseEnter?: () => void;
-    /** Callback fired when one or more touch points are placed on the touch surface. */
-    onTouchStart?: () => void;
   };
   defaultComponent: D;
 }
