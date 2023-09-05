@@ -283,6 +283,8 @@ const getNextItem = (elem: HTMLLIElement): HTMLLIElement | undefined => {
 
 export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
   const {
+    button,
+
     className,
     sx,
     options,
@@ -317,7 +319,7 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
 
   const isTouchScreen = useMediaQuery('(hover: none) and (pointer: coarse)');
 
-  const [menuAnchor, setMenuAnchor] = useState<HTMLButtonElement | null>(null);
+  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const [isMultiple, setMultiple] = useState(props.multiple && props.value.length > 1);
 
   const menuListRef = useRef<HTMLUListElement | null>(null);
@@ -360,7 +362,7 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
     setMenuAnchor(null);
   };
 
-  const onMenuOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onMenuOpen = (e: React.MouseEvent<HTMLElement>) => {
     setMenuAnchor(e.currentTarget);
   };
 
@@ -468,22 +470,26 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
 
   return (
     <SFSSortingRoot className={clsx(classes.root, className)} sx={sx}>
-      <SFSSortingMenuButton className={classes.menuButton} ownerState={ownerState} onClick={onMenuOpen}>
-        <Typography component="div" variant="body100">
-          {values.length === 1 ? sortMap[values[0].value].label : labelButton}
-        </Typography>
-        {iconSort}
-        {values.length === 1 && (
-          <SFSSortingMenuButtonBadge className={classes.menuButtonBadge} component="div">
-            {values[0].direction === 'asc' ? iconAsc : iconDesc}
-          </SFSSortingMenuButtonBadge>
-        )}
-        {values.length > 1 && (
-          <SFSSortingMenuButtonBadge className={classes.menuButtonBadge} component="div" variant="mini200">
-            {values.length}
-          </SFSSortingMenuButtonBadge>
-        )}
-      </SFSSortingMenuButton>
+      {button ? (
+        button({ anchorEl: menuAnchor, setAnchorEl: setMenuAnchor })
+      ) : (
+        <SFSSortingMenuButton className={classes.menuButton} ownerState={ownerState} onClick={onMenuOpen}>
+          <Typography component="div" variant="body100">
+            {values.length === 1 ? sortMap[values[0].value].label : labelButton}
+          </Typography>
+          {iconSort}
+          {values.length === 1 && (
+            <SFSSortingMenuButtonBadge className={classes.menuButtonBadge} component="div">
+              {values[0].direction === 'asc' ? iconAsc : iconDesc}
+            </SFSSortingMenuButtonBadge>
+          )}
+          {values.length > 1 && (
+            <SFSSortingMenuButtonBadge className={classes.menuButtonBadge} component="div" variant="mini200">
+              {values.length}
+            </SFSSortingMenuButtonBadge>
+          )}
+        </SFSSortingMenuButton>
+      )}
       <SFSSortingMenu
         TransitionProps={{
           onExited: () => isMultiple && values.length === 1 && setMultiple(false)
