@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 import { SFSFiltersClasses } from './SFSFilters.classes';
 
@@ -6,6 +6,10 @@ import { SxProps, Theme } from '@mui/material';
 
 export interface SFSFiltersProps {
   children?: ReactNode;
+
+  /** Function to render the custom button element. */
+  button?: (props: { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> }) => ReactNode;
+
   /** Override or extend the styles applied to the component. */
   classes?: Partial<SFSFiltersClasses>;
   /** The system prop that allows defining system overrides as well as additional CSS styles. */

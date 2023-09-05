@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 import { SFSSortingClasses } from './SFSSorting.classes';
 
@@ -19,6 +19,12 @@ export interface SFSSortingOptionMap {
 }
 
 export type SFSSortingProps = {
+  /** Function to render the custom button element. */
+  button?: (props: {
+    anchorEl: HTMLElement | null;
+    setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>;
+  }) => ReactNode;
+
   /** Override or extend the styles applied to the component. */
   classes?: Partial<SFSSortingClasses>;
   /** The system prop that allows defining system overrides as well as additional CSS styles. */

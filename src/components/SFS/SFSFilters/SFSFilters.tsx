@@ -157,8 +157,10 @@ const SFSFiltersResetButton = styled(Button, {
 
 export const SFSFilters = (inProps: SFSFiltersProps) => {
   const {
-    className,
     children,
+    button,
+
+    className,
     sx,
 
     count,
@@ -193,17 +195,21 @@ export const SFSFilters = (inProps: SFSFiltersProps) => {
 
   return (
     <SFSFiltersRoot className={clsx(className, classes.root)} color="tertiary" sx={sx} {...props}>
-      <SFSFiltersButton className={classes.button} ownerState={ownerState} onClick={onOpen}>
-        <Typography component="div" variant="body100">
-          {labelButton}
-        </Typography>
-        {iconFilters}
-        {!!count && (
-          <SFSFiltersButtonBadge className={classes.buttonBadge} component="div" variant="mini200">
-            {count}
-          </SFSFiltersButtonBadge>
-        )}
-      </SFSFiltersButton>
+      {button ? (
+        button({ open: isOpen, setOpen })
+      ) : (
+        <SFSFiltersButton className={classes.button} ownerState={ownerState} onClick={onOpen}>
+          <Typography component="div" variant="body100">
+            {labelButton}
+          </Typography>
+          {iconFilters}
+          {!!count && (
+            <SFSFiltersButtonBadge className={classes.buttonBadge} component="div" variant="mini200">
+              {count}
+            </SFSFiltersButtonBadge>
+          )}
+        </SFSFiltersButton>
+      )}
       <SFSFiltersDrawer anchor={'right'} className={classes.drawer} open={isOpen} onClose={onClose}>
         <SFSFiltersHeader className={classes.header} variant="h5">
           {labelHeader}
