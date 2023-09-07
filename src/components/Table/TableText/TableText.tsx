@@ -1,4 +1,4 @@
-import { MutableRefObject } from 'react';
+import { memo, MutableRefObject } from 'react';
 
 import { TableTextProps } from './TableText.types';
 
@@ -46,7 +46,7 @@ const TableTextTooltip = styled(
   }
 )({});
 
-export const TableText = (inProps: TableTextProps) => {
+export const TableText = memo(function TableText(inProps: TableTextProps) {
   const {
     children,
     className,
@@ -90,4 +90,4 @@ export const TableText = (inProps: TableTextProps) => {
       {children}
     </TableTextRoot>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 import { PaginationPagesProps } from './PaginationPages.types';
 
@@ -196,7 +196,7 @@ const PaginationPagesTooltip = styled(
 
 const REGEX = /^[0-9]*$/;
 
-export const PaginationPages = (inProps: PaginationPagesProps) => {
+export const PaginationPages = memo(function PaginationPages(inProps: PaginationPagesProps) {
   const {
     className,
     sx,
@@ -310,4 +310,4 @@ export const PaginationPages = (inProps: PaginationPagesProps) => {
       />
     </PaginationPagesRoot>
   );
-};
+});

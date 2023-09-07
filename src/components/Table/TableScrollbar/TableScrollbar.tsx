@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { TableScrollbarProps } from './TableScrollbar.types';
 
 import clsx from 'clsx';
@@ -32,7 +34,7 @@ const TableScrollbarRoot = styled('div', {
   overflowX: 'auto'
 }));
 
-export const TableScrollbar = (inProps: TableScrollbarProps) => {
+export const TableScrollbar = memo(function TableScrollbar(inProps: TableScrollbarProps) {
   const { className, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableScrollbar'
@@ -48,4 +50,4 @@ export const TableScrollbar = (inProps: TableScrollbarProps) => {
       <div style={{ width: `${width}px`, height: '0.1px' }}></div>
     </TableScrollbarRoot>
   );
-};
+});
