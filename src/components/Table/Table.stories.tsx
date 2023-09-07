@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { Story } from '@storybook/react';
 
@@ -104,9 +104,9 @@ export const Demo: Story = (args, context) => {
     key: 'id'
   });
 
-  const onClose = () => {
+  const onClose = useCallback(() => {
     setSelected([]);
-  };
+  }, []);
 
   return (
     <>

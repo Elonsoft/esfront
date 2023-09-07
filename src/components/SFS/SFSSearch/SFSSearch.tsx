@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { SFSSearchProps } from './SFSSearch.types';
 
 import clsx from 'clsx';
@@ -130,7 +132,7 @@ const SFSSearchClear = styled(Button, {
   }
 }));
 
-export const SFSSearch = (inProps: SFSSearchProps) => {
+export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
   const {
     className,
     sx,
@@ -178,4 +180,4 @@ export const SFSSearch = (inProps: SFSSearchProps) => {
       />
     </SFSSearchRoot>
   );
-};
+});

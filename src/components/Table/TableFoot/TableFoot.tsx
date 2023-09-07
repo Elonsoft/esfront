@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { memo, useRef, useState } from 'react';
 
 import { TableFootProps } from './TableFoot.types';
 
@@ -50,7 +50,7 @@ const TableFootRoot = styled('div', {
   })
 }));
 
-export const TableFoot = (inProps: TableFootProps) => {
+export const TableFoot = memo(function TableFoot(inProps: TableFootProps) {
   const { children, className, sticky, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableFoot'
@@ -76,4 +76,4 @@ export const TableFoot = (inProps: TableFootProps) => {
       {children}
     </TableFootRoot>
   );
-};
+});

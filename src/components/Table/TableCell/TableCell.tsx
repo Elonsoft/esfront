@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 
 import { TableCellProps } from './TableCell.types';
 
@@ -220,7 +220,7 @@ const RESIZE_STEPS: Record<string, number | undefined> = {
   ArrowRight: 16
 };
 
-export const TableCell = (inProps: TableCellProps) => {
+export const TableCell = memo(function TableCell(inProps: TableCellProps) {
   const context = useTableCellContext();
 
   const {
@@ -353,4 +353,4 @@ export const TableCell = (inProps: TableCellProps) => {
       </TableCellContainer>
     </TableCellRoot>
   );
-};
+});

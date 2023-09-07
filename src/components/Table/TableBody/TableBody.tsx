@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { TableBodyProps } from './TableBody.types';
 
 import clsx from 'clsx';
@@ -62,7 +64,7 @@ const TableBodyContainer = styled('div', {
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
-export const TableBody = (inProps: TableBodyProps) => {
+export const TableBody = memo(function TableBody(inProps: TableBodyProps) {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableBody'
@@ -80,4 +82,4 @@ export const TableBody = (inProps: TableBodyProps) => {
       </TableBodyRoot>
     </TableCellContext.Provider>
   );
-};
+});

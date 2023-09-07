@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { TableActionsProps } from './TableActions.types';
 
 import clsx from 'clsx';
@@ -70,7 +72,7 @@ const TableActionsChildren = styled('div', {
 /**
  * This component displays actions for the selected table rows.
  */
-export const TableActions = (inProps: TableActionsProps) => {
+export const TableActions = memo(function TableActions(inProps: TableActionsProps) {
   const { className, sx, label, count, children, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableActions'
@@ -87,4 +89,4 @@ export const TableActions = (inProps: TableActionsProps) => {
       <TableActionsChildren className={classes.children}>{children}</TableActionsChildren>
     </TableActionsRoot>
   );
-};
+});

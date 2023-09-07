@@ -1,4 +1,4 @@
-import { forwardRef, useMemo, useRef } from 'react';
+import { forwardRef, memo, useMemo, useRef } from 'react';
 
 import { TableProps } from './Table.types';
 
@@ -44,40 +44,42 @@ const TableRoot = styled('div', {
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
-export const Table = forwardRef<HTMLDivElement, TableProps>((inProps, inRef) => {
-  const { children, className, columns, sx, ...props } = useThemeProps({
-    props: inProps,
-    name: 'ESTable'
-  });
+export const Table = memo(
+  forwardRef<HTMLDivElement, TableProps>((inProps, inRef) => {
+    const { children, className, columns, sx, ...props } = useThemeProps({
+      props: inProps,
+      name: 'ESTable'
+    });
 
-  const ref = useRef<HTMLDivElement | null>(null);
-  const rootRef = useForkRef(ref, inRef);
+    const ref = useRef<HTMLDivElement | null>(null);
+    const rootRef = useForkRef(ref, inRef);
 
-  const value = useMemo(() => {
-    return { columns };
-  }, [columns]);
+    const value = useMemo(() => {
+      return { columns };
+    }, [columns]);
 
-  const { bodyContextValue, headContextValue, scrollbarContextValue } = useTableScrollSync();
-  useTableStickyOffset(ref);
+    const { bodyContextValue, headContextValue, scrollbarContextValue } = useTableScrollSync();
+    useTableStickyOffset(ref);
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
+    const ownerState = { ...props };
+    const classes = useUtilityClasses(ownerState);
 
-  return (
-    <TableContext.Provider value={value}>
-      <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
-        <TableBodyContext.Provider value={bodyContextValue}>
-          <TableHeadContext.Provider value={headContextValue}>
-            <TableScrollbarContext.Provider value={scrollbarContextValue}>
-              <TableRoot ref={rootRef} className={clsx(classes.root, className)} role="table" sx={sx}>
-                {children}
-              </TableRoot>
-            </TableScrollbarContext.Provider>
-          </TableHeadContext.Provider>
-        </TableBodyContext.Provider>
-      </TableCellContext.Provider>
-    </TableContext.Provider>
-  );
-});
+    return (
+      <TableContext.Provider value={value}>
+        <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
+          <TableBodyContext.Provider value={bodyContextValue}>
+            <TableHeadContext.Provider value={headContextValue}>
+              <TableScrollbarContext.Provider value={scrollbarContextValue}>
+                <TableRoot ref={rootRef} className={clsx(classes.root, className)} role="table" sx={sx}>
+                  {children}
+                </TableRoot>
+              </TableScrollbarContext.Provider>
+            </TableHeadContext.Provider>
+          </TableBodyContext.Provider>
+        </TableCellContext.Provider>
+      </TableContext.Provider>
+    );
+  })
+);
 
 Table.displayName = 'Table';

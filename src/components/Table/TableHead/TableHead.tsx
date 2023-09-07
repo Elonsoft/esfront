@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 import { TableHeadProps } from './TableHead.types';
 
@@ -72,7 +72,7 @@ const TableHeadContainer = styled('div', {
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
 
-export const TableHead = (inProps: TableHeadProps) => {
+export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
   const { children, className, sticky, sx, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTableHead'
@@ -106,4 +106,4 @@ export const TableHead = (inProps: TableHeadProps) => {
       </TableHeadRoot>
     </TableCellContext.Provider>
   );
-};
+});

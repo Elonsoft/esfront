@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 
 import { SFSSortingDirection, SFSSortingOptionMap, SFSSortingProps, SFSSortingValue } from './SFSSorting.types';
 
@@ -281,7 +281,7 @@ const getNextItem = (elem: HTMLLIElement): HTMLLIElement | undefined => {
   }
 };
 
-export const SFSSorting = (inProps: SFSSortingProps) => {
+export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
   const {
     className,
     sx,
@@ -556,4 +556,4 @@ export const SFSSorting = (inProps: SFSSortingProps) => {
       </SFSSortingMenu>
     </SFSSortingRoot>
   );
-};
+});

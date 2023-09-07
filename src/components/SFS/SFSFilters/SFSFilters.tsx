@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 import { SFSFiltersProps } from './SFSFilters.types';
 
@@ -155,7 +155,7 @@ const SFSFiltersResetButton = styled(Button, {
   overridesResolver: (_, styles) => styles.resetButton
 })({});
 
-export const SFSFilters = (inProps: SFSFiltersProps) => {
+export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
   const {
     className,
     children,
@@ -237,4 +237,4 @@ export const SFSFilters = (inProps: SFSFiltersProps) => {
       </SFSFiltersDrawer>
     </SFSFiltersRoot>
   );
-};
+});
