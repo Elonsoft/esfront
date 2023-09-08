@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1](https://github.com/Elonsoft/elonkit-react/compare/v0.8.0...v0.8.1) (2023-09-08)
+
+
+### Features
+
+* **BottomSheet:** add new component ([e7819f5](https://github.com/Elonsoft/elonkit-react/commit/e7819f54158103156a90d2255bd39afd29c7f80c))
+* **SFS:** add render props for filters and sorting buttons ([d784959](https://github.com/Elonsoft/elonkit-react/commit/d7849594a9269f561e24504b7df799ce87f686c7))
+* add memo for table components ([473c4ec](https://github.com/Elonsoft/elonkit-react/commit/473c4ecd0f55006576ddb4dd82e1eb55e2debe15))
+* **Table:** add column pinning ([1b310b9](https://github.com/Elonsoft/elonkit-react/commit/1b310b9d962fdc13b4554e0754c3404be7c9c33e))
+
+
+### Bug Fixes
+
+* **SidebarItem:** pass events to callbacks ([f75fa7f](https://github.com/Elonsoft/elonkit-react/commit/f75fa7fc7b6446fc814240d41ef9b896e4989380))
+
 ## [0.8.0](https://github.com/Elonsoft/elonkit-react/compare/v0.7.0...v0.8.0) (2023-09-01)
 
 
