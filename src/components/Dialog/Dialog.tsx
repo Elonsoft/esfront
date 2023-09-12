@@ -25,7 +25,12 @@ const useUtilityClasses = (ownerState: DialogOwnerState) => {
 
   const slots = {
     root: ['root'],
-    wrapper: ['wrapper', align === 'center' && 'wrapperAlignCenter', align === 'flex-start' && 'wrapperAlignFlexStart'],
+    wrapper: [
+      'wrapper',
+      align === 'center' && 'wrapperAlignCenter',
+      align === 'flex-start' && 'wrapperAlignFlexStart',
+      align === 'flex-start' && 'wrapperAlignFlexEnd'
+    ],
     container: ['container'],
     content: ['content', fullWidth && 'contentFullWidth', fullScreen && 'contentFullScreen'],
     paper: ['paper', fullScreen && 'paperFullScreen']
@@ -87,7 +92,8 @@ const DialogWrapper = styled('div', {
     return [
       styles.wrapper,
       ownerState.align === 'center' && styles.wrapperAlignCenter,
-      ownerState.align === 'flex-start' && styles.wrapperAlignFlexStart
+      ownerState.align === 'flex-start' && styles.wrapperAlignFlexStart,
+      ownerState.align === 'flex-end' && styles.wrapperAlignFlexEnd
     ];
   }
 })<{ ownerState: DialogOwnerState }>(({ ownerState }) => ({

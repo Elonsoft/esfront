@@ -50,7 +50,7 @@ export interface DialogProps {
    * Dialog vertical alignment.
    * @default 'center'
    */
-  align?: 'flex-start' | 'center';
+  align?: 'center' | 'flex-start' | 'flex-end';
   /** Callback fired when the backdrop is clicked. */
   onBackdropClick?: ModalProps['onBackdropClick'];
   /** If true, the backdrop is not rendered. */
