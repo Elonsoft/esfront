@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.2](https://github.com/Elonsoft/elonkit-react/compare/v0.8.1...v0.8.2) (2023-09-12)
+
+
+### Features
+
+* **Dialog:** add flex-end alignment ([8c8980b](https://github.com/Elonsoft/elonkit-react/commit/8c8980bc119cd01111d1c60550b03b102a48f0eb))
+* **EmptyState:** add new icon components ([3c61f14](https://github.com/Elonsoft/elonkit-react/commit/3c61f14a006c3c63c986187ffff9f7de4ce89435))
+* **MenuItem:** change focus state ([d0f0856](https://github.com/Elonsoft/elonkit-react/commit/d0f0856548d0e48dc66ef1e0f8ce0e29925c42fc))
+
+
+### Bug Fixes
+
+* **PaginationRange:** use correct overrides resolvers ([feb9395](https://github.com/Elonsoft/elonkit-react/commit/feb93951b6b323c535c73caa6ddc9f33ede7268c))
+
 ### [0.8.1](https://github.com/Elonsoft/elonkit-react/compare/v0.8.0...v0.8.1) (2023-09-08)
 
 
