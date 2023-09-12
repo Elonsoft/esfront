@@ -45,7 +45,7 @@ const PaginationRangeRoot = styled('div', {
 const PaginationRangeLabel = styled(Typography, {
   name: 'ESPaginationRange',
   slot: 'Label',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.label
 })(({ theme }) => ({
   display: 'inline-block',
   color: theme.palette.monoA.A600
@@ -54,7 +54,7 @@ const PaginationRangeLabel = styled(Typography, {
 const PaginationRangeButton = styled(Button, {
   name: 'ESPaginationRange',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.button
 })(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
     [`&.${buttonClasses.text}`]: {
@@ -74,7 +74,7 @@ const PaginationRangeButton = styled(Button, {
 const PaginationRangeValue = styled(Typography, {
   name: 'ESPaginationRange',
   slot: 'Value',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.value
 })(({ theme }) => ({
   marginLeft: '16px',
   color: theme.palette.monoA.A600
