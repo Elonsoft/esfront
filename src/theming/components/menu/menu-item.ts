@@ -42,7 +42,7 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
             background: 'transparent',
             color: theme.palette.monoA.A900,
             hover: theme.palette.monoA.A50,
-            focus: theme.palette.monoA.A200,
+            focus: theme.palette.monoA.A75,
             active: theme.palette.monoA.A150
           }),
 
@@ -51,7 +51,7 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
               background: theme.palette.secondary.A100,
               color: theme.palette.monoA.A900,
               hover: theme.palette.monoA.A50,
-              focus: theme.palette.monoA.A200,
+              focus: theme.palette.monoA.A75,
               active: theme.palette.monoA.A150
             })
           }

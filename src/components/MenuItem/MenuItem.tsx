@@ -37,7 +37,7 @@ const MenuItemRoot = styled(MuiMenuItem, {
         icon: theme.palette.error[300],
         hover: theme.palette.error.A50,
         active: theme.palette.error.A150,
-        focus: theme.palette.error.A200
+        focus: theme.palette.error.A75
       })
     }
   })
