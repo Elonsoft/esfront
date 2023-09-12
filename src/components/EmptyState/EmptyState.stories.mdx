@@ -1,9 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 
-import Button from '@mui/material/Button';
-
-import { EmptyState, EmptyStateIconBox } from '.';
+import { EmptyState } from './EmptyState.tsx';
+import * as stories from './EmptyState.stories';
 
 <Meta
   title="Components/EmptyState"
@@ -28,55 +27,48 @@ import { EmptyState, EmptyStateIconBox } from '.';
       }
     },
     icon: {
-      table: {
-        disable: true
+      control: {
+        type: 'select',
+        options: [
+          'EmptyStateIconBarChart',
+          'EmptyStateIconBell',
+          'EmptyStateIconBox',
+          'EmptyStateIconCamera',
+          'EmptyStateIconCart',
+          'EmptyStateIconChat',
+          'EmptyStateIconFace',
+          'EmptyStateIconFile',
+          'EmptyStateIconFilter',
+          'EmptyStateIconImage',
+          'EmptyStateIconLock',
+          'EmptyStateIconPieChart',
+          'EmptyStateIconSearch',
+          'EmptyStateIconSmile',
+          'EmptyStateIconWiFi',
+          'EmptyStateIconWiFiOff'
+        ],
+        defaultValue: 'EmptyStateIconBox'
       }
     },
     heading: {
-      table: {
-        category: 'General'
+      control: {
+        type: 'text'
       }
     },
     subheading: {
-      table: {
-        category: 'General'
+      control: {
+        type: 'text'
       }
     }
   }}
 />
-
-export const getHeading = (args, context) => {
-  return args.heading || (context.globals.locale === 'en' ? 'There are no entities yet' : 'Здесь пока нет сущностей');
-};
-
-export const getSubheading = (args, context) => {
-  return (
-    args.subheading ||
-    (context.globals.locale === 'en'
-      ? 'There are no entities yet. Do you want to create the first entity?'
-      : 'Здесь пока нет сущностей. Хотите создать первую сущность?')
-  );
-};
-
-export const getAction = (args, context) => {
-  return context.globals.locale === 'en' ? 'Create entity' : 'Создать сущность';
-};
 
 # EmptyState
 
 <Description of={EmptyState} />
 
 <Canvas>
-  <Story name="Demo">
-    {(args, context) => (
-      <EmptyState
-        {...args}
-        icon={<EmptyStateIconBox />}
-        heading={getHeading(args, context)}
-        subheading={getSubheading(args, context)}
-      />
-    )}
-  </Story>
+  <Story story={stories.Demo} name="Demo" />
 </Canvas>
 
 <ArgsTable story="Demo" />
@@ -86,20 +78,7 @@ export const getAction = (args, context) => {
 We can use `children` prop to add action button.
 
 <Canvas>
-  <Story name="Action">
-    {(args, context) => (
-      <EmptyState
-        {...args}
-        icon={<EmptyStateIconBox />}
-        heading={getHeading(args, context)}
-        subheading={getSubheading(args, context)}
-      >
-        <Button variant="outlined" color="primary">
-          {getAction(args, context)}
-        </Button>
-      </EmptyState>
-    )}
-  </Story>
+  <Story story={stories.Action} name="Action" />
 </Canvas>
 
 ## API

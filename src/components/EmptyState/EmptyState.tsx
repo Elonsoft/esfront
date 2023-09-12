@@ -42,6 +42,7 @@ const EmptyStateIcon = styled('div', {
   slot: 'Icon',
   overridesResolver: (props, styles) => styles.icon
 })(({ theme }) => ({
+  display: 'flex',
   color: theme.palette.monoA.A150,
   marginBottom: 12
 }));
