@@ -14,7 +14,8 @@ export const createOutlinedInput: Component<'MuiOutlinedInput'> = (theme, typogr
           color: theme.palette.monoA.A500,
           '& .MuiOutlinedInput-notchedOutline': {
             borderWidth: '1px',
-            borderColor: theme.palette.monoA.A200
+            borderColor: theme.palette.monoA.A200,
+            top: '-5px'
           },
           '& .MuiInputAdornment-root .MuiIcon-root': {
             color: theme.palette.monoA.A400
