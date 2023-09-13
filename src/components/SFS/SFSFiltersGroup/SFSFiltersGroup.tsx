@@ -6,7 +6,10 @@ import { getSFSFiltersGroupUtilityClass } from './SFSFiltersGroup.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { Typography } from '@mui/material';
+import { formLabelClasses } from '@mui/material/FormLabel';
+import { inputLabelClasses } from '@mui/material/InputLabel';
+import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import Typography from '@mui/material/Typography';
 
 type SFSFiltersGroupOwnerState = {
   classes?: SFSFiltersGroupProps['classes'];
@@ -36,6 +39,17 @@ const SFSFiltersGroupRoot = styled('div', {
 
   '&:not(:last-of-type)': {
     paddingBottom: 0
+  },
+
+  [`& .${outlinedInputClasses.input}, & .${formLabelClasses.root}`]: {
+    ...theme.typography.body100
+  },
+
+  [`& .${inputLabelClasses.outlined}.${inputLabelClasses.outlined}`]: {
+    transform: 'translate(12px, 14px) scale(1)',
+    [`&.${inputLabelClasses.shrink}`]: {
+      transform: 'translate(12px, -8.5px) scale(0.857)'
+    }
   }
 }));
 
