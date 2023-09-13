@@ -1,10 +1,9 @@
-import { ForwardedRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { AutocompleteClasses } from './Autocomplete.classes';
 
 import { SxProps, Theme } from '@mui/material/styles';
 import { OutlinedInputProps, PopoverProps, TextFieldProps } from '@mui/material';
-import { MenuProps } from '@mui/material/Menu';
 
 export type AutocompleteProps<T> = {
   /** Override or extend the styles applied to the component. */
@@ -28,6 +27,8 @@ export type AutocompleteProps<T> = {
   /** Children content for the menu footer. */
   footer?: ReactNode;
 
+  /** If true, the popover is opened. */
+  open?: boolean;
   /** Callback fired when the menu requests to be opened. */
   onOpen?: () => void;
   /** Callback fired when the menu requests to be closed. */

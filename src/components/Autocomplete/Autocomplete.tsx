@@ -22,6 +22,7 @@ import Popover, { popoverClasses } from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
+import { useControlled } from '../../hooks/useControlled';
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
@@ -227,6 +228,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     PopoverProps,
     SearchProps,
 
+    open: inOpen,
     onOpen,
     onClose,
 
@@ -246,7 +248,9 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   }
 
   const ref = useRef<HTMLDivElement | null>(null);
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+  const [open, setOpen] = useControlled(false, inOpen);
+
   const [menuMinWidthState, setMenuMinWidthState] = useState(0);
 
   const valueArray = useMemo(
@@ -281,13 +285,13 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const onMenuOpen = useCallback(() => {
     if (ref.current) {
       setMenuMinWidthState(ref.current.clientWidth);
-      setAnchorEl(ref.current);
+      setOpen(true);
       onOpen && onOpen();
     }
   }, []);
 
   const onMenuClose = useCallback(() => {
-    setAnchorEl(null);
+    setOpen(false);
     onClose && onClose();
   }, []);
 
@@ -348,7 +352,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
           onKeyDown
         }}
         label={label}
-        notched={formControl.filled || formControl.focused || !!startAdornment || !!anchorEl}
+        notched={formControl.filled || formControl.focused || !!startAdornment || !!open}
         required={formControl.required}
         startAdornment={startAdornment}
         sx={sx}
@@ -357,13 +361,13 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         {valueDisplay}
       </AutocompleteRoot>
       <AutocompletePopover
-        anchorEl={anchorEl}
+        anchorEl={ref.current}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center'
         }}
         className={classes.popover}
-        open={!!anchorEl}
+        open={!!open}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'center'

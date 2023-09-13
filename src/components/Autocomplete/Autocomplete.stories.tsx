@@ -44,6 +44,7 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
   const [users, setUsers] = useState<User[]>([]);
 
   const onChange = (user: User | null) => {
+    toggleOpen();
     setUser(user);
   };
 
@@ -80,13 +81,22 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
 
   const props: Pick<
     AutocompleteProps<any>,
-    'getOptionValue' | 'getOptionLabel' | 'options' | 'loading' | 'footer' | 'onOpen' | 'onClose' | 'SearchProps'
+    | 'getOptionValue'
+    | 'getOptionLabel'
+    | 'options'
+    | 'loading'
+    | 'footer'
+    | 'open'
+    | 'onOpen'
+    | 'onClose'
+    | 'SearchProps'
   > = {
     getOptionValue: getUserValue,
     getOptionLabel: getUserLabel,
     options,
     loading,
     footer: args.footer,
+    open,
     onOpen: toggleOpen,
     onClose: toggleOpen,
     SearchProps: {
