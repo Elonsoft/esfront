@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.3](https://github.com/Elonsoft/elonkit-react/compare/v0.8.2...v0.8.3) (2023-09-13)
+
+
+### Features
+
+* **Autocomplete:** add new component ([a0f5593](https://github.com/Elonsoft/elonkit-react/commit/a0f55933d4a2f8fe7293f5c3073d3335e2830c58))
+* **SFSFiltersGroup:** add style overrides for nested inputs ([e6e18e6](https://github.com/Elonsoft/elonkit-react/commit/e6e18e6916a99c1940a25a931b8d4afa7f07aca0))
+
+
+### Bug Fixes
+
+* **OutlinedInput:** add top property for disabled outline ([10cff52](https://github.com/Elonsoft/elonkit-react/commit/10cff524e91328407be8855bc92a5dec5b8a670a))
+
 ### [0.8.2](https://github.com/Elonsoft/elonkit-react/compare/v0.8.1...v0.8.2) (2023-09-12)
 
 
