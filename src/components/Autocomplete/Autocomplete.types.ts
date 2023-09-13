@@ -33,6 +33,8 @@ export type AutocompleteProps<T> = {
   onOpen?: () => void;
   /** Callback fired when the menu requests to be closed. */
   onClose?: () => void;
+  /** Callback fired when the menu list is scrolled to the end. */
+  onLoadMore?: () => void;
 
   /** Props applied to the popover component. */
   PopoverProps?: PopoverProps;

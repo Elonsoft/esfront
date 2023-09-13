@@ -89,6 +89,7 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
     | 'open'
     | 'onOpen'
     | 'onClose'
+    | 'onLoadMore'
     | 'SearchProps'
   > = {
     getOptionValue: getUserValue,
@@ -99,6 +100,7 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
     open,
     onOpen: toggleOpen,
     onClose: toggleOpen,
+    onLoadMore: args.onLoadMore,
     SearchProps: {
       value: search,
       onChange: (e) => setSearch(e.target.value)

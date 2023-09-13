@@ -22,7 +22,7 @@ import Popover, { popoverClasses } from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
-import { useControlled } from '../../hooks/useControlled';
+import { useControlled, useIntersectionObserver } from '../../hooks';
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
@@ -40,6 +40,7 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
     popover: ['popover'],
     menuList: ['menuList'],
     menuItem: ['menuItem'],
+    sentinel: ['sentinel'],
     emptyState: ['emptyState'],
     search: ['search'],
     footer: ['footer']
@@ -97,6 +98,15 @@ const AutocompleteMenuItem = styled(MenuItem, {
   overridesResolver: (props, styles) => styles.menuItem
 })(() => ({
   padding: '2px 16px'
+}));
+
+const AutocompleteSentinel = styled(MenuItem, {
+  name: 'ESAutocomplete',
+  slot: 'Sentinel',
+  overridesResolver: (props, styles) => styles.sentinel
+})(() => ({
+  padding: 0,
+  minHeight: 0
 }));
 
 const AutocompleteCheckbox = styled(Checkbox, {
@@ -231,6 +241,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     open: inOpen,
     onOpen,
     onClose,
+    onLoadMore,
 
     iconSearch = <IconMagnify2W400 />,
     iconSearchClear = <IconCloseW350 />,
@@ -248,9 +259,9 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   }
 
   const ref = useRef<HTMLDivElement | null>(null);
+  const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
 
   const [open, setOpen] = useControlled(false, inOpen);
-
   const [menuMinWidthState, setMenuMinWidthState] = useState(0);
 
   const valueArray = useMemo(
@@ -281,6 +292,12 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     // FIXME: Wrong typing in MUI.
     (formControl as any).setAdornedStart(!!startAdornment);
   }, [!!startAdornment]);
+
+  useIntersectionObserver({ current: sentinelRef }, (entries) => {
+    if (onLoadMore && entries[0].isIntersecting) {
+      onLoadMore();
+    }
+  });
 
   const onMenuOpen = useCallback(() => {
     if (ref.current) {
@@ -437,6 +454,9 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
                 </AutocompleteMenuItem>
               );
             })}
+            {!!onLoadMore && (
+              <AutocompleteSentinel ref={setSentinelRef} disabled className={classes.sentinel} tabIndex={-1} />
+            )}
           </AutocompleteMenuList>
         ) : (
           <AutocompleteEmptyState className={classes.emptyState}>
