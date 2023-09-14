@@ -3,12 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Args, Story } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 
-import { Autocomplete, AutocompleteProps } from '.';
-
-import { useBoolean } from '../../hooks';
+import { AutocompleteField, AutocompleteFieldProps } from '.';
 
 interface User {
   id: number;
@@ -38,13 +34,11 @@ const getUserLabel = (user: User) => user.name;
 export const Demo: Story<Args> = (args, { globals: { locale } }) => {
   const [options, setOptions] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
-  const [open, toggleOpen] = useBoolean(false);
 
   const [user, setUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>([]);
 
   const onChange = (user: User | null) => {
-    toggleOpen();
     setUser(user);
   };
 
@@ -58,7 +52,6 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
     setOptions(USERS[locale as 'en' | 'ru']);
     setSearch('');
     setLoading(false);
-    toggleOpen(false);
   }, [locale]);
 
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -80,51 +73,63 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
   }, [search]);
 
   const props: Pick<
-    AutocompleteProps<any>,
-    | 'getOptionValue'
-    | 'getOptionLabel'
-    | 'options'
-    | 'loading'
+    AutocompleteFieldProps<any>,
+    | 'closeAfterSelect'
+    | 'disabled'
+    | 'error'
     | 'footer'
-    | 'open'
-    | 'onOpen'
-    | 'onClose'
-    | 'onLoadMore'
-    | 'SearchProps'
+    | 'fullWidth'
+    | 'getOptionLabel'
+    | 'getOptionValue'
+    | 'helperText'
+    | 'loading'
+    | 'options'
+    | 'placeholder'
+    | 'required'
+    | 'size'
+    | 'InputProps'
+    | 'onBlur'
   > = {
-    getOptionValue: getUserValue,
-    getOptionLabel: getUserLabel,
-    options,
-    loading,
+    closeAfterSelect: args.closeAfterSelect,
+    disabled: args.disabled,
+    error: args.error,
     footer: args.footer,
-    open,
-    onOpen: toggleOpen,
-    onClose: toggleOpen,
-    onLoadMore: args.onLoadMore,
-    SearchProps: {
-      value: search,
-      onChange: (e) => setSearch(e.target.value)
-    }
+    fullWidth: true,
+    getOptionLabel: getUserLabel,
+    getOptionValue: getUserValue,
+    helperText: args.helperText,
+    loading,
+    options,
+    placeholder: args.placeholder,
+    required: args.required,
+    size: args.size,
+    InputProps: {
+      onLoadMore: args.onLoadMore,
+      SearchProps: {
+        value: search,
+        onChange: (e) => setSearch(e.target.value)
+      }
+    },
+    onBlur: args.onBlur
   };
 
   return (
     <Box sx={{ maxWidth: '500px' }}>
       {args.multiple ? (
-        <FormControl fullWidth focused={open || undefined}>
-          <InputLabel htmlFor="component-helper">{locale === 'en' ? 'Users' : 'Пользователи'}</InputLabel>
-          <Autocomplete
-            multiple
-            label={locale === 'en' ? 'Users' : 'Пользователи'}
-            value={users}
-            onChange={onChangeUsers}
-            {...props}
-          />
-        </FormControl>
+        <AutocompleteField
+          multiple
+          label={locale === 'en' ? 'Users' : 'Пользователи'}
+          value={users}
+          onChange={onChangeUsers}
+          {...props}
+        />
       ) : (
-        <FormControl fullWidth focused={open || undefined}>
-          <InputLabel htmlFor="component-helper">{locale === 'en' ? 'User' : 'Пользователь'}</InputLabel>
-          <Autocomplete label={locale === 'en' ? 'User' : 'Пользователь'} value={user} onChange={onChange} {...props} />
-        </FormControl>
+        <AutocompleteField
+          label={locale === 'en' ? 'Users' : 'Пользователи'}
+          value={user}
+          onChange={onChange}
+          {...props}
+        />
       )}
     </Box>
   );
