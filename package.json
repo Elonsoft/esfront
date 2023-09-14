@@ -103,7 +103,9 @@
   },
   "dependencies": {
     "@date-io/core": "^2.11.0",
-    "@use-gesture/react": "^10.2.27"
+    "@use-gesture/react": "^10.2.27",
+    "overlayscrollbars": "^2.3.0",
+    "overlayscrollbars-react": "^0.5.2"
   },
   "peerDependencies": {
     "@date-io/core": "^2.11.0",
