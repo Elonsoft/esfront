@@ -259,6 +259,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   }
 
   const ref = useRef<HTMLDivElement | null>(null);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
 
   const [open, setOpen] = useControlled(false, inOpen);
@@ -304,6 +305,12 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
       setMenuMinWidthState(ref.current.clientWidth);
       setOpen(true);
       onOpen && onOpen();
+
+      setTimeout(() => {
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        }
+      }, 0);
     }
   }, []);
 
@@ -401,6 +408,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
             autoFocus
             fullWidth
             className={classes.search}
+            inputRef={searchInputRef}
             placeholder={labelSearch}
             size="40"
             {...SearchProps}
@@ -414,7 +422,14 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
                     aria-label={labelSearchClear}
                     color="monoA"
                     size="24"
-                    onClick={() => SearchProps.onChange && SearchProps.onChange({ target: { value: '' } } as never)}
+                    onClick={() => {
+                      if (SearchProps.onChange) {
+                        SearchProps.onChange({ target: { value: '' } } as never);
+                        if (searchInputRef.current) {
+                          searchInputRef.current.focus();
+                        }
+                      }
+                    }}
                   >
                     {iconSearchClear}
                   </Button>
