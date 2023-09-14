@@ -2,6 +2,10 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+import { OverlayScrollbars } from '../../components/OverlayScrollbars';
+
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+
 const ScrollbarsDemoName = styled(Typography)(({ theme }) => ({
   display: 'inline-block',
   marginBottom: '8px',
@@ -51,14 +55,16 @@ export const ScrollbarsDemo = () => {
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         overlay
       </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
-          height: '150px',
-          ...theme.scrollbars.overlay
-        })}
-      >
-        {content}
-      </Box>
+      <OverlayScrollbars />
+      <OverlayScrollbarsComponent>
+        <Box
+          sx={(theme) => ({
+            height: '150px'
+          })}
+        >
+          {content}
+        </Box>
+      </OverlayScrollbarsComponent>
     </Box>
   );
 };

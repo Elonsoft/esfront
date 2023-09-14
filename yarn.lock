@@ -10371,10 +10371,20 @@ os-browserify@^0.3.0:
   resolved "https://registry.yarnpkg.com/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
   integrity sha1-hUNzx/XCMVkU/Jv8a9gjj92h7Cc=
 
+overlayscrollbars-react@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/overlayscrollbars-react/-/overlayscrollbars-react-0.5.2.tgz#b8a6294279a1d0984392586b56a03df78d6c1e34"
+  integrity sha512-y3xIPY3to7hneF30MQ/tK9nI6UOcflgenAYktgyfi0GuwnsYEuAqgLfs2qDGiNhFA30Xcz3gaMxvqD7+hTvFRA==
+
 overlayscrollbars@^1.13.1:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/overlayscrollbars/-/overlayscrollbars-1.13.1.tgz#0b840a88737f43a946b9d87875a2f9e421d0338a"
   integrity sha512-gIQfzgGgu1wy80EB4/6DaJGHMEGmizq27xHIESrzXq0Y/J0Ay1P3DWk6tuVmEPIZH15zaBlxeEJOqdJKmowHCQ==
+
+overlayscrollbars@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/overlayscrollbars/-/overlayscrollbars-2.3.0.tgz#db42a2da106fdeb7bab2b8ee132c0b675b962787"
+  integrity sha512-4h6wtdTzqDFBGcNeoXObulJ8uQ1MkcMrtFDnqfQDaRp4dRfzsxSwi4PnsWsObcEm4AQPkMNUJsFHUNlRq4ZQbg==
 
 p-all@^2.1.0:
   version "2.1.0"
