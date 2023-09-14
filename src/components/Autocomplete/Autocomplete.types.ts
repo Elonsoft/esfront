@@ -36,6 +36,9 @@ export type AutocompleteProps<T> = {
   /** Callback fired when the menu list is scrolled to the end. */
   onLoadMore?: () => void;
 
+  /** Callback fired when the input loses focus. */
+  onBlur?: (event: { target: { name?: string } }) => void;
+
   /** Props applied to the popover component. */
   PopoverProps?: PopoverProps;
   /** Props applied to the search field component. If present, shows the component. */
@@ -68,4 +71,21 @@ export type AutocompleteProps<T> = {
       multiple: true;
     }
 ) &
-  Pick<OutlinedInputProps, 'id' | 'label' | 'startAdornment' | 'endAdornment' | 'autoFocus'>;
+  Pick<
+    OutlinedInputProps,
+    | 'aria-describedby'
+    | 'autoFocus'
+    | 'disabled'
+    | 'endAdornment'
+    | 'error'
+    | 'fullWidth'
+    | 'id'
+    | 'inputProps'
+    | 'inputRef'
+    | 'label'
+    | 'name'
+    | 'placeholder'
+    | 'required'
+    | 'size'
+    | 'startAdornment'
+  >;

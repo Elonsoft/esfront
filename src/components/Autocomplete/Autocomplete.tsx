@@ -20,9 +20,10 @@ import MenuList from '@mui/material/MenuList';
 import OutlinedInput, { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import Popover, { popoverClasses } from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
+import { useForkRef } from '@mui/material/utils';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
-import { useControlled, useIntersectionObserver } from '../../hooks';
+import { useControlled, useIntersectionObserver, useUpdateEffect, useValueDebounce } from '../../hooks';
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
@@ -43,7 +44,8 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
     sentinel: ['sentinel'],
     emptyState: ['emptyState'],
     search: ['search'],
-    footer: ['footer']
+    footer: ['footer'],
+    inputPlaceholder: ['inputPlaceholder']
   };
 
   return composeClasses(slots, getAutocompleteUtilityClass, classes);
@@ -211,13 +213,28 @@ const AutocompleteFooter = styled('div', {
   borderTop: `1px solid ${theme.palette.monoA.A100}`
 }));
 
+const AutocompleteInputPlaceholder = styled('span', {
+  name: 'ESAutocomplete',
+  slot: 'InputPlaceholder',
+  overridesResolver: (props, styles) => styles.inputPlaceholder
+})(({ theme }) => ({
+  color: theme.palette.monoA.A400
+}));
+
+/** The autocomplete is used to choose an item from a collection of options. */
 export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const {
     className,
+    classes: inClasses,
     sx,
 
     id,
+    inputRef: inInputRef,
     label,
+    name,
+    placeholder,
+    'aria-describedby': ariaDescribedby,
+
     startAdornment,
     endAdornment,
 
@@ -242,6 +259,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     onOpen,
     onClose,
     onLoadMore,
+    onBlur,
 
     iconSearch = <IconMagnify2W400 />,
     iconSearchClear = <IconCloseW350 />,
@@ -262,8 +280,13 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
 
+  const inputRef = useRef<HTMLDivElement | null>(null);
+  const inputNodeRef = useForkRef(inputRef, inInputRef);
+
   const [open, setOpen] = useControlled(false, inOpen);
   const [menuMinWidthState, setMenuMinWidthState] = useState(0);
+
+  const focusedDebounce = useValueDebounce(formControl.focused, 1);
 
   const valueArray = useMemo(
     () => (props.multiple ? props.value : props.value ? [props.value] : []),
@@ -288,6 +311,12 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
       formControl.onEmpty();
     }
   }, [valueArray, formControl.onEmpty, formControl.onFilled]);
+
+  useUpdateEffect(() => {
+    if (!focusedDebounce && !open && onBlur) {
+      onBlur({ target: { name } });
+    }
+  }, [focusedDebounce, open]);
 
   useEnhancedEffect(() => {
     // FIXME: Wrong typing in MUI.
@@ -353,7 +382,9 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     onMenuOpen();
   };
 
-  const ownerState = { classes: props.classes };
+  const notched = formControl.filled || formControl.focused || !!startAdornment || !!open;
+
+  const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);
 
   return (
@@ -364,19 +395,30 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         disabled={formControl.disabled}
         endAdornment={endAdornment}
         error={formControl.error}
+        fullWidth={props.fullWidth}
         id={id}
         inputComponent={'div' as never}
         inputProps={{
-          children: valueDisplay,
+          children:
+            valueDisplay ||
+            ((notched || !label) && (
+              <AutocompleteInputPlaceholder className={classes.inputPlaceholder}>
+                {placeholder}
+              </AutocompleteInputPlaceholder>
+            )),
           className: classes.input,
           role: 'button',
           tabIndex: formControl.disabled ? -1 : 0,
           onBlur: formControl.onBlur,
           onFocus: formControl.onFocus,
-          onKeyDown
+          onKeyDown,
+          ['aria-describedby']: ariaDescribedby,
+          ...props.inputProps
         }}
+        inputRef={inputNodeRef}
         label={label}
-        notched={formControl.filled || formControl.focused || !!startAdornment || !!open}
+        name={name}
+        notched={notched}
         required={formControl.required}
         startAdornment={startAdornment}
         sx={sx}

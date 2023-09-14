@@ -1,6 +1,7 @@
 export * from './Alert';
 export * from './AudioPlayer';
 export * from './Autocomplete';
+export * from './AutocompleteField';
 export * from './AvatarGroup';
 export * from './BottomSheet';
 export * from './Breadcrumbs';
