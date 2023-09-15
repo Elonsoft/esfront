@@ -7,7 +7,7 @@ import { EmptyState } from '.';
 
 const getIcon = (args: Args) => {
   const Component = EmptyStateIcons[args.icon as keyof typeof EmptyStateIcons] || EmptyStateIcons.EmptyStateIconBox;
-  return <Component />;
+  return <Component size={args.size === 'small' ? '40px' : '56px'} />;
 };
 
 const getHeading = (args: Args, context: StoryContext<ReactFramework>) => {
@@ -46,7 +46,7 @@ export const Action: Story = (args, context) => {
       icon={getIcon(args)}
       subheading={getSubheading(args, context)}
     >
-      <Button color="primary" variant="outlined">
+      <Button color="primary" size={args.size === 'small' ? '32' : '40'} variant="outlined">
         {getAction(args, context)}
       </Button>
     </EmptyState>

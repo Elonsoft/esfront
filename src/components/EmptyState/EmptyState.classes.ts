@@ -3,6 +3,10 @@ import { generateUtilityClass, generateUtilityClasses } from '@mui/base';
 export type EmptyStateClasses = {
   /** Styles applied to the root element. */
   root: string;
+  /** Styles applied to the root element if size="medium". */
+  medium: string;
+  /** Styles applied to the root element if size="small". */
+  small: string;
   /** Styles applied to the icon element. */
   icon: string;
   /** Styles applied to the text element. */
@@ -20,6 +24,8 @@ export function getEmptyStateUtilityClass(slot: string): string {
 
 export const emptyStateClasses: EmptyStateClasses = generateUtilityClasses('ESEmptyState', [
   'root',
+  'medium',
+  'small',
   'icon',
   'text',
   'heading',

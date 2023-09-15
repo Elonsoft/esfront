@@ -10,13 +10,14 @@ import Typography from '@mui/material/Typography';
 
 type EmptyStateOwnerState = {
   classes?: EmptyStateProps['classes'];
+  size?: EmptyStateProps['size'];
 };
 
 const useUtilityClasses = (ownerState: EmptyStateOwnerState) => {
-  const { classes } = ownerState;
+  const { classes, size } = ownerState;
 
   const slots = {
-    root: ['root'],
+    root: ['root', size],
     icon: ['icon'],
     text: ['text'],
     heading: ['heading'],
@@ -29,7 +30,13 @@ const useUtilityClasses = (ownerState: EmptyStateOwnerState) => {
 const EmptyStateRoot = styled('div', {
   name: 'ESEmptyState',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState: { size }
+    } = props;
+
+    return [styles.root, styles[size]];
+  }
 })(() => ({
   alignItems: 'center',
   display: 'flex',
@@ -41,19 +48,19 @@ const EmptyStateIcon = styled('div', {
   name: 'ESEmptyState',
   slot: 'Icon',
   overridesResolver: (props, styles) => styles.icon
-})(({ theme }) => ({
+})<{ ownerState: EmptyStateOwnerState }>(({ theme, ownerState }) => ({
   display: 'flex',
   color: theme.palette.monoA.A150,
-  marginBottom: 12
+  marginBottom: ownerState.size === 'medium' ? '12px' : '8px'
 }));
 
 const EmptyStateText = styled('div', {
   name: 'ESEmptyState',
   slot: 'Text',
   overridesResolver: (props, styles) => styles.text
-})(() => ({
+})<{ ownerState: EmptyStateOwnerState }>(({ ownerState }) => ({
   '&:not(:last-child)': {
-    marginBottom: 20
+    marginBottom: ownerState.size === 'medium' ? '20px' : '16px'
   }
 }));
 
@@ -65,7 +72,7 @@ const EmptyStateHeading = styled(Typography, {
   color: theme.palette.monoA.A900,
   display: 'block',
   '&:not(:last-child)': {
-    marginBottom: 2
+    marginBottom: '2px'
   }
 }));
 
@@ -82,24 +89,33 @@ const EmptyStateSubheading = styled(Typography, {
  * This component is a placeholder to use on pages without content.
  */
 export const EmptyState = (inProps: EmptyStateProps) => {
-  const { children, className, sx, icon, heading, subheading, ...props } = useThemeProps({
+  const {
+    children,
+    className,
+    sx,
+    size = 'medium',
+    icon,
+    heading,
+    subheading,
+    ...props
+  } = useThemeProps({
     props: inProps,
     name: 'ESEmptyState'
   });
 
-  const ownerState = { ...props };
+  const ownerState = { size, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <EmptyStateRoot className={clsx(classes.root, className)} sx={sx}>
       {!!icon && (
-        <EmptyStateIcon className={classes.icon} data-testid="icon">
+        <EmptyStateIcon className={classes.icon} data-testid="icon" ownerState={ownerState}>
           {icon}
         </EmptyStateIcon>
       )}
-      <EmptyStateText className={classes.text}>
+      <EmptyStateText className={classes.text} ownerState={ownerState}>
         {!!heading && (
-          <EmptyStateHeading className={classes.heading} variant="body200">
+          <EmptyStateHeading className={classes.heading} variant={size === 'medium' ? 'body200' : 'body100'}>
             {heading}
           </EmptyStateHeading>
         )}
