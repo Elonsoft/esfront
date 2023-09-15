@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 
 import { AutocompleteField, AutocompleteFieldProps } from '.';
 
+import { AutocompleteFooter, AutocompleteHeader } from '../Autocomplete';
+
 interface User {
   id: number;
   name: string;
@@ -77,6 +79,7 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
     | 'closeAfterSelect'
     | 'disabled'
     | 'error'
+    | 'header'
     | 'footer'
     | 'fullWidth'
     | 'getOptionLabel'
@@ -93,7 +96,8 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
     closeAfterSelect: args.closeAfterSelect,
     disabled: args.disabled,
     error: args.error,
-    footer: args.footer,
+    header: args.header && <AutocompleteHeader>{args.header}</AutocompleteHeader>,
+    footer: args.footer && <AutocompleteFooter>{args.footer}</AutocompleteFooter>,
     fullWidth: true,
     getOptionLabel: getUserLabel,
     getOptionValue: getUserValue,

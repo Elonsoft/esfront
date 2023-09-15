@@ -24,6 +24,8 @@ export type AutocompleteProps<T> = {
 
   /** If true, the component is in a loading state. This shows the labelLoading in place of options (only if options are empty). */
   loading?: boolean;
+  /** Children content for the menu header. */
+  header?: ReactNode;
   /** Children content for the menu footer. */
   footer?: ReactNode;
 
