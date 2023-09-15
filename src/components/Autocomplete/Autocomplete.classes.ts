@@ -17,8 +17,6 @@ export type AutocompleteClasses = {
   emptyState: string;
   /** Styles applied to the search field element. */
   search: string;
-  /** Styles applied to the footer element. */
-  footer: string;
   /** Styles applied to the input placeholder element. */
   inputPlaceholder: string;
 };
@@ -37,6 +35,5 @@ export const autocompleteClasses: AutocompleteClasses = generateUtilityClasses('
   'sentinel',
   'emptyState',
   'search',
-  'footer',
   'inputPlaceholder'
 ]);

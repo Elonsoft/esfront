@@ -44,7 +44,6 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
     sentinel: ['sentinel'],
     emptyState: ['emptyState'],
     search: ['search'],
-    footer: ['footer'],
     inputPlaceholder: ['inputPlaceholder']
   };
 
@@ -202,17 +201,6 @@ const AutocompleteSearch = styled(TextField, {
   }
 }));
 
-const AutocompleteFooter = styled('div', {
-  name: 'ESAutocomplete',
-  slot: 'Footer',
-  overridesResolver: (props, styles) => styles.footer
-})(({ theme }) => ({
-  ...theme.typography.caption,
-  color: theme.palette.monoA.A600,
-  padding: '5px 16px 6px',
-  borderTop: `1px solid ${theme.palette.monoA.A100}`
-}));
-
 const AutocompleteInputPlaceholder = styled('span', {
   name: 'ESAutocomplete',
   slot: 'InputPlaceholder',
@@ -244,6 +232,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     getOptionDisabled,
 
     loading,
+    header,
     footer,
 
     labelNoOptions,
@@ -481,6 +470,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
             }}
           />
         )}
+        {header}
         {loading ? (
           <AutocompleteEmptyState className={classes.emptyState}>
             <SpinnerRing color="monoA" size={16} /> {labelLoading}
@@ -520,7 +510,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
             {!!SearchProps?.value ? labelNoMatches : labelNoOptions}
           </AutocompleteEmptyState>
         )}
-        {footer && <AutocompleteFooter className={classes.footer}>{footer}</AutocompleteFooter>}
+        {footer}
       </AutocompletePopover>
     </>
   );
