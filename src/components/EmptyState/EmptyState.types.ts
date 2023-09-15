@@ -12,6 +12,13 @@ export interface EmptyStateProps {
   className?: string;
   /** The system prop that allows defining system overrides as well as additional CSS styles. */
   sx?: SxProps<Theme>;
+
+  /**
+   * The size of the component.
+   * @default 'medium'
+   */
+  size?: 'medium' | 'small';
+
   /** Icon to display above the text. */
   icon?: ReactNode;
   /** Heading text. */
