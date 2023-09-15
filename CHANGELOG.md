@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.4](https://github.com/Elonsoft/elonkit-react/compare/v0.8.3...v0.8.4) (2023-09-15)
+
+
+### Features
+
+* **Autocomplete:** add controlled open state ([442cd9e](https://github.com/Elonsoft/elonkit-react/commit/442cd9eae5ac63da347aadcb93fd6e8bc6b9d4e3))
+* **Autocomplete:** add header prop ([934b71c](https://github.com/Elonsoft/elonkit-react/commit/934b71c77dac6602c8adb34e1577bc25a16dcd3d))
+* **Autocomplete:** add infinite scroll ([59f0140](https://github.com/Elonsoft/elonkit-react/commit/59f01405879a184a0db53bb0dbddf99de30f7043))
+* **Autocomplete:** add search input autoFocus ([ab76da0](https://github.com/Elonsoft/elonkit-react/commit/ab76da03035b4290dafee22c40352036a78d6a89))
+* **AutocompleteField:** add new component ([b27a95e](https://github.com/Elonsoft/elonkit-react/commit/b27a95ed2147a1fcc9e002eeeed2cb537d49ebef))
+* **EmptyState:** add small size variant ([db3aee7](https://github.com/Elonsoft/elonkit-react/commit/db3aee72a67f17523ce22570b80f6b080dc810de))
+
 ### [0.8.3](https://github.com/Elonsoft/elonkit-react/compare/v0.8.2...v0.8.3) (2023-09-13)
 
 
