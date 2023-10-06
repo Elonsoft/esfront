@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AutocompleteProps } from './Autocomplete.types';
 
@@ -23,7 +23,7 @@ import TextField from '@mui/material/TextField';
 import { useForkRef } from '@mui/material/utils';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
-import { useControlled, useIntersectionObserver, useUpdateEffect, useValueDebounce } from '../../hooks';
+import { useControlled, useIntersectionObserver, usePreviousValue } from '../../hooks';
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
@@ -271,11 +271,12 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
 
   const inputRef = useRef<HTMLDivElement | null>(null);
   const inputNodeRef = useForkRef(inputRef, inInputRef);
+  const isInputFocusRequested = useRef(false);
 
   const [open, setOpen] = useControlled(false, inOpen);
   const [menuMinWidthState, setMenuMinWidthState] = useState(0);
 
-  const focusedDebounce = useValueDebounce(formControl.focused, 1);
+  const previousFocused = usePreviousValue(formControl.focused);
 
   const valueArray = useMemo(
     () => (props.multiple ? props.value : props.value ? [props.value] : []),
@@ -301,11 +302,15 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     }
   }, [valueArray, formControl.onEmpty, formControl.onFilled]);
 
-  useUpdateEffect(() => {
-    if (!focusedDebounce && !open && onBlur) {
-      onBlur({ target: { name } });
+  useEffect(() => {
+    if (onBlur && !formControl.focused && previousFocused) {
+      if (isInputFocusRequested.current) {
+        isInputFocusRequested.current = false;
+      } else {
+        onBlur({ target: { name } });
+      }
     }
-  }, [focusedDebounce, open]);
+  }, [formControl.focused, previousFocused]);
 
   useEnhancedEffect(() => {
     // FIXME: Wrong typing in MUI.
@@ -332,7 +337,16 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     }
   }, []);
 
-  const onMenuClose = useCallback(() => {
+  const onMenuClose = useCallback((_event: unknown, reason: 'backdropClick' | 'escapeKeyDown') => {
+    if (reason === 'escapeKeyDown') {
+      isInputFocusRequested.current = true;
+      requestAnimationFrame(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      });
+    }
+
     setOpen(false);
     onClose && onClose();
   }, []);
@@ -429,6 +443,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         }}
         onClose={onMenuClose}
         {...PopoverProps}
+        disableRestoreFocus
         PaperProps={{
           ...PopoverProps?.PaperProps,
           style: { minWidth: menuMinWidthState, ...PopoverProps?.PaperProps?.style }

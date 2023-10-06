@@ -13,6 +13,7 @@ export { useLatest } from './useLatest';
 export { useLocalStorage } from './useLocalStorage';
 export { useMenuAim } from './useMenuAim';
 export { useOnLine } from './useOnLine';
+export { usePreviousValue } from './usePreviousValue';
 export { useResizeObserver } from './useResizeObserver';
 export { useScrollSync } from './useScrollSync';
 export { useSessionStorage } from './useSessionStorage';
