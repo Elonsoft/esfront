@@ -15,6 +15,8 @@ export type EmptyStateClasses = {
   heading: string;
   /** Styles applied to the subheading element. */
   subheading: string;
+  /** Styles applied to the children container element. */
+  children: string;
 };
 export type EmptyStateClassKey = keyof EmptyStateClasses;
 
@@ -29,5 +31,6 @@ export const emptyStateClasses: EmptyStateClasses = generateUtilityClasses('ESEm
   'icon',
   'text',
   'heading',
-  'subheading'
+  'subheading',
+  'children'
 ]);

@@ -21,7 +21,8 @@ const useUtilityClasses = (ownerState: EmptyStateOwnerState) => {
     icon: ['icon'],
     text: ['text'],
     heading: ['heading'],
-    subheading: ['subheading']
+    subheading: ['subheading'],
+    children: ['children']
   };
 
   return composeClasses(slots, getEmptyStateUtilityClass, classes);
@@ -60,7 +61,7 @@ const EmptyStateText = styled('div', {
   overridesResolver: (props, styles) => styles.text
 })<{ ownerState: EmptyStateOwnerState }>(({ ownerState }) => ({
   '&:not(:last-child)': {
-    marginBottom: ownerState.size === 'medium' ? '20px' : '16px'
+    marginBottom: ownerState.size === 'medium' ? '12px' : '8px'
   }
 }));
 
@@ -83,6 +84,14 @@ const EmptyStateSubheading = styled(Typography, {
 })(({ theme }) => ({
   color: theme.palette.monoA.A600,
   display: 'block'
+}));
+
+const EmptyStateChildren = styled('div', {
+  name: 'ESEmptyState',
+  slot: 'Children',
+  overridesResolver: (props, styles) => styles.children
+})(() => ({
+  padding: '8px 0'
 }));
 
 /**
@@ -125,7 +134,7 @@ export const EmptyState = (inProps: EmptyStateProps) => {
           </EmptyStateSubheading>
         )}
       </EmptyStateText>
-      {children}
+      {!!children && <EmptyStateChildren className={classes.children}>{children}</EmptyStateChildren>}
     </EmptyStateRoot>
   );
 };
