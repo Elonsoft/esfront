@@ -30,6 +30,7 @@ export * from './SvgIcon';
 export * from './Swiper';
 export * from './Swiper';
 export * from './Switch';
+export * from './TabBar';
 export * from './Table';
 export * from './TextFieldGroup';
 export * from './TooltipEllipsis';
