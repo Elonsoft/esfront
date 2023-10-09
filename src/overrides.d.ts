@@ -166,6 +166,7 @@ import {
   SwiperProps
 } from './components/Swiper';
 import { SwitchClassKey, SwitchProps } from './components/Switch';
+import { TabBarClassKey, TabBarItemClassKey, TabBarItemProps, TabBarProps } from './components/TabBar';
 import {
   TableActionsClassKey,
   TableActionsProps,
@@ -316,6 +317,8 @@ declare module '@mui/material/styles/props' {
     ESSwitch: SwitchProps;
     ESSwiperButton: SwiperButtonProps;
     ESSwiperPagination: SwiperPaginationProps;
+    ESTabBar: TabBarProps;
+    ESTabBarItem: TabBarItemProps;
     ESTable: TableProps;
     ESTableActions: TableActionsProps;
     ESTableBody: TableBodyProps;
@@ -401,6 +404,8 @@ declare module '@mui/material/styles/overrides' {
     ESSwitch: SwitchClassKey;
     ESSwiperButton: SwiperButtonClassKey;
     ESSwiperPagination: SwiperPaginationClassKey;
+    ESTabBar: TabBarClassKey;
+    ESTabBarItem: TabBarItemClassKey;
     ESTable: TableClassKey;
     ESTableActions: TableActionsClassKey;
     ESTableBody: TableBodyClassKey;
@@ -663,6 +668,14 @@ declare module '@mui/material/styles/components' {
     ESSvgIcon?: {
       defaultProps?: ComponentsProps['ESSvgIcon'];
       styleOverrides?: ComponentsOverrides['ESSvgIcon'];
+    };
+    ESTabBar?: {
+      defaultProps?: ComponentsProps['ESTabBar'];
+      styleOverrides?: ComponentsOverrides['ESTabBar'];
+    };
+    ESTabBarItem?: {
+      defaultProps?: ComponentsProps['ESTabBarItem'];
+      styleOverrides?: ComponentsOverrides['ESTabBarItem'];
     };
     ESTable?: {
       defaultProps?: ComponentsProps['ESTable'];
