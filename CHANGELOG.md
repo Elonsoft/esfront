@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.6](https://github.com/Elonsoft/elonkit-react/compare/v0.8.5...v0.8.6) (2023-10-12)
+
+
+### Bug Fixes
+
+* **Autocomplete:** improve blur detection ([bc0f2b2](https://github.com/Elonsoft/elonkit-react/commit/bc0f2b20151221e0009484bf98580544f11291cc))
+
 ### [0.8.5](https://github.com/Elonsoft/elonkit-react/compare/v0.8.4...v0.8.5) (2023-10-12)
 
 
