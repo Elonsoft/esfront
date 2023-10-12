@@ -290,8 +290,11 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   }, [valueArray]);
 
   const valueDisplay = useMemo(() => {
+    if (props.getDisplayValue) {
+      return props.multiple ? props.getDisplayValue(props.value) : props.getDisplayValue(props.value);
+    }
     return valueArray.map((v) => getOptionLabel(v)).join(', ');
-  }, [valueArray]);
+  }, [props.value, valueArray]);
 
   useEnhancedEffect(() => {
     if (valueArray.length) {

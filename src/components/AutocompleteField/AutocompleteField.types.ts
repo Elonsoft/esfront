@@ -25,7 +25,19 @@ export type AutocompleteFieldProps<T> = {
   size?: TextFieldProps['size'];
 
   /** Props applied to the `Autocomplete` element. */
-  InputProps?: Partial<Omit<AutocompleteProps<T>, 'value' | 'onChange' | 'multiple'>>;
+  InputProps?: Partial<
+    Omit<
+      AutocompleteProps<T>,
+      | 'value'
+      | 'onChange'
+      | 'multiple'
+      | 'getDisplayValue'
+      | 'options'
+      | 'getOptionLabel'
+      | 'getOptionValue'
+      | 'getOptionDisabled'
+    >
+  >;
   /** Props applied to the `InputLabel` element. */
   InputLabelProps?: InputLabelProps;
   /** Props applied to the `FormHelperText` element. */
@@ -34,11 +46,13 @@ export type AutocompleteFieldProps<T> = {
   | {
       value: T | null;
       onChange?: (value: T | null) => void;
+      getDisplayValue?: (value: T | null) => ReactNode;
       multiple?: false;
     }
   | {
       value: T[];
       onChange?: (value: T[]) => void;
+      getDisplayValue?: (value: T[]) => ReactNode;
       multiple: true;
     }
 ) &
