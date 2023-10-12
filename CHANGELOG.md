@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.5](https://github.com/Elonsoft/elonkit-react/compare/v0.8.4...v0.8.5) (2023-10-12)
+
+
+### Features
+
+* **Autocomplete:** add support for custom option label and display value ([b28fc68](https://github.com/Elonsoft/elonkit-react/commit/b28fc68b7c0b125fc70154f84155d215d682e312))
+* **EmptyState:** add children container element ([a232d67](https://github.com/Elonsoft/elonkit-react/commit/a232d671b272305a56aa1b94eec6636a9b5d6f89))
+
 ### [0.8.4](https://github.com/Elonsoft/elonkit-react/compare/v0.8.3...v0.8.4) (2023-09-15)
 
 
