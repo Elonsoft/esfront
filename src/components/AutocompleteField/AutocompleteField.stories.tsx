@@ -32,6 +32,17 @@ for (let i = 0; i < 20; i++) {
 
 const getUserValue = (user: User) => user.id;
 const getUserLabel = (user: User) => user.name;
+const getUserLabelReactNode = (user: User) => <i>{user.name}</i>;
+const getUsersDisplayValue = (users: User[]) => (
+  <span>
+    {users.map((user, index) => (
+      <>
+        <i key={user.id}>{user.name}</i>
+        {index < users.length - 1 && ', '}
+      </>
+    ))}
+  </span>
+);
 
 export const Demo: Story<Args> = (args, { globals: { locale } }) => {
   const [options, setOptions] = useState<User[]>([]);
@@ -135,6 +146,35 @@ export const Demo: Story<Args> = (args, { globals: { locale } }) => {
           {...props}
         />
       )}
+    </Box>
+  );
+};
+
+export const Customization: Story<Args> = (args, { globals: { locale } }) => {
+  const [options, setOptions] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+
+  const onChangeUsers = (users: User[]) => {
+    setUsers(users);
+  };
+
+  useEffect(() => {
+    setOptions(USERS[locale as 'en' | 'ru']);
+  }, [locale]);
+
+  return (
+    <Box sx={{ maxWidth: '500px' }}>
+      <AutocompleteField<User>
+        fullWidth
+        multiple
+        getDisplayValue={getUsersDisplayValue}
+        getOptionLabel={getUserLabelReactNode}
+        getOptionValue={getUserValue}
+        label={locale === 'en' ? 'Users' : 'Пользователи'}
+        options={options}
+        value={users}
+        onChange={onChangeUsers}
+      />
     </Box>
   );
 };

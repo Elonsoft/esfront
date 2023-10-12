@@ -17,8 +17,8 @@ export type AutocompleteProps<T> = {
   options: T[];
   /** Used to determine the value for a given option. It's used for options comparison. */
   getOptionValue: (option: T) => number | string;
-  /** Used to determine the string value for a given option. It's used to fill the input and the list box options. */
-  getOptionLabel: (option: T) => number | string;
+  /** Used to determine the display value for a given option. It's used to fill the input and the list box options. */
+  getOptionLabel: (option: T) => ReactNode;
   /** Used to determine the disabled state for a given option. */
   getOptionDisabled?: (option: T) => boolean;
 
@@ -63,14 +63,16 @@ export type AutocompleteProps<T> = {
   iconSearchClear?: ReactNode;
 } & (
   | {
+      multiple?: false;
       value: T | null;
       onChange?: (value: T | null) => void;
-      multiple?: false;
+      getDisplayValue?: (value: T | null) => ReactNode;
     }
   | {
+      multiple: true;
       value: T[];
       onChange?: (value: T[]) => void;
-      multiple: true;
+      getDisplayValue?: (value: T[]) => ReactNode;
     }
 ) &
   Pick<
