@@ -88,6 +88,20 @@ import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinkClassKey, LinkProps } from './components/Link';
 import { MenuItemClassKey, MenuItemProps } from './components/MenuItem';
 import {
+  PageHGroupActionsClassKey,
+  PageHGroupActionsProps,
+  PageHGroupBreadcrumbsClassKey,
+  PageHGroupBreadcrumbsProps,
+  PageHGroupClassKey,
+  PageHGroupHeadingClassKey,
+  PageHGroupHeadingProps,
+  PageHGroupMainClassKey,
+  PageHGroupMainProps,
+  PageHGroupProps,
+  PageHGroupStatusClassKey,
+  PageHGroupStatusProps
+} from './components/PageHGroup';
+import {
   PaginationClassKey,
   PaginationPagesClassKey,
   PaginationPagesProps,
@@ -264,6 +278,12 @@ declare module '@mui/material/styles/props' {
     ESKbd: KbdProps;
     ESLink: LinkProps;
     ESMenuItem: MenuItemProps;
+    ESPageHGroup: PageHGroupProps;
+    ESPageHGroupActions: PageHGroupActionsProps;
+    ESPageHGroupBreadcrumbs: PageHGroupBreadcrumbsProps;
+    ESPageHGroupHeading: PageHGroupHeadingProps;
+    ESPageHGroupMain: PageHGroupMainProps;
+    ESPageHGroupStatus: PageHGroupStatusProps;
     ESPagination: PaginationProps;
     ESPaginationPages: PaginationPagesProps;
     ESPaginationRange: PaginationRangeProps;
@@ -342,6 +362,12 @@ declare module '@mui/material/styles/overrides' {
     ESKbd: KbdClassKey;
     ESLink: LinkClassKey;
     ESMenuItem: MenuItemClassKey;
+    ESPageHGroup: PageHGroupClassKey;
+    ESPageHGroupActions: PageHGroupActionsClassKey;
+    ESPageHGroupBreadcrumbs: PageHGroupBreadcrumbsClassKey;
+    ESPageHGroupHeading: PageHGroupHeadingClassKey;
+    ESPageHGroupMain: PageHGroupMainClassKey;
+    ESPageHGroupStatus: PageHGroupStatusClassKey;
     ESPagination: PaginationClassKey;
     ESPaginationPages: PaginationPagesClassKey;
     ESPaginationRange: PaginationRangeClassKey;
@@ -538,6 +564,30 @@ declare module '@mui/material/styles/components' {
     ESMenuItem?: {
       defaultProps?: ComponentsProps['ESMenuItem'];
       styleOverrides?: ComponentsOverrides['ESMenuItem'];
+    };
+    ESPageHGroup?: {
+      defaultProps?: ComponentsProps['ESPageHGroup'];
+      styleOverrides?: ComponentsOverrides['ESPageHGroup'];
+    };
+    ESPageHGroupActions?: {
+      defaultProps?: ComponentsProps['ESPageHGroupActions'];
+      styleOverrides?: ComponentsOverrides['ESPageHGroupActions'];
+    };
+    ESPageHGroupBreadcrumbs?: {
+      defaultProps?: ComponentsProps['ESPageHGroupBreadcrumbs'];
+      styleOverrides?: ComponentsOverrides['ESPageHGroupBreadcrumbs'];
+    };
+    ESPageHGroupHeading?: {
+      defaultProps?: ComponentsProps['ESPageHGroupHeading'];
+      styleOverrides?: ComponentsOverrides['ESPageHGroupHeading'];
+    };
+    ESPageHGroupMain?: {
+      defaultProps?: ComponentsProps['ESPageHGroupMain'];
+      styleOverrides?: ComponentsOverrides['ESPageHGroupMain'];
+    };
+    ESPageHGroupStatus?: {
+      defaultProps?: ComponentsProps['ESPageHGroupStatus'];
+      styleOverrides?: ComponentsOverrides['ESPageHGroupStatus'];
     };
     ESPagination?: {
       defaultProps?: ComponentsProps['ESPagination'];
