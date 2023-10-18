@@ -16,20 +16,22 @@ const BREADCRUMBS = {
   ]
 };
 
-export const Demo: Story = (args, context) => {
+export const DemoBase: Story = (args, context) => {
   const locale = (context.globals.locale || 'en') as 'en' | 'ru';
 
   return (
-    <Box sx={{ padding: '25px 0' }}>
-      <Breadcrumbs>
-        {BREADCRUMBS[locale].map((item) => (
-          <Breadcrumb key={item.name} component="button" onClick={() => console.log(item.name)}>
-            {item.name}
-          </Breadcrumb>
-        ))}
+    <Breadcrumbs>
+      {BREADCRUMBS[locale].map((item) => (
+        <Breadcrumb key={item.name} component="button" onClick={() => console.log(item.name)}>
+          {item.name}
+        </Breadcrumb>
+      ))}
 
-        <Breadcrumb disabled>iPad Pro</Breadcrumb>
-      </Breadcrumbs>
-    </Box>
+      <Breadcrumb disabled>iPad Pro</Breadcrumb>
+    </Breadcrumbs>
   );
+};
+
+export const Demo: Story = (args, context) => {
+  return <Box sx={{ padding: '25px 0' }}>{DemoBase(args, context)} </Box>;
 };

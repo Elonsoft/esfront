@@ -19,6 +19,7 @@ export * from './Kbd';
 export * from './Link';
 export * from './locale';
 export * from './MenuItem';
+export * from './PageHGroup';
 export * from './Pagination';
 export * from './PasswordField';
 export * from './SFS';
