@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { AppBar } from './AppBar.tsx';
+import * as stories from './AppBar.stories';
+
+<Meta
+  title="Components/AppBar"
+  component={AppBar}
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    sx: {
+      table: {
+        disable: true
+      }
+    },
+    children: {
+      control: {
+        type: 'text'
+      }
+    },
+    startAdornment: {
+      defaultValue: true,
+      control: {
+        type: 'boolean'
+      }
+    },
+    endAdornment: {
+      defaultValue: true,
+      control: {
+        type: 'boolean'
+      }
+    }
+  }}
+/>
+
+# AppBar
+
+<Description of={AppBar} />
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-AppBar" story="page">
+      <code>AppBar</code>
+    </LinkTo>
+  </li>
+</ul>

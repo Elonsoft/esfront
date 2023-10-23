@@ -27,5 +27,5 @@ export const useIntersectionObserver = (
         intersectionObserver.disconnect();
       };
     }
-  }, [element.current]);
+  }, [element.current, options?.rootMargin]);
 };
