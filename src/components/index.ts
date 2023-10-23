@@ -1,4 +1,5 @@
 export * from './Alert';
+export * from './AppBar';
 export * from './AudioPlayer';
 export * from './Autocomplete';
 export * from './AutocompleteField';
