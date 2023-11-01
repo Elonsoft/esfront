@@ -16,7 +16,7 @@ import { unstable_useId as useId } from '@mui/utils';
 
 import { BottomSheetContext } from './BottomSheet.context';
 
-import { useIntersectionObserver, useWindowEventListener } from '../../hooks';
+import { useIntersectionObserver, useResizeObserver, useWindowEventListener } from '../../hooks';
 
 import { useDrag } from '@use-gesture/react';
 
@@ -115,20 +115,25 @@ const BottomSheetContent = styled('div', {
   name: 'ESBottomSheet',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content
-})<{ ownerState: BottomSheetOwnerState }>(({ ownerState }) => ({
-  position: 'relative',
-  overflow: 'visible',
-  display: 'inline-block',
-  verticalAlign: 'middle',
-  width: '100%',
-  marginTop: `calc(100vh - ${ownerState.snapPoint})`,
-  transition: !ownerState.isOpen ? 'none' : `margin-top ${ownerState.transitionDuration}ms`,
-  willChange: 'auto',
+})<{ ownerState: BottomSheetOwnerState }>(
+  ({ ownerState }) => ({
+    position: 'relative',
+    overflow: 'visible',
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    width: '100%',
+    marginTop: `calc(100vh - ${ownerState.snapPoint})`,
+    transition: !ownerState.isOpen ? 'none' : `margin-top ${ownerState.transitionDuration}ms`,
+    willChange: 'auto',
 
-  '@media print': {
-    overflowY: 'visible'
-  }
-}));
+    '@media print': {
+      overflowY: 'visible'
+    }
+  }),
+  ({ ownerState }) => ({
+    marginTop: `calc(100dvh - ${ownerState.snapPoint})`
+  })
+);
 
 const BottomSheetPaper = styled('div', {
   name: 'ESBottomSheet',
@@ -316,6 +321,12 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
 
   useWindowEventListener('resize', () => onResize());
 
+  useResizeObserver(contentRef, () => {
+    if (contentRef.current) {
+      contentRef.current.style.setProperty('--client-height', `${contentRef.current.clientHeight}px`);
+    }
+  });
+
   useIntersectionObserver(
     sentinelRef,
     (entries) => {
@@ -384,11 +395,11 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
             }
           }
 
+          const point = activeSnapPoints[snapPointIndex].point;
+          const height = point === 'auto' ? `min(100dvh, ${contentRef.current.clientHeight}px)` : point;
+
           contentRef.current.style.setProperty('transition', `none`);
-          contentRef.current.style.setProperty(
-            'margin-top',
-            `max(0px, calc(100vh - ${activeSnapPoints[snapPointIndex].point} + ${my}px))`
-          );
+          contentRef.current.style.setProperty('margin-top', `max(0px, calc(100dvh - ${height} + ${my}px))`);
         } else {
           const up = getPixelsFromCssUnits(activeSnapPoints[snapPointIndex].dragThresholds.up);
           const down = getPixelsFromCssUnits(activeSnapPoints[snapPointIndex].dragThresholds.down);
@@ -427,6 +438,9 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
     [isFullHeight]
   );
 
+  const point = activeSnapPoints[snapPointIndex].point;
+  const snapPoint = point === 'auto' ? `min(100dvh, var(--client-height))` : point;
+
   const ownerState = {
     ...props,
     align,
@@ -434,7 +448,7 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
     isLastSnapPoint,
     isOpen,
     transitionDuration: duration,
-    snapPoint: activeSnapPoints[snapPointIndex].point
+    snapPoint: snapPoint
   };
 
   const classes = useUtilityClasses(ownerState);
