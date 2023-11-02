@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.7](https://github.com/Elonsoft/elonkit-react/compare/v0.8.6...v0.8.7) (2023-11-02)
+
+
+### Features
+
+* **AppBar:** add new component ([1eb0654](https://github.com/Elonsoft/elonkit-react/commit/1eb0654124189696f5d314632735bfe3845e311c))
+* **PageHGroup:** add new component ([19f2d11](https://github.com/Elonsoft/elonkit-react/commit/19f2d11bd81f46ddb3fe0b4f894278965f453f26))
+* **TabBar:** add new component ([7bef7e1](https://github.com/Elonsoft/elonkit-react/commit/7bef7e183dc1d04437b2c7f39a2d887cae9224ba))
+
+
+### Bug Fixes
+
+* **TableScrollbar:** increase inner block height ([cc61416](https://github.com/Elonsoft/elonkit-react/commit/cc614162ec25a20952e4ed98adcaccf5345d1118))
+
 ### [0.8.6](https://github.com/Elonsoft/elonkit-react/compare/v0.8.5...v0.8.6) (2023-10-12)
 
 
