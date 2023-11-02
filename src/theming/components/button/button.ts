@@ -101,6 +101,7 @@ export const createButton: Component<'MuiButton'> = (theme, typography) => {
           }
         },
         '&.MuiButton-size32': {
+          ...typography.body100,
           height: 32,
           padding: '0 12px',
           '& .MuiButton-startIcon': {
