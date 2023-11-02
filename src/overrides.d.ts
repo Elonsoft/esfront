@@ -87,6 +87,7 @@ import { FormatDateProps } from './components/FormatDate';
 import { FormatSizeProps } from './components/FormatSize';
 import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinkClassKey, LinkProps } from './components/Link';
+import { LoadingButtonClassKey, LoadingButtonProps } from './components/LoadingButton';
 import { MenuItemClassKey, MenuItemProps } from './components/MenuItem';
 import {
   PageHGroupActionsClassKey,
@@ -280,6 +281,7 @@ declare module '@mui/material/styles/props' {
     ESFormatSize: FormatSizeProps;
     ESKbd: KbdProps;
     ESLink: LinkProps;
+    ESLoadingButton: LoadingButtonProps;
     ESMenuItem: MenuItemProps;
     ESPageHGroup: PageHGroupProps;
     ESPageHGroupActions: PageHGroupActionsProps;
@@ -367,6 +369,7 @@ declare module '@mui/material/styles/overrides' {
     ESFlag: FlagClassKey;
     ESKbd: KbdClassKey;
     ESLink: LinkClassKey;
+    ESLoadingButton: LoadingButtonClassKey;
     ESMenuItem: MenuItemClassKey;
     ESPageHGroup: PageHGroupClassKey;
     ESPageHGroupActions: PageHGroupActionsClassKey;
@@ -572,6 +575,10 @@ declare module '@mui/material/styles/components' {
     ESLink?: {
       defaultProps?: ComponentsProps['ESLink'];
       styleOverrides?: ComponentsOverrides['ESLink'];
+    };
+    ESLoadingButton?: {
+      defaultProps?: ComponentsProps['ESLoadingButton'];
+      styleOverrides?: ComponentsOverrides['ESLoadingButton'];
     };
     ESMenuItem?: {
       defaultProps?: ComponentsProps['ESMenuItem'];

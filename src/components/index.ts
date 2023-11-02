@@ -18,6 +18,7 @@ export * from './FormatDate';
 export * from './FormatSize';
 export * from './Kbd';
 export * from './Link';
+export * from './LoadingButton';
 export * from './locale';
 export * from './MenuItem';
 export * from './PageHGroup';
