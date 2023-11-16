@@ -5,7 +5,7 @@ import { getLinkUtilityClass, linkClasses } from './Link.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
-import { alpha, styled, useThemeProps } from '@mui/material/styles';
+import { styled, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
@@ -91,17 +91,13 @@ const LinkRoot = styled(Typography, {
 
     ...(!!ownerState.showVisited && {
       '&:visited': {
-        color: theme.palette.common.linkVisited,
-
-        [`& .${linkClasses.children}`]: {
-          textDecorationColor: alpha(theme.palette.common.linkVisited, 0.4)
-        }
+        color: theme.palette.common.linkVisited
       }
     }),
 
     [`& .${linkClasses.children}`]: {
       textDecorationStyle: 'solid',
-      textDecorationColor: color !== 'inherit' ? alpha(color, 0.4) : undefined,
+      textDecorationColor: 'color-mix(in srgb, currentColor 40%, transparent)',
 
       ...(ownerState.underline === 'always' && {
         textDecorationLine: 'underline'
