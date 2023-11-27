@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.8](https://github.com/Elonsoft/elonkit-react/compare/v0.8.7...v0.8.8) (2023-11-27)
+
+
+### Bug Fixes
+
+* **AutocompleteField:** safely pass callbacks from InputProps to Autocomplete component ([7c1fa99](https://github.com/Elonsoft/elonkit-react/commit/7c1fa9959c75020ff46f42765e3951dc6232580f))
+
 ### [0.8.7](https://github.com/Elonsoft/elonkit-react/compare/v0.8.6...v0.8.7) (2023-11-02)
 
 
