@@ -80,6 +80,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
   const id = useId(inId);
   const helperTextId = helperText && id ? `${id}-helper-text` : undefined;
   const inputLabelId = label && id ? `${id}-label` : undefined;
+  const { onClose, onOpen, ...restInputProps } = InputProps || {};
 
   const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);
@@ -110,10 +111,16 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
         open={open}
         required={required}
         onChange={handleChange as never}
-        onClose={toggleOpen}
-        onOpen={toggleOpen}
+        onClose={() => {
+          onClose && onClose();
+          toggleOpen();
+        }}
+        onOpen={() => {
+          onOpen && onOpen();
+          toggleOpen();
+        }}
         {...rest}
-        {...InputProps}
+        {...restInputProps}
       />
       {!!helperText && (
         <FormHelperText id={helperTextId} {...FormHelperTextProps}>
