@@ -147,7 +147,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
   useResizeObserver(ref, () => {
     if (typeof window !== 'undefined' && ref.current) {
       let width = 0;
-      const nodes = document.querySelectorAll(`.${breadcrumbClasses.root}:not(.${breadcrumbsClasses.buttonMore})`);
+      const nodes = ref.current.querySelectorAll(`.${breadcrumbClasses.root}:not(.${breadcrumbsClasses.buttonMore})`);
       const button = ref.current.querySelector(`.${breadcrumbsClasses.buttonMore}`);
 
       nodes.forEach((item) => {
