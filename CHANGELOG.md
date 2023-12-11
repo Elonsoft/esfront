@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.9](https://github.com/Elonsoft/elonkit-react/compare/v0.8.8...v0.8.9) (2023-12-11)
+
+
+### Bug Fixes
+
+* **Breadcrumbs:** select nodes inside root element instead of document ([8d26068](https://github.com/Elonsoft/elonkit-react/commit/8d260688d421cfa8ba39a0fdc39deae902ed83d7))
+
 ### [0.8.8](https://github.com/Elonsoft/elonkit-react/compare/v0.8.7...v0.8.8) (2023-11-27)
 
 
