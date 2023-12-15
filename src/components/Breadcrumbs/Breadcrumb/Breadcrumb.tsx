@@ -169,7 +169,18 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <>
+    <BreadcrumbRoot
+      noWrap
+      align="center"
+      className={clsx(classes.root, className)}
+      component="li"
+      itemProp={position ? 'itemListElement' : undefined}
+      itemScope={position ? '' : undefined}
+      itemType={position ? 'https://schema.org/ListItem' : undefined}
+      ownerState={ownerState}
+      style={style}
+      sx={sx}
+    >
       <BreadcrumbTooltip
         arrow
         disableInteractive
@@ -179,42 +190,29 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
         {...(!position ? { disableHoverListener: true, disableFocusListener: true, disableTouchListener: true } : {})}
       >
         {({ ref, childrenRef }) => (
-          <BreadcrumbRoot
-            noWrap
-            align="center"
-            className={clsx(classes.root, className)}
-            component="li"
-            itemProp={position ? 'itemListElement' : undefined}
-            itemScope={position ? '' : undefined}
-            itemType={position ? 'https://schema.org/ListItem' : undefined}
-            ownerState={ownerState}
-            style={style}
-            sx={sx}
-          >
-            <div ref={ref as never} style={{ minWidth: 0 }}>
-              <BreadcrumbContent
-                className={clsx(classes.content)}
-                color="monoA"
-                disabled={disabled}
-                itemProp={position ? 'item' : undefined}
-                size="24"
-                {...props}
-              >
-                {position ? (
-                  <span ref={childrenRef} itemProp="name">
-                    {children}
-                  </span>
-                ) : (
-                  <>{children}</>
-                )}
-              </BreadcrumbContent>
-            </div>
-
-            {!!position && <meta content={position} itemProp="position" />}
-            <BreadcrumbSeparator className={clsx(classes.separator)}>{separator}</BreadcrumbSeparator>
-          </BreadcrumbRoot>
+          <div ref={ref as never} style={{ minWidth: 0 }}>
+            <BreadcrumbContent
+              className={clsx(classes.content)}
+              color="monoA"
+              disabled={disabled}
+              itemProp={position ? 'item' : undefined}
+              size="24"
+              {...props}
+            >
+              {position ? (
+                <span ref={childrenRef} itemProp="name">
+                  {children}
+                </span>
+              ) : (
+                <>{children}</>
+              )}
+            </BreadcrumbContent>
+          </div>
         )}
       </BreadcrumbTooltip>
-    </>
+
+      {!!position && <meta content={position} itemProp="position" />}
+      <BreadcrumbSeparator className={clsx(classes.separator)}>{separator}</BreadcrumbSeparator>
+    </BreadcrumbRoot>
   );
 };
