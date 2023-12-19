@@ -18,6 +18,7 @@ export { useResizeObserver } from './useResizeObserver';
 export { useScrollSync } from './useScrollSync';
 export { useSessionStorage } from './useSessionStorage';
 export { useSticky } from './useSticky';
+export { useStuckSentinel } from './useStuckSentinel';
 export { useUpdateEffect } from './useUpdateEffect';
 export { useValueDebounce } from './useValueDebounce';
 export { useVibration } from './useVibration';

@@ -9,20 +9,19 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { unstable_useId as useId } from '@mui/utils';
 
-import { useIntersectionObserver, useResizeObserver } from '../../hooks';
+import { useIntersectionObserver, useResizeObserver, useStuckSentinel } from '../../hooks';
 
 type AppBarOwnerState = {
   classes?: AppBarProps['classes'];
-  isStuck?: boolean;
+  stuck?: boolean;
 };
 
 const useUtilityClasses = (ownerState: AppBarOwnerState) => {
-  const { classes, isStuck } = ownerState;
+  const { classes, stuck } = ownerState;
 
   const slots = {
-    root: ['root', isStuck && 'stuck'],
+    root: ['root', stuck && 'stuck'],
     title: ['title'],
     titleProminent: ['titleProminent'],
     adornment: ['adornment']
@@ -36,15 +35,15 @@ const AppBarRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { isStuck }
+      ownerState: { stuck }
     } = props;
 
-    return [styles.root, isStuck && styles.stuck];
+    return [styles.root, stuck && styles.stuck];
   }
 })(({ theme }) => ({
   ...theme.typography.h6,
   position: 'sticky',
-  top: -1,
+  top: 0,
   zIndex: 1,
   display: 'flex',
   alignItems: 'center',
@@ -105,8 +104,9 @@ export const AppBar = (inProps: AppBarProps) => {
   const [height, setHeight] = useState(0);
   const [prominentHeight, setProminentHeight] = useState(0);
 
-  const [isStuck, setStuck] = useState(false);
   const [isTitleVisible, setTitleVisible] = useState(false);
+
+  const { stuck, sentinel } = useStuckSentinel();
 
   useResizeObserver(ref, (entries) => {
     setHeight(entries[0].target.clientHeight);
@@ -118,14 +118,6 @@ export const AppBar = (inProps: AppBarProps) => {
   });
 
   useIntersectionObserver(
-    ref,
-    (entries) => {
-      setStuck(entries[0].intersectionRatio < 1);
-    },
-    { threshold: [1] }
-  );
-
-  useIntersectionObserver(
     prominentRef,
     (entries) => {
       setTitleVisible(entries[0].intersectionRatio < 1);
@@ -133,11 +125,12 @@ export const AppBar = (inProps: AppBarProps) => {
     { threshold: [1], rootMargin: `${prominentHeight - height}px 0px 0px` }
   );
 
-  const ownerState = { ...props, isStuck };
+  const ownerState = { ...props, stuck };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <>
+      {sentinel}
       <AppBarRoot ref={ref} className={clsx(className, classes.root)} sx={sx}>
         {startAdornment && <AppBarAdornment className={classes.adornment}>{startAdornment}</AppBarAdornment>}
         <AppBarTitle className={classes.title}>{!prominent || isTitleVisible ? children : '\u00A0'}</AppBarTitle>
