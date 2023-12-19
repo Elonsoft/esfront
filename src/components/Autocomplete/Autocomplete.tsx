@@ -41,6 +41,7 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
     popover: ['popover'],
     menuList: ['menuList'],
     menuItem: ['menuItem'],
+    menuItemText: ['menuItemText'],
     sentinel: ['sentinel'],
     emptyState: ['emptyState'],
     search: ['search'],
@@ -99,6 +100,15 @@ const AutocompleteMenuItem = styled(MenuItem, {
   overridesResolver: (props, styles) => styles.menuItem
 })(() => ({
   padding: '2px 16px'
+}));
+
+const AutocompleteMenuItemText = styled('div', {
+  name: 'ESAutocomplete',
+  slot: 'MenuItemText',
+  overridesResolver: (props, styles) => styles.menuItemText
+})(() => ({
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'
 }));
 
 const AutocompleteSentinel = styled(MenuItem, {
@@ -274,7 +284,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const isInputFocusRequested = useRef(false);
 
   const [open, setOpen] = useControlled(false, inOpen);
-  const [menuMinWidthState, setMenuMinWidthState] = useState(0);
+  const [menuWidthState, setMenuWidthState] = useState(0);
 
   const previousFocused = usePreviousValue(formControl.focused);
 
@@ -328,7 +338,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
 
   const onMenuOpen = useCallback(() => {
     if (ref.current) {
-      setMenuMinWidthState(ref.current.clientWidth);
+      setMenuWidthState(ref.current.clientWidth);
       setOpen(true);
       onOpen && onOpen();
 
@@ -449,7 +459,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         disableRestoreFocus
         PaperProps={{
           ...PopoverProps?.PaperProps,
-          style: { minWidth: menuMinWidthState, ...PopoverProps?.PaperProps?.style }
+          style: { width: menuWidthState, ...PopoverProps?.PaperProps?.style }
         }}
       >
         {!!SearchProps && (
@@ -515,7 +525,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
                   {!!props.multiple && (
                     <AutocompleteCheckbox readOnly checked={selected} color="secondary" tabIndex={-1} />
                   )}
-                  {label}
+                  <AutocompleteMenuItemText className={classes.menuItemText}>{label}</AutocompleteMenuItemText>
                 </AutocompleteMenuItem>
               );
             })}
