@@ -1,5 +1,3 @@
-import { useRef, useState } from 'react';
-
 import { DialogTitleProps } from './DialogTitle.types';
 
 import clsx from 'clsx';
@@ -9,19 +7,19 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
-import { useIntersectionObserver } from '../../../hooks';
+import { useStuckSentinel } from '../../../hooks';
 
 type DialogTitleOwnerState = {
   classes?: DialogTitleProps['classes'];
   sticky?: boolean;
-  isStuck?: boolean;
+  stuck?: boolean;
 };
 
 const useUtilityClasses = (ownerState: DialogTitleOwnerState) => {
-  const { classes, sticky, isStuck } = ownerState;
+  const { classes, sticky, stuck } = ownerState;
 
   const slots = {
-    root: ['root', sticky && 'sticky', sticky && isStuck && 'stuck']
+    root: ['root', sticky && 'sticky', sticky && stuck && 'stuck']
   };
 
   return composeClasses(slots, getDialogTitleUtilityClass, classes);
@@ -32,9 +30,9 @@ const DialogTitleRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { sticky, isStuck }
+      ownerState: { sticky, stuck }
     } = props;
-    return [styles.root, sticky && styles.sticky, sticky && isStuck && styles.stuck];
+    return [styles.root, sticky && styles.sticky, sticky && stuck && styles.stuck];
   }
 })<{ ownerState: DialogTitleOwnerState }>(({ theme, ownerState }) => ({
   ...theme.typography.h4,
@@ -44,13 +42,13 @@ const DialogTitleRoot = styled('div', {
 
   ...(ownerState.sticky && {
     position: 'sticky',
-    top: -1,
+    top: 0,
     backgroundColor: theme.palette.surface[600],
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
     zIndex: 1,
 
-    ...(ownerState.isStuck && {
+    ...(ownerState.stuck && {
       borderRadius: 0,
 
       '&::after': {
@@ -74,23 +72,17 @@ export const DialogTitle = (inProps: DialogTitleProps) => {
     name: 'ESDialogTitle'
   });
 
-  const [isStuck, setStuck] = useState(false);
-  const root = useRef<HTMLDivElement | null>(null);
+  const { stuck, sentinel } = useStuckSentinel();
 
-  useIntersectionObserver(
-    root,
-    (entries) => {
-      setStuck(entries[0].intersectionRatio < 1);
-    },
-    { threshold: [1] }
-  );
-
-  const ownerState = { sticky, isStuck, ...props };
+  const ownerState = { sticky, stuck, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <DialogTitleRoot ref={root} className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
-      {children}
-    </DialogTitleRoot>
+    <>
+      {sentinel}
+      <DialogTitleRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+        {children}
+      </DialogTitleRoot>
+    </>
   );
 };
