@@ -108,7 +108,7 @@ const SFSSortingMenu = styled(Popover, {
   overridesResolver: (_, styles) => styles.menu
 })(({ theme }) => ({
   '& .MuiPopover-paper': {
-    ...theme.scrollbars.overlay,
+    ...theme.scrollbars.overlayMonoA,
     marginTop: '4px',
     paddingBottom: '6px',
     backgroundImage: 'none',

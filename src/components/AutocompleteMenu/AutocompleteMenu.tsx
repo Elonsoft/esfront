@@ -86,7 +86,7 @@ const AutocompleteMenuMenuList = styled(MenuList, {
   slot: 'MenuList',
   overridesResolver: (_props, styles) => styles.menuList
 })(({ theme }) => ({
-  ...theme.scrollbars.overlay,
+  ...theme.scrollbars.overlayMonoA,
   maxHeight: '228px'
 }));
 
