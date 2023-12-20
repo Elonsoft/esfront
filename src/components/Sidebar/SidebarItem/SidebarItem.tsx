@@ -265,7 +265,7 @@ const SidebarItemTooltipTitle = styled(MenuList, {
   overridesResolver: (props, styles) => styles.tooltipTitle
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
   maxHeight: '100vh',
-  ...theme.scrollbars.overlay,
+  ...theme.scrollbars.overlayMonoA,
 
   ...(ownerState.children && {
     paddingBottom: '8px'

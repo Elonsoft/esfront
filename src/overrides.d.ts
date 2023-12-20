@@ -1089,17 +1089,47 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/styles/createTheme' {
   interface ThemeOptions {
     scrollbars?: {
+      /** @deprecated Use normalMonoA instead. */
       normal?: React.CSSProperties;
+      normalMonoA?: React.CSSProperties;
+      normalMonoB?: React.CSSProperties;
+      normalWhite?: React.CSSProperties;
+      normalBlack?: React.CSSProperties;
+      /** @deprecated Use thinMonoA instead. */
       thin?: React.CSSProperties;
+      thinMonoA?: React.CSSProperties;
+      thinMonoB?: React.CSSProperties;
+      thinWhite?: React.CSSProperties;
+      thinBlack?: React.CSSProperties;
+      /** @deprecated Use overlayMonoA instead. */
       overlay?: React.CSSProperties;
+      overlayMonoA?: React.CSSProperties;
+      overlayMonoB?: React.CSSProperties;
+      overlayWhite?: React.CSSProperties;
+      overlayBlack?: React.CSSProperties;
     };
   }
 
   interface Theme {
     scrollbars: {
+      /** @deprecated Use normalMonoA instead. */
       normal: React.CSSProperties;
+      normalMonoA: React.CSSProperties;
+      normalMonoB: React.CSSProperties;
+      normalWhite: React.CSSProperties;
+      normalBlack: React.CSSProperties;
+      /** @deprecated Use thinMonoA instead. */
       thin: React.CSSProperties;
+      thinMonoA: React.CSSProperties;
+      thinMonoB: React.CSSProperties;
+      thinWhite: React.CSSProperties;
+      thinBlack: React.CSSProperties;
+      /** @deprecated Use overlayMonoA instead. */
       overlay: React.CSSProperties;
+      overlayMonoA: React.CSSProperties;
+      overlayMonoB: React.CSSProperties;
+      overlayWhite: React.CSSProperties;
+      overlayBlack: React.CSSProperties;
     };
   }
 }

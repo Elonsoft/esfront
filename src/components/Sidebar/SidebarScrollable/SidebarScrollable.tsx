@@ -41,7 +41,7 @@ const SidebarScrollableRoot = styled('div', {
     maskRepeat: 'no-repeat'
   }),
 
-  ...theme.scrollbars.overlay
+  ...theme.scrollbars.overlayMonoA
 }));
 
 export const SidebarScrollable = (inProps: SidebarScrollableProps) => {

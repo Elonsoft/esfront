@@ -136,7 +136,7 @@ const SFSFiltersContainer = styled('div', {
   slot: 'Container',
   overridesResolver: (_, styles) => styles.container
 })(({ theme }) => ({
-  ...theme.scrollbars.overlay
+  ...theme.scrollbars.overlayMonoA
 }));
 
 const SFSFiltersCloseButton = styled(Button, {
