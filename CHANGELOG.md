@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.10](https://github.com/Elonsoft/elonkit-react/compare/v0.8.9...v0.8.10) (2023-12-25)
+
+
+### Features
+
+* **Autocomplete:** use fixed menu width ([6224df7](https://github.com/Elonsoft/elonkit-react/commit/6224df7e8b851143f3e5ba48b3e3d9cdbfdb3268))
+* **useStuckSentinel:** add new hook ([82f4efa](https://github.com/Elonsoft/elonkit-react/commit/82f4efa8b880c410604751137c47045d19b630e0))
+
+
+### Bug Fixes
+
+* **Breadcrumb:** change tooltip reference element ([d9f542c](https://github.com/Elonsoft/elonkit-react/commit/d9f542cf2bd6396c7182d289646c428a093a653e))
+
 ### [0.8.9](https://github.com/Elonsoft/elonkit-react/compare/v0.8.8...v0.8.9) (2023-12-11)
 
 
