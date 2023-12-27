@@ -12,6 +12,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import { useTableHeadContext } from './TableHead.context';
 
 import { useIntersectionObserver } from '../../../hooks';
+import { useTableContext } from '../Table.context';
 import { TableCellContext } from '../TableCell';
 
 type TableHeadOwnerState = {
@@ -66,6 +67,7 @@ const TableHeadContainer = styled('div', {
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container
 })(() => ({
+  display: 'grid',
   minWidth: '100%',
   width: 'fit-content'
 }));
@@ -80,6 +82,7 @@ export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
 
   const [isStuck, setStuck] = useState(false);
 
+  const { columns } = useTableContext();
   const { ref, setRef } = useTableHeadContext();
 
   useIntersectionObserver(
@@ -102,7 +105,9 @@ export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
         role="rowgroup"
         sx={sx}
       >
-        <TableHeadContainer className={classes.container}>{children}</TableHeadContainer>
+        <TableHeadContainer className={classes.container} style={{ gridTemplateColumns: columns.join(' ') }}>
+          {children}
+        </TableHeadContainer>
       </TableHeadRoot>
     </TableCellContext.Provider>
   );

@@ -11,6 +11,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 
 import { useTableBodyContext } from './TableBody.context';
 
+import { useTableContext } from '../Table.context';
 import { tableCellClasses, TableCellContext } from '../TableCell';
 import { tableRowClasses } from '../TableRow';
 
@@ -58,6 +59,7 @@ const TableBodyContainer = styled('div', {
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container
 })(() => ({
+  display: 'grid',
   minWidth: '100%',
   width: 'fit-content'
 }));
@@ -70,6 +72,7 @@ export const TableBody = memo(function TableBody(inProps: TableBodyProps) {
     name: 'ESTableBody'
   });
 
+  const { columns } = useTableContext();
   const { setRef } = useTableBodyContext();
 
   const ownerState = { ...props };
@@ -78,7 +81,9 @@ export const TableBody = memo(function TableBody(inProps: TableBodyProps) {
   return (
     <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
       <TableBodyRoot ref={setRef} className={clsx(classes.root, className)} role="rowgroup" sx={sx}>
-        <TableBodyContainer className={classes.container}>{children}</TableBodyContainer>
+        <TableBodyContainer className={classes.container} style={{ gridTemplateColumns: columns.join(' ') }}>
+          {children}
+        </TableBodyContainer>
       </TableBodyRoot>
     </TableCellContext.Provider>
   );
