@@ -18,7 +18,7 @@ export const useTableResize = (
     (index: number, colSpan = 1) =>
     (width: number, element: HTMLElement) => {
       if (ref.current && rowRef.current) {
-        const rows = ref.current.querySelectorAll('.es-table-row__content,.es-table-row__overlap');
+        const grids = ref.current.querySelectorAll(`.es-table-body__container, .es-table-head__container`);
 
         const newColumns = columns.slice();
 
@@ -35,8 +35,8 @@ export const useTableResize = (
           }
         });
 
-        rows.forEach((row) => {
-          (row as HTMLElement).style.gridTemplateColumns = newColumns.join(' ');
+        grids.forEach((grid) => {
+          (grid as HTMLElement).style.gridTemplateColumns = newColumns.join(' ');
         });
       }
     };

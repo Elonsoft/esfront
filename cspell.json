@@ -1,6 +1,46 @@
 {
+<<<<<<< HEAD
   "import": ["@esfront/cspell-config", "@cspell/dict-lorem-ipsum/cspell-ext.json"],
   "dictionaries": ["lorem-ipsum"],
   "ignorePaths": ["**/lib/**", "**/storybook-static/**", "packages/react/src/typedoc.json", "lerna.json"],
   "words": ["libphonenumber", "nojekyll", "vite", "Svyatoslav", "Daria", "Alekhina", "Yakshov"]
+=======
+  "import": ["@cspell/dict-ru_ru/cspell-ext.json", "@cspell/dict-lorem-ipsum/cspell-ext.json"],
+  "dictionaries": ["ru-ru", "lorem-ipsum"],
+  "languageSettings": [{ "languageId": "commit-msg", "ignoreRegExpList": ["/^#.*/gm"] }],
+  "ignorePaths": ["node_modules/**", "src/typedoc.json"],
+  "words": [
+    "behaviour",
+    "ccircle",
+    "clsx",
+    "colspans",
+    "csvg",
+    "describedby",
+    "elonkit",
+    "essfs",
+    "greyscale",
+    "kanban",
+    "kbd",
+    "labelledby",
+    "minwidth",
+    "multisort",
+    "nums",
+    "overridable",
+    "pagehgroup",
+    "popperjs",
+    "roboto",
+    "samesite",
+    "sfs",
+    "sidenav",
+    "subgrid",
+    "subgrids",
+    "swiper",
+    "testid",
+    "toggleable",
+    "инпут",
+    "мультисортировка",
+    "мультисортировки",
+    "селект"
+  ]
+>>>>>>> 73f7fd09 (feat(Table): migrate to subgrids)
 }
