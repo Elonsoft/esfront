@@ -1,7 +1,8 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
+import { tableBodyClasses } from './TableBody/TableBody.classes';
 import { tableCellClasses } from './TableCell/TableCell.classes';
-import { tableRowClasses } from './TableRow/TableRow.classes';
+import { tableHeadClasses } from './TableHead/TableHead.classes';
 
 /**
  * The hook that manages resizing of the table columns.
@@ -21,7 +22,7 @@ export const useTableResize = (
     (index: number, colSpan = 1) =>
     (width: number, element: HTMLElement) => {
       if (ref.current && rowRef.current) {
-        const rows = ref.current.querySelectorAll(`.${tableRowClasses.content},.${tableRowClasses.overlap}`);
+        const grids = ref.current.querySelectorAll(`.${tableBodyClasses.container},.${tableHeadClasses.container}`);
 
         const newColumns = columns.slice();
 
@@ -38,8 +39,8 @@ export const useTableResize = (
           }
         });
 
-        rows.forEach((row) => {
-          (row as HTMLElement).style.gridTemplateColumns = newColumns.join(' ');
+        grids.forEach((grid) => {
+          (grid as HTMLElement).style.gridTemplateColumns = newColumns.join(' ');
         });
       }
     };

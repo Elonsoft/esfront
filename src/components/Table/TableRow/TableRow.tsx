@@ -40,6 +40,11 @@ const TableRowRoot = styled('div', {
     return [styles.root, ownerState.hover && styles.hover, ownerState.selected && styles.selected];
   }
 })<{ ownerState: TableRowOwnerState }>(({ theme, ownerState }) => ({
+  display: 'grid',
+  gridTemplateColumns: 'subgrid',
+  gridColumnEnd: -1,
+  gridColumnStart: 1,
+
   ...(ownerState.selected && {
     [`& .${tableCellClasses.container}`]: {
       backgroundColor: theme.palette.secondary.A100
@@ -61,6 +66,9 @@ const TableRowContent = styled(Box, {
   overridesResolver: (props, styles) => styles.content
 })<{ ownerState: TableRowOwnerState }>(({ theme, ownerState }) => ({
   display: 'grid',
+  gridTemplateColumns: 'subgrid',
+  gridColumnEnd: -1,
+  gridColumnStart: 1,
   gridAutoRows: 'max-content',
   minWidth: '100%',
   border: 0,
@@ -98,21 +106,12 @@ export const TableRow = memo(
       name: 'ESTableRow'
     });
 
-    const { columns } = useTableContext();
-
     const ownerState = { selected, hover, ...props };
     const classes = useUtilityClasses(ownerState);
 
     return (
       <TableRowRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
-        <TableRowContent
-          ref={ref}
-          className={classes.content}
-          ownerState={ownerState}
-          role="row"
-          style={{ gridTemplateColumns: columns.join(' ') }}
-          {...props}
-        >
+        <TableRowContent ref={ref} className={classes.content} ownerState={ownerState} role="row" {...props}>
           {children}
         </TableRowContent>
       </TableRowRoot>
