@@ -885,43 +885,43 @@ declare module '@mui/material/styles' {
 
   interface TypographyVariants {
     body400: React.CSSProperties;
-    body400Medium: React.CSSProperties;
-    body400Bold: React.CSSProperties;
+    body400W40: React.CSSProperties;
+    body400W50: React.CSSProperties;
     body300: React.CSSProperties;
-    body300Medium: React.CSSProperties;
-    body300Bold: React.CSSProperties;
+    body300W40: React.CSSProperties;
+    body300W50: React.CSSProperties;
     body200: React.CSSProperties;
-    body200Medium: React.CSSProperties;
-    body200Bold: React.CSSProperties;
+    body200W40: React.CSSProperties;
+    body200W50: React.CSSProperties;
     body100: React.CSSProperties;
-    body100Medium: React.CSSProperties;
-    body100Bold: React.CSSProperties;
-    captionMedium: React.CSSProperties;
-    captionBold: React.CSSProperties;
+    body100W40: React.CSSProperties;
+    body100W50: React.CSSProperties;
+    captionW40: React.CSSProperties;
+    captionW50: React.CSSProperties;
     mini200: React.CSSProperties;
     mini100: React.CSSProperties;
-    mini100Bold: React.CSSProperties;
+    mini100W50: React.CSSProperties;
     micro: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
     body400?: React.CSSProperties;
-    body400Medium?: React.CSSProperties;
-    body400Bold?: React.CSSProperties;
+    body400W40?: React.CSSProperties;
+    body400W50?: React.CSSProperties;
     body300?: React.CSSProperties;
-    body300Medium?: React.CSSProperties;
-    body300Bold?: React.CSSProperties;
+    body300W40?: React.CSSProperties;
+    body300W50?: React.CSSProperties;
     body200?: React.CSSProperties;
-    body200Medium?: React.CSSProperties;
-    body200Bold?: React.CSSProperties;
+    body200W40?: React.CSSProperties;
+    body200W50?: React.CSSProperties;
     body100?: React.CSSProperties;
-    body100Medium?: React.CSSProperties;
-    body100Bold?: React.CSSProperties;
-    captionMedium?: React.CSSProperties;
-    captionBold?: React.CSSProperties;
+    body100W40?: React.CSSProperties;
+    body100W50?: React.CSSProperties;
+    captionW40?: React.CSSProperties;
+    captionW50?: React.CSSProperties;
     mini200?: React.CSSProperties;
     mini100?: React.CSSProperties;
-    mini100Bold?: React.CSSProperties;
+    mini100W50?: React.CSSProperties;
     micro?: React.CSSProperties;
   }
 }
@@ -1040,22 +1040,22 @@ declare module '@mui/material/TextField' {
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     body400: true;
-    body400Medium: true;
-    body400Bold: true;
+    body400W40: true;
+    body400W50: true;
     body300: true;
-    body300Medium: true;
-    body300Bold: true;
+    body300W40: true;
+    body300W50: true;
     body200: true;
-    body200Medium: true;
-    body200Bold: true;
+    body200W40: true;
+    body200W50: true;
     body100: true;
-    body100Medium: true;
-    body100Bold: true;
-    captionMedium: true;
-    captionBold: true;
+    body100W40: true;
+    body100W50: true;
+    captionW40: true;
+    captionW50: true;
     mini200: true;
     mini100: true;
-    mini100Bold: true;
+    mini100W50: true;
     micro: true;
     body1: false;
     body2: false;

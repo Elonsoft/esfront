@@ -71,7 +71,7 @@ export const SFSFiltersGroup = (inProps: SFSFiltersGroupProps) => {
   return (
     <SFSFiltersGroupRoot className={clsx(classes.root, className)} sx={sx}>
       {!!title && (
-        <SFSFiltersGroupTitle className={classes.title} component="div" variant="body200Medium">
+        <SFSFiltersGroupTitle className={classes.title} component="div" variant="body200W40">
           {title}
         </SFSFiltersGroupTitle>
       )}
