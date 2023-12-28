@@ -108,21 +108,21 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>body400Medium</code>
+              <code>body400W40</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="body400Medium">
-                Body 400 | Medium
+              <Typography component="div" variant="body400W40">
+                Body 400 | W40
               </Typography>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>body400Bold</code>
+              <code>body400W50</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="body400Bold">
-                Body 400 | Bold
+              <Typography component="div" variant="body400W50">
+                Body 400 | W50
               </Typography>
             </TableCell>
           </TableRow>
@@ -138,21 +138,21 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>body300Medium</code>
+              <code>body300W40</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="body300Medium">
-                Body 300 | Medium
+              <Typography component="div" variant="body300W40">
+                Body 300 | W40
               </Typography>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>body300Bold</code>
+              <code>body300W50</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="body300Bold">
-                Body 300 | Bold
+              <Typography component="div" variant="body300W50">
+                Body 300 | W50
               </Typography>
             </TableCell>
           </TableRow>
@@ -168,21 +168,21 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>body200Medium</code>
+              <code>body200W40</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="body200Medium">
-                Body 200 | Medium
+              <Typography component="div" variant="body200W40">
+                Body 200 | W40
               </Typography>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>body200Bold</code>
+              <code>body200W50</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="body200Bold">
-                Body 200 | Bold
+              <Typography component="div" variant="body200W50">
+                Body 200 | W50
               </Typography>
             </TableCell>
           </TableRow>
@@ -198,20 +198,20 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>body100Medium</code>
+              <code>body100W40</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="body100Medium">
-                Body 100 | Medium
+              <Typography component="div" variant="body100W40">
+                Body 100 | W40
               </Typography>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>body100Bold</code>
+              <code>body100W50</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="body100Bold">
+              <Typography component="div" variant="body100W50">
                 Body 100 | Bold
               </Typography>
             </TableCell>
@@ -238,11 +238,11 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>mini100Bold</code>
+              <code>mini100W50</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="mini100Bold">
-                Mini 100 | Bold
+              <Typography component="div" variant="mini100W50">
+                Mini 100 | W50
               </Typography>
             </TableCell>
           </TableRow>
@@ -278,21 +278,21 @@ export const TypographyDemo = () => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>captionMedium</code>
+              <code>captionW40</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="captionMedium">
-                Caption | Medium
+              <Typography component="div" variant="captionW40">
+                Caption | W40
               </Typography>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
-              <code>captionBold</code>
+              <code>captionW50</code>
             </TableCell>
             <TableCell>
-              <Typography component="div" variant="captionBold">
-                Caption | Bold
+              <Typography component="div" variant="captionW50">
+                Caption | W50
               </Typography>
             </TableCell>
           </TableRow>

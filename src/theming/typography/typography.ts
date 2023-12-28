@@ -1,5 +1,7 @@
 import { Theme } from '@mui/material/styles';
 
+import { Property } from 'csstype';
+
 export const createTypography = (theme: Theme) => {
   const pxToRem = theme.typography.pxToRem;
   const tabletXS = theme.breakpoints.up('tabletXS');
@@ -47,7 +49,8 @@ export const createTypography = (theme: Theme) => {
     letterSpacing: pxToRem(0.6),
     lineHeight: pxToRem(12),
     textDecorationThickness: pxToRem(1),
-    textUnderlineOffset: pxToRem(1)
+    textUnderlineOffset: pxToRem(1),
+    textTransform: 'uppercase' as Property.TextTransform
   };
 
   const caption = {
@@ -94,7 +97,7 @@ export const createTypography = (theme: Theme) => {
       },
 
       [desktopXS]: {
-        fontSize: pxToRem(34),
+        fontSize: pxToRem(32),
         lineHeight: pxToRem(40),
         textUnderlineOffset: pxToRem(3)
       }
@@ -164,38 +167,38 @@ export const createTypography = (theme: Theme) => {
       textUnderlineOffset: pxToRem(1)
     },
     body400,
-    body400Medium: {
+    body400W40: {
       ...body400,
       fontWeight: 500
     },
-    body400Bold: {
+    body400W50: {
       ...body400,
       fontWeight: 700
     },
     body300,
-    body300Medium: {
+    body300W40: {
       ...body300,
       fontWeight: 500
     },
-    body300Bold: {
+    body300W50: {
       ...body300,
       fontWeight: 700
     },
     body200,
-    body200Medium: {
+    body200W40: {
       ...body200,
       fontWeight: 500
     },
-    body200Bold: {
+    body200W50: {
       ...body200,
       fontWeight: 700
     },
     body100,
-    body100Medium: {
+    body100W40: {
       ...body100,
       fontWeight: 500
     },
-    body100Bold: {
+    body100W50: {
       ...body100,
       fontWeight: 700
     },
@@ -208,14 +211,14 @@ export const createTypography = (theme: Theme) => {
       textUnderlineOffset: pxToRem(1)
     },
     mini100,
-    mini100Bold: {
+    mini100W50: {
       ...mini100,
       fontWeight: 700
     },
     micro: {
-      fontSize: pxToRem(9),
-      fontWeight: 500,
-      letterSpacing: 0,
+      fontSize: pxToRem(10),
+      fontWeight: 400,
+      letterSpacing: pxToRem(0.4),
       lineHeight: pxToRem(12),
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1)
@@ -229,11 +232,11 @@ export const createTypography = (theme: Theme) => {
       textUnderlineOffset: pxToRem(1)
     },
     caption,
-    captionMedium: {
+    captionW40: {
       ...caption,
       fontWeight: 500
     },
-    captionBold: {
+    captionW50: {
       ...caption,
       fontWeight: 700
     },

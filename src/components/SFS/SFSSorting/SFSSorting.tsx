@@ -461,7 +461,7 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
           </SFSSortingCaption>
           <SFSSortingDirectionButtonBadge className={classes.directionButtonBadge}>
             {item.direction === 'asc' ? iconItemAsc : iconItemDesc}
-            {isMultiple && <Typography variant="mini100Bold">{i + 1}</Typography>}
+            {isMultiple && <Typography variant="mini100W50">{i + 1}</Typography>}
           </SFSSortingDirectionButtonBadge>
         </SFSSortingDirectionButton>
       )}
