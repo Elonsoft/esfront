@@ -60,6 +60,7 @@ import {
   DialogTitleClassKey,
   DialogTitleProps
 } from './components/Dialog';
+import { DividerClassKey, DividerProps } from './components/Divider';
 import { DropzoneClassKey, DropzoneProps } from './components/Dropzone';
 import { EmptyStateClassKey, EmptyStateProps } from './components/EmptyState';
 import {
@@ -267,6 +268,7 @@ declare module '@mui/material/styles/props' {
     ESDialogClose: DialogCloseProps;
     ESDialogContent: DialogContentProps;
     ESDialogTitle: DialogTitleProps;
+    ESDivider: DividerProps;
     ESDropzone: DropzoneProps;
     ESEmptyState: EmptyStateProps;
     ESFileIcon: FileIconProps;
@@ -356,6 +358,7 @@ declare module '@mui/material/styles/overrides' {
     ESDialogClose: DialogCloseClassKey;
     ESDialogContent: DialogContentClassKey;
     ESDialogTitle: DialogTitleClassKey;
+    ESDivider: DividerClassKey;
     ESDropzone: DropzoneClassKey;
     ESEmptyState: EmptyStateClassKey;
     ESFileIcon: FileIconClassKey;
@@ -503,6 +506,10 @@ declare module '@mui/material/styles/components' {
     ESDialogTitle?: {
       defaultProps?: ComponentsProps['ESDialogTitle'];
       styleOverrides?: ComponentsOverrides['ESDialogTitle'];
+    };
+    ESDivider?: {
+      defaultProps?: ComponentsProps['ESDivider'];
+      styleOverrides?: ComponentsOverrides['ESDivider'];
     };
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];

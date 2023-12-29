@@ -9,6 +9,7 @@ export * from './Breadcrumbs';
 export * from './DateAdapter';
 export * from './Dialog';
 export * from './DialogStack';
+export * from './Divider';
 export * from './Dropzone';
 export * from './EmptyState';
 export * from './FileIcon';
