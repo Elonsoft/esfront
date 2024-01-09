@@ -15,6 +15,17 @@ export const DialogStackProvider = ({ children }: DialogStackProviderProps) => {
     }>
   >([]);
 
+  const closeDialogById = (id: number) => {
+    setDialogs((prev) => {
+      const newValue = prev.slice();
+      const index = newValue.findIndex((e) => e.id === id);
+      if (index !== -1) {
+        newValue[index].open = false;
+      }
+      return newValue;
+    });
+  };
+
   const value = useMemo(() => {
     return {
       open: (
@@ -25,14 +36,7 @@ export const DialogStackProvider = ({ children }: DialogStackProviderProps) => {
 
         const afterClosed = new Promise<any>((resolve) => {
           close = (data?: any) => {
-            setDialogs((prev) => {
-              const newValue = prev.slice();
-              const index = newValue.findIndex((e) => e.id === id);
-              if (index !== -1) {
-                newValue[index].open = false;
-              }
-              return newValue;
-            });
+            closeDialogById(id);
             resolve(data);
           };
 
@@ -46,7 +50,8 @@ export const DialogStackProvider = ({ children }: DialogStackProviderProps) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         return { id, close, afterClosed };
-      }
+      },
+      close: closeDialogById
     };
   }, []);
 

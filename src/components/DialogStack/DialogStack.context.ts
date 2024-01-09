@@ -12,11 +12,16 @@ export interface DialogStackContextValue {
     close: (data?: any) => void;
     afterClosed: Promise<any>;
   };
+
+  /**
+   * Closes the dialog.
+   */
+  close: (id: number) => void;
 }
 
 export const DialogStackContext = createContext<DialogStackContextValue | null>(null);
 
-export const useDialogStack = () => {
+export const useDialogStackContext = () => {
   const value = useContext(DialogStackContext);
 
   if (value === null) {
