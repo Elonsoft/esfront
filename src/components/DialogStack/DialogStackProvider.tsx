@@ -74,7 +74,13 @@ export const DialogStackProvider = ({ children }: DialogStackProviderProps) => {
             <Fragment key={dialog.id}>
               {cloneElement(dialog.component, {
                 open: dialog.open,
-                hideBackdrop: dialog.component.props.hideBackdrop ?? index < dialogs.length - 1,
+                BackdropProps: {
+                  style: {
+                    opacity: index < dialogs.filter((dialog) => dialog.open).length - 1 ? '0' : '',
+                    ...dialog.component.props.BackdropProps?.style
+                  },
+                  ...dialog.component.props.BackdropProps
+                },
                 TransitionProps: {
                   ...dialog.component.props.TransitionProps,
                   onExited: (node: HTMLElement) => {

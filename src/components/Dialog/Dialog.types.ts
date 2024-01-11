@@ -66,6 +66,8 @@ export interface DialogProps {
    * If `true`, the component is shown.
    */
   open?: ModalProps['open'];
+  /** Props applied to the backdrop element. */
+  BackdropProps?: ModalProps['BackdropProps'];
   /** The component used for the transition. */
   TransitionComponent?: React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
   /** Props applied to the transition element. */
