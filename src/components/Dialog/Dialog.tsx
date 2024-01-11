@@ -71,6 +71,7 @@ const DialogContainer = styled('div', {
   overflowY: 'scroll',
   overflowX: 'hidden',
   textAlign: 'center',
+
   '&:after': {
     content: '""',
     display: 'inline-block',
@@ -78,6 +79,7 @@ const DialogContainer = styled('div', {
     height: '100%',
     width: '0'
   },
+
   '@media print': {
     height: 'auto'
   }
@@ -192,6 +194,7 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
     onBackdropClick,
     onClose,
     open,
+    BackdropProps,
     TransitionComponent = Fade,
     transitionDuration = defaultTransitionDuration,
     TransitionProps,
@@ -247,7 +250,8 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
       closeAfterTransition
       BackdropComponent={DialogBackdrop}
       BackdropProps={{
-        transitionDuration
+        transitionDuration,
+        ...BackdropProps
       }}
       className={clsx(classes.root, className)}
       disableEscapeKeyDown={disableEscapeKeyDown}

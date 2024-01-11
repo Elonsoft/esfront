@@ -203,7 +203,7 @@ export const Stack: Story = {
       dialogStack.open(({ close }) => (
         <Dialog fullWidth maxWidth="700px" onClose={() => close()}>
           <DialogTitle>
-            {getHeadingText(context)} {i}
+            {getHeadingText(context)} {i + 1}
           </DialogTitle>
           <DialogContent>
             <Typography variant="body200">
@@ -226,7 +226,7 @@ export const Stack: Story = {
     };
 
     return (
-      <Button variant="contained" onClick={onOpen(1)}>
+      <Button variant="contained" onClick={onOpen(0)}>
         {getOpenButtonText(context)}
       </Button>
     );
