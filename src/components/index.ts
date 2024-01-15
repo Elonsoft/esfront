@@ -12,6 +12,7 @@ export * from './DialogStack';
 export * from './Divider';
 export * from './Dropzone';
 export * from './EmptyState';
+export * from './EmptyStateCompact';
 export * from './FileIcon';
 export * from './FileInfo';
 export * from './Flags';

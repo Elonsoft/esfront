@@ -63,6 +63,7 @@ import {
 import { DividerClassKey, DividerProps } from './components/Divider';
 import { DropzoneClassKey, DropzoneProps } from './components/Dropzone';
 import { EmptyStateClassKey, EmptyStateProps } from './components/EmptyState';
+import { EmptyStateCompactClassKey, EmptyStateCompactProps } from './components/EmptyStateCompact';
 import {
   FileIconBadgeClassKey,
   FileIconBadgeProps,
@@ -271,6 +272,7 @@ declare module '@mui/material/styles/props' {
     ESDivider: DividerProps;
     ESDropzone: DropzoneProps;
     ESEmptyState: EmptyStateProps;
+    ESEmptyStateCompact: EmptyStateCompactProps;
     ESFileIcon: FileIconProps;
     ESFileIconBadge: FileIconBadgeProps;
     ESFileIconText: FileIconTextProps;
@@ -361,6 +363,7 @@ declare module '@mui/material/styles/overrides' {
     ESDivider: DividerClassKey;
     ESDropzone: DropzoneClassKey;
     ESEmptyState: EmptyStateClassKey;
+    ESEmptyStateCompact: EmptyStateCompactClassKey;
     ESFileIcon: FileIconClassKey;
     ESFileIconBadge: FileIconBadgeClassKey;
     ESFileIconText: FileIconTextClassKey;
@@ -514,6 +517,10 @@ declare module '@mui/material/styles/components' {
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];
       styleOverrides?: ComponentsOverrides['ESEmptyState'];
+    };
+    ESEmptyStateCompact?: {
+      defaultProps?: ComponentsProps['ESEmptyStateCompact'];
+      styleOverrides?: ComponentsOverrides['ESEmptyStateCompact'];
     };
     ESSwiper?: {
       defaultProps?: ComponentsProps['ESSwiper'];
