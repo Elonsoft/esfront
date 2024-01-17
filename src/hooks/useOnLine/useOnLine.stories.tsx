@@ -1,3 +1,5 @@
+/* eslint-disable storybook/default-exports */
+
 import { Story } from '@storybook/react';
 
 import Typography from '@mui/material/Typography';

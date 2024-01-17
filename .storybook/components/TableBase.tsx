@@ -8,10 +8,7 @@ import MuiTableRow, { tableRowClasses } from '@mui/material/TableRow';
 
 import json from '../../src/typedoc.json';
 
-export const TableContainer = styled(MuiTableContainer)(({ theme }) => ({
-  border: `1px solid ${theme.palette.monoA.A150}`,
-  borderRadius: 4,
-  marginTop: 24,
+export const TableContainer = styled(MuiTableContainer)(() => ({
   fontFamily: 'monospace'
 }));
 

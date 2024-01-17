@@ -1,4 +1,4 @@
-import { Args, ReactFramework, Story, StoryContext } from '@storybook/react';
+import { Args, Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import Button from '@mui/material/Button';
 
@@ -10,11 +10,11 @@ const getIcon = (args: Args) => {
   return <Component size={args.size === 'small' ? '40px' : '56px'} />;
 };
 
-const getHeading = (args: Args, context: StoryContext<ReactFramework>) => {
+const getHeading = (args: Args, context: StoryContext<unknown>) => {
   return args.heading || (context.globals.locale === 'en' ? 'There are no entities yet' : 'Здесь пока нет сущностей');
 };
 
-const getSubheading = (args: Args, context: StoryContext<ReactFramework>) => {
+const getSubheading = (args: Args, context: StoryContext<unknown>) => {
   return (
     args.subheading ||
     (context.globals.locale === 'en'
@@ -23,32 +23,86 @@ const getSubheading = (args: Args, context: StoryContext<ReactFramework>) => {
   );
 };
 
-const getAction = (args: Args, context: StoryContext<ReactFramework>) => {
+const getAction = (_args: Args, context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Create entity' : 'Создать сущность';
 };
 
-export const Demo: Story = (args, context) => {
-  return (
-    <EmptyState
-      {...args}
-      heading={getHeading(args, context)}
-      icon={getIcon(args)}
-      subheading={getSubheading(args, context)}
-    />
-  );
+const meta: Meta<typeof EmptyState> = {
+  tags: ['autodocs'],
+  component: EmptyState,
+  parameters: {
+    references: ['EmptyState']
+  },
+  argTypes: {
+    icon: {
+      control: {
+        type: 'select'
+      },
+      options: [
+        'EmptyStateIconBarChart',
+        'EmptyStateIconBell',
+        'EmptyStateIconBox',
+        'EmptyStateIconCamera',
+        'EmptyStateIconCart',
+        'EmptyStateIconChat',
+        'EmptyStateIconFace',
+        'EmptyStateIconFile',
+        'EmptyStateIconFilter',
+        'EmptyStateIconImage',
+        'EmptyStateIconLock',
+        'EmptyStateIconPieChart',
+        'EmptyStateIconSearch',
+        'EmptyStateIconSmile',
+        'EmptyStateIconWiFi',
+        'EmptyStateIconWiFiOff'
+      ]
+    },
+    heading: {
+      control: {
+        type: 'text'
+      }
+    },
+    subheading: {
+      control: {
+        type: 'text'
+      }
+    }
+  },
+  args: {
+    icon: 'EmptyStateIconBox'
+  }
 };
 
-export const Action: Story = (args, context) => {
-  return (
-    <EmptyState
-      {...args}
-      heading={getHeading(args, context)}
-      icon={getIcon(args)}
-      subheading={getSubheading(args, context)}
-    >
-      <Button color="primary" size={args.size === 'small' ? '32' : '40'} variant="outlined">
-        {getAction(args, context)}
-      </Button>
-    </EmptyState>
-  );
+export default meta;
+type Story = StoryObj<typeof EmptyState>;
+
+export const Demo: Story = {
+  render: (args, context) => {
+    return (
+      <EmptyState
+        {...args}
+        heading={getHeading(args, context)}
+        icon={getIcon(args)}
+        subheading={getSubheading(args, context)}
+      />
+    );
+  }
+};
+
+/** We can use `children` prop to add action button. */
+export const Action: Story = {
+  render: (args, context) => {
+    return (
+      <EmptyState
+        {...args}
+        heading={getHeading(args, context)}
+        icon={getIcon(args)}
+        subheading={getSubheading(args, context)}
+      >
+        <Button color="primary" size={args.size === 'small' ? '32' : '40'} variant="outlined">
+          {getAction(args, context)}
+        </Button>
+      </EmptyState>
+    );
+  }
 };

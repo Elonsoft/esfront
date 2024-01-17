@@ -12,7 +12,8 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "~storybook/*": [".storybook/*"]
-    }
+    },
+    "skipLibCheck": true
   },
   "exclude": ["node_modules", "lib", "./*.js"]
 }

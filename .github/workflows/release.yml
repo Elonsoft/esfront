@@ -16,9 +16,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Lint code
-        run: yarn run lint:eslint
-      - name: Lint styles
-        run: yarn run lint:stylelint
+        run: yarn run lint
       - name: Check formatting
         run: yarn run prettier:check
       - name: Check spelling

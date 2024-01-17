@@ -2,8 +2,16 @@ const path = require('path');
 const toPath = (filePath) => path.join(process.cwd(), filePath);
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx'],
+  stories: [
+    '../src/**/*.stories.mdx',
+    {
+      directory: '../src/components',
+      files: '**/*.stories.tsx',
+      titlePrefix: 'Components'
+    }
+  ],
   staticDirs: ['./assets'],
+
   addons: [
     '@storybook/addon-links',
     {
@@ -12,13 +20,11 @@ module.exports = {
         backgrounds: false
       }
     },
-    {
-      name: '@storybook/addon-docs',
-      options: { transcludeMarkdown: true }
-    },
     '@storybook/addon-a11y',
-    'storybook-dark-mode'
+    'storybook-dark-mode',
+    '@storybook/addon-mdx-gfm'
   ],
+
   webpackFinal: async (config) => {
     return {
       ...config,
@@ -32,5 +38,15 @@ module.exports = {
         }
       }
     };
+  },
+  core: {
+    disableTelemetry: true
+  },
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {}
+  },
+  docs: {
+    autodocs: 'tag'
   }
 };

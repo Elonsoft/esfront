@@ -1,19 +1,39 @@
-import { Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import TextField from '@mui/material/TextField';
 
 import { TextFieldGroup } from './TextFieldGroup';
 
-export const Demo: Story = ({ breakpoint }, context) => {
-  const locale = (context.globals.locale || 'en') as 'en' | 'ru';
+const meta: Meta<typeof TextFieldGroup> = {
+  tags: ['autodocs'],
+  component: TextFieldGroup,
+  parameters: {
+    references: ['TextFieldGroup']
+  },
+  argTypes: {
+    breakpoint: {
+      control: {
+        type: 'number'
+      }
+    }
+  }
+};
 
-  return (
-    <>
-      <TextFieldGroup breakpoint={breakpoint}>
-        <TextField required label={locale === 'en' ? 'First name' : 'Имя'} />
-        <TextField required label={locale === 'en' ? 'Second name' : 'Фамилия'} />
-        <TextField error required label={locale === 'en' ? 'Patronymic' : 'Отчество'} />
-      </TextFieldGroup>
-    </>
-  );
+export default meta;
+type Story = StoryObj<typeof TextFieldGroup>;
+
+export const Demo: Story = {
+  render: ({ breakpoint }, context) => {
+    const locale = (context.globals.locale || 'en') as 'en' | 'ru';
+
+    return (
+      <>
+        <TextFieldGroup breakpoint={breakpoint}>
+          <TextField required label={locale === 'en' ? 'First name' : 'Имя'} />
+          <TextField required label={locale === 'en' ? 'Second name' : 'Фамилия'} />
+          <TextField error required label={locale === 'en' ? 'Patronymic' : 'Отчество'} />
+        </TextFieldGroup>
+      </>
+    );
+  }
 };

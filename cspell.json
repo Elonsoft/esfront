@@ -4,6 +4,7 @@
   "languageSettings": [{ "languageId": "commit-msg", "ignoreRegExpList": ["/^#.*/gm"] }],
   "ignorePaths": ["node_modules/**", "src/typedoc.json"],
   "words": [
+    "autodocs",
     "behaviour",
     "ccircle",
     "clsx",

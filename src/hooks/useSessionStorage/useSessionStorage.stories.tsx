@@ -1,3 +1,5 @@
+/* eslint-disable storybook/default-exports */
+
 import { Story } from '@storybook/react';
 
 import Box from '@mui/material/Box';

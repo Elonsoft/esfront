@@ -1,3 +1,5 @@
+/* eslint-disable storybook/default-exports */
+
 import { useState } from 'react';
 
 import { Story } from '@storybook/react';
@@ -9,7 +11,7 @@ const MARKS = [{ value: 0 }, { value: 10 }, { value: 20 }, { value: 30 }, { valu
 export const Demo: Story = ({ height, ...args }) => {
   const [value, setValue] = useState<number[]>([20, 60]);
 
-  const onChange = (event: any, newValue: number | number[]) => {
+  const onChange = (_event: any, newValue: number | number[]) => {
     setValue(newValue as number[]);
   };
 

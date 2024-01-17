@@ -1,36 +1,62 @@
 import { useState } from 'react';
 
-import { PaginationProps } from './Pagination.types';
-
-import { Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Pagination } from './Pagination';
 import { PaginationPages } from './PaginationPages';
 import { PaginationRange } from './PaginationRange';
 
-export const Demo: Story<PaginationProps> = ({ count }) => {
-  const [page, setPage] = useState(1);
+const meta: Meta<typeof Pagination> = {
+  tags: ['autodocs'],
+  component: Pagination,
+  parameters: {
+    references: ['Pagination', 'PaginationPages', 'PaginationRange']
+  },
+  argTypes: {
+    itemsPerPage: {
+      table: {
+        disable: true
+      }
+    },
+    page: {
+      table: {
+        disable: true
+      }
+    }
+  },
+  args: {
+    count: 100
+  }
+};
 
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+export default meta;
+type Story = StoryObj<typeof Pagination>;
 
-  const onItemsPerPageChange = (event: number) => {
-    setItemsPerPage(event);
-  };
+export const Demo: Story = {
+  render: ({ count }) => {
+    const [page, setPage] = useState(1);
 
-  const onPageChange = (page: number) => {
-    setPage(page);
-  };
+    const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  return (
-    <Pagination
-      count={count}
-      itemsPerPage={itemsPerPage}
-      page={page}
-      onItemsPerPageChange={onItemsPerPageChange}
-      onPageChange={onPageChange}
-    >
-      <PaginationRange />
-      <PaginationPages />
-    </Pagination>
-  );
+    const onItemsPerPageChange = (event: number) => {
+      setItemsPerPage(event);
+    };
+
+    const onPageChange = (page: number) => {
+      setPage(page);
+    };
+
+    return (
+      <Pagination
+        count={count}
+        itemsPerPage={itemsPerPage}
+        page={page}
+        onItemsPerPageChange={onItemsPerPageChange}
+        onPageChange={onPageChange}
+      >
+        <PaginationRange />
+        <PaginationPages />
+      </Pagination>
+    );
+  }
 };
