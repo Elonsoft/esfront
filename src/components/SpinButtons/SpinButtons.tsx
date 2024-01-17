@@ -108,7 +108,6 @@ export const SpinButtons = (inProps: SpinButtonsProps) => {
         aria-label={labelIncrement}
         className={classes.button}
         color="tertiary"
-        disabled={disabled}
         size="32"
         onClick={onIncrement}
       >
