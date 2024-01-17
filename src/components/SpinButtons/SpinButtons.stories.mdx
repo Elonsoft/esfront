@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas, ArgsTable, Props, Description } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
+
+import { SpinButtons } from './SpinButtons';
+import * as stories from './SpinButtons.stories';
+
+<Meta
+  title="Components/SpinButtons"
+  parameters={{
+    options: { showPanel: true }
+  }}
+  argTypes={{
+    classes: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    sx: {
+      table: {
+        disable: true
+      }
+    },
+    size: {
+      table: {
+        disable: true
+      }
+    },
+    labelDecrement: {
+      table: {
+        disable: true
+      }
+    },
+    labelIncrement: {
+      table: {
+        disable: true
+      }
+    }
+  }}
+/>
+
+# SpinButtons
+
+<Description of={SpinButtons} />
+
+<Canvas>
+  <Story story={stories.Demo} name="Demo" />
+</Canvas>
+
+<ArgsTable story="Demo" />
+
+## API
+
+<ul>
+  <li>
+    <LinkTo kind="components-api-SpinButtons" story="page">
+      <code>SpinButtons</code>
+    </LinkTo>
+  </li>
+</ul>

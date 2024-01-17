@@ -142,6 +142,7 @@ import {
   SidebarToggleProps
 } from './components/Sidebar';
 import { SidenavClassKey, SidenavItemClassKey, SidenavItemProps, SidenavProps } from './components/Sidenav';
+import { SpinButtonsClassKey, SpinButtonsProps } from './components/SpinButtons';
 import {
   SpinnerDashRingClassKey,
   SpinnerDashRingProps,
@@ -306,6 +307,7 @@ declare module '@mui/material/styles/props' {
     ESSFSFilters: SFSFiltersProps;
     ESSFSFiltersGroup: SFSFiltersGroupProps;
     ESSFSRow: SFSRowProps;
+    ESSpinButtons: SpinButtonsProps;
     ESSpinnerDashRing: SpinnerDashRingProps;
     ESSpinnerFadingBars: SpinnerFadingBarsProps;
     ESSpinnerFadingDots: SpinnerFadingDotsProps;
@@ -393,6 +395,7 @@ declare module '@mui/material/styles/overrides' {
     ESSFSFilters: SFSFiltersClassKey;
     ESSFSFiltersGroup: SFSFiltersGroupClassKey;
     ESSFSRow: SFSRowClassKey;
+    ESSpinButtons: SpinButtonsClassKey;
     ESSpinnerDashRing: SpinnerDashRingClassKey;
     ESSpinnerFadingBars: SpinnerFadingBarsClassKey;
     ESSpinnerFadingDots: SpinnerFadingDotsClassKey;
@@ -640,6 +643,10 @@ declare module '@mui/material/styles/components' {
     ESSFSRow?: {
       defaultProps?: ComponentsProps['ESSFSRow'];
       styleOverrides?: ComponentsOverrides['ESSFSRow'];
+    };
+    ESSpinButtons?: {
+      defaultProps?: ComponentsProps['ESSpinButtons'];
+      styleOverrides?: ComponentsOverrides['ESSpinButtons'];
     };
     ESSpinnerDashRing?: {
       defaultProps?: ComponentsProps['ESSpinnerDashRing'];

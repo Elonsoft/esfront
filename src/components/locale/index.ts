@@ -9,6 +9,7 @@ import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
 import { SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
+import { SpinButtonsProps } from '../SpinButtons';
 import { SwiperButtonProps } from '../Swiper';
 import { TableActionsProps, TableCellProps } from '../Table';
 
@@ -65,6 +66,9 @@ export interface Localization {
     };
     ESSidebarItem: {
       defaultProps: Pick<SidebarItemProps, 'labelOpen' | 'labelHide'>;
+    };
+    ESSpinButtons: {
+      defaultProps: Pick<SpinButtonsProps, 'labelIncrement' | 'labelDecrement'>;
     };
     ESSFSSearch: {
       defaultProps: Pick<SFSSearchProps, 'ariaLabel' | 'placeholder' | 'labelClear'>;
@@ -189,6 +193,12 @@ export const en: Localization = {
       defaultProps: {
         labelOpen: 'Show nested list',
         labelHide: 'Hide nested list'
+      }
+    },
+    ESSpinButtons: {
+      defaultProps: {
+        labelIncrement: 'Increase',
+        labelDecrement: 'Decrease'
       }
     },
     ESSFSSearch: {
@@ -326,6 +336,12 @@ export const ru: Localization = {
       defaultProps: {
         labelOpen: 'Показать вложенный список',
         labelHide: 'Скрыть вложенный список'
+      }
+    },
+    ESSpinButtons: {
+      defaultProps: {
+        labelIncrement: 'Увеличить',
+        labelDecrement: 'Уменьшить'
       }
     },
     ESSFSSearch: {
