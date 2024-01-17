@@ -51,7 +51,8 @@ const spinnerOpacityDelay = (duration: number) => {
 export const spinnerOpacityAnimation = (animatedElement: string, duration: number, ease: string) => ({
   ...spinnerOpacityDelay(duration),
   // prettier-ignore
-  ...{[animatedElement]: css`animation: ${opacityKeyframe} ${duration}ms ${ease} infinite;`
+  ...{
+    [animatedElement]: css`animation: ${opacityKeyframe} ${duration}ms ${ease} infinite;`
   }
 });
 
@@ -62,6 +63,8 @@ export const spinnerRotateAnimation = (animatedElement: string, duration: number
 
 // Use only for <circle> element.
 export const spinnerDashAnimation = (duration: number, ease: string, dashEase: string) => css`
-  animation: ${strokeArrayKeyframe} ${duration}ms ${dashEase} infinite, ${rotateKeyframe} ${duration}ms ${ease} infinite;
+  animation:
+    ${strokeArrayKeyframe} ${duration}ms ${dashEase} infinite,
+    ${rotateKeyframe} ${duration}ms ${ease} infinite;
   transform-origin: center;
 `;

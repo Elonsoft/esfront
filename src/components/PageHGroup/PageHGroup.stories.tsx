@@ -1,4 +1,6 @@
-import { Story } from '@storybook/react';
+import { ComponentProps } from 'react';
+
+import { Meta, StoryObj } from '@storybook/react';
 
 import Button from '@mui/material/Button';
 
@@ -14,26 +16,62 @@ import {
 import { IconDotsHorizontalW500, IconPlusW400 } from '../../icons';
 import { DemoBase as BreadcrumbsDemo } from '../Breadcrumbs/Breadcrumbs.stories';
 
-export const Demo: Story = (args, context) => {
-  const locale = (context.globals.locale || 'en') as 'en' | 'ru';
+type Args = ComponentProps<typeof PageHGroup> & ComponentProps<typeof PageHGroupHeading>;
 
-  return (
-    <PageHGroup>
-      <PageHGroupBreadcrumbs>{BreadcrumbsDemo({}, context)}</PageHGroupBreadcrumbs>
-      <PageHGroupMain>
-        <PageHGroupHeading maxLines={args.maxLines}>
-          {args.children || (locale === 'en' ? 'Schedule' : 'Расписание')}
-        </PageHGroupHeading>
-        <PageHGroupActions>
-          <Button color="primary" startIcon={<IconPlusW400 />} variant="contained">
-            {locale === 'en' ? 'Create' : 'Создать'}
-          </Button>
-          <Button color="tertiary" variant="outlined">
-            <IconDotsHorizontalW500 />
-          </Button>
-        </PageHGroupActions>
-      </PageHGroupMain>
-      <PageHGroupStatus>{locale === 'en' ? 'Link access enabled' : 'Доступ по ссылке включен'}</PageHGroupStatus>
-    </PageHGroup>
-  );
+const meta: Meta<Args> = {
+  tags: ['autodocs'],
+  component: PageHGroup,
+  parameters: {
+    references: [
+      'PageHGroup',
+      'PageHGroupActions',
+      'PageHGroupBreadcrumbs',
+      'PageHGroupHeading',
+      'PageHGroupMain',
+      'PageHGroupStatus'
+    ]
+  },
+  argTypes: {
+    children: {
+      control: { type: 'text' },
+      table: {
+        category: 'PageHGroupHeading'
+      }
+    },
+    maxLines: {
+      control: { type: 'number' },
+      table: {
+        category: 'PageHGroupHeading'
+      }
+    }
+  }
+};
+
+export default meta;
+type Story = StoryObj<Args>;
+
+export const Demo: Story = {
+  render: (args, context) => {
+    const locale = (context.globals.locale || 'en') as 'en' | 'ru';
+
+    return (
+      <PageHGroup>
+        <PageHGroupBreadcrumbs>{BreadcrumbsDemo.render?.({}, context)}</PageHGroupBreadcrumbs>
+        <PageHGroupMain>
+          <PageHGroupHeading maxLines={args.maxLines}>
+            {args.children || (locale === 'en' ? 'Schedule' : 'Расписание')}
+          </PageHGroupHeading>
+          <PageHGroupActions>
+            <Button color="primary" startIcon={<IconPlusW400 />} variant="contained">
+              {locale === 'en' ? 'Create' : 'Создать'}
+            </Button>
+            <Button color="tertiary" variant="outlined">
+              <IconDotsHorizontalW500 />
+            </Button>
+          </PageHGroupActions>
+        </PageHGroupMain>
+        <PageHGroupStatus>{locale === 'en' ? 'Link access enabled' : 'Доступ по ссылке включен'}</PageHGroupStatus>
+      </PageHGroup>
+    );
+  }
 };

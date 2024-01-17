@@ -44,6 +44,7 @@ const TableRoot = styled('div', {
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
+/** Tables display information in a way that's easy to scan, so that users can look for patterns and insights. */
 export const Table = memo(
   forwardRef<HTMLDivElement, TableProps>((inProps, inRef) => {
     const { children, className, columns, sx, ...props } = useThemeProps({

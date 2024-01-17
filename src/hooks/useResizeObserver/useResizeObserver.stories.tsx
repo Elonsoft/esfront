@@ -1,3 +1,5 @@
+/* eslint-disable storybook/default-exports */
+
 import { useRef, useState } from 'react';
 
 import { Story } from '@storybook/react';
@@ -8,7 +10,7 @@ import { useResizeObserver } from './useResizeObserver';
 
 export const Demo: Story = () => {
   const [height, setHeight] = useState(0);
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDetailsElement | null>(null);
 
   useResizeObserver(ref, () => {
     if (ref.current) {

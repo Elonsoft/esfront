@@ -3,3 +3,4 @@ export { FileIconClasses, fileIconClasses, FileIconClassKey } from './FileIcon.c
 export { FileIconProps } from './FileIcon.types';
 export * from './FileIconBadge';
 export * from './FileIconText';
+export * from './icons';

@@ -1,3 +1,5 @@
+/* eslint-disable storybook/default-exports */
+
 import { useRef } from 'react';
 
 import { Story } from '@storybook/react';

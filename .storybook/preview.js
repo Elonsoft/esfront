@@ -1,4 +1,8 @@
-import { DocsContainer } from './components/DocsContainer';
+import React from 'react';
+
+import { Controls, Description, DocsContainer, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
+
+import { ReferencesList } from './components/ReferencesList';
 import { themeDark, themeLight } from './themes';
 
 import { Theme } from '../src/testing';
@@ -12,14 +16,12 @@ export const parameters = {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/
-    }
+    },
+    exclude: /^(classes|className|sx|(on|icon|label)[A-Z].*)$/
   },
   darkMode: {
     light: themeLight,
     dark: themeDark
-  },
-  docs: {
-    container: DocsContainer
   },
   options: {
     storySort: {
@@ -33,6 +35,32 @@ export const parameters = {
         'Components API',
         'Hooks API'
       ]
+    }
+  },
+  docs: {
+    container: (props) => {
+      const isDarkMode = useDarkMode();
+      const currentProps = { ...props };
+      currentProps.theme = isDarkMode ? themeDark : themeLight;
+
+      return (
+        <div className={`docs-container ${isDarkMode ? 'docs-container__dark' : ''}`}>
+          <DocsContainer {...currentProps} />
+        </div>
+      );
+    },
+    page: () => {
+      return (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+          <Stories includePrimary={false} />
+          <ReferencesList />
+        </>
+      );
     }
   }
 };
@@ -49,6 +77,25 @@ export const decorators = [
     );
   }
 ];
+
+export const argTypes = {
+  // exclude: ['classes', 'className', 'sx']
+  // classes: {
+  //   table: {
+  //     disable: true
+  //   }
+  // },
+  // className: {
+  //   table: {
+  //     disable: true
+  //   }
+  // },
+  // sx: {
+  //   table: {
+  //     disable: true
+  //   }
+  // }
+};
 
 const isRussian = window.navigator.language === 'ru-RU';
 

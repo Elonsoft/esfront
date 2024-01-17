@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: TabBarItemOwnerState) => {
 const TabBarItemRoot = styled(Button, {
   name: 'ESTabBarItem',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (_props, styles) => styles.root
 })(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
     flexDirection: 'column',
@@ -52,7 +52,7 @@ const TabBarItemRoot = styled(Button, {
 const TabBarItemIcon = styled('span', {
   name: 'ESTabBarItem',
   slot: 'Icon',
-  overridesResolver: (props, styles) => styles.icon
+  overridesResolver: (_props, styles) => styles.icon
 })(({ theme }) => ({
   display: 'flex',
   color: theme.palette.monoA.A500
@@ -61,7 +61,7 @@ const TabBarItemIcon = styled('span', {
 const TabBarItemLabel = styled('span', {
   name: 'ESTabBarItem',
   slot: 'Label',
-  overridesResolver: (props, styles) => styles.label
+  overridesResolver: (_props, styles) => styles.label
 })(({ theme }) => ({
   ...theme.typography.micro,
   textTransform: 'none',
@@ -76,6 +76,7 @@ export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: Tab
     icon,
     label,
     selected,
+    // eslint-disable-next-line
     color,
     ...props
   } = useThemeProps({

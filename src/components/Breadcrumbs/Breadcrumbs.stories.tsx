@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
 
@@ -16,22 +16,38 @@ const BREADCRUMBS = {
   ]
 };
 
-export const DemoBase: Story = (args, context) => {
-  const locale = (context.globals.locale || 'en') as 'en' | 'ru';
-
-  return (
-    <Breadcrumbs>
-      {BREADCRUMBS[locale].map((item) => (
-        <Breadcrumb key={item.name} component="button" onClick={() => console.log(item.name)}>
-          {item.name}
-        </Breadcrumb>
-      ))}
-
-      <Breadcrumb disabled>iPad Pro</Breadcrumb>
-    </Breadcrumbs>
-  );
+const meta: Meta<typeof Breadcrumbs> = {
+  tags: ['autodocs'],
+  component: Breadcrumbs,
+  parameters: {
+    references: ['Breadcrumbs', 'Breadcrumb']
+  }
 };
 
-export const Demo: Story = (args, context) => {
-  return <Box sx={{ padding: '25px 0' }}>{DemoBase(args, context)} </Box>;
+export default meta;
+type Story = StoryObj<typeof Breadcrumbs>;
+
+export const DemoBase: Story = {
+  tags: ['test-only'],
+  render: (_args, context) => {
+    const locale = (context.globals.locale || 'en') as 'en' | 'ru';
+
+    return (
+      <Breadcrumbs>
+        {BREADCRUMBS[locale].map((item) => (
+          <Breadcrumb key={item.name} component="button" onClick={() => console.log(item.name)}>
+            {item.name}
+          </Breadcrumb>
+        ))}
+
+        <Breadcrumb disabled>iPad Pro</Breadcrumb>
+      </Breadcrumbs>
+    );
+  }
+};
+
+export const Demo: Story = {
+  render: (args, context) => {
+    return <Box sx={{ padding: '25px 0' }}>{DemoBase.render?.(args, context)} </Box>;
+  }
 };

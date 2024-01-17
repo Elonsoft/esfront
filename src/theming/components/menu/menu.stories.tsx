@@ -1,6 +1,8 @@
+/* eslint-disable storybook/default-exports */
+
 import { useState } from 'react';
 
-import { Args, ReactFramework, Story, StoryContext } from '@storybook/react';
+import { Args, Story, StoryContext } from '@storybook/react';
 
 import { IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -16,27 +18,27 @@ import Menu from '@mui/material/Menu';
 import { MenuItem } from '../../../components/MenuItem';
 import { IconDotsVerticalW400, IconUpload } from '../../../icons';
 
-const getButtonText = (args: Args, context: StoryContext<ReactFramework>) => {
+const getButtonText = (args: Args, context: StoryContext) => {
   return context.globals.locale === 'en' ? 'Open menu' : 'Открыть меню';
 };
 
-const getCutText = (args: Args, context: StoryContext<ReactFramework>) => {
+const getCutText = (args: Args, context: StoryContext) => {
   return context.globals.locale === 'en' ? 'Cut' : 'Вырезать';
 };
 
-const getCopyText = (args: Args, context: StoryContext<ReactFramework>) => {
+const getCopyText = (args: Args, context: StoryContext) => {
   return context.globals.locale === 'en' ? 'Copy' : 'Копировать';
 };
 
-const getPasteText = (args: Args, context: StoryContext<ReactFramework>) => {
+const getPasteText = (args: Args, context: StoryContext) => {
   return context.globals.locale === 'en' ? 'Paste' : 'Вставить';
 };
 
-const getActionText = (args: Args, context: StoryContext<ReactFramework>) => {
+const getActionText = (args: Args, context: StoryContext) => {
   return context.globals.locale === 'en' ? 'Action' : 'Действие';
 };
 
-const getErrorActionText = (args: Args, context: StoryContext<ReactFramework>) => {
+const getErrorActionText = (args: Args, context: StoryContext) => {
   return context.globals.locale === 'en' ? 'Dangerous action' : 'Опасное действие';
 };
 

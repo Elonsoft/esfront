@@ -1,6 +1,11 @@
 {
   "plugins": ["prettier", "simple-import-sort"],
-  "extends": ["plugin:@typescript-eslint/recommended", "plugin:react/recommended", "prettier"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2015,
