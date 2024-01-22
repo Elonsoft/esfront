@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AutocompleteProps } from './Autocomplete.types';
 
@@ -40,6 +40,7 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
     input: ['input'],
     popover: ['popover'],
     menuList: ['menuList'],
+    menuGroup: ['menuGroup'],
     menuItem: ['menuItem'],
     menuItemText: ['menuItemText'],
     sentinel: ['sentinel'],
@@ -92,6 +93,22 @@ const AutocompleteMenuList = styled(MenuList, {
 })(({ theme }) => ({
   ...theme.scrollbars.overlay,
   maxHeight: '228px'
+}));
+
+const AutocompleteMenuGroup = styled('div', {
+  name: 'ESAutocomplete',
+  slot: 'MenuGroup',
+  overridesResolver: (props, styles) => styles.group
+})(({ theme }) => ({
+  ...theme.typography.caption,
+  color: theme.palette.monoA.A600,
+  padding: '8px 16px 4px',
+
+  '&:not(:first-child)': {
+    borderTop: `1px solid ${theme.palette.monoA.A100}`,
+    paddingTop: '16px',
+    marginTop: '8px'
+  }
 }));
 
 const AutocompleteMenuItem = styled(MenuItem, {
@@ -240,6 +257,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     getOptionValue,
     getOptionLabel,
     getOptionDisabled,
+    groupBy,
 
     loading,
     header,
@@ -403,6 +421,47 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);
 
+  const groupedOptions: ReactNode[] = [];
+
+  for (let index = 0; index < options.length; index++) {
+    const option = options[index];
+
+    const value = getOptionValue(option);
+    const label = getOptionLabel(option);
+
+    const selected = !!valueMap[value];
+    const disabled = getOptionDisabled ? getOptionDisabled(option) : undefined;
+    const group = groupBy?.(option);
+
+    if (!!groupBy && (index === 0 || group !== groupBy(options[index - 1]))) {
+      groupedOptions.push(
+        <AutocompleteMenuGroup
+          key={`${value}-${group}`}
+          aria-disabled={true}
+          className={classes.menuGroup}
+          tabIndex={-1}
+        >
+          {group}
+        </AutocompleteMenuGroup>
+      );
+    }
+
+    groupedOptions.push(
+      <AutocompleteMenuItem
+        key={value}
+        autoFocus={index === 0 && !SearchProps}
+        className={classes.menuItem}
+        disabled={disabled}
+        selected={selected}
+        tabIndex={index === 0 ? 0 : -1}
+        onClick={onMenuItemClick(option)}
+      >
+        {!!props.multiple && <AutocompleteCheckbox readOnly checked={selected} color="secondary" tabIndex={-1} />}
+        <AutocompleteMenuItemText className={classes.menuItemText}>{label}</AutocompleteMenuItemText>
+      </AutocompleteMenuItem>
+    );
+  }
+
   return (
     <>
       <AutocompleteRoot
@@ -505,30 +564,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
           </AutocompleteEmptyState>
         ) : options.length ? (
           <AutocompleteMenuList className={classes.menuList}>
-            {options.map((option, index) => {
-              const value = getOptionValue(option);
-              const label = getOptionLabel(option);
-
-              const selected = !!valueMap[value];
-              const disabled = getOptionDisabled ? getOptionDisabled(option) : undefined;
-
-              return (
-                <AutocompleteMenuItem
-                  key={value}
-                  autoFocus={index === 0 && !SearchProps}
-                  className={classes.menuItem}
-                  disabled={disabled}
-                  selected={selected}
-                  tabIndex={index === 0 ? 0 : -1}
-                  onClick={onMenuItemClick(option)}
-                >
-                  {!!props.multiple && (
-                    <AutocompleteCheckbox readOnly checked={selected} color="secondary" tabIndex={-1} />
-                  )}
-                  <AutocompleteMenuItemText className={classes.menuItemText}>{label}</AutocompleteMenuItemText>
-                </AutocompleteMenuItem>
-              );
-            })}
+            {groupedOptions}
             {!!onLoadMore && (
               <AutocompleteSentinel ref={setSentinelRef} disabled className={classes.sentinel} tabIndex={-1} />
             )}
