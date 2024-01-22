@@ -36,6 +36,7 @@ export type AutocompleteFieldProps<T> = {
       | 'getOptionLabel'
       | 'getOptionValue'
       | 'getOptionDisabled'
+      | 'groupBy'
     >
   >;
   /** Props applied to the `InputLabel` element. */
@@ -66,6 +67,7 @@ export type AutocompleteFieldProps<T> = {
     | 'getOptionDisabled'
     | 'getOptionLabel'
     | 'getOptionValue'
+    | 'groupBy'
     | 'header'
     | 'id'
     | 'label'

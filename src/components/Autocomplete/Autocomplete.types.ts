@@ -22,6 +22,9 @@ export type AutocompleteProps<T> = {
   /** Used to determine the disabled state for a given option. */
   getOptionDisabled?: (option: T) => boolean;
 
+  /** If provided, the options will be grouped under the returned value. */
+  groupBy?: (option: T) => number | string;
+
   /** If true, the component is in a loading state. This shows the labelLoading in place of options (only if options are empty). */
   loading?: boolean;
   /** Children content for the menu header. */

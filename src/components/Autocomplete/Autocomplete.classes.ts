@@ -9,6 +9,8 @@ export type AutocompleteClasses = {
   popover: string;
   /** Styles applied to the menu list element. */
   menuList: string;
+  /** Styles applied to the menu group element. */
+  menuGroup: string;
   /** Styles applied to the menu item element. */
   menuItem: string;
   /** Styles applied to the menu item text element. */
@@ -33,6 +35,7 @@ export const autocompleteClasses: AutocompleteClasses = generateUtilityClasses('
   'input',
   'popover',
   'menuList',
+  'menuGroup',
   'menuItem',
   'menuItemText',
   'sentinel',

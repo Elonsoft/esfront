@@ -18,7 +18,7 @@ const USERS: { en: User[]; ru: User[] } = {
   ru: []
 };
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 25; i++) {
   USERS.en.push({
     id: i + 1,
     name: `John Doe ${i + 1}`
@@ -85,6 +85,56 @@ const meta: Meta<typeof AutocompleteField> = {
     },
     placeholder: {
       control: { type: 'text' }
+    },
+    InputProps: {
+      table: {
+        disable: true
+      }
+    },
+    InputLabelProps: {
+      table: {
+        disable: true
+      }
+    },
+    FormHelperTextProps: {
+      table: {
+        disable: true
+      }
+    },
+    value: {
+      table: {
+        disable: true
+      }
+    },
+    getDisplayValue: {
+      table: {
+        disable: true
+      }
+    },
+    getOptionDisabled: {
+      table: {
+        disable: true
+      }
+    },
+    getOptionLabel: {
+      table: {
+        disable: true
+      }
+    },
+    getOptionValue: {
+      table: {
+        disable: true
+      }
+    },
+    loading: {
+      table: {
+        disable: true
+      }
+    },
+    options: {
+      table: {
+        disable: true
+      }
     }
   }
 };
@@ -194,6 +244,41 @@ export const Demo: Story = {
             {...props}
           />
         )}
+      </Box>
+    );
+  }
+};
+
+/** We can group the options with the `groupBy` prop. Make sure that the options are also sorted with the same dimension that they are grouped by, otherwise, you will notice duplicate headers. */
+export const Groups: Story = {
+  render: (_args, { globals: { locale } }) => {
+    const [options, setOptions] = useState<User[]>([]);
+    const [users, setUsers] = useState<User[]>([]);
+
+    const onChangeUsers = (users: User[]) => {
+      setUsers(users);
+    };
+
+    useEffect(() => {
+      setOptions(USERS[locale as 'en' | 'ru']);
+    }, [locale]);
+
+    return (
+      <Box sx={{ maxWidth: '500px' }}>
+        <AutocompleteField<User>
+          fullWidth
+          multiple
+          getOptionLabel={getUserLabel}
+          getOptionValue={getUserValue}
+          groupBy={(user) => {
+            const base = Math.floor(user.id / 10);
+            return `${base * 10} - ${(base + 1) * 10 - 1}`;
+          }}
+          label={locale === 'en' ? 'Users' : 'Пользователи'}
+          options={options}
+          value={users}
+          onChange={onChangeUsers}
+        />
       </Box>
     );
   }
