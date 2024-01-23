@@ -37,7 +37,6 @@ const useUtilityClasses = (ownerState: SortingMenuOwnerState) => {
     resetButton: ['resetButton'],
     directionButton: ['directionButton'],
     directionButtonBadge: ['directionButtonBadge'],
-    directionButtonBadgeText: ['directionButtonBadgeOrder'],
     plusSign: ['plusSign'],
     caption: ['caption']
   };

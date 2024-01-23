@@ -1,0 +1,1 @@
+export { SFSButtonBadge } from './SFSButtonBadge';
