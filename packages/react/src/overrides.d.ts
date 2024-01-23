@@ -169,6 +169,8 @@ import {
 } from './components/Pagination';
 import { PasswordFieldClassKey, PasswordFieldProps } from './components/PasswordField';
 import {
+  SFSButtonClassKey,
+  SFSButtonProps,
   SFSClassKey,
   SFSFiltersClassKey,
   SFSFiltersGroupClassKey,
@@ -387,6 +389,7 @@ declare module '@mui/material/styles/props' {
     ESSidenav: SidenavProps;
     ESSidenavItem: SidenavItemProps;
     ESSFS: SFSProps;
+    ESSFSButton: SFSButtonProps;
     ESSFSSearch: SFSSearchProps;
     ESSFSSorting: SFSSortingProps;
     ESSFSFilters: SFSFiltersProps;
@@ -503,6 +506,7 @@ declare module '@mui/material/styles/overrides' {
     ESSidenav: SidenavClassKey;
     ESSidenavItem: SidenavItemClassKey;
     ESSFS: SFSClassKey;
+    ESSFSButton: SFSButtonClassKey;
     ESSFSSearch: SFSSearchClassKey;
     ESSFSSorting: SFSSortingClassKey;
     ESSFSFilters: SFSFiltersClassKey;
@@ -848,6 +852,10 @@ declare module '@mui/material/styles/components' {
     ESSFS?: {
       defaultProps?: ComponentsProps['ESSFS'];
       styleOverrides?: ComponentsOverrides['ESSFS'];
+    };
+    ESSFSButton?: {
+      defaultProps?: ComponentsProps['ESSFSButton'];
+      styleOverrides?: ComponentsOverrides['ESSFSButton'];
     };
     ESSFSSearch?: {
       defaultProps?: ComponentsProps['ESSFSSearch'];

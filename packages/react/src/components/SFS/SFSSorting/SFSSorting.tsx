@@ -3,7 +3,7 @@ import React, { memo, useState } from 'react';
 import { SFSSortingProps } from './SFSSorting.types';
 
 import clsx from 'clsx';
-import { getSFSSortingUtilityClass, sfsSortingClasses } from './SFSSorting.classes';
+import { getSFSSortingUtilityClass } from './SFSSorting.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -12,12 +12,11 @@ import Typography from '@mui/material/Typography';
 
 import { IconSortAscending2, IconSortDescending2, IconSortOff } from '../../../icons';
 import { SortingMenu } from '../../SortingMenu';
-import { svgIconClasses } from '../../SvgIcon';
 import { SFSButton } from '../SFSButton';
+import { SFSButtonBadge } from '../SFSButtonBadge';
 
 type SFSSortingOwnerState = {
   classes?: SFSSortingProps['classes'];
-  isWithValue?: boolean;
 };
 
 const useUtilityClasses = (ownerState: SFSSortingOwnerState) => {
@@ -25,8 +24,8 @@ const useUtilityClasses = (ownerState: SFSSortingOwnerState) => {
 
   const slots = {
     root: ['root'],
-    menuButton: ['menuButton'],
-    menuButtonBadge: ['menuButtonBadge']
+    button: ['button'],
+    buttonBadge: ['buttonBadge']
   };
 
   return composeClasses(slots, getSFSSortingUtilityClass, classes);
@@ -36,47 +35,19 @@ const SFSSortingRoot = styled('div', {
   name: 'ESSFSSorting',
   slot: 'Root',
   overridesResolver: (_, styles) => styles.root
-})(() => ({}));
+})({});
 
-const SFSSortingMenuButton = styled(SFSButton, {
+const SFSSortingButton = styled(SFSButton, {
   name: 'ESSFSSorting',
-  slot: 'MenuButton',
-  overridesResolver: (_, styles) => styles.menuButton
-})<{ ownerState: SFSSortingOwnerState }>(({ ownerState, theme }) => ({
-  gap: '4px',
+  slot: 'Button',
+  overridesResolver: (_, styles) => styles.button
+})({});
 
-  [`&:hover .${sfsSortingClasses.menuButtonBadge}, &:focus-visible .${sfsSortingClasses.menuButtonBadge},, & .${sfsSortingClasses.menuButtonBadge}`]:
-    {
-      [`&.MuiTypography-root, & .${svgIconClasses.root}`]: {
-        color: `${theme.palette.black.A800}`
-      }
-    },
-  [theme.breakpoints.up('tabletXS')]: {
-    [`& > .${svgIconClasses.root}`]: {
-      display: ownerState.isWithValue && 'none'
-    }
-  },
-  [theme.breakpoints.down('tabletXS')]: {
-    gap: '2px',
-    '& > .MuiTypography-root:first-of-type': {
-      display: 'none'
-    }
-  }
-}));
-
-const SFSSortingMenuButtonBadge = styled(Typography, {
+const SFSSortingButtonBadge = styled(SFSButtonBadge, {
   name: 'ESSFSSorting',
-  slot: 'MenuButtonBadge',
-  overridesResolver: (_, styles) => styles.menuButtonBadge
-})(({ theme }) => ({
-  width: '16px',
-  height: '16px',
-  borderRadius: '16px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: theme.palette.secondary[300]
-})) as typeof Typography;
+  slot: 'ButtonBadge',
+  overridesResolver: (_, styles) => styles.buttonBadge
+})({}) as typeof SFSButtonBadge;
 
 export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
   const {
@@ -99,7 +70,7 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
 
   const values = props.multiple ? props.value : props.value ? [props.value] : [];
 
-  const ownerState = { classes: inClasses, isWithValue: !!values[0] };
+  const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);
 
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
@@ -114,22 +85,22 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
 
   return (
     <SFSSortingRoot className={clsx(classes.root, className)} sx={sx}>
-      <SFSSortingMenuButton className={classes.menuButton} ownerState={ownerState} onClick={onMenuOpen}>
+      <SFSSortingButton active={!!values[0]} className={classes.button} onClick={onMenuOpen}>
         <Typography component="div" variant="body100">
           {values.length === 1 ? options.find((o) => o.value === values[0].value)?.label : labelButton}
         </Typography>
         {iconSort}
         {values.length === 1 && (
-          <SFSSortingMenuButtonBadge className={classes.menuButtonBadge} component="div">
+          <SFSSortingButtonBadge className={classes.buttonBadge} component="div">
             {values[0].direction === 'asc' ? iconAsc : iconDesc}
-          </SFSSortingMenuButtonBadge>
+          </SFSSortingButtonBadge>
         )}
         {values.length > 1 && (
-          <SFSSortingMenuButtonBadge className={classes.menuButtonBadge} component="div" variant="mini200">
+          <SFSSortingButtonBadge className={classes.buttonBadge} component="div" variant="mini200">
             {values.length}
-          </SFSSortingMenuButtonBadge>
+          </SFSSortingButtonBadge>
         )}
-      </SFSSortingMenuButton>
+      </SFSSortingButton>
       <SortingMenu
         PopoverProps={{
           anchorEl: menuAnchor,
