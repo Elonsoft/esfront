@@ -12,6 +12,7 @@ import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
 import { SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
+import { SortingMenuProps } from '../SortingMenu';
 import { SwiperButtonProps } from '../Swiper';
 import { TableActionsProps, TableCellProps } from '../Table';
 
@@ -88,12 +89,17 @@ export interface Localization {
       defaultProps: Pick<SFSSearchProps, 'ariaLabel' | 'placeholder' | 'labelClear'>;
     };
     ESSFSSorting: {
+      defaultProps: Pick<SFSSortingProps, 'labelButton'>;
+    };
+    ESSFSFilters: {
+      defaultProps: Pick<SFSFiltersProps, 'labelButton' | 'labelHeader' | 'labelClose' | 'labelReset'>;
+    };
+    ESSortingMenu: {
       defaultProps: Pick<
-        SFSSortingProps,
+        SortingMenuProps,
         | 'labelAsc'
         | 'labelDesc'
         | 'labelResetButton'
-        | 'labelButton'
         | 'labelSortOrder'
         | 'labelSortTooltip'
         | 'labelMultisortTitle'
@@ -101,9 +107,6 @@ export interface Localization {
         | 'labelMultisortMobileOn'
         | 'labelMultisortMobileOff'
       >;
-    };
-    ESSFSFilters: {
-      defaultProps: Pick<SFSFiltersProps, 'labelButton' | 'labelHeader' | 'labelClose' | 'labelReset'>;
     };
     ESFormatSize: {
       defaultProps: Pick<FormatSizeProps, 'metricUnits' | 'binaryUnits'>;
@@ -249,16 +252,7 @@ export const en: Localization = {
     },
     ESSFSSorting: {
       defaultProps: {
-        labelAsc: 'Ascending',
-        labelDesc: 'Descending',
-        labelResetButton: 'Reset',
-        labelButton: 'Sorting',
-        labelSortOrder: 'The sort order',
-        labelSortTooltip: 'Sort by properties',
-        labelMultisortTitle: 'Multisort',
-        labelMultisortLMB: 'LMB',
-        labelMultisortMobileOn: 'Multisort enabled',
-        labelMultisortMobileOff: 'Hold to multisort'
+        labelButton: 'Sorting'
       }
     },
     ESSFSFilters: {
@@ -267,6 +261,19 @@ export const en: Localization = {
         labelHeader: 'Filters',
         labelClose: 'Close',
         labelReset: 'Reset all filters'
+      }
+    },
+    ESSortingMenu: {
+      defaultProps: {
+        labelAsc: 'Ascending',
+        labelDesc: 'Descending',
+        labelResetButton: 'Reset',
+        labelSortOrder: 'The sort order',
+        labelSortTooltip: 'Sort by properties',
+        labelMultisortTitle: 'Multisort',
+        labelMultisortLMB: 'LMB',
+        labelMultisortMobileOn: 'Multisort enabled',
+        labelMultisortMobileOff: 'Hold to multisort'
       }
     },
     ESSwiperButton: {
@@ -419,16 +426,7 @@ export const ru: Localization = {
     },
     ESSFSSorting: {
       defaultProps: {
-        labelAsc: 'По возрастанию',
-        labelDesc: 'По убыванию',
-        labelResetButton: 'Сбросить',
-        labelButton: 'Сортировка',
-        labelSortOrder: 'Порядок сортировки',
-        labelSortTooltip: 'Сортировка по свойствам',
-        labelMultisortTitle: 'Мультисортировка',
-        labelMultisortLMB: 'ЛКМ',
-        labelMultisortMobileOn: 'Мультисортировка включена',
-        labelMultisortMobileOff: 'Удерживайте для мультисортировки'
+        labelButton: 'Сортировка'
       }
     },
     ESSFSFilters: {
@@ -437,6 +435,19 @@ export const ru: Localization = {
         labelHeader: 'Фильтры',
         labelClose: 'Закрыть',
         labelReset: 'Сбросить все фильтры'
+      }
+    },
+    ESSortingMenu: {
+      defaultProps: {
+        labelAsc: 'По возрастанию',
+        labelDesc: 'По убыванию',
+        labelResetButton: 'Сбросить',
+        labelSortOrder: 'Порядок сортировки',
+        labelSortTooltip: 'Сортировка по свойствам',
+        labelMultisortTitle: 'Мультисортировка',
+        labelMultisortLMB: 'ЛКМ',
+        labelMultisortMobileOn: 'Мультисортировка включена',
+        labelMultisortMobileOff: 'Удерживайте для мультисортировки'
       }
     },
     ESSwiperButton: {
