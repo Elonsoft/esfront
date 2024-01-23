@@ -1,13 +1,11 @@
 import { ComponentProps, useState } from 'react';
 
-import { SFSSortingValue } from './SFSSorting/SFSSorting.types';
-
 import { Meta, StoryObj } from '@storybook/react';
 
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 
-import { SFS, SFSFilters, SFSFiltersGroup, SFSRow, SFSSearch, SFSSorting } from '..';
+import { SFS, SFSFilters, SFSFiltersGroup, SFSRow, SFSSearch, SFSSorting, SortingMenuValue } from '..';
 
 const sortingOptionsRu = [
   { label: 'Кол-во квартир', value: 'byCount' },
@@ -51,8 +49,8 @@ export const Demo: Story = {
   render: function Render(args, { globals: { locale } }) {
     const [search, setSearch] = useState('');
 
-    const [value, setValue] = useState<SFSSortingValue | null>(null);
-    const [values, setValues] = useState<SFSSortingValue[]>([]);
+    const [value, setValue] = useState<SortingMenuValue | null>(null);
+    const [values, setValues] = useState<SortingMenuValue[]>([]);
     const [filters, setFilters] = useState<Record<string, any>>({
       '1': '',
       '2': '',
