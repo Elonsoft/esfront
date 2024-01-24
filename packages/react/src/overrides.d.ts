@@ -190,6 +190,7 @@ import { PasswordFieldClassKey, PasswordFieldProps } from './components/Password
 import { RadioClassKey, RadioIconClassKey, RadioIconProps, RadioProps } from './components/Radio';
 import { RadioGroupClassKey, RadioGroupProps } from './components/RadioGroup';
 import { RibbonBadgeClassKey, RibbonBadgeProps } from './components/RibbonBadge';
+import { PhoneFieldClassKey, PhoneFieldProps } from './components/PhoneField';
 import {
   SFSButtonClassKey,
   SFSButtonProps,
@@ -430,6 +431,7 @@ declare module '@mui/material/styles/props' {
     ESPaginationPages: PaginationPagesProps;
     ESPaginationRange: PaginationRangeProps;
     ESPasswordField: PasswordFieldProps;
+    ESPhoneField: PhoneFieldProps;
     ESRadio: RadioProps;
     ESRadioIcon: RadioIconProps;
     ESRadioGroup: RadioGroupProps;
@@ -571,6 +573,7 @@ declare module '@mui/material/styles/overrides' {
     ESPaginationPages: PaginationPagesClassKey;
     ESPaginationRange: PaginationRangeClassKey;
     ESPasswordField: PasswordFieldClassKey;
+    ESPhoneField: PhoneFieldClassKey;
     ESRadio: RadioClassKey;
     ESRadioIcon: RadioIconClassKey;
     ESRadioGroup: RadioGroupClassKey;
@@ -990,6 +993,10 @@ declare module '@mui/material/styles/components' {
     ESPasswordField?: {
       defaultProps?: ComponentsProps['ESPasswordField'];
       styleOverrides?: ComponentsOverrides['ESPasswordField'];
+    };
+    ESPhoneField?: {
+      defaultProps?: ComponentsProps['ESPhoneField'];
+      styleOverrides?: ComponentsOverrides['ESPhoneField'];
     };
     ESRadio?: {
       defaultProps?: ComponentsProps['ESRadio'];
