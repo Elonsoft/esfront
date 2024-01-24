@@ -128,6 +128,7 @@ const AutocompleteMenuMenuItemText = styled('div', {
   slot: 'MenuItemText',
   overridesResolver: (_props, styles) => styles.menuItemText,
 })(() => ({
+  flexGrow: 1,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
