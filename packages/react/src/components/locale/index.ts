@@ -11,6 +11,7 @@ import { GalleryActionsProps, GalleryDescriptionProps, GalleryMetaProps, Gallery
 import { MadeByProps } from '../MadeBy';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
+import { PhoneFieldProps } from '../PhoneField';
 import { SFSChipsProps, SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
 import { SnackbarCloseProps } from '../Snackbar';
@@ -83,6 +84,9 @@ export interface Localization {
     };
     ESPasswordField: {
       defaultProps: Pick<PasswordFieldProps, 'labelHidePassword' | 'labelShowPassword'>;
+    };
+    ESPhoneField: {
+      defaultProps: Pick<PhoneFieldProps, 'labelMenu'>;
     };
     ESSidebarToggle: {
       defaultProps: Pick<SidebarToggleProps, 'labelOpen' | 'labelHide'>;
@@ -247,6 +251,11 @@ export const en: Localization = {
       defaultProps: {
         labelHidePassword: 'Hide',
         labelShowPassword: 'Show',
+      },
+    },
+    ESPhoneField: {
+      defaultProps: {
+        labelMenu: 'Select country',
       },
     },
     ESSidebarToggle: {
@@ -438,6 +447,11 @@ export const ru: Localization = {
       defaultProps: {
         labelHidePassword: 'Скрыть',
         labelShowPassword: 'Показать',
+      },
+    },
+    ESPhoneField: {
+      defaultProps: {
+        labelMenu: 'Выбрать страну',
       },
     },
     ESSidebarToggle: {
