@@ -12,6 +12,7 @@ import { GalleryActionsProps, GalleryDescriptionProps, GalleryMetaProps, Gallery
 import { MadeByProps } from '../MadeBy';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
+import { PhoneFieldProps } from '../PhoneField';
 import { PriceProps } from '../Price';
 import { SFSChipsProps, SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
@@ -97,6 +98,9 @@ export interface Localization {
     };
     ESPrice: {
       defaultProps: Pick<PriceProps, 'locales'>;
+    };
+    ESPhoneField: {
+      defaultProps: Pick<PhoneFieldProps, 'labelMenu'>;
     };
     ESSidebarToggle: {
       defaultProps: Pick<SidebarToggleProps, 'labelOpen' | 'labelHide'>;
@@ -284,6 +288,11 @@ export const en: Localization = {
     ESPrice: {
       defaultProps: {
         locales: 'en-US',
+      },
+    },
+    ESPhoneField: {
+      defaultProps: {
+        labelMenu: 'Select country',
       },
     },
     ESSidebarToggle: {
@@ -498,6 +507,11 @@ export const ru: Localization = {
     ESPrice: {
       defaultProps: {
         locales: 'ru-RU',
+      },
+    },
+    ESPhoneField: {
+      defaultProps: {
+        labelMenu: 'Выбрать страну',
       },
     },
     ESSidebarToggle: {
