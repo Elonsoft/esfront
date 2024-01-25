@@ -56,7 +56,7 @@ export interface SwiperProps {
   /** Whether the swiper will be reset into beginning if there are no more slides. */
   loop?: boolean;
 
-  /** Whether the AutoPlay mode is enabled and the interval between slides change. */
+  /** Whether the auto play mode is enabled and the interval between slides change. */
   autoPlay?: number;
   /**
    * Slides count to be auto played.

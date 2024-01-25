@@ -325,12 +325,12 @@ export const Swiper = (inProps: SwiperProps) => {
   const setActiveSlideByStep = useCallback(
     (step: number, options?: { smooth?: boolean }) => {
       if (container.current) {
-        if (active === to && step === 1 && loop) {
+        if (active === to && step > 0 && loop) {
           container.current.scrollTo({ [mapping.start]: 0, behavior: 'smooth' });
           return;
         }
         if (active === from && step === -1 && loop) {
-          container.current.scrollTo({ [mapping.start]: getStep(1, to), behavior: 'smooth' });
+          container.current.scrollTo({ [mapping.start]: container.current[mapping.scrollSize], behavior: 'smooth' });
           return;
         }
         const s = latestGetStep.current(Math.sign(step) as 1 | -1, Math.abs(step));
@@ -340,7 +340,7 @@ export const Swiper = (inProps: SwiperProps) => {
         });
       }
     },
-    [container, mapping, latestGetStep, active, to]
+    [container, mapping, latestGetStep, active, from, to]
   );
 
   const onDragStart = (event: React.DragEvent) => {
