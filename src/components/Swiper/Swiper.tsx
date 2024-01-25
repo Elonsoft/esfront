@@ -329,7 +329,7 @@ export const Swiper = (inProps: SwiperProps) => {
           container.current.scrollTo({ [mapping.start]: 0, behavior: 'smooth' });
           return;
         }
-        if (active === from && step === -1 && loop) {
+        if (active === from && step < 0 && loop) {
           container.current.scrollTo({ [mapping.start]: container.current[mapping.scrollSize], behavior: 'smooth' });
           return;
         }
