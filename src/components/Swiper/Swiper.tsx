@@ -139,7 +139,8 @@ export const Swiper = (inProps: SwiperProps) => {
     snap,
     draggable,
     loop,
-    loopCount = 1,
+    autoPlay,
+    autoPlayCount = 1,
     actions,
     onActiveSlideChange,
     onPaginationRangeChange,
@@ -324,6 +325,14 @@ export const Swiper = (inProps: SwiperProps) => {
   const setActiveSlideByStep = useCallback(
     (step: number, options?: { smooth?: boolean }) => {
       if (container.current) {
+        if (active === to && step > 0 && loop) {
+          container.current.scrollTo({ [mapping.start]: 0, behavior: 'smooth' });
+          return;
+        }
+        if (active === from && step < 0 && loop) {
+          container.current.scrollTo({ [mapping.start]: container.current[mapping.scrollSize], behavior: 'smooth' });
+          return;
+        }
         const s = latestGetStep.current(Math.sign(step) as 1 | -1, Math.abs(step));
         container.current.scrollBy({
           [mapping.start]: Math.sign(step) * s,
@@ -331,7 +340,7 @@ export const Swiper = (inProps: SwiperProps) => {
         });
       }
     },
-    [container, mapping, latestGetStep]
+    [container, mapping, latestGetStep, active, from, to]
   );
 
   const onDragStart = (event: React.DragEvent) => {
@@ -388,8 +397,10 @@ export const Swiper = (inProps: SwiperProps) => {
   };
 
   const onScroll = () => {
+    const newActive = getActiveSlide();
+
     if (container.current) {
-      if (container.current[mapping.scrollPosition] <= 0) {
+      if (container.current[mapping.scrollPosition] <= 0 && !loop) {
         setPrevVisible(false);
       } else {
         setPrevVisible(true);
@@ -398,19 +409,18 @@ export const Swiper = (inProps: SwiperProps) => {
       // Sometimes there is a 1px offset which cannot be scrolled.
       if (
         container.current[mapping.clientSize] + container.current[mapping.scrollPosition] >=
-        container.current[mapping.scrollSize] - 1
+          container.current[mapping.scrollSize] - 1 &&
+        !loop
       ) {
         setNextVisible(false);
       } else {
         setNextVisible(true);
       }
-
-      const newActive = getActiveSlide();
-      if (newActive !== null && newActive !== active) {
-        setActive(newActive);
-        if (onActiveSlideChange) {
-          onActiveSlideChange(newActive);
-        }
+    }
+    if (newActive !== null && newActive !== active) {
+      setActive(newActive);
+      if (onActiveSlideChange) {
+        onActiveSlideChange(newActive);
       }
     }
   };
@@ -443,7 +453,7 @@ export const Swiper = (inProps: SwiperProps) => {
   }, [from, to]);
 
   useEffect(() => {
-    if (loop && loop > 0 && !isMouseDown && !isMouseOver && !isTouchDown) {
+    if (autoPlay && autoPlay > 0 && !isMouseDown && !isMouseOver && !isTouchDown) {
       const interval = setInterval(() => {
         if (container.current) {
           if (
@@ -452,17 +462,17 @@ export const Swiper = (inProps: SwiperProps) => {
           ) {
             container.current.scrollTo({ [mapping.start]: 0, behavior: 'smooth' });
           } else {
-            const step = getStep(1, loopCount);
+            const step = getStep(1, autoPlayCount);
             container.current.scrollBy({ [mapping.start]: step, behavior: 'smooth' });
           }
         }
-      }, loop);
+      }, autoPlay);
 
       return () => {
         clearInterval(interval);
       };
     }
-  }, [loop, loopCount, isMouseDown, isMouseOver, isTouchDown, direction, alignment]);
+  }, [autoPlay, autoPlayCount, isMouseDown, isMouseOver, isTouchDown, direction, alignment]);
 
   const ownerState = { ...props, alignment, direction, snap: !!(snap && !isSnapDisabled) };
   const classes = useUtilityClasses(ownerState);

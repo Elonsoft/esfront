@@ -66,12 +66,17 @@ const meta: Meta<Args> = {
     },
     loop: {
       table: {
-        category: 'Loop'
+        category: 'General'
       }
     },
-    loopCount: {
+    autoPlay: {
       table: {
-        category: 'Loop'
+        category: 'AutoPlay'
+      }
+    },
+    autoPlayCount: {
+      table: {
+        category: 'AutoPlay'
       }
     },
     buttonPrev: {

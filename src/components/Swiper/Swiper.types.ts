@@ -53,14 +53,16 @@ export interface SwiperProps {
   snap?: boolean;
   /** Whether the swiper can be scrolled by mouse drag. Not working well with snap mode. */
   draggable?: boolean;
-  /** Whether the loop mode is enabled and the interval between slides change. */
-  loop?: number;
+  /** Whether the swiper will be reset into beginning if there are no more slides. */
+  loop?: boolean;
 
+  /** Whether the auto play mode is enabled and the interval between slides change. */
+  autoPlay?: number;
   /**
-   * Slides count to loop.
+   * Slides count to be auto played.
    * @default 1
    */
-  loopCount?: number;
+  autoPlayCount?: number;
 
   /** A ref for imperative actions. */
   actions?: Ref<SwiperImperativeActions>;
