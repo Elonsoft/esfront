@@ -66,6 +66,7 @@ export const SvgIcon = (inProps: SvgIconProps) => {
     containerSize,
     containerWidth,
     containerHeight,
+    title,
     ContainerProps,
     ...props
   } = useThemeProps({ props: inProps, name: 'ESSvgIcon' });
@@ -82,6 +83,7 @@ export const SvgIcon = (inProps: SvgIconProps) => {
       style={{ width: width || size, height: height || size, ...props.style }}
     >
       {children}
+      {title ? <title>{title}</title> : null}
     </SvgIconSvg>
   );
 

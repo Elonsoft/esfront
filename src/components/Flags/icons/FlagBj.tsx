@@ -1,5 +1,4 @@
-import { SvgIconProps } from '@mui/material/SvgIcon';
-
+import { SvgIconProps } from '../../SvgIcon';
 import { FlagRoot } from '../Flag';
 
 export const FlagBj = (props: SvgIconProps) => {

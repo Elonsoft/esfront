@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
-import SvgIcon from '@mui/material/SvgIcon';
+
+import { SvgIcon } from '../SvgIcon';
 
 export const FlagRoot = styled(SvgIcon, {
   name: 'ESFlag',

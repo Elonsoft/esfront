@@ -29,6 +29,12 @@ export type SvgIconProps = {
   /** The height of the icon container. */
   containerHeight?: string;
 
+  /**
+   * Provides a human-readable title for the element that contains it.
+   * https://www.w3.org/TR/SVG-access/#Equivalent
+   */
+  title?: string;
+
   /** Props applied to the container element. */
   ContainerProps?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 } & SVGProps<SVGSVGElement>;
