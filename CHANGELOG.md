@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.11](https://github.com/Elonsoft/elonkit-react/compare/v0.8.10...v0.8.11) (2024-01-29)
+
+
+### Features
+
+* **Autocomplete:** add options grouping ([eb1aaba](https://github.com/Elonsoft/elonkit-react/commit/eb1aaba67a16342cd6705b59a1d22bbefdbf329d))
+* **BottomSheet:** add auto height option for snap point ([fff59bc](https://github.com/Elonsoft/elonkit-react/commit/fff59bcc89c511c05c4abfe68968f180d86d1e26))
+* **DialogStack:** add dialog auto close on component unmount ([7452f12](https://github.com/Elonsoft/elonkit-react/commit/7452f12483c64d7267833f305670c865813ca589))
+* **DialogStack:** improve backdrop transition ([aef8a29](https://github.com/Elonsoft/elonkit-react/commit/aef8a29c8f64205e4141447b5f3361aa2a1cf1f8))
+* **Divider:** add new component ([4dd17aa](https://github.com/Elonsoft/elonkit-react/commit/4dd17aa6441625d54e6e6dcdfcabb1dc33c5adff))
+* **EmptyStateCompact:** add new component ([5aaa24f](https://github.com/Elonsoft/elonkit-react/commit/5aaa24f81ba7bd9d98b739ce67f92e89dcbcbf8f))
+* **LoadingButton:** add new component ([e4678bd](https://github.com/Elonsoft/elonkit-react/commit/e4678bd6bfdc0e3fbd28b499dbfaacdd57a0255e))
+* **SvgIcon:** add title prop ([25595ca](https://github.com/Elonsoft/elonkit-react/commit/25595ca9091224574ca2b6b9bd93c700878e0601))
+* **Swiper:** add loop ([cf17a37](https://github.com/Elonsoft/elonkit-react/commit/cf17a377095af96a0d00964cb74cf72bf468fccf))
+
 ### [0.8.10](https://github.com/Elonsoft/elonkit-react/compare/v0.8.9...v0.8.10) (2023-12-25)
 
 
