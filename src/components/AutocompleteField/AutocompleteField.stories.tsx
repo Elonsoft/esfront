@@ -54,6 +54,9 @@ const meta: Meta<typeof AutocompleteField> = {
     multiple: {
       control: { type: 'boolean' }
     },
+    inlineSearch: {
+      control: { type: 'boolean' }
+    },
     closeAfterSelect: {
       control: { type: 'boolean' }
     },
@@ -152,6 +155,10 @@ export const Demo: Story = {
 
     const onChange = (user: User | null) => {
       setUser(user);
+
+      if (args.inlineSearch && user) {
+        setSearch(user.name);
+      }
     };
 
     const onChangeUsers = (users: User[]) => {
@@ -189,6 +196,7 @@ export const Demo: Story = {
       | 'closeAfterSelect'
       | 'disabled'
       | 'error'
+      | 'inlineSearch'
       | 'header'
       | 'footer'
       | 'fullWidth'
@@ -209,6 +217,7 @@ export const Demo: Story = {
       header: args.header && <AutocompleteHeader>{args.header}</AutocompleteHeader>,
       footer: args.footer && <AutocompleteFooter>{args.footer}</AutocompleteFooter>,
       fullWidth: true,
+      inlineSearch: args.inlineSearch,
       getOptionLabel: getUserLabel,
       getOptionValue: getUserValue,
       helperText: args.helperText,

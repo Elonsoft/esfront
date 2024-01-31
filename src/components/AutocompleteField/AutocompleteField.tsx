@@ -73,7 +73,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
       onChange(e);
     }
     if (closeAfterSelect) {
-      toggleOpen();
+      toggleOpen(false);
     }
   };
 
@@ -113,11 +113,11 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
         onChange={handleChange as never}
         onClose={() => {
           onClose && onClose();
-          toggleOpen();
+          toggleOpen(false);
         }}
         onOpen={() => {
           onOpen && onOpen();
-          toggleOpen();
+          toggleOpen(true);
         }}
         {...rest}
         {...restInputProps}
