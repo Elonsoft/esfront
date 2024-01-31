@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { autocompleteClasses, getAutocompleteUtilityClass } from './Autocomplete.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
+import { ClickAwayListener } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import Button, { buttonClasses } from '@mui/material/Button';
@@ -30,6 +31,7 @@ import { svgIconClasses } from '../SvgIcon';
 
 type AutocompleteOwnerState = {
   classes?: AutocompleteProps<unknown>['classes'];
+  inlineSearch?: boolean;
 };
 
 const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
@@ -46,6 +48,7 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
     sentinel: ['sentinel'],
     emptyState: ['emptyState'],
     search: ['search'],
+    displayValue: ['displayValue'],
     inputPlaceholder: ['inputPlaceholder']
   };
 
@@ -55,7 +58,7 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
 const AutocompleteRoot = styled(OutlinedInput, {
   name: 'ESAutocomplete',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (_props, styles) => styles.root
 })(() => ({
   cursor: 'pointer',
 
@@ -64,15 +67,18 @@ const AutocompleteRoot = styled(OutlinedInput, {
     outline: 'none',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    display: 'inline-flex',
+    alignItems: 'center'
   }
 }));
 
 const AutocompletePopover = styled(Popover, {
   name: 'ESAutocomplete',
   slot: 'Popover',
-  overridesResolver: (props, styles) => styles.popover
-})(({ theme }) => ({
+  overridesResolver: (_props, styles) => styles.popover
+})<{ ownerState: AutocompleteOwnerState }>(({ ownerState, theme }) => ({
+  pointerEvents: ownerState.inlineSearch ? 'none' : 'auto',
+
   [`& .${popoverClasses.paper}`]: {
     display: 'flex',
     flexDirection: 'column',
@@ -82,14 +88,15 @@ const AutocompletePopover = styled(Popover, {
     borderRadius: '6px',
     userSelect: 'none',
     overflow: 'hidden',
-    margin: '4px 0'
+    margin: '4px 0',
+    pointerEvents: 'auto'
   }
 }));
 
 const AutocompleteMenuList = styled(MenuList, {
   name: 'ESAutocompleteMenuList',
   slot: 'MenuList',
-  overridesResolver: (props, styles) => styles.menuList
+  overridesResolver: (_props, styles) => styles.menuList
 })(({ theme }) => ({
   ...theme.scrollbars.overlay,
   maxHeight: '228px'
@@ -98,7 +105,7 @@ const AutocompleteMenuList = styled(MenuList, {
 const AutocompleteMenuGroup = styled('div', {
   name: 'ESAutocomplete',
   slot: 'MenuGroup',
-  overridesResolver: (props, styles) => styles.group
+  overridesResolver: (_props, styles) => styles.group
 })(({ theme }) => ({
   ...theme.typography.caption,
   color: theme.palette.monoA.A600,
@@ -114,7 +121,7 @@ const AutocompleteMenuGroup = styled('div', {
 const AutocompleteMenuItem = styled(MenuItem, {
   name: 'ESAutocomplete',
   slot: 'MenuItem',
-  overridesResolver: (props, styles) => styles.menuItem
+  overridesResolver: (_props, styles) => styles.menuItem
 })(() => ({
   padding: '2px 16px'
 }));
@@ -122,7 +129,7 @@ const AutocompleteMenuItem = styled(MenuItem, {
 const AutocompleteMenuItemText = styled('div', {
   name: 'ESAutocomplete',
   slot: 'MenuItemText',
-  overridesResolver: (props, styles) => styles.menuItemText
+  overridesResolver: (_props, styles) => styles.menuItemText
 })(() => ({
   overflow: 'hidden',
   textOverflow: 'ellipsis'
@@ -131,7 +138,7 @@ const AutocompleteMenuItemText = styled('div', {
 const AutocompleteSentinel = styled(MenuItem, {
   name: 'ESAutocomplete',
   slot: 'Sentinel',
-  overridesResolver: (props, styles) => styles.sentinel
+  overridesResolver: (_props, styles) => styles.sentinel
 })(() => ({
   padding: 0,
   minHeight: 0
@@ -140,7 +147,7 @@ const AutocompleteSentinel = styled(MenuItem, {
 const AutocompleteCheckbox = styled(Checkbox, {
   name: 'ESAutocomplete',
   slot: 'Checkbox',
-  overridesResolver: (props, styles) => styles.checkbox
+  overridesResolver: (_props, styles) => styles.checkbox
 })(() => ({
   marginLeft: '-9px',
   marginRight: '3px'
@@ -149,7 +156,7 @@ const AutocompleteCheckbox = styled(Checkbox, {
 const AutocompleteEmptyState = styled('div', {
   name: 'ESAutocomplete',
   slot: 'EmptyState',
-  overridesResolver: (props, styles) => styles.emptyState
+  overridesResolver: (_props, styles) => styles.emptyState
 })(({ theme }) => ({
   ...theme.typography.caption,
   display: 'flex',
@@ -163,7 +170,7 @@ const AutocompleteEmptyState = styled('div', {
 const AutocompleteSearch = styled(TextField, {
   name: 'ESAutocomplete',
   slot: 'Search',
-  overridesResolver: (props, styles) => styles.search
+  overridesResolver: (_props, styles) => styles.search
 })(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.monoA.A100}`,
 
@@ -228,12 +235,25 @@ const AutocompleteSearch = styled(TextField, {
   }
 }));
 
-const AutocompleteInputPlaceholder = styled('span', {
+const AutocompleteInputDisplayValue = styled('div', {
+  name: 'ESAutocomplete',
+  slot: 'DisplayValue',
+  overridesResolver: (_props, styles) => styles.displayValue
+})(() => ({
+  minWidth: 0,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'
+}));
+
+const AutocompleteInputPlaceholder = styled('div', {
   name: 'ESAutocomplete',
   slot: 'InputPlaceholder',
-  overridesResolver: (props, styles) => styles.inputPlaceholder
+  overridesResolver: (_props, styles) => styles.inputPlaceholder
 })(({ theme }) => ({
-  color: theme.palette.monoA.A400
+  color: theme.palette.monoA.A400,
+  minWidth: 0,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'
 }));
 
 /** The autocomplete is used to choose an item from a collection of options. */
@@ -260,6 +280,8 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     groupBy,
 
     loading,
+    inlineSearch,
+
     header,
     footer,
 
@@ -294,6 +316,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   }
 
   const ref = useRef<HTMLDivElement | null>(null);
+  const paperRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
 
@@ -331,7 +354,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     } else {
       formControl.onEmpty();
     }
-  }, [valueArray, formControl.onEmpty, formControl.onFilled]);
+  }, [valueArray, formControl.onEmpty, formControl.onFilled, formControl.filled]);
 
   useEffect(() => {
     if (onBlur && !formControl.focused && previousFocused) {
@@ -354,28 +377,42 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     }
   });
 
-  const onMenuOpen = useCallback(() => {
+  const onMenuOpen = useCallback((disableAutoFocus?: boolean) => {
     if (ref.current) {
       setMenuWidthState(ref.current.clientWidth);
       setOpen(true);
       onOpen && onOpen();
 
-      setTimeout(() => {
-        if (searchInputRef.current) {
-          searchInputRef.current.focus();
-        }
-      }, 0);
+      if (!disableAutoFocus) {
+        setTimeout(() => {
+          if (searchInputRef.current) {
+            searchInputRef.current.focus();
+          } else if (paperRef.current) {
+            const element = paperRef.current.querySelector(
+              'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            ) as HTMLElement | null;
+            if (element) {
+              element.focus();
+            }
+          }
+        }, 0);
+      }
     }
   }, []);
 
-  const onMenuClose = useCallback((_event: unknown, reason: 'backdropClick' | 'escapeKeyDown') => {
+  const onMenuClose = useCallback((event: unknown, reason: 'backdropClick' | 'escapeKeyDown' | 'clickAway') => {
     if (reason === 'escapeKeyDown') {
       isInputFocusRequested.current = true;
+
       requestAnimationFrame(() => {
         if (inputRef.current) {
           inputRef.current.focus();
         }
       });
+    }
+
+    if (reason === 'clickAway' && ref.current?.contains((event as any).target)) {
+      return;
     }
 
     setOpen(false);
@@ -402,9 +439,17 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   );
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    if ([' ', 'ArrowUp', 'ArrowDown', 'Enter'].indexOf(event.key) !== -1) {
+    if (
+      (inlineSearch ? ['ArrowUp', 'ArrowDown', 'Enter'] : [' ', 'ArrowUp', 'ArrowDown', 'Enter']).indexOf(event.key) !==
+      -1
+    ) {
       event.preventDefault();
       onMenuOpen();
+    }
+
+    if (['Escape', 'Tab'].indexOf(event.key) !== -1) {
+      setOpen(false);
+      onClose && onClose();
     }
   };
 
@@ -413,12 +458,18 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
       return;
     }
 
-    onMenuOpen();
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    });
+
+    onMenuOpen(!!inlineSearch);
   };
 
   const notched = formControl.filled || formControl.focused || !!startAdornment || !!open;
 
-  const ownerState = { classes: inClasses };
+  const ownerState = { classes: inClasses, inlineSearch };
   const classes = useUtilityClasses(ownerState);
 
   const groupedOptions: ReactNode[] = [];
@@ -461,30 +512,38 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
       </AutocompleteMenuItem>
     );
   }
-
   return (
     <>
       <AutocompleteRoot
         ref={ref}
+        autoComplete={inlineSearch ? 'off' : undefined}
+        autoFocus={inlineSearch ? formControl.focused : false}
         className={clsx(className, classes.root)}
         disabled={formControl.disabled}
         endAdornment={endAdornment}
         error={formControl.error}
         fullWidth={props.fullWidth}
         id={id}
-        inputComponent={'div' as never}
+        inputComponent={inlineSearch && formControl.focused ? 'input' : ('div' as never)}
         inputProps={{
           children:
-            valueDisplay ||
-            ((notched || !label) && (
-              <AutocompleteInputPlaceholder className={classes.inputPlaceholder}>
-                {placeholder}
-              </AutocompleteInputPlaceholder>
-            )),
+            inlineSearch && formControl.focused ? null : valueDisplay ? (
+              <AutocompleteInputDisplayValue className={classes.displayValue}>
+                {valueDisplay}
+              </AutocompleteInputDisplayValue>
+            ) : (
+              (notched || !label) && (
+                <AutocompleteInputPlaceholder className={classes.inputPlaceholder}>
+                  {placeholder}
+                </AutocompleteInputPlaceholder>
+              )
+            ),
           className: classes.input,
-          role: 'button',
+          role: inlineSearch ? 'input' : 'button',
           tabIndex: formControl.disabled ? -1 : 0,
-          onBlur: formControl.onBlur,
+          onBlur: () => {
+            formControl.onBlur();
+          },
           onFocus: formControl.onFocus,
           onKeyDown,
           ['aria-describedby']: ariaDescribedby,
@@ -494,88 +553,106 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         label={label}
         name={name}
         notched={notched}
+        placeholder={inlineSearch ? placeholder : undefined}
         required={formControl.required}
         startAdornment={startAdornment}
         sx={sx}
+        value={inlineSearch && formControl.focused ? SearchProps?.value : null}
+        onChange={
+          inlineSearch && formControl.focused
+            ? (e) => {
+                SearchProps?.onChange?.(e);
+                onMenuOpen(true);
+              }
+            : undefined
+        }
         onMouseDown={onMouseDown}
       >
-        {valueDisplay}
+        {inlineSearch ? null : valueDisplay}
       </AutocompleteRoot>
-      <AutocompletePopover
-        anchorEl={ref.current}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center'
-        }}
-        className={classes.popover}
-        open={!!open}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center'
-        }}
-        onClose={onMenuClose}
-        {...PopoverProps}
-        disableRestoreFocus
-        PaperProps={{
-          ...PopoverProps?.PaperProps,
-          style: { width: menuWidthState, ...PopoverProps?.PaperProps?.style }
-        }}
+      <ClickAwayListener
+        onClickAway={(e) => onMenuClose(e, 'clickAway')}
+        {...(!inlineSearch && { mouseEvent: false, touchEvent: false })}
       >
-        {!!SearchProps && (
-          <AutocompleteSearch
-            autoFocus
-            fullWidth
-            className={classes.search}
-            inputRef={searchInputRef}
-            placeholder={labelSearch}
-            size="40"
-            {...SearchProps}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">{iconSearch}</InputAdornment>,
-              endAdornment: !!SearchProps.value && (
-                <InputAdornment position="end">
-                  <Button
-                    disableFocusRipple
-                    disableRipple
-                    aria-label={labelSearchClear}
-                    color="monoA"
-                    size="24"
-                    onClick={() => {
-                      if (SearchProps.onChange) {
-                        SearchProps.onChange({ target: { value: '' } } as never);
-                        if (searchInputRef.current) {
-                          searchInputRef.current.focus();
+        <AutocompletePopover
+          anchorEl={ref.current}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center'
+          }}
+          className={classes.popover}
+          open={!!open}
+          ownerState={ownerState}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center'
+          }}
+          onClose={onMenuClose}
+          {...PopoverProps}
+          disableRestoreFocus
+          PaperProps={{
+            ...PopoverProps?.PaperProps,
+            ref: paperRef,
+            style: { width: menuWidthState, ...PopoverProps?.PaperProps?.style }
+          }}
+          disableAutoFocus={!!inlineSearch}
+        >
+          {!!SearchProps && !inlineSearch && (
+            <AutocompleteSearch
+              autoFocus
+              fullWidth
+              className={classes.search}
+              inputRef={searchInputRef}
+              placeholder={labelSearch}
+              size="40"
+              {...SearchProps}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">{iconSearch}</InputAdornment>,
+                endAdornment: !!SearchProps.value && (
+                  <InputAdornment position="end">
+                    <Button
+                      disableFocusRipple
+                      disableRipple
+                      aria-label={labelSearchClear}
+                      color="monoA"
+                      size="24"
+                      onClick={() => {
+                        if (SearchProps.onChange) {
+                          SearchProps.onChange({ target: { value: '' } } as never);
+                          if (searchInputRef.current) {
+                            searchInputRef.current.focus();
+                          }
                         }
-                      }
-                    }}
-                  >
-                    {iconSearchClear}
-                  </Button>
-                </InputAdornment>
-              ),
-              ...SearchProps.InputProps
-            }}
-          />
-        )}
-        {header}
-        {loading ? (
-          <AutocompleteEmptyState className={classes.emptyState}>
-            <SpinnerRing color="monoA" size={16} /> {labelLoading}
-          </AutocompleteEmptyState>
-        ) : options.length ? (
-          <AutocompleteMenuList className={classes.menuList}>
-            {groupedOptions}
-            {!!onLoadMore && (
-              <AutocompleteSentinel ref={setSentinelRef} disabled className={classes.sentinel} tabIndex={-1} />
-            )}
-          </AutocompleteMenuList>
-        ) : (
-          <AutocompleteEmptyState className={classes.emptyState}>
-            {!!SearchProps?.value ? labelNoMatches : labelNoOptions}
-          </AutocompleteEmptyState>
-        )}
-        {footer}
-      </AutocompletePopover>
+                      }}
+                    >
+                      {iconSearchClear}
+                    </Button>
+                  </InputAdornment>
+                ),
+                ...SearchProps.InputProps
+              }}
+            />
+          )}
+          {header}
+          {loading ? (
+            <AutocompleteEmptyState className={classes.emptyState}>
+              <SpinnerRing color="monoA" size={16} /> {labelLoading}
+            </AutocompleteEmptyState>
+          ) : options.length ? (
+            <AutocompleteMenuList className={classes.menuList}>
+              {groupedOptions}
+              {!!onLoadMore && (
+                <AutocompleteSentinel ref={setSentinelRef} disabled className={classes.sentinel} tabIndex={-1} />
+              )}
+            </AutocompleteMenuList>
+          ) : (
+            <AutocompleteEmptyState className={classes.emptyState}>
+              {!!SearchProps?.value ? labelNoMatches : labelNoOptions}
+            </AutocompleteEmptyState>
+          )}
+          {footer}
+        </AutocompletePopover>
+      </ClickAwayListener>
     </>
   );
 };

@@ -25,8 +25,11 @@ export type AutocompleteProps<T> = {
   /** If provided, the options will be grouped under the returned value. */
   groupBy?: (option: T) => number | string;
 
+  /** If true, it is possible to enter a search string in the input itself. */
+  inlineSearch?: boolean;
   /** If true, the component is in a loading state. This shows the labelLoading in place of options (only if options are empty). */
   loading?: boolean;
+
   /** Children content for the menu header. */
   header?: ReactNode;
   /** Children content for the menu footer. */

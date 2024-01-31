@@ -70,6 +70,7 @@ export type AutocompleteFieldProps<T> = {
     | 'groupBy'
     | 'header'
     | 'id'
+    | 'inlineSearch'
     | 'label'
     | 'loading'
     | 'name'
