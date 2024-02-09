@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.12](https://github.com/Elonsoft/elonkit-react/compare/v0.8.11...v0.8.12) (2024-02-09)
+
+
+### Features
+
+* **Autocomplete:** add inline search ([971e724](https://github.com/Elonsoft/elonkit-react/commit/971e7242c203d2094f79396a2f46b8d0ec1de948))
+* **Calendar:** add new component ([7c5e9ed](https://github.com/Elonsoft/elonkit-react/commit/7c5e9ed2cc2015deaa3017ae98f5727cd7e16fb6))
+
 ### [0.8.11](https://github.com/Elonsoft/elonkit-react/compare/v0.8.10...v0.8.11) (2024-01-29)
 
 

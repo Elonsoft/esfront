@@ -11,7 +11,7 @@ import { capitalize } from '@mui/material/utils';
 import { CalendarButton, CalendarButtonProps } from './CalendarButton';
 import { useCalendar } from './useCalendar';
 
-import { useDateAdapterContext } from '..';
+import { useDateAdapterContext } from '../DateAdapter';
 
 type CalendarOwnerState = {
   classes?: CalendarProps['classes'];
