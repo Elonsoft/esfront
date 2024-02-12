@@ -178,7 +178,7 @@ const CalendarButtonWrapper = styled('div', {
 })(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
-  height: '36px',
+  height: '32px',
   justifyContent: 'center',
   position: 'relative',
   width: '100%',
@@ -223,7 +223,7 @@ const CalendarButtonButton = styled(ButtonBase, {
     borderRadius: '6px',
     display: 'flex',
     fontFamily: 'inherit',
-    height: '36px',
+    height: '32px',
     justifyContent: 'center',
     width: '100%',
 
