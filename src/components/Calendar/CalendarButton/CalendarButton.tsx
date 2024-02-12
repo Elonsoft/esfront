@@ -69,7 +69,7 @@ const CalendarButtonRoot = styled('div', {
       position && styles[`position${capitalize(position)}`]
     ];
   }
-})(({ theme }) => ({
+})<{ ownerState: CalendarButtonOwnerState }>(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
   justifyContent: 'center',
@@ -312,6 +312,7 @@ export const CalendarButton = (inProps: CalendarButtonProps) => {
   return (
     <CalendarButtonRoot
       className={clsx(className, classes.root)}
+      ownerState={ownerState}
       sx={sx}
       onClick={onClick}
       onFocus={onHover}

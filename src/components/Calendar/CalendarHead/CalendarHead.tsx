@@ -27,7 +27,7 @@ const useUtilityClasses = (ownerState: CalendarHeadOwnerState) => {
 const CalendarHeadRoot = styled('div', {
   name: 'ESCalendarHead',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (_props, styles) => styles.root
 })(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(7, 1fr)',
@@ -38,7 +38,7 @@ const CalendarHeadRoot = styled('div', {
 const CalenderHeadDay = styled(Typography, {
   name: 'ESCalendarHead',
   slot: 'Day',
-  overridesResolver: (props, styles) => styles.day
+  overridesResolver: (_props, styles) => styles.day
 })(({ theme }) => ({
   color: theme.palette.monoA.A500,
   display: 'flex',
