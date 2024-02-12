@@ -38,7 +38,7 @@ const CalendarRoot = styled('div', {
 
     return [styles.root, styles[`rows${capitalize(rows)}`]];
   }
-})(() => ({
+})<{ ownerState: CalendarOwnerState }>(() => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(7, 1fr)',
   rowGap: '4px',
@@ -143,7 +143,7 @@ export const Calendar = (inProps: CalendarProps) => {
   };
 
   return (
-    <CalendarRoot className={clsx(classes.root, className)} sx={sx}>
+    <CalendarRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {prevDates.map((date) =>
         showPrevMonth ? (
           <CalendarButton key={date} inactive {...getButtonProps(year, month - 1, date)}>
