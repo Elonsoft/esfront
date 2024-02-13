@@ -46,7 +46,7 @@ const SidebarToggleRoot = styled('div', {
 const SidebarToggleTooltip = styled(
   ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
   {
-    name: 'ESidebarToggle',
+    name: 'ESSidebarToggle',
     slot: 'Tooltip',
     overridesResolver: (props, styles) => styles.tooltip
   }
