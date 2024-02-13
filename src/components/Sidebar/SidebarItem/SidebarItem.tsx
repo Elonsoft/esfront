@@ -234,7 +234,7 @@ const SidebarItemNestedMenu = styled('div', {
 const SidebarItemTooltip = styled(
   ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
   {
-    name: 'ESidebarItem',
+    name: 'ESSidebarItem',
     slot: 'Tooltip',
     overridesResolver: (props, styles) => styles.tooltip
   }
