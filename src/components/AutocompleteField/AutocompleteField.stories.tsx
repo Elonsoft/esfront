@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 
 import { AutocompleteField, AutocompleteFieldProps } from '.';
 
-import { AutocompleteFooter, AutocompleteHeader } from '../Autocomplete';
+import { AutocompleteMenuFooter, AutocompleteMenuHeader } from '../AutocompleteMenu';
 
 interface User {
   id: number;
@@ -214,8 +214,8 @@ export const Demo: Story = {
       closeAfterSelect: args.closeAfterSelect,
       disabled: args.disabled,
       error: args.error,
-      header: args.header && <AutocompleteHeader>{args.header}</AutocompleteHeader>,
-      footer: args.footer && <AutocompleteFooter>{args.footer}</AutocompleteFooter>,
+      header: args.header && <AutocompleteMenuHeader>{args.header}</AutocompleteMenuHeader>,
+      footer: args.footer && <AutocompleteMenuFooter>{args.footer}</AutocompleteMenuFooter>,
       fullWidth: true,
       inlineSearch: args.inlineSearch,
       getOptionLabel: getUserLabel,
