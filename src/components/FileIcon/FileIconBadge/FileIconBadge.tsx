@@ -34,7 +34,7 @@ const FileIconBadgeRoot = styled(Typography, {
   }
 })<{ ownerState: FileIconBadgeOwnerState }>(({ theme, ownerState }) => ({
   alignSelf: 'flex-start',
-  borderRadius: '3px',
+  borderRadius: '4px',
   display: 'block',
   color: theme.palette.monoB[500],
   left: '-5px',
