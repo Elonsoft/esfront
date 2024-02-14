@@ -1,6 +1,6 @@
 import { AlertCloseProps } from '../Alert';
 import { AudioPlayerProps } from '../AudioPlayer';
-import { AutocompleteProps } from '../Autocomplete';
+import { AutocompleteMenuProps } from '../AutocompleteMenu';
 import { BreadcrumbsProps } from '../Breadcrumbs';
 import { CalendarHeadProps } from '../Calendar';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
@@ -35,9 +35,9 @@ export interface Localization {
         | 'labelVolume'
       >;
     };
-    ESAutocomplete: {
+    ESAutocompleteMenu: {
       defaultProps: Pick<
-        AutocompleteProps<unknown>,
+        AutocompleteMenuProps<unknown>,
         'labelNoOptions' | 'labelNoMatches' | 'labelLoading' | 'labelSearch' | 'labelSearchClear'
       >;
     };
@@ -141,7 +141,7 @@ export const en: Localization = {
         labelVolume: 'Volume'
       }
     },
-    ESAutocomplete: {
+    ESAutocompleteMenu: {
       defaultProps: {
         labelNoOptions: 'No options',
         labelNoMatches: 'No matches',
@@ -306,7 +306,7 @@ export const ru: Localization = {
         labelVolume: 'Громкость'
       }
     },
-    ESAutocomplete: {
+    ESAutocompleteMenu: {
       defaultProps: {
         labelNoOptions: 'Ничего нет',
         labelNoMatches: 'Совпадений нет',

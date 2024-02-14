@@ -34,15 +34,16 @@ import {
 } from './components/Alert';
 import { AppBarClassKey, AppBarProps } from './components/AppBar';
 import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
-import {
-  AutocompleteClassKey,
-  AutocompleteFooterClassKey,
-  AutocompleteFooterProps,
-  AutocompleteHeaderClassKey,
-  AutocompleteHeaderProps,
-  AutocompleteProps
-} from './components/Autocomplete';
+import { AutocompleteClassKey, AutocompleteProps } from './components/Autocomplete';
 import { AutocompleteFieldClassKey, AutocompleteFieldProps } from './components/AutocompleteField';
+import {
+  AutocompleteMenuClassKey,
+  AutocompleteMenuFooterClassKey,
+  AutocompleteMenuFooterProps,
+  AutocompleteMenuHeaderClassKey,
+  AutocompleteMenuHeaderProps,
+  AutocompleteMenuProps
+} from './components/AutocompleteMenu';
 import { AvatarGroupClassKey, AvatarGroupProps } from './components/AvatarGroup';
 import { BottomSheetClassKey, BottomSheetProps } from './components/BottomSheet';
 import { BreadcrumbClassKey, BreadcrumbProps, BreadcrumbsClassKey, BreadcrumbsProps } from './components/Breadcrumbs';
@@ -293,9 +294,10 @@ declare module '@mui/material/styles/props' {
     ESAlertTitle: AlertTitleProps;
     ESAudioPlayer: AudioPlayerProps;
     ESAutocomplete: AutocompleteProps<any>;
-    ESAutocompleteFooter: AutocompleteFooterProps;
-    ESAutocompleteHeader: AutocompleteHeaderProps;
     ESAutocompleteField: AutocompleteFieldProps<any>;
+    ESAutocompleteMenu: AutocompleteMenuProps<any>;
+    ESAutocompleteMenuFooter: AutocompleteMenuFooterProps;
+    ESAutocompleteMenuHeader: AutocompleteMenuHeaderProps;
     ESBreadcrumbs: BreadcrumbsProps;
     ESBreadcrumb: BreadcrumbProps;
     ESBottomSheet: BottomSheetProps;
@@ -400,9 +402,10 @@ declare module '@mui/material/styles/overrides' {
     ESAlertTitle: AlertTitleClassKey;
     ESAudioPlayer: AudioPlayerClassKey;
     ESAutocomplete: AutocompleteClassKey;
-    ESAutocompleteFooter: AutocompleteFooterClassKey;
-    ESAutocompleteHeader: AutocompleteHeaderClassKey;
     ESAutocompleteField: AutocompleteFieldClassKey;
+    ESAutocompleteMenu: AutocompleteMenuClassKey;
+    ESAutocompleteMenuFooter: AutocompleteMenuFooterClassKey;
+    ESAutocompleteMenuHeader: AutocompleteMenuHeaderClassKey;
     ESBreadcrumbs: BreadcrumbsClassKey;
     ESBreadcrumb: BreadcrumbClassKey;
     ESBottomSheet: BottomSheetClassKey;
@@ -530,17 +533,21 @@ declare module '@mui/material/styles/components' {
       defaultProps?: ComponentsProps['ESAutocomplete'];
       styleOverrides?: ComponentsOverrides['ESAutocomplete'];
     };
-    ESAutocompleteFooter?: {
-      defaultProps?: ComponentsProps['ESAutocompleteFooter'];
-      styleOverrides?: ComponentsOverrides['ESAutocompleteFooter'];
-    };
-    ESAutocompleteHeader?: {
-      defaultProps?: ComponentsProps['ESAutocompleteHeader'];
-      styleOverrides?: ComponentsOverrides['ESAutocompleteHeader'];
-    };
     ESAutocompleteField?: {
       defaultProps?: ComponentsProps['ESAutocompleteField'];
       styleOverrides?: ComponentsOverrides['ESAutocompleteField'];
+    };
+    ESAutocompleteMenu?: {
+      defaultProps?: ComponentsProps['ESAutocompleteMenu'];
+      styleOverrides?: ComponentsOverrides['ESAutocompleteMenu'];
+    };
+    ESAutocompleteMenuFooter?: {
+      defaultProps?: ComponentsProps['ESAutocompleteMenuFooter'];
+      styleOverrides?: ComponentsOverrides['ESAutocompleteMenuFooter'];
+    };
+    ESAutocompleteMenuHeader?: {
+      defaultProps?: ComponentsProps['ESAutocompleteMenuHeader'];
+      styleOverrides?: ComponentsOverrides['ESAutocompleteMenuHeader'];
     };
     ESBreadcrumbs?: {
       defaultProps?: ComponentsProps['ESBreadcrumbs'];

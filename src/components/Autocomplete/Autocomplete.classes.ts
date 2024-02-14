@@ -5,22 +5,8 @@ export type AutocompleteClasses = {
   root: string;
   /** Styles applied to the input element. */
   input: string;
-  /** Styles applied to the popover element. */
-  popover: string;
-  /** Styles applied to the menu list element. */
-  menuList: string;
-  /** Styles applied to the menu group element. */
-  menuGroup: string;
-  /** Styles applied to the menu item element. */
-  menuItem: string;
-  /** Styles applied to the menu item text element. */
-  menuItemText: string;
-  /** Styles applied to the sentinel element. */
-  sentinel: string;
-  /** Styles applied to the empty state element. */
-  emptyState: string;
-  /** Styles applied to the search field element. */
-  search: string;
+  /** Styles applied to the menu element. */
+  menu: string;
   /** Styles applied to the display value element. */
   displayValue: string;
   /** Styles applied to the input placeholder element. */
@@ -35,14 +21,7 @@ export function getAutocompleteUtilityClass(slot: string): string {
 export const autocompleteClasses: AutocompleteClasses = generateUtilityClasses('ESAutocomplete', [
   'root',
   'input',
-  'popover',
-  'menuList',
-  'menuGroup',
-  'menuItem',
-  'menuItemText',
-  'sentinel',
-  'emptyState',
-  'search',
+  'menu',
   'displayValue',
   'inputPlaceholder'
 ]);
