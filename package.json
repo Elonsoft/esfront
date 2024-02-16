@@ -1,6 +1,6 @@
 {
   "name": "@elonkit/react",
-  "version": "0.8.12",
+  "version": "0.8.13",
   "description": "",
   "main": "lib/node/index.js",
   "module": "lib/index.js",

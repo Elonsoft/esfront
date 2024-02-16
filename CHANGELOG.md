@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.13](https://github.com/Elonsoft/elonkit-react/compare/v0.8.12...v0.8.13) (2024-02-16)
+
+
+### Features
+
+* **FileIconBadge:** increase border radius ([8d424da](https://github.com/Elonsoft/elonkit-react/commit/8d424da21af8adf83354842b765b62a848a8a2dd))
+
+
+### Bug Fixes
+
+* **Calendar:** pass ownerState to styled components ([9e29251](https://github.com/Elonsoft/elonkit-react/commit/9e29251c9605653e86092a9dfa95ad7a4c469cf9))
+* **CalendarButton:** reduce button height ([5dfb3ea](https://github.com/Elonsoft/elonkit-react/commit/5dfb3ea817dc421b667b89524ca02d44c7821f4f))
+* **CalendarButton:** replace of S syntax with subsequent-sibling combinator ([869c492](https://github.com/Elonsoft/elonkit-react/commit/869c492d75e4d969d264831bd0271197bbb6d095))
+* **Sidebar:** correct typos in styled components names ([c0fd0a4](https://github.com/Elonsoft/elonkit-react/commit/c0fd0a4fde2547b5f6cca95b4035ae0533527fdd))
+
 ### [0.8.12](https://github.com/Elonsoft/elonkit-react/compare/v0.8.11...v0.8.12) (2024-02-09)
 
 
