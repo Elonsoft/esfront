@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/Elonsoft/elonkit-react/compare/v0.8.13...v0.9.0) (2024-02-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **AutocompleteMenu:** add new component
+
+### Features
+
+* **AutocompleteMenu:** add new component ([6ff8e89](https://github.com/Elonsoft/elonkit-react/commit/6ff8e89dcc861d5f8b4bba345220e012a9d226bb))
+* **Gallery:** add new component ([f5311c6](https://github.com/Elonsoft/elonkit-react/commit/f5311c6e9afd1e39510e6d84586ab45c0b24daee))
+
 ### [0.8.13](https://github.com/Elonsoft/elonkit-react/compare/v0.8.12...v0.8.13) (2024-02-16)
 
 
