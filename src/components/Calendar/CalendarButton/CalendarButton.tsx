@@ -148,9 +148,9 @@ const CalendarButtonRoot = styled('div', {
     }
   },
 
-  [`&.${calendarButtonClasses.selected}.${calendarButtonClasses.positionStart}:not(:nth-last-child(1 of .${calendarButtonClasses.selected})) .${calendarButtonClasses.wrapper}`]:
+  [`&.${calendarButtonClasses.selected}.${calendarButtonClasses.positionStart}:has(~ .${calendarButtonClasses.selected}) .${calendarButtonClasses.wrapper}`]:
     {
-      background: `linear-gradient(to right, transparent 50% , ${theme.palette.secondary.A200} 50%)`,
+      background: `linear-gradient(to right, transparent 50%, ${theme.palette.secondary.A200} 50%)`,
       borderBottomLeftRadius: '6px',
       borderTopLeftRadius: '6px',
 
@@ -159,9 +159,9 @@ const CalendarButtonRoot = styled('div', {
       }
     },
 
-  [`&.${calendarButtonClasses.selected}.${calendarButtonClasses.positionEnd}:not(:nth-child(1 of .${calendarButtonClasses.selected})) .${calendarButtonClasses.wrapper}`]:
+  [`&.${calendarButtonClasses.selected} ~ .${calendarButtonClasses.selected}.${calendarButtonClasses.positionEnd} .${calendarButtonClasses.wrapper}`]:
     {
-      background: `linear-gradient(to left, transparent 50% , ${theme.palette.secondary.A200} 50%)`,
+      background: `linear-gradient(to left, transparent 50%, ${theme.palette.secondary.A200} 50%)`,
       borderBottomRightRadius: '6px',
       borderTopRightRadius: '6px',
 
