@@ -7,6 +7,7 @@ export { useDebounce } from './useDebounce';
 export { useDocumentEventListener } from './useDocumentEventListener';
 export { useDragOver } from './useDragOver';
 export { useForceUpdate } from './useForceUpdate';
+export { useForkRef } from './useForkRef';
 export { useGeolocation } from './useGeolocation';
 export { useIntersectionObserver } from './useIntersectionObserver';
 export { useLatest } from './useLatest';

@@ -12,6 +12,7 @@ import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { useGalleryThumbnailsContext } from './GalleryThumbnails.context';
 
+import { useForkRef } from '../../../hooks';
 import { IconChevronLeftW400, IconChevronRightW400 } from '../../../icons';
 import { Swiper, SwiperImperativeActions, useSwiperContext } from '../../Swiper';
 import { useGalleryContext } from '../Gallery.context';
@@ -185,6 +186,8 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
     }
   };
 
+  const actionsRef = useForkRef(actions, SwiperProps?.actions);
+
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
@@ -196,12 +199,12 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
     >
       <GalleryThumbnailsSwiper
         draggable
-        actions={actions}
         buttonNext={<GalleryThumbnailsButtonNext icon={iconNext} label={labelNext} />}
         buttonPrev={<GalleryThumbnailsButtonPrev icon={iconPrev} label={labelPrev} />}
         className={classes.swiper}
         gap={8}
         {...SwiperProps}
+        actions={actionsRef}
       >
         {items.map((i, index) => (
           <GalleryThumbnailsItem key={i.id} isActive={index === item} onClick={onClick(index)}>
