@@ -12,6 +12,7 @@ import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { useGallerySwiperContext } from './GallerySwiper.context';
 
+import { useForkRef } from '../../../hooks';
 import { IconChevronLeftW400, IconChevronRightW400 } from '../../../icons';
 import { Swiper, useSwiperContext } from '../../Swiper';
 import { useGalleryContext } from '../Gallery.context';
@@ -190,6 +191,8 @@ export const GallerySwiper = (inProps: GallerySwiperProps) => {
     setItem(index);
   };
 
+  const actionsRef = useForkRef(setActions, SwiperProps?.actions);
+
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
@@ -197,13 +200,13 @@ export const GallerySwiper = (inProps: GallerySwiperProps) => {
     <GallerySwiperRoot className={clsx(classes.root, className)} sx={sx} {...bind()}>
       <GallerySwiperSwiper
         snap
-        actions={setActions}
         buttonNext={<GallerySwiperButtonNext icon={iconNext} label={labelNext} />}
         buttonPrev={<GallerySwiperButtonPrev icon={iconPrev} label={labelPrev} />}
         className={classes.swiper}
         gap={16}
         onActiveSlideChange={onActiveSlideChange}
         {...SwiperProps}
+        actions={actionsRef}
       >
         {items.map((i, index) => children(i, index))}
       </GallerySwiperSwiper>
