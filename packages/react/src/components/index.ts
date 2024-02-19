@@ -6,6 +6,7 @@ export * from './AutocompleteField';
 export * from './AutocompleteMenu';
 export * from './Avatar';
 export * from './AvatarGroup';
+export * from './Badge';
 export * from './Banner';
 export * from './BottomSheet';
 export * from './Breadcrumbs';

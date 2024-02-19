@@ -342,6 +342,7 @@ declare module '@mui/material/styles/props' {
     ESBanner: BannerProps;
     ESBannerActions: BannerActionsProps;
     ESBannerTitle: BannerTitleProps;
+    ESBadge: BadgeProps;
     ESBreadcrumbs: BreadcrumbsProps;
     ESBreadcrumb: BreadcrumbProps;
     ESBottomSheet: BottomSheetProps;
@@ -469,6 +470,7 @@ declare module '@mui/material/styles/overrides' {
     ESBanner: BannerClassKey;
     ESBannerActions: BannerActionsClassKey;
     ESBannerTitle: BannerTitleClassKey;
+    ESBadge: BadgeClassKey;
     ESBreadcrumbs: BreadcrumbsClassKey;
     ESBreadcrumb: BreadcrumbClassKey;
     ESBottomSheet: BottomSheetClassKey;
@@ -642,6 +644,10 @@ declare module '@mui/material/styles/components' {
     ESBannerTitle?: {
       defaultProps?: ComponentsProps['ESBannerTitle'];
       styleOverrides?: ComponentsOverrides['ESBannerTitle'];
+    };
+    ESBadge?: {
+      defaultProps?: ComponentsProps['ESBadge'];
+      styleOverrides?: ComponentsOverrides['ESBadge'];
     };
     ESBreadcrumbs?: {
       defaultProps?: ComponentsProps['ESBreadcrumbs'];
