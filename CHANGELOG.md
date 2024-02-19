@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.1](https://github.com/Elonsoft/elonkit-react/compare/v0.9.0...v0.9.1) (2024-02-19)
+
+
+### Features
+
+* **Gallery:** add fork ref for swiper actions ([e24b080](https://github.com/Elonsoft/elonkit-react/commit/e24b0807027edf1f9e19ce3a3327e6e420d0290e))
+
 ## [0.9.0](https://github.com/Elonsoft/elonkit-react/compare/v0.8.13...v0.9.0) (2024-02-16)
 
 
