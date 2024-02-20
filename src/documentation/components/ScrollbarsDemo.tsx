@@ -16,7 +16,7 @@ export const ScrollbarsDemo = () => {
   const content = (
     <Typography
       component="div"
-      sx={{ height: '1000px', width: '1000px', padding: '8px', backgroundColor: 'monoA.A75', color: 'monoA.A900' }}
+      sx={{ height: '1000px', width: '1000px', padding: '8px', color: 'monoA.A900' }}
       variant="body200"
     >
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -32,6 +32,7 @@ export const ScrollbarsDemo = () => {
       <Box
         sx={(theme) => ({
           height: '150px',
+          backgroundColor: 'monoA.A75',
           ...theme.scrollbars.normal
         })}
       >
@@ -43,6 +44,7 @@ export const ScrollbarsDemo = () => {
       <Box
         sx={(theme) => ({
           height: '150px',
+          backgroundColor: 'monoA.A75',
           ...theme.scrollbars.thin
         })}
       >
@@ -54,6 +56,7 @@ export const ScrollbarsDemo = () => {
       <Box
         sx={(theme) => ({
           height: '150px',
+          backgroundColor: 'monoA.A75',
           ...theme.scrollbars.overlay
         })}
       >
