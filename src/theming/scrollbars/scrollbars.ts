@@ -86,16 +86,16 @@ export const createScrollbars = (theme: Theme) => {
     normal: getScrollbar(16, 2),
     thin: getScrollbar(10, 1),
     overlay: {
+      '@supports not selector(::-webkit-scrollbar)': {
+        scrollbarWidth: 'thin'
+      },
+
       overflow: 'auto',
-      scrollbarWidth: 'thin',
       color: 'transparent',
+
       ...(scrollbarWidth > 0 && {
-        transition: `color ${theme.transitions.duration.shortest}ms`,
-        '&': {
-          overflow: 'overlay' as any
-        },
-        '&:hover': {
-          color: theme.palette.monoA.A200
+        '&:hover::-webkit-scrollbar-thumb': {
+          boxShadow: `inset 0 0 0 10px ${theme.palette.monoA.A200}`
         },
         '&::-webkit-scrollbar': {
           width: '14px',
@@ -109,7 +109,6 @@ export const createScrollbars = (theme: Theme) => {
           backgroundColor: 'transparent',
           border: '4px solid transparent',
           backgroundClip: 'padding-box',
-          boxShadow: 'inset 0 0 0 10px',
 
           '&:hover': {
             boxShadow: `inset 0 0 0 10px ${theme.palette.monoA.A400}`
