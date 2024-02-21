@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { Children, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 
 import { SwiperAlignment, SwiperDirection, SwiperProps } from './Swiper.types';
 
@@ -82,7 +82,7 @@ const SwiperRoot = styled('div', {
 const SwiperWrapper = styled('div', {
   name: 'ESSwiper',
   slot: 'Wrapper',
-  overridesResolver: (props, styles) => styles.wrapper
+  overridesResolver: (_props, styles) => styles.wrapper
 })(() => ({
   position: 'relative'
 }));
@@ -433,7 +433,8 @@ export const Swiper = (inProps: SwiperProps) => {
 
   useEffect(() => {
     onScroll();
-  }, []);
+    getPaginationRange();
+  }, [Children.toArray(children).filter(Boolean).length]);
 
   useDocumentEventListener('touchend', () => {
     setTouchDown(false);
