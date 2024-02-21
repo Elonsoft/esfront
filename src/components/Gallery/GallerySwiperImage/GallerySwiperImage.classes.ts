@@ -3,6 +3,8 @@ import { generateUtilityClass, generateUtilityClasses } from '@mui/base';
 export type GallerySwiperImageClasses = {
   /** Styles applied to the root element. */
   root: string;
+  /** Styles applied to the image element. */
+  image: string;
 };
 export type GallerySwiperImageClassKey = keyof GallerySwiperImageClasses;
 
@@ -11,5 +13,6 @@ export function getGallerySwiperImageUtilityClass(slot: string): string {
 }
 
 export const gallerySwiperImageClasses: GallerySwiperImageClasses = generateUtilityClasses('ESGallerySwiperImage', [
-  'root'
+  'root',
+  'image'
 ]);

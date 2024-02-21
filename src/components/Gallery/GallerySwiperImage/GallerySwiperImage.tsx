@@ -15,7 +15,8 @@ const useUtilityClasses = (ownerState: GallerySwiperImageOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
+    image: ['image']
   };
 
   return composeClasses(slots, getGallerySwiperImageUtilityClass, classes);
@@ -65,7 +66,7 @@ export const GallerySwiperImage = (inProps: GallerySwiperImageProps) => {
 
   return (
     <GallerySwiperImageRoot className={clsx(classes.root, className)} sx={sx}>
-      <GallerySwiperImageImage alt={alt} src={src} />
+      <GallerySwiperImageImage alt={alt} className={classes.image} src={src} />
     </GallerySwiperImageRoot>
   );
 };
