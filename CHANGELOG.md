@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/Elonsoft/elonkit-react/compare/v0.9.1...v0.9.2) (2024-02-21)
+
+
+### Features
+
+* **scrollbars:** add color variants ([a474d19](https://github.com/Elonsoft/elonkit-react/commit/a474d19fee1284c7215dd57aaacf42fa8298be2d))
+
+
+### Bug Fixes
+
+* **GallerySwiperImage:** add utility class to image element ([2a594ec](https://github.com/Elonsoft/elonkit-react/commit/2a594ec6744b058bc47ffb61371e81338b7f1a5e))
+* **scrollbars:** disable scrollbar-width for webkit browsers ([b5ea6a7](https://github.com/Elonsoft/elonkit-react/commit/b5ea6a70539f8ea547964b1c66a5a9e157f0f7cf))
+* **Swiper:** update buttons and pagination states on children count change ([2d6df32](https://github.com/Elonsoft/elonkit-react/commit/2d6df32944000777857e2a7a39cde7ef1c0aa470))
+
 ### [0.9.1](https://github.com/Elonsoft/elonkit-react/compare/v0.9.0...v0.9.1) (2024-02-19)
 
 
