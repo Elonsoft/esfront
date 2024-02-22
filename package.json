@@ -9,9 +9,9 @@
   "sideEffects": false,
   "scripts": {
     "start": "storybook dev -p 8000",
-    "start:typedoc": "yarn run typedoc && yarn run start",
+    "start:typedoc": "npm run typedoc && npm run start",
     "build": "rimraf ./lib && rollup -c rollup.config.js",
-    "build:storybook": "yarn run typedoc && storybook build",
+    "build:storybook": "npm run typedoc && storybook build",
     "test": "cross-env TZ=utc jest",
     "test:watch": "cross-env TZ=utc jest --watch",
     "lint": "eslint src",
