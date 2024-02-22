@@ -109,6 +109,7 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.2.2",
+    "@use-gesture/react": "^10.2.27",
     "react": "^17.0.0 || ^18.0.0"
   },
   "files": [
