@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 
 import clsx from 'clsx';
-import { getDropzoneUtilityClass } from './Dropzone.classes';
+import { dropzoneClasses, getDropzoneUtilityClass } from './Dropzone.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -14,6 +14,7 @@ import { validateFileType } from './validateFileType';
 
 import { useDocumentEventListener, useDragOver } from '../../hooks';
 import { ButtonBase, buttonBaseClasses } from '../ButtonBase';
+import { touchRippleClasses } from '../TouchRipple';
 
 type DropzoneOwnerState = {
   classes?: DropzoneProps['classes'];
@@ -71,13 +72,10 @@ const DropzoneDropzone = styled(ButtonBase, {
 })<{ ownerState: DropzoneOwnerState }>(({ theme }) => ({
   width: '100%',
   display: 'flex',
-  padding: '22px 24px',
+  padding: '32px 24px',
   border: `1px dashed ${theme.vars.palette.monoA.A200}`,
   borderRadius: 4,
-  transitionDuration: `${theme.transitions.duration.short}ms`,
-  transitionProperty: 'background-color, border',
-  transitionTimingFunction: theme.transitions.easing.easeInOut,
-  '--background': theme.vars.palette.monoA.A50,
+  '--background': theme.vars.palette.monoA.A25,
   '--hovered': theme.vars.palette.monoA.A50,
   '--pressed': theme.vars.palette.monoA.A150,
 
@@ -88,19 +86,12 @@ const DropzoneDropzone = styled(ButtonBase, {
   variants: [
     {
       props: {
-        isDragOverDocument: true,
-      },
-      style: {
-        '--background': theme.vars.palette.primary.A50,
-        border: `1px dashed ${theme.vars.palette.primary.A500}`,
-      },
-    },
-    {
-      props: {
         isDragOver: true,
       },
       style: {
-        '--background': theme.vars.palette.primary.A100,
+        [`& .${touchRippleClasses.root}`]: {
+          backgroundColor: 'var(--hovered)',
+        },
       },
     },
     {
@@ -110,6 +101,10 @@ const DropzoneDropzone = styled(ButtonBase, {
       style: {
         '--background': theme.vars.palette.error.A50,
         border: `1px dashed ${theme.vars.palette.error.A800}`,
+
+        [` .${dropzoneClasses.heading}`]: {
+          color: theme.vars.palette.error[300],
+        },
       },
     },
   ],
@@ -123,20 +118,20 @@ const DropzoneHeading = styled('div', {
   alignItems: 'center',
   color: theme.vars.palette.primary[300],
   display: 'grid',
-  gap: 4,
+  gap: '4px',
   gridAutoFlow: 'column',
   justifyContent: 'center',
+  minHeight: '32px',
 }));
 
 const DropzoneHeadingText = styled(Typography, {
   name: 'ESDropzone',
   slot: 'HeadingText',
   overridesResolver: (props, styles) => styles.headingText,
-})(({ theme }) => ({
-  paddingBottom: 8,
-  paddingTop: 8,
-  lineHeight: theme.typography.pxToRem(16),
-}));
+})({
+  paddingTop: '4px',
+  paddingBottom: '4px',
+});
 
 const DropzoneSubheading = styled(Typography, {
   name: 'ESDropzone',
@@ -144,7 +139,7 @@ const DropzoneSubheading = styled(Typography, {
   overridesResolver: (props, styles) => styles.subheading,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A500,
-  marginTop: 4,
+  marginTop: '4px',
 }));
 
 const DropzoneIcon = styled('div', {
@@ -333,7 +328,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
             </DropzoneHeadingText>
           ) : (
             !!heading && (
-              <DropzoneHeadingText className={classes.headingText} variant="button">
+              <DropzoneHeadingText className={classes.headingText} variant="body100">
                 {heading}
               </DropzoneHeadingText>
             )
