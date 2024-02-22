@@ -8,14 +8,13 @@ Please have the following versions of the required tools on your machine:
 
 ```
 node ^16.0.0
-yarn ^1.22.0
 ```
 
 ### Development Workflow
 
-After cloning Elonkit, run `yarn install` to fetch its dependencies and then run `yarn husky` in order to install git
-hooks. Make sure to run `yarn typedoc` before the first start - this will generate API documentation for the components
-and hooks. Then, you can run `yarn start` in order to start storybook.
+After cloning Elonkit, run `npm run install` to fetch its dependencies and then run `npm run husky` in order to install
+git hooks. Make sure to run `npm run typedoc` before the first start - this will generate API documentation for the
+components and hooks. Then, you can run `npm run start` in order to start storybook.
 
 ### Components requirements
 
@@ -34,9 +33,9 @@ Follow this requirements when building new or updating existing components.
 Please follow the coding style of the project. We use eslint, prettier and stylelint, so if possible, enable linting in
 your editor to get real-time feedback.
 
-- `yarn lint` checks the code style.
-- `yarn prettier:check` checks the code formatting.
-- `yarn prettier:write` reformats the code.
+- `npm run lint` checks the code style.
+- `npm run prettier:check` checks the code formatting.
+- `npm run prettier:write` reformats the code.
 
 When you submit a Pull Request, they are run again by our continuous integration tools.
 
