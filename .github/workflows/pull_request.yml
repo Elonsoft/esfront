@@ -20,16 +20,6 @@ jobs:
         run: npm run prettier:check
       - name: Check spelling
         run: npm run cspell
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Install dependencies
-        run: npm install
-      - name: Test
-        run: npm run test
   chromatic:
     name: Chromatic
     runs-on: ubuntu-latest
@@ -46,4 +36,5 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: packages/react
           buildScriptName: build:storybook

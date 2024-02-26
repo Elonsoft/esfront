@@ -5,7 +5,7 @@ module.exports = {
   stories: [
     '../**/*.stories.mdx',
     {
-      directory: '../components',
+      directory: '../src/components',
       files: '**/*.stories.tsx',
       titlePrefix: 'Components'
     }
