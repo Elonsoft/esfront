@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "es6",
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "~storybook/*": [".storybook/*"]
+    },
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "lib", "./*.js"]
+}

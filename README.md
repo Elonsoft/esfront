@@ -5,7 +5,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@elonkit/react)](https://www.npmjs.com/package/@elonkit/react)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/elonsoft/elonkit.svg)](https://isitmaintained.com/project/elonsoft/elonkit 'Average time to resolve an issue')
 
-For a full list of componets and usage examples check out our
+For a full list of components and usage examples check out our
 [documentation website](https://elonsoft.github.io/elonkit-react).
 
 ## Contributing

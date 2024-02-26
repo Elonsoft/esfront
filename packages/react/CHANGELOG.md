@@ -341,7 +341,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * **List:** fix ripple effect on safari ([be6be43](https://github.com/Elonsoft/elonkit-react/commit/be6be435944cd7062e1f0ee9c82cb26b860df8bc))
-* add mising ')' in orange color ([e9d7195](https://github.com/Elonsoft/elonkit-react/commit/e9d71955bc34650974d1b756b84677e1939b5bef))
+* add missing ')' in orange color ([e9d7195](https://github.com/Elonsoft/elonkit-react/commit/e9d71955bc34650974d1b756b84677e1939b5bef))
 * replace FC with children prop ([46351ea](https://github.com/Elonsoft/elonkit-react/commit/46351ea0b957ebcc90a25f6279ad94e6d79edf7b))
 * **Dialog:** change paper background color ([d44f1e2](https://github.com/Elonsoft/elonkit-react/commit/d44f1e257323b0544f940e78d3c894e8fe466def))
 

@@ -30,8 +30,8 @@ Follow this requirements when building new or updating existing components.
 
 ### Coding style
 
-Please follow the coding style of the project. We use eslint, prettier and stylelint, so if possible, enable linting in
-your editor to get real-time feedback.
+Please follow the coding style of the project. We use eslint and prettier, so if possible, enable linting in your editor
+to get real-time feedback.
 
 - `npm run lint` checks the code style.
 - `npm run prettier:check` checks the code formatting.
