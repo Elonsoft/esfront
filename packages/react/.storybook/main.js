@@ -3,9 +3,9 @@ const toPath = (filePath) => path.join(process.cwd(), filePath);
 
 module.exports = {
   stories: [
-    '../src/**/*.stories.mdx',
+    '../**/*.stories.mdx',
     {
-      directory: '../src/components',
+      directory: '../components',
       files: '**/*.stories.tsx',
       titlePrefix: 'Components'
     }

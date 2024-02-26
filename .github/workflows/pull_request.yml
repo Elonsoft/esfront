@@ -15,7 +15,7 @@ jobs:
       - name: Lint commit messages
         uses: wagoid/commitlint-github-action@v1
       - name: Lint code
-        run: npm run lint
+        run: npm run eslint
       - name: Check formatting
         run: npm run prettier:check
       - name: Check spelling
