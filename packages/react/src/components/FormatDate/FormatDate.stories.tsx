@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import requirements from './FormatDate.stories.requirements.md?raw';
 import { FormatDate } from '.';
 
-import { ReferencesList } from '../../.storybook/components/ReferencesList';
+import { ReferencesList } from '../../../.storybook/components/ReferencesList';
 
 const meta: Meta<typeof FormatDate> = {
   tags: ['autodocs'],

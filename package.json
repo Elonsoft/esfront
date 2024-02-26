@@ -18,7 +18,8 @@
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "cspell": "cspell --no-progress .",
-    "husky": "husky install"
+    "husky": "husky install",
+    "release": "lerna version --no-push"
   },
   "repository": {
     "type": "git",

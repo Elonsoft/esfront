@@ -1,4 +1,20 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "version": "independent"
+  "version": "independent",
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "changelogPreset": {
+        "name": "conventional-changelog-conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "Features" },
+          { "type": "fix", "section": "Bug Fixes" },
+          { "type": "build", "section": "Build Changes", "hidden": true }
+        ]
+      },
+      "conventionalCommits": true,
+      "noPush": true,
+      "premajorVersionBump": "force-patch"
+    }
+  }
 }
