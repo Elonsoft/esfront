@@ -18,18 +18,32 @@ const useUtilityClasses = (ownerState: PageHGroupHeadingOwnerState) => {
 
   const slots = {
     root: ['root'],
+    title: ['title'],
     tooltip: ['tooltip'],
+    endAdornment: ['endAdornment'],
   };
 
   return composeClasses(slots, getPageHGroupHeadingUtilityClass, classes);
 };
 
-const PageHGroupHeadingRoot = styled('h1', {
+const PageHGroupHeadingRoot = styled('div', {
   name: 'ESPageHGroupHeading',
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root,
-})<{ ownerState: PageHGroupHeadingOwnerState }>(({ theme }) => ({
+})(({ theme }) => ({
   ...theme.typography.h2,
+  display: 'flex',
+  alignItems: 'flex-start',
+  gap: '12px',
+}));
+
+const PageHGroupHeadingTitle = styled('h1', {
+  name: 'ESPageHGroupHeading',
+  slot: 'Title',
+  overridesResolver: (_props, styles) => styles.title,
+})<{ ownerState: PageHGroupHeadingOwnerState }>(({ theme }) => ({
+  font: 'inherit',
+  letterSpacing: 'inherit',
   alignSelf: 'center',
   padding: 0,
   maxHeight: '100%',
@@ -47,11 +61,23 @@ const PageHGroupHeadingRoot = styled('h1', {
 const PageHGroupHeadingTooltip = styled(
   ({ className, ...props }: TooltipEllipsisProps) => <TooltipEllipsis {...props} classes={{ popper: className }} />,
   {
-    name: 'ESBreadcrumbs',
+    name: 'ESPageHGroupHeading',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip,
+    overridesResolver: (_props, styles) => styles.tooltip,
   }
-)(() => ({}));
+)({});
+
+const PageHGroupHeadingEndAdornment = styled('div', {
+  name: 'ESPageHGroupHeading',
+  slot: 'EndAdornment',
+  overridesResolver: (_props, styles) => styles.endAdornment,
+})(() => ({
+  alignItems: 'center',
+  display: 'inline-flex',
+  flexShrink: 0,
+  height: '1lh',
+  lineHeight: 'inherit',
+}));
 
 export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
   const {
@@ -59,6 +85,7 @@ export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
     children,
     sx,
     maxLines = 1,
+    endAdornment,
     TooltipProps,
     ...props
   } = useThemeProps({
@@ -70,25 +97,30 @@ export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <PageHGroupHeadingTooltip
-      arrow
-      disableInteractive
-      className={classes.tooltip}
-      placement="top"
-      title={children || false}
-      {...TooltipProps}
-    >
-      {({ ref }) => (
-        <PageHGroupHeadingRoot
-          ref={ref as React.RefObject<HTMLHeadingElement>}
-          className={clsx(classes.root, className)}
-          ownerState={ownerState}
-          style={{ '--ESPageHGroupHeading-maxLines': maxLines } as React.CSSProperties}
-          sx={sx}
-        >
-          {children}
-        </PageHGroupHeadingRoot>
+    <PageHGroupHeadingRoot className={clsx(classes.root, className)}>
+      <PageHGroupHeadingTooltip
+        arrow
+        disableInteractive
+        className={classes.tooltip}
+        placement="top"
+        title={children || false}
+        {...TooltipProps}
+      >
+        {({ ref }) => (
+          <PageHGroupHeadingTitle
+            ref={ref as React.RefObject<HTMLHeadingElement>}
+            className={classes.title}
+            ownerState={ownerState}
+            style={{ '--ESPageHGroupHeading-maxLines': maxLines } as React.CSSProperties}
+            sx={sx}
+          >
+            {children}
+          </PageHGroupHeadingTitle>
+        )}
+      </PageHGroupHeadingTooltip>
+      {!!endAdornment && (
+        <PageHGroupHeadingEndAdornment className={classes.endAdornment}>{endAdornment}</PageHGroupHeadingEndAdornment>
       )}
-    </PageHGroupHeadingTooltip>
+    </PageHGroupHeadingRoot>
   );
 };
