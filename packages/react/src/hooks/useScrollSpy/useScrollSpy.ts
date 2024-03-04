@@ -30,7 +30,12 @@ export const useScrollSpy = (items: string[], options?: IntersectionObserverInit
     );
 
     items.forEach((id) => {
+      if (!id) {
+        return;
+      }
+
       const element = document.getElementById(id);
+
       if (element) {
         observer.observe(element);
       }

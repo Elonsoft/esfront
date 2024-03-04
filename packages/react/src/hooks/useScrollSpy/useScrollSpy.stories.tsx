@@ -22,18 +22,16 @@ export const Demo: Story = () => {
   const activeId = useScrollSpy(
     buttons.map(({ id }) => id),
     {
-      ...(containerRef.current
-        ? { root: containerRef.current, rootMargin: `0px 0px -${containerRef.current?.clientHeight}px 0px` }
-        : {})
+      ...(containerRef.current ? { root: containerRef.current, rootMargin: `0px 0px -100% 0px` } : {})
     }
   );
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '40vh', marginTop: '-40px' }}>
       <List sx={{ display: 'flex', flexDirection: 'row' }}>
         {buttons.map((item) => (
           <ListItem key={item.id} sx={{ justifyContent: 'center' }}>
-            <Button disabled={activeId !== item.id} variant="contained">
+            <Button disabled={+activeId !== +item.id} variant="contained">
               {item.text}
             </Button>
           </ListItem>
@@ -42,23 +40,23 @@ export const Demo: Story = () => {
       <Box ref={containerRef} sx={{ overflowY: 'auto' }}>
         <Box
           id="1"
-          sx={(theme) => ({ backgroundColor: theme.palette.pink[100], height: '100vh', marginBottom: '8px' })}
+          sx={(theme) => ({ backgroundColor: theme.palette.pink[100], height: '40vh', marginBottom: '8px' })}
         />
         <Box
           id="2"
-          sx={(theme) => ({ backgroundColor: theme.palette.yellow[100], height: '100vh', marginBottom: '8px' })}
+          sx={(theme) => ({ backgroundColor: theme.palette.yellow[100], height: '40vh', marginBottom: '8px' })}
         />
         <Box
           id="3"
-          sx={(theme) => ({ backgroundColor: theme.palette.grey[100], height: '100vh', marginBottom: '8px' })}
+          sx={(theme) => ({ backgroundColor: theme.palette.grey[100], height: '40vh', marginBottom: '8px' })}
         />
         <Box
           id="4"
-          sx={(theme) => ({ backgroundColor: theme.palette.orange[100], height: '100vh', marginBottom: '8px' })}
+          sx={(theme) => ({ backgroundColor: theme.palette.orange[100], height: '40vh', marginBottom: '8px' })}
         />
         <Box
           id="5"
-          sx={(theme) => ({ backgroundColor: theme.palette.green[100], height: '100vh', marginBottom: '8px' })}
+          sx={(theme) => ({ backgroundColor: theme.palette.green[100], height: '40vh', marginBottom: '8px' })}
         />
       </Box>
     </Box>
