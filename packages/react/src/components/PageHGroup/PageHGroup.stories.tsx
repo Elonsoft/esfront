@@ -11,7 +11,7 @@ import {
   PageHGroupStatus,
 } from '.';
 
-import { IconDotsHorizontalW500, IconPlusW400 } from '../../icons';
+import { IconDotsHorizontalW500, IconInformation2W400, IconPlusW400 } from '../../icons';
 import { DemoBase as BreadcrumbsDemo } from '../Breadcrumbs/Breadcrumbs.stories';
 import { Button } from '../Button';
 
@@ -43,6 +43,11 @@ const meta: Meta<Args> = {
         category: 'PageHGroupHeading',
       },
     },
+    endAdornment: {
+      table: {
+        category: 'PageHGroupHeading',
+      },
+    },
   },
 };
 
@@ -57,7 +62,10 @@ export const Demo: Story = {
       <PageHGroup>
         <PageHGroupBreadcrumbs>{BreadcrumbsDemo.render?.({}, context)}</PageHGroupBreadcrumbs>
         <PageHGroupMain>
-          <PageHGroupHeading maxLines={args.maxLines}>
+          <PageHGroupHeading
+            endAdornment={<IconInformation2W400 sx={{ color: 'monoA.A400' }} />}
+            maxLines={args.maxLines}
+          >
             {args.children || (locale === 'en' ? 'Schedule' : 'Расписание')}
           </PageHGroupHeading>
           <PageHGroupActions>

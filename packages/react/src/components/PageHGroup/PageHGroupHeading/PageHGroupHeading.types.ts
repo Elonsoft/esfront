@@ -20,6 +20,9 @@ export interface PageHGroupHeadingProps {
    */
   maxLines?: number;
 
+  /** Element placed after the children. */
+  endAdornment?: ReactNode;
+
   /** Props applied to the Tooltip component. */
   TooltipProps?: Partial<Omit<TooltipProps, 'children'>>;
 }
