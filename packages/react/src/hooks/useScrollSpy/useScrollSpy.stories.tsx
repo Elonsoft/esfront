@@ -19,6 +19,8 @@ const buttons = [
 export const Demo: Story = () => {
   const containerRef = useRef<HTMLElement>(null);
 
+  const isDocsPage = window.location.href.includes('docs');
+
   const activeId = useScrollSpy(
     buttons.map(({ id }) => id),
     {
@@ -27,7 +29,15 @@ export const Demo: Story = () => {
   );
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '40vh', marginTop: '-40px' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: isDocsPage ? '40vh' : '100vh',
+        marginTop: isDocsPage ? '-40px' : '-35px',
+        paddingTop: isDocsPage ? '0' : '18px'
+      }}
+    >
       <List sx={{ display: 'flex', flexDirection: 'row' }}>
         {buttons.map((item) => (
           <ListItem key={item.id} sx={{ justifyContent: 'center' }}>
@@ -40,23 +50,43 @@ export const Demo: Story = () => {
       <Box ref={containerRef} sx={{ overflowY: 'auto' }}>
         <Box
           id="1"
-          sx={(theme) => ({ backgroundColor: theme.palette.pink[100], height: '40vh', marginBottom: '8px' })}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.pink[100],
+            height: isDocsPage ? '40vh' : '100vh',
+            marginBottom: '8px'
+          })}
         />
         <Box
           id="2"
-          sx={(theme) => ({ backgroundColor: theme.palette.yellow[100], height: '40vh', marginBottom: '8px' })}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.yellow[100],
+            height: isDocsPage ? '40vh' : '100vh',
+            marginBottom: '8px'
+          })}
         />
         <Box
           id="3"
-          sx={(theme) => ({ backgroundColor: theme.palette.grey[100], height: '40vh', marginBottom: '8px' })}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.grey[100],
+            height: isDocsPage ? '40vh' : '100vh',
+            marginBottom: '8px'
+          })}
         />
         <Box
           id="4"
-          sx={(theme) => ({ backgroundColor: theme.palette.orange[100], height: '40vh', marginBottom: '8px' })}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.orange[100],
+            height: isDocsPage ? '40vh' : '100vh',
+            marginBottom: '8px'
+          })}
         />
         <Box
           id="5"
-          sx={(theme) => ({ backgroundColor: theme.palette.green[100], height: '40vh', marginBottom: '8px' })}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.green[100],
+            height: isDocsPage ? '40vh' : '100vh',
+            marginBottom: '8px'
+          })}
         />
       </Box>
     </Box>
