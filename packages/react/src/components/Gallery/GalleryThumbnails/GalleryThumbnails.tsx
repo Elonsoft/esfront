@@ -8,13 +8,14 @@ import { getGalleryThumbnailsUtilityClass } from './GalleryThumbnails.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { useGalleryThumbnailsContext } from './GalleryThumbnails.context';
 
 import { useForkRef } from '../../../hooks';
 import { IconChevronLeftW400, IconChevronRightW400 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
 import { Swiper, SwiperImperativeActions, useSwiperContext } from '../../Swiper';
+import { touchRippleClasses } from '../../TouchRipple';
 import { useGalleryContext } from '../Gallery.context';
 import { useGallerySwiperContext } from '../GallerySwiper';
 import { GalleryThumbnailsItem } from '../GalleryThumbnailsItem';
@@ -79,7 +80,7 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(
   WebkitTapHighlightColor: 'transparent',
 
   '&:hover': {
-    '& .MuiTouchRipple-root': {
+    [`& .${touchRippleClasses.root}`]: {
       backgroundColor: theme.vars.palette.black.A50
     }
   },
@@ -94,17 +95,15 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(
     paddingRight: 8
   }),
 
-  [`& .${iconButtonClasses.root}.${iconButtonClasses.root}`]: {
+  [`& .${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorTertiary}`]: {
     backdropFilter: 'blur(10px)',
-    padding: 4,
+    borderRadius: '50%',
 
-    ...theme.mixins.button({
-      background: theme.vars.palette.white.A600,
-      color: theme.vars.palette.black[500],
-      hover: theme.vars.palette.black.A50,
-      focus: theme.vars.palette.black.A200,
-      active: theme.vars.palette.black.A150
-    })
+    '--background': theme.vars.palette.white.A600,
+    '--icon': theme.vars.palette.black[500],
+    '--hovered': theme.vars.palette.black.A50,
+    '--focused': theme.vars.palette.black.A200,
+    '--pressed': theme.vars.palette.black.A150
   }
 }));
 
@@ -121,9 +120,9 @@ const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?:
 
   return (
     <GalleryThumbnailsButton ownerState={{ step: -1 }} onClick={onClick} onPointerDown={onPointerDown}>
-      <IconButton aria-label={label} size="32">
+      <Button aria-label={label} size="32">
         {icon}
-      </IconButton>
+      </Button>
     </GalleryThumbnailsButton>
   );
 };
@@ -141,9 +140,9 @@ const GalleryThumbnailsButtonNext = ({ icon, label }: { icon: ReactNode; label?:
 
   return (
     <GalleryThumbnailsButton ownerState={{ step: 1 }} onClick={onClick} onPointerDown={onPointerDown}>
-      <IconButton aria-label={label} size="32">
+      <Button aria-label={label} size="32">
         {icon}
-      </IconButton>
+      </Button>
     </GalleryThumbnailsButton>
   );
 };

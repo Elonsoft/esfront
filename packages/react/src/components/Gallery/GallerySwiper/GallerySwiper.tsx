@@ -8,13 +8,14 @@ import { getGallerySwiperUtilityClass } from './GallerySwiper.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { useGallerySwiperContext } from './GallerySwiper.context';
 
 import { useForkRef } from '../../../hooks';
 import { IconChevronLeftW400, IconChevronRightW400 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
 import { Swiper, useSwiperContext } from '../../Swiper';
+import { touchRippleClasses } from '../../TouchRipple';
 import { useGalleryContext } from '../Gallery.context';
 import { useGalleryPanelsContext } from '../GalleryPanel';
 import { GalleryTooltip } from '../GalleryTooltip';
@@ -78,7 +79,7 @@ const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ t
   },
 
   '&:hover': {
-    '& .MuiTouchRipple-root': {
+    [`& .${touchRippleClasses.root}`]: {
       backgroundColor: theme.vars.palette.white.A50
     }
   },
@@ -97,18 +98,15 @@ const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ t
     paddingLeft: 8
   }),
 
-  [`& .${iconButtonClasses.root}.${iconButtonClasses.root}`]: {
+  [`& .${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorTertiary}`]: {
     backdropFilter: 'blur(10px)',
     borderRadius: 4,
-    padding: 8,
 
-    ...theme.mixins.button({
-      background: theme.vars.palette.black.A500,
-      color: theme.vars.palette.white[500],
-      hover: theme.vars.palette.white.A50,
-      focus: theme.vars.palette.white.A200,
-      active: theme.vars.palette.white.A150
-    })
+    '--background': theme.vars.palette.black.A500,
+    '--icon': theme.vars.palette.white[500],
+    '--hovered': theme.vars.palette.white.A50,
+    '--focused': theme.vars.palette.white.A200,
+    '--pressed': theme.vars.palette.white.A150
   }
 }));
 
@@ -131,7 +129,7 @@ const GallerySwiperButtonPrev = ({ icon, label }: { icon: ReactNode; label?: str
       title={label || ''}
     >
       <GallerySwiperButton ownerState={{ step: -1 }} onClick={onClick} onPointerDown={onPointerDown}>
-        <IconButton aria-label={label}>{icon}</IconButton>
+        <Button aria-label={label}>{icon}</Button>
       </GallerySwiperButton>
     </GalleryTooltip>
   );
@@ -156,7 +154,7 @@ const GallerySwiperButtonNext = ({ icon, label }: { icon: ReactNode; label?: str
       title={label || ''}
     >
       <GallerySwiperButton ownerState={{ step: 1 }} onClick={onClick} onPointerDown={onPointerDown}>
-        <IconButton aria-label={label}> {icon}</IconButton>
+        <Button aria-label={label}>{icon}</Button>
       </GallerySwiperButton>
     </GalleryTooltip>
   );

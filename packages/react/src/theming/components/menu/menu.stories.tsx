@@ -2,9 +2,7 @@ import { useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import { IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -13,6 +11,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
 
+import { Button } from '../../../components/Button';
 import { MenuItem } from '../../../components/MenuItem';
 import { IconDotsVerticalW400, IconUpload } from '../../../icons';
 
@@ -145,9 +144,9 @@ export const DemoList: Story = {
           <Divider />
           <ListItem>
             <ListItemText>{getActionText(context)}</ListItemText>
-            <IconButton color="tertiary" size="32">
+            <Button color="tertiary" size="32" sx={{ borderRadius: '50%' }}>
               <IconDotsVerticalW400 />
-            </IconButton>
+            </Button>
           </ListItem>
           <ListItem>
             <ListItemText inset>{getActionText(context)}</ListItemText>

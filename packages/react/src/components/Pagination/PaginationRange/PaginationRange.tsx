@@ -8,12 +8,13 @@ import { getPaginationRangeUtilityClass } from './PaginationRange.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button, { buttonClasses } from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
 import { IconMenuDownW300 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
+import { buttonBaseClasses } from '../../ButtonBase';
 import { usePaginationContext } from '../Pagination.context';
 
 type PaginationRangeOwnerState = {
@@ -56,16 +57,18 @@ const PaginationRangeButton = styled(Button, {
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
 })(({ theme }) => ({
+  '--icon': theme.vars.palette.monoA.A500,
+
   [`&.${buttonClasses.root}`]: {
-    [`&.${buttonClasses.text}`]: {
+    [`& .${buttonBaseClasses.wrapper}:first-child`]: {
       padding: '0 6px 0 4px',
 
       '&, &:not(:disabled):hover, &:not(:disabled):active': {
         color: theme.vars.palette.monoA.A900
       }
     },
-    [`& .${buttonClasses.endIcon}`]: {
-      color: theme.vars.palette.monoA.A500,
+
+    [` .${buttonBaseClasses.wrapper} .${buttonClasses.endIcon}`]: {
       marginLeft: '2px'
     }
   }

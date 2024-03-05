@@ -8,7 +8,6 @@ import { getSortingMenuUtilityClass } from './SortingMenu.classes';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { unstable_composeClasses, useMediaQuery } from '@mui/material';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
@@ -17,6 +16,8 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 
 import { IconSortAscending, IconSortDescending } from '../../icons';
+import { Button, buttonClasses } from '../Button';
+import { buttonBaseClasses } from '../ButtonBase';
 import { Kbd, kbdClasses } from '../Kbd';
 import { Link } from '../Link';
 import { Switch, switchClasses } from '../Switch';
@@ -147,15 +148,25 @@ const SortingDirectionButton = styled(Button, {
   slot: 'DirectionButton',
   overridesResolver: (_, styles) => styles.directionButton
 })(({ theme }) => ({
-  '&.MuiButton-root': {
+  '--icon': theme.vars.palette.monoA.A600,
+
+  [`&.${buttonClasses.root}`]: {
     textTransform: 'unset',
     position: 'relative',
     zIndex: 10,
     borderRadius: 0,
-    gap: '6px',
     padding: 0,
-    color: theme.vars.palette.monoA.A600,
-    '&.Mui-focusVisible': {
+
+    [`&.${buttonClasses.size32}`]: {
+      '--pressed': 'inherit',
+      '--hovered': 'inherit'
+    },
+
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      gap: '6px'
+    },
+
+    '&:focus-visible': {
       '& .MuiTypography-root': {
         color: theme.vars.palette.monoA.A900
       },
@@ -163,10 +174,8 @@ const SortingDirectionButton = styled(Button, {
         backgroundColor: theme.vars.palette.secondary.A550
       }
     },
+
     '&:hover': {
-      '& .MuiTouchRipple-root': {
-        backgroundColor: 'transparent'
-      },
       [`& .${sortingMenuClasses.directionButtonBadge}`]: {
         backgroundColor: theme.vars.palette.secondary.A550
       },
@@ -174,6 +183,7 @@ const SortingDirectionButton = styled(Button, {
         color: theme.vars.palette.monoA.A900
       }
     },
+
     '&:active': {
       [`& .${sortingMenuClasses.directionButtonBadge}`]: {
         backgroundColor: theme.vars.palette.secondary.A400
@@ -391,7 +401,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
         <ListItemText>{sortMap && sortMap[item.value].label}</ListItemText>
         {!!item.direction && (
           <SortingDirectionButton
-            disableRipple
+            disableTouchRipple
             className={classes.directionButton}
             color="tertiary"
             size="32"

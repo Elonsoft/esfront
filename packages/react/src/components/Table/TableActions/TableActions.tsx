@@ -8,8 +8,10 @@ import { getTableActionsUtilityClass } from './TableActions.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { dividerClasses, iconButtonClasses } from '@mui/material';
+import { dividerClasses } from '@mui/material';
 import Typography from '@mui/material/Typography';
+
+import { buttonClasses } from '../../Button';
 
 type TableActionsOwnerState = {
   classes?: TableActionsProps['classes'];
@@ -60,8 +62,8 @@ const TableActionsChildren = styled('div', {
   gap: 2,
   gridAutoFlow: 'column',
 
-  [`& .${iconButtonClasses.root}`]: {
-    color: theme.vars.palette.monoA.A700
+  [`& .${buttonClasses.root}`]: {
+    '--icon': theme.vars.palette.monoA.A700
   },
   [`& .${dividerClasses.root}`]: {
     backgroundColor: theme.vars.palette.monoA.A200,

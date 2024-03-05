@@ -2,8 +2,6 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
-
 import {
   PageHGroup,
   PageHGroupActions,
@@ -15,6 +13,7 @@ import {
 
 import { IconDotsHorizontalW500, IconPlusW400 } from '../../icons';
 import { DemoBase as BreadcrumbsDemo } from '../Breadcrumbs/Breadcrumbs.stories';
+import { Button } from '../Button';
 
 type Args = ComponentProps<typeof PageHGroup> & ComponentProps<typeof PageHGroupHeading>;
 

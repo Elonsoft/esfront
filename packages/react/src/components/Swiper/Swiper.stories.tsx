@@ -3,12 +3,12 @@ import { ComponentProps } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { styled } from '@mui/material/styles';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { useSwiperContext } from './Swiper.context';
 import { Swiper, SwiperPagination, SwiperPaginationProps } from '.';
 
 import { IconChevronLeftW400, IconChevronRightW400 } from '../../icons';
+import { Button, buttonClasses } from '../Button';
 
 const Image = (props: { src: string; width?: string }) => {
   return (
@@ -228,10 +228,11 @@ export const Vertical: Story = {
   }
 };
 
-const CustomizationButton = styled(IconButton)<{ prev?: boolean; next?: boolean }>(({ theme, prev, next }) => ({
+const CustomizationButton = styled(Button)<{ prev?: boolean; next?: boolean }>(({ theme, prev, next }) => ({
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
+  borderRadius: '50%',
 
   ...(prev && {
     left: 8
@@ -240,17 +241,10 @@ const CustomizationButton = styled(IconButton)<{ prev?: boolean; next?: boolean 
     right: 8
   }),
 
-  [`&.${iconButtonClasses.root}.${iconButtonClasses.root}`]: {
-    backdropFilter: 'blur(10px)',
-    padding: 4,
+  backdropFilter: 'blur(10px)',
 
-    ...theme.mixins.button({
-      background: theme.vars.palette.white.A600,
-      color: theme.vars.palette.black[500],
-      hover: theme.vars.palette.black.A50,
-      focus: theme.vars.palette.black.A200,
-      active: theme.vars.palette.black.A150
-    })
+  [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorBlack}`]: {
+    '--background': theme.vars.palette.white.A600
   }
 }));
 
@@ -262,7 +256,7 @@ const CustomizationButtonPrev = () => {
   };
 
   return (
-    <CustomizationButton prev onClick={onClick}>
+    <CustomizationButton prev color="black" onClick={onClick}>
       <IconChevronLeftW400 />
     </CustomizationButton>
   );
@@ -276,7 +270,7 @@ const CustomizationButtonNext = () => {
   };
 
   return (
-    <CustomizationButton next onClick={onClick}>
+    <CustomizationButton next color="black" onClick={onClick}>
       <IconChevronRightW400 />
     </CustomizationButton>
   );

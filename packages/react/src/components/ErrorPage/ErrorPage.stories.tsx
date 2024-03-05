@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 
 import {
   ErrorPage,
@@ -15,6 +14,7 @@ import {
 } from '.';
 
 import { IconArrowLeftW500 } from '../../icons';
+import { Button } from '../Button';
 
 const meta: Meta<typeof ErrorPage> = {
   tags: ['autodocs'],
@@ -52,7 +52,7 @@ export const Demo: Story = {
             <Button color="tertiary" size="48" startIcon={<IconArrowLeftW500 />} variant="outlined">
               {locale === 'ru' ? 'Назад' : 'Back'}
             </Button>
-            <Button size="48" variant="outlined">
+            <Button color="primary" size="48" variant="outlined">
               {locale === 'ru' ? 'На главную' : 'Go to home'}
             </Button>
           </ErrorPageActions>

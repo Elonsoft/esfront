@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Tooltip } from '@mui/material';
+import { Tooltip } from '@mui/material';
+
+import { Button } from '../../../components/Button';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Args = {};

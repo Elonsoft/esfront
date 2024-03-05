@@ -6,11 +6,9 @@ import { getAlertCloseUtilityClass } from './AlertClose.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { touchRippleClasses } from '@mui/material';
-import Button, { buttonClasses } from '@mui/material/Button';
 
 import { IconCloseW500 } from '../../../icons';
-import { svgIconClasses } from '../../SvgIcon';
+import { Button } from '../../Button';
 
 type AlertCloseOwnerState = {
   classes?: AlertCloseProps['classes'];
@@ -31,15 +29,7 @@ const AlertCloseRoot = styled(Button, {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
 })(({ theme }) => ({
-  [`&.${buttonClasses.root}`]: {
-    padding: '0 4px'
-  },
-  [`&.${buttonClasses.focusVisible} .${touchRippleClasses.child}`]: {
-    borderRadius: '4px'
-  },
-  [`& .${svgIconClasses.root}`]: {
-    color: theme.vars.palette.monoA.A500
-  }
+  '--icon': theme.vars.palette.monoA.A500
 }));
 
 export const AlertClose = (inProps: AlertCloseProps) => {
@@ -47,7 +37,7 @@ export const AlertClose = (inProps: AlertCloseProps) => {
     className,
     sx,
     label,
-    icon = IconCloseW500,
+    icon = <IconCloseW500 container containerSize="20px" />,
     onClick,
     ...props
   } = useThemeProps({
@@ -69,7 +59,7 @@ export const AlertClose = (inProps: AlertCloseProps) => {
       sx={sx}
       onClick={onClick}
     >
-      <Icon />
+      {Icon}
     </AlertCloseRoot>
   );
 };

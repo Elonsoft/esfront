@@ -8,11 +8,11 @@ import { getGalleryDescriptionUtilityClass } from './GalleryDescription.classes'
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { useWindowEventListener } from '../../../hooks';
 import { IconCloseW350 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
 import { SvgIcon, SvgIconProps } from '../../SvgIcon';
 import { useGalleryPanelContext, useGalleryPanelsContext } from '../GalleryPanel';
 
@@ -102,14 +102,11 @@ const GalleryDescriptionButton = styled(Button, {
   position: 'sticky',
   top: 0,
   width: 24,
-  '&.MuiButton-root': {
-    ...theme.mixins.button({
-      background: 'transparent',
-      color: theme.vars.palette.white.A500,
-      hover: theme.vars.palette.white.A50,
-      focus: theme.vars.palette.white.A200,
-      active: theme.vars.palette.white.A150
-    })
+  [`&.${buttonClasses.root}`]: {
+    [`&.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
+      '--background': 'transparent',
+      '--icon': theme.vars.palette.white.A500
+    }
   },
   ...(ownerState.position === 'top' && {
     transform: 'scaleY(-1)'
@@ -230,6 +227,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
         <GalleryDescriptionButton
           aria-label={isExpanded ? labelCollapse : labelExpand}
           className={classes.button}
+          color="white"
           ownerState={ownerState}
           size="24"
           style={!isExpanded && !isTruncated ? { display: 'none' } : {}}

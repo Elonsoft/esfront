@@ -1,9 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 
 import { useBoolean } from './useBoolean';
+
+import { Button } from '../../components/Button';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -22,13 +23,13 @@ export const Demo: Story = {
     return (
       <Box sx={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
         <div>{on ? 'ON' : 'OFF'}</div>
-        <Button variant="contained" onClick={toggle}>
+        <Button color="primary" variant="contained" onClick={toggle}>
           Toggle
         </Button>
-        <Button variant="contained" onClick={() => toggle(true)}>
+        <Button color="primary" variant="contained" onClick={() => toggle(true)}>
           set ON
         </Button>
-        <Button variant="contained" onClick={() => toggle(false)}>
+        <Button color="primary" variant="contained" onClick={() => toggle(false)}>
           set OFF
         </Button>
       </Box>

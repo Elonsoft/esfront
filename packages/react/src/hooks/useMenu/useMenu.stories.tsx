@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import { useMenu } from './useMenu';
+
+import { Button } from '../../components/Button';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -23,7 +24,7 @@ export const Demo: Story = {
 
     return (
       <>
-        <Button variant="contained" onClick={onOpen}>
+        <Button color="primary" variant="contained" onClick={onOpen}>
           Menu
         </Button>
         <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={onClose}>

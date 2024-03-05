@@ -8,8 +8,6 @@ import { getAutocompleteMenuUtilityClass } from './AutocompleteMenu.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button, { buttonClasses } from '@mui/material/Button';
-import { touchRippleClasses } from '@mui/material/ButtonBase';
 import Checkbox from '@mui/material/Checkbox';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -25,6 +23,8 @@ import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
 import { useIntersectionObserver, useLatest, useScrollLock } from '../../hooks';
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';
+import { Button, buttonClasses } from '../Button';
+import { buttonBaseClasses } from '../ButtonBase';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
 
@@ -183,29 +183,24 @@ const AutocompleteMenuSearch = styled(TextField, {
 
     [`& .${buttonClasses.root}`]: {
       height: '40px',
-      padding: '0 7px',
       flexShrink: 0,
+      '--icon': theme.vars.palette.monoA.A400,
 
-      '&:hover ': {
-        [`& .${svgIconClasses.root}`]: {
-          color: theme.vars.palette.monoA.A500
-        },
-
-        [`& .${touchRippleClasses.root}`]: {
-          backgroundColor: 'inherit'
-        }
+      [`& .${buttonBaseClasses.wrapper}`]: {
+        padding: '0 7px'
       },
 
-      [`& .${svgIconClasses.root}`]: {
-        color: theme.vars.palette.monoA.A400
+      [`&.${buttonClasses.variantText}`]: {
+        '--hovered': 'inherit',
+        '--pressed': 'inherit'
       },
 
-      '&.Mui-focusVisible': {
-        backgroundColor: theme.vars.palette.monoA.A200
+      '&:hover': {
+        '--icon': theme.vars.palette.monoA.A500
       },
 
-      [`&:active .${svgIconClasses.root}`]: {
-        color: theme.vars.palette.monoA.A600
+      '&:active': {
+        '--icon': theme.vars.palette.monoA.A600
       }
     }
   },
@@ -456,8 +451,6 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                           endAdornment: !!SearchProps.value && (
                             <InputAdornment position="end">
                               <Button
-                                disableFocusRipple
-                                disableRipple
                                 aria-label={labelSearchClear}
                                 color="monoA"
                                 size="24"

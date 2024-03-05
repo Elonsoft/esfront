@@ -3,11 +3,11 @@ import { ComponentProps } from 'react';
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 
 import { Banner, BannerActions, BannerTitle } from '.';
 
 import { IconCloseW600 } from '../../icons';
+import { Button } from '../Button';
 
 const getText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'This is banner' : 'Это баннер';

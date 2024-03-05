@@ -8,13 +8,13 @@ import { getSwiperUtilityClass, swiperClasses } from './Swiper.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { iconButtonClasses } from '@mui/material';
 
 import { SwiperContext } from './Swiper.context';
 import { SwiperButton } from './SwiperButton';
 import { usePropertiesMapping } from './usePropertiesMapping';
 
 import { useDocumentEventListener, useLatest, useResizeObserver } from '../../hooks';
+import { buttonClasses } from '../Button';
 
 type SwiperOwnerState = {
   classes?: SwiperProps['classes'];
@@ -72,7 +72,7 @@ const SwiperRoot = styled('div', {
       gridAutoFlow: 'row',
       height: '100%'
     },
-    [`& .${swiperClasses.button}.${iconButtonClasses.root}`]: {
+    [`& .${swiperClasses.button}.${buttonClasses.root}`]: {
       position: 'absolute',
       left: '50%',
       transform: 'translateX(-50%)'

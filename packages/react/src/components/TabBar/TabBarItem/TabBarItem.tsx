@@ -6,8 +6,10 @@ import { getTabBarItemUtilityClass, tabBarItemClasses } from './TabBarItem.class
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button, { buttonClasses } from '@mui/material/Button';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+
+import { Button, buttonClasses } from '../../Button';
+import { buttonBaseClasses } from '../../ButtonBase';
 
 type TabBarItemOwnerState = {
   classes?: TabBarItemProps['classes'];
@@ -31,17 +33,20 @@ const TabBarItemRoot = styled(Button, {
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root
 })(({ theme }) => ({
+  '--icon': theme.vars.palette.monoA.A500,
+
   [`&.${buttonClasses.root}`]: {
-    flexDirection: 'column',
     borderRadius: 0,
     flex: 1,
     height: '100%'
   },
 
+  [`& .${buttonBaseClasses.wrapper}`]: {
+    flexDirection: 'column'
+  },
+
   [`&.${tabBarItemClasses.selected}`]: {
-    [`& .${tabBarItemClasses.icon}`]: {
-      color: theme.vars.palette.monoA.A900
-    },
+    '--icon': theme.vars.palette.monoA.A900,
 
     [`& .${tabBarItemClasses.label}`]: {
       color: theme.vars.palette.monoA.A800
@@ -53,9 +58,8 @@ const TabBarItemIcon = styled('span', {
   name: 'ESTabBarItem',
   slot: 'Icon',
   overridesResolver: (_props, styles) => styles.icon
-})(({ theme }) => ({
-  display: 'flex',
-  color: theme.vars.palette.monoA.A500
+})(() => ({
+  display: 'flex'
 }));
 
 const TabBarItemLabel = styled('span', {

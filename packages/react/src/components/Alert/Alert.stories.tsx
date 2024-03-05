@@ -2,9 +2,9 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
-
 import { Alert, AlertActions, AlertClose, AlertTitle } from '.';
+
+import { Button } from '../Button';
 
 const getText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'This is an alert' : 'Это предупреждение';
@@ -90,20 +90,10 @@ export const Demo: Story = {
         actions={
           !!args.actions && (
             <AlertActions>
-              <Button
-                color="tertiary"
-                size="32"
-                sx={{ mr: '8px', padding: '0 8px!important', color: 'monoA.A700' }}
-                variant="contained"
-              >
+              <Button color="tertiary" size="32" sx={{ mr: '8px' }} variant="contained">
                 {getButtonText(context)}
               </Button>
-              <Button
-                color="tertiary"
-                size="32"
-                sx={{ padding: '0 8px!important', color: 'monoA.A700' }}
-                variant="text"
-              >
+              <Button color="tertiary" size="32" variant="text">
                 {getCancelButtonText(context)}
               </Button>
             </AlertActions>

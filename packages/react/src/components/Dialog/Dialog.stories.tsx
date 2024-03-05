@@ -2,7 +2,6 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { Dialog } from './Dialog';
@@ -12,6 +11,7 @@ import { DialogClose } from './DialogClose';
 import { DialogContent } from './DialogContent';
 import { DialogTitle } from './DialogTitle';
 
+import { Button } from '../Button';
 import { useDialogStack } from '../DialogStack';
 
 const getOpenButtonText = (context: StoryContext<unknown>) => {
@@ -146,7 +146,7 @@ export const Demo: Story = {
     };
 
     return (
-      <Button variant="contained" onClick={onOpen}>
+      <Button color="primary" variant="contained" onClick={onOpen}>
         {getOpenButtonText(context)}
       </Button>
     );
@@ -187,7 +187,7 @@ export const Alignment: Story = {
     };
 
     return (
-      <Button variant="contained" onClick={onOpen}>
+      <Button color="primary" variant="contained" onClick={onOpen}>
         {getOpenButtonText(context)}
       </Button>
     );
@@ -262,7 +262,7 @@ export const FullScreen: Story = {
     };
 
     return (
-      <Button variant="contained" onClick={onOpen}>
+      <Button color="primary" variant="contained" onClick={onOpen}>
         {getOpenButtonText(context)}
       </Button>
     );
@@ -301,7 +301,7 @@ export const Stack: Story = {
     };
 
     return (
-      <Button variant="contained" onClick={onOpen(0)}>
+      <Button color="primary" variant="contained" onClick={onOpen(0)}>
         {getOpenButtonText(context)}
       </Button>
     );

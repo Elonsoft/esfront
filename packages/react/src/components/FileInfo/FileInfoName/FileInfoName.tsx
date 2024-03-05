@@ -6,9 +6,10 @@ import { getFileInfoNameUtilityClass } from './FileInfoName.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
 
 import { IconCloseW350 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
+import { buttonBaseClasses } from '../../ButtonBase';
 
 type FileInfoNameOwnerState = {
   classes?: FileInfoNameProps['classes'];
@@ -34,12 +35,17 @@ const FileInfoNameRoot = styled('div', {
   alignItems: 'center'
 }));
 
-const FileInfoNameButton = styled(IconButton, {
+const FileInfoNameButton = styled(Button, {
   name: 'ESFileInfoName',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
 })(() => ({
-  marginLeft: 4
+  marginLeft: 4,
+  borderRadius: '50%',
+
+  [`&.${buttonClasses.size24} .${buttonBaseClasses.wrapper}`]: {
+    padding: '0px 4px'
+  }
 }));
 
 export const FileInfoName = (inProps: FileInfoNameProps) => {

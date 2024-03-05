@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
+// eslint-disable-next-line no-restricted-imports
 import IconButton from '@mui/material/IconButton';
 
 import { IconChevronDownW400 } from '../../../icons';

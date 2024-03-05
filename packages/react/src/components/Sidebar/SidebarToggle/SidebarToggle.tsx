@@ -8,10 +8,10 @@ import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { IconChevronLeftW300 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
 import { svgIconClasses } from '../../SvgIcon';
 import { useSidebarContext } from '../Sidebar.context';
 import { SidebarDivider } from '../SidebarDivider';
@@ -59,46 +59,40 @@ const SidebarToggleTooltip = styled(
   }
 }));
 
-const SidebarToggleButton = styled(IconButton, {
+const SidebarToggleButton = styled(Button, {
   name: 'ESSidebarToggle',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
 })<{ ownerState: SidebarToggleOwnerState }>(({ theme, ownerState }) => ({
-  [`&.${iconButtonClasses.root}`]: {
-    transition: 'none',
-    width: '20px',
-    height: '20px',
-    marginLeft: ownerState.open ? '7px' : 0,
-    boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A100}`,
-    borderRadius: '20px',
-    zIndex: '4',
-    overflow: 'hidden',
-    position: 'absolute',
-    right: '-10px',
-    top: '-9px',
+  transition: 'none',
+  width: '20px',
+  height: '20px',
+  marginLeft: ownerState.open ? '7px' : 0,
+  boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A100}`,
+  borderRadius: '20px',
+  zIndex: '4',
+  overflow: 'hidden',
+  position: 'absolute',
+  right: '-10px',
+  top: '-9px',
 
-    [`& .${svgIconClasses.root}`]: {
-      transform: `rotate(${ownerState.open ? '' : '18'}0deg)`
-    },
+  [`& .${svgIconClasses.root}`]: {
+    transform: `rotate(${ownerState.open ? '' : '18'}0deg)`
+  },
 
+  [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorMonoA}`]: {
     ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
-      ...theme.mixins.button({
-        background: theme.vars.palette.surface.background2,
-        color: theme.vars.palette.monoA.A500,
-        hover: theme.vars.palette.monoA.A50,
-        focus: theme.vars.palette.monoA.A150,
-        active: theme.vars.palette.monoA.A150
-      })
+      '--background': theme.vars.palette.surface.background2,
+      '--icon': theme.vars.palette.monoA.A500,
+      '--focused': theme.vars.palette.monoA.A150
     }),
 
     ...(ownerState.color === 'primary' && {
-      ...theme.mixins.button({
-        background: theme.vars.palette.primary[300],
-        color: theme.vars.palette.monoB[500],
-        hover: theme.vars.palette.monoB.A50,
-        focus: theme.vars.palette.monoA.A150,
-        active: theme.vars.palette.monoA.A150
-      })
+      '--background': theme.vars.palette.primary[300],
+      '--icon': theme.vars.palette.monoB[500],
+      '--hovered': theme.vars.palette.monoB.A50,
+      '--focused': theme.vars.palette.monoA.A150,
+      '--pressed': theme.vars.palette.monoA.A150
     })
   }
 }));
@@ -160,6 +154,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
         <SidebarToggleButton
           aria-label={open ? labelHide : labelOpen}
           className={clsx(classes.button)}
+          color="monoA"
           ownerState={ownerState}
           onClick={onClickToggle}
         >

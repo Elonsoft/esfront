@@ -9,13 +9,12 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { backdropClasses } from '@mui/material/Backdrop';
-import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import { paperClasses } from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
 import { IconCloseW600, IconFilter } from '../../../icons';
-import { svgIconClasses } from '../../SvgIcon';
+import { Button } from '../../Button';
 import { SFSButton } from '../SFSButton';
 import { SFSButtonBadge } from '../SFSButtonBadge';
 
@@ -116,9 +115,7 @@ const SFSFiltersCloseButton = styled(Button, {
   slot: 'CloseButton',
   overridesResolver: (_, styles) => styles.closeButton
 })(({ theme }) => ({
-  [`.${svgIconClasses.root}`]: {
-    color: theme.vars.palette.monoA.A500
-  }
+  '--icon': theme.vars.palette.monoA.A500
 }));
 
 const SFSFiltersResetButton = styled(Button, {

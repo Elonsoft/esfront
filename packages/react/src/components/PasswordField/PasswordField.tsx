@@ -8,7 +8,6 @@ import { getPasswordFieldUtilityClass } from './PasswordField.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import { inputBaseClasses } from '@mui/material/InputBase';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
@@ -16,6 +15,7 @@ import TextField, { textFieldClasses } from '@mui/material/TextField';
 
 import { useControlled } from '../../hooks';
 import { IconEye, IconEyeOff } from '../../icons';
+import { Button, buttonClasses } from '../Button';
 
 type PasswordFieldOwnerState = {
   classes?: PasswordFieldProps['classes'];
@@ -43,8 +43,9 @@ const PasswordFieldRoot = styled(TextField, {
     [`& .${inputAdornmentClasses.positionEnd}`]: {
       paddingRight: '7px',
 
-      [`& .${iconButtonClasses.root}`]: {
-        color: theme.vars.palette.monoA.A500
+      [`& .${buttonClasses.root}`]: {
+        borderRadius: '50%',
+        '--icon': theme.vars.palette.monoA.A500
       }
     }
   }
@@ -102,14 +103,14 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            <IconButton
+            <Button
               aria-label={visible ? labelHidePassword : labelShowPassword}
               onClick={onClick}
               onMouseDown={onMouseDown}
               onMouseUp={onMouseUp}
             >
               {visible ? iconHidePassword : iconShowPassword}
-            </IconButton>
+            </Button>
           </InputAdornment>
         ),
         ...InputProps

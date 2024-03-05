@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { BottomSheet } from './BottomSheet';
 
+import { Button } from '../Button';
 import { DialogActions, DialogContent, DialogTitle } from '../Dialog';
 
 const getOpenButtonText = (context: StoryContext<unknown>) => {
@@ -80,7 +80,7 @@ export const Demo: Story = {
 
     return (
       <>
-        <Button variant="contained" onClick={onOpen}>
+        <Button color="primary" variant="contained" onClick={onOpen}>
           {getOpenButtonText(context)}
         </Button>
         <BottomSheet {...args} open={isOpen} onClose={onClose}>

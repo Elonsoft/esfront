@@ -4,8 +4,9 @@ import { SFSButtonClasses } from './SFSButton.classes';
 
 import { Theme } from '@mui/material/styles';
 import { SxProps } from '@mui/material';
-import { ButtonClasses, ExtendButtonTypeMap } from '@mui/material/Button';
 import { OverrideProps } from '@mui/material/OverridableComponent';
+
+import { ButtonClasses, ExtendButtonTypeMap } from '../../Button';
 
 export interface SFSButtonOwnProps {
   /**

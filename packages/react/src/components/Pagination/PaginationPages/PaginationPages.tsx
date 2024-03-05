@@ -11,7 +11,6 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import { keyframes } from '@mui/system';
 import { outlinedInputClasses } from '@mui/material';
 import ButtonBase, { buttonBaseClasses, touchRippleClasses } from '@mui/material/ButtonBase';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import Pagination, { paginationClasses } from '@mui/material/Pagination';
 import PaginationItem, { paginationItemClasses } from '@mui/material/PaginationItem';
 import TextField from '@mui/material/TextField';
@@ -25,6 +24,8 @@ import {
   IconChevronRightW400,
   IconDotsHorizontalW100
 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
+import { buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
 import { usePaginationContext } from '../Pagination.context';
 
 const enterKeyframe = keyframes`
@@ -77,18 +78,21 @@ const PaginationPagesPagination = styled(Pagination, {
   }
 }));
 
-const PaginationPagesButton = styled(IconButton, {
+const PaginationPagesButton = styled(Button, {
   name: 'ESPaginationPages',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
 })(({ theme }) => ({
-  [`&.${iconButtonClasses.root}`]: {
+  borderRadius: '50%',
+
+  [`&.${buttonClasses.root}`]: {
     '&, &:not(:disabled):hover, &:not(:disabled):active': {
-      color: theme.vars.palette.monoA.A500
+      '--icon': theme.vars.palette.monoA.A500
+    },
+
+    [`&.${ESbuttonBaseClasses.disabled}`]: {
+      '--icon': theme.vars.palette.monoA.A300
     }
-  },
-  [`&.${iconButtonClasses.disabled}`]: {
-    color: theme.vars.palette.monoA.A300
   }
 }));
 
