@@ -5,7 +5,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 
@@ -24,6 +23,7 @@ import { useTableSelection } from './useTableSelection';
 
 import { IconCloseW600, IconDotsVerticalW500, IconPencilW500 } from '../../icons';
 import { Avatar } from '../Avatar';
+import { Button } from '../Button';
 import { Pagination, PaginationPages, PaginationRange } from '../Pagination';
 
 const DATA: {
@@ -220,9 +220,9 @@ export const Demo: Story = {
                 )}
                 <TableCell padding="none" />
                 <TableCell overlap align="flex-end">
-                  <IconButton aria-label={locale === 'en' ? 'More' : 'Ещё'}>
+                  <Button rounded aria-label={locale === 'en' ? 'More' : 'Ещё'}>
                     <IconDotsVerticalW500 />
-                  </IconButton>
+                  </Button>
                 </TableCell>
               </TableRow>
             );
@@ -235,13 +235,13 @@ export const Demo: Story = {
               label={locale === 'en' ? 'Selected' : 'Выбрано'}
               sx={(theme) => ({ borderBottom: `1px solid ${theme.vars.palette.monoA.A100}` })}
             >
-              <IconButton aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
+              <Button aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
                 <IconPencilW500 />
-              </IconButton>
+              </Button>
               <Divider flexItem orientation="vertical" />
-              <IconButton aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
+              <Button aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
                 <IconCloseW600 />
-              </IconButton>
+              </Button>
             </TableActions>
           )}
           <TableScrollbar />
@@ -444,9 +444,9 @@ export const ColumnPinning: Story = {
                   </TableCell>
                   <TableCell padding="none" pin={getPin('city')} />
                   <TableCell overlap align="flex-end" pin={getPin('menu')}>
-                    <IconButton aria-label={locale === 'en' ? 'More' : 'Ещё'}>
+                    <Button rounded aria-label={locale === 'en' ? 'More' : 'Ещё'}>
                       <IconDotsVerticalW500 />
-                    </IconButton>
+                    </Button>
                   </TableCell>
                 </TableRow>
               );
@@ -459,13 +459,13 @@ export const ColumnPinning: Story = {
                 label={locale === 'en' ? 'Selected' : 'Выбрано'}
                 sx={(theme) => ({ borderBottom: `1px solid ${theme.vars.palette.monoA.A100}` })}
               >
-                <IconButton aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
+                <Button aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
                   <IconPencilW500 />
-                </IconButton>
+                </Button>
                 <Divider flexItem orientation="vertical" />
-                <IconButton aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
+                <Button aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
                   <IconCloseW600 />
-                </IconButton>
+                </Button>
               </TableActions>
             )}
             <TableScrollbar />

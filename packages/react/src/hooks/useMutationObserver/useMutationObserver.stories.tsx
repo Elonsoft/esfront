@@ -2,10 +2,11 @@ import { useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { useMutationObserver } from './useMutationObserver';
+
+import { Button } from '../../components/Button';
 
 const meta: Meta = {
   tags: ['autodocs'],

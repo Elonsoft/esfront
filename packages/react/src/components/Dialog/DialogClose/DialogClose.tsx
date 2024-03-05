@@ -7,9 +7,9 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { Typography } from '@mui/material';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { IconCloseW600 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
 
 type DialogCloseOwnerState = {
   classes?: DialogCloseProps['classes'];
@@ -43,7 +43,7 @@ const DialogCloseRoot = styled('div', {
   }
 }));
 
-const DialogCloseButton = styled(IconButton, {
+const DialogCloseButton = styled(Button, {
   name: 'ESDialogClose',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button
@@ -56,25 +56,22 @@ const DialogCloseButton = styled(IconButton, {
     top: 0,
     marginBottom: 0
   },
-  [`&.${iconButtonClasses.root}`]: {
+
+  [`&.${buttonClasses.root}`]: {
     backdropFilter: 'blur(10px)',
     borderRadius: 4,
     padding: 8,
     width: 32,
     height: 32,
 
+    [`&.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
+      '--background': theme.vars.palette.white.A200
+    },
+
     [theme.breakpoints.up('tabletXS')]: {
       width: 40,
       height: 40
-    },
-
-    ...theme.mixins.button({
-      background: theme.vars.palette.white.A200,
-      color: theme.vars.palette.white[500],
-      hover: theme.vars.palette.white.A50,
-      focus: theme.vars.palette.white.A200,
-      active: theme.vars.palette.white.A150
-    })
+    }
   }
 }));
 

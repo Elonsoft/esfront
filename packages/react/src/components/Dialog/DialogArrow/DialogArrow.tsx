@@ -6,9 +6,9 @@ import { getDialogArrowUtilityClass } from './DialogArrow.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button, { buttonClasses } from '@mui/material/Button';
 
 import { IconArrowLeftW500, IconArrowRightW500 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
 
 type DialogArrowOwnerState = {
   classes?: DialogArrowProps['classes'];
@@ -63,16 +63,16 @@ const DialogArrowButton = styled(Button, {
 
   [`&.${buttonClasses.root}`]: {
     borderRadius: 0,
-    color: theme.vars.palette.white.A700,
     padding: 8,
     width: 72,
     height: '100vh',
+    '--icon': theme.vars.palette.white.A700,
 
-    [`&:not(:disabled):hover, &.${buttonClasses.focusVisible}`]: {
-      color: theme.vars.palette.white.A900
+    '&:not(:disabled):hover, &:focus-visible': {
+      '--icon': theme.vars.palette.white.A900
     },
     '&:not(:disabled):active': {
-      color: theme.vars.palette.white[500]
+      '--icon': theme.vars.palette.white[500]
     }
   }
 }));

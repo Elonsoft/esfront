@@ -9,7 +9,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import Divider, { dividerClasses } from '@mui/material/Divider';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText, { listItemTextClasses } from '@mui/material/ListItemText';
 import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
@@ -35,6 +34,7 @@ import {
   IconVolumeLow,
   IconVolumeMute
 } from '../../icons';
+import { Button } from '../Button';
 
 import { Instance } from '@popperjs/core';
 
@@ -96,14 +96,13 @@ const AudioPlayerRoot = styled('div', {
   }
 }));
 
-const AudioPlayerIconButton = styled(IconButton, {
+const AudioPlayerIconButton = styled(Button, {
   name: 'ESAudioPlayer',
   slot: 'IconButton',
   overridesResolver: (props, styles) => styles.iconButton
 })(({ theme }) => ({
-  [`&.${iconButtonClasses.root}`]: {
-    color: theme.vars.palette.monoA.A600
-  }
+  borderRadius: '50%',
+  '--icon': theme.vars.palette.monoA.A600
 }));
 
 const AudioPlayerCurrent = styled('div', {

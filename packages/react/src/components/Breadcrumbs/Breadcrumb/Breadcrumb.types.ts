@@ -3,9 +3,10 @@ import { ReactNode } from 'react';
 
 import { BreadcrumbClasses } from './Breadcrumb.classes';
 
-import { SxProps, Theme } from '@mui/material';
-import Button from '@mui/material/Button';
+import { SxProps, Theme } from '@mui/material/styles';
 import { OverrideProps } from '@mui/material/OverridableComponent';
+
+import { Button } from '../../Button';
 
 export interface BreadcrumbTypeMap<P = {}, D extends React.ElementType = typeof Button> {
   props: P & {

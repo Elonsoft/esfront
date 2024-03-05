@@ -8,11 +8,12 @@ import { getSFSSearchUtilityClass } from './SFSSearch.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 
 import { IconCloseW350, IconMagnify2W400 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
+import { buttonBaseClasses } from '../../ButtonBase';
 
 type SFSSearchOwnerState = {
   classes?: SFSSearchProps['classes'];
@@ -103,32 +104,25 @@ const SFSSearchClear = styled(Button, {
   slot: 'Clear',
   overridesResolver: (_, styles) => styles.clear
 })(({ theme }) => ({
-  '&.MuiButton-root': {
+  [`&.${buttonClasses.root}`]: {
     padding: '0 4px',
     margin: '0 6px 0 2px',
     flexShrink: 0,
+    width: '24px',
+    '--icon': theme.vars.palette.monoA.A400,
 
-    '&:hover ': {
-      '& .ESSvgIcon-root': {
-        color: theme.vars.palette.monoA.A500
-      },
-
-      '& .MuiTouchRipple-root': {
-        backgroundColor: 'inherit'
-      }
+    [`&.${buttonClasses.variantText}.${buttonClasses.colorMonoA}`]: {
+      '--hovered': 'inherit',
+      '--pressed': 'inherit'
     },
 
-    '&:active .ESSvgIcon-root': {
-      color: theme.vars.palette.monoA.A600
+    '&:hover': {
+      '--icon': theme.vars.palette.monoA.A500
+    },
+
+    [`&.${buttonBaseClasses.pressed}`]: {
+      '--icon': theme.vars.palette.monoA.A600
     }
-  },
-
-  '& .ESSvgIcon-root': {
-    color: theme.vars.palette.monoA.A400
-  },
-
-  '&.Mui-focusVisible': {
-    backgroundColor: theme.vars.palette.monoA.A200
   }
 }));
 
@@ -159,8 +153,7 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
           endAdornment: onClear && (
             <InputAdornment position="end" onClick={onClear}>
               <SFSSearchClear
-                disableFocusRipple
-                disableRipple
+                disableTouchRipple
                 aria-label={labelClear}
                 className={classes.clear}
                 color="monoA"

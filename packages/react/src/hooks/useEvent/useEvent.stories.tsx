@@ -4,9 +4,10 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 
 import { useEvent } from './useEvent';
+
+import { Button } from '../../components/Button';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -32,7 +33,7 @@ export const Demo: Story = {
       });
 
       return (
-        <Button sx={{ width: '220px' }} onClick={onClick}>
+        <Button color="primary" sx={{ width: '220px' }} onClick={onClick}>
           Click {!!count && count}
         </Button>
       );

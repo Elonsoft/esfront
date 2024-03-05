@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 
 import { AppBar } from '.';
 
 import { IconArrowLeftW500, IconCheckW500 } from '../../icons';
+import { Button } from '../Button';
 
 const meta: Meta<typeof AppBar> = {
   tags: ['autodocs'],

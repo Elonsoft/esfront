@@ -3,7 +3,6 @@ import { useCallback, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Theme, useMediaQuery } from '@mui/material';
-import Button from '@mui/material/Button';
 
 import { GalleryTooltip } from './GalleryTooltip';
 import {
@@ -23,6 +22,7 @@ import {
 } from '.';
 
 import { IconDotsVerticalW500, IconDownloadW400, IconShare } from '../../icons';
+import { Button } from '../Button';
 import { FormatDate } from '../FormatDate';
 import { FormatSize } from '../FormatSize';
 
@@ -130,7 +130,7 @@ export const Demo: Story = {
 
     return (
       <>
-        <Button variant="contained" onClick={onOpen}>
+        <Button color="primary" variant="contained" onClick={onOpen}>
           {t('open')}
         </Button>
         <Gallery {...args} items={ITEMS} open={isOpen} onClose={onClose}>

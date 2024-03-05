@@ -15,6 +15,7 @@ export interface ButtonMixinStates {
 
 /**
  * The mixin that applies button states.
+ * @deprecated Use our own `Button` implementation instead.
  */
 export const buttonMixin = (states: ButtonMixinStates) => {
   const { background, color, hover, active, focus } = states;

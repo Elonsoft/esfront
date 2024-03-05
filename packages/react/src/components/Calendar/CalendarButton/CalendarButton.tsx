@@ -6,21 +6,10 @@ import { calendarButtonClasses, getCalendarButtonUtilityClass } from './Calendar
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { keyframes } from '@mui/system';
-import ButtonBase, { buttonBaseClasses, touchRippleClasses } from '@mui/material/ButtonBase';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import { capitalize } from '@mui/material/utils';
 
-const enterKeyframe = keyframes`
-  0% {
-    transform: scale(0);
-    opacity: 0.1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-`;
+import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';
 
 type CalendarButtonOwnerState = {
   classes?: CalendarButtonProps['classes'];
@@ -225,47 +214,26 @@ const CalendarButtonButton = styled(ButtonBase, {
     height: '32px',
     justifyContent: 'center',
     width: '100%',
+    '--text': theme.vars.palette.monoA.A900,
+    '--hovered': theme.vars.palette.monoA.A50,
+    '--focused': theme.vars.palette.monoA.A200,
+    '--pressed': theme.vars.palette.monoA.A150,
 
     [`&.${calendarButtonClasses.buttonToday}`]: {
       ...theme.typography.body100Bold,
       border: `1px solid ${theme.vars.palette.monoA.A400}`
     },
 
-    [`&.${calendarButtonClasses.button}`]: {
-      [`& .${touchRippleClasses.root}`]: {
-        transitionDuration: `${theme.transitions.duration.short}ms`
-      }
-    },
-
-    [`& .${touchRippleClasses.rippleVisible}`]: {
-      animationName: `${enterKeyframe} !important`,
-      opacity: '1 !important'
-    },
-
-    ...theme.mixins.button({
-      background: 'transparent',
-      color: theme.vars.palette.monoA.A900,
-      hover: theme.vars.palette.monoA.A50,
-      focus: theme.vars.palette.monoA.A200,
-      active: theme.vars.palette.monoA.A150
-    }),
-
     [`&.${buttonBaseClasses.root}.${calendarButtonClasses.buttonInactive}`]: {
-      color: theme.vars.palette.monoA.A550
+      '--text': theme.vars.palette.monoA.A550
     },
 
     [`&.${calendarButtonClasses.buttonSelected}`]: {
-      ...theme.mixins.button({
-        background: theme.vars.palette.secondary[300],
-        color: theme.vars.palette.monoA.A900,
-        hover: theme.vars.palette.monoA.A50,
-        focus: theme.vars.palette.monoA.A200,
-        active: theme.vars.palette.monoA.A150
-      })
+      '--background': theme.vars.palette.secondary[300]
     },
 
     [`&.${buttonBaseClasses.root}.${buttonBaseClasses.disabled}`]: {
-      color: theme.vars.palette.monoA.A400,
+      '--text': theme.vars.palette.monoA.A400,
       cursor: 'not-allowed',
       pointerEvents: 'auto'
     }

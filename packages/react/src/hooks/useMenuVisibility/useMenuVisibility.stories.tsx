@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import { useMenuVisibility } from './useMenuVisibility';
 
+import { Button } from '../../components/Button';
 import { useMenu } from '../useMenu';
 
 const meta: Meta = {
@@ -26,7 +26,7 @@ export const Demo: Story = {
 
     return (
       <>
-        <Button variant="contained" onClick={onOpen}>
+        <Button color="primary" variant="contained" onClick={onOpen}>
           Menu {!visible && 'not'} visible
         </Button>
         <Menu TransitionProps={{ onEnter, onExited }} anchorEl={anchorEl} open={!!anchorEl} onClose={onClose}>

@@ -8,11 +8,12 @@ import { getDropzoneUtilityClass } from './Dropzone.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { ButtonBase, touchRippleClasses, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import { validateFileType } from './validateFileType';
 
 import { useDocumentEventListener, useDragOver } from '../../hooks';
+import { ButtonBase, buttonBaseClasses } from '../ButtonBase';
 
 type DropzoneOwnerState = {
   classes?: DropzoneProps['classes'];
@@ -69,34 +70,32 @@ const DropzoneDropzone = styled(ButtonBase, {
   }
 })<{ ownerState: DropzoneOwnerState }>(({ theme, ownerState }) => ({
   width: '100%',
-  backgroundColor: theme.vars.palette.monoA.A50,
+  display: 'flex',
+  padding: '22px 24px',
   border: `1px dashed ${theme.vars.palette.monoA.A200}`,
   borderRadius: 4,
-  display: 'flex',
-  flexDirection: 'column',
-  padding: '22px 24px',
   transitionDuration: `${theme.transitions.duration.short}ms`,
   transitionProperty: 'background-color, border',
   transitionTimingFunction: theme.transitions.easing.easeInOut,
+  '--background': theme.vars.palette.monoA.A50,
+  '--hovered': theme.vars.palette.monoA.A50,
+  '--focused': theme.vars.palette.monoA.A50,
+  '--pressed': theme.vars.palette.monoA.A150,
+
+  [`& .${buttonBaseClasses.wrapper}`]: {
+    flexDirection: 'column'
+  },
   ...(ownerState.isDragOverDocument && {
-    backgroundColor: theme.vars.palette.primary.A50,
+    '--background': theme.vars.palette.primary.A50,
     border: `1px dashed ${theme.vars.palette.primary.A500}`
   }),
-  [`& .${touchRippleClasses.root}`]: {
-    transitionDuration: `${theme.transitions.duration.short}ms`,
-    transitionProperty: 'background-color, border',
-    transitionTimingFunction: theme.transitions.easing.easeInOut,
-    ...(ownerState.isDragOver && {
-      backgroundColor: theme.vars.palette.primary.A100
-    }),
-    ...(ownerState.error && {
-      backgroundColor: theme.vars.palette.error.A50,
-      border: `1px dashed ${theme.vars.palette.error.A800}`
-    })
-  },
-  [`&:hover .${touchRippleClasses.root}, &:focus-visible .${touchRippleClasses.root}`]: {
-    backgroundColor: theme.vars.palette.monoA.A50
-  }
+  ...(ownerState.isDragOver && {
+    '--background': theme.vars.palette.primary.A100
+  }),
+  ...(ownerState.error && {
+    '--background': theme.vars.palette.error.A50,
+    border: `1px dashed ${theme.vars.palette.error.A800}`
+  })
 }));
 
 const DropzoneHeading = styled('div', {

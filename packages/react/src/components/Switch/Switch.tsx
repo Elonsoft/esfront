@@ -8,9 +8,9 @@ import { getSwitchUtilityClass, switchClasses } from './Switch.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import ButtonBase, { buttonBaseClasses } from '@mui/material/ButtonBase';
 
 import { useControlled } from '../../hooks/useControlled';
+import { ButtonBase } from '../ButtonBase';
 
 type SwitchOwnerState = {
   classes?: SwitchProps['classes'];
@@ -57,6 +57,7 @@ const SwitchRoot = styled('div', {
   justifyContent: 'center',
   zIndex: 0,
   color: theme.vars.palette.monoA.A500,
+
   [`&.${switchClasses.checked}`]: {
     color: theme.vars.palette[color][300],
     [`& .${switchClasses.input}`]: {
@@ -73,18 +74,14 @@ const SwitchRoot = styled('div', {
     [`& .${switchClasses.button}`]: {
       transform: 'translateX(12px)',
       '&:hover': {
-        backgroundColor: theme.vars.palette[color].A50,
+        '--background': theme.vars.palette[color].A50,
 
         '@media (hover: none)': {
-          backgroundColor: 'transparent'
+          '--background': 'transparent'
         }
       },
-      '&:active': {
-        backgroundColor: theme.vars.palette[color].A150
-      },
-      [`&.${buttonBaseClasses.focusVisible}`]: {
-        backgroundColor: theme.vars.palette[color].A200
-      }
+      '--pressed': theme.vars.palette[color].A150,
+      '--focused': theme.vars.palette[color].A200
     }
   },
   [`&.${switchClasses.disabled}`]: {
@@ -182,18 +179,14 @@ const SwitchRoot = styled('div', {
     },
     [`& .${switchClasses.button}`]: {
       '&:hover': {
-        backgroundColor: theme.palette[color].A50,
+        '--background': theme.palette[color].A50,
 
         '@media (hover: none)': {
-          backgroundColor: 'transparent'
+          '--background': 'transparent'
         }
       },
-      '&:active': {
-        backgroundColor: theme.palette[color].A150
-      },
-      [`&.${buttonBaseClasses.focusVisible}`]: {
-        backgroundColor: theme.palette[color].A200
-      }
+      '--focused': theme.palette[color].A200,
+      '--pressed': theme.palette[color].A150
     }
   }
 }));
@@ -231,19 +224,15 @@ const SwitchButton = styled(ButtonBase, {
   position: 'absolute',
   transition: `${theme.transitions.duration.shortest}ms`,
 
-  '&:hover': {
-    backgroundColor: theme.vars.palette.monoA.A50,
-    '@media (hover: none)': {
-      backgroundColor: 'transparent'
-    }
-  },
-  '&:active': {
-    backgroundColor: theme.vars.palette.monoA.A150
-  },
-  [`&.${buttonBaseClasses.focusVisible}`]: {
-    backgroundColor: theme.vars.palette.monoA.A200
+  '--text': 'currentColor',
+  '--hovered': theme.vars.palette.monoA.A50,
+  '--pressed': theme.vars.palette.monoA.A150,
+  '--focused': theme.vars.palette.monoA.A200,
+
+  '@media (hover: none)': {
+    '--background': 'transparent'
   }
-})) as unknown as typeof ButtonBase;
+})) as typeof ButtonBase;
 
 const SwitchInput = styled('input', {
   name: 'ESSwitch',
@@ -314,14 +303,7 @@ export const Switch = (inProps: SwitchProps) => {
 
   return (
     <SwitchRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
-      <SwitchButton
-        disableRipple
-        disableTouchRipple
-        className={classes.button}
-        component="span"
-        disabled={disabled}
-        tabIndex={-1}
-      >
+      <SwitchButton disableTouchRipple className={classes.button} component="span" disabled={disabled} tabIndex={-1}>
         <SwitchInput
           autoFocus={autoFocus}
           checked={!!checked}

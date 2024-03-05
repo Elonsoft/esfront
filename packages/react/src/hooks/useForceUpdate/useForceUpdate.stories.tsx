@@ -2,10 +2,11 @@ import { useRef } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { useForceUpdate } from './useForceUpdate';
+
+import { Button } from '../../components/Button';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -33,7 +34,7 @@ export const Demo: Story = {
 
     return (
       <>
-        <Button size="32" variant="contained" onClick={update}>
+        <Button color="primary" size="32" variant="contained" onClick={update}>
           Update
         </Button>
         <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">

@@ -7,12 +7,13 @@ import { breadcrumbClasses, getBreadcrumbUtilityClass } from './Breadcrumb.class
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { buttonBaseClasses, tooltipClasses } from '@mui/material';
-import Button from '@mui/material/Button';
+import { tooltipClasses } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 
 import { IconBreadcrumbArrowRight } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
+import { buttonBaseClasses } from '../../ButtonBase';
 import { svgIconClasses } from '../../SvgIcon';
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../TooltipEllipsis';
 
@@ -110,29 +111,25 @@ const BreadcrumbContent = styled(Button, {
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content
 })(({ theme }) => ({
-  [`&.${buttonBaseClasses.root}.${breadcrumbClasses.content}`]: {
+  [`&.${buttonClasses.size24} .${buttonBaseClasses.wrapper}`]: {
+    ...theme.typography.caption,
+    padding: 0
+  },
+
+  [`&.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
     padding: '0 4px',
     width: '100%',
     maxWidth: '400px',
-
-    ...theme.mixins.button({
-      background: 'transparent',
-      color: theme.vars.palette.monoA.A900,
-      hover: theme.vars.palette.monoA.A50,
-      focus: theme.vars.palette.monoA.A200,
-      active: theme.vars.palette.monoA.A150
-    }),
+    '--text': theme.vars.palette.monoA.A900,
 
     [`&.${buttonBaseClasses.disabled}`]: {
-      color: theme.vars.palette.monoA.A500,
+      '--text': theme.vars.palette.monoA.A500,
       pointerEvents: 'none'
     },
 
     [`& .${svgIconClasses.root}`]: {
       color: theme.vars.palette.monoA.A500
-    },
-
-    ...theme.typography.caption
+    }
   }
 })) as typeof Button;
 

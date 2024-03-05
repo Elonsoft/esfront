@@ -60,6 +60,8 @@ import {
 } from './components/Banner';
 import { BottomSheetClassKey, BottomSheetProps } from './components/BottomSheet';
 import { BreadcrumbClassKey, BreadcrumbProps, BreadcrumbsClassKey, BreadcrumbsProps } from './components/Breadcrumbs';
+import { ButtonClassKey, ButtonOwnProps } from './components/Button';
+import { ButtonBaseClassKey, ButtonBaseProps } from './components/ButtonBase';
 import {
   CalendarButtonClassKey,
   CalendarButtonProps,
@@ -264,6 +266,7 @@ import {
   TableTextProps
 } from './components/Table';
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
+import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { buttonMixin, listItemMixin } from './theming/mixins';
 import { AvatarProps } from './components';
 
@@ -342,6 +345,8 @@ declare module '@mui/material/styles/props' {
     ESBreadcrumbs: BreadcrumbsProps;
     ESBreadcrumb: BreadcrumbProps;
     ESBottomSheet: BottomSheetProps;
+    ESButton: ButtonOwnProps;
+    ESButtonBase: ButtonBaseProps;
     ESCalendar: CalendarProps;
     ESCalendarButton: CalendarButtonProps;
     ESCalendarHead: CalendarHeadProps;
@@ -441,6 +446,7 @@ declare module '@mui/material/styles/props' {
     ESTableRow: TableRowProps;
     ESTableScrollbar: TableScrollbarProps;
     ESTableText: TableTextProps;
+    ESTouchRipple: TouchRippleProps;
     ESTextFieldGroup: TextFieldGroupProps;
   }
 }
@@ -466,6 +472,8 @@ declare module '@mui/material/styles/overrides' {
     ESBreadcrumbs: BreadcrumbsClassKey;
     ESBreadcrumb: BreadcrumbClassKey;
     ESBottomSheet: BottomSheetClassKey;
+    ESButton: ButtonClassKey;
+    ESButtonBase: ButtonBaseClassKey;
     ESCalendar: CalendarClassKey;
     ESCalendarButton: CalendarButtonClassKey;
     ESCalendarHead: CalendarHeadClassKey;
@@ -564,6 +572,7 @@ declare module '@mui/material/styles/overrides' {
     ESTableRow: TableRowClassKey;
     ESTableScrollbar: TableScrollbarClassKey;
     ESTableText: TableTextClassKey;
+    ESTouchRipple: TouchRippleClassKey;
     ESTextFieldGroup: TextFieldGroupClassKey;
   }
 }
@@ -645,6 +654,14 @@ declare module '@mui/material/styles/components' {
     ESBottomSheet?: {
       defaultProps?: ComponentsProps['ESBottomSheet'];
       styleOverrides?: ComponentsOverrides['ESBottomSheet'];
+    };
+    ESButton?: {
+      defaultProps?: ComponentsProps['ESButton'];
+      styleOverrides?: ComponentsOverrides['ESButton'];
+    };
+    ESButtonBase?: {
+      defaultProps?: ComponentsProps['ESButtonBase'];
+      styleOverrides?: ComponentsOverrides['ESButtonBase'];
     };
     ESCalendar?: {
       defaultProps?: ComponentsProps['ESCalendar'];
@@ -1006,6 +1023,10 @@ declare module '@mui/material/styles/components' {
       defaultProps?: ComponentsProps['ESTableText'];
       styleOverrides?: ComponentsOverrides['ESTableText'];
     };
+    ESTouchRipple?: {
+      defaultProps?: ComponentsProps['ESTouchRipple'];
+      styleOverrides?: ComponentsOverrides['ESTouchRipple'];
+    };
     ESSidebar?: {
       defaultProps?: ComponentsProps['ESSidebar'];
       styleOverrides?: ComponentsOverrides['ESSidebar'];
@@ -1269,7 +1290,9 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles/createMixins' {
   interface Mixins {
+    /** @deprecated Use our own `Button` implementation instead. */
     button: typeof buttonMixin;
+    /** @deprecated Use our own `Button` implementation instead. */
     listItem: typeof listItemMixin;
   }
 }

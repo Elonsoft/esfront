@@ -9,7 +9,7 @@ import { breadcrumbsClasses, getBreadcrumbsUtilityClass } from './Breadcrumbs.cl
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { buttonBaseClasses, paperClasses } from '@mui/material';
+import { paperClasses } from '@mui/material';
 import Menu, { menuClasses } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { tooltipClasses } from '@mui/material/Tooltip';
@@ -20,6 +20,7 @@ import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 
 import { useResizeObserver } from '../../hooks';
 import { IconDotsHorizontal2W300 } from '../../icons';
+import { buttonClasses } from '../Button';
 import { TooltipEllipsis, TooltipEllipsisProps } from '../TooltipEllipsis';
 
 type BreadcrumbsOwnerState = {
@@ -61,8 +62,8 @@ const BreadcrumbsList = styled('ol', {
 
   ...(ownerState.open && {
     [`.${breadcrumbsClasses.buttonMore}`]: {
-      [`.${buttonBaseClasses.root}.${breadcrumbClasses.content}`]: {
-        backgroundColor: theme.vars.palette.monoA.A50
+      [`.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
+        '--background': theme.vars.palette.monoA.A50
       }
     }
   })

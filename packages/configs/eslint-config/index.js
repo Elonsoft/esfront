@@ -37,6 +37,28 @@ module.exports = {
     'no-new-wrappers': 'error',
     // 'no-param-reassign': ['error', { props: true }],
     'no-restricted-globals': ['error', 'close', 'event'],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          {
+            group: ['@mui/material*'],
+            importNames: ['Button', 'IconButton'],
+            message: 'Use our own `Button` implementation instead.'
+          },
+          {
+            group: ['@mui/material/Button'],
+            importNames: ['default'],
+            message: 'Use our own `Button` implementation instead.'
+          },
+          {
+            group: ['@mui/material/IconButton'],
+            importNames: ['default'],
+            message: 'Use our own `Button` implementation instead.'
+          }
+        ]
+      }
+    ],
     'no-return-assign': 'error',
     'no-unneeded-ternary': 'error',
     'no-unused-expressions': 'error',

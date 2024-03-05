@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
-
 import { SortingMenu, SortingMenuValue } from '.';
+
+import { Button } from '../Button';
 
 const sortingOptionsRu = [
   { label: 'Кол-во квартир', value: 'byCount' },

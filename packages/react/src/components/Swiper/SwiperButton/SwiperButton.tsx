@@ -7,9 +7,9 @@ import { getSwiperButtonUtilityClass } from './SwiperButton.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { IconArrowDownW500, IconArrowLeftW500, IconArrowRightW500, IconArrowUpW500 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
 import { useSwiperContext } from '../Swiper.context';
 
 type SwiperButtonOwnerState = {
@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: SwiperButtonOwnerState) => {
   return composeClasses(slots, getSwiperButtonUtilityClass, classes);
 };
 
-const SwiperButtonRoot = styled(IconButton, {
+const SwiperButtonRoot = styled(Button, {
   name: 'ESSwiperButton',
   slot: 'Root',
   overridesResolver: (props, styles) => {
@@ -66,18 +66,11 @@ const SwiperButtonRoot = styled(IconButton, {
     })
   }),
 
-  [`&.${iconButtonClasses.root}.${iconButtonClasses.root}`]: {
-    backdropFilter: 'blur(10px)',
-    borderRadius: 4,
-    padding: 8,
+  backdropFilter: 'blur(10px)',
+  borderRadius: 4,
 
-    ...theme.mixins.button({
-      background: theme.vars.palette.black.A600,
-      color: theme.vars.palette.white[500],
-      hover: theme.vars.palette.white.A50,
-      focus: theme.vars.palette.white.A200,
-      active: theme.vars.palette.white.A150
-    })
+  [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
+    '--background': theme.vars.palette.black.A600
   }
 }));
 
@@ -111,6 +104,7 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
     <SwiperButtonRoot
       aria-label={step < 0 ? labelPrev : labelNext}
       className={clsx(classes.root, className)}
+      color="white"
       ownerState={ownerState}
       sx={sx}
       onClick={onClick}

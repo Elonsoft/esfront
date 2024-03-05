@@ -7,8 +7,9 @@ import { getSFSButtonUtilityClass, sfsButtonClasses } from './SFSButton.classes'
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button, { ExtendButton } from '@mui/material/Button';
 
+import { Button, buttonClasses, ExtendButton } from '../../Button';
+import { buttonBaseClasses } from '../../ButtonBase';
 import { svgIconClasses } from '../../SvgIcon';
 
 type SFSButtonOwnerState = {
@@ -46,9 +47,13 @@ const SFSButtonRoot = styled(Button, {
     return [styles.root, active && active.loading];
   }
 })(({ theme }) => ({
-  gap: '4px',
   textTransform: 'inherit',
-  '&.MuiButton-root': {
+
+  [`&.${buttonClasses.root}`]: {
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      gap: '4px'
+    },
+
     '&:hover .ESSvgIcon-root, &:hover .MuiTypography-root, &:focus-visible .ESSvgIcon-root, &:focus-visible .MuiTypography-root':
       {
         color: theme.vars.palette.monoA.A600
@@ -64,13 +69,13 @@ const SFSButtonRoot = styled(Button, {
   },
   [theme.breakpoints.down('tabletXS')]: {
     gap: '2px',
-    '& > .MuiTypography-root:first-of-type': {
+    '& .MuiTypography-root:first-of-type': {
       display: 'none'
     }
   },
 
   [theme.breakpoints.up('tabletXS')]: {
-    [`&.${sfsButtonClasses.active} > .${svgIconClasses.root}`]: {
+    [`&.${sfsButtonClasses.active} > .${buttonBaseClasses.wrapper} > .${svgIconClasses.root}`]: {
       display: 'none'
     }
   }

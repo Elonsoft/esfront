@@ -5,7 +5,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { styled } from '@mui/material/styles';
 import { listItemButtonClasses, outlinedInputClasses } from '@mui/material';
 import Box from '@mui/material/Box';
-import { iconButtonClasses } from '@mui/material/IconButton';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -15,6 +14,7 @@ import { SidenavContext } from './Sidenav.context';
 import { SidenavItem } from './SidenavItem';
 
 import { IconAccountLc, IconAt } from '../../icons';
+import { buttonClasses } from '../Button';
 import { Sidebar, SidebarProps } from '../Sidebar';
 import { SidebarDivider } from '../Sidebar/SidebarDivider';
 import { SidebarItem, sidebarItemClasses } from '../Sidebar/SidebarItem';
@@ -31,8 +31,8 @@ const SearchField = styled(TextField)(({ theme }) => ({
     [`& .${outlinedInputClasses.root}`]: {
       padding: '0 4px',
 
-      [`& .${iconButtonClasses.root}`]: {
-        color: theme.vars.palette.monoA.A500
+      [`& .${buttonClasses.root}`]: {
+        '--icon': theme.vars.palette.monoA.A500
       },
 
       [`& .${inputAdornmentClasses.positionStart}`]: {

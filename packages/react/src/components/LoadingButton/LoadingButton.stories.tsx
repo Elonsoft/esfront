@@ -53,7 +53,7 @@ export const Demo: Story = {
       );
 
     return (
-      <LoadingButton {...args} endIcon={icon}>
+      <LoadingButton color="primary" {...args} endIcon={icon}>
         {context.globals.locale === 'en' ? 'Button' : 'Кнопка'}
       </LoadingButton>
     );

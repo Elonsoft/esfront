@@ -10,7 +10,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { buttonBaseClasses, touchRippleClasses } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
-import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 import ListItemButton, { listItemButtonClasses } from '@mui/material/ListItemButton';
 import ListItemIcon, { listItemIconClasses } from '@mui/material/ListItemIcon';
 import ListItemText, { listItemTextClasses } from '@mui/material/ListItemText';
@@ -22,6 +21,8 @@ import Typography, { TypographyProps } from '@mui/material/Typography';
 
 import { useResizeObserver } from '../../../hooks';
 import { IconChevronLeftW200 } from '../../../icons';
+import { Button, buttonClasses } from '../../Button';
+import { buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
 import { Divider } from '../../Divider';
 import { svgIconClasses } from '../../SvgIcon';
 import { useSidebarContext } from '../Sidebar.context';
@@ -133,45 +134,44 @@ const SidebarItemButton = styled(ListItemButton, {
   }
 }));
 
-const SidebarItemSecondaryAction = styled(IconButton, {
+const SidebarItemSecondaryAction = styled(Button, {
   name: 'ESSidebarItem',
   slot: 'SecondaryAction',
   overridesResolver: (props, styles) => styles.secondaryAction
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
-  [`&.${iconButtonClasses.root}`]: {
-    cursor: 'pointer',
-    position: 'absolute',
-    left: `${ownerState.width}px`,
-    top: '8px',
-    zIndex: '5',
+  cursor: 'pointer',
+  position: 'absolute',
+  left: `${ownerState.width}px`,
+  top: '8px',
+  zIndex: '5',
+  borderRadius: '50%',
 
-    ...(ownerState.behaviour === 'hover' && {
-      pointerEvents: 'none'
-    }),
+  ...(ownerState.behaviour === 'hover' && {
+    pointerEvents: 'none'
+  }),
 
-    ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
-      ...theme.mixins.button({
-        background: 'transparent',
-        color: theme.vars.palette.monoA.A500,
-        hover: theme.vars.palette.monoA.A50,
-        focus: theme.vars.palette.monoA.A200,
-        active: theme.vars.palette.monoA.A150
-      })
-    }),
+  ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
+    '--background': 'transparent',
+    '--icon': theme.vars.palette.monoA.A500,
+    '--hovered': theme.vars.palette.monoA.A50,
+    '--focused': theme.vars.palette.monoA.A200,
+    '--pressed': theme.vars.palette.monoA.A150
+  }),
 
-    ...(ownerState.color === 'primary' && {
-      ...theme.mixins.button({
-        background: 'transparent',
-        color: theme.vars.palette.monoB.A800,
-        hover: theme.vars.palette.monoB.A50,
-        focus: theme.vars.palette.monoB.A200,
-        active: theme.vars.palette.monoB.A150
-      })
-    }),
+  ...(ownerState.color === 'primary' && {
+    '--background': 'transparent',
+    '--icon': theme.vars.palette.monoB.A800,
+    '--hovered': theme.vars.palette.monoB.A50,
+    '--focused': theme.vars.palette.monoB.A200,
+    '--pressed': theme.vars.palette.monoB.A150
+  }),
 
-    [`& .${svgIconClasses.root}`]: {
-      transform: `${ownerState.isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`
-    }
+  [`&.${buttonClasses.size24} .${ESbuttonBaseClasses.wrapper}`]: {
+    padding: '0px 8px'
+  },
+
+  [`& .${svgIconClasses.root}`]: {
+    transform: `${ownerState.isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`
   }
 }));
 

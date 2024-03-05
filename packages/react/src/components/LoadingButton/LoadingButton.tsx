@@ -7,9 +7,10 @@ import { getLoadingButtonUtilityClass, loadingButtonClasses } from './LoadingBut
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Button, { buttonClasses, ButtonProps, ExtendButton } from '@mui/material/Button';
 import { unstable_useId as useId } from '@mui/utils';
 
+import { Button, buttonClasses, ButtonOwnProps, ExtendButton } from '../Button';
+import { buttonBaseClasses } from '../ButtonBase';
 import { SpinnerFadingDots, spinnerFadingDotsClasses } from '../Spinner';
 
 type LoadingButtonOwnerState = {
@@ -48,8 +49,11 @@ const LoadingButtonRoot = styled(Button, {
     return [styles.root, loading && styles.loading];
   }
 })(() => ({
-  [`&.${loadingButtonClasses.loading}.${buttonClasses.root}.${buttonClasses.disabled}`]: {
-    color: 'transparent'
+  [`&.${loadingButtonClasses.loading}.${buttonClasses.root}.${buttonBaseClasses.disabled}`]: {
+    '--text': 'transparent'
+  },
+  [`&.${loadingButtonClasses.loading}.${buttonClasses.root}`]: {
+    '--icon': 'transparent'
   }
 }));
 
@@ -70,7 +74,7 @@ const LoadingButtonLoadingIndicator = styled('span', {
   }
 }));
 
-export const getLoadingButtonSpinnerSize = (size: ButtonProps['size']) => {
+export const getLoadingButtonSpinnerSize = (size: ButtonOwnProps['size']) => {
   switch (size) {
     case '16':
       return 10;

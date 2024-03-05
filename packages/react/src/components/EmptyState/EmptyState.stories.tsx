@@ -1,9 +1,9 @@
 import { Args, Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Button from '@mui/material/Button';
-
 import * as EmptyStateIcons from './icons';
 import { EmptyState } from '.';
+
+import { Button } from '../Button';
 
 const getIcon = (args: Args) => {
   const Component = EmptyStateIcons[args.icon as keyof typeof EmptyStateIcons] || EmptyStateIcons.EmptyStateIconBox;
