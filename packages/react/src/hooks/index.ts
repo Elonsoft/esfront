@@ -1,4 +1,3 @@
-export { useAudioPlayer } from './useAudioPlayer';
 export { useBoolean } from './useBoolean';
 export { useCallbackDebounce } from './useCallbackDebounce';
 export { useClipboard } from './useClipboard';

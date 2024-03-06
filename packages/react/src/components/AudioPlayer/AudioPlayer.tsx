@@ -10,25 +10,12 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { sliderClasses } from '@mui/material';
 
-import { useAudioPlayer } from '../../hooks';
-import {
-  IconArrowLeftW500,
-  IconCheckW400,
-  IconChevronRightW400,
-  IconDotsVerticalW400,
-  IconDownloadW400,
-  IconPauseW400,
-  IconPlayW400,
-  IconSpeedometer,
-  IconVolumeHigh,
-  IconVolumeLow,
-  IconVolumeMute
-} from '../../icons';
-import { AudioPlayerMenu } from '../AudioPlayerMenu';
-import { AudioPlayerPlayButton } from '../AudioPlayerPlayButton';
-import { AudioPlayerProgressBar } from '../AudioPlayerProgressBar';
-import { AudioPlayerTime } from '../AudioPlayerTime';
-import { AudioPlayerVolume } from '../AudioPlayerVolume';
+import { AudioPlayerMenu } from './AudioPlayerMenu';
+import { AudioPlayerPlayButton } from './AudioPlayerPlayButton';
+import { AudioPlayerProgressBar } from './AudioPlayerProgressBar';
+import { AudioPlayerTime } from './AudioPlayerTime';
+import { AudioPlayerVolume } from './AudioPlayerVolume';
+import { useAudioPlayer } from './useAudioPlayer';
 
 type AudioPlayerOwnerState = {
   classes?: AudioPlayerProps['classes'];
@@ -38,7 +25,8 @@ const useUtilityClasses = (ownerState: AudioPlayerOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
+    progressWrapper: ['progressWrapper']
   };
 
   return composeClasses(slots, getAudioPlayerUtilityClass, classes);
@@ -62,20 +50,30 @@ const AudioPlayerRoot = styled('div', {
   }
 }));
 
+const AudioPlayerProgressWrapper = styled('div', {
+  name: 'ESAudioPlayer',
+  slot: 'ProgressWrapper',
+  overridesResolver: (props, styles) => styles.progressWrapper
+})({
+  margin: '0 11px',
+  width: '100%'
+});
+
 /**
  * This component is used to embed sound content in documents.
  */
 export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const {
-    className,
-    sx,
+    AudioPlayerVolumeProps,
+    AudioPlayerPlayButtonProps,
+    AudioPlayerProgressBarProps,
+    AudioPlayerMenuProps,
+    AudioPlayerTimeProps,
     src,
-    rates,
-    step = 10,
     loop,
+    step,
     reverse,
     audioRef,
-    onDownloadClick,
     onAbort,
     onCanPlay,
     onCanPlayThrough,
@@ -98,31 +96,9 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     onTimeUpdate,
     onVolumeChange,
     onWaiting,
-
-    labelBack,
-    labelDownload,
-    labelMute,
-    labelOptions,
-    labelPause,
-    labelPlay,
-    labelRate,
-    labelRateNormal,
-    labelUnmute,
-    labelCurrent,
-    labelVolume,
-
-    iconBack = <IconArrowLeftW500 container containerWidth="16px" />,
-    iconDownload = <IconDownloadW400 />,
-    iconOptions = <IconDotsVerticalW400 />,
-    iconPause = <IconPauseW400 />,
-    iconPlay = <IconPlayW400 />,
-    iconRate = <IconSpeedometer />,
-    iconRateOpen = <IconChevronRightW400 />,
-    iconRateCheck = <IconCheckW400 />,
-    iconVolumeHigh = <IconVolumeHigh />,
-    iconVolumeLow = <IconVolumeLow />,
-    iconVolumeOff = <IconVolumeMute />,
-
+    // AudioPlayerBaseProps,
+    className,
+    sx,
     TooltipProps,
     ...props
   } = useThemeProps({
@@ -153,8 +129,8 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   } = useAudioPlayer({
     src,
     loop,
-    hover,
     audioRef,
+    hover,
     onAbort,
     onCanPlay,
     onCanPlayThrough,
@@ -187,68 +163,50 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     onTimeChange(event, value);
   };
 
-  const ownerState = {
-    ...props
-  };
+  const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <AudioPlayerRoot className={clsx(classes.root, className)} sx={sx}>
-      <AudioPlayerPlayButton
-        iconPause={iconPause}
-        iconPlay={iconPlay}
-        isPlaying={isPlaying}
-        labelPause={labelPause}
-        labelPlay={labelPlay}
-        onTogglePlay={onTogglePlay}
-      />
-      <AudioPlayerTime current={current} duration={duration} isCurrentVisible={isCurrentVisible} reverse={reverse} />
-      <AudioPlayerProgressBar
+      <AudioPlayerPlayButton {...AudioPlayerPlayButtonProps} isPlaying={isPlaying} onTogglePlay={onTogglePlay} />
+      <AudioPlayerTime
+        {...AudioPlayerTimeProps}
         current={current}
-        currentChanging={currentChanging}
         duration={duration}
-        hover={hover}
-        isChanging={isChanging}
         isCurrentVisible={isCurrentVisible}
-        isPlaying={isPlaying}
-        labelCurrent={labelCurrent}
         reverse={reverse}
-        setHover={setHover}
-        step={step}
-        onTimeChange={onUITimeChange}
-        onTimeChangeCommitted={onTimeChangeCommitted}
       />
+      <AudioPlayerProgressWrapper>
+        <AudioPlayerProgressBar
+          current={current}
+          currentChanging={currentChanging}
+          duration={duration}
+          hover={hover}
+          isChanging={isChanging}
+          isCurrentVisible={isCurrentVisible}
+          isPlaying={isPlaying}
+          reverse={reverse}
+          setHover={setHover}
+          step={step}
+          {...AudioPlayerProgressBarProps}
+          onTimeChange={onUITimeChange}
+          onTimeChangeCommitted={onTimeChangeCommitted}
+        />
+      </AudioPlayerProgressWrapper>
       <AudioPlayerVolume
+        {...AudioPlayerVolumeProps}
         TooltipProps={TooltipProps}
-        iconVolumeHigh={iconVolumeHigh}
-        iconVolumeLow={iconVolumeLow}
-        iconVolumeOff={iconVolumeOff}
         isMuted={isMuted}
-        labelMute={labelMute}
-        labelUnmute={labelUnmute}
-        labelVolume={labelVolume}
         volume={volume}
         onChange={onVolumeInputChange}
         onToggleMute={onToggleMute}
       />
       <AudioPlayerMenu
         TooltipProps={TooltipProps}
-        iconBack={iconBack}
-        iconDownload={iconDownload}
-        iconOptions={iconOptions}
-        iconRate={iconRate}
-        iconRateCheck={iconRateCheck}
-        iconRateOpen={iconRateOpen}
+        {...AudioPlayerMenuProps}
         isMenuOpen={isMenuOpen}
-        labelBack={labelBack}
-        labelDownload={labelDownload}
-        labelOptions={labelOptions}
-        labelRate={labelRate}
-        labelRateNormal={labelRateNormal}
         rate={rate}
-        rates={rates}
         setMenuOpen={setMenuOpen}
-        onDownloadClick={onDownloadClick}
         onRateInputChange={onRateInputChange}
       />
     </AudioPlayerRoot>
