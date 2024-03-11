@@ -98,18 +98,6 @@ const meta: Meta<Args> = {
         category: 'TimelineItem'
       }
     },
-    isFirst: {
-      control: 'boolean',
-      table: {
-        category: 'TimelineItem'
-      }
-    },
-    isLast: {
-      control: 'boolean',
-      table: {
-        category: 'TimelineItem'
-      }
-    },
     weight: {
       options: ['xs', 'sm'],
       control: { type: 'select' },
@@ -117,28 +105,21 @@ const meta: Meta<Args> = {
         category: 'TimelineItem'
       }
     }
-  },
-  args: {
-    weight: 'xs'
   }
 };
 
 export default meta;
 type Story = StoryObj<Args>;
 
-export const DemoBase: Story = {
-  tags: ['test-only'],
+export const Demo: Story = {
   render: (args, context) => {
     const locale = (context.globals.locale || 'en') as 'en' | 'ru';
 
     return (
       <Timeline>
-        {TIMELINE[locale].map((item) => (
+        {TIMELINE[locale].map((item, index) => (
           <TimelineItem
             key={item.name}
-            // isFirst={index === 0}
-            // isLast={index === 4}
-            // weight="sm"
             header={item.name}
             icon={
               <Box
@@ -154,7 +135,7 @@ export const DemoBase: Story = {
               </Box>
             }
             oppositeContent={item.oppositeContent}
-            onClick={() => console.log(item.name)}
+            weight={index === 0 ? 'sm' : 'xs'}
             {...args}
           >
             {item.text}
@@ -162,11 +143,5 @@ export const DemoBase: Story = {
         ))}
       </Timeline>
     );
-  }
-};
-
-export const Demo: Story = {
-  render: (args, context) => {
-    return <Box sx={{ padding: '25px 0' }}>{DemoBase.render?.(args, context)} </Box>;
   }
 };

@@ -9,7 +9,6 @@ import { styled, useThemeProps } from '@mui/material/styles';
 
 type TimelineOwnerState = {
   classes?: TimelineProps['classes'];
-  open?: boolean;
 };
 
 const useUtilityClasses = (ownerState: TimelineOwnerState) => {
