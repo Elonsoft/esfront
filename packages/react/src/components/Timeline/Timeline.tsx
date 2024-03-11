@@ -1,12 +1,7 @@
-// import { Children, cloneElement, CSSProperties, Fragment, isValidElement, useRef, useState } from 'react';
-
 import { TimelineProps } from './Timeline.types';
 
 import clsx from 'clsx';
-import {
-  getTimelineUtilityClass
-  //timelineClasses
-} from './Timeline.classes';
+import { getTimelineUtilityClass } from './Timeline.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -21,12 +16,7 @@ const useUtilityClasses = (ownerState: TimelineOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root'],
-    list: ['list'],
-    buttonMore: ['buttonMore'],
-    menu: ['menu'],
-    menuItem: ['menuItem'],
-    tooltip: ['tooltip']
+    root: ['root']
   };
 
   return composeClasses(slots, getTimelineUtilityClass, classes);

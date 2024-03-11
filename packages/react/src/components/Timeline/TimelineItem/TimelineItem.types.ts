@@ -18,9 +18,22 @@ export interface TimelineItemTypeMap<P = {}, D extends React.ElementType = typeo
     /** The system prop that allows defining system overrides as well as additional CSS styles. */
     sx?: SxProps<Theme>;
 
+    /** The custom opposite content. */
     oppositeContent?: string;
 
     weight?: 'xs' | 'sm';
+
+    /** If true, the TimelineItem without top line. */
+    isFirst?: boolean;
+
+    /** If true, the TimelineItem without bottom line. */
+    isLast?: boolean;
+
+    /** The custom header node. */
+    header?: ReactNode;
+
+    /** The custom icon node. */
+    icon?: ReactNode;
   };
   defaultComponent: D;
 }

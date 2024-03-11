@@ -12,6 +12,14 @@ type TimelineItemOwnerState = {
   classes?: TimelineItemProps['classes'];
   oppositeContent?: TimelineItemProps['oppositeContent'];
   weight?: TimelineItemProps['weight'];
+  isFirst?: TimelineItemProps['isFirst'];
+  isLast?: TimelineItemProps['isLast'];
+};
+
+type TimelineItemLineOwnerState = {
+  isTop?: boolean;
+  isBottom?: boolean;
+  weight?: TimelineItemProps['weight'];
 };
 
 const useUtilityClasses = (ownerState: TimelineItemOwnerState) => {
@@ -33,8 +41,37 @@ const TimelineItemRoot = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '12px',
-  padding: '16px 24px',
+  padding: '8px 24px',
   position: 'relative'
+}));
+
+const TimelineItemContent = styled('div', {
+  name: 'ESTimelineItem',
+  slot: 'Content',
+  overridesResolver: (props, styles) => styles.root
+})(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '16px'
+}));
+
+const TimelineItemContainer = styled('div', {
+  name: 'ESTimelineItem',
+  slot: 'Container',
+  overridesResolver: (props, styles) => styles.root
+})(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '4px'
+}));
+
+const TimelineItemHeader = styled('div', {
+  name: 'ESTimelineItem',
+  slot: 'Header',
+  overridesResolver: (props, styles) => styles.root
+})(({ theme }) => ({
+  ...theme.typography.caption,
+  color: theme.palette.monoA.A600
 }));
 
 const TimelineItemOppositeContent = styled('div', {
@@ -44,7 +81,8 @@ const TimelineItemOppositeContent = styled('div', {
 })<{ ownerState: TimelineItemOwnerState }>(({ theme, ownerState }) => ({
   ...theme.typography.caption,
   color: theme.palette.monoA.A600,
-  width: '60px',
+  width: '56px',
+  flexShrink: 0,
   display: 'flex',
   justifyContent: 'flex-end',
 
@@ -55,8 +93,8 @@ const TimelineItemOppositeContent = styled('div', {
 }));
 
 const TimelineItemPoint = styled('div', {
-  name: 'ESTimelineItemDivider',
-  slot: 'Point',
+  name: 'ESTimelineItem',
+  slot: 'DividerPoint',
   overridesResolver: (props, styles) => styles.root
 })<{ ownerState: TimelineItemOwnerState }>(({ theme, ownerState }) => ({
   height: '5px',
@@ -71,44 +109,56 @@ const TimelineItemPoint = styled('div', {
 }));
 
 const TimelineItemLine = styled('div', {
-  name: 'ESTimelineItemDivider',
-  slot: 'Line',
+  name: 'ESTimelineItem',
+  slot: 'DividerLine',
   overridesResolver: (props, styles) => styles.root
-})<{ ownerState: TimelineItemOwnerState }>(({ theme }) => ({
-  height: '100%',
+})<{ ownerState: TimelineItemLineOwnerState }>(({ ownerState, theme }) => ({
+  height: 'calc(50% - 6px)',
   width: '1px',
   background: theme.palette.monoA.A100,
   position: 'absolute',
-  left: '98px'
+  left: '94px',
+  top: 'calc(50% + 6px)',
+  ...(ownerState.isTop && {
+    top: 0
+  }),
+  ...(ownerState.weight === 'sm' && {
+    left: '95px'
+  })
 }));
 
 const TimelineItemDivider = styled('div', {
-  name: 'ESTimelineItemDivider',
+  name: 'ESTimelineItem',
   slot: 'Divider',
   overridesResolver: (props, styles) => styles.root
-})<{ ownerState: TimelineItemOwnerState }>(() => ({
+})(() => ({
   height: '100%'
 }));
 
 export const TimelineItem: OverridableComponent<TimelineItemTypeMap> = (inProps: TimelineItemProps) => {
-  const { oppositeContent, children, className, sx, style, ...props } = useThemeProps({
+  const { icon, header, isFirst, isLast, oppositeContent, children, className, sx, style, ...props } = useThemeProps({
     props: inProps,
     name: 'ESTimelineItem'
   });
 
-  const ownerState = { ...props };
+  const ownerState = { isLast, isFirst, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <TimelineItemRoot className={clsx(classes.root, className)} ownerState={ownerState} style={style} sx={sx}>
-      {oppositeContent && (
-        <TimelineItemOppositeContent ownerState={ownerState}>{oppositeContent}</TimelineItemOppositeContent>
-      )}
-      <TimelineItemDivider ownerState={ownerState}>
-        <TimelineItemLine ownerState={ownerState} />
+      <TimelineItemOppositeContent ownerState={ownerState}>{oppositeContent}</TimelineItemOppositeContent>
+      <TimelineItemDivider>
+        {!isFirst && <TimelineItemLine ownerState={{ weight: ownerState.weight, isTop: true }} />}
         <TimelineItemPoint ownerState={ownerState} />
+        {!isLast && <TimelineItemLine ownerState={{ weight: ownerState.weight, isBottom: true }} />}
       </TimelineItemDivider>
-      {children}
+      <TimelineItemContent>
+        {icon}
+        <TimelineItemContainer>
+          <TimelineItemHeader>{header}</TimelineItemHeader>
+          {children}
+        </TimelineItemContainer>
+      </TimelineItemContent>
     </TimelineItemRoot>
   );
 };
