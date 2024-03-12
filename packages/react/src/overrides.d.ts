@@ -70,6 +70,7 @@ import {
   CalendarHeadProps,
   CalendarProps,
 } from './components/Calendar';
+import { CheckboxClassKey, CheckboxProps, CheckboxIconClassKey, CheckboxIconProps } from './components/Checkbox';
 import {
   DialogActionsClassKey,
   DialogActionsProps,
@@ -243,6 +244,7 @@ import {
   SwiperProps,
 } from './components/Swiper';
 import { SwitchClassKey, SwitchProps } from './components/Switch';
+import { SwitchBaseClassKey, SwitchBaseProps } from './components/SwitchBase';
 import { TabBarClassKey, TabBarItemClassKey, TabBarItemProps, TabBarProps } from './components/TabBar';
 import {
   TableActionsClassKey,
@@ -352,6 +354,8 @@ declare module '@mui/material/styles/props' {
     ESCalendar: CalendarProps;
     ESCalendarButton: CalendarButtonProps;
     ESCalendarHead: CalendarHeadProps;
+    ESCheckbox: CheckboxProps;
+    ESCheckboxIcon: CheckboxIconProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
     ESDialogArrow: DialogArrowProps;
@@ -435,6 +439,7 @@ declare module '@mui/material/styles/props' {
     ESSvgIcon: SvgIconProps;
     ESSwiper: SwiperProps;
     ESSwitch: SwitchProps;
+    ESSwitchBase: SwitchBaseProps;
     ESSwiperButton: SwiperButtonProps;
     ESSwiperPagination: SwiperPaginationProps;
     ESTabBar: TabBarProps;
@@ -481,6 +486,8 @@ declare module '@mui/material/styles/overrides' {
     ESCalendar: CalendarClassKey;
     ESCalendarButton: CalendarButtonClassKey;
     ESCalendarHead: CalendarHeadClassKey;
+    ESCheckbox: CheckboxClassKey;
+    ESCheckboxIcon: CheckboxIconClassKey;
     ESDialog: DialogClassKey;
     ESDialogActions: DialogActionsClassKey;
     ESDialogArrow: DialogArrowClassKey;
@@ -563,6 +570,7 @@ declare module '@mui/material/styles/overrides' {
     ESSvgIcon: SvgIconClassKey;
     ESSwiper: SwiperClassKey;
     ESSwitch: SwitchClassKey;
+    ESSwitchBase: SwitchBaseClassKey;
     ESSwiperButton: SwiperButtonClassKey;
     ESSwiperPagination: SwiperPaginationClassKey;
     ESTabBar: TabBarClassKey;
@@ -683,6 +691,14 @@ declare module '@mui/material/styles/components' {
     ESCalendarHead?: {
       defaultProps?: ComponentsProps['ESCalendarHead'];
       styleOverrides?: ComponentsOverrides['ESCalendarHead'];
+    };
+    ESCheckbox?: {
+      defaultProps?: ComponentsProps['ESCheckbox'];
+      styleOverrides?: ComponentsOverrides['ESCheckbox'];
+    };
+    ESCheckboxIcon?: {
+      defaultProps?: ComponentsProps['ESCheckboxIcon'];
+      styleOverrides?: ComponentsOverrides['ESCheckboxIcon'];
     };
     ESDialog?: {
       defaultProps?: ComponentsProps['ESDialog'];
@@ -807,6 +823,10 @@ declare module '@mui/material/styles/components' {
     ESSwitch?: {
       defaultProps?: ComponentsProps['ESSwitch'];
       styleOverrides?: ComponentsOverrides['ESSwitch'];
+    };
+    ESSwitchBase?: {
+      defaultProps?: ComponentsProps['ESSwitchBase'];
+      styleOverrides?: ComponentsOverrides['ESSwitchBase'];
     };
     ESSwiperButton?: {
       defaultProps?: ComponentsProps['ESSwiperButton'];
