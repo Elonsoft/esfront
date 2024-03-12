@@ -228,8 +228,8 @@ import {
   TableTextProps
 } from './components/Table';
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
+import { TimelineClassKey, TimelineItemClassKey, TimelineItemProps, TimelineProps } from './components/Timeline';
 import { buttonMixin, listItemMixin } from './theming/mixins';
-import { TimelineClassKey, TimelineProps } from './components';
 
 export interface ISurfacePalette {
   background: string;
@@ -391,6 +391,7 @@ declare module '@mui/material/styles/props' {
     ESTableText: TableTextProps;
     ESTextFieldGroup: TextFieldGroupProps;
     ESTimeline: TimelineProps;
+    ESTimelineItem: TimelineItemProps;
   }
 }
 
@@ -499,6 +500,7 @@ declare module '@mui/material/styles/overrides' {
     ESTableText: TableTextClassKey;
     ESTextFieldGroup: TextFieldGroupClassKey;
     ESTimeline: TimelineClassKey;
+    ESTimelineItem: TimelineItemClassKey;
   }
 }
 
@@ -919,6 +921,10 @@ declare module '@mui/material/styles/components' {
     ESTimeline?: {
       defaultProps?: ComponentsProps['ESTimeline'];
       styleOverrides?: ComponentsOverrides['ESTimeline'];
+    };
+    ESTimelineItem?: {
+      defaultProps?: ComponentsProps['ESTimelineItem'];
+      styleOverrides?: ComponentsOverrides['ESTimelineItem'];
     };
   }
 }

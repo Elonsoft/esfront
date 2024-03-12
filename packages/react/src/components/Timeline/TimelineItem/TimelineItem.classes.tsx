@@ -17,6 +17,11 @@ export type TimelineItemClasses = {
   dividerLine: string;
   /** Styles applied to the divider element. */
   divider: string;
+
+  /** Styles applied to the root element if weight='xs'. */
+  weightXS: string;
+  /** Styles applied to the root element if  weight='sm'. */
+  weightSM: string;
 };
 
 export type TimelineItemClassKey = keyof TimelineItemClasses;
@@ -33,5 +38,7 @@ export const timelineItemClasses: TimelineItemClasses = generateUtilityClasses('
   'header',
   'dividerPoint',
   'dividerLine',
-  'divider'
+  'divider',
+  'weightXS',
+  'weightSM'
 ]);

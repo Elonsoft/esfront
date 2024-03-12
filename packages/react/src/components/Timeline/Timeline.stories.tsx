@@ -2,6 +2,7 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
+import { Divider } from '@mui/material';
 import Box from '@mui/material/Box';
 
 import { Timeline } from './Timeline';
@@ -76,7 +77,6 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     children: {
-      control: { type: 'text' },
       table: {
         category: 'TimelineItem'
       }
@@ -87,13 +87,11 @@ const meta: Meta<Args> = {
       }
     },
     header: {
-      control: { type: 'text' },
       table: {
         category: 'TimelineItem'
       }
     },
     oppositeContent: {
-      control: { type: 'text' },
       table: {
         category: 'TimelineItem'
       }
@@ -112,11 +110,14 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Demo: Story = {
-  render: (args, context) => {
+  render: (_args, context) => {
     const locale = (context.globals.locale || 'en') as 'en' | 'ru';
 
     return (
       <Timeline>
+        <TimelineItem oppositeContent={'today'} weight={'sm'}>
+          <Divider />
+        </TimelineItem>
         {TIMELINE[locale].map((item, index) => (
           <TimelineItem
             key={item.name}
@@ -136,7 +137,6 @@ export const Demo: Story = {
             }
             oppositeContent={item.oppositeContent}
             weight={index === 0 ? 'sm' : 'xs'}
-            {...args}
           >
             {item.text}
           </TimelineItem>

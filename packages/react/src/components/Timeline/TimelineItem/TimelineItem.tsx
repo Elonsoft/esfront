@@ -17,7 +17,7 @@ const useUtilityClasses = (ownerState: TimelineItemOwnerState) => {
   const { classes, weight } = ownerState;
 
   const slots = {
-    root: ['root', `weight${weight}`],
+    root: ['root', `weight${weight?.toUpperCase()}`],
     oppositeContent: ['oppositeContent'],
     content: ['content'],
     container: ['container'],
@@ -33,16 +33,32 @@ const useUtilityClasses = (ownerState: TimelineItemOwnerState) => {
 const TimelineItemRoot = styled('div', {
   name: 'ESTimelineItem',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
-})<{ ownerState: TimelineItemOwnerState }>(({ ownerState }) => ({
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState: { weight }
+    } = props;
+
+    return [styles.root, styles[`weight${weight.toUpperCase()}`]];
+  }
+})(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '12px',
   padding: '8px 24px',
   position: 'relative',
-  ...(ownerState.weight === 'sm' && {
-    gap: '11px'
-  }),
+
+  [`&.${timelineItemClasses.weightSM}`]: {
+    gap: '11px',
+    [`& .${timelineItemClasses.oppositeContent}`]: {
+      ...theme.typography.body100Bold,
+      color: theme.palette.monoA.A700
+    },
+    [`& .${timelineItemClasses.dividerPoint}`]: {
+      height: '7px',
+      width: '7px',
+      background: theme.palette.monoA.A600
+    }
+  },
   '&:first-of-type': {
     [`& .${timelineItemClasses.dividerLine}:first-of-type`]: {
       display: 'none'
@@ -60,6 +76,7 @@ const TimelineItemContent = styled('div', {
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content
 })(() => ({
+  width: '100%',
   display: 'flex',
   alignItems: 'center',
   gap: '16px'
@@ -70,6 +87,7 @@ const TimelineItemContainer = styled('div', {
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container
 })(() => ({
+  width: '100%',
   display: 'flex',
   flexDirection: 'column',
   gap: '4px'
@@ -88,34 +106,24 @@ const TimelineItemOppositeContent = styled('div', {
   name: 'ESTimelineItem',
   slot: 'OppositeContent',
   overridesResolver: (props, styles) => styles.oppositeContent
-})<{ ownerState: TimelineItemOwnerState }>(({ theme, ownerState }) => ({
+})(({ theme }) => ({
   ...theme.typography.caption,
   color: theme.palette.monoA.A600,
   width: '56px',
   flexShrink: 0,
   display: 'flex',
-  justifyContent: 'flex-end',
-
-  ...(ownerState.weight === 'sm' && {
-    ...theme.typography.body100Bold,
-    color: theme.palette.monoA.A700
-  })
+  justifyContent: 'flex-end'
 }));
 
 const TimelineItemPoint = styled('div', {
   name: 'ESTimelineItem',
   slot: 'DividerPoint',
   overridesResolver: (props, styles) => styles.dividerPoint
-})<{ ownerState: TimelineItemOwnerState }>(({ theme, ownerState }) => ({
+})(({ theme }) => ({
   height: '5px',
   width: '5px',
   borderRadius: '50%',
-  background: theme.palette.monoA.A500,
-  ...(ownerState.weight === 'sm' && {
-    height: '7px',
-    width: '7px',
-    background: theme.palette.monoA.A600
-  })
+  background: theme.palette.monoA.A500
 }));
 
 const TimelineItemLine = styled('div', {
@@ -152,19 +160,17 @@ export const TimelineItem = (inProps: TimelineItemProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TimelineItemRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
-      <TimelineItemOppositeContent className={clsx(classes.oppositeContent, className)} ownerState={ownerState}>
-        {oppositeContent}
-      </TimelineItemOppositeContent>
-      <TimelineItemDivider className={clsx(classes.divider, className)}>
-        <TimelineItemLine className={clsx(classes.dividerLine, className)} />
-        <TimelineItemPoint className={clsx(classes.dividerPoint, className)} ownerState={ownerState} />
-        <TimelineItemLine className={clsx(classes.dividerLine, className)} />
+    <TimelineItemRoot className={clsx(classes.root, className)} sx={sx}>
+      <TimelineItemOppositeContent className={classes.oppositeContent}>{oppositeContent}</TimelineItemOppositeContent>
+      <TimelineItemDivider className={classes.divider}>
+        <TimelineItemLine className={classes.dividerLine} />
+        <TimelineItemPoint className={classes.dividerPoint} />
+        <TimelineItemLine className={classes.dividerLine} />
       </TimelineItemDivider>
-      <TimelineItemContent className={clsx(classes.content, className)}>
+      <TimelineItemContent className={classes.content}>
         {icon}
-        <TimelineItemContainer className={clsx(classes.container, className)}>
-          <TimelineItemHeader className={clsx(classes.header, className)}>{header}</TimelineItemHeader>
+        <TimelineItemContainer className={classes.container}>
+          {header && <TimelineItemHeader className={classes.header}>{header}</TimelineItemHeader>}
           {children}
         </TimelineItemContainer>
       </TimelineItemContent>
