@@ -26,6 +26,7 @@ export const createCheckbox: Component<'MuiCheckbox'> = (theme) => {
       root: {
         '& .MuiSvgIcon-root': {
           fill: 'none',
+
           '&.MuiSvgIcon-fontSizeSmall': {
             fontSize: '18px',
           },
