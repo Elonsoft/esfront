@@ -5,12 +5,16 @@ export type DialogClasses = {
   root: string;
   /** Styles applied to the container element. */
   container: string;
+  /** Styles applied to the container element if fullScreen=true. */
+  containerFullScreen: string;
   /** Styles applied to the wrapper element. */
   wrapper: string;
   /** Styles applied to the wrapper element if align='center'. */
   wrapperAlignCenter: string;
   /** Styles applied to the wrapper element if align='flex-start'. */
   wrapperAlignFlexStart: string;
+  /** Styles applied to the wrapper element if fullScreen=true. */
+  wrapperFullScreen: string;
   /** Styles applied to the content element. */
   content: string;
   /** Styles applied to the content element if fullWidth=true. */
@@ -31,9 +35,11 @@ export function getDialogUtilityClass(slot: string): string {
 export const dialogClasses: DialogClasses = generateUtilityClasses('ESDialog', [
   'root',
   'container',
+  'containerFullScreen',
   'wrapper',
   'wrapperAlignCenter',
   'wrapperAlignFlexStart',
+  'wrapperFullScreen',
   'content',
   'contentFullWidth',
   'contentFullScreen',

@@ -155,14 +155,14 @@ export const Demo: Story = {
 
 /** Dialogs can be aligned to the top of the screen. */
 export const Alignment: Story = {
-  render: function Render(_args, context) {
+  render: function Render(args, context) {
     const dialogStack = useDialogStack();
 
     const onOpen = () => {
       dialogStack
         .open(({ close }) => (
           <Dialog fullWidth align="flex-start" maxWidth="700px" onClose={() => close()}>
-            <DialogTitle>{getHeadingText(context)}</DialogTitle>
+            <DialogTitle sticky={args.DialogTitleSticky}>{getHeadingText(context)}</DialogTitle>
             <DialogContent>
               <Typography variant="body200">
                 Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
@@ -171,7 +171,82 @@ export const Alignment: Story = {
                 consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
               </Typography>
             </DialogContent>
-            <DialogActions>
+            <DialogActions sticky={args.DialogActionsSticky}>
+              <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
+                {getCancelButtonText(context)}
+              </Button>
+              <Button color="primary" size="40" variant="contained" onClick={() => close(true)}>
+                {getCreateButtonText(context)}
+              </Button>
+            </DialogActions>
+          </Dialog>
+        ))
+        .afterClosed.then((data) => {
+          console.info(data);
+        });
+    };
+
+    return (
+      <Button variant="contained" onClick={onOpen}>
+        {getOpenButtonText(context)}
+      </Button>
+    );
+  }
+};
+
+/** Dialogs can be opened in `fullScreen` mode. */
+export const FullScreen: Story = {
+  render: function Render(args, context) {
+    const dialogStack = useDialogStack();
+
+    const onOpen = () => {
+      dialogStack
+        .open(({ close }) => (
+          <Dialog fullScreen align="flex-start" onClose={() => close()}>
+            <DialogTitle sticky={args.DialogTitleSticky}>{getHeadingText(context)}</DialogTitle>
+            <DialogContent>
+              <Typography variant="body200">
+                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+                quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit
+                amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
+                eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur
+                purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus,
+                porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras
+                justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+                vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+                facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras
+                mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+                quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit
+                amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
+                eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur
+                purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus,
+                porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras
+                justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+                vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+                facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras
+                mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+                quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit
+                amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
+                eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur
+                purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus,
+                porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras
+                justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+                vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+                facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras
+                mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+                quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+              </Typography>
+            </DialogContent>
+            <DialogActions sticky={args.DialogActionsSticky}>
               <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
                 {getCancelButtonText(context)}
               </Button>
