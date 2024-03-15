@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
-import { CheckboxClasses } from './Checkbox.classes';
+import { RadioClasses } from './Radio.classes';
 
 import { SxProps, Theme } from '@mui/material';
 
 import { SwitchBaseProps } from '../SwitchBase';
 
-export interface CheckboxProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'color' | 'icon' | 'type'> {
+export interface RadioProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'color' | 'icon' | 'type'> {
   /** The system prop that allows defining system overrides as well as additional CSS styles. */
   sx?: SxProps<Theme>;
 
@@ -28,7 +28,7 @@ export interface CheckboxProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'co
   /**
    * Override or extend the styles applied to the component.
    */
-  classes?: Partial<CheckboxClasses>;
+  classes?: Partial<RadioClasses>;
 
   /** Class applied to the root element. */
   className?: string;
@@ -64,17 +64,9 @@ export interface CheckboxProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'co
 
   /**
    * The icon to display when the component is unchecked.
+  
    */
   icon?: ReactNode;
-
-  /**
-   * The icon to display when the component is unchecked.
-   */
-  iconMapping?: {
-    large: ReactNode;
-    medium: ReactNode;
-    small: ReactNode;
-  };
 
   /**
    * The id of the `input` element.
@@ -82,21 +74,13 @@ export interface CheckboxProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'co
   id?: string;
 
   /**
-   * If `true`, the component appears indeterminate.
-   * This does not set the native input element to indeterminate due
-   * to inconsistent behavior across browsers.
-   * However, we set a `data-indeterminate` attribute on the `input`.
-   * @default false
+   * The name used to reference the value of the control.
+   * If you don't provide this prop, it falls back to a randomly generated name.
    */
-  indeterminate?: boolean;
+  name?: string;
 
   /**
-   * The icon to display when the component is indeterminate.
-   */
-  indeterminateIcon?: ReactNode;
-
-  /**
-   * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+   * [Attributes] applied to the `input` element.
    */
   inputProps?: SwitchBaseProps['inputProps'];
 
@@ -121,7 +105,6 @@ export interface CheckboxProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'co
 
   /**
    * The size of the component.
-   * `small` is equivalent to the dense checkbox styling.
    * @default 'medium'
    */
   size?: 'large' | 'medium' | 'small';

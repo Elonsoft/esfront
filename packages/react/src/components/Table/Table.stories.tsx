@@ -3,7 +3,6 @@ import { useCallback, useRef, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 
@@ -23,6 +22,7 @@ import { useTableSelection } from './useTableSelection';
 import { IconCloseW600, IconDotsVerticalW500, IconPencilW500 } from '../../icons';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
+import { Checkbox } from '../Checkbox';
 import { Divider } from '../Divider';
 import { Pagination, PaginationPages, PaginationRange } from '../Pagination';
 

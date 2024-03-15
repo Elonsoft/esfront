@@ -8,7 +8,6 @@ import { getAutocompleteMenuUtilityClass } from './AutocompleteMenu.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Checkbox from '@mui/material/Checkbox';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
@@ -25,6 +24,7 @@ import { useIntersectionObserver, useLatest, useScrollLock } from '../../hooks';
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
+import { Checkbox } from '../Checkbox';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
 
