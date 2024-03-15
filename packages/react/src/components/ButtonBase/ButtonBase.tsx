@@ -145,6 +145,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     onPointerDown,
     onPointerUp,
     onPointerLeave,
+    onKeyDown,
     TouchRippleProps,
     ...props
   } = useThemeProps({
@@ -165,6 +166,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     onPointerDown,
     onPointerUp,
     onPointerLeave,
+    onKeyDown,
   });
 
   const ownerState = { classes: inClasses, disabled, disableTouchRipple, pressed };

@@ -497,7 +497,7 @@ const defaultIndeterminateIcon = {
 export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(function Checkbox(inProps, ref) {
   const props = useThemeProps({ props: inProps, name: 'ESCheckbox' });
   const {
-    size = 'large',
+    size = 'medium',
     variant = 'contained',
     color = 'primary',
     checkedIcon = defaultIcon[size],

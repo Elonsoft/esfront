@@ -57,6 +57,7 @@ module.exports = {
               'Breadcrumbs',
               'Button',
               'ButtonBase',
+              'Checkbox',
               'Dialog',
               'DialogActions',
               'DialogContent',
@@ -68,6 +69,7 @@ module.exports = {
               'Link',
               'Pagination',
               'PaginationItem',
+              'Radio',
               'SvgIcon',
               'Switch',
               'Table',
@@ -117,6 +119,10 @@ module.exports = {
             importNames: ['default'],
           },
           {
+            group: ['@mui/material/Checkbox'],
+            importNames: ['default'],
+          },
+          {
             group: ['@mui/material/Dialog'],
             importNames: ['default'],
           },
@@ -161,11 +167,19 @@ module.exports = {
             importNames: ['default'],
           },
           {
+            group: ['@mui/material/Radio'],
+            importNames: ['default'],
+          },
+          {
             group: ['@mui/material/SvgIcon'],
             importNames: ['default'],
           },
           {
             group: ['@mui/material/Switch'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/SwitchBase'],
             importNames: ['default'],
           },
           {

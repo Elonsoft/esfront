@@ -74,6 +74,7 @@ export const useTouchRipple = ({
   const hovered = useRef(false);
   const state = useRef(State.INACTIVE);
   const checkBoundsAfterContextMenu = useRef(false);
+  const shouldReactToKeyboard = useRef(false);
   const rippleStartEvent = useRef<React.PointerEvent<HTMLElement> | undefined>(undefined);
 
   const growAnimation = useRef<Animation | null>(null);
@@ -163,6 +164,8 @@ export const useTouchRipple = ({
   };
 
   const startPressAnimation = (positionEvent?: React.PointerEvent<HTMLElement>) => {
+    shouldReactToKeyboard.current = false;
+
     setPressed(true);
     growAnimation.current?.cancel();
     determineRippleSize();
@@ -312,7 +315,7 @@ export const useTouchRipple = ({
       return;
     }
 
-    if (state.current === State.INACTIVE) {
+    if (state.current === State.INACTIVE && shouldReactToKeyboard.current) {
       // keyboard synthesized click event
       startPressAnimation();
       endPressAnimation();
@@ -338,9 +341,17 @@ export const useTouchRipple = ({
     endPressAnimation();
   };
 
+  const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    rest.onKeyDown?.(event);
+
+    if (event.key === ' ' || event.key === 'Enter') {
+      shouldReactToKeyboard.current = true;
+    }
+  };
+
   return {
     ref,
     pressed,
-    bind: { onClick, onContextMenu, onPointerCancel, onPointerUp, onPointerDown, onPointerLeave },
+    bind: { onClick, onContextMenu, onPointerCancel, onPointerUp, onPointerDown, onPointerLeave, onKeyDown },
   };
 };

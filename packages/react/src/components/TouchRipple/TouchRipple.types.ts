@@ -28,4 +28,5 @@ export interface TouchRippleParams {
   onPointerDown?: React.PointerEventHandler<HTMLElement>;
   onPointerUp?: React.PointerEventHandler<HTMLElement>;
   onPointerLeave?: React.PointerEventHandler<HTMLElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
 }
