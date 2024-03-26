@@ -98,6 +98,9 @@ const meta: Meta<typeof Table> = {
       'TableScrollbar',
       'TableText',
     ],
+    docs: {
+      story: { inline: false, iframeHeight: '100vh' },
+    },
   },
   argTypes: {
     columns: {
