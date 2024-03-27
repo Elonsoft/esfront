@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 import { BreadcrumbClasses } from './Breadcrumb.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 import Button from '@mui/material/Button';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 

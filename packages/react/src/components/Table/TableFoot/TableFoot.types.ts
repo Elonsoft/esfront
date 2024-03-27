@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { TableFootClasses } from './TableFoot.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface TableFootProps {
   children?: ReactNode;

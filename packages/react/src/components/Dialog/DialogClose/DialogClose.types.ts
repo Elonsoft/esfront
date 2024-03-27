@@ -2,7 +2,7 @@ import React from 'react';
 
 import { DialogCloseClasses } from './DialogClose.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface DialogCloseProps {
   /** Override or extend the styles applied to the component. */

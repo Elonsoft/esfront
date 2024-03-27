@@ -1,4 +1,4 @@
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export type SpinnerColor = 'inherit' | 'primary' | 'secondary' | 'monoA';
 

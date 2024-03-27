@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { SidebarToggleClasses } from './SidebarToggle.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface SidebarToggleProps {
   /** Override or extend the styles applied to the component. */

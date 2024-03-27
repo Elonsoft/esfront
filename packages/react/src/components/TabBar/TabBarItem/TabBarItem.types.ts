@@ -4,7 +4,7 @@ import { ElementType, ReactNode } from 'react';
 
 import { TabBarItemClasses } from './TabBarItem.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
 export interface TabBarItemTypeMap<P = {}, D extends ElementType = `button`> {

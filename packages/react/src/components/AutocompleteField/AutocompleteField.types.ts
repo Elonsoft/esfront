@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { AutocompleteFieldClasses } from './AutocompleteField.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 import { FormHelperTextProps } from '@mui/material/FormHelperText';
 import { InputLabelProps } from '@mui/material/InputLabel';
 import { TextFieldProps } from '@mui/material/TextField';

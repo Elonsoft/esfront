@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { DialogActionsClasses } from './DialogActions.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface DialogActionsProps {
   children?: ReactNode;

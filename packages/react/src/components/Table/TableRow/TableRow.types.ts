@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 import { TableRowClasses } from './TableRow.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
 export interface TableRowTypeMap<P = {}, D extends React.ElementType = 'div'> {

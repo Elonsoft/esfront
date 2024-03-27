@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { TextFieldGroupClasses } from './TextFieldGroup.classes';
 
-import { Breakpoint, SxProps, Theme } from '@mui/material/styles';
+import { Breakpoint, SxProps, Theme } from '@mui/material';
 
 export interface TextFieldGroupProps {
   children?: ReactNode;

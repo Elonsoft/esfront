@@ -83,7 +83,7 @@ const AvatarRoot = styled('div', {
   ...theme.typography.body100,
   height: `${size}px`,
   width: `${size}px`,
-  backgroundColor: theme.palette.monoA.A100,
+  backgroundColor: theme.vars.palette.monoA.A100,
   backgroundSize: '100%',
   textAlign: 'center',
   objectFit: 'cover',
@@ -91,10 +91,10 @@ const AvatarRoot = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',
-  color: theme.palette.monoA.A500,
+  color: theme.vars.palette.monoA.A500,
 
   [`& .${svgIconClasses.root}`]: {
-    color: theme.palette.monoA.A400
+    color: theme.vars.palette.monoA.A400
   },
 
   [`&.${avatarClasses.variantSquare}`]: {
@@ -114,7 +114,7 @@ const AvatarRoot = styled('div', {
       inset: 0,
       pointerEvents: 'none',
       borderRadius: 'inherit',
-      border: `1px solid ${theme.palette.monoA.A100}`
+      border: `1px solid ${theme.vars.palette.monoA.A100}`
     }
   }
 }));

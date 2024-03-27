@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { ErrorPageLogoClasses } from './ErrorPageLogo.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface ErrorPageLogoProps {
   children?: ReactNode;

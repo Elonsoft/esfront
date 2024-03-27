@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 
-import json from '../../src/typedoc.json';
+// import json from '../../src/typedoc.json';
+const json: any = {};
 
 interface DescriptionProps {
   name: string;

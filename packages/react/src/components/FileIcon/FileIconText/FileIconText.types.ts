@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { FileIconTextClasses } from './FileIconText.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface FileIconTextProps {
   children?: ReactNode;

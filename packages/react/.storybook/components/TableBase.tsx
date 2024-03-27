@@ -7,7 +7,8 @@ import { tableCellClasses } from '@mui/material';
 import MuiTableContainer from '@mui/material/TableContainer';
 import MuiTableRow, { tableRowClasses } from '@mui/material/TableRow';
 
-import json from '../../src/typedoc.json';
+// import json from '../../src/typedoc.json';
+const json: any = {};
 
 export const TableContainer = styled(MuiTableContainer)(() => ({
   fontFamily: 'monospace'

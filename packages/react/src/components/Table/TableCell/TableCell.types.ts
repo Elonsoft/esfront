@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { TableCellClasses } from './TableCell.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface TableCellProps {
   children?: ReactNode;

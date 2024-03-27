@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { FileInfoMetaClasses } from './FileInfoMeta.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface FileInfoMetaProps {
   children?: ReactNode;

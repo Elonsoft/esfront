@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { DialogContentClasses } from './DialogContent.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface DialogContentProps {
   children?: ReactNode;

@@ -2,8 +2,7 @@
 
 import { LoadingButtonClasses } from './LoadingButton.classes';
 
-import { Theme } from '@mui/material/styles';
-import { SxProps } from '@mui/system';
+import { SxProps, Theme } from '@mui/material';
 import { ButtonClasses, ExtendButtonTypeMap } from '@mui/material/Button';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 

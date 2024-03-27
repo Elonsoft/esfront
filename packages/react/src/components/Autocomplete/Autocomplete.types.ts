@@ -2,8 +2,7 @@ import { ReactNode } from 'react';
 
 import { AutocompleteClasses } from './Autocomplete.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
-import { OutlinedInputProps, TextFieldProps } from '@mui/material';
+import { OutlinedInputProps, SxProps, TextFieldProps, Theme } from '@mui/material';
 
 import { AutocompleteMenuProps } from '../AutocompleteMenu';
 

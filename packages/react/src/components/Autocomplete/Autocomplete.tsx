@@ -75,7 +75,7 @@ const AutocompleteInputPlaceholder = styled('div', {
   slot: 'InputPlaceholder',
   overridesResolver: (_props, styles) => styles.inputPlaceholder
 })(({ theme }) => ({
-  color: theme.palette.monoA.A400,
+  color: theme.vars.palette.monoA.A400,
   minWidth: 0,
   overflow: 'hidden',
   textOverflow: 'ellipsis'
@@ -295,10 +295,8 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
           className: classes.input,
           role: inlineSearch ? 'input' : 'button',
           tabIndex: formControl.disabled ? -1 : 0,
-          onBlur: () => {
-            formControl.onBlur();
-          },
-          onFocus: formControl.onFocus,
+          onBlur: () => formControl.onBlur,
+          onFocus: () => formControl.onFocus,
           onKeyDown,
           'aria-describedby': ariaDescribedby,
           ...props.inputProps

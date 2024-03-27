@@ -54,8 +54,8 @@ const SortingMenuRoot = styled(Popover, {
     marginTop: '4px',
     paddingBottom: '6px',
     backgroundImage: 'none',
-    backgroundColor: theme.palette.surface[400],
-    boxShadow: theme.palette.shadow.down[600],
+    backgroundColor: theme.vars.palette.surface[400],
+    boxShadow: theme.vars.palette.shadow.down[600],
     userSelect: 'none',
     overflowX: 'hidden',
 
@@ -82,7 +82,7 @@ const SortingMenuFooter = styled('div', {
   slot: 'MenuFooter',
   overridesResolver: (_, styles) => styles.menuFooter
 })(({ theme }) => ({
-  borderTop: `1px solid ${theme.palette.monoA.A100}`,
+  borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
   marginTop: '8px',
   padding: '6px 3px 0 12px',
   display: 'flex',
@@ -107,7 +107,7 @@ const SortingResetButton = styled(Link, {
   slot: 'ResetButton',
   overridesResolver: (_, styles) => styles.resetButton
 })(({ theme }) => ({
-  color: theme.palette.monoA.A500
+  color: theme.vars.palette.monoA.A500
 })) as typeof Link;
 
 const SortingMenuItem = styled(MenuItem, {
@@ -124,9 +124,9 @@ const SortingMenuItem = styled(MenuItem, {
     height: '32px',
     ...theme.mixins.listItem({
       background: '',
-      hover: theme.palette.monoA.A50,
-      focus: theme.palette.monoA.A75,
-      active: theme.palette.monoA.A150
+      hover: theme.vars.palette.monoA.A50,
+      focus: theme.vars.palette.monoA.A75,
+      active: theme.vars.palette.monoA.A150
     })
   },
   '&.MuiMenuItem-root.Mui-disabled': {
@@ -154,13 +154,13 @@ const SortingDirectionButton = styled(Button, {
     borderRadius: 0,
     gap: '6px',
     padding: 0,
-    color: theme.palette.monoA.A600,
+    color: theme.vars.palette.monoA.A600,
     '&.Mui-focusVisible': {
       '& .MuiTypography-root': {
-        color: theme.palette.monoA.A900
+        color: theme.vars.palette.monoA.A900
       },
       [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.palette.secondary.A550
+        backgroundColor: theme.vars.palette.secondary.A550
       }
     },
     '&:hover': {
@@ -168,18 +168,18 @@ const SortingDirectionButton = styled(Button, {
         backgroundColor: 'transparent'
       },
       [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.palette.secondary.A550
+        backgroundColor: theme.vars.palette.secondary.A550
       },
       '& .MuiTypography-root:first-of-type': {
-        color: theme.palette.monoA.A900
+        color: theme.vars.palette.monoA.A900
       }
     },
     '&:active': {
       [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.palette.secondary.A400
+        backgroundColor: theme.vars.palette.secondary.A400
       },
       '& .MuiTypography-root:first-of-type': {
-        color: theme.palette.monoA.A600
+        color: theme.vars.palette.monoA.A600
       }
     }
   }
@@ -193,8 +193,8 @@ const SortingDirectionButtonBadge = styled('div', {
   display: 'flex',
   borderRadius: '4px',
   padding: '3px 2px',
-  backgroundColor: theme.palette.secondary.A400,
-  boxShadow: `inset 0 0 0 1px ${theme.palette.monoA.A25}`
+  backgroundColor: theme.vars.palette.secondary.A400,
+  boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A25}`
 }));
 
 const SortingPlusSign = styled(Typography, {
@@ -202,7 +202,7 @@ const SortingPlusSign = styled(Typography, {
   slot: 'PlusSign',
   overridesResolver: (_, styles) => styles.plusSign
 })(({ theme }) => ({
-  color: theme.palette.monoA.A900
+  color: theme.vars.palette.monoA.A900
 })) as typeof Typography;
 
 const SortingCaption = styled(Typography, {
@@ -210,7 +210,7 @@ const SortingCaption = styled(Typography, {
   slot: 'Caption',
   overridesResolver: (_, styles) => styles.caption
 })(({ theme }) => ({
-  color: theme.palette.monoA.A600
+  color: theme.vars.palette.monoA.A600
 })) as typeof Typography;
 
 const getNextItem = (elem: HTMLLIElement): HTMLLIElement | undefined => {

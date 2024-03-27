@@ -1,6 +1,6 @@
 import { GallerySwiperImageClasses } from './GallerySwiperImage.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface GallerySwiperImageProps {
   /** Override or extend the styles applied to the component. */

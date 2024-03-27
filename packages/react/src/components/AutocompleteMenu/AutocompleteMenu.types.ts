@@ -2,8 +2,7 @@ import { ForwardedRef, ReactNode } from 'react';
 
 import { AutocompleteMenuClasses } from './AutocompleteMenu.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
-import { PopperProps, TextFieldProps } from '@mui/material';
+import { PopperProps, SxProps, TextFieldProps, Theme } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 
 export type AutocompleteMenuProps<T> = {

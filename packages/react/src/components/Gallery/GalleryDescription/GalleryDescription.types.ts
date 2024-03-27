@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { GalleryDescriptionClasses } from './GalleryDescription.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface GalleryDescriptionProps {
   children?: string;

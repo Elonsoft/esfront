@@ -15,7 +15,8 @@ import Typography from '@mui/material/Typography';
 import { getDescription, getField, TableCode, TableContainer, TableDescription, TableRow } from './TableBase';
 
 import { Theme } from '../../src/testing';
-import json from '../../src/typedoc.json';
+// import json from '../../src/typedoc.json';
+const json: any = {};
 
 import { useDarkMode } from 'storybook-dark-mode';
 

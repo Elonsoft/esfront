@@ -1,6 +1,6 @@
 import { SwitchClasses } from './Switch.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface SwitchProps {
   className?: string;

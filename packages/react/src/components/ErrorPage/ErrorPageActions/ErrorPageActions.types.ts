@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { ErrorPageActionsClasses } from './ErrorPageActions.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface ErrorPageActionsProps {
   children?: ReactNode;

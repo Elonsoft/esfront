@@ -15,7 +15,7 @@ export const IconCheckboxChecked = (props: SvgIconProps) => {
       {...props}
     >
       <rect fill="currentColor" height="18" rx="4" width="18" />
-      <path d="M13 6.5L8 11.5L5 8.5" stroke={theme.palette.monoB[500]} strokeLinecap="round" strokeWidth="2" />
+      <path d="M13 6.5L8 11.5L5 8.5" stroke={theme.vars.palette.monoB[500]} strokeLinecap="round" strokeWidth="2" />
     </SvgIcon>
   );
 };

@@ -1,6 +1,6 @@
 import { DialogArrowClasses } from './DialogArrow.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export type DialogArrowDirection = 'prev' | 'next';
 

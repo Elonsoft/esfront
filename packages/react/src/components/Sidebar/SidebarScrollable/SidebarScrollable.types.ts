@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { SidebarScrollableClasses } from './SidebarScrollable.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface SidebarScrollableProps {
   children?: ReactNode;

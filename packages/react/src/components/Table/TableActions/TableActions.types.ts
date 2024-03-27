@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { TableActionsClasses } from './TableActions.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface TableActionsProps {
   children?: ReactNode;

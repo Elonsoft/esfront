@@ -1,9 +1,13 @@
+// eslint-disable-next-line simple-import-sort/imports
+import type {} from '@mui/material/themeCssVarsAugmentation';
+
 /* eslint-disable @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars */
 import {
   BreakpointOverrides,
   Palette,
   PaletteColor,
   PaletteColorOptions,
+  styled,
   Theme,
   ThemeOptions,
   TypographyVariants,
@@ -12,6 +16,7 @@ import {
 import { Components } from '@mui/material/styles/components';
 import { Mixins } from '@mui/material/styles/createMixins';
 import { CommonColors } from '@mui/material/styles/createPalette';
+import { ThemeVars } from '@mui/material/styles/experimental_extendTheme';
 import { ComponentNameToClassKey, ComponentsOverrides } from '@mui/material/styles/overrides';
 import { ComponentsProps, ComponentsPropsList } from '@mui/material/styles/props';
 import { Color, ComponentsVariants } from '@mui/material';
@@ -1173,7 +1178,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-declare module '@mui/material/styles/createTheme' {
+declare module '@mui/material/styles' {
   interface ThemeOptions {
     scrollbars?: {
       /** @deprecated Use normalMonoA instead. */

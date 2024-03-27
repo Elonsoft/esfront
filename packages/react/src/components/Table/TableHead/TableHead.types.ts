@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { TableHeadClasses } from './TableHead.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface TableHeadProps {
   children?: ReactNode;

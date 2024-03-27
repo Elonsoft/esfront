@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { GalleryActionsButtonGroupClasses } from './GalleryActionsButtonGroup.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface GalleryActionsButtonGroupProps {
   children?: ReactNode;

@@ -1,6 +1,6 @@
 import { SidebarDividerClasses } from './SidebarDivider.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface SidebarDividerProps {
   /** The system prop that allows defining system overrides as well as additional CSS styles. */

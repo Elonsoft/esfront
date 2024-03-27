@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { GalleryThumbnailsItemClasses } from './GalleryThumbnailsItem.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface GalleryThumbnailsItemProps {
   children?: ReactNode;
