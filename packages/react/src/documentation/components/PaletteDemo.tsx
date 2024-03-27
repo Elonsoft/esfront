@@ -42,7 +42,7 @@ const PaletteDemoRoot = styled('div')(() => ({
 }));
 
 const PaletteDemoPalette = styled(Typography)(({ theme }) => ({
-  backgroundColor: theme.palette.monoA.A50,
+  backgroundColor: theme.vars.palette.monoA.A50,
   borderRadius: 2,
   display: 'block',
   gridColumnEnd: -1,
@@ -55,7 +55,7 @@ const PaletteDemoPalette = styled(Typography)(({ theme }) => ({
 }));
 
 const PaletteDemoColorName = styled(Typography)(({ theme }) => ({
-  backgroundColor: theme.palette.monoA.A50,
+  backgroundColor: theme.vars.palette.monoA.A50,
   borderTopLeftRadius: 2,
   borderTopRightRadius: 2,
   display: 'block',
@@ -63,7 +63,7 @@ const PaletteDemoColorName = styled(Typography)(({ theme }) => ({
 }));
 
 const PaletteDemoColorBackground = styled('div')(({ theme }) => ({
-  border: `1px solid ${theme.palette.monoA.A50}`,
+  border: `1px solid ${theme.vars.palette.monoA.A50}`,
   borderBottomLeftRadius: 2,
   borderBottomRightRadius: 2,
   borderTop: 0,
@@ -79,7 +79,7 @@ export const PaletteDemo = () => {
           <PaletteDemoPalette variant="body100">
             <code>{palette}</code>
           </PaletteDemoPalette>
-          {Object.keys((theme.palette as any)[palette])
+          {Object.keys((theme.vars.palette as any)[palette])
             .filter((color) => !COLOR_IGNORE.includes(color))
             .map((color) => (
               <div key={color}>
@@ -88,7 +88,7 @@ export const PaletteDemo = () => {
                 </PaletteDemoColorName>
                 <PaletteDemoColorBackground
                   sx={{
-                    backgroundColor: (theme.palette as any)[palette][color] as string
+                    backgroundColor: (theme.vars.palette as any)[palette][color] as string
                   }}
                 />
               </div>
@@ -98,12 +98,12 @@ export const PaletteDemo = () => {
       <PaletteDemoPalette variant="body100">
         <code>shadow</code>
       </PaletteDemoPalette>
-      {Object.keys(theme.palette.shadow).map((direction) =>
-        Object.keys((theme.palette.shadow as any)[direction]).map((level) => (
+      {Object.keys(theme.vars.palette.shadow).map((direction) =>
+        Object.keys((theme.vars.palette.shadow as any)[direction]).map((level) => (
           <div key={`${direction}-${level}`}>
             <PaletteDemoColorName
               sx={{
-                boxShadow: (theme.palette.shadow as any)[direction][level],
+                boxShadow: (theme.vars.palette.shadow as any)[direction][level],
                 margin: '24px',
                 borderRadius: '2px'
               }}

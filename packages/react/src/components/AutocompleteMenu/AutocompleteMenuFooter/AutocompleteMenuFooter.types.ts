@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { AutocompleteMenuFooterClasses } from './AutocompleteMenuFooter.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface AutocompleteMenuFooterProps {
   children?: ReactNode;

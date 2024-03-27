@@ -1,6 +1,6 @@
 import { FileInfoMetaSeparatorClasses } from './FileInfoMetaSeparator.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface FileInfoMetaSeparatorProps {
   /** Override or extend the styles applied to the component. */

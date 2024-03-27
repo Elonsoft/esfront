@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { GalleryClasses } from './Gallery.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 import { ModalProps } from '@mui/material/Modal';
 import { TransitionProps } from '@mui/material/transitions';
 

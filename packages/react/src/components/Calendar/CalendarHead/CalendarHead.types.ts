@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { CalendarHeadClasses } from './CalendarHead.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface CalendarHeadProps {
   /** Override or extend the styles applied to the component. */

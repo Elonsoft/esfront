@@ -1,5 +1,4 @@
-import { Theme } from '@mui/material/styles';
-import { Components } from '@mui/material/styles/components';
+import { Components, CssVarsTheme, Theme } from '@mui/material/styles';
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 import { createButton } from './button';
@@ -77,7 +76,7 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
   const MuiListItemText = createListItemText(theme, typography);
   const MuiListItemButton = createListItemButton(theme, typography);
 
-  const components: Components = {
+  const components: Components<Omit<Theme, 'components' | 'palette'> & CssVarsTheme> = {
     MuiButton,
     MuiCheckbox,
 
@@ -104,5 +103,6 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
     MuiListItemIcon,
     MuiListItemText
   };
+
   return components;
 };

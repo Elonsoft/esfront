@@ -93,7 +93,7 @@ export const Demo: Story = {
     );
 
     return (
-      <Box sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.palette.shadow.down[600], maxWidth: '400px' })}>
+      <Box sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.vars.palette.shadow.down[600], maxWidth: '400px' })}>
         <CalendarHead weekStart={args.weekStart} />
         <Calendar
           month={args.month}
@@ -117,7 +117,7 @@ export const Range: Story = {
 
     return (
       <Box
-        sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.palette.shadow.down[600], maxWidth: '400px' })}
+        sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.vars.palette.shadow.down[600], maxWidth: '400px' })}
         onMouseLeave={onHoverDelete}
       >
         <CalendarHead weekStart={args.weekStart} />
@@ -147,13 +147,13 @@ export const DualRange: Story = {
       <Box
         sx={(theme) => ({
           borderRadius: '8px',
-          boxShadow: theme.palette.shadow.down[600],
+          boxShadow: theme.vars.palette.shadow.down[600],
           maxWidth: '800px',
           display: 'flex'
         })}
         onMouseLeave={onHoverDelete}
       >
-        <Box flex="1" sx={(theme) => ({ borderRight: `1px solid ${theme.palette.monoA.A100}` })}>
+        <Box flex="1" sx={(theme) => ({ borderRight: `1px solid ${theme.vars.palette.monoA.A100}` })}>
           <CalendarHead weekStart={args.weekStart} />
           <Calendar
             showPrevMonth
@@ -196,7 +196,7 @@ export const DisabledAndTooltips: Story = {
 
     return (
       <Box
-        sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.palette.shadow.down[600], maxWidth: '400px' })}
+        sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.vars.palette.shadow.down[600], maxWidth: '400px' })}
         onMouseLeave={onHoverDelete}
       >
         <CalendarHead weekStart={args.weekStart} />

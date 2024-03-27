@@ -1,6 +1,11 @@
 import { ThemeOptions } from './ThemeProvider.types';
 
-import { alpha as generateAlpha, createTheme as createMUITheme, Palette, PaletteOptions } from '@mui/material/styles';
+import {
+  alpha as generateAlpha,
+  experimental_extendTheme as extendMUITheme,
+  Palette,
+  PaletteOptions
+} from '@mui/material/styles';
 import { enUS } from '@mui/material/locale';
 
 import { en } from '../../components/locale';
@@ -11,16 +16,19 @@ import { palettes as defaultPalettes } from '../palettes';
 import { createScrollbars as createDefaultScrollbars } from '../scrollbars';
 import { createTypography as createDefaultTypography } from '../typography';
 
-const defaultPalette = {
+const defaultPaletteDark = {
+  mode: 'dark' as const,
+  ...defaultPalettes.common,
+  ...defaultPalettes.dark
+};
+
+const defaultPaletteLight = {
   mode: 'light' as const,
   ...defaultPalettes.common,
   ...defaultPalettes.light
 };
 
-const createPalette = ({
-  alpha = defaultPalettes.common.alpha,
-  ...palette
-}: PaletteOptions = defaultPalette): Palette => {
+const createPalette = ({ alpha = defaultPalettes.common.alpha, ...palette }: PaletteOptions): Palette => {
   for (const p in palette) {
     if ((palette as any)[p] && (palette as any)[p].alpha) {
       const paletteWithAlpha: Record<string, string> = {};
@@ -47,7 +55,8 @@ const createPalette = ({
  */
 export const createTheme = (
   {
-    palette,
+    paletteDark = defaultPaletteDark,
+    paletteLight = defaultPaletteLight,
     components: createComponents,
     scrollbars: createScrollbars,
     typography: createTypography,
@@ -55,16 +64,27 @@ export const createTheme = (
   }: ThemeOptions,
   ...args: any
 ) => {
-  const palettes = createPalette(palette);
-  const mixins = { button: buttonMixin, listItem: listItemMixin };
+  const cssVarPrefix = 'es';
 
-  const theme = createMUITheme({
+  const mixins = { button: buttonMixin, listItem: listItemMixin };
+  const dark = createPalette(paletteDark);
+  const light = createPalette(paletteLight);
+
+  const theme = extendMUITheme({
+    cssVarPrefix,
+    colorSchemes: {
+      dark: {
+        palette: dark
+      },
+      light: {
+        palette: light
+      }
+    },
     breakpoints: {
       values: {
         ...breakpoints
       }
     },
-    palette: palettes,
     mixins
   });
 
@@ -75,14 +95,22 @@ export const createTheme = (
     ...(createComponents ? createComponents(theme, typography) : {})
   };
 
-  return createMUITheme(
+  return extendMUITheme(
     {
+      cssVarPrefix,
+      colorSchemes: {
+        dark: {
+          palette: dark
+        },
+        light: {
+          palette: light
+        }
+      },
       breakpoints: {
         values: {
           ...theme.breakpoints.values
         }
       },
-      palette: palettes,
       components,
       scrollbars,
       mixins,

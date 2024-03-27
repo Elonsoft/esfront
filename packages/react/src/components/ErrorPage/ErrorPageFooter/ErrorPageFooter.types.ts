@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { ErrorPageFooterClasses } from './ErrorPageFooter.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface ErrorPageFooterProps {
   children?: ReactNode;

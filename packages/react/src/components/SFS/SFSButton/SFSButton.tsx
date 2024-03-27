@@ -51,15 +51,15 @@ const SFSButtonRoot = styled(Button, {
   '&.MuiButton-root': {
     '&:hover .ESSvgIcon-root, &:hover .MuiTypography-root, &:focus-visible .ESSvgIcon-root, &:focus-visible .MuiTypography-root':
       {
-        color: theme.palette.monoA.A600
+        color: theme.vars.palette.monoA.A600
       },
 
     '& .MuiTypography-root': {
-      color: theme.palette.monoA.A550
+      color: theme.vars.palette.monoA.A550
     },
 
     '& .ESSvgIcon-root': {
-      color: theme.palette.monoA.A500
+      color: theme.vars.palette.monoA.A500
     }
   },
   [theme.breakpoints.down('tabletXS')]: {

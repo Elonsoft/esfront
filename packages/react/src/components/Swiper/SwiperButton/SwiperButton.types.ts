@@ -1,6 +1,6 @@
 import { SwiperButtonClasses } from './SwiperButton.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface SwiperButtonProps {
   /** Class applied to the root element. */

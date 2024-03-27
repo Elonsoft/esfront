@@ -1,6 +1,6 @@
 import { TableScrollbarClasses } from './TableScrollbar.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface TableScrollbarProps {
   /** Override or extend the styles applied to the component. */

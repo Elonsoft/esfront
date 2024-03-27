@@ -10,9 +10,9 @@ export const SFSButtonBadge = styled(Typography)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: theme.palette.secondary[300],
+  backgroundColor: theme.vars.palette.secondary[300],
 
   [`&, & .${svgIconClasses.root}`]: {
-    color: `${theme.palette.black.A800} !important`
+    color: `${theme.vars.palette.black.A800} !important`
   }
 })) as typeof Typography;

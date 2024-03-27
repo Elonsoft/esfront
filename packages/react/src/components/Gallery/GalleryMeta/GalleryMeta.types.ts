@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { GalleryMetaClasses } from './GalleryMeta.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface GalleryMetaProps {
   children?: ReactNode;

@@ -2,7 +2,7 @@ import React, { ReactNode, Ref } from 'react';
 
 import { SwiperClasses } from './Swiper.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export type SwiperDirection = 'horizontal' | 'vertical';
 export type SwiperAlignment = 'center' | 'start';

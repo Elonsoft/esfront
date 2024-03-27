@@ -34,5 +34,12 @@ export default {
       targets: [{ src: ['./src/overrides.d.ts'], dest: './lib/' }]
     }),
     progress()
-  ]
+  ],
+  onwarn: (warning, warn) => {
+    if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+      return;
+    }
+
+    warn(warning);
+  }
 };

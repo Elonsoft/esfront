@@ -2,7 +2,7 @@ import { DetailedHTMLProps, HTMLAttributes, ReactNode, SVGProps } from 'react';
 
 import { SvgIconClasses } from './SvgIcon.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export type SvgIconProps = {
   children?: ReactNode;

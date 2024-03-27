@@ -69,11 +69,11 @@ const DialogCloseButton = styled(IconButton, {
     },
 
     ...theme.mixins.button({
-      background: theme.palette.white.A200,
-      color: theme.palette.white[500],
-      hover: theme.palette.white.A50,
-      focus: theme.palette.white.A200,
-      active: theme.palette.white.A150
+      background: theme.vars.palette.white.A200,
+      color: theme.vars.palette.white[500],
+      hover: theme.vars.palette.white.A50,
+      focus: theme.vars.palette.white.A200,
+      active: theme.vars.palette.white.A150
     })
   }
 }));
@@ -83,7 +83,7 @@ const DialogCloseEscapeKey = styled(Typography, {
   slot: 'EscapeKey',
   overridesResolver: (props, styles) => styles.escapeKey
 })(({ theme }) => ({
-  color: theme.palette.white.A800,
+  color: theme.vars.palette.white.A800,
   pointerEvents: 'none',
   position: 'absolute',
   right: 'calc(100% + 8px)',

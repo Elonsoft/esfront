@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { GallerySwiperClasses } from './GallerySwiper.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 import { SwiperProps } from '../../Swiper';
 

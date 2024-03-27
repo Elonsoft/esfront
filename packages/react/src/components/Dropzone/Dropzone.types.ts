@@ -2,7 +2,7 @@ import React from 'react';
 
 import { DropzoneClasses } from './Dropzone.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export type FileError = 'file-too-large' | 'file-invalid-type' | 'too-many-files';
 

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { ErrorPageStatusClasses } from './ErrorPageStatus.classes';
 
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme } from '@mui/material';
 
 export interface ErrorPageStatusProps {
   children?: ReactNode;
