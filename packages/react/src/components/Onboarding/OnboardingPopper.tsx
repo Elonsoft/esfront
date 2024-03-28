@@ -10,7 +10,7 @@ import { Link } from '../Link';
 
 const OnboardingRoot = styled(Box, {
   name: 'ESOnboarding',
-  slot: 'Wrapper',
+  slot: 'Root',
   overridesResolver: () => {
     return [];
   }
@@ -92,14 +92,14 @@ export const OnboardingPopper = (inProps: OnboardingProps) => {
           </Box>
 
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Button style={{ textTransform: 'none' }} variant="contained" onClick={onNext}>
-              Далее
-            </Button>
             {currentStep !== undefined && currentStep > 0 && (
               <Button style={{ textTransform: 'none' }} variant="contained" onClick={onPrev}>
                 Назад
               </Button>
             )}
+            <Button style={{ textTransform: 'none' }} variant="contained" onClick={onNext}>
+              Далее
+            </Button>
             <Typography color="monoA.A500">
               {currentStep && currentStep + 1} из {steps.length}
             </Typography>
