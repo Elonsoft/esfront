@@ -19,9 +19,7 @@ const meta: Meta<typeof Onboarding> = {
       control: { type: 'text' }
     },
     subtitle: {
-      control: {
-        type: 'text'
-      }
+      control: 'text'
     }
   },
   args: {}
@@ -35,33 +33,37 @@ interface IStep {
   element: () => HTMLElement | null;
 }
 
-const steps: IStep[] = [
-  {
-    popper: ({ onNext, ...props }) => (
-      <OnboardingPopper subtitle="subtitle" title="title1" onNext={onNext} {...props} />
-    ),
-    element: () => document.getElementById('1')
-  },
-  {
-    popper: ({ onNext, ...props }) => <OnboardingPopper title="title2" onNext={onNext} {...props} />,
-    element: () => document.querySelector('[data-onboarding="3"]')
-  },
-  {
-    popper: ({ onNext, ...props }) => <OnboardingPopper title="title3" onNext={onNext} {...props} />,
-    element: () => document.querySelector('[data-onboarding="4"]')
-  },
-  {
-    popper: ({ onNext, ...props }) => <OnboardingPopper title="title4" onNext={onNext} {...props} />,
-    element: () => document.querySelector('[data-onboarding="2"]')
-  },
-  {
-    popper: ({ onNext, ...props }) => <OnboardingPopper title="title5" onNext={onNext} {...props} />,
-    element: () => document.getElementById('test')
-  }
-];
-
 export const Demo: Story = {
-  render: () => {
+  render: (args) => {
+    const steps: IStep[] = [
+      {
+        popper: ({ onNext, ...props }) => (
+          <OnboardingPopper
+            subtitle={args.subtitle || 'subtitle'}
+            title={args.title || 'Title1'}
+            onNext={onNext}
+            {...props}
+          />
+        ),
+        element: () => document.getElementById('1')
+      },
+      {
+        popper: ({ onNext, ...props }) => <OnboardingPopper title="title2" onNext={onNext} {...props} />,
+        element: () => document.querySelector('[data-onboarding="3"]')
+      },
+      {
+        popper: ({ onNext, ...props }) => <OnboardingPopper title="title3" onNext={onNext} {...props} />,
+        element: () => document.querySelector('[data-onboarding="4"]')
+      },
+      {
+        popper: ({ onNext, ...props }) => <OnboardingPopper title="title4" onNext={onNext} {...props} />,
+        element: () => document.querySelector('[data-onboarding="2"]')
+      },
+      {
+        popper: ({ onNext, ...props }) => <OnboardingPopper title="title5" onNext={onNext} {...props} />,
+        element: () => document.getElementById('test')
+      }
+    ];
     return (
       <>
         <Onboarding steps={steps} />
