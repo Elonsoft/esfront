@@ -11,10 +11,8 @@ import { Link } from '../Link';
 const OnboardingRoot = styled(Box, {
   name: 'ESOnboarding',
   slot: 'Root',
-  overridesResolver: () => {
-    return [];
-  }
-})(({ theme }) => ({
+  overridesResolver: (props, styles) => styles.root
+})<OnboardingProps>(({ theme, padding }) => ({
   display: 'flex',
   backgroundColor: theme.palette.monoB[500],
   width: '100%',
@@ -25,13 +23,13 @@ const OnboardingRoot = styled(Box, {
   gap: '8px',
 
   '&::before': {
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.surface[400],
     content: '""',
     display: 'block',
     position: 'absolute',
     width: 12,
     height: 12,
-    top: -6,
+    top: -6 ,
     transform: 'rotate(45deg)',
     left: 'calc(50% - 6px)'
   }
