@@ -249,6 +249,7 @@ import {
 } from './components/Table';
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { buttonMixin, listItemMixin } from './theming/mixins';
+import { OnboardingClassKey, OnboardingProps } from './components';
 
 export interface ISurfacePalette {
   background: string;
@@ -369,6 +370,7 @@ declare module '@mui/material/styles/props' {
     ESLoadingButton: LoadingButtonProps;
     ESMenuItem: MenuItemProps;
     ESMadeBy: MadeByProps;
+    ESOnboarding: OnboardingProps;
     ESPageHGroup: PageHGroupProps;
     ESPageHGroupActions: PageHGroupActionsProps;
     ESPageHGroupBreadcrumbs: PageHGroupBreadcrumbsProps;
@@ -486,6 +488,7 @@ declare module '@mui/material/styles/overrides' {
     ESLoadingButton: LoadingButtonClassKey;
     ESMenuItem: MenuItemClassKey;
     ESMadeBy: MadeByClassKey;
+    ESOnboarding: OnboardingClassKey;
     ESPageHGroup: PageHGroupClassKey;
     ESPageHGroupActions: PageHGroupActionsClassKey;
     ESPageHGroupBreadcrumbs: PageHGroupBreadcrumbsClassKey;
@@ -808,6 +811,10 @@ declare module '@mui/material/styles/components' {
     ESMadeBy?: {
       defaultProps?: ComponentsProps['ESMadeBy'];
       styleOverrides?: ComponentsOverrides['ESMadeBy'];
+    };
+    ESOnboarding?: {
+      defaultProps?: ComponentsProps['ESOnboarding'];
+      styleOverrides?: ComponentsOverrides['ESOnboarding'];
     };
     ESPageHGroup?: {
       defaultProps?: ComponentsProps['ESPageHGroup'];
