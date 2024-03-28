@@ -53,13 +53,19 @@ export const Onboarding = (inProps: OnboardingProps) => {
 
   useEffect(() => {
     element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto');
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   }, [element, isOpen]);
 
   useDebounce(
     () => {
       if (element) {
         setRect(element.getBoundingClientRect());
+      } else {
+        onNext();
       }
     },
     500,

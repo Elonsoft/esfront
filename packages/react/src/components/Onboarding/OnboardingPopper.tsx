@@ -56,7 +56,7 @@ export const OnboardingPopper = (inProps: OnboardingProps) => {
     currentStep >= steps.length ||
     !steps[currentStep]?.element
   ) {
-    return <></>;
+    return null;
   }
 
   return (

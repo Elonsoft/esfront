@@ -6,7 +6,9 @@ interface Props {
 }
 
 export const OnboardingSpotlight: React.FC<Props> = ({ rect, padding = 5 }) => {
-  if (!rect) return null;
+  if (!rect) {
+    return null;
+  }
 
   const styles: React.CSSProperties = {
     position: 'absolute',

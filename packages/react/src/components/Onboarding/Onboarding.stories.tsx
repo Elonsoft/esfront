@@ -56,8 +56,8 @@ export const Demo: Story = {
         element: () => document.querySelector('[data-onboarding="4"]')
       },
       {
-        popper: ({ onNext, ...props }) => <OnboardingPopper title="title4" onNext={onNext} {...props} />,
-        element: () => document.querySelector('[data-onboarding="2"]')
+        popper: ({ onNext, ...props }) => <OnboardingPopper title="Testing no data..." onNext={onNext} {...props} />,
+        element: () => document.querySelector('[data-onboarding="12"]')
       },
       {
         popper: ({ onNext, ...props }) => <OnboardingPopper title="title5" onNext={onNext} {...props} />,
