@@ -249,6 +249,7 @@ import {
 } from './components/Table';
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { buttonMixin, listItemMixin } from './theming/mixins';
+import { AvatarProps } from './components';
 
 export interface ISurfacePalette {
   background: string;
@@ -310,6 +311,7 @@ declare module '@mui/material/styles/props' {
     ESAlertActions: AlertActionsProps;
     ESAlertClose: AlertCloseProps;
     ESAppBar: AppBarProps;
+    ESAvatar: AvatarProps;
     ESAvatarGroup: AvatarGroupProps;
     ESAlertTitle: AlertTitleProps;
     ESAudioPlayer: AudioPlayerProps;
@@ -428,6 +430,7 @@ declare module '@mui/material/styles/overrides' {
     ESAlertActions: AlertActionsClassKey;
     ESAlertClose: AlertCloseClassKey;
     ESAppBar: AppBarClassKey;
+    ESAvatar: AvatarClasses;
     ESAvatarGroup: AvatarGroupClassKey;
     ESAlertTitle: AlertTitleClassKey;
     ESAudioPlayer: AudioPlayerClassKey;
@@ -544,6 +547,10 @@ declare module '@mui/material/styles/components' {
     ESAlert?: {
       defaultProps?: ComponentsProps['ESAlert'];
       styleOverrides?: ComponentsOverrides['ESAlert'];
+    };
+    ESAvatar?: {
+      defaultProps?: ComponentsProps['ESAvatar'];
+      styleOverrides?: ComponentsOverrides['ESAvatar'];
     };
     ESAvatarGroup?: {
       defaultProps?: ComponentsProps['ESAvatarGroup'];
