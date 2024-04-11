@@ -15,6 +15,8 @@ export interface DialogCloseProps {
   onClick?: () => void;
   /** Text for the button aria-label. */
   label?: string;
+  /** Text for the escape key. */
+  labelEscapeKey?: string;
   /** Icon for the button. */
   icon?: React.ReactNode;
 }

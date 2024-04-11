@@ -6,6 +6,7 @@ import { getDialogCloseUtilityClass } from './DialogClose.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+import { Typography } from '@mui/material';
 import IconButton, { iconButtonClasses } from '@mui/material/IconButton';
 
 import { IconCloseW600 } from '../../../icons';
@@ -19,7 +20,8 @@ const useUtilityClasses = (ownerState: DialogCloseOwnerState) => {
 
   const slots = {
     root: ['root'],
-    button: ['button']
+    button: ['button'],
+    escapeKey: ['escapeKey']
   };
 
   return composeClasses(slots, getDialogCloseUtilityClass, classes);
@@ -32,7 +34,8 @@ const DialogCloseRoot = styled('div', {
 })(({ theme }) => ({
   zIndex: 1,
   display: 'flex',
-  justifyContent: 'flex-end',
+  justifyContent: 'flex-start',
+  flexDirection: 'row-reverse',
 
   [theme.breakpoints.up('tabletXS')]: {
     position: 'sticky',
@@ -75,12 +78,29 @@ const DialogCloseButton = styled(IconButton, {
   }
 }));
 
+const DialogCloseEscapeKey = styled(Typography, {
+  name: 'ESDialogClose',
+  slot: 'EscapeKey',
+  overridesResolver: (props, styles) => styles.escapeKey
+})(({ theme }) => ({
+  color: theme.palette.white.A800,
+  pointerEvents: 'none',
+  position: 'absolute',
+  right: 'calc(100% + 8px)',
+
+  [theme.breakpoints.up('tabletXS')]: {
+    right: 'unset',
+    top: 'calc(100% + 8px)'
+  }
+}));
+
 export const DialogClose = (inProps: DialogCloseProps) => {
   const {
     className,
     sx,
     onClick,
     label,
+    labelEscapeKey,
     icon = <IconCloseW600 />,
     ...props
   } = useThemeProps({
@@ -95,6 +115,9 @@ export const DialogClose = (inProps: DialogCloseProps) => {
     <DialogCloseRoot className={clsx(classes.root, className)} sx={sx}>
       <DialogCloseButton aria-label={label} className={classes.button} color="white" onClick={onClick}>
         {icon}
+        <DialogCloseEscapeKey className={classes.escapeKey} variant="caption">
+          {labelEscapeKey}
+        </DialogCloseEscapeKey>
       </DialogCloseButton>
     </DialogCloseRoot>
   );

@@ -53,7 +53,7 @@ export interface Localization {
       defaultProps: Pick<DialogArrowProps, 'labelPrev' | 'labelNext'>;
     };
     ESDialogClose: {
-      defaultProps: Pick<DialogCloseProps, 'label'>;
+      defaultProps: Pick<DialogCloseProps, 'label' | 'labelEscapeKey'>;
     };
     ESFileInfoName: {
       defaultProps: Pick<FileInfoNameProps, 'labelDelete'>;
@@ -175,7 +175,8 @@ export const en: Localization = {
     },
     ESDialogClose: {
       defaultProps: {
-        label: 'Close'
+        label: 'Close',
+        labelEscapeKey: 'Esc'
       }
     },
     ESFileInfoName: {
@@ -349,7 +350,8 @@ export const ru: Localization = {
     },
     ESDialogClose: {
       defaultProps: {
-        label: 'Закрыть'
+        label: 'Закрыть',
+        labelEscapeKey: 'Esc'
       }
     },
     ESFileInfoName: {
