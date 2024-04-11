@@ -407,8 +407,8 @@ export const ru: Localization = {
     },
     ESSidebarToggle: {
       defaultProps: {
-        labelOpen: 'Полный вид',
-        labelHide: 'Компактный вид'
+        labelOpen: 'Развернуть',
+        labelHide: 'Свернуть'
       }
     },
     ESSidebarItem: {
