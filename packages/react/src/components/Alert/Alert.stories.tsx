@@ -65,6 +65,11 @@ const meta: Meta<Args> = {
       control: {
         type: 'boolean'
       }
+    },
+    breakpoint: {
+      control: {
+        type: 'number'
+      }
     }
   },
   args: {
@@ -82,27 +87,35 @@ export const Demo: Story = {
     return (
       <Alert
         action={args.action ? <AlertClose /> : null}
+        actions={
+          !!args.actions && (
+            <AlertActions>
+              <Button
+                color="tertiary"
+                size="32"
+                sx={{ mr: '8px', padding: '0 8px!important', color: 'monoA.A700' }}
+                variant="contained"
+              >
+                {getButtonText(context)}
+              </Button>
+              <Button
+                color="tertiary"
+                size="32"
+                sx={{ padding: '0 8px!important', color: 'monoA.A700' }}
+                variant="text"
+              >
+                {getCancelButtonText(context)}
+              </Button>
+            </AlertActions>
+          )
+        }
+        breakpoint={args.breakpoint}
         color={args.color}
         icon={args.icon ? undefined : false}
         severity={args.severity}
       >
         {!!args.title && <AlertTitle>{args.title}</AlertTitle>}
         {args.text || getText(context)}
-        {!!args.actions && (
-          <AlertActions>
-            <Button
-              color="tertiary"
-              size="32"
-              sx={{ mr: '8px', padding: '0 8px!important', color: 'monoA.A700' }}
-              variant="contained"
-            >
-              {getButtonText(context)}
-            </Button>
-            <Button color="tertiary" size="32" sx={{ padding: '0 8px!important', color: 'monoA.A700' }} variant="text">
-              {getCancelButtonText(context)}
-            </Button>
-          </AlertActions>
-        )}
       </Alert>
     );
   }

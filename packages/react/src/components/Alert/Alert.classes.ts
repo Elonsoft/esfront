@@ -19,6 +19,8 @@ export type AlertClasses = {
   content: string;
   /** Styles applied to the action wrapper element. */
   action: string;
+  /** Styles applied to the message element. */
+  message: string;
 };
 export type AlertClassKey = keyof AlertClasses;
 
@@ -35,5 +37,6 @@ export const alertClasses: AlertClasses = generateUtilityClasses('ESAlert', [
   'standardMonoA',
   'icon',
   'content',
-  'action'
+  'action',
+  'message'
 ]);

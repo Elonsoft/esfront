@@ -26,7 +26,6 @@ const AlertActionsRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
 })(() => ({
-  marginTop: '6px',
   padding: '4px 0'
 }));
 

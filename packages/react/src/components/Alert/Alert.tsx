@@ -13,6 +13,7 @@ import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500
 
 type AlertOwnerState = {
   classes?: AlertProps['classes'];
+  breakpoint?: AlertProps['breakpoint'];
   color?: AlertProps['color'];
   severity: 'success' | 'warning' | 'error' | 'info';
   variant: 'standard';
@@ -26,6 +27,7 @@ const useUtilityClasses = (ownerState: AlertOwnerState) => {
     root: ['root', `${variant}${capitalize(color || severity)}`, `${variant}`],
     icon: ['icon'],
     content: ['content'],
+    message: ['message'],
     action: ['action']
   };
 
@@ -83,10 +85,28 @@ const AlertIcon = styled('div', {
   marginRight: '8px'
 }));
 
-const AlertContent = styled(Typography, {
+const AlertContent = styled('div', {
   name: 'ESAlert',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content
+})<{ ownerState: { breakpoint: AlertProps['breakpoint'] } }>(({ ownerState: { breakpoint }, theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '6px',
+  flexGrow: 1,
+
+  ...(!!breakpoint && {
+    [theme.breakpoints.up(breakpoint)]: {
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+    }
+  })
+}));
+
+const AlertMessage = styled(Typography, {
+  name: 'ESAlert',
+  slot: 'Message',
+  overridesResolver: (props, styles) => styles.message
 })(() => ({
   wordBreak: 'break-word',
   marginRight: 'auto',
@@ -123,7 +143,9 @@ export const Alert = (inProps: AlertProps) => {
     variant = 'standard',
     severity = 'success',
     action,
+    actions,
     color,
+    breakpoint,
     iconMapping = defaultIconMapping,
     ...props
   } = useThemeProps({
@@ -135,14 +157,17 @@ export const Alert = (inProps: AlertProps) => {
     ? children.some((elem) => (typeof elem === 'object' ? elem.type?.displayName === 'AlertActions' : false))
     : false;
 
-  const ownerState = { ...props, variant, severity, color, isWithActions };
+  const ownerState = { ...props, variant, severity, color, isWithActions, breakpoint };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <AlertRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {icon !== false && <AlertIcon className={classes.icon}>{icon || iconMapping[severity]}</AlertIcon>}
-      <AlertContent className={classes.content} color="monoA.A900" component="div" variant="body100">
-        {children}
+      <AlertContent className={classes.content} ownerState={{ breakpoint }}>
+        <AlertMessage className={classes.message} color="monoA.A900" component="div" variant="body100">
+          {children}
+        </AlertMessage>
+        {actions}
       </AlertContent>
       {!!action && (
         <AlertAction className={classes.action} ownerState={ownerState}>
