@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { AlertClasses } from './Alert.classes';
 
-import { SxProps, Theme } from '@mui/material';
+import { Breakpoint, SxProps, Theme } from '@mui/material';
 
 export interface AlertProps {
   children?: ReactNode;
@@ -32,10 +32,20 @@ export interface AlertProps {
    */
   color?: 'success' | 'warning' | 'error' | 'info' | 'monoA';
 
+  /** The screen width at which the flex items are ordered along the cross axis.
+   * @default 'tabletXS'
+   */
+  breakpoint?: number | Breakpoint;
+
   /**
    * The action to display. It renders after the message, at the end of the alert.
    */
   action?: ReactNode;
+
+  /**
+   * The action to display. It renders after the message, at the end of the alert.
+   */
+  actions?: ReactNode;
 
   /**
    * The component maps the severity prop to a range of different icons.
