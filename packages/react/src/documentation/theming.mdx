@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
+import * as ThemingStories from './theming.stories';
+
+import { PaletteDemo } from './components/PaletteDemo';
+import { TypographyDemo } from './components/TypographyDemo';
+
+<Meta of={ThemingStories} />
+
+## Palette
+
+Our design system build upon MUI palette and introduces new colors and hues. Palette can be customized via `theme` prop
+in `ThemeProvider`:
+
+```tsx
+import { createTheme, palettes } from '@elonkit/react';
+
+const theme = createTheme({
+  palette: {
+    ...palettes.common,
+    ...palettes.light
+  }
+});
+
+<ThemeProvider theme={theme}>...</ThemeProvider>;
+```
+
+<Story of={ThemingStories.Palette} />
+
+## Typography
+
+Typography is based on the guidelines from the Material Design spec and is arranged into typography levels. Each level
+has a font-size, line-height, font-weight and letter-spacing. Typography can be customized via `typography` key in
+`createTheme` options.
+
+```tsx
+// Default typography
+import { createTypography } from '@elonkit/react';
+
+const theme = createTheme({
+  palette: {
+    ...palettes.common,
+    ...palettes.light
+  },
+  typography: createTypography
+});
+
+<ThemeProvider theme={theme}>...</ThemeProvider>;
+```
+
+<Story of={ThemingStories.Typography} />
