@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
+
+<Meta
+  title="Getting Started/Usage"
+  parameters={{
+    viewMode: 'docs'
+  }}
+/>
+
+# Usage
+
+You can use any of the components as demonstrated in the documentation. Please refer to each component's demo page.
+
+## Quick start
+
+Here's a quick example to get you started:
+
+```tsx
+import {} from '@elonkit/react/lib/overrides';
+
+import ReactDOM from 'react-dom';
+
+import { ThemeProvider, EmptyState } from '@elonkit/react';
+import Button from '@mui/material/Button';
+
+const Application = () => {
+  return (
+    <ThemeProvider>
+      <Button variant="contained">Hello World</Button>
+      <EmptyState heading="There are no entities yet" subheading="Do you want to create the first entity?" />
+    </ThemeProvider>
+  );
+};
+
+ReactDOM.render(<Application />, document.querySelector('#root'));
+```
+
+Then follow the usage instructions for [MUI](https://mui.com/getting-started/usage/). You may also want to see
+documentation for [server rendering](https://mui.com/guides/server-rendering/).
+
+## Typescript
+
+There are three ways to load the types overrides for MUI.
+
+The easiest one, if your `tsconfig.json` already has a `"types"` array in the `"compilerOptions"` section, is to add
+`"@elonkit/react/lib/overrides"` to the `"types"` array.
+
+Alternatively, a specific import syntax can to be used from a typescript file. This module does not exist in reality,
+which is why the `{}` is important:
+
+```ts
+import {} from '@elonkit/react/lib/overrides';
+```
+
+It is also possible to include it through a triple-slash reference:
+
+```ts
+/// <reference types="@elonkit/react/lib/overrides" />
+```
+
+Either the import or the reference only needs to appear once, anywhere in the project.

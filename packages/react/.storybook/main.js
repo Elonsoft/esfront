@@ -1,9 +1,15 @@
+import { dirname, join } from 'path';
 const path = require('path');
+
 const toPath = (filePath) => path.join(process.cwd(), filePath);
+const getAbsolutePath = (value) => dirname(require.resolve(join(value, 'package.json')));
 
 module.exports = {
   stories: [
-    '../**/*.stories.mdx',
+    '../src/**/*.mdx',
+    '../src/documentation/**/*.stories.tsx',
+    '../src/hooks/**/*.stories.tsx',
+    '../src/theming/**/*.stories.tsx',
     {
       directory: '../src/components',
       files: '**/*.stories.tsx',
@@ -13,16 +19,17 @@ module.exports = {
   staticDirs: ['./assets'],
 
   addons: [
-    '@storybook/addon-links',
+    getAbsolutePath('@storybook/addon-links'),
     {
       name: '@storybook/addon-essentials',
       options: {
         backgrounds: false
       }
     },
-    '@storybook/addon-a11y',
-    'storybook-dark-mode',
-    '@storybook/addon-mdx-gfm'
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('storybook-dark-mode'),
+    getAbsolutePath('@storybook/addon-mdx-gfm'),
+    '@storybook/addon-webpack5-compiler-babel'
   ],
 
   webpackFinal: (config) => {
@@ -43,7 +50,7 @@ module.exports = {
     disableTelemetry: true
   },
   framework: {
-    name: '@storybook/react-webpack5',
+    name: getAbsolutePath('@storybook/react-webpack5'),
     options: {}
   },
   docs: {

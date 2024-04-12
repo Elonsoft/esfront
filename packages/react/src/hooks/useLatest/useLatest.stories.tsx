@@ -1,35 +1,46 @@
-/* eslint-disable storybook/default-exports */
-
 import { useEffect, useState } from 'react';
 
-import { Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Typography from '@mui/material/Typography';
 
 import { useLatest } from './useLatest';
 
-export const Demo: Story = () => {
-  const [count, setCount] = useState(0);
+const meta: Meta = {
+  tags: ['autodocs'],
+  title: 'Hooks/useLatest',
+  parameters: {
+    references: ['useLatest']
+  }
+};
 
-  const latestCallback = useLatest(() => {
-    setCount(count + 1);
-  });
+export default meta;
+type Story = StoryObj;
 
-  useEffect(() => {
-    const onClick = () => {
-      latestCallback.current();
-    };
+export const Demo: Story = {
+  render: function Render() {
+    const [count, setCount] = useState(0);
 
-    document.addEventListener('click', onClick);
+    const latestCallback = useLatest(() => {
+      setCount(count + 1);
+    });
 
-    return () => {
-      document.removeEventListener('click', onClick);
-    };
-  }, []);
+    useEffect(() => {
+      const onClick = () => {
+        latestCallback.current();
+      };
 
-  return (
-    <Typography variant="body100">
-      Count of clicks on this page: <b>{count}</b>.
-    </Typography>
-  );
+      document.addEventListener('click', onClick);
+
+      return () => {
+        document.removeEventListener('click', onClick);
+      };
+    }, []);
+
+    return (
+      <Typography variant="body100">
+        Count of clicks on this page: <b>{count}</b>.
+      </Typography>
+    );
+  }
 };

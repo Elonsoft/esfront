@@ -3,7 +3,7 @@
   "dictionaries": ["ru-ru", "lorem-ipsum"],
   "languageSettings": [{ "languageId": "commit-msg", "ignoreRegExpList": ["/^#.*/gm"] }],
   "ignorePaths": [
-    "node_modules/**",
+    "**/node_modules/**",
     "**/lib/**",
     "**/storybook-static/**",
     "packages/react/src/typedoc.json",
