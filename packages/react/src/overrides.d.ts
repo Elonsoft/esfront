@@ -249,6 +249,7 @@ import {
 } from './components/Table';
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { buttonMixin, listItemMixin } from './theming/mixins';
+import { HighlighClassKey, HighlighProps, SearchHighlightClassKey, SearchHighlightProps } from './components';
 
 export interface ISurfacePalette {
   background: string;
@@ -364,6 +365,7 @@ declare module '@mui/material/styles/props' {
     ESGalleryThumbnails: GalleryThumbnailsProps;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageProps;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemProps;
+    ESHighlight: HighlighProps;
     ESKbd: KbdProps;
     ESLink: LinkProps;
     ESLoadingButton: LoadingButtonProps;
@@ -379,6 +381,7 @@ declare module '@mui/material/styles/props' {
     ESPaginationPages: PaginationPagesProps;
     ESPaginationRange: PaginationRangeProps;
     ESPasswordField: PasswordFieldProps;
+    ESSearchHighlight: SearchHighlightProps;
     ESSidebar: SidebarProps;
     ESSidebarSpacer: SidebarSpacerProps;
     ESSidebarToggle: SidebarToggleProps;
@@ -481,6 +484,7 @@ declare module '@mui/material/styles/overrides' {
     ESGalleryThumbnails: GalleryThumbnailsClassKey;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageClassKey;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemClassKey;
+    ESHighlight: HighlighClassKey;
     ESKbd: KbdClassKey;
     ESLink: LinkClassKey;
     ESLoadingButton: LoadingButtonClassKey;
@@ -496,6 +500,7 @@ declare module '@mui/material/styles/overrides' {
     ESPaginationPages: PaginationPagesClassKey;
     ESPaginationRange: PaginationRangeClassKey;
     ESPasswordField: PasswordFieldClassKey;
+    ESSearchHighlight: SearchHighlightClassKey;
     ESSidebar: SidebarClassKey;
     ESSidebarItem: SidebarItemClassKey;
     ESSidebarToggle: SidebarToggleClassKey;
@@ -728,6 +733,14 @@ declare module '@mui/material/styles/components' {
     ESGalleryThumbnailsItem?: {
       defaultProps?: ComponentsProps['ESGalleryThumbnailsItem'];
       styleOverrides?: ComponentsOverrides['ESGalleryThumbnailsItem'];
+    };
+    ESHighlight?: {
+      defaultProps?: ComponentsProps['ESHighlight'];
+      styleOverrides?: ComponentsOverrides['ESHighlight'];
+    };
+    ESSearchHighlight?: {
+      defaultProps?: ComponentsProps['ESSearchHighlight'];
+      styleOverrides?: ComponentsOverrides['ESSearchHighlight'];
     };
     ESSwiper?: {
       defaultProps?: ComponentsProps['ESSwiper'];
