@@ -9,6 +9,34 @@ import { OnboardingSpotlight } from './OnboardingSpotlight';
 
 import { useDebounce } from '../../hooks';
 
+type OnboardingOwnerState = {
+  currentStep?: OnboardingProps['currentStep'];
+  isOpen?: OnboardingProps['isOpen'];
+  steps?: OnboardingProps['steps'];
+  padding?: OnboardingProps['padding'];
+};
+
+const useUtilityClasses = (ownerState: OnboardingOwnerState) => {
+  const { isOpen, currentStep } = ownerState;
+
+  const classes = {
+    root: 'onboarding-root',
+    backdrop: 'onboarding-backdrop',
+    spotlight: 'onboarding-spotlight'
+  };
+
+  if (isOpen) {
+    classes.root += ' onboarding-open';
+    classes.backdrop += ' onboarding-backdrop-open';
+  }
+
+  if (currentStep !== undefined && currentStep > 0) {
+    classes.spotlight += ' onboarding-spotlight-step-' + currentStep;
+  }
+
+  return classes;
+};
+
 const OnboardingBackdrop = styled(Backdrop, {
   name: 'ESOnboardingBackdrop',
   slot: 'Backdrop',
@@ -72,10 +100,12 @@ export const Onboarding = (inProps: OnboardingProps) => {
     [element]
   );
 
+  const classes = useUtilityClasses({ steps, padding, isOpen });
+
   return (
     <>
       <Portal>
-        <OnboardingBackdrop open={isOpen} ownerState={inProps}>
+        <OnboardingBackdrop className={classes.root} open={isOpen} ownerState={inProps}>
           <OnboardingSpotlight padding={padding} rect={rect} />
         </OnboardingBackdrop>
       </Portal>
