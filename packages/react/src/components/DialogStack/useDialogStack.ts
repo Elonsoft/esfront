@@ -4,7 +4,7 @@ import { DialogStackContextValue, useDialogStackContext } from './DialogStack.co
 
 export const useDialogStack = (): DialogStackContextValue => {
   const context = useDialogStackContext();
-  const dialogs = useRef<number[]>([]);
+  const dialogs = useRef<Array<number | string>>([]);
 
   useEffect(() => {
     return () => {

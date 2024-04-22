@@ -6,4 +6,5 @@ export type DialogStackProviderComponentInterface = Pick<DialogProps, 'open' | '
 
 export interface DialogStackProviderProps {
   children?: ReactNode;
+  enableHistoryOverride?: boolean;
 }
