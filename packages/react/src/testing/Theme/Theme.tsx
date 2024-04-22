@@ -27,7 +27,7 @@ export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <DialogStackProvider>
+      <DialogStackProvider enableHistoryOverride>
         <DateAdapterProvider adapter={DateFnsAdapter} locale={locale === 'ru' ? dateRU : dateEN}>
           {children}
         </DateAdapterProvider>

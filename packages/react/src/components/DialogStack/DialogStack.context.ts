@@ -7,8 +7,11 @@ export interface DialogStackContextValue {
    * Opens a dialog.
    * @returns The object with `id` property, `close` method and `afterClose` promise that resolves with an argument passed to the `close` method.
    */
-  open: (dialog: (props: { close: (data?: any) => void }) => ReactElement<DialogStackProviderComponentInterface>) => {
-    id: number;
+  open: (
+    dialog: (props: { close: (data?: any) => void }) => ReactElement<DialogStackProviderComponentInterface>,
+    params?: { id?: string }
+  ) => {
+    id: number | string;
     close: (data?: any) => void;
     afterClosed: Promise<any>;
   };
@@ -16,7 +19,7 @@ export interface DialogStackContextValue {
   /**
    * Closes the dialog.
    */
-  close: (id: number) => void;
+  close: (id: number | string) => void;
 }
 
 export const DialogStackContext = createContext<DialogStackContextValue | null>(null);

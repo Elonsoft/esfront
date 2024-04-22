@@ -5,51 +5,69 @@ import { DialogStackProviderComponentInterface, DialogStackProviderProps } from 
 import { DialogStackContext } from './DialogStack.context';
 import { DialogStackStateContext } from './DialogStackState.context';
 
-export const DialogStackProvider = ({ children }: DialogStackProviderProps) => {
+import { useLatest, useWindowEventListener } from '../../hooks';
+
+export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogStackProviderProps) => {
   const [dialogs, setDialogs] = useState<
     Array<{
-      id: number;
+      id: number | string;
       open: boolean;
       onExited: () => void;
       component: ReactElement<DialogStackProviderComponentInterface>;
     }>
   >([]);
 
-  const closeDialogById = (id: number) => {
+  const latestDialogs = useLatest(dialogs);
+
+  const closeDialogById = (id: number | string) => {
     setDialogs((prev) => {
-      const newValue = prev.slice();
-      const index = newValue.findIndex((e) => e.id === id);
+      const index = prev.findIndex((e) => e.id === id);
       if (index !== -1) {
+        const newValue = prev.slice();
         newValue[index].open = false;
+        return newValue;
       }
-      return newValue;
+      return prev;
     });
   };
 
   const value = useMemo(() => {
     return {
       open: (
-        dialog: (props: { close: (data?: any) => void }) => ReactElement<DialogStackProviderComponentInterface>
+        dialog: (props: { close: (data?: any) => void }) => ReactElement<DialogStackProviderComponentInterface>,
+        params?: { id?: string }
       ) => {
-        const id = DialogStackProvider.dialogId++;
+        const dialogId = params?.id || DialogStackProvider.dialogId++;
         let close: (data?: any) => void;
 
         const afterClosed = new Promise<any>((resolve) => {
           close = (data?: any) => {
-            closeDialogById(id);
-            resolve(data);
+            const index = latestDialogs.current.findIndex((e) => e.id === dialogId);
+            if (index !== -1 && latestDialogs.current[index].open) {
+              if (enableHistoryOverride) {
+                history.back();
+              }
+              closeDialogById(dialogId);
+              resolve(data);
+            }
           };
 
           const onExited = () => {
-            setDialogs((prev) => prev.filter((dialog) => dialog.id !== id));
+            setDialogs((prev) => prev.filter((dialog) => dialog.id !== dialogId));
           };
 
-          setDialogs((prev) => [...prev, { id, open: true, onExited, component: dialog({ close }) }]);
+          setDialogs((prev) => [...prev, { id: dialogId, open: true, onExited, component: dialog({ close }) }]);
+
+          if (enableHistoryOverride) {
+            const state = history.state;
+            history.replaceState({ ...state, dialogId }, '', location.href);
+            history.pushState(state, '');
+          }
         });
 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        return { id, close, afterClosed };
+        return { id: dialogId, close, afterClosed };
       },
       close: closeDialogById
     };
@@ -57,9 +75,17 @@ export const DialogStackProvider = ({ children }: DialogStackProviderProps) => {
 
   const stateValue = useMemo(() => {
     return {
+      dialogs: dialogs.map(({ id, open }) => ({ id, open })),
       size: dialogs.length
     };
-  }, [dialogs.length]);
+  }, [dialogs]);
+
+  useWindowEventListener('popstate', (event) => {
+    // TODO: Integrate with react-router's useBlocker hook.
+    if (enableHistoryOverride && event.state?.dialogId) {
+      closeDialogById(event.state?.dialogId);
+    }
+  });
 
   return (
     <DialogStackContext.Provider value={value}>
@@ -99,4 +125,4 @@ export const DialogStackProvider = ({ children }: DialogStackProviderProps) => {
   );
 };
 
-DialogStackProvider.dialogId = 0;
+DialogStackProvider.dialogId = 1;

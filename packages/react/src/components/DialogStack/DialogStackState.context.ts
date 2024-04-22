@@ -1,6 +1,8 @@
 import { createContext, useContext } from 'react';
 
 export interface DialogStackStateContextValue {
+  /** The currently opened dialogs. */
+  dialogs: Array<{ id: number | string; open: boolean }>;
   /** The number of opened dialogs in the stack. */
   size: number;
 }
