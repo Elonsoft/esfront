@@ -80,10 +80,17 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
     };
   }, [dialogs]);
 
+  // TODO: Integrate with react-router's useBlocker hook.
   useWindowEventListener('popstate', (event) => {
-    // TODO: Integrate with react-router's useBlocker hook.
     if (enableHistoryOverride && event.state?.dialogId) {
-      closeDialogById(event.state?.dialogId);
+      const id = event.state.dialogId;
+      const index = latestDialogs.current.findIndex((e) => e.id === id);
+      if (index !== -1) {
+        const state = event.state;
+        delete state.dialogId;
+        history.replaceState(state, '', location.href);
+      }
+      closeDialogById(id);
     }
   });
 
