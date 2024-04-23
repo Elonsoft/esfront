@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.0 (2024-04-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **SFSButton:** combine button styles
+* **SortingMenu:** add new component
+
+### Features
+
+* **AlertTitle:** change color ([774a109](https://github.com/Elonsoft/elonkit-react/commit/774a109d74023671c52c8543748dc08fb955f1f2))
+* **DialogStack:** add history override ([e6b38ff](https://github.com/Elonsoft/elonkit-react/commit/e6b38ff9930e34d531886208e92a40882e40da09))
+* **ErrorPage:** add new component ([a9fca4c](https://github.com/Elonsoft/elonkit-react/commit/a9fca4cf2d9d4787474116df634f0cce3b6af2ad))
+* **MadeBy:** add new component ([8498590](https://github.com/Elonsoft/elonkit-react/commit/84985906aafcebf98201a7f22d839e0a1e14643b))
+* **SidebarItem:** improve hover behaviour for keyboard navigation ([1a532da](https://github.com/Elonsoft/elonkit-react/commit/1a532dad4b6a744aacbdf4dbd08cb05fe98b5489))
+* **SidebarToggle:** change label text ([901d0a0](https://github.com/Elonsoft/elonkit-react/commit/901d0a0114029e63b80de2514c39cc8a71bbd0a7))
+* **SortingMenu:** add new component ([99bb597](https://github.com/Elonsoft/elonkit-react/commit/99bb5973d6567702e7492615d663527497c2e96c))
+* **Switch:** add large size ([64bc0da](https://github.com/Elonsoft/elonkit-react/commit/64bc0da783408662df23f6e7b6c3aa37c5ca5419))
+
+
+### Bug Fixes
+
+* **AutocompleteMenu:** change ClickAwayListener mouseEvent ([031fee9](https://github.com/Elonsoft/elonkit-react/commit/031fee98f3500b2e2cd5716e22e215048ebb529d))
+* **SidebarItem:** prevent divider focus ([21d98ba](https://github.com/Elonsoft/elonkit-react/commit/21d98ba73ecc403f95cfbfd7bab8038d35afdf56))
+* **TableCell:** disable transition for border-bottom ([4b8b140](https://github.com/Elonsoft/elonkit-react/commit/4b8b140cbbe66bd4008afd4dbbdbdb9a647da066))
+
+
+### Refactor
+
+* **SFSButton:** combine button styles ([0dc9a18](https://github.com/Elonsoft/elonkit-react/commit/0dc9a187788dd2a55892d43af64244cfea0f404e))
+
+
 ### 0.9.4 (2024-03-05)
 
 
