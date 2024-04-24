@@ -43,12 +43,14 @@ export const getDescription = (c) => {
 
 export const getMethod = (m) => {
   const signature = m?.signatures?.[0];
+
   if (signature) {
     const parameters = signature.parameters
       ? signature.parameters.map((p) => `${p.name}: ${getProperty(p.type)}`).join(', ')
       : '';
     return `(${parameters}) => ${getProperty(signature.type)}`;
   }
+
   return '';
 };
 
@@ -61,6 +63,7 @@ export const getProperty = (p) => {
       if (p.value === null) {
         return `${p.value}`;
       }
+
       return `'${p.value}'`;
     }
     case 'union': {
@@ -71,9 +74,11 @@ export const getProperty = (p) => {
     }
     case 'reference': {
       const reference = json.children.find((e) => e.id === p.id);
+
       if (reference && reference.type && reference.type.type !== 'reflection') {
         return getProperty(reference.type);
       }
+
       return `${p.name}${p.typeArguments ? `<${p.typeArguments.map(getProperty).join(', ')}>` : ''}`;
     }
     case 'typeOperator': {
@@ -95,8 +100,10 @@ export const getField = (t) => {
   if (t.kindString === 'Method') {
     return getMethod(t);
   }
+
   if (t.kindString === 'Property') {
     return getProperty(t.type);
   }
+
   return '';
 };

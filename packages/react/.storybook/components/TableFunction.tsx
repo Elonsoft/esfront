@@ -37,6 +37,7 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
   } | null = useMemo(() => {
     const entry = json.children.find((e) => e.name === name);
     const signature = entry?.signatures?.[0];
+
     if (signature) {
       const params = (signature as any).parameters
         ? (signature as any).parameters.map((child) => ({
@@ -51,6 +52,7 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
       const returns = { type: getProperty(signature.type), description: (signature as any)?.comment?.returns || null };
       return { params, returns };
     }
+
     return null;
   }, [name]);
 
@@ -61,6 +63,7 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
       </div>
     );
   }
+
   return (
     <TableContainer>
       <Table>

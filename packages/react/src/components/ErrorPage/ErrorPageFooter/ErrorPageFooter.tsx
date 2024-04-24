@@ -21,6 +21,7 @@ const useUtilityClasses = (ownerState: ErrorPageFooterOwnerState) => {
 
   return composeClasses(slots, getErrorPageFooterUtilityClass, classes);
 };
+
 export const ErrorPageFooterRoot = styled(Typography, {
   name: 'ESErrorPageFooter',
   slot: 'Root',

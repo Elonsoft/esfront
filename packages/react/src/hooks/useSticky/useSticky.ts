@@ -30,6 +30,7 @@ export const useSticky = (
       const elementBottom = ref.current.getBoundingClientRect().bottom;
       const relativeTop = options.relativeTo ? options.relativeTo.getBoundingClientRect().top : 0;
       const relativeHeight = options.relativeTo ? options.relativeTo.clientHeight : window.innerHeight;
+
       ref.current.style.transform = `translate3d(0px, ${-Math.max(
         0,
         elementBottom - relativeTop + options.bottom - relativeHeight

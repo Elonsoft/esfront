@@ -22,11 +22,13 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
   const closeDialogById = (id: number | string) => {
     setDialogs((prev) => {
       const index = prev.findIndex((e) => e.id === id);
+
       if (index !== -1) {
         const newValue = prev.slice();
         newValue[index].open = false;
         return newValue;
       }
+
       return prev;
     });
   };
@@ -43,10 +45,12 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
         const afterClosed = new Promise<any>((resolve) => {
           close = (data?: any) => {
             const index = latestDialogs.current.findIndex((e) => e.id === dialogId);
+
             if (index !== -1 && latestDialogs.current[index].open) {
               if (enableHistoryOverride) {
                 history.back();
               }
+
               closeDialogById(dialogId);
               resolve(data);
             }
@@ -85,11 +89,13 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
     if (enableHistoryOverride && event.state?.dialogId) {
       const id = event.state.dialogId;
       const index = latestDialogs.current.findIndex((e) => e.id === id);
+
       if (index !== -1) {
         const state = event.state;
         delete state.dialogId;
         history.replaceState(state, '', location.href);
       }
+
       closeDialogById(id);
     }
   });
@@ -120,6 +126,7 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
                     if (dialog.component.props.TransitionProps?.onExited) {
                       dialog.component.props.TransitionProps.onExited(node);
                     }
+
                     dialog.onExited();
                   }
                 }

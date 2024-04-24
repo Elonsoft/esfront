@@ -294,6 +294,7 @@ export const ColumnPinning: Story = {
         setPinRight((prev) => prev.filter((e) => !value.includes(e)));
         setPinLeft(value as unknown as string[]);
       }
+
       if (pin === 'right') {
         setPinLeft((prev) => prev.filter((e) => !value.includes(e)));
         setPinRight(value as unknown as string[]);
@@ -304,9 +305,11 @@ export const ColumnPinning: Story = {
       if (pinLeft.includes(field)) {
         return 'left';
       }
+
       if (pinRight.includes(field)) {
         return 'right';
       }
+
       return undefined;
     };
 

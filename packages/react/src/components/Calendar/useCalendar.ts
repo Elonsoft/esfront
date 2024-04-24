@@ -14,18 +14,21 @@ export const useCalendar = (
 
     const difference = date.getDay() - weekStart;
     date.setDate(1 - (difference >= 0 ? difference : 7 + difference));
+
     while (date.getDate() !== 1) {
       prevDates.push(date.getDate());
       date.setDate(date.getDate() + 1);
     }
 
     let i = 1;
+
     while (date.getMonth() === month) {
       dates.push(i++);
       date.setDate(i);
     }
 
     i = 1;
+
     while (date.getDay() !== weekStart) {
       nextDates.push(i++);
       date.setDate(i);

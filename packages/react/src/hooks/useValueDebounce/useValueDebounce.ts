@@ -22,6 +22,7 @@ export const useValueDebounce = <T>(
   useEffect(() => {
     if (isLeading.current) {
       isLeading.current = false;
+
       if (leading) {
         setDebouncedValue(value);
       }
@@ -29,6 +30,7 @@ export const useValueDebounce = <T>(
 
     const id = setTimeout(() => {
       isLeading.current = true;
+
       if (trailing) {
         setDebouncedValue(value);
       }

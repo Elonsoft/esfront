@@ -20,6 +20,7 @@ const useUtilityClasses = (ownerState: ErrorPageStatusOwnerState) => {
 
   return composeClasses(slots, getErrorPageStatusUtilityClass, classes);
 };
+
 export const ErrorPageStatusRoot = styled('div', {
   name: 'ESErrorPageStatus',
   slot: 'Root',

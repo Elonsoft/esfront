@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: ['prettier', 'react-hooks', 'simple-import-sort'],
+  plugins: ['prettier', 'react-hooks', 'simple-import-sort', '@stylistic/eslint-plugin'],
   extends: ['plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -54,6 +54,16 @@ module.exports = {
     // 'prefer-template': 'error',
     'require-await': 'error',
     // yoda: 'error',
+
+    '@stylistic/padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: '*', next: 'block-like' },
+      { blankLine: 'always', prev: '*', next: 'multiline-expression' },
+      { blankLine: 'always', prev: 'block-like', next: '*' },
+      { blankLine: 'always', prev: 'multiline-expression', next: '*' },
+      { blankLine: 'never', prev: 'case', next: 'case' },
+      { blankLine: 'never', prev: 'case', next: 'default' }
+    ],
 
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',

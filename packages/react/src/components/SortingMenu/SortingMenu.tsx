@@ -282,8 +282,10 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     if (!e?.code) {
       return;
     }
+
     setTimeout(() => {
       let elem = menuListRef?.current?.firstChild as HTMLLIElement;
+
       do {
         if ((elem.firstChild as HTMLLIElement).innerText === label) {
           elem.focus();
@@ -349,17 +351,21 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
           break;
         case 'ArrowUp':
           const prevElement = ((e.target as HTMLButtonElement).parentElement as HTMLLIElement).previousElementSibling;
+
           if (prevElement) {
             e.stopPropagation();
             (prevElement as HTMLLIElement).focus();
           }
+
           break;
         case 'ArrowDown':
           const nextElement = getNextItem((e.target as HTMLButtonElement).parentElement as HTMLLIElement);
+
           if (nextElement) {
             e.stopPropagation();
             nextElement.focus();
           }
+
           break;
       }
     } else if (e.code === 'ArrowRight' && (e.target as any).childNodes[1]) {
@@ -416,6 +422,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
           if (isMultiple && values.length === 1) {
             setMultiple(false);
           }
+
           PopoverProps.TransitionProps?.onExited?.(...args);
         }
       }}

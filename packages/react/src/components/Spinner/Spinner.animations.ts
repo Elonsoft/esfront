@@ -39,6 +39,7 @@ const strokeArrayKeyframe = keyframes`
 
 const spinnerOpacityDelay = (duration: number) => {
   const animationDelay: Record<string, { animationDelay: string }> = {};
+
   for (let i = DOTS_AMOUNT - 1; i > 0; i--) {
     animationDelay[`& > *:nth-child(${DOTS_AMOUNT - i})`] = {
       animationDelay: `${(-i / DOTS_AMOUNT) * duration}ms`

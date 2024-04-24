@@ -23,14 +23,17 @@ export const FormatDate = (inProps: FormatDateProps) => {
     }
 
     const date = adapter.date(children);
+
     if (date) {
       if (formatString) {
         return adapter.formatByString(date, formatString);
       }
+
       if (format) {
         return adapter.format(date, format);
       }
     }
+
     return children;
   }, [children, adapter, format, formatString]);
 

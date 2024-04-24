@@ -53,6 +53,7 @@ const TableInterfaceBase = ({ name, variant }: TableInterfaceProps) => {
         }))
         .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
     }
+
     return [];
   }, [name]);
 

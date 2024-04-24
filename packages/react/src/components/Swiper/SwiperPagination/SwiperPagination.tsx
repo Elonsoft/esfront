@@ -117,9 +117,11 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
 
   const bullets = useMemo(() => {
     const result: Array<number> = [];
+
     for (let i = from; i <= to; i++) {
       result.push(i);
     }
+
     return result;
   }, [from, to]);
 

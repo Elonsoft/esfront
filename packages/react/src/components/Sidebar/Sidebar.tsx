@@ -204,6 +204,7 @@ export const Sidebar = (inProps: SidebarProps) => {
 
         setMouseMove(true);
       };
+
       document.addEventListener('touchmove', onMouseMove.current);
     }
   };
@@ -236,6 +237,7 @@ export const Sidebar = (inProps: SidebarProps) => {
 
         setMouseMove(true);
       };
+
       document.addEventListener('mousemove', onMouseMove.current);
     }
   };

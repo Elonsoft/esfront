@@ -165,9 +165,11 @@ export const Sidenav = (inProps: SidenavProps) => {
     if (timeout.current) {
       clearTimeout(timeout.current);
     }
+
     timeout.current = setTimeout(() => {
       if (id) {
         setItemId(id);
+
         if (!open) {
           setHover(true);
         }
@@ -207,6 +209,7 @@ export const Sidenav = (inProps: SidenavProps) => {
       onHoverItem();
     } else {
       onMouseLeaveSidenav();
+
       if (timeout.current) {
         clearTimeout(timeout.current);
       }
@@ -261,6 +264,7 @@ export const Sidenav = (inProps: SidenavProps) => {
                 </SidenavDrawer>
               );
             }
+
             return (
               <SidenavRail
                 ref={root}

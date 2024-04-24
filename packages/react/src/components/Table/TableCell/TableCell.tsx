@@ -139,6 +139,7 @@ const TableCellRoot = styled('div', {
     width: '3px',
     backgroundColor: theme.palette.info.A600
   },
+
   ...(ownerState.isResizing && {
     [`.${tableCellClasses.resize}.${tableCellClasses.resize}::after`]: {
       width: '3px',
@@ -259,6 +260,7 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
         );
         onResizeLatest.current(width, ref.current);
       }
+
       screenX.current = event.screenX;
     }
   });
@@ -270,6 +272,7 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const step = RESIZE_STEPS[event.key];
+
     if (onResizeLatest.current && ref.current && step) {
       event.preventDefault();
       const width = Math.max(

@@ -175,6 +175,7 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
     if (!isClicked.current) {
       actions.current?.setActiveSlide(item);
     }
+
     isClicked.current = false;
   }, [item]);
 

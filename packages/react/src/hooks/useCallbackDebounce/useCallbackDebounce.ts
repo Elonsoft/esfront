@@ -28,6 +28,7 @@ export const useCallbackDebounce = <T extends any[]>(
 
     if (isLeading.current) {
       isLeading.current = false;
+
       if (leading) {
         callback(...args);
       }
@@ -35,6 +36,7 @@ export const useCallbackDebounce = <T extends any[]>(
 
     timeout.current = setTimeout(() => {
       isLeading.current = true;
+
       if (trailing) {
         callback(...args);
       }

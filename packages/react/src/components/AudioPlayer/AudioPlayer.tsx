@@ -565,6 +565,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
       const { left, right, top, bottom } = sliderRef.current.getBoundingClientRect();
       const clientX = Math.min(right, Math.max(left, event.clientX));
       setHover((clientX - left) / (right - left));
+
       if (popperRef.current) {
         positionRef.current = { x: clientX, y: (top + bottom) / 2 };
         popperRef.current.update();
@@ -574,6 +575,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
   const onPointerEnter = (event: React.PointerEvent) => {
     setOverRail(true);
+
     requestAnimationFrame(() => {
       onPointerMove(event);
     });
@@ -610,6 +612,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     if (event.key === 'ArrowRight') {
       setRateMenuOpen(true);
     }
+
     if (event.key === 'ArrowLeft') {
       setRateMenuOpen(false);
     }
@@ -628,6 +631,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
       if (volume === 0) {
         audio.volume = 1;
       }
+
       audio.muted = false;
     } else {
       audio.muted = true;
@@ -656,6 +660,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     if (onSeeked) {
       onSeeked();
     }
+
     audio.currentTime = event.type === 'change' ? (value as number) : currentChanging;
     setChanging(false);
     setCurrent(audio.currentTime);
@@ -697,6 +702,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const onDurationChangeLatest = useLatest((event: Event) => {
     const { duration } = event.target as HTMLAudioElement;
     setDuration(duration);
+
     if (onDurationChange) {
       onDurationChange(event);
     }
@@ -712,6 +718,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     audio.currentTime = 0;
     setPlaying(false);
     setCurrentVisible(false);
+
     if (onEnded) {
       onEnded(event);
     }
@@ -726,6 +733,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const onLoadedDataLatest = useLatest((event: Event) => {
     const { currentTime } = event.target as HTMLAudioElement;
     setCurrent(currentTime);
+
     if (onLoadedData) {
       onLoadedData(event);
     }
@@ -745,6 +753,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
   const onPauseLatest = useLatest((event: Event) => {
     setPlaying(false);
+
     if (onPause) {
       onPause(event);
     }
@@ -753,6 +762,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const onPlayLatest = useLatest((event: Event) => {
     setPlaying(true);
     setCurrentVisible(true);
+
     if (onPlay) {
       onPlay(event);
     }
@@ -773,6 +783,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const onRateChangeLatest = useLatest((event: Event) => {
     const { playbackRate } = event.target as HTMLAudioElement;
     setRate(playbackRate);
+
     if (onRateChange) {
       onRateChange(event);
     }
@@ -793,6 +804,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const onTimeUpdateLatest = useLatest((event: Event) => {
     const { currentTime } = event.target as HTMLAudioElement;
     setCurrent(currentTime);
+
     if (onTimeUpdate) {
       onTimeUpdate(event);
     }
@@ -818,60 +830,79 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     const onAudioAbort = (event: Event) => {
       onAbortLatest.current(event);
     };
+
     const onAudioCanPlay = (event: Event) => {
       onCanPlayLatest.current(event);
     };
+
     const onAudioCanPlayThrough = (event: Event) => {
       onCanPlayThroughLatest.current(event);
     };
+
     const onAudioDurationChange = (event: Event) => {
       onDurationChangeLatest.current(event);
     };
+
     const onAudioEmptied = (event: Event) => {
       onEmptiedLatest.current(event);
     };
+
     const onAudioEnded = (event: Event) => {
       onEndedLatest.current(event);
     };
+
     const onAudioError = (event: Event) => {
       onErrorLatest.current(event);
     };
+
     const onAudioLoadedData = (event: Event) => {
       onLoadedDataLatest.current(event);
     };
+
     const onAudioLoadedMetadata = (event: Event) => {
       onLoadedMetadataLatest.current(event);
     };
+
     const onAudioLoadStart = (event: Event) => {
       onLoadStartLatest.current(event);
     };
+
     const onAudioPause = (event: Event) => {
       onPauseLatest.current(event);
     };
+
     const onAudioPlay = (event: Event) => {
       onPlayLatest.current(event);
     };
+
     const onAudioPlaying = (event: Event) => {
       onPlayingLatest.current(event);
     };
+
     const onAudioProgress = (event: Event) => {
       onProgressLatest.current(event);
     };
+
     const onAudioRateChange = (event: Event) => {
       onRateChangeLatest.current(event);
     };
+
     const onAudioStalled = (event: Event) => {
       onStalledLatest.current(event);
     };
+
     const onAudioSuspend = (event: Event) => {
       onSuspendLatest.current(event);
     };
+
     const onAudioTimeUpdate = (event: Event) => {
       onTimeUpdateLatest.current(event);
     };
+
     const onAudioVolumeChange = (event: Event) => {
       onVolumeChangeLatest.current(event);
     };
+
     const onAudioWaiting = (event: Event) => {
       onWaitingLatest.current(event);
     };
@@ -945,6 +976,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     const animation = () => {
       if (sliderRef.current && popperRef.current) {
         const thumb = sliderRef.current.querySelector(`.${sliderClasses.thumb}`);
+
         if (thumb) {
           const { top, bottom } = sliderRef.current.getBoundingClientRect();
           const { left, right } = thumb.getBoundingClientRect();
@@ -952,6 +984,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
           popperRef.current.update();
         }
       }
+
       handle = requestAnimationFrame(animation);
     };
 

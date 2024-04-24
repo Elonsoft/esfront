@@ -212,6 +212,7 @@ export const Demo: Story = {
                 ref.current.style.transition = '';
                 ref.current.style.paddingLeft = '';
               }
+
               setWidth(value);
             }}
           >

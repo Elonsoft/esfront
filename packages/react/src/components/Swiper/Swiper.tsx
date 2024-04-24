@@ -178,6 +178,7 @@ export const Swiper = (inProps: SwiperProps) => {
    */
   const getActiveSlide = () => {
     let active: number | null = null;
+
     if (container.current) {
       const rect = container.current.getBoundingClientRect();
       const center = (rect[mapping.start] + rect[mapping.end]) / 2;
@@ -194,6 +195,7 @@ export const Swiper = (inProps: SwiperProps) => {
         }
       }
     }
+
     return active;
   };
 
@@ -207,6 +209,7 @@ export const Swiper = (inProps: SwiperProps) => {
         const children = container.current.children[
           Math.max(0, Math.min(index, container.current.children.length - 1))
         ] as HTMLElement;
+
         if (children) {
           const start =
             children[mapping.offset] - container.current[mapping.clientSize] / 2 + children[mapping.clientSize] / 2;
@@ -232,20 +235,25 @@ export const Swiper = (inProps: SwiperProps) => {
 
       if (alignment === 'center') {
         const active = getActiveSlide();
+
         if (active !== null) {
           const center = (start + end) / 2;
+
           for (let i = active; count >= 1 && (direction === -1 ? i >= 0 : i < children.length); i += direction) {
             const child = children[i];
             const childNext = children[i + direction];
+
             if (i === active) {
               const rect = child.getBoundingClientRect();
               step += direction === -1 ? center - rect[mapping.start] : rect[mapping.end] - center;
             } else {
               step += child[mapping.clientSize] / 2;
             }
+
             if (childNext) {
               step += childNext[mapping.clientSize] / 2 + gap;
             }
+
             count--;
           }
         }
@@ -255,8 +263,10 @@ export const Swiper = (inProps: SwiperProps) => {
         if (direction === 1) {
           for (let i = 0; i < children.length; i++) {
             const rect = children[i].getBoundingClientRect();
+
             if (rect[mapping.end] - start > BUFFER) {
               step = rect[mapping.end] - start + gap;
+
               if (count === 1) {
                 break;
               } else {
@@ -267,8 +277,10 @@ export const Swiper = (inProps: SwiperProps) => {
         } else {
           for (let i = children.length - 1; i >= 0; i--) {
             const rect = children[i].getBoundingClientRect();
+
             if (rect[mapping.start] - start < -BUFFER) {
               step = -(rect[mapping.start] - start + gap);
+
               if (count === 1) {
                 break;
               } else {
@@ -281,6 +293,7 @@ export const Swiper = (inProps: SwiperProps) => {
 
       return step;
     }
+
     return 0;
   };
 
@@ -314,6 +327,7 @@ export const Swiper = (inProps: SwiperProps) => {
       if (newFrom !== from) {
         setFrom(newFrom);
       }
+
       if (newTo !== to) {
         setTo(newTo);
       }
@@ -333,11 +347,14 @@ export const Swiper = (inProps: SwiperProps) => {
           container.current.scrollTo({ [mapping.start]: 0, behavior: 'smooth' });
           return;
         }
+
         if (active === from && step < 0 && loop) {
           container.current.scrollTo({ [mapping.start]: container.current[mapping.scrollSize], behavior: 'smooth' });
           return;
         }
+
         const s = latestGetStep.current(Math.sign(step) as 1 | -1, Math.abs(step));
+
         container.current.scrollBy({
           [mapping.start]: Math.sign(step) * s,
           behavior: options?.smooth ?? true ? 'smooth' : 'auto'
@@ -374,6 +391,7 @@ export const Swiper = (inProps: SwiperProps) => {
 
       if (snap) {
         const index = getActiveSlide();
+
         if (index !== null) {
           setActiveSlide(index, { smooth: true });
         }
@@ -421,8 +439,10 @@ export const Swiper = (inProps: SwiperProps) => {
         setNextVisible(true);
       }
     }
+
     if (newActive !== null && newActive !== active) {
       setActive(newActive);
+
       if (onActiveSlideChange) {
         onActiveSlideChange(newActive);
       }
