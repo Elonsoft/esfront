@@ -7,7 +7,7 @@ import { Backdrop, Portal } from '@mui/material';
 
 import { OnboardingSpotlight } from './OnboardingSpotlight';
 
-import { useDebounce } from '../../hooks';
+import { useDebounce, useScrollLock } from '../../hooks';
 
 type OnboardingOwnerState = {
   steps?: OnboardingProps['steps'];
@@ -81,12 +81,9 @@ export const Onboarding = (inProps: OnboardingProps) => {
 
   useEffect(() => {
     element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    if (step !== null && steps) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [element, step]);
+  }, [element]);
+
+  useScrollLock(Boolean(step !== null && steps), document.body);
 
   const classes = useUtilityClasses({ steps, padding, step });
 
