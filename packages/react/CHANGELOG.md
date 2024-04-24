@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.1 (2024-04-24)
+
+
+### Features
+
+* **DialogStack:** cleanup dialog id from history state on pop state ([9e9035d](https://github.com/Elonsoft/elonkit-react/commit/9e9035dce6714bce63516cbc0e6610f642d879c8))
+
+
 ## 0.10.0 (2024-04-23)
 
 
