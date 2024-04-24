@@ -100,6 +100,7 @@ export const Calendar = (inProps: CalendarProps) => {
       if (range[0] && range[1] && range[0] > range[1]) {
         range = range.reverse() as [Date, Date];
       }
+
       if (rangeHover[0] && rangeHover[1] && rangeHover[0] > rangeHover[1]) {
         rangeHover = rangeHover.reverse() as [Date, Date];
       }

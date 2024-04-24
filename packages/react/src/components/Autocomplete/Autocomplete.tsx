@@ -153,6 +153,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     if (props.getDisplayValue) {
       return props.multiple ? props.getDisplayValue(props.value) : props.getDisplayValue(props.value);
     }
+
     return valueArray.map((v) => getOptionLabel(v)).join(', ');
   }, [props.value, valueArray]);
 
@@ -191,6 +192,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
             const element = paperRef.current.querySelector(
               'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
             ) as HTMLElement | null;
+
             if (element) {
               element.focus();
             }

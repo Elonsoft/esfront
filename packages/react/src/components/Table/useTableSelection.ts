@@ -27,6 +27,7 @@ export const useTableSelection = <T extends object, K extends keyof T>(
   const toggle = useCallback(
     (value: V, isSelected?: boolean) => {
       const index = selected.indexOf(value);
+
       if (isSelected ?? index === -1) {
         setSelected(selected.concat(value));
       } else {
@@ -42,9 +43,11 @@ export const useTableSelection = <T extends object, K extends keyof T>(
     (isSelected?: boolean) => {
       if (data) {
         let newSelected = selected.filter((id) => !data.find((row) => row[options.key] === id));
+
         if (isSelected ?? !isAllSelected) {
           newSelected = newSelected.concat(data.map((row) => row[options.key]));
         }
+
         setSelected(newSelected);
       }
     },

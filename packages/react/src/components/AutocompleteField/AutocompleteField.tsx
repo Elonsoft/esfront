@@ -72,6 +72,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
     if (onChange) {
       onChange(e);
     }
+
     if (closeAfterSelect) {
       toggleOpen(false);
     }

@@ -173,6 +173,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
   useEffect(() => {
     if (rootRef.current) {
       const rect = rootRef.current.getBoundingClientRect();
+
       if (position === 'bottom') {
         if (rectTop) {
           setMaxHeight(rect.bottom - rectTop.bottom);
@@ -191,6 +192,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     if (textRef.current) {
       const isTruncated = textRef.current.scrollWidth > textRef.current.clientWidth;
       setTruncated(isTruncated);
+
       if (isExpanded && !isTruncated) {
         setExpanded(false);
       }

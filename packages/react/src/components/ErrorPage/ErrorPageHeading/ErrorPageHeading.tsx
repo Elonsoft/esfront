@@ -21,6 +21,7 @@ const useUtilityClasses = (ownerState: ErrorPageHeadingOwnerState) => {
 
   return composeClasses(slots, getErrorPageHeadingUtilityClass, classes);
 };
+
 export const ErrorPageHeadingRoot = styled(Typography, {
   name: 'ESErrorPageHeading',
   slot: 'Root',

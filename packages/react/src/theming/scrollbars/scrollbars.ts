@@ -17,6 +17,7 @@ const getScrollbarWidth = () => {
     scrollbarWidth = div.offsetWidth - div.clientWidth;
     document.body.removeChild(div);
   }
+
   return scrollbarWidth || 0;
 };
 

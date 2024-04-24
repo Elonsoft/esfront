@@ -145,6 +145,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
   const onItemClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (id) {
       setItemId(id);
+
       if (!open) {
         setHover(true);
       }
@@ -167,6 +168,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
 
     if (id) {
       setItemId(id);
+
       if (!open) {
         setHover(true);
       }

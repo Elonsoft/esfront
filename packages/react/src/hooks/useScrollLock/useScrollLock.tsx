@@ -38,12 +38,14 @@ export const useScrollLock = (lock: boolean, container: HTMLElement) => {
 
         // .mui-fixed is a global helper.
         const fixedElements = ownerDocument(container).querySelectorAll('.mui-fixed');
+
         [].forEach.call(fixedElements, (element: HTMLElement | SVGElement) => {
           restoreStyle.push({
             value: element.style.paddingRight,
             property: 'padding-right',
             el: element
           });
+
           element.style.paddingRight = `${getPaddingRight(element) + scrollbarSize}px`;
         });
       }
@@ -57,6 +59,7 @@ export const useScrollLock = (lock: boolean, container: HTMLElement) => {
         // https://css-tricks.com/snippets/css/force-vertical-scrollbar/
         const parent = container.parentElement;
         const containerWindow = ownerWindow(container);
+
         scrollContainer =
           parent?.nodeName === 'HTML' && containerWindow.getComputedStyle(parent).overflowY === 'scroll'
             ? parent

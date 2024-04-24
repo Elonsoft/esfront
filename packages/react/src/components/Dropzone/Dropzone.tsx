@@ -222,18 +222,22 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
         acceptedFiles.push(file);
       } else {
         const errors: FileError[] = [];
+
         if (!typeMatch) {
           errors.push('file-invalid-type');
         }
+
         if (!sizeMatch) {
           errors.push('file-too-large');
         }
+
         rejectedFiles.push({
           file,
           errors
         });
       }
     }
+
     if (rejectedFiles.length) {
       onReject?.(event, rejectedFiles);
     } else if (!multiple && acceptedFiles.length > 1) {
@@ -243,6 +247,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
           errors: ['too-many-files']
         });
       });
+
       onReject?.(event, rejectedFiles);
     } else {
       onChange?.(event, acceptedFiles);
@@ -256,6 +261,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   const onDropzoneDrop = (event: React.DragEvent<HTMLButtonElement>) => {
     event.preventDefault();
     onDrop();
+
     if (event.dataTransfer) {
       onFileList(event, event.dataTransfer.files);
     }

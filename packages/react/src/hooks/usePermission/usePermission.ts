@@ -39,6 +39,7 @@ export const usePermission = (permissionDesc: IPermissionDescriptor): IState => 
       if (!mounted) {
         return;
       }
+
       setState(() => permissionStatus?.state ?? '');
     };
 
@@ -52,6 +53,7 @@ export const usePermission = (permissionDesc: IPermissionDescriptor): IState => 
       if (permissionStatus) {
         permissionStatus.removeEventListener('change', onChange);
       }
+
       mounted = false;
       permissionStatus = null;
     };

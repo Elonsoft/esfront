@@ -49,11 +49,13 @@ export const useTableResize = (
     () => {
       if (rowRef.current) {
         const newColumns = columns.slice();
+
         Array.from(rowRef.current.querySelectorAll(`.${tableCellClasses.root}`)).forEach((cell, i) => {
           if (i < index + colSpan) {
             newColumns[i] = `${cell.getBoundingClientRect().width}px`;
           }
         });
+
         setColumns(newColumns);
       }
     };

@@ -365,9 +365,11 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
   const onItemKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (children && refTooltip.current && event.key === 'ArrowRight') {
       let element = refTooltip.current.firstChild as HTMLElement;
+
       if (element.getAttribute('aria-disabled')) {
         element = element.nextSibling?.nextSibling as HTMLElement;
       }
+
       element.focus();
     }
 
@@ -414,6 +416,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     }
 
     onClick?.(e);
+
     if (!component) {
       onNestedMenuClick(e);
     }

@@ -388,6 +388,7 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
           if (my <= 0) {
             my = 0;
           }
+
           if (my > 0) {
             containerRef.current.style.setProperty('touch-action', `none`);
             containerRef.current.style.setProperty('overflow', `hidden`);

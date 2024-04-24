@@ -25,6 +25,7 @@ export const useDebounce = (
   useEffect(() => {
     if (isLeading.current) {
       isLeading.current = false;
+
       if (leading) {
         latestCallback.current();
       }
@@ -32,6 +33,7 @@ export const useDebounce = (
 
     const id = setTimeout(() => {
       isLeading.current = true;
+
       if (trailing) {
         latestCallback.current();
       }

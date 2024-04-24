@@ -160,6 +160,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
       }
 
       let i = 1;
+
       while (width > ref.current.offsetWidth && i < nodes.length - 1) {
         width -= (nodes[i] as HTMLElement).offsetWidth;
         i++;
@@ -221,6 +222,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
           if (!isValidElement(child)) {
             return null;
           }
+
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { children, ...rest } = child.props;
 

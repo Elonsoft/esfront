@@ -20,9 +20,11 @@ export const useCookie = <T extends string | null = null>(
 ): [string | T, (data: string, attributes?: Attributes) => void, () => void] => {
   const initialValue = useMemo(() => {
     const cookie = document.cookie.split('; ').find((c) => c.startsWith(`${encodeURIComponent(name)}=`));
+
     if (cookie) {
       return decodeURIComponent(cookie.slice(cookie.indexOf('=') + 1));
     }
+
     return (defaultValue ?? null) as T;
   }, []);
 
@@ -35,18 +37,23 @@ export const useCookie = <T extends string | null = null>(
     if (attributes?.expires) {
       cookie.push(`expires=${attributes.expires}`);
     }
+
     if (attributes?.maxAge) {
       cookie.push(`max-age=${attributes.expires}`);
     }
+
     if (attributes?.path) {
       cookie.push(`path=${attributes.path}`);
     }
+
     if (attributes?.domain) {
       cookie.push(`domain=${attributes.domain}`);
     }
+
     if (attributes?.secure) {
       cookie.push(`secure`);
     }
+
     if (attributes?.sameSite) {
       cookie.push(`samesite=${attributes.sameSite}`);
     }

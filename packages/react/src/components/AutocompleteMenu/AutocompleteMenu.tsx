@@ -323,6 +323,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
       if (props.onChange) {
         if (props.multiple) {
           const index = props.value.findIndex((v) => getOptionValue(v) === getOptionValue(option));
+
           if (index === -1) {
             props.onChange(props.value.concat(option));
           } else {
@@ -463,6 +464,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                                 onClick={() => {
                                   if (SearchProps.onChange) {
                                     SearchProps.onChange({ target: { value: '' } } as never);
+
                                     if (searchInputRef.current) {
                                       searchInputRef.current.focus();
                                     }

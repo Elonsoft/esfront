@@ -62,9 +62,11 @@ export const CalendarHead = (inProps: CalendarHeadProps) => {
 
   const days = useMemo(() => {
     const names = getWeekDays!();
+
     for (let i = 0; i < weekStart; i++) {
       names.push(names.shift() || '');
     }
+
     return names;
   }, [weekStart, getWeekDays]);
 

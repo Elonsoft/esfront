@@ -140,6 +140,7 @@ export const GalleryPanel = (inProps: GalleryPanelProps) => {
   const onResize = () => {
     if (rootRef.current) {
       const rect = rootRef.current.getBoundingClientRect();
+
       if (position === 'top') {
         setRectTop(rect);
       } else {

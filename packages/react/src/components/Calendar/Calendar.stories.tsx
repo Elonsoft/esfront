@@ -19,6 +19,7 @@ const useRangeDatePicker = () => {
       } else {
         const s = new Date(selection[0]);
         setHover(null);
+
         if (s < date) {
           setSelection([s, date]);
         } else {
@@ -207,6 +208,7 @@ export const DisabledAndTooltips: Story = {
             ) {
               return true;
             }
+
             return false;
           }}
           getButtonTooltipProps={(date) => {
@@ -218,11 +220,13 @@ export const DisabledAndTooltips: Story = {
                 title: locale === 'ru' ? 'Дата уже забронирована' : 'The date is already booked'
               };
             }
+
             if (selection && selection[0] && !selection[1] && hover && adapter?.isSameDay(date, hover)) {
               return {
                 title: locale === 'ru' ? 'N суток' : 'N days'
               };
             }
+
             return {};
           }}
           hover={hover}
