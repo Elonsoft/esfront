@@ -10,14 +10,13 @@ import { OnboardingSpotlight } from './OnboardingSpotlight';
 import { useDebounce } from '../../hooks';
 
 type OnboardingOwnerState = {
-  currentStep?: OnboardingProps['currentStep'];
-  isOpen?: OnboardingProps['isOpen'];
   steps?: OnboardingProps['steps'];
+  step?: OnboardingProps['step'];
   padding?: OnboardingProps['padding'];
 };
 
 const useUtilityClasses = (ownerState: OnboardingOwnerState) => {
-  const { isOpen, currentStep } = ownerState;
+  const { step, steps } = ownerState;
 
   const classes = {
     root: 'onboarding-root',
@@ -25,13 +24,9 @@ const useUtilityClasses = (ownerState: OnboardingOwnerState) => {
     spotlight: 'onboarding-spotlight'
   };
 
-  if (isOpen) {
+  if (step !== null && steps) {
     classes.root += ' onboarding-open';
     classes.backdrop += ' onboarding-backdrop-open';
-  }
-
-  if (currentStep !== undefined && currentStep > 0) {
-    classes.spotlight += ' onboarding-spotlight-step-' + currentStep;
   }
 
   return classes;
@@ -49,67 +44,62 @@ const OnboardingBackdrop = styled(Backdrop, {
  * The onboarding component allows you to create a reliable adaptation system for your web application
  */
 export const Onboarding = (inProps: OnboardingProps) => {
-  const { steps, padding } = useThemeProps({
+  const { steps, padding, step, onStepChange } = useThemeProps({
     props: inProps,
     name: 'ESOnboarding'
   });
-
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  const step = steps?.[currentStep];
-  const element = step && step.element ? step.element() : null;
   const [rect, setRect] = useState<DOMRect | null>(null);
+  const currentStep = step ?? 0;
   const currentPopper = steps?.[currentStep].popper;
 
-  const onPrev = () => {
-    if (currentStep > 0) {
-      setCurrentStep((prev) => prev - 1);
-    }
-  };
+  const stepCurrent = steps?.[currentStep];
+  const element = stepCurrent && stepCurrent.element ? stepCurrent.element() : null;
 
-  const onNext = () => {
-    if (steps && currentStep < steps.length - 1) {
-      setCurrentStep((prev) => prev + 1);
-    } else {
-      setIsOpen(false);
-    }
-  };
+  useDebounce(
+    () => {
+      if (typeof step === 'number' && Array.isArray(steps)) {
+        const stepElement = steps[step].element && steps[step].element();
+        if (stepElement) {
+          setRect(stepElement.getBoundingClientRect());
+        } else {
+          onStepChange?.(step + 1);
+        }
+      }
+    },
+    500,
+    [step, steps]
+  );
 
   useEffect(() => {
-    setIsOpen(true);
-  }, []);
+    if (step !== null && steps) {
+      const stepElement = steps[step]?.element();
+      if (stepElement) {
+        setRect(stepElement.getBoundingClientRect());
+      }
+    }
+  }, [step, steps]);
 
   useEffect(() => {
     element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    if (isOpen) {
+    if (step !== null && steps) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [element, isOpen]);
+  }, [element, step]);
 
-  useDebounce(
-    () => {
-      if (element) {
-        setRect(element.getBoundingClientRect());
-      } else {
-        onNext();
-      }
-    },
-    500,
-    [element]
-  );
-
-  const classes = useUtilityClasses({ steps, padding, isOpen });
+  const classes = useUtilityClasses({ steps, padding, step });
 
   return (
     <>
-      <Portal>
-        <OnboardingBackdrop className={classes.root} open={isOpen} ownerState={inProps}>
-          <OnboardingSpotlight padding={padding} rect={rect} />
-        </OnboardingBackdrop>
-      </Portal>
-      {isOpen && currentPopper && currentPopper({ onNext, currentStep, steps, setIsOpen, onPrev })}
+      {step !== null && (
+        <Portal>
+          <OnboardingBackdrop open className={classes.root} ownerState={inProps}>
+            <OnboardingSpotlight padding={padding} rect={rect} />
+          </OnboardingBackdrop>
+        </Portal>
+      )}
+      {step !== null && currentPopper && currentPopper({ currentStep, steps, step, onStepChange })}
     </>
   );
 };

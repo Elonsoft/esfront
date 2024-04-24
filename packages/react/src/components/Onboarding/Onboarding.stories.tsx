@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Box } from '@mui/material';
@@ -22,7 +24,10 @@ const meta: Meta<typeof Onboarding> = {
       control: 'text'
     }
   },
-  args: {}
+  args: {
+    title: 'Воронка продаж',
+    subtitle: 'Мелочь, а приятно: герцог графства коронован'
+  }
 };
 
 export default meta;
@@ -34,39 +39,34 @@ interface IStep {
 }
 
 export const Demo: Story = {
-  render: (args) => {
+  render: function Render(args) {
+    const [currentStep, setCurrentStep] = useState<number | null>(0);
+
     const steps: IStep[] = [
       {
-        popper: ({ onNext, ...props }) => (
-          <OnboardingPopper
-            subtitle={args.subtitle || 'subtitle'}
-            title={args.title || 'Title1'}
-            onNext={onNext}
-            {...props}
-          />
-        ),
+        popper: ({ ...props }) => <OnboardingPopper subtitle={args.subtitle} title={args.title} {...props} />,
         element: () => document.getElementById('1')
       },
       {
-        popper: ({ onNext, ...props }) => <OnboardingPopper title="title2" onNext={onNext} {...props} />,
+        popper: ({ ...props }) => <OnboardingPopper title="title2" {...props} />,
         element: () => document.querySelector('[data-onboarding="3"]')
       },
       {
-        popper: ({ onNext, ...props }) => <OnboardingPopper title="title3" onNext={onNext} {...props} />,
+        popper: ({ ...props }) => <OnboardingPopper title="title3" {...props} />,
         element: () => document.querySelector('[data-onboarding="4"]')
       },
       {
-        popper: ({ onNext, ...props }) => <OnboardingPopper title="Testing no data..." onNext={onNext} {...props} />,
+        popper: ({ ...props }) => <OnboardingPopper title="Testing no data..." {...props} />,
         element: () => document.querySelector('[data-onboarding="12"]')
       },
       {
-        popper: ({ onNext, ...props }) => <OnboardingPopper title="title5" onNext={onNext} {...props} />,
+        popper: ({ ...props }) => <OnboardingPopper title="title5" {...props} />,
         element: () => document.getElementById('test')
       }
     ];
     return (
       <>
-        <Onboarding steps={steps} />
+        <Onboarding step={currentStep} steps={steps} onStepChange={setCurrentStep} />
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '150px' }}>
           <Box data-onboarding="1" id="1" sx={{ backgroundColor: '#F2E344', width: '150px', height: '50px' }}>
             data-onboarding 1
