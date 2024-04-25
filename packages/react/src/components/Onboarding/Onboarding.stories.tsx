@@ -16,17 +16,10 @@ const meta: Meta<typeof Onboarding> = {
   argTypes: {
     padding: {
       control: { type: 'number' }
-    },
-    title: {
-      control: { type: 'text' }
-    },
-    subtitle: {
-      control: 'text'
     }
   },
   args: {
-    title: 'Воронка продаж',
-    subtitle: 'Мелочь, а приятно: герцог графства коронован'
+    padding: 3
   }
 };
 
@@ -44,7 +37,7 @@ export const Demo: Story = {
 
     const steps: IStep[] = [
       {
-        popper: ({ ...props }) => <OnboardingPopper subtitle={args.subtitle} title={args.title} {...props} />,
+        popper: ({ ...props }) => <OnboardingPopper subtitle="subtitle" title="title1" {...props} />,
         element: () => document.getElementById('1')
       },
       {
@@ -66,7 +59,7 @@ export const Demo: Story = {
     ];
     return (
       <>
-        <Onboarding step={currentStep} steps={steps} onStepChange={setCurrentStep} />
+        <Onboarding padding={args.padding} step={currentStep} steps={steps} onStepChange={setCurrentStep} />
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '150px' }}>
           <Box data-onboarding="1" id="1" sx={{ backgroundColor: '#F2E344', width: '150px', height: '50px' }}>
             data-onboarding 1
