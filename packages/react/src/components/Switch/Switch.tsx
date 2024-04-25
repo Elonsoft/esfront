@@ -18,13 +18,14 @@ type SwitchOwnerState = {
   disabled?: boolean;
   color: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
   size: 'large' | 'medium' | 'small';
+  indeterminate?: boolean;
 };
 
 const useUtilityClasses = (ownerState: SwitchOwnerState) => {
-  const { classes, checked, disabled, size } = ownerState;
+  const { classes, checked, disabled, size, indeterminate } = ownerState;
 
   const slots = {
-    root: ['root', checked && 'checked', disabled && 'disabled', size && size],
+    root: ['root', checked && 'checked', disabled && 'disabled', size && size, indeterminate && 'indeterminate'],
     track: ['track'],
     input: ['input'],
     thumb: ['thumb'],
@@ -39,9 +40,15 @@ const SwitchRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { disabled, checked, size }
+      ownerState: { disabled, checked, indeterminate, size }
     } = props;
-    return [styles.root, disabled && styles.disabled, checked && styles.checked, styles[size]];
+    return [
+      styles.root,
+      disabled && styles.disabled,
+      checked && styles.checked,
+      indeterminate && styles.indeterminate,
+      styles[size]
+    ];
   }
 })<{ ownerState: SwitchOwnerState }>(({ ownerState: { color }, theme }) => ({
   position: 'relative',
@@ -133,9 +140,62 @@ const SwitchRoot = styled('div', {
       height: '16px'
     }
   },
-  transition: theme.transitions.create(['color'], {
-    duration: theme.transitions.duration.shortest
-  })
+  [`&.${switchClasses.indeterminate}`]: {
+    color: theme.palette[color][300],
+    [`&.${switchClasses.large}`]: {
+      [`& .${switchClasses.button}`]: {
+        transform: 'translateX(8px)',
+        padding: '17.5px 13px'
+      },
+      [`& .${switchClasses.thumb}`]: {
+        width: '14px',
+        height: '5px',
+        borderRadius: '2.5px',
+        borderColor: 'transparent'
+      },
+      [`& .${switchClasses.input}`]: {
+        transform: 'translateX(-8px)'
+      }
+    },
+    [`&.${switchClasses.medium}`]: {
+      [`& .${switchClasses.button}`]: {
+        transform: 'translateX(6px)',
+        padding: '16px 12px'
+      },
+      [`& .${switchClasses.thumb}`]: {
+        width: '12px',
+        height: '4px',
+        borderRadius: '2px',
+        borderColor: 'transparent'
+      },
+      [`& .${switchClasses.input}`]: {
+        transform: 'translateX(-6px)'
+      }
+    },
+    [`&.${switchClasses.small}`]: {
+      [`& .${switchClasses.button}`]: {
+        transform: 'translateX(6px)'
+      },
+      [`& .${switchClasses.input}`]: {
+        transform: 'translateX(-6px)'
+      }
+    },
+    [`& .${switchClasses.button}`]: {
+      '&:hover': {
+        backgroundColor: theme.palette[color].A50,
+
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      },
+      '&:active': {
+        backgroundColor: theme.palette[color].A150
+      },
+      [`&.${buttonBaseClasses.focusVisible}`]: {
+        backgroundColor: theme.palette[color].A200
+      }
+    }
+  }
 }));
 
 const SwitchTrack = styled('div', {
@@ -155,7 +215,8 @@ const SwitchThumb = styled('div', {
 })(({ theme }) => ({
   backgroundColor: theme.vars.palette.common.switch,
   border: '2px solid currentColor',
-  borderRadius: '50%'
+  borderRadius: '50%',
+  transition: `all ${theme.transitions.duration.shortest}ms, color 0ms`
 }));
 
 const SwitchButton = styled(ButtonBase, {
@@ -168,9 +229,8 @@ const SwitchButton = styled(ButtonBase, {
   left: 0,
   zIndex: 1,
   position: 'absolute',
-  transition: theme.transitions.create(['transform'], {
-    duration: theme.transitions.duration.shortest
-  }),
+  transition: `${theme.transitions.duration.shortest}ms`,
+
   '&:hover': {
     backgroundColor: theme.vars.palette.monoA.A50,
     '@media (hover: none)': {
@@ -208,6 +268,7 @@ export const Switch = (inProps: SwitchProps) => {
   const {
     className,
     checked: checkedProp,
+    indeterminate,
     onChange,
     type = 'checkbox',
     disabled,
@@ -227,7 +288,7 @@ export const Switch = (inProps: SwitchProps) => {
   });
   const [checked, setCheckedState] = useControlled(defaultChecked, checkedProp);
 
-  const ownerState = { ...props, disabled, color, checked, size };
+  const ownerState = { ...props, disabled, color, indeterminate, checked: !indeterminate && checked, size };
   const classes = useUtilityClasses(ownerState);
 
   const onSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {

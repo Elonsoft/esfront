@@ -30,9 +30,7 @@ const meta: Meta<typeof Switch> = {
       }
     },
     checked: {
-      table: {
-        disable: true
-      }
+      control: { type: 'boolean' }
     },
     defaultChecked: {
       table: {

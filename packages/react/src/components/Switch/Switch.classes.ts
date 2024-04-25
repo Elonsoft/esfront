@@ -7,6 +7,8 @@ export type SwitchClasses = {
   checked: string;
   /** Styles applied to the root element if component disabled. */
   disabled: string;
+  /** Styles applied to the root element if indeterminate=true. */
+  indeterminate: string;
   /** Styles applied to the root element if size='large'. */
   large: string;
   /** Styles applied to the root element if size='medium'. */
@@ -39,5 +41,6 @@ export const switchClasses: SwitchClasses = generateUtilityClasses('ESSwitch', [
   'disabled',
   'large',
   'medium',
-  'small'
+  'small',
+  'indeterminate'
 ]);
