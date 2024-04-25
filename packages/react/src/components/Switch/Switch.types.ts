@@ -13,6 +13,9 @@ export interface SwitchProps {
   /** Callback fired when the state is changed. */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
+  /** If `true`, the component appears indeterminate. */
+  indeterminate?: boolean;
+
   /**
    * The color of the component.
    * @default 'secondary'
