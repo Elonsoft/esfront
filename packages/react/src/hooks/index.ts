@@ -6,6 +6,7 @@ export { useCookie } from './useCookie';
 export { useDebounce } from './useDebounce';
 export { useDocumentEventListener } from './useDocumentEventListener';
 export { useDragOver } from './useDragOver';
+export { useFocusBox } from './useFocusBox';
 export { useForceUpdate } from './useForceUpdate';
 export { useForkRef } from './useForkRef';
 export { useGeolocation } from './useGeolocation';
