@@ -6,8 +6,6 @@ export interface OnboardingPopperProps {
   classes?: Partial<OnboardingPopperClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The index of the current step in the Onboarding process. */
-  currentStep?: number | undefined;
   /** Title text for the Onboarding component. */
   title?: string;
   /** Subtitle text for the Onboarding component. */

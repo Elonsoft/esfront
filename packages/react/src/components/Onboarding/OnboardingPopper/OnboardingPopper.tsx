@@ -24,6 +24,7 @@ const useUtilityClasses = (ownerState: OnboardingPopperOwnerState) => {
     root: ['root'],
     icon: ['icon'],
     button: ['button'],
+    buttonGroup: ['buttonGroup'],
     container: ['container']
   };
 
@@ -60,7 +61,7 @@ const OnboardingPopperRoot = styled('div', {
 const OnboardingPopperContent = styled('div', {
   name: 'ESOnboardingPopper',
   slot: 'Content',
-  overridesResolver: (_, styles) => styles.root
+  overridesResolver: (_, styles) => styles.content
 })(() => ({
   display: 'flex',
   flexDirection: 'column',
@@ -87,8 +88,8 @@ const OnboardingPopperButton = styled(Button, {
 
 const OnboardingPopperButtonGroup = styled('div', {
   name: 'ESOnboardingPopper',
-  slot: 'Container',
-  overridesResolver: (_, styles) => styles.container
+  slot: 'ButtonGroup',
+  overridesResolver: (_, styles) => styles.buttonGroup
 })(() => ({
   display: 'flex',
   justifyContent: 'space-between',
@@ -110,7 +111,6 @@ export const OnboardingPopper = (inProps: OnboardingPopperProps) => {
     step,
     title,
     steps,
-    currentStep,
     subtitle,
     labelNextButton,
     labelBackButton,
@@ -131,13 +131,7 @@ export const OnboardingPopper = (inProps: OnboardingPopperProps) => {
     setOpen(true);
   }, []);
 
-  if (
-    !steps ||
-    !Array.isArray(steps) ||
-    currentStep === undefined ||
-    currentStep >= steps.length ||
-    !steps[currentStep]?.element
-  ) {
+  if (!Array.isArray(steps) || typeof step !== 'number' || step >= steps.length || !steps[step]?.element) {
     return null;
   }
 
@@ -161,7 +155,7 @@ export const OnboardingPopper = (inProps: OnboardingPopperProps) => {
 
   return (
     <Popper
-      anchorEl={steps[currentStep]?.element?.() ?? null}
+      anchorEl={steps[step]?.element?.() ?? null}
       modifiers={[
         {
           name: 'offset',
@@ -176,7 +170,7 @@ export const OnboardingPopper = (inProps: OnboardingPopperProps) => {
         {iconInformation}
         <OnboardingPopperContent>
           <OnboardingPopperContainer className={classes.container}>
-            <Typography color="monoA.A900" variant="body100">
+            <Typography color="monoA.A900" variant="body100Bold">
               {title}
             </Typography>
             <OnboardingPopperIconClose
@@ -193,8 +187,8 @@ export const OnboardingPopper = (inProps: OnboardingPopperProps) => {
             </Typography>
           </OnboardingPopperContainer>
           <Link variant="body100">Узнать больше</Link>
-          <OnboardingPopperButtonGroup>
-            {currentStep !== undefined && currentStep > 0 && (
+          <OnboardingPopperButtonGroup className={classes.buttonGroup}>
+            {step !== null && step > 0 && (
               <OnboardingPopperButton className={classes.button} variant="contained" onClick={() => handlePrev()}>
                 {labelBackButton}
               </OnboardingPopperButton>
@@ -203,7 +197,7 @@ export const OnboardingPopper = (inProps: OnboardingPopperProps) => {
               {labelNextButton}
             </OnboardingPopperButton>
             <Typography color="monoA.A500">
-              {currentStep && currentStep + 1} из {steps.length}
+              {step !== null && step + 1} из {steps.length}
             </Typography>
           </OnboardingPopperButtonGroup>
         </OnboardingPopperContent>

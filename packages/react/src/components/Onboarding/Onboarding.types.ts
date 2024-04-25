@@ -1,7 +1,11 @@
 import { OnboardingClasses } from './Onboarding.classes';
 
+import { SxProps, Theme } from '@mui/material';
+
 export interface OnboardingProps {
   classes?: Partial<OnboardingClasses>;
+  /** The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx?: SxProps<Theme>;
   /** Class applied to the root element. */
   className?: string;
   /** Padding applied to the Onboarding component. */
@@ -15,8 +19,4 @@ export interface OnboardingProps {
     popper: (props: any) => JSX.Element;
     element: () => Element | null;
   }[];
-  /** Title text for the Onboarding component. */
-  title?: string;
-  /** Subtitle text for the Onboarding component. */
-  subtitle?: string;
 }

@@ -153,7 +153,7 @@ const TableCellContainer = styled('div', {
   overridesResolver: (props, styles) => styles.container
 })(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.monoA.A100}`,
-  transition: `${theme.transitions.duration.short}ms, border-bottom 0ms`,
+  transition: `${theme.transitions.duration.short}ms`,
   width: '100%',
   height: '100%',
   display: 'flex'

@@ -9,6 +9,8 @@ import { styled, useThemeProps } from '@mui/material/styles';
 
 type OnboardingSpotlightOwnerState = {
   classes?: OnboardingSpotlightProps['classes'];
+  rect: DOMRect | null;
+  padding?: number;
 };
 
 const useUtilityClasses = (ownerState: OnboardingSpotlightOwnerState) => {
@@ -25,7 +27,7 @@ const SpotlightRoot = styled('div', {
   name: 'OnboardingSpotlight',
   slot: 'Root',
   overridesResolver: (_, styles) => styles.root
-})<OnboardingSpotlightProps>(({ rect, padding = 5 }) => ({
+})<{ ownerState: OnboardingSpotlightOwnerState }>(({ ownerState: { rect, padding = 0 } }) => ({
   position: 'absolute',
   background: 'grey',
   borderRadius: '4px',
@@ -36,7 +38,7 @@ const SpotlightRoot = styled('div', {
 }));
 
 export const OnboardingSpotlight = (inProps: OnboardingSpotlightProps) => {
-  const { className, rect, padding, ...props } = useThemeProps({
+  const props = useThemeProps({
     props: inProps,
     name: 'ESOnboardingSpotlight'
   });
@@ -44,17 +46,12 @@ export const OnboardingSpotlight = (inProps: OnboardingSpotlightProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  if (!rect) {
-    return null;
-  }
-
   return (
     <SpotlightRoot
       key="OnboardingSpotlight"
-      className={clsx(classes.root, className)}
+      className={clsx(classes.root, ownerState.className)}
       data-onboarding-id="spotlight"
-      padding={padding}
-      rect={rect}
+      ownerState={ownerState}
     />
   );
 };

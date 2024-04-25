@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { OnboardingProps } from './Onboarding.types';
 
+import { getOnboardingUtilityClass } from './Onboarding.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/base';
+
 import { styled, useThemeProps } from '@mui/material/styles';
 import { Backdrop, Portal } from '@mui/material';
 
@@ -10,26 +14,22 @@ import { OnboardingSpotlight } from './OnboardingSpotlight';
 import { useDebounce, useScrollLock } from '../../hooks';
 
 type OnboardingOwnerState = {
+  classes?: OnboardingProps['classes'];
   steps?: OnboardingProps['steps'];
   step?: OnboardingProps['step'];
   padding?: OnboardingProps['padding'];
 };
 
 const useUtilityClasses = (ownerState: OnboardingOwnerState) => {
-  const { step, steps } = ownerState;
+  const { classes } = ownerState;
 
-  const classes = {
-    root: 'onboarding-root',
-    backdrop: 'onboarding-backdrop',
-    spotlight: 'onboarding-spotlight'
+  const slots = {
+    root: ['onboarding-root'],
+    backdrop: ['onboarding-backdrop'],
+    spotlight: ['onboarding-spotlight']
   };
 
-  if (step !== null && steps) {
-    classes.root += ' onboarding-open';
-    classes.backdrop += ' onboarding-backdrop-open';
-  }
-
-  return classes;
+  return composeClasses(slots, getOnboardingUtilityClass, classes);
 };
 
 const OnboardingBackdrop = styled(Backdrop, {
@@ -44,7 +44,7 @@ const OnboardingBackdrop = styled(Backdrop, {
  * The onboarding component allows you to create a reliable adaptation system for your web application
  */
 export const Onboarding = (inProps: OnboardingProps) => {
-  const { steps, padding, step, onStepChange } = useThemeProps({
+  const { steps, sx, padding, step, onStepChange } = useThemeProps({
     props: inProps,
     name: 'ESOnboarding'
   });
@@ -54,6 +54,8 @@ export const Onboarding = (inProps: OnboardingProps) => {
 
   const stepCurrent = steps?.[currentStep];
   const element = stepCurrent && stepCurrent.element ? stepCurrent.element() : null;
+
+  useScrollLock(Boolean(step !== null && steps), document.body);
 
   useDebounce(
     () => {
@@ -71,19 +73,8 @@ export const Onboarding = (inProps: OnboardingProps) => {
   );
 
   useEffect(() => {
-    if (step !== null && steps) {
-      const stepElement = steps[step]?.element();
-      if (stepElement) {
-        setRect(stepElement.getBoundingClientRect());
-      }
-    }
-  }, [step, steps]);
-
-  useEffect(() => {
     element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, [element]);
-
-  useScrollLock(Boolean(step !== null && steps), document.body);
 
   const classes = useUtilityClasses({ steps, padding, step });
 
@@ -91,7 +82,7 @@ export const Onboarding = (inProps: OnboardingProps) => {
     <>
       {step !== null && (
         <Portal>
-          <OnboardingBackdrop open className={classes.root} ownerState={inProps}>
+          <OnboardingBackdrop open className={classes.root} ownerState={inProps} sx={sx}>
             <OnboardingSpotlight padding={padding} rect={rect} />
           </OnboardingBackdrop>
         </Portal>
