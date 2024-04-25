@@ -47,6 +47,7 @@ const AvatarGroupRoot = styled('div', {
       },
 
       '& > *': {
+        borderRadius: '50%',
         width: `${size}px`,
         height: `${size}px`
       },
