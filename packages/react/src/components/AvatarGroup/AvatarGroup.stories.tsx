@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 
 import { AvatarGroup } from '.';
+
+import { Avatar } from '../Avatar';
 
 const meta: Meta<typeof AvatarGroup> = {
   tags: ['autodocs'],
@@ -51,14 +52,7 @@ export const Children: Story = {
         <Tooltip arrow placement="top" title="John Sharp">
           <Avatar alt="John Sharp" src="./avatar/5.png" />
         </Tooltip>
-        <Button
-          color="tertiary"
-          size="56"
-          sx={{
-            borderRadius: '50%'
-          }}
-          variant="contained"
-        >
+        <Button color="tertiary" size="56" variant="contained">
           +5
         </Button>
       </AvatarGroup>

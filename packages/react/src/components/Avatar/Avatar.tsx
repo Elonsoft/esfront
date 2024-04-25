@@ -145,8 +145,10 @@ export const Avatar = (inProps: AvatarProps) => {
     props: inProps,
     name: 'ESAvatar'
   });
+
   const ownerState = { ...props, variant, size, outlined };
   const classes = useUtilityClasses(ownerState);
+
   const hasImgLoaded = useLoaded(src || '') === 'loaded';
   const hasImgNotFailing = src ? hasImgLoaded : false;
 
