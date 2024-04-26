@@ -21,6 +21,7 @@ type SwiperOwnerState = {
   alignment: SwiperAlignment;
   direction: SwiperDirection;
   snap: boolean;
+  snapStop: NonNullable<SwiperProps['snapStop']>;
 };
 
 const useUtilityClasses = (ownerState: SwiperOwnerState) => {
@@ -115,6 +116,7 @@ const SwiperContainer = styled('div', {
 
   '& > *': {
     scrollSnapAlign: ownerState.alignment,
+    scrollSnapStop: ownerState.snapStop,
     ...(ownerState.snap && {
       '&:first-child': {
         scrollSnapAlign: 'start'
@@ -141,6 +143,7 @@ export const Swiper = (inProps: SwiperProps) => {
     alignment = 'center',
     gap = 16,
     snap,
+    snapStop = 'normal',
     draggable,
     loop,
     autoPlay,
@@ -499,7 +502,7 @@ export const Swiper = (inProps: SwiperProps) => {
     }
   }, [autoPlay, autoPlayCount, isMouseDown, isMouseOver, isTouchDown, direction, alignment]);
 
-  const ownerState = { ...props, alignment, direction, snap: !!(snap && !isSnapDisabled) };
+  const ownerState = { ...props, alignment, direction, snap: !!(snap && !isSnapDisabled), snapStop };
   const classes = useUtilityClasses(ownerState);
 
   const value = useMemo(() => {

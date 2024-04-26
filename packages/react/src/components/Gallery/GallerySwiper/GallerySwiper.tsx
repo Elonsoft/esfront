@@ -54,6 +54,7 @@ const GallerySwiperSwiper = styled(Swiper, {
   overridesResolver: (props, styles) => styles.swiper
 })(() => ({
   height: '100%',
+
   '& .ESSwiper-wrapper': {
     height: '100%'
   },
@@ -204,6 +205,7 @@ export const GallerySwiper = (inProps: GallerySwiperProps) => {
         buttonPrev={<GallerySwiperButtonPrev icon={iconPrev} label={labelPrev} />}
         className={classes.swiper}
         gap={16}
+        snapStop="always"
         onActiveSlideChange={onActiveSlideChange}
         {...SwiperProps}
         actions={actionsRef}
