@@ -53,6 +53,13 @@ const meta: Meta<Args> = {
       },
       defaultValue: true
     },
+    snapStop: {
+      table: {
+        category: 'General'
+      },
+      options: ['normal', 'always'],
+      control: { type: 'select' }
+    },
     draggable: {
       table: {
         category: 'General'

@@ -51,6 +51,12 @@ export interface SwiperProps {
 
   /** Whether CSS Scroll Snap is enabled. */
   snap?: boolean;
+  /**
+   * Specifies when to stop on snap positions during scrolling.
+   * - `normal`: Scroll stops only if a snap point is reached.
+   * - `always`: Scroll stops on snap points even if they are not exactly reached.
+   */
+  snapStop?: 'normal' | 'always';
   /** Whether the swiper can be scrolled by mouse drag. Not working well with snap mode. */
   draggable?: boolean;
   /** Whether the swiper will be reset into beginning if there are no more slides. */
