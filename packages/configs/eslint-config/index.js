@@ -36,6 +36,7 @@ module.exports = {
     // 'no-nested-ternary': 'error',
     'no-new-wrappers': 'error',
     // 'no-param-reassign': ['error', { props: true }],
+    'no-restricted-globals': ['error', 'close', 'event'],
     'no-return-assign': 'error',
     'no-unneeded-ternary': 'error',
     'no-unused-expressions': 'error',
