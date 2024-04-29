@@ -11,6 +11,8 @@ export type SortingMenuClasses = {
   menuFooter: string;
   /** Styles applied to the reset button. */
   resetButton: string;
+  /** Styles applied to the tooltip. */
+  tooltipBadge: string;
   /** Styles applied to the direction button. */
   directionButton: string;
   /** Styles applied to the direction button badge. */
@@ -35,6 +37,7 @@ export const sortingMenuClasses: SortingMenuClasses = generateUtilityClasses('ES
   'resetButton',
   'directionButton',
   'directionButtonBadge',
+  'tooltipBadge',
   'plusSign',
   'caption'
 ]);

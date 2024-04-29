@@ -106,6 +106,8 @@ export interface Localization {
         | 'labelMultisortLMB'
         | 'labelMultisortMobileOn'
         | 'labelMultisortMobileOff'
+        | 'labelTooltipSortingOrder'
+        | 'labelTooltipSorting'
       >;
     };
     ESFormatSize: {
@@ -274,7 +276,10 @@ export const en: Localization = {
         labelMultisortTitle: 'Multisort',
         labelMultisortLMB: 'LMB',
         labelMultisortMobileOn: 'Multisort enabled',
-        labelMultisortMobileOff: 'Hold to multisort'
+        labelMultisortMobileOff: 'Hold to multisort',
+        labelTooltipSortingOrder: 'Drag properties to change sort order.',
+        labelTooltipSorting:
+          ' Turn on the switch or hold down the Ctrl key and select multiple properties to sort by multiple criteria.'
       }
     },
     ESSwiperButton: {
@@ -449,7 +454,10 @@ export const ru: Localization = {
         labelMultisortTitle: 'Мультисортировка',
         labelMultisortLMB: 'ЛКМ',
         labelMultisortMobileOn: 'Мультисортировка включена',
-        labelMultisortMobileOff: 'Удерживайте для мультисортировки'
+        labelMultisortMobileOff: 'Удерживайте для мультисортировки',
+        labelTooltipSortingOrder: 'Перетащите свойства, чтобы изменить порядок сортировки.',
+        labelTooltipSorting:
+          'Включите переключатель или, удерживая клавишу "Ctrl", выберите несколько свойств для сортировки по нескольким критериям.'
       }
     },
     ESSwiperButton: {
