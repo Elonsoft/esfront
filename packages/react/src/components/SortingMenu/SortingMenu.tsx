@@ -12,11 +12,13 @@ import Popover from '@mui/material/Popover';
 import { IconSortAscendingLineW200, IconSortDescendingLineW200 } from '../../icons';
 import { Button } from '../Button';
 import { Divider } from '../Divider';
+import { InformationIcon } from '../InformationIcon';
 import { Kbd } from '../Kbd';
 import { Link } from '../Link';
 import { ListItemText } from '../ListItem';
 import { MenuItem } from '../MenuItem';
 import { Switch } from '../Switch';
+import { Tooltip } from '../Tooltip';
 
 const isMacintosh = () => {
   return navigator.userAgent.indexOf('Macintosh') > 0;
@@ -47,6 +49,8 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     labelSortOrder,
     labelSortTooltip,
     labelMultisortTitle,
+    labelMultisortTooltip,
+    labelMultisortTooltipMacintosh,
     labelMultisortLMB,
     labelMultisortMobileOn,
     labelMultisortMobileOff,
@@ -282,6 +286,12 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
               <span className="es-sorting-menu__plus-sign caption">+</span>
               <Kbd variant="outlined">{labelMultisortLMB}</Kbd>
               <span className="es-sorting-menu__caption caption">{labelMultisortTitle}</span>
+              <Tooltip
+                className="es-sorting-menu__information-icon"
+                title={isMacintosh() ? labelMultisortTooltipMacintosh : labelMultisortTooltip}
+              >
+                <InformationIcon variant="question" />
+              </Tooltip>
             </>
           )}
           <Switch checked={isMultiple} size="small" type="button" onChange={onChangeSortMode} />

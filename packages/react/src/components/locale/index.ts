@@ -136,6 +136,8 @@ export interface Localization {
         | 'labelSortOrder'
         | 'labelSortTooltip'
         | 'labelMultisortTitle'
+        | 'labelMultisortTooltip'
+        | 'labelMultisortTooltipMacintosh'
         | 'labelMultisortLMB'
         | 'labelMultisortMobileOn'
         | 'labelMultisortMobileOff'
@@ -354,6 +356,10 @@ export const en: Localization = {
         labelSortOrder: 'The sort order',
         labelSortTooltip: 'Sort by properties',
         labelMultisortTitle: 'Multisort',
+        labelMultisortTooltip:
+          'Turn on the switch or hold down the "Ctrl" key and select multiple properties to sort by multiple criteria.',
+        labelMultisortTooltipMacintosh:
+          'Turn on the switch or hold down the "⌘" key and select multiple properties to sort by multiple criteria.',
         labelMultisortLMB: 'LMB',
         labelMultisortMobileOn: 'Multisort enabled',
         labelMultisortMobileOff: 'Hold to multisort',
@@ -578,6 +584,10 @@ export const ru: Localization = {
         labelSortOrder: 'Порядок сортировки',
         labelSortTooltip: 'Сортировка по свойствам',
         labelMultisortTitle: 'Мультисортировка',
+        labelMultisortTooltip:
+          'Включите переключатель или, удерживая клавишу "Ctrl", выберите несколько свойств для сортировки по нескольким критериям.',
+        labelMultisortTooltipMacintosh:
+          'Включите переключатель или, удерживая клавишу "⌘", выберите несколько свойств для сортировки по нескольким критериям.',
         labelMultisortLMB: 'ЛКМ',
         labelMultisortMobileOn: 'Мультисортировка включена',
         labelMultisortMobileOff: 'Удерживайте для мультисортировки',
