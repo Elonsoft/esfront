@@ -41,6 +41,10 @@ export type SortingMenuProps = {
   labelSortTooltip?: string;
   /** Text for the switch label. */
   labelMultisortTitle?: string;
+  /** Text for the multisort tooltip. */
+  labelMultisortTooltip?: string;
+  /** Text for the multisort tooltip on macintosh. */
+  labelMultisortTooltipMacintosh?: string;
   /** Text for the left mouse button. */
   labelMultisortLMB?: string;
   /** Text for the switch label. */
