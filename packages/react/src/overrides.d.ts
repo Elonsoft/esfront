@@ -168,6 +168,7 @@ import {
   PaginationRangeProps
 } from './components/Pagination';
 import { PasswordFieldClassKey, PasswordFieldProps } from './components/PasswordField';
+import { RatingClassKey, RatingProps } from './components/Rating';
 import {
   SFSButtonClassKey,
   SFSButtonProps,
@@ -381,6 +382,7 @@ declare module '@mui/material/styles/props' {
     ESPaginationPages: PaginationPagesProps;
     ESPaginationRange: PaginationRangeProps;
     ESPasswordField: PasswordFieldProps;
+    ESRating: RatingProps;
     ESSidebar: SidebarProps;
     ESSidebarSpacer: SidebarSpacerProps;
     ESSidebarToggle: SidebarToggleProps;
@@ -499,6 +501,7 @@ declare module '@mui/material/styles/overrides' {
     ESPaginationPages: PaginationPagesClassKey;
     ESPaginationRange: PaginationRangeClassKey;
     ESPasswordField: PasswordFieldClassKey;
+    ESRating: RatingClassKey;
     ESSidebar: SidebarClassKey;
     ESSidebarItem: SidebarItemClassKey;
     ESSidebarToggle: SidebarToggleClassKey;
@@ -735,6 +738,10 @@ declare module '@mui/material/styles/components' {
     ESGalleryThumbnailsItem?: {
       defaultProps?: ComponentsProps['ESGalleryThumbnailsItem'];
       styleOverrides?: ComponentsOverrides['ESGalleryThumbnailsItem'];
+    };
+    ESRating?: {
+      defaultProps?: ComponentsProps['ESRating'];
+      styleOverrides?: ComponentsOverrides['ESRating'];
     };
     ESSwiper?: {
       defaultProps?: ComponentsProps['ESSwiper'];
