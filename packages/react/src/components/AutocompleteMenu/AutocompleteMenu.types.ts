@@ -99,6 +99,9 @@ export type AutocompleteMenuProps<T> = {
    */
   disableAutoFocus?: boolean;
 
+  /** When opening the menu will not scroll to the selected item. */
+  disableAutoScrollToSelected?: boolean;
+
   /** If `true`, the modal will not prevent focus from leaving the modal while open. */
   disableEnforceFocus?: boolean;
   /** If `true`, hitting escape will not fire the `onClose` callback. */
