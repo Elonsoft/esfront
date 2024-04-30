@@ -259,6 +259,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     inlineSearch,
 
     disableAutoFocus,
+    disableAutoScrollToSelected,
     disableEnforceFocus,
     disableEscapeKeyDown,
     disableRestoreFocus,
@@ -288,8 +289,8 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     name: 'ESAutocompleteMenu',
   });
 
-  // const paperRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const menuListRef = useRef<HTMLUListElement | null>(null);
   const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
 
   const trapFocusEnabled = useRef(true);
@@ -358,6 +359,17 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     },
     [props.multiple, props.value, props.onChange]
   );
+
+  const onEnter = useCallback(() => {
+    if (menuListRef.current && !disableAutoScrollToSelected) {
+      const element = menuListRef.current.querySelector(`.${listItemClasses.selected}`) as HTMLElement;
+
+      if (element) {
+        menuListRef.current.scrollTop =
+          element.offsetTop + element.clientHeight / 2 - menuListRef.current.clientHeight / 2;
+      }
+    }
+  }, [disableAutoScrollToSelected]);
 
   const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);
@@ -442,6 +454,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
           timeout={transitionDuration}
           {...inTransitionProps}
           onEnter={(...args) => {
+            onEnter();
             TransitionProps?.onEnter?.();
             inTransitionProps?.onEnter?.(...args);
           }}
@@ -511,7 +524,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                         <SpinnerRing color="monoA" size={16} /> {labelLoading}
                       </AutocompleteMenuEmptyState>
                     ) : options.length ? (
-                      <AutocompleteMenuMenuList className={classes.menuList}>
+                      <AutocompleteMenuMenuList ref={menuListRef} className={classes.menuList}>
                         {groupedOptions}
                         {!!onLoadMore && (
                           <AutocompleteMenuSentinel
