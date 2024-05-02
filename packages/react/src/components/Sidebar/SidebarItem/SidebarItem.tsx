@@ -8,7 +8,7 @@ import { getSidebarItemUtilityClass, sidebarItemClasses } from './SidebarItem.cl
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { buttonBaseClasses, touchRippleClasses } from '@mui/material';
+import { buttonBaseClasses, touchRippleClasses, useMediaQuery } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import ListItemButton, { listItemButtonClasses } from '@mui/material/ListItemButton';
 import ListItemIcon, { listItemIconClasses } from '@mui/material/ListItemIcon';
@@ -329,9 +329,12 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
   const shouldSkipClick = useRef(false);
 
   const { color, open } = useSidebarContext();
-  const { openedItems, onOpen, behaviour, onClose } = useSidebarMenuContext();
+  const { openedItems, onOpen, behaviour: inBehaviour, onClose } = useSidebarMenuContext();
 
   const isNestedMenuOpen = id ? openedItems.includes(id) : null;
+
+  const isTouchDevice = useMediaQuery('(hover: none) and (pointer: coarse)');
+  const behaviour = isTouchDevice ? 'click' : inBehaviour;
 
   const component = (props as any).component as React.ElementType;
 
