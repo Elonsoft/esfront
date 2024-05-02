@@ -48,6 +48,10 @@ export type SortingMenuProps = {
   labelMultisortMobileOn?: string;
   /** Text for the switch label. */
   labelMultisortMobileOff?: string;
+  /** Tooltip text. */
+  labelTooltipSortingOrder?: string;
+  /** Tooltip text. */
+  labelTooltipSorting?: string;
 
   /** Icon for the ascending item direction. */
   iconItemAsc?: ReactNode;

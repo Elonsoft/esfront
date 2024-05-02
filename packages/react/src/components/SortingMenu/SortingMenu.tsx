@@ -7,7 +7,7 @@ import { sortingMenuClasses } from '../SortingMenu/SortingMenu.classes';
 import { getSortingMenuUtilityClass } from './SortingMenu.classes';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { unstable_composeClasses, useMediaQuery } from '@mui/material';
+import { Tooltip, unstable_composeClasses, useMediaQuery } from '@mui/material';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
@@ -16,7 +16,7 @@ import MenuList from '@mui/material/MenuList';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 
-import { IconSortAscending, IconSortDescending } from '../../icons';
+import { IconQuestionLine, IconSortAscending, IconSortDescending } from '../../icons';
 import { Kbd, kbdClasses } from '../Kbd';
 import { Link } from '../Link';
 import { Switch, switchClasses } from '../Switch';
@@ -37,6 +37,7 @@ const useUtilityClasses = (ownerState: SortingMenuOwnerState) => {
     resetButton: ['resetButton'],
     directionButton: ['directionButton'],
     directionButtonBadge: ['directionButtonBadge'],
+    tooltipBadge: ['tooltipBadge'],
     plusSign: ['plusSign'],
     caption: ['caption']
   };
@@ -147,6 +148,9 @@ const SortingDirectionButton = styled(Button, {
   slot: 'DirectionButton',
   overridesResolver: (_, styles) => styles.directionButton
 })(({ theme }) => ({
+  width: '130px',
+  display: 'flex',
+  justifyContent: 'flex-end',
   '&.MuiButton-root': {
     textTransform: 'unset',
     position: 'relative',
@@ -197,6 +201,14 @@ const SortingDirectionButtonBadge = styled('div', {
   boxShadow: `inset 0 0 0 1px ${theme.palette.monoA.A25}`
 }));
 
+const SortingFlexContainer = styled('div', {
+  name: 'ESSortingMenu',
+  slot: 'tooltipBadge',
+  overridesResolver: (_, styles) => styles.tooltipBadge
+})(() => ({
+  display: 'flex'
+}));
+
 const SortingPlusSign = styled(Typography, {
   name: 'ESSortingMenu',
   slot: 'PlusSign',
@@ -210,6 +222,8 @@ const SortingCaption = styled(Typography, {
   slot: 'Caption',
   overridesResolver: (_, styles) => styles.caption
 })(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
   color: theme.palette.monoA.A600
 })) as typeof Typography;
 
@@ -241,6 +255,8 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     labelMultisortLMB,
     labelMultisortMobileOn,
     labelMultisortMobileOff,
+    labelTooltipSortingOrder = '',
+    labelTooltipSorting = '',
 
     iconItemAsc = <IconSortAscending container containerHeight="12px" containerWidth="8px" />,
     iconItemDesc = <IconSortDescending container containerHeight="12px" containerWidth="8px" />,
@@ -431,6 +447,15 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
       <SortingMenuHeader className={classes.menuHeader}>
         <SortingCaption className={classes.caption} variant="caption">
           {isMultiple && !!values.length ? labelSortOrder : labelSortTooltip}
+          <Tooltip
+            arrow
+            placement="top"
+            title={isMultiple && !!values.length ? labelTooltipSortingOrder : labelTooltipSorting}
+          >
+            <SortingFlexContainer>
+              <IconQuestionLine />
+            </SortingFlexContainer>
+          </Tooltip>
         </SortingCaption>
         {!!values.length && (
           <SortingResetButton
