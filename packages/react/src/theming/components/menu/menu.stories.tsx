@@ -41,7 +41,7 @@ const getErrorActionText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Dangerous action' : 'Опасное действие';
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type Args = {};
 
 const meta: Meta<Args> = {

@@ -4,7 +4,7 @@ import { Tooltip } from '@mui/material';
 
 import { Button } from '../../../components/Button';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type Args = {};
 
 const meta: Meta<Args> = {
