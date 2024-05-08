@@ -6,6 +6,7 @@ import { PopperProps, SxProps, TextFieldProps, Theme } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 
 import { MenuGroupProps } from '../MenuGroup';
+import { TooltipEllipsisProps } from '../TooltipEllipsis';
 
 export interface AutocompleteMenuImperativeActions {
   setTrapFocusEnabled: (enabled: boolean) => void;
@@ -74,12 +75,22 @@ export type AutocompleteMenuProps<T> = {
   /** Callback fired when the menu list is scrolled to the end. */
   onLoadMore?: () => void;
 
-  /** Props applied to the popper component. */
+  /**
+   * Props applied to the popper component.
+   */
   PopperProps?: Omit<Partial<PopperProps>, 'anchorEl' | 'open'>;
-  /** Props applied to the search field component. If present, shows the component. */
+  /**
+   * Props applied to the search field component. If present, shows the component.
+   */
   SearchProps?: Partial<TextFieldProps>;
-  /** Props applied to the MenuGroup components. */
+  /**
+   * Props applied to the MenuGroup components.
+   */
   MenuGroupProps?: Partial<MenuGroupProps>;
+  /**
+   * Props applied to the Tooltip component.
+   */
+  TooltipProps?: Partial<TooltipEllipsisProps>;
 
   /**
    * Set to 'auto' to automatically calculate transition time based on height.

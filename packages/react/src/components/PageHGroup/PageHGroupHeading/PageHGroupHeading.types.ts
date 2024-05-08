@@ -2,7 +2,9 @@ import { ReactNode } from 'react';
 
 import { PageHGroupHeadingClasses } from './PageHGroupHeading.classes';
 
-import { SxProps, Theme, TooltipProps } from '@mui/material';
+import { SxProps, Theme } from '@mui/material';
+
+import { TooltipEllipsisProps } from '../../TooltipEllipsis';
 
 export interface PageHGroupHeadingProps {
   children?: ReactNode;
@@ -24,5 +26,5 @@ export interface PageHGroupHeadingProps {
   endAdornment?: ReactNode;
 
   /** Props applied to the Tooltip component. */
-  TooltipProps?: Partial<Omit<TooltipProps, 'children'>>;
+  TooltipProps?: Partial<Omit<TooltipEllipsisProps, 'children'>>;
 }

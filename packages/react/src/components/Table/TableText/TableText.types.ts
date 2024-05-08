@@ -3,7 +3,8 @@ import { ReactNode } from 'react';
 import { TableTextClasses } from './TableText.classes';
 
 import { SxProps, Theme } from '@mui/material';
-import { TooltipProps } from '@mui/material/Tooltip';
+
+import { TooltipEllipsisProps } from '../../TooltipEllipsis';
 
 export interface TableTextProps {
   children?: ReactNode;
@@ -21,5 +22,5 @@ export interface TableTextProps {
    */
   tooltip?: boolean;
   /** Props applied to the Tooltip component. */
-  TooltipProps?: Omit<TooltipProps, 'children'>;
+  TooltipProps?: Omit<TooltipEllipsisProps, 'children'>;
 }

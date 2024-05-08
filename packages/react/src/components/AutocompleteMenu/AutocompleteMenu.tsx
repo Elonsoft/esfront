@@ -3,6 +3,7 @@ import {
   forwardRef,
   Fragment,
   ReactNode,
+  RefObject,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -41,6 +42,7 @@ import { MenuGroup } from '../MenuGroup';
 import { MenuItem } from '../MenuItem';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
+import { TooltipEllipsis, TooltipEllipsisProps } from '../TooltipEllipsis';
 
 type AutocompleteMenuOwnerState = {
   classes?: AutocompleteMenuProps<unknown>['classes'];
@@ -60,6 +62,7 @@ const useUtilityClasses = (ownerState: AutocompleteMenuOwnerState) => {
     sentinel: ['sentinel'],
     emptyState: ['emptyState'],
     search: ['search'],
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getAutocompleteMenuUtilityClass, classes);
@@ -105,6 +108,15 @@ const AutocompleteMenuMenuList = styled(MenuList, {
   maxHeight: '228px',
 }));
 
+const AutocompleteMenuTooltip = styled(
+  ({ className, ...props }: TooltipEllipsisProps) => <TooltipEllipsis {...props} classes={{ popper: className }} />,
+  {
+    name: 'ESAutocompleteMenu',
+    slot: 'Tooltip',
+    overridesResolver: (props, styles) => styles.tooltip,
+  }
+)({});
+
 const AutocompleteMenuMenuItem = styled(MenuItem, {
   name: 'ESAutocompleteMenu',
   slot: 'MenuItem',
@@ -118,6 +130,7 @@ const AutocompleteMenuMenuItemText = styled('div', {
 })(() => ({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 }));
 
 const AutocompleteMenuMenuGroup = styled(MenuGroup, {
@@ -153,6 +166,7 @@ const AutocompleteMenuCheckbox = styled(Checkbox, {
 })(() => ({
   marginLeft: '-8px',
   marginRight: '4px',
+  flexShrink: 0,
 }));
 
 const AutocompleteMenuEmptyState = styled('div', {
@@ -276,6 +290,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
 
     PopperProps,
     SearchProps,
+    TooltipProps,
 
     transitionDuration,
     TransitionProps: inTransitionProps,
@@ -394,7 +409,12 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
       groupedOptions.push(
         <Fragment key={`${value}-${group}`}>
           {index > 0 && <AutocompleteMenuMenuGroupDivider className={classes.menuGroupDivider} color="monoA.A100" />}
-          <AutocompleteMenuMenuGroup aria-disabled className={classes.menuGroup} tabIndex={-1} {...MenuGroupProps}>
+          <AutocompleteMenuMenuGroup
+            aria-disabled
+            tabIndex={-1}
+            {...MenuGroupProps}
+            className={clsx(classes.menuGroup, MenuGroupProps?.className)}
+          >
             {group}
           </AutocompleteMenuMenuGroup>
         </Fragment>
@@ -402,20 +422,41 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     }
 
     groupedOptions.push(
-      <AutocompleteMenuMenuItem
+      <AutocompleteMenuTooltip
         key={value}
-        autoFocus={!disabled && tabIndex && !SearchProps && !disableAutoFocus}
-        className={classes.menuItem}
-        disabled={disabled}
-        selected={selected}
-        tabIndex={!disabled && tabIndex ? 0 : -1}
-        onClick={disabled ? undefined : onMenuItemClick(option)}
+        disableInteractive
+        title={label}
+        {...TooltipProps}
+        className={clsx(classes.tooltip, TooltipProps?.className)}
       >
-        {!!props.multiple && (
-          <AutocompleteMenuCheckbox readOnly checked={selected} color="secondary" disabled={disabled} tabIndex={-1} />
+        {({ ref, childrenRef }) => (
+          <AutocompleteMenuMenuItem
+            ref={ref && (ref as RefObject<HTMLLIElement>)}
+            autoFocus={!disabled && tabIndex && !SearchProps && !disableAutoFocus}
+            className={classes.menuItem}
+            disabled={disabled}
+            selected={selected}
+            tabIndex={!disabled && tabIndex ? 0 : -1}
+            onClick={disabled ? undefined : onMenuItemClick(option)}
+          >
+            {!!props.multiple && (
+              <AutocompleteMenuCheckbox
+                readOnly
+                checked={selected}
+                color="secondary"
+                disabled={disabled}
+                tabIndex={-1}
+              />
+            )}
+            <AutocompleteMenuMenuItemText
+              ref={childrenRef && (childrenRef as RefObject<HTMLDivElement>)}
+              className={classes.menuItemText}
+            >
+              {label}
+            </AutocompleteMenuMenuItemText>
+          </AutocompleteMenuMenuItem>
         )}
-        <AutocompleteMenuMenuItemText className={classes.menuItemText}>{label}</AutocompleteMenuMenuItemText>
-      </AutocompleteMenuMenuItem>
+      </AutocompleteMenuTooltip>
     );
 
     if (!disabled) {
