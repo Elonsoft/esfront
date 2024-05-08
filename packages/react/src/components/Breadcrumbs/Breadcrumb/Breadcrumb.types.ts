@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { ReactNode } from 'react';
 
 import { BreadcrumbClasses } from './Breadcrumb.classes';

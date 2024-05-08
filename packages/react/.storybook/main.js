@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import { dirname, join } from 'path';
 const path = require('path');
 
