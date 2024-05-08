@@ -22,6 +22,10 @@ import { Kbd, kbdClasses } from '../Kbd';
 import { Link } from '../Link';
 import { Switch, switchClasses } from '../Switch';
 
+const isMacintosh = () => {
+  return navigator.userAgent.indexOf('Macintosh') > 0;
+};
+
 type SortingMenuOwnerState = {
   classes?: SortingMenuProps['classes'];
   isWithValue?: boolean;
@@ -477,7 +481,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
             </SortingCaption>
           ) : (
             <>
-              <Kbd variant="outlined">Ctrl</Kbd>
+              <Kbd variant="outlined">{isMacintosh() ? '⌘' : 'Ctrl'}</Kbd>
               <SortingPlusSign className={classes.plusSign} component="span" variant="caption">
                 +
               </SortingPlusSign>
