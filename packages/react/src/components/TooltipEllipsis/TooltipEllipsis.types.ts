@@ -1,6 +1,6 @@
 import { MutableRefObject, ReactElement } from 'react';
 
-import { TooltipProps } from '@mui/material/Tooltip';
+import { TooltipProps } from '../Tooltip';
 
 export type TooltipEllipsisProps = Omit<TooltipProps, 'children'> & {
   children: (props: {
