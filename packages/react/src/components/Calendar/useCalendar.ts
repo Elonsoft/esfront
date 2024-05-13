@@ -3,7 +3,8 @@ import { useMemo } from 'react';
 export const useCalendar = (
   year: number,
   month: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11,
-  weekStart: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  weekStart: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  rows: 'max' | 'auto'
 ) => {
   const result = useMemo(() => {
     const dates = [];
@@ -29,13 +30,13 @@ export const useCalendar = (
 
     i = 1;
 
-    while (date.getDay() !== weekStart) {
+    while (date.getDay() !== weekStart || (rows === 'max' && nextDates.length + prevDates.length + dates.length < 42)) {
       nextDates.push(i++);
       date.setDate(i);
     }
 
     return { dates, prevDates, nextDates };
-  }, [year, month, weekStart]);
+  }, [year, month, weekStart, rows]);
 
   return result;
 };
