@@ -37,7 +37,7 @@ export const Calendar = (inProps: CalendarProps) => {
     throw new Error('No provider for DateAdapterContext.');
   }
 
-  const { dates, prevDates, nextDates } = useCalendar(year, month, weekStart);
+  const { dates, prevDates, nextDates } = useCalendar(year, month, weekStart, rows);
 
   const getButtonProps = (year: number, month: number, date: number) => {
     const current = new Date(year, month, date);
