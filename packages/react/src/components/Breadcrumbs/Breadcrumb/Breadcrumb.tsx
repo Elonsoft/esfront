@@ -151,6 +151,7 @@ const BreadcrumbSeparator = styled('div', {
 export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: BreadcrumbProps) => {
   const {
     children,
+    itemContent,
     className,
     sx,
     style,
@@ -172,7 +173,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
       className={clsx(classes.root, className)}
       component="li"
       itemProp={position ? 'itemListElement' : undefined}
-      itemScope={position ? '' : undefined}
+      itemScope={position ? true : undefined}
       itemType={position ? 'https://schema.org/ListItem' : undefined}
       ownerState={ownerState}
       style={style}
@@ -197,7 +198,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
               {...props}
             >
               {position ? (
-                <span ref={childrenRef} itemProp="name">
+                <span ref={childrenRef} content={itemContent} itemProp="name">
                   {children}
                 </span>
               ) : (

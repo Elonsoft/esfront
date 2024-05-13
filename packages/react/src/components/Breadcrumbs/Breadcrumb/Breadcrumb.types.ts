@@ -36,6 +36,9 @@ export interface BreadcrumbTypeMap<P = {}, D extends React.ElementType = typeof 
      * @ignore
      */
     shouldFirstShrink?: boolean;
+
+    /** The content for microdata schema. */
+    itemContent?: string;
   };
   defaultComponent: D;
 }
