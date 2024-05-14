@@ -48,13 +48,19 @@ export const Demo: Story = {
         }
       >
         <BoxDrawingItem>
-          <div style={{ padding: '16px' }}>BoxDrawing 1</div>
+          <ListItemButton>
+            <ListItemText primary="BoxDrawing 1" />
+          </ListItemButton>
         </BoxDrawingItem>
         <BoxDrawingItem>
-          <div style={{ padding: '16px' }}>BoxDrawing 2</div>
+          <ListItemButton>
+            <ListItemText primary="BoxDrawing 2" />
+          </ListItemButton>
         </BoxDrawingItem>
         <BoxDrawingItem>
-          <div style={{ padding: '16px' }}>BoxDrawing 3</div>
+          <ListItemButton>
+            <ListItemText primary="BoxDrawing 3" />
+          </ListItemButton>
         </BoxDrawingItem>
       </BoxDrawing>
     );

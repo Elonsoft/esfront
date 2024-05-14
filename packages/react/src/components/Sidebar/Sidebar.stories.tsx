@@ -2,6 +2,7 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
+import { ListItemButton } from '@mui/material';
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -16,6 +17,8 @@ import { SidebarSpacer } from './SidebarSpacer';
 import { SidebarToggle } from './SidebarToggle';
 
 import { IconAccountLc, IconAt, IconBellFill, IconMagnify } from '../../icons';
+import { BoxDrawing } from '../BoxDrawing';
+import { BoxDrawingItem } from '../BoxDrawing/BoxDrawingItem';
 
 type Args = ComponentProps<typeof Sidebar> & { behaviour?: SidebarMenuProps['behaviour']; exclusive?: boolean };
 
@@ -167,6 +170,32 @@ export const Demo: Story = {
                 text={locale === 'en' ? 'Inbox' : 'Входящие'}
                 onClick={() => console.info(`Inbox`)}
               />
+
+              <BoxDrawing
+                header={
+                  <SidebarItem
+                    icon={<IconAt />}
+                    text={locale === 'en' ? 'Inbox' : 'Входящие'}
+                    onClick={() => console.info(`Inbox`)}
+                  />
+                }
+              >
+                <BoxDrawingItem>
+                  <ListItemButton>
+                    <ListItemText primary="BoxDrawing 1" />
+                  </ListItemButton>
+                </BoxDrawingItem>
+                <BoxDrawingItem>
+                  <ListItemButton>
+                    <ListItemText primary="BoxDrawing 2" />
+                  </ListItemButton>
+                </BoxDrawingItem>
+                <BoxDrawingItem>
+                  <ListItemButton>
+                    <ListItemText primary="BoxDrawing 3" />
+                  </ListItemButton>
+                </BoxDrawingItem>
+              </BoxDrawing>
             </SidebarMenu>
           </SidebarScrollable>
           <SidebarSpacer />
