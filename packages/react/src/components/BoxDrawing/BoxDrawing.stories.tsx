@@ -1,9 +1,14 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
+import { ListItemText } from '@mui/material';
+import ListItemButton from '@mui/material/ListItemButton';
+
 import { BoxDrawing } from './BoxDrawing';
 import { BoxDrawingItem } from './BoxDrawingItem';
+
+import { IconChevronLeftW400, IconChevronRightW400 } from '../../icons';
 
 type Args = ComponentProps<typeof BoxDrawing> & { header?: string };
 
@@ -29,9 +34,19 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Demo: Story = {
-  render: (args) => {
+  render: function Render() {
+    const [isCollapsed, setCollapsed] = useState(false);
+
     return (
-      <BoxDrawing collapsed={args.collapsed} header={args.header || 'Header'}>
+      <BoxDrawing
+        collapsed={isCollapsed}
+        header={
+          <ListItemButton onClick={() => setCollapsed(!isCollapsed)}>
+            <ListItemText primary="Header" />
+            {isCollapsed ? <IconChevronLeftW400 /> : <IconChevronRightW400 />}
+          </ListItemButton>
+        }
+      >
         <BoxDrawingItem>
           <div style={{ padding: '16px' }}>BoxDrawing 1</div>
         </BoxDrawingItem>

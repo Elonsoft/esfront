@@ -41,7 +41,7 @@ const BoxDrawingContainer = styled('div', {
     return [styles.container];
   }
 })(() => ({
-  paddingLeft: '8px',
+  paddingLeft: '24px',
   display: 'flex',
   flexDirection: 'column'
 }));
