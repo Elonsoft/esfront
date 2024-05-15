@@ -10,6 +10,7 @@ import { styled } from '@mui/material';
 
 type BoxDrawingOwnerState = {
   classes?: BoxDrawingProps['classes'];
+  bottomOffset?: BoxDrawingProps['bottomOffset'];
 };
 
 const useUtilityClasses = (ownerState: BoxDrawingOwnerState) => {
@@ -29,30 +30,23 @@ const BoxDrawingRoot = styled('div', {
   overridesResolver: (props, styles) => {
     return [styles.root];
   }
-})(() => ({
-  display: 'flex',
-  flexDirection: 'column'
-}));
-
-const BoxDrawingContainer = styled('div', {
-  name: 'ESBoxDrawing',
-  slot: 'Container',
-  overridesResolver: (props, styles) => {
-    return [styles.container];
-  }
-})(() => ({
-  paddingLeft: '24px',
-  display: 'flex',
-  flexDirection: 'column'
+})<{ ownerState: BoxDrawingOwnerState }>(({ ownerState: { bottomOffset }, theme }) => ({
+  position: 'absolute',
+  borderLeft: `1px dashed ${theme.vars.palette.monoA.A400}`,
+  borderBottom: `1px dashed ${theme.vars.palette.monoA.A400}`,
+  borderRadius: '0px 0px 0px 4px',
+  width: '7px',
+  height: `calc(100% - ${bottomOffset ?? '0'}px)`,
+  backgroundColor: 'transparent',
+  left: '20px',
+  top: 0
 }));
 
 export const BoxDrawing = (inProps: BoxDrawingProps) => {
   const {
-    children,
     className,
     classes: inClasses,
-    header,
-    collapsed,
+    bottomOffset,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -60,15 +54,11 @@ export const BoxDrawing = (inProps: BoxDrawingProps) => {
   });
 
   const ownerState = {
-    classes: inClasses
+    classes: inClasses,
+    bottomOffset
   };
 
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <BoxDrawingRoot className={clsx(classes.root, className)} {...props}>
-      {header}
-      {!collapsed && <BoxDrawingContainer className={classes.container}>{children}</BoxDrawingContainer>}
-    </BoxDrawingRoot>
-  );
+  return <BoxDrawingRoot className={clsx(classes.root, className)} ownerState={ownerState} {...props} />;
 };

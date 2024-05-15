@@ -2,7 +2,6 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { ListItemButton } from '@mui/material';
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -141,10 +140,12 @@ export const Demo: Story = {
                 ))}
               </SidebarItem>
               <SidebarItem icon={<IconAt />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
+                <BoxDrawing bottomOffset="20" />
                 {[...Array(8)].map((_, i) => (
                   <SidebarItem
                     key={i}
                     inset
+                    icon={<BoxDrawingItem isLast={i === 7} />}
                     text={(locale === 'en' ? 'File' : 'Файл') + ' №' + i}
                     onClick={() => console.info(`File ${i}`)}
                   />
@@ -170,32 +171,6 @@ export const Demo: Story = {
                 text={locale === 'en' ? 'Inbox' : 'Входящие'}
                 onClick={() => console.info(`Inbox`)}
               />
-
-              <BoxDrawing
-                header={
-                  <SidebarItem
-                    icon={<IconAt />}
-                    text={locale === 'en' ? 'Inbox' : 'Входящие'}
-                    onClick={() => console.info(`Inbox`)}
-                  />
-                }
-              >
-                <BoxDrawingItem>
-                  <ListItemButton>
-                    <ListItemText primary="BoxDrawing 1" />
-                  </ListItemButton>
-                </BoxDrawingItem>
-                <BoxDrawingItem>
-                  <ListItemButton>
-                    <ListItemText primary="BoxDrawing 2" />
-                  </ListItemButton>
-                </BoxDrawingItem>
-                <BoxDrawingItem>
-                  <ListItemButton>
-                    <ListItemText primary="BoxDrawing 3" />
-                  </ListItemButton>
-                </BoxDrawingItem>
-              </BoxDrawing>
             </SidebarMenu>
           </SidebarScrollable>
           <SidebarSpacer />

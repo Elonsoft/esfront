@@ -224,6 +224,7 @@ const SidebarItemNestedMenu = styled('div', {
   flexDirection: 'column',
   gap: '2px',
   marginTop: '2px',
+  position: 'relative',
 
   [`& .${sidebarItemClasses.root}`]: {
     margin: '0'
