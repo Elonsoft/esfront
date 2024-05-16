@@ -1,7 +1,26 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { InlineTextFieldProps } from './InlineTextField.types';
+
+import clsx from 'clsx';
+import { getInlineTextFieldUtilityClass } from './InlineTextField.classes';
+
+import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled } from '@mui/material/styles';
-import { inputBaseClasses, TextField, TypographyProps } from '@mui/material';
+import { inputBaseClasses, TextField, TextFieldClasses, TypographyProps } from '@mui/material';
+
+type InlineTextFieldOwnerState = {
+  classes?: Partial<TextFieldClasses>;
+};
+
+const useUtilityClasses = (ownerState: InlineTextFieldOwnerState) => {
+  const { classes } = ownerState;
+
+  const slots = {
+    root: ['root']
+  };
+
+  return composeClasses(slots, getInlineTextFieldUtilityClass, classes);
+};
 
 const InlineTextFieldRoot = styled(TextField, {
   name: 'ESInlineTextField',
@@ -15,11 +34,11 @@ const InlineTextFieldRoot = styled(TextField, {
   },
 
   '.MuiInput-root.Mui-disabled::before': {
-    borderBottom: `1px dotted ${theme.palette.monoA.A200}`
+    borderBottom: `1px dotted ${theme.vars.palette.monoA.A200}`
   },
 
   '.MuiInput-root:hover:not(.Mui-disabled, .Mui-error)::before': {
-    borderBottom: `1px solid ${theme.palette.monoA.A200}`
+    borderBottom: `1px solid ${theme.vars.palette.monoA.A200}`
   },
 
   [`& .${inputBaseClasses.root}`]: {
@@ -31,12 +50,12 @@ const InlineTextFieldRoot = styled(TextField, {
     padding: '5px 0',
 
     '&::placeholder': {
-      color: theme.palette.monoA.A400,
+      color: theme.vars.palette.monoA.A400,
       opacity: 1
     },
 
     '&, &:disabled': {
-      color: theme.palette.monoA.A900,
+      color: theme.vars.palette.monoA.A900,
       WebkitTextFillColor: 'unset'
     }
   }
@@ -45,13 +64,17 @@ const InlineTextFieldRoot = styled(TextField, {
 export const InlineTextField = ({
   typography = 'body200',
   placeholder,
+  classes: inClasses,
+  className,
   ...props
-}: Omit<ComponentPropsWithoutRef<typeof InlineTextFieldRoot>, 'ownerState'> & {
-  typography?: Exclude<TypographyProps['variant'], 'inherit'>;
-}) => {
+}: InlineTextFieldProps) => {
+  const ownerState = { classes: inClasses };
+  const classes = useUtilityClasses(ownerState);
   return (
     <InlineTextFieldRoot
       multiline
+      className={clsx(classes.root, className)}
+      classes={inClasses}
       ownerState={{ typography }}
       placeholder={placeholder ?? '-'}
       variant="standard"

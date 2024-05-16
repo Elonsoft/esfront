@@ -145,6 +145,7 @@ import {
   GalleryThumbnailsItemProps,
   GalleryThumbnailsProps
 } from './components/Gallery';
+import { InlineTextFieldClassKey, InlineTextField } from './components/InlineTextField';
 import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinkClassKey, LinkProps } from './components/Link';
 import { LoadingButtonClassKey, LoadingButtonProps } from './components/LoadingButton';
@@ -371,6 +372,7 @@ declare module '@mui/material/styles/props' {
     ESGalleryThumbnails: GalleryThumbnailsProps;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageProps;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemProps;
+    ESInlineTextField: InlineTextFieldProps;
     ESKbd: KbdProps;
     ESLink: LinkProps;
     ESLoadingButton: LoadingButtonProps;
@@ -489,6 +491,7 @@ declare module '@mui/material/styles/overrides' {
     ESGalleryThumbnails: GalleryThumbnailsClassKey;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageClassKey;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemClassKey;
+    ESInlineTextField: InlineTextFieldClassKey;
     ESKbd: KbdClassKey;
     ESLink: LinkClassKey;
     ESLoadingButton: LoadingButtonClassKey;
@@ -801,6 +804,10 @@ declare module '@mui/material/styles/components' {
     };
     ESFormatSize?: {
       defaultProps?: ComponentsProps['ESFormatSize'];
+    };
+    ESInlineTextField?: {
+      defaultProps?: ComponentsProps['ESInlineTextField'];
+      styleOverrides?: ComponentsOverrides['ESInlineTextField'];
     };
     ESKbd?: {
       defaultProps?: ComponentsProps['ESKbd'];
