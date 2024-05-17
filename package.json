@@ -6,6 +6,7 @@
   "workspaces": [
     "packages/configs/eslint-config",
     "packages/configs/prettier-config",
+    "packages/editor",
     "packages/react"
   ],
   "scripts": {

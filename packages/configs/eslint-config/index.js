@@ -130,6 +130,7 @@ module.exports = {
           ['^.+\\.types$'],
           ['^(@testing-library|@storybook|@date-io|date-fns)'],
           ['^clsx', '^.+\\.classes$'],
+          ['^slate'],
           ['^@mui/base'],
           ['^@mui/material/styles', '^@mui/system', '^@mui/material', '^@mui/utils'],
           ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
