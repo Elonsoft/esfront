@@ -11,6 +11,7 @@
     "packages/configs/prettier-config",
     "packages/configs/stylelint-config",
     "packages/date-fns",
+    "packages/editor",
     "packages/react",
     "packages/theme"
   ],

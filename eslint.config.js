@@ -15,6 +15,7 @@ export default [
             ['^.+\\.types$'],
             ['^(@testing-library|@storybook|@date-io|@esfront/date-fns|date-fns|overlayscrollbars)'],
             ['^clsx'],
+            ['^slate'],
             ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
             ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
           ],
