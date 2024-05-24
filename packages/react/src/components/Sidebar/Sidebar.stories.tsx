@@ -16,6 +16,8 @@ import { SidebarSpacer } from './SidebarSpacer';
 import { SidebarToggle } from './SidebarToggle';
 
 import { IconAccountLc, IconAt, IconBellFill, IconMagnify } from '../../icons';
+import { BoxDrawing } from '../BoxDrawing';
+import { BoxDrawingItem } from '../BoxDrawing/BoxDrawingItem';
 
 type Args = ComponentProps<typeof Sidebar> & { behaviour?: SidebarMenuProps['behaviour']; exclusive?: boolean };
 
@@ -138,10 +140,12 @@ export const Demo: Story = {
                 ))}
               </SidebarItem>
               <SidebarItem icon={<IconAt />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
+                <BoxDrawing bottomOffset="20" />
                 {[...Array(8)].map((_, i) => (
                   <SidebarItem
                     key={i}
                     inset
+                    icon={<BoxDrawingItem isLast={i === 7} />}
                     text={(locale === 'en' ? 'File' : 'Файл') + ' №' + i}
                     onClick={() => console.info(`File ${i}`)}
                   />
