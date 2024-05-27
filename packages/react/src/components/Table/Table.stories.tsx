@@ -15,6 +15,7 @@ import { TableBody } from './TableBody';
 import { TableCell } from './TableCell';
 import { TableFoot } from './TableFoot';
 import { TableHead } from './TableHead';
+import { TableItem } from './TableItem';
 import { TableRow } from './TableRow';
 import { TableScrollbar } from './TableScrollbar';
 import { TableText } from './TableText';
@@ -22,6 +23,7 @@ import { useTableResize } from './useTableResize';
 import { useTableSelection } from './useTableSelection';
 
 import { IconCloseW600, IconDotsVerticalW500, IconPencilW500 } from '../../icons';
+import { Avatar } from '../Avatar';
 import { Pagination, PaginationPages, PaginationRange } from '../Pagination';
 
 const DATA: {
@@ -91,6 +93,7 @@ const meta: Meta<typeof Table> = {
       'TableCell',
       'TableFoot',
       'TableHead',
+      'TableItem',
       'TableRow',
       'TableScrollbar',
       'TableText'
@@ -167,7 +170,7 @@ export const Demo: Story = {
             {fields.map((field, index) => (
               <TableCell
                 key={field}
-                minWidth={100}
+                minWidth={field === 'name' ? 130 : 90}
                 onResize={onResize(index + 1)}
                 onResizeCommit={onResizeCommit(index + 1)}
               >
@@ -193,11 +196,28 @@ export const Demo: Story = {
                     onChange={() => toggle(row.id)}
                   />
                 </TableCell>
-                {fields.map((field) => (
-                  <TableCell key={field} id={field === 'name' ? labelId : undefined}>
-                    <TableText>{row[field]}</TableText>
-                  </TableCell>
-                ))}
+
+                <TableCell>
+                  <TableText>{row.id}</TableText>
+                </TableCell>
+
+                <TableCell id={labelId}>
+                  <TableItem
+                    avatar={<Avatar alt="John Sharp" src="./avatar/6.png" />}
+                    primary={<TableText>{row.name}</TableText>}
+                    secondary={<TableText>{row.city}</TableText>}
+                  />
+                </TableCell>
+
+                {fields.map(
+                  (field) =>
+                    field !== 'name' &&
+                    field !== 'id' && (
+                      <TableCell key={field}>
+                        <TableText>{row[field]}</TableText>
+                      </TableCell>
+                    )
+                )}
                 <TableCell padding="none" />
                 <TableCell overlap align="flex-end">
                   <IconButton aria-label={locale === 'en' ? 'More' : 'Ещё'}>
