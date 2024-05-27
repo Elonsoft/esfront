@@ -85,6 +85,7 @@ const AvatarRoot = styled('div', {
   width: `${size}px`,
   backgroundColor: theme.vars.palette.monoA.A100,
   backgroundSize: '100%',
+  flexShrink: 0,
   textAlign: 'center',
   objectFit: 'cover',
   display: 'flex',

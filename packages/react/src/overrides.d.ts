@@ -244,6 +244,8 @@ import { TabBarClassKey, TabBarItemClassKey, TabBarItemProps, TabBarProps } from
 import {
   TableActionsClassKey,
   TableActionsProps,
+  TableItemClassKey,
+  TableItemProps,
   TableBodyClassKey,
   TableBodyProps,
   TableCellClassKey,
@@ -431,6 +433,7 @@ declare module '@mui/material/styles/props' {
     ESTabBarItem: TabBarItemProps;
     ESTable: TableProps;
     ESTableActions: TableActionsProps;
+    ESTableItem: TableItemProps;
     ESTableBody: TableBodyProps;
     ESTableCell: TableCellProps;
     ESTableFoot: TableFootProps;
@@ -553,6 +556,7 @@ declare module '@mui/material/styles/overrides' {
     ESTabBarItem: TabBarItemClassKey;
     ESTable: TableClassKey;
     ESTableActions: TableActionsClassKey;
+    ESTableItem: TableItemClassKey;
     ESTableBody: TableBodyClassKey;
     ESTableCell: TableCellClassKey;
     ESTableFoot: TableFootClassKey;
@@ -969,6 +973,10 @@ declare module '@mui/material/styles/components' {
     ESTableActions?: {
       defaultProps?: ComponentsProps['ESTableActions'];
       styleOverrides?: ComponentsOverrides['ESTableActions'];
+    };
+    ESTableItem?: {
+      defaultProps?: ComponentsProps['ESTableItem'];
+      styleOverrides?: ComponentsOverrides['ESTableItem'];
     };
     ESTableBody?: {
       defaultProps?: ComponentsProps['ESTableBody'];
