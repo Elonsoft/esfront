@@ -9,10 +9,12 @@
         "types": [
           { "type": "feat", "section": "Features" },
           { "type": "fix", "section": "Bug Fixes" },
-          { "type": "build", "section": "Build Changes", "hidden": true }
+          { "type": "build", "section": "Build Changes", "hidden": true },
+          { "type": "style", "section": "Style Changes" }
         ]
       },
       "conventionalCommits": true,
+      "message": "chore(release): publish",
       "noPush": true,
       "premajorVersionBump": "force-patch"
     }
