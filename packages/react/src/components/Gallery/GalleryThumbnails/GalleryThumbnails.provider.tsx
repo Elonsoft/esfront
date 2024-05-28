@@ -1,8 +1,8 @@
-import { FC, useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 
 import { GalleryThumbnailsContext } from './GalleryThumbnails.context';
 
-export const GalleryThumbnailsProvider: FC = ({ children }) => {
+export const GalleryThumbnailsProvider = ({ children }: { children?: ReactNode }) => {
   const [isVisible, setVisible] = useState(false);
 
   const value = useMemo(() => {

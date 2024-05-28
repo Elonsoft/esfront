@@ -1,8 +1,8 @@
-import { FC, useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 
 import { GalleryPanelsContext } from './GalleryPanels.context';
 
-export const GalleryPanelsProvider: FC = ({ children }) => {
+export const GalleryPanelsProvider = ({ children }: { children?: ReactNode }) => {
   const [isVisible, setVisible] = useState(false);
   const [rectTop, setRectTop] = useState<DOMRect | null>(null);
   const [rectBottom, setRectBottom] = useState<DOMRect | null>(null);

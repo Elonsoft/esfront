@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { FC, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AutocompleteProps } from './Autocomplete.types';
 
@@ -9,7 +9,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { useFormControl } from '@mui/material/FormControl';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { useForkRef } from '@mui/material/utils';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
@@ -50,7 +50,7 @@ const AutocompleteRoot = styled(OutlinedInput, {
     display: 'inline-flex',
     alignItems: 'center'
   }
-}));
+})) as unknown as FC<OutlinedInputProps & { children?: ReactNode }>;
 
 const AutocompleteMenu = styled(ESAutocompleteMenu, {
   name: 'ESAutocomplete',
