@@ -10,15 +10,11 @@ import { getPaginationPagesUtilityClass } from './PaginationPages.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { keyframes } from '@mui/system';
 import { outlinedInputClasses } from '@mui/material';
-import ButtonBase, { buttonBaseClasses, touchRippleClasses } from '@mui/material/ButtonBase';
-import Pagination, { paginationClasses } from '@mui/material/Pagination';
-import PaginationItem, { paginationItemClasses } from '@mui/material/PaginationItem';
 import TextField from '@mui/material/TextField';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
-import { useDocumentEventListener } from '../../../hooks';
+import { useDocumentEventListener, usePagination } from '../../../hooks';
 import {
   IconArrowLeft2W300,
   IconArrowRight2W300,
@@ -27,19 +23,8 @@ import {
   IconDotsHorizontalW100,
 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
-import { buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
+import { ButtonBase, buttonBaseClasses, buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
 import { usePaginationContext } from '../Pagination.context';
-
-const enterKeyframe = keyframes`
-  0% {
-    transform: scale(0);
-    opacity: 0.1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-`;
 
 type PaginationPagesOwnerState = {
   classes?: PaginationPagesProps['classes'];
@@ -70,14 +55,17 @@ const PaginationPagesRoot = styled('div', {
   alignItems: 'center',
 }));
 
-const PaginationPagesPagination = styled(Pagination, {
+const PaginationPagesPagination = styled('ul', {
   name: 'ESPaginationPages',
   slot: 'Pagination',
   overridesResolver: (props, styles) => styles.pagination,
 })(() => ({
-  [`& .${paginationClasses.ul}`]: {
-    flexWrap: 'nowrap',
-  },
+  display: 'flex',
+  flexWrap: 'nowrap',
+  alignItems: 'center',
+  padding: 0,
+  margin: 0,
+  listStyle: 'none',
 }));
 
 const PaginationPagesButton = styled(Button, {
@@ -111,49 +99,37 @@ const PaginationPagesEllipsis = styled('div', {
   color: theme.vars.palette.monoA.A500,
 }));
 
-const PaginationPagesPaginationItem = styled(PaginationItem, {
+const PaginationPagesPaginationItem = styled(ButtonBase, {
   name: 'ESPaginationPages',
   slot: 'PaginationItem',
   overridesResolver: (props, styles) => styles.paginationItem,
-})(({ theme }) => ({
+})<{ ownerState: { selected: boolean } }>(({ ownerState, theme }) => ({
   [`&.${buttonBaseClasses.root}`]: {
     ...theme.typography.caption,
 
     margin: 0,
     padding: '0 4px',
+    width: '32px',
+    height: '32px',
+    borderRadius: '50%',
 
-    [`&.${paginationItemClasses.root}`]: {
-      [`& .${touchRippleClasses.root}`]: {
-        transitionDuration: `${theme.transitions.duration.short}ms`,
-      },
-    },
+    '--background': 'transparent',
+    '--text': theme.vars.palette.monoA.A600,
+    '--hovered': theme.vars.palette.monoA.A50,
+    '--focused': theme.vars.palette.monoA.A200,
+    '--pressed': theme.vars.palette.monoA.A150,
 
-    [`& .${touchRippleClasses.rippleVisible}`]: {
-      animationName: `${enterKeyframe} !important`,
-      opacity: '1 !important',
-    },
-
-    ...theme.mixins.button({
-      background: 'transparent',
-      color: theme.vars.palette.monoA.A600,
-      hover: theme.vars.palette.monoA.A50,
-      focus: theme.vars.palette.monoA.A200,
-      active: theme.vars.palette.monoA.A150,
-    }),
-
-    [`&.${paginationItemClasses.selected}`]: {
+    ...(ownerState.selected && {
       fontWeight: 700,
 
-      ...theme.mixins.button({
-        background: theme.vars.palette.secondary.A100,
-        color: theme.vars.palette.monoA.A800,
-        hover: theme.vars.palette.secondary.A100,
-        focus: theme.vars.palette.secondary.A200,
-        active: theme.vars.palette.secondary.A150,
-      }),
-    },
+      '--background': theme.vars.palette.secondary.A100,
+      '--text': theme.vars.palette.monoA.A800,
+      '--hovered': theme.vars.palette.secondary.A100,
+      '--focused': theme.vars.palette.monoA.A200,
+      '--pressed': theme.vars.palette.monoA.A150,
+    }),
   },
-})) as typeof ButtonBase;
+}));
 
 const PaginationPagesTextField = styled(TextField, {
   name: 'ESPaginationPages',
@@ -260,14 +236,20 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
+  const { items } = usePagination({
+    boundaryCount,
+    page,
+    count: Math.ceil(count / itemsPerPage),
+    ...props,
+    componentName: 'Pagination',
+    siblingCount,
+    onChange: onPaginationPageChange,
+  });
+
   return (
     <PaginationPagesRoot className={clsx(classes.root, className)} sx={sx}>
-      <PaginationPagesPagination
-        boundaryCount={boundaryCount}
-        className={clsx(classes.pagination)}
-        count={Math.ceil(count / itemsPerPage)}
-        page={page}
-        renderItem={(item) => {
+      <PaginationPagesPagination className={classes.pagination}>
+        {items.map((item) => {
           switch (item.type) {
             case 'previous':
             case 'next':
@@ -297,14 +279,20 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
                     </>
                   }
                 >
-                  <PaginationPagesPaginationItem className={clsx(classes.paginationItem)} component="div" {...item} />
+                  <PaginationPagesPaginationItem
+                    className={clsx(classes.paginationItem)}
+                    data-selected={item.selected}
+                    disabled={item.disabled}
+                    ownerState={{ selected: item.selected }}
+                    onClick={item.onClick}
+                  >
+                    {item.page}
+                  </PaginationPagesPaginationItem>
                 </PaginationPagesTooltip>
               );
           }
-        }}
-        siblingCount={siblingCount}
-        onChange={onPaginationPageChange}
-      />
+        })}
+      </PaginationPagesPagination>
       <PaginationPagesTextField
         className={clsx(classes.textField)}
         placeholder={`${page} ${labelPage}`}
