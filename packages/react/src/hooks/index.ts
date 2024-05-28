@@ -18,6 +18,7 @@ export { useMenuAim } from './useMenuAim';
 export { useMenuVisibility } from './useMenuVisibility';
 export { useMutationObserver } from './useMutationObserver';
 export { useOnLine } from './useOnLine';
+export { usePagination } from './usePagination';
 export { usePreviousValue } from './usePreviousValue';
 export { useResizeObserver } from './useResizeObserver';
 export { useScrollLock } from './useScrollLock';
