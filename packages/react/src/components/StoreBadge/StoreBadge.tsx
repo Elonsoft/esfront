@@ -22,7 +22,8 @@ const useUtilityClasses = (ownerState: StoreBadgeOwnerState) => {
 
   const slots = {
     root: ['root', disabled && 'disabled'],
-    text: ['text']
+    text: ['text'],
+    container: ['container']
   };
 
   return composeClasses(slots, getStoreBadgeUtilityClass, classes);
@@ -82,6 +83,7 @@ export const StoreBadge = (inProps: StoreBadgeProps) => {
     children,
     startIcon,
     upperText,
+    href,
     sx,
     ...props
   } = useThemeProps({
@@ -96,11 +98,12 @@ export const StoreBadge = (inProps: StoreBadgeProps) => {
     <StoreBadgeRoot
       className={clsx(classes.root, className)}
       color={color}
+      href={href}
       ownerState={ownerState}
       startIcon={startIcon}
       sx={sx}
     >
-      <StoreBadgeContainer>
+      <StoreBadgeContainer className={classes.container}>
         <StoreBadgeText className={classes.text}>{upperText}</StoreBadgeText>
         {children}
       </StoreBadgeContainer>

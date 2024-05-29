@@ -19,7 +19,7 @@ export const Demo: Story = {
   render: (args) => {
     return (
       <StoreBadge startIcon={<IconAppStoreLogo />} upperText="Загрузите в" {...args}>
-        <IconAppStore />
+        <IconAppStore title="sd" />
       </StoreBadge>
     );
   }
