@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { SidebarToggleProps } from './SidebarToggle.types';
 
@@ -10,6 +10,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
+import { useEvent } from '../../../hooks';
 import { IconChevronLeftW300 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { svgIconClasses } from '../../SvgIcon';
@@ -144,14 +145,18 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
     setTooltipOpen(false);
   }, [open]);
 
-  const onCloseTooltip = () => {
+  const onCloseTooltip = useCallback(() => {
     setTooltipOpen(false);
-  };
+  }, []);
 
-  const onClickToggle = () => {
+  const onOpenTooltip = useCallback(() => {
+    setTooltipOpen(true);
+  }, []);
+
+  const onClickToggle = useEvent(() => {
     onCloseTooltip();
     onClick?.();
-  };
+  });
 
   return (
     <SidebarToggleRoot className={clsx(classes.root, className)} sx={sx}>
@@ -168,7 +173,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
         placement="right"
         title={<>{open ? labelHide : labelOpen}</>}
         onClose={onCloseTooltip}
-        onOpen={() => setTooltipOpen(true)}
+        onOpen={onOpenTooltip}
       >
         <SidebarToggleButton
           aria-label={open ? labelHide : labelOpen}

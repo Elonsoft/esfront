@@ -9,7 +9,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
-import { useControlled } from '../../hooks/useControlled';
+import { useControlled, useEvent } from '../../hooks';
 import { ButtonBase } from '../ButtonBase';
 import { touchRippleClasses } from '../TouchRipple';
 
@@ -303,7 +303,7 @@ export const Switch = (inProps: SwitchProps) => {
   const ownerState = { ...props, disabled, color, indeterminate, checked: !indeterminate && checked, size };
   const classes = useUtilityClasses(ownerState);
 
-  const onSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onSwitchChange = useEvent((e: React.ChangeEvent<HTMLInputElement>) => {
     if (!readOnly) {
       setCheckedState(e.target.checked);
 
@@ -311,9 +311,9 @@ export const Switch = (inProps: SwitchProps) => {
         onChange(e);
       }
     }
-  };
+  });
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDown = useEvent((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!readOnly && e.key === 'Enter') {
       e.preventDefault();
       setCheckedState(!checked);
@@ -322,7 +322,7 @@ export const Switch = (inProps: SwitchProps) => {
         onChange({ target: { name, checked: !checked } } as any);
       }
     }
-  };
+  });
 
   return (
     <SwitchRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>

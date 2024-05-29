@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -38,13 +38,13 @@ export const Demo: Story = {
 
     const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    const onItemsPerPageChange = (event: number) => {
+    const onItemsPerPageChange = useCallback((event: number) => {
       setItemsPerPage(event);
-    };
+    }, []);
 
-    const onPageChange = (page: number) => {
+    const onPageChange = useCallback((page: number) => {
       setPage(page);
-    };
+    }, []);
 
     return (
       <Pagination

@@ -950,7 +950,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     });
   });
 
-  const handleKeyDown = (event: KeyboardEvent) => {
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (tabListRef.current) {
       const list = tabListRef.current;
       const currentFocus = ownerDocument(list).activeElement as HTMLElement;
@@ -993,7 +993,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
           break;
       }
     }
-  };
+  }, []);
 
   const conditionalElements = getConditionalElements();
 

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -57,24 +57,24 @@ export const ImperativeActions: Story = {
     const firstAudioRef = useRef<HTMLAudioElement | null>(null);
     const secondAudioRef = useRef<HTMLAudioElement | null>(null);
 
-    const onFirstPlay = () => {
+    const onFirstPlay = useCallback(() => {
       if (secondAudioRef.current) {
         secondAudioRef.current.pause();
       }
-    };
+    }, [secondAudioRef]);
 
-    const onFirstEnded = () => {
+    const onFirstEnded = useCallback(() => {
       if (secondAudioRef.current) {
         // eslint-disable-next-line storybook/context-in-play-function
         secondAudioRef.current.play();
       }
-    };
+    }, [secondAudioRef]);
 
-    const onSecondPlay = () => {
+    const onSecondPlay = useCallback(() => {
       if (firstAudioRef.current) {
         firstAudioRef.current.pause();
       }
-    };
+    }, [firstAudioRef]);
 
     return (
       <Box paddingTop="16px">

@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react';
+import React, { memo, useCallback, useRef, useState } from 'react';
 
 import { SortingMenuDirection, SortingMenuOptionMap, SortingMenuProps, SortingMenuValue } from './SortingMenu.types';
 
@@ -12,6 +12,7 @@ import MenuList from '@mui/material/MenuList';
 import Popover from '@mui/material/Popover';
 import Typography, { typographyClasses } from '@mui/material/Typography';
 
+import { useEvent } from '../../hooks';
 import { IconSortAscending, IconSortDescending } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
@@ -321,23 +322,23 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     });
   };
 
-  const onSortChange = (values: SortingMenuValue[]) => {
+  const onSortChange = useEvent((values: SortingMenuValue[]) => {
     if (props.multiple) {
       props.onChange(values);
     } else {
       props.onChange(values[0] ? { ...values[0] } : null);
     }
-  };
+  });
 
-  const onChangeSortMode = () => {
+  const onChangeSortMode = useCallback(() => {
     onSortChange(!isMultiple || values.length === 1 ? [...values] : []);
     setMultiple(!isMultiple);
-  };
+  }, [isMultiple, onSortChange]);
 
-  const onResetSort = () => {
+  const onResetSort = useCallback(() => {
     setMultiple(false);
     onSortChange([]);
-  };
+  }, []);
 
   const toggleMultiSort = (value: string) => {
     const newValues: SortingMenuValue[] = values[sortMap[value].i]
@@ -402,9 +403,9 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     }
   };
 
-  const onStopRipple = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+  const onStopRipple = useCallback((e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-  };
+  }, []);
 
   const renderItem = (item: SortingMenuValue, i: number, isCalcTabIndex = false) => {
     return (

@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import { Meta, StoryObj } from '@storybook/react';
 
 import { FileInfo, FileInfoContent, FileInfoMeta, FileInfoMetaSeparator, FileInfoName } from '.';
@@ -27,13 +29,15 @@ type Story = StoryObj<typeof FileInfo>;
 
 export const Demo: Story = {
   render: () => {
+    const onDelete = useCallback(() => {}, []);
+
     return (
       <FileInfo>
         <FileIcon>
           <FileIconBadge color="red">RAR</FileIconBadge>
         </FileIcon>
         <FileInfoContent>
-          <FileInfoName onDelete={() => {}}>File_name.rar</FileInfoName>
+          <FileInfoName onDelete={onDelete}>File_name.rar</FileInfoName>
           <FileInfoMeta>
             <FormatSize>{10 ** 10}</FormatSize>
             <FileInfoMetaSeparator />

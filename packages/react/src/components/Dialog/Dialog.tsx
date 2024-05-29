@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from 'react';
+import { forwardRef, useCallback, useRef } from 'react';
 
 import { DialogProps } from './Dialog.types';
 
@@ -14,6 +14,8 @@ import Modal from '@mui/material/Modal';
 import { unstable_useId as useId } from '@mui/utils';
 
 import { dialogActionsClasses } from './DialogActions';
+
+import { useEvent } from '../../hooks';
 
 type DialogOwnerState = {
   classes?: DialogProps['classes'];
@@ -303,18 +305,21 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const backdropClick = useRef<boolean | null>(null);
 
-  const onMouseDown = (event: React.MouseEvent<HTMLElement>) => {
-    // We don't want to close the dialog when clicking the dialog content.
-    // Make sure the event starts and ends on the same DOM element.
+  const onMouseDown = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      // We don't want to close the dialog when clicking the dialog content.
+      // Make sure the event starts and ends on the same DOM element.
 
-    if (wrapperRef.current && wrapperRef.current === event.target) {
-      backdropClick.current = true;
-    } else {
-      backdropClick.current = false;
-    }
-  };
+      if (wrapperRef.current && wrapperRef.current === event.target) {
+        backdropClick.current = true;
+      } else {
+        backdropClick.current = false;
+      }
+    },
+    [wrapperRef, backdropClick]
+  );
 
-  const onDialogBackdropClick = (event: React.MouseEvent<HTMLElement>) => {
+  const onDialogBackdropClick = useEvent((event: React.MouseEvent<HTMLElement>) => {
     // Ignore the events not coming from the "backdrop".
     if (!backdropClick.current) {
       return;
@@ -329,7 +334,7 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
     if (onClose) {
       onClose(event, 'backdropClick');
     }
-  };
+  });
 
   const ariaLabelledby = useId(ariaLabelledbyProp);
 

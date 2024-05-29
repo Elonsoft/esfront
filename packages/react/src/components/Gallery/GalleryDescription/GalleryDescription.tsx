@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { GalleryDescriptionProps } from './GalleryDescription.types';
 
@@ -190,11 +190,11 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
   const [isTruncated, setTruncated] = useState(false);
   const [maxHeight, setMaxHeight] = useState(32);
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     if (isTruncated) {
       setExpanded(!isExpanded);
     }
-  };
+  }, [isTruncated, isExpanded]);
 
   useEffect(() => {
     if (galleryPanelContext) {

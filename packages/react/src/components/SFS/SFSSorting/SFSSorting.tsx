@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 
 import { SFSSortingProps } from './SFSSorting.types';
 
@@ -75,13 +75,13 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
 
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
 
-  const onMenuClose = () => {
+  const onMenuClose = useCallback(() => {
     setMenuAnchor(null);
-  };
+  }, []);
 
-  const onMenuOpen = (e: React.MouseEvent<HTMLElement>) => {
+  const onMenuOpen = useCallback((e: React.MouseEvent<HTMLElement>) => {
     setMenuAnchor(e.currentTarget);
-  };
+  }, []);
 
   return (
     <SFSSortingRoot className={clsx(classes.root, className)} sx={sx}>
