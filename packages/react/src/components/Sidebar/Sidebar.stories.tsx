@@ -13,7 +13,8 @@ import { SidebarToggle } from './SidebarToggle';
 import { IconAccountFillW500Lc, IconAtLineW500, IconBellFillW500, IconMagnifyLineW500 } from '../../icons';
 import { ListItem, ListItemIcon, ListItemText } from '../ListItem';
 
-type Args = ComponentProps<typeof Sidebar> & { behaviour?: SidebarMenuProps['behaviour']; exclusive?: boolean };
+type Args = ComponentProps<typeof Sidebar> &
+  ComponentProps<typeof SidebarItem> & { behaviour?: SidebarMenuProps['behaviour']; exclusive?: boolean };
 
 const meta: Meta<Args> = {
   tags: ['autodocs'],
@@ -57,6 +58,11 @@ const meta: Meta<Args> = {
         disable: true,
       },
     },
+    closePopoverAfterClick: {
+      control: {
+        type: 'boolean',
+      },
+    },
   },
   args: {
     color: 'default',
@@ -72,7 +78,10 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Demo: Story = {
-  render: function Render({ color, behaviour, exclusive, minWidth, maxWidth }, { globals: { locale } }) {
+  render: function Render(
+    { color, behaviour, exclusive, minWidth, maxWidth, closePopoverAfterClick },
+    { globals: { locale } }
+  ) {
     const [isOpen, setIsOpen] = useState(false);
     const [width, setWidth] = useState(280);
 
@@ -120,6 +129,7 @@ export const Demo: Story = {
             <SidebarMenu behaviour={behaviour} exclusive={exclusive}>
               <SidebarItem
                 selected
+                closePopoverAfterClick={closePopoverAfterClick}
                 component="button"
                 icon={<IconAtLineW500 />}
                 id="0"
@@ -136,7 +146,12 @@ export const Demo: Story = {
                   />
                 ))}
               </SidebarItem>
-              <SidebarItem icon={<IconAtLineW500 />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
+              <SidebarItem
+                closePopoverAfterClick={closePopoverAfterClick}
+                icon={<IconAtLineW500 />}
+                id="1"
+                text={locale === 'en' ? 'Files' : 'Файлы'}
+              >
                 {[...Array(8)].map((_, i) => (
                   <SidebarItem
                     key={i}

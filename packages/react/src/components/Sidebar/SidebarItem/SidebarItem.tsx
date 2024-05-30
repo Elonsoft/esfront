@@ -27,6 +27,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     icon,
     iconToggle = <IconChevronLeftLineW200 container containerSize="20px" />,
     inset,
+    closePopoverAfterClick,
     onClick,
     onKeyDown,
     onTouchStart,
@@ -184,9 +185,15 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
             disabled={!onClick}
             size="100"
             tabIndex={-1}
-            onClick={onClick}
             {...props}
             selected={false}
+            onClick={(e: React.MouseEvent<HTMLLIElement>) => {
+              onClick?.(e);
+
+              if (closePopoverAfterClick) {
+                onTooltipClose();
+              }
+            }}
           >
             <span className="body100">{text}</span>
           </MenuItem>
@@ -195,10 +202,23 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
           {!!children &&
             React.Children.map(children, (child: any, idx: number) => {
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              const { text, inset, ...rest } = child.props;
+              const { text, inset, onClick, ...rest } = child.props;
 
               return (
-                <MenuItem key={idx} className="es-sidebar-item__tooltip-item" size="100" tabIndex={idx} {...rest}>
+                <MenuItem
+                  key={idx}
+                  className="es-sidebar-item__tooltip-item"
+                  size="100"
+                  tabIndex={idx}
+                  {...rest}
+                  onClick={(e: React.MouseEvent<HTMLLIElement>) => {
+                    onClick?.(e);
+
+                    if (closePopoverAfterClick) {
+                      onTooltipClose();
+                    }
+                  }}
+                >
                   <span className="body100">{text}</span>
                 </MenuItem>
               );
