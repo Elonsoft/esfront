@@ -17,7 +17,8 @@ import { SidebarToggle } from './SidebarToggle';
 
 import { IconAccountLc, IconAt, IconBellFill, IconMagnify } from '../../icons';
 
-type Args = ComponentProps<typeof Sidebar> & { behaviour?: SidebarMenuProps['behaviour']; exclusive?: boolean };
+type Args = ComponentProps<typeof Sidebar> &
+  ComponentProps<typeof SidebarItem> & { behaviour?: SidebarMenuProps['behaviour']; exclusive?: boolean };
 
 const meta: Meta<Args> = {
   tags: ['autodocs'],
@@ -60,6 +61,11 @@ const meta: Meta<Args> = {
       table: {
         disable: true
       }
+    },
+    closeAfterClick: {
+      control: {
+        type: 'boolean'
+      }
     }
   },
   args: {
@@ -75,7 +81,10 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Demo: Story = {
-  render: function Render({ color, behaviour, exclusive, minWidth, maxWidth }, { globals: { locale } }) {
+  render: function Render(
+    { color, behaviour, exclusive, minWidth, maxWidth, closeAfterClick },
+    { globals: { locale } }
+  ) {
     const [isOpen, setIsOpen] = useState(false);
     const [width, setWidth] = useState(280);
 
@@ -121,6 +130,7 @@ export const Demo: Story = {
             <SidebarMenu behaviour={behaviour} exclusive={exclusive}>
               <SidebarItem
                 selected
+                closeAfterClick={closeAfterClick}
                 component="button"
                 icon={<IconAt />}
                 id="0"
@@ -137,7 +147,12 @@ export const Demo: Story = {
                   />
                 ))}
               </SidebarItem>
-              <SidebarItem icon={<IconAt />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
+              <SidebarItem
+                closeAfterClick={closeAfterClick}
+                icon={<IconAt />}
+                id="1"
+                text={locale === 'en' ? 'Files' : 'Файлы'}
+              >
                 {[...Array(8)].map((_, i) => (
                   <SidebarItem
                     key={i}
