@@ -228,8 +228,8 @@ export const en: Localization = {
     },
     ESPasswordField: {
       defaultProps: {
-        labelHidePassword: 'Hide password',
-        labelShowPassword: 'Show password',
+        labelHidePassword: 'Hide',
+        labelShowPassword: 'Show',
       },
     },
     ESSidebarToggle: {
@@ -403,8 +403,8 @@ export const ru: Localization = {
     },
     ESPasswordField: {
       defaultProps: {
-        labelHidePassword: 'Скрыть пароль',
-        labelShowPassword: 'Показать пароль',
+        labelHidePassword: 'Скрыть',
+        labelShowPassword: 'Показать',
       },
     },
     ESSidebarToggle: {
