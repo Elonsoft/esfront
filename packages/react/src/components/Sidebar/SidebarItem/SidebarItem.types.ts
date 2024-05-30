@@ -22,6 +22,8 @@ export interface SidebarItemTypeMap<P = {}, D extends ElementType = `li`> {
     selected?: boolean;
     /** If true, the children are indented. This should be used if there is no left avatar or left icon. */
     inset?: boolean;
+    /** If true, the popover will close after an item is clicked. */
+    closePopoverAfterClick?: boolean;
     /** Text for the secondary action aria-label. */
     labelOpen?: string;
     /** Text for the secondary action aria-label. */
