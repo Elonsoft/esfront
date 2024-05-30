@@ -33,6 +33,8 @@ export interface SidebarItemTypeMap<P = {}, D extends ElementType = `div`> {
     labelOpen?: string;
     /** Text for the secondary action aria-label. */
     labelHide?: string;
+    /** If true, the item will close after click. */
+    closeAfterClick?: boolean;
   };
   defaultComponent: D;
 }
