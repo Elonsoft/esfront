@@ -94,7 +94,7 @@ export const createTypography = (theme: Theme) => {
       },
 
       [desktopXS]: {
-        fontSize: pxToRem(34),
+        fontSize: pxToRem(32),
         lineHeight: pxToRem(40),
         textUnderlineOffset: pxToRem(3),
       },
@@ -151,7 +151,7 @@ export const createTypography = (theme: Theme) => {
       fontSize: pxToRem(16),
       fontWeight: 400,
       letterSpacing: pxToRem(0.15),
-      lineHeight: pxToRem(20),
+      lineHeight: pxToRem(24),
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1),
     },
@@ -159,7 +159,7 @@ export const createTypography = (theme: Theme) => {
       fontSize: pxToRem(14),
       fontWeight: 500,
       letterSpacing: pxToRem(0.1),
-      lineHeight: pxToRem(16),
+      lineHeight: pxToRem(20),
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1),
     },
@@ -213,9 +213,9 @@ export const createTypography = (theme: Theme) => {
       fontWeight: 700,
     },
     micro: {
-      fontSize: pxToRem(9),
+      fontSize: pxToRem(10),
       fontWeight: 500,
-      letterSpacing: 0,
+      letterSpacing: pxToRem(0.4),
       lineHeight: pxToRem(12),
       textDecorationThickness: pxToRem(1),
       textUnderlineOffset: pxToRem(1),
