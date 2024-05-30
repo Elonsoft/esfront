@@ -12,6 +12,7 @@ import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornm
 import { inputBaseClasses } from '@mui/material/InputBase';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
 
 import { useControlled } from '../../hooks';
 import { IconEye, IconEyeOff } from '../../icons';
@@ -44,7 +45,6 @@ const PasswordFieldRoot = styled(TextField, {
       paddingRight: '7px',
 
       [`& .${buttonClasses.root}`]: {
-        borderRadius: '50%',
         '--icon': theme.vars.palette.monoA.A500,
       },
     },
@@ -69,6 +69,7 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
     iconShowPassword = <IconEye />,
 
     InputProps,
+    TooltipProps,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -103,14 +104,23 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            <Button
-              aria-label={visible ? labelHidePassword : labelShowPassword}
-              onClick={onClick}
-              onMouseDown={onMouseDown}
-              onMouseUp={onMouseUp}
+            <Tooltip
+              arrow
+              disableInteractive
+              placement="top-end"
+              title={visible ? labelHidePassword : labelShowPassword}
+              {...TooltipProps}
             >
-              {visible ? iconHidePassword : iconShowPassword}
-            </Button>
+              <Button
+                rounded
+                aria-label={visible ? labelHidePassword : labelShowPassword}
+                onClick={onClick}
+                onMouseDown={onMouseDown}
+                onMouseUp={onMouseUp}
+              >
+                {visible ? iconHidePassword : iconShowPassword}
+              </Button>
+            </Tooltip>
           </InputAdornment>
         ),
         ...InputProps,
