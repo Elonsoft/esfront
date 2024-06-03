@@ -121,22 +121,7 @@ module.exports = {
 
     'react-hooks/rules-of-hooks': 'error',
 
-    'simple-import-sort/imports': [
-      'error',
-      {
-        groups: [
-          ['^react'],
-          ['^\\.\\./\\.\\./testing'],
-          ['^.+\\.types$'],
-          ['^(@testing-library|@storybook|@date-io|date-fns)'],
-          ['^clsx', '^.+\\.classes$'],
-          ['^@mui/base'],
-          ['^@mui/material/styles', '^@mui/system', '^@mui/material', '^@mui/utils'],
-          ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-          ['^\\.\\.(?!/?$)', '^\\.\\./?$']
-        ]
-      }
-    ],
+    'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error'
   }
 };
