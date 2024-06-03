@@ -12,6 +12,8 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { IconElonsoft } from '../../icons';
 import { svgIconClasses } from '../SvgIcon';
 
+import PropTypes from 'prop-types';
+
 type MadeByOwnerState = {
   classes?: MadeByProps['classes'];
   clickable?: MadeByProps['clickable'];
@@ -95,4 +97,48 @@ export const MadeBy: OverridableComponent<MadeByTypeMap> = (inProps: MadeByProps
       {icon}
     </MadeByRoot>
   );
+};
+
+//@ts-expect-error: Property 'propTypes' does not exist on type OverridableComponent
+MadeBy.propTypes = {
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: PropTypes.object,
+
+  /**
+   * @ignore
+   */
+  className: PropTypes.string,
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: PropTypes.elementType,
+
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])),
+    PropTypes.func,
+    PropTypes.object
+  ]),
+
+  /**
+   * If `true`, component will appear clickable, even if the onClick prop is not defined.
+   * If `false`, component will not appear clickable, even if onClick prop is defined.
+   * */
+  clickable: PropTypes.bool,
+
+  /**
+   * Text to display.
+   */
+  text: PropTypes.node,
+
+  /**
+   * Icon to display.
+   */
+  icon: PropTypes.node
 };

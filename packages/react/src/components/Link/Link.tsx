@@ -10,6 +10,8 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 
+import PropTypes from 'prop-types';
+
 type LinkOwnerState = {
   classes?: LinkProps['classes'];
   variant?: LinkProps['variant'];
@@ -200,4 +202,67 @@ export const Link: OverridableComponent<LinkTypeMap> = (inProps: LinkProps) => {
       {!!endIcon && <LinkIcon className={classes.icon}>{endIcon}</LinkIcon>}
     </LinkRoot>
   );
+};
+
+//@ts-expect-error: Property 'propTypes' does not exist on type OverridableComponent
+Link.propTypes = {
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: PropTypes.object,
+
+  /**
+   * @ignore
+   */
+  className: PropTypes.string,
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: PropTypes.elementType,
+
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])),
+    PropTypes.func,
+    PropTypes.object
+  ]),
+
+  /** Element placed before the children. */
+  startIcon: PropTypes.node,
+  /** Element placed after the children. */
+  endIcon: PropTypes.node,
+  /**
+   * Controls when the link should have an underline.
+   * @default 'always'
+   */
+  underline: PropTypes.oneOfType([PropTypes.oneOf(['none', 'hover', 'always']), PropTypes.string]),
+  /** Whether the link should show visited state. */
+  showVisited: PropTypes.bool,
+  /**
+   * Applies the theme typography styles.
+   * @default 'inherit'
+   */
+  variant: PropTypes.oneOfType([
+    PropTypes.oneOf([
+      'body1',
+      'body2',
+      'button',
+      'caption',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+      'inherit',
+      'overline',
+      'subtitle1',
+      'subtitle2'
+    ]),
+    PropTypes.string
+  ])
 };
