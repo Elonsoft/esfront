@@ -27,5 +27,6 @@ export { useSticky } from './useSticky';
 export { useStuckSentinel } from './useStuckSentinel';
 export { useUpdateEffect } from './useUpdateEffect';
 export { useValueDebounce } from './useValueDebounce';
+export { useValueGate } from './useValueGate';
 export { useVibration } from './useVibration';
 export { useWindowEventListener } from './useWindowEventListener';
