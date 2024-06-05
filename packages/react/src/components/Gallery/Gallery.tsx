@@ -7,9 +7,8 @@ import { getGalleryUtilityClass } from './Gallery.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
-import { styled, useThemeProps } from '@mui/material/styles';
-// TODO: Replace with our Dialog component.
-import Dialog from '@mui/material/Dialog';
+import { duration, styled, useThemeProps } from '@mui/material/styles';
+import { backdropClasses, Fade, Modal } from '@mui/material';
 
 import { GalleryContext } from './Gallery.context';
 import { GalleryPanelsProvider } from './GalleryPanel';
@@ -33,18 +32,15 @@ const useUtilityClasses = (ownerState: GalleryOwnerState) => {
   return composeClasses(slots, getGalleryUtilityClass, classes);
 };
 
-const GalleryRoot = styled(Dialog, {
+const GalleryRoot = styled(Modal, {
   name: 'ESGallery',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
 })(({ theme }) => ({
-  '.MuiBackdrop-root': {
-    backgroundColor: 'transparent'
-  },
-  '.MuiDialog-paper': {
-    backgroundColor: theme.vars.palette.overlay[900],
-    backgroundImage: 'none',
-    boxShadow: 'none'
+  height: '100vh',
+
+  [`.${backdropClasses.root}`]: {
+    backgroundColor: theme.vars.palette.overlay[900]
   }
 }));
 
@@ -57,6 +53,8 @@ const GalleryContent = styled('div', {
   flexDirection: 'column',
   height: '100%'
 }));
+
+const transitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
 
 /*
  * `Gallery` is a component for displaying a fullscreen list of images or any other type of content.
@@ -104,16 +102,16 @@ export const Gallery = (inProps: GalleryProps) => {
         <GalleryPanelsProvider>
           <GalleryThumbnailsProvider>
             <GalleryRoot
-              fullScreen
-              BackdropProps={BackdropProps}
-              TransitionProps={TransitionProps}
               className={clsx(classes.root, className)}
               open={open}
+              slotProps={{ backdrop: BackdropProps }}
               onClose={onClose}
             >
-              <GalleryContent ref={contentRef} className={classes.content}>
-                {children}
-              </GalleryContent>
+              <Fade appear in={open} role="presentation" timeout={transitionDuration} {...TransitionProps}>
+                <GalleryContent ref={contentRef} className={classes.content}>
+                  {children}
+                </GalleryContent>
+              </Fade>
             </GalleryRoot>
           </GalleryThumbnailsProvider>
         </GalleryPanelsProvider>
