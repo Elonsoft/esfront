@@ -37,7 +37,7 @@ const GalleryRoot = styled(Modal, {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root
 })(({ theme }) => ({
-  height: '100vh',
+  height: '100dvh',
 
   [`.${backdropClasses.root}`]: {
     backgroundColor: theme.vars.palette.overlay[900]
