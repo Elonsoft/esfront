@@ -1,27 +1,28 @@
-import React from 'react';
-
-import { StoreBadgeProps } from './StoreBadge.types';
+import { StoreBadgeOwnProps, StoreBadgeProps, StoreBadgeTypeMap } from './StoreBadge.types';
 
 import clsx from 'clsx';
-import { getStoreBadgeUtilityClass, storeBadgeClasses } from './StoreBadge.classes';
+import { getStoreBadgeUtilityClass } from './StoreBadge.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { Button, buttonBaseClasses, Typography } from '@mui/material';
+import { capitalize, Typography } from '@mui/material';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+
+import { Button } from '../Button';
 
 type StoreBadgeOwnerState = {
-  classes?: StoreBadgeProps['classes'];
-  disabled?: StoreBadgeProps['disabled'];
-  color: NonNullable<StoreBadgeProps['color']>;
-  variant: NonNullable<StoreBadgeProps['variant']>;
+  classes?: StoreBadgeOwnProps['classes'];
+  disabled?: StoreBadgeOwnProps['disabled'];
+  color: NonNullable<StoreBadgeOwnProps['color']>;
+  variant: NonNullable<StoreBadgeOwnProps['variant']>;
 };
 
 const useUtilityClasses = (ownerState: StoreBadgeOwnerState) => {
-  const { classes, disabled } = ownerState;
+  const { classes, disabled, color, variant } = ownerState;
 
   const slots = {
-    root: ['root', disabled && 'disabled'],
+    root: ['root', disabled && 'disabled', `color${capitalize(color)}`, `variant${capitalize(variant)}`],
     text: ['text'],
     container: ['container']
   };
@@ -34,25 +35,21 @@ const StoreBadgeRoot = styled(Button, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { disabled, checked, size }
+      ownerState: { disabled, checked, size, variant, color }
     } = props;
-    return [styles.root, disabled && styles.disabled, checked && styles.checked, styles[size]];
+    return [
+      styles.root,
+      disabled && styles.disabled,
+      checked && styles.checked,
+      styles[size],
+      styles[`color${capitalize(color)}`],
+      styles[`variant${capitalize(variant)}`]
+    ];
   }
-})<{ ownerState: StoreBadgeOwnerState }>(({ ownerState: { color, variant }, theme }) => ({
+})(({ theme }) => ({
   ...theme.typography.body100,
-  border: `1px solid ${theme.vars.palette[color].A150}`,
-  color: theme.vars.palette[color][500],
-  textTransform: 'none',
-  [`&.${buttonBaseClasses.root}`]: {
-    ...(variant === 'filled' && {
-      backgroundColor: theme.vars.palette[`${color === 'monoA' ? 'monoB' : 'monoA'}`].A900
-    })
-  },
-
-  [`& .${storeBadgeClasses.text}`]: {
-    color: theme.vars.palette[color].A700
-  }
-}));
+  textTransform: 'none'
+})) as typeof Button;
 
 const StoreBadgeText = styled(Typography, {
   name: 'ESStoreBadge',
@@ -74,12 +71,12 @@ const StoreBadgeContainer = styled('div', {
   gap: '2px'
 }));
 
-export const StoreBadge = (inProps: StoreBadgeProps) => {
+export const StoreBadge: OverridableComponent<StoreBadgeTypeMap> = (inProps: StoreBadgeProps) => {
   const {
     className,
     disabled,
     color = 'monoA',
-    variant = 'filled',
+    variant = 'contained',
     children,
     startIcon,
     upperText,
@@ -98,10 +95,11 @@ export const StoreBadge = (inProps: StoreBadgeProps) => {
     <StoreBadgeRoot
       className={clsx(classes.root, className)}
       color={color}
+      component="a"
       href={href}
-      ownerState={ownerState}
       startIcon={startIcon}
       sx={sx}
+      variant={variant}
     >
       <StoreBadgeContainer className={classes.container}>
         <StoreBadgeText className={classes.text}>{upperText}</StoreBadgeText>

@@ -1,10 +1,15 @@
+/* eslint-disable @typescript-eslint/ban-types */
+
 import { ReactNode } from 'react';
 
 import { StoreBadgeClasses } from './StoreBadge.classes';
 
 import { SxProps, Theme } from '@mui/material';
+import { OverrideProps } from '@mui/material/OverridableComponent';
 
-export interface StoreBadgeProps {
+import { ExtendButtonTypeMap } from '../Button';
+
+export interface StoreBadgeOwnProps {
   children: ReactNode;
   /** Class applied to the root element. */
   className?: string;
@@ -19,9 +24,9 @@ export interface StoreBadgeProps {
   color?: 'monoA' | 'monoB';
   /**
    * The variant of the component.
-   * @default 'filled'
+   * @default 'contained'
    */
-  variant?: 'filled' | 'outlined';
+  variant: 'contained' | 'outlined';
   /** Element placed before the children. */
   startIcon?: ReactNode;
   /** Text placed up the children. */
@@ -31,3 +36,16 @@ export interface StoreBadgeProps {
   /** If `true`, the component is disabled. */
   disabled?: boolean;
 }
+
+export type StoreBadgeTypeMap<
+  AdditionalProps = {},
+  RootComponent extends React.ElementType = 'button'
+> = ExtendButtonTypeMap<{
+  props: AdditionalProps & StoreBadgeOwnProps;
+  defaultComponent: RootComponent;
+}>;
+
+export type StoreBadgeProps<
+  RootComponent extends React.ElementType = StoreBadgeTypeMap['defaultComponent'],
+  AdditionalProps = {}
+> = OverrideProps<StoreBadgeTypeMap<AdditionalProps, RootComponent>, RootComponent>;

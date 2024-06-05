@@ -9,6 +9,11 @@ export type StoreBadgeClasses = {
   container: string;
   /** Styles applied to the text element. */
   text: string;
+
+  colorMonoA: string;
+  colorMonoB: string;
+  variantFilled: string;
+  variantOutlined: string;
 };
 
 export type StoreBadgeClassKey = keyof StoreBadgeClasses;
@@ -21,5 +26,9 @@ export const storeBadgeClasses: StoreBadgeClasses = generateUtilityClasses('ESSt
   'root',
   'text',
   'disabled',
-  'container'
+  'container',
+  'colorMonoA',
+  'colorMonoB',
+  'variantFilled',
+  'variantOutlined'
 ]);

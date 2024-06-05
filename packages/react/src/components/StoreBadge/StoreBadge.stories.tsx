@@ -9,6 +9,16 @@ const meta: Meta<typeof StoreBadge> = {
   component: StoreBadge,
   parameters: {
     references: ['StoreBadge']
+  },
+  argTypes: {
+    variant: {
+      options: ['contained', 'outlined'],
+      control: { type: 'select' }
+    },
+    color: {
+      options: ['monoA', 'monoB'],
+      control: { type: 'select' }
+    }
   }
 };
 
