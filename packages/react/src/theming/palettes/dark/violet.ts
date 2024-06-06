@@ -9,5 +9,5 @@ export const violet = {
   700: '#E4DDFF',
   800: '#EEE9FF',
   900: '#F3F0FF',
-  alpha: '300'
+  alpha: '300',
 };

@@ -15,37 +15,37 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: FileIcon,
   parameters: {
-    references: ['FileIcon', 'FileIconBadge', 'FileIconText']
+    references: ['FileIcon', 'FileIconBadge', 'FileIconText'],
   },
   argTypes: {
     textChildren: {
       description: 'Text in text component.',
       name: 'FileIconText.children',
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     badgeChildren: {
       description: 'Text in badge component.',
       name: 'FileIconBadge.children',
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     badgeColor: {
       name: 'FileIconBadge.color',
       control: { type: 'color' },
-      description: 'The badge component background color.'
+      description: 'The badge component background color.',
     },
     badgeSize: {
       name: 'FileIconBadge.size',
       control: { type: 'select' },
       options: ['md', 'sm'],
-      description: 'The badge component size.'
-    }
+      description: 'The badge component size.',
+    },
   },
   args: {
     textChildren: 'DOCX',
     badgeChildren: 'RAR',
     badgeColor: '#ff0000',
-    badgeSize: 'md'
-  }
+    badgeSize: 'md',
+  },
 };
 
 export default meta;
@@ -58,7 +58,7 @@ export const Demo: Story = {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '16px'
+          gap: '16px',
         }}
       >
         <FileIcon height={args.height} icon={FileIconIconVariant} width={args.width} />
@@ -81,7 +81,7 @@ export const Demo: Story = {
         </FileIcon>
       </div>
     );
-  }
+  },
 };
 
 /** Children element automatically positioned in visual center depending on component size. */
@@ -92,7 +92,7 @@ export const Sizes: Story = {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '16px'
+          gap: '16px',
         }}
       >
         <FileIcon>
@@ -137,5 +137,5 @@ export const Sizes: Story = {
         </FileIcon>
       </div>
     );
-  }
+  },
 };

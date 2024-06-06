@@ -14,8 +14,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useDebounce',
   parameters: {
-    references: ['useDebounce']
-  }
+    references: ['useDebounce'],
+  },
 };
 
 export default meta;
@@ -65,5 +65,5 @@ export const Demo: Story = {
         </Typography>
       </div>
     );
-  }
+  },
 };

@@ -24,5 +24,5 @@ export const sidebarClasses: SidebarClasses = generateUtilityClasses('ESSidebar'
   'rootOpen',
   'content',
   'handler',
-  'handlerLine'
+  'handlerLine',
 ]);

@@ -14,5 +14,5 @@ export function getPageHGroupHeadingUtilityClass(slot: string): string {
 
 export const pageHGroupHeadingClasses: PageHGroupHeadingClasses = generateUtilityClasses('ESPageHGroupHeading', [
   'root',
-  'tooltip'
+  'tooltip',
 ]);

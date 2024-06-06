@@ -42,48 +42,48 @@ const meta: Meta<Args> = {
   title: 'Overrides/TextField',
 
   parameters: {
-    viewMode: 'canvas'
+    viewMode: 'canvas',
   },
 
   argTypes: {
     disabled: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
 
     required: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
 
     size: {
       options: ['56', '48', '40', '32'],
 
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
 
     placeholder: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
 
     startAdornment: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
 
     endAdornment: {
       control: {
-        type: 'boolean'
-      }
-    }
-  }
+        type: 'boolean',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -107,7 +107,7 @@ export const Demo: Story = {
 
     const InputProps = {
       startAdornment: StartAdornment,
-      endAdornment: EndAdornment
+      endAdornment: EndAdornment,
     };
 
     return (
@@ -115,7 +115,7 @@ export const Demo: Story = {
         style={{
           display: 'grid',
           gap: '16px',
-          gridAutoFlow: 'row'
+          gridAutoFlow: 'row',
         }}
       >
         <TextField id="text-field-base" label={label} {...args} {...InputProps} />
@@ -151,5 +151,5 @@ export const Demo: Story = {
         </TextField>
       </div>
     );
-  }
+  },
 };

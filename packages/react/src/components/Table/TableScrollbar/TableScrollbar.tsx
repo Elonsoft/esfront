@@ -19,7 +19,7 @@ const useUtilityClasses = (ownerState: TableOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getTableScrollbarUtilityClass, classes);
@@ -28,16 +28,16 @@ const useUtilityClasses = (ownerState: TableOwnerState) => {
 const TableScrollbarRoot = styled('div', {
   name: 'ESTableScrollbar',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   ...theme.scrollbars.thinMonoA,
-  overflowX: 'auto'
+  overflowX: 'auto',
 }));
 
 export const TableScrollbar = memo(function TableScrollbar(inProps: TableScrollbarProps) {
   const { className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESTableScrollbar'
+    name: 'ESTableScrollbar',
   });
 
   const { width, setRef } = useTableScrollbarContext();

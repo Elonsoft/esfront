@@ -2,6 +2,6 @@ export { PageHGroupHeading } from './PageHGroupHeading';
 export {
   PageHGroupHeadingClasses,
   pageHGroupHeadingClasses,
-  PageHGroupHeadingClassKey
+  PageHGroupHeadingClassKey,
 } from './PageHGroupHeading.classes';
 export { PageHGroupHeadingProps } from './PageHGroupHeading.types';

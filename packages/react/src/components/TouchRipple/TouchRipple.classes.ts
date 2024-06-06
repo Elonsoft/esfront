@@ -20,5 +20,5 @@ export const touchRippleClasses: TouchRippleClasses = generateUtilityClasses('ES
   'root',
   'center',
   'hovered',
-  'pressed'
+  'pressed',
 ]);

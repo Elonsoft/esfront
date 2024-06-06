@@ -11,5 +11,5 @@ export const surface = {
   700: '#fff',
   800: '#fff',
   900: '#fff',
-  on: '#f5f7fa'
+  on: '#f5f7fa',
 };

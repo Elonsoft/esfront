@@ -20,7 +20,7 @@ const useUtilityClasses = (ownerState: SFSFiltersGroupOwnerState) => {
 
   const slots = {
     root: ['root'],
-    title: ['title']
+    title: ['title'],
   };
 
   return composeClasses(slots, getSFSFiltersGroupUtilityClass, classes);
@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: SFSFiltersGroupOwnerState) => {
 const SFSFiltersGroupRoot = styled('div', {
   name: 'ESSFSFiltersGroup',
   slot: 'Root',
-  overridesResolver: (_, styles) => styles.root
+  overridesResolver: (_, styles) => styles.root,
 })(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -38,31 +38,31 @@ const SFSFiltersGroupRoot = styled('div', {
   color: theme.vars.palette.monoA.A900,
 
   '&:not(:last-of-type)': {
-    paddingBottom: 0
+    paddingBottom: 0,
   },
 
   [`& .${outlinedInputClasses.input}, & .${formLabelClasses.root}`]: {
-    ...theme.typography.body100
+    ...theme.typography.body100,
   },
 
   [`& .${inputLabelClasses.outlined}.${inputLabelClasses.outlined}`]: {
     transform: 'translate(12px, 14px) scale(1)',
     [`&.${inputLabelClasses.shrink}`]: {
-      transform: 'translate(12px, -8.5px) scale(0.857)'
-    }
-  }
+      transform: 'translate(12px, -8.5px) scale(0.857)',
+    },
+  },
 }));
 
 const SFSFiltersGroupTitle = styled(Typography, {
   name: 'ESSFSFiltersGroup',
   slot: 'Title',
-  overridesResolver: (_, styles) => styles.title
+  overridesResolver: (_, styles) => styles.title,
 })(() => ({})) as typeof Typography;
 
 export const SFSFiltersGroup = (inProps: SFSFiltersGroupProps) => {
   const { className, children, sx, title, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESSFSFiltersGroup'
+    name: 'ESSFSFiltersGroup',
   });
 
   const ownerState = { ...props };

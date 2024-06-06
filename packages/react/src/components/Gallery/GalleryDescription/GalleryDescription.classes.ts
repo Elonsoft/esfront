@@ -20,5 +20,5 @@ export const galleryDescriptionClasses: GalleryDescriptionClasses = generateUtil
   'root',
   'content',
   'text',
-  'button'
+  'button',
 ]);

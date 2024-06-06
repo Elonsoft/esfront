@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: BannerOwnerState) => {
     content: ['content'],
     message: ['message'],
     action: ['action'],
-    icon: ['icon']
+    icon: ['icon'],
   };
 
   return composeClasses(slots, getBannerUtilityClass, classes);
@@ -40,11 +40,11 @@ const BannerRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { color, variant, severity }
+      ownerState: { color, variant, severity },
     } = props;
 
     return [styles.root, styles[`variant${capitalize(variant)}`], styles[`color${capitalize(color || severity)}`]];
-  }
+  },
 })(({ theme }) => ({
   padding: '4px 8px',
   paddingLeft: '16px',
@@ -53,19 +53,19 @@ const BannerRoot = styled('div', {
     color: theme.vars.palette.monoB[500],
 
     [`&.${bannerClasses.colorWarning}`]: {
-      backgroundColor: theme.vars.palette.warning[300]
+      backgroundColor: theme.vars.palette.warning[300],
     },
 
     [`&.${bannerClasses.colorError}`]: {
-      backgroundColor: theme.vars.palette.error[300]
+      backgroundColor: theme.vars.palette.error[300],
     },
 
     [`&.${bannerClasses.colorSuccess}`]: {
-      backgroundColor: theme.vars.palette.success[300]
+      backgroundColor: theme.vars.palette.success[300],
     },
 
     [`&.${bannerClasses.colorInfo}`]: {
-      backgroundColor: theme.vars.palette.info[300]
+      backgroundColor: theme.vars.palette.info[300],
     },
 
     [`&.${bannerClasses.colorMonoA}`]: {
@@ -73,16 +73,16 @@ const BannerRoot = styled('div', {
       color: theme.vars.palette.monoA.A900,
 
       [`& .${bannerTitleClasses.root}`]: {
-        color: theme.vars.palette.monoA.A800
+        color: theme.vars.palette.monoA.A800,
       },
 
       [`& .${bannerClasses.icon}`]: {
-        color: theme.vars.palette.monoA.A550
-      }
+        color: theme.vars.palette.monoA.A550,
+      },
     },
 
     [`&.${bannerClasses.colorPrimary}`]: {
-      backgroundColor: theme.vars.palette.primary[300]
+      backgroundColor: theme.vars.palette.primary[300],
     },
 
     [`&.${bannerClasses.colorSecondary}`]: {
@@ -90,9 +90,9 @@ const BannerRoot = styled('div', {
       color: theme.vars.palette.black.A900,
 
       [`& .${bannerTitleClasses.root}`]: {
-        color: theme.vars.palette.black.A900
-      }
-    }
+        color: theme.vars.palette.black.A900,
+      },
+    },
   },
 
   [`&.${bannerClasses.variantMonoB}`]: {
@@ -100,48 +100,48 @@ const BannerRoot = styled('div', {
     color: theme.vars.palette.monoA.A900,
 
     [`&.${bannerClasses.colorWarning} .${bannerClasses.icon}`]: {
-      color: theme.vars.palette.warning[300]
+      color: theme.vars.palette.warning[300],
     },
 
     [`&.${bannerClasses.colorError} .${bannerClasses.icon}`]: {
-      color: theme.vars.palette.error[300]
+      color: theme.vars.palette.error[300],
     },
 
     [`&.${bannerClasses.colorSuccess} .${bannerClasses.icon}`]: {
-      color: theme.vars.palette.success[300]
+      color: theme.vars.palette.success[300],
     },
 
     [`&.${bannerClasses.colorInfo} .${bannerClasses.icon}`]: {
-      color: theme.vars.palette.info[300]
+      color: theme.vars.palette.info[300],
     },
 
     [`&.${bannerClasses.colorMonoA} .${bannerClasses.icon}`]: {
-      color: theme.vars.palette.monoA.A550
+      color: theme.vars.palette.monoA.A550,
     },
 
     [`&.${bannerClasses.colorPrimary} .${bannerClasses.icon}`]: {
-      color: theme.vars.palette.primary[300]
+      color: theme.vars.palette.primary[300],
     },
 
     [`&.${bannerClasses.colorSecondary} .${bannerClasses.icon}`]: {
-      color: theme.vars.palette.secondary[300]
-    }
-  }
+      color: theme.vars.palette.secondary[300],
+    },
+  },
 }));
 
 const BannerWrapper = styled('div', {
   name: 'ESBanner',
   slot: 'Wrapper',
-  overridesResolver: (_props, styles) => styles.wrapper
+  overridesResolver: (_props, styles) => styles.wrapper,
 })(() => ({
   display: 'flex',
-  margin: '0 auto'
+  margin: '0 auto',
 }));
 
 const BannerContent = styled('div', {
   name: 'ESBanner',
   slot: 'Wrapper',
-  overridesResolver: (_props, styles) => styles.content
+  overridesResolver: (_props, styles) => styles.content,
 })<{ ownerState: { breakpoint: BannerProps['breakpoint'] } }>(({ ownerState: { breakpoint }, theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -151,46 +151,46 @@ const BannerContent = styled('div', {
   ...(!!breakpoint && {
     [theme.breakpoints.up(breakpoint)]: {
       flexDirection: 'row',
-      justifyContent: 'space-between'
-    }
-  })
+      justifyContent: 'space-between',
+    },
+  }),
 }));
 
 const BannerMessage = styled(Typography, {
   name: 'ESBanner',
   slot: 'Message',
-  overridesResolver: (_props, styles) => styles.message
+  overridesResolver: (_props, styles) => styles.message,
 })(() => ({
   wordBreak: 'break-word',
   minHeight: '40px',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center'
+  justifyContent: 'center',
 })) as typeof Typography;
 
 const BannerAction = styled('div', {
   name: 'ESBanner',
   slot: 'Action',
-  overridesResolver: (_props, styles) => styles.action
+  overridesResolver: (_props, styles) => styles.action,
 })(() => ({
   paddingTop: '4px',
-  marginLeft: '8px'
+  marginLeft: '8px',
 }));
 
 const BannerIcon = styled('div', {
   name: 'ESBanner',
   slot: 'Icon',
-  overridesResolver: (_props, styles) => styles.icon
+  overridesResolver: (_props, styles) => styles.icon,
 })(() => ({
   paddingTop: '8px',
-  marginRight: '8px'
+  marginRight: '8px',
 }));
 
 const defaultIconMapping = {
   success: <IconCheckCircleW500 />,
   warning: <IconAlertW500 />,
   error: <IconErrorW500 />,
-  info: <IconInformation2W500 />
+  info: <IconInformation2W500 />,
 };
 
 /**
@@ -212,7 +212,7 @@ export const Banner = (inProps: BannerProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESBanner'
+    name: 'ESBanner',
   });
 
   const ownerState = { ...props, variant, severity, color, breakpoint };

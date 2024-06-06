@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: FileIconTextOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getFileIconTextUtilityClass, classes);
@@ -25,16 +25,16 @@ const useUtilityClasses = (ownerState: FileIconTextOwnerState) => {
 const FileIconTextRoot = styled(Typography, {
   name: 'ESFileIconText',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   position: 'relative',
-  top: '-2px'
+  top: '-2px',
 })) as typeof Typography;
 
 export const FileIconText = (inProps: FileIconTextProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESFileIconText'
+    name: 'ESFileIconText',
   });
 
   const ownerState = { ...props };

@@ -14,5 +14,5 @@ export function getGallerySwiperImageUtilityClass(slot: string): string {
 
 export const gallerySwiperImageClasses: GallerySwiperImageClasses = generateUtilityClasses('ESGallerySwiperImage', [
   'root',
-  'image'
+  'image',
 ]);

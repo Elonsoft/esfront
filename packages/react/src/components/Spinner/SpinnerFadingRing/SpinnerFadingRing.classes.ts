@@ -26,5 +26,5 @@ export const spinnerFadingRingClasses: SpinnerFadingRingClasses = generateUtilit
   'primary',
   'secondary',
   'monoA',
-  'inherit'
+  'inherit',
 ]);

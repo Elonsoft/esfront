@@ -38,7 +38,7 @@ const useUtilityClasses = (ownerState: BottomSheetOwnerState) => {
     wrapper: ['wrapper'],
     container: ['container'],
     content: ['content'],
-    paper: ['paper']
+    paper: ['paper'],
   };
 
   return composeClasses(slots, getBottomSheetUtilityClass, classes);
@@ -47,28 +47,28 @@ const useUtilityClasses = (ownerState: BottomSheetOwnerState) => {
 const BottomSheetRoot = styled(Modal, {
   name: 'ESBottomSheet',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })({
   '@media print': {
     // Use !important to override the Modal inline-style.
-    position: 'absolute !important'
-  }
+    position: 'absolute !important',
+  },
 });
 
 const BottomSheetBackdrop = styled(Backdrop, {
   name: 'ESBottomSheet',
   slot: 'Backdrop',
-  overridesResolver: (props, styles) => styles.backdrop
+  overridesResolver: (props, styles) => styles.backdrop,
 })(({ theme }) => ({
   // Improve scrollable dialog support.
   zIndex: -1,
-  backgroundColor: theme.vars.palette.overlay[700]
+  backgroundColor: theme.vars.palette.overlay[700],
 }));
 
 const BottomSheetContainer = styled('div', {
   name: 'ESBottomSheet',
   slot: 'Container',
-  overridesResolver: (props, styles) => styles.container
+  overridesResolver: (props, styles) => styles.container,
 })<{ ownerState: BottomSheetOwnerState }>(({ ownerState }) => ({
   // We disable the focus ring for mouse, touch and keyboard users.
   outline: 0,
@@ -80,7 +80,7 @@ const BottomSheetContainer = styled('div', {
   scrollbarGutter: 'stable',
 
   '&, & *': {
-    touchAction: ownerState.isLastSnapPoint ? 'auto' : 'none'
+    touchAction: ownerState.isLastSnapPoint ? 'auto' : 'none',
   },
 
   '&:after': {
@@ -88,17 +88,17 @@ const BottomSheetContainer = styled('div', {
     display: 'inline-block',
     verticalAlign: 'middle',
     height: '100%',
-    width: '0'
+    width: '0',
   },
   '@media print': {
-    height: 'auto'
-  }
+    height: 'auto',
+  },
 }));
 
 const BottomSheetWrapper = styled('div', {
   name: 'ESBottomSheet',
   slot: 'Wrapper',
-  overridesResolver: (props, styles) => styles.wrapper
+  overridesResolver: (props, styles) => styles.wrapper,
 })<{ ownerState: BottomSheetOwnerState }>(({ ownerState }) => ({
   verticalAlign: 'middle',
   position: 'relative',
@@ -108,13 +108,13 @@ const BottomSheetWrapper = styled('div', {
   alignItems: ownerState.align,
   justifyContent: 'center',
   margin: 0,
-  overflow: 'visible'
+  overflow: 'visible',
 }));
 
 const BottomSheetContent = styled('div', {
   name: 'ESBottomSheet',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })<{ ownerState: BottomSheetOwnerState }>(
   ({ ownerState }) => ({
     position: 'relative',
@@ -127,11 +127,11 @@ const BottomSheetContent = styled('div', {
     willChange: 'auto',
 
     '@media print': {
-      overflowY: 'visible'
-    }
+      overflowY: 'visible',
+    },
   }),
   ({ ownerState }) => ({
-    marginTop: `calc(100dvh - ${ownerState.snapPoint})`
+    marginTop: `calc(100dvh - ${ownerState.snapPoint})`,
   })
 );
 
@@ -142,7 +142,7 @@ const BottomSheetPaper = styled('div', {
     const { ownerState } = props;
 
     return [styles.paper, ownerState.fullScreen && styles.paperFullScreen];
-  }
+  },
 })<{ ownerState: BottomSheetOwnerState }>(({ theme, ownerState }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -156,7 +156,7 @@ const BottomSheetPaper = styled('div', {
 
   ...(!ownerState.isFullHeight && {
     borderTopLeftRadius: 16,
-    borderTopRightRadius: 16
+    borderTopRightRadius: 16,
   }),
 
   '&::after': {
@@ -168,12 +168,12 @@ const BottomSheetPaper = styled('div', {
     width: '40px',
     height: '4px',
     borderRadius: '4px',
-    backgroundColor: theme.vars.palette.white.A500
+    backgroundColor: theme.vars.palette.white.A500,
   },
 
   '@media print': {
-    boxShadow: 'none'
-  }
+    boxShadow: 'none',
+  },
 }));
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.enteringScreen };
@@ -182,15 +182,15 @@ const defaultSnapPoints: BottomSheetProps['snapPoints'] = [
   {
     point: '60vh',
     dragThresholds: { up: '15vh', down: '15vh' },
-    activeWhen: { screen: { minHeight: 400 }, paperOverflow: true }
+    activeWhen: { screen: { minHeight: 400 }, paperOverflow: true },
   },
-  { point: '100vh', dragThresholds: { up: '0px', down: '15vh' } }
+  { point: '100vh', dragThresholds: { up: '0px', down: '15vh' } },
 ];
 
 const getPixelsFromCssUnits = (cssValue: string) => {
   const supportedUnits = {
     px: (value: number) => value,
-    vh: (value: number) => (value / 100) * window.innerHeight
+    vh: (value: number) => (value / 100) * window.innerHeight,
   };
 
   const pattern = new RegExp(`^([\-\+]?(?:\\d+(?:\\.\\d+)?))(${Object.keys(supportedUnits).join('|')})$`, 'i');
@@ -432,7 +432,7 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
 
   const value = useMemo(
     () => ({
-      isFullHeight
+      isFullHeight,
     }),
     [isFullHeight]
   );
@@ -447,7 +447,7 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
     isLastSnapPoint,
     isOpen,
     transitionDuration: duration,
-    snapPoint
+    snapPoint,
   };
 
   const classes = useUtilityClasses(ownerState);
@@ -458,7 +458,7 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
       closeAfterTransition
       BackdropComponent={BottomSheetBackdrop}
       BackdropProps={{
-        transitionDuration
+        transitionDuration,
       }}
       className={clsx(classes.root, className)}
       disableEscapeKeyDown={disableEscapeKeyDown}

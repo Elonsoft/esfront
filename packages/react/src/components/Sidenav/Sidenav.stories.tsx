@@ -32,18 +32,18 @@ const SearchField = styled(TextField)(({ theme }) => ({
       padding: '0 4px',
 
       [`& .${buttonClasses.root}`]: {
-        '--icon': theme.vars.palette.monoA.A500
+        '--icon': theme.vars.palette.monoA.A500,
       },
 
       [`& .${inputAdornmentClasses.positionStart}`]: {
         marginRight: '4px',
 
         [`& .${svgIconClasses.root}`]: {
-          color: theme.vars.palette.monoA.A400
-        }
-      }
-    }
-  }
+          color: theme.vars.palette.monoA.A400,
+        },
+      },
+    },
+  },
 }));
 
 const SidebarHeading = (props: { title: string }) => (
@@ -65,14 +65,14 @@ const SidebarMenuItem = styled(SidebarItem)(() => ({
   margin: '0 16px',
 
   [`& .${listItemButtonClasses.root}.${sidebarItemClasses.button}`]: {
-    padding: '4px'
-  }
+    padding: '4px',
+  },
 }));
 
 const Content = styled('div')<{ ownerState: { isOpen?: boolean; width?: number } }>(
   ({ ownerState: { isOpen, width } }) => ({
     transition: 'padding-left 0.2s',
-    paddingLeft: `${isOpen ? width : 0}px`
+    paddingLeft: `${isOpen ? width : 0}px`,
   })
 );
 
@@ -94,37 +94,37 @@ const meta: Meta<Args> = {
       'SidebarMenu',
       'SidebarScrollable',
       'SidebarSpacer',
-      'SidebarToggle'
-    ]
+      'SidebarToggle',
+    ],
   },
   argTypes: {
     disableEscapeKeyDown: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     disableItemHover: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     color: {
       control: {
-        type: 'select'
+        type: 'select',
       },
-      options: ['default', 'primary', 'secondary']
+      options: ['default', 'primary', 'secondary'],
     },
     open: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
     disableEscapeKeyDown: false,
     disableItemHover: false,
-    color: 'secondary'
-  }
+    color: 'secondary',
+  },
 };
 
 export default meta;
@@ -235,7 +235,7 @@ export const Demo: Story = {
                               <InputAdornment position="start">
                                 <IconAt />
                               </InputAdornment>
-                            )
+                            ),
                           }}
                           placeholder={locale === 'en' ? 'Search' : 'Поиск'}
                           size="32"
@@ -311,7 +311,7 @@ export const Demo: Story = {
                               <InputAdornment position="start">
                                 <IconAt />
                               </InputAdornment>
-                            )
+                            ),
                           }}
                           placeholder={locale === 'en' ? 'Search' : 'Поиск'}
                           size="32"
@@ -480,5 +480,5 @@ export const Demo: Story = {
         </Content>
       </Box>
     );
-  }
+  },
 };

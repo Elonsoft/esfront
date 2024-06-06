@@ -31,14 +31,14 @@ const useUtilityClasses = (ownerState: DropzoneOwnerState) => {
       'dropzone',
       error && 'dropzoneError',
       isDragOver && 'dropzoneDragOver',
-      isDragOverDocument && 'dropzoneDragOverDocument'
+      isDragOverDocument && 'dropzoneDragOverDocument',
     ],
     input: ['input'],
     icon: ['icon'],
     heading: ['heading'],
     headingText: ['headingText'],
     subheading: ['subheading'],
-    helperText: ['helperText', error && 'helperTextError']
+    helperText: ['helperText', error && 'helperTextError'],
   };
 
   return composeClasses(slots, getDropzoneUtilityClass, classes);
@@ -47,11 +47,11 @@ const useUtilityClasses = (ownerState: DropzoneOwnerState) => {
 const DropzoneRoot = styled('div', {
   name: 'ESDropzone',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'grid',
   gap: 8,
-  gridAutoFlow: 'row'
+  gridAutoFlow: 'row',
 }));
 
 const DropzoneDropzone = styled(ButtonBase, {
@@ -59,15 +59,15 @@ const DropzoneDropzone = styled(ButtonBase, {
   slot: 'Dropzone',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { error, isDragOver, isDragOverDocument }
+      ownerState: { error, isDragOver, isDragOverDocument },
     } = props;
     return [
       styles.dropzone,
       error && styles.dropzoneError,
       isDragOver && styles.dropzoneDragOver,
-      isDragOverDocument && styles.dropzoneDragOverDocument
+      isDragOverDocument && styles.dropzoneDragOverDocument,
     ];
-  }
+  },
 })<{ ownerState: DropzoneOwnerState }>(({ theme, ownerState }) => ({
   width: '100%',
   display: 'flex',
@@ -83,69 +83,69 @@ const DropzoneDropzone = styled(ButtonBase, {
   '--pressed': theme.vars.palette.monoA.A150,
 
   [`& .${buttonBaseClasses.wrapper}`]: {
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   ...(ownerState.isDragOverDocument && {
     '--background': theme.vars.palette.primary.A50,
-    border: `1px dashed ${theme.vars.palette.primary.A500}`
+    border: `1px dashed ${theme.vars.palette.primary.A500}`,
   }),
   ...(ownerState.isDragOver && {
-    '--background': theme.vars.palette.primary.A100
+    '--background': theme.vars.palette.primary.A100,
   }),
   ...(ownerState.error && {
     '--background': theme.vars.palette.error.A50,
-    border: `1px dashed ${theme.vars.palette.error.A800}`
-  })
+    border: `1px dashed ${theme.vars.palette.error.A800}`,
+  }),
 }));
 
 const DropzoneHeading = styled('div', {
   name: 'ESDropzone',
   slot: 'Heading',
-  overridesResolver: (props, styles) => styles.heading
+  overridesResolver: (props, styles) => styles.heading,
 })(({ theme }) => ({
   alignItems: 'center',
   color: theme.vars.palette.primary[300],
   display: 'grid',
   gap: 4,
   gridAutoFlow: 'column',
-  justifyContent: 'center'
+  justifyContent: 'center',
 }));
 
 const DropzoneHeadingText = styled(Typography, {
   name: 'ESDropzone',
   slot: 'HeadingText',
-  overridesResolver: (props, styles) => styles.headingText
+  overridesResolver: (props, styles) => styles.headingText,
 })(({ theme }) => ({
   paddingBottom: 8,
   paddingTop: 8,
-  lineHeight: theme.typography.pxToRem(16)
+  lineHeight: theme.typography.pxToRem(16),
 }));
 
 const DropzoneSubheading = styled(Typography, {
   name: 'ESDropzone',
   slot: 'Subheading',
-  overridesResolver: (props, styles) => styles.subheading
+  overridesResolver: (props, styles) => styles.subheading,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A500,
-  marginTop: 4
+  marginTop: 4,
 }));
 
 const DropzoneIcon = styled('div', {
   name: 'ESDropzone',
   slot: 'Subheading',
-  overridesResolver: (props, styles) => styles.icon
+  overridesResolver: (props, styles) => styles.icon,
 })(() => ({
   alignItems: 'center',
   display: 'flex',
-  justifyContent: 'center'
+  justifyContent: 'center',
 }));
 
 const DropzoneInput = styled('input', {
   name: 'ESDropzone',
   slot: 'Input',
-  overridesResolver: (props, styles) => styles.input
+  overridesResolver: (props, styles) => styles.input,
 })(() => ({
-  display: 'none'
+  display: 'none',
 }));
 
 const DropzoneHelperText = styled(Typography, {
@@ -153,15 +153,15 @@ const DropzoneHelperText = styled(Typography, {
   slot: 'HelperText',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { error }
+      ownerState: { error },
     } = props;
     return [styles.helperText, error && styles.helperTextError];
-  }
+  },
 })<{ ownerState: DropzoneOwnerState }>(({ theme, ownerState }) => ({
   color: theme.vars.palette.monoA.A700,
   ...(ownerState.error && {
-    color: theme.vars.palette.error.A800
-  })
+    color: theme.vars.palette.error.A800,
+  }),
 }));
 
 /**
@@ -187,7 +187,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESDropzone'
+    name: 'ESDropzone',
   });
 
   const { isDragOver, onDragEnter, onDragLeave, onDrop } = useDragOver();
@@ -232,7 +232,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
 
         rejectedFiles.push({
           file,
-          errors
+          errors,
         });
       }
     }
@@ -243,7 +243,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
       acceptedFiles.forEach((file) => {
         rejectedFiles.push({
           file,
-          errors: ['too-many-files']
+          errors: ['too-many-files'],
         });
       });
 

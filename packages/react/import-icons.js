@@ -20,7 +20,7 @@ const argv = yargs(hideBin(process.argv))
   .option('size', {
     alias: 's',
     type: 'number',
-    description: 'Size of the icon'
+    description: 'Size of the icon',
   })
   .parse();
 

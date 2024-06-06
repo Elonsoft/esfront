@@ -11,5 +11,5 @@ export function getAutocompleteFieldUtilityClass(slot: string): string {
 }
 
 export const autocompleteFieldClasses: AutocompleteFieldClasses = generateUtilityClasses('ESAutocompleteField', [
-  'root'
+  'root',
 ]);

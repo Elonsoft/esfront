@@ -11,8 +11,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useCookie',
   parameters: {
-    references: ['useCookie']
-  }
+    references: ['useCookie'],
+  },
 };
 
 export default meta;
@@ -37,5 +37,5 @@ export const Demo: Story = {
         </Button>
       </Box>
     );
-  }
+  },
 };

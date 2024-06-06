@@ -11,28 +11,28 @@ const meta: Meta<typeof AudioPlayer> = {
   tags: ['autodocs'],
   component: AudioPlayer,
   parameters: {
-    references: ['AudioPlayer', 'AudioPlayerProvider']
+    references: ['AudioPlayer', 'AudioPlayerProvider'],
   },
   argTypes: {
     rates: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     audioRef: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     TooltipProps: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
-    src: 'https://www.fesliyanstudios.com/musicfiles/2019-06-12_-_Homework_-_David_Fesliyan.mp3'
-  }
+    src: 'https://www.fesliyanstudios.com/musicfiles/2019-06-12_-_Homework_-_David_Fesliyan.mp3',
+  },
 };
 
 export default meta;
@@ -47,7 +47,7 @@ export const Demo: Story = {
         </AudioPlayerProvider>
       </Box>
     );
-  }
+  },
 };
 
 /** We can use `audioRef` in order to interact directly with audio element and call it's imperative actions. For example,
@@ -94,5 +94,5 @@ export const ImperativeActions: Story = {
         </AudioPlayerProvider>
       </Box>
     );
-  }
+  },
 };

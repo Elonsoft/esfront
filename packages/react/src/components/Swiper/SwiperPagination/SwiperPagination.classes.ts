@@ -51,5 +51,5 @@ export const swiperPaginationClasses: SwiperPaginationClasses = generateUtilityC
   'input',
   'bullet',
   'bulletActive',
-  'bulletSmall'
+  'bulletSmall',
 ]);

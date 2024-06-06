@@ -9,5 +9,5 @@ export const green = {
   700: '#CCF4C9',
   800: '#E0FADD',
   900: '#EEFFEB',
-  alpha: '300'
+  alpha: '300',
 };

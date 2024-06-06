@@ -30,43 +30,43 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Link,
   parameters: {
-    references: ['Link']
+    references: ['Link'],
   },
   argTypes: {
     children: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     component: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     startIcon: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     endIcon: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     color: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     variant: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     underline: {
-      control: { type: 'select' }
-    }
-  }
+      control: { type: 'select' },
+    },
+  },
 };
 
 export default meta;
@@ -96,7 +96,7 @@ export const Demo: Story = {
         </Link>
       </MuiTypography>
     );
-  }
+  },
 };
 
 /* Links are aligned within the text. */
@@ -120,7 +120,7 @@ export const Alignment: Story = {
         , sunt in culpa qui officia deserunt mollit anim id est laborum.
       </MuiTypography>
     );
-  }
+  },
 };
 
 /* Links have different underline thickness and offset depending on the font variant. */
@@ -146,7 +146,7 @@ export const Typography: Story = {
       'micro',
       'button',
       'caption',
-      'overline'
+      'overline',
     ];
 
     return (
@@ -165,5 +165,5 @@ export const Typography: Story = {
         ))}
       </div>
     );
-  }
+  },
 };

@@ -24,18 +24,18 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
         transitionDuration: `${theme.transitions.duration.short}ms`,
 
         '& .MuiIconButton-root': {
-          marginRight: '-8px'
+          marginRight: '-8px',
         },
 
         '&.MuiMenuItem-root': {
           '&.MuiButtonBase-root': {
             '& .MuiTouchRipple-root': {
-              transitionDuration: `${theme.transitions.duration.short}ms`
-            }
+              transitionDuration: `${theme.transitions.duration.short}ms`,
+            },
           },
           '& .MuiTouchRipple-rippleVisible': {
             animationName: `${enterKeyframe} !important`,
-            opacity: '1 !important'
+            opacity: '1 !important',
           },
 
           ...theme.mixins.listItem({
@@ -43,7 +43,7 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
             color: theme.vars.palette.monoA.A900,
             hover: theme.vars.palette.monoA.A50,
             focus: theme.vars.palette.monoA.A75,
-            active: theme.vars.palette.monoA.A150
+            active: theme.vars.palette.monoA.A150,
           }),
 
           '&.Mui-selected': {
@@ -52,11 +52,11 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
               color: theme.vars.palette.monoA.A900,
               hover: theme.vars.palette.monoA.A50,
               focus: theme.vars.palette.monoA.A75,
-              active: theme.vars.palette.monoA.A150
-            })
-          }
-        }
-      }
-    }
+              active: theme.vars.palette.monoA.A150,
+            }),
+          },
+        },
+      },
+    },
   };
 };

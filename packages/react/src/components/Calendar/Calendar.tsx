@@ -22,7 +22,7 @@ const useUtilityClasses = (ownerState: CalendarOwnerState) => {
   const { classes, rows } = ownerState;
 
   const slots = {
-    root: ['root', `rows${capitalize(rows)}`]
+    root: ['root', `rows${capitalize(rows)}`],
   };
 
   return composeClasses(slots, getCalendarUtilityClass, classes);
@@ -33,11 +33,11 @@ const CalendarRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { rows }
+      ownerState: { rows },
     } = props;
 
     return [styles.root, styles[`rows${capitalize(rows)}`]];
-  }
+  },
 })<{ ownerState: CalendarOwnerState }>(() => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(7, 1fr)',
@@ -45,8 +45,8 @@ const CalendarRoot = styled('div', {
   padding: '12px',
 
   [`&.${calendarClasses.rowsMax}`]: {
-    gridTemplateRows: 'repeat(6, 1fr)'
-  }
+    gridTemplateRows: 'repeat(6, 1fr)',
+  },
 }));
 
 /** The calendar allows users to pick a date or a range of dates. */
@@ -69,7 +69,7 @@ export const Calendar = (inProps: CalendarProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESCalendar'
+    name: 'ESCalendar',
   });
 
   const { adapter } = useDateAdapterContext();
@@ -139,7 +139,7 @@ export const Calendar = (inProps: CalendarProps) => {
       today: adapter.isSameDay(new Date(), current),
       onClick: () => !disabled && onSelectionChange?.(current),
       onHover: () => !disabled && onHover?.(current),
-      TooltipProps: getButtonTooltipProps?.(current)
+      TooltipProps: getButtonTooltipProps?.(current),
     };
   };
 

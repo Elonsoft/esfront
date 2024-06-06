@@ -10,25 +10,25 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: MadeBy,
   parameters: {
-    references: ['MadeBy']
+    references: ['MadeBy'],
   },
   argTypes: {
     component: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     icon: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     text: {
       control: {
-        type: 'text'
-      }
-    }
-  }
+        type: 'text',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -37,5 +37,5 @@ type Story = StoryObj<Args>;
 export const Demo: Story = {
   render: (args) => {
     return <MadeBy {...args} />;
-  }
+  },
 };

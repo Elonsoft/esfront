@@ -17,5 +17,5 @@ export function getLoadingButtonUtilityClass(slot: string): string {
 export const loadingButtonClasses: LoadingButtonClasses = generateUtilityClasses('ESLoadingButton', [
   'root',
   'loading',
-  'loadingIndicator'
+  'loadingIndicator',
 ]);

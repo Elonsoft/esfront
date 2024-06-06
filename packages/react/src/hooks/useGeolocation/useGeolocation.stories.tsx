@@ -8,8 +8,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useGeolocation',
   parameters: {
-    references: ['useGeolocation']
-  }
+    references: ['useGeolocation'],
+  },
 };
 
 export default meta;
@@ -31,5 +31,5 @@ export const Demo: Story = {
         {!!error && <div>Error: {error.message}</div>}
       </Typography>
     );
-  }
+  },
 };

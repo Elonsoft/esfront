@@ -10,8 +10,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useUpdateEffect',
   parameters: {
-    references: ['useUpdateEffect']
-  }
+    references: ['useUpdateEffect'],
+  },
 };
 
 export default meta;
@@ -51,5 +51,5 @@ export const Demo: Story = {
         </Typography>
       </>
     );
-  }
+  },
 };

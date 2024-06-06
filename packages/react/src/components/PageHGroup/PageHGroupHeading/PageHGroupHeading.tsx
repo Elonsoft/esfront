@@ -19,7 +19,7 @@ const useUtilityClasses = (ownerState: PageHGroupHeadingOwnerState) => {
 
   const slots = {
     root: ['root'],
-    tooltip: ['tooltip']
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getPageHGroupHeadingUtilityClass, classes);
@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: PageHGroupHeadingOwnerState) => {
 const PageHGroupHeadingRoot = styled('h1', {
   name: 'ESPageHGroupHeading',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: PageHGroupHeadingOwnerState }>(({ theme, ownerState }) => ({
   ...theme.typography.h2,
   alignSelf: 'center',
@@ -42,7 +42,7 @@ const PageHGroupHeadingRoot = styled('h1', {
   textOverflow: 'ellipsis',
   display: '-webkit-box',
   WebkitLineClamp: ownerState.maxLines,
-  WebkitBoxOrient: 'vertical'
+  WebkitBoxOrient: 'vertical',
 }));
 
 const PageHGroupHeadingTooltip = styled(
@@ -50,7 +50,7 @@ const PageHGroupHeadingTooltip = styled(
   {
     name: 'ESBreadcrumbs',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )(() => ({}));
 
@@ -64,7 +64,7 @@ export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESPageHGroupHeading'
+    name: 'ESPageHGroupHeading',
   });
 
   const ownerState = { ...props, maxLines };

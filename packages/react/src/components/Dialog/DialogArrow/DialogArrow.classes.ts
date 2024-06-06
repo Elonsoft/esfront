@@ -20,5 +20,5 @@ export const dialogArrowClasses: DialogArrowClasses = generateUtilityClasses('ES
   'root',
   'button',
   'prev',
-  'next'
+  'next',
 ]);

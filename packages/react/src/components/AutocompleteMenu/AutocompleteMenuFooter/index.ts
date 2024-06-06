@@ -2,6 +2,6 @@ export { AutocompleteMenuFooter } from './AutocompleteMenuFooter';
 export {
   AutocompleteMenuFooterClasses,
   autocompleteMenuFooterClasses,
-  AutocompleteMenuFooterClassKey
+  AutocompleteMenuFooterClassKey,
 } from './AutocompleteMenuFooter.classes';
 export { AutocompleteMenuFooterProps } from './AutocompleteMenuFooter.types';

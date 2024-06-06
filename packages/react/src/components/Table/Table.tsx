@@ -26,7 +26,7 @@ const useUtilityClasses = (ownerState: TableOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getTableUtilityClass, classes);
@@ -35,11 +35,11 @@ const useUtilityClasses = (ownerState: TableOwnerState) => {
 const TableRoot = styled('div', {
   name: 'ESTable',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   backgroundColor: theme.vars.palette.surface[100],
   boxShadow: theme.vars.palette.shadow.down[100],
-  borderRadius: '6px'
+  borderRadius: '6px',
 }));
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
@@ -49,7 +49,7 @@ export const Table = memo(
   forwardRef<HTMLDivElement, TableProps>((inProps, inRef) => {
     const { children, className, columns, sx, ...props } = useThemeProps({
       props: inProps,
-      name: 'ESTable'
+      name: 'ESTable',
     });
 
     const ref = useRef<HTMLDivElement | null>(null);

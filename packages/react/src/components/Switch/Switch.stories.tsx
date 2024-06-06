@@ -6,38 +6,38 @@ const meta: Meta<typeof Switch> = {
   tags: ['autodocs'],
   component: Switch,
   parameters: {
-    references: ['Switch']
+    references: ['Switch'],
   },
   argTypes: {
     value: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     name: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     id: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     autoFocus: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     checked: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     defaultChecked: {
       table: {
-        disable: true
-      }
-    }
-  }
+        disable: true,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -46,5 +46,5 @@ type Story = StoryObj<typeof Switch>;
 export const Demo: Story = {
   render: (args) => {
     return <Switch {...args} />;
-  }
+  },
 };

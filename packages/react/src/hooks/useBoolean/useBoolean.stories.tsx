@@ -10,8 +10,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useBoolean',
   parameters: {
-    references: ['useBoolean']
-  }
+    references: ['useBoolean'],
+  },
 };
 
 export default meta;
@@ -34,5 +34,5 @@ export const Demo: Story = {
         </Button>
       </Box>
     );
-  }
+  },
 };

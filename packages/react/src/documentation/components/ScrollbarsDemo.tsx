@@ -9,7 +9,7 @@ const ScrollbarsDemoName = styled(Typography)(({ theme }) => ({
   borderRadius: '3px',
   fontSize: '13px',
   backgroundColor: theme.vars.palette.monoA.A50,
-  border: `1px solid ${theme.vars.palette.monoA.A75}`
+  border: `1px solid ${theme.vars.palette.monoA.A75}`,
 })) as typeof Typography;
 
 export const ScrollbarsDemo = () => {
@@ -30,7 +30,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'monoB.A75',
           color: 'monoA.A900',
-          ...theme.scrollbars.normalMonoA
+          ...theme.scrollbars.normalMonoA,
         })}
       >
         {content}
@@ -43,7 +43,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'monoA.A800',
           color: 'monoB.A900',
-          ...theme.scrollbars.normalMonoB
+          ...theme.scrollbars.normalMonoB,
         })}
       >
         {content}
@@ -56,7 +56,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'white.A800',
           color: 'black.A900',
-          ...theme.scrollbars.normalBlack
+          ...theme.scrollbars.normalBlack,
         })}
       >
         {content}
@@ -69,7 +69,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'black.A800',
           color: 'white.A900',
-          ...theme.scrollbars.normalWhite
+          ...theme.scrollbars.normalWhite,
         })}
       >
         {content}
@@ -81,7 +81,7 @@ export const ScrollbarsDemo = () => {
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'monoA.A75',
-          ...theme.scrollbars.thinMonoA
+          ...theme.scrollbars.thinMonoA,
         })}
       >
         {content}
@@ -94,7 +94,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'monoA.A800',
           color: 'monoB.A900',
-          ...theme.scrollbars.thinMonoB
+          ...theme.scrollbars.thinMonoB,
         })}
       >
         {content}
@@ -107,7 +107,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'white.A800',
           color: 'black.A900',
-          ...theme.scrollbars.thinBlack
+          ...theme.scrollbars.thinBlack,
         })}
       >
         {content}
@@ -120,7 +120,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'black.A800',
           color: 'white.A900',
-          ...theme.scrollbars.thinWhite
+          ...theme.scrollbars.thinWhite,
         })}
       >
         {content}
@@ -133,7 +133,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'monoB.A75',
           color: 'monoA.A900',
-          ...theme.scrollbars.overlayMonoA
+          ...theme.scrollbars.overlayMonoA,
         })}
       >
         {content}
@@ -146,7 +146,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'monoA.A800',
           color: 'monoB.A900',
-          ...theme.scrollbars.overlayMonoB
+          ...theme.scrollbars.overlayMonoB,
         })}
       >
         {content}
@@ -159,7 +159,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'white.A800',
           color: 'black.A900',
-          ...theme.scrollbars.overlayBlack
+          ...theme.scrollbars.overlayBlack,
         })}
       >
         {content}
@@ -172,7 +172,7 @@ export const ScrollbarsDemo = () => {
           height: '150px',
           backgroundColor: 'black.A800',
           color: 'white.A900',
-          ...theme.scrollbars.overlayWhite
+          ...theme.scrollbars.overlayWhite,
         })}
       >
         {content}

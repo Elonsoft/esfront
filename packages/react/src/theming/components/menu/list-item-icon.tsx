@@ -7,16 +7,16 @@ export const createListItemIcon: Component<'MuiListItemIcon'> = (theme) => {
         color: theme.vars.palette.monoA.A500,
 
         '&.MuiListItemIcon-root.MuiListItemIcon-root': {
-          minWidth: 'auto'
+          minWidth: 'auto',
         },
 
         '&:first-of-type': {
-          marginRight: '16px'
+          marginRight: '16px',
         },
         '&:last-of-type': {
-          marginLeft: '16px'
-        }
-      }
-    }
+          marginLeft: '16px',
+        },
+      },
+    },
   };
 };

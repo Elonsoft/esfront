@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: AlertActionsOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getAlertActionsUtilityClass, classes);
@@ -24,15 +24,15 @@ const useUtilityClasses = (ownerState: AlertActionsOwnerState) => {
 const AlertActionsRoot = styled('div', {
   name: 'ESAlertActions',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
-  padding: '4px 0'
+  padding: '4px 0',
 }));
 
 export const AlertActions = (inProps: AlertActionsProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESAlertActions'
+    name: 'ESAlertActions',
   });
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);

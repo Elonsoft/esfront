@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: AlertTitleOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getAlertTitleUtilityClass, classes);
@@ -25,13 +25,13 @@ const useUtilityClasses = (ownerState: AlertTitleOwnerState) => {
 const AlertTitleRoot = styled(Typography, {
   name: 'ESAlertTitle',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({}));
 
 export const AlertTitle = (inProps: AlertTitleProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESAlertTitle'
+    name: 'ESAlertTitle',
   });
 
   const ownerState = { ...props };

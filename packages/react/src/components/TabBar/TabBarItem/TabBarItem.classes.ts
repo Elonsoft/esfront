@@ -21,5 +21,5 @@ export const tabBarItemClasses: TabBarItemClasses = generateUtilityClasses('ESTa
   'root',
   'selected',
   'icon',
-  'label'
+  'label',
 ]);

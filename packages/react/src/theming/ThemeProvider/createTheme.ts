@@ -4,7 +4,7 @@ import {
   alpha as generateAlpha,
   experimental_extendTheme as extendMUITheme,
   Palette,
-  PaletteOptions
+  PaletteOptions,
 } from '@mui/material/styles';
 import { enUS } from '@mui/material/locale';
 
@@ -19,13 +19,13 @@ import { createTypography as createDefaultTypography } from '../typography';
 const defaultPaletteDark = {
   mode: 'dark' as const,
   ...defaultPalettes.common,
-  ...defaultPalettes.dark
+  ...defaultPalettes.dark,
 };
 
 const defaultPaletteLight = {
   mode: 'light' as const,
   ...defaultPalettes.common,
-  ...defaultPalettes.light
+  ...defaultPalettes.light,
 };
 
 const createPalette = ({ alpha = defaultPalettes.common.alpha, ...palette }: PaletteOptions): Palette => {
@@ -60,7 +60,7 @@ export const createTheme = (
     components: createComponents,
     scrollbars: createScrollbars,
     typography: createTypography,
-    breakpoints = defaultBreakpoints
+    breakpoints = defaultBreakpoints,
   }: ThemeOptions,
   ...args: any
 ) => {
@@ -74,25 +74,25 @@ export const createTheme = (
     cssVarPrefix,
     colorSchemes: {
       dark: {
-        palette: dark
+        palette: dark,
       },
       light: {
-        palette: light
-      }
+        palette: light,
+      },
     },
     breakpoints: {
       values: {
-        ...breakpoints
-      }
+        ...breakpoints,
+      },
     },
-    mixins
+    mixins,
   });
 
   const scrollbars = { ...createDefaultScrollbars(theme), ...(createScrollbars ? createScrollbars(theme) : {}) };
   const typography = { ...createDefaultTypography(theme), ...(createTypography ? createTypography(theme) : {}) };
   const components = {
     ...createDefaultComponents(theme, typography),
-    ...(createComponents ? createComponents(theme, typography) : {})
+    ...(createComponents ? createComponents(theme, typography) : {}),
   };
 
   return extendMUITheme(
@@ -100,24 +100,24 @@ export const createTheme = (
       cssVarPrefix,
       colorSchemes: {
         dark: {
-          palette: dark
+          palette: dark,
         },
         light: {
-          palette: light
-        }
+          palette: light,
+        },
       },
       breakpoints: {
         values: {
-          ...theme.breakpoints.values
-        }
+          ...theme.breakpoints.values,
+        },
       },
       components,
       scrollbars,
       mixins,
       typography: {
         fontFamily: "'Roboto', sans-serif",
-        ...typography
-      }
+        ...typography,
+      },
     },
     enUS,
     en,

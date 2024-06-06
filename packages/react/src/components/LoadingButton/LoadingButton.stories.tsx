@@ -12,28 +12,28 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   title: 'LoadingButton',
   parameters: {
-    references: ['LoadingButton']
+    references: ['LoadingButton'],
   },
   argTypes: {
     variant: {
       options: ['text', 'outlined', 'contained'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     color: {
       options: ['inherit', 'primary', 'secondary', 'tertiary', 'error', 'success', 'monoA', 'monoB', 'white', 'black'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     size: {
       options: ['16', '20', '24', '32', '40', '48', '56'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     disabled: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     loading: {
-      control: { type: 'boolean' }
-    }
-  }
+      control: { type: 'boolean' },
+    },
+  },
 };
 
 export default meta;
@@ -57,5 +57,5 @@ export const Demo: Story = {
         {context.globals.locale === 'en' ? 'Button' : 'Кнопка'}
       </LoadingButton>
     );
-  }
+  },
 };

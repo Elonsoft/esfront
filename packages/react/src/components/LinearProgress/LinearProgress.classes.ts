@@ -134,5 +134,5 @@ export const linearProgressClasses: LinearProgressClasses = generateUtilityClass
   'bar1Buffer',
   'bar2Indeterminate',
   'bar2Buffer',
-  'loadingIndicator'
+  'loadingIndicator',
 ]);

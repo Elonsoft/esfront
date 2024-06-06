@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: TabBarOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getTabBarUtilityClass, classes);
@@ -24,13 +24,13 @@ const useUtilityClasses = (ownerState: TabBarOwnerState) => {
 const TabBarRoot = styled('div', {
   name: 'ESTabBar',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   display: 'flex',
   height: '56px',
   padding: '0px 8px',
   backgroundColor: theme.vars.palette.surface[100],
-  boxShadow: theme.vars.palette.shadow.up[50]
+  boxShadow: theme.vars.palette.shadow.up[50],
 }));
 
 /**
@@ -39,7 +39,7 @@ const TabBarRoot = styled('div', {
 export const TabBar = (inProps: TabBarProps) => {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESTabBar'
+    name: 'ESTabBar',
   });
 
   const ownerState = { ...props };

@@ -42,5 +42,5 @@ export const switchClasses: SwitchClasses = generateUtilityClasses('ESSwitch', [
   'large',
   'medium',
   'small',
-  'indeterminate'
+  'indeterminate',
 ]);

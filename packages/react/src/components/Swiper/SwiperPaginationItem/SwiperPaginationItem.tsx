@@ -20,7 +20,7 @@ const useUtilityClasses = (ownerState: SwiperPaginationItemOwnerState) => {
   const slots = {
     item: ['item', index === active && 'itemActive'],
     bullet: ['bullet', index === active && 'bulletActive', small && 'bulletSmall'],
-    input: ['input']
+    input: ['input'],
   };
 
   return composeClasses(slots, getSwiperPaginationUtilityClass, classes);
@@ -33,7 +33,7 @@ const PAGINATION_ITEM_HIDDEN = {
   minWidth: 0,
   opacity: 0,
   padding: 0,
-  width: 0
+  width: 0,
 };
 
 const SwiperPaginationItemRoot = styled('label', {
@@ -41,10 +41,10 @@ const SwiperPaginationItemRoot = styled('label', {
   slot: 'Item',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { index, active }
+      ownerState: { index, active },
     } = props;
     return [styles.item, index === active && styles.itemActive];
-  }
+  },
 })<{ ownerState: SwiperPaginationItemOwnerState }>(({ theme, ownerState }) => ({
   alignItems: 'center',
   border: 0,
@@ -59,20 +59,20 @@ const SwiperPaginationItemRoot = styled('label', {
   transitionDuration: `${theme.transitions.duration.shortest}ms`,
   transitionTimingFunction: 'linear',
   '&:focus': {
-    outline: 'none'
+    outline: 'none',
   },
   [`&:hover .${swiperPaginationClasses.bullet}`]: {
-    backgroundColor: theme.vars.palette.secondary.A600
+    backgroundColor: theme.vars.palette.secondary.A600,
   },
   [`&:active .${swiperPaginationClasses.bullet}`]: {
-    backgroundColor: theme.vars.palette.secondary.A800
+    backgroundColor: theme.vars.palette.secondary.A800,
   },
 
   ...(ownerState.index === ownerState.active && {
     [`&:hover .${swiperPaginationClasses.bullet}, &:active .${swiperPaginationClasses.bullet}`]: {
-      backgroundColor: theme.vars.palette.secondary[300]
-    }
-  })
+      backgroundColor: theme.vars.palette.secondary[300],
+    },
+  }),
 }));
 
 const SwiperPaginationItemBullet = styled('div', {
@@ -80,10 +80,10 @@ const SwiperPaginationItemBullet = styled('div', {
   slot: 'Bullet',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { index, active, small }
+      ownerState: { index, active, small },
     } = props;
     return [styles.bullet, index === active && styles.bulletActive, small && styles.bulletSmall];
-  }
+  },
 })<{ ownerState: SwiperPaginationItemOwnerState }>(({ theme, ownerState }) => ({
   backgroundColor: theme.vars.palette.secondary.A400,
   borderRadius: '16px',
@@ -93,19 +93,19 @@ const SwiperPaginationItemBullet = styled('div', {
   width: 8,
 
   ...(ownerState.index === ownerState.active && {
-    backgroundColor: theme.vars.palette.secondary[300]
+    backgroundColor: theme.vars.palette.secondary[300],
   }),
 
   ...(ownerState.small && {
     height: 4,
-    width: 4
-  })
+    width: 4,
+  }),
 }));
 
 const SwiperPaginationItemInput = styled('input', {
   name: 'ESSwiperPagination',
   slot: 'Input',
-  overridesResolver: (props, styles) => styles.input
+  overridesResolver: (props, styles) => styles.input,
 })(({ theme }) => ({
   appearance: 'none',
   cursor: 'pointer',
@@ -116,8 +116,8 @@ const SwiperPaginationItemInput = styled('input', {
   top: 0,
   width: 0,
   [`&:focus-visible + .${swiperPaginationClasses.bulletActive}`]: {
-    boxShadow: `0 0 0 7px ${theme.vars.palette.secondary.A500}`
-  }
+    boxShadow: `0 0 0 7px ${theme.vars.palette.secondary.A500}`,
+  },
 }));
 
 export const SwiperPaginationItem = ({

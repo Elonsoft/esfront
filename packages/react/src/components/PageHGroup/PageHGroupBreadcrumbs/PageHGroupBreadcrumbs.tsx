@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: PageHGroupBreadcrumbsOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getPageHGroupBreadcrumbsUtilityClass, classes);
@@ -24,15 +24,15 @@ const useUtilityClasses = (ownerState: PageHGroupBreadcrumbsOwnerState) => {
 const PageHGroupBreadcrumbsRoot = styled('div', {
   name: 'ESPageHGroupBreadcrumbs',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
-  padding: '4px 0'
+  padding: '4px 0',
 }));
 
 export const PageHGroupBreadcrumbs = (inProps: PageHGroupBreadcrumbsProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESPageHGroupBreadcrumbs'
+    name: 'ESPageHGroupBreadcrumbs',
   });
 
   const ownerState = { ...props };

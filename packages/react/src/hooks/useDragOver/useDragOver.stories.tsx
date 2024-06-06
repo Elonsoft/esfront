@@ -8,8 +8,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useDragOver',
   parameters: {
-    references: ['useDragOver']
-  }
+    references: ['useDragOver'],
+  },
 };
 
 export default meta;
@@ -26,7 +26,7 @@ export const Demo: Story = {
           padding: '16px',
           border: `1px dashed ${theme.vars.palette.monoA.A500}`,
           borderRadius: '2px',
-          backgroundColor: isDragOver ? theme.vars.palette.monoA.A50 : 'transparent'
+          backgroundColor: isDragOver ? theme.vars.palette.monoA.A50 : 'transparent',
         })}
         variant="body100"
         {...props}
@@ -34,5 +34,5 @@ export const Demo: Story = {
         Drag&apos;n&apos;Drop
       </Typography>
     );
-  }
+  },
 };

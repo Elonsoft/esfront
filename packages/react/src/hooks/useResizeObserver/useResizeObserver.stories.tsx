@@ -10,8 +10,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useResizeObserver',
   parameters: {
-    references: ['useResizeObserver']
-  }
+    references: ['useResizeObserver'],
+  },
 };
 
 export default meta;
@@ -39,5 +39,5 @@ export const Demo: Story = {
         </details>
       </Typography>
     );
-  }
+  },
 };

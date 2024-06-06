@@ -2,6 +2,6 @@ export { SpinnerFadingDoubleRing } from './SpinnerFadingDoubleRing';
 export {
   SpinnerFadingDoubleRingClasses,
   spinnerFadingDoubleRingClasses,
-  SpinnerFadingDoubleRingClassKey
+  SpinnerFadingDoubleRingClassKey,
 } from './SpinnerFadingDoubleRing.classes';
 export { SpinnerFadingDoubleRingProps } from './SpinnerFadingDoubleRing.types';

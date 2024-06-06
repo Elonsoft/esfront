@@ -17,5 +17,5 @@ export function getGalleryMetaUtilityClass(slot: string): string {
 export const galleryMetaClasses: GalleryMetaClasses = generateUtilityClasses('ESGalleryMeta', [
   'root',
   'content',
-  'buttonClose'
+  'buttonClose',
 ]);

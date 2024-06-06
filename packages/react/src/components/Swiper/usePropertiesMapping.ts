@@ -12,7 +12,7 @@ export const usePropertiesMapping = (direction: SwiperDirection) => {
           offset: 'offsetLeft',
           start: 'left',
           end: 'right',
-          movement: 'movementX'
+          movement: 'movementX',
         } as const)
       : ({
           scrollSize: 'scrollHeight',
@@ -21,7 +21,7 @@ export const usePropertiesMapping = (direction: SwiperDirection) => {
           offset: 'offsetTop',
           start: 'top',
           end: 'bottom',
-          movement: 'movementY'
+          movement: 'movementY',
         } as const);
   }, [direction]);
 };

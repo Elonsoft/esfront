@@ -46,5 +46,5 @@ export const sidebarItemClasses: SidebarItemClasses = generateUtilityClasses('ES
   'icon',
   'nestedMenu',
   'container',
-  'secondaryAction'
+  'secondaryAction',
 ]);

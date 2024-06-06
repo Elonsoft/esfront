@@ -31,7 +31,7 @@ const useUtilityClasses = (ownerState: SidebarOwnerState) => {
     root: ['root', open && 'rootOpen'],
     content: ['content'],
     handler: ['handler'],
-    handlerLine: ['handlerLine']
+    handlerLine: ['handlerLine'],
   };
 
   return composeClasses(slots, getSidebarUtilityClass, classes);
@@ -42,24 +42,24 @@ const SidebarRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { open }
+      ownerState: { open },
     } = props;
     return [styles.root, open && styles.rootOpen];
-  }
+  },
 })<{ ownerState: SidebarOwnerState }>(({ ownerState }) => ({
   display: 'flex',
   height: '100%',
 
   ...(ownerState.isMouseMove &&
     ownerState.open && {
-      cursor: 'col-resize'
-    })
+      cursor: 'col-resize',
+    }),
 }));
 
 const SidebarContent = styled('aside', {
   name: 'ESSidebar',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })<{ ownerState: SidebarOwnerState }>(({ theme, ownerState }) => ({
   display: 'flex',
   order: '1',
@@ -71,11 +71,11 @@ const SidebarContent = styled('aside', {
   transition: 'width 0.2s',
 
   ...(ownerState.color === 'primary' && {
-    backgroundColor: theme.vars.palette.primary[300]
+    backgroundColor: theme.vars.palette.primary[300],
   }),
 
   ...(ownerState.color === 'secondary' && {
-    backgroundColor: theme.vars.palette.surface.background2
+    backgroundColor: theme.vars.palette.surface.background2,
   }),
 
   ...(ownerState.open && {
@@ -85,15 +85,15 @@ const SidebarContent = styled('aside', {
       transition: 'none',
       userSelect: 'none',
       pointerEvents: 'none',
-      minWidth: `${ownerState.minWidth}px`
-    })
-  })
+      minWidth: `${ownerState.minWidth}px`,
+    }),
+  }),
 }));
 
 const SidebarHandler = styled('div', {
   name: 'ESSidebar',
   slot: 'Handler',
-  overridesResolver: (props, styles) => styles.handler
+  overridesResolver: (props, styles) => styles.handler,
 })<{ ownerState: SidebarOwnerState }>(({ theme, ownerState }) => ({
   order: '2',
   height: '100%',
@@ -111,34 +111,34 @@ const SidebarHandler = styled('div', {
       backgroundColor: theme.vars.palette.monoA.A50,
 
       [`& .${sidebarClasses.handlerLine}`]: {
-        backgroundColor: theme.vars.palette.monoA.A150
-      }
+        backgroundColor: theme.vars.palette.monoA.A150,
+      },
     },
 
     ...(ownerState.isMouseDown && {
       backgroundColor: 'transparent !important',
 
       [`& + .${sidebarClasses.content}`]: {
-        borderColor: 'transparent'
+        borderColor: 'transparent',
       },
 
       [`& .${sidebarClasses.handlerLine}`]: {
         width: '3px',
         backgroundColor: `${theme.vars.palette.info.A600} !important`,
-        backdropFilter: 'blur(20px)'
-      }
-    })
-  })
+        backdropFilter: 'blur(20px)',
+      },
+    }),
+  }),
 }));
 
 const SidebarHandlerLine = styled('div', {
   name: 'ESSidebar',
   slot: 'HandlerLine',
-  overridesResolver: (props, styles) => styles.handlerLine
+  overridesResolver: (props, styles) => styles.handlerLine,
 })(() => ({
   height: '100%',
   width: '1px',
-  transition: 'background-color 0.3s'
+  transition: 'background-color 0.3s',
 }));
 
 /**
@@ -159,7 +159,7 @@ export const Sidebar = (inProps: SidebarProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSidebar'
+    name: 'ESSidebar',
   });
 
   const [isMouseMove, setMouseMove] = useState(false);

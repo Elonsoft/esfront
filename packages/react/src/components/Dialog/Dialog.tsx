@@ -32,11 +32,11 @@ const useUtilityClasses = (ownerState: DialogOwnerState) => {
       align === 'center' && 'wrapperAlignCenter',
       align === 'flex-start' && 'wrapperAlignFlexStart',
       align === 'flex-start' && 'wrapperAlignFlexEnd',
-      fullScreen && 'wrapperFullScreen'
+      fullScreen && 'wrapperFullScreen',
     ],
     container: ['container', fullScreen && 'containerFullScreen'],
     content: ['content', fullWidth && 'contentFullWidth', fullScreen && 'contentFullScreen'],
-    paper: ['paper', fullScreen && 'paperFullScreen']
+    paper: ['paper', fullScreen && 'paperFullScreen'],
   };
 
   return composeClasses(slots, getDialogUtilityClass, classes);
@@ -45,22 +45,22 @@ const useUtilityClasses = (ownerState: DialogOwnerState) => {
 const DialogRoot = styled(Modal, {
   name: 'ESDialog',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })({
   '@media print': {
     // Use !important to override the Modal inline-style.
-    position: 'absolute !important'
-  }
+    position: 'absolute !important',
+  },
 });
 
 const DialogBackdrop = styled(Backdrop, {
   name: 'ESDialog',
   slot: 'Backdrop',
-  overridesResolver: (props, styles) => styles.backdrop
+  overridesResolver: (props, styles) => styles.backdrop,
 })(({ theme }) => ({
   // Improve scrollable dialog support.
   zIndex: -1,
-  backgroundColor: theme.vars.palette.overlay[700]
+  backgroundColor: theme.vars.palette.overlay[700],
 }));
 
 const DialogContainer = styled('div', {
@@ -70,7 +70,7 @@ const DialogContainer = styled('div', {
     const { ownerState } = props;
 
     return [styles.container, ownerState.container && styles.containerFullScreen];
-  }
+  },
 })<{ ownerState: DialogOwnerState }>(({ theme }) => ({
   ...theme.scrollbars.thinMonoB,
   // We disable the focus ring for mouse, touch and keyboard users.
@@ -85,17 +85,17 @@ const DialogContainer = styled('div', {
     display: 'inline-block',
     verticalAlign: 'middle',
     height: '100%',
-    width: '0'
+    width: '0',
   },
 
   '@media print': {
-    height: 'auto'
+    height: 'auto',
   },
 
   [`&.${dialogClasses.containerFullScreen}`]: {
     ...theme.scrollbars.thinMonoA,
-    backgroundColor: theme.vars.palette.surface[600]
-  }
+    backgroundColor: theme.vars.palette.surface[600],
+  },
 }));
 
 const DialogWrapper = styled('div', {
@@ -109,9 +109,9 @@ const DialogWrapper = styled('div', {
       ownerState.align === 'center' && styles.wrapperAlignCenter,
       ownerState.align === 'flex-start' && styles.wrapperAlignFlexStart,
       ownerState.align === 'flex-end' && styles.wrapperAlignFlexEnd,
-      ownerState.fullScreen && styles.wrapperFullScreen
+      ownerState.fullScreen && styles.wrapperFullScreen,
     ];
-  }
+  },
 })<{ ownerState: DialogOwnerState }>(({ ownerState }) => ({
   verticalAlign: 'middle',
   position: 'relative',
@@ -124,8 +124,8 @@ const DialogWrapper = styled('div', {
   overflow: 'visible',
 
   [`&.${dialogClasses.wrapperFullScreen}`]: {
-    height: '100%'
-  }
+    height: '100%',
+  },
 }));
 
 const DialogContent = styled('div', {
@@ -137,9 +137,9 @@ const DialogContent = styled('div', {
     return [
       styles.content,
       ownerState.fullWidth && styles.contentFullWidth,
-      ownerState.fullScreen && styles.contentFullScreen
+      ownerState.fullScreen && styles.contentFullScreen,
     ];
-  }
+  },
 })<{ ownerState: DialogOwnerState }>(({ theme }) => ({
   position: 'relative',
   overflowY: 'auto',
@@ -150,15 +150,15 @@ const DialogContent = styled('div', {
 
   [theme.breakpoints.up('tabletXS')]: {
     position: 'static',
-    margin: '40px 88px'
+    margin: '40px 88px',
   },
 
   '@media print': {
-    overflowY: 'visible'
+    overflowY: 'visible',
   },
 
   [`&.${dialogClasses.contentFullWidth}`]: {
-    width: '100%'
+    width: '100%',
   },
 
   [`&.${dialogClasses.contentFullScreen}`]: {
@@ -171,9 +171,9 @@ const DialogContent = styled('div', {
 
     [`& > .${dialogClasses.paper}`]: {
       minHeight: '100%',
-      borderRadius: 0
-    }
-  }
+      borderRadius: 0,
+    },
+  },
 }));
 
 const DialogPaper = styled('div', {
@@ -183,7 +183,7 @@ const DialogPaper = styled('div', {
     const { ownerState } = props;
 
     return [styles.paper, ownerState.fullScreen && styles.paperFullScreen];
-  }
+  },
 })<{ ownerState: DialogOwnerState }>(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -194,12 +194,12 @@ const DialogPaper = styled('div', {
   backgroundColor: theme.vars.palette.surface[600],
 
   [`& .${dialogActionsClasses.root}`]: {
-    marginTop: 'auto'
+    marginTop: 'auto',
   },
 
   '@media print': {
-    boxShadow: 'none'
-  }
+    boxShadow: 'none',
+  },
 }));
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
@@ -236,7 +236,7 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
     fullScreen,
     fullWidth,
     scroll,
-    align
+    align,
   };
 
   const classes = useUtilityClasses(ownerState);
@@ -281,7 +281,7 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
       BackdropComponent={DialogBackdrop}
       BackdropProps={{
         transitionDuration,
-        ...BackdropProps
+        ...BackdropProps,
       }}
       className={clsx(classes.root, className)}
       disableEscapeKeyDown={disableEscapeKeyDown}

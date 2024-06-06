@@ -14,7 +14,7 @@ export default {
       exports: 'named',
       sourcemap: true,
       preserveModules: true,
-      preserveModulesRoot: 'src'
+      preserveModulesRoot: 'src',
     },
     {
       dir: 'lib',
@@ -22,8 +22,8 @@ export default {
       exports: 'named',
       sourcemap: true,
       preserveModules: true,
-      preserveModulesRoot: 'src'
-    }
+      preserveModulesRoot: 'src',
+    },
   ],
   plugins: [
     external(),
@@ -31,9 +31,9 @@ export default {
     typescript({ tsconfig: './tsconfig.lib.json', useTsconfigDeclarationDir: true }),
     commonjs(),
     copy({
-      targets: [{ src: ['./src/overrides.d.ts'], dest: './lib/' }]
+      targets: [{ src: ['./src/overrides.d.ts'], dest: './lib/' }],
     }),
-    progress()
+    progress(),
   ],
   onwarn: (warning, warn) => {
     if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
@@ -41,5 +41,5 @@ export default {
     }
 
     warn(warning);
-  }
+  },
 };

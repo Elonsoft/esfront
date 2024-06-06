@@ -7,17 +7,17 @@ export const createTooltip: Component<'MuiTooltip'> = (theme, typography) => {
     styleOverrides: {
       popper: {
         '&[data-popper-placement*="top"] .MuiTooltip-tooltip': {
-          marginBottom: '14px !important'
+          marginBottom: '14px !important',
         },
         '&[data-popper-placement*="bottom"] .MuiTooltip-tooltip': {
-          marginTop: '14px !important'
+          marginTop: '14px !important',
         },
         '&[data-popper-placement*="right"] .MuiTooltip-tooltip': {
-          marginLeft: '14px !important'
+          marginLeft: '14px !important',
         },
         '&[data-popper-placement*="left"] .MuiTooltip-tooltip': {
-          marginRight: '14px !important'
-        }
+          marginRight: '14px !important',
+        },
       },
       tooltip: {
         ...typography.caption,
@@ -28,13 +28,13 @@ export const createTooltip: Component<'MuiTooltip'> = (theme, typography) => {
 
         '& .MuiTooltip-arrow': {
           color: theme.vars.palette.monoA.A600,
-          backdropFilter: 'blur(40px)'
-        }
-      }
+          backdropFilter: 'blur(40px)',
+        },
+      },
     },
     defaultProps: {
       arrow: true,
-      TransitionComponent: Fade
-    }
+      TransitionComponent: Fade,
+    },
   };
 };

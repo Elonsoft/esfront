@@ -10,8 +10,8 @@ const meta: Meta<typeof EmptyStateCompact> = {
   tags: ['autodocs'],
   component: EmptyStateCompact,
   parameters: {
-    references: ['EmptyStateCompact']
-  }
+    references: ['EmptyStateCompact'],
+  },
 };
 
 export default meta;
@@ -20,5 +20,5 @@ type Story = StoryObj<typeof EmptyStateCompact>;
 export const Demo: Story = {
   render: (args, context) => {
     return <EmptyStateCompact> {getChildren(args, context)}</EmptyStateCompact>;
-  }
+  },
 };

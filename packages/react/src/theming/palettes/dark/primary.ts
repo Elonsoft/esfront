@@ -12,5 +12,5 @@ export const primary = {
   alpha: '300',
   main: '#9A8CFF',
   light: '#7B73D7',
-  dark: '#A89EFF'
+  dark: '#A89EFF',
 };

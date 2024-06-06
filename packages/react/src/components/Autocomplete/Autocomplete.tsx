@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
     input: ['input'],
     menu: ['menu'],
     displayValue: ['displayValue'],
-    inputPlaceholder: ['inputPlaceholder']
+    inputPlaceholder: ['inputPlaceholder'],
   };
 
   return composeClasses(slots, getAutocompleteUtilityClass, classes);
@@ -38,7 +38,7 @@ const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
 const AutocompleteRoot = styled(OutlinedInput, {
   name: 'ESAutocomplete',
   slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root
+  overridesResolver: (_props, styles) => styles.root,
 })(() => ({
   cursor: 'pointer',
 
@@ -48,37 +48,37 @@ const AutocompleteRoot = styled(OutlinedInput, {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     display: 'inline-flex',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 })) as unknown as FC<OutlinedInputProps & { children?: ReactNode }>;
 
 const AutocompleteMenu = styled(ESAutocompleteMenu, {
   name: 'ESAutocomplete',
   slot: 'Menu',
-  overridesResolver: (_props, styles) => styles.menu
+  overridesResolver: (_props, styles) => styles.menu,
 })<{ ownerState: AutocompleteOwnerState }>(({ ownerState }) => ({
-  pointerEvents: ownerState.inlineSearch ? 'none' : 'auto'
+  pointerEvents: ownerState.inlineSearch ? 'none' : 'auto',
 })) as unknown as typeof ESAutocompleteMenu;
 
 const AutocompleteInputDisplayValue = styled('div', {
   name: 'ESAutocomplete',
   slot: 'DisplayValue',
-  overridesResolver: (_props, styles) => styles.displayValue
+  overridesResolver: (_props, styles) => styles.displayValue,
 })(() => ({
   minWidth: 0,
   overflow: 'hidden',
-  textOverflow: 'ellipsis'
+  textOverflow: 'ellipsis',
 }));
 
 const AutocompleteInputPlaceholder = styled('div', {
   name: 'ESAutocomplete',
   slot: 'InputPlaceholder',
-  overridesResolver: (_props, styles) => styles.inputPlaceholder
+  overridesResolver: (_props, styles) => styles.inputPlaceholder,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A400,
   minWidth: 0,
   overflow: 'hidden',
-  textOverflow: 'ellipsis'
+  textOverflow: 'ellipsis',
 }));
 
 /** The autocomplete is used to choose an item from a collection of options. */
@@ -122,7 +122,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESAutocomplete'
+    name: 'ESAutocomplete',
   });
 
   const formControl = useFormControl();
@@ -299,7 +299,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
           onFocus: () => formControl.onFocus,
           onKeyDown,
           'aria-describedby': ariaDescribedby,
-          ...props.inputProps
+          ...props.inputProps,
         }}
         inputRef={inputNodeRef}
         label={label}

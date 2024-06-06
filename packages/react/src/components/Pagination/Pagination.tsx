@@ -19,7 +19,7 @@ const useUtilityClasses = (ownerState: PaginationOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getPaginationUtilityClass, classes);
@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: PaginationOwnerState) => {
 const PaginationRoot = styled('div', {
   name: 'ESPagination',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
   alignItems: 'center',
@@ -36,12 +36,12 @@ const PaginationRoot = styled('div', {
   gap: 12,
   '& > *:first-of-type': {
     flexGrow: 0.5,
-    marginLeft: 'auto'
+    marginLeft: 'auto',
   },
   '& > *:last-of-type': {
     flexGrow: 0.5,
-    justifyContent: 'flex-end'
-  }
+    justifyContent: 'flex-end',
+  },
 }));
 
 /**
@@ -51,7 +51,7 @@ export const Pagination = memo(function Pagination(inProps: PaginationProps) {
   const { className, sx, children, count, itemsPerPage, page, onPageChange, onItemsPerPageChange, ...props } =
     useThemeProps({
       props: inProps,
-      name: 'ESPagination'
+      name: 'ESPagination',
     });
 
   const value = useMemo(() => {
@@ -60,7 +60,7 @@ export const Pagination = memo(function Pagination(inProps: PaginationProps) {
       itemsPerPage,
       page,
       onPageChange,
-      onItemsPerPageChange
+      onItemsPerPageChange,
     };
   }, [count, itemsPerPage, page, onPageChange, onItemsPerPageChange]);
 

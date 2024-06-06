@@ -24,5 +24,5 @@ export const swiperButtonClasses: SwiperButtonClasses = generateUtilityClasses('
   'prev',
   'next',
   'horizontal',
-  'vertical'
+  'vertical',
 ]);

@@ -22,7 +22,7 @@ const useUtilityClasses = (ownerState: SwiperButtonOwnerState) => {
   const { classes, step, direction } = ownerState;
 
   const slots = {
-    root: ['root', step < 0 && 'prev', step > 0 && 'next', direction]
+    root: ['root', step < 0 && 'prev', step > 0 && 'next', direction],
   };
 
   return composeClasses(slots, getSwiperButtonUtilityClass, classes);
@@ -33,10 +33,10 @@ const SwiperButtonRoot = styled(Button, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { step, direction }
+      ownerState: { step, direction },
     } = props;
     return [styles.root, step < 0 && styles.prev, step > 0 && styles.next, styles[direction]];
-  }
+  },
 })<{ ownerState: SwiperButtonOwnerState }>(({ theme, ownerState }) => ({
   position: 'absolute',
 
@@ -45,12 +45,12 @@ const SwiperButtonRoot = styled(Button, {
     transform: 'translateY(-50%)',
 
     ...(ownerState.step < 0 && {
-      left: '16px'
+      left: '16px',
     }),
 
     ...(ownerState.step > 0 && {
-      right: '16px'
-    })
+      right: '16px',
+    }),
   }),
 
   ...(ownerState.direction === 'vertical' && {
@@ -58,20 +58,20 @@ const SwiperButtonRoot = styled(Button, {
     transform: 'translateX(-50%)',
 
     ...(ownerState.step < 0 && {
-      top: '16px'
+      top: '16px',
     }),
 
     ...(ownerState.step > 0 && {
-      bottom: '16px'
-    })
+      bottom: '16px',
+    }),
   }),
 
   backdropFilter: 'blur(10px)',
   borderRadius: 4,
 
   [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
-    '--background': theme.vars.palette.black.A600
-  }
+    '--background': theme.vars.palette.black.A600,
+  },
 }));
 
 export const SwiperButton = (inProps: SwiperButtonProps) => {
@@ -88,7 +88,7 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSwiperButton'
+    name: 'ESSwiperButton',
   });
 
   const { direction, setActiveSlideByStep } = useSwiperContext();

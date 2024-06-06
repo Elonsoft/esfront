@@ -10,8 +10,8 @@ type Args = {};
 const meta: Meta<Args> = {
   title: 'Overrides/Tooltip',
   parameters: {
-    viewMode: 'canvas'
-  }
+    viewMode: 'canvas',
+  },
 };
 
 export default meta;
@@ -23,7 +23,7 @@ export const Demo: Story = {
       <div
         style={{
           display: 'flex',
-          gap: '12px'
+          gap: '12px',
         }}
       >
         <Tooltip arrow placement="right" title={locale === 'en' ? 'Tooltip' : 'Подсказка'} {...args}>
@@ -32,5 +32,5 @@ export const Demo: Story = {
         <Button variant="contained">{locale === 'en' ? 'Button' : 'Кнопка'}</Button>
       </div>
     );
-  }
+  },
 };

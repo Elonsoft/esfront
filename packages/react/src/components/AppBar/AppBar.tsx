@@ -24,7 +24,7 @@ const useUtilityClasses = (ownerState: AppBarOwnerState) => {
     root: ['root', stuck && 'stuck'],
     title: ['title'],
     titleProminent: ['titleProminent'],
-    adornment: ['adornment']
+    adornment: ['adornment'],
   };
 
   return composeClasses(slots, getAppBarUtilityClass, classes);
@@ -35,11 +35,11 @@ const AppBarRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { stuck }
+      ownerState: { stuck },
     } = props;
 
     return [styles.root, stuck && styles.stuck];
-  }
+  },
 })(({ theme }) => ({
   ...theme.typography.h6,
   position: 'sticky',
@@ -52,41 +52,41 @@ const AppBarRoot = styled('div', {
   color: theme.vars.palette.monoA.A900,
 
   [`&.${appBarClasses.stuck}`]: {
-    borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`
-  }
+    borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
+  },
 }));
 
 const AppBarTitle = styled('div', {
   name: 'ESAppBar',
   slot: 'Title',
-  overridesResolver: (props, styles) => styles.title
+  overridesResolver: (props, styles) => styles.title,
 })({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-  padding: '8px'
+  padding: '8px',
 });
 
 const AppBarTitleProminent = styled(Typography, {
   name: 'ESAppBar',
   slot: 'TitleProminent',
-  overridesResolver: (props, styles) => styles.titleProminent
+  overridesResolver: (props, styles) => styles.titleProminent,
 })(() => ({
   padding: '8px 16px',
-  wordBreak: 'break-word'
+  wordBreak: 'break-word',
 })) as typeof Typography;
 
 const AppBarAdornment = styled('div', {
   name: 'ESAppBar',
   slot: 'Adornment',
-  overridesResolver: (props, styles) => styles.adornment
+  overridesResolver: (props, styles) => styles.adornment,
 })({
   display: 'flex',
   gap: '4px',
 
   '&:last-of-type': {
-    marginLeft: 'auto'
-  }
+    marginLeft: 'auto',
+  },
 });
 
 /**
@@ -95,7 +95,7 @@ const AppBarAdornment = styled('div', {
 export const AppBar = (inProps: AppBarProps) => {
   const { className, children, sx, startAdornment, endAdornment, prominent, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESAppBar'
+    name: 'ESAppBar',
   });
 
   const ref = useRef<HTMLDivElement | null>(null);

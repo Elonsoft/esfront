@@ -18,5 +18,5 @@ export function getSFSSortingUtilityClass(slot: string) {
 export const sfsSortingClasses: SFSSortingClasses = generateUtilityClasses('ESSFSSorting', [
   'root',
   'button',
-  'buttonBadge'
+  'buttonBadge',
 ]);

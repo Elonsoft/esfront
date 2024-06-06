@@ -10,7 +10,7 @@ import {
   ErrorPageHeading,
   ErrorPageLogo,
   ErrorPageStatus,
-  ErrorPageStatusIcon403
+  ErrorPageStatusIcon403,
 } from '.';
 
 import { IconArrowLeftW500 } from '../../icons';
@@ -20,8 +20,8 @@ const meta: Meta<typeof ErrorPage> = {
   tags: ['autodocs'],
   component: ErrorPage,
   parameters: {
-    references: ['ErrorPage']
-  }
+    references: ['ErrorPage'],
+  },
 };
 
 export default meta;
@@ -61,5 +61,5 @@ export const Demo: Story = {
         </ErrorPage>
       </Box>
     );
-  }
+  },
 };

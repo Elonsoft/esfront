@@ -2,6 +2,6 @@ export { GalleryThumbnailsItem } from './GalleryThumbnailsItem';
 export {
   GalleryThumbnailsItemClasses,
   galleryThumbnailsItemClasses,
-  GalleryThumbnailsItemClassKey
+  GalleryThumbnailsItemClassKey,
 } from './GalleryThumbnailsItem.classes';
 export { GalleryThumbnailsItemProps } from './GalleryThumbnailsItem.types';

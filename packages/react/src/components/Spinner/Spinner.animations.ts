@@ -42,7 +42,7 @@ const spinnerOpacityDelay = (duration: number) => {
 
   for (let i = DOTS_AMOUNT - 1; i > 0; i--) {
     animationDelay[`& > *:nth-child(${DOTS_AMOUNT - i})`] = {
-      animationDelay: `${(-i / DOTS_AMOUNT) * duration}ms`
+      animationDelay: `${(-i / DOTS_AMOUNT) * duration}ms`,
     };
   }
 
@@ -54,12 +54,12 @@ export const spinnerOpacityAnimation = (animatedElement: string, duration: numbe
   // prettier-ignore
   ...{
     [animatedElement]: css`animation: ${opacityKeyframe} ${duration}ms ${ease} infinite;`
-  }
+  },
 });
 
 export const spinnerRotateAnimation = (animatedElement: string, duration: number, ease: string) => ({
   // prettier-ignore
-  [animatedElement]: css`animation: ${rotateKeyframe} ${duration}ms ${ease} infinite; transform-origin: center;`
+  [animatedElement]: css`animation: ${rotateKeyframe} ${duration}ms ${ease} infinite; transform-origin: center;`,
 });
 
 // Use only for <circle> element.

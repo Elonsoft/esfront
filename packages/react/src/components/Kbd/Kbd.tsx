@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: KbdOwnerState) => {
   const { classes, variant } = ownerState;
 
   const slots = {
-    root: ['root', variant]
+    root: ['root', variant],
   };
 
   return composeClasses(slots, getKbdUtilityClass, classes);
@@ -27,10 +27,10 @@ const KbdRoot = styled('kbd', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { variant }
+      ownerState: { variant },
     } = props;
     return [styles.root, styles[variant]];
-  }
+  },
 })<{ ownerState: KbdOwnerState }>(({ theme, ownerState }) => ({
   ...theme.typography.body100,
 
@@ -42,15 +42,15 @@ const KbdRoot = styled('kbd', {
 
   ...(ownerState.variant === 'raised' && {
     backgroundColor: theme.vars.palette.monoA.A75,
-    boxShadow: `0 1px 0 1px ${theme.vars.palette.monoA.A300}`
+    boxShadow: `0 1px 0 1px ${theme.vars.palette.monoA.A300}`,
   }),
   ...(ownerState.variant === 'contained' && {
     backgroundColor: theme.vars.palette.monoA.A75,
-    boxShadow: `0 1px 0 ${theme.vars.palette.monoA.A300}, inset 0 0 0 1px ${theme.vars.palette.monoA.A50}`
+    boxShadow: `0 1px 0 ${theme.vars.palette.monoA.A300}, inset 0 0 0 1px ${theme.vars.palette.monoA.A50}`,
   }),
   ...(ownerState.variant === 'outlined' && {
-    boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A200}`
-  })
+    boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A200}`,
+  }),
 }));
 
 /**

@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: GalleryThumbnailsItemOwnerState) => {
   const { classes, isActive } = ownerState;
 
   const slots = {
-    root: ['root', isActive && 'active']
+    root: ['root', isActive && 'active'],
   };
 
   return composeClasses(slots, getGalleryThumbnailsItemUtilityClass, classes);
@@ -40,10 +40,10 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { isActive }
+      ownerState: { isActive },
     } = props;
     return [styles.root, isActive && styles.active];
-  }
+  },
 })<{ ownerState: GalleryThumbnailsItemOwnerState }>(({ theme, ownerState }) => ({
   padding: 0,
   borderRadius: 6,
@@ -58,34 +58,34 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
     borderRadius: 6,
 
     ...(ownerState.isActive && {
-      boxShadow: `inset 0 0 0 2px ${theme.vars.palette.white.A800}`
+      boxShadow: `inset 0 0 0 2px ${theme.vars.palette.white.A800}`,
     }),
     ...(!ownerState.isActive && {
-      backgroundColor: theme.vars.palette.black.A500
-    })
+      backgroundColor: theme.vars.palette.black.A500,
+    }),
   },
 
   '&:hover::after': {
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   '&:focus-visible::after': {
-    boxShadow: `inset 0 0 0 3px ${theme.vars.palette.white[500]}`
+    boxShadow: `inset 0 0 0 3px ${theme.vars.palette.white[500]}`,
   },
 
   '& .MuiTouchRipple-root': {
     transitionDuration: `${theme.transitions.duration.short}ms`,
-    color: theme.vars.palette.black.A150
+    color: theme.vars.palette.black.A150,
   },
   '& .MuiTouchRipple-rippleVisible': {
     animationName: `${enterKeyframe} !important`,
-    opacity: '1 !important'
-  }
+    opacity: '1 !important',
+  },
 }));
 
 export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {
   const { className, sx, isActive, onClick, children, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryThumbnailsItem'
+    name: 'ESGalleryThumbnailsItem',
   });
 
   const ownerState = { isActive, ...props };

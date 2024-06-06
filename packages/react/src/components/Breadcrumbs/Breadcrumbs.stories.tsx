@@ -12,16 +12,16 @@ const BREADCRUMBS = {
     { name: 'Каталог' },
     { name: 'Электроника' },
     { name: 'Планшеты' },
-    { name: 'Apple' }
-  ]
+    { name: 'Apple' },
+  ],
 };
 
 const meta: Meta<typeof Breadcrumbs> = {
   tags: ['autodocs'],
   component: Breadcrumbs,
   parameters: {
-    references: ['Breadcrumbs', 'Breadcrumb']
-  }
+    references: ['Breadcrumbs', 'Breadcrumb'],
+  },
 };
 
 export default meta;
@@ -43,11 +43,11 @@ export const DemoBase: Story = {
         <Breadcrumb disabled>iPad Pro</Breadcrumb>
       </Breadcrumbs>
     );
-  }
+  },
 };
 
 export const Demo: Story = {
   render: (args, context) => {
     return <Box sx={{ padding: '25px 0' }}>{DemoBase.render?.(args, context)} </Box>;
-  }
+  },
 };

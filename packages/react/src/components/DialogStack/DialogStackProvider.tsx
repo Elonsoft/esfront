@@ -73,14 +73,14 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
         // @ts-ignore
         return { id: dialogId, close, afterClosed };
       },
-      close: closeDialogById
+      close: closeDialogById,
     };
   }, []);
 
   const stateValue = useMemo(() => {
     return {
       dialogs: dialogs.map(({ id, open }) => ({ id, open })),
-      size: dialogs.length
+      size: dialogs.length,
     };
   }, [dialogs]);
 
@@ -116,9 +116,9 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
                 BackdropProps: {
                   style: {
                     opacity: index < dialogs.filter((dialog) => dialog.open).length - 1 ? '0' : '',
-                    ...dialog.component.props.BackdropProps?.style
+                    ...dialog.component.props.BackdropProps?.style,
                   },
-                  ...dialog.component.props.BackdropProps
+                  ...dialog.component.props.BackdropProps,
                 },
                 TransitionProps: {
                   ...dialog.component.props.TransitionProps,
@@ -128,8 +128,8 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
                     }
 
                     dialog.onExited();
-                  }
-                }
+                  },
+                },
               } as never)}
             </Fragment>
           );

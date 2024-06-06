@@ -32,7 +32,7 @@ export interface LoadingButtonOwnProps {
 
 export type LoadingButtonTypeMap<
   AdditionalProps = {},
-  RootComponent extends React.ElementType = 'button'
+  RootComponent extends React.ElementType = 'button',
 > = ExtendButtonTypeMap<{
   props: AdditionalProps & LoadingButtonOwnProps;
   defaultComponent: RootComponent;
@@ -40,5 +40,5 @@ export type LoadingButtonTypeMap<
 
 export type LoadingButtonProps<
   RootComponent extends React.ElementType = LoadingButtonTypeMap['defaultComponent'],
-  AdditionalProps = {}
+  AdditionalProps = {},
 > = OverrideProps<LoadingButtonTypeMap<AdditionalProps, RootComponent>, RootComponent>;

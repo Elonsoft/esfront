@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: EmptyStateCompactOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getEmptyStateUtilityClass, classes);
@@ -27,14 +27,14 @@ const EmptyStateCompactRoot = styled(Typography, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     return [styles.root];
-  }
+  },
 })(({ theme }) => ({
   width: '100%',
   textAlign: 'center',
   padding: '11px',
   borderRadius: '6px',
   border: `1px dashed ${theme.vars.palette.monoA.A300}`,
-  color: theme.vars.palette.monoA.A550
+  color: theme.vars.palette.monoA.A550,
 })) as typeof Typography;
 
 /**
@@ -43,7 +43,7 @@ const EmptyStateCompactRoot = styled(Typography, {
 export const EmptyStateCompact = (inProps: EmptyStateCompactProps) => {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESEmptyStateCompact'
+    name: 'ESEmptyStateCompact',
   });
 
   const ownerState = { ...props };

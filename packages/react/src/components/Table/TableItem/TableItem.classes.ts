@@ -20,5 +20,5 @@ export const tableItemClasses: TableItemClasses = generateUtilityClasses('ESTabl
   'root',
   'content',
   'primary',
-  'secondary'
+  'secondary',
 ]);

@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: SwitchOwnerState) => {
     track: ['track'],
     input: ['input'],
     thumb: ['thumb'],
-    button: ['button']
+    button: ['button'],
   };
 
   return composeClasses(slots, getSwitchUtilityClass, classes);
@@ -40,16 +40,16 @@ const SwitchRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { disabled, checked, indeterminate, size }
+      ownerState: { disabled, checked, indeterminate, size },
     } = props;
     return [
       styles.root,
       disabled && styles.disabled,
       checked && styles.checked,
       indeterminate && styles.indeterminate,
-      styles[size]
+      styles[size],
     ];
-  }
+  },
 })<{ ownerState: SwitchOwnerState }>(({ ownerState: { color }, theme }) => ({
   position: 'relative',
   display: 'inline-flex',
@@ -61,15 +61,15 @@ const SwitchRoot = styled('div', {
   [`&.${switchClasses.checked}`]: {
     color: theme.vars.palette[color][300],
     [`& .${switchClasses.input}`]: {
-      transform: 'translateX(-12px)'
+      transform: 'translateX(-12px)',
     },
     [`&.${switchClasses.large}`]: {
       [`& .${switchClasses.input}`]: {
-        transform: 'translateX(-16px)'
+        transform: 'translateX(-16px)',
       },
       [`& .${switchClasses.button}`]: {
-        transform: 'translateX(16px)'
-      }
+        transform: 'translateX(16px)',
+      },
     },
     [`& .${switchClasses.button}`]: {
       transform: 'translateX(12px)',
@@ -77,16 +77,16 @@ const SwitchRoot = styled('div', {
         '--background': theme.vars.palette[color].A50,
 
         '@media (hover: none)': {
-          '--background': 'transparent'
-        }
+          '--background': 'transparent',
+        },
       },
       '--pressed': theme.vars.palette[color].A150,
-      '--focused': theme.vars.palette[color].A200
-    }
+      '--focused': theme.vars.palette[color].A200,
+    },
   },
   [`&.${switchClasses.disabled}`]: {
     opacity: '0.3',
-    cursor: 'not-allowed'
+    cursor: 'not-allowed',
   },
   [`&.${switchClasses.large}`]: {
     height: '36px',
@@ -94,128 +94,128 @@ const SwitchRoot = styled('div', {
     [`& .${switchClasses.track}`]: {
       borderRadius: '20px',
       width: '38px',
-      height: '24px'
+      height: '24px',
     },
     [`& .${switchClasses.input}`]: {
-      width: '56px'
+      width: '56px',
     },
     [`& .${switchClasses.thumb}`]: {
       width: '24px',
-      height: '24px'
-    }
+      height: '24px',
+    },
   },
   [`&.${switchClasses.medium}`]: {
     height: '36px',
     width: '48px',
     [`& .${switchClasses.track}`]: {
       width: '32px',
-      height: '14px'
+      height: '14px',
     },
     [`& .${switchClasses.input}`]: {
-      width: '48px'
+      width: '48px',
     },
     [`& .${switchClasses.thumb}`]: {
       width: '20px',
-      height: '20px'
-    }
+      height: '20px',
+    },
   },
   [`&.${switchClasses.small}`]: {
     height: '32px',
     width: '46px',
     [`& .${switchClasses.track}`]: {
       width: '28px',
-      height: '4px'
+      height: '4px',
     },
     [`& .${switchClasses.input}`]: {
-      width: '46px'
+      width: '46px',
     },
     [`& .${switchClasses.button}`]: {
-      left: '1px'
+      left: '1px',
     },
     [`& .${switchClasses.thumb}`]: {
       width: '16px',
-      height: '16px'
-    }
+      height: '16px',
+    },
   },
   [`&.${switchClasses.indeterminate}`]: {
     color: theme.palette[color][300],
     [`&.${switchClasses.large}`]: {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(8px)',
-        padding: '17.5px 13px'
+        padding: '17.5px 13px',
       },
       [`& .${switchClasses.thumb}`]: {
         width: '14px',
         height: '5px',
         borderRadius: '2.5px',
-        borderColor: 'transparent'
+        borderColor: 'transparent',
       },
       [`& .${switchClasses.input}`]: {
-        transform: 'translateX(-8px)'
-      }
+        transform: 'translateX(-8px)',
+      },
     },
     [`&.${switchClasses.medium}`]: {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(6px)',
-        padding: '16px 12px'
+        padding: '16px 12px',
       },
       [`& .${switchClasses.thumb}`]: {
         width: '12px',
         height: '4px',
         borderRadius: '2px',
-        borderColor: 'transparent'
+        borderColor: 'transparent',
       },
       [`& .${switchClasses.input}`]: {
-        transform: 'translateX(-6px)'
-      }
+        transform: 'translateX(-6px)',
+      },
     },
     [`&.${switchClasses.small}`]: {
       [`& .${switchClasses.button}`]: {
-        transform: 'translateX(6px)'
+        transform: 'translateX(6px)',
       },
       [`& .${switchClasses.input}`]: {
-        transform: 'translateX(-6px)'
-      }
+        transform: 'translateX(-6px)',
+      },
     },
     [`& .${switchClasses.button}`]: {
       '&:hover': {
         '--background': theme.palette[color].A50,
 
         '@media (hover: none)': {
-          '--background': 'transparent'
-        }
+          '--background': 'transparent',
+        },
       },
       '--focused': theme.palette[color].A200,
-      '--pressed': theme.palette[color].A150
-    }
-  }
+      '--pressed': theme.palette[color].A150,
+    },
+  },
 }));
 
 const SwitchTrack = styled('div', {
   name: 'ESSwitch',
   slot: 'Track',
-  overridesResolver: (props, styles) => styles.track
+  overridesResolver: (props, styles) => styles.track,
 })(() => ({
   borderRadius: '8px',
   backgroundColor: 'currentColor',
-  zIndex: -1
+  zIndex: -1,
 }));
 
 const SwitchThumb = styled('div', {
   name: 'ESSwitch',
   slot: 'Thumb',
-  overridesResolver: (_props, styles) => styles.thumb
+  overridesResolver: (_props, styles) => styles.thumb,
 })(({ theme }) => ({
   backgroundColor: theme.vars.palette.common.switch,
   border: '2px solid currentColor',
   borderRadius: '50%',
-  transition: `all ${theme.transitions.duration.shortest}ms, color 0ms`
+  transition: `all ${theme.transitions.duration.shortest}ms, color 0ms`,
 }));
 
 const SwitchButton = styled(ButtonBase, {
   name: 'ESSwitch',
   slot: 'Button',
-  overridesResolver: (_props, styles) => styles.button
+  overridesResolver: (_props, styles) => styles.button,
 })(({ theme }) => ({
   borderRadius: '50%',
   padding: '8px',
@@ -230,14 +230,14 @@ const SwitchButton = styled(ButtonBase, {
   '--focused': theme.vars.palette.monoA.A200,
 
   '@media (hover: none)': {
-    '--background': 'transparent'
-  }
+    '--background': 'transparent',
+  },
 })) as typeof ButtonBase;
 
 const SwitchInput = styled('input', {
   name: 'ESSwitch',
   slot: 'Input',
-  overridesResolver: (props, styles) => styles.input
+  overridesResolver: (props, styles) => styles.input,
 })(() => ({
   cursor: 'inherit',
   position: 'absolute',
@@ -247,7 +247,7 @@ const SwitchInput = styled('input', {
   left: 0,
   margin: 0,
   padding: 0,
-  zIndex: 1
+  zIndex: 1,
 }));
 
 /**
@@ -273,7 +273,7 @@ export const Switch = (inProps: SwitchProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSwitch'
+    name: 'ESSwitch',
   });
   const [checked, setCheckedState] = useControlled(defaultChecked, checkedProp);
 

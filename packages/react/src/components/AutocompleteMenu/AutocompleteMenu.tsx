@@ -44,7 +44,7 @@ const useUtilityClasses = (ownerState: AutocompleteMenuOwnerState) => {
     menuItemText: ['menuItemText'],
     sentinel: ['sentinel'],
     emptyState: ['emptyState'],
-    search: ['search']
+    search: ['search'],
   };
 
   return composeClasses(slots, getAutocompleteMenuUtilityClass, classes);
@@ -53,23 +53,23 @@ const useUtilityClasses = (ownerState: AutocompleteMenuOwnerState) => {
 const AutocompleteMenuRoot = styled(Popper, {
   name: 'ESAutocompleteMenu',
   slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root
+  overridesResolver: (_props, styles) => styles.root,
 })(() => ({
   zIndex: 1300,
 
   '& *': {
-    outline: 'none'
+    outline: 'none',
   },
 
   '& > div': {
-    transformOrigin: `50% 0 0`
-  }
+    transformOrigin: `50% 0 0`,
+  },
 }));
 
 const AutocompleteMenuPaper = styled('div', {
   name: 'ESAutocompleteMenu',
   slot: 'Paper',
-  overridesResolver: (_props, styles) => styles.paper
+  overridesResolver: (_props, styles) => styles.paper,
 })(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -78,22 +78,22 @@ const AutocompleteMenuPaper = styled('div', {
   borderRadius: '6px',
   userSelect: 'none',
   overflow: 'hidden',
-  pointerEvents: 'auto'
+  pointerEvents: 'auto',
 }));
 
 const AutocompleteMenuMenuList = styled(MenuList, {
   name: 'ESAutocompleteMenuMenuList',
   slot: 'MenuList',
-  overridesResolver: (_props, styles) => styles.menuList
+  overridesResolver: (_props, styles) => styles.menuList,
 })(({ theme }) => ({
   ...theme.scrollbars.overlayMonoA,
-  maxHeight: '228px'
+  maxHeight: '228px',
 }));
 
 const AutocompleteMenuMenuGroup = styled('div', {
   name: 'ESAutocompleteMenu',
   slot: 'MenuGroup',
-  overridesResolver: (_props, styles) => styles.group
+  overridesResolver: (_props, styles) => styles.group,
 })(({ theme }) => ({
   ...theme.typography.caption,
   color: theme.vars.palette.monoA.A600,
@@ -102,49 +102,49 @@ const AutocompleteMenuMenuGroup = styled('div', {
   '&:not(:first-child)': {
     borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
     paddingTop: '16px',
-    marginTop: '8px'
-  }
+    marginTop: '8px',
+  },
 }));
 
 const AutocompleteMenuMenuItem = styled(MenuItem, {
   name: 'ESAutocompleteMenu',
   slot: 'MenuItem',
-  overridesResolver: (_props, styles) => styles.menuItem
+  overridesResolver: (_props, styles) => styles.menuItem,
 })(() => ({
-  padding: '2px 16px'
+  padding: '2px 16px',
 }));
 
 const AutocompleteMenuMenuItemText = styled('div', {
   name: 'ESAutocompleteMenu',
   slot: 'MenuItemText',
-  overridesResolver: (_props, styles) => styles.menuItemText
+  overridesResolver: (_props, styles) => styles.menuItemText,
 })(() => ({
   overflow: 'hidden',
-  textOverflow: 'ellipsis'
+  textOverflow: 'ellipsis',
 }));
 
 const AutocompleteMenuSentinel = styled(MenuItem, {
   name: 'ESAutocompleteMenu',
   slot: 'Sentinel',
-  overridesResolver: (_props, styles) => styles.sentinel
+  overridesResolver: (_props, styles) => styles.sentinel,
 })(() => ({
   padding: 0,
-  minHeight: 0
+  minHeight: 0,
 }));
 
 const AutocompleteMenuCheckbox = styled(Checkbox, {
   name: 'ESAutocompleteMenu',
   slot: 'Checkbox',
-  overridesResolver: (_props, styles) => styles.checkbox
+  overridesResolver: (_props, styles) => styles.checkbox,
 })(() => ({
   marginLeft: '-9px',
-  marginRight: '3px'
+  marginRight: '3px',
 }));
 
 const AutocompleteMenuEmptyState = styled('div', {
   name: 'ESAutocompleteMenu',
   slot: 'EmptyState',
-  overridesResolver: (_props, styles) => styles.emptyState
+  overridesResolver: (_props, styles) => styles.emptyState,
 })(({ theme }) => ({
   ...theme.typography.caption,
   display: 'flex',
@@ -152,30 +152,30 @@ const AutocompleteMenuEmptyState = styled('div', {
   justifyContent: 'center',
   gap: '8px',
   padding: '12px 16px',
-  color: theme.vars.palette.monoA.A600
+  color: theme.vars.palette.monoA.A600,
 }));
 
 const AutocompleteMenuSearch = styled(TextField, {
   name: 'ESAutocompleteMenu',
   slot: 'Search',
-  overridesResolver: (_props, styles) => styles.search
+  overridesResolver: (_props, styles) => styles.search,
 })(({ theme }) => ({
   borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
 
   [`& .${outlinedInputClasses.root}.${inputBaseClasses.adornedEnd}`]: {
-    paddingRight: '8px'
+    paddingRight: '8px',
   },
 
   [`& .${inputLabelClasses.root}`]: {
-    opacity: 0
+    opacity: 0,
   },
 
   [`& .${inputAdornmentClasses.positionStart}`]: {
-    color: theme.vars.palette.monoA.A500
+    color: theme.vars.palette.monoA.A500,
   },
 
   [`&:hover .${inputAdornmentClasses.positionStart} .${svgIconClasses.root}`]: {
-    color: theme.vars.palette.monoA.A600
+    color: theme.vars.palette.monoA.A600,
   },
 
   [`& .${inputAdornmentClasses.positionEnd}`]: {
@@ -187,35 +187,35 @@ const AutocompleteMenuSearch = styled(TextField, {
       '--icon': theme.vars.palette.monoA.A400,
 
       [`& .${buttonBaseClasses.wrapper}`]: {
-        padding: '0 7px'
+        padding: '0 7px',
       },
 
       [`&.${buttonClasses.variantText}`]: {
         '--hovered': 'inherit',
-        '--pressed': 'inherit'
+        '--pressed': 'inherit',
       },
 
       '&:hover': {
-        '--icon': theme.vars.palette.monoA.A500
+        '--icon': theme.vars.palette.monoA.A500,
       },
 
       '&:active': {
-        '--icon': theme.vars.palette.monoA.A600
-      }
-    }
+        '--icon': theme.vars.palette.monoA.A600,
+      },
+    },
   },
 
   [`& .${outlinedInputClasses.notchedOutline}`]: {
     border: 'none',
 
     [`&.${inputBaseClasses.adornedEnd}`]: {
-      paddingRight: '4px'
-    }
+      paddingRight: '4px',
+    },
   },
 
   [`& .${outlinedInputClasses.input}`]: {
-    ...theme.typography.body100
-  }
+    ...theme.typography.body100,
+  },
 }));
 
 export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, ref) {
@@ -270,7 +270,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESAutocompleteMenu'
+    name: 'ESAutocompleteMenu',
   });
 
   // const paperRef = useRef<HTMLDivElement | null>(null);
@@ -386,8 +386,8 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
         {
           name: 'offset',
           options: {
-            offset
-          }
+            offset,
+          },
         },
         ...(disableScrollLock
           ? []
@@ -396,11 +396,11 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                 name: 'preventOverflow',
                 options: {
                   altAxis: true,
-                  padding: { top: 8, bottom: 8 }
-                }
-              }
+                  padding: { top: 8, bottom: 8 },
+                },
+              },
             ]),
-        ...(PopperProps?.modifiers || [])
+        ...(PopperProps?.modifiers || []),
       ]}
     >
       {({ TransitionProps }) => (
@@ -468,7 +468,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                               </Button>
                             </InputAdornment>
                           ),
-                          ...SearchProps.InputProps
+                          ...SearchProps.InputProps,
                         }}
                       />
                     )}

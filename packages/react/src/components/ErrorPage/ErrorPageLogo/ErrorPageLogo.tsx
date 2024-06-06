@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: ErrorPageLogoOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getErrorPageLogoUtilityClass, classes);
@@ -24,17 +24,17 @@ const useUtilityClasses = (ownerState: ErrorPageLogoOwnerState) => {
 export const ErrorPageLogoRoot = styled('div', {
   name: 'ESErrorPageLogo',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   alignSelf: 'flex-start',
   gridArea: 'logo',
-  paddingBottom: '64px'
+  paddingBottom: '64px',
 }));
 
 export const ErrorPageLogo = (inProps: ErrorPageLogoProps) => {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESErrorPageLogo'
+    name: 'ESErrorPageLogo',
   });
 
   const ownerState = { ...props };

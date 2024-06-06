@@ -10,26 +10,26 @@ const meta: Meta<typeof Avatar> = {
   tags: ['autodocs'],
   component: Avatar,
   parameters: {
-    references: ['Avatar']
+    references: ['Avatar'],
   },
   argTypes: {
     children: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     variant: {
       control: {
-        type: 'select'
-      }
-    }
+        type: 'select',
+      },
+    },
   },
   args: {
     src: './avatar/6.png',
     size: 40,
     variant: 'square',
-    outlined: false
-  }
+    outlined: false,
+  },
 };
 
 export default meta;
@@ -38,7 +38,7 @@ type Story = StoryObj<typeof Avatar>;
 export const Demo: Story = {
   args: {
     children: 'НФ',
-    outlined: true
+    outlined: true,
   },
   render: ({ children, src, ...args }) => {
     return (
@@ -50,5 +50,5 @@ export const Demo: Story = {
         <Avatar {...args}>{args.variant === 'circle' ? <IconAccountRoundedLc /> : <IconAccountLc />}</Avatar>
       </Box>
     );
-  }
+  },
 };

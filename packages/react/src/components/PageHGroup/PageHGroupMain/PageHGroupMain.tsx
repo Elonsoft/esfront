@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: PageHGroupMainOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getPageHGroupMainUtilityClass, classes);
@@ -24,19 +24,19 @@ const useUtilityClasses = (ownerState: PageHGroupMainOwnerState) => {
 const PageHGroupMainRoot = styled('div', {
   name: 'ESPageHGroupMain',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
   alignItems: 'flex-start',
   justifyContent: 'space-between',
   padding: '4px 0 8px',
-  gap: '24px'
+  gap: '24px',
 }));
 
 export const PageHGroupMain = (inProps: PageHGroupMainProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESPageHGroupMain'
+    name: 'ESPageHGroupMain',
   });
 
   const ownerState = { ...props };

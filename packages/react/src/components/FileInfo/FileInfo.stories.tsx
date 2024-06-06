@@ -17,9 +17,9 @@ const meta: Meta<typeof FileInfo> = {
       'FileInfoContent',
       'FileInfoMeta',
       'FileInfoMetaSeparator',
-      'FileInfoName'
-    ]
-  }
+      'FileInfoName',
+    ],
+  },
 };
 
 export default meta;
@@ -42,5 +42,5 @@ export const Demo: Story = {
         </FileInfoContent>
       </FileInfo>
     );
-  }
+  },
 };

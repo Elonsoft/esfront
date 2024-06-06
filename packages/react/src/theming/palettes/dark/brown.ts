@@ -9,5 +9,5 @@ export const brown = {
   700: '#EEDED4',
   800: '#F6EDE7',
   900: '#FFF9F5',
-  alpha: '300'
+  alpha: '300',
 };

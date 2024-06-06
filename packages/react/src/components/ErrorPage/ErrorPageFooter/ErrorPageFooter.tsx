@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: ErrorPageFooterOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getErrorPageFooterUtilityClass, classes);
@@ -25,18 +25,18 @@ const useUtilityClasses = (ownerState: ErrorPageFooterOwnerState) => {
 export const ErrorPageFooterRoot = styled(Typography, {
   name: 'ESErrorPageFooter',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   alignSelf: 'flex-end',
   color: theme.vars.palette.monoA.A500,
   gridArea: 'footer',
-  paddingTop: '64px'
+  paddingTop: '64px',
 }));
 
 export const ErrorPageFooter = (inProps: ErrorPageFooterProps) => {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESErrorPageFooter'
+    name: 'ESErrorPageFooter',
   });
 
   const ownerState = { ...props };

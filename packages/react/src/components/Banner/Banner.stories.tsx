@@ -27,60 +27,60 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Banner,
   parameters: {
-    references: ['Banner', 'BannerActions', 'BannerTitle']
+    references: ['Banner', 'BannerActions', 'BannerTitle'],
   },
   argTypes: {
     children: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     color: {
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     severity: {
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     variant: {
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     icon: {
       defaultValue: true,
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     title: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     text: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     breakpoint: {
       control: {
-        type: 'number'
-      }
+        type: 'number',
+      },
     },
     action: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     actions: {
       control: {
-        type: 'boolean'
-      }
-    }
+        type: 'boolean',
+      },
+    },
   },
   args: {
     icon: true,
     action: false,
-    actions: false
-  }
+    actions: false,
+  },
 };
 
 export default meta;
@@ -153,5 +153,5 @@ export const Demo: Story = {
         </Banner>
       </Box>
     );
-  }
+  },
 };

@@ -18,7 +18,7 @@ const useUtilityClasses = (ownerState: AlertCloseOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getAlertCloseUtilityClass, classes);
@@ -27,9 +27,9 @@ const useUtilityClasses = (ownerState: AlertCloseOwnerState) => {
 const AlertCloseRoot = styled(Button, {
   name: 'ESAlertClose',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
-  '--icon': theme.vars.palette.monoA.A500
+  '--icon': theme.vars.palette.monoA.A500,
 }));
 
 export const AlertClose = (inProps: AlertCloseProps) => {
@@ -42,7 +42,7 @@ export const AlertClose = (inProps: AlertCloseProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESAlertClose'
+    name: 'ESAlertClose',
   });
 
   const ownerState = { ...props };

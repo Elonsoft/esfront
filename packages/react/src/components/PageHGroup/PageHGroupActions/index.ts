@@ -2,6 +2,6 @@ export { PageHGroupActions } from './PageHGroupActions';
 export {
   PageHGroupActionsClasses,
   pageHGroupActionsClasses,
-  PageHGroupActionsClassKey
+  PageHGroupActionsClassKey,
 } from './PageHGroupActions.classes';
 export { PageHGroupActionsProps } from './PageHGroupActions.types';

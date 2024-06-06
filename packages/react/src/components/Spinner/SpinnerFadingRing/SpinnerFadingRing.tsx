@@ -27,7 +27,7 @@ const useUtilityClasses = (ownerState: SpinnerFadingRingOwnerState) => {
 
   const slots = {
     root: ['root', color],
-    circle: ['circle']
+    circle: ['circle'],
   };
 
   return composeClasses(slots, getSpinnerFadingRingUtilityClass, classes);
@@ -38,17 +38,17 @@ const SpinnerFadingRingRoot = styled('svg', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { color }
+      ownerState: { color },
     } = props;
     return [styles.root, styles[color]];
-  }
+  },
 })<{ ownerState: SpinnerFadingRingOwnerState }>(
   ({ ownerState }) => ({
     '& > *': {
-      fill: 'currentColor'
+      fill: 'currentColor',
     },
 
-    color: ownerState.spinnerColor
+    color: ownerState.spinnerColor,
   }),
   ({ ownerState }) =>
     spinnerRotateAnimation(isSafari() ? '&' : '& > foreignObject', ownerState.duration, ownerState.ease)
@@ -57,14 +57,14 @@ const SpinnerFadingRingRoot = styled('svg', {
 const SpinnerFadingRingCircle = styled('div', {
   name: 'ESSpinnerFadingRing',
   slot: 'Circle',
-  overridesResolver: (props, styles) => styles.circle
+  overridesResolver: (props, styles) => styles.circle,
 })<{ ownerState: SpinnerFadingRingOwnerState }>(({ theme, ownerState }) => ({
   width: '100%',
   height: '100%',
   background: `conic-gradient(from 187deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
     theme.palette.mode,
     0.5
-  )}) 61deg, ${ownerState.spinnerColor} 360deg)`
+  )}) 61deg, ${ownerState.spinnerColor} 360deg)`,
 }));
 
 export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
@@ -78,7 +78,7 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSpinnerFadingRing'
+    name: 'ESSpinnerFadingRing',
   });
 
   const id = useMemo(() => `SpinnerFadingRing-${SpinnerFadingRing.count++}`, []);

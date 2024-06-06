@@ -4,12 +4,12 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2015,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   settings: {
     react: {
-      version: 'detect'
-    }
+      version: 'detect',
+    },
   },
   rules: {
     'prettier/prettier': 'error',
@@ -44,20 +44,20 @@ module.exports = {
           {
             group: ['@mui/material*'],
             importNames: ['Button', 'IconButton'],
-            message: 'Use our own `Button` implementation instead.'
+            message: 'Use our own `Button` implementation instead.',
           },
           {
             group: ['@mui/material/Button'],
             importNames: ['default'],
-            message: 'Use our own `Button` implementation instead.'
+            message: 'Use our own `Button` implementation instead.',
           },
           {
             group: ['@mui/material/IconButton'],
             importNames: ['default'],
-            message: 'Use our own `Button` implementation instead.'
-          }
-        ]
-      }
+            message: 'Use our own `Button` implementation instead.',
+          },
+        ],
+      },
     ],
     'no-return-assign': 'error',
     'no-unneeded-ternary': 'error',
@@ -85,7 +85,7 @@ module.exports = {
       { blankLine: 'always', prev: 'block-like', next: '*' },
       { blankLine: 'always', prev: 'multiline-expression', next: '*' },
       { blankLine: 'never', prev: 'case', next: 'case' },
-      { blankLine: 'never', prev: 'case', next: 'default' }
+      { blankLine: 'never', prev: 'case', next: 'default' },
     ],
 
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -115,35 +115,35 @@ module.exports = {
       'error',
       {
         component: true,
-        html: true
-      }
+        html: true,
+      },
     ],
     'react/jsx-curly-brace-presence': [
       'error',
       {
         props: 'never',
         children: 'never',
-        propElementValues: 'always'
-      }
+        propElementValues: 'always',
+      },
     ],
     'react/jsx-no-useless-fragment': [
       'error',
       {
-        allowExpressions: true
-      }
+        allowExpressions: true,
+      },
     ],
     'react/jsx-sort-props': [
       'error',
       {
         reservedFirst: true,
         shorthandFirst: true,
-        callbacksLast: true
-      }
+        callbacksLast: true,
+      },
     ],
 
     'react-hooks/rules-of-hooks': 'error',
 
     'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error'
-  }
+    'simple-import-sort/exports': 'error',
+  },
 };

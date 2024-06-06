@@ -28,12 +28,12 @@ export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
       {
         paletteDark: {
           ...palettes.common,
-          ...palettes.dark
+          ...palettes.dark,
         },
         paletteLight: {
           ...palettes.common,
-          ...palettes.light
-        }
+          ...palettes.light,
+        },
       },
       locale === 'ru' ? { ...ruRU, ...ru } : { ...enUS, ...en }
     );

@@ -24,7 +24,7 @@ const useUtilityClasses = (ownerState: ButtonBaseOwnerState) => {
 
   const slots = {
     root: ['root', disabled && 'disabled', disableTouchRipple && 'disableTouchRipple', pressed && 'pressed'],
-    wrapper: ['wrapper']
+    wrapper: ['wrapper'],
   };
 
   return composeClasses(slots, getButtonBaseUtilityClass, classes);
@@ -35,16 +35,16 @@ const ButtonBaseRoot = styled('button', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { disabled, disableTouchRipple, pressed }
+      ownerState: { disabled, disableTouchRipple, pressed },
     } = props;
 
     return [
       styles.root,
       disabled && styles.disabled,
       disableTouchRipple && styles.disableTouchRipple,
-      pressed && styles.disabled
+      pressed && styles.disabled,
     ];
-  }
+  },
 })(({ theme }) => ({
   '--background': 'transparent',
   '--text': theme.vars.palette.monoB[500],
@@ -73,7 +73,7 @@ const ButtonBaseRoot = styled('button', {
 
   '&::-moz-focus-inner': {
     // Remove Firefox dotted outline.
-    borderStyle: 'none'
+    borderStyle: 'none',
   },
 
   backgroundColor: 'var(--background)',
@@ -81,17 +81,17 @@ const ButtonBaseRoot = styled('button', {
 
   '@media (hover: hover)': {
     [`&:not(:disabled):hover .${touchRippleClasses.root}`]: {
-      backgroundColor: 'var(--hovered)'
-    }
+      backgroundColor: 'var(--hovered)',
+    },
   },
 
   [`&:not(:disabled):focus-visible .${touchRippleClasses.root}`]: {
-    backgroundColor: 'var(--focused)'
+    backgroundColor: 'var(--focused)',
   },
 
   [`&.${buttonBaseClasses.pressed} .${touchRippleClasses.root}::after`]: {
     opacity: 1,
-    transitionDuration: '105ms'
+    transitionDuration: '105ms',
   },
 
   [`&.${buttonBaseClasses.disableTouchRipple}`]: {
@@ -99,31 +99,31 @@ const ButtonBaseRoot = styled('button', {
       inset: 0,
       background: 'var(--pressed)',
       transition: theme.transitions.create(['opacity'], {
-        duration: theme.transitions.duration.short
-      })
+        duration: theme.transitions.duration.short,
+      }),
     },
 
     [`&:active .${touchRippleClasses.root}::after`]: {
-      opacity: 1
-    }
+      opacity: 1,
+    },
   },
 
   '@media print': {
-    colorAdjust: 'exact'
-  }
+    colorAdjust: 'exact',
+  },
 }));
 
 const ButtonBaseWrapper = styled('div', {
   name: 'ESButtonBase',
   slot: 'Wrapper',
-  overridesResolver: (_props, styles) => styles.wrapper
+  overridesResolver: (_props, styles) => styles.wrapper,
 })(() => ({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
   height: '100%',
-  zIndex: 1
+  zIndex: 1,
 }));
 
 /**
@@ -149,13 +149,13 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESButtonBase'
+    name: 'ESButtonBase',
   });
 
   const {
     ref: touchRippleRef,
     pressed,
-    bind
+    bind,
   } = useTouchRipple({
     ...TouchRippleProps,
     disabled: disabled || disableTouchRipple,
@@ -164,7 +164,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     onPointerCancel,
     onPointerDown,
     onPointerUp,
-    onPointerLeave
+    onPointerLeave,
   });
 
   const ownerState = { classes: inClasses, disabled, disableTouchRipple, pressed };

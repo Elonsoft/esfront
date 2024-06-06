@@ -21,7 +21,7 @@ const useUtilityClasses = (ownerState: SidebarDividerOwnerState) => {
 
   const slots = {
     root: ['root'],
-    line: ['line']
+    line: ['line'],
   };
 
   return composeClasses(slots, getSidebarDividerUtilityClass, classes);
@@ -30,26 +30,26 @@ const useUtilityClasses = (ownerState: SidebarDividerOwnerState) => {
 const SidebarDividerRoot = styled('div', {
   name: 'ESSidebarDivider',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: SidebarDividerOwnerState }>(({ theme, ownerState }) => ({
   padding: `0 ${ownerState.open ? 16 : 8}px`,
   transitionDuration: `${theme.transitions.duration.shortest}ms`,
   transitionTimingFunction: theme.transitions.easing.easeOut,
-  transitionProperty: 'padding'
+  transitionProperty: 'padding',
 }));
 
 const SidebarDividerLine = styled(Divider, {
   name: 'ESSidebarDivider',
   slot: 'Line',
-  overridesResolver: (props, styles) => styles.line
+  overridesResolver: (props, styles) => styles.line,
 })<{ ownerState: SidebarDividerOwnerState }>(({ theme, ownerState: { color } }) => ({
-  borderColor: `${color === 'default' || color === 'secondary' ? theme.vars.palette.monoA.A100 : theme.vars.palette.monoB.A200}`
+  borderColor: `${color === 'default' || color === 'secondary' ? theme.vars.palette.monoA.A100 : theme.vars.palette.monoB.A200}`,
 }));
 
 export const SidebarDivider = (inProps: SidebarDividerProps) => {
   const { className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESSidebarDivider'
+    name: 'ESSidebarDivider',
   });
 
   const { color, open } = useSidebarContext();

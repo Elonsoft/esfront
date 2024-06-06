@@ -17,5 +17,5 @@ export function getGallerySwiperUtilityClass(slot: string): string {
 export const gallerySwiperClasses: GallerySwiperClasses = generateUtilityClasses('ESGallerySwiper', [
   'root',
   'rootFullscreen',
-  'swiper'
+  'swiper',
 ]);

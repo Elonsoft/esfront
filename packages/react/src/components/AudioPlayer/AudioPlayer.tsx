@@ -32,7 +32,7 @@ import {
   IconSpeedometer,
   IconVolumeHigh,
   IconVolumeLow,
-  IconVolumeMute
+  IconVolumeMute,
 } from '../../icons';
 import { Button } from '../Button';
 
@@ -58,7 +58,7 @@ const useUtilityClasses = (ownerState: AudioPlayerOwnerState) => {
       isPlaying && 'currentTooltipPlaying',
       !isPlaying && 'currentTooltipPaused',
       isOverTrack && 'currentTooltipOverTrack',
-      isOverThumb && 'currentTooltipOverThumb'
+      isOverThumb && 'currentTooltipOverThumb',
     ],
     currentSlider: ['currentSlider', isPlaying && 'currentSliderPlaying', !isPlaying && 'currentSliderPaused'],
     tooltip: ['tooltip'],
@@ -72,7 +72,7 @@ const useUtilityClasses = (ownerState: AudioPlayerOwnerState) => {
     rateOpen: ['rateOpen'],
     rateCheck: ['rateCheck'],
     volume: ['volume'],
-    volumeSlider: ['volumeSlider']
+    volumeSlider: ['volumeSlider'],
   };
 
   return composeClasses(slots, getAudioPlayerUtilityClass, classes);
@@ -81,7 +81,7 @@ const useUtilityClasses = (ownerState: AudioPlayerOwnerState) => {
 const AudioPlayerRoot = styled('div', {
   name: 'ESAudioPlayer',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   alignItems: 'center',
   backgroundColor: theme.vars.palette.monoA.A50,
@@ -91,31 +91,31 @@ const AudioPlayerRoot = styled('div', {
 
   '&:hover': {
     [`& .${sliderClasses.thumb}`]: {
-      opacity: 1
-    }
-  }
+      opacity: 1,
+    },
+  },
 }));
 
 const AudioPlayerIconButton = styled(Button, {
   name: 'ESAudioPlayer',
   slot: 'IconButton',
-  overridesResolver: (props, styles) => styles.iconButton
+  overridesResolver: (props, styles) => styles.iconButton,
 })(({ theme }) => ({
   borderRadius: '50%',
-  '--icon': theme.vars.palette.monoA.A600
+  '--icon': theme.vars.palette.monoA.A600,
 }));
 
 const AudioPlayerCurrent = styled('div', {
   name: 'ESAudioPlayer',
   slot: 'Current',
-  overridesResolver: (props, styles) => styles.current
+  overridesResolver: (props, styles) => styles.current,
 })(() => ({
   marginLeft: 11,
   marginRight: 11,
   position: 'relative',
   flexGrow: 1,
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
 }));
 
 const AudioPlayerCurrentTooltip = styled(
@@ -125,23 +125,23 @@ const AudioPlayerCurrentTooltip = styled(
     slot: 'CurrentTooltip',
     overridesResolver: (props, styles) => {
       const {
-        ownerState: { isPlaying, isOverTrack, isOverThumb }
+        ownerState: { isPlaying, isOverTrack, isOverThumb },
       } = props;
       return [
         styles.currentTooltip,
         isPlaying && styles.currentTooltipPlaying,
         !isPlaying && styles.currentTooltipPaused,
         isOverTrack && styles.currentTooltipOverTrack,
-        isOverThumb && styles.currentTooltipOverThumb
+        isOverThumb && styles.currentTooltipOverThumb,
       ];
-    }
+    },
   }
 )<{ ownerState: AudioPlayerOwnerState }>(({ theme, ownerState }) => ({
   pointerEvents: 'none',
 
   [`&[data-popper-placement*="top"] .${tooltipClasses.arrow}`]: {
     height: 7.8,
-    marginBottom: '-8px'
+    marginBottom: '-8px',
   },
 
   [`& .${tooltipClasses.tooltip}`]: {
@@ -162,9 +162,9 @@ const AudioPlayerCurrentTooltip = styled(
         : theme.vars.palette.monoA.A150,
       left: '50%',
       transform: 'translateX(-2.3px)',
-      top: 'calc(100% + 12px)'
-    }
-  }
+      top: 'calc(100% + 12px)',
+    },
+  },
 }));
 
 const AudioPlayerCurrentSlider = styled(Slider, {
@@ -172,10 +172,10 @@ const AudioPlayerCurrentSlider = styled(Slider, {
   slot: 'CurrentSlider',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { isPlaying }
+      ownerState: { isPlaying },
     } = props;
     return [styles.currentSlider, isPlaying && styles.currentSliderPlaying, !isPlaying && styles.currentSliderPaused];
-  }
+  },
 })<{ ownerState: AudioPlayerOwnerState }>(({ theme, ownerState }) => ({
   [`&.${sliderClasses.colorPrimary}`]: {
     padding: '18px 0',
@@ -184,19 +184,19 @@ const AudioPlayerCurrentSlider = styled(Slider, {
       '&:hover': {
         height: 8,
         width: 8,
-        boxShadow: `0 0 0 10px ${theme.vars.palette.primary.A150}`
+        boxShadow: `0 0 0 10px ${theme.vars.palette.primary.A150}`,
       },
       [`&.${sliderClasses.focusVisible}`]: {
         opacity: 1,
         height: 10,
         width: 10,
-        boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A400}`
+        boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A400}`,
       },
       [`&.${sliderClasses.active}`]: {
         height: 10,
         width: 10,
-        boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A300}`
-      }
+        boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A300}`,
+      },
     },
     ...(!ownerState.isPlaying && {
       color: theme.vars.palette.monoA.A600,
@@ -208,10 +208,10 @@ const AudioPlayerCurrentSlider = styled(Slider, {
           opacity: 1,
           height: 10,
           width: 10,
-          boxShadow: `0 0 0 9px ${theme.vars.palette.monoA.A75}`
-        }
-      }
-    })
+          boxShadow: `0 0 0 9px ${theme.vars.palette.monoA.A75}`,
+        },
+      },
+    }),
   },
   [`& .${sliderClasses.thumb}`]: {
     opacity: 0,
@@ -221,22 +221,22 @@ const AudioPlayerCurrentSlider = styled(Slider, {
     '&::after': {
       width: 12,
       height: 30,
-      borderRadius: 0
-    }
+      borderRadius: 0,
+    },
   },
   [`& .${sliderClasses.rail}`]: {
-    backgroundColor: theme.vars.palette.monoA.A100
-  }
+    backgroundColor: theme.vars.palette.monoA.A100,
+  },
 }));
 
 const AudioPlayerTime = styled(Typography, {
   name: 'ESAudioPlayer',
   slot: 'Time',
-  overridesResolver: (props, styles) => styles.time
+  overridesResolver: (props, styles) => styles.time,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A800,
   fontVariantNumeric: 'tabular-nums',
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
 })) as typeof Typography;
 
 const AudioPlayerTooltip = styled(
@@ -244,12 +244,12 @@ const AudioPlayerTooltip = styled(
   {
     name: 'ESAudioPlayer',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    padding: 0
-  }
+    padding: 0,
+  },
 }));
 
 const AudioPlayerMenu = styled(
@@ -257,7 +257,7 @@ const AudioPlayerMenu = styled(
   {
     name: 'ESAudioPlayer',
     slot: 'Menu',
-    overridesResolver: (props, styles) => styles.menu
+    overridesResolver: (props, styles) => styles.menu,
   }
 )(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
@@ -269,113 +269,113 @@ const AudioPlayerMenu = styled(
 
     [`& .${tooltipClasses.arrow}`]: {
       color: theme.vars.palette.surface[400],
-      backdropFilter: 'none'
-    }
+      backdropFilter: 'none',
+    },
   },
   [`&[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]: {
-    boxShadow: theme.vars.palette.shadow.down[600]
+    boxShadow: theme.vars.palette.shadow.down[600],
   },
   [`&[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]: {
-    boxShadow: theme.vars.palette.shadow.up[600]
-  }
+    boxShadow: theme.vars.palette.shadow.up[600],
+  },
 }));
 
 const AudioPlayerMenuList = styled(MenuList, {
   name: 'ESAudioPlayer',
   slot: 'MenuList',
-  overridesResolver: (props, styles) => styles.menuList
+  overridesResolver: (props, styles) => styles.menuList,
 })(() => ({
   padding: '8px 0',
   width: 168,
-  outline: 'none'
+  outline: 'none',
 }));
 
 const AudioPlayerMenuItem = styled(MenuItem, {
   name: 'ESAudioPlayer',
   slot: 'MenuItem',
-  overridesResolver: (props, styles) => styles.menuItem
+  overridesResolver: (props, styles) => styles.menuItem,
 })(() => ({
   [`&.${menuItemClasses.root}`]: {
     minHeight: 32,
-    padding: '0 16px'
-  }
+    padding: '0 16px',
+  },
 }));
 
 const AudioPlayerMainMenuItem = styled(AudioPlayerMenuItem, {
   name: 'ESAudioPlayer',
   slot: 'MainMenuItem',
-  overridesResolver: (props, styles) => styles.mainMenuItem
+  overridesResolver: (props, styles) => styles.mainMenuItem,
 })(() => ({
   [`&.${menuItemClasses.root}.${menuItemClasses.root}`]: {
-    minHeight: 48
-  }
+    minHeight: 48,
+  },
 }));
 
 const AudioPlayerListItemIcon = styled(ListItemIcon, {
   name: 'ESAudioPlayer',
   slot: 'ListItemIcon',
-  overridesResolver: (props, styles) => styles.listItemIcon
+  overridesResolver: (props, styles) => styles.listItemIcon,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A500,
 
   '&, &:first-of-type': {
-    marginRight: '12px'
-  }
+    marginRight: '12px',
+  },
 }));
 
 const AudioPlayerListItemText = styled(ListItemText, {
   name: 'ESAudioPlayer',
   slot: 'ListItemText',
-  overridesResolver: (props, styles) => styles.listItemText
+  overridesResolver: (props, styles) => styles.listItemText,
 })(({ theme }) => ({
   margin: 0,
   [`& .${listItemTextClasses.primary}`]: {
     color: theme.vars.palette.monoA.A900,
     fontWeight: 400,
-    ...theme.typography.body100
+    ...theme.typography.body100,
   },
   [`& .${listItemTextClasses.secondary}`]: {
     color: theme.vars.palette.monoA.A600,
     marginTop: 2,
-    ...theme.typography.caption
-  }
+    ...theme.typography.caption,
+  },
 }));
 
 const AudioPlayerListDivider = styled(Divider, {
   name: 'ESAudioPlayer',
   slot: 'ListDivider',
-  overridesResolver: (props, styles) => styles.listDivider
+  overridesResolver: (props, styles) => styles.listDivider,
 })(({ theme }) => ({
   [`&.${dividerClasses.root}`]: {
     borderColor: theme.vars.palette.monoA.A100,
-    margin: '8px 0'
-  }
+    margin: '8px 0',
+  },
 }));
 
 const AudioPlayerRateOpen = styled('div', {
   name: 'ESAudioPlayer',
   slot: 'RateOpen',
-  overridesResolver: (props, styles) => styles.rateOpen
+  overridesResolver: (props, styles) => styles.rateOpen,
 })(({ theme }) => ({
   display: 'inline-flex',
   marginLeft: 12,
-  color: theme.vars.palette.monoA.A500
+  color: theme.vars.palette.monoA.A500,
 }));
 
 const AudioPlayerRateCheck = styled('div', {
   name: 'ESAudioPlayer',
   slot: 'RateCheck',
-  overridesResolver: (props, styles) => styles.rateCheck
+  overridesResolver: (props, styles) => styles.rateCheck,
 })(({ theme }) => ({
   display: 'flex',
   color: theme.vars.palette.monoA.A500,
-  marginRight: '-4px'
+  marginRight: '-4px',
 }));
 
 const AudioPlayerVolume = styled(Typography, {
   name: 'ESAudioPlayer',
   slot: 'Volume',
-  overridesResolver: (props, styles) => styles.volume
+  overridesResolver: (props, styles) => styles.volume,
 })(({ theme }) => ({
   display: 'grid',
   gap: 6,
@@ -385,24 +385,24 @@ const AudioPlayerVolume = styled(Typography, {
   color: theme.vars.palette.monoB[500],
   justifyContent: 'center',
   textAlign: 'center',
-  fontWeight: 400
+  fontWeight: 400,
 })) as typeof Typography;
 
 const AudioPlayerVolumeButton = styled(AudioPlayerIconButton, {
   name: 'ESAudioPlayer',
   slot: 'VolumeButton',
-  overridesResolver: (props, styles) => styles.volumeButton
+  overridesResolver: (props, styles) => styles.volumeButton,
 })({
   display: 'none',
   '@media (hover) and (pointer: fine)': {
-    display: 'flex'
-  }
+    display: 'flex',
+  },
 });
 
 const AudioPlayerVolumeSlider = styled(Slider, {
   name: 'ESAudioPlayer',
   slot: 'VolumeSlider',
-  overridesResolver: (props, styles) => styles.volumeSlider
+  overridesResolver: (props, styles) => styles.volumeSlider,
 })(({ theme }) => ({
   margin: '3px 0',
   height: 86,
@@ -411,19 +411,19 @@ const AudioPlayerVolumeSlider = styled(Slider, {
 
     [`& .${sliderClasses.thumb}`]: {
       '&:hover': {
-        boxShadow: `0 0 0 8px ${theme.vars.palette.monoB.A50}`
+        boxShadow: `0 0 0 8px ${theme.vars.palette.monoB.A50}`,
       },
       [`&.${sliderClasses.focusVisible}`]: {
-        boxShadow: `0 0 0 7px ${theme.vars.palette.monoB.A150}`
+        boxShadow: `0 0 0 7px ${theme.vars.palette.monoB.A150}`,
       },
       [`&.${sliderClasses.active}`]: {
-        boxShadow: `0 0 0 6px ${theme.vars.palette.monoB.A200}`
-      }
-    }
+        boxShadow: `0 0 0 6px ${theme.vars.palette.monoB.A200}`,
+      },
+    },
   },
   [`& .${sliderClasses.rail}`]: {
-    backgroundColor: theme.vars.palette.monoB.A400
-  }
+    backgroundColor: theme.vars.palette.monoB.A400,
+  },
 }));
 
 const DEFAULT_RATES = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
@@ -503,7 +503,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESAudioPlayer'
+    name: 'ESAudioPlayer',
   });
 
   const { volume, setVolume } = useAudioPlayerContext();
@@ -539,7 +539,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
   const positionRef = useRef({
     x: 0,
-    y: 0
+    y: 0,
   });
 
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -1029,7 +1029,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     ...props,
     isPlaying,
     isOverThumb: isOverThumb || isChanging || (isFocused && !isOverRail),
-    isOverTrack
+    isOverTrack,
   };
   const classes = useUtilityClasses(ownerState);
 
@@ -1049,8 +1049,8 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
             anchorEl: {
               getBoundingClientRect: () => {
                 return new DOMRect(positionRef.current.x, positionRef.current.y, 0, 0);
-              }
-            }
+              },
+            },
           }}
           className={classes.currentTooltip}
           open={isFocused || isOverRail}

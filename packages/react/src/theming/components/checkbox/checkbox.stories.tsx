@@ -5,27 +5,27 @@ import { Checkbox } from '@mui/material';
 const meta: Meta<typeof Checkbox> = {
   title: 'Overrides/Checkbox',
   parameters: {
-    viewMode: 'canvas'
+    viewMode: 'canvas',
   },
   argTypes: {
     color: {
       options: ['primary', 'secondary', 'error'],
 
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
     disabled: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     indeterminate: {
       control: {
-        type: 'boolean'
-      }
-    }
-  }
+        type: 'boolean',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -38,5 +38,5 @@ export const Demo: Story = {
         <Checkbox {...args} />
       </div>
     );
-  }
+  },
 };

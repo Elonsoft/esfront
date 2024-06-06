@@ -9,5 +9,5 @@ export const info = {
   700: '#BBE7FF',
   800: '#D3F1FF',
   900: '#EBF9FF',
-  alpha: '300'
+  alpha: '300',
 };

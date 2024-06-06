@@ -3,6 +3,6 @@ export {
   getSwiperPaginationUtilityClass,
   SwiperPaginationClasses,
   swiperPaginationClasses,
-  SwiperPaginationClassKey
+  SwiperPaginationClassKey,
 } from './SwiperPagination.classes';
 export { SwiperPaginationProps } from './SwiperPagination.types';

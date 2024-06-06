@@ -9,5 +9,5 @@ export const teal = {
   700: '#BEEBE8',
   800: '#DCF7F5',
   900: '#EDFCFB',
-  alpha: '300'
+  alpha: '300',
 };

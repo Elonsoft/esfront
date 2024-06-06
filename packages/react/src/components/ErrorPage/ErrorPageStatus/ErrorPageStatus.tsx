@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: ErrorPageStatusOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getErrorPageStatusUtilityClass, classes);
@@ -24,21 +24,21 @@ const useUtilityClasses = (ownerState: ErrorPageStatusOwnerState) => {
 export const ErrorPageStatusRoot = styled('div', {
   name: 'ESErrorPageStatus',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A900,
   gridArea: 'status',
   height: '64px',
 
   [theme.breakpoints.up('tabletXS')]: {
-    height: '78px'
-  }
+    height: '78px',
+  },
 }));
 
 export const ErrorPageStatus = (inProps: ErrorPageStatusProps) => {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESErrorPageStatus'
+    name: 'ESErrorPageStatus',
   });
 
   const ownerState = { ...props };

@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: DialogContentOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getDialogContentUtilityClass, classes);
@@ -24,20 +24,20 @@ const useUtilityClasses = (ownerState: DialogContentOwnerState) => {
 const DialogContentRoot = styled('div', {
   name: 'ESDialogContent',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   // Add iOS momentum scrolling for iOS < 13.0
   WebkitOverflowScrolling: 'touch',
   flex: '1 1 auto',
   overflowY: 'auto',
   color: theme.vars.palette.monoA.A700,
-  padding: '0 24px'
+  padding: '0 24px',
 }));
 
 export const DialogContent = (inProps: DialogContentProps) => {
   const { className, sx, children, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESDialogContent'
+    name: 'ESDialogContent',
   });
 
   const ownerState = { ...props };

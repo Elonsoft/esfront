@@ -8,15 +8,15 @@ const meta: Meta<typeof TextFieldGroup> = {
   tags: ['autodocs'],
   component: TextFieldGroup,
   parameters: {
-    references: ['TextFieldGroup']
+    references: ['TextFieldGroup'],
   },
   argTypes: {
     breakpoint: {
       control: {
-        type: 'number'
-      }
-    }
-  }
+        type: 'number',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -33,5 +33,5 @@ export const Demo: Story = {
         <TextField error required label={locale === 'en' ? 'Patronymic' : 'Отчество'} />
       </TextFieldGroup>
     );
-  }
+  },
 };

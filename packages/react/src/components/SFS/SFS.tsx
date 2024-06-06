@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: SFSOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getSFSUtilityClass, classes);
@@ -27,18 +27,18 @@ const useUtilityClasses = (ownerState: SFSOwnerState) => {
 const SFSRoot = styled('div', {
   name: 'ESSFS',
   slot: 'Root',
-  overridesResolver: (_, styles) => styles.root
+  overridesResolver: (_, styles) => styles.root,
 })(({ theme }) => ({
   padding: '8px',
   backgroundColor: theme.vars.palette.surface[100],
   boxShadow: theme.vars.palette.shadow.down[100],
-  borderRadius: '6px'
+  borderRadius: '6px',
 }));
 
 export const SFS = (inProps: SFSProps) => {
   const { className, sx, children, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESSFS'
+    name: 'ESSFS',
   });
 
   const ownerState = { ...props };

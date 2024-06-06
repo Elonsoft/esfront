@@ -26,7 +26,7 @@ const useUtilityClasses = (ownerState: GalleryOwnerState) => {
 
   const slots = {
     root: ['root'],
-    content: ['content']
+    content: ['content'],
   };
 
   return composeClasses(slots, getGalleryUtilityClass, classes);
@@ -35,23 +35,23 @@ const useUtilityClasses = (ownerState: GalleryOwnerState) => {
 const GalleryRoot = styled(Modal, {
   name: 'ESGallery',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   height: '100dvh',
 
   [`.${backdropClasses.root}`]: {
-    backgroundColor: theme.vars.palette.overlay[900]
-  }
+    backgroundColor: theme.vars.palette.overlay[900],
+  },
 }));
 
 const GalleryContent = styled('div', {
   name: 'ESGallery',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })(() => ({
   display: 'flex',
   flexDirection: 'column',
-  height: '100%'
+  height: '100%',
 }));
 
 const transitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
@@ -71,7 +71,7 @@ export const Gallery = (inProps: GalleryProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESGallery'
+    name: 'ESGallery',
   });
 
   const contentRef = useRef<HTMLDivElement>(null);
@@ -89,7 +89,7 @@ export const Gallery = (inProps: GalleryProps) => {
       items,
       item,
       setItem,
-      onClose
+      onClose,
     };
   }, [items, item, setItem, onClose]);
 

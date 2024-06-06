@@ -17,5 +17,5 @@ export function getTableActionsUtilityClass(slot: string): string {
 export const tableActionsClasses: TableActionsClasses = generateUtilityClasses('ESTableActions', [
   'root',
   'text',
-  'children'
+  'children',
 ]);

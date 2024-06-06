@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { TouchRippleParams } from './TouchRipple.types';
 
 export const EASING = {
-  STANDARD: 'cubic-bezier(0.2, 0, 0, 1)'
+  STANDARD: 'cubic-bezier(0.2, 0, 0, 1)',
 } as const;
 
 const PRESS_GROW_MS = 800;
@@ -49,7 +49,7 @@ enum State {
    * Transitions:
    *   - on click end press; transition to `INACTIVE`.
    */
-  WAITING_FOR_CLICK
+  WAITING_FOR_CLICK,
 }
 
 // Delay reacting to touch so that we do not show the ripple for a swipe or scroll interaction.
@@ -121,7 +121,7 @@ export const useTouchRipple = ({
     // end in the center
     const endPoint = {
       x: (width - initialSize.current) / 2,
-      y: (height - initialSize.current) / 2
+      y: (height - initialSize.current) / 2,
     };
 
     let startPoint;
@@ -131,14 +131,14 @@ export const useTouchRipple = ({
     } else {
       startPoint = {
         x: width / 2,
-        y: height / 2
+        y: height / 2,
       };
     }
 
     // center around start point
     startPoint = {
       x: startPoint.x - initialSize.current / 2,
-      y: startPoint.y - initialSize.current / 2
+      y: startPoint.y - initialSize.current / 2,
     };
 
     return { startPoint, endPoint };
@@ -176,13 +176,16 @@ export const useTouchRipple = ({
         left: [0, 0],
         height: [rippleSize.current, rippleSize.current],
         width: [rippleSize.current, rippleSize.current],
-        transform: [`translate(${translateStart}) scale(1)`, `translate(${translateEnd}) scale(${rippleScale.current})`]
+        transform: [
+          `translate(${translateStart}) scale(1)`,
+          `translate(${translateEnd}) scale(${rippleScale.current})`,
+        ],
       },
       {
         pseudoElement: PRESS_PSEUDO,
         duration: pressGrowDuration,
         easing: EASING.STANDARD,
-        fill: ANIMATION_FILL
+        fill: ANIMATION_FILL,
       }
     );
   };
@@ -338,6 +341,6 @@ export const useTouchRipple = ({
   return {
     ref,
     pressed,
-    bind: { onClick, onContextMenu, onPointerCancel, onPointerUp, onPointerDown, onPointerLeave }
+    bind: { onClick, onContextMenu, onPointerCancel, onPointerUp, onPointerDown, onPointerLeave },
   };
 };

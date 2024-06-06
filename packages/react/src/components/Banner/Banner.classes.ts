@@ -56,5 +56,5 @@ export const bannerClasses: BannerClasses = generateUtilityClasses('ESBanner', [
   'wrapper',
   'content',
   'message',
-  'action'
+  'action',
 ]);

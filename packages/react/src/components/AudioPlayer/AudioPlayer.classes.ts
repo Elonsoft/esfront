@@ -80,5 +80,5 @@ export const audioPlayerClasses: AudioPlayerClasses = generateUtilityClasses('ES
   'rateOpen',
   'rateCheck',
   'volume',
-  'volumeSlider'
+  'volumeSlider',
 ]);

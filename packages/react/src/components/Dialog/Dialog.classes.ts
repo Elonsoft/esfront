@@ -44,5 +44,5 @@ export const dialogClasses: DialogClasses = generateUtilityClasses('ESDialog', [
   'contentFullWidth',
   'contentFullScreen',
   'paper',
-  'paperFullScreen'
+  'paperFullScreen',
 ]);

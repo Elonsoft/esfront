@@ -24,5 +24,5 @@ export const sidenavClasses: SidenavClasses = generateUtilityClasses('ESSidenav'
   'container',
   'rail',
   'drawer',
-  'overlay'
+  'overlay',
 ]);

@@ -69,5 +69,5 @@ export const buttonClasses: ButtonClasses = generateUtilityClasses('ESButton', [
   'colorWhite',
   'icon',
   'startIcon',
-  'endIcon'
+  'endIcon',
 ]);

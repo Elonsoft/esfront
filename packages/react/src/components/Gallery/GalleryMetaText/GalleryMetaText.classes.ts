@@ -14,5 +14,5 @@ export function getGalleryMetaTextUtilityClass(slot: string): string {
 
 export const galleryMetaTextClasses: GalleryMetaTextClasses = generateUtilityClasses('ESGalleryMetaText', [
   'root',
-  'primary'
+  'primary',
 ]);

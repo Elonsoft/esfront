@@ -23,5 +23,5 @@ export const spinnerFadingBarsClasses: SpinnerFadingBarsClasses = generateUtilit
   'primary',
   'secondary',
   'monoA',
-  'inherit'
+  'inherit',
 ]);

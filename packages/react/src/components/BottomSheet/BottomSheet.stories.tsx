@@ -29,38 +29,38 @@ const meta: Meta<typeof BottomSheet> = {
   tags: ['autodocs'],
   component: BottomSheet,
   parameters: {
-    references: ['BottomSheet']
+    references: ['BottomSheet'],
   },
   argTypes: {
     snapPoints: {
-      control: { type: 'object' }
+      control: { type: 'object' },
     },
     align: {
       options: ['flex-end', 'stretch'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     maxWidth: {
       defaultValue: '100%',
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     hideBackdrop: {
       defaultValue: false,
       control: {
-        type: 'boolean'
-      }
-    }
+        type: 'boolean',
+      },
+    },
   },
   args: {
     snapPoints: [
       {
         point: '60vh',
         dragThresholds: { up: '15vh', down: '15vh' },
-        activeWhen: { screen: { minHeight: 400 }, paperOverflow: true }
+        activeWhen: { screen: { minHeight: 400 }, paperOverflow: true },
       },
-      { point: '100vh', dragThresholds: { up: '0px', down: '15vh' } }
+      { point: '100vh', dragThresholds: { up: '0px', down: '15vh' } },
     ],
-    align: 'flex-end'
-  }
+    align: 'flex-end',
+  },
 };
 
 export default meta;
@@ -122,5 +122,5 @@ export const Demo: Story = {
         </BottomSheet>
       </>
     );
-  }
+  },
 };

@@ -20,5 +20,5 @@ export const tableHeadClasses: TableHeadClasses = generateUtilityClasses('ESTabl
   'root',
   'sticky',
   'stuck',
-  'container'
+  'container',
 ]);

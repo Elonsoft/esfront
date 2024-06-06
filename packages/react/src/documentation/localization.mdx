@@ -3,7 +3,7 @@ import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
 <Meta
   title="Getting Started/Localization"
   parameters={{
-    viewMode: 'docs'
+    viewMode: 'docs',
   }}
 />
 
@@ -22,12 +22,12 @@ const Application = () => {
     {
       paletteDark: {
         ...palettes.common,
-        ...palettes.dark
+        ...palettes.dark,
       },
       paletteLight: {
         ...palettes.common,
-        ...palettes.light
-      }
+        ...palettes.light,
+      },
     },
     { ...ruRU, ru }
   );

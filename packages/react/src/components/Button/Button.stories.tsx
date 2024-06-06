@@ -20,90 +20,90 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Button,
   parameters: {
-    references: ['Button', 'ButtonBase']
+    references: ['Button', 'ButtonBase'],
   },
   argTypes: {
     variant: {
       options: ['text', 'outlined', 'contained'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     color: {
       options: ['primary', 'secondary', 'tertiary', 'error', 'success', 'monoA', 'monoB', 'white', 'black'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     size: {
       options: ['16', '20', '24', '32', '40', '48', '56'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     rounded: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     disabled: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     disableTouchRipple: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     startIcon: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     endIcon: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     fullWidth: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     TouchRippleProps: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     TouchRipplePropsCenter: {
       table: {
-        category: 'TouchRippleProps'
+        category: 'TouchRippleProps',
       },
       name: 'center',
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     TouchRipplePropsPressGrowDuration: {
       table: {
-        category: 'TouchRippleProps'
+        category: 'TouchRippleProps',
       },
       name: 'pressGrowDuration',
       control: {
-        type: 'number'
-      }
+        type: 'number',
+      },
     },
     TouchRipplePropsMinimumPressDuration: {
       table: {
-        category: 'TouchRippleProps'
+        category: 'TouchRippleProps',
       },
       name: 'minimumPressDuration',
       control: {
-        type: 'number'
-      }
-    }
+        type: 'number',
+      },
+    },
   },
   args: {
     variant: 'contained',
     color: 'tertiary',
     TouchRipplePropsPressGrowDuration: 800,
-    TouchRipplePropsMinimumPressDuration: 150
-  }
+    TouchRipplePropsMinimumPressDuration: 150,
+  },
 };
 
 export default meta;
@@ -131,8 +131,8 @@ export const Demo: Story = {
       TouchRippleProps: {
         center: TouchRipplePropsCenter,
         pressGrowDuration: TouchRipplePropsPressGrowDuration,
-        minimumPressDuration: TouchRipplePropsMinimumPressDuration
-      }
+        minimumPressDuration: TouchRipplePropsMinimumPressDuration,
+      },
     };
 
     return (
@@ -142,7 +142,7 @@ export const Demo: Story = {
           gap: '16px',
           gridAutoFlow: 'column',
           justifyContent: 'flex-start',
-          marginBottom: '16px'
+          marginBottom: '16px',
         }}
       >
         <Button {...props}>{text}</Button>
@@ -152,5 +152,5 @@ export const Demo: Story = {
         <Button {...props}>{icon}</Button>
       </div>
     );
-  }
+  },
 };

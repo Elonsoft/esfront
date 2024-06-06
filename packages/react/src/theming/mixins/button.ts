@@ -23,20 +23,20 @@ export const buttonMixin = (states: ButtonMixinStates) => {
   return {
     '&, &:not(:disabled):hover, &:not(:disabled):active': {
       backgroundColor: background,
-      color
+      color,
     },
     [`& .${touchRippleClasses.root}`]: {
-      color: active
+      color: active,
     },
     '@media (hover: hover)': {
       [`&:not(.${buttonClasses.focusVisible}):not(:disabled):hover .${touchRippleClasses.root}`]: {
-        backgroundColor: hover
-      }
+        backgroundColor: hover,
+      },
     },
     [`&.${buttonClasses.focusVisible}`]: {
       [`& .${touchRippleClasses.root}`]: {
-        backgroundColor: focus
-      }
-    }
+        backgroundColor: focus,
+      },
+    },
   } as React.CSSProperties;
 };

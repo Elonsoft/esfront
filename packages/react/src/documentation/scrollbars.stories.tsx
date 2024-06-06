@@ -4,10 +4,10 @@ export default {
   title: 'Getting Started/Scrollbars',
 
   parameters: {
-    viewMode: 'docs'
-  }
+    viewMode: 'docs',
+  },
 };
 
 export const Scrollbars = {
-  render: () => <ScrollbarsDemo />
+  render: () => <ScrollbarsDemo />,
 };

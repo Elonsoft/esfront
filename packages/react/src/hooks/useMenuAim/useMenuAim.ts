@@ -36,19 +36,19 @@ export const useMenuAim = (
 
     const upperLeft = {
       x: rect.left,
-      y: rect.top
+      y: rect.top,
     };
     const upperRight = {
       x: rect.left + rect.width,
-      y: rect.top
+      y: rect.top,
     };
     const lowerLeft = {
       x: rect.left + rect.width,
-      y: rect.top
+      y: rect.top,
     };
     const lowerRight = {
       x: rect.left + rect.width,
-      y: rect.top + rect.height
+      y: rect.top + rect.height,
     };
 
     const loc = mouseLocs.current[mouseLocs.current.length - 1];

@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: FileInfoContentOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getFileInfoContentUtilityClass, classes);
@@ -24,9 +24,9 @@ const useUtilityClasses = (ownerState: FileInfoContentOwnerState) => {
 const FileInfoContentRoot = styled('div', {
   name: 'ESFileInfoName',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
-  marginLeft: '12px'
+  marginLeft: '12px',
 }));
 
 export const FileInfoContent = (inProps: FileInfoContentProps) => {

@@ -24,7 +24,7 @@ const useUtilityClasses = (ownerState: SwiperPaginationOwnerState) => {
   const { classes, direction, position, variant } = ownerState;
 
   const slots = {
-    root: ['root', direction, position, variant]
+    root: ['root', direction, position, variant],
   };
 
   return composeClasses(slots, getSwiperPaginationUtilityClass, classes);
@@ -35,10 +35,10 @@ const SwiperPaginationRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { direction, position, variant }
+      ownerState: { direction, position, variant },
     } = props;
     return [styles.root, styles[direction], styles[position], styles[variant]];
-  }
+  },
 })<{ ownerState: SwiperPaginationOwnerState }>(({ ownerState }) => ({
   alignItems: 'center',
   display: 'flex',
@@ -50,12 +50,12 @@ const SwiperPaginationRoot = styled('div', {
     width: '100%',
     [`&.${swiperPaginationClasses.start}`]: {
       marginBottom: 14,
-      marginTop: -2
+      marginTop: -2,
     },
     [`&.${swiperPaginationClasses.end}`]: {
       marginBottom: -2,
-      marginTop: 14
-    }
+      marginTop: 14,
+    },
   }),
 
   ...(ownerState.direction === 'vertical' && {
@@ -63,36 +63,36 @@ const SwiperPaginationRoot = styled('div', {
     height: '100%',
     [`&.${swiperPaginationClasses.start}`]: {
       marginLeft: -2,
-      marginRight: 14
+      marginRight: 14,
     },
     [`&.${swiperPaginationClasses.end}`]: {
       marginLeft: 14,
-      marginRight: -2
-    }
+      marginRight: -2,
+    },
   }),
 
   ...(ownerState.position === 'start' && {
-    order: -1
+    order: -1,
   }),
 
   ...(ownerState.variant === 'long' && {
     [`&.${swiperPaginationClasses.horizontal} .${swiperPaginationClasses.bulletActive}`]: {
-      width: 16
+      width: 16,
     },
     [`&.${swiperPaginationClasses.vertical} .${swiperPaginationClasses.bulletActive}`]: {
-      height: 16
-    }
+      height: 16,
+    },
   }),
 
   ...(ownerState.variant === 'big' && {
     [`& .${swiperPaginationClasses.itemActive}`]: {
-      padding: 2
+      padding: 2,
     },
     [`& .${swiperPaginationClasses.bulletActive}`]: {
       height: 12,
-      width: 12
-    }
-  })
+      width: 12,
+    },
+  }),
 }));
 
 export const SwiperPagination = (inProps: SwiperPaginationProps) => {
@@ -106,7 +106,7 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSwiperPagination'
+    name: 'ESSwiperPagination',
   });
 
   const { direction, from, to, active, setActiveSlide } = useSwiperContext();

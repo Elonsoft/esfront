@@ -15,13 +15,13 @@ export const parameters = {
     hideNoControlsWarning: true,
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/
+      date: /Date$/,
     },
-    exclude: /^(classes|className|component|ref|sx|(on|icon|label)[A-Z].*)$/
+    exclude: /^(classes|className|component|ref|sx|(on|icon|label)[A-Z].*)$/,
   },
   darkMode: {
     light: themeLight,
-    dark: themeDark
+    dark: themeDark,
   },
   options: {
     storySort: {
@@ -33,9 +33,9 @@ export const parameters = {
         'Hooks',
         'Overrides',
         'Components API',
-        'Hooks API'
-      ]
-    }
+        'Hooks API',
+      ],
+    },
   },
   docs: {
     container: function Container(props) {
@@ -61,8 +61,8 @@ export const parameters = {
           <ReferencesList />
         </>
       );
-    }
-  }
+    },
+  },
 };
 
 export const decorators = [
@@ -75,7 +75,7 @@ export const decorators = [
         <Story />
       </Theme>
     );
-  }
+  },
 ];
 
 export const argTypes = {
@@ -108,8 +108,8 @@ export const globalTypes = {
       icon: 'globe',
       items: [
         { value: 'en', title: 'English' },
-        { value: 'ru', title: 'Русский' }
-      ]
-    }
-  }
+        { value: 'ru', title: 'Русский' },
+      ],
+    },
+  },
 };

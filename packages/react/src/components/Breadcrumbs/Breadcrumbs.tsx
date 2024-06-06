@@ -37,7 +37,7 @@ const useUtilityClasses = (ownerState: BreadcrumbsOwnerState) => {
     buttonMore: ['buttonMore'],
     menu: ['menu'],
     menuItem: ['menuItem'],
-    tooltip: ['tooltip']
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getBreadcrumbsUtilityClass, classes);
@@ -46,13 +46,13 @@ const useUtilityClasses = (ownerState: BreadcrumbsOwnerState) => {
 const BreadcrumbsRoot = styled(Typography, {
   name: 'ESBreadcrumbs',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({})) as typeof Typography;
 
 const BreadcrumbsList = styled('ol', {
   name: 'ESBreadcrumbs',
   slot: 'List',
-  overridesResolver: (props, styles) => styles.list
+  overridesResolver: (props, styles) => styles.list,
 })<{ ownerState: BreadcrumbsOwnerState }>(({ theme, ownerState }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -63,25 +63,25 @@ const BreadcrumbsList = styled('ol', {
   ...(ownerState.open && {
     [`.${breadcrumbsClasses.buttonMore}`]: {
       [`.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
-        '--background': theme.vars.palette.monoA.A50
-      }
-    }
-  })
+        '--background': theme.vars.palette.monoA.A50,
+      },
+    },
+  }),
 }));
 
 const BreadcrumbsMenu = styled(Menu, {
   name: 'ESBreadcrumbs',
   slot: 'Menu',
-  overridesResolver: (props, styles) => styles.menu
+  overridesResolver: (props, styles) => styles.menu,
 })(() => ({
   [`& .${menuClasses.list}`]: {
     padding: '4px 0',
-    maxWidth: '240px'
+    maxWidth: '240px',
   },
 
   [`.${paperClasses.root}`]: {
-    marginTop: '4px'
-  }
+    marginTop: '4px',
+  },
 })) as typeof Menu;
 
 const BreadcrumbsTooltip = styled(
@@ -89,27 +89,27 @@ const BreadcrumbsTooltip = styled(
   {
     name: 'ESBreadcrumbs',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )(() => ({
   [`&[data-popper-placement*="left"] .${tooltipClasses.tooltip}`]: {
-    marginLeft: '10px !important'
+    marginLeft: '10px !important',
   },
   [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
-    marginRight: '10px !important'
-  }
+    marginRight: '10px !important',
+  },
 }));
 
 const BreadcrumbsMenuItem = styled(MenuItem, {
   name: 'ESBreadcrumbs',
   slot: 'MenuItem',
-  overridesResolver: (props, styles) => styles.menuItem
+  overridesResolver: (props, styles) => styles.menuItem,
 })(({ theme }) => ({
   minHeight: '32px',
   padding: '8px 12px',
   width: '100%',
 
-  ...theme.typography.caption
+  ...theme.typography.caption,
 })) as typeof MenuItem;
 
 /**
@@ -196,7 +196,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
           const item = cloneElement(child, {
             position: (idx + 1).toString(),
             shouldFirstShrink: lastIndex >= Children.count(children) - 1,
-            style: { display: idx > 0 && idx < lastIndex ? 'none' : 'flex' }
+            style: { display: idx > 0 && idx < lastIndex ? 'none' : 'flex' },
           } as { position: string; shouldFirstShrink: boolean; style: CSSProperties });
 
           return (

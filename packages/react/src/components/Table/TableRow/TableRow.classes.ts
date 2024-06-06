@@ -23,5 +23,5 @@ export const tableRowClasses: TableRowClasses = generateUtilityClasses('ESTableR
   'hover',
   'selected',
   'content',
-  'overlap'
+  'overlap',
 ]);

@@ -21,7 +21,7 @@ const useUtilityClasses = (ownerState: DialogCloseOwnerState) => {
   const slots = {
     root: ['root'],
     button: ['button'],
-    escapeKey: ['escapeKey']
+    escapeKey: ['escapeKey'],
   };
 
   return composeClasses(slots, getDialogCloseUtilityClass, classes);
@@ -30,7 +30,7 @@ const useUtilityClasses = (ownerState: DialogCloseOwnerState) => {
 const DialogCloseRoot = styled('div', {
   name: 'ESDialogClose',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   zIndex: 1,
   display: 'flex',
@@ -39,14 +39,14 @@ const DialogCloseRoot = styled('div', {
 
   [theme.breakpoints.up('tabletXS')]: {
     position: 'sticky',
-    top: 16
-  }
+    top: 16,
+  },
 }));
 
 const DialogCloseButton = styled(Button, {
   name: 'ESDialogClose',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.button
+  overridesResolver: (props, styles) => styles.button,
 })(({ theme }) => ({
   marginBottom: '16px',
 
@@ -54,7 +54,7 @@ const DialogCloseButton = styled(Button, {
     position: 'absolute',
     left: 'calc(100% + 16px)',
     top: 0,
-    marginBottom: 0
+    marginBottom: 0,
   },
 
   [`&.${buttonClasses.root}`]: {
@@ -65,20 +65,20 @@ const DialogCloseButton = styled(Button, {
     height: 32,
 
     [`&.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
-      '--background': theme.vars.palette.white.A200
+      '--background': theme.vars.palette.white.A200,
     },
 
     [theme.breakpoints.up('tabletXS')]: {
       width: 40,
-      height: 40
-    }
-  }
+      height: 40,
+    },
+  },
 }));
 
 const DialogCloseEscapeKey = styled(Typography, {
   name: 'ESDialogClose',
   slot: 'EscapeKey',
-  overridesResolver: (props, styles) => styles.escapeKey
+  overridesResolver: (props, styles) => styles.escapeKey,
 })(({ theme }) => ({
   color: theme.vars.palette.white.A800,
   pointerEvents: 'none',
@@ -87,8 +87,8 @@ const DialogCloseEscapeKey = styled(Typography, {
 
   [theme.breakpoints.up('tabletXS')]: {
     right: 'unset',
-    top: 'calc(100% + 8px)'
-  }
+    top: 'calc(100% + 8px)',
+  },
 }));
 
 export const DialogClose = (inProps: DialogCloseProps) => {
@@ -102,7 +102,7 @@ export const DialogClose = (inProps: DialogCloseProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESDialogClose'
+    name: 'ESDialogClose',
   });
 
   const ownerState = { ...props };

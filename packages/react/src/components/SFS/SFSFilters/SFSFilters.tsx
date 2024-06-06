@@ -34,7 +34,7 @@ const useUtilityClasses = (ownerState: SFSFiltersOwnerState) => {
     footer: ['footer'],
     container: ['container'],
     closeButton: ['closeButton'],
-    resetButton: ['resetButton']
+    resetButton: ['resetButton'],
   };
 
   return composeClasses(slots, getSFSFiltersUtilityClass, classes);
@@ -43,30 +43,30 @@ const useUtilityClasses = (ownerState: SFSFiltersOwnerState) => {
 const SFSFiltersRoot = styled('div', {
   name: 'ESSFSFilters',
   slot: 'Root',
-  overridesResolver: (_, styles) => styles.root
+  overridesResolver: (_, styles) => styles.root,
 })(() => ({
-  position: 'relative'
+  position: 'relative',
 }));
 
 const SFSFiltersButton = styled(SFSButton, {
   name: 'ESSFSFilters',
   slot: 'Button',
-  overridesResolver: (_, styles) => styles.button
+  overridesResolver: (_, styles) => styles.button,
 })({});
 
 const SFSFiltersButtonBadge = styled(SFSButtonBadge, {
   name: 'ESSFSFilters',
   slot: 'ButtonBadge',
-  overridesResolver: (_, styles) => styles.buttonBadge
+  overridesResolver: (_, styles) => styles.buttonBadge,
 })({}) as typeof SFSButtonBadge;
 
 const SFSFiltersDrawer = styled(Drawer, {
   name: 'ESSFSFilters',
   slot: 'Drawer',
-  overridesResolver: (_, styles) => styles.drawer
+  overridesResolver: (_, styles) => styles.drawer,
 })(({ theme }) => ({
   [`& .${backdropClasses.root}`]: {
-    backgroundColor: theme.vars.palette.overlay[200]
+    backgroundColor: theme.vars.palette.overlay[200],
   },
   [`& .${paperClasses.root}`]: {
     width: '100%',
@@ -74,14 +74,14 @@ const SFSFiltersDrawer = styled(Drawer, {
     boxShadow: theme.vars.palette.shadow.left[800],
     backgroundImage: 'none',
     backgroundColor: theme.vars.palette.surface[200],
-    borderLeft: `1px solid ${theme.vars.palette.monoA.A100}`
-  }
+    borderLeft: `1px solid ${theme.vars.palette.monoA.A100}`,
+  },
 }));
 
 const SFSFiltersHeader = styled(Typography, {
   name: 'ESSFSFilters',
   slot: 'Header',
-  overridesResolver: (_, styles) => styles.header
+  overridesResolver: (_, styles) => styles.header,
 })(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -89,39 +89,39 @@ const SFSFiltersHeader = styled(Typography, {
   padding: '12px',
   paddingLeft: '20px',
   borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
-  color: theme.vars.palette.monoA.A900
+  color: theme.vars.palette.monoA.A900,
 }));
 
 const SFSFiltersFooter = styled('div', {
   name: 'ESSFSFilters',
   slot: 'Footer',
-  overridesResolver: (_, styles) => styles.footer
+  overridesResolver: (_, styles) => styles.footer,
 })(({ theme }) => ({
   borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
   marginTop: 'auto',
-  padding: '16px 20px'
+  padding: '16px 20px',
 }));
 
 const SFSFiltersContainer = styled('div', {
   name: 'ESSFSFilters',
   slot: 'Container',
-  overridesResolver: (_, styles) => styles.container
+  overridesResolver: (_, styles) => styles.container,
 })(({ theme }) => ({
-  ...theme.scrollbars.overlayMonoA
+  ...theme.scrollbars.overlayMonoA,
 }));
 
 const SFSFiltersCloseButton = styled(Button, {
   name: 'ESSFSFilters',
   slot: 'CloseButton',
-  overridesResolver: (_, styles) => styles.closeButton
+  overridesResolver: (_, styles) => styles.closeButton,
 })(({ theme }) => ({
-  '--icon': theme.vars.palette.monoA.A500
+  '--icon': theme.vars.palette.monoA.A500,
 }));
 
 const SFSFiltersResetButton = styled(Button, {
   name: 'ESSFSFilters',
   slot: 'ResetButton',
-  overridesResolver: (_, styles) => styles.resetButton
+  overridesResolver: (_, styles) => styles.resetButton,
 })({});
 
 export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
@@ -146,7 +146,7 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSFSFilters'
+    name: 'ESSFSFilters',
   });
 
   const [isOpen, setOpen] = useState(false);

@@ -15,5 +15,5 @@ export function getSidebarDividerUtilityClass(slot: string): string {
 
 export const sidebarDividerClasses: SidebarDividerClasses = generateUtilityClasses('ESSidebarDivider', [
   'root',
-  'line'
+  'line',
 ]);

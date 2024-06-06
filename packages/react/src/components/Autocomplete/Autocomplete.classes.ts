@@ -23,5 +23,5 @@ export const autocompleteClasses: AutocompleteClasses = generateUtilityClasses('
   'input',
   'menu',
   'displayValue',
-  'inputPlaceholder'
+  'inputPlaceholder',
 ]);

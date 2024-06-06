@@ -30,45 +30,45 @@ const meta: Meta<Args> = {
       'SidebarMenu',
       'SidebarScrollable',
       'SidebarSpacer',
-      'SidebarToggle'
-    ]
+      'SidebarToggle',
+    ],
   },
   argTypes: {
     color: {
       control: {
-        type: 'select'
+        type: 'select',
       },
-      options: ['default', 'primary', 'secondary']
+      options: ['default', 'primary', 'secondary'],
     },
     behaviour: {
       control: {
-        type: 'select'
+        type: 'select',
       },
-      options: ['click', 'hover']
+      options: ['click', 'hover'],
     },
     exclusive: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     open: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     width: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
     color: 'default',
     behaviour: 'click',
     exclusive: false,
     minWidth: 220,
-    maxWidth: 400
-  }
+    maxWidth: 400,
+  },
 };
 
 export default meta;
@@ -262,5 +262,5 @@ export const Demo: Story = {
         </div>
       </Box>
     );
-  }
+  },
 };

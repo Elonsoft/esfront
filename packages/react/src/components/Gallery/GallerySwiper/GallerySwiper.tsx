@@ -31,7 +31,7 @@ const useUtilityClasses = (ownerState: GallerySwiperOwnerState) => {
 
   const slots = {
     root: ['root'],
-    swiper: ['swiper']
+    swiper: ['swiper'],
   };
 
   return composeClasses(slots, getGallerySwiperUtilityClass, classes);
@@ -42,27 +42,27 @@ const GallerySwiperRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     return [styles.root];
-  }
+  },
 })(() => ({
   flexGrow: 1,
   width: '100%',
-  minHeight: 0
+  minHeight: 0,
 }));
 
 const GallerySwiperSwiper = styled(Swiper, {
   name: 'ESGallerySwiper',
   slot: 'Swiper',
-  overridesResolver: (props, styles) => styles.swiper
+  overridesResolver: (props, styles) => styles.swiper,
 })(() => ({
   height: '100%',
 
   '& .ESSwiper-wrapper': {
-    height: '100%'
+    height: '100%',
   },
   '& .ESSwiper-container': {
     gridAutoColumns: '100%',
-    height: '100%'
-  }
+    height: '100%',
+  },
 }));
 
 const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ theme, ownerState }) => ({
@@ -75,27 +75,27 @@ const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ t
   WebkitTapHighlightColor: 'transparent',
 
   '@media (hover: none)': {
-    display: 'none'
+    display: 'none',
   },
 
   '&:hover': {
     [`& .${touchRippleClasses.root}`]: {
-      backgroundColor: theme.vars.palette.white.A50
-    }
+      backgroundColor: theme.vars.palette.white.A50,
+    },
   },
 
   ...(ownerState.step < 0 && {
     justifyContent: 'flex-start',
     left: 0,
     paddingLeft: 24,
-    paddingRight: 8
+    paddingRight: 8,
   }),
 
   ...(ownerState.step > 0 && {
     justifyContent: 'flex-end',
     right: 0,
     paddingRight: 24,
-    paddingLeft: 8
+    paddingLeft: 8,
   }),
 
   [`& .${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorTertiary}`]: {
@@ -106,8 +106,8 @@ const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ t
     '--icon': theme.vars.palette.white[500],
     '--hovered': theme.vars.palette.white.A50,
     '--focused': theme.vars.palette.white.A200,
-    '--pressed': theme.vars.palette.white.A150
-  }
+    '--pressed': theme.vars.palette.white.A150,
+  },
 }));
 
 const GallerySwiperButtonPrev = ({ icon, label }: { icon: ReactNode; label?: string }) => {
@@ -173,7 +173,7 @@ export const GallerySwiper = (inProps: GallerySwiperProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESGallerySwiper'
+    name: 'ESGallerySwiper',
   });
 
   const { items, setItem } = useGalleryContext();

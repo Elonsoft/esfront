@@ -13,8 +13,8 @@ module.exports = {
     {
       directory: '../src/components',
       files: '**/*.stories.tsx',
-      titlePrefix: 'Components'
-    }
+      titlePrefix: 'Components',
+    },
   ],
   staticDirs: ['./assets'],
 
@@ -23,13 +23,13 @@ module.exports = {
     {
       name: '@storybook/addon-essentials',
       options: {
-        backgrounds: false
-      }
+        backgrounds: false,
+      },
     },
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-mdx-gfm'),
-    '@storybook/addon-webpack5-compiler-babel'
+    '@storybook/addon-webpack5-compiler-babel',
   ],
 
   webpackFinal: (config) => {
@@ -41,19 +41,19 @@ module.exports = {
           ...config.resolve.alias,
           '@emotion/core': toPath('node_modules/@emotion/react'),
           'emotion-theming': toPath('node_modules/@emotion/react'),
-          '~storybook': path.resolve(__dirname)
-        }
-      }
+          '~storybook': path.resolve(__dirname),
+        },
+      },
     };
   },
   core: {
-    disableTelemetry: true
+    disableTelemetry: true,
   },
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
-    options: {}
+    options: {},
   },
   docs: {
-    autodocs: 'tag'
-  }
+    autodocs: 'tag',
+  },
 };

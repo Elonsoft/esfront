@@ -11,29 +11,29 @@ const meta: Meta<typeof AppBar> = {
   tags: ['autodocs'],
   component: AppBar,
   parameters: {
-    references: ['AppBar']
+    references: ['AppBar'],
   },
   argTypes: {
     children: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     startAdornment: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     endAdornment: {
       control: {
-        type: 'boolean'
-      }
-    }
+        type: 'boolean',
+      },
+    },
   },
   args: {
     startAdornment: true,
-    endAdornment: true
-  }
+    endAdornment: true,
+  },
 };
 
 export default meta;
@@ -67,5 +67,5 @@ export const Demo: Story = {
         <Box height="150vh" />
       </Box>
     );
-  }
+  },
 };

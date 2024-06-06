@@ -17,7 +17,7 @@ const useUtilityClasses = (ownerState: FileIconBadgeOwnerState) => {
   const { classes, size } = ownerState;
 
   const slots = {
-    root: ['root', size]
+    root: ['root', size],
   };
 
   return composeClasses(slots, getFileIconBadgeUtilityClass, classes);
@@ -28,10 +28,10 @@ const FileIconBadgeRoot = styled(Typography, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { size }
+      ownerState: { size },
     } = props;
     return [styles.root, styles[size]];
-  }
+  },
 })<{ ownerState: FileIconBadgeOwnerState }>(({ theme, ownerState }) => ({
   alignSelf: 'flex-start',
   borderRadius: '4px',
@@ -44,14 +44,14 @@ const FileIconBadgeRoot = styled(Typography, {
   ...(ownerState.size === 'md' && {
     minWidth: '32px',
     padding: '1px 2px',
-    top: '-3px'
+    top: '-3px',
   }),
 
   ...(ownerState.size === 'sm' && {
     minWidth: '30px',
     padding: '0 2px',
-    top: '-2px'
-  })
+    top: '-2px',
+  }),
 }));
 
 export const FileIconBadge = (inProps: FileIconBadgeProps) => {
@@ -64,7 +64,7 @@ export const FileIconBadge = (inProps: FileIconBadgeProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESFileIconBadge'
+    name: 'ESFileIconBadge',
   });
 
   const ownerState = { ...props, size };

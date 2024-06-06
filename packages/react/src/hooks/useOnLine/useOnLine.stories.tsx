@@ -8,8 +8,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useOnLine',
   parameters: {
-    references: ['useOnLine']
-  }
+    references: ['useOnLine'],
+  },
 };
 
 export default meta;
@@ -24,5 +24,5 @@ export const Demo: Story = {
         Network status is <b>{isOnLine ? 'ONLINE' : 'OFFLINE'}</b>.
       </Typography>
     );
-  }
+  },
 };

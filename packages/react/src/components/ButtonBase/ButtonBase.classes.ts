@@ -23,5 +23,5 @@ export const buttonBaseClasses: ButtonBaseClasses = generateUtilityClasses('ESBu
   'disabled',
   'disableTouchRipple',
   'pressed',
-  'wrapper'
+  'wrapper',
 ]);

@@ -17,7 +17,7 @@ const useUtilityClasses = (ownerState: GalleryMetaTextOwnerState) => {
   const { classes, primary } = ownerState;
 
   const slots = {
-    root: ['root', primary && 'primary']
+    root: ['root', primary && 'primary'],
   };
 
   return composeClasses(slots, getGalleryMetaTextUtilityClass, classes);
@@ -28,10 +28,10 @@ const GalleryMetaTextRoot = styled(Typography, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { primary }
+      ownerState: { primary },
     } = props;
     return [styles.root, primary && styles.primary];
-  }
+  },
 })<{ ownerState: GalleryMetaTextOwnerState }>(({ theme }) => ({
   color: theme.vars.palette.white.A800,
   display: 'flex',
@@ -45,16 +45,16 @@ const GalleryMetaTextRoot = styled(Typography, {
       ...theme.typography.body100,
 
       '&:not(:last-child)': {
-        marginBottom: 4
-      }
-    }
-  }
+        marginBottom: 4,
+      },
+    },
+  },
 }));
 
 export const GalleryMetaText = (inProps: GalleryMetaTextProps) => {
   const { children, className, sx, primary, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryMetaText'
+    name: 'ESGalleryMetaText',
   });
 
   const ownerState = { primary, ...props };

@@ -20,7 +20,7 @@ const useUtilityClasses = (ownerState: TableTextOwnerState) => {
 
   const slots = {
     root: ['root'],
-    tooltip: ['tooltip']
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getTableTextUtilityClass, classes);
@@ -29,12 +29,12 @@ const useUtilityClasses = (ownerState: TableTextOwnerState) => {
 const TableTextRoot = styled('div', {
   name: 'ESTableText',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-  minWidth: 0
+  minWidth: 0,
 }));
 
 const TableTextTooltip = styled(
@@ -42,7 +42,7 @@ const TableTextTooltip = styled(
   {
     name: 'ESTableText',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )({});
 
@@ -56,7 +56,7 @@ export const TableText = memo(function TableText(inProps: TableTextProps) {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESTableText'
+    name: 'ESTableText',
   });
 
   const ownerState = { ...props };

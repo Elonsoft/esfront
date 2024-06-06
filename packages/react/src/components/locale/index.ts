@@ -130,8 +130,8 @@ export const en: Localization = {
   components: {
     ESAlertClose: {
       defaultProps: {
-        label: 'Close'
-      }
+        label: 'Close',
+      },
     },
     ESAudioPlayer: {
       defaultProps: {
@@ -145,8 +145,8 @@ export const en: Localization = {
         labelRate: 'Rate',
         labelRateNormal: 'Normal',
         labelUnmute: 'Unmute',
-        labelVolume: 'Volume'
-      }
+        labelVolume: 'Volume',
+      },
     },
     ESAutocompleteMenu: {
       defaultProps: {
@@ -154,115 +154,115 @@ export const en: Localization = {
         labelNoMatches: 'No matches',
         labelLoading: 'Loading',
         labelSearch: 'Search',
-        labelSearchClear: 'Reset'
-      }
+        labelSearchClear: 'Reset',
+      },
     },
     ESBreadcrumbs: {
       defaultProps: {
-        labelButtonMore: 'More'
-      }
+        labelButtonMore: 'More',
+      },
     },
     ESCalendarHead: {
       defaultProps: {
-        getWeekDays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-      }
+        getWeekDays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+      },
     },
     ESDialogArrow: {
       defaultProps: {
         labelPrev: 'Previous',
-        labelNext: 'Next'
-      }
+        labelNext: 'Next',
+      },
     },
     ESDialogClose: {
       defaultProps: {
         label: 'Close',
-        labelEscapeKey: 'Esc'
-      }
+        labelEscapeKey: 'Esc',
+      },
     },
     ESFileInfoName: {
       defaultProps: {
-        labelDelete: 'Delete'
-      }
+        labelDelete: 'Delete',
+      },
     },
     ESFormatSize: {
       defaultProps: {
         metricUnits: ['B', 'KB', 'MB', 'GB', 'TB'],
-        binaryUnits: ['B', 'KiB', 'MiB', 'GiB', 'TiB']
-      }
+        binaryUnits: ['B', 'KiB', 'MiB', 'GiB', 'TiB'],
+      },
     },
     ESGalleryActions: {
       defaultProps: {
         labelClose: 'Close',
-        labelThumbnails: 'Thumbnails'
-      }
+        labelThumbnails: 'Thumbnails',
+      },
     },
     ESGalleryDescription: {
       defaultProps: {
         labelCollapse: 'Collapse description',
-        labelExpand: 'Expand description'
-      }
+        labelExpand: 'Expand description',
+      },
     },
     ESGalleryMeta: {
       defaultProps: {
-        labelClose: 'Close'
-      }
+        labelClose: 'Close',
+      },
     },
     ESGallerySwiper: {
       defaultProps: {
         labelNext: 'Next photo',
-        labelPrev: 'Previous photo'
-      }
+        labelPrev: 'Previous photo',
+      },
     },
     ESPaginationPages: {
       defaultProps: {
         labelPrevPage: 'Go to previous page',
         labelNextPage: 'Go to next page',
-        labelPage: 'page'
-      }
+        labelPage: 'page',
+      },
     },
     ESPaginationRange: {
       defaultProps: {
         labelItemsPerPage: 'Per:',
-        labelOf: 'of'
-      }
+        labelOf: 'of',
+      },
     },
     ESPasswordField: {
       defaultProps: {
         labelHidePassword: 'Hide password',
-        labelShowPassword: 'Show password'
-      }
+        labelShowPassword: 'Show password',
+      },
     },
     ESSidebarToggle: {
       defaultProps: {
         labelOpen: 'Expand',
-        labelHide: 'Collapse'
-      }
+        labelHide: 'Collapse',
+      },
     },
     ESSidebarItem: {
       defaultProps: {
         labelOpen: 'Show nested list',
-        labelHide: 'Hide nested list'
-      }
+        labelHide: 'Hide nested list',
+      },
     },
     ESSFSSearch: {
       defaultProps: {
         ariaLabel: 'Search',
         placeholder: 'Search',
-        labelClear: 'Clear'
-      }
+        labelClear: 'Clear',
+      },
     },
     ESSFSSorting: {
       defaultProps: {
-        labelButton: 'Sorting'
-      }
+        labelButton: 'Sorting',
+      },
     },
     ESSFSFilters: {
       defaultProps: {
         labelButton: 'Filters',
         labelHeader: 'Filters',
         labelClose: 'Close',
-        labelReset: 'Reset all filters'
-      }
+        labelReset: 'Reset all filters',
+      },
     },
     ESSortingMenu: {
       defaultProps: {
@@ -274,39 +274,39 @@ export const en: Localization = {
         labelMultisortTitle: 'Multisort',
         labelMultisortLMB: 'LMB',
         labelMultisortMobileOn: 'Multisort enabled',
-        labelMultisortMobileOff: 'Hold to multisort'
-      }
+        labelMultisortMobileOff: 'Hold to multisort',
+      },
     },
     ESSwiperButton: {
       defaultProps: {
         labelPrev: 'Previous slide',
-        labelNext: 'Next slide'
-      }
+        labelNext: 'Next slide',
+      },
     },
     ESTableActions: {
       defaultProps: {
-        label: 'Selected'
-      }
+        label: 'Selected',
+      },
     },
     ESTableCell: {
       defaultProps: {
-        labelResize: 'Resize'
-      }
+        labelResize: 'Resize',
+      },
     },
     ESMadeBy: {
       defaultProps: {
-        text: 'Made by'
-      }
-    }
-  }
+        text: 'Made by',
+      },
+    },
+  },
 };
 
 export const ru: Localization = {
   components: {
     ESAlertClose: {
       defaultProps: {
-        label: 'Закрыть'
-      }
+        label: 'Закрыть',
+      },
     },
     ESAudioPlayer: {
       defaultProps: {
@@ -320,8 +320,8 @@ export const ru: Localization = {
         labelRate: 'Скорость',
         labelRateNormal: 'Обычная',
         labelUnmute: 'Включить звук',
-        labelVolume: 'Громкость'
-      }
+        labelVolume: 'Громкость',
+      },
     },
     ESAutocompleteMenu: {
       defaultProps: {
@@ -329,115 +329,115 @@ export const ru: Localization = {
         labelNoMatches: 'Совпадений нет',
         labelLoading: 'Загрузка',
         labelSearch: 'Поиск по списку',
-        labelSearchClear: 'Сбросить'
-      }
+        labelSearchClear: 'Сбросить',
+      },
     },
     ESBreadcrumbs: {
       defaultProps: {
-        labelButtonMore: 'Ещё'
-      }
+        labelButtonMore: 'Ещё',
+      },
     },
     ESCalendarHead: {
       defaultProps: {
-        getWeekDays: () => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
-      }
+        getWeekDays: () => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+      },
     },
     ESDialogArrow: {
       defaultProps: {
         labelPrev: 'Назад',
-        labelNext: 'Вперёд'
-      }
+        labelNext: 'Вперёд',
+      },
     },
     ESDialogClose: {
       defaultProps: {
         label: 'Закрыть',
-        labelEscapeKey: 'Esc'
-      }
+        labelEscapeKey: 'Esc',
+      },
     },
     ESFileInfoName: {
       defaultProps: {
-        labelDelete: 'Удалить'
-      }
+        labelDelete: 'Удалить',
+      },
     },
     ESFormatSize: {
       defaultProps: {
         metricUnits: ['Б', 'КБ', 'МБ', 'ГБ', 'ТБ'],
-        binaryUnits: ['Б', 'КиБ', 'МиБ', 'ГиБ', 'ТиБ']
-      }
+        binaryUnits: ['Б', 'КиБ', 'МиБ', 'ГиБ', 'ТиБ'],
+      },
     },
     ESGalleryActions: {
       defaultProps: {
         labelClose: 'Закрыть',
-        labelThumbnails: 'Миниатюры'
-      }
+        labelThumbnails: 'Миниатюры',
+      },
     },
     ESGalleryDescription: {
       defaultProps: {
         labelCollapse: 'Свернуть описание',
-        labelExpand: 'Развернуть описание'
-      }
+        labelExpand: 'Развернуть описание',
+      },
     },
     ESGalleryMeta: {
       defaultProps: {
-        labelClose: 'Закрыть'
-      }
+        labelClose: 'Закрыть',
+      },
     },
     ESGallerySwiper: {
       defaultProps: {
         labelNext: 'Следующее фото',
-        labelPrev: 'Предыдущее фото'
-      }
+        labelPrev: 'Предыдущее фото',
+      },
     },
     ESPaginationPages: {
       defaultProps: {
         labelPrevPage: 'Предыдущая страница',
         labelNextPage: 'Следующая страница',
-        labelPage: 'стр.'
-      }
+        labelPage: 'стр.',
+      },
     },
     ESPaginationRange: {
       defaultProps: {
         labelItemsPerPage: 'По:',
-        labelOf: 'из'
-      }
+        labelOf: 'из',
+      },
     },
     ESPasswordField: {
       defaultProps: {
         labelHidePassword: 'Скрыть пароль',
-        labelShowPassword: 'Показать пароль'
-      }
+        labelShowPassword: 'Показать пароль',
+      },
     },
     ESSidebarToggle: {
       defaultProps: {
         labelOpen: 'Развернуть',
-        labelHide: 'Свернуть'
-      }
+        labelHide: 'Свернуть',
+      },
     },
     ESSidebarItem: {
       defaultProps: {
         labelOpen: 'Показать вложенный список',
-        labelHide: 'Скрыть вложенный список'
-      }
+        labelHide: 'Скрыть вложенный список',
+      },
     },
     ESSFSSearch: {
       defaultProps: {
         ariaLabel: 'Поиск',
         placeholder: 'Поиск',
-        labelClear: 'Сбросить'
-      }
+        labelClear: 'Сбросить',
+      },
     },
     ESSFSSorting: {
       defaultProps: {
-        labelButton: 'Сортировка'
-      }
+        labelButton: 'Сортировка',
+      },
     },
     ESSFSFilters: {
       defaultProps: {
         labelButton: 'Фильтры',
         labelHeader: 'Фильтры',
         labelClose: 'Закрыть',
-        labelReset: 'Сбросить все фильтры'
-      }
+        labelReset: 'Сбросить все фильтры',
+      },
     },
     ESSortingMenu: {
       defaultProps: {
@@ -449,29 +449,29 @@ export const ru: Localization = {
         labelMultisortTitle: 'Мультисортировка',
         labelMultisortLMB: 'ЛКМ',
         labelMultisortMobileOn: 'Мультисортировка включена',
-        labelMultisortMobileOff: 'Удерживайте для мультисортировки'
-      }
+        labelMultisortMobileOff: 'Удерживайте для мультисортировки',
+      },
     },
     ESSwiperButton: {
       defaultProps: {
         labelPrev: 'Предыдущий слайд',
-        labelNext: 'Следующий слайд'
-      }
+        labelNext: 'Следующий слайд',
+      },
     },
     ESTableActions: {
       defaultProps: {
-        label: 'Выбрано'
-      }
+        label: 'Выбрано',
+      },
     },
     ESTableCell: {
       defaultProps: {
-        labelResize: 'Изменить ширину'
-      }
+        labelResize: 'Изменить ширину',
+      },
     },
     ESMadeBy: {
       defaultProps: {
-        text: 'Сделано в'
-      }
-    }
-  }
+        text: 'Сделано в',
+      },
+    },
+  },
 };

@@ -18,5 +18,5 @@ export const avatarClasses: AvatarClasses = generateUtilityClasses('ESAvatar', [
   'outlined',
   'root',
   'variantSquare',
-  'variantCircle'
+  'variantCircle',
 ]);

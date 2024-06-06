@@ -2,6 +2,6 @@ export { SpinnerFadingBars } from './SpinnerFadingBars';
 export {
   SpinnerFadingBarsClasses,
   spinnerFadingBarsClasses,
-  SpinnerFadingBarsClassKey
+  SpinnerFadingBarsClassKey,
 } from './SpinnerFadingBars.classes';
 export { SpinnerFadingBarsProps } from './SpinnerFadingBars.types';

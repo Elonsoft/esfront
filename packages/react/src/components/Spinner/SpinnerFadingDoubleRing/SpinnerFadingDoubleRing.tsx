@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: SpinnerFadingDoubleRingPropsOwnerState) =
   const slots = {
     root: ['root', color],
     lowerPath: ['lowerPath'],
-    upperPath: ['upperPaths']
+    upperPath: ['upperPaths'],
   };
 
   return composeClasses(slots, getSpinnerFadingDoubleRingUtilityClass, classes);
@@ -39,16 +39,16 @@ const SpinnerFadingDoubleRingSpinnerRoot = styled('svg', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { color }
+      ownerState: { color },
     } = props;
     return [styles.root, styles[color]];
-  }
+  },
 })<{ ownerState: SpinnerFadingDoubleRingPropsOwnerState }>(
   ({ ownerState }) => ({
     color: ownerState.spinnerColor,
     '& > *': {
-      fill: 'currentColor'
-    }
+      fill: 'currentColor',
+    },
   }),
   ({ ownerState }) => spinnerRotateAnimation('&', ownerState.duration, ownerState.ease)
 );
@@ -56,27 +56,27 @@ const SpinnerFadingDoubleRingSpinnerRoot = styled('svg', {
 const SpinnerFadingDoubleRingSpinnerLowerPath = styled('div', {
   name: 'ESSpinnerFadingDoubleRing',
   slot: 'LowerPath',
-  overridesResolver: (props, styles) => styles.lowerPath
+  overridesResolver: (props, styles) => styles.lowerPath,
 })<{ ownerState: SpinnerFadingDoubleRingPropsOwnerState }>(({ theme, ownerState }) => ({
   background: `conic-gradient(from 180deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
     theme.palette.mode,
     1
   )}) 246deg, ${ownerState.spinnerColor} 360deg)`,
   width: '100%',
-  height: '100%'
+  height: '100%',
 }));
 
 const SpinnerFadingDoubleRingSpinnerUpperPath = styled('div', {
   name: 'ESSpinnerFadingDoubleRing',
   slot: 'UpperPath',
-  overridesResolver: (props, styles) => styles.upperPath
+  overridesResolver: (props, styles) => styles.upperPath,
 })<{ ownerState: SpinnerFadingDoubleRingPropsOwnerState }>(({ theme, ownerState }) => ({
   background: `conic-gradient(from 0deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
     theme.palette.mode,
     1
   )}) 246deg, ${ownerState.spinnerColor} 360deg)`,
   width: '100%',
-  height: '100%'
+  height: '100%',
 }));
 
 export const SpinnerFadingDoubleRing = (inProps: SpinnerFadingDoubleRingProps) => {
@@ -90,7 +90,7 @@ export const SpinnerFadingDoubleRing = (inProps: SpinnerFadingDoubleRingProps) =
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSpinnerFadingDoubleRing'
+    name: 'ESSpinnerFadingDoubleRing',
   });
 
   const id = useMemo(() => `SpinnerFadingDoubleRing-${SpinnerFadingDoubleRing.count++}`, []);

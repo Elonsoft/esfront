@@ -6,24 +6,24 @@ const meta: Meta<typeof SvgIcon> = {
   tags: ['autodocs'],
   component: SvgIcon,
   parameters: {
-    references: ['SvgIcon']
+    references: ['SvgIcon'],
   },
   argTypes: {
     viewBox: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     ContainerProps: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
     size: '24px',
-    containerSize: '32px'
-  }
+    containerSize: '32px',
+  },
 };
 
 export default meta;
@@ -39,5 +39,5 @@ export const Demo: Story = {
         />
       </SvgIcon>
     );
-  }
+  },
 };

@@ -41,5 +41,5 @@ export const swiperClasses: SwiperClasses = generateUtilityClasses('ESSwiper', [
   'containerSnapAlignStart',
   'button',
   'buttonPrev',
-  'buttonNext'
+  'buttonNext',
 ]);

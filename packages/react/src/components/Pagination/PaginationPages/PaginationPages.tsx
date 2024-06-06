@@ -22,7 +22,7 @@ import {
   IconArrowRight2W300,
   IconChevronLeftW400,
   IconChevronRightW400,
-  IconDotsHorizontalW100
+  IconDotsHorizontalW100,
 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
@@ -53,7 +53,7 @@ const useUtilityClasses = (ownerState: PaginationPagesOwnerState) => {
     button: ['button'],
     ellipsis: ['ellipsis'],
     textField: ['textField'],
-    tooltip: ['tooltip']
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getPaginationPagesUtilityClass, classes);
@@ -62,57 +62,57 @@ const useUtilityClasses = (ownerState: PaginationPagesOwnerState) => {
 const PaginationPagesRoot = styled('div', {
   name: 'ESPaginationPages',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
 }));
 
 const PaginationPagesPagination = styled(Pagination, {
   name: 'ESPaginationPages',
   slot: 'Pagination',
-  overridesResolver: (props, styles) => styles.pagination
+  overridesResolver: (props, styles) => styles.pagination,
 })(() => ({
   [`& .${paginationClasses.ul}`]: {
-    flexWrap: 'nowrap'
-  }
+    flexWrap: 'nowrap',
+  },
 }));
 
 const PaginationPagesButton = styled(Button, {
   name: 'ESPaginationPages',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.button
+  overridesResolver: (props, styles) => styles.button,
 })(({ theme }) => ({
   borderRadius: '50%',
 
   [`&.${buttonClasses.root}`]: {
     '&, &:not(:disabled):hover, &:not(:disabled):active': {
-      '--icon': theme.vars.palette.monoA.A500
+      '--icon': theme.vars.palette.monoA.A500,
     },
 
     [`&.${ESbuttonBaseClasses.disabled}`]: {
-      '--icon': theme.vars.palette.monoA.A300
-    }
-  }
+      '--icon': theme.vars.palette.monoA.A300,
+    },
+  },
 }));
 
 const PaginationPagesEllipsis = styled('div', {
   name: 'ESPaginationPages',
   slot: 'Ellipsis',
-  overridesResolver: (props, styles) => styles.ellipsis
+  overridesResolver: (props, styles) => styles.ellipsis,
 })(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   width: 32,
   height: 32,
-  color: theme.vars.palette.monoA.A500
+  color: theme.vars.palette.monoA.A500,
 }));
 
 const PaginationPagesPaginationItem = styled(PaginationItem, {
   name: 'ESPaginationPages',
   slot: 'PaginationItem',
-  overridesResolver: (props, styles) => styles.paginationItem
+  overridesResolver: (props, styles) => styles.paginationItem,
 })(({ theme }) => ({
   [`&.${buttonBaseClasses.root}`]: {
     ...theme.typography.caption,
@@ -122,13 +122,13 @@ const PaginationPagesPaginationItem = styled(PaginationItem, {
 
     [`&.${paginationItemClasses.root}`]: {
       [`& .${touchRippleClasses.root}`]: {
-        transitionDuration: `${theme.transitions.duration.short}ms`
-      }
+        transitionDuration: `${theme.transitions.duration.short}ms`,
+      },
     },
 
     [`& .${touchRippleClasses.rippleVisible}`]: {
       animationName: `${enterKeyframe} !important`,
-      opacity: '1 !important'
+      opacity: '1 !important',
     },
 
     ...theme.mixins.button({
@@ -136,7 +136,7 @@ const PaginationPagesPaginationItem = styled(PaginationItem, {
       color: theme.vars.palette.monoA.A600,
       hover: theme.vars.palette.monoA.A50,
       focus: theme.vars.palette.monoA.A200,
-      active: theme.vars.palette.monoA.A150
+      active: theme.vars.palette.monoA.A150,
     }),
 
     [`&.${paginationItemClasses.selected}`]: {
@@ -147,16 +147,16 @@ const PaginationPagesPaginationItem = styled(PaginationItem, {
         color: theme.vars.palette.monoA.A800,
         hover: theme.vars.palette.secondary.A100,
         focus: theme.vars.palette.secondary.A200,
-        active: theme.vars.palette.secondary.A150
-      })
-    }
-  }
+        active: theme.vars.palette.secondary.A150,
+      }),
+    },
+  },
 })) as typeof ButtonBase;
 
 const PaginationPagesTextField = styled(TextField, {
   name: 'ESPaginationPages',
   slot: 'TextField',
-  overridesResolver: (props, styles) => styles.textField
+  overridesResolver: (props, styles) => styles.textField,
 })(({ theme }) => ({
   [`& .${outlinedInputClasses.root}`]: {
     marginLeft: '16px',
@@ -167,17 +167,17 @@ const PaginationPagesTextField = styled(TextField, {
       color: theme.vars.palette.monoA.A600,
       padding: '7px 8px',
       '&::placeholder': {
-        color: theme.vars.palette.monoA.A600
+        color: theme.vars.palette.monoA.A600,
       },
       '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
         appearance: 'none',
-        margin: 0
+        margin: 0,
       },
       '&[type=number]': {
-        appearance: 'textfield'
-      }
-    }
-  }
+        appearance: 'textfield',
+      },
+    },
+  },
 }));
 
 const PaginationPagesTooltip = styled(
@@ -185,7 +185,7 @@ const PaginationPagesTooltip = styled(
   {
     name: 'ESPaginationPages',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
@@ -194,8 +194,8 @@ const PaginationPagesTooltip = styled(
     alignItems: 'center',
     display: 'grid',
     gap: 4,
-    gridAutoFlow: 'column'
-  }
+    gridAutoFlow: 'column',
+  },
 }));
 
 const REGEX = /^[0-9]*$/;
@@ -217,7 +217,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESPaginationPages'
+    name: 'ESPaginationPages',
   });
 
   const { count, itemsPerPage, page, onPageChange } = usePaginationContext();

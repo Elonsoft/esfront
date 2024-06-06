@@ -17,5 +17,5 @@ export function getGalleryActionsUtilityClass(slot: string): string {
 export const galleryActionsClasses: GalleryActionsClasses = generateUtilityClasses('ESGalleryActions', [
   'root',
   'buttonClose',
-  'buttonThumbnails'
+  'buttonThumbnails',
 ]);

@@ -30,5 +30,5 @@ export const paginationPagesClasses: PaginationPagesClasses = generateUtilityCla
   'button',
   'ellipsis',
   'textField',
-  'tooltip'
+  'tooltip',
 ]);

@@ -24,59 +24,59 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Alert,
   parameters: {
-    references: ['Alert', 'AlertActions', 'AlertClose', 'AlertTitle']
+    references: ['Alert', 'AlertActions', 'AlertClose', 'AlertTitle'],
   },
   argTypes: {
     color: {
       options: ['success', 'warning', 'error', 'info', 'monoA'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     severity: {
       options: ['success', 'warning', 'error', 'info'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     variant: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     icon: {
       defaultValue: true,
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     title: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     text: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     action: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     actions: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     breakpoint: {
       control: {
-        type: 'number'
-      }
-    }
+        type: 'number',
+      },
+    },
   },
   args: {
     icon: true,
     action: false,
-    actions: false
-  }
+    actions: false,
+  },
 };
 
 export default meta;
@@ -108,5 +108,5 @@ export const Demo: Story = {
         {args.text || getText(context)}
       </Alert>
     );
-  }
+  },
 };

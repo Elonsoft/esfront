@@ -19,7 +19,7 @@ const useUtilityClasses = (ownerState: SidebarMenuOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getSidebarMenuUtilityClass, classes);
@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: SidebarMenuOwnerState) => {
 const SidebarMenuRoot = styled('div', {
   name: 'ESSidebarMenu',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
   flexDirection: 'column',
@@ -36,7 +36,7 @@ const SidebarMenuRoot = styled('div', {
   gap: '2px',
   textAlign: 'center',
   overflowX: 'hidden',
-  padding: '8px 0'
+  padding: '8px 0',
 }));
 
 export const SidebarMenu = (inProps: SidebarMenuProps) => {
@@ -49,7 +49,7 @@ export const SidebarMenu = (inProps: SidebarMenuProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSidebarMenu'
+    name: 'ESSidebarMenu',
   });
 
   const [openedItems, setItems] = useState<string[]>([]);

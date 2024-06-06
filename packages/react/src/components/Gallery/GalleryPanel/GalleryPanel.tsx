@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: GalleryPanelOwnerState) => {
 
   const slots = {
     root: ['root', `position${capitalize(position)}`],
-    content: ['content', isVisible && 'contentVisible', expanded && 'contentExpanded']
+    content: ['content', isVisible && 'contentVisible', expanded && 'contentExpanded'],
   };
 
   return composeClasses(slots, getGalleryPanelUtilityClass, classes);
@@ -39,10 +39,10 @@ const GalleryPanelRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { position }
+      ownerState: { position },
     } = props;
     return [styles.root, styles[`position${capitalize(position)}`]];
-  }
+  },
 })(({ theme }) => ({
   position: 'absolute',
   width: '100%',
@@ -53,10 +53,10 @@ const GalleryPanelRoot = styled('div', {
 
     [theme.breakpoints.up('tabletXS')]: {
       [`&.${galleryPanelClasses.positionBottom}`]: {
-        paddingTop: '8px'
-      }
-    }
-  }
+        paddingTop: '8px',
+      },
+    },
+  },
 }));
 
 const GalleryPanelContent = styled('div', {
@@ -64,20 +64,20 @@ const GalleryPanelContent = styled('div', {
   slot: 'Content',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { isVisible, expanded }
+      ownerState: { isVisible, expanded },
     } = props;
     return [styles.content, isVisible && styles.contentVisible, expanded && styles.expanded];
-  }
+  },
 })<{ ownerState: GalleryPanelOwnerState }>(({ theme }) => ({
   display: 'flex',
   transition: `opacity ${theme.transitions.duration.shortest}ms`,
 
   [`&.${galleryPanelClasses.content}.${galleryPanelClasses.contentVisible}`]: {
-    opacity: 1
+    opacity: 1,
   },
 
   [`&.${galleryPanelClasses.contentExpanded}`]: {
-    backgroundColor: theme.vars.palette.overlay[900]
+    backgroundColor: theme.vars.palette.overlay[900],
   },
 
   '@media (max-height: 449px)': {
@@ -86,15 +86,15 @@ const GalleryPanelContent = styled('div', {
     opacity: 0,
 
     [`&.${galleryPanelClasses.contentExpanded}`]: {
-      backgroundColor: theme.vars.palette.overlay[900]
-    }
-  }
+      backgroundColor: theme.vars.palette.overlay[900],
+    },
+  },
 }));
 
 export const GalleryPanel = (inProps: GalleryPanelProps) => {
   const { children, className, sx, position, direction, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryPanel'
+    name: 'ESGalleryPanel',
   });
 
   const { items, item } = useGalleryContext();

@@ -12,7 +12,7 @@ const sortingOptionsRu = [
   { label: 'Срок сдачи', value: 'byRent' },
   { label: 'Старт продаж', value: 'bySalesStart' },
   { label: 'Дата создания', value: 'byCreationDate' },
-  { label: 'Новизна', value: 'byNewest' }
+  { label: 'Новизна', value: 'byNewest' },
 ];
 
 const sortingOptionsEn = [
@@ -21,7 +21,7 @@ const sortingOptionsEn = [
   { label: 'Deadline', value: 'byRent' },
   { label: 'Start of sales', value: 'bySalesStart' },
   { label: 'Date of creation', value: 'byCreationDate' },
-  { label: 'Novelty', value: 'byNewest' }
+  { label: 'Novelty', value: 'byNewest' },
 ];
 
 type Args = { multiple: boolean };
@@ -30,11 +30,11 @@ const meta: Meta<Args> = {
   title: 'SortingMenu',
   tags: ['autodocs'],
   parameters: {
-    references: ['SortingMenu']
+    references: ['SortingMenu'],
   },
   args: {
-    multiple: false
-  }
+    multiple: false,
+  },
 };
 
 export default meta;
@@ -66,14 +66,14 @@ const DemoWrapper = ({ locale, multiple }: { locale: string; multiple: boolean }
             anchorEl: menuAnchor,
             anchorOrigin: {
               vertical: 'bottom',
-              horizontal: 'right'
+              horizontal: 'right',
             },
             open: !!menuAnchor,
             transformOrigin: {
               vertical: 'top',
-              horizontal: 'right'
+              horizontal: 'right',
             },
-            onClose: onMenuClose
+            onClose: onMenuClose,
           }}
           options={locale === 'ru' ? sortingOptionsRu : sortingOptionsEn}
           value={values}
@@ -85,14 +85,14 @@ const DemoWrapper = ({ locale, multiple }: { locale: string; multiple: boolean }
             anchorEl: menuAnchor,
             anchorOrigin: {
               vertical: 'bottom',
-              horizontal: 'right'
+              horizontal: 'right',
             },
             open: !!menuAnchor,
             transformOrigin: {
               vertical: 'top',
-              horizontal: 'right'
+              horizontal: 'right',
             },
-            onClose: onMenuClose
+            onClose: onMenuClose,
           }}
           options={locale === 'ru' ? sortingOptionsRu : sortingOptionsEn}
           value={value}
@@ -106,5 +106,5 @@ const DemoWrapper = ({ locale, multiple }: { locale: string; multiple: boolean }
 export const Demo: Story = {
   render: function Render(args, { globals: { locale } }) {
     return <DemoWrapper locale={locale} multiple={args.multiple} />;
-  }
+  },
 };

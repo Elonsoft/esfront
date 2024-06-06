@@ -9,5 +9,5 @@ export const marine = {
   700: '#C5F1EA',
   800: '#DBF8F3',
   900: '#EBFFFC',
-  alpha: '300'
+  alpha: '300',
 };

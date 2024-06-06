@@ -2,6 +2,6 @@ export { ErrorPageDescription } from './ErrorPageDescription';
 export {
   ErrorPageDescriptionClasses,
   errorPageDescriptionClasses,
-  ErrorPageDescriptionClassKey
+  ErrorPageDescriptionClassKey,
 } from './ErrorPageDescription.classes';
 export { ErrorPageDescriptionProps } from './ErrorPageDescription.types';

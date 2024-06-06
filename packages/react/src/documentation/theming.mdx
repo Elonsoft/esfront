@@ -17,12 +17,12 @@ import { createTheme, palettes } from '@elonkit/react';
 const theme = createTheme({
   paletteDark: {
     ...palettes.common,
-    ...palettes.dark
+    ...palettes.dark,
   },
   paletteLight: {
     ...palettes.common,
-    ...palettes.light
-  }
+    ...palettes.light,
+  },
 });
 
 <ThemeProvider theme={theme}>...</ThemeProvider>;
@@ -43,13 +43,13 @@ import { createTypography } from '@elonkit/react';
 const theme = createTheme({
   paletteDark: {
     ...palettes.common,
-    ...palettes.dark
+    ...palettes.dark,
   },
   paletteLight: {
     ...palettes.common,
-    ...palettes.light
+    ...palettes.light,
   },
-  typography: createTypography
+  typography: createTypography,
 });
 
 <ThemeProvider theme={theme}>...</ThemeProvider>;

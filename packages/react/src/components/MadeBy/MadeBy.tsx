@@ -21,7 +21,7 @@ const useUtilityClasses = (ownerState: MadeByOwnerState) => {
   const { classes, clickable } = ownerState;
 
   const slots = {
-    root: ['root', clickable && 'clickable']
+    root: ['root', clickable && 'clickable'],
   };
 
   return composeClasses(slots, getMadeByUtilityClass, classes);
@@ -32,11 +32,11 @@ const MadeByRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { clickable }
+      ownerState: { clickable },
     } = props;
 
     return [styles.root, clickable && styles.clickable];
-  }
+  },
 })(({ theme }) => ({
   ...theme.typography.caption,
   color: theme.vars.palette.monoA.A500,
@@ -49,19 +49,19 @@ const MadeByRoot = styled('div', {
   width: 'fit-content',
 
   [`& .${svgIconClasses.root}`]: {
-    color: theme.vars.palette.monoA.A300
+    color: theme.vars.palette.monoA.A300,
   },
 
   [`&.${madeByClasses.clickable}`]: {
     cursor: 'pointer',
 
     [`&:hover .${svgIconClasses.root}, &:focus-visible .${svgIconClasses.root}`]: {
-      color: theme.vars.palette.monoA.A400
+      color: theme.vars.palette.monoA.A400,
     },
     [`&:active .${svgIconClasses.root}`]: {
-      color: theme.vars.palette.monoA.A500
-    }
-  }
+      color: theme.vars.palette.monoA.A500,
+    },
+  },
 }));
 
 /** The MadeBy component displays name of the developer. */
@@ -77,14 +77,14 @@ export const MadeBy: OverridableComponent<MadeByTypeMap> = (inProps: MadeByProps
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESMadeBy'
+    name: 'ESMadeBy',
   });
 
   const clickable = inClickable !== false && onClick ? true : inClickable;
 
   const ownerState = {
     classes: inClasses,
-    clickable
+    clickable,
   };
 
   const classes = useUtilityClasses(ownerState);

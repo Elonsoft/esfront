@@ -17,5 +17,5 @@ export function getDialogActionsUtilityClass(slot: string): string {
 export const dialogActionsClasses: DialogActionsClasses = generateUtilityClasses('ESDialogActions', [
   'root',
   'sticky',
-  'stuck'
+  'stuck',
 ]);

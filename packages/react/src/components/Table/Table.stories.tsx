@@ -51,7 +51,7 @@ const NAMES = {
     age: 'Age',
     status: 'Status',
     city: 'City',
-    menu: 'Menu'
+    menu: 'Menu',
   },
   ru: {
     checkbox: 'Чекбокс',
@@ -60,8 +60,8 @@ const NAMES = {
     age: 'Возраст',
     status: 'Статус',
     city: 'Город',
-    menu: 'Меню'
-  }
+    menu: 'Меню',
+  },
 };
 
 for (let i = 0; i < 50; i++) {
@@ -70,7 +70,7 @@ for (let i = 0; i < 50; i++) {
     name: 'John Doe',
     age: 25,
     status: 'Active',
-    city: 'New York City'
+    city: 'New York City',
   });
 
   DATA.ru.push({
@@ -78,7 +78,7 @@ for (let i = 0; i < 50; i++) {
     name: 'Иванов Иван Иванович',
     age: 25,
     status: 'Активен',
-    city: 'Иваново'
+    city: 'Иваново',
   });
 }
 
@@ -96,16 +96,16 @@ const meta: Meta<typeof Table> = {
       'TableItem',
       'TableRow',
       'TableScrollbar',
-      'TableText'
-    ]
+      'TableText',
+    ],
   },
   argTypes: {
     columns: {
       table: {
-        disable: true
-      }
-    }
-  }
+        disable: true,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -127,7 +127,7 @@ export const Demo: Story = {
       'minmax(100px, 2fr)',
       'minmax(100px, 1fr)',
       'minmax(0px, auto)',
-      '72px'
+      '72px',
     ]);
 
     const { onResize, onResizeCommit } = useTableResize(ref, rowRef, columns, setColumns);
@@ -135,7 +135,7 @@ export const Demo: Story = {
     const { selected, setSelected, isAllSelected, isSomeSelected, toggle, toggleAll } = useTableSelection(
       DATA[locale],
       {
-        key: 'id'
+        key: 'id',
       }
     );
 
@@ -263,7 +263,7 @@ export const Demo: Story = {
         </TableFoot>
       </Table>
     );
-  }
+  },
 };
 
 /** Pinned (or frozen, locked, or sticky) columns are columns that are visible at all time while the user scrolls the data grid horizontally. They can be pinned either to the left or right side.
@@ -289,7 +289,7 @@ export const ColumnPinning: Story = {
       'minmax(100px, 2fr)',
       'minmax(100px, 1fr)',
       'minmax(0px, auto)',
-      '72px'
+      '72px',
     ]);
 
     const { onResize, onResizeCommit } = useTableResize(ref, rowRef, columns, setColumns);
@@ -297,7 +297,7 @@ export const ColumnPinning: Story = {
     const { selected, setSelected, isAllSelected, isSomeSelected, toggle, toggleAll } = useTableSelection(
       DATA[locale],
       {
-        key: 'id'
+        key: 'id',
       }
     );
 
@@ -307,7 +307,7 @@ export const ColumnPinning: Story = {
 
     const onPinChange = (pin: 'left' | 'right') => (event: React.ChangeEvent<HTMLInputElement>) => {
       const {
-        target: { value }
+        target: { value },
       } = event;
 
       if (pin === 'left') {
@@ -342,7 +342,7 @@ export const ColumnPinning: Story = {
             gap: '16px',
             marginBottom: '16px',
             maxWidth: '850px',
-            [theme.breakpoints.up('tabletXS')]: { flexDirection: 'row' }
+            [theme.breakpoints.up('tabletXS')]: { flexDirection: 'row' },
           })}
         >
           <TextField
@@ -488,5 +488,5 @@ export const ColumnPinning: Story = {
         </Table>
       </Box>
     );
-  }
+  },
 };

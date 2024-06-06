@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: GalleryDescriptionOwnerState) => {
     root: ['root', position],
     content: ['content', position, isExpanded && 'expanded'],
     text: ['text', isExpanded && 'expanded'],
-    button: ['button']
+    button: ['button'],
   };
 
   return composeClasses(slots, getGalleryDescriptionUtilityClass, classes);
@@ -38,17 +38,17 @@ const useUtilityClasses = (ownerState: GalleryDescriptionOwnerState) => {
 const GalleryDescriptionRoot = styled(Typography, {
   name: 'ESGalleryDescription',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
   height: '32px',
-  position: 'relative'
+  position: 'relative',
 })) as typeof Typography;
 
 const GalleryDescriptionContent = styled('div', {
   name: 'ESGalleryDescription',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })<{ ownerState: GalleryDescriptionOwnerState }>(({ theme, ownerState }) => ({
   display: 'flex',
   alignItems: 'flex-start',
@@ -64,19 +64,19 @@ const GalleryDescriptionContent = styled('div', {
     left: 0,
     right: 0,
     ...(ownerState.position === 'top' && {
-      top: 0
+      top: 0,
     }),
     ...(ownerState.position === 'bottom' && {
-      bottom: 0
+      bottom: 0,
     }),
-    background: `linear-gradient(to ${ownerState.position}, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`
-  })
+    background: `linear-gradient(to ${ownerState.position}, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`,
+  }),
 }));
 
 const GalleryDescriptionText = styled('div', {
   name: 'ESGalleryDescription',
   slot: 'Text',
-  overridesResolver: (props, styles) => styles.text
+  overridesResolver: (props, styles) => styles.text,
 })<{ ownerState: GalleryDescriptionOwnerState }>(({ theme, ownerState }) => ({
   color: theme.vars.palette.white.A800,
   overflow: 'hidden',
@@ -89,14 +89,14 @@ const GalleryDescriptionText = styled('div', {
   ...(!ownerState.isExpanded && {
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    textAlign: 'center'
-  })
+    textAlign: 'center',
+  }),
 }));
 
 const GalleryDescriptionButton = styled(Button, {
   name: 'ESGalleryDescription',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.button
+  overridesResolver: (props, styles) => styles.button,
 })<{ ownerState: GalleryDescriptionOwnerState }>(({ theme, ownerState }) => ({
   flexShrink: 0,
   position: 'sticky',
@@ -105,12 +105,12 @@ const GalleryDescriptionButton = styled(Button, {
   [`&.${buttonClasses.root}`]: {
     [`&.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
       '--background': 'transparent',
-      '--icon': theme.vars.palette.white.A500
-    }
+      '--icon': theme.vars.palette.white.A500,
+    },
   },
   ...(ownerState.position === 'top' && {
-    transform: 'scaleY(-1)'
-  })
+    transform: 'scaleY(-1)',
+  }),
 }));
 
 const IconDoubleChevronUp = (props: SvgIconProps) => {
@@ -141,7 +141,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryDescription'
+    name: 'ESGalleryDescription',
   });
 
   const { rectTop, rectBottom } = useGalleryPanelsContext();

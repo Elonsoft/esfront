@@ -8,5 +8,5 @@ export const greyscale = {
   600: '#A7AEBB',
   700: '#C2C9D4',
   800: '#DCE1E9',
-  900: '#F5F7FA'
+  900: '#F5F7FA',
 };

@@ -30,7 +30,7 @@ const useUtilityClasses = (ownerState: BreadcrumbOwnerState) => {
     root: ['root', disabled && 'disabled', shouldFirstShrink && 'shouldFirstShrink'],
     content: ['content'],
     separator: ['separator'],
-    tooltip: ['tooltip']
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getBreadcrumbUtilityClass, classes);
@@ -41,10 +41,10 @@ const BreadcrumbRoot = styled(Typography, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { disabled, shouldFirstShrink }
+      ownerState: { disabled, shouldFirstShrink },
     } = props;
     return [styles.root, disabled && styles.disabled, shouldFirstShrink && styles.shouldFirstShrink];
-  }
+  },
 })<{ ownerState: BreadcrumbOwnerState }>(({ ownerState }) => ({
   flexShrink: 0,
   display: 'flex',
@@ -53,20 +53,20 @@ const BreadcrumbRoot = styled(Typography, {
   overflow: 'hidden',
 
   [`&.${breadcrumbsClasses.buttonMore}`]: {
-    minWidth: '40px'
+    minWidth: '40px',
   },
 
   span: {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   },
 
   ...(ownerState.shouldFirstShrink && {
     '&:first-of-type': {
       flexShrink: '1',
-      flexGrow: 0
-    }
+      flexGrow: 0,
+    },
   }),
 
   ...(ownerState.disabled && {
@@ -74,8 +74,8 @@ const BreadcrumbRoot = styled(Typography, {
       cursor: 'not-allowed',
       textOverflow: 'ellipsis',
       overflow: 'hidden',
-      whiteSpace: 'nowrap'
-    }
+      whiteSpace: 'nowrap',
+    },
   }),
 
   '&:last-of-type': {
@@ -85,9 +85,9 @@ const BreadcrumbRoot = styled(Typography, {
     flexBasis: '0px',
 
     [`.${breadcrumbClasses.separator}`]: {
-      display: 'none'
-    }
-  }
+      display: 'none',
+    },
+  },
 })) as any;
 
 const BreadcrumbTooltip = styled(
@@ -95,25 +95,25 @@ const BreadcrumbTooltip = styled(
   {
     name: 'ESBreadcrumb',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )(() => ({
   [`&[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]: {
-    marginBottom: '10px !important'
+    marginBottom: '10px !important',
   },
   [`&[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]: {
-    marginBottom: '10px !important'
-  }
+    marginBottom: '10px !important',
+  },
 }));
 
 const BreadcrumbContent = styled(Button, {
   name: 'ESBreadcrumb',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })(({ theme }) => ({
   [`&.${buttonClasses.size24} .${buttonBaseClasses.wrapper}`]: {
     ...theme.typography.caption,
-    padding: 0
+    padding: 0,
   },
 
   [`&.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
@@ -124,19 +124,19 @@ const BreadcrumbContent = styled(Button, {
 
     [`&.${buttonBaseClasses.disabled}`]: {
       '--text': theme.vars.palette.monoA.A500,
-      pointerEvents: 'none'
+      pointerEvents: 'none',
     },
 
     [`& .${svgIconClasses.root}`]: {
-      color: theme.vars.palette.monoA.A500
-    }
-  }
+      color: theme.vars.palette.monoA.A500,
+    },
+  },
 })) as typeof Button;
 
 const BreadcrumbSeparator = styled('div', {
   name: 'ESBreadcrumb',
   slot: 'Separator',
-  overridesResolver: (props, styles) => styles.separator
+  overridesResolver: (props, styles) => styles.separator,
 })(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -144,8 +144,8 @@ const BreadcrumbSeparator = styled('div', {
   color: theme.vars.palette.monoA.A500,
 
   [`& .${svgIconClasses.root}`]: {
-    width: '16px'
-  }
+    width: '16px',
+  },
 }));
 
 export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: BreadcrumbProps) => {

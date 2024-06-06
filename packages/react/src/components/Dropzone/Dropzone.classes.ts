@@ -45,5 +45,5 @@ export const dropzoneClasses: DropzoneClasses = generateUtilityClasses('ESDropzo
   'headingText',
   'subheading',
   'helperText',
-  'helperTextError'
+  'helperTextError',
 ]);

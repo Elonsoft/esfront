@@ -36,36 +36,36 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Dialog,
   parameters: {
-    references: ['Dialog', 'DialogActions', 'DialogArrow', 'DialogClose', 'DialogTitle', 'DialogStackProvider']
+    references: ['Dialog', 'DialogActions', 'DialogArrow', 'DialogClose', 'DialogTitle', 'DialogStackProvider'],
   },
   argTypes: {
     DialogTitleSticky: {
       name: 'sticky',
       description: 'Whether the actions should be sticky.',
       table: {
-        category: 'DialogTitle'
+        category: 'DialogTitle',
       },
       defaultValue: true,
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     DialogActionsSticky: {
       name: 'sticky',
       description: 'Whether the title should be sticky.',
       table: {
-        category: 'DialogActions'
+        category: 'DialogActions',
       },
       defaultValue: true,
       control: {
-        type: 'boolean'
-      }
-    }
+        type: 'boolean',
+      },
+    },
   },
   args: {
     DialogTitleSticky: true,
-    DialogActionsSticky: true
-  }
+    DialogActionsSticky: true,
+  },
 };
 
 export default meta;
@@ -150,7 +150,7 @@ export const Demo: Story = {
         {getOpenButtonText(context)}
       </Button>
     );
-  }
+  },
 };
 
 /** Dialogs can be aligned to the top of the screen. */
@@ -191,7 +191,7 @@ export const Alignment: Story = {
         {getOpenButtonText(context)}
       </Button>
     );
-  }
+  },
 };
 
 /** Dialogs can be opened in `fullScreen` mode. */
@@ -266,7 +266,7 @@ export const FullScreen: Story = {
         {getOpenButtonText(context)}
       </Button>
     );
-  }
+  },
 };
 
 /** Dialogs can be easily stacked on top of each other with the help of the `DialogStackProvider`. */
@@ -305,5 +305,5 @@ export const Stack: Story = {
         {getOpenButtonText(context)}
       </Button>
     );
-  }
+  },
 };

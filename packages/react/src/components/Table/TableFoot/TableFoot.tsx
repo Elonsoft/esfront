@@ -21,7 +21,7 @@ const useUtilityClasses = (ownerState: TableFootOwnerState) => {
   const { classes, sticky, isStuck } = ownerState;
 
   const slots = {
-    root: ['root', sticky !== undefined && 'sticky', sticky !== undefined && isStuck && 'stuck']
+    root: ['root', sticky !== undefined && 'sticky', sticky !== undefined && isStuck && 'stuck'],
   };
 
   return composeClasses(slots, getTableFootUtilityClass, classes);
@@ -32,10 +32,10 @@ const TableFootRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { sticky, isStuck }
+      ownerState: { sticky, isStuck },
     } = props;
     return [styles.root, sticky !== undefined && styles.sticky, sticky !== undefined && isStuck && styles.stuck];
-  }
+  },
 })<{ ownerState: TableFootOwnerState }>(({ theme, ownerState }) => ({
   backgroundColor: theme.vars.palette.surface[100],
   borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
@@ -46,14 +46,14 @@ const TableFootRoot = styled('div', {
 
   ...(ownerState.sticky !== undefined && {
     position: 'sticky',
-    bottom: ownerState.sticky || 0
-  })
+    bottom: ownerState.sticky || 0,
+  }),
 }));
 
 export const TableFoot = memo(function TableFoot(inProps: TableFootProps) {
   const { children, className, sticky, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESTableFoot'
+    name: 'ESTableFoot',
   });
 
   const [isStuck, setStuck] = useState(false);

@@ -9,5 +9,5 @@ export const orange = {
   700: '#FFDEC7',
   800: '#FFECE2',
   900: '#FFF7F3',
-  alpha: '300'
+  alpha: '300',
 };

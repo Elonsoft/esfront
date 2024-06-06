@@ -6,9 +6,9 @@ export const createList: Component<'MuiList'> = (theme) => {
       root: {
         '& .MuiDivider-root': {
           margin: '8px 0',
-          borderColor: theme.vars.palette.monoA.A100
-        }
-      }
-    }
+          borderColor: theme.vars.palette.monoA.A100,
+        },
+      },
+    },
   };
 };

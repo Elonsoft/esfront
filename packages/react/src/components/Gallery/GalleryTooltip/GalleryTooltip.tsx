@@ -6,7 +6,7 @@ export const GalleryTooltip = styled(
   {
     name: 'ESGalleryTooltip',
     slot: 'Root',
-    overridesResolver: (props, styles) => styles.root
+    overridesResolver: (props, styles) => styles.root,
   }
 )(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
@@ -15,11 +15,11 @@ export const GalleryTooltip = styled(
     borderRadius: '4px',
 
     [`& .${tooltipClasses.arrow}`]: {
-      color: theme.vars.palette.white.A600
-    }
+      color: theme.vars.palette.white.A600,
+    },
   },
   '&[data-popper-reference-hidden]': {
     pointerEvents: 'none',
-    opacity: '0'
-  }
+    opacity: '0',
+  },
 }));

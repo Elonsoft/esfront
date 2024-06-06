@@ -12,8 +12,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useMenuVisibility',
   parameters: {
-    references: ['useMenu', 'useMenuVisibility']
-  }
+    references: ['useMenu', 'useMenuVisibility'],
+  },
 };
 
 export default meta;
@@ -35,5 +35,5 @@ export const Demo: Story = {
         </Menu>
       </>
     );
-  }
+  },
 };

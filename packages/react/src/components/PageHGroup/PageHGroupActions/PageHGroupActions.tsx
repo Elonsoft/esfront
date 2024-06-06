@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: PageHGroupActionsOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getPageHGroupActionsUtilityClass, classes);
@@ -24,16 +24,16 @@ const useUtilityClasses = (ownerState: PageHGroupActionsOwnerState) => {
 const PageHGroupActionsRoot = styled('div', {
   name: 'ESPageHGroupActions',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
-  gap: '16px'
+  gap: '16px',
 }));
 
 export const PageHGroupActions = (inProps: PageHGroupActionsProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESPageHGroupActions'
+    name: 'ESPageHGroupActions',
   });
 
   const ownerState = { ...props };

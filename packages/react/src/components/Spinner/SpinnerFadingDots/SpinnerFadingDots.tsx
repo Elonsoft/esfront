@@ -22,7 +22,7 @@ const useUtilityClasses = (ownerState: SpinnerFadingDotsOwnerState) => {
   const { classes, color } = ownerState;
 
   const slots = {
-    root: ['root', color]
+    root: ['root', color],
   };
 
   return composeClasses(slots, getSpinnerFadingDotsUtilityClass, classes);
@@ -33,21 +33,21 @@ const SpinnerFadingDotsRoot = styled('svg', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { color }
+      ownerState: { color },
     } = props;
     return [styles.root, styles[color]];
-  }
+  },
 })<{ ownerState: SpinnerFadingDotsOwnerState }>(
   ({ ownerState }) => ({
     color: ownerState.spinnerColor,
     '& > *': {
       fill: 'currentColor',
       height: '10px',
-      width: '4px'
-    }
+      width: '4px',
+    },
   }),
   ({ ownerState }) => ({
-    ...spinnerOpacityAnimation('& > *', ownerState.duration, ownerState.ease)
+    ...spinnerOpacityAnimation('& > *', ownerState.duration, ownerState.ease),
   })
 );
 
@@ -62,7 +62,7 @@ export const SpinnerFadingDots = (inProps: SpinnerFadingDotsProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSpinnerFadingDots'
+    name: 'ESSpinnerFadingDots',
   });
 
   const spinnerColor = useSpinnerColor(color);

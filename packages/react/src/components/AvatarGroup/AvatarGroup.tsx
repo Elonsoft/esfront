@@ -24,7 +24,7 @@ const useUtilityClasses = (ownerState: AvatarGroupOwnerState) => {
 
   const slots = {
     root: ['root', direction],
-    avatar: ['avatar']
+    avatar: ['avatar'],
   };
 
   return composeClasses(slots, getAlertUtilityClass, classes);
@@ -33,7 +33,7 @@ const useUtilityClasses = (ownerState: AvatarGroupOwnerState) => {
 const AvatarGroupRoot = styled('div', {
   name: 'ESAvatarGroup',
   slot: 'Root',
-  overridesResolver: (props, styles) => [styles.root, styles[props.ownerState.direction]]
+  overridesResolver: (props, styles) => [styles.root, styles[props.ownerState.direction]],
 })<{ ownerState: AvatarGroupOwnerState }>(
   ({ ownerState: { spacing = -6, size = 32, direction = 'rtl', cutoutWidth = 2 } }) => ({
     display: 'flex',
@@ -43,19 +43,19 @@ const AvatarGroupRoot = styled('div', {
       height: `${size}px`,
 
       '&:not(:nth-of-type(1))': {
-        marginLeft: `${spacing}px`
+        marginLeft: `${spacing}px`,
       },
 
       '& > *': {
         borderRadius: '50%',
         width: `${size}px`,
-        height: `${size}px`
+        height: `${size}px`,
       },
 
       [`&:not(:${direction === 'ltr' ? 'first' : 'last'}-of-type)`]: {
         // safari
         '@supports selector(:nth-child(1 of x))': {
-          overflow: 'visible'
+          overflow: 'visible',
         },
 
         WebkitMaskImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${size} ${size}'%3E%3Ccircle cx='${
@@ -71,26 +71,26 @@ const AvatarGroupRoot = styled('div', {
 
         // safari ios
         '@supports (-webkit-touch-callout: none)': {
-          maskComposite: 'exclude'
+          maskComposite: 'exclude',
         },
 
         // firefox chrome safari
         '@supports (not (-webkit-touch-callout: none))': {
           WebkitMaskComposite: 'destination-out',
-          maskComposite: 'exclude'
+          maskComposite: 'exclude',
         },
 
         // firefox
         '@supports ( -moz-appearance:none )': {
-          WebkitMaskSize: `${+size + cutoutWidth * 2}px, ${+size + 0.5}px`
+          WebkitMaskSize: `${+size + cutoutWidth * 2}px, ${+size + 0.5}px`,
         },
 
         // chrome safari
         '@supports (not( -moz-appearance:none ))': {
-          WebkitMaskSize: `${+size + cutoutWidth * 2}px, ${+size}px`
-        }
-      }
-    }
+          WebkitMaskSize: `${+size + cutoutWidth * 2}px, ${+size}px`,
+        },
+      },
+    },
   })
 );
 
@@ -109,7 +109,7 @@ export const AvatarGroup = (inProps: AvatarGroupProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESAvatarGroup'
+    name: 'ESAvatarGroup',
   });
 
   const ownerState = { ...props, spacing, direction, cutoutWidth, size };

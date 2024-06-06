@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: GalleryMetaSeparatorOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getGalleryMetaSeparatorUtilityClass, classes);
@@ -26,23 +26,23 @@ const GalleryMetaSeparatorRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { isActive }
+      ownerState: { isActive },
     } = props;
     return [styles.root, isActive && styles.active];
-  }
+  },
 })<{ ownerState: GalleryMetaSeparatorOwnerState }>(({ theme }) => ({
   margin: '0 8px',
   width: 3,
   height: 3,
   borderRadius: '50%',
   backgroundColor: theme.vars.palette.white.A700,
-  flexShrink: 0
+  flexShrink: 0,
 }));
 
 export const GalleryMetaSeparator = (inProps: GalleryMetaSeparatorProps) => {
   const { className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryMetaSeparator'
+    name: 'ESGalleryMetaSeparator',
   });
 
   const ownerState = { ...props };

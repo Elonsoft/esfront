@@ -47,35 +47,35 @@ const meta: Meta<typeof Calendar> = {
   tags: ['autodocs'],
   component: Calendar,
   parameters: {
-    references: ['Calendar', 'CalendarButton', 'CalendarHead']
+    references: ['Calendar', 'CalendarButton', 'CalendarHead'],
   },
   argTypes: {
     selection: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     hover: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     getButtonDisabled: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     getButtonTooltipProps: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
     year: 2024,
     month: 1,
-    weekStart: 1
-  }
+    weekStart: 1,
+  },
 };
 
 export default meta;
@@ -107,7 +107,7 @@ export const Demo: Story = {
         />
       </Box>
     );
-  }
+  },
 };
 
 /** We can select a range of dates. */
@@ -135,7 +135,7 @@ export const Range: Story = {
         />
       </Box>
     );
-  }
+  },
 };
 
 /** We can use multiple calendars side-by-side. */
@@ -149,7 +149,7 @@ export const DualRange: Story = {
           borderRadius: '8px',
           boxShadow: theme.vars.palette.shadow.down[600],
           maxWidth: '800px',
-          display: 'flex'
+          display: 'flex',
         })}
         onMouseLeave={onHoverDelete}
       >
@@ -183,7 +183,7 @@ export const DualRange: Story = {
         </Box>
       </Box>
     );
-  }
+  },
 };
 
 /** We can disable certain dates and show tooltips. */
@@ -217,13 +217,13 @@ export const DisabledAndTooltips: Story = {
               (date.getFullYear() === 2024 && date.getMonth() === 0 && date.getDate() === 30)
             ) {
               return {
-                title: locale === 'ru' ? 'Дата уже забронирована' : 'The date is already booked'
+                title: locale === 'ru' ? 'Дата уже забронирована' : 'The date is already booked',
               };
             }
 
             if (selection && selection[0] && !selection[1] && hover && adapter?.isSameDay(date, hover)) {
               return {
-                title: locale === 'ru' ? 'N суток' : 'N days'
+                title: locale === 'ru' ? 'N суток' : 'N days',
               };
             }
 
@@ -242,5 +242,5 @@ export const DisabledAndTooltips: Story = {
         />
       </Box>
     );
-  }
+  },
 };

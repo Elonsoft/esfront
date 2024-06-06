@@ -24,5 +24,5 @@ export const bottomSheetClasses: BottomSheetClasses = generateUtilityClasses('ES
   'wrapper',
   'container',
   'content',
-  'paper'
+  'paper',
 ]);
