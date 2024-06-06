@@ -306,6 +306,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     icon,
     iconToggle = <IconChevronLeftW200 container containerSize="16px" />,
     inset,
+    closeAfterClick,
     onClick,
     onKeyDown,
     onTouchStart,
@@ -422,6 +423,14 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     }
   };
 
+  const onItemTooltipClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    onClick?.(e);
+
+    if (closeAfterClick) {
+      onTooltipClose();
+    }
+  };
+
   const onMouseDown = (event: React.MouseEvent) => {
     event.stopPropagation();
     event.preventDefault();
@@ -456,9 +465,9 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
             component={component}
             disabled={!onClick}
             tabIndex={-1}
-            onClick={onClick}
             {...props}
             selected={false}
+            onClick={onItemTooltipClick}
           >
             <Typography variant="body100">{text}</Typography>
           </SidebarItemTooltipItem>
@@ -467,10 +476,22 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
           {!!children &&
             React.Children.map(children, (child: any, idx: number) => {
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              const { text, inset, ...rest } = child.props;
+              const { text, inset, onClick, ...rest } = child.props;
 
               return (
-                <SidebarItemTooltipItem key={idx} className={clsx(classes.tooltipItem)} tabIndex={idx} {...rest}>
+                <SidebarItemTooltipItem
+                  key={idx}
+                  className={clsx(classes.tooltipItem)}
+                  tabIndex={idx}
+                  {...rest}
+                  onClick={(e) => {
+                    onClick?.(e);
+
+                    if (closeAfterClick) {
+                      onTooltipClose();
+                    }
+                  }}
+                >
                   <Typography variant="body100">{text}</Typography>
                 </SidebarItemTooltipItem>
               );
