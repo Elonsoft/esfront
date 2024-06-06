@@ -6,8 +6,8 @@ import { getSidebarDividerUtilityClass } from './SidebarDivider.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Divider from '@mui/material/Divider';
 
+import { Divider } from '../../Divider';
 import { useSidebarContext } from '../Sidebar.context';
 
 type SidebarDividerOwnerState = {
@@ -43,7 +43,7 @@ const SidebarDividerLine = styled(Divider, {
   slot: 'Line',
   overridesResolver: (props, styles) => styles.line,
 })<{ ownerState: SidebarDividerOwnerState }>(({ theme, ownerState: { color } }) => ({
-  borderColor: `${color === 'default' || color === 'secondary' ? theme.vars.palette.monoA.A100 : theme.vars.palette.monoB.A200}`,
+  color: `${color === 'default' || color === 'secondary' ? theme.vars.palette.monoA.A100 : theme.vars.palette.monoB.A200}`,
 }));
 
 export const SidebarDivider = (inProps: SidebarDividerProps) => {

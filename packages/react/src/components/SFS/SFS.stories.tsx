@@ -2,10 +2,12 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 
-import { SFS, SFSFilters, SFSFiltersGroup, SFSRow, SFSSearch, SFSSorting, SortingMenuValue } from '..';
+import { SFS, SFSFilters, SFSFiltersGroup, SFSRow, SFSSearch, SFSSorting } from '.';
+
+import { Divider } from '../Divider';
+import { SortingMenuValue } from '../SortingMenu';
 
 const sortingOptionsRu = [
   { label: 'Кол-во квартир', value: 'byCount' },

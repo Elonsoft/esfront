@@ -1,6 +1,7 @@
 // Waiting for storybook implementation of this feature.
 // https://github.com/storybookjs/storybook/issues/15008
 
+/* eslint-disable no-restricted-imports */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../src/overrides.d.ts" />
 
