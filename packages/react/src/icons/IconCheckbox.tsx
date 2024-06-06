@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
 export const IconCheckbox = (props: SvgIconProps) => {

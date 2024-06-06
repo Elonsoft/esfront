@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
-import Divider from '@mui/material/Divider';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 
@@ -24,6 +23,7 @@ import { useTableSelection } from './useTableSelection';
 import { IconCloseW600, IconDotsVerticalW500, IconPencilW500 } from '../../icons';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
+import { Divider } from '../Divider';
 import { Pagination, PaginationPages, PaginationRange } from '../Pagination';
 
 const DATA: {

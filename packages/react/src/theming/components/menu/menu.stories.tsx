@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -12,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
 
 import { Button } from '../../../components/Button';
+import { Divider } from '../../../components/Divider';
 import { MenuItem } from '../../../components/MenuItem';
 import { IconDotsVerticalW400, IconUpload } from '../../../icons';
 

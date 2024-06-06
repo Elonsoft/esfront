@@ -8,7 +8,6 @@ import { getSortingMenuUtilityClass } from './SortingMenu.classes';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { unstable_composeClasses, useMediaQuery } from '@mui/material';
-import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
@@ -18,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import { IconSortAscending, IconSortDescending } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
+import { Divider } from '../Divider';
 import { Kbd, kbdClasses } from '../Kbd';
 import { Link } from '../Link';
 import { Switch, switchClasses } from '../Switch';
@@ -137,7 +137,7 @@ const SortingMenuItem = styled(MenuItem, {
     minHeight: 0,
     height: 'auto',
     opacity: 1,
-    '& .MuiDivider-root': {
+    '& .ESDivider-root': {
       margin: '8px -16px',
     },
   },

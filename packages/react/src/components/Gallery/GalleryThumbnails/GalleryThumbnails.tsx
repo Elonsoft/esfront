@@ -73,7 +73,7 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(
   display: 'flex',
   alignItems: 'center',
   padding: 4,
-  zIndex: 1,
+  zIndex: 4,
   position: 'absolute',
   height: '100%',
   cursor: 'pointer',

@@ -8,7 +8,6 @@ import { getAudioPlayerUtilityClass } from './AudioPlayer.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Divider, { dividerClasses } from '@mui/material/Divider';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText, { listItemTextClasses } from '@mui/material/ListItemText';
 import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
@@ -35,6 +34,7 @@ import {
   IconVolumeMute,
 } from '../../icons';
 import { Button } from '../Button';
+import { Divider, dividerClasses } from '../Divider';
 
 import { Instance } from '@popperjs/core';
 
@@ -347,7 +347,7 @@ const AudioPlayerListDivider = styled(Divider, {
   overridesResolver: (props, styles) => styles.listDivider,
 })(({ theme }) => ({
   [`&.${dividerClasses.root}`]: {
-    borderColor: theme.vars.palette.monoA.A100,
+    color: theme.vars.palette.monoA.A100,
     margin: '8px 0',
   },
 }));

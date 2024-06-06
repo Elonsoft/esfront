@@ -42,19 +42,163 @@ module.exports = {
       {
         patterns: [
           {
+            group: ['@mui/lab*'],
+            importNames: ['LoadingButton'],
+          },
+          {
             group: ['@mui/material*'],
-            importNames: ['Button', 'IconButton'],
-            message: 'Use our own `Button` implementation instead.',
+            importNames: [
+              'Alert',
+              'AlertTitle',
+              'AppBar',
+              'Autocomplete',
+              'Avatar',
+              'AvatarGroup',
+              'Breadcrumbs',
+              'Button',
+              'ButtonBase',
+              'Dialog',
+              'DialogActions',
+              'DialogContent',
+              'DialogContentText',
+              'DialogTitle',
+              'Divider',
+              'IconButton',
+              'LinearProgress',
+              'Link',
+              'Pagination',
+              'PaginationItem',
+              'SvgIcon',
+              'Switch',
+              'Table',
+              'TableBody',
+              'TableCell',
+              'TableContainer',
+              'TableHead',
+              'TablePagination',
+              'TableRow',
+              'TableText',
+            ],
+          },
+          {
+            group: ['@mui/material/Alert'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/AlertTitle'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/AppBar'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Autocomplete'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Avatar'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/AvatarGroup'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Breadcrumbs'],
+            importNames: ['default'],
           },
           {
             group: ['@mui/material/Button'],
             importNames: ['default'],
-            message: 'Use our own `Button` implementation instead.',
+          },
+          {
+            group: ['@mui/material/ButtonBase'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Dialog'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/DialogActions'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/DialogContent'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/DialogContentText'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/DialogTitle'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Divider'],
+            importNames: ['default'],
           },
           {
             group: ['@mui/material/IconButton'],
             importNames: ['default'],
-            message: 'Use our own `Button` implementation instead.',
+          },
+          {
+            group: ['@mui/material/LinearProgress'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Link'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Pagination'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/PaginationItem'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/SvgIcon'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Switch'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Table'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/TableBody'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/TableCell'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/TableContainer'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/TableHead'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/TablePagination'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/TableRow'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/TableText'],
+            importNames: ['default'],
           },
         ],
       },
