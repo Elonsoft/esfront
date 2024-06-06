@@ -22,7 +22,7 @@ const useUtilityClasses = (ownerState: SidebarScrollableOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getSidebarScrollableUtilityClass, classes);
@@ -31,23 +31,23 @@ const useUtilityClasses = (ownerState: SidebarScrollableOwnerState) => {
 const SidebarScrollableRoot = styled('div', {
   name: 'ESSidebarScrollable',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: SidebarScrollableOwnerState }>(({ theme, ownerState }) => ({
   ...(ownerState.isScrollable && {
     mask: `${ownerState.isBeforeScroll ? 'linear-gradient(to bottom, transparent 0, black 32px) top' : 'none'}, ${
       ownerState.isAfterScroll ? 'linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom' : 'none'
     }`,
     maskSize: `${ownerState.isBeforeScroll ? '100%' : 'auto'}${ownerState.isAfterScroll ? '51%' : 'auto'}`,
-    maskRepeat: 'no-repeat'
+    maskRepeat: 'no-repeat',
   }),
 
-  ...theme.scrollbars.overlayMonoA
+  ...theme.scrollbars.overlayMonoA,
 }));
 
 export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
   const { className, sx, beforeScroll, afterScroll, children, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESSidebarScrollable'
+    name: 'ESSidebarScrollable',
   });
 
   const [isScrollable, setScrollable] = useState(false);

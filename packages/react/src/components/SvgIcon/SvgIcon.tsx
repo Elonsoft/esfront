@@ -17,7 +17,7 @@ const useUtilityClasses = (ownerState: SvgIconOwnerState) => {
 
   const slots = {
     root: ['root'],
-    svg: ['svg']
+    svg: ['svg'],
   };
 
   return composeClasses(slots, getSvgIconUtilityClass, classes);
@@ -26,14 +26,14 @@ const useUtilityClasses = (ownerState: SvgIconOwnerState) => {
 const SvgIconRoot = styled('div', {
   name: 'ESSvgIcon',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   userSelect: 'none',
   display: 'inline-flex',
   flexShrink: 0,
   alignItems: 'center',
   justifyContent: 'center',
-  overflow: 'hidden'
+  overflow: 'hidden',
 }));
 
 const SvgIconSvg = styled('svg', {
@@ -42,12 +42,12 @@ const SvgIconSvg = styled('svg', {
   overridesResolver: (props, styles) => {
     const { ownerState } = props;
     return [styles.svg, !ownerState.container && styles.root];
-  }
+  },
 })(() => ({
   userSelect: 'none',
   display: 'inline-flex',
   fill: 'none',
-  flexShrink: 0
+  flexShrink: 0,
 }));
 
 /**
@@ -96,7 +96,7 @@ export const SvgIcon = (inProps: SvgIconProps) => {
         style={{
           width: containerWidth || containerSize || width || size,
           height: containerHeight || containerSize || height || size,
-          ...ContainerProps?.style
+          ...ContainerProps?.style,
         }}
       >
         {svg}

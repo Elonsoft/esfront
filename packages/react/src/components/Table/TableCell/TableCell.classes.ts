@@ -59,5 +59,5 @@ export const tableCellClasses: TableCellClasses = generateUtilityClasses('ESTabl
   'contentAlignCenter',
   'contentAlignFlexEnd',
   'resize',
-  'resizeResizing'
+  'resizeResizing',
 ]);

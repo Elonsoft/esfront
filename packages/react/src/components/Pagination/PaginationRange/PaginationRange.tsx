@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: PaginationRangeOwnerState) => {
     root: ['root'],
     label: ['label'],
     button: ['button'],
-    value: ['value']
+    value: ['value'],
   };
 
   return composeClasses(slots, getPaginationRangeUtilityClass, classes);
@@ -37,25 +37,25 @@ const useUtilityClasses = (ownerState: PaginationRangeOwnerState) => {
 const PaginationRangeRoot = styled('div', {
   name: 'ESPaginationRange',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
 }));
 
 const PaginationRangeLabel = styled(Typography, {
   name: 'ESPaginationRange',
   slot: 'Label',
-  overridesResolver: (props, styles) => styles.label
+  overridesResolver: (props, styles) => styles.label,
 })(({ theme }) => ({
   display: 'inline-block',
-  color: theme.vars.palette.monoA.A600
+  color: theme.vars.palette.monoA.A600,
 }));
 
 const PaginationRangeButton = styled(Button, {
   name: 'ESPaginationRange',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.button
+  overridesResolver: (props, styles) => styles.button,
 })(({ theme }) => ({
   '--icon': theme.vars.palette.monoA.A500,
 
@@ -64,23 +64,23 @@ const PaginationRangeButton = styled(Button, {
       padding: '0 6px 0 4px',
 
       '&, &:not(:disabled):hover, &:not(:disabled):active': {
-        color: theme.vars.palette.monoA.A900
-      }
+        color: theme.vars.palette.monoA.A900,
+      },
     },
 
     [` .${buttonBaseClasses.wrapper} .${buttonClasses.endIcon}`]: {
-      marginLeft: '2px'
-    }
-  }
+      marginLeft: '2px',
+    },
+  },
 }));
 
 const PaginationRangeValue = styled(Typography, {
   name: 'ESPaginationRange',
   slot: 'Value',
-  overridesResolver: (props, styles) => styles.value
+  overridesResolver: (props, styles) => styles.value,
 })(({ theme }) => ({
   marginLeft: '16px',
-  color: theme.vars.palette.monoA.A600
+  color: theme.vars.palette.monoA.A600,
 }));
 
 const OPTIONS = [10, 25, 100];
@@ -99,7 +99,7 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESPaginationRange'
+    name: 'ESPaginationRange',
   });
 
   const { count, itemsPerPage, page, onItemsPerPageChange, onPageChange } = usePaginationContext();

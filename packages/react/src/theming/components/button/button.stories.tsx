@@ -12,39 +12,39 @@ const getText = (context: StoryContext<unknown>) => {
 const meta: Meta<typeof Button> = {
   title: 'Overrides/Button',
   parameters: {
-    viewMode: 'canvas'
+    viewMode: 'canvas',
   },
   argTypes: {
     variant: {
       options: ['text', 'outlined', 'contained'],
 
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
 
     color: {
       options: ['inherit', 'primary', 'secondary', 'tertiary', 'error', 'success', 'monoA', 'monoB', 'white', 'black'],
 
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
 
     size: {
       options: ['16', '20', '24', '32', '40', '48', '56'],
 
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
 
     disabled: {
       control: {
-        type: 'boolean'
-      }
-    }
-  }
+        type: 'boolean',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -70,7 +70,7 @@ export const Demo: Story = {
           display: 'grid',
           gap: '16px',
           gridAutoFlow: 'column',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
         }}
       >
         <Button {...args}>{text}</Button>
@@ -80,5 +80,5 @@ export const Demo: Story = {
         <Button {...args}>{icon}</Button>
       </div>
     );
-  }
+  },
 };

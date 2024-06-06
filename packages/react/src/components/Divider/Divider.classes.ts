@@ -35,5 +35,5 @@ export const dividerClasses: DividerClasses = generateUtilityClasses('ESDivider'
   'textAlignEnd',
   'flexItem',
   'withChildren',
-  'wrapper'
+  'wrapper',
 ]);

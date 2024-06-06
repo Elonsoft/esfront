@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: SidenavItemOwnerState) => {
 
   const slots = {
     root: ['root'],
-    tooltip: ['tooltip']
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getSidenavItemUtilityClass, classes);
@@ -37,7 +37,7 @@ const useUtilityClasses = (ownerState: SidenavItemOwnerState) => {
 const SidenavItemRoot = styled(ListItemButton, {
   name: 'ESSidenavItem',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: SidenavItemOwnerState }>(({ theme, ownerState }) => ({
   [`&.${listItemButtonClasses.root}`]: {
     borderRadius: '6px',
@@ -52,7 +52,7 @@ const SidenavItemRoot = styled(ListItemButton, {
         hover: theme.vars.palette.monoA.A50,
         icon: theme.vars.palette.monoA.A500,
         focus: theme.vars.palette.monoA.A200,
-        active: theme.vars.palette.monoA.A150
+        active: theme.vars.palette.monoA.A150,
       }),
       [`&.${listItemButtonClasses.selected}`]: {
         ...theme.mixins.listItem({
@@ -60,9 +60,9 @@ const SidenavItemRoot = styled(ListItemButton, {
           hover: theme.vars.palette.monoA.A50,
           icon: theme.vars.palette.monoA.A600,
           focus: theme.vars.palette.monoA.A75,
-          active: theme.vars.palette.monoA.A150
-        })
-      }
+          active: theme.vars.palette.monoA.A150,
+        }),
+      },
     }),
     ...(ownerState.color === 'primary' && {
       ...theme.mixins.listItem({
@@ -71,7 +71,7 @@ const SidenavItemRoot = styled(ListItemButton, {
         icon: theme.vars.palette.monoB.A800,
         hover: theme.vars.palette.monoB.A50,
         focus: theme.vars.palette.monoB.A200,
-        active: theme.vars.palette.monoB.A150
+        active: theme.vars.palette.monoB.A150,
       }),
       [`&.${listItemButtonClasses.selected}`]: {
         ...theme.mixins.listItem({
@@ -80,11 +80,11 @@ const SidenavItemRoot = styled(ListItemButton, {
           icon: theme.vars.palette.monoB[500],
           hover: theme.vars.palette.monoB.A50,
           focus: theme.vars.palette.monoB.A75,
-          active: theme.vars.palette.monoB.A150
-        })
-      }
-    })
-  }
+          active: theme.vars.palette.monoB.A150,
+        }),
+      },
+    }),
+  },
 }));
 
 const SidenavItemTooltip = styled(
@@ -92,7 +92,7 @@ const SidenavItemTooltip = styled(
   {
     name: 'ESidenavItem',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )(({ theme }) => ({
   [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
@@ -100,12 +100,12 @@ const SidenavItemTooltip = styled(
     marginLeft: '1px !important',
     maxWidth: '288px',
 
-    ...theme.typography.caption
+    ...theme.typography.caption,
   },
   '&[data-popper-reference-hidden]': {
     pointerEvents: 'none',
-    opacity: '0'
-  }
+    opacity: '0',
+  },
 }));
 
 export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: SidenavItemProps) => {
@@ -123,7 +123,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSidenavItem'
+    name: 'ESSidenavItem',
   });
 
   const { open, hover, itemId, setHover, setItemId, disableItemHover } = useSidenavContext();

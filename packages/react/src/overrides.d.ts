@@ -11,7 +11,7 @@ import {
   Theme,
   ThemeOptions,
   TypographyVariants,
-  TypographyVariantsOptions
+  TypographyVariantsOptions,
 } from '@mui/material/styles';
 import { Components } from '@mui/material/styles/components';
 import { Mixins } from '@mui/material/styles/createMixins';
@@ -35,7 +35,7 @@ import {
   AlertCloseProps,
   AlertProps,
   AlertTitleClassKey,
-  AlertTitleProps
+  AlertTitleProps,
 } from './components/Alert';
 import { AppBarClassKey, AppBarProps } from './components/AppBar';
 import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
@@ -47,7 +47,7 @@ import {
   AutocompleteMenuFooterProps,
   AutocompleteMenuHeaderClassKey,
   AutocompleteMenuHeaderProps,
-  AutocompleteMenuProps
+  AutocompleteMenuProps,
 } from './components/AutocompleteMenu';
 import { AvatarGroupClassKey, AvatarGroupProps } from './components/AvatarGroup';
 import {
@@ -56,7 +56,7 @@ import {
   BannerClassKey,
   BannerProps,
   BannerTitleClassKey,
-  BannerTitleProps
+  BannerTitleProps,
 } from './components/Banner';
 import { BottomSheetClassKey, BottomSheetProps } from './components/BottomSheet';
 import { BreadcrumbClassKey, BreadcrumbProps, BreadcrumbsClassKey, BreadcrumbsProps } from './components/Breadcrumbs';
@@ -68,7 +68,7 @@ import {
   CalendarClassKey,
   CalendarHeadClassKey,
   CalendarHeadProps,
-  CalendarProps
+  CalendarProps,
 } from './components/Calendar';
 import {
   DialogActionsClassKey,
@@ -82,7 +82,7 @@ import {
   DialogContentProps,
   DialogProps,
   DialogTitleClassKey,
-  DialogTitleProps
+  DialogTitleProps,
 } from './components/Dialog';
 import { DividerClassKey, DividerProps } from './components/Divider';
 import { DropzoneClassKey, DropzoneProps } from './components/Dropzone';
@@ -102,7 +102,7 @@ import {
   ErrorPageLogoProps,
   ErrorPageProps,
   ErrorPageStatusClassKey,
-  ErrorPageStatusProps
+  ErrorPageStatusProps,
 } from './components/ErrorPage';
 import {
   FileIconBadgeClassKey,
@@ -110,7 +110,7 @@ import {
   FileIconClassKey,
   FileIconProps,
   FileIconTextClassKey,
-  FileIconTextProps
+  FileIconTextProps,
 } from './components/FileIcon';
 import {
   FileInfoClassKey,
@@ -122,7 +122,7 @@ import {
   FileInfoMetaSeparatorProps,
   FileInfoNameClassKey,
   FileInfoNameProps,
-  FileInfoProps
+  FileInfoProps,
 } from './components/FileInfo';
 import { FlagClassKey } from './components/Flags';
 import { FormatDateProps } from './components/FormatDate';
@@ -153,7 +153,7 @@ import {
   GalleryThumbnailsImageProps,
   GalleryThumbnailsItemClassKey,
   GalleryThumbnailsItemProps,
-  GalleryThumbnailsProps
+  GalleryThumbnailsProps,
 } from './components/Gallery';
 import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinearProgressClassKey, LinearProgressProps } from './components/LinearProgress';
@@ -173,7 +173,7 @@ import {
   PageHGroupMainProps,
   PageHGroupProps,
   PageHGroupStatusClassKey,
-  PageHGroupStatusProps
+  PageHGroupStatusProps,
 } from './components/PageHGroup';
 import {
   PaginationClassKey,
@@ -181,7 +181,7 @@ import {
   PaginationPagesProps,
   PaginationProps,
   PaginationRangeClassKey,
-  PaginationRangeProps
+  PaginationRangeProps,
 } from './components/Pagination';
 import { PasswordFieldClassKey, PasswordFieldProps } from './components/PasswordField';
 import {
@@ -198,7 +198,7 @@ import {
   SFSSearchClassKey,
   SFSSearchProps,
   SFSSortingClassKey,
-  SFSSortingProps
+  SFSSortingProps,
 } from './components/SFS';
 import {
   SidebarClassKey,
@@ -214,7 +214,7 @@ import {
   SidebarSpacerClassKey,
   SidebarSpacerProps,
   SidebarToggleClassKey,
-  SidebarToggleProps
+  SidebarToggleProps,
 } from './components/Sidebar';
 import { SidenavClassKey, SidenavItemClassKey, SidenavItemProps, SidenavProps } from './components/Sidenav';
 import { SortingMenuClassKey, SortingMenuProps } from './components/SortingMenu';
@@ -230,7 +230,7 @@ import {
   SpinnerFadingRingClassKey,
   SpinnerFadingRingProps,
   SpinnerRingClassKey,
-  SpinnerRingProps
+  SpinnerRingProps,
 } from './components/Spinner';
 import { SvgIconClassKey, SvgIconProps } from './components/SvgIcon';
 import {
@@ -239,7 +239,7 @@ import {
   SwiperClassKey,
   SwiperPaginationClassKey,
   SwiperPaginationProps,
-  SwiperProps
+  SwiperProps,
 } from './components/Swiper';
 import { SwitchClassKey, SwitchProps } from './components/Switch';
 import { TabBarClassKey, TabBarItemClassKey, TabBarItemProps, TabBarProps } from './components/TabBar';
@@ -263,7 +263,7 @@ import {
   TableScrollbarClassKey,
   TableScrollbarProps,
   TableTextClassKey,
-  TableTextProps
+  TableTextProps,
 } from './components/Table';
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';

@@ -12,8 +12,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useForceUpdate',
   parameters: {
-    references: ['useForceUpdate']
-  }
+    references: ['useForceUpdate'],
+  },
 };
 
 export default meta;
@@ -42,5 +42,5 @@ export const Demo: Story = {
         </Typography>
       </>
     );
-  }
+  },
 };

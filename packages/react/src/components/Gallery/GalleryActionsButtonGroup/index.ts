@@ -2,6 +2,6 @@ export { GalleryActionsButtonGroup } from './GalleryActionsButtonGroup';
 export {
   GalleryActionsButtonGroupClasses,
   galleryActionsButtonGroupClasses,
-  GalleryActionsButtonGroupClassKey
+  GalleryActionsButtonGroupClassKey,
 } from './GalleryActionsButtonGroup.classes';
 export { GalleryActionsButtonGroupProps } from './GalleryActionsButtonGroup.types';

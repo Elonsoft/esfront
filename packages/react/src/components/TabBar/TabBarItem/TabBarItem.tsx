@@ -22,7 +22,7 @@ const useUtilityClasses = (ownerState: TabBarItemOwnerState) => {
   const slots = {
     root: ['root', selected && 'selected'],
     icon: ['icon'],
-    label: ['label']
+    label: ['label'],
   };
 
   return composeClasses(slots, getTabBarItemUtilityClass, classes);
@@ -31,45 +31,45 @@ const useUtilityClasses = (ownerState: TabBarItemOwnerState) => {
 const TabBarItemRoot = styled(Button, {
   name: 'ESTabBarItem',
   slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root
+  overridesResolver: (_props, styles) => styles.root,
 })(({ theme }) => ({
   '--icon': theme.vars.palette.monoA.A500,
 
   [`&.${buttonClasses.root}`]: {
     borderRadius: 0,
     flex: 1,
-    height: '100%'
+    height: '100%',
   },
 
   [`& .${buttonBaseClasses.wrapper}`]: {
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
   [`&.${tabBarItemClasses.selected}`]: {
     '--icon': theme.vars.palette.monoA.A900,
 
     [`& .${tabBarItemClasses.label}`]: {
-      color: theme.vars.palette.monoA.A800
-    }
-  }
+      color: theme.vars.palette.monoA.A800,
+    },
+  },
 }));
 
 const TabBarItemIcon = styled('span', {
   name: 'ESTabBarItem',
   slot: 'Icon',
-  overridesResolver: (_props, styles) => styles.icon
+  overridesResolver: (_props, styles) => styles.icon,
 })(() => ({
-  display: 'flex'
+  display: 'flex',
 }));
 
 const TabBarItemLabel = styled('span', {
   name: 'ESTabBarItem',
   slot: 'Label',
-  overridesResolver: (_props, styles) => styles.label
+  overridesResolver: (_props, styles) => styles.label,
 })(({ theme }) => ({
   ...theme.typography.micro,
   textTransform: 'none',
-  color: theme.vars.palette.monoA.A700
+  color: theme.vars.palette.monoA.A700,
 }));
 
 export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: TabBarItemProps) => {
@@ -85,7 +85,7 @@ export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: Tab
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESTabBarItem'
+    name: 'ESTabBarItem',
   });
 
   const ownerState = { classes: inClasses, selected };

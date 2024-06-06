@@ -13,8 +13,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useValueGate',
   parameters: {
-    references: ['useValueGate']
-  }
+    references: ['useValueGate'],
+  },
 };
 
 export default meta;
@@ -64,5 +64,5 @@ export const Demo: Story = {
         </Typography>
       </div>
     );
-  }
+  },
 };

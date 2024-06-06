@@ -21,5 +21,5 @@ export const paginationRangeClasses: PaginationRangeClasses = generateUtilityCla
   'root',
   'label',
   'button',
-  'value'
+  'value',
 ]);

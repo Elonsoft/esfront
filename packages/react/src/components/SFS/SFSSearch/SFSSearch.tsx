@@ -25,7 +25,7 @@ const useUtilityClasses = (ownerState: SFSSearchOwnerState) => {
   const slots = {
     root: ['root'],
     input: ['input'],
-    clear: ['clear']
+    clear: ['clear'],
   };
 
   return composeClasses(slots, getSFSSearchUtilityClass, classes);
@@ -34,25 +34,25 @@ const useUtilityClasses = (ownerState: SFSSearchOwnerState) => {
 const SFSSearchRoot = styled('div', {
   name: 'ESSFSSearch',
   slot: 'Root',
-  overridesResolver: (_, styles) => styles.root
+  overridesResolver: (_, styles) => styles.root,
 })(() => ({
   display: 'flex',
   alignItems: 'center',
-  flexGrow: 1
+  flexGrow: 1,
 }));
 
 const SFSSearchInput = styled(TextField, {
   name: 'ESSFSSearch',
   slot: 'Input',
-  overridesResolver: (_, styles) => styles.input
+  overridesResolver: (_, styles) => styles.input,
 })(({ theme }) => ({
   '& .MuiInputLabel-root': {
-    opacity: 0
+    opacity: 0,
   },
 
   '& .MuiOutlinedInput-root': {
     '&.MuiInputBase-adornedEnd': {
-      paddingRight: '3px'
+      paddingRight: '3px',
     },
 
     '&.MuiInputBase-adornedStart': {
@@ -60,49 +60,49 @@ const SFSSearchInput = styled(TextField, {
 
       '&.Mui-focused': {
         '& .MuiInputAdornment-positionStart .ESSvgIcon-root': {
-          color: theme.vars.palette.monoA.A600
-        }
-      }
+          color: theme.vars.palette.monoA.A600,
+        },
+      },
     },
 
     '& .MuiOutlinedInput-notchedOutline': {
-      border: 'none'
+      border: 'none',
     },
 
     '& .MuiOutlinedInput-input': {
       paddingLeft: '0',
       ...theme.typography.body100,
-      lineHeight: '23px'
-    }
+      lineHeight: '23px',
+    },
   },
 
   '& .MuiInputAdornment-positionEnd': {
     marginLeft: 0,
     width: '32px',
     cursor: 'pointer',
-    flexShrink: 0
+    flexShrink: 0,
   },
 
   '& .MuiInputAdornment-positionStart': {
     marginRight: 0,
     width: '32px',
     flexShrink: 0,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   '& .MuiInputAdornment-positionStart .ESSvgIcon-root': {
-    color: theme.vars.palette.monoA.A500
+    color: theme.vars.palette.monoA.A500,
   },
 
   '&:hover .MuiInputAdornment-positionStart .ESSvgIcon-root': {
-    color: theme.vars.palette.monoA.A600
-  }
+    color: theme.vars.palette.monoA.A600,
+  },
 }));
 
 const SFSSearchClear = styled(Button, {
   name: 'ESSFSSearch',
   slot: 'Clear',
-  overridesResolver: (_, styles) => styles.clear
+  overridesResolver: (_, styles) => styles.clear,
 })(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
     padding: '0 4px',
@@ -113,17 +113,17 @@ const SFSSearchClear = styled(Button, {
 
     [`&.${buttonClasses.variantText}.${buttonClasses.colorMonoA}`]: {
       '--hovered': 'inherit',
-      '--pressed': 'inherit'
+      '--pressed': 'inherit',
     },
 
     '&:hover': {
-      '--icon': theme.vars.palette.monoA.A500
+      '--icon': theme.vars.palette.monoA.A500,
     },
 
     [`&.${buttonBaseClasses.pressed}`]: {
-      '--icon': theme.vars.palette.monoA.A600
-    }
-  }
+      '--icon': theme.vars.palette.monoA.A600,
+    },
+  },
 }));
 
 export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
@@ -139,7 +139,7 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSFSSearch'
+    name: 'ESSFSSearch',
   });
 
   const ownerState = { ...props };
@@ -162,7 +162,7 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
                 {iconClear}
               </SFSSearchClear>
             </InputAdornment>
-          )
+          ),
         }}
         {...props}
         fullWidth

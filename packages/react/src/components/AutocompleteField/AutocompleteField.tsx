@@ -23,7 +23,7 @@ const useUtilityClasses = (ownerState: AutocompleteFieldOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getAutocompleteFieldUtilityClass, classes);
@@ -32,7 +32,7 @@ const useUtilityClasses = (ownerState: AutocompleteFieldOwnerState) => {
 const AutocompleteFieldRoot = styled(FormControl, {
   name: 'ESAutocompleteField',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })({});
 
 /** The autocomplete is used to choose an item from a collection of options. */
@@ -63,7 +63,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
     ...rest
   } = useThemeProps({
     props: inProps,
-    name: 'ESAutocompleteField'
+    name: 'ESAutocompleteField',
   });
 
   const [open, toggleOpen] = useBoolean(false);

@@ -34,9 +34,9 @@ const useUtilityClasses = (ownerState: CalendarButtonOwnerState) => {
       'button',
       inactive && 'buttonInactive',
       selected && position !== 'between' && 'buttonSelected',
-      today && 'buttonToday'
+      today && 'buttonToday',
     ],
-    tooltip: ['tooltip']
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getCalendarButtonUtilityClass, classes);
@@ -47,16 +47,16 @@ const CalendarButtonRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { selected, hovered, position }
+      ownerState: { selected, hovered, position },
     } = props;
 
     return [
       styles.root,
       selected && styles.selected,
       hovered && styles.hovered,
-      position && styles[`position${capitalize(position)}`]
+      position && styles[`position${capitalize(position)}`],
     ];
-  }
+  },
 })<{ ownerState: CalendarButtonOwnerState }>(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
@@ -68,7 +68,7 @@ const CalendarButtonRoot = styled('div', {
     border: `0 dashed ${theme.vars.palette.monoA.A300}`,
     content: '""',
     inset: 0,
-    position: 'absolute'
+    position: 'absolute',
   },
 
   [`&.${calendarButtonClasses.hovered}`]: {
@@ -77,12 +77,12 @@ const CalendarButtonRoot = styled('div', {
       borderBottomWidth: '1px',
       borderLeftWidth: '1px',
       borderTopLeftRadius: '8px',
-      borderTopWidth: '1px'
+      borderTopWidth: '1px',
     },
 
     [`&.${calendarButtonClasses.positionBetween}::before`]: {
       borderBottomWidth: '1px',
-      borderTopWidth: '1px'
+      borderTopWidth: '1px',
     },
 
     [`&.${calendarButtonClasses.positionEnd}::before`]: {
@@ -90,15 +90,15 @@ const CalendarButtonRoot = styled('div', {
       borderBottomWidth: '1px',
       borderRightWidth: '1px',
       borderTopRightRadius: '8px',
-      borderTopWidth: '1px'
-    }
+      borderTopWidth: '1px',
+    },
   },
 
   '&:nth-child(7n), &:last-of-type': {
     [`&.${calendarButtonClasses.hovered}::before`]: {
       borderBottomRightRadius: '8px',
       borderRightWidth: '1px',
-      borderTopRightRadius: '8px'
+      borderTopRightRadius: '8px',
     },
 
     [`& .${calendarButtonClasses.wrapper}`]: {
@@ -106,16 +106,16 @@ const CalendarButtonRoot = styled('div', {
       borderTopRightRadius: '6px',
 
       '&::after': {
-        display: 'none'
-      }
-    }
+        display: 'none',
+      },
+    },
   },
 
   '&:nth-child(7n + 1), &:first-of-type': {
     [`&.${calendarButtonClasses.hovered}::before`]: {
       borderBottomLeftRadius: '8px',
       borderLeftWidth: '1px',
-      borderTopLeftRadius: '8px'
+      borderTopLeftRadius: '8px',
     },
 
     [`& .${calendarButtonClasses.wrapper}`]: {
@@ -123,17 +123,17 @@ const CalendarButtonRoot = styled('div', {
       borderTopLeftRadius: '6px',
 
       '&::before': {
-        display: 'none'
-      }
-    }
+        display: 'none',
+      },
+    },
   },
 
   [`&.${calendarButtonClasses.selected}.${calendarButtonClasses.positionBetween} .${calendarButtonClasses.wrapper}`]: {
     background: theme.vars.palette.secondary.A200,
 
     '&::before, &::after': {
-      content: '""'
-    }
+      content: '""',
+    },
   },
 
   [`&.${calendarButtonClasses.selected}.${calendarButtonClasses.positionStart}:has(~ .${calendarButtonClasses.selected}) .${calendarButtonClasses.wrapper}`]:
@@ -143,8 +143,8 @@ const CalendarButtonRoot = styled('div', {
       borderTopLeftRadius: '6px',
 
       '&::after': {
-        content: '""'
-      }
+        content: '""',
+      },
     },
 
   [`&.${calendarButtonClasses.selected} ~ .${calendarButtonClasses.selected}.${calendarButtonClasses.positionEnd} .${calendarButtonClasses.wrapper}`]:
@@ -154,15 +154,15 @@ const CalendarButtonRoot = styled('div', {
       borderTopRightRadius: '6px',
 
       '&::before': {
-        content: '""'
-      }
-    }
+        content: '""',
+      },
+    },
 }));
 
 const CalendarButtonWrapper = styled('div', {
   name: 'ESCalendarButton',
   slot: 'Wrapper',
-  overridesResolver: (_props, styles) => styles.wrapper
+  overridesResolver: (_props, styles) => styles.wrapper,
 })(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
@@ -177,16 +177,16 @@ const CalendarButtonWrapper = styled('div', {
     pointerEvents: 'none',
     position: 'absolute',
     top: 0,
-    width: '2px'
+    width: '2px',
   },
 
   '&::before': {
-    left: '-2px'
+    left: '-2px',
   },
 
   '&::after': {
-    right: '-2px'
-  }
+    right: '-2px',
+  },
 }));
 
 const CalendarButtonButton = styled(ButtonBase, {
@@ -194,16 +194,16 @@ const CalendarButtonButton = styled(ButtonBase, {
   slot: 'Button',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { inactive, selected, today, position }
+      ownerState: { inactive, selected, today, position },
     } = props;
 
     return [
       styles.button,
       inactive && styles.buttonInactive,
       selected && position !== 'between' && styles.buttonSelected,
-      today && styles.buttonToday
+      today && styles.buttonToday,
     ];
-  }
+  },
 })<{ ownerState: CalendarButtonOwnerState }>(({ theme }) => ({
   [`&.${buttonBaseClasses.root}`]: {
     ...theme.typography.body100,
@@ -221,23 +221,23 @@ const CalendarButtonButton = styled(ButtonBase, {
 
     [`&.${calendarButtonClasses.buttonToday}`]: {
       ...theme.typography.body100Bold,
-      border: `1px solid ${theme.vars.palette.monoA.A400}`
+      border: `1px solid ${theme.vars.palette.monoA.A400}`,
     },
 
     [`&.${buttonBaseClasses.root}.${calendarButtonClasses.buttonInactive}`]: {
-      '--text': theme.vars.palette.monoA.A550
+      '--text': theme.vars.palette.monoA.A550,
     },
 
     [`&.${calendarButtonClasses.buttonSelected}`]: {
-      '--background': theme.vars.palette.secondary[300]
+      '--background': theme.vars.palette.secondary[300],
     },
 
     [`&.${buttonBaseClasses.root}.${buttonBaseClasses.disabled}`]: {
       '--text': theme.vars.palette.monoA.A400,
       cursor: 'not-allowed',
-      pointerEvents: 'auto'
-    }
-  }
+      pointerEvents: 'auto',
+    },
+  },
 }));
 
 const CalendarButtonTooltip = styled(
@@ -245,12 +245,12 @@ const CalendarButtonTooltip = styled(
   {
     name: 'ESCalendarButton',
     slot: 'Tooltip',
-    overridesResolver: (_props, styles) => styles.tooltip
+    overridesResolver: (_props, styles) => styles.tooltip,
   }
 )(() => ({
   [`&[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]: {
-    marginBottom: '12px !important'
-  }
+    marginBottom: '12px !important',
+  },
 }));
 
 export const CalendarButton = (inProps: CalendarButtonProps) => {
@@ -270,7 +270,7 @@ export const CalendarButton = (inProps: CalendarButtonProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESCalendarButton'
+    name: 'ESCalendarButton',
   });
 
   const ownerState = { today, disabled, inactive, selected, hovered, position, ...props };

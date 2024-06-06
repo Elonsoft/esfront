@@ -12,5 +12,5 @@ export const error = {
   alpha: '300',
   main: '#F44336',
   light: '#FF6F68',
-  dark: '#C6281F'
+  dark: '#C6281F',
 };

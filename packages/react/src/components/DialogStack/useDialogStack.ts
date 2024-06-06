@@ -25,6 +25,6 @@ export const useDialogStack = (): DialogStackContextValue => {
       });
 
       return result;
-    }
+    },
   };
 };

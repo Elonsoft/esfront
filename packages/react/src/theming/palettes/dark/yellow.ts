@@ -9,5 +9,5 @@ export const yellow = {
   700: '#FFF0CE',
   800: '#FFF7E6',
   900: '#FFFBF5',
-  alpha: '300'
+  alpha: '300',
 };

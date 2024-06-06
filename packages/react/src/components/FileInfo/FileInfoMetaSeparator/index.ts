@@ -2,6 +2,6 @@ export { FileInfoMetaSeparator } from './FileInfoMetaSeparator';
 export {
   FileInfoMetaSeparatorClasses,
   fileInfoMetaSeparatorClasses,
-  FileInfoMetaSeparatorClassKey
+  FileInfoMetaSeparatorClassKey,
 } from './FileInfoMetaSeparator.classes';
 export { FileInfoMetaSeparatorProps } from './FileInfoMetaSeparator.types';

@@ -17,5 +17,5 @@ export function getDialogCloseUtilityClass(slot: string): string {
 export const dialogCloseClasses: DialogCloseClasses = generateUtilityClasses('ESDialogClose', [
   'root',
   'button',
-  'escapeKey'
+  'escapeKey',
 ]);

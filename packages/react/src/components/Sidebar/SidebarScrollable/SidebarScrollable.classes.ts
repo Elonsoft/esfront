@@ -12,5 +12,5 @@ export function getSidebarScrollableUtilityClass(slot: string): string {
 }
 
 export const sidebarScrollableClasses: SidebarScrollableClasses = generateUtilityClasses('ESSidebarScrollable', [
-  'root'
+  'root',
 ]);

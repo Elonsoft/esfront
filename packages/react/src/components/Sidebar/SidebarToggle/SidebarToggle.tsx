@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: SidebarToggleOwnerState) => {
   const slots = {
     root: ['root'],
     button: ['button'],
-    tooltip: ['tooltip']
+    tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getSidebarToggleUtilityClass, classes);
@@ -37,10 +37,10 @@ const useUtilityClasses = (ownerState: SidebarToggleOwnerState) => {
 const SidebarToggleRoot = styled('div', {
   name: 'ESSidebarToggle',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   position: 'relative',
-  zIndex: '10'
+  zIndex: '10',
 }));
 
 const SidebarToggleTooltip = styled(
@@ -48,21 +48,21 @@ const SidebarToggleTooltip = styled(
   {
     name: 'ESSidebarToggle',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    ...theme.typography.caption
+    ...theme.typography.caption,
   },
   [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
-    marginLeft: '9px !important'
-  }
+    marginLeft: '9px !important',
+  },
 }));
 
 const SidebarToggleButton = styled(Button, {
   name: 'ESSidebarToggle',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.button
+  overridesResolver: (props, styles) => styles.button,
 })<{ ownerState: SidebarToggleOwnerState }>(({ theme, ownerState }) => ({
   transition: 'none',
   width: '20px',
@@ -77,14 +77,14 @@ const SidebarToggleButton = styled(Button, {
   top: '-9px',
 
   [`& .${svgIconClasses.root}`]: {
-    transform: `rotate(${ownerState.open ? '' : '18'}0deg)`
+    transform: `rotate(${ownerState.open ? '' : '18'}0deg)`,
   },
 
   [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorMonoA}`]: {
     ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
       '--background': theme.vars.palette.surface.background2,
       '--icon': theme.vars.palette.monoA.A500,
-      '--focused': theme.vars.palette.monoA.A150
+      '--focused': theme.vars.palette.monoA.A150,
     }),
 
     ...(ownerState.color === 'primary' && {
@@ -92,9 +92,9 @@ const SidebarToggleButton = styled(Button, {
       '--icon': theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
       '--focused': theme.vars.palette.monoA.A150,
-      '--pressed': theme.vars.palette.monoA.A150
-    })
-  }
+      '--pressed': theme.vars.palette.monoA.A150,
+    }),
+  },
 }));
 
 export const SidebarToggle = (inProps: SidebarToggleProps) => {
@@ -109,7 +109,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSidebarToggle'
+    name: 'ESSidebarToggle',
   });
 
   const theme = useTheme();

@@ -36,5 +36,5 @@ export const sfsFiltersClasses: SFSFiltersClasses = generateUtilityClasses('ESSF
   'footer',
   'container',
   'closeButton',
-  'resetButton'
+  'resetButton',
 ]);

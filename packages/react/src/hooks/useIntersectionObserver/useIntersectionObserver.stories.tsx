@@ -11,8 +11,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useIntersectionObserver',
   parameters: {
-    references: ['useIntersectionObserver']
-  }
+    references: ['useIntersectionObserver'],
+  },
 };
 
 export default meta;
@@ -33,7 +33,7 @@ export const Demo: Story = {
           height: 'min(calc(100vh - 32px), 300px)',
           overflow: 'auto',
           border: '1px solid black',
-          borderRadius: '4px'
+          borderRadius: '4px',
         }}
       >
         <Typography
@@ -47,5 +47,5 @@ export const Demo: Story = {
         <Box ref={ref} sx={{ height: '64px', backgroundColor: 'primary.300' }} />
       </Box>
     );
-  }
+  },
 };

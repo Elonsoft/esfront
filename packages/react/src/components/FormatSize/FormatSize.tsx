@@ -12,10 +12,10 @@ export const FormatSize = (inProps: FormatSizeProps) => {
     children,
     prefix = 'metric',
     metricUnits,
-    binaryUnits
+    binaryUnits,
   } = useThemeProps({
     props: inProps,
-    name: 'ESFormatSize'
+    name: 'ESFormatSize',
   });
 
   const multiplier = prefix === 'metric' ? 1000 : 1024;

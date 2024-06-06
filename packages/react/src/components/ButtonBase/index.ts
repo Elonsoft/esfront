@@ -5,5 +5,5 @@ export {
   ButtonBaseProps,
   ButtonBaseTypeMap,
   ExtendButtonBase,
-  ExtendButtonBaseTypeMap
+  ExtendButtonBaseTypeMap,
 } from './ButtonBase.types';

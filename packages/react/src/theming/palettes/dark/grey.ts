@@ -9,5 +9,5 @@ export const grey = {
   700: '#DCDFE6',
   800: '#EAEDF3',
   900: '#F5F7FC',
-  alpha: '300'
+  alpha: '300',
 };

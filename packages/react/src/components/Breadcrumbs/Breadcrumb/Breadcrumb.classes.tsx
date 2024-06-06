@@ -21,5 +21,5 @@ export const breadcrumbClasses: BreadcrumbClasses = generateUtilityClasses('ESBr
   'root',
   'content',
   'separator',
-  'tooltip'
+  'tooltip',
 ]);

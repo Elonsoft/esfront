@@ -38,5 +38,5 @@ export const alertClasses: AlertClasses = generateUtilityClasses('ESAlert', [
   'icon',
   'content',
   'action',
-  'message'
+  'message',
 ]);

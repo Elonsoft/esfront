@@ -32,119 +32,119 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Swiper,
   parameters: {
-    references: ['Swiper', 'SwiperButton', 'SwiperPagination']
+    references: ['Swiper', 'SwiperButton', 'SwiperPagination'],
   },
   argTypes: {
     direction: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     alignment: {
       table: {
-        category: 'General'
+        category: 'General',
       },
       options: ['center', 'start'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     snap: {
       table: {
-        category: 'General'
+        category: 'General',
       },
-      defaultValue: true
+      defaultValue: true,
     },
     snapStop: {
       table: {
-        category: 'General'
+        category: 'General',
       },
       options: ['normal', 'always'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     draggable: {
       table: {
-        category: 'General'
+        category: 'General',
       },
-      defaultValue: true
+      defaultValue: true,
     },
     gap: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     loop: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     autoPlay: {
       table: {
-        category: 'AutoPlay'
-      }
+        category: 'AutoPlay',
+      },
     },
     autoPlayCount: {
       table: {
-        category: 'AutoPlay'
-      }
+        category: 'AutoPlay',
+      },
     },
     buttonPrev: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     buttonNext: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     pagination: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     SwiperPaginationPosition: {
       name: 'SwiperPagination.position',
       description: 'The position of the `SwiperPagination` component.',
       table: {
         category: 'Pagination',
-        defaultValue: { summary: 'end' }
+        defaultValue: { summary: 'end' },
       },
       options: ['start', 'end'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     SwiperPaginationVariant: {
       name: 'SwiperPagination.variant',
       description: 'The variant of the `SwiperPagination` component.',
       table: {
         category: 'Pagination',
-        defaultValue: { summary: 'small' }
+        defaultValue: { summary: 'small' },
       },
       options: ['small', 'long', 'big'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     SwiperPaginationSiblingCount: {
       name: 'SwiperPagination.siblingCount',
       description: 'Number of always visible items before and after active slide.',
       table: {
-        category: 'Pagination'
+        category: 'Pagination',
       },
-      control: { type: 'number' }
+      control: { type: 'number' },
     },
     SwiperPaginationTransitionDuration: {
       name: 'SwiperPagination.transitionDuration',
       description: 'The length of time in ms a transition animation should take to complete.',
       table: {
         category: 'Pagination',
-        defaultValue: { summary: 'theme.transitions.duration.shortest' }
+        defaultValue: { summary: 'theme.transitions.duration.shortest' },
       },
-      control: { type: 'number' }
+      control: { type: 'number' },
     },
     actions: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
-  args: {}
+  args: {},
 };
 
 export default meta;
@@ -184,7 +184,7 @@ export const Demo: Story = {
         <Image src="./swiper/4.png" />
       </Swiper>
     );
-  }
+  },
 };
 
 /** We can create vertical swiper. */
@@ -225,7 +225,7 @@ export const Vertical: Story = {
         </Swiper>
       </div>
     );
-  }
+  },
 };
 
 const CustomizationButton = styled(Button)<{ prev?: boolean; next?: boolean }>(({ theme, prev, next }) => ({
@@ -235,17 +235,17 @@ const CustomizationButton = styled(Button)<{ prev?: boolean; next?: boolean }>((
   borderRadius: '50%',
 
   ...(prev && {
-    left: 8
+    left: 8,
   }),
   ...(next && {
-    right: 8
+    right: 8,
   }),
 
   backdropFilter: 'blur(10px)',
 
   [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorBlack}`]: {
-    '--background': theme.vars.palette.white.A600
-  }
+    '--background': theme.vars.palette.white.A600,
+  },
 }));
 
 const CustomizationButtonPrev = () => {
@@ -315,5 +315,5 @@ export const Customization: Story = {
         <Image src="./swiper/2-9.png" />
       </Swiper>
     );
-  }
+  },
 };

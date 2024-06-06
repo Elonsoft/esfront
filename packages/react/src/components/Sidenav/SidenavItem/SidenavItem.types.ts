@@ -29,5 +29,5 @@ export interface SidenavItemTypeMap<P = {}, D extends ElementType = 'div'> {
 
 export type SidenavItemProps<
   D extends React.ElementType = SidenavItemTypeMap['defaultComponent'],
-  P = {}
+  P = {},
 > = OverrideProps<SidenavItemTypeMap<P, D>, D>;

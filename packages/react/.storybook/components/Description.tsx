@@ -25,7 +25,7 @@ export const Description = ({ name }: DescriptionProps) => {
         fontFamily:
           '"Nunito Sans",-apple-system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif',
         fontSize: '14px',
-        lineHeight: '24px'
+        lineHeight: '24px',
       }}
     >
       {description}

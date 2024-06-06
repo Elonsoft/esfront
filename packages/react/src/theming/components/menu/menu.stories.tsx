@@ -46,8 +46,8 @@ const meta: Meta<Args> = {
   title: 'Overrides/Menu',
 
   parameters: {
-    viewMode: 'canvas'
-  }
+    viewMode: 'canvas',
+  },
 };
 
 export default meta;
@@ -108,7 +108,7 @@ export const Demo: Story = {
         </Menu>
       </div>
     );
-  }
+  },
 };
 
 export const DemoList: Story = {
@@ -119,7 +119,7 @@ export const DemoList: Story = {
           maxWidth: '360px',
           boxShadow: theme.vars.palette.shadow.down[500],
           backgroundColor: theme.vars.palette.surface[400],
-          borderRadius: '4px'
+          borderRadius: '4px',
         })}
       >
         <List>
@@ -154,7 +154,7 @@ export const DemoList: Story = {
         </List>
       </Box>
     );
-  }
+  },
 };
 
 export const DemoListButton: Story = {
@@ -165,7 +165,7 @@ export const DemoListButton: Story = {
           maxWidth: '360px',
           boxShadow: theme.vars.palette.shadow.down[500],
           backgroundColor: theme.vars.palette.surface[400],
-          borderRadius: '4px'
+          borderRadius: '4px',
         })}
       >
         <List>
@@ -197,5 +197,5 @@ export const DemoListButton: Story = {
         </List>
       </Box>
     );
-  }
+  },
 };

@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: ErrorPageHeadingOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getErrorPageHeadingUtilityClass, classes);
@@ -25,17 +25,17 @@ const useUtilityClasses = (ownerState: ErrorPageHeadingOwnerState) => {
 export const ErrorPageHeadingRoot = styled(Typography, {
   name: 'ESErrorPageHeading',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A900,
   gridArea: 'heading',
-  marginTop: '24px'
+  marginTop: '24px',
 })) as typeof Typography;
 
 export const ErrorPageHeading = (inProps: ErrorPageHeadingProps) => {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESErrorPageHeading'
+    name: 'ESErrorPageHeading',
   });
 
   const ownerState = { ...props };

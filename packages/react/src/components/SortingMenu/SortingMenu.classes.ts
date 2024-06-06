@@ -36,5 +36,5 @@ export const sortingMenuClasses: SortingMenuClasses = generateUtilityClasses('ES
   'directionButton',
   'directionButtonBadge',
   'plusSign',
-  'caption'
+  'caption',
 ]);

@@ -34,10 +34,10 @@ const useUtilityClasses = (ownerState: LinkOwnerState) => {
       variant === 'inherit' && 'inherit',
       !!showVisited && 'showVisited',
       !!startIcon && 'startIcon',
-      !!endIcon && 'endIcon'
+      !!endIcon && 'endIcon',
     ],
     icon: ['icon'],
-    children: ['children']
+    children: ['children'],
   };
 
   return composeClasses(slots, getLinkUtilityClass, classes);
@@ -48,7 +48,7 @@ const LinkRoot = styled(Typography, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { variant, underline, showVisited, startIcon, endIcon }
+      ownerState: { variant, underline, showVisited, startIcon, endIcon },
     } = props;
     return [
       styles.root,
@@ -56,9 +56,9 @@ const LinkRoot = styled(Typography, {
       variant === 'inherit' && styles.inherit,
       !!showVisited && styles.showVisited,
       !!startIcon && styles.startIcon,
-      !!endIcon && styles.endIcon
+      !!endIcon && styles.endIcon,
     ];
-  }
+  },
 })<{ ownerState: LinkOwnerState }>(({ theme, ownerState }) => {
   const color = getPath<string>(theme, `palette.${ownerState.color}`) || (ownerState.color as string);
 
@@ -84,17 +84,17 @@ const LinkRoot = styled(Typography, {
     MozAppearance: 'none',
     WebkitAppearance: 'none',
     '&::-moz-focus-inner': {
-      borderStyle: 'none'
+      borderStyle: 'none',
     },
 
     ...(ownerState.variant === 'inherit' && {
-      textDecorationThickness: 'inherit'
+      textDecorationThickness: 'inherit',
     }),
 
     ...(!!ownerState.showVisited && {
       '&:visited': {
-        color: theme.vars.palette.common.linkVisited
-      }
+        color: theme.vars.palette.common.linkVisited,
+      },
     }),
 
     [`& .${linkClasses.children}`]: {
@@ -102,22 +102,22 @@ const LinkRoot = styled(Typography, {
       textDecorationColor: 'color-mix(in srgb, currentColor 40%, transparent)',
 
       ...(ownerState.underline === 'always' && {
-        textDecorationLine: 'underline'
-      })
+        textDecorationLine: 'underline',
+      }),
     },
 
     '&:hover': {
       [`& .${linkClasses.children}`]: {
         ...(ownerState.underline === 'hover' && {
-          textDecorationLine: 'underline'
+          textDecorationLine: 'underline',
         }),
         textDecorationStyle: 'solid',
-        textDecorationColor: 'inherit'
-      }
+        textDecorationColor: 'inherit',
+      },
     },
 
     '&:focus': {
-      outline: 'none'
+      outline: 'none',
     },
 
     '&:focus-visible': {
@@ -129,45 +129,45 @@ const LinkRoot = styled(Typography, {
         left: ownerState.startIcon ? '-1px' : '-4px',
         right: ownerState.endIcon ? '-1px' : '-4px',
         border: `2px solid ${theme.vars.palette.monoA.A700}`,
-        zIndex: 1
+        zIndex: 1,
       },
 
       [`& .${linkClasses.children}`]: {
-        textDecorationLine: 'none'
-      }
+        textDecorationLine: 'none',
+      },
     },
 
     '&:active': {
       [`& .${linkClasses.children}`]: {
-        textDecorationLine: 'none'
-      }
+        textDecorationLine: 'none',
+      },
     },
 
     '&:disabled': {
       color: theme.vars.palette.monoA.A400,
       cursor: 'not-allowed',
       [`& .${linkClasses.children}`]: {
-        textDecorationLine: 'none'
-      }
-    }
+        textDecorationLine: 'none',
+      },
+    },
   };
 });
 
 const LinkIcon = styled('span', {
   name: 'ESLink',
   slot: 'Icon',
-  overridesResolver: (props, styles) => styles.icon
+  overridesResolver: (props, styles) => styles.icon,
 })(() => ({
   display: 'inline-flex',
-  alignSelf: 'center'
+  alignSelf: 'center',
 }));
 
 const LinkChildren = styled('span', {
   name: 'ESLink',
   slot: 'Children',
-  overridesResolver: (props, styles) => styles.children
+  overridesResolver: (props, styles) => styles.children,
 })(() => ({
-  textDecorationThickness: 'inherit'
+  textDecorationThickness: 'inherit',
 }));
 
 /**
@@ -187,7 +187,7 @@ export const Link: OverridableComponent<LinkTypeMap> = (inProps: LinkProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESLink'
+    name: 'ESLink',
   });
 
   const ownerState = { startIcon, endIcon, variant, color, underline, showVisited, ...props };

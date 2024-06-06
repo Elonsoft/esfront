@@ -13,8 +13,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useClipboard',
   parameters: {
-    references: ['useClipboard']
-  }
+    references: ['useClipboard'],
+  },
 };
 
 export default meta;
@@ -49,5 +49,5 @@ export const Demo: Story = {
         )}
       </Box>
     );
-  }
+  },
 };

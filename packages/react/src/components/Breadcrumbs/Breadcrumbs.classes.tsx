@@ -27,5 +27,5 @@ export const breadcrumbsClasses: BreadcrumbsClasses = generateUtilityClasses('ES
   'buttonMore',
   'menu',
   'menuItem',
-  'tooltip'
+  'tooltip',
 ]);

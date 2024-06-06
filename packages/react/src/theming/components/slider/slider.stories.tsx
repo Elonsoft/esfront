@@ -12,7 +12,7 @@ const meta: Meta<Args> = {
   title: 'Overrides/Slider',
 
   parameters: {
-    viewMode: 'canvas'
+    viewMode: 'canvas',
   },
 
   argTypes: {
@@ -20,24 +20,24 @@ const meta: Meta<Args> = {
       options: ['primary', 'secondary'],
 
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
 
     valueLabelDisplay: {
       options: ['off', 'on', 'auto'],
 
       control: {
-        type: 'select'
+        type: 'select',
       },
 
-      defaultValue: 'auto'
+      defaultValue: 'auto',
     },
 
     disabled: {
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
 
     height: {
@@ -45,10 +45,10 @@ const meta: Meta<Args> = {
         type: 'range',
         min: 2,
         max: 8,
-        step: 1
-      }
-    }
-  }
+        step: 1,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -75,7 +75,7 @@ const DemoWrapper = ({ height, ...args }: Args) => {
           gap: '24px',
           gridAutoFlow: 'column',
           justifyContent: 'flex-start',
-          height: '150px'
+          height: '150px',
         }}
       >
         <Slider max={100} min={0} orientation="vertical" style={styleVertical} {...args} />
@@ -97,5 +97,5 @@ const DemoWrapper = ({ height, ...args }: Args) => {
 export const Demo: Story = {
   render: function Render(args) {
     return <DemoWrapper {...args} />;
-  }
+  },
 };

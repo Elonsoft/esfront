@@ -17,5 +17,5 @@ export function getFileIconBadgeUtilityClass(slot: string): string {
 export const fileIconBadgeClasses: FileIconBadgeClasses = generateUtilityClasses('ESFileIconBadge', [
   'root',
   'md',
-  'sm'
+  'sm',
 ]);

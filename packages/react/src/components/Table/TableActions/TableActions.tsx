@@ -23,7 +23,7 @@ const useUtilityClasses = (ownerState: TableActionsOwnerState) => {
   const slots = {
     root: ['root'],
     text: ['text'],
-    children: ['children']
+    children: ['children'],
   };
 
   return composeClasses(slots, getTableActionsUtilityClass, classes);
@@ -32,29 +32,29 @@ const useUtilityClasses = (ownerState: TableActionsOwnerState) => {
 const TableActionsRoot = styled('div', {
   name: 'ESTableActions',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   alignItems: 'center',
   backgroundColor: theme.vars.palette.secondary.A100,
   display: 'flex',
   padding: 8,
-  paddingLeft: 24
+  paddingLeft: 24,
 }));
 
 const TableActionsText = styled(Typography, {
   name: 'ESTableActions',
   slot: 'Text',
-  overridesResolver: (props, styles) => styles.text
+  overridesResolver: (props, styles) => styles.text,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A900,
   fontWeight: 500,
-  marginRight: 'auto'
+  marginRight: 'auto',
 }));
 
 const TableActionsChildren = styled('div', {
   name: 'ESTableActions',
   slot: 'Children',
-  overridesResolver: (props, styles) => styles.children
+  overridesResolver: (props, styles) => styles.children,
 })(({ theme }) => ({
   alignItems: 'center',
   alignSelf: 'stretch',
@@ -63,12 +63,12 @@ const TableActionsChildren = styled('div', {
   gridAutoFlow: 'column',
 
   [`& .${buttonClasses.root}`]: {
-    '--icon': theme.vars.palette.monoA.A700
+    '--icon': theme.vars.palette.monoA.A700,
   },
   [`& .${dividerClasses.root}`]: {
     backgroundColor: theme.vars.palette.monoA.A200,
-    margin: '0 6px'
-  }
+    margin: '0 6px',
+  },
 }));
 
 /**
@@ -77,7 +77,7 @@ const TableActionsChildren = styled('div', {
 export const TableActions = memo(function TableActions(inProps: TableActionsProps) {
   const { className, sx, label, count, children, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESTableActions'
+    name: 'ESTableActions',
   });
 
   const ownerState = { ...props };

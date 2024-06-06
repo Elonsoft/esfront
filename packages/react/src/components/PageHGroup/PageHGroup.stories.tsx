@@ -8,7 +8,7 @@ import {
   PageHGroupBreadcrumbs,
   PageHGroupHeading,
   PageHGroupMain,
-  PageHGroupStatus
+  PageHGroupStatus,
 } from '.';
 
 import { IconDotsHorizontalW500, IconPlusW400 } from '../../icons';
@@ -27,23 +27,23 @@ const meta: Meta<Args> = {
       'PageHGroupBreadcrumbs',
       'PageHGroupHeading',
       'PageHGroupMain',
-      'PageHGroupStatus'
-    ]
+      'PageHGroupStatus',
+    ],
   },
   argTypes: {
     children: {
       control: { type: 'text' },
       table: {
-        category: 'PageHGroupHeading'
-      }
+        category: 'PageHGroupHeading',
+      },
     },
     maxLines: {
       control: { type: 'number' },
       table: {
-        category: 'PageHGroupHeading'
-      }
-    }
-  }
+        category: 'PageHGroupHeading',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -72,5 +72,5 @@ export const Demo: Story = {
         <PageHGroupStatus>{locale === 'en' ? 'Link access enabled' : 'Доступ по ссылке включен'}</PageHGroupStatus>
       </PageHGroup>
     );
-  }
+  },
 };

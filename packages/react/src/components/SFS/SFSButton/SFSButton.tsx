@@ -21,7 +21,7 @@ const useUtilityClasses = (ownerState: SFSButtonOwnerState) => {
   const { active, classes } = ownerState;
 
   const slots = {
-    root: ['root', active && 'active']
+    root: ['root', active && 'active'],
   };
 
   const composedClasses = composeClasses(slots, getSFSButtonUtilityClass, classes);
@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: SFSButtonOwnerState) => {
   return {
     // forward the outlined, color, etc. classes to Button
     ...classes,
-    ...composedClasses
+    ...composedClasses,
   };
 };
 
@@ -42,43 +42,43 @@ const SFSButtonRoot = styled(Button, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { active }
+      ownerState: { active },
     } = props;
     return [styles.root, active && active.loading];
-  }
+  },
 })(({ theme }) => ({
   textTransform: 'inherit',
 
   [`&.${buttonClasses.root}`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
-      gap: '4px'
+      gap: '4px',
     },
 
     '&:hover .ESSvgIcon-root, &:hover .MuiTypography-root, &:focus-visible .ESSvgIcon-root, &:focus-visible .MuiTypography-root':
       {
-        color: theme.vars.palette.monoA.A600
+        color: theme.vars.palette.monoA.A600,
       },
 
     '& .MuiTypography-root': {
-      color: theme.vars.palette.monoA.A550
+      color: theme.vars.palette.monoA.A550,
     },
 
     '& .ESSvgIcon-root': {
-      color: theme.vars.palette.monoA.A500
-    }
+      color: theme.vars.palette.monoA.A500,
+    },
   },
   [theme.breakpoints.down('tabletXS')]: {
     gap: '2px',
     '& .MuiTypography-root:first-of-type': {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
 
   [theme.breakpoints.up('tabletXS')]: {
     [`&.${sfsButtonClasses.active} > .${buttonBaseClasses.wrapper} > .${svgIconClasses.root}`]: {
-      display: 'none'
-    }
-  }
+      display: 'none',
+    },
+  },
 }));
 
 export const SFSButton = forwardRef(function SFSButton(inProps, ref) {
@@ -86,7 +86,7 @@ export const SFSButton = forwardRef(function SFSButton(inProps, ref) {
 
   const ownerState = {
     classes: inClasses,
-    active
+    active,
   };
 
   const classes = useUtilityClasses(ownerState);

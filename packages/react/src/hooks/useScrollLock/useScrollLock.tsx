@@ -2,7 +2,7 @@ import {
   unstable_getScrollbarSize as getScrollbarSize,
   unstable_ownerDocument as ownerDocument,
   unstable_ownerWindow as ownerWindow,
-  unstable_useEnhancedEffect as useEnhancedEffect
+  unstable_useEnhancedEffect as useEnhancedEffect,
 } from '@mui/utils';
 
 const isOverflowing = (element: Element) => {
@@ -30,7 +30,7 @@ export const useScrollLock = (lock: boolean, container: HTMLElement) => {
         restoreStyle.push({
           value: container.style.paddingRight,
           property: 'padding-right',
-          el: container
+          el: container,
         });
 
         // Use computed style, here to get the real padding to add our scrollbar width.
@@ -43,7 +43,7 @@ export const useScrollLock = (lock: boolean, container: HTMLElement) => {
           restoreStyle.push({
             value: element.style.paddingRight,
             property: 'padding-right',
-            el: element
+            el: element,
           });
 
           element.style.paddingRight = `${getPaddingRight(element) + scrollbarSize}px`;
@@ -72,17 +72,17 @@ export const useScrollLock = (lock: boolean, container: HTMLElement) => {
         {
           value: scrollContainer.style.overflow,
           property: 'overflow',
-          el: scrollContainer
+          el: scrollContainer,
         },
         {
           value: scrollContainer.style.overflowX,
           property: 'overflow-x',
-          el: scrollContainer
+          el: scrollContainer,
         },
         {
           value: scrollContainer.style.overflowY,
           property: 'overflow-y',
-          el: scrollContainer
+          el: scrollContainer,
         }
       );
 

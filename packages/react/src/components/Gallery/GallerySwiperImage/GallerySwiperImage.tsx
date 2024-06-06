@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: GallerySwiperImageOwnerState) => {
 
   const slots = {
     root: ['root'],
-    image: ['image']
+    image: ['image'],
   };
 
   return composeClasses(slots, getGallerySwiperImageUtilityClass, classes);
@@ -25,20 +25,20 @@ const useUtilityClasses = (ownerState: GallerySwiperImageOwnerState) => {
 const GallerySwiperImageRoot = styled('div', {
   name: 'ESGallerySwiperImage',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
   width: '100%',
-  minHeight: 0
+  minHeight: 0,
 }));
 
 const GallerySwiperImageImage = styled('img', {
   name: 'ESGallerySwiperImage',
   slot: 'Image',
-  overridesResolver: (props, styles) => styles.image
+  overridesResolver: (props, styles) => styles.image,
 })(({ theme }) => ({
   display: 'block',
   maxHeight: 'calc(100% - 16px)',
@@ -47,18 +47,18 @@ const GallerySwiperImageImage = styled('img', {
   boxShadow: theme.vars.palette.shadow.down[900],
 
   [theme.breakpoints.up('tabletXS')]: {
-    maxWidth: 'calc(100% - 32px)'
+    maxWidth: 'calc(100% - 32px)',
   },
 
   '@media (min-height: 450px)': {
-    maxHeight: '100%'
-  }
+    maxHeight: '100%',
+  },
 }));
 
 export const GallerySwiperImage = (inProps: GallerySwiperImageProps) => {
   const { className, sx, src, alt, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESGallerySwiperImage'
+    name: 'ESGallerySwiperImage',
   });
 
   const ownerState = { ...props };

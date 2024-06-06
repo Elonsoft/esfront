@@ -10,23 +10,23 @@ const meta: Meta<typeof Pagination> = {
   tags: ['autodocs'],
   component: Pagination,
   parameters: {
-    references: ['Pagination', 'PaginationPages', 'PaginationRange']
+    references: ['Pagination', 'PaginationPages', 'PaginationRange'],
   },
   argTypes: {
     itemsPerPage: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     page: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
-    count: 100
-  }
+    count: 100,
+  },
 };
 
 export default meta;
@@ -58,5 +58,5 @@ export const Demo: Story = {
         <PaginationPages />
       </Pagination>
     );
-  }
+  },
 };

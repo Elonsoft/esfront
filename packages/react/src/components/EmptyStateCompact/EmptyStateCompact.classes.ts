@@ -11,5 +11,5 @@ export function getEmptyStateUtilityClass(slot: string): string {
 }
 
 export const emptyStateCompactClasses: EmptyStateCompactClasses = generateUtilityClasses('ESEmptyStateCompact', [
-  'root'
+  'root',
 ]);

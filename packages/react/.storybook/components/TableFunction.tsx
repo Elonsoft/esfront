@@ -46,7 +46,7 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
             isOptional: !!child.flags.isOptional,
             type: getProperty(child.type),
             default: child.comment?.tags?.find((tag) => tag.tag === 'default')?.text,
-            description: getDescription(child)
+            description: getDescription(child),
           }))
         : [];
       const returns = { type: getProperty(signature.type), description: (signature as any)?.comment?.returns || null };

@@ -11,5 +11,5 @@ export function getPageHGroupActionsUtilityClass(slot: string): string {
 }
 
 export const pageHGroupActionsClasses: PageHGroupActionsClasses = generateUtilityClasses('ESPageHGroupActions', [
-  'root'
+  'root',
 ]);

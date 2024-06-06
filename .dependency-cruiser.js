@@ -9,8 +9,8 @@ module.exports = {
         'your solution (i.e. use dependency inversion, make sure the modules have a single responsibility) ',
       from: {},
       to: {
-        circular: true
-      }
+        circular: true,
+      },
     },
     {
       name: 'no-orphans',
@@ -27,10 +27,10 @@ module.exports = {
           '(^|/)[.][^/]+[.](?:js|cjs|mjs|ts|cts|mts|json)$', // dot files
           '[.]d[.]ts$', // TypeScript declaration files
           '(^|/)tsconfig[.]json$', // TypeScript config
-          '(^|/)(?:babel|webpack)[.]config[.](?:js|cjs|mjs|ts|cts|mts|json)$' // other configs
-        ]
+          '(^|/)(?:babel|webpack)[.]config[.](?:js|cjs|mjs|ts|cts|mts|json)$', // other configs
+        ],
       },
-      to: {}
+      to: {},
     },
     {
       name: 'no-deprecated-core',
@@ -61,9 +61,9 @@ module.exports = {
           '^constants$',
           '^sys$',
           '^_linklist$',
-          '^_stream_wrap$'
-        ]
-      }
+          '^_stream_wrap$',
+        ],
+      },
     },
     {
       name: 'not-to-deprecated',
@@ -73,8 +73,8 @@ module.exports = {
       severity: 'warn',
       from: {},
       to: {
-        dependencyTypes: ['deprecated']
-      }
+        dependencyTypes: ['deprecated'],
+      },
     },
     // {
     //   name: 'no-non-package-json',
@@ -100,8 +100,8 @@ module.exports = {
       severity: 'error',
       from: {},
       to: {
-        couldNotResolve: true
-      }
+        couldNotResolve: true,
+      },
     },
     // {
     //   name: 'no-duplicate-dep-types',
@@ -131,8 +131,8 @@ module.exports = {
       severity: 'error',
       from: {},
       to: {
-        path: '[.](?:spec|test)[.](?:js|mjs|cjs|jsx|ts|mts|cts|tsx|ls|coffee|litcoffee|coffee[.]md)$'
-      }
+        path: '[.](?:spec|test)[.](?:js|mjs|cjs|jsx|ts|mts|cts|tsx|ls|coffee|litcoffee|coffee[.]md)$',
+      },
     },
     // {
     //   name: 'not-to-dev-dep',
@@ -171,9 +171,9 @@ module.exports = {
         'dependency-cruiser configuration.',
       from: {},
       to: {
-        dependencyTypes: ['npm-optional']
-      }
-    }
+        dependencyTypes: ['npm-optional'],
+      },
+    },
     // {
     //   name: 'peer-deps-used',
     //   comment:
@@ -194,7 +194,7 @@ module.exports = {
     /* Which modules not to follow further when encountered */
     doNotFollow: {
       /* path: an array of regular expressions in strings to match against */
-      path: ['node_modules']
+      path: ['node_modules'],
     },
 
     /* Which modules to exclude */
@@ -262,7 +262,7 @@ module.exports = {
        defaults to './tsconfig.json'.
      */
     tsConfig: {
-      fileName: 'tsconfig.json'
+      fileName: 'tsconfig.json',
     },
 
     /* Webpack configuration to use to get resolve options from.
@@ -324,7 +324,7 @@ module.exports = {
       // if you migrate to ESM (or are in an ESM environment already) you will want to
       // have "module" in the list of mainFields, like so:
       // mainFields: ["module", "main", "types", "typings"],
-      mainFields: ['main', 'types', 'typings']
+      mainFields: ['main', 'types', 'typings'],
       /*
          A list of alias fields in package.jsons
          See [this specification](https://github.com/defunctzombie/package-browser-field-spec) and
@@ -342,7 +342,7 @@ module.exports = {
            collapses everything in node_modules to one folder deep so you see
            the external modules, but not the innards your app depends upon.
          */
-        collapsePattern: 'node_modules/(?:@[^/]+/[^/]+|[^/]+)'
+        collapsePattern: 'node_modules/(?:@[^/]+/[^/]+|[^/]+)',
 
         /* Options to tweak the appearance of your graph.See
            https://github.com/sverweij/dependency-cruiser/blob/main/doc/options-reference.md#reporteroptions
@@ -367,7 +367,7 @@ module.exports = {
           this collapsePattern to your situation.
         */
         collapsePattern:
-          '^(?:packages|src|lib(s?)|app(s?)|bin|test(s?)|spec(s?))/[^/]+|node_modules/(?:@[^/]+/[^/]+|[^/]+)'
+          '^(?:packages|src|lib(s?)|app(s?)|bin|test(s?)|spec(s?))/[^/]+|node_modules/(?:@[^/]+/[^/]+|[^/]+)',
 
         /* Options to tweak the appearance of your graph.See
            https://github.com/sverweij/dependency-cruiser/blob/main/doc/options-reference.md#reporteroptions
@@ -379,9 +379,9 @@ module.exports = {
         // },
       },
       text: {
-        highlightFocused: true
-      }
-    }
-  }
+        highlightFocused: true,
+      },
+    },
+  },
 };
 // generated: dependency-cruiser@16.2.4 on 2024-03-19T13:39:51.072Z

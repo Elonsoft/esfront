@@ -5,14 +5,14 @@ export default {
   title: 'Getting Started/Theming',
 
   parameters: {
-    viewMode: 'docs'
-  }
+    viewMode: 'docs',
+  },
 };
 
 export const Palette = {
-  render: () => <PaletteDemo />
+  render: () => <PaletteDemo />,
 };
 
 export const Typography = {
-  render: () => <TypographyDemo />
+  render: () => <TypographyDemo />,
 };

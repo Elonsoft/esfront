@@ -25,7 +25,7 @@ const useUtilityClasses = (ownerState: PasswordFieldOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getPasswordFieldUtilityClass, classes);
@@ -34,10 +34,10 @@ const useUtilityClasses = (ownerState: PasswordFieldOwnerState) => {
 const PasswordFieldRoot = styled(TextField, {
   name: 'ESPasswordFieldRoot',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   [`.${outlinedInputClasses.root}.${inputBaseClasses.adornedEnd}`]: {
-    paddingRight: '0px'
+    paddingRight: '0px',
   },
   [`&.${textFieldClasses.root}`]: {
     [`& .${inputAdornmentClasses.positionEnd}`]: {
@@ -45,10 +45,10 @@ const PasswordFieldRoot = styled(TextField, {
 
       [`& .${buttonClasses.root}`]: {
         borderRadius: '50%',
-        '--icon': theme.vars.palette.monoA.A500
-      }
-    }
-  }
+        '--icon': theme.vars.palette.monoA.A500,
+      },
+    },
+  },
 }));
 
 /**
@@ -72,7 +72,7 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESPasswordField'
+    name: 'ESPasswordField',
   });
 
   const [visible, setVisible] = useControlled(false, inVisible);
@@ -113,7 +113,7 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
             </Button>
           </InputAdornment>
         ),
-        ...InputProps
+        ...InputProps,
       }}
       className={clsx(classes.root, className)}
       classes={inClasses}

@@ -21,7 +21,7 @@ const useUtilityClasses = (ownerState: FileIconOwnerState) => {
   const slots = {
     root: ['root'],
     children: ['children'],
-    icon: ['icon']
+    icon: ['icon'],
   };
 
   return composeClasses(slots, getFileIconUtilityClass, classes);
@@ -30,27 +30,27 @@ const useUtilityClasses = (ownerState: FileIconOwnerState) => {
 const FileIconRoot = styled('div', {
   name: 'ESFileIcon',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A500,
   display: 'flex',
   fontWeight: 700,
   height: 'auto',
   justifyContent: 'center',
-  position: 'relative'
+  position: 'relative',
 }));
 
 const FileIconChildren = styled('div', {
   name: 'ESFileIcon',
   slot: 'Children',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
   inset: 0,
   justifyContent: 'center',
-  position: 'absolute'
+  position: 'absolute',
 }));
 
 /**
@@ -67,7 +67,7 @@ export const FileIcon = (inProps: FileIconProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESFileIcon'
+    name: 'ESFileIcon',
   });
 
   const ownerState = { ...props };

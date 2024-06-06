@@ -10,8 +10,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useVibration',
   parameters: {
-    references: ['useVibration']
-  }
+    references: ['useVibration'],
+  },
 };
 
 export default meta;
@@ -32,5 +32,5 @@ export const Demo: Story = {
         </Button>
       </Box>
     );
-  }
+  },
 };

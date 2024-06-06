@@ -65,15 +65,15 @@ const useUtilityClasses = (ownerState: LinearProgressOwnerState) => {
       `barColor${capitalize(color)}`,
       variant === 'indeterminate' && 'bar1Indeterminate',
       variant === 'determinate' && 'bar1Determinate',
-      variant === 'buffer' && 'bar1Buffer'
+      variant === 'buffer' && 'bar1Buffer',
     ],
     bar2: [
       'bar',
       variant !== 'buffer' && `barColor${capitalize(color)}`,
       variant === 'buffer' && `color${capitalize(color)}`,
       variant === 'indeterminate' && 'bar2Indeterminate',
-      variant === 'buffer' && 'bar2Buffer'
-    ]
+      variant === 'buffer' && 'bar2Buffer',
+    ],
   };
 
   return composeClasses(slots, getLinearProgressUtilityClass, classes);
@@ -86,7 +86,7 @@ const LinearProgressRoot = styled('span', {
     const { ownerState } = props;
 
     return [styles.root, styles[`color${capitalize(ownerState.color)}`], styles[ownerState.variant]];
-  }
+  },
 })<{ ownerState: LinearProgressOwnerState }>(({ ownerState, theme }) => ({
   position: 'relative',
   overflow: 'hidden',
@@ -95,7 +95,7 @@ const LinearProgressRoot = styled('span', {
   borderRadius: `${ownerState.width / 2}px`,
   zIndex: 0,
   '@media print': {
-    colorAdjust: 'exact'
+    colorAdjust: 'exact',
   },
   backgroundColor: theme.vars.palette.monoA.A200,
   ...(ownerState.color === 'inherit' &&
@@ -109,10 +109,10 @@ const LinearProgressRoot = styled('span', {
         right: 0,
         bottom: 0,
         backgroundColor: 'transparent',
-        opacity: 0.3
-      }
+        opacity: 0.3,
+      },
     }),
-  ...(ownerState.variant === 'buffer' && { backgroundColor: 'transparent' })
+  ...(ownerState.variant === 'buffer' && { backgroundColor: 'transparent' }),
 }));
 
 const LinearProgressDashed = styled('span', {
@@ -122,7 +122,7 @@ const LinearProgressDashed = styled('span', {
     const { ownerState } = props;
 
     return [styles.dashed, styles[`dashedColor${capitalize(ownerState.color)}`]];
-  }
+  },
 })<{ ownerState: LinearProgressOwnerState }>(({ ownerState, theme }) => {
   const backgroundColor = theme.vars.palette.monoA.A200;
 
@@ -132,11 +132,11 @@ const LinearProgressDashed = styled('span', {
     height: '100%',
     width: '100%',
     ...(ownerState.color === 'inherit' && {
-      opacity: 0.3
+      opacity: 0.3,
     }),
     backgroundImage: `radial-gradient(${backgroundColor} 0%, ${backgroundColor} 20%, transparent 0%)`,
     backgroundSize: `${ownerState.width * 3}px ${ownerState.width * 3}px`,
-    backgroundPosition: `0 ${ownerState.width * 2}px`
+    backgroundPosition: `0 ${ownerState.width * 2}px`,
   };
 });
 
@@ -151,9 +151,9 @@ const LinearProgressBar1 = styled('span', {
       styles[`barColor${capitalize(ownerState.color)}`],
       (ownerState.variant === 'indeterminate' || ownerState.variant === 'query') && styles.bar1Indeterminate,
       ownerState.variant === 'determinate' && styles.bar1Determinate,
-      ownerState.variant === 'buffer' && styles.bar1Buffer
+      ownerState.variant === 'buffer' && styles.bar1Buffer,
     ];
-  }
+  },
 })<{ ownerState: LinearProgressOwnerState }>(
   ({ ownerState, theme }) => ({
     width: '100%',
@@ -166,12 +166,12 @@ const LinearProgressBar1 = styled('span', {
     borderRadius: `${ownerState.width / 2}px`,
     backgroundColor: ownerState.color === 'inherit' ? 'currentColor' : theme.vars.palette[ownerState.color][300],
     ...(ownerState.variant === 'determinate' && {
-      transition: `transform .${TRANSITION_DURATION}s linear`
+      transition: `transform .${TRANSITION_DURATION}s linear`,
     }),
     ...(ownerState.variant === 'buffer' && {
       zIndex: 1,
-      transition: `transform .${TRANSITION_DURATION}s linear`
-    })
+      transition: `transform .${TRANSITION_DURATION}s linear`,
+    }),
   }),
   ({ ownerState }) =>
     ownerState.variant === 'indeterminate' &&
@@ -191,9 +191,9 @@ const LinearProgressBar2 = styled('span', {
       styles.bar,
       styles[`barColor${capitalize(ownerState.color)}`],
       (ownerState.variant === 'indeterminate' || ownerState.variant === 'query') && styles.bar2Indeterminate,
-      ownerState.variant === 'buffer' && styles.bar2Buffer
+      ownerState.variant === 'buffer' && styles.bar2Buffer,
     ];
-  }
+  },
 })<{ ownerState: LinearProgressOwnerState }>(
   ({ ownerState, theme }) => ({
     width: '100%',
@@ -206,16 +206,16 @@ const LinearProgressBar2 = styled('span', {
     borderRadius: `${ownerState.width / 2}px`,
 
     ...(ownerState.variant === 'determinate' && {
-      backgroundColor: ownerState.color === 'inherit' ? 'currentColor' : theme.vars.palette[ownerState.color].A400
+      backgroundColor: ownerState.color === 'inherit' ? 'currentColor' : theme.vars.palette[ownerState.color].A400,
     }),
 
     ...(ownerState.variant === 'buffer' && {
-      backgroundColor: theme.vars.palette.monoA.A200
+      backgroundColor: theme.vars.palette.monoA.A200,
     }),
 
     ...(ownerState.variant !== 'indeterminate' && {
-      transition: `transform .${TRANSITION_DURATION}s linear`
-    })
+      transition: `transform .${TRANSITION_DURATION}s linear`,
+    }),
   }),
   ({ ownerState }) =>
     ownerState.variant === 'indeterminate' &&
@@ -238,7 +238,7 @@ export const LinearProgress = forwardRef<HTMLButtonElement, LinearProgressProps>
     ...props,
     color,
     variant,
-    width
+    width,
   };
 
   const classes = useUtilityClasses(ownerState);

@@ -38,63 +38,63 @@ const meta: Meta<typeof Dropzone> = {
   tags: ['autodocs'],
   component: Dropzone,
   parameters: {
-    references: ['Dropzone']
+    references: ['Dropzone'],
   },
   argTypes: {
     heading: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     subheading: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     dragHeading: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     dragSubheading: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     helperText: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     error: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     accept: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     maxSize: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     multiple: {
       table: {
-        category: 'General'
-      }
+        category: 'General',
+      },
     },
     icon: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
-    accept: '*'
-  }
+    accept: '*',
+  },
 };
 
 export default meta;
@@ -113,5 +113,5 @@ export const Demo: Story = {
         subheading={getSubheading(args, context)}
       />
     );
-  }
+  },
 };

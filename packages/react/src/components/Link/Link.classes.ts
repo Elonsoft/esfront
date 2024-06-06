@@ -38,5 +38,5 @@ export const linkClasses: LinkClasses = generateUtilityClasses('ESLink', [
   'startIcon',
   'endIcon',
   'icon',
-  'children'
+  'children',
 ]);

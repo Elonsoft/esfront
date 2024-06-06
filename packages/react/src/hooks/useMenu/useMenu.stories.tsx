@@ -11,8 +11,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useMenu',
   parameters: {
-    references: ['useMenu']
-  }
+    references: ['useMenu'],
+  },
 };
 
 export default meta;
@@ -33,5 +33,5 @@ export const Demo: Story = {
         </Menu>
       </>
     );
-  }
+  },
 };

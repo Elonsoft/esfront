@@ -13,8 +13,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/usePermission',
   parameters: {
-    references: ['usePermission']
-  }
+    references: ['usePermission'],
+  },
 };
 
 export default meta;
@@ -50,5 +50,5 @@ export const Demo: Story = {
         </Typography>
       </>
     );
-  }
+  },
 };

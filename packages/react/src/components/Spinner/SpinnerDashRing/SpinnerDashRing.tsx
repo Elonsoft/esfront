@@ -24,7 +24,7 @@ const useUtilityClasses = (ownerState: SpinnerDashRingOwnerState) => {
 
   const slots = {
     root: ['root', color],
-    circle: ['circle']
+    circle: ['circle'],
   };
 
   return composeClasses(slots, getSpinnerDashRingUtilityClass, classes);
@@ -35,24 +35,24 @@ const SpinnerDashRingRoot = styled('svg', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { color }
+      ownerState: { color },
     } = props;
     return [styles.root, styles[color]];
-  }
+  },
 })<{ ownerState: SpinnerDashRingOwnerState }>(({ ownerState }) => ({
   color: ownerState.spinnerColor,
   '& > path': {
-    fill: 'currentColor'
+    fill: 'currentColor',
   },
   '& > circle': {
-    stroke: 'currentColor'
-  }
+    stroke: 'currentColor',
+  },
 }));
 
 const SpinnerDashRingCircle = styled('circle', {
   name: 'ESSpinnerDashRing',
   slot: 'Circle',
-  overridesResolver: (props, styles) => styles.circle
+  overridesResolver: (props, styles) => styles.circle,
 })<{ ownerState: SpinnerDashRingOwnerState }>(({ ownerState }) =>
   spinnerDashAnimation(ownerState.duration, ownerState.ease, ownerState.dashEase)
 );
@@ -69,7 +69,7 @@ export const SpinnerDashRing = (inProps: SpinnerDashRingProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSpinnerDashRing'
+    name: 'ESSpinnerDashRing',
   });
 
   const spinnerColor = useSpinnerColor(color);

@@ -34,11 +34,11 @@ const useUtilityClasses = (ownerState: SwiperOwnerState) => {
       'container',
       snap && 'containerSnap',
       snap && alignment === 'center' && 'containerSnapAlignCenter',
-      snap && alignment === 'start' && 'containerSnapAlignStart'
+      snap && alignment === 'start' && 'containerSnapAlignStart',
     ],
     button: ['button'],
     buttonPrev: ['buttonPrev'],
-    buttonNext: ['buttonNext']
+    buttonNext: ['buttonNext'],
   };
 
   return composeClasses(slots, getSwiperUtilityClass, classes);
@@ -49,10 +49,10 @@ const SwiperRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { direction }
+      ownerState: { direction },
     } = props;
     return [styles.root, styles[direction]];
-  }
+  },
 })<{ ownerState: SwiperOwnerState }>(({ ownerState }) => ({
   position: 'relative',
   display: 'flex',
@@ -60,8 +60,8 @@ const SwiperRoot = styled('div', {
   ...(ownerState.direction === 'horizontal' && {
     flexDirection: 'column',
     [`& .${swiperClasses.container}`]: {
-      gridAutoFlow: 'column'
-    }
+      gridAutoFlow: 'column',
+    },
   }),
 
   ...(ownerState.direction === 'vertical' && {
@@ -70,22 +70,22 @@ const SwiperRoot = styled('div', {
     width: 'max-content',
     [`& .${swiperClasses.container}`]: {
       gridAutoFlow: 'row',
-      height: '100%'
+      height: '100%',
     },
     [`& .${swiperClasses.button}.${buttonClasses.root}`]: {
       position: 'absolute',
       left: '50%',
-      transform: 'translateX(-50%)'
-    }
-  })
+      transform: 'translateX(-50%)',
+    },
+  }),
 }));
 
 const SwiperWrapper = styled('div', {
   name: 'ESSwiper',
   slot: 'Wrapper',
-  overridesResolver: (_props, styles) => styles.wrapper
+  overridesResolver: (_props, styles) => styles.wrapper,
 })(() => ({
-  position: 'relative'
+  position: 'relative',
 }));
 
 const SwiperContainer = styled('div', {
@@ -93,15 +93,15 @@ const SwiperContainer = styled('div', {
   slot: 'Container',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { snap, alignment }
+      ownerState: { snap, alignment },
     } = props;
     return [
       styles.container,
       snap && styles.containerSnap,
       snap && alignment === 'center' && styles.containerSnapAlignCenter,
-      snap && alignment === 'start' && styles.containerSnapAlignStart
+      snap && alignment === 'start' && styles.containerSnapAlignStart,
     ];
-  }
+  },
 })<{ ownerState: SwiperOwnerState }>(({ ownerState }) => ({
   display: 'grid',
   justifyContent: 'flex-start',
@@ -111,7 +111,7 @@ const SwiperContainer = styled('div', {
   scrollbarWidth: 'none',
 
   '&::-webkit-scrollbar': {
-    display: 'none'
+    display: 'none',
   },
 
   '& > *': {
@@ -119,15 +119,15 @@ const SwiperContainer = styled('div', {
     scrollSnapStop: ownerState.snapStop,
     ...(ownerState.snap && {
       '&:first-child': {
-        scrollSnapAlign: 'start'
+        scrollSnapAlign: 'start',
       },
       '&:last-child': {
-        scrollSnapAlign: 'end'
-      }
-    })
+        scrollSnapAlign: 'end',
+      },
+    }),
   },
 
-  scrollSnapType: ownerState.snap ? 'x mandatory' : 'none'
+  scrollSnapType: ownerState.snap ? 'x mandatory' : 'none',
 }));
 
 /**
@@ -157,7 +157,7 @@ export const Swiper = (inProps: SwiperProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSwiper'
+    name: 'ESSwiper',
   });
 
   const mapping = usePropertiesMapping(direction);
@@ -360,7 +360,7 @@ export const Swiper = (inProps: SwiperProps) => {
 
         container.current.scrollBy({
           [mapping.start]: Math.sign(step) * s,
-          behavior: options?.smooth ?? true ? 'smooth' : 'auto'
+          behavior: options?.smooth ?? true ? 'smooth' : 'auto',
         });
       }
     },
@@ -512,7 +512,7 @@ export const Swiper = (inProps: SwiperProps) => {
       from,
       to,
       setActiveSlide,
-      setActiveSlideByStep
+      setActiveSlideByStep,
     };
   }, [direction, active, from, to, setActiveSlide, setActiveSlideByStep]);
 

@@ -25,7 +25,7 @@ const useUtilityClasses = (ownerState: TableHeadOwnerState) => {
 
   const slots = {
     root: ['root', sticky !== undefined && 'sticky', sticky !== undefined && isStuck && 'stuck'],
-    container: ['container']
+    container: ['container'],
   };
 
   return composeClasses(slots, getTableHeadUtilityClass, classes);
@@ -36,10 +36,10 @@ const TableHeadRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { sticky, isStuck }
+      ownerState: { sticky, isStuck },
     } = props;
     return [styles.root, sticky !== undefined && styles.sticky, sticky !== undefined && isStuck && styles.stuck];
-  }
+  },
 })<{ ownerState: TableHeadOwnerState }>(({ ownerState }) => ({
   overflow: 'auto',
   position: 'relative',
@@ -52,22 +52,22 @@ const TableHeadRoot = styled('div', {
   scrollbarWidth: 'none',
 
   '&::-webkit-scrollbar': {
-    display: 'none'
+    display: 'none',
   },
 
   ...(ownerState.sticky !== undefined && {
     position: 'sticky',
-    top: ownerState.sticky || 0
-  })
+    top: ownerState.sticky || 0,
+  }),
 }));
 
 const TableHeadContainer = styled('div', {
   name: 'ESTableBody',
   slot: 'Container',
-  overridesResolver: (props, styles) => styles.container
+  overridesResolver: (props, styles) => styles.container,
 })(() => ({
   minWidth: '100%',
-  width: 'fit-content'
+  width: 'fit-content',
 }));
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
@@ -75,7 +75,7 @@ const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
 export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
   const { children, className, sticky, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESTableHead'
+    name: 'ESTableHead',
   });
 
   const [isStuck, setStuck] = useState(false);

@@ -22,7 +22,7 @@ const useUtilityClasses = (ownerState: EmptyStateOwnerState) => {
     text: ['text'],
     heading: ['heading'],
     subheading: ['subheading'],
-    children: ['children']
+    children: ['children'],
   };
 
   return composeClasses(slots, getEmptyStateUtilityClass, classes);
@@ -33,65 +33,65 @@ const EmptyStateRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { size }
+      ownerState: { size },
     } = props;
 
     return [styles.root, styles[size]];
-  }
+  },
 })(() => ({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
-  textAlign: 'center'
+  textAlign: 'center',
 }));
 
 const EmptyStateIcon = styled('div', {
   name: 'ESEmptyState',
   slot: 'Icon',
-  overridesResolver: (props, styles) => styles.icon
+  overridesResolver: (props, styles) => styles.icon,
 })<{ ownerState: EmptyStateOwnerState }>(({ theme, ownerState }) => ({
   display: 'flex',
   color: theme.vars.palette.monoA.A150,
-  marginBottom: ownerState.size === 'medium' ? '12px' : '8px'
+  marginBottom: ownerState.size === 'medium' ? '12px' : '8px',
 }));
 
 const EmptyStateText = styled('div', {
   name: 'ESEmptyState',
   slot: 'Text',
-  overridesResolver: (props, styles) => styles.text
+  overridesResolver: (props, styles) => styles.text,
 })<{ ownerState: EmptyStateOwnerState }>(({ ownerState }) => ({
   '&:not(:last-child)': {
-    marginBottom: ownerState.size === 'medium' ? '12px' : '8px'
-  }
+    marginBottom: ownerState.size === 'medium' ? '12px' : '8px',
+  },
 }));
 
 const EmptyStateHeading = styled(Typography, {
   name: 'ESEmptyState',
   slot: 'Heading',
-  overridesResolver: (props, styles) => styles.heading
+  overridesResolver: (props, styles) => styles.heading,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A900,
   display: 'block',
   '&:not(:last-child)': {
-    marginBottom: '2px'
-  }
+    marginBottom: '2px',
+  },
 }));
 
 const EmptyStateSubheading = styled(Typography, {
   name: 'ESEmptyState',
   slot: 'Subheading',
-  overridesResolver: (props, styles) => styles.subheading
+  overridesResolver: (props, styles) => styles.subheading,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A600,
-  display: 'block'
+  display: 'block',
 }));
 
 const EmptyStateChildren = styled('div', {
   name: 'ESEmptyState',
   slot: 'Children',
-  overridesResolver: (props, styles) => styles.children
+  overridesResolver: (props, styles) => styles.children,
 })(() => ({
-  padding: '8px 0'
+  padding: '8px 0',
 }));
 
 /**
@@ -109,7 +109,7 @@ export const EmptyState = (inProps: EmptyStateProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESEmptyState'
+    name: 'ESEmptyState',
   });
 
   const ownerState = { size, ...props };

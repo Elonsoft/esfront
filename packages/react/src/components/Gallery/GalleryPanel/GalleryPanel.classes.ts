@@ -26,5 +26,5 @@ export const galleryPanelClasses: GalleryPanelClasses = generateUtilityClasses('
   'positionTop',
   'content',
   'contentVisible',
-  'contentExpanded'
+  'contentExpanded',
 ]);

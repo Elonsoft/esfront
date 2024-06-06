@@ -5,6 +5,6 @@ export { AudioPlayerProps } from './AudioPlayer.types';
 export {
   AudioPlayerProvider,
   AudioPlayerProviderVolumeStorageLocal,
-  AudioPlayerProviderVolumeStorageMemory
+  AudioPlayerProviderVolumeStorageMemory,
 } from './AudioPlayerProvider';
 export { AudioPlayerProviderProps, AudioPlayerProviderVolumeStorage } from './AudioPlayerProvider.types';

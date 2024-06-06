@@ -23,5 +23,5 @@ export const spinnerRingClasses: SpinnerRingClasses = generateUtilityClasses('ES
   'primary',
   'secondary',
   'monoA',
-  'inherit'
+  'inherit',
 ]);

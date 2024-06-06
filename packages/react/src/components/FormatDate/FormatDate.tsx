@@ -12,7 +12,7 @@ import { useDateAdapterContext } from '../DateAdapter';
 export const FormatDate = (inProps: FormatDateProps) => {
   const { children, format, formatString } = useThemeProps({
     props: inProps,
-    name: 'ESFormatDate'
+    name: 'ESFormatDate',
   });
 
   const { adapter } = useDateAdapterContext();

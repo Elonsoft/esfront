@@ -31,12 +31,12 @@ const meta: Meta<typeof EmptyState> = {
   tags: ['autodocs'],
   component: EmptyState,
   parameters: {
-    references: ['EmptyState']
+    references: ['EmptyState'],
   },
   argTypes: {
     icon: {
       control: {
-        type: 'select'
+        type: 'select',
       },
       options: [
         'EmptyStateIconBarChart',
@@ -54,23 +54,23 @@ const meta: Meta<typeof EmptyState> = {
         'EmptyStateIconSearch',
         'EmptyStateIconSmile',
         'EmptyStateIconWiFi',
-        'EmptyStateIconWiFiOff'
-      ]
+        'EmptyStateIconWiFiOff',
+      ],
     },
     heading: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     subheading: {
       control: {
-        type: 'text'
-      }
-    }
+        type: 'text',
+      },
+    },
   },
   args: {
-    icon: 'EmptyStateIconBox'
-  }
+    icon: 'EmptyStateIconBox',
+  },
 };
 
 export default meta;
@@ -86,7 +86,7 @@ export const Demo: Story = {
         subheading={getSubheading(args, context)}
       />
     );
-  }
+  },
 };
 
 /** We can use `children` prop to add action button. */
@@ -104,5 +104,5 @@ export const Action: Story = {
         </Button>
       </EmptyState>
     );
-  }
+  },
 };

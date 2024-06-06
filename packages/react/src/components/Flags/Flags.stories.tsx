@@ -6,8 +6,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Flags',
   parameters: {
-    references: ['Flags']
-  }
+    references: ['Flags'],
+  },
 };
 
 export default meta;
@@ -23,5 +23,5 @@ export const Demo: Story = {
         })}
       </div>
     );
-  }
+  },
 };

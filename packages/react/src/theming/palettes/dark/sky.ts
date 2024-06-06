@@ -9,5 +9,5 @@ export const sky = {
   700: '#BFF1FA',
   800: '#D8F7FD',
   900: '#EBFCFF',
-  alpha: '300'
+  alpha: '300',
 };

@@ -10,23 +10,23 @@ import MuiTableRow, { tableRowClasses } from '@mui/material/TableRow';
 import json from '../../src/typedoc.json';
 
 export const TableContainer = styled(MuiTableContainer)(() => ({
-  fontFamily: 'monospace'
+  fontFamily: 'monospace',
 }));
 
 export const TableRow = styled(MuiTableRow)(({ theme }) => ({
   [`&.${tableRowClasses.head}`]: {
-    backgroundColor: theme.palette.monoA.A50
+    backgroundColor: theme.palette.monoA.A50,
   },
   [`& .${tableCellClasses.root}`]: {
-    borderBottom: `1px solid ${theme.palette.monoA.A150}`
+    borderBottom: `1px solid ${theme.palette.monoA.A150}`,
   },
   [`&.${tableRowClasses.head}:last-child .${tableCellClasses.root}`]: {
-    borderBottom: `1px solid ${theme.palette.monoA.A150}`
-  }
+    borderBottom: `1px solid ${theme.palette.monoA.A150}`,
+  },
 }));
 
 export const TableDescription = styled('div')(() => ({
-  marginBottom: 4
+  marginBottom: 4,
 }));
 
 export const TableCode = styled('code')(({ theme }) => ({
@@ -34,7 +34,7 @@ export const TableCode = styled('code')(({ theme }) => ({
   padding: '3px 5px',
   borderRadius: 3,
   backgroundColor: theme.palette.monoA.A50,
-  border: `1px solid ${theme.palette.monoA.A150}`
+  border: `1px solid ${theme.palette.monoA.A150}`,
 }));
 
 export const getDescription = (c) => {

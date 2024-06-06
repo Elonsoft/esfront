@@ -2,6 +2,6 @@ export { GalleryMetaSeparator } from './GalleryMetaSeparator';
 export {
   GalleryMetaSeparatorClasses,
   galleryMetaSeparatorClasses,
-  GalleryMetaSeparatorClassKey
+  GalleryMetaSeparatorClassKey,
 } from './GalleryMetaSeparator.classes';
 export { GalleryMetaSeparatorProps } from './GalleryMetaSeparator.types';

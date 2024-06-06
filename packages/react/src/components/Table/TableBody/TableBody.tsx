@@ -23,7 +23,7 @@ const useUtilityClasses = (ownerState: TableBodyOwnerState) => {
 
   const slots = {
     root: ['root'],
-    container: ['container']
+    container: ['container'],
   };
 
   return composeClasses(slots, getTableBodyUtilityClass, classes);
@@ -32,7 +32,7 @@ const useUtilityClasses = (ownerState: TableBodyOwnerState) => {
 const TableBodyRoot = styled('div', {
   name: 'ESTableBody',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   overflow: 'auto',
   position: 'relative',
@@ -43,23 +43,23 @@ const TableBodyRoot = styled('div', {
   scrollbarWidth: 'none',
 
   '&::-webkit-scrollbar': {
-    display: 'none'
+    display: 'none',
   },
 
   [`& .${tableRowClasses.root}:last-of-type`]: {
     [`& .${tableCellClasses.container}`]: {
-      borderBottom: 0
-    }
-  }
+      borderBottom: 0,
+    },
+  },
 }));
 
 const TableBodyContainer = styled('div', {
   name: 'ESTableBody',
   slot: 'Container',
-  overridesResolver: (props, styles) => styles.container
+  overridesResolver: (props, styles) => styles.container,
 })(() => ({
   minWidth: '100%',
-  width: 'fit-content'
+  width: 'fit-content',
 }));
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
@@ -67,7 +67,7 @@ const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 export const TableBody = memo(function TableBody(inProps: TableBodyProps) {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESTableBody'
+    name: 'ESTableBody',
   });
 
   const { setRef } = useTableBodyContext();

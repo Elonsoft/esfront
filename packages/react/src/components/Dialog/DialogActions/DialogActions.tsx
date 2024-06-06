@@ -19,7 +19,7 @@ const useUtilityClasses = (ownerState: DialogActionsOwnerState) => {
   const { classes, sticky, stuck } = ownerState;
 
   const slots = {
-    root: ['root', sticky && 'sticky', sticky && stuck && 'stuck']
+    root: ['root', sticky && 'sticky', sticky && stuck && 'stuck'],
   };
 
   return composeClasses(slots, getDialogActionsUtilityClass, classes);
@@ -30,17 +30,17 @@ const DialogActionsRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { sticky, stuck }
+      ownerState: { sticky, stuck },
     } = props;
     return [styles.root, sticky && styles.sticky, sticky && stuck && styles.stuck];
-  }
+  },
 })<{ ownerState: DialogActionsOwnerState }>(({ theme, ownerState }) => ({
   display: 'flex',
   justifyContent: 'flex-end',
   padding: '16px 24px 24px',
 
   '> :not(:first-of-type)': {
-    marginLeft: 16
+    marginLeft: 16,
   },
 
   ...(ownerState.sticky && {
@@ -53,15 +53,15 @@ const DialogActionsRoot = styled('div', {
 
     ...(ownerState.stuck && {
       borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
-      borderRadius: 0
-    })
-  })
+      borderRadius: 0,
+    }),
+  }),
 }));
 
 export const DialogActions = (inProps: DialogActionsProps) => {
   const { className, sx, sticky, children, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESDialogActions'
+    name: 'ESDialogActions',
   });
 
   const { stuck, sentinel } = useStuckSentinel();

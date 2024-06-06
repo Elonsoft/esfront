@@ -23,7 +23,7 @@ import {
   createInputAdornment,
   createOutlinedInput,
   createSelect,
-  createTextField
+  createTextField,
 } from './text-field';
 export {
   createFormControl,
@@ -32,7 +32,7 @@ export {
   createInputAdornment,
   createOutlinedInput,
   createSelect,
-  createTextField
+  createTextField,
 } from './text-field';
 
 import { createTooltip } from './tooltip';
@@ -45,7 +45,7 @@ import {
   createListItemIcon,
   createListItemText,
   createMenu,
-  createMenuItem
+  createMenuItem,
 } from './menu';
 export { createMenu } from './menu';
 
@@ -101,7 +101,7 @@ export const createComponents = (theme: Theme, typography: TypographyOptions) =>
     MuiListItem,
     MuiListItemButton,
     MuiListItemIcon,
-    MuiListItemText
+    MuiListItemText,
   };
 
   return components;

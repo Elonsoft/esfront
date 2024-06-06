@@ -19,7 +19,7 @@ const useUtilityClasses = (ownerState: TableItemOwnerState) => {
     root: ['root'],
     content: ['content'],
     primary: ['primary'],
-    secondary: ['secondary']
+    secondary: ['secondary'],
   };
 
   return composeClasses(slots, getTableItemUtilityClass, classes);
@@ -28,38 +28,38 @@ const useUtilityClasses = (ownerState: TableItemOwnerState) => {
 const TableItemRoot = styled('div', {
   name: 'ESTableItem',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   overflow: 'hidden',
   display: 'flex',
-  gap: '16px'
+  gap: '16px',
 }));
 
 const TableItemContent = styled('div', {
   name: 'ESTableItem',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })(() => ({
   overflow: 'hidden',
   display: 'flex',
   flexDirection: 'column',
-  gap: '4px'
+  gap: '4px',
 }));
 
 const TableItemPrimary = styled(Typography, {
   name: 'ESTableItem',
   slot: 'Primary',
-  overridesResolver: (props, styles) => styles.primary
+  overridesResolver: (props, styles) => styles.primary,
 })(() => ({
-  wordBreak: 'break-word'
+  wordBreak: 'break-word',
 })) as typeof Typography;
 
 const TableItemSecondary = styled(Typography, {
   name: 'ESTableItem',
   slot: 'Secondary',
-  overridesResolver: (props, styles) => styles.secondary
+  overridesResolver: (props, styles) => styles.secondary,
 })(() => ({
-  wordBreak: 'break-word'
+  wordBreak: 'break-word',
 })) as typeof Typography;
 
 export const TableItem = (inProps: TableItemProps) => {
@@ -73,7 +73,7 @@ export const TableItem = (inProps: TableItemProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESTableItem'
+    name: 'ESTableItem',
   });
 
   const ownerState = { ...props };

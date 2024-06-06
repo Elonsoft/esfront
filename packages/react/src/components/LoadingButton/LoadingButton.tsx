@@ -23,7 +23,7 @@ const useUtilityClasses = (ownerState: LoadingButtonOwnerState) => {
 
   const slots = {
     root: ['root', loading && 'loading'],
-    loadingIndicator: ['loadingIndicator']
+    loadingIndicator: ['loadingIndicator'],
   };
 
   const composedClasses = composeClasses(slots, getLoadingButtonUtilityClass, classes);
@@ -31,7 +31,7 @@ const useUtilityClasses = (ownerState: LoadingButtonOwnerState) => {
   return {
     // forward the outlined, color, etc. classes to Button
     ...classes,
-    ...composedClasses
+    ...composedClasses,
   };
 };
 
@@ -44,23 +44,23 @@ const LoadingButtonRoot = styled(Button, {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { loading }
+      ownerState: { loading },
     } = props;
     return [styles.root, loading && styles.loading];
-  }
+  },
 })(() => ({
   [`&.${loadingButtonClasses.loading}.${buttonClasses.root}.${buttonBaseClasses.disabled}`]: {
-    '--text': 'transparent'
+    '--text': 'transparent',
   },
   [`&.${loadingButtonClasses.loading}.${buttonClasses.root}`]: {
-    '--icon': 'transparent'
-  }
+    '--icon': 'transparent',
+  },
 }));
 
 const LoadingButtonLoadingIndicator = styled('span', {
   name: 'ESLoadingButton',
   slot: 'LoadingIndicator',
-  overridesResolver: (props, styles) => styles.loadingIndicator
+  overridesResolver: (props, styles) => styles.loadingIndicator,
 })(({ theme }) => ({
   position: 'absolute',
   visibility: 'visible',
@@ -70,8 +70,8 @@ const LoadingButtonLoadingIndicator = styled('span', {
   transform: 'translate(-50%, -50%)',
 
   [`& .${spinnerFadingDotsClasses.root}`]: {
-    color: theme.vars.palette.monoA.A500
-  }
+    color: theme.vars.palette.monoA.A500,
+  },
 }));
 
 export const getLoadingButtonSpinnerSize = (size: ButtonOwnProps['size']) => {
@@ -107,7 +107,7 @@ export const LoadingButton = forwardRef(function LoadingButton(inProps, ref) {
 
   const ownerState = {
     classes: inClasses,
-    loading
+    loading,
   };
 
   const classes = useUtilityClasses(ownerState);

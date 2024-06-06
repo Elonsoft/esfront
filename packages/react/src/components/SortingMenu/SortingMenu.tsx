@@ -39,7 +39,7 @@ const useUtilityClasses = (ownerState: SortingMenuOwnerState) => {
     directionButton: ['directionButton'],
     directionButtonBadge: ['directionButtonBadge'],
     plusSign: ['plusSign'],
-    caption: ['caption']
+    caption: ['caption'],
   };
 
   return unstable_composeClasses(slots, getSortingMenuUtilityClass, classes);
@@ -48,7 +48,7 @@ const useUtilityClasses = (ownerState: SortingMenuOwnerState) => {
 const SortingMenuRoot = styled(Popover, {
   name: 'ESSortingMenu',
   slot: 'Root',
-  overridesResolver: (_, styles) => styles.root
+  overridesResolver: (_, styles) => styles.root,
 })(({ theme }) => ({
   '& .MuiPopover-paper': {
     ...theme.scrollbars.overlayMonoA,
@@ -63,25 +63,25 @@ const SortingMenuRoot = styled(Popover, {
     '& .MuiList-root': {
       minWidth: '320px',
       maxWidth: '100%',
-      padding: '0 16px'
-    }
-  }
+      padding: '0 16px',
+    },
+  },
 }));
 
 const SortingMenuHeader = styled('div', {
   name: 'ESSortingMenu',
   slot: 'MenuHeader',
-  overridesResolver: (_, styles) => styles.menuHeader
+  overridesResolver: (_, styles) => styles.menuHeader,
 })(() => ({
   display: 'flex',
   justifyContent: 'space-between',
-  padding: '14px 16px 6px 16px'
+  padding: '14px 16px 6px 16px',
 }));
 
 const SortingMenuFooter = styled('div', {
   name: 'ESSortingMenu',
   slot: 'MenuFooter',
-  overridesResolver: (_, styles) => styles.menuFooter
+  overridesResolver: (_, styles) => styles.menuFooter,
 })(({ theme }) => ({
   borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
   marginTop: '8px',
@@ -90,31 +90,31 @@ const SortingMenuFooter = styled('div', {
   alignItems: 'center',
 
   [`& .${kbdClasses.root}:first-of-type`]: {
-    marginRight: '3px'
+    marginRight: '3px',
   },
 
   [`& .${kbdClasses.root}:last-of-type`]: {
     marginLeft: '3px',
-    marginRight: '8px'
+    marginRight: '8px',
   },
 
   [`& .${switchClasses.root}`]: {
-    marginLeft: 'auto'
-  }
+    marginLeft: 'auto',
+  },
 }));
 
 const SortingResetButton = styled(Link, {
   name: 'ESSortingMenu',
   slot: 'ResetButton',
-  overridesResolver: (_, styles) => styles.resetButton
+  overridesResolver: (_, styles) => styles.resetButton,
 })(({ theme }) => ({
-  color: theme.vars.palette.monoA.A500
+  color: theme.vars.palette.monoA.A500,
 })) as typeof Link;
 
 const SortingMenuItem = styled(MenuItem, {
   name: 'ESSortingMenu',
   slot: 'MenuItem',
-  overridesResolver: (_, styles) => styles.menuItem
+  overridesResolver: (_, styles) => styles.menuItem,
 })(({ theme }) => ({
   '&.MuiMenuItem-root.MuiButtonBase-root:not(.Mui-disabled)': {
     display: 'flex',
@@ -127,8 +127,8 @@ const SortingMenuItem = styled(MenuItem, {
       background: '',
       hover: theme.vars.palette.monoA.A50,
       focus: theme.vars.palette.monoA.A75,
-      active: theme.vars.palette.monoA.A150
-    })
+      active: theme.vars.palette.monoA.A150,
+    }),
   },
   '&.MuiMenuItem-root.Mui-disabled': {
     color: 'inherit',
@@ -138,15 +138,15 @@ const SortingMenuItem = styled(MenuItem, {
     height: 'auto',
     opacity: 1,
     '& .MuiDivider-root': {
-      margin: '8px -16px'
-    }
-  }
+      margin: '8px -16px',
+    },
+  },
 }));
 
 const SortingDirectionButton = styled(Button, {
   name: 'ESSortingMenu',
   slot: 'DirectionButton',
-  overridesResolver: (_, styles) => styles.directionButton
+  overridesResolver: (_, styles) => styles.directionButton,
 })(({ theme }) => ({
   '--icon': theme.vars.palette.monoA.A600,
 
@@ -159,68 +159,68 @@ const SortingDirectionButton = styled(Button, {
 
     [`&.${buttonClasses.size32}`]: {
       '--pressed': 'inherit',
-      '--hovered': 'inherit'
+      '--hovered': 'inherit',
     },
 
     [`& .${buttonBaseClasses.wrapper}`]: {
-      gap: '6px'
+      gap: '6px',
     },
 
     '&:focus-visible': {
       '& .MuiTypography-root': {
-        color: theme.vars.palette.monoA.A900
+        color: theme.vars.palette.monoA.A900,
       },
       [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.vars.palette.secondary.A550
-      }
+        backgroundColor: theme.vars.palette.secondary.A550,
+      },
     },
 
     '&:hover': {
       [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.vars.palette.secondary.A550
+        backgroundColor: theme.vars.palette.secondary.A550,
       },
       '& .MuiTypography-root:first-of-type': {
-        color: theme.vars.palette.monoA.A900
-      }
+        color: theme.vars.palette.monoA.A900,
+      },
     },
 
     '&:active': {
       [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.vars.palette.secondary.A400
+        backgroundColor: theme.vars.palette.secondary.A400,
       },
       '& .MuiTypography-root:first-of-type': {
-        color: theme.vars.palette.monoA.A600
-      }
-    }
-  }
+        color: theme.vars.palette.monoA.A600,
+      },
+    },
+  },
 }));
 
 const SortingDirectionButtonBadge = styled('div', {
   name: 'ESSortingMenu',
   slot: 'DirectionButtonBadge',
-  overridesResolver: (_, styles) => styles.directionButtonBadge
+  overridesResolver: (_, styles) => styles.directionButtonBadge,
 })(({ theme }) => ({
   display: 'flex',
   borderRadius: '4px',
   padding: '3px 2px',
   backgroundColor: theme.vars.palette.secondary.A400,
-  boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A25}`
+  boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A25}`,
 }));
 
 const SortingPlusSign = styled(Typography, {
   name: 'ESSortingMenu',
   slot: 'PlusSign',
-  overridesResolver: (_, styles) => styles.plusSign
+  overridesResolver: (_, styles) => styles.plusSign,
 })(({ theme }) => ({
-  color: theme.vars.palette.monoA.A900
+  color: theme.vars.palette.monoA.A900,
 })) as typeof Typography;
 
 const SortingCaption = styled(Typography, {
   name: 'ESSortingMenu',
   slot: 'Caption',
-  overridesResolver: (_, styles) => styles.caption
+  overridesResolver: (_, styles) => styles.caption,
 })(({ theme }) => ({
-  color: theme.vars.palette.monoA.A600
+  color: theme.vars.palette.monoA.A600,
 })) as typeof Typography;
 
 const getNextItem = (elem: HTMLLIElement): HTMLLIElement | undefined => {
@@ -258,7 +258,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSortingMenu'
+    name: 'ESSortingMenu',
   });
 
   const values = props.multiple ? props.value : props.value ? [props.value] : [];
@@ -277,14 +277,14 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
   values.forEach((value, i) => {
     valuesMap[value.value] = {
       direction: value.direction,
-      i
+      i,
     };
   });
 
   options.forEach((option) => {
     sortMap[option.value] = {
       ...option,
-      ...valuesMap[option.value]
+      ...valuesMap[option.value],
     };
   });
 
@@ -434,7 +434,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
           }
 
           PopoverProps.TransitionProps?.onExited?.(...args);
-        }
+        },
       }}
       className={clsx(classes.root, PopoverProps.className)}
     >

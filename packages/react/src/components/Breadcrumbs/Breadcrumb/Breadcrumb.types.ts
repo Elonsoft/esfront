@@ -42,5 +42,5 @@ export interface BreadcrumbTypeMap<P = {}, D extends React.ElementType = typeof 
 
 export type BreadcrumbProps<
   D extends React.ElementType = BreadcrumbTypeMap['defaultComponent'],
-  P = {}
+  P = {},
 > = OverrideProps<BreadcrumbTypeMap<P, D>, D>;

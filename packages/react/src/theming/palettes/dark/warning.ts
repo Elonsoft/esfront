@@ -9,5 +9,5 @@ export const warning = {
   700: '#FED6AD',
   800: '#FFE5CB',
   900: '#FFF4EA',
-  alpha: '300'
+  alpha: '300',
 };

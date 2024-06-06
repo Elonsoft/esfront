@@ -18,7 +18,7 @@ import {
   GallerySwiper,
   GallerySwiperImage,
   GalleryThumbnails,
-  GalleryThumbnailsImage
+  GalleryThumbnailsImage,
 } from '.';
 
 import { IconDotsVerticalW500, IconDownloadW400, IconShare } from '../../icons';
@@ -47,7 +47,7 @@ const IMAGES = [
   'https://placehold.co/4000x3000',
   'https://placehold.co/700x700',
   'https://placehold.co/500x500',
-  'https://placehold.co/2000x100'
+  'https://placehold.co/2000x100',
 ];
 
 for (let i = 0; i < 20; i++) {
@@ -58,7 +58,7 @@ for (let i = 0; i < 20; i++) {
     description:
       i === 0 ? DESCRIPTION : i % 2 === 0 ? '' : `Lorem ipsum dolor sit amet, consectetur adipiscing elit ${i}.`,
     date: `2021-01-20T03:00:00.000Z`,
-    size: `${1000 + 2 ** i}`
+    size: `${1000 + 2 ** i}`,
   });
 }
 
@@ -67,11 +67,11 @@ const useI18N = (locale: 'en' | 'ru') => {
     open: locale === 'ru' ? 'Открыть' : 'Open',
     download: locale === 'ru' ? 'Скачать' : 'Download',
     share: locale === 'ru' ? 'Поделиться' : 'Share',
-    menu: locale === 'ru' ? 'Открыть меню' : 'Open menu'
+    menu: locale === 'ru' ? 'Открыть меню' : 'Open menu',
   };
 
   return {
-    t: (key: keyof typeof translations) => translations[key]
+    t: (key: keyof typeof translations) => translations[key],
   };
 };
 
@@ -92,21 +92,21 @@ const meta: Meta<typeof Gallery> = {
       'GallerySwiperImage',
       'GalleryThumbnails',
       'GalleryThumbnailsImage',
-      'GalleryThumbnailsItem'
-    ]
+      'GalleryThumbnailsItem',
+    ],
   },
   argTypes: {
     items: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     open: {
       table: {
-        disable: true
-      }
-    }
-  }
+        disable: true,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -186,5 +186,5 @@ export const Demo: Story = {
         </Gallery>
       </>
     );
-  }
+  },
 };

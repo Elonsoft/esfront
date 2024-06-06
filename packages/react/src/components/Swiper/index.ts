@@ -8,5 +8,5 @@ export {
   SwiperPaginationClasses,
   swiperPaginationClasses,
   SwiperPaginationClassKey,
-  SwiperPaginationProps
+  SwiperPaginationProps,
 } from './SwiperPagination';

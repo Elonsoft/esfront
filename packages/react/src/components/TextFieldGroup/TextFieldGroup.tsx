@@ -18,7 +18,7 @@ const useUtilityClasses = (ownerState: TextFieldGroupOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getTextFieldGroupUtilityClass, classes);
@@ -27,7 +27,7 @@ const useUtilityClasses = (ownerState: TextFieldGroupOwnerState) => {
 export const TextFieldGroupRoot = styled('div', {
   name: 'ESTextFieldGroup',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: TextFieldGroupOwnerState }>(({ ownerState: { breakpoint }, theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -39,37 +39,37 @@ export const TextFieldGroupRoot = styled('div', {
     gap: 0,
 
     [`& .${textFieldClasses.root}:first-of-type .${outlinedInputClasses.root}`]: {
-      borderRadius: '4px 0 0 4px'
+      borderRadius: '4px 0 0 4px',
     },
 
     [`& .${textFieldClasses.root} .${outlinedInputClasses.root}`]: {
-      borderRadius: '0'
+      borderRadius: '0',
     },
 
     [`& .${textFieldClasses.root}:last-of-type .${outlinedInputClasses.root}`]: {
-      borderRadius: '0 4px 4px 0'
+      borderRadius: '0 4px 4px 0',
     },
 
     [`& .${textFieldClasses.root}:not(:last-of-type) .${outlinedInputClasses.root}`]: {
       [`&:hover .${outlinedInputClasses.notchedOutline}, 
         &.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
-        borderRightWidth: '2px'
+        borderRightWidth: '2px',
       },
 
       [`& .${outlinedInputClasses.notchedOutline}`]: {
-        borderRightWidth: '0.5px'
-      }
+        borderRightWidth: '0.5px',
+      },
     },
 
     [`& .${textFieldClasses.root}:not(:first-of-type) .${outlinedInputClasses.root}`]: {
       [`&:hover .${outlinedInputClasses.notchedOutline}, 
         &.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
-        borderLeftWidth: '2px'
+        borderLeftWidth: '2px',
       },
 
       [`& .${outlinedInputClasses.notchedOutline}`]: {
-        borderLeftWidth: '0.5px'
-      }
+        borderLeftWidth: '0.5px',
+      },
     },
 
     [`& .${textFieldClasses.root}`]: {
@@ -77,11 +77,11 @@ export const TextFieldGroupRoot = styled('div', {
 
       [`& .${outlinedInputClasses.root}.${outlinedInputClasses.error}`]: {
         [`& .${outlinedInputClasses.notchedOutline}`]: {
-          borderWidth: '2px'
-        }
-      }
-    }
-  }
+          borderWidth: '2px',
+        },
+      },
+    },
+  },
 }));
 
 /**
@@ -96,7 +96,7 @@ export const TextFieldGroup = (inProps: TextFieldGroupProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESTextFieldGroup'
+    name: 'ESTextFieldGroup',
   });
 
   const ownerState = { breakpoint, ...props };

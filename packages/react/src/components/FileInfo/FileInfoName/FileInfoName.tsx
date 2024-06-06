@@ -20,7 +20,7 @@ const useUtilityClasses = (ownerState: FileInfoNameOwnerState) => {
 
   const slots = {
     root: ['root'],
-    button: ['button']
+    button: ['button'],
   };
 
   return composeClasses(slots, getFileInfoNameUtilityClass, classes);
@@ -29,23 +29,23 @@ const useUtilityClasses = (ownerState: FileInfoNameOwnerState) => {
 const FileInfoNameRoot = styled('div', {
   name: 'ESFileInfoName',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
 }));
 
 const FileInfoNameButton = styled(Button, {
   name: 'ESFileInfoName',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.button
+  overridesResolver: (props, styles) => styles.button,
 })(() => ({
   marginLeft: 4,
   borderRadius: '50%',
 
   [`&.${buttonClasses.size24} .${buttonBaseClasses.wrapper}`]: {
-    padding: '0px 4px'
-  }
+    padding: '0px 4px',
+  },
 }));
 
 export const FileInfoName = (inProps: FileInfoNameProps) => {
@@ -59,7 +59,7 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESFileInfoName'
+    name: 'ESFileInfoName',
   });
 
   const ownerState = { ...props };

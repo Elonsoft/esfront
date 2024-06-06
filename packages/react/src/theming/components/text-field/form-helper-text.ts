@@ -10,9 +10,9 @@ export const createFormHelperText: Component<'MuiFormHelperText'> = (theme, typo
         marginLeft: 12,
         marginRight: 12,
         '&.Mui-error': {
-          color: theme.vars.palette.error[300]
-        }
-      }
-    }
+          color: theme.vars.palette.error[300],
+        },
+      },
+    },
   };
 };

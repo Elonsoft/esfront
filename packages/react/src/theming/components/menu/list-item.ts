@@ -8,9 +8,9 @@ export const createListItem: Component<'MuiListItem'> = () => {
         minHeight: '40px',
 
         '& .MuiIconButton-root': {
-          marginLeft: '8px'
-        }
-      }
-    }
+          marginLeft: '8px',
+        },
+      },
+    },
   };
 };

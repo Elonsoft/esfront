@@ -37,7 +37,7 @@ export type ExtendButtonBase<TypeMap extends OverridableTypeMap> = ((
 
 export type ButtonBaseProps<
   RootComponent extends React.ElementType = ButtonBaseTypeMap['defaultComponent'],
-  AdditionalProps = {}
+  AdditionalProps = {},
 > = OverrideProps<ButtonBaseTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
   component?: React.ElementType;
 };

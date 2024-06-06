@@ -35,5 +35,5 @@ export const autocompleteMenuClasses: AutocompleteMenuClasses = generateUtilityC
   'menuItemText',
   'sentinel',
   'emptyState',
-  'search'
+  'search',
 ]);

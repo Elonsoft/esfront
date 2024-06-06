@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: SFSRowOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getSFSRowUtilityClass, classes);
@@ -24,20 +24,20 @@ const useUtilityClasses = (ownerState: SFSRowOwnerState) => {
 const SFSRowRoot = styled('div', {
   name: 'ESSFSRow',
   slot: 'Root',
-  overridesResolver: (_, styles) => styles.root
+  overridesResolver: (_, styles) => styles.root,
 })(() => ({
   display: 'flex',
 
   '& .MuiDivider-root': {
     margin: '8px 2px',
-    height: '16px'
-  }
+    height: '16px',
+  },
 }));
 
 export const SFSRow = (inProps: SFSRowProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESSFSRow'
+    name: 'ESSFSRow',
   });
 
   const ownerState = { ...props };

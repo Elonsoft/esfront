@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: SidenavOwnerState) => {
     container: ['container'],
     rail: ['rail'],
     drawer: ['drawer'],
-    overlay: ['overlay']
+    overlay: ['overlay'],
   };
 
   return composeClasses(slots, getSidenavUtilityClass, classes);
@@ -38,24 +38,24 @@ const useUtilityClasses = (ownerState: SidenavOwnerState) => {
 const SidenavRoot = styled('div', {
   name: 'ESSidenav',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
-  zIndex: '100'
+  zIndex: '100',
 }));
 
 const SidenavContainer = styled('div', {
   name: 'ESSidenav',
   slot: 'Container',
-  overridesResolver: (props, styles) => styles.container
+  overridesResolver: (props, styles) => styles.container,
 })(() => ({
   display: 'flex',
-  height: '100%'
+  height: '100%',
 }));
 
 const SidenavOverlay = styled('div', {
   name: 'ESSidenav',
   slot: 'Overlay',
-  overridesResolver: (props, styles) => styles.overlay
+  overridesResolver: (props, styles) => styles.overlay,
 })<{ ownerState: SidenavOwnerState }>(({ ownerState, theme }) => ({
   opacity: '0',
   userSelect: 'none',
@@ -68,20 +68,20 @@ const SidenavOverlay = styled('div', {
   transition: 'opacity 0.3s',
 
   ...(ownerState.hover && {
-    opacity: '1'
+    opacity: '1',
   }),
 
   [theme.breakpoints.down('desktopXS')]: {
     ...(ownerState.open && {
-      opacity: '1'
-    })
-  }
+      opacity: '1',
+    }),
+  },
 }));
 
 const SidenavRail = styled('div', {
   name: 'ESSidenav',
   slot: 'Rail',
-  overridesResolver: (props, styles) => styles.rail
+  overridesResolver: (props, styles) => styles.rail,
 })(({ theme }) => ({
   display: 'flex',
   height: '100%',
@@ -89,20 +89,20 @@ const SidenavRail = styled('div', {
   zIndex: '99',
 
   [`& .${sidebarClasses.handler}`]: {
-    display: 'none'
+    display: 'none',
   },
 
   [theme.breakpoints.down('desktopXS')]: {
     [`& .${sidebarToggleClasses.button}`]: {
-      display: 'none'
-    }
-  }
+      display: 'none',
+    },
+  },
 }));
 
 const SidenavDrawer = styled('div', {
   name: 'ESSidenav',
   slot: 'Drawer',
-  overridesResolver: (props, styles) => styles.drawer
+  overridesResolver: (props, styles) => styles.drawer,
 })<{ ownerState: SidenavOwnerState }>(({ ownerState, theme }) => ({
   position: 'absolute',
   top: '0',
@@ -114,14 +114,14 @@ const SidenavDrawer = styled('div', {
 
   ...((ownerState.hover || ownerState.open) && {
     left: '57px',
-    transform: 'translateX(0)'
+    transform: 'translateX(0)',
   }),
 
   [theme.breakpoints.down('desktopXS')]: {
     ...(ownerState.open && {
-      position: 'absolute'
-    })
-  }
+      position: 'absolute',
+    }),
+  },
 }));
 
 /**
@@ -130,7 +130,7 @@ const SidenavDrawer = styled('div', {
 export const Sidenav = (inProps: SidenavProps) => {
   const { className, children, open, sx, disableEscapeKeyDown, disableItemHover, onClose, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESSidenav'
+    name: 'ESSidenav',
   });
 
   const [hover, setHover] = useState(false);

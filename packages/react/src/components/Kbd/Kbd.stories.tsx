@@ -8,19 +8,19 @@ const meta: Meta<typeof Kbd> = {
   tags: ['autodocs'],
   component: Kbd,
   parameters: {
-    references: ['Kbd']
+    references: ['Kbd'],
   },
   argTypes: {
     children: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     variant: {
-      control: { type: 'select' }
-    }
+      control: { type: 'select' },
+    },
   },
   args: {
-    children: 'Ctrl'
-  }
+    children: 'Ctrl',
+  },
 };
 
 export default meta;
@@ -33,5 +33,5 @@ export const Demo: Story = {
         Lorem ipsum dolor sit amet <Kbd {...args} /> consectetur adipiscing elit.
       </Typography>
     );
-  }
+  },
 };

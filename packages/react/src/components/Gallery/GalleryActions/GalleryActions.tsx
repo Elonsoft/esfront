@@ -23,7 +23,7 @@ const useUtilityClasses = (ownerState: GalleryActionsOwnerState) => {
   const slots = {
     root: ['root'],
     buttonClose: ['buttonClose'],
-    buttonThumbnails: ['buttonThumbnails']
+    buttonThumbnails: ['buttonThumbnails'],
   };
 
   return composeClasses(slots, getGalleryActionsUtilityClass, classes);
@@ -32,7 +32,7 @@ const useUtilityClasses = (ownerState: GalleryActionsOwnerState) => {
 const GalleryActionsRoot = styled('div', {
   name: 'ESGalleryActions',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -41,28 +41,28 @@ const GalleryActionsRoot = styled('div', {
   marginLeft: 'auto',
 
   [theme.breakpoints.up('tabletXS')]: {
-    padding: '16px'
-  }
+    padding: '16px',
+  },
 }));
 
 const GalleryActionsButtonClose = styled(GalleryActionsButton, {
   name: 'ESGalleryActions',
   slot: 'ButtonClose',
-  overridesResolver: (props, styles) => styles.buttonClose
+  overridesResolver: (props, styles) => styles.buttonClose,
 })(({ theme }) => ({
   [theme.breakpoints.down('tabletXS')]: {
-    display: 'none'
-  }
+    display: 'none',
+  },
 }));
 
 const GalleryActionsButtonThumbnails = styled(GalleryActionsButton, {
   name: 'ESGalleryActions',
   slot: 'ButtonThumbnails',
-  overridesResolver: (props, styles) => styles.buttonThumbnails
+  overridesResolver: (props, styles) => styles.buttonThumbnails,
 })(() => ({
   '@media (min-height: 450px)': {
-    display: 'none'
-  }
+    display: 'none',
+  },
 }));
 
 export const GalleryActions = (inProps: GalleryActionsProps) => {
@@ -77,7 +77,7 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryActions'
+    name: 'ESGalleryActions',
   });
 
   const { onClose } = useGalleryContext();

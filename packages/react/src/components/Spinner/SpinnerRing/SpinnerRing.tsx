@@ -22,7 +22,7 @@ const useUtilityClasses = (ownerState: SpinnerRingOwnerState) => {
   const { classes, color } = ownerState;
 
   const slots = {
-    root: ['root', color]
+    root: ['root', color],
   };
 
   return composeClasses(slots, getSpinnerRingUtilityClass, classes);
@@ -33,19 +33,19 @@ const SpinnerRingRoot = styled('svg', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { color }
+      ownerState: { color },
     } = props;
     return [styles.root, styles[color]];
-  }
+  },
 })<{ ownerState: SpinnerRingOwnerState }>(
   ({ ownerState }) => ({
     color: ownerState.spinnerColor,
     '& > path': {
-      fill: 'currentColor'
+      fill: 'currentColor',
     },
     '& > circle': {
-      stroke: 'currentColor'
-    }
+      stroke: 'currentColor',
+    },
   }),
   ({ ownerState }) => spinnerRotateAnimation('& > *', ownerState.duration, ownerState.ease)
 );
@@ -61,7 +61,7 @@ export const SpinnerRing = (inProps: SpinnerRingProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSpinnerRing'
+    name: 'ESSpinnerRing',
   });
 
   const spinnerColor = useSpinnerColor(color);

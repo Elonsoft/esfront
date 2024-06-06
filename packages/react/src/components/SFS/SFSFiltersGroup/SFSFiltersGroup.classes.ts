@@ -15,5 +15,5 @@ export function getSFSFiltersGroupUtilityClass(slot: string) {
 
 export const sfsFiltersGroupClasses: SFSFiltersGroupClasses = generateUtilityClasses('ESSFSFiltersGroup', [
   'root',
-  'title'
+  'title',
 ]);

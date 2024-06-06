@@ -11,8 +11,8 @@ const meta: Meta<typeof AvatarGroup> = {
   tags: ['autodocs'],
   component: AvatarGroup,
   parameters: {
-    references: ['AvatarGroup']
-  }
+    references: ['AvatarGroup'],
+  },
 };
 
 export default meta;
@@ -29,7 +29,7 @@ export const Demo: Story = {
         <Avatar alt="John Sharp" src="./avatar/5.png" />
       </AvatarGroup>
     );
-  }
+  },
 };
 
 /** We can use `AvatarGroup` not only with the `Avatar` component. */
@@ -57,5 +57,5 @@ export const Children: Story = {
         </Button>
       </AvatarGroup>
     );
-  }
+  },
 };

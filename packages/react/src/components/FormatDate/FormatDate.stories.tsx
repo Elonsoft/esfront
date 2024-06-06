@@ -11,17 +11,17 @@ const meta: Meta<typeof FormatDate> = {
   component: FormatDate,
   argTypes: {
     children: {
-      control: { type: 'date' }
+      control: { type: 'date' },
     },
     formatString: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
     children: '2021-01-30T13:00:00.000Z',
-    format: 'fullDateTime'
+    format: 'fullDateTime',
   },
   parameters: {
     references: ['DateAdapterProvider', 'FormatDate'],
@@ -40,9 +40,9 @@ const meta: Meta<typeof FormatDate> = {
             <ReferencesList />
           </>
         );
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 export default meta;
@@ -51,5 +51,5 @@ type Story = StoryObj<typeof FormatDate>;
 export const Demo: Story = {
   render: (args) => {
     return <FormatDate {...args} />;
-  }
+  },
 };

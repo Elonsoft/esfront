@@ -51,5 +51,5 @@ export const dark = {
   pink,
   teal,
   grey,
-  shadow
+  shadow,
 };

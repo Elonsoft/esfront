@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: FileInfoMetaSeparatorOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getFileInfoMetaSeparatorUtilityClass, classes);
@@ -24,10 +24,10 @@ const useUtilityClasses = (ownerState: FileInfoMetaSeparatorOwnerState) => {
 const FileInfoMetaSeparatorRoot = styled('div', {
   name: 'ESFileInfoMetaSeparator',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A600,
-  margin: '0 8px'
+  margin: '0 8px',
 }));
 
 export const FileInfoMetaSeparator = (inProps: FileInfoMetaSeparatorProps) => {

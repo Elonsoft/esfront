@@ -18,7 +18,7 @@ const useUtilityClasses = (ownerState: MenuItemOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getMenuItemUtilityClass, classes);
@@ -27,7 +27,7 @@ const useUtilityClasses = (ownerState: MenuItemOwnerState) => {
 const MenuItemRoot = styled(MuiMenuItem, {
   name: 'ESMenuItem',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: MenuItemOwnerState }>(({ theme, ownerState }) => ({
   ...(ownerState.color === 'error' && {
     [`&.${menuItemClasses.root}`]: {
@@ -37,10 +37,10 @@ const MenuItemRoot = styled(MuiMenuItem, {
         icon: theme.vars.palette.error[300],
         hover: theme.vars.palette.error.A50,
         active: theme.vars.palette.error.A150,
-        focus: theme.vars.palette.error.A75
-      })
-    }
-  })
+        focus: theme.vars.palette.error.A75,
+      }),
+    },
+  }),
 }));
 
 /**
@@ -49,7 +49,7 @@ const MenuItemRoot = styled(MuiMenuItem, {
 export const MenuItem: OverridableComponent<MenuItemTypeMap> = (inProps: MenuItemProps) => {
   const { className, color, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESMenuItem'
+    name: 'ESMenuItem',
   });
 
   const ownerState = { color };

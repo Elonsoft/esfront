@@ -31,9 +31,9 @@ const useUtilityClasses = (ownerState: DividerOwnerState) => {
       orientation,
       `textAlign${capitalize(textAlign)}`,
       flexItem && 'flexItem',
-      withChildren && 'withChildren'
+      withChildren && 'withChildren',
     ],
-    wrapper: ['wrapper']
+    wrapper: ['wrapper'],
   };
 
   return composeClasses(slots, getDividerUtilityClass, classes);
@@ -44,7 +44,7 @@ const DividerRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { orientation, textAlign, flexItem, withChildren }
+      ownerState: { orientation, textAlign, flexItem, withChildren },
     } = props;
 
     return [
@@ -52,9 +52,9 @@ const DividerRoot = styled('div', {
       styles[orientation],
       styles[`textAlign${capitalize(textAlign)}`],
       flexItem && styles.flexItem,
-      withChildren && styles.withChildren
+      withChildren && styles.withChildren,
     ];
-  }
+  },
 })<{ ownerState: DividerOwnerState }>(({ theme, ownerState }) => ({
   flexShrink: 0,
   color: getPath<string>(theme, `palette.${ownerState.color}`) || (ownerState.color as string),
@@ -63,12 +63,12 @@ const DividerRoot = styled('div', {
     backgroundColor: 'currentColor',
 
     [`&.${dividerClasses.horizontal}`]: {
-      height: `${ownerState.width}px`
+      height: `${ownerState.width}px`,
     },
     [`&.${dividerClasses.vertical}`]: {
       height: '100%',
-      width: `${ownerState.width}px`
-    }
+      width: `${ownerState.width}px`,
+    },
   },
 
   [`&.${dividerClasses.withChildren}`]: {
@@ -81,15 +81,15 @@ const DividerRoot = styled('div', {
       backgroundColor: 'currentColor',
       content: '""',
       display: 'block',
-      flex: 1
+      flex: 1,
     },
 
     [`&.${dividerClasses.horizontal}`]: {
       flexDirection: 'row',
 
       '&::before, &::after': {
-        height: `${ownerState.width}px`
-      }
+        height: `${ownerState.width}px`,
+      },
     },
 
     [`&.${dividerClasses.vertical}`]: {
@@ -97,32 +97,32 @@ const DividerRoot = styled('div', {
       height: '100%',
 
       '&::before, &::after': {
-        width: `${ownerState.width}px`
-      }
+        width: `${ownerState.width}px`,
+      },
     },
 
     [`&.${dividerClasses.textAlignStart}::before`]: {
-      content: 'unset'
+      content: 'unset',
     },
     [`&.${dividerClasses.textAlignEnd}::after`]: {
-      content: 'unset'
-    }
+      content: 'unset',
+    },
   },
 
   [`&.${dividerClasses.vertical}.${dividerClasses.flexItem}`]: {
     alignSelf: 'stretch',
-    height: 'auto'
-  }
+    height: 'auto',
+  },
 }));
 
 const DividerWrapper = styled('span', {
   name: 'ESDivider',
   slot: 'Wrapper',
-  overridesResolver: (props, styles) => styles.wrapper
+  overridesResolver: (props, styles) => styles.wrapper,
 })(({ theme }) => ({
   ...theme.typography.caption,
   display: 'inline-block',
-  color: theme.vars.palette.monoA.A700
+  color: theme.vars.palette.monoA.A700,
 }));
 
 /**
@@ -141,7 +141,7 @@ export const Divider = (inProps: DividerProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESDivider'
+    name: 'ESDivider',
   });
 
   const ownerState = { ...props, color, width, orientation, textAlign, flexItem, withChildren: !!children };

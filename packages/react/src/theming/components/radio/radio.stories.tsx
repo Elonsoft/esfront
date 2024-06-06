@@ -7,21 +7,21 @@ import RadioGroup from '@mui/material/RadioGroup';
 const meta: Meta<typeof Radio> = {
   title: 'Overrides/Radio',
   parameters: {
-    viewMode: 'canvas'
+    viewMode: 'canvas',
   },
   argTypes: {
     color: {
       options: ['primary', 'secondary', 'error'],
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
     disabled: {
       control: {
-        type: 'boolean'
-      }
-    }
-  }
+        type: 'boolean',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -35,5 +35,5 @@ export const Demo: Story = {
         <FormControlLabel control={<Radio {...args} />} label="Two" value="Two" />
       </RadioGroup>
     );
-  }
+  },
 };

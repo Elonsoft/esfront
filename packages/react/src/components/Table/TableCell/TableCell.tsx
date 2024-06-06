@@ -37,16 +37,16 @@ const useUtilityClasses = (ownerState: TableCellOwnerState) => {
       pin === 'left' && 'pinLeft',
       pin === 'right' && 'pinRight',
       overlap && 'overlap',
-      isResizing && 'resizing'
+      isResizing && 'resizing',
     ],
     container: ['container'],
     content: [
       'content',
       align === 'flex-start' && 'contentAlignFlexStart',
       align === 'center' && 'contentAlignCenter',
-      align === 'flex-end' && 'contentAlignFlexEnd'
+      align === 'flex-end' && 'contentAlignFlexEnd',
     ],
-    resize: ['resize', isResizing && 'resizeResizing']
+    resize: ['resize', isResizing && 'resizeResizing'],
   };
 
   return composeClasses(slots, getTableCellUtilityClass, classes);
@@ -64,9 +64,9 @@ const TableCellRoot = styled('div', {
       ownerState.padding === 'normal' && styles.paddingNormal,
       ownerState.padding === 'checkbox' && styles.paddingCheckbox,
       ownerState.overlap && styles.overlap,
-      ownerState.isResizing && styles.resizing
+      ownerState.isResizing && styles.resizing,
     ];
-  }
+  },
 })<{ ownerState: TableCellOwnerState }>(({ theme, ownerState }) => ({
   position: 'relative',
   height: '100%',
@@ -78,86 +78,86 @@ const TableCellRoot = styled('div', {
     position: 'relative',
     zIndex: 1,
     userSelect: 'none',
-    height: '49px'
+    height: '49px',
   }),
 
   ...(ownerState.variant === 'body' && {
     ...theme.typography.body100,
     color: theme.vars.palette.monoA.A900,
     backgroundColor: theme.vars.palette.surface[100],
-    height: '57px'
+    height: '57px',
   }),
 
   ...(ownerState.pin && {
     position: 'sticky',
     boxShadow: `${ownerState.pin === 'left' ? '2px' : '-2px'} 0 0 0 ${theme.vars.palette.monoA.A100}`,
-    zIndex: ownerState.variant === 'body' ? 2 : 3
+    zIndex: ownerState.variant === 'body' ? 2 : 3,
   }),
 
   [`&.${tableCellClasses.pinRight} + .${tableCellClasses.pinRight}`]: {
-    boxShadow: 'none'
+    boxShadow: 'none',
   },
   [`&.${tableCellClasses.pinLeft}:not(:nth-last-child(1 of .${tableCellClasses.pinLeft}))`]: {
-    boxShadow: 'none'
+    boxShadow: 'none',
   },
   [`&.${tableCellClasses.pinRight}:not(:nth-child(1 of .${tableCellClasses.pinRight}))`]: {
-    boxShadow: 'none'
+    boxShadow: 'none',
   },
 
   ...(ownerState.colSpan && {
-    gridColumnEnd: `span ${ownerState.colSpan}`
+    gridColumnEnd: `span ${ownerState.colSpan}`,
   }),
 
   ...(ownerState.padding === 'normal' && {
     [`& .${tableCellClasses.content}`]: {
-      padding: '0 16px'
-    }
+      padding: '0 16px',
+    },
   }),
   ...(ownerState.padding === 'checkbox' && {
     [`& .${tableCellClasses.content}`]: {
-      padding: '0 4px'
+      padding: '0 4px',
     },
     [`&:first-of-type .${tableCellClasses.content}`]: {
-      paddingLeft: '16px'
+      paddingLeft: '16px',
     },
     [`&:last-of-type .${tableCellClasses.content}`]: {
-      paddingRight: '16px'
-    }
+      paddingRight: '16px',
+    },
   }),
 
   [`&:hover .${tableCellClasses.resize}::after`]: {
     width: '1px',
-    backgroundColor: theme.vars.palette.monoA.A200
+    backgroundColor: theme.vars.palette.monoA.A200,
   },
 
   [`.${tableCellClasses.resize}:hover::after`]: {
     width: '3px',
-    backgroundColor: theme.vars.palette.monoA.A400
+    backgroundColor: theme.vars.palette.monoA.A400,
   },
 
   [`.${tableCellClasses.resize}:focus-visible::after`]: {
     width: '3px',
-    backgroundColor: theme.vars.palette.info.A600
+    backgroundColor: theme.vars.palette.info.A600,
   },
 
   ...(ownerState.isResizing && {
     [`.${tableCellClasses.resize}.${tableCellClasses.resize}::after`]: {
       width: '3px',
-      backgroundColor: theme.vars.palette.info.A600
-    }
-  })
+      backgroundColor: theme.vars.palette.info.A600,
+    },
+  }),
 }));
 
 const TableCellContainer = styled('div', {
   name: 'ESTableCell',
   slot: 'Container',
-  overridesResolver: (props, styles) => styles.container
+  overridesResolver: (props, styles) => styles.container,
 })(({ theme }) => ({
   borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
   transition: `${theme.transitions.duration.short}ms, border-bottom 0ms`,
   width: '100%',
   height: '100%',
-  display: 'flex'
+  display: 'flex',
 }));
 
 const TableCellContent = styled('div', {
@@ -169,9 +169,9 @@ const TableCellContent = styled('div', {
       styles.content,
       ownerState.align === 'flex-start' && styles.contentAlignFlexStart,
       ownerState.align === 'center' && styles.contentAlignCenter,
-      ownerState.align === 'flex-end' && styles.contentAlignFlexEnd
+      ownerState.align === 'flex-end' && styles.contentAlignFlexEnd,
     ];
-  }
+  },
 })<{ ownerState: TableCellOwnerState }>(({ theme, ownerState }) => ({
   transition: `${theme.transitions.duration.short}ms`,
   width: '100%',
@@ -179,7 +179,7 @@ const TableCellContent = styled('div', {
   overflow: 'hidden',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: ownerState.align
+  justifyContent: ownerState.align,
 }));
 
 const TableCellResize = styled('button', {
@@ -188,7 +188,7 @@ const TableCellResize = styled('button', {
   overridesResolver: (props, styles) => {
     const { ownerState } = props;
     return [styles.resize, ownerState.isResizing && styles.resizeResizing];
-  }
+  },
 })<{ ownerState: TableCellOwnerState }>(({ ownerState }) => ({
   position: 'absolute',
   right: 0,
@@ -205,20 +205,20 @@ const TableCellResize = styled('button', {
 
   '&::after': {
     ...(ownerState.isResizing && {
-      display: 'block !important'
+      display: 'block !important',
     }),
     content: '""',
     position: 'absolute',
     right: 0,
     top: '12px',
     bottom: '12px',
-    borderRadius: '3px'
-  }
+    borderRadius: '3px',
+  },
 }));
 
 const RESIZE_STEPS: Record<string, number | undefined> = {
   ArrowLeft: -16,
-  ArrowRight: 16
+  ArrowRight: 16,
 };
 
 export const TableCell = memo(function TableCell(inProps: TableCellProps) {
@@ -240,7 +240,7 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESTableCell'
+    name: 'ESTableCell',
   });
 
   const ref = useRef<HTMLDivElement | null>(null);

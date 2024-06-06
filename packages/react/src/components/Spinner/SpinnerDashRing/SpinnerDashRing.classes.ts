@@ -26,5 +26,5 @@ export const spinnerDashRingClasses: SpinnerDashRingClasses = generateUtilityCla
   'primary',
   'secondary',
   'monoA',
-  'inherit'
+  'inherit',
 ]);

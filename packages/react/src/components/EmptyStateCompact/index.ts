@@ -2,6 +2,6 @@ export { EmptyStateCompact } from './EmptyStateCompact';
 export {
   EmptyStateCompactClasses,
   emptyStateCompactClasses,
-  EmptyStateCompactClassKey
+  EmptyStateCompactClassKey,
 } from './EmptyStateCompact.classes';
 export { EmptyStateCompactProps } from './EmptyStateCompact.types';

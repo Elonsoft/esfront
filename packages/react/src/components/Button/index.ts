@@ -7,5 +7,5 @@ export {
   ButtonPropsVariantOverrides,
   ButtonTypeMap,
   ExtendButton,
-  ExtendButtonTypeMap
+  ExtendButtonTypeMap,
 } from './Button.types';

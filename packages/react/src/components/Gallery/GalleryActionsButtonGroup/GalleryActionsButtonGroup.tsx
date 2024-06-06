@@ -17,7 +17,7 @@ const useUtilityClasses = (ownerState: GalleryActionsButtonGroupOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getGalleryActionsButtonGroupUtilityClass, classes);
@@ -26,24 +26,24 @@ const useUtilityClasses = (ownerState: GalleryActionsButtonGroupOwnerState) => {
 const GalleryActionsButtonGroupRoot = styled('div', {
   name: 'ESGalleryActionsButtonGroup',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   [`& .${buttonClasses.root}:not(:first-of-type)`]: {
     borderBottomLeftRadius: 0,
-    borderTopLeftRadius: 0
+    borderTopLeftRadius: 0,
   },
 
   [`& .${buttonClasses.root}:not(:last-of-type)`]: {
     borderRight: `1px solid ${theme.vars.palette.white.A200}`,
     borderBottomRightRadius: 0,
-    borderTopRightRadius: 0
-  }
+    borderTopRightRadius: 0,
+  },
 }));
 
 export const GalleryActionsButtonGroup = (inProps: GalleryActionsButtonGroupProps) => {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryActionsButtonGroup'
+    name: 'ESGalleryActionsButtonGroup',
   });
 
   const ownerState = { ...props };

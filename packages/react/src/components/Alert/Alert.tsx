@@ -28,7 +28,7 @@ const useUtilityClasses = (ownerState: AlertOwnerState) => {
     icon: ['icon'],
     content: ['content'],
     message: ['message'],
-    action: ['action']
+    action: ['action'],
   };
 
   return composeClasses(slots, getAlertUtilityClass, classes);
@@ -39,11 +39,11 @@ const AlertRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { color, variant, severity }
+      ownerState: { color, variant, severity },
     } = props;
 
     return [styles.root, styles[variant], styles[`${variant}${capitalize(color || severity)}`]];
-  }
+  },
 })<{ ownerState: AlertOwnerState }>(({ ownerState: { isWithActions }, theme }) => ({
   display: 'flex',
   borderRadius: '4px',
@@ -52,43 +52,43 @@ const AlertRoot = styled('div', {
   [`&.${alertClasses.standardSuccess}`]: {
     backgroundColor: theme.vars.palette.success.A100,
     border: `1px solid ${theme.vars.palette.success.A200}`,
-    color: theme.vars.palette.success[300]
+    color: theme.vars.palette.success[300],
   },
   [`&.${alertClasses.standardWarning}`]: {
     backgroundColor: theme.vars.palette.warning.A100,
     border: `1px solid ${theme.vars.palette.warning.A200}`,
-    color: theme.vars.palette.warning[300]
+    color: theme.vars.palette.warning[300],
   },
   [`&.${alertClasses.standardError}`]: {
     backgroundColor: theme.vars.palette.error.A100,
     border: `1px solid ${theme.vars.palette.error.A200}`,
-    color: theme.vars.palette.error[300]
+    color: theme.vars.palette.error[300],
   },
   [`&.${alertClasses.standardInfo}`]: {
     backgroundColor: theme.vars.palette.info.A100,
     border: `1px solid ${theme.vars.palette.info.A200}`,
-    color: theme.vars.palette.info[300]
+    color: theme.vars.palette.info[300],
   },
   [`&.${alertClasses.standardMonoA}`]: {
     backgroundColor: theme.vars.palette.monoA.A50,
     border: `1px solid ${theme.vars.palette.monoA.A100}`,
-    color: theme.vars.palette.monoA.A500
-  }
+    color: theme.vars.palette.monoA.A500,
+  },
 }));
 
 const AlertIcon = styled('div', {
   name: 'ESAlert',
   slot: 'Icon',
-  overridesResolver: (props, styles) => styles.icon
+  overridesResolver: (props, styles) => styles.icon,
 })(() => ({
   paddingTop: '8px',
-  marginRight: '8px'
+  marginRight: '8px',
 }));
 
 const AlertContent = styled('div', {
   name: 'ESAlert',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })<{ ownerState: { breakpoint: AlertProps['breakpoint'] } }>(({ ownerState: { breakpoint }, theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -98,37 +98,37 @@ const AlertContent = styled('div', {
   ...(!!breakpoint && {
     [theme.breakpoints.up(breakpoint)]: {
       flexDirection: 'row',
-      justifyContent: 'space-between'
-    }
-  })
+      justifyContent: 'space-between',
+    },
+  }),
 }));
 
 const AlertMessage = styled(Typography, {
   name: 'ESAlert',
   slot: 'Message',
-  overridesResolver: (props, styles) => styles.message
+  overridesResolver: (props, styles) => styles.message,
 })(() => ({
   wordBreak: 'break-word',
   marginRight: 'auto',
   minHeight: '40px',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center'
+  justifyContent: 'center',
 })) as typeof Typography;
 
 const AlertAction = styled('div', {
   name: 'ESAlert',
   slot: 'Action',
-  overridesResolver: (props, styles) => styles.action
+  overridesResolver: (props, styles) => styles.action,
 })<{ ownerState: AlertOwnerState }>(({ ownerState: { isWithActions } }) => ({
-  margin: `${isWithActions ? '4px' : '8px'} 0 0 8px`
+  margin: `${isWithActions ? '4px' : '8px'} 0 0 8px`,
 }));
 
 const defaultIconMapping = {
   success: <IconCheckCircleW500 />,
   warning: <IconAlertW500 />,
   error: <IconErrorW500 />,
-  info: <IconInformation2W500 />
+  info: <IconInformation2W500 />,
 };
 
 /**
@@ -150,7 +150,7 @@ export const Alert = (inProps: AlertProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESAlert'
+    name: 'ESAlert',
   });
 
   const isWithActions = Array.isArray(children)

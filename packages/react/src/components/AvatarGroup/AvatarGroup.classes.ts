@@ -20,5 +20,5 @@ export const avatarGroupClasses: AvatarGroupClasses = generateUtilityClasses('ES
   'root',
   'avatar',
   'rtl',
-  'ltr'
+  'ltr',
 ]);

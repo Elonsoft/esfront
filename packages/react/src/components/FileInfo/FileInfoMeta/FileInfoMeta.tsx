@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: FileInfoMetaOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getFileInfoMetaUtilityClass, classes);
@@ -25,11 +25,11 @@ const useUtilityClasses = (ownerState: FileInfoMetaOwnerState) => {
 const FileInfoMetaRoot = styled(Typography, {
   name: 'ESFileInfoMeta',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   color: theme.vars.palette.monoA.A500,
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
 }));
 
 export const FileInfoMeta = (inProps: FileInfoMetaProps) => {

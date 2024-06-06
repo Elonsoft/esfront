@@ -25,7 +25,7 @@ const useUtilityClasses = (ownerState: SFSSortingOwnerState) => {
   const slots = {
     root: ['root'],
     button: ['button'],
-    buttonBadge: ['buttonBadge']
+    buttonBadge: ['buttonBadge'],
   };
 
   return composeClasses(slots, getSFSSortingUtilityClass, classes);
@@ -34,19 +34,19 @@ const useUtilityClasses = (ownerState: SFSSortingOwnerState) => {
 const SFSSortingRoot = styled('div', {
   name: 'ESSFSSorting',
   slot: 'Root',
-  overridesResolver: (_, styles) => styles.root
+  overridesResolver: (_, styles) => styles.root,
 })({});
 
 const SFSSortingButton = styled(SFSButton, {
   name: 'ESSFSSorting',
   slot: 'Button',
-  overridesResolver: (_, styles) => styles.button
+  overridesResolver: (_, styles) => styles.button,
 })({});
 
 const SFSSortingButtonBadge = styled(SFSButtonBadge, {
   name: 'ESSFSSorting',
   slot: 'ButtonBadge',
-  overridesResolver: (_, styles) => styles.buttonBadge
+  overridesResolver: (_, styles) => styles.buttonBadge,
 })({}) as typeof SFSButtonBadge;
 
 export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
@@ -65,7 +65,7 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSFSSorting'
+    name: 'ESSFSSorting',
   });
 
   const values = props.multiple ? props.value : props.value ? [props.value] : [];
@@ -106,14 +106,14 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
           anchorEl: menuAnchor,
           anchorOrigin: {
             vertical: 'bottom',
-            horizontal: 'right'
+            horizontal: 'right',
           },
           open: !!menuAnchor,
           transformOrigin: {
             vertical: 'top',
-            horizontal: 'right'
+            horizontal: 'right',
           },
-          onClose: onMenuClose
+          onClose: onMenuClose,
         }}
         options={options}
         {...props}

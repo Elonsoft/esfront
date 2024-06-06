@@ -54,7 +54,7 @@ const useUtilityClasses = (ownerState: SidebarItemOwnerState) => {
     icon: ['icon'],
     nestedMenu: ['nestedMenu'],
     container: ['container'],
-    secondaryAction: ['secondaryAction']
+    secondaryAction: ['secondaryAction'],
   };
 
   return composeClasses(slots, getSidebarItemUtilityClass, classes);
@@ -63,23 +63,23 @@ const useUtilityClasses = (ownerState: SidebarItemOwnerState) => {
 const SidebarItemRoot = styled('div', {
   name: 'ESSidebarItem',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
-  margin: '0 8px'
+  margin: '0 8px',
 }));
 
 const SidebarItemWrapper = styled('div', {
   name: 'ESSidebarItem',
   slot: 'Wrapper',
-  overridesResolver: (props, styles) => styles.wrapper
+  overridesResolver: (props, styles) => styles.wrapper,
 })(() => ({
-  position: 'relative'
+  position: 'relative',
 }));
 
 const SidebarItemButton = styled(ListItemButton, {
   name: 'ESSidebarItem',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.button
+  overridesResolver: (props, styles) => styles.button,
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
   [`&.${listItemButtonClasses.root}`]: {
     borderRadius: '4px',
@@ -89,8 +89,8 @@ const SidebarItemButton = styled(ListItemButton, {
 
     [`&.${buttonBaseClasses.root}`]: {
       [`& .${touchRippleClasses.root}`]: {
-        transitionDuration: `${theme.transitions.duration.short}ms`
-      }
+        transitionDuration: `${theme.transitions.duration.short}ms`,
+      },
     },
     ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
       ...theme.mixins.listItem({
@@ -99,7 +99,7 @@ const SidebarItemButton = styled(ListItemButton, {
         hover: theme.vars.palette.monoA.A50,
         icon: theme.vars.palette.monoA.A500,
         focus: theme.vars.palette.monoA.A200,
-        active: theme.vars.palette.monoA.A150
+        active: theme.vars.palette.monoA.A150,
       }),
       [`&.${listItemButtonClasses.selected}`]: {
         ...theme.mixins.listItem({
@@ -107,9 +107,9 @@ const SidebarItemButton = styled(ListItemButton, {
           hover: theme.vars.palette.monoA.A50,
           icon: theme.vars.palette.monoA.A600,
           focus: theme.vars.palette.monoA.A75,
-          active: theme.vars.palette.monoA.A150
-        })
-      }
+          active: theme.vars.palette.monoA.A150,
+        }),
+      },
     }),
     ...(ownerState.color === 'primary' && {
       ...theme.mixins.listItem({
@@ -118,7 +118,7 @@ const SidebarItemButton = styled(ListItemButton, {
         icon: theme.vars.palette.monoB.A800,
         hover: theme.vars.palette.monoB.A50,
         focus: theme.vars.palette.monoB.A200,
-        active: theme.vars.palette.monoB.A150
+        active: theme.vars.palette.monoB.A150,
       }),
       [`&.${listItemButtonClasses.selected}`]: {
         ...theme.mixins.listItem({
@@ -127,17 +127,17 @@ const SidebarItemButton = styled(ListItemButton, {
           icon: theme.vars.palette.monoB[500],
           hover: theme.vars.palette.monoB.A50,
           focus: theme.vars.palette.monoB.A75,
-          active: theme.vars.palette.monoB.A150
-        })
-      }
-    })
-  }
+          active: theme.vars.palette.monoB.A150,
+        }),
+      },
+    }),
+  },
 }));
 
 const SidebarItemSecondaryAction = styled(Button, {
   name: 'ESSidebarItem',
   slot: 'SecondaryAction',
-  overridesResolver: (props, styles) => styles.secondaryAction
+  overridesResolver: (props, styles) => styles.secondaryAction,
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
   cursor: 'pointer',
   position: 'absolute',
@@ -147,7 +147,7 @@ const SidebarItemSecondaryAction = styled(Button, {
   borderRadius: '50%',
 
   ...(ownerState.behaviour === 'hover' && {
-    pointerEvents: 'none'
+    pointerEvents: 'none',
   }),
 
   ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
@@ -155,7 +155,7 @@ const SidebarItemSecondaryAction = styled(Button, {
     '--icon': theme.vars.palette.monoA.A500,
     '--hovered': theme.vars.palette.monoA.A50,
     '--focused': theme.vars.palette.monoA.A200,
-    '--pressed': theme.vars.palette.monoA.A150
+    '--pressed': theme.vars.palette.monoA.A150,
   }),
 
   ...(ownerState.color === 'primary' && {
@@ -163,62 +163,62 @@ const SidebarItemSecondaryAction = styled(Button, {
     '--icon': theme.vars.palette.monoB.A800,
     '--hovered': theme.vars.palette.monoB.A50,
     '--focused': theme.vars.palette.monoB.A200,
-    '--pressed': theme.vars.palette.monoB.A150
+    '--pressed': theme.vars.palette.monoB.A150,
   }),
 
   [`&.${buttonClasses.size24} .${ESbuttonBaseClasses.wrapper}`]: {
-    padding: '0px 8px'
+    padding: '0px 8px',
   },
 
   [`& .${svgIconClasses.root}`]: {
-    transform: `${ownerState.isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`
-  }
+    transform: `${ownerState.isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`,
+  },
 }));
 
 const SidebarItemText = styled(ListItemText, {
   name: 'ESSidebarItem',
   slot: 'Text',
-  overridesResolver: (props, styles) => styles.text
+  overridesResolver: (props, styles) => styles.text,
 })<{ ownerState: SidebarItemOwnerState }>(({ ownerState: { open } }) => ({
   whiteSpace: 'nowrap',
   display: `${open ? 'block' : 'none'}`,
 
   [`&.${listItemTextClasses.inset}`]: {
-    paddingLeft: '36px'
-  }
+    paddingLeft: '36px',
+  },
 }));
 
 const SidebarItemIcon = styled(ListItemIcon, {
   name: 'ESSidebarItem',
   slot: 'Icon',
-  overridesResolver: (props, styles) => styles.icon
+  overridesResolver: (props, styles) => styles.icon,
 })<{ ownerState: SidebarItemOwnerState }>(({ ownerState: { isNestedMenuOpen } }) => ({
   '&:last-of-type': {
-    marginLeft: '3.5px'
+    marginLeft: '3.5px',
   },
 
   [`& .${svgIconClasses.root}`]: {
-    transform: `${isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`
-  }
+    transform: `${isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`,
+  },
 }));
 
 const SidebarItemContainer = styled('div', {
   name: 'ESSidebarItem',
   slot: 'Container',
-  overridesResolver: (props, styles) => styles.container
+  overridesResolver: (props, styles) => styles.container,
 })(() => ({
   display: 'flex',
   alignItems: 'center',
 
   [`& .${listItemIconClasses.root}:first-of-type`]: {
-    marginRight: '12px'
-  }
+    marginRight: '12px',
+  },
 }));
 
 const SidebarItemNestedMenu = styled('div', {
   name: 'ESSidebarItem',
   slot: 'NestedMenu',
-  overridesResolver: (props, styles) => styles.nestedMenu
+  overridesResolver: (props, styles) => styles.nestedMenu,
 })(() => ({
   display: 'flex',
   flexDirection: 'column',
@@ -226,8 +226,8 @@ const SidebarItemNestedMenu = styled('div', {
   marginTop: '2px',
 
   [`& .${sidebarItemClasses.root}`]: {
-    margin: '0'
-  }
+    margin: '0',
+  },
 }));
 
 const SidebarItemTooltip = styled(
@@ -235,7 +235,7 @@ const SidebarItemTooltip = styled(
   {
     name: 'ESSidebarItem',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip
+    overridesResolver: (props, styles) => styles.tooltip,
   }
 )(({ theme }) => ({
   [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
@@ -249,32 +249,32 @@ const SidebarItemTooltip = styled(
 
     [`& .${tooltipClasses.arrow}`]: {
       color: theme.vars.palette.surface[400],
-      backdropFilter: 'none'
-    }
+      backdropFilter: 'none',
+    },
   },
   '&[data-popper-reference-hidden]': {
     pointerEvents: 'none',
-    opacity: '0'
-  }
+    opacity: '0',
+  },
 }));
 
 const SidebarItemTooltipTitle = styled(MenuList, {
   name: 'ESSidebarItem',
   slot: 'TooltipTitle',
-  overridesResolver: (props, styles) => styles.tooltipTitle
+  overridesResolver: (props, styles) => styles.tooltipTitle,
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
   maxHeight: '100vh',
   ...theme.scrollbars.overlayMonoA,
 
   ...(ownerState.children && {
-    paddingBottom: '8px'
-  })
+    paddingBottom: '8px',
+  }),
 }));
 
 const SidebarItemTooltipItem = styled(MenuItem, {
   name: 'ESSidebarItem',
   slot: 'TooltipItem',
-  overridesResolver: (props, styles) => styles.tooltipItem
+  overridesResolver: (props, styles) => styles.tooltipItem,
 })(() => ({
   [`&.${menuItemClasses.root}`]: {
     width: '100%',
@@ -282,21 +282,21 @@ const SidebarItemTooltipItem = styled(MenuItem, {
     padding: '6px 16px',
 
     '&:first-child': {
-      margin: '4px 0'
+      margin: '4px 0',
     },
 
     [`&.${menuItemClasses.disabled}`]: {
-      opacity: '1'
-    }
-  }
+      opacity: '1',
+    },
+  },
 })) as typeof MenuItem;
 
 const SidebarItemTooltipDivider = styled(Divider, {
   name: 'ESSidebarItem',
   slot: 'TooltipDivider',
-  overridesResolver: (props, styles) => styles.tooltipDivider
+  overridesResolver: (props, styles) => styles.tooltipDivider,
 })(() => ({
-  marginBottom: '8px'
+  marginBottom: '8px',
 }));
 
 export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: SidebarItemProps) => {
@@ -317,7 +317,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESSidebarItem'
+    name: 'ESSidebarItem',
   });
 
   const [isTooltipOpen, setTooltipOpen] = useState(false);

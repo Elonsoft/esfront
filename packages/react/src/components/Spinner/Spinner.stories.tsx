@@ -17,8 +17,8 @@ const meta: Meta<typeof SpinnerDashRing> = {
       'SpinnerFadingDots',
       'SpinnerFadingDoubleRing',
       'SpinnerFadingRing',
-      'SpinnerRing'
-    ]
+      'SpinnerRing',
+    ],
   },
   argTypes: {
     dashEase: {
@@ -26,14 +26,14 @@ const meta: Meta<typeof SpinnerDashRing> = {
       control: { type: 'text' },
       table: {
         type: {
-          summary: 'string'
-        }
-      }
-    }
+          summary: 'string',
+        },
+      },
+    },
   },
   args: {
-    dashEase: 'ease-in-out'
-  }
+    dashEase: 'ease-in-out',
+  },
 };
 
 export default meta;
@@ -48,7 +48,7 @@ export const Demo: Story = {
           display: 'grid',
           gap: '24px',
           gridAutoFlow: 'column',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
         }}
       >
         <SpinnerFadingRing color={args.color} duration={args.duration} ease={args.ease} size={args.size} />
@@ -59,5 +59,5 @@ export const Demo: Story = {
         <SpinnerFadingDoubleRing color={args.color} duration={args.duration} ease={args.ease} size={args.size} />
       </div>
     );
-  }
+  },
 };

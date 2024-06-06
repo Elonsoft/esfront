@@ -19,7 +19,7 @@ const useUtilityClasses = (ownerState: DialogTitleOwnerState) => {
   const { classes, sticky, stuck } = ownerState;
 
   const slots = {
-    root: ['root', sticky && 'sticky', sticky && stuck && 'stuck']
+    root: ['root', sticky && 'sticky', sticky && stuck && 'stuck'],
   };
 
   return composeClasses(slots, getDialogTitleUtilityClass, classes);
@@ -30,10 +30,10 @@ const DialogTitleRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { sticky, stuck }
+      ownerState: { sticky, stuck },
     } = props;
     return [styles.root, sticky && styles.sticky, sticky && stuck && styles.stuck];
-  }
+  },
 })<{ ownerState: DialogTitleOwnerState }>(({ theme, ownerState }) => ({
   ...theme.typography.h4,
   color: theme.vars.palette.monoA.A900,
@@ -60,16 +60,16 @@ const DialogTitleRoot = styled('div', {
         left: 0,
         position: 'absolute',
         right: 0,
-        top: '100%'
-      }
-    })
-  })
+        top: '100%',
+      },
+    }),
+  }),
 }));
 
 export const DialogTitle = (inProps: DialogTitleProps) => {
   const { className, sx, sticky, children, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESDialogTitle'
+    name: 'ESDialogTitle',
   });
 
   const { stuck, sentinel } = useStuckSentinel();

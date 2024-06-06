@@ -23,5 +23,5 @@ export const spinnerFadingDotsClasses: SpinnerFadingDotsClasses = generateUtilit
   'primary',
   'secondary',
   'monoA',
-  'inherit'
+  'inherit',
 ]);

@@ -30,7 +30,7 @@ const PALETTES = [
   'purple',
   'pink',
   'teal',
-  'grey'
+  'grey',
 ];
 
 const COLOR_IGNORE = ['main', 'light', 'dark', 'contrastText', 'alpha', 'white', 'black'];
@@ -38,7 +38,7 @@ const COLOR_IGNORE = ['main', 'light', 'dark', 'contrastText', 'alpha', 'white',
 const PaletteDemoRoot = styled('div')(() => ({
   display: 'grid',
   gap: 4,
-  gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))'
+  gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
 }));
 
 const PaletteDemoPalette = styled(Typography)(({ theme }) => ({
@@ -50,8 +50,8 @@ const PaletteDemoPalette = styled(Typography)(({ theme }) => ({
   padding: '8px 16px',
 
   '&:not(:first-child)': {
-    marginTop: 32
-  }
+    marginTop: 32,
+  },
 }));
 
 const PaletteDemoColorName = styled(Typography)(({ theme }) => ({
@@ -59,7 +59,7 @@ const PaletteDemoColorName = styled(Typography)(({ theme }) => ({
   borderTopLeftRadius: 2,
   borderTopRightRadius: 2,
   display: 'block',
-  padding: '8px 16px'
+  padding: '8px 16px',
 }));
 
 const PaletteDemoColorBackground = styled('div')(({ theme }) => ({
@@ -67,7 +67,7 @@ const PaletteDemoColorBackground = styled('div')(({ theme }) => ({
   borderBottomLeftRadius: 2,
   borderBottomRightRadius: 2,
   borderTop: 0,
-  padding: 16
+  padding: 16,
 }));
 
 export const PaletteDemo = () => {
@@ -88,7 +88,7 @@ export const PaletteDemo = () => {
                 </PaletteDemoColorName>
                 <PaletteDemoColorBackground
                   sx={{
-                    backgroundColor: (theme.vars.palette as any)[palette][color] as string
+                    backgroundColor: (theme.vars.palette as any)[palette][color] as string,
                   }}
                 />
               </div>
@@ -105,7 +105,7 @@ export const PaletteDemo = () => {
               sx={{
                 boxShadow: (theme.vars.palette.shadow as any)[direction][level],
                 margin: '24px',
-                borderRadius: '2px'
+                borderRadius: '2px',
               }}
               variant="caption"
             >

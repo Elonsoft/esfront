@@ -12,5 +12,5 @@ export const secondary = {
   alpha: '300',
   main: '#FFC45A',
   light: '#E3A136',
-  dark: '#FFD17D'
+  dark: '#FFD17D',
 };

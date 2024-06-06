@@ -14,7 +14,7 @@ const useUtilityClasses = (ownerState: AutocompleteMenuHeaderOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getAutocompleteMenuHeaderUtilityClass, classes);
@@ -23,12 +23,12 @@ const useUtilityClasses = (ownerState: AutocompleteMenuHeaderOwnerState) => {
 const AutocompleteMenuHeaderRoot = styled('div', {
   name: 'ESAutocompleteMenuHeader',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   ...theme.typography.caption,
   color: theme.vars.palette.monoA.A600,
   padding: '6px 16px 5px',
-  borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`
+  borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
 }));
 
 export const AutocompleteMenuHeader = (inProps: AutocompleteMenuHeaderProps) => {
@@ -41,7 +41,7 @@ export const AutocompleteMenuHeader = (inProps: AutocompleteMenuHeaderProps) => 
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESAutocompleteMenuHeader'
+    name: 'ESAutocompleteMenuHeader',
   });
 
   const ownerState = { ...props };

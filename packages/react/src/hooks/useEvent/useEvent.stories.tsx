@@ -13,8 +13,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useEvent',
   parameters: {
-    references: ['useEvent']
-  }
+    references: ['useEvent'],
+  },
 };
 
 export default meta;
@@ -49,5 +49,5 @@ export const Demo: Story = {
         <Box sx={{ margin: '8px' }}>Message: {message}</Box>
       </>
     );
-  }
+  },
 };

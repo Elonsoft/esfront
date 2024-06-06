@@ -6,29 +6,29 @@ const meta: Meta<typeof FormatSize> = {
   tags: ['autodocs'],
   component: FormatSize,
   parameters: {
-    references: ['FormatSize']
+    references: ['FormatSize'],
   },
   argTypes: {
     children: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     prefix: {
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     metricUnits: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     binaryUnits: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   args: {
-    children: '1000'
-  }
+    children: '1000',
+  },
 };
 
 export default meta;
@@ -37,5 +37,5 @@ type Story = StoryObj<typeof FormatSize>;
 export const Demo: Story = {
   render: (args) => {
     return <FormatSize {...args} />;
-  }
+  },
 };

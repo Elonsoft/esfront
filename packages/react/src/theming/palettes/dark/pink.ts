@@ -9,5 +9,5 @@ export const pink = {
   700: '#FFDEF3',
   800: '#FFECF8',
   900: '#FFF5FC',
-  alpha: '300'
+  alpha: '300',
 };

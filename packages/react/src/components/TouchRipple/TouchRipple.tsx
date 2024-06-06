@@ -17,7 +17,7 @@ const useUtilityClasses = (ownerState: TouchRippleOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getTouchRippleUtilityClass, classes);
@@ -26,7 +26,7 @@ const useUtilityClasses = (ownerState: TouchRippleOwnerState) => {
 const TouchRippleRoot = styled('div', {
   name: 'ESTouchRipple',
   slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root
+  overridesResolver: (_props, styles) => styles.root,
 })(({ theme }) => ({
   borderRadius: 'inherit',
   inset: 0,
@@ -36,7 +36,7 @@ const TouchRippleRoot = styled('div', {
   zIndex: 0,
 
   transition: theme.transitions.create(['background-color'], {
-    duration: theme.transitions.duration.short
+    duration: theme.transitions.duration.short,
   }),
 
   '&::after': {
@@ -45,8 +45,8 @@ const TouchRippleRoot = styled('div', {
     position: 'absolute',
     background: 'radial-gradient(closest-side, var(--pressed) 99%, transparent 100%)',
     transformOrigin: 'center center',
-    transition: 'opacity 375ms linear'
-  }
+    transition: 'opacity 375ms linear',
+  },
 }));
 
 /**
@@ -55,7 +55,7 @@ const TouchRippleRoot = styled('div', {
 export const TouchRipple = forwardRef<HTMLDivElement, TouchRippleProps>(function TouchRipple(inProps, ref) {
   const { className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESTouchRipple'
+    name: 'ESTouchRipple',
   });
 
   const ownerState = { ...props };

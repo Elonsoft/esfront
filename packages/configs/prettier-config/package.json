@@ -15,6 +15,6 @@
   },
   "homepage": "https://github.com/Elonsoft/elonkit-react#readme",
   "peerDependencies": {
-    "prettier": "^3.2.3"
+    "prettier": "^3.3.1"
   }
 }

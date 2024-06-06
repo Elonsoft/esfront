@@ -39,5 +39,5 @@ export interface SidebarItemTypeMap<P = {}, D extends ElementType = `div`> {
 
 export type SidebarItemProps<
   D extends React.ElementType = SidebarItemTypeMap['defaultComponent'],
-  P = {}
+  P = {},
 > = OverrideProps<SidebarItemTypeMap<P, D>, D>;

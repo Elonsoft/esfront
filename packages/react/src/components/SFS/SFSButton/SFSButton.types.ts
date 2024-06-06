@@ -25,7 +25,7 @@ export interface SFSButtonOwnProps {
 
 export type SFSButtonTypeMap<
   AdditionalProps = {},
-  RootComponent extends React.ElementType = 'button'
+  RootComponent extends React.ElementType = 'button',
 > = ExtendButtonTypeMap<{
   props: AdditionalProps & SFSButtonOwnProps;
   defaultComponent: RootComponent;
@@ -33,5 +33,5 @@ export type SFSButtonTypeMap<
 
 export type SFSButtonProps<
   RootComponent extends React.ElementType = SFSButtonTypeMap['defaultComponent'],
-  AdditionalProps = {}
+  AdditionalProps = {},
 > = OverrideProps<SFSButtonTypeMap<AdditionalProps, RootComponent>, RootComponent>;

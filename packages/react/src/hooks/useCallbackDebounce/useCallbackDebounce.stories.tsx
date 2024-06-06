@@ -14,8 +14,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useCallbackDebounce',
   parameters: {
-    references: ['useCallbackDebounce']
-  }
+    references: ['useCallbackDebounce'],
+  },
 };
 
 export default meta;
@@ -57,5 +57,5 @@ export const Demo: Story = {
         </Typography>
       </div>
     );
-  }
+  },
 };

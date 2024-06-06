@@ -36,10 +36,10 @@ export const createScrollbars = (theme: Theme) => {
         '&::-webkit-scrollbar': {
           width: `${width}px`,
           height: `${width}px`,
-          backgroundColor: color.A50
+          backgroundColor: color.A50,
         },
         '&::-webkit-scrollbar-corner': {
-          backgroundColor: color.A100
+          backgroundColor: color.A100,
         },
         '&::-webkit-scrollbar-thumb': {
           borderRadius: `${2 + borderWidth}px`,
@@ -49,11 +49,11 @@ export const createScrollbars = (theme: Theme) => {
           boxShadow: `inset 0 0 0 10px ${color.A300}`,
 
           '&:hover': {
-            boxShadow: `inset 0 0 0 10px ${color.A400}`
+            boxShadow: `inset 0 0 0 10px ${color.A400}`,
           },
           '&:active': {
-            boxShadow: `inset 0 0 0 10px ${color.A500}`
-          }
+            boxShadow: `inset 0 0 0 10px ${color.A500}`,
+          },
         },
         '&::-webkit-scrollbar-button': {
           width: `${width}px`,
@@ -62,33 +62,33 @@ export const createScrollbars = (theme: Theme) => {
           backgroundPosition: 'center',
 
           '&:hover': {
-            backgroundColor: color.A50
+            backgroundColor: color.A50,
           },
           '&:active': {
-            backgroundColor: color.A150
+            backgroundColor: color.A150,
           },
 
           '&:vertical:increment': {
-            backgroundImage: `url("data:image/svg+xml;base64,${btoa(iconMenuDown)}")`
+            backgroundImage: `url("data:image/svg+xml;base64,${btoa(iconMenuDown)}")`,
           },
           '&:vertical:decrement': {
-            backgroundImage: `url("data:image/svg+xml;base64,${btoa(iconMenuUp)}")`
+            backgroundImage: `url("data:image/svg+xml;base64,${btoa(iconMenuUp)}")`,
           },
           '&:horizontal:increment': {
-            backgroundImage: `url("data:image/svg+xml;base64,${btoa(iconMenuRight)}")`
+            backgroundImage: `url("data:image/svg+xml;base64,${btoa(iconMenuRight)}")`,
           },
           '&:horizontal:decrement': {
-            backgroundImage: `url("data:image/svg+xml;base64,${btoa(iconMenuLeft)}")`
-          }
-        }
-      })
+            backgroundImage: `url("data:image/svg+xml;base64,${btoa(iconMenuLeft)}")`,
+          },
+        },
+      }),
     };
   };
 
   const getOverlayScrollbar = (color: PaletteColor) => {
     return {
       '@supports not selector(::-webkit-scrollbar)': {
-        scrollbarWidth: 'thin'
+        scrollbarWidth: 'thin',
       },
 
       overflow: 'auto',
@@ -96,14 +96,14 @@ export const createScrollbars = (theme: Theme) => {
 
       ...(scrollbarWidth > 0 && {
         '&:hover::-webkit-scrollbar-thumb': {
-          boxShadow: `inset 0 0 0 10px ${color.A200}`
+          boxShadow: `inset 0 0 0 10px ${color.A200}`,
         },
         '&::-webkit-scrollbar': {
           width: '14px',
-          height: '14px'
+          height: '14px',
         },
         '&::-webkit-scrollbar-corner': {
-          backgroundColor: 'transparent'
+          backgroundColor: 'transparent',
         },
         '&::-webkit-scrollbar-thumb': {
           borderRadius: '100px',
@@ -112,13 +112,13 @@ export const createScrollbars = (theme: Theme) => {
           backgroundClip: 'padding-box',
 
           '&:hover': {
-            boxShadow: `inset 0 0 0 10px ${color.A400}`
+            boxShadow: `inset 0 0 0 10px ${color.A400}`,
           },
           '&:active': {
-            boxShadow: `inset 0 0 0 10px ${color.A500}`
-          }
-        }
-      })
+            boxShadow: `inset 0 0 0 10px ${color.A500}`,
+          },
+        },
+      }),
     };
   };
 
@@ -141,6 +141,6 @@ export const createScrollbars = (theme: Theme) => {
     overlayMonoA: overlay,
     overlayMonoB: getOverlayScrollbar(theme.vars.palette.monoB),
     overlayWhite: getOverlayScrollbar(theme.vars.palette.white),
-    overlayBlack: getOverlayScrollbar(theme.vars.palette.black)
+    overlayBlack: getOverlayScrollbar(theme.vars.palette.black),
   };
 };

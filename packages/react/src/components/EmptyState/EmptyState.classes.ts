@@ -32,5 +32,5 @@ export const emptyStateClasses: EmptyStateClasses = generateUtilityClasses('ESEm
   'text',
   'heading',
   'subheading',
-  'children'
+  'children',
 ]);

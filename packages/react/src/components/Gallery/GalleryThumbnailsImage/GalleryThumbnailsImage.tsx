@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: GalleryThumbnailsImageOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getGalleryThumbnailsImageUtilityClass, classes);
@@ -24,18 +24,18 @@ const useUtilityClasses = (ownerState: GalleryThumbnailsImageOwnerState) => {
 const GalleryThumbnailsImageRoot = styled('img', {
   name: 'ESGalleryThumbnailsImage',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   borderRadius: 6,
   height: 56,
   objectFit: 'cover',
-  width: 56
+  width: 56,
 }));
 
 export const GalleryThumbnailsImage = (inProps: GalleryThumbnailsImageProps) => {
   const { className, sx, src, alt, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryThumbnailsImage'
+    name: 'ESGalleryThumbnailsImage',
   });
 
   const ownerState = { ...props };

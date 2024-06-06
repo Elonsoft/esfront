@@ -18,5 +18,5 @@ export function getSidebarToggleUtilityClass(slot: string): string {
 export const sidebarToggleClasses: SidebarToggleClasses = generateUtilityClasses('ESSidebarToggle', [
   'root',
   'button',
-  'tooltip'
+  'tooltip',
 ]);

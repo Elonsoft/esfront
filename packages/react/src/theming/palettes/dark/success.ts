@@ -9,5 +9,5 @@ export const success = {
   700: '#C9FFEB',
   800: '#DDFFF2',
   900: '#EDFFF7',
-  alpha: '300'
+  alpha: '300',
 };

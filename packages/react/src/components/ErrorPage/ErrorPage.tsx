@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: ErrorPageOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getErrorPageUtilityClass, classes);
@@ -24,7 +24,7 @@ const useUtilityClasses = (ownerState: ErrorPageOwnerState) => {
 export const ErrorPageRoot = styled('div', {
   name: 'ESErrorPage',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(
   ({ theme }) => ({
     backgroundColor: theme.vars.palette.surface[50],
@@ -45,16 +45,16 @@ export const ErrorPageRoot = styled('div', {
     padding: '16px 32px 24px',
 
     [theme.breakpoints.up('tabletXS')]: {
-      gridTemplateRows: '1fr auto auto auto auto 1fr'
+      gridTemplateRows: '1fr auto auto auto auto 1fr',
     },
 
     [theme.breakpoints.up('desktopXS')]: {
-      padding: '56px 160px 40px'
+      padding: '56px 160px 40px',
     },
 
     [theme.breakpoints.down('desktopXS')]: {
-      backgroundImage: 'none'
-    }
+      backgroundImage: 'none',
+    },
   }),
   { minHeight: '100dvh' }
 );
@@ -62,7 +62,7 @@ export const ErrorPageRoot = styled('div', {
 export const ErrorPage = (inProps: ErrorPageProps) => {
   const { children, className, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESErrorPage'
+    name: 'ESErrorPage',
   });
 
   const ownerState = { ...props };

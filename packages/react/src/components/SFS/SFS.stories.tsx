@@ -13,7 +13,7 @@ const sortingOptionsRu = [
   { label: 'Срок сдачи', value: 'byRent' },
   { label: 'Старт продаж', value: 'bySalesStart' },
   { label: 'Дата создания', value: 'byCreationDate' },
-  { label: 'Новизна', value: 'byNewest' }
+  { label: 'Новизна', value: 'byNewest' },
 ];
 
 const sortingOptionsEn = [
@@ -22,7 +22,7 @@ const sortingOptionsEn = [
   { label: 'Deadline', value: 'byRent' },
   { label: 'Start of sales', value: 'bySalesStart' },
   { label: 'Date of creation', value: 'byCreationDate' },
-  { label: 'Novelty', value: 'byNewest' }
+  { label: 'Novelty', value: 'byNewest' },
 ];
 
 type Args = ComponentProps<typeof SFS> & { SFSSortingMultiple?: boolean };
@@ -31,15 +31,15 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: SFS,
   parameters: {
-    references: ['SFS', 'SFSFilters', 'SFSFiltersGroup', 'SFSRow', 'SFSSearch', 'SFSSorting']
+    references: ['SFS', 'SFSFilters', 'SFSFiltersGroup', 'SFSRow', 'SFSSearch', 'SFSSorting'],
   },
   argTypes: {
     SFSSortingMultiple: {
       name: 'SFSSorting.multiple',
       description: 'If `true`, multiple options can be selected.',
-      control: { type: 'boolean' }
-    }
-  }
+      control: { type: 'boolean' },
+    },
+  },
 };
 
 export default meta;
@@ -57,7 +57,7 @@ export const Demo: Story = {
       '3': '',
       '4': '',
       '5': '',
-      '6': ''
+      '6': '',
     });
 
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -103,7 +103,7 @@ export const Demo: Story = {
                 '3': '',
                 '4': '',
                 '5': '',
-                '6': ''
+                '6': '',
               })
             }
           >
@@ -157,5 +157,5 @@ export const Demo: Story = {
         </SFSRow>
       </SFS>
     );
-  }
+  },
 };

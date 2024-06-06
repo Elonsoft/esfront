@@ -4,10 +4,10 @@ export default {
   title: 'Getting Started/Icons',
 
   parameters: {
-    viewMode: 'docs'
-  }
+    viewMode: 'docs',
+  },
 };
 
 export const Icons = {
-  render: () => <IconsDemo />
+  render: () => <IconsDemo />,
 };

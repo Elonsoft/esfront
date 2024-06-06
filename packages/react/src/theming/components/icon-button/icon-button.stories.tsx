@@ -9,7 +9,7 @@ const meta: Meta<typeof IconButton> = {
   title: 'Overrides/IconButton',
 
   parameters: {
-    viewMode: 'canvas'
+    viewMode: 'canvas',
   },
 
   argTypes: {
@@ -17,24 +17,24 @@ const meta: Meta<typeof IconButton> = {
       options: ['inherit', 'primary', 'secondary', 'tertiary', 'error', 'monoA', 'monoB', 'white', 'black'],
 
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
 
     size: {
       options: ['16', '20', '24', '32', '40', '48', '56'],
 
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
 
     disabled: {
       control: {
-        type: 'boolean'
-      }
-    }
-  }
+        type: 'boolean',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -53,5 +53,5 @@ export const Demo: Story = {
         <IconChevronDownW400 />
       );
     return <IconButton {...args}>{icon}</IconButton>;
-  }
+  },
 };

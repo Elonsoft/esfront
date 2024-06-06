@@ -26,31 +26,31 @@ export const listItemMixin = (states: ListItemMixinStates) => {
 
   return {
     '&, &:hover, &:active': {
-      backgroundColor: background
+      backgroundColor: background,
     },
     ...(color && {
       [`&, & .${listItemTextClasses.root}`]: {
-        color
-      }
+        color,
+      },
     }),
     ...(icon && {
       [`& .${listItemIconClasses.root}`]: {
-        color: icon
-      }
+        color: icon,
+      },
     }),
     [`& .${touchRippleClasses.root}`]: {
       color: active,
-      transform: 'translateZ(0)'
+      transform: 'translateZ(0)',
     },
     '@media (hover: hover)': {
       [`&:not(.${listItemButtonClasses.focusVisible}):hover .${touchRippleClasses.root}`]: {
-        backgroundColor: hover
-      }
+        backgroundColor: hover,
+      },
     },
     [`&.${listItemButtonClasses.focusVisible}`]: {
       [`& .${touchRippleClasses.root}`]: {
-        backgroundColor: focus
-      }
-    }
+        backgroundColor: focus,
+      },
+    },
   } as React.CSSProperties;
 };

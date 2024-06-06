@@ -24,7 +24,7 @@ const useUtilityClasses = (ownerState: AvatarOwnerState) => {
 
   const slots = {
     root: ['root', `variant${capitalize(variant)}`, outlined && 'outlined'],
-    image: ['image']
+    image: ['image'],
   };
 
   return composeClasses(slots, getAvatarUtilityClass, classes);
@@ -74,11 +74,11 @@ const AvatarRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { variant, outlined }
+      ownerState: { variant, outlined },
     } = props;
 
     return [styles.root, styles[`variant${capitalize(variant)}`], outlined && styles.outlined];
-  }
+  },
 })<{ ownerState: AvatarOwnerState }>(({ theme, ownerState: { size } }) => ({
   ...theme.typography.body100,
   height: `${size}px`,
@@ -95,15 +95,15 @@ const AvatarRoot = styled('div', {
   color: theme.vars.palette.monoA.A500,
 
   [`& .${svgIconClasses.root}`]: {
-    color: theme.vars.palette.monoA.A400
+    color: theme.vars.palette.monoA.A400,
   },
 
   [`&.${avatarClasses.variantSquare}`]: {
-    borderRadius: '8px'
+    borderRadius: '8px',
   },
 
   [`&.${avatarClasses.variantCircle}`]: {
-    borderRadius: '50%'
+    borderRadius: '50%',
   },
 
   [`&.${avatarClasses.outlined}`]: {
@@ -115,9 +115,9 @@ const AvatarRoot = styled('div', {
       inset: 0,
       pointerEvents: 'none',
       borderRadius: 'inherit',
-      border: `1px solid ${theme.vars.palette.monoA.A100}`
-    }
-  }
+      border: `1px solid ${theme.vars.palette.monoA.A100}`,
+    },
+  },
 }));
 
 const AvatarImage = styled('img', {
@@ -125,10 +125,10 @@ const AvatarImage = styled('img', {
   slot: 'Image',
   overridesResolver: (props, styles) => {
     return [styles.image];
-  }
+  },
 })({
   width: '100%',
-  height: '100%'
+  height: '100%',
 });
 
 /** Avatar is used to represent users or things. */
@@ -144,7 +144,7 @@ export const Avatar = (inProps: AvatarProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESAvatar'
+    name: 'ESAvatar',
   });
 
   const ownerState = { ...props, variant, size, outlined };

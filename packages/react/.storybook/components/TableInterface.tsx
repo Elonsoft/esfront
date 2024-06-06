@@ -49,7 +49,7 @@ const TableInterfaceBase = ({ name, variant }: TableInterfaceProps) => {
           isOptional: !!child.flags.isOptional,
           type: getField(child),
           default: child.comment?.tags?.find((tag) => tag.tag === 'default')?.text,
-          description: getDescription(child)
+          description: getDescription(child),
         }))
         .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
     }

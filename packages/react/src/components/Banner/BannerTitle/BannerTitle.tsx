@@ -16,7 +16,7 @@ const useUtilityClasses = (ownerState: BannerTitleOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getBannerTitleUtilityClass, classes);
@@ -25,13 +25,13 @@ const useUtilityClasses = (ownerState: BannerTitleOwnerState) => {
 const BannerTitleRoot = styled(Typography, {
   name: 'ESBannerTitle',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({}));
 
 export const BannerTitle = (inProps: BannerTitleProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESBannerTitle'
+    name: 'ESBannerTitle',
   });
 
   const ownerState = { ...props };

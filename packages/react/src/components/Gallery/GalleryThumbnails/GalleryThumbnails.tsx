@@ -29,7 +29,7 @@ const useUtilityClasses = (ownerState: GalleryThumbnailsOwnerState) => {
 
   const slots = {
     root: ['root'],
-    swiper: ['swiper']
+    swiper: ['swiper'],
   };
 
   return composeClasses(slots, getGalleryThumbnailsUtilityClass, classes);
@@ -38,35 +38,35 @@ const useUtilityClasses = (ownerState: GalleryThumbnailsOwnerState) => {
 const GalleryThumbnailsRoot = styled('div', {
   name: 'ESGalleryThumbnails',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   display: 'none',
   paddingBottom: '16px',
 
   [theme.breakpoints.up('tabletXS')]: {
-    paddingTop: '8px'
+    paddingTop: '8px',
   },
 
   '@media (min-height: 450px)': {
-    display: 'block'
-  }
+    display: 'block',
+  },
 }));
 
 const GalleryThumbnailsSwiper = styled(Swiper, {
   name: 'ESGalleryThumbnails',
   slot: 'Swiper',
-  overridesResolver: (props, styles) => styles.swiper
+  overridesResolver: (props, styles) => styles.swiper,
 })(() => ({
   '& .ESSwiper-container': {
     '&::before, &::after': {
       content: '""',
       display: 'block',
-      width: 8
-    }
+      width: 8,
+    },
   },
   '& .ESSwiperButton-root': {
-    zIndex: 1
-  }
+    zIndex: 1,
+  },
 }));
 
 const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(({ theme, ownerState }) => ({
@@ -81,18 +81,18 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(
 
   '&:hover': {
     [`& .${touchRippleClasses.root}`]: {
-      backgroundColor: theme.vars.palette.black.A50
-    }
+      backgroundColor: theme.vars.palette.black.A50,
+    },
   },
 
   ...(ownerState.step < 0 && {
     left: 0,
-    paddingLeft: 8
+    paddingLeft: 8,
   }),
 
   ...(ownerState.step > 0 && {
     right: 0,
-    paddingRight: 8
+    paddingRight: 8,
   }),
 
   [`& .${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorTertiary}`]: {
@@ -103,8 +103,8 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(
     '--icon': theme.vars.palette.black[500],
     '--hovered': theme.vars.palette.black.A50,
     '--focused': theme.vars.palette.black.A200,
-    '--pressed': theme.vars.palette.black.A150
-  }
+    '--pressed': theme.vars.palette.black.A150,
+  },
 }));
 
 const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?: string }) => {
@@ -160,7 +160,7 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryThumbnails'
+    name: 'ESGalleryThumbnails',
   });
 
   const { items, item } = useGalleryContext();

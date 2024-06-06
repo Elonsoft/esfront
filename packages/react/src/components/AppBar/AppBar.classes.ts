@@ -23,5 +23,5 @@ export const appBarClasses: AppBarClasses = generateUtilityClasses('ESAppBar', [
   'stuck',
   'title',
   'titleProminent',
-  'adornment'
+  'adornment',
 ]);

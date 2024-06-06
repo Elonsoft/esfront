@@ -22,7 +22,7 @@ const useUtilityClasses = (ownerState: GalleryMetaOwnerState) => {
   const slots = {
     root: ['root'],
     content: ['content'],
-    buttonClose: ['buttonClose']
+    buttonClose: ['buttonClose'],
   };
 
   return composeClasses(slots, getGalleryMetaUtilityClass, classes);
@@ -31,7 +31,7 @@ const useUtilityClasses = (ownerState: GalleryMetaOwnerState) => {
 const GalleryMetaRoot = styled('div', {
   name: 'ESGalleryMeta',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
   minWidth: 0,
   padding: '8px',
@@ -41,33 +41,33 @@ const GalleryMetaRoot = styled('div', {
 
   [theme.breakpoints.up('tabletXS')]: {
     padding: '16px',
-    paddingRight: 0
-  }
+    paddingRight: 0,
+  },
 }));
 
 const GalleryMetaContent = styled('div', {
   name: 'ESGalleryMeta',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })(() => ({
   whiteSpace: 'nowrap',
   '&, & *': {
     overflow: 'hidden',
-    textOverflow: 'ellipsis'
-  }
+    textOverflow: 'ellipsis',
+  },
 }));
 
 const GalleryMetaButtonClose = styled(GalleryActionsButton, {
   name: 'ESGalleryMeta',
   slot: 'ButtonClose',
-  overridesResolver: (props, styles) => styles.buttonClose
+  overridesResolver: (props, styles) => styles.buttonClose,
 })(({ theme }) => ({
   flexShrink: 0,
   marginRight: 8,
 
   [theme.breakpoints.up('tabletXS')]: {
-    display: 'none'
-  }
+    display: 'none',
+  },
 }));
 
 export const GalleryMeta = (inProps: GalleryMetaProps) => {
@@ -80,7 +80,7 @@ export const GalleryMeta = (inProps: GalleryMetaProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESGalleryMeta'
+    name: 'ESGalleryMeta',
   });
 
   const { onClose } = useGalleryContext();

@@ -8,25 +8,25 @@ const meta: Meta<typeof Divider> = {
   tags: ['autodocs'],
   component: Divider,
   parameters: {
-    references: ['Divider']
+    references: ['Divider'],
   },
   argTypes: {
     children: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     color: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     flexItem: {
       table: {
-        disable: true
-      }
-    }
-  }
+        disable: true,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -39,7 +39,7 @@ export const Demo: Story = {
         <Divider {...args} />
       </Box>
     );
-  }
+  },
 };
 
 /** We can pass child text inside the divider. */
@@ -50,5 +50,5 @@ export const WithText: Story = {
         <Divider {...args}>{context.globals.locale === 'en' ? 'Text' : 'Текст'}</Divider>
       </Box>
     );
-  }
+  },
 };

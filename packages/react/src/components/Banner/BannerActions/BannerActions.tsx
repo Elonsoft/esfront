@@ -15,7 +15,7 @@ const useUtilityClasses = (ownerState: BannerActionsOwnerState) => {
   const { classes } = ownerState;
 
   const slots = {
-    root: ['root']
+    root: ['root'],
   };
 
   return composeClasses(slots, getBannerActionsUtilityClass, classes);
@@ -24,16 +24,16 @@ const useUtilityClasses = (ownerState: BannerActionsOwnerState) => {
 const BannerActionsRoot = styled('div', {
   name: 'ESBannerActions',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   padding: '4px 0',
-  flexShrink: 0
+  flexShrink: 0,
 }));
 
 export const BannerActions = (inProps: BannerActionsProps) => {
   const { className, children, sx, ...props } = useThemeProps({
     props: inProps,
-    name: 'ESBannerActions'
+    name: 'ESBannerActions',
   });
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);

@@ -26,7 +26,7 @@ const useUtilityClasses = (ownerState: TableRowOwnerState) => {
   const slots = {
     root: ['root', hover && 'hover', selected && 'selected'],
     content: ['content'],
-    overlap: ['overlap']
+    overlap: ['overlap'],
   };
 
   return composeClasses(slots, getTableRowUtilityClass, classes);
@@ -38,27 +38,27 @@ const TableRowRoot = styled('div', {
   overridesResolver: (props, styles) => {
     const { ownerState } = props;
     return [styles.root, ownerState.hover && styles.hover, ownerState.selected && styles.selected];
-  }
+  },
 })<{ ownerState: TableRowOwnerState }>(({ theme, ownerState }) => ({
   ...(ownerState.selected && {
     [`& .${tableCellClasses.container}`]: {
-      backgroundColor: theme.vars.palette.secondary.A100
-    }
+      backgroundColor: theme.vars.palette.secondary.A100,
+    },
   }),
 
   ...(ownerState.hover && {
     '&:hover': {
       [`& .${tableCellClasses.content}`]: {
-        backgroundColor: theme.vars.palette.monoA.A50
-      }
-    }
-  })
+        backgroundColor: theme.vars.palette.monoA.A50,
+      },
+    },
+  }),
 }));
 
 const TableRowContent = styled(Box, {
   name: 'ESTableRow',
   slot: 'Content',
-  overridesResolver: (props, styles) => styles.content
+  overridesResolver: (props, styles) => styles.content,
 })<{ ownerState: TableRowOwnerState }>(({ theme, ownerState }) => ({
   display: 'grid',
   gridAutoRows: 'max-content',
@@ -76,26 +76,26 @@ const TableRowContent = styled(Box, {
     '&:focus-visible': {
       [`&, & + .${tableRowClasses.overlap}`]: {
         [`& .${tableCellClasses.content}.${tableCellClasses.content}`]: {
-          backgroundColor: theme.vars.palette.monoA.A50
-        }
-      }
+          backgroundColor: theme.vars.palette.monoA.A50,
+        },
+      },
     },
 
     '&:active': {
       [`&, & + .${tableRowClasses.overlap}`]: {
         [`& .${tableCellClasses.content}.${tableCellClasses.content}`]: {
-          backgroundColor: theme.vars.palette.monoA.A100
-        }
-      }
-    }
-  })
+          backgroundColor: theme.vars.palette.monoA.A100,
+        },
+      },
+    },
+  }),
 }));
 
 export const TableRow = memo(
   forwardRef((inProps: TableRowProps, ref) => {
     const { children, className, sx, selected, hover, ...props } = useThemeProps({
       props: inProps,
-      name: 'ESTableRow'
+      name: 'ESTableRow',
     });
 
     const { columns } = useTableContext();

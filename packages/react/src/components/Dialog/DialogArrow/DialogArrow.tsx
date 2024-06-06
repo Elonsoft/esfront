@@ -20,7 +20,7 @@ const useUtilityClasses = (ownerState: DialogArrowOwnerState) => {
 
   const slots = {
     root: ['root', direction],
-    button: ['button']
+    button: ['button'],
   };
 
   return composeClasses(slots, getDialogArrowUtilityClass, classes);
@@ -31,10 +31,10 @@ const DialogArrowRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { direction }
+      ownerState: { direction },
     } = props;
     return [styles.root, styles[direction]];
-  }
+  },
 })<{ ownerState: DialogArrowOwnerState }>(({ theme, ownerState }) => ({
   display: 'none',
   position: 'absolute',
@@ -42,21 +42,21 @@ const DialogArrowRoot = styled('div', {
   height: '100%',
 
   ...(ownerState.direction === 'prev' && {
-    left: '0'
+    left: '0',
   }),
   ...(ownerState.direction === 'next' && {
-    right: '0'
+    right: '0',
   }),
 
   [theme.breakpoints.up('tabletXS')]: {
-    display: 'block'
-  }
+    display: 'block',
+  },
 }));
 
 const DialogArrowButton = styled(Button, {
   name: 'ESDialogArrow',
   slot: 'Button',
-  overridesResolver: (props, styles) => styles.button
+  overridesResolver: (props, styles) => styles.button,
 })(({ theme }) => ({
   position: 'sticky',
   top: 0,
@@ -69,12 +69,12 @@ const DialogArrowButton = styled(Button, {
     '--icon': theme.vars.palette.white.A700,
 
     '&:not(:disabled):hover, &:focus-visible': {
-      '--icon': theme.vars.palette.white.A900
+      '--icon': theme.vars.palette.white.A900,
     },
     '&:not(:disabled):active': {
-      '--icon': theme.vars.palette.white[500]
-    }
-  }
+      '--icon': theme.vars.palette.white[500],
+    },
+  },
 }));
 
 export const DialogArrow = (inProps: DialogArrowProps) => {
@@ -90,7 +90,7 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
     ...props
   } = useThemeProps({
     props: inProps,
-    name: 'ESDialogArrow'
+    name: 'ESDialogArrow',
   });
 
   const ownerState = { ...props, direction };

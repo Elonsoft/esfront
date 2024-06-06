@@ -10,8 +10,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useDocumentEventListener',
   parameters: {
-    references: ['useDocumentEventListener']
-  }
+    references: ['useDocumentEventListener'],
+  },
 };
 
 export default meta;
@@ -30,5 +30,5 @@ export const Demo: Story = {
         Count of clicks on this page: <b>{count}</b>.
       </Typography>
     );
-  }
+  },
 };

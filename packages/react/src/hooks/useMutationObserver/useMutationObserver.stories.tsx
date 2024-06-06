@@ -12,8 +12,8 @@ const meta: Meta = {
   tags: ['autodocs'],
   title: 'Hooks/useMutationObserver',
   parameters: {
-    references: ['useMutationObserver']
-  }
+    references: ['useMutationObserver'],
+  },
 };
 
 export default meta;
@@ -30,7 +30,7 @@ export const Demo: Story = {
         setMutated(entries[0].attributeName);
       },
       {
-        attributes: true
+        attributes: true,
       }
     );
 
@@ -53,5 +53,5 @@ export const Demo: Story = {
         </Typography>
       </div>
     );
-  }
+  },
 };

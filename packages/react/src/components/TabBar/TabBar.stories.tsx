@@ -10,8 +10,8 @@ const meta: Meta<typeof TabBar> = {
   tags: ['autodocs'],
   component: TabBar,
   parameters: {
-    references: ['TabBar', 'TabBarItem']
-  }
+    references: ['TabBar', 'TabBarItem'],
+  },
 };
 
 export default meta;
@@ -29,7 +29,7 @@ export const Demo: Story = {
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 1
+          zIndex: 1,
         }}
       >
         <TabBarItem aria-label={label} icon={<IconAt />} selected={index === 0} onClick={() => setIndex(0)} />
@@ -37,7 +37,7 @@ export const Demo: Story = {
         <TabBarItem aria-label={label} icon={<IconAt />} selected={index === 2} onClick={() => setIndex(2)} />
       </TabBar>
     );
-  }
+  },
 };
 
 /** We can use `label` prop to add labels to `TabBarItem`. */
@@ -53,7 +53,7 @@ export const WithLabels: Story = {
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 1
+          zIndex: 1,
         }}
       >
         <TabBarItem icon={<IconAt />} label={label} selected={index === 0} onClick={() => setIndex(0)} />
@@ -61,5 +61,5 @@ export const WithLabels: Story = {
         <TabBarItem icon={<IconAt />} label={label} selected={index === 2} onClick={() => setIndex(2)} />
       </TabBar>
     );
-  }
+  },
 };

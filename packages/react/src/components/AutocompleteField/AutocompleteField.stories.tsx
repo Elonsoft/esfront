@@ -15,18 +15,18 @@ interface User {
 
 const USERS: { en: User[]; ru: User[] } = {
   en: [],
-  ru: []
+  ru: [],
 };
 
 for (let i = 0; i < 25; i++) {
   USERS.en.push({
     id: i + 1,
-    name: `John Doe ${i + 1}`
+    name: `John Doe ${i + 1}`,
   });
 
   USERS.ru.push({
     id: i + 1,
-    name: `Иванов Иван ${i + 1}`
+    name: `Иванов Иван ${i + 1}`,
   });
 }
 
@@ -48,98 +48,98 @@ const meta: Meta<typeof AutocompleteField> = {
   tags: ['autodocs'],
   component: AutocompleteField,
   parameters: {
-    references: ['Autocomplete', 'AutocompleteField']
+    references: ['Autocomplete', 'AutocompleteField'],
   },
   argTypes: {
     multiple: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     inlineSearch: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     closeAfterSelect: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     header: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     footer: {
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     disabled: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     required: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     error: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     size: {
       options: ['56', '48', '40', '32'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     helperText: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     placeholder: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     InputProps: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     InputLabelProps: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     FormHelperTextProps: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     value: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     getDisplayValue: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     getOptionDisabled: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     getOptionLabel: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     getOptionValue: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     loading: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     options: {
       table: {
-        disable: true
-      }
-    }
-  }
+        disable: true,
+      },
+    },
+  },
 };
 
 export default meta;
@@ -228,10 +228,10 @@ export const Demo: Story = {
       InputProps: {
         SearchProps: {
           value: search,
-          onChange: (e) => setSearch(e.target.value)
-        }
+          onChange: (e) => setSearch(e.target.value),
+        },
       },
-      onBlur: args.onBlur
+      onBlur: args.onBlur,
     };
 
     return (
@@ -254,7 +254,7 @@ export const Demo: Story = {
         )}
       </Box>
     );
-  }
+  },
 };
 
 /** We can group the options with the `groupBy` prop. Make sure that the options are also sorted with the same dimension that they are grouped by, otherwise, you will notice duplicate headers. */
@@ -289,7 +289,7 @@ export const Groups: Story = {
         />
       </Box>
     );
-  }
+  },
 };
 
 export const Customization: Story = {
@@ -320,5 +320,5 @@ export const Customization: Story = {
         />
       </Box>
     );
-  }
+  },
 };

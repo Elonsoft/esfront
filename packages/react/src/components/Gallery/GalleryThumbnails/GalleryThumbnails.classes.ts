@@ -14,5 +14,5 @@ export function getGalleryThumbnailsUtilityClass(slot: string): string {
 
 export const galleryThumbnailsClasses: GalleryThumbnailsClasses = generateUtilityClasses('ESGalleryThumbnails', [
   'root',
-  'swiper'
+  'swiper',
 ]);

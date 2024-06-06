@@ -51,5 +51,5 @@ export const calendarButtonClasses: CalendarButtonClasses = generateUtilityClass
   'buttonInactive',
   'buttonSelected',
   'buttonToday',
-  'tooltip'
+  'tooltip',
 ]);

@@ -9,5 +9,5 @@ export const purple = {
   700: '#4F0D61',
   800: '#33043F',
   900: '#1B0121',
-  alpha: '300'
+  alpha: '300',
 };

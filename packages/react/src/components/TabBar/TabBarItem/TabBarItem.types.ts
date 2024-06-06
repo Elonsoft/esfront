@@ -27,5 +27,5 @@ export interface TabBarItemTypeMap<P = {}, D extends ElementType = `button`> {
 
 export type TabBarItemProps<
   D extends React.ElementType = TabBarItemTypeMap['defaultComponent'],
-  P = {}
+  P = {},
 > = OverrideProps<TabBarItemTypeMap<P, D>, D>;

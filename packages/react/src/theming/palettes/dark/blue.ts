@@ -9,5 +9,5 @@ export const blue = {
   700: '#C9E1FF',
   800: '#DEEDFF',
   900: '#EBF4FF',
-  alpha: '300'
+  alpha: '300',
 };
