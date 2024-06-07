@@ -24,15 +24,12 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     variant: {
-      options: ['text', 'outlined', 'contained'],
       control: { type: 'select' },
     },
     color: {
-      options: ['primary', 'secondary', 'tertiary', 'error', 'success', 'monoA', 'monoB', 'white', 'black'],
       control: { type: 'select' },
     },
     size: {
-      options: ['16', '20', '24', '32', '40', '48', '56'],
       control: { type: 'select' },
     },
     rounded: {
