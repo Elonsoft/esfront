@@ -49,6 +49,10 @@ module.exports = {
   core: {
     disableTelemetry: true,
   },
+  // https://github.com/storybookjs/storybook/issues/26496
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: {},
