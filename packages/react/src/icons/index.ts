@@ -8,6 +8,8 @@ export { IconAlertLc } from './IconAlertLc';
 export { IconAlertW300 } from './IconAlertW300';
 export { IconAlertW500 } from './IconAlertW500';
 export { IconApple } from './IconApple';
+export { IconAppStore } from './IconAppStore';
+export { IconAppStoreLogo } from './IconAppStoreLogo';
 export { IconArchiveArrowDown } from './IconArchiveArrowDown';
 export { IconArrowCollapse } from './IconArrowCollapse';
 export { IconArrowDownW300 } from './IconArrowDownW300';

@@ -42,6 +42,7 @@ export * from './Sidenav';
 export * from './SortingMenu';
 export * from './Spinner';
 export * from './Spinner';
+export * from './StoreBadge';
 export * from './SvgIcon';
 export * from './Swiper';
 export * from './Swiper';
