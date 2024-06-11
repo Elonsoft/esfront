@@ -155,7 +155,6 @@ const RadioRoot = styled(SwitchBase, {
   background: 'transparent',
   color: theme.vars.palette.monoA.A600,
   '--hovered': theme.vars.palette.monoA.A50,
-  '--focused': theme.vars.palette.monoA.A200,
   '--pressed': theme.vars.palette.monoA.A150,
 
   [`&.${radioClasses.disabled}`]: {
@@ -168,7 +167,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&.${radioClasses.checked}`]: {
       color: theme.vars.palette.success[300],
       '--hovered': theme.vars.palette.success.A50,
-      '--focused': theme.vars.palette.success.A200,
       '--pressed': theme.vars.palette.success.A150,
     },
   },
@@ -177,7 +175,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&, &.${radioClasses.checked}`]: {
       color: theme.vars.palette.monoA[500],
       '--hover': theme.vars.palette.monoA.A50,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     },
   },
@@ -185,7 +182,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&, &.${radioClasses.checked}`]: {
       color: theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
     },
     [`&.${radioClasses.checked}`]: {
@@ -211,7 +207,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&, &.${radioClasses.checked}`]: {
       color: theme.vars.palette.black[500],
       '--hover': theme.vars.palette.black.A50,
-      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
     },
     [`&.${radioClasses.checked}`]: {
@@ -236,7 +231,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&, &.${radioClasses.checked}`]: {
       color: theme.vars.palette.white[500],
       '--hover': theme.vars.palette.white.A50,
-      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
     },
     [`&.${radioClasses.checked}`]: {
@@ -261,7 +255,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&.${radioClasses.checked}`]: {
       color: theme.vars.palette.primary[300],
       '--hover': theme.vars.palette.primary.A50,
-      '--focused': theme.vars.palette.primary.A200,
       '--pressed': theme.vars.palette.primary.A150,
     },
   },
@@ -269,7 +262,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&.${radioClasses.checked}`]: {
       color: theme.vars.palette.secondary[300],
       '--hover': theme.vars.palette.secondary.A50,
-      '--focused': theme.vars.palette.secondary.A200,
       '--pressed': theme.vars.palette.secondary.A150,
     },
   },
@@ -277,7 +269,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&.${radioClasses.checked}`]: {
       color: theme.vars.palette.warning[300],
       '--hovered': theme.vars.palette.warning.A50,
-      '--focused': theme.vars.palette.warning.A200,
       '--pressed': theme.vars.palette.warning.A150,
     },
   },
@@ -285,7 +276,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&.${radioClasses.checked}`]: {
       color: theme.vars.palette.error[300],
       '--hovered': theme.vars.palette.error.A50,
-      '--focused': theme.vars.palette.error.A200,
       '--pressed': theme.vars.palette.error.A150,
     },
   },
@@ -293,7 +283,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&.${radioClasses.checked}`]: {
       color: theme.vars.palette.info[300],
       '--hovered': theme.vars.palette.info.A50,
-      '--focused': theme.vars.palette.info.A200,
       '--pressed': theme.vars.palette.info.A150,
     },
   },
@@ -301,7 +290,6 @@ const RadioRoot = styled(SwitchBase, {
     [`&, &.${radioClasses.checked}`]: {
       color: theme.vars.palette.error[300],
       '--hovered': theme.vars.palette.error.A50,
-      '--focused': theme.vars.palette.error.A200,
       '--pressed': theme.vars.palette.error.A150,
     },
     [`&.${radioClasses.checked}`]: {

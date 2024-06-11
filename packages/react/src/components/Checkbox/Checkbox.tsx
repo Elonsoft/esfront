@@ -172,7 +172,6 @@ const CheckboxRoot = styled(SwitchBase, {
   background: 'transparent',
   color: theme.vars.palette.monoA.A600,
   '--hovered': theme.vars.palette.monoA.A50,
-  '--focused': theme.vars.palette.monoA.A200,
   '--pressed': theme.vars.palette.monoA.A150,
 
   [`&.${checkboxClasses.disabled}`]: {
@@ -185,7 +184,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.success[300],
       '--hovered': theme.vars.palette.success.A50,
-      '--focused': theme.vars.palette.success.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     },
   },
@@ -199,13 +197,11 @@ const CheckboxRoot = styled(SwitchBase, {
       },
       color: theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
     },
 
     color: theme.vars.palette.monoB.A600,
     '--hovered': theme.vars.palette.monoB.A50,
-    '--focused': theme.vars.palette.monoB.A200,
     '--pressed': theme.vars.palette.monoB.A150,
 
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
@@ -247,7 +243,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.black[500],
       '--hovered': theme.vars.palette.black.A50,
-      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
 
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
@@ -260,14 +255,13 @@ const CheckboxRoot = styled(SwitchBase, {
     },
     color: theme.vars.palette.black.A600,
     '--hovered': theme.vars.palette.black.A50,
-    '--focused': theme.vars.palette.black.A200,
     '--pressed': theme.vars.palette.black.A150,
 
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
       color: theme.vars.palette.black[500],
       '--hovered': theme.vars.palette.black.A50,
-      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
+
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         [`& .${checkboxIconClasses.root}`]: {
           boxShadow: `inset 0 0 0 2px ${theme.vars.palette.black.A600}`,
@@ -306,7 +300,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.white[500],
       '--hovered': theme.vars.palette.white.A50,
-      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
 
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
@@ -320,7 +313,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
       color: theme.vars.palette.white[500],
       '--hovered': theme.vars.palette.white.A50,
-      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
 
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
@@ -361,7 +353,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.monoA[500],
       '--hovered': theme.vars.palette.monoA.A50,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     },
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
@@ -381,7 +372,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.primary[300],
       '--hovered': theme.vars.palette.primary.A50,
-      '--focused': theme.vars.palette.primary.A200,
       '--pressed': theme.vars.palette.primary.A150,
     },
   },
@@ -389,7 +379,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.secondary[300],
       '--hovered': theme.vars.palette.secondary.A50,
-      '--focused': theme.vars.palette.secondary.A200,
       '--pressed': theme.vars.palette.secondary.A150,
     },
   },
@@ -397,7 +386,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.warning[300],
       '--hovered': theme.vars.palette.warning.A50,
-      '--focused': theme.vars.palette.warning.A200,
       '--pressed': theme.vars.palette.warning.A150,
     },
   },
@@ -405,7 +393,6 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.error[300],
       '--hovered': theme.vars.palette.error.A50,
-      '--focused': theme.vars.palette.error.A200,
       '--pressed': theme.vars.palette.error.A150,
     },
   },
@@ -413,20 +400,17 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.info[300],
       '--hovered': theme.vars.palette.info.A50,
-      '--focused': theme.vars.palette.info.A200,
       '--pressed': theme.vars.palette.info.A150,
     },
   },
   [`&.${checkboxClasses.error}`]: {
     color: theme.vars.palette.error[300],
     '--hovered': theme.vars.palette.error.A50,
-    '--focused': theme.vars.palette.error.A200,
     '--pressed': theme.vars.palette.error.A150,
 
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       color: theme.vars.palette.error[300],
       '--hovered': theme.vars.palette.error.A50,
-      '--focused': theme.vars.palette.error.A200,
       '--pressed': theme.vars.palette.error.A150,
 
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {

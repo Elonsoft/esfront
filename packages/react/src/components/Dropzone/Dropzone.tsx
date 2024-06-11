@@ -79,7 +79,6 @@ const DropzoneDropzone = styled(ButtonBase, {
   transitionTimingFunction: theme.transitions.easing.easeInOut,
   '--background': theme.vars.palette.monoA.A50,
   '--hovered': theme.vars.palette.monoA.A50,
-  '--focused': theme.vars.palette.monoA.A50,
   '--pressed': theme.vars.palette.monoA.A150,
 
   [`& .${buttonBaseClasses.wrapper}`]: {

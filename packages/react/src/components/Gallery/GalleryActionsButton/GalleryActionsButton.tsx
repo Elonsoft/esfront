@@ -12,14 +12,12 @@ export const GalleryActionsButton = styled(Button, {
       '--background': 'transparent',
       '--text': theme.vars.palette.white.A800,
       '--hovered': theme.vars.palette.white.A50,
-      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
 
       [theme.breakpoints.up('tabletXS')]: {
         '--background': theme.vars.palette.white.A200,
         '--text': theme.vars.palette.white[500],
         '--hovered': theme.vars.palette.white.A50,
-        '--focused': theme.vars.palette.white.A200,
         '--pressed': theme.vars.palette.white.A150,
       },
     },

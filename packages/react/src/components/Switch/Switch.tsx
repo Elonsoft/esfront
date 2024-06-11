@@ -11,6 +11,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 
 import { useControlled } from '../../hooks/useControlled';
 import { ButtonBase } from '../ButtonBase';
+import { touchRippleClasses } from '../TouchRipple';
 
 type SwitchOwnerState = {
   classes?: SwitchProps['classes'];
@@ -60,9 +61,11 @@ const SwitchRoot = styled('div', {
 
   [`&.${switchClasses.checked}`]: {
     color: theme.vars.palette[color][300],
+
     [`& .${switchClasses.input}`]: {
       transform: 'translateX(-12px)',
     },
+
     [`&.${switchClasses.large}`]: {
       [`& .${switchClasses.input}`]: {
         transform: 'translateX(-16px)',
@@ -71,6 +74,7 @@ const SwitchRoot = styled('div', {
         transform: 'translateX(16px)',
       },
     },
+
     [`& .${switchClasses.button}`]: {
       transform: 'translateX(12px)',
       '&:hover': {
@@ -80,14 +84,20 @@ const SwitchRoot = styled('div', {
           '--background': 'transparent',
         },
       },
+
+      [`&:not(:disabled):has(:focus-visible) .${touchRippleClasses.root}`]: {
+        backgroundColor: theme.vars.palette[color].A200,
+      },
+
       '--pressed': theme.vars.palette[color].A150,
-      '--focused': theme.vars.palette[color].A200,
     },
   },
+
   [`&.${switchClasses.disabled}`]: {
     opacity: '0.3',
     cursor: 'not-allowed',
   },
+
   [`&.${switchClasses.large}`]: {
     height: '36px',
     width: '56px',
@@ -104,6 +114,7 @@ const SwitchRoot = styled('div', {
       height: '24px',
     },
   },
+
   [`&.${switchClasses.medium}`]: {
     height: '36px',
     width: '48px',
@@ -119,6 +130,7 @@ const SwitchRoot = styled('div', {
       height: '20px',
     },
   },
+
   [`&.${switchClasses.small}`]: {
     height: '32px',
     width: '46px',
@@ -137,6 +149,7 @@ const SwitchRoot = styled('div', {
       height: '16px',
     },
   },
+
   [`&.${switchClasses.indeterminate}`]: {
     color: theme.vars.palette[color][300],
     [`&.${switchClasses.large}`]: {
@@ -154,6 +167,7 @@ const SwitchRoot = styled('div', {
         transform: 'translateX(-8px)',
       },
     },
+
     [`&.${switchClasses.medium}`]: {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(6px)',
@@ -169,6 +183,7 @@ const SwitchRoot = styled('div', {
         transform: 'translateX(-6px)',
       },
     },
+
     [`&.${switchClasses.small}`]: {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(6px)',
@@ -177,6 +192,7 @@ const SwitchRoot = styled('div', {
         transform: 'translateX(-6px)',
       },
     },
+
     [`& .${switchClasses.button}`]: {
       '&:hover': {
         '--background': theme.vars.palette[color].A50,
@@ -185,7 +201,11 @@ const SwitchRoot = styled('div', {
           '--background': 'transparent',
         },
       },
-      '--focused': theme.vars.palette[color].A200,
+
+      [`&:not(:disabled):has(:focus-visible) .${touchRippleClasses.root}`]: {
+        backgroundColor: theme.vars.palette[color].A200,
+      },
+
       '--pressed': theme.vars.palette[color].A150,
     },
   },
@@ -222,12 +242,15 @@ const SwitchButton = styled(ButtonBase, {
   left: 0,
   zIndex: 1,
   position: 'absolute',
-  transition: `${theme.transitions.duration.shortest}ms`,
+  transition: `${theme.transitions.duration.shortest}ms, outline 0ms`,
 
   '--text': 'currentColor',
   '--hovered': theme.vars.palette.monoA.A50,
   '--pressed': theme.vars.palette.monoA.A150,
-  '--focused': theme.vars.palette.monoA.A200,
+
+  [`&:not(:disabled):has(:focus-visible)`]: {
+    outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+  },
 
   '@media (hover: none)': {
     '--background': 'transparent',

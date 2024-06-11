@@ -131,6 +131,11 @@ const BreadcrumbContent = styled(Button, {
       color: theme.vars.palette.monoA.A500,
     },
   },
+
+  [`&:not(:disabled):focus-visible`]: {
+    outline: 'none',
+    boxShadow: `inset 0px 0px 0px 2px ${theme.vars.palette.monoA[500]}`,
+  },
 })) as typeof Button;
 
 const BreadcrumbSeparator = styled('div', {

@@ -42,7 +42,6 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
   position: 'relative',
 
   '--hovered': 'transparent',
-  '--focused': 'transparent',
   '--pressed': theme.vars.palette.black.A150,
 
   '&::after': {

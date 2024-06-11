@@ -105,7 +105,6 @@ const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ t
     '--background': theme.vars.palette.black.A500,
     '--icon': theme.vars.palette.white[500],
     '--hovered': theme.vars.palette.white.A50,
-    '--focused': theme.vars.palette.white.A200,
     '--pressed': theme.vars.palette.white.A150,
   },
 }));
