@@ -81,56 +81,60 @@ const ButtonRoot = styled(ButtonBase, {
 
   [`&.${buttonClasses.variantContained}`]: {
     '--hovered': theme.vars.palette.monoB.A50,
-    '--focused': theme.vars.palette.monoB.A200,
     '--pressed': theme.vars.palette.monoB.A150,
 
     [`&.${buttonClasses.colorTertiary}`]: {
       '--background': theme.vars.palette.monoA.A100,
       '--text': theme.vars.palette.monoA.A800,
       '--hovered': theme.vars.palette.monoA.A50,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     },
     [`&.${buttonClasses.colorPrimary}`]: {
       '--background': theme.vars.palette.primary[300],
       '--text': theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
     },
     [`&.${buttonClasses.colorSecondary}`]: {
       '--background': theme.vars.palette.secondary[300],
       '--text': theme.vars.palette.black[500],
       '--hovered': theme.vars.palette.black.A50,
-      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
+    },
+    [`&.${buttonClasses.colorInfo}`]: {
+      '--background': theme.vars.palette.info[300],
+      '--text': theme.vars.palette.monoB[500],
+      '--hovered': theme.vars.palette.monoB.A50,
+      '--pressed': theme.vars.palette.monoB.A150,
+    },
+    [`&.${buttonClasses.colorWarning}`]: {
+      '--background': theme.vars.palette.warning[300],
+      '--text': theme.vars.palette.monoB[500],
+      '--hovered': theme.vars.palette.monoB.A50,
+      '--pressed': theme.vars.palette.monoB.A150,
     },
     [`&.${buttonClasses.colorError}`]: {
       '--background': theme.vars.palette.error[300],
       '--text': theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
     },
     [`&.${buttonClasses.colorSuccess}`]: {
       '--background': theme.vars.palette.success[300],
       '--text': theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
     },
     [`&.${buttonClasses.colorMonoA}`]: {
       '--background': theme.vars.palette.monoA[500],
       '--text': theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
     },
     [`&.${buttonClasses.colorMonoB}`]: {
       '--background': theme.vars.palette.monoB[500],
       '--text': theme.vars.palette.monoA[500],
       '--hovered': theme.vars.palette.monoA.A50,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
 
       [`&.${buttonBaseClasses.disabled}`]: {
@@ -143,7 +147,6 @@ const ButtonRoot = styled(ButtonBase, {
       '--background': theme.vars.palette.white[500],
       '--text': theme.vars.palette.black[500],
       '--hovered': theme.vars.palette.black.A50,
-      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
 
       [`&.${buttonBaseClasses.disabled}`]: {
@@ -156,7 +159,6 @@ const ButtonRoot = styled(ButtonBase, {
       '--background': theme.vars.palette.black[500],
       '--text': theme.vars.palette.white[500],
       '--hovered': theme.vars.palette.white.A50,
-      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
 
       [`&.${buttonBaseClasses.disabled}`]: {
@@ -180,43 +182,46 @@ const ButtonRoot = styled(ButtonBase, {
     [`&.${buttonClasses.colorPrimary}`]: {
       '--text': theme.vars.palette.primary[300],
       '--hovered': theme.vars.palette.primary.A50,
-      '--focused': theme.vars.palette.primary.A200,
       '--pressed': theme.vars.palette.primary.A150,
     },
     [`&.${buttonClasses.colorSecondary}`]: {
       '--text': theme.vars.palette.secondary[400],
       '--hovered': theme.vars.palette.secondary.A50,
-      '--focused': theme.vars.palette.secondary.A200,
       '--pressed': theme.vars.palette.secondary.A150,
     },
     [`&.${buttonClasses.colorTertiary}`]: {
       '--text': theme.vars.palette.monoA.A700,
       '--hovered': theme.vars.palette.monoA.A50,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
+    },
+    [`&.${buttonClasses.colorInfo}`]: {
+      '--text': theme.vars.palette.info[500],
+      '--hovered': theme.vars.palette.info.A50,
+      '--pressed': theme.vars.palette.info.A150,
+    },
+    [`&.${buttonClasses.colorWarning}`]: {
+      '--text': theme.vars.palette.warning[500],
+      '--hovered': theme.vars.palette.warning.A50,
+      '--pressed': theme.vars.palette.warning.A150,
     },
     [`&.${buttonClasses.colorError}`]: {
       '--text': theme.vars.palette.error[300],
       '--hovered': theme.vars.palette.error.A50,
-      '--focused': theme.vars.palette.error.A200,
       '--pressed': theme.vars.palette.error.A150,
     },
     [`&.${buttonClasses.colorSuccess}`]: {
       '--text': theme.vars.palette.success[300],
       '--hovered': theme.vars.palette.success.A50,
-      '--focused': theme.vars.palette.success.A200,
       '--pressed': theme.vars.palette.success.A150,
     },
     [`&.${buttonClasses.colorMonoA}`]: {
       '--text': theme.vars.palette.monoA[500],
       '--hovered': theme.vars.palette.monoA.A50,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     },
     [`&.${buttonClasses.colorMonoB}`]: {
       '--text': theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
       boxShadow: `inset 0px 0px 0px 1px ${theme.vars.palette.monoB.A200}`,
 
@@ -229,7 +234,6 @@ const ButtonRoot = styled(ButtonBase, {
     [`&.${buttonClasses.colorWhite}`]: {
       '--text': theme.vars.palette.white[500],
       '--hovered': theme.vars.palette.white.A50,
-      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
       boxShadow: `inset 0px 0px 0px 1px ${theme.vars.palette.white.A200}`,
 
@@ -243,7 +247,6 @@ const ButtonRoot = styled(ButtonBase, {
       '--background': 'transparent',
       '--text': theme.vars.palette.black[500],
       '--hovered': theme.vars.palette.black.A50,
-      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
       boxShadow: `inset 0px 0px 0px 1px ${theme.vars.palette.black.A200}`,
 
@@ -267,43 +270,46 @@ const ButtonRoot = styled(ButtonBase, {
     [`&.${buttonClasses.colorPrimary}`]: {
       '--text': theme.vars.palette.primary[300],
       '--hovered': theme.vars.palette.primary.A50,
-      '--focused': theme.vars.palette.primary.A200,
       '--pressed': theme.vars.palette.primary.A150,
     },
     [`&.${buttonClasses.colorSecondary}`]: {
       '--text': theme.vars.palette.secondary[400],
       '--hovered': theme.vars.palette.secondary.A50,
-      '--focused': theme.vars.palette.secondary.A200,
       '--pressed': theme.vars.palette.secondary.A150,
     },
     [`&.${buttonClasses.colorError}`]: {
       '--text': theme.vars.palette.error[300],
       '--hovered': theme.vars.palette.error.A50,
-      '--focused': theme.vars.palette.error.A200,
       '--pressed': theme.vars.palette.error.A150,
     },
     [`&.${buttonClasses.colorSuccess}`]: {
       '--text': theme.vars.palette.success[300],
       '--hovered': theme.vars.palette.success.A50,
-      '--focused': theme.vars.palette.success.A200,
       '--pressed': theme.vars.palette.success.A150,
     },
     [`&.${buttonClasses.colorTertiary}`]: {
       '--text': theme.vars.palette.monoA.A700,
       '--hovered': theme.vars.palette.monoA.A50,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
+    },
+    [`&.${buttonClasses.colorInfo}`]: {
+      '--text': theme.vars.palette.info[500],
+      '--hovered': theme.vars.palette.info.A50,
+      '--pressed': theme.vars.palette.info.A150,
+    },
+    [`&.${buttonClasses.colorWarning}`]: {
+      '--text': theme.vars.palette.warning[500],
+      '--hovered': theme.vars.palette.warning.A50,
+      '--pressed': theme.vars.palette.warning.A150,
     },
     [`&.${buttonClasses.colorMonoA}`]: {
       '--text': theme.vars.palette.monoA[500],
       '--hovered': theme.vars.palette.monoA.A50,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     },
     [`&.${buttonClasses.colorMonoB}`]: {
       '--text': theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
 
       [`&.${buttonBaseClasses.disabled}`]: {
@@ -314,7 +320,6 @@ const ButtonRoot = styled(ButtonBase, {
     [`&.${buttonClasses.colorWhite}`]: {
       '--text': theme.vars.palette.white[500],
       '--hovered': theme.vars.palette.white.A50,
-      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
 
       [`&.${buttonBaseClasses.disabled}`]: {
@@ -325,7 +330,6 @@ const ButtonRoot = styled(ButtonBase, {
     [`&.${buttonClasses.colorBlack}`]: {
       '--text': theme.vars.palette.black[500],
       '--hovered': theme.vars.palette.black.A50,
-      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
 
       [`&.${buttonBaseClasses.disabled}`]: {

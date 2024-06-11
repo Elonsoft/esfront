@@ -12,7 +12,6 @@ import { capitalize, useFormControl } from '@mui/material';
 
 import { useControlled } from '../../hooks';
 import { ButtonBase } from '../ButtonBase';
-import { touchRippleClasses } from '../TouchRipple';
 
 type SwitchBaseOwnerState = {
   classes: SwitchBaseProps['classes'];
@@ -47,7 +46,7 @@ const SwitchBaseRoot = styled(ButtonBase, {
       edge && styles[`edge${capitalize(edge)}`],
     ];
   },
-})(() => ({
+})(({ theme }) => ({
   padding: 9,
   borderRadius: '50%',
   [`&.${switchBaseClasses.edgeStart}`]: {
@@ -56,8 +55,9 @@ const SwitchBaseRoot = styled(ButtonBase, {
   [`&.${switchBaseClasses.edgeEnd}`]: {
     marginRight: -12,
   },
-  [`&:not(:disabled):has(:focus-visible) .${touchRippleClasses.root}`]: {
-    backgroundColor: 'var(--focused)',
+
+  [`&:not(:disabled):has(:focus-visible)`]: {
+    outline: `2px solid ${theme.vars.palette.monoA[500]}`,
   },
 })) as typeof ButtonBase;
 

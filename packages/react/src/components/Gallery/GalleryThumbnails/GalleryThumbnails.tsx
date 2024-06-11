@@ -102,7 +102,6 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(
     '--background': theme.vars.palette.white.A600,
     '--icon': theme.vars.palette.black[500],
     '--hovered': theme.vars.palette.black.A50,
-    '--focused': theme.vars.palette.black.A200,
     '--pressed': theme.vars.palette.black.A150,
   },
 }));

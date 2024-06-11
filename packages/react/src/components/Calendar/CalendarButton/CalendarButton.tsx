@@ -216,7 +216,6 @@ const CalendarButtonButton = styled(ButtonBase, {
     width: '100%',
     '--text': theme.vars.palette.monoA.A900,
     '--hovered': theme.vars.palette.monoA.A50,
-    '--focused': theme.vars.palette.monoA.A200,
     '--pressed': theme.vars.palette.monoA.A150,
 
     [`&.${calendarButtonClasses.buttonToday}`]: {

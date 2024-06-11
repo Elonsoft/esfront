@@ -84,14 +84,12 @@ const SidebarToggleButton = styled(Button, {
     ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
       '--background': theme.vars.palette.surface.background2,
       '--icon': theme.vars.palette.monoA.A500,
-      '--focused': theme.vars.palette.monoA.A150,
     }),
 
     ...(ownerState.color === 'primary' && {
       '--background': theme.vars.palette.primary[300],
       '--icon': theme.vars.palette.monoB[500],
       '--hovered': theme.vars.palette.monoB.A50,
-      '--focused': theme.vars.palette.monoA.A150,
       '--pressed': theme.vars.palette.monoA.A150,
     }),
   },

@@ -49,7 +49,6 @@ const ButtonBaseRoot = styled('button', {
   '--background': 'transparent',
   '--text': theme.vars.palette.monoB[500],
   '--hovered': theme.vars.palette.monoB.A50,
-  '--focused': theme.vars.palette.monoB.A200,
   '--pressed': theme.vars.palette.monoB.A150,
 
   display: 'inline-flex',
@@ -85,8 +84,8 @@ const ButtonBaseRoot = styled('button', {
     },
   },
 
-  [`&:not(:disabled):focus-visible .${touchRippleClasses.root}`]: {
-    backgroundColor: 'var(--focused)',
+  [`&:not(:disabled):focus-visible`]: {
+    outline: `2px solid ${theme.vars.palette.monoA[500]}`,
   },
 
   [`&.${buttonBaseClasses.pressed} .${touchRippleClasses.root}::after`]: {

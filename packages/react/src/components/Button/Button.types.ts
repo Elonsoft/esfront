@@ -62,7 +62,7 @@ export interface ButtonOwnProps {
   /**
    * The size of the component.
    * `small` is equivalent to the dense button styling.
-   * @default 'medium'
+   * @default '500'
    */
   size?: OverridableStringUnion<'100' | '200' | '300' | '400' | '500' | '600' | '700', ButtonPropsSizeOverrides>;
   /**

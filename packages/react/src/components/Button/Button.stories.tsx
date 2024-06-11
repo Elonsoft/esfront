@@ -2,6 +2,8 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
+import { useTheme } from '@mui/material';
+
 import { Button } from '.';
 
 import { IconChevronDownW400 } from '../../icons';
@@ -123,6 +125,12 @@ export const Demo: Story = {
         <IconChevronDownW400 />
       );
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const theme = useTheme();
+
+    const backgroundColor =
+      args.color === 'monoB' || args.color === 'white' ? theme.vars.palette.monoA.A800 : undefined;
+
     const props = {
       ...args,
       TouchRippleProps: {
@@ -140,6 +148,8 @@ export const Demo: Story = {
           gridAutoFlow: 'column',
           justifyContent: 'flex-start',
           marginBottom: '16px',
+          padding: '10px 0px 10px 10px',
+          backgroundColor,
         }}
       >
         <Button {...props}>{text}</Button>

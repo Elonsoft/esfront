@@ -116,7 +116,6 @@ const PaginationPagesPaginationItem = styled(ButtonBase, {
     '--background': 'transparent',
     '--text': theme.vars.palette.monoA.A600,
     '--hovered': theme.vars.palette.monoA.A50,
-    '--focused': theme.vars.palette.monoA.A200,
     '--pressed': theme.vars.palette.monoA.A150,
 
     ...(ownerState.selected && {
@@ -125,7 +124,6 @@ const PaginationPagesPaginationItem = styled(ButtonBase, {
       '--background': theme.vars.palette.secondary.A100,
       '--text': theme.vars.palette.monoA.A800,
       '--hovered': theme.vars.palette.secondary.A100,
-      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     }),
   },

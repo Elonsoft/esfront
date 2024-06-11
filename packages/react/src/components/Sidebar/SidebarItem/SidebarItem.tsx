@@ -154,7 +154,6 @@ const SidebarItemSecondaryAction = styled(Button, {
     '--background': 'transparent',
     '--icon': theme.vars.palette.monoA.A500,
     '--hovered': theme.vars.palette.monoA.A50,
-    '--focused': theme.vars.palette.monoA.A200,
     '--pressed': theme.vars.palette.monoA.A150,
   }),
 
@@ -162,7 +161,6 @@ const SidebarItemSecondaryAction = styled(Button, {
     '--background': 'transparent',
     '--icon': theme.vars.palette.monoB.A800,
     '--hovered': theme.vars.palette.monoB.A50,
-    '--focused': theme.vars.palette.monoB.A200,
     '--pressed': theme.vars.palette.monoB.A150,
   }),
 
