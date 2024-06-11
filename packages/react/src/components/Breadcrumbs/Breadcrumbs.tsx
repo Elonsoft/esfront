@@ -11,7 +11,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { paperClasses } from '@mui/material';
 import Menu, { menuClasses } from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
@@ -21,6 +20,7 @@ import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 import { useResizeObserver } from '../../hooks';
 import { IconDotsHorizontal2W300 } from '../../icons';
 import { buttonClasses } from '../Button';
+import { MenuItem } from '../MenuItem';
 import { TooltipEllipsis, TooltipEllipsisProps } from '../TooltipEllipsis';
 
 type BreadcrumbsOwnerState = {
@@ -105,10 +105,8 @@ const BreadcrumbsMenuItem = styled(MenuItem, {
   slot: 'MenuItem',
   overridesResolver: (props, styles) => styles.menuItem,
 })(({ theme }) => ({
-  minHeight: '32px',
-  padding: '8px 12px',
+  padding: '8px 16px',
   width: '100%',
-
   ...theme.typography.caption,
 })) as typeof MenuItem;
 
@@ -236,7 +234,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
                 title={<Typography variant="caption">{children}</Typography>}
               >
                 {({ ref, childrenRef }) => (
-                  <BreadcrumbsMenuItem ref={ref} className={clsx(classes.menuItem)} {...rest}>
+                  <BreadcrumbsMenuItem ref={ref} className={clsx(classes.menuItem)} size="100" {...rest}>
                     <Typography ref={childrenRef} noWrap>
                       {children}
                     </Typography>

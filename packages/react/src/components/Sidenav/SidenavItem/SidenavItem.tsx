@@ -10,11 +10,11 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { TypographyProps } from '@mui/material';
-import ListItemButton, { listItemButtonClasses } from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
+import { buttonBaseClasses } from '../../ButtonBase';
+import { ListItem, listItemClasses, ListItemIcon, listItemIconClasses } from '../../ListItem';
 import { useSidebarContext } from '../../Sidebar/Sidebar.context';
 import { useSidenavContext } from '../Sidenav.context';
 
@@ -28,71 +28,73 @@ const useUtilityClasses = (ownerState: SidenavItemOwnerState) => {
 
   const slots = {
     root: ['root'],
+    wrapper: ['wrapper'],
     tooltip: ['tooltip'],
   };
 
   return composeClasses(slots, getSidenavItemUtilityClass, classes);
 };
 
-const SidenavItemRoot = styled(ListItemButton, {
+const SidenavItemRoot = styled(ListItem, {
   name: 'ESSidenavItem',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
+  overridesResolver: (_props, styles) => styles.root,
 })<{ ownerState: SidenavItemOwnerState }>(({ theme, ownerState }) => ({
-  [`&.${listItemButtonClasses.root}`]: {
+  [`&.${listItemClasses.root}`]: {
     borderRadius: '6px',
-    padding: '0 4px',
+    padding: '0',
     margin: '0 8px',
     justifyContent: 'center',
 
     ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
-      ...theme.mixins.listItem({
-        background: 'transparent',
-        color: theme.vars.palette.monoA.A800,
-        hover: theme.vars.palette.monoA.A50,
-        icon: theme.vars.palette.monoA.A500,
-        focus: theme.vars.palette.monoA.A200,
-        active: theme.vars.palette.monoA.A150,
-      }),
-      [`&.${listItemButtonClasses.selected}`]: {
-        ...theme.mixins.listItem({
-          background: theme.vars.palette.monoA.A100,
-          hover: theme.vars.palette.monoA.A50,
-          icon: theme.vars.palette.monoA.A600,
-          focus: theme.vars.palette.monoA.A75,
-          active: theme.vars.palette.monoA.A150,
-        }),
+      '--text': theme.vars.palette.monoA.A800,
+      '--icon': theme.vars.palette.monoA.A500,
+      '--hovered': theme.vars.palette.monoA.A50,
+      '--pressed': theme.vars.palette.monoA.A150,
+
+      [`&.${listItemClasses.selected}`]: {
+        '--icon': theme.vars.palette.monoA.A600,
+        '--background': theme.vars.palette.monoA.A100,
       },
     }),
     ...(ownerState.color === 'primary' && {
-      ...theme.mixins.listItem({
-        background: 'transparent',
-        color: theme.vars.palette.monoB.A800,
-        icon: theme.vars.palette.monoB.A800,
-        hover: theme.vars.palette.monoB.A50,
-        focus: theme.vars.palette.monoB.A200,
-        active: theme.vars.palette.monoB.A150,
-      }),
-      [`&.${listItemButtonClasses.selected}`]: {
-        ...theme.mixins.listItem({
-          background: theme.vars.palette.monoB.A100,
-          color: theme.vars.palette.monoB[500],
-          icon: theme.vars.palette.monoB[500],
-          hover: theme.vars.palette.monoB.A50,
-          focus: theme.vars.palette.monoB.A75,
-          active: theme.vars.palette.monoB.A150,
-        }),
+      '--text': theme.vars.palette.monoB.A800,
+      '--icon': theme.vars.palette.monoB.A800,
+      '--hovered': theme.vars.palette.monoB.A50,
+      '--pressed': theme.vars.palette.monoB.A150,
+
+      [`&.${listItemClasses.selected}`]: {
+        '--text': theme.vars.palette.monoB[500],
+        '--icon': theme.vars.palette.monoB[500],
+        '--background': theme.vars.palette.monoB.A100,
       },
     }),
+
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      justifyContent: 'center',
+    },
+
+    [`& .${listItemIconClasses.root}`]: {
+      color: 'var(--icon)',
+      padding: 0,
+    },
   },
 }));
+
+const SidenavItemWrapper = styled('div', {
+  name: 'ESSidenavItem',
+  slot: 'Wrapper',
+  overridesResolver: (_props, styles) => styles.wrapper,
+})({
+  display: 'flex',
+});
 
 const SidenavItemTooltip = styled(
   ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
   {
     name: 'ESidenavItem',
     slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip,
+    overridesResolver: (_props, styles) => styles.tooltip,
   }
 )(({ theme }) => ({
   [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
@@ -131,10 +133,10 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
 
   const [isTooltipOpen, setTooltipOpen] = useState(false);
 
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLLIElement | null>(null);
   const shouldSkipClick = useRef(false);
 
-  const onItemTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+  const onItemTouchStart = (event: React.TouchEvent<HTMLLIElement>) => {
     onTouchStart?.(event);
 
     if (id && !open && (!hover || id !== itemId)) {
@@ -142,7 +144,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     }
   };
 
-  const onItemClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const onItemClick = (event: React.MouseEvent<HTMLLIElement>) => {
     if (id) {
       setItemId(id);
 
@@ -163,7 +165,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     onClick?.(event);
   };
 
-  const onItemFocus = (event: React.FocusEvent<HTMLDivElement>) => {
+  const onItemFocus = (event: React.FocusEvent<HTMLLIElement>) => {
     onFocus?.(event);
 
     if (id) {
@@ -177,7 +179,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     }
   };
 
-  const onItemKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const onItemKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
     onKeyDown?.(event);
 
     if (ref.current && event.key === 'ArrowRight') {
@@ -216,7 +218,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     <SidenavItemTooltip
       disableInteractive
       arrow={!!text}
-      className={clsx(classes.tooltip)}
+      className={classes.tooltip}
       enterNextDelay={200}
       leaveDelay={120}
       open={isTooltipOpen}
@@ -225,9 +227,10 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
       onClose={onTooltipClose}
       onOpen={onTooltipOpen}
     >
-      <div className="ESSidenavItem-wrapper" data-id={id}>
+      <SidenavItemWrapper className={classes.wrapper} data-id={id}>
         <SidenavItemRoot
           ref={ref}
+          button
           className={clsx(classes.root, className)}
           data-id={id}
           ownerState={ownerState}
@@ -241,7 +244,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
         >
           <ListItemIcon>{icon}</ListItemIcon>
         </SidenavItemRoot>
-      </div>
+      </SidenavItemWrapper>
     </SidenavItemTooltip>
   );
 };

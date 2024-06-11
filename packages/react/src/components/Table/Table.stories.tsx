@@ -3,7 +3,6 @@ import { useCallback, useRef, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 
 import { Table } from './Table';
@@ -24,6 +23,7 @@ import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { Divider } from '../Divider';
+import { MenuItem } from '../MenuItem';
 import { Pagination, PaginationPages, PaginationRange } from '../Pagination';
 
 const DATA: {

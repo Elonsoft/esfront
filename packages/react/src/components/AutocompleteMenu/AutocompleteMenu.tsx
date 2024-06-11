@@ -13,7 +13,6 @@ import Grow from '@mui/material/Grow';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import { inputBaseClasses } from '@mui/material/InputBase';
 import { inputLabelClasses } from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import Popper from '@mui/material/Popper';
@@ -25,6 +24,7 @@ import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
 import { Checkbox } from '../Checkbox';
+import { MenuItem } from '../MenuItem';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
 
@@ -110,9 +110,7 @@ const AutocompleteMenuMenuItem = styled(MenuItem, {
   name: 'ESAutocompleteMenu',
   slot: 'MenuItem',
   overridesResolver: (_props, styles) => styles.menuItem,
-})(() => ({
-  padding: '2px 16px',
-}));
+})(() => ({}));
 
 const AutocompleteMenuMenuItemText = styled('div', {
   name: 'ESAutocompleteMenu',

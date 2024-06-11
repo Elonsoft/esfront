@@ -8,8 +8,6 @@ import { getSortingMenuUtilityClass } from './SortingMenu.classes';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import { unstable_composeClasses, useMediaQuery } from '@mui/material';
-import ListItemText from '@mui/material/ListItemText';
-import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
@@ -17,9 +15,11 @@ import Typography from '@mui/material/Typography';
 import { IconSortAscending, IconSortDescending } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
-import { Divider } from '../Divider';
+import { Divider, dividerClasses } from '../Divider';
 import { Kbd, kbdClasses } from '../Kbd';
 import { Link } from '../Link';
+import { listItemClasses, ListItemText } from '../ListItem';
+import { MenuItem } from '../MenuItem';
 import { Switch, switchClasses } from '../Switch';
 
 const isMacintosh = () => {
@@ -67,7 +67,7 @@ const SortingMenuRoot = styled(Popover, {
     '& .MuiList-root': {
       minWidth: '320px',
       maxWidth: '100%',
-      padding: '0 16px',
+      padding: '0',
     },
   },
 }));
@@ -119,30 +119,26 @@ const SortingMenuItem = styled(MenuItem, {
   name: 'ESSortingMenu',
   slot: 'MenuItem',
   overridesResolver: (_, styles) => styles.menuItem,
-})(({ theme }) => ({
-  '&.MuiMenuItem-root.MuiButtonBase-root:not(.Mui-disabled)': {
+})(() => ({
+  [`&:not(.${listItemClasses.disabled})`]: {
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '6px 16px',
-    margin: '0 -16px',
-    minHeight: '32px',
-    height: '32px',
-    ...theme.mixins.listItem({
-      background: '',
-      hover: theme.vars.palette.monoA.A50,
-      focus: theme.vars.palette.monoA.A75,
-      active: theme.vars.palette.monoA.A150,
-    }),
   },
-  '&.MuiMenuItem-root.Mui-disabled': {
+
+  [`&.${listItemClasses.disabled}`]: {
     color: 'inherit',
     padding: '0 0 6px 0',
     display: 'block',
     minHeight: 0,
     height: 'auto',
-    opacity: 1,
-    '& .ESDivider-root': {
-      margin: '8px -16px',
+    cursor: 'default',
+
+    [`& > .${buttonBaseClasses.wrapper}`]: {
+      display: 'block',
+    },
+
+    [`& .${dividerClasses.root}`]: {
+      margin: '8px 0',
     },
   },
 }));
@@ -162,12 +158,16 @@ const SortingDirectionButton = styled(Button, {
     padding: 0,
 
     [`&.${buttonClasses.size400}`]: {
-      '--pressed': 'inherit',
-      '--hovered': 'inherit',
+      '--pressed': 'transparent',
+      '--hovered': 'transparent',
     },
 
     [`& .${buttonBaseClasses.wrapper}`]: {
       gap: '6px',
+    },
+
+    [`&:not(.${buttonBaseClasses.disabled}):focus-visible`]: {
+      outline: 'none',
     },
 
     '&:focus-visible': {
@@ -228,7 +228,7 @@ const SortingCaption = styled(Typography, {
 })) as typeof Typography;
 
 const getNextItem = (elem: HTMLLIElement): HTMLLIElement | undefined => {
-  if (elem.nextElementSibling && (elem.nextElementSibling as HTMLLIElement).getAttribute('aria-disabled')) {
+  if (elem.nextElementSibling && (elem.nextElementSibling as HTMLLIElement).getAttribute('aria-disabled') === 'true') {
     return (elem.nextElementSibling as HTMLLIElement).nextElementSibling as HTMLLIElement;
   }
 
@@ -361,10 +361,11 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     if ((e.target as HTMLButtonElement).type === 'button') {
       switch (e.code) {
         case 'ArrowLeft':
-          ((e.target as HTMLLIElement).parentNode as HTMLLIElement).focus();
+          ((e.target as HTMLLIElement).parentNode?.parentNode as HTMLLIElement).focus();
           break;
         case 'ArrowUp':
-          const prevElement = ((e.target as HTMLButtonElement).parentElement as HTMLLIElement).previousElementSibling;
+          const prevElement = ((e.target as HTMLButtonElement).parentElement?.parentElement as HTMLLIElement)
+            .previousElementSibling;
 
           if (prevElement) {
             e.stopPropagation();
@@ -373,7 +374,9 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
 
           break;
         case 'ArrowDown':
-          const nextElement = getNextItem((e.target as HTMLButtonElement).parentElement as HTMLLIElement);
+          const nextElement = getNextItem(
+            (e.target as HTMLButtonElement).parentElement?.parentElement as HTMLLIElement
+          );
 
           if (nextElement) {
             e.stopPropagation();
@@ -382,8 +385,8 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
 
           break;
       }
-    } else if (e.code === 'ArrowRight' && (e.target as any).childNodes[1]) {
-      ((e.target as HTMLLIElement).childNodes[1] as HTMLButtonElement).focus();
+    } else if (e.code === 'ArrowRight' && (e.target as any).childNodes[0].childNodes[1]) {
+      ((e.target as HTMLLIElement).childNodes[0].childNodes[1] as HTMLButtonElement).focus();
     }
   };
 
@@ -396,8 +399,8 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
       <SortingMenuItem
         key={item.value}
         className={classes.menuItem}
-        disableTouchRipple={isMultiple}
         selected={!!item.direction}
+        size="100"
         tabIndex={isCalcTabIndex ? (i === 0 ? 0 : -1) : -1}
         onClick={onHandleSort(item.value)}
         onKeyDown={onKeyDownControl}
@@ -412,6 +415,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
             tabIndex={-1}
             onClick={onChangeSortDirection(item.value)}
             onMouseDown={onStopRipple}
+            onPointerDown={onStopRipple}
             onTouchStart={onStopRipple}
           >
             <SortingCaption className={classes.caption} variant="caption">
@@ -464,7 +468,13 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
         {isMultiple && !!values.length && values.length !== options.length && (
           <SortingMenuItem key="middleSortingDivider" disabled>
             <Divider />
-            <SortingCaption className={classes.caption} component="div" marginTop="14px" variant="caption">
+            <SortingCaption
+              className={classes.caption}
+              component="div"
+              marginTop="14px"
+              paddingLeft="16px"
+              variant="caption"
+            >
               {labelSortTooltip}
             </SortingCaption>
           </SortingMenuItem>

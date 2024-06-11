@@ -7,7 +7,7 @@ import { SidenavItemClasses } from './SidenavItem.classes';
 import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
-export interface SidenavItemTypeMap<P = {}, D extends ElementType = 'div'> {
+export interface SidenavItemTypeMap<P = {}, D extends ElementType = 'li'> {
   props: P & {
     /** Override or extend the styles applied to the component. */
     classes?: Partial<SidenavItemClasses>;

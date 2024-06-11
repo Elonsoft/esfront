@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 
 import { useMenuVisibility } from './useMenuVisibility';
 
 import { Button } from '../../components/Button';
+import { MenuItem } from '../../components/MenuItem';
 import { useMenu } from '../useMenu';
 
 const meta: Meta = {
