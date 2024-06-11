@@ -9,12 +9,12 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
 import { IconMenuDownW300 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
+import { MenuItem } from '../../MenuItem';
 import { usePaginationContext } from '../Pagination.context';
 
 type PaginationRangeOwnerState = {

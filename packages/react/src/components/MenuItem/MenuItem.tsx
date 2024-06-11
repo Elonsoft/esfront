@@ -6,12 +6,12 @@ import { getMenuItemUtilityClass } from './MenuItem.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import MuiMenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+
+import { ListItem, listItemClasses } from '../ListItem';
 
 type MenuItemOwnerState = {
   classes?: MenuItemProps['classes'];
-  color?: MenuItemProps['color'];
 };
 
 const useUtilityClasses = (ownerState: MenuItemOwnerState) => {
@@ -24,36 +24,37 @@ const useUtilityClasses = (ownerState: MenuItemOwnerState) => {
   return composeClasses(slots, getMenuItemUtilityClass, classes);
 };
 
-const MenuItemRoot = styled(MuiMenuItem, {
+const MenuItemRoot = styled(ListItem, {
   name: 'ESMenuItem',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})<{ ownerState: MenuItemOwnerState }>(({ theme, ownerState }) => ({
-  ...(ownerState.color === 'error' && {
-    [`&.${menuItemClasses.root}`]: {
-      ...theme.mixins.listItem({
-        background: 'transparent',
-        color: theme.vars.palette.error[300],
-        icon: theme.vars.palette.error[300],
-        hover: theme.vars.palette.error.A50,
-        active: theme.vars.palette.error.A150,
-        focus: theme.vars.palette.error.A75,
-      }),
-    },
-  }),
+  overridesResolver: (_props, styles) => styles.root,
+})(({ theme }) => ({
+  [`&.${listItemClasses.selected}`]: {
+    '--background': theme.vars.palette.secondary.A100,
+  },
 }));
 
-/**
- * Wrapper around MenuItem from MUI with color prop.
- */
 export const MenuItem: OverridableComponent<MenuItemTypeMap> = (inProps: MenuItemProps) => {
-  const { className, color, ...props } = useThemeProps({
+  const {
+    className,
+    classes: inClasses,
+    tabIndex: inTabIndex,
+    ...props
+  } = useThemeProps({
     props: inProps,
     name: 'ESMenuItem',
   });
 
-  const ownerState = { color };
+  const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);
 
-  return <MenuItemRoot className={clsx(className, classes.root)} ownerState={ownerState} {...props} />;
+  let tabIndex = -1;
+
+  if (!props.disabled && inTabIndex !== undefined) {
+    tabIndex = inTabIndex;
+  }
+
+  return (
+    <MenuItemRoot button className={clsx(className, classes.root)} role="menuitem" tabIndex={tabIndex} {...props} />
+  );
 };

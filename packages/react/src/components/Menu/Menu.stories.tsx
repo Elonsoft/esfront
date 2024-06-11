@@ -1,21 +1,16 @@
-/* eslint-disable no-restricted-imports */
-
-import { useState } from 'react';
+import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 
-import { Button } from '../../../components/Button';
-import { Divider } from '../../../components/Divider';
-import { IconDotsVerticalW400, IconUpload } from '../../../icons';
+import { IconUpload } from '../../icons';
+import { Button } from '../Button';
+import { Divider } from '../Divider';
+import { ListItem, ListItemIcon, ListItemText } from '../ListItem';
+import { MenuItem } from '../MenuItem';
 
 const getButtonText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Open menu' : 'Открыть меню';
@@ -42,13 +37,20 @@ const getErrorActionText = (context: StoryContext<unknown>) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-type Args = {};
+type Args = ComponentProps<typeof ListItem>;
 
 const meta: Meta<Args> = {
-  title: 'Overrides/Menu',
-
-  parameters: {
-    viewMode: 'canvas',
+  title: 'Menu',
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['100', '200', '300', '400'],
+    },
+  },
+  args: {
+    size: '200',
   },
 };
 
@@ -56,7 +58,7 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Demo: Story = {
-  render: function Render(_args, context) {
+  render: function Render(args, context) {
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
     const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -72,36 +74,48 @@ export const Demo: Story = {
         <Button variant="contained" onClick={onClick}>
           {getButtonText(context)}
         </Button>
-        <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={onClose}>
-          <MenuItem>
+        <Menu
+          anchorEl={anchorEl}
+          open={!!anchorEl}
+          slotProps={{
+            paper: {
+              style: {
+                margin: '4px 0',
+                minWidth: 192,
+              },
+            },
+          }}
+          onClose={onClose}
+        >
+          <MenuItem selected size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem disabled size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </MenuItem>
-          <Divider />
-          <MenuItem>
+          <Divider sx={{ my: '8px' }} />
+          <MenuItem size={args.size}>
             <ListItemText>{getActionText(context)}</ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem size={args.size}>
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem error size={args.size}>
             <ListItemText>{getErrorActionText(context)}</ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem error size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
@@ -114,7 +128,7 @@ export const Demo: Story = {
 };
 
 export const DemoList: Story = {
-  render: (_args, context) => {
+  render: (args, context) => {
     return (
       <Box
         sx={(theme) => ({
@@ -125,32 +139,29 @@ export const DemoList: Story = {
         })}
       >
         <List>
-          <ListItem>
+          <ListItem size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
           </ListItem>
-          <ListItem>
+          <ListItem size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
           </ListItem>
-          <ListItem>
+          <ListItem size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </ListItem>
-          <Divider />
-          <ListItem>
+          <Divider sx={{ my: '8px' }} />
+          <ListItem size={args.size}>
             <ListItemText>{getActionText(context)}</ListItemText>
-            <Button color="tertiary" size="400" sx={{ borderRadius: '50%' }}>
-              <IconDotsVerticalW400 />
-            </Button>
           </ListItem>
-          <ListItem>
+          <ListItem size={args.size}>
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItem>
         </List>
@@ -160,7 +171,7 @@ export const DemoList: Story = {
 };
 
 export const DemoListButton: Story = {
-  render: (_args, context) => {
+  render: (args, context) => {
     return (
       <Box
         sx={(theme) => ({
@@ -171,31 +182,31 @@ export const DemoListButton: Story = {
         })}
       >
         <List>
-          <ListItemButton>
+          <ListItem button selected size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
-          </ListItemButton>
-          <ListItemButton>
+          </ListItem>
+          <ListItem button disabled size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
-          </ListItemButton>
-          <ListItemButton>
+          </ListItem>
+          <ListItem button size={args.size}>
             <ListItemIcon>
               <IconUpload />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
-          </ListItemButton>
-          <Divider />
-          <ListItemButton>
+          </ListItem>
+          <Divider sx={{ my: '8px' }} />
+          <ListItem button size={args.size}>
             <ListItemText>{getActionText(context)}</ListItemText>
-          </ListItemButton>
-          <ListItemButton>
+          </ListItem>
+          <ListItem button size={args.size}>
             <ListItemText inset>{getActionText(context)}</ListItemText>
-          </ListItemButton>
+          </ListItem>
         </List>
       </Box>
     );

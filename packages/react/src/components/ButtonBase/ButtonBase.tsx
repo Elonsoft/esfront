@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useRef } from 'react';
 
 import { ButtonBaseProps, ButtonBaseTypeMap } from './ButtonBase.types';
 
@@ -10,6 +10,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 
+import { useForkRef } from '../../hooks';
 import { TouchRipple, touchRippleClasses, useTouchRipple } from '../TouchRipple';
 
 type ButtonBaseOwnerState = {
@@ -79,22 +80,22 @@ const ButtonBaseRoot = styled('button', {
   color: 'var(--text)',
 
   '@media (hover: hover)': {
-    [`&:not(:disabled):hover .${touchRippleClasses.root}`]: {
+    [`&:not(.${buttonBaseClasses.disabled}):hover > .${touchRippleClasses.root}`]: {
       backgroundColor: 'var(--hovered)',
     },
   },
 
-  [`&:not(:disabled):focus-visible`]: {
+  [`&:not(.${buttonBaseClasses.disabled}):focus-visible`]: {
     outline: `2px solid ${theme.vars.palette.monoA[500]}`,
   },
 
-  [`&.${buttonBaseClasses.pressed} .${touchRippleClasses.root}::after`]: {
+  [`&.${buttonBaseClasses.pressed} > .${touchRippleClasses.root}::after`]: {
     opacity: 1,
     transitionDuration: '105ms',
   },
 
   [`&.${buttonBaseClasses.disableTouchRipple}`]: {
-    [`& .${touchRippleClasses.root}::after`]: {
+    [`& > .${touchRippleClasses.root}::after`]: {
       inset: 0,
       background: 'var(--pressed)',
       transition: theme.transitions.create(['opacity'], {
@@ -102,7 +103,7 @@ const ButtonBaseRoot = styled('button', {
       }),
     },
 
-    [`&:active .${touchRippleClasses.root}::after`]: {
+    [`&:active > .${touchRippleClasses.root}::after`]: {
       opacity: 1,
     },
   },
@@ -152,6 +153,38 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     name: 'ESButtonBase',
   });
 
+  const buttonRef = useRef<HTMLButtonElement | HTMLLinkElement | null>(null);
+  const handleRef = useForkRef(ref, buttonRef);
+
+  const isNonNativeButton = () => {
+    const button = buttonRef.current;
+
+    if (!button) {
+      return false;
+    }
+
+    return component && component !== 'button' && !(button.tagName === 'A' && (button as HTMLLinkElement).href);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.target === event.currentTarget && isNonNativeButton() && event.key === ' ') {
+      event.preventDefault();
+    }
+
+    if (onKeyDown) {
+      onKeyDown(event);
+    }
+
+    // Keyboard accessibility for non interactive elements
+    if (event.target === event.currentTarget && isNonNativeButton() && event.key === 'Enter' && !disabled) {
+      event.preventDefault();
+
+      if (onClick) {
+        onClick(event as never);
+      }
+    }
+  };
+
   const {
     ref: touchRippleRef,
     pressed,
@@ -165,7 +198,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     onPointerDown,
     onPointerUp,
     onPointerLeave,
-    onKeyDown,
+    onKeyDown: handleKeyDown,
   });
 
   const ownerState = { classes: inClasses, disabled, disableTouchRipple, pressed };
@@ -173,7 +206,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
 
   return (
     <ButtonBaseRoot
-      ref={ref}
+      ref={handleRef}
       as={component}
       className={clsx(className, classes.root)}
       disabled={disabled}

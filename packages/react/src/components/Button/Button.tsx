@@ -195,12 +195,12 @@ const ButtonRoot = styled(ButtonBase, {
       '--pressed': theme.vars.palette.monoA.A150,
     },
     [`&.${buttonClasses.colorInfo}`]: {
-      '--text': theme.vars.palette.info[500],
+      '--text': theme.vars.palette.info[300],
       '--hovered': theme.vars.palette.info.A50,
       '--pressed': theme.vars.palette.info.A150,
     },
     [`&.${buttonClasses.colorWarning}`]: {
-      '--text': theme.vars.palette.warning[500],
+      '--text': theme.vars.palette.warning[300],
       '--hovered': theme.vars.palette.warning.A50,
       '--pressed': theme.vars.palette.warning.A150,
     },
@@ -293,12 +293,12 @@ const ButtonRoot = styled(ButtonBase, {
       '--pressed': theme.vars.palette.monoA.A150,
     },
     [`&.${buttonClasses.colorInfo}`]: {
-      '--text': theme.vars.palette.info[500],
+      '--text': theme.vars.palette.info[300],
       '--hovered': theme.vars.palette.info.A50,
       '--pressed': theme.vars.palette.info.A150,
     },
     [`&.${buttonClasses.colorWarning}`]: {
-      '--text': theme.vars.palette.warning[500],
+      '--text': theme.vars.palette.warning[300],
       '--hovered': theme.vars.palette.warning.A50,
       '--pressed': theme.vars.palette.warning.A150,
     },
@@ -386,42 +386,62 @@ const ButtonRoot = styled(ButtonBase, {
       margin: '0 -4px',
     },
   },
-  [`&.${buttonClasses.size200} .${buttonBaseClasses.wrapper}`]: {
-    ...theme.typography.caption,
-    fontWeight: 400,
-    height: 20,
-    padding: '0 6px',
-    textTransform: 'none',
+  [`&.${buttonClasses.size200}`]: {
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      ...theme.typography.caption,
+      fontWeight: 400,
+      height: 20,
+      padding: '0 8px',
+      textTransform: 'none',
 
-    [`& .${buttonClasses.startIcon}`]: {
-      marginLeft: -2,
-      marginRight: 2,
+      [`& .${buttonClasses.startIcon}`]: {
+        marginLeft: -2,
+        marginRight: 2,
+      },
+      [`& .${buttonClasses.endIcon}`]: {
+        marginLeft: 2,
+        marginRight: -2,
+      },
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 -6px',
+      },
     },
-    [`& .${buttonClasses.endIcon}`]: {
-      marginLeft: 2,
-      marginRight: -2,
-    },
-    [`& > .${svgIconClasses.root}`]: {
-      margin: '0 -4px',
+
+    [`&.${buttonClasses.variantText} .${buttonBaseClasses.wrapper}`]: {
+      padding: '0 6px',
+
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 -4px',
+      },
     },
   },
-  [`&.${buttonClasses.size300} .${buttonBaseClasses.wrapper}`]: {
-    ...theme.typography.body100,
-    fontWeight: 400,
-    height: 24,
-    padding: '0 6px',
-    textTransform: 'none',
+  [`&.${buttonClasses.size300}`]: {
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      ...theme.typography.body100,
+      fontWeight: 400,
+      height: 24,
+      padding: '0 8px',
+      textTransform: 'none',
 
-    [`& .${buttonClasses.startIcon}`]: {
-      marginLeft: -2,
-      marginRight: 2,
+      [`& .${buttonClasses.startIcon}`]: {
+        marginLeft: -2,
+        marginRight: 2,
+      },
+      [`& .${buttonClasses.endIcon}`]: {
+        marginLeft: 2,
+        marginRight: -2,
+      },
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 -6px',
+      },
     },
-    [`& .${buttonClasses.endIcon}`]: {
-      marginLeft: 2,
-      marginRight: -2,
-    },
-    [`& > .${svgIconClasses.root}`]: {
-      margin: '0 -4px',
+
+    [`&.${buttonClasses.variantText} .${buttonBaseClasses.wrapper}`]: {
+      padding: '0 6px',
+
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 -4px',
+      },
     },
   },
   [`&.${buttonClasses.size400}`]: {

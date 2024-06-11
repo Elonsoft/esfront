@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 import { usePermission } from './usePermission';
+
+import { MenuItem } from '../../components/MenuItem';
 
 const meta: Meta = {
   tags: ['autodocs'],

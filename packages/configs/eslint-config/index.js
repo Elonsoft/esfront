@@ -67,6 +67,11 @@ module.exports = {
               'IconButton',
               'LinearProgress',
               'Link',
+              'ListItem',
+              'ListItemButton',
+              'ListItemIcon',
+              'ListItemText',
+              'MenuItem',
               'Pagination',
               'PaginationItem',
               'Radio',
@@ -156,6 +161,26 @@ module.exports = {
           },
           {
             group: ['@mui/material/Link'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/ListItem'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/ListItemButton'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/ListItemIcon'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/ListItemText'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/MenuItem'],
             importNames: ['default'],
           },
           {

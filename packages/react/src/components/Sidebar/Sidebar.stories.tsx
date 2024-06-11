@@ -3,9 +3,6 @@ import { ComponentProps, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 
 import { Sidebar } from './Sidebar';
 import { SidebarDivider } from './SidebarDivider';
@@ -16,6 +13,7 @@ import { SidebarSpacer } from './SidebarSpacer';
 import { SidebarToggle } from './SidebarToggle';
 
 import { IconAccountLc, IconAt, IconBellFill, IconMagnify } from '../../icons';
+import { ListItem, ListItemIcon, ListItemText } from '../ListItem';
 
 type Args = ComponentProps<typeof Sidebar> & { behaviour?: SidebarMenuProps['behaviour']; exclusive?: boolean };
 
@@ -91,9 +89,8 @@ export const Demo: Story = {
           onWidthChangeCommit={(value: number) => setWidth(value)}
         >
           <ListItem
-            disableGutters
             component="div"
-            sx={{ padding: '16px 16px 15px', overflow: 'hidden', flexShrink: '0' }}
+            sx={{ padding: '16px 16px 15px', overflow: 'hidden', flexShrink: '0', height: 'auto !important' }}
           >
             <ListItemIcon>
               <IconAt sx={{ color: color === 'primary' ? 'monoB.A800' : 'monoA.A500' }} />

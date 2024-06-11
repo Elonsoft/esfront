@@ -8,12 +8,8 @@ import { getSidebarItemUtilityClass, sidebarItemClasses } from './SidebarItem.cl
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { buttonBaseClasses, touchRippleClasses, useMediaQuery } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
-import ListItemButton, { listItemButtonClasses } from '@mui/material/ListItemButton';
-import ListItemIcon, { listItemIconClasses } from '@mui/material/ListItemIcon';
-import ListItemText, { listItemTextClasses } from '@mui/material/ListItemText';
-import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
@@ -24,6 +20,15 @@ import { IconChevronLeftW200 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
 import { Divider } from '../../Divider';
+import {
+  ListItem,
+  listItemClasses,
+  ListItemIcon,
+  listItemIconClasses,
+  ListItemText,
+  listItemTextClasses,
+} from '../../ListItem';
+import { MenuItem, menuItemClasses } from '../../MenuItem';
 import { svgIconClasses } from '../../SvgIcon';
 import { useSidebarContext } from '../Sidebar.context';
 import { useSidebarMenuContext } from '../SidebarMenu/SidebarMenu.context';
@@ -76,61 +81,47 @@ const SidebarItemWrapper = styled('div', {
   position: 'relative',
 }));
 
-const SidebarItemButton = styled(ListItemButton, {
+const SidebarItemButton = styled(ListItem, {
   name: 'ESSidebarItem',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button,
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
-  [`&.${listItemButtonClasses.root}`]: {
+  [`&.${listItemClasses.root}`]: {
     borderRadius: '4px',
     width: '100%',
-    padding: '6px 8px',
-    fontFamily: 'inherit',
 
-    [`&.${buttonBaseClasses.root}`]: {
-      [`& .${touchRippleClasses.root}`]: {
-        transitionDuration: `${theme.transitions.duration.short}ms`,
-      },
+    [`&.${listItemClasses.root}`]: {
+      padding: '6px 8px',
     },
+
     ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
-      ...theme.mixins.listItem({
-        background: 'transparent',
-        color: theme.vars.palette.monoA.A800,
-        hover: theme.vars.palette.monoA.A50,
-        icon: theme.vars.palette.monoA.A500,
-        focus: theme.vars.palette.monoA.A200,
-        active: theme.vars.palette.monoA.A150,
-      }),
-      [`&.${listItemButtonClasses.selected}`]: {
-        ...theme.mixins.listItem({
-          background: theme.vars.palette.monoA.A100,
-          hover: theme.vars.palette.monoA.A50,
-          icon: theme.vars.palette.monoA.A600,
-          focus: theme.vars.palette.monoA.A75,
-          active: theme.vars.palette.monoA.A150,
-        }),
+      '--text': theme.vars.palette.monoA.A800,
+      '--icon': theme.vars.palette.monoA.A500,
+      '--hovered': theme.vars.palette.monoA.A50,
+      '--pressed': theme.vars.palette.monoA.A150,
+
+      [`&.${listItemClasses.selected}`]: {
+        '--icon': theme.vars.palette.monoA.A600,
+        '--background': theme.vars.palette.monoA.A100,
       },
     }),
     ...(ownerState.color === 'primary' && {
-      ...theme.mixins.listItem({
-        background: 'transparent',
-        color: theme.vars.palette.monoB.A800,
-        icon: theme.vars.palette.monoB.A800,
-        hover: theme.vars.palette.monoB.A50,
-        focus: theme.vars.palette.monoB.A200,
-        active: theme.vars.palette.monoB.A150,
-      }),
-      [`&.${listItemButtonClasses.selected}`]: {
-        ...theme.mixins.listItem({
-          background: theme.vars.palette.monoB.A100,
-          color: theme.vars.palette.monoB[500],
-          icon: theme.vars.palette.monoB[500],
-          hover: theme.vars.palette.monoB.A50,
-          focus: theme.vars.palette.monoB.A75,
-          active: theme.vars.palette.monoB.A150,
-        }),
+      '--text': theme.vars.palette.monoB.A800,
+      '--icon': theme.vars.palette.monoB.A800,
+      '--hovered': theme.vars.palette.monoB.A50,
+      '--pressed': theme.vars.palette.monoB.A150,
+
+      [`&.${listItemClasses.selected}`]: {
+        '--text': theme.vars.palette.monoB[500],
+        '--icon': theme.vars.palette.monoB[500],
+        '--background': theme.vars.palette.monoB.A100,
       },
     }),
+
+    [`& .${listItemIconClasses.root}`]: {
+      color: 'var(--icon)',
+      padding: 0,
+    },
   },
 }));
 
@@ -141,7 +132,7 @@ const SidebarItemSecondaryAction = styled(Button, {
 })<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
   cursor: 'pointer',
   position: 'absolute',
-  left: `${ownerState.width}px`,
+  left: `${ownerState.width + 2}px`,
   top: '8px',
   zIndex: '5',
   borderRadius: '50%',
@@ -276,14 +267,12 @@ const SidebarItemTooltipItem = styled(MenuItem, {
 })(() => ({
   [`&.${menuItemClasses.root}`]: {
     width: '100%',
-    minHeight: '32px',
-    padding: '6px 16px',
 
     '&:first-child': {
       margin: '4px 0',
     },
 
-    [`&.${menuItemClasses.disabled}`]: {
+    [`&.${listItemClasses.disabled}`]: {
       opacity: '1',
     },
   },
@@ -302,7 +291,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     children,
     className,
     icon,
-    iconToggle = <IconChevronLeftW200 container containerSize="16px" />,
+    iconToggle = <IconChevronLeftW200 container containerSize="20px" />,
     inset,
     onClick,
     onKeyDown,
@@ -323,7 +312,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
 
   const ref = useRef<HTMLDivElement | null>(null);
   const refTooltip = useRef<HTMLUListElement | null>(null);
-  const refItem = useRef<HTMLDivElement | null>(null);
+  const refItem = useRef<HTMLLIElement | null>(null);
   const shouldSkipClick = useRef(false);
 
   const { color, open } = useSidebarContext();
@@ -363,7 +352,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     }
   };
 
-  const onItemKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const onItemKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
     if (children && refTooltip.current && event.key === 'ArrowRight') {
       let element = refTooltip.current.firstChild as HTMLElement;
 
@@ -401,7 +390,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     }
   };
 
-  const onItemTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+  const onItemTouchStart = (e: React.TouchEvent<HTMLLIElement>) => {
     onTouchStart?.(e);
 
     if (!open && !isTooltipOpen && children) {
@@ -409,7 +398,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     }
   };
 
-  const onItemClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onItemClick = (e: React.MouseEvent<HTMLLIElement>) => {
     if (shouldSkipClick.current) {
       shouldSkipClick.current = false;
       e.preventDefault();
@@ -456,6 +445,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
             className={clsx(classes.tooltipItem)}
             component={component}
             disabled={!onClick}
+            size="100"
             tabIndex={-1}
             onClick={onClick}
             {...props}
@@ -471,7 +461,13 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
               const { text, inset, ...rest } = child.props;
 
               return (
-                <SidebarItemTooltipItem key={idx} className={clsx(classes.tooltipItem)} tabIndex={idx} {...rest}>
+                <SidebarItemTooltipItem
+                  key={idx}
+                  className={clsx(classes.tooltipItem)}
+                  size="100"
+                  tabIndex={idx}
+                  {...rest}
+                >
                   <Typography variant="body100">{text}</Typography>
                 </SidebarItemTooltipItem>
               );
@@ -490,6 +486,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
         <SidebarItemWrapper className={clsx(classes.wrapper)}>
           <SidebarItemButton
             ref={refItem}
+            button
             className={clsx(classes.button)}
             ownerState={ownerState}
             onClick={onItemClick}

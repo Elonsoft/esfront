@@ -1,21 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
-import { MenuItemTypeMap as MuiMenuItemTypeMap } from '@mui/material/MenuItem';
 import { OverridableTypeMap, OverrideProps } from '@mui/material/OverridableComponent';
 
+import { ListItemTypeMap } from '../ListItem';
+
 export interface ExtendMuiMenuItemTypeMap<M extends OverridableTypeMap> {
-  props: M['props'] & Omit<MuiMenuItemTypeMap['props'], 'classes'>;
+  props: M['props'] & ListItemTypeMap['props'];
   defaultComponent: M['defaultComponent'];
 }
 
 export type MenuItemTypeMap<P = {}, D extends React.ElementType = 'li'> = ExtendMuiMenuItemTypeMap<{
-  props: P & {
-    /**
-     * The color of the component.
-     * @default 'default'
-     */
-    color?: 'default' | 'error';
-  };
+  props: P;
   defaultComponent: D;
 }>;
 

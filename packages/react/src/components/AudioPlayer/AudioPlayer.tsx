@@ -8,9 +8,6 @@ import { getAudioPlayerUtilityClass } from './AudioPlayer.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText, { listItemTextClasses } from '@mui/material/ListItemText';
-import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
@@ -35,6 +32,8 @@ import {
 } from '../../icons';
 import { Button } from '../Button';
 import { Divider, dividerClasses } from '../Divider';
+import { ListItemIcon, ListItemText, listItemTextClasses } from '../ListItem';
+import { MenuItem } from '../MenuItem';
 
 import { Instance } from '@popperjs/core';
 
@@ -294,50 +293,31 @@ const AudioPlayerMenuItem = styled(MenuItem, {
   name: 'ESAudioPlayer',
   slot: 'MenuItem',
   overridesResolver: (props, styles) => styles.menuItem,
-})(() => ({
-  [`&.${menuItemClasses.root}`]: {
-    minHeight: 32,
-    padding: '0 16px',
-  },
-}));
+})({});
 
 const AudioPlayerMainMenuItem = styled(AudioPlayerMenuItem, {
   name: 'ESAudioPlayer',
   slot: 'MainMenuItem',
   overridesResolver: (props, styles) => styles.mainMenuItem,
-})(() => ({
-  [`&.${menuItemClasses.root}.${menuItemClasses.root}`]: {
-    minHeight: 48,
-  },
-}));
+})({});
 
 const AudioPlayerListItemIcon = styled(ListItemIcon, {
   name: 'ESAudioPlayer',
   slot: 'ListItemIcon',
   overridesResolver: (props, styles) => styles.listItemIcon,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A500,
-
-  '&, &:first-of-type': {
-    marginRight: '12px',
-  },
-}));
+})(() => ({}));
 
 const AudioPlayerListItemText = styled(ListItemText, {
   name: 'ESAudioPlayer',
   slot: 'ListItemText',
   overridesResolver: (props, styles) => styles.listItemText,
 })(({ theme }) => ({
-  margin: 0,
   [`& .${listItemTextClasses.primary}`]: {
-    color: theme.vars.palette.monoA.A900,
     fontWeight: 400,
     ...theme.typography.body100,
   },
   [`& .${listItemTextClasses.secondary}`]: {
-    color: theme.vars.palette.monoA.A600,
     marginTop: 2,
-    ...theme.typography.caption,
   },
 }));
 
@@ -358,7 +338,7 @@ const AudioPlayerRateOpen = styled('div', {
   overridesResolver: (props, styles) => styles.rateOpen,
 })(({ theme }) => ({
   display: 'inline-flex',
-  marginLeft: 12,
+  marginLeft: '12px',
   color: theme.vars.palette.monoA.A500,
 }));
 
@@ -487,7 +467,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     labelCurrent,
     labelVolume,
 
-    iconBack = <IconArrowLeftW500 container containerWidth="16px" />,
+    iconBack = <IconArrowLeftW500 />,
     iconDownload = <IconDownloadW400 />,
     iconOptions = <IconDotsVerticalW400 />,
     iconPause = <IconPauseW400 />,
@@ -1121,7 +1101,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
             <TrapFocus open={isMenuOpen}>
               <div style={{ outline: 'none' }} tabIndex={-1} onKeyDown={onRateMenuKeyDown} onMouseDown={onMouseDown}>
                 <AudioPlayerMenuList className={classes.menuList}>
-                  <AudioPlayerMenuItem autoFocus className={classes.menuItem} onClick={onRateMenuClose}>
+                  <AudioPlayerMenuItem autoFocus className={classes.menuItem} size="100" onClick={onRateMenuClose}>
                     <AudioPlayerListItemIcon className={classes.listItemIcon}>{iconBack}</AudioPlayerListItemIcon>
                     <AudioPlayerListItemText className={classes.listItemText} primary={labelBack} />
                   </AudioPlayerMenuItem>
@@ -1131,6 +1111,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
                       key={r}
                       className={classes.menuItem}
                       selected={r === rate}
+                      size="100"
                       onClick={onRateInputChange(r)}
                     >
                       <AudioPlayerListItemText
@@ -1151,6 +1132,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
                 <AudioPlayerMainMenuItem
                   autoFocus
                   className={classes.mainMenuItem}
+                  size="300"
                   onClick={onRateMenuClick}
                   onKeyDown={onRateMenuKeyDown}
                 >
@@ -1163,7 +1145,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
                   <AudioPlayerRateOpen className={classes.rateOpen}>{iconRateOpen}</AudioPlayerRateOpen>
                 </AudioPlayerMainMenuItem>
                 {!!onDownloadClick && (
-                  <AudioPlayerMainMenuItem className={classes.mainMenuItem} onClick={onDownloadClick}>
+                  <AudioPlayerMainMenuItem className={classes.mainMenuItem} size="300" onClick={onDownloadClick}>
                     <AudioPlayerListItemIcon className={classes.listItemIcon}>{iconDownload}</AudioPlayerListItemIcon>
                     <AudioPlayerListItemText className={classes.listItemText} primary={labelDownload} />
                   </AudioPlayerMainMenuItem>

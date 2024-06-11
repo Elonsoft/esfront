@@ -2,8 +2,9 @@ import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import Icon from '@mui/material/Icon';
 import InputAdornment from '@mui/material/InputAdornment';
-import MenuItem from '@mui/material/MenuItem';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
+
+import { MenuItem } from '../../../components/MenuItem';
 
 const getLabel = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Input' : 'Инпут';

@@ -32,6 +32,7 @@ export * from './Gallery';
 export * from './Kbd';
 export * from './LinearProgress';
 export * from './Link';
+export * from './ListItem';
 export * from './LoadingButton';
 export * from './locale';
 export * from './MadeBy';
