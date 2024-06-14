@@ -66,6 +66,7 @@ export type AutocompleteProps<T> = {
     | 'getOptionValue'
     | 'getOptionDisabled'
     | 'groupBy'
+    | 'MenuGroupProps'
     | 'loading'
     | 'header'
     | 'footer'

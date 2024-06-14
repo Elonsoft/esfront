@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { ComponentProps, useEffect, useRef, useState } from 'react';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
 
 import { AutocompleteField, AutocompleteFieldProps } from '.';
 
 import { AutocompleteMenuFooter, AutocompleteMenuHeader } from '../AutocompleteMenu';
+import { MenuGroupProps } from '../MenuGroup';
 
 interface User {
   id: number;
@@ -44,13 +45,36 @@ const getUsersDisplayValue = (users: User[]) => (
   </span>
 );
 
-const meta: Meta<typeof AutocompleteField> = {
+type Args = ComponentProps<typeof AutocompleteField> & {
+  MenuGroupPaddingBottom?: MenuGroupProps['paddingBottom'];
+  MenuGroupSticky?: MenuGroupProps['sticky'];
+};
+
+const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: AutocompleteField,
   parameters: {
-    references: ['Autocomplete', 'AutocompleteField'],
+    references: ['Autocomplete', 'AutocompleteField', 'MenuGroup'],
   },
   argTypes: {
+    MenuGroupPaddingBottom: {
+      name: 'paddingBottom',
+      description: 'The bottom padding of the `MenuGroup` component.',
+      table: {
+        category: 'MenuGroup',
+        defaultValue: { summary: 'l' },
+      },
+      options: ['s', 'm', 'l'],
+      control: { type: 'select' },
+    },
+    MenuGroupSticky: {
+      name: 'sticky',
+      description: 'The sticky of the `MenuGroup` component.',
+      table: {
+        category: 'MenuGroup',
+      },
+      control: { type: 'boolean' },
+    },
     multiple: {
       control: { type: 'boolean' },
     },
@@ -143,10 +167,10 @@ const meta: Meta<typeof AutocompleteField> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof AutocompleteField>;
+type Story = StoryObj<Args>;
 
 export const Demo: Story = {
-  render: function Render(args, { globals: { locale } }) {
+  render: function Render(args: Args, { globals: { locale } }: StoryContext<unknown>) {
     const [options, setOptions] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
 
@@ -259,7 +283,7 @@ export const Demo: Story = {
 
 /** We can group the options with the `groupBy` prop. Make sure that the options are also sorted with the same dimension that they are grouped by, otherwise, you will notice duplicate headers. */
 export const Groups: Story = {
-  render: function Render(_args, { globals: { locale } }) {
+  render: function Render(args: Args, { globals: { locale } }: StoryContext<unknown>) {
     const [options, setOptions] = useState<User[]>([]);
     const [users, setUsers] = useState<User[]>([]);
 
@@ -276,6 +300,10 @@ export const Groups: Story = {
         <AutocompleteField<User>
           fullWidth
           multiple
+          MenuGroupProps={{
+            paddingBottom: args.MenuGroupPaddingBottom,
+            sticky: args.MenuGroupSticky,
+          }}
           getOptionLabel={getUserLabel}
           getOptionValue={getUserValue}
           groupBy={(user) => {
@@ -293,7 +321,7 @@ export const Groups: Story = {
 };
 
 export const Customization: Story = {
-  render: function Render(_args, { globals: { locale } }) {
+  render: function Render(_args: Args, { globals: { locale } }: StoryContext<unknown>) {
     const [options, setOptions] = useState<User[]>([]);
     const [users, setUsers] = useState<User[]>([]);
 
@@ -324,7 +352,7 @@ export const Customization: Story = {
 };
 
 export const Controlled: Story = {
-  render: function Render(_args, { globals: { locale } }) {
+  render: function Render(_args: Args, { globals: { locale } }: StoryContext<unknown>) {
     const [open, setOpen] = useState(false);
     const [options, setOptions] = useState<User[]>([]);
     const [users, setUsers] = useState<User[]>([]);
