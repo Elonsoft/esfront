@@ -9,6 +9,8 @@ export type AutocompleteMenuClasses = {
   menuList: string;
   /** Styles applied to the menu group element. */
   menuGroup: string;
+  /** Styles applied to the menu group divider element. */
+  menuGroupDivider: string;
   /** Styles applied to the menu item element. */
   menuItem: string;
   /** Styles applied to the menu item text element. */
@@ -31,6 +33,7 @@ export const autocompleteMenuClasses: AutocompleteMenuClasses = generateUtilityC
   'paper',
   'menuList',
   'menuGroup',
+  'menuGroupDivider',
   'menuItem',
   'menuItemText',
   'sentinel',

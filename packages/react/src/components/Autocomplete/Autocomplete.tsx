@@ -114,6 +114,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     getOptionLabel,
     getOptionDisabled,
     groupBy,
+    MenuGroupProps,
 
     loading,
     inlineSearch,
@@ -354,6 +355,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
               value: T[];
             })}
         disableRestoreFocus
+        MenuGroupProps={MenuGroupProps}
         SearchProps={SearchProps}
         actions={actions}
         anchorEl={ref.current}
