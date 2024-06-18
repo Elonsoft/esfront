@@ -453,7 +453,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                               <Button
                                 aria-label={labelSearchClear}
                                 color="monoA"
-                                size="24"
+                                size="300"
                                 onClick={() => {
                                   if (SearchProps.onChange) {
                                     SearchProps.onChange({ target: { value: '' } } as never);

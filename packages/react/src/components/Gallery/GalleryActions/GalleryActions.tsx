@@ -96,7 +96,7 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
         <GalleryActionsButtonThumbnails
           aria-label={labelThumbnails}
           className={clsx(classes.buttonThumbnails)}
-          size="40"
+          size="500"
           onClick={onThumbnailsClick}
         >
           {iconThumbnails}
@@ -107,7 +107,7 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
         <GalleryActionsButtonClose
           aria-label={labelClose}
           className={clsx(classes.buttonClose)}
-          size="40"
+          size="500"
           onClick={onClose}
         >
           {iconClose}

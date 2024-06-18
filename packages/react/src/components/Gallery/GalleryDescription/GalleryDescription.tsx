@@ -229,7 +229,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
           className={classes.button}
           color="white"
           ownerState={ownerState}
-          size="24"
+          size="300"
           style={!isExpanded && !isTruncated ? { display: 'none' } : {}}
         >
           {isExpanded ? iconCollapse : iconExpand}

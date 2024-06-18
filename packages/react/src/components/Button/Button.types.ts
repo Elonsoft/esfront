@@ -64,7 +64,7 @@ export interface ButtonOwnProps {
    * `small` is equivalent to the dense button styling.
    * @default 'medium'
    */
-  size?: OverridableStringUnion<'16' | '20' | '24' | '32' | '40' | '48' | '56', ButtonPropsSizeOverrides>;
+  size?: OverridableStringUnion<'100' | '200' | '300' | '400' | '500' | '600' | '700', ButtonPropsSizeOverrides>;
   /**
    * Element placed before the children.
    */

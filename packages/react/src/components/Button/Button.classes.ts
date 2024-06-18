@@ -8,13 +8,13 @@ export type ButtonClasses = {
 
   rounded: string;
 
-  size16: string;
-  size20: string;
-  size24: string;
-  size32: string;
-  size40: string;
-  size48: string;
-  size56: string;
+  size100: string;
+  size200: string;
+  size300: string;
+  size400: string;
+  size500: string;
+  size600: string;
+  size700: string;
 
   variantText: string;
   variantOutlined: string;
@@ -46,13 +46,13 @@ export const buttonClasses: ButtonClasses = generateUtilityClasses('ESButton', [
   'root',
   'fullWidth',
   'rounded',
-  'size16',
-  'size20',
-  'size24',
-  'size32',
-  'size40',
-  'size48',
-  'size56',
+  'size100',
+  'size200',
+  'size300',
+  'size400',
+  'size500',
+  'size600',
+  'size700',
   'variantText',
   'variantOutlined',
   'variantContained',

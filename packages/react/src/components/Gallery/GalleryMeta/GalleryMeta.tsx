@@ -91,7 +91,7 @@ export const GalleryMeta = (inProps: GalleryMetaProps) => {
   return (
     <GalleryMetaRoot className={clsx(classes.root, className)} sx={sx}>
       <GalleryTooltip arrow title={labelClose || ''}>
-        <GalleryMetaButtonClose aria-label={labelClose} className={classes.buttonClose} size="40" onClick={onClose}>
+        <GalleryMetaButtonClose aria-label={labelClose} className={classes.buttonClose} size="500" onClick={onClose}>
           {iconClose}
         </GalleryMetaButtonClose>
       </GalleryTooltip>

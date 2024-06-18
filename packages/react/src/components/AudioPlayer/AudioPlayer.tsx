@@ -1035,7 +1035,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
   return (
     <AudioPlayerRoot className={clsx(classes.root, className)} sx={sx}>
-      <AudioPlayerIconButton aria-label={isPlaying ? labelPause : labelPlay} size="32" onClick={onTogglePlay}>
+      <AudioPlayerIconButton aria-label={isPlaying ? labelPause : labelPlay} size="400" onClick={onTogglePlay}>
         {isPlaying ? iconPause : iconPlay}
       </AudioPlayerIconButton>
       <AudioPlayerTime className={classes.time} variant="caption">
@@ -1102,7 +1102,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
         <AudioPlayerVolumeButton
           aria-label={isMuted || volume === 0 ? labelUnmute : labelMute}
           className={classes.iconButton}
-          size="32"
+          size="400"
           onClick={onToggleMute}
         >
           {isMuted || volume === 0 ? iconVolumeOff : volume <= 50 ? iconVolumeLow : iconVolumeHigh}
@@ -1179,7 +1179,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
           ref={menuButtonRef}
           aria-label={labelOptions}
           className={classes.iconButton}
-          size="32"
+          size="400"
           onClick={onMenuClick}
         >
           {iconOptions}

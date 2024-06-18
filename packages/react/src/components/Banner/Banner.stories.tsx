@@ -101,7 +101,7 @@ export const Demo: Story = {
                       ? 'black'
                       : 'monoB'
                 }
-                size="32"
+                size="400"
               >
                 <IconCloseW600
                   sx={{ color: args.variant === 'monoB' || args.color === 'monoA' ? 'monoA.A500' : 'inherit' }}
@@ -120,7 +120,7 @@ export const Demo: Story = {
                         ? 'black'
                         : 'monoB'
                   }
-                  size="32"
+                  size="400"
                   sx={{ mr: '8px' }}
                   variant="contained"
                 >
@@ -134,7 +134,7 @@ export const Demo: Story = {
                         ? 'black'
                         : 'monoB'
                   }
-                  size="32"
+                  size="400"
                   variant="text"
                 >
                   {getCancelButtonText(context)}

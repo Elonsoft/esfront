@@ -55,7 +55,7 @@ export const AlertClose = (inProps: AlertCloseProps) => {
       aria-label={label}
       className={clsx(classes.root, className)}
       color="tertiary"
-      size="24"
+      size="300"
       sx={sx}
       onClick={onClick}
     >

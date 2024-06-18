@@ -166,7 +166,7 @@ const SidebarItemSecondaryAction = styled(Button, {
     '--pressed': theme.vars.palette.monoB.A150,
   }),
 
-  [`&.${buttonClasses.size24} .${ESbuttonBaseClasses.wrapper}`]: {
+  [`&.${buttonClasses.size300} .${ESbuttonBaseClasses.wrapper}`]: {
     padding: '0px 8px',
   },
 
@@ -522,7 +522,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
               aria-label={isNestedMenuOpen ? labelHide : labelOpen}
               className={clsx(classes.secondaryAction)}
               ownerState={ownerState}
-              size="24"
+              size="300"
               onClick={onNestedMenuClick}
             >
               {iconToggle}

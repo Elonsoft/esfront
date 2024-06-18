@@ -52,7 +52,7 @@ export const Children: Story = {
         <Tooltip arrow placement="top" title="John Sharp">
           <Avatar alt="John Sharp" src="./avatar/5.png" />
         </Tooltip>
-        <Button color="tertiary" size="56" variant="contained">
+        <Button color="tertiary" size="700" variant="contained">
           +5
         </Button>
       </AvatarGroup>

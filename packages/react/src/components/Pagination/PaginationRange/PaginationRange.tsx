@@ -131,7 +131,7 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
         className={clsx(classes.button, className)}
         color="tertiary"
         endIcon={iconItemsPerPage}
-        size="32"
+        size="400"
         onClick={onClickListItem}
       >
         <Typography variant="caption">{itemsPerPage}</Typography>

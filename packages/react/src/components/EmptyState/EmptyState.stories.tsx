@@ -99,7 +99,7 @@ export const Action: Story = {
         icon={getIcon(args)}
         subheading={getSubheading(args, context)}
       >
-        <Button color="primary" size={args.size === 'small' ? '32' : '40'} variant="outlined">
+        <Button color="primary" size={args.size === 'small' ? '400' : '500'} variant="outlined">
           {getAction(args, context)}
         </Button>
       </EmptyState>

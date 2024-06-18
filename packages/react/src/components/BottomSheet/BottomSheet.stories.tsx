@@ -112,10 +112,10 @@ export const Demo: Story = {
             </Typography>
           </DialogContent>
           <DialogActions sticky>
-            <Button fullWidth color="monoA" size="40" variant="outlined" onClick={onClose}>
+            <Button fullWidth color="monoA" size="500" variant="outlined" onClick={onClose}>
               {getCancelButtonText(context)}
             </Button>
-            <Button fullWidth color="primary" size="40" variant="contained">
+            <Button fullWidth color="primary" size="500" variant="contained">
               {getCreateButtonText(context)}
             </Button>
           </DialogActions>

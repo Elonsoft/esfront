@@ -43,7 +43,7 @@ const FileInfoNameButton = styled(Button, {
   marginLeft: 4,
   borderRadius: '50%',
 
-  [`&.${buttonClasses.size24} .${buttonBaseClasses.wrapper}`]: {
+  [`&.${buttonClasses.size300} .${buttonBaseClasses.wrapper}`]: {
     padding: '0px 4px',
   },
 }));
@@ -69,7 +69,7 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
     <FileInfoNameRoot className={clsx(classes.root, className)}>
       {children}
       {!!onDelete && (
-        <FileInfoNameButton aria-label={labelDelete} className={classes.button} size="24" sx={sx} onClick={onDelete}>
+        <FileInfoNameButton aria-label={labelDelete} className={classes.button} size="300" sx={sx} onClick={onDelete}>
           {iconDelete}
         </FileInfoNameButton>
       )}

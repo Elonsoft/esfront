@@ -258,7 +258,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
                   aria-label={`${item.type === 'next' ? labelNextPage : labelPrevPage}`}
                   className={classes.button}
                   disabled={item.disabled}
-                  size="32"
+                  size="400"
                   onClick={item.onClick}
                 >
                   {item.type === 'previous' ? iconPrevPage : iconNextPage}
