@@ -144,7 +144,7 @@ export const DemoList: Story = {
           <Divider />
           <ListItem>
             <ListItemText>{getActionText(context)}</ListItemText>
-            <Button color="tertiary" size="32" sx={{ borderRadius: '50%' }}>
+            <Button color="tertiary" size="400" sx={{ borderRadius: '50%' }}>
               <IconDotsVerticalW400 />
             </Button>
           </ListItem>

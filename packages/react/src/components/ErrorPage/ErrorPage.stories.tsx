@@ -49,10 +49,10 @@ export const Demo: Story = {
           </ErrorPageDescription>
 
           <ErrorPageActions>
-            <Button color="tertiary" size="48" startIcon={<IconArrowLeftW500 />} variant="outlined">
+            <Button color="tertiary" size="600" startIcon={<IconArrowLeftW500 />} variant="outlined">
               {locale === 'ru' ? 'Назад' : 'Back'}
             </Button>
-            <Button color="primary" size="48" variant="outlined">
+            <Button color="primary" size="600" variant="outlined">
               {locale === 'ru' ? 'На главную' : 'Go to home'}
             </Button>
           </ErrorPageActions>

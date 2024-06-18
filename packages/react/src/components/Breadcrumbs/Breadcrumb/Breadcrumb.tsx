@@ -111,7 +111,7 @@ const BreadcrumbContent = styled(Button, {
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
 })(({ theme }) => ({
-  [`&.${buttonClasses.size24} .${buttonBaseClasses.wrapper}`]: {
+  [`&.${buttonClasses.size300} .${buttonBaseClasses.wrapper}`]: {
     ...theme.typography.caption,
     padding: 0,
   },
@@ -194,7 +194,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
               color="monoA"
               disabled={disabled}
               itemProp={position ? 'item' : undefined}
-              size="24"
+              size="300"
               {...props}
             >
               {position ? (

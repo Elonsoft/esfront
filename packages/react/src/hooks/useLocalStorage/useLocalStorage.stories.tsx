@@ -32,7 +32,7 @@ export const Demo: Story = {
           value={value || ''}
           onChange={(event) => update(event.target.value)}
         />
-        <Button color="primary" size="32" variant="contained" onClick={() => remove()}>
+        <Button color="primary" size="400" variant="contained" onClick={() => remove()}>
           Remove
         </Button>
       </Box>

@@ -27,7 +27,7 @@ export const Demo: Story = {
 
     return (
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
-        <Button color="primary" size="32" variant="contained" onClick={onVibrate}>
+        <Button color="primary" size="400" variant="contained" onClick={onVibrate}>
           Vibrate
         </Button>
       </Box>

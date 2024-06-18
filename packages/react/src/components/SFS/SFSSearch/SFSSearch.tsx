@@ -157,7 +157,7 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
                 aria-label={labelClear}
                 className={classes.clear}
                 color="monoA"
-                size="24"
+                size="300"
               >
                 {iconClear}
               </SFSSearchClear>

@@ -186,7 +186,7 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
             aria-label={labelClose}
             className={classes.closeButton}
             color="tertiary"
-            size="40"
+            size="500"
             onClick={onClose}
           >
             {iconClose}
@@ -201,7 +201,7 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
               fullWidth
               className={classes.resetButton}
               color="error"
-              size="48"
+              size="600"
               variant="outlined"
               onClick={onReset}
             >

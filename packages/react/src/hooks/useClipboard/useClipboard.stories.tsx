@@ -39,11 +39,11 @@ export const Demo: Story = {
     return (
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
         <TextField fullWidth label="Value" size="40" value={value} onChange={(event) => setValue(event.target.value)} />
-        <Button color="primary" size="32" variant="contained" onClick={onCopy}>
+        <Button color="primary" size="400" variant="contained" onClick={onCopy}>
           Copy
         </Button>
         {isReadSupported && (
-          <Button color="primary" size="32" variant="contained" onClick={onPaste}>
+          <Button color="primary" size="400" variant="contained" onClick={onPaste}>
             Paste
           </Button>
         )}

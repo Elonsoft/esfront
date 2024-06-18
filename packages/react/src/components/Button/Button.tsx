@@ -340,30 +340,30 @@ const ButtonRoot = styled(ButtonBase, {
     },
   },
   [`&.${buttonClasses.rounded} `]: {
-    [`&.${buttonClasses.size16} `]: {
+    [`&.${buttonClasses.size100} `]: {
       borderRadius: '16px',
     },
-    [`&.${buttonClasses.size20} `]: {
+    [`&.${buttonClasses.size200} `]: {
       borderRadius: '20px',
     },
-    [`&.${buttonClasses.size24} `]: {
+    [`&.${buttonClasses.size300} `]: {
       borderRadius: '24px',
     },
-    [`&.${buttonClasses.size32} `]: {
+    [`&.${buttonClasses.size400} `]: {
       borderRadius: '32px',
     },
-    [`&.${buttonClasses.size40} `]: {
+    [`&.${buttonClasses.size500} `]: {
       borderRadius: '40px',
     },
-    [`&.${buttonClasses.size48} `]: {
+    [`&.${buttonClasses.size600} `]: {
       borderRadius: '48px',
     },
-    [`&.${buttonClasses.size56} `]: {
+    [`&.${buttonClasses.size700} `]: {
       borderRadius: '56px',
     },
   },
 
-  [`&.${buttonClasses.size16} .${buttonBaseClasses.wrapper}`]: {
+  [`&.${buttonClasses.size100} .${buttonBaseClasses.wrapper}`]: {
     ...theme.typography.mini100,
     fontWeight: 400,
     height: 16,
@@ -382,7 +382,7 @@ const ButtonRoot = styled(ButtonBase, {
       margin: '0 -4px',
     },
   },
-  [`&.${buttonClasses.size20} .${buttonBaseClasses.wrapper}`]: {
+  [`&.${buttonClasses.size200} .${buttonBaseClasses.wrapper}`]: {
     ...theme.typography.caption,
     fontWeight: 400,
     height: 20,
@@ -401,7 +401,7 @@ const ButtonRoot = styled(ButtonBase, {
       margin: '0 -4px',
     },
   },
-  [`&.${buttonClasses.size24} .${buttonBaseClasses.wrapper}`]: {
+  [`&.${buttonClasses.size300} .${buttonBaseClasses.wrapper}`]: {
     ...theme.typography.body100,
     fontWeight: 400,
     height: 24,
@@ -420,7 +420,7 @@ const ButtonRoot = styled(ButtonBase, {
       margin: '0 -4px',
     },
   },
-  [`&.${buttonClasses.size32}`]: {
+  [`&.${buttonClasses.size400}`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       ...theme.typography.body100,
       height: 32,
@@ -446,7 +446,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size40}`]: {
+  [`&.${buttonClasses.size500}`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 40,
       padding: '0 16px',
@@ -469,7 +469,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size48}`]: {
+  [`&.${buttonClasses.size600}`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 48,
       padding: '0 16px',
@@ -492,7 +492,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size56}`]: {
+  [`&.${buttonClasses.size700}`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 56,
       padding: '0 20px',
@@ -546,7 +546,7 @@ export const Button = forwardRef(function Button(inProps, ref) {
     sx,
     fullWidth,
     color = 'tertiary',
-    size = '40',
+    size = '500',
     variant = 'text',
     rounded = false,
     startIcon,

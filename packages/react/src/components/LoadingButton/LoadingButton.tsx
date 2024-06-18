@@ -76,12 +76,12 @@ const LoadingButtonLoadingIndicator = styled('span', {
 
 export const getLoadingButtonSpinnerSize = (size: ButtonOwnProps['size']) => {
   switch (size) {
-    case '16':
+    case '100':
       return 10;
-    case '20':
+    case '200':
       return 12;
-    case '24':
-    case '32':
+    case '300':
+    case '400':
       return 16;
     default:
       return 24;

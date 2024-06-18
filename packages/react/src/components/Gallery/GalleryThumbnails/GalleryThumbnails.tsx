@@ -120,7 +120,7 @@ const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?:
 
   return (
     <GalleryThumbnailsButton ownerState={{ step: -1 }} onClick={onClick} onPointerDown={onPointerDown}>
-      <Button aria-label={label} size="32">
+      <Button aria-label={label} size="400">
         {icon}
       </Button>
     </GalleryThumbnailsButton>
@@ -140,7 +140,7 @@ const GalleryThumbnailsButtonNext = ({ icon, label }: { icon: ReactNode; label?:
 
   return (
     <GalleryThumbnailsButton ownerState={{ step: 1 }} onClick={onClick} onPointerDown={onPointerDown}>
-      <Button aria-label={label} size="32">
+      <Button aria-label={label} size="400">
         {icon}
       </Button>
     </GalleryThumbnailsButton>

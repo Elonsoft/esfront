@@ -90,10 +90,10 @@ export const Demo: Story = {
         actions={
           !!args.actions && (
             <AlertActions>
-              <Button color="tertiary" size="32" sx={{ mr: '8px' }} variant="contained">
+              <Button color="tertiary" size="400" sx={{ mr: '8px' }} variant="contained">
                 {getButtonText(context)}
               </Button>
-              <Button color="tertiary" size="32" variant="text">
+              <Button color="tertiary" size="400" variant="text">
                 {getCancelButtonText(context)}
               </Button>
             </AlertActions>

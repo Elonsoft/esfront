@@ -32,7 +32,7 @@ export const Demo: Story = {
           value={cookie}
           onChange={(event) => updateCookie(event.target.value)}
         />
-        <Button color="primary" size="32" variant="contained" onClick={removeCookie}>
+        <Button color="primary" size="400" variant="contained" onClick={removeCookie}>
           Remove cookie
         </Button>
       </Box>

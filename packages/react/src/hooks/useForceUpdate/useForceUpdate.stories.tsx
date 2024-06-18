@@ -34,7 +34,7 @@ export const Demo: Story = {
 
     return (
       <>
-        <Button color="primary" size="32" variant="contained" onClick={update}>
+        <Button color="primary" size="400" variant="contained" onClick={update}>
           Update
         </Button>
         <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">

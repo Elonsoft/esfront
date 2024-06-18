@@ -38,7 +38,7 @@ export const Demo: Story = {
       <div>
         <Button
           color="primary"
-          size="32"
+          size="400"
           variant="contained"
           onClick={() => {
             if (ref.current) {

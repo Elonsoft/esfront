@@ -161,7 +161,7 @@ const SortingDirectionButton = styled(Button, {
     borderRadius: 0,
     padding: 0,
 
-    [`&.${buttonClasses.size32}`]: {
+    [`&.${buttonClasses.size400}`]: {
       '--pressed': 'inherit',
       '--hovered': 'inherit',
     },
@@ -408,7 +408,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
             disableTouchRipple
             className={classes.directionButton}
             color="tertiary"
-            size="32"
+            size="400"
             tabIndex={-1}
             onClick={onChangeSortDirection(item.value)}
             onMouseDown={onStopRipple}

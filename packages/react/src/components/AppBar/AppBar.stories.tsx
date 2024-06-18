@@ -49,14 +49,14 @@ export const Demo: Story = {
           {...args}
           endAdornment={
             endAdornment ? (
-              <Button color="tertiary" size="40">
+              <Button color="tertiary" size="500">
                 <IconCheckW500 />
               </Button>
             ) : null
           }
           startAdornment={
             startAdornment ? (
-              <Button color="tertiary" size="40">
+              <Button color="tertiary" size="500">
                 <IconArrowLeftW500 />
               </Button>
             ) : null

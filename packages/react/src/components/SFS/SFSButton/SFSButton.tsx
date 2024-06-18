@@ -91,5 +91,5 @@ export const SFSButton = forwardRef(function SFSButton(inProps, ref) {
 
   const classes = useUtilityClasses(ownerState);
 
-  return <SFSButtonRoot ref={ref} classes={classes} color="tertiary" size="32" {...props} />;
+  return <SFSButtonRoot ref={ref} classes={classes} color="tertiary" size="400" {...props} />;
 }) as ExtendButton<SFSButtonTypeMap>;

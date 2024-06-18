@@ -131,10 +131,10 @@ export const Demo: Story = {
               </Typography>
             </DialogContent>
             <DialogActions sticky={args.DialogActionsSticky}>
-              <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
+              <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
                 {getCancelButtonText(context)}
               </Button>
-              <Button color="primary" size="40" variant="contained" onClick={() => close(true)}>
+              <Button color="primary" size="500" variant="contained" onClick={() => close(true)}>
                 {getCreateButtonText(context)}
               </Button>
             </DialogActions>
@@ -172,10 +172,10 @@ export const Alignment: Story = {
               </Typography>
             </DialogContent>
             <DialogActions sticky={args.DialogActionsSticky}>
-              <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
+              <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
                 {getCancelButtonText(context)}
               </Button>
-              <Button color="primary" size="40" variant="contained" onClick={() => close(true)}>
+              <Button color="primary" size="500" variant="contained" onClick={() => close(true)}>
                 {getCreateButtonText(context)}
               </Button>
             </DialogActions>
@@ -247,10 +247,10 @@ export const FullScreen: Story = {
               </Typography>
             </DialogContent>
             <DialogActions sticky={args.DialogActionsSticky}>
-              <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
+              <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
                 {getCancelButtonText(context)}
               </Button>
-              <Button color="primary" size="40" variant="contained" onClick={() => close(true)}>
+              <Button color="primary" size="500" variant="contained" onClick={() => close(true)}>
                 {getCreateButtonText(context)}
               </Button>
             </DialogActions>
@@ -289,10 +289,10 @@ export const Stack: Story = {
             </Typography>
           </DialogContent>
           <DialogActions>
-            <Button color="tertiary" size="40" variant="outlined" onClick={() => close()}>
+            <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
               {getCancelButtonText(context)}
             </Button>
-            <Button color="primary" size="40" variant="contained" onClick={onOpen(i + 1)}>
+            <Button color="primary" size="500" variant="contained" onClick={onOpen(i + 1)}>
               {getOpenButtonText(context)}
             </Button>
           </DialogActions>

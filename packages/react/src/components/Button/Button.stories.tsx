@@ -113,11 +113,11 @@ export const Demo: Story = {
   ) => {
     const text = getText(context);
     const icon =
-      args.size === '16' ? (
+      args.size === '100' ? (
         <IconChevronDownW400 size="12px" />
-      ) : args.size === '20' ? (
+      ) : args.size === '200' ? (
         <IconChevronDownW400 size="16px" />
-      ) : args.size === '24' ? (
+      ) : args.size === '300' ? (
         <IconChevronDownW400 size="20px" />
       ) : (
         <IconChevronDownW400 />
