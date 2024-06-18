@@ -9,7 +9,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import MenuList from '@mui/material/MenuList';
-import Slider, { sliderClasses } from '@mui/material/Slider';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
@@ -34,6 +33,7 @@ import { Button } from '../Button';
 import { Divider, dividerClasses } from '../Divider';
 import { ListItemIcon, ListItemText, listItemTextClasses } from '../ListItem';
 import { MenuItem } from '../MenuItem';
+import { Slider, sliderClasses } from '../Slider';
 
 import { Instance } from '@popperjs/core';
 
