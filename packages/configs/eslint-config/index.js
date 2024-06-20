@@ -217,6 +217,13 @@ module.exports = {
         ],
       },
     ],
+    'no-restricted-properties': [
+      'error',
+      {
+        object: 'theme',
+        property: 'palette',
+      },
+    ],
     'no-return-assign': 'error',
     'no-unneeded-ternary': 'error',
     'no-unused-expressions': 'error',

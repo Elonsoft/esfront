@@ -62,6 +62,7 @@ const SpinnerFadingRingCircle = styled('div', {
   width: '100%',
   height: '100%',
   background: `conic-gradient(from 187deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
+    // eslint-disable-next-line no-restricted-properties
     theme.palette.mode,
     0.5
   )}) 61deg, ${ownerState.spinnerColor} 360deg)`,

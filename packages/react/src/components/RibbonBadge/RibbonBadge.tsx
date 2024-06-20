@@ -90,7 +90,7 @@ const BadgeRoot = styled(ButtonBase, {
     '--focused': theme.vars.palette.monoA.A200,
 
     '&:after': {
-      borderColor: theme.palette.success[400],
+      borderColor: theme.vars.palette.success[400],
     },
   },
 
@@ -102,7 +102,7 @@ const BadgeRoot = styled(ButtonBase, {
     '--pressed': theme.vars.palette.monoA.A150,
 
     '&:after': {
-      borderColor: theme.palette.monoB.A800,
+      borderColor: theme.vars.palette.monoB.A800,
     },
   },
   [`&.${ribbonBadgeClasses.colorPrimary}`]: {
@@ -113,7 +113,7 @@ const BadgeRoot = styled(ButtonBase, {
     '--pressed': theme.vars.palette.monoA.A150,
 
     '&:after': {
-      borderColor: theme.palette.primary[400],
+      borderColor: theme.vars.palette.primary[400],
     },
   },
   [`&.${ribbonBadgeClasses.colorSecondary}`]: {
@@ -124,7 +124,7 @@ const BadgeRoot = styled(ButtonBase, {
     '--pressed': theme.vars.palette.monoA.A150,
 
     '&:after': {
-      borderColor: theme.palette.secondary[400],
+      borderColor: theme.vars.palette.secondary[400],
     },
   },
   [`&.${ribbonBadgeClasses.colorWarning}`]: {
@@ -135,7 +135,7 @@ const BadgeRoot = styled(ButtonBase, {
     '--pressed': theme.vars.palette.monoA.A150,
 
     '&:after': {
-      borderColor: theme.palette.warning[400],
+      borderColor: theme.vars.palette.warning[400],
     },
   },
   [`&.${ribbonBadgeClasses.colorError}`]: {
@@ -146,7 +146,7 @@ const BadgeRoot = styled(ButtonBase, {
     '--pressed': theme.vars.palette.monoA.A150,
 
     '&:after': {
-      borderColor: theme.palette.error[400],
+      borderColor: theme.vars.palette.error[400],
     },
   },
   [`&.${ribbonBadgeClasses.colorInfo}`]: {
@@ -157,7 +157,7 @@ const BadgeRoot = styled(ButtonBase, {
     '--pressed': theme.vars.palette.monoA.A150,
 
     '&:after': {
-      borderColor: theme.palette.info[400],
+      borderColor: theme.vars.palette.info[400],
     },
   },
 

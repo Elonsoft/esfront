@@ -29,7 +29,7 @@ const RadioIconRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: RadioIconOwnerState }>(({ theme }) => ({
-  boxShadow: `inset 0 0 0 2px ${theme.palette.monoA.A600}`,
+  boxShadow: `inset 0 0 0 2px ${theme.vars.palette.monoA.A600}`,
   borderRadius: '50%',
   display: 'flex',
   alignItems: 'center',

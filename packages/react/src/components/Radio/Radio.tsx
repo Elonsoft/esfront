@@ -73,12 +73,12 @@ const RadioRoot = styled(SwitchBase, {
   [`&:not(.${radioClasses.checked}):not(.${radioClasses.disabled})`]: {
     '&:hover': {
       [`& .${radioIconClasses.circle}`]: {
-        background: theme.palette.monoA.A400,
+        background: theme.vars.palette.monoA.A400,
       },
     },
     '&:active': {
       [`& .${radioIconClasses.circle}`]: {
-        background: theme.palette.monoA.A600,
+        background: theme.vars.palette.monoA.A600,
       },
     },
   },
@@ -131,7 +131,7 @@ const RadioRoot = styled(SwitchBase, {
 
   [`&.${radioClasses.variantOutlined}, &.${radioClasses.variantHybrid}`]: {
     [`& .${radioIconClasses.root}`]: {
-      boxShadow: `inset 0 0 0 1px ${theme.palette.monoA.A500}`,
+      boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A500}`,
     },
   },
 
@@ -142,7 +142,7 @@ const RadioRoot = styled(SwitchBase, {
         boxShadow: 'none',
       },
       [`& .${radioIconClasses.circle}`]: {
-        background: theme.palette.monoB[500],
+        background: theme.vars.palette.monoB[500],
       },
     },
     [`&.${radioClasses.variantOutlined}`]: {
@@ -153,10 +153,10 @@ const RadioRoot = styled(SwitchBase, {
   },
 
   background: 'transparent',
-  color: theme.palette.monoA.A600,
-  '--hovered': theme.palette.monoA.A50,
-  '--focused': theme.palette.monoA.A200,
-  '--pressed': theme.palette.monoA.A150,
+  color: theme.vars.palette.monoA.A600,
+  '--hovered': theme.vars.palette.monoA.A50,
+  '--focused': theme.vars.palette.monoA.A200,
+  '--pressed': theme.vars.palette.monoA.A150,
 
   [`&.${radioClasses.disabled}`]: {
     cursor: 'not-allowed',
@@ -166,159 +166,159 @@ const RadioRoot = styled(SwitchBase, {
 
   [`&.${radioClasses.colorSuccess}`]: {
     [`&.${radioClasses.checked}`]: {
-      color: theme.palette.success[300],
-      '--hovered': theme.palette.success.A50,
-      '--focused': theme.palette.success.A200,
-      '--pressed': theme.palette.success.A150,
+      color: theme.vars.palette.success[300],
+      '--hovered': theme.vars.palette.success.A50,
+      '--focused': theme.vars.palette.success.A200,
+      '--pressed': theme.vars.palette.success.A150,
     },
   },
 
   [`&.${radioClasses.colorMonoA}`]: {
     [`&, &.${radioClasses.checked}`]: {
-      color: theme.palette.monoA[500],
-      '--hover': theme.palette.monoA.A50,
-      '--focused': theme.palette.monoA.A200,
-      '--pressed': theme.palette.monoA.A150,
+      color: theme.vars.palette.monoA[500],
+      '--hover': theme.vars.palette.monoA.A50,
+      '--focused': theme.vars.palette.monoA.A200,
+      '--pressed': theme.vars.palette.monoA.A150,
     },
   },
   [`&.${radioClasses.colorMonoB}`]: {
     [`&, &.${radioClasses.checked}`]: {
-      color: theme.palette.monoB[500],
-      '--hovered': theme.palette.monoB.A50,
-      '--focused': theme.palette.monoB.A200,
-      '--pressed': theme.palette.monoB.A150,
+      color: theme.vars.palette.monoB[500],
+      '--hovered': theme.vars.palette.monoB.A50,
+      '--focused': theme.vars.palette.monoB.A200,
+      '--pressed': theme.vars.palette.monoB.A150,
     },
     [`&.${radioClasses.checked}`]: {
       [`&.${radioClasses.variantContained}, &.${radioClasses.variantHybrid}`]: {
         [`& .${radioIconClasses.root}`]: { boxShadow: 'none' },
         [`& .${radioIconClasses.circle}`]: {
-          background: theme.palette.monoA[500],
+          background: theme.vars.palette.monoA[500],
         },
       },
     },
     [`&.${radioClasses.variantOutlined}, &.${radioClasses.variantHybrid}`]: {
       [`& .${radioIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.monoA.A500}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A500}`,
       },
     },
     [`&.${radioClasses.variantContained}`]: {
       [`& .${radioIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 2px ${theme.palette.monoB.A600}`,
+        boxShadow: `inset 0 0 0 2px ${theme.vars.palette.monoB.A600}`,
       },
     },
   },
   [`&.${radioClasses.colorBlack}`]: {
     [`&, &.${radioClasses.checked}`]: {
-      color: theme.palette.black[500],
-      '--hover': theme.palette.black.A50,
-      '--focused': theme.palette.black.A200,
-      '--pressed': theme.palette.black.A150,
+      color: theme.vars.palette.black[500],
+      '--hover': theme.vars.palette.black.A50,
+      '--focused': theme.vars.palette.black.A200,
+      '--pressed': theme.vars.palette.black.A150,
     },
     [`&.${radioClasses.checked}`]: {
       [`&.${radioClasses.variantContained}, &.${radioClasses.variantHybrid}`]: {
         [`& .${radioIconClasses.circle}`]: {
-          background: theme.palette.white[500],
+          background: theme.vars.palette.white[500],
         },
       },
     },
     [`&.${radioClasses.variantOutlined}, &.${radioClasses.variantHybrid}`]: {
       [`& .${radioIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.black.A500}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.black.A500}`,
       },
     },
     [`&.${radioClasses.variantContained}`]: {
       [`& .${radioIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 2px ${theme.palette.black.A600}`,
+        boxShadow: `inset 0 0 0 2px ${theme.vars.palette.black.A600}`,
       },
     },
   },
   [`&.${radioClasses.colorWhite}`]: {
     [`&, &.${radioClasses.checked}`]: {
-      color: theme.palette.white[500],
-      '--hover': theme.palette.white.A50,
-      '--focused': theme.palette.white.A200,
-      '--pressed': theme.palette.white.A150,
+      color: theme.vars.palette.white[500],
+      '--hover': theme.vars.palette.white.A50,
+      '--focused': theme.vars.palette.white.A200,
+      '--pressed': theme.vars.palette.white.A150,
     },
     [`&.${radioClasses.checked}`]: {
       [`&.${radioClasses.variantContained}, &.${radioClasses.variantHybrid}`]: {
         [`& .${radioIconClasses.circle}`]: {
-          background: theme.palette.black[500],
+          background: theme.vars.palette.black[500],
         },
       },
     },
     [`&.${radioClasses.variantOutlined}, &.${radioClasses.variantHybrid}`]: {
       [`& .${radioIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.white.A500}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.white.A500}`,
       },
     },
     [`&.${radioClasses.variantContained}`]: {
       [`& .${radioIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 2px ${theme.palette.white.A600}`,
+        boxShadow: `inset 0 0 0 2px ${theme.vars.palette.white.A600}`,
       },
     },
   },
   [`&.${radioClasses.colorPrimary}`]: {
     [`&.${radioClasses.checked}`]: {
-      color: theme.palette.primary[300],
-      '--hover': theme.palette.primary.A50,
-      '--focused': theme.palette.primary.A200,
-      '--pressed': theme.palette.primary.A150,
+      color: theme.vars.palette.primary[300],
+      '--hover': theme.vars.palette.primary.A50,
+      '--focused': theme.vars.palette.primary.A200,
+      '--pressed': theme.vars.palette.primary.A150,
     },
   },
   [`&.${radioClasses.colorSecondary}`]: {
     [`&.${radioClasses.checked}`]: {
-      color: theme.palette.secondary[300],
-      '--hover': theme.palette.secondary.A50,
-      '--focused': theme.palette.secondary.A200,
-      '--pressed': theme.palette.secondary.A150,
+      color: theme.vars.palette.secondary[300],
+      '--hover': theme.vars.palette.secondary.A50,
+      '--focused': theme.vars.palette.secondary.A200,
+      '--pressed': theme.vars.palette.secondary.A150,
     },
   },
   [`&.${radioClasses.colorWarning}`]: {
     [`&.${radioClasses.checked}`]: {
-      color: theme.palette.warning[300],
-      '--hovered': theme.palette.warning.A50,
-      '--focused': theme.palette.warning.A200,
-      '--pressed': theme.palette.warning.A150,
+      color: theme.vars.palette.warning[300],
+      '--hovered': theme.vars.palette.warning.A50,
+      '--focused': theme.vars.palette.warning.A200,
+      '--pressed': theme.vars.palette.warning.A150,
     },
   },
   [`&.${radioClasses.colorError}`]: {
     [`&.${radioClasses.checked}`]: {
-      color: theme.palette.error[300],
-      '--hovered': theme.palette.error.A50,
-      '--focused': theme.palette.error.A200,
-      '--pressed': theme.palette.error.A150,
+      color: theme.vars.palette.error[300],
+      '--hovered': theme.vars.palette.error.A50,
+      '--focused': theme.vars.palette.error.A200,
+      '--pressed': theme.vars.palette.error.A150,
     },
   },
   [`&.${radioClasses.colorInfo}`]: {
     [`&.${radioClasses.checked}`]: {
-      color: theme.palette.info[300],
-      '--hovered': theme.palette.info.A50,
-      '--focused': theme.palette.info.A200,
-      '--pressed': theme.palette.info.A150,
+      color: theme.vars.palette.info[300],
+      '--hovered': theme.vars.palette.info.A50,
+      '--focused': theme.vars.palette.info.A200,
+      '--pressed': theme.vars.palette.info.A150,
     },
   },
   [`&.${radioClasses.error}`]: {
     [`&, &.${radioClasses.checked}`]: {
-      color: theme.palette.error[300],
-      '--hovered': theme.palette.error.A50,
-      '--focused': theme.palette.error.A200,
-      '--pressed': theme.palette.error.A150,
+      color: theme.vars.palette.error[300],
+      '--hovered': theme.vars.palette.error.A50,
+      '--focused': theme.vars.palette.error.A200,
+      '--pressed': theme.vars.palette.error.A150,
     },
     [`&.${radioClasses.checked}`]: {
       [`&.${radioClasses.variantContained}, &.${radioClasses.variantHybrid}`]: {
         [`& .${radioIconClasses.circle}`]: {
-          background: theme.palette.monoB[500],
+          background: theme.vars.palette.monoB[500],
         },
       },
     },
     [`&.${radioClasses.variantOutlined}, &.${radioClasses.variantHybrid}`]: {
       [`& .${radioIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.error[300]}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.error[300]}`,
       },
     },
     [`&.${radioClasses.variantContained}`]: {
       [`& .${radioIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 2px ${theme.palette.error[300]}`,
+        boxShadow: `inset 0 0 0 2px ${theme.vars.palette.error[300]}`,
       },
     },
   },

@@ -138,7 +138,7 @@ const SwitchRoot = styled('div', {
     },
   },
   [`&.${switchClasses.indeterminate}`]: {
-    color: theme.palette[color][300],
+    color: theme.vars.palette[color][300],
     [`&.${switchClasses.large}`]: {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(8px)',
@@ -179,14 +179,14 @@ const SwitchRoot = styled('div', {
     },
     [`& .${switchClasses.button}`]: {
       '&:hover': {
-        '--background': theme.palette[color].A50,
+        '--background': theme.vars.palette[color].A50,
 
         '@media (hover: none)': {
           '--background': 'transparent',
         },
       },
-      '--focused': theme.palette[color].A200,
-      '--pressed': theme.palette[color].A150,
+      '--focused': theme.vars.palette[color].A200,
+      '--pressed': theme.vars.palette[color].A150,
     },
   },
 }));
