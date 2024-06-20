@@ -91,14 +91,14 @@ const CheckboxRoot = styled(SwitchBase, {
     '&:hover': {
       '& svg': {
         '& path': {
-          stroke: theme.palette.monoA.A400,
+          stroke: theme.vars.palette.monoA.A400,
         },
       },
     },
     '&:active': {
       '& svg': {
         '& path': {
-          stroke: theme.palette.monoA.A600,
+          stroke: theme.vars.palette.monoA.A600,
         },
       },
     },
@@ -144,7 +144,7 @@ const CheckboxRoot = styled(SwitchBase, {
 
   [`&.${checkboxClasses.variantOutlined}, &.${checkboxClasses.variantHybrid}`]: {
     [`& .${checkboxIconClasses.root}`]: {
-      boxShadow: `inset 0 0 0 1px ${theme.palette.monoA.A500}`,
+      boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A500}`,
     },
   },
 
@@ -152,7 +152,7 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
       '& svg': {
         '& path': {
-          stroke: theme.palette.monoB[500],
+          stroke: theme.vars.palette.monoB[500],
         },
       },
       [`& .${checkboxIconClasses.root}`]: {
@@ -170,9 +170,9 @@ const CheckboxRoot = styled(SwitchBase, {
   },
 
   background: 'transparent',
-  color: theme.palette.monoA.A600,
-  '--hovered': theme.palette.monoA.A50,
-  '--focused': theme.palette.monoA.A200,
+  color: theme.vars.palette.monoA.A600,
+  '--hovered': theme.vars.palette.monoA.A50,
+  '--focused': theme.vars.palette.monoA.A200,
   '--pressed': theme.vars.palette.monoA.A150,
 
   [`&.${checkboxClasses.disabled}`]: {
@@ -183,9 +183,9 @@ const CheckboxRoot = styled(SwitchBase, {
 
   [`&.${checkboxClasses.colorSuccess}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.success[300],
-      '--hovered': theme.palette.success.A50,
-      '--focused': theme.palette.success.A200,
+      color: theme.vars.palette.success[300],
+      '--hovered': theme.vars.palette.success.A50,
+      '--focused': theme.vars.palette.success.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     },
   },
@@ -194,245 +194,245 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         '& path': {
-          stroke: theme.palette.monoA[500],
+          stroke: theme.vars.palette.monoA[500],
         },
       },
-      color: theme.palette.monoB[500],
-      '--hovered': theme.palette.monoB.A50,
-      '--focused': theme.palette.monoB.A200,
+      color: theme.vars.palette.monoB[500],
+      '--hovered': theme.vars.palette.monoB.A50,
+      '--focused': theme.vars.palette.monoB.A200,
       '--pressed': theme.vars.palette.monoB.A150,
     },
 
-    color: theme.palette.monoB.A600,
-    '--hovered': theme.palette.monoB.A50,
-    '--focused': theme.palette.monoB.A200,
+    color: theme.vars.palette.monoB.A600,
+    '--hovered': theme.vars.palette.monoB.A50,
+    '--focused': theme.vars.palette.monoB.A200,
     '--pressed': theme.vars.palette.monoB.A150,
 
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         [`& .${checkboxIconClasses.root}`]: {
-          boxShadow: `inset 0 0 0 2px ${theme.palette.monoB.A600}`,
+          boxShadow: `inset 0 0 0 2px ${theme.vars.palette.monoB.A600}`,
         },
       },
     },
     [`&.${checkboxClasses.variantOutlined}`]: {
       [`& .${checkboxIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.monoB.A600}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoB.A600}`,
       },
     },
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
       '&:hover': {
         '& svg': {
           '& path': {
-            stroke: theme.palette.monoB.A400,
+            stroke: theme.vars.palette.monoB.A400,
           },
         },
       },
       '&:active': {
         '& svg': {
           '& path': {
-            stroke: theme.palette.monoB.A600,
+            stroke: theme.vars.palette.monoB.A600,
           },
         },
       },
     },
     '&:focus': {
-      backgroundColor: theme.palette.monoB.A200,
+      backgroundColor: theme.vars.palette.monoB.A200,
     },
     '&:active': {
-      backgroundColor: theme.palette.monoB.A150,
+      backgroundColor: theme.vars.palette.monoB.A150,
     },
   },
   [`&.${checkboxClasses.colorBlack}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.black[500],
-      '--hovered': theme.palette.black.A50,
-      '--focused': theme.palette.black.A200,
+      color: theme.vars.palette.black[500],
+      '--hovered': theme.vars.palette.black.A50,
+      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
 
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         '& svg': {
           '& path': {
-            stroke: theme.palette.white[500],
+            stroke: theme.vars.palette.white[500],
           },
         },
       },
     },
-    color: theme.palette.black.A600,
-    '--hovered': theme.palette.black.A50,
-    '--focused': theme.palette.black.A200,
+    color: theme.vars.palette.black.A600,
+    '--hovered': theme.vars.palette.black.A50,
+    '--focused': theme.vars.palette.black.A200,
     '--pressed': theme.vars.palette.black.A150,
 
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
-      color: theme.palette.black[500],
-      '--hovered': theme.palette.black.A50,
-      '--focused': theme.palette.black.A200,
+      color: theme.vars.palette.black[500],
+      '--hovered': theme.vars.palette.black.A50,
+      '--focused': theme.vars.palette.black.A200,
       '--pressed': theme.vars.palette.black.A150,
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         [`& .${checkboxIconClasses.root}`]: {
-          boxShadow: `inset 0 0 0 2px ${theme.palette.black.A600}`,
+          boxShadow: `inset 0 0 0 2px ${theme.vars.palette.black.A600}`,
         },
       },
     },
     [`&.${checkboxClasses.variantOutlined}`]: {
       [`& .${checkboxIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.black.A600}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.black.A600}`,
       },
     },
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
       '&:hover': {
         '& svg': {
           '& path': {
-            stroke: theme.palette.black.A400,
+            stroke: theme.vars.palette.black.A400,
           },
         },
       },
       '&:active': {
         '& svg': {
           '& path': {
-            stroke: theme.palette.black.A600,
+            stroke: theme.vars.palette.black.A600,
           },
         },
       },
     },
     '&:focus': {
-      backgroundColor: theme.palette.black.A200,
+      backgroundColor: theme.vars.palette.black.A200,
     },
     '&:active': {
-      backgroundColor: theme.palette.black.A150,
+      backgroundColor: theme.vars.palette.black.A150,
     },
   },
   [`&.${checkboxClasses.colorWhite}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.white[500],
-      '--hovered': theme.palette.white.A50,
-      '--focused': theme.palette.white.A200,
+      color: theme.vars.palette.white[500],
+      '--hovered': theme.vars.palette.white.A50,
+      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
 
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         '& svg': {
           '& path': {
-            stroke: theme.palette.black[500],
+            stroke: theme.vars.palette.black[500],
           },
         },
       },
     },
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
-      color: theme.palette.white[500],
-      '--hovered': theme.palette.white.A50,
-      '--focused': theme.palette.white.A200,
+      color: theme.vars.palette.white[500],
+      '--hovered': theme.vars.palette.white.A50,
+      '--focused': theme.vars.palette.white.A200,
       '--pressed': theme.vars.palette.white.A150,
 
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         [`& .${checkboxIconClasses.root}`]: {
-          boxShadow: `inset 0 0 0 2px ${theme.palette.white.A600}`,
+          boxShadow: `inset 0 0 0 2px ${theme.vars.palette.white.A600}`,
         },
       },
     },
     [`&.${checkboxClasses.variantOutlined}`]: {
       [`& .${checkboxIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.white.A600}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.white.A600}`,
       },
     },
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
       '&:hover': {
         '& svg': {
           '& path': {
-            stroke: theme.palette.white.A400,
+            stroke: theme.vars.palette.white.A400,
           },
         },
       },
       '&:active': {
         '& svg': {
           '& path': {
-            stroke: theme.palette.white.A600,
+            stroke: theme.vars.palette.white.A600,
           },
         },
       },
     },
     '&:focus': {
-      backgroundColor: theme.palette.white.A200,
+      backgroundColor: theme.vars.palette.white.A200,
     },
     '&:active': {
-      backgroundColor: theme.palette.white.A150,
+      backgroundColor: theme.vars.palette.white.A150,
     },
   },
   [`&.${checkboxClasses.colorMonoA}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.monoA[500],
-      '--hovered': theme.palette.monoA.A50,
-      '--focused': theme.palette.monoA.A200,
+      color: theme.vars.palette.monoA[500],
+      '--hovered': theme.vars.palette.monoA.A50,
+      '--focused': theme.vars.palette.monoA.A200,
       '--pressed': theme.vars.palette.monoA.A150,
     },
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         [`& .${checkboxIconClasses.root}`]: {
-          boxShadow: `inset 0 0 0 2px ${theme.palette.monoA.A600}`,
+          boxShadow: `inset 0 0 0 2px ${theme.vars.palette.monoA.A600}`,
         },
       },
     },
     [`&.${checkboxClasses.variantOutlined}`]: {
       [`& .${checkboxIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.monoA.A600}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A600}`,
       },
     },
   },
   [`&.${checkboxClasses.colorPrimary}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.primary[300],
-      '--hovered': theme.palette.primary.A50,
-      '--focused': theme.palette.primary.A200,
+      color: theme.vars.palette.primary[300],
+      '--hovered': theme.vars.palette.primary.A50,
+      '--focused': theme.vars.palette.primary.A200,
       '--pressed': theme.vars.palette.primary.A150,
     },
   },
   [`&.${checkboxClasses.colorSecondary}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.secondary[300],
-      '--hovered': theme.palette.secondary.A50,
-      '--focused': theme.palette.secondary.A200,
+      color: theme.vars.palette.secondary[300],
+      '--hovered': theme.vars.palette.secondary.A50,
+      '--focused': theme.vars.palette.secondary.A200,
       '--pressed': theme.vars.palette.secondary.A150,
     },
   },
   [`&.${checkboxClasses.colorWarning}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.warning[300],
-      '--hovered': theme.palette.warning.A50,
-      '--focused': theme.palette.warning.A200,
+      color: theme.vars.palette.warning[300],
+      '--hovered': theme.vars.palette.warning.A50,
+      '--focused': theme.vars.palette.warning.A200,
       '--pressed': theme.vars.palette.warning.A150,
     },
   },
   [`&.${checkboxClasses.colorError}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.error[300],
-      '--hovered': theme.palette.error.A50,
-      '--focused': theme.palette.error.A200,
+      color: theme.vars.palette.error[300],
+      '--hovered': theme.vars.palette.error.A50,
+      '--focused': theme.vars.palette.error.A200,
       '--pressed': theme.vars.palette.error.A150,
     },
   },
   [`&.${checkboxClasses.colorInfo}`]: {
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.info[300],
-      '--hovered': theme.palette.info.A50,
-      '--focused': theme.palette.info.A200,
+      color: theme.vars.palette.info[300],
+      '--hovered': theme.vars.palette.info.A50,
+      '--focused': theme.vars.palette.info.A200,
       '--pressed': theme.vars.palette.info.A150,
     },
   },
   [`&.${checkboxClasses.error}`]: {
-    color: theme.palette.error[300],
-    '--hovered': theme.palette.error.A50,
-    '--focused': theme.palette.error.A200,
+    color: theme.vars.palette.error[300],
+    '--hovered': theme.vars.palette.error.A50,
+    '--focused': theme.vars.palette.error.A200,
     '--pressed': theme.vars.palette.error.A150,
 
     [`&.${checkboxClasses.checked}, &.${checkboxClasses.indeterminate}`]: {
-      color: theme.palette.error[300],
-      '--hovered': theme.palette.error.A50,
-      '--focused': theme.palette.error.A200,
+      color: theme.vars.palette.error[300],
+      '--hovered': theme.vars.palette.error.A50,
+      '--focused': theme.vars.palette.error.A200,
       '--pressed': theme.vars.palette.error.A150,
 
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         '& svg': {
           '& path': {
-            stroke: theme.palette.monoB[500],
+            stroke: theme.vars.palette.monoB[500],
           },
         },
       },
@@ -440,20 +440,20 @@ const CheckboxRoot = styled(SwitchBase, {
     [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.indeterminate})`]: {
       [`&.${checkboxClasses.variantContained}, &.${checkboxClasses.variantHybrid}`]: {
         [`& .${checkboxIconClasses.root}`]: {
-          boxShadow: `inset 0 0 0 2px ${theme.palette.error[300]}`,
+          boxShadow: `inset 0 0 0 2px ${theme.vars.palette.error[300]}`,
         },
       },
     },
     [`&.${checkboxClasses.variantOutlined}`]: {
       [`& .${checkboxIconClasses.root}`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.error[300]}`,
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.error[300]}`,
       },
     },
     '&:focus': {
-      backgroundColor: theme.palette.error.A200,
+      backgroundColor: theme.vars.palette.error.A200,
     },
     '&:active': {
-      backgroundColor: theme.palette.error.A150,
+      backgroundColor: theme.vars.palette.error.A150,
     },
   },
 }));

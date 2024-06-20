@@ -15,13 +15,13 @@ export const TableContainer = styled(MuiTableContainer)(() => ({
 
 export const TableRow = styled(MuiTableRow)(({ theme }) => ({
   [`&.${tableRowClasses.head}`]: {
-    backgroundColor: theme.palette.monoA.A50,
+    backgroundColor: theme.vars.palette.monoA.A50,
   },
   [`& .${tableCellClasses.root}`]: {
-    borderBottom: `1px solid ${theme.palette.monoA.A150}`,
+    borderBottom: `1px solid ${theme.vars.palette.monoA.A150}`,
   },
   [`&.${tableRowClasses.head}:last-child .${tableCellClasses.root}`]: {
-    borderBottom: `1px solid ${theme.palette.monoA.A150}`,
+    borderBottom: `1px solid ${theme.vars.palette.monoA.A150}`,
   },
 }));
 
@@ -33,8 +33,8 @@ export const TableCode = styled('code')(({ theme }) => ({
   display: 'inline-block',
   padding: '3px 5px',
   borderRadius: 3,
-  backgroundColor: theme.palette.monoA.A50,
-  border: `1px solid ${theme.palette.monoA.A150}`,
+  backgroundColor: theme.vars.palette.monoA.A50,
+  border: `1px solid ${theme.vars.palette.monoA.A150}`,
 }));
 
 export const getDescription = (c) => {

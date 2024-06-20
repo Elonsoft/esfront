@@ -59,6 +59,7 @@ const SpinnerFadingDoubleRingSpinnerLowerPath = styled('div', {
   overridesResolver: (props, styles) => styles.lowerPath,
 })<{ ownerState: SpinnerFadingDoubleRingPropsOwnerState }>(({ theme, ownerState }) => ({
   background: `conic-gradient(from 180deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
+    // eslint-disable-next-line no-restricted-properties
     theme.palette.mode,
     1
   )}) 246deg, ${ownerState.spinnerColor} 360deg)`,
@@ -72,6 +73,7 @@ const SpinnerFadingDoubleRingSpinnerUpperPath = styled('div', {
   overridesResolver: (props, styles) => styles.upperPath,
 })<{ ownerState: SpinnerFadingDoubleRingPropsOwnerState }>(({ theme, ownerState }) => ({
   background: `conic-gradient(from 0deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
+    // eslint-disable-next-line no-restricted-properties
     theme.palette.mode,
     1
   )}) 246deg, ${ownerState.spinnerColor} 360deg)`,
