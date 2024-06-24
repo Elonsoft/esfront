@@ -274,6 +274,8 @@ import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFi
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { buttonMixin, listItemMixin } from './theming/mixins';
 import { AvatarProps } from './components';
+import { BadgeProps, BadgeClassKey } from './components/Badge';
+import { BadgePlacementControlProps, BadgePlacementControlClassKey } from './components/BadgePlacementControl';
 
 export interface ISurfacePalette {
   background: string;
@@ -348,6 +350,7 @@ declare module '@mui/material/styles/props' {
     ESBannerActions: BannerActionsProps;
     ESBannerTitle: BannerTitleProps;
     ESBadge: BadgeProps;
+    ESBadgePlacementControl: BadgePlacementControlProps;
     ESBreadcrumbs: BreadcrumbsProps;
     ESBreadcrumb: BreadcrumbProps;
     ESBottomSheet: BottomSheetProps;
@@ -483,6 +486,7 @@ declare module '@mui/material/styles/overrides' {
     ESBannerActions: BannerActionsClassKey;
     ESBannerTitle: BannerTitleClassKey;
     ESBadge: BadgeClassKey;
+    ESBadgePlacementControl: BadgePlacementControlClassKey;
     ESBreadcrumbs: BreadcrumbsClassKey;
     ESBreadcrumb: BreadcrumbClassKey;
     ESBottomSheet: BottomSheetClassKey;
@@ -667,6 +671,10 @@ declare module '@mui/material/styles/components' {
     ESBadge?: {
       defaultProps?: ComponentsProps['ESBadge'];
       styleOverrides?: ComponentsOverrides['ESBadge'];
+    };
+    ESBadgePlacementControl?: {
+      defaultProps?: ComponentsProps['ESBadgePlacementControl'];
+      styleOverrides?: ComponentsOverrides['ESBadgePlacementControl'];
     };
     ESBreadcrumbs?: {
       defaultProps?: ComponentsProps['ESBreadcrumbs'];
