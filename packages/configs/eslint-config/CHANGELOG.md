@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.0](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.0.1...@esfront/eslint-config@0.1.0) (2024-07-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename package to @esfront
+
+### Features
+
+* **Button:** add new component ([0e62dc8](https://github.com/Elonsoft/esfront/commit/0e62dc87ad60a487bbb7c8c25a3dbd75a22cbf01))
+* **ListItem:** add new component ([6088522](https://github.com/Elonsoft/esfront/commit/6088522920a853df08076d6fd2c8eaaae2a184f8))
+* **Radio:** add new component ([bd3cc99](https://github.com/Elonsoft/esfront/commit/bd3cc9996454b7d3e237a4c8954187b4a342061f))
+
+
+### Style Changes
+
+* enable @stylistic/padding-line-between-statements rule ([a428472](https://github.com/Elonsoft/esfront/commit/a4284721e5af9d154bc19010837c3a23327b972a))
+* enable no-restricted-globals rule ([e0d0f68](https://github.com/Elonsoft/esfront/commit/e0d0f68508341f432637fa9ca6265d5929b0e341))
+* enable no-restricted-imports rule ([9bb7d75](https://github.com/Elonsoft/esfront/commit/9bb7d75d63940b4a92822b2ee1945685a0a2a16e))
+* enable no-restricted-properties rule ([fb8718c](https://github.com/Elonsoft/esfront/commit/fb8718c6e19811c067ee92ea21501c98ecb9014e))
+* enable trailing commas ([af49619](https://github.com/Elonsoft/esfront/commit/af49619e9180a889021435681cdf904272c27975))
+* move simple-import-sort/imports to root eslint config ([c3b0e5d](https://github.com/Elonsoft/esfront/commit/c3b0e5d095b21300f2e3ede982b36ebabde10d8c))
+
+
+### Build Changes
+
+* rename package to [@esfront](https://github.com/esfront) ([c7d67dc](https://github.com/Elonsoft/esfront/commit/c7d67dc5b9eb1a2c436fe9e2a9fe9191516d95a0))
+
+
+
 ### 0.0.1 (2024-03-04)
 
 **Note:** Version bump only for package @elonkit/eslint-config

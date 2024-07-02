@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.10.1...@esfront/react@0.11.0) (2024-07-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename package to @esfront
+* **Button:** change size prop
+* upgrade react to v18.2.0
+* use css variables for color tokens
+* **Alert:** add horizontal view
+
+### Features
+
+* **Alert:** add horizontal view ([a523da9](https://github.com/Elonsoft/esfront/commit/a523da9fbca8349fbf2bdbb1193ded6f588c0d40))
+* **Avatar:** add new component ([dc82bc4](https://github.com/Elonsoft/esfront/commit/dc82bc409b1d0a439dfeaf9a5a45d5f04458b64a))
+* **AvatarGroup:** add support for our own avatar component ([173dccf](https://github.com/Elonsoft/esfront/commit/173dccf79494031d4486ee70d52817614b991dca))
+* **Badge:** add new component ([cc8510d](https://github.com/Elonsoft/esfront/commit/cc8510dd7b5e544ec3b25bb33e2bfcf8e03d5325))
+* **BadgePlacementControl:** add new component ([967042d](https://github.com/Elonsoft/esfront/commit/967042d9583c8749061a477ea730fba274563997))
+* **Banner:** add new component ([6de5b0c](https://github.com/Elonsoft/esfront/commit/6de5b0c3888d0dc2fa36e8ad63ec70e98fd5f5b0))
+* **Breadcrumb:** add itemContent prop ([bbec7e5](https://github.com/Elonsoft/esfront/commit/bbec7e5eccd16242c41a0d27d5043c6e03937d6e))
+* **Button:** add new component ([0e62dc8](https://github.com/Elonsoft/esfront/commit/0e62dc87ad60a487bbb7c8c25a3dbd75a22cbf01))
+* **ButtonBase:** change focus state ([ea7f3f5](https://github.com/Elonsoft/esfront/commit/ea7f3f5fc2ca53140c2f3754ec570ff3176436ec))
+* **Button:** change size prop ([c1d5aa7](https://github.com/Elonsoft/esfront/commit/c1d5aa7a8c19240555e6ff18e321f5875866b40c))
+* **Checkbox:** add new component ([d4b25ab](https://github.com/Elonsoft/esfront/commit/d4b25abc6b78ab4019b03399423a6b3b44d0c216))
+* **Dialog:** add fullScreen styles ([d0ec946](https://github.com/Elonsoft/esfront/commit/d0ec94659fe3b9224bc54e2536d0edcc0f73f975))
+* **DialogClose:** add escape key text ([f0b35f7](https://github.com/Elonsoft/esfront/commit/f0b35f7aa8b7e83f3a9197b0f534931634ac4c95))
+* **Gallery:** change root component ([f9045fb](https://github.com/Elonsoft/esfront/commit/f9045fb12e21a9b56fb4515100404083ad099798))
+* **LinearProgress:** add new component ([cc32207](https://github.com/Elonsoft/esfront/commit/cc32207805a41604d4ab5df31b743d8bfadb7bbd))
+* **ListItem:** add new component ([6088522](https://github.com/Elonsoft/esfront/commit/6088522920a853df08076d6fd2c8eaaae2a184f8))
+* **PasswordField:** add tooltip ([052be95](https://github.com/Elonsoft/esfront/commit/052be953c96ed8efd8c3f894618b62bf67ecb670))
+* **Radio:** add new component ([bd3cc99](https://github.com/Elonsoft/esfront/commit/bd3cc9996454b7d3e237a4c8954187b4a342061f))
+* **RibbonBadge:** add new component ([843e315](https://github.com/Elonsoft/esfront/commit/843e315ac37a611ef84750e21e259c0cd7a2ad64))
+* **SortingMenu:** change hotkey label depending on os ([8546d71](https://github.com/Elonsoft/esfront/commit/8546d7140ca4897c1fd6d0b1b0aa2f2ae8d33656))
+* **Swiper:** add snap stop ([af2cbf0](https://github.com/Elonsoft/esfront/commit/af2cbf0ac51c9a165f21cabed11410a9d242a14c))
+* **Switch:** add indeterminate state ([05e605e](https://github.com/Elonsoft/esfront/commit/05e605e5ccd324a4f6443f828cb5e17d7cdaeab9))
+* **TableItem:** add new component ([1c1abf2](https://github.com/Elonsoft/esfront/commit/1c1abf2c5b8d529e5b9f02a1939f5724cca14f73))
+* update typography ([1e084f0](https://github.com/Elonsoft/esfront/commit/1e084f06a5b8d3da7673d77a7c79073c5ec31792))
+* use css variables for color tokens ([9317db8](https://github.com/Elonsoft/esfront/commit/9317db88fed8d6b99375d59ba3c17e0b0afefef4))
+* **useEvent:** add new hook ([f3fd1ce](https://github.com/Elonsoft/esfront/commit/f3fd1ce034b92bdc7b2c93acaea46b0ec9f596a7))
+* **useMenu:** add new hook ([f87f5f1](https://github.com/Elonsoft/esfront/commit/f87f5f123abffc9c97aaae016f109fb9cab28001))
+* **useMutationObserver:** add new hook ([279b7cb](https://github.com/Elonsoft/esfront/commit/279b7cbd273fd909b4e90195d5b1c58aa7ef892f))
+* **usePagination:** add new hook ([879aba7](https://github.com/Elonsoft/esfront/commit/879aba721eafd08af0e3a74c2c7782bd16d2be7d))
+* **useValueGate:** add new hook ([ecebad2](https://github.com/Elonsoft/esfront/commit/ecebad2bbc4f4806950ac4e6a438919a552d2905))
+
+
+### Bug Fixes
+
+* **SidebarItem:** force behaviour click on touch devices ([c9be81f](https://github.com/Elonsoft/esfront/commit/c9be81f68f67c65154d7a29269f3eab1990e88ea))
+
+
+### Style Changes
+
+* enable @stylistic/padding-line-between-statements rule ([a428472](https://github.com/Elonsoft/esfront/commit/a4284721e5af9d154bc19010837c3a23327b972a))
+* enable no-restricted-imports rule ([9bb7d75](https://github.com/Elonsoft/esfront/commit/9bb7d75d63940b4a92822b2ee1945685a0a2a16e))
+* enable no-restricted-properties rule ([fb8718c](https://github.com/Elonsoft/esfront/commit/fb8718c6e19811c067ee92ea21501c98ecb9014e))
+* enable trailing commas ([af49619](https://github.com/Elonsoft/esfront/commit/af49619e9180a889021435681cdf904272c27975))
+
+
+### Build Changes
+
+* rename package to [@esfront](https://github.com/esfront) ([c7d67dc](https://github.com/Elonsoft/esfront/commit/c7d67dc5b9eb1a2c436fe9e2a9fe9191516d95a0))
+* upgrade react to v18.2.0 ([84ac39a](https://github.com/Elonsoft/esfront/commit/84ac39a637a481efa91087f2cfb84e24850bc400))
+
+
+
 ## 0.10.1 (2024-04-24)
 
 
