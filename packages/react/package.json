@@ -1,5 +1,5 @@
 {
-  "name": "@elonkit/react",
+  "name": "@esfront/react",
   "version": "0.10.1",
   "description": "",
   "main": "lib/node/index.js",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Elonsoft/elonkit-react.git"
+    "url": "git+https://github.com/Elonsoft/esfront.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Elonsoft/elonkit-react/issues"
+    "url": "https://github.com/Elonsoft/esfront/issues"
   },
-  "homepage": "https://github.com/Elonsoft/elonkit-react#readme",
+  "homepage": "https://github.com/Elonsoft/esfront#readme",
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.5",

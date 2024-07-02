@@ -1,19 +1,19 @@
 {
-  "name": "@elonkit/eslint-config",
+  "name": "@esfront/eslint-config",
   "version": "0.0.1",
   "description": "",
   "private": false,
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Elonsoft/elonkit-react.git"
+    "url": "git+https://github.com/Elonsoft/esfront.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Elonsoft/elonkit-react/issues"
+    "url": "https://github.com/Elonsoft/esfront/issues"
   },
-  "homepage": "https://github.com/Elonsoft/elonkit-react#readme",
+  "homepage": "https://github.com/Elonsoft/esfront#readme",
   "peerDependencies": {
     "@stylistic/eslint-plugin": "^1.7.2",
     "@typescript-eslint/eslint-plugin": "^6.19.0",

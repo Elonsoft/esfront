@@ -1,5 +1,5 @@
 {
-  "extends": ["@elonkit/eslint-config", "plugin:storybook/recommended"],
+  "extends": ["@esfront/eslint-config", "plugin:storybook/recommended"],
   "rules": {
     "simple-import-sort/imports": [
       "error",

@@ -1,5 +1,5 @@
 {
-  "name": "@elonkit/monorepo",
+  "name": "@esfront/monorepo",
   "version": "0.0.0",
   "description": "",
   "private": true,
@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Elonsoft/elonkit-react.git"
+    "url": "git+https://github.com/Elonsoft/esfront.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Elonsoft/elonkit-react/issues"
+    "url": "https://github.com/Elonsoft/esfront/issues"
   },
-  "homepage": "https://github.com/Elonsoft/elonkit-react#readme",
+  "homepage": "https://github.com/Elonsoft/esfront#readme",
   "devDependencies": {
     "@commitlint/cli": "^16.0.1",
     "@commitlint/config-conventional": "^16.0.0",

@@ -5,7 +5,7 @@ This component relies on the date management library of your choice. Please inst
 `DateAdapterProvider`:
 
 ```tsx
-import { DateAdapterProvider } from '@elonkit/react';
+import { DateAdapterProvider } from '@esfront/react';
 
 import DateFnsAdapter from '@date-io/date-fns';
 import { ru } from 'date-fns/locale';

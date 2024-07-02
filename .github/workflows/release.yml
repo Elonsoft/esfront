@@ -2,7 +2,7 @@ name: Release
 on:
   push:
     tags:
-      - '@elonkit/react@*'
+      - '@esfront/react@*'
 jobs:
   storybook:
     name: Storybook

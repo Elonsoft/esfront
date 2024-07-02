@@ -1,10 +1,15 @@
 # Migration Guide
 
 - [0.10.1 → 0.11.0](#0101--0110)
+  - [Package Name](#package-name)
   - [CSS Theme Variables](#css-theme-variables)
   - [Components Replacement](#components-replacement)
 
 ## 0.10.1 → 0.11.0
+
+### Package Name
+
+Package name is changed from `@elonkit/react` to `@esfront/react`.
 
 ### CSS Theme Variables
 
@@ -56,8 +61,8 @@ Following components from `@mui/material` have been reimplemented or copied and 
 - `Badge`
 - `LinearProgress`
 
-If you are using any of this components, please import them from `@elonkit/react` instead of `@mui/material`. Some
+If you are using any of this components, please import them from `@esfront/react` instead of `@mui/material`. Some
 breaking changes expected to occur.
 
-If you are using our `@elonkit/eslint-config` config you'll notice forbidden import errors which will help you to locate
+If you are using our `@esfront/eslint-config` config you'll notice forbidden import errors which will help you to locate
 such imports to replace.

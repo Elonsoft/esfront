@@ -1,4 +1,4 @@
-# Contributing to Elonkit
+# Contributing to @esfront
 
 ## Development Guide
 
@@ -12,7 +12,7 @@ node ^16.0.0
 
 ### Development Workflow
 
-After cloning Elonkit, run `npm run install` to fetch its dependencies and then run `npm run husky` in order to install
+After cloning the repo, run `npm run install` to fetch its dependencies and then run `npm run husky` in order to install
 git hooks. Make sure to run `npm run typedoc` before the first start - this will generate API documentation for the
 components and hooks. Then, you can run `npm run start` in order to start storybook.
 
