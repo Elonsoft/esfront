@@ -49,6 +49,7 @@ const meta: Meta<typeof EmptyState> = {
         'EmptyStateIconFile',
         'EmptyStateIconFilter',
         'EmptyStateIconImage',
+        'EmptyStateIconKey',
         'EmptyStateIconLock',
         'EmptyStateIconPieChart',
         'EmptyStateIconSearch',
