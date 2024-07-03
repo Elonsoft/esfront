@@ -8,6 +8,7 @@ export { EmptyStateIconFace } from './EmptyStateIconFace';
 export { EmptyStateIconFile } from './EmptyStateIconFile';
 export { EmptyStateIconFilter } from './EmptyStateIconFilter';
 export { EmptyStateIconImage } from './EmptyStateIconImage';
+export { EmptyStateIconKey } from './EmptyStateIconKey';
 export { EmptyStateIconLock } from './EmptyStateIconLock';
 export { EmptyStateIconPieChart } from './EmptyStateIconPieChart';
 export { EmptyStateIconSearch } from './EmptyStateIconSearch';
