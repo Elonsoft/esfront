@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "workspaces": [
+    "packages/configs/cspell-config",
     "packages/configs/eslint-config",
     "packages/configs/prettier-config",
     "packages/react"
@@ -30,12 +31,12 @@
   "devDependencies": {
     "@commitlint/cli": "^16.0.1",
     "@commitlint/config-conventional": "^16.0.0",
-    "@cspell/dict-lorem-ipsum": "^3.0.0",
-    "@cspell/dict-ru_ru": "^2.0.5",
+    "@cspell/dict-lorem-ipsum": "^4.0.0",
+    "@cspell/dict-ru_ru": "^2.2.1",
     "@stylistic/eslint-plugin": "^1.7.2",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
-    "cspell": "^6.31.1",
+    "cspell": "^8.10.0",
     "dependency-cruiser": "^16.2.4",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
