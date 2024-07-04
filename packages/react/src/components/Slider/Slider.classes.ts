@@ -72,7 +72,7 @@ export interface SliderClasses {
 export type SliderClassKey = keyof SliderClasses;
 
 export function getSliderUtilityClass(slot: string): string {
-  return generateUtilityClass('MuiSlider', slot);
+  return generateUtilityClass('ESSlider', slot);
 }
 
 export const sliderClasses: SliderClasses = generateUtilityClasses('MuiSlider', [

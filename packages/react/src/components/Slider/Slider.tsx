@@ -352,7 +352,7 @@ export const SliderThumb = styled('span', {
     width: '14px',
     height: '14px',
 
-    '& .MuiSlider-valueLabel': {
+    '& .ESSlider-valueLabel': {
       top: '-8px',
     },
   },
@@ -360,7 +360,7 @@ export const SliderThumb = styled('span', {
     width: '16px',
     height: '16px',
 
-    '& .MuiSlider-valueLabel': {
+    '& .ESSlider-valueLabel': {
       top: '-7px',
     },
   },
@@ -586,6 +586,10 @@ export const Slider = forwardRef<HTMLSpanElement | null, SliderProps>(function S
     shiftStep,
     value: valueProp,
     defaultValue,
+
+    onChange,
+    onChangeCommitted,
+
     ...other
   } = props;
 
@@ -596,6 +600,8 @@ export const Slider = forwardRef<HTMLSpanElement | null, SliderProps>(function S
     track,
     color,
     width,
+    onChange,
+    onChangeCommitted,
   };
 
   const {
@@ -695,7 +701,6 @@ export const Slider = forwardRef<HTMLSpanElement | null, SliderProps>(function S
     externalSlotProps: thumbSlotProps,
     ownerState: {
       ...ownerState,
-      //...thumbSlotProps?.ownerState,
     },
     className: classes.thumb,
   });
