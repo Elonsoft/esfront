@@ -9,7 +9,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 import MenuList from '@mui/material/MenuList';
-import Slider, { sliderClasses } from '@mui/material/Slider';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
@@ -34,6 +33,7 @@ import { Button } from '../Button';
 import { Divider, dividerClasses } from '../Divider';
 import { ListItemIcon, ListItemText, listItemTextClasses } from '../ListItem';
 import { MenuItem } from '../MenuItem';
+import { Slider, sliderClasses } from '../Slider';
 
 import { Instance } from '@popperjs/core';
 
@@ -176,56 +176,53 @@ const AudioPlayerCurrentSlider = styled(Slider, {
     return [styles.currentSlider, isPlaying && styles.currentSliderPlaying, !isPlaying && styles.currentSliderPaused];
   },
 })<{ ownerState: AudioPlayerOwnerState }>(({ theme, ownerState }) => ({
-  [`&.${sliderClasses.colorPrimary}`]: {
-    padding: '18px 0',
-
-    [`& .${sliderClasses.thumb}`]: {
-      '&:hover': {
-        height: 8,
-        width: 8,
-        boxShadow: `0 0 0 10px ${theme.vars.palette.primary.A150}`,
-      },
-      [`&.${sliderClasses.focusVisible}`]: {
-        opacity: 1,
-        height: 10,
-        width: 10,
-        boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A400}`,
-      },
-      [`&.${sliderClasses.active}`]: {
-        height: 10,
-        width: 10,
-        boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A300}`,
-      },
-    },
-    ...(!ownerState.isPlaying && {
-      color: theme.vars.palette.monoA.A600,
-      [`& .${sliderClasses.thumb}`]: {
-        opacity: 0,
-        backdropFilter: 'blur(40px)',
-
-        [`&.${sliderClasses.focusVisible}`]: {
-          opacity: 1,
-          height: 10,
-          width: 10,
-          boxShadow: `0 0 0 9px ${theme.vars.palette.monoA.A75}`,
-        },
-      },
-    }),
-  },
-  [`& .${sliderClasses.thumb}`]: {
-    opacity: 0,
-    height: 8,
-    width: 8,
-
-    '&::after': {
-      width: 12,
-      height: 30,
-      borderRadius: 0,
-    },
-  },
-  [`& .${sliderClasses.rail}`]: {
-    backgroundColor: theme.vars.palette.monoA.A100,
-  },
+  // [`&.${sliderClasses.colorPrimary}`]: {
+  //   padding: '18px 0',
+  //   [`& .${sliderClasses.thumb}`]: {
+  //     '&:hover': {
+  //       height: 8,
+  //       width: 8,
+  //       boxShadow: `0 0 0 10px ${theme.vars.palette.primary.A150}`,
+  //     },
+  //     [`&.${sliderClasses.focusVisible}`]: {
+  //       opacity: 1,
+  //       height: 10,
+  //       width: 10,
+  //       boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A400}`,
+  //     },
+  //     [`&.${sliderClasses.active}`]: {
+  //       height: 10,
+  //       width: 10,
+  //       boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A300}`,
+  //     },
+  //   },
+  //   ...(!ownerState.isPlaying && {
+  //     color: theme.vars.palette.monoA.A600,
+  //     [`& .${sliderClasses.thumb}`]: {
+  //       opacity: 0,
+  //       backdropFilter: 'blur(40px)',
+  //       [`&.${sliderClasses.focusVisible}`]: {
+  //         opacity: 1,
+  //         height: 10,
+  //         width: 10,
+  //         boxShadow: `0 0 0 9px ${theme.vars.palette.monoA.A75}`,
+  //       },
+  //     },
+  //   }),
+  // },
+  // [`& .${sliderClasses.thumb}`]: {
+  //   opacity: 0,
+  //   height: 8,
+  //   width: 8,
+  //   '&::after': {
+  //     width: 12,
+  //     height: 30,
+  //     borderRadius: 0,
+  //   },
+  // },
+  // [`& .${sliderClasses.rail}`]: {
+  //   backgroundColor: theme.vars.palette.monoA.A100,
+  // },
 }));
 
 const AudioPlayerTime = styled(Typography, {

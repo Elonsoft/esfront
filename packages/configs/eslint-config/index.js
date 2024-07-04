@@ -75,6 +75,7 @@ module.exports = {
               'Pagination',
               'PaginationItem',
               'Radio',
+              'Slider',
               'SvgIcon',
               'Switch',
               'Table',
@@ -193,6 +194,10 @@ module.exports = {
           },
           {
             group: ['@mui/material/Radio'],
+            importNames: ['default'],
+          },
+          {
+            group: ['@mui/material/Slider'],
             importNames: ['default'],
           },
           {
