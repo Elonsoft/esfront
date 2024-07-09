@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.0...@esfront/react@0.11.1) (2024-07-09)
+
+
+### Features
+
+* **EmptyState:** add new icon ([9bdb80b](https://github.com/Elonsoft/esfront/commit/9bdb80b134abb6203e485790c2dd37fc15cbd203))
+* **Sidenav:** add hover state class ([ba2dafe](https://github.com/Elonsoft/esfront/commit/ba2dafe31f1da77c40cf812f1f14cb856007510f))
+* **SwiperPaginationItem:** change focus state ([c09ac9f](https://github.com/Elonsoft/esfront/commit/c09ac9f8ea6549eb9cf0fda80a50a64165b5d2a8))
+
+
+
 ## [0.11.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.10.1...@esfront/react@0.11.0) (2024-07-02)
 
 
