@@ -22,6 +22,7 @@ export * from './ClearButton';
 export * from './ClickAwayListener';
 export * from './Collapse';
 export * from './DateAdapter';
+export * from './DateInput';
 export * from './Dialog';
 export * from './DialogStack';
 export * from './DialogStackV2';

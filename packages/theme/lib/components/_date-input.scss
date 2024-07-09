@@ -1,0 +1,33 @@
+@mixin include() {
+  .es-date-input {
+    caret-color: transparent;
+    display: flex;
+
+    &,
+    & * {
+      &::selection {
+        background: var(--es-info-a500);
+      }
+    }
+
+    & span[data-node] {
+      align-items: center;
+      display: flex;
+    }
+
+    & span[data-placeholder] {
+      color: var(--es-mono-a-a400);
+    }
+
+    & span[data-node]:has(span[data-placeholder]) + span:not([data-token]) {
+      color: var(--es-mono-a-a400);
+    }
+
+    &--disabled {
+      &,
+      & span[data-placeholder] {
+        color: var(--es-mono-a-a400);
+      }
+    }
+  }
+}

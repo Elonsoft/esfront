@@ -19,6 +19,7 @@
 @use './chips';
 @use './clear-button';
 @use './collapse';
+@use './date-input';
 @use './dialog';
 @use './divider';
 @use './drawer';
@@ -100,6 +101,7 @@
   @include chips.include;
   @include clear-button.include;
   @include collapse.include;
+  @include date-input.include;
   @include dialog.include;
   @include divider.include;
   @include drawer.include;
