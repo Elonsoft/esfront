@@ -22,10 +22,10 @@ type SidenavOwnerState = {
 };
 
 const useUtilityClasses = (ownerState: SidenavOwnerState) => {
-  const { classes } = ownerState;
+  const { classes, hover } = ownerState;
 
   const slots = {
-    root: ['root'],
+    root: ['root', hover && 'hover'],
     container: ['container'],
     rail: ['rail'],
     drawer: ['drawer'],
@@ -38,7 +38,11 @@ const useUtilityClasses = (ownerState: SidenavOwnerState) => {
 const SidenavRoot = styled('div', {
   name: 'ESSidenav',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
+  overridesResolver: (props, styles) => {
+    const { ownerState } = props;
+
+    return [styles.root, ownerState.hover && styles.hover];
+  },
 })(() => ({
   zIndex: '100',
 }));
