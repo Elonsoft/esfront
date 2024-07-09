@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.1...@esfront/react@0.11.2) (2024-07-09)
+
+
+### Bug Fixes
+
+* **Sidenav:** add ownerState to root element ([7561ebf](https://github.com/Elonsoft/esfront/commit/7561ebf3fc297ffa7fb6a7476f2532563350e9d4))
+
+
+
 ### [0.11.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.0...@esfront/react@0.11.1) (2024-07-09)
 
 
