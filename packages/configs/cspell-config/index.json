@@ -4,6 +4,7 @@
   "languageSettings": [{ "languageId": "commit-msg", "ignoreRegExpList": ["/^#.*/gm"] }],
   "ignorePaths": ["**/node_modules/**"],
   "words": [
+    "activedescendant",
     "autodocs",
     "beforeinput",
     "behaviour",
@@ -11,6 +12,7 @@
     "clsx",
     "colspans",
     "commitlint",
+    "contenteditable",
     "crossorigin",
     "csvg",
     "date-fns",

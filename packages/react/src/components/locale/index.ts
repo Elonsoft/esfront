@@ -5,6 +5,7 @@ import { BreadcrumbsProps } from '../Breadcrumbs';
 import { CalendarHeadProps } from '../Calendar';
 import { ChipsProps } from '../Chips';
 import { ClearButtonProps } from '../ClearButton';
+import { DateInputProps } from '../DateInput';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FiltersFilterProps, FiltersFormGroupProps, FiltersHeaderProps } from '../Filters';
@@ -60,6 +61,9 @@ export interface Localization {
     };
     ESClearButton: {
       defaultProps: Pick<ClearButtonProps, 'label'>;
+    };
+    ESDateInput: {
+      defaultProps: Pick<DateInputProps, 'getFieldLabel'>;
     };
     ESDialogArrow: {
       defaultProps: Pick<DialogArrowProps, 'labelPrev' | 'labelNext'>;
@@ -211,6 +215,20 @@ export const en: Localization = {
     ESClearButton: {
       defaultProps: {
         label: 'Clear',
+      },
+    },
+    ESDateInput: {
+      defaultProps: {
+        getFieldLabel: (field) =>
+          ({
+            year: 'Year',
+            month: 'Month',
+            date: 'Day',
+            hours: 'Hours',
+            minutes: 'Minutes',
+            seconds: 'Seconds',
+            milliseconds: 'Milliseconds',
+          })[field],
       },
     },
     ESDialogArrow: {
@@ -441,6 +459,20 @@ export const ru: Localization = {
     ESClearButton: {
       defaultProps: {
         label: 'Очистить',
+      },
+    },
+    ESDateInput: {
+      defaultProps: {
+        getFieldLabel: (field) =>
+          ({
+            year: 'Год',
+            month: 'Месяц',
+            date: 'День',
+            hours: 'Часы',
+            minutes: 'Минуты',
+            seconds: 'Секунды',
+            milliseconds: 'Миллисекунды',
+          })[field],
       },
     },
     ESDialogArrow: {

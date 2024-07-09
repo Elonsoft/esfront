@@ -28,8 +28,16 @@ export const FormFieldLabel = forwardRef<HTMLLabelElement, FormFieldLabelProps>(
   const innerRef = useRef<HTMLLabelElement | null>(null);
   const handleRef = useForkRef(ref, innerRef);
 
-  const { id: inputId, variant, size, required, disabled, error, focused, filled } = useFormFieldContext();
+  const { id: inputId, inputRef, variant, size, required, disabled, error, focused, filled } = useFormFieldContext();
   const shrink = shrinkProp ?? (focused || filled);
+
+  const onClick = () => {
+    const control = inputRef.current;
+
+    if (control && !control.matches('button, input, meter, output, progress, select, textarea')) {
+      control.focus();
+    }
+  };
 
   return (
     <label
@@ -50,8 +58,9 @@ export const FormFieldLabel = forwardRef<HTMLLabelElement, FormFieldLabelProps>(
         shrink && 'es-form-field-label--shrink'
       )}
       htmlFor={inputId}
-      id={id}
+      id={id ?? `${inputId}-label`}
       style={style}
+      onClick={onClick}
     >
       {children} {!!required && <span className="es-form-field-label__asterisk">*</span>}
     </label>

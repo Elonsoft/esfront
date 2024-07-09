@@ -24,6 +24,7 @@ import { ChipsProps } from './components/Chips';
 import { ClearButtonProps } from './components/ClearButton';
 import { ClickAwayListenerProps } from './components/ClickAwayListener';
 import { CollapseProps } from './components/Collapse';
+import { DateInputProps } from './components/DateInput';
 import {
   DialogActionsProps,
   DialogArrowProps,
@@ -212,6 +213,7 @@ declare module './theming/DefaultPropsProvider/DefaultPropsProvider.types' {
     ESClearButton: ClearButtonProps;
     ESClickAwayListener: ClickAwayListenerProps;
     ESCollapse: CollapseProps;
+    ESDateInput: DateInputProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
     ESDialogArrow: DialogArrowProps;
