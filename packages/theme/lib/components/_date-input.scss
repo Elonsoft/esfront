@@ -1,0 +1,20 @@
+@mixin include() {
+  .es-date-input {
+    caret-color: transparent;
+
+    &,
+    & * {
+      &::selection {
+        background: var(--es-info-a500);
+      }
+    }
+
+    & span[data-placeholder] {
+      color: var(--es-mono-a-a400);
+    }
+
+    & span[data-node]:has(span[data-placeholder]) + span:not([data-token]) {
+      color: var(--es-mono-a-a400);
+    }
+  }
+}
