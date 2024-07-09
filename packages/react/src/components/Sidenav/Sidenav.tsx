@@ -43,7 +43,7 @@ const SidenavRoot = styled('div', {
 
     return [styles.root, ownerState.hover && styles.hover];
   },
-})(() => ({
+})<{ ownerState: SidenavOwnerState }>(() => ({
   zIndex: '100',
 }));
 
@@ -251,7 +251,7 @@ export const Sidenav = (inProps: SidenavProps) => {
 
   return (
     <SidenavContext.Provider value={value}>
-      <SidenavRoot className={clsx(classes.root, className)} sx={sx}>
+      <SidenavRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
         <SidenavContainer className={clsx(classes.container)} onMouseLeave={onMouseLeaveSidenav}>
           {React.Children.map(children as React.ReactElement[], (child, idx: number) => {
             if (idx) {
