@@ -1,0 +1,18 @@
+@mixin include() {
+  .es-dropzone-compact {
+    align-items: center;
+    background-color: var(--es-mono-a-a25);
+    border-radius: 4px;
+    color: var(--es-mono-a-a550);
+    display: flex;
+    justify-content: center;
+    outline: 1px dashed var(--es-mono-a-a300);
+    outline-offset: -1px;
+    padding: 12px;
+    transition: background-color 200ms;
+
+    &--drag-over {
+      background-color: var(--es-mono-a-a50);
+    }
+  }
+}

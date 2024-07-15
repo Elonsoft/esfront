@@ -40,6 +40,7 @@ import {
 } from './components/Dialog';
 import { DividerProps } from './components/Divider';
 import { DropzoneProps } from './components/Dropzone';
+import { DropzoneCompactProps } from './components/DropzoneCompact';
 import { EmptyStateProps } from './components/EmptyState';
 import { EmptyStateCompactProps } from './components/EmptyStateCompact';
 import {
@@ -208,6 +209,7 @@ declare module '@mui/material/styles/props' {
     ESDialogTitle: DialogTitleProps;
     ESDivider: DividerProps;
     ESDropzone: DropzoneProps;
+    ESDropzoneCompact: DropzoneCompactProps;
     ESEmptyState: EmptyStateProps;
     ESEmptyStateCompact: EmptyStateCompactProps;
     ESErrorPage: ErrorPageProps;
@@ -534,6 +536,9 @@ declare module '@mui/material/styles/components' {
     };
     ESDropzone?: {
       defaultProps?: ComponentsProps['ESDropzone'];
+    };
+    ESDropzoneCompact?: {
+      defaultProps?: ComponentsProps['ESDropzoneCompact'];
     };
     ESFileIcon?: {
       defaultProps?: ComponentsProps['ESFileIcon'];

@@ -20,6 +20,7 @@
 @use './dialog';
 @use './divider';
 @use './dropzone';
+@use './dropzone-compact';
 @use './empty-state-compact';
 @use './empty-state';
 @use './error-page';
@@ -89,6 +90,7 @@
   @include dialog.include;
   @include divider.include;
   @include dropzone.include;
+  @include dropzone-compact.include;
   @include empty-state-compact.include;
   @include empty-state.include;
   @include error-page.include;
