@@ -33,7 +33,7 @@ const useUtilityClasses = (ownerState: PasswordFieldOwnerState) => {
 };
 
 const PasswordFieldRoot = styled(TextField, {
-  name: 'ESPasswordFieldRoot',
+  name: 'ESPasswordField',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
