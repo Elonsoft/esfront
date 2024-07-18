@@ -1,6 +1,6 @@
 {
   "name": "@esfront/react",
-  "version": "0.11.2",
+  "version": "0.11.3",
   "description": "",
   "main": "lib/node/index.js",
   "module": "lib/index.js",

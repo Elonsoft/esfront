@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.3](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.2...@esfront/react@0.11.3) (2024-07-18)
+
+
+### Bug Fixes
+
+* **RadioGroup:** change useId import ([4430ecb](https://github.com/Elonsoft/esfront/commit/4430ecbfbfc6605bbc363f4e5bf5f52d9e689cd4))
+
+
+
 ### [0.11.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.1...@esfront/react@0.11.2) (2024-07-09)
 
 
