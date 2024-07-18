@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.4](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.3...@esfront/react@0.11.4) (2024-07-18)
+
+
+### Bug Fixes
+
+* **PasswordField:** change root component name ([a9233e0](https://github.com/Elonsoft/esfront/commit/a9233e0cab1d27712da892c3a2f30c51f71695ca))
+
+
+
 ### [0.11.3](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.2...@esfront/react@0.11.3) (2024-07-18)
 
 
