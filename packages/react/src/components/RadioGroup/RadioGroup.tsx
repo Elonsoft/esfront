@@ -3,7 +3,7 @@ import * as React from 'react';
 import { RadioGroupProps } from './RadioGroup.types';
 
 import { FormGroup, useControlled, useForkRef } from '@mui/material';
-import useId from '@mui/material/utils/useId';
+import { unstable_useId as useId } from '@mui/utils';
 
 import RadioGroupContext from './RadioGroup.context';
 
