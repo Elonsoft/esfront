@@ -11,5 +11,5 @@ export interface KbdProps {
    * Variant of the component.
    * @default 'raised'
    */
-  variant?: 'raised' | 'contained' | 'outlined';
+  variant?: 'raised' | 'contained' | 'outlined' | 'mono-a' | 'mono-b';
 }

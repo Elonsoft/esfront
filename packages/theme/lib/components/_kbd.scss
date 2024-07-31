@@ -21,5 +21,17 @@
       background-color: var(--es-mono-a-a75);
       box-shadow: 0 1px 0 1px var(--es-mono-a-a300);
     }
+
+    &--mono-a {
+      background-color: var(--es-mono-a-a200);
+      color: var(--es-mono-a-a900);
+      padding: 1px 4px;
+    }
+
+    &--mono-b {
+      background-color: var(--es-mono-a-a550);
+      color: var(--es-mono-b-500);
+      padding: 1px 4px;
+    }
   }
 }
