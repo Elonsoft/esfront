@@ -161,6 +161,15 @@ const BadgeRoot = styled(ButtonBase, {
     },
   },
 
+  '&:focus-visible': {
+    outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+    outlineOffset: '-2px',
+
+    '&:after': {
+      borderColor: `${theme.vars.palette.monoA[500]}`,
+    },
+  },
+
   [`&.${ribbonBadgeClasses.orientationLeft}`]: {
     borderRadius: '4px 4px 4px 0px',
 
