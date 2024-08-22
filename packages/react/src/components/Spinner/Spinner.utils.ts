@@ -1,4 +1,5 @@
 export const isSafari = () =>
+  typeof window !== 'undefined' &&
   navigator.vendor &&
   navigator.vendor.indexOf('Apple') > -1 &&
   navigator.userAgent &&
