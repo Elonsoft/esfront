@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.5](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.4...@esfront/react@0.11.5) (2024-08-22)
+
+
+### Bug Fixes
+
+* **Spinner:** add window check ([9a74fa2](https://github.com/Elonsoft/esfront/commit/9a74fa2d24a9bdd0b97a8f242dcdde676fb990cf))
+
+
+
 ### [0.11.4](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.3...@esfront/react@0.11.4) (2024-07-18)
 
 
