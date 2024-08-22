@@ -11,7 +11,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize, useFormControl } from '@mui/material';
 
 import { useControlled } from '../../hooks';
-import { ButtonBase } from '../ButtonBase';
+import { ButtonBase, buttonBaseClasses } from '../ButtonBase';
 
 type SwitchBaseOwnerState = {
   classes: SwitchBaseProps['classes'];
@@ -56,8 +56,9 @@ const SwitchBaseRoot = styled(ButtonBase, {
     marginRight: -12,
   },
 
-  [`&:not(:disabled):has(:focus-visible)`]: {
+  [`&:not(.${buttonBaseClasses.disabled}):has(:focus-visible)`]: {
     outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+    outlineOffset: '-2px',
   },
 })) as typeof ButtonBase;
 

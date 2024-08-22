@@ -11,7 +11,6 @@ import { styled, useThemeProps } from '@mui/material/styles';
 
 import { useControlled } from '../../hooks/useControlled';
 import { ButtonBase } from '../ButtonBase';
-import { touchRippleClasses } from '../TouchRipple';
 
 type SwitchOwnerState = {
   classes?: SwitchProps['classes'];
@@ -85,10 +84,6 @@ const SwitchRoot = styled('div', {
         },
       },
 
-      [`&:not(:disabled):has(:focus-visible) .${touchRippleClasses.root}`]: {
-        backgroundColor: theme.vars.palette[color].A200,
-      },
-
       '--pressed': theme.vars.palette[color].A150,
     },
   },
@@ -156,6 +151,12 @@ const SwitchRoot = styled('div', {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(8px)',
         padding: '17.5px 13px',
+
+        [`&:not(:disabled):has(:focus-visible)`]: {
+          [`& .${switchClasses.thumb}`]: {
+            outlineOffset: 0,
+          },
+        },
       },
       [`& .${switchClasses.thumb}`]: {
         width: '14px',
@@ -172,6 +173,12 @@ const SwitchRoot = styled('div', {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(6px)',
         padding: '16px 12px',
+
+        [`&:not(:disabled):has(:focus-visible)`]: {
+          [`& .${switchClasses.thumb}`]: {
+            outlineOffset: 0,
+          },
+        },
       },
       [`& .${switchClasses.thumb}`]: {
         width: '12px',
@@ -202,10 +209,6 @@ const SwitchRoot = styled('div', {
         },
       },
 
-      [`&:not(:disabled):has(:focus-visible) .${touchRippleClasses.root}`]: {
-        backgroundColor: theme.vars.palette[color].A200,
-      },
-
       '--pressed': theme.vars.palette[color].A150,
     },
   },
@@ -229,7 +232,8 @@ const SwitchThumb = styled('div', {
   backgroundColor: theme.vars.palette.common.switch,
   border: '2px solid currentColor',
   borderRadius: '50%',
-  transition: `all ${theme.transitions.duration.shortest}ms, color 0ms`,
+  transition: `${theme.transitions.duration.shortest}ms`,
+  transitionProperty: 'width, height, border, border-radius',
 }));
 
 const SwitchButton = styled(ButtonBase, {
@@ -242,14 +246,17 @@ const SwitchButton = styled(ButtonBase, {
   left: 0,
   zIndex: 1,
   position: 'absolute',
-  transition: `${theme.transitions.duration.shortest}ms, outline 0ms`,
+  transition: `${theme.transitions.duration.shortest}ms`,
 
   '--text': 'currentColor',
   '--hovered': theme.vars.palette.monoA.A50,
   '--pressed': theme.vars.palette.monoA.A150,
 
   [`&:not(:disabled):has(:focus-visible)`]: {
-    outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+    [`& .${switchClasses.thumb}`]: {
+      outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+      outlineOffset: '-2px',
+    },
   },
 
   '@media (hover: none)': {
