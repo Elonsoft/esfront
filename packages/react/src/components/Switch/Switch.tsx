@@ -249,7 +249,9 @@ const SwitchButton = styled(ButtonBase, {
   '--pressed': theme.vars.palette.monoA.A150,
 
   [`&:not(:disabled):has(:focus-visible)`]: {
-    outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+    [`& .${switchClasses.thumb}`]: {
+      border: `2px solid ${theme.vars.palette.monoA[500]}`,
+    },
   },
 
   '@media (hover: none)': {
