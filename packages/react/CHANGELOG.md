@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.6](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.5...@esfront/react@0.11.6) (2024-08-29)
+
+
+### Bug Fixes
+
+* **AutocompleteMenu:** remove unselected option via filter ([6eb4108](https://github.com/Elonsoft/esfront/commit/6eb4108f702f26d3b4166387992d62a39e580d1e))
+
+
+
 ### [0.11.5](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.4...@esfront/react@0.11.5) (2024-08-22)
 
 
