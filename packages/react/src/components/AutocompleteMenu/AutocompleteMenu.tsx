@@ -320,8 +320,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
           if (index === -1) {
             props.onChange(props.value.concat(option));
           } else {
-            props.value.splice(index, 1);
-            props.onChange(props.value.slice());
+            props.onChange(props.value.filter((_, i) => i !== index));
           }
         } else {
           props.onChange(option);
