@@ -241,6 +241,8 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     header,
     footer,
 
+    inlineSearch,
+
     disableAutoFocus,
     disableEnforceFocus,
     disableEscapeKeyDown,
@@ -434,7 +436,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                     className={classes.paper}
                     style={{ width, maxHeight: disableScrollLock ? undefined : 'calc(100dvh - 16px)' }}
                   >
-                    {!!SearchProps && (
+                    {!!SearchProps && !inlineSearch && (
                       <AutocompleteMenuSearch
                         fullWidth
                         autoFocus={!disableAutoFocus}

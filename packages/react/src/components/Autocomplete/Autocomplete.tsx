@@ -333,7 +333,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
               value: T[];
             })}
         disableRestoreFocus
-        SearchProps={inlineSearch ? undefined : SearchProps}
+        SearchProps={SearchProps}
         anchorEl={ref.current}
         className={classes.menu}
         disableAutoFocus={!!inlineSearch}
@@ -344,6 +344,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         getOptionValue={getOptionValue}
         groupBy={groupBy}
         header={header}
+        inlineSearch={inlineSearch}
         loading={loading}
         open={!!open}
         options={options}
