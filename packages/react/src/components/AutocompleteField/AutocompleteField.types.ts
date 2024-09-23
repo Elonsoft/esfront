@@ -74,6 +74,7 @@ export type AutocompleteFieldProps<T> = {
     | 'label'
     | 'loading'
     | 'name'
+    | 'open'
     | 'options'
     | 'placeholder'
     | 'required'
