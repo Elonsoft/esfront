@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.7](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.6...@esfront/react@0.11.7) (2024-09-23)
+
+
+### Features
+
+* **AutocompleteField:** add open prop ([826200d](https://github.com/Elonsoft/esfront/commit/826200dc59cd41613b227a12cc87912b5c7ce00d))
+* **AutocompleteMenu:** add imperative actions ([63a8cf8](https://github.com/Elonsoft/esfront/commit/63a8cf8f5f8971443f1f6f755801cb3c67f3b225))
+* **Link:** change focus state ([f134118](https://github.com/Elonsoft/esfront/commit/f13411855248e71647f8c48a28d567166a36039e))
+* **useThrottle:** add new hook ([320dd98](https://github.com/Elonsoft/esfront/commit/320dd98d29a10e49ca82b9c5b776a2a98a1f8176))
+
+
+### Bug Fixes
+
+* **AutocompleteMenu:** display labelNoMatches for inlineSearch ([151ce6a](https://github.com/Elonsoft/esfront/commit/151ce6a22d28cc107f15a0d41c3f1c824b7dd687))
+
+
+
 ### [0.11.6](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.5...@esfront/react@0.11.6) (2024-08-29)
 
 
