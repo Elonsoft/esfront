@@ -40,6 +40,7 @@ export type AutocompleteProps<T> = {
       | 'getOptionValue'
       | 'getOptionDisabled'
       | 'groupBy'
+      | 'actions'
     >
   >;
   /** Props applied to the search field component. If present, shows the component. */

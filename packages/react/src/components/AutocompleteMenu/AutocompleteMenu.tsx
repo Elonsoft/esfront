@@ -1,4 +1,14 @@
-import { ForwardedRef, forwardRef, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  ForwardedRef,
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { AutocompleteMenuProps } from './AutocompleteMenu.types';
 
@@ -229,6 +239,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     container = document.body,
     anchorEl,
     open,
+    actions,
 
     options,
     getOptionValue,
@@ -276,6 +287,18 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
   // const paperRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
+
+  const trapFocusEnabled = useRef(true);
+
+  useImperativeHandle(
+    actions,
+    () => ({
+      setTrapFocusEnabled: (enabled: boolean) => {
+        trapFocusEnabled.current = enabled;
+      },
+    }),
+    [trapFocusEnabled]
+  );
 
   const onCloseLatest = useLatest(onClose);
 
@@ -421,7 +444,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
               disableAutoFocus={disableAutoFocus}
               disableEnforceFocus={disableEnforceFocus}
               disableRestoreFocus={disableRestoreFocus}
-              isEnabled={() => true}
+              isEnabled={() => trapFocusEnabled.current}
               open={open}
             >
               <div tabIndex={-1}>
