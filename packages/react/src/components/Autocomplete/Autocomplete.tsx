@@ -14,7 +14,7 @@ import { useForkRef } from '@mui/material/utils';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
 import { useControlled, usePreviousValue } from '../../hooks';
-import { AutocompleteMenu as ESAutocompleteMenu } from '../AutocompleteMenu';
+import { AutocompleteMenu as ESAutocompleteMenu, AutocompleteMenuImperativeActions } from '../AutocompleteMenu';
 
 type AutocompleteOwnerState = {
   classes?: AutocompleteProps<unknown>['classes'];
@@ -137,6 +137,8 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const inputRef = useRef<HTMLDivElement | null>(null);
   const inputNodeRef = useForkRef(inputRef, inInputRef);
 
+  const actions = useRef<AutocompleteMenuImperativeActions>(null);
+
   const isInputFocusRequested = useRef(false);
 
   const [open, setOpen] = useControlled(false, inOpen);
@@ -252,10 +254,14 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
       return;
     }
 
-    setTimeout(() => {
+    actions.current?.setTrapFocusEnabled?.(false);
+
+    requestAnimationFrame(() => {
       if (inputRef.current) {
         inputRef.current.focus();
       }
+
+      actions.current?.setTrapFocusEnabled?.(true);
     });
 
     onMenuOpen(!!inlineSearch);
@@ -295,8 +301,12 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
           className: classes.input,
           role: inlineSearch ? 'input' : 'button',
           tabIndex: formControl.disabled ? -1 : 0,
-          onBlur: () => formControl.onBlur,
-          onFocus: () => formControl.onFocus,
+          onBlur: (e) => {
+            formControl.onBlur?.(e as never);
+          },
+          onFocus: (e) => {
+            formControl.onFocus?.(e as never);
+          },
           onKeyDown,
           'aria-describedby': ariaDescribedby,
           ...props.inputProps,
@@ -334,6 +344,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
             })}
         disableRestoreFocus
         SearchProps={SearchProps}
+        actions={actions}
         anchorEl={ref.current}
         className={classes.menu}
         disableAutoFocus={!!inlineSearch}

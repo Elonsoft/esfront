@@ -1,9 +1,13 @@
-import { ForwardedRef, ReactNode } from 'react';
+import { ForwardedRef, ReactNode, Ref } from 'react';
 
 import { AutocompleteMenuClasses } from './AutocompleteMenu.classes';
 
 import { PopperProps, SxProps, TextFieldProps, Theme } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
+
+export interface AutocompleteMenuImperativeActions {
+  setTrapFocusEnabled: (enabled: boolean) => void;
+}
 
 export type AutocompleteMenuProps<T> = {
   paperRef?: ForwardedRef<HTMLDivElement>;
@@ -33,6 +37,8 @@ export type AutocompleteMenuProps<T> = {
 
   /** If `true`, the component is shown. */
   open: boolean;
+  /** A ref for imperative actions. */
+  actions?: Ref<AutocompleteMenuImperativeActions>;
 
   /** The width of the menu. */
   width?: number | string;
