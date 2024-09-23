@@ -12,7 +12,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { textFieldClasses } from '@mui/material/TextField';
 import { unstable_useId as useId } from '@mui/utils';
 
-import { useBoolean } from '../../hooks';
+import { useControlled } from '../../hooks';
 import { Autocomplete } from '../Autocomplete';
 
 type AutocompleteFieldOwnerState = {
@@ -49,6 +49,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
     id: inId,
     label,
     required,
+    open: inOpen,
 
     closeAfterSelect,
     helperText,
@@ -66,17 +67,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
     name: 'ESAutocompleteField',
   });
 
-  const [open, toggleOpen] = useBoolean(false);
-
-  const handleChange = (e: T & T[]) => {
-    if (onChange) {
-      onChange(e);
-    }
-
-    if (closeAfterSelect) {
-      toggleOpen(false);
-    }
-  };
+  const [open, setOpen] = useControlled(false, inOpen);
 
   const id = useId(inId);
   const helperTextId = helperText && id ? `${id}-helper-text` : undefined;
@@ -85,6 +76,17 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
 
   const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);
+
+  const handleChange = (e: T & T[]) => {
+    if (onChange) {
+      onChange(e);
+    }
+
+    if (closeAfterSelect) {
+      onClose?.();
+      setOpen(false);
+    }
+  };
 
   return (
     <AutocompleteFieldRoot
@@ -114,11 +116,11 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
         onChange={handleChange as never}
         onClose={() => {
           onClose?.();
-          toggleOpen(false);
+          setOpen(false);
         }}
         onOpen={() => {
           onOpen?.();
-          toggleOpen(true);
+          setOpen(true);
         }}
         {...rest}
         {...restInputProps}

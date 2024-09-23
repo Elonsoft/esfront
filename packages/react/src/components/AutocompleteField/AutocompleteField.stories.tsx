@@ -322,3 +322,36 @@ export const Customization: Story = {
     );
   },
 };
+
+export const Controlled: Story = {
+  render: function Render(_args, { globals: { locale } }) {
+    const [open, setOpen] = useState(false);
+    const [options, setOptions] = useState<User[]>([]);
+    const [users, setUsers] = useState<User[]>([]);
+
+    const onChangeUsers = (users: User[]) => {
+      setUsers(users);
+    };
+
+    useEffect(() => {
+      setOptions(USERS[locale as 'en' | 'ru']);
+    }, [locale]);
+
+    return (
+      <Box sx={{ maxWidth: '500px' }}>
+        <AutocompleteField<User>
+          fullWidth
+          multiple
+          InputProps={{ onOpen: () => setOpen(true), onClose: () => setOpen(false) }}
+          getOptionLabel={getUserLabel}
+          getOptionValue={getUserValue}
+          label={locale === 'en' ? 'Users' : 'Пользователи'}
+          open={open}
+          options={options}
+          value={users}
+          onChange={onChangeUsers}
+        />
+      </Box>
+    );
+  },
+};
