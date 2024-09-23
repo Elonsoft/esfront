@@ -58,6 +58,9 @@ export type AutocompleteMenuProps<T> = {
   /** Children content for the menu footer. */
   footer?: ReactNode;
 
+  /** If true, it is possible to enter a search string in the input itself. */
+  inlineSearch?: boolean;
+
   /** Callback fired when the menu requests to be closed. */
   onClose?: (event: unknown, reason: 'escapeKeyDown' | 'clickAway') => void;
   /** Callback fired when the menu list is scrolled to the end. */
