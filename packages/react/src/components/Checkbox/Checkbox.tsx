@@ -20,6 +20,7 @@ import {
   IconIndeterminateSmall,
 } from './icons';
 
+import { buttonBaseClasses } from '../ButtonBase';
 import { SwitchBase } from '../SwitchBase';
 
 type CheckboxOwnerState = {
@@ -114,6 +115,10 @@ const CheckboxRoot = styled(SwitchBase, {
       height: '24px !important',
       width: '24px !important',
     },
+
+    [`&:not(.${buttonBaseClasses.disabled}):focus-visible`]: {
+      outlineOffset: '-4px',
+    },
   },
   [`&.${checkboxClasses.sizeMedium}`]: {
     [`& .${checkboxIconClasses.root}`]: {
@@ -127,6 +132,10 @@ const CheckboxRoot = styled(SwitchBase, {
       height: '20px !important',
       width: '20px !important',
     },
+
+    [`&:not(.${buttonBaseClasses.disabled}):focus-visible`]: {
+      outlineOffset: '-2px',
+    },
   },
   [`&.${checkboxClasses.sizeSmall}`]: {
     [`& .${checkboxIconClasses.root}`]: {
@@ -139,6 +148,10 @@ const CheckboxRoot = styled(SwitchBase, {
       fontSize: '16px',
       height: '16px !important',
       width: '16px !important',
+    },
+
+    [`&:not(.${buttonBaseClasses.disabled}):focus-visible`]: {
+      outlineOffset: '-2px',
     },
   },
 
