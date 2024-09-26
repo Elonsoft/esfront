@@ -10,6 +10,7 @@ const PALETTES = [
   'success',
   'info',
   'lime',
+  'lightblue',
   'warning',
   'monoA',
   'monoB',
