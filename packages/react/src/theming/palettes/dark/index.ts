@@ -6,6 +6,7 @@ import { green } from './green';
 import { grey } from './grey';
 import { greyscale } from './greyscale';
 import { info } from './info';
+import { lime } from './lime';
 import { marine } from './marine';
 import { monoA } from './monoA';
 import { monoB } from './monoB';
@@ -31,6 +32,7 @@ export const dark = {
   error,
   greyscale,
   info,
+  lime,
   monoA,
   monoB,
   primary,
