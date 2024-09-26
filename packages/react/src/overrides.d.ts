@@ -1197,6 +1197,7 @@ declare module '@mui/material/styles' {
     brown: PaletteColor;
     orange: PaletteColor;
     yellow: PaletteColor;
+    lime: PaletteColor;
     green: PaletteColor;
     marine: PaletteColor;
     sky: PaletteColor;
@@ -1227,6 +1228,7 @@ declare module '@mui/material/styles' {
     brown?: PaletteColorOptions;
     orange?: PaletteColorOptions;
     yellow?: PaletteColorOptions;
+    lime?: PaletteColorOptions;
     green?: PaletteColorOptions;
     marine?: PaletteColorOptions;
     sky?: PaletteColorOptions;
