@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.8](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.7...@esfront/react@0.11.8) (2024-09-27)
+
+
+### Features
+
+* add lightblue palette ([d205c24](https://github.com/Elonsoft/esfront/commit/d205c2484855472ad90b87aead6f30b9f9b67e4c))
+* add lime palette ([e75e98b](https://github.com/Elonsoft/esfront/commit/e75e98b940ae8c1add0c87a551e9ae9bfec18705))
+
+
+### Bug Fixes
+
+* **AutocompleteMenu:** prevent click on disabled menu item ([25c2857](https://github.com/Elonsoft/esfront/commit/25c28572f43525bd3b4ffa28d588f48acfb86aa9))
+
+
+
 ### [0.11.7](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.6...@esfront/react@0.11.7) (2024-09-23)
 
 
