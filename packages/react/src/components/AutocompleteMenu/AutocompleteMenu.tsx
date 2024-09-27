@@ -359,6 +359,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
   const classes = useUtilityClasses(ownerState);
 
   const groupedOptions: ReactNode[] = [];
+  let tabIndex = true;
 
   for (let index = 0; index < options.length; index++) {
     const option = options[index];
@@ -381,17 +382,23 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     groupedOptions.push(
       <AutocompleteMenuMenuItem
         key={value}
-        autoFocus={index === 0 && !SearchProps && !disableAutoFocus}
+        autoFocus={!disabled && tabIndex && !SearchProps && !disableAutoFocus}
         className={classes.menuItem}
         disabled={disabled}
         selected={selected}
-        tabIndex={index === 0 ? 0 : -1}
-        onClick={onMenuItemClick(option)}
+        tabIndex={!disabled && tabIndex ? 0 : -1}
+        onClick={disabled ? undefined : onMenuItemClick(option)}
       >
-        {!!props.multiple && <AutocompleteMenuCheckbox readOnly checked={selected} color="secondary" tabIndex={-1} />}
+        {!!props.multiple && (
+          <AutocompleteMenuCheckbox readOnly checked={selected} color="secondary" disabled={disabled} tabIndex={-1} />
+        )}
         <AutocompleteMenuMenuItemText className={classes.menuItemText}>{label}</AutocompleteMenuMenuItemText>
       </AutocompleteMenuMenuItem>
     );
+
+    if (!disabled) {
+      tabIndex = false;
+    }
   }
 
   return (
