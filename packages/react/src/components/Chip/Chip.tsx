@@ -25,6 +25,7 @@ type ChipOwnerState = {
   selectedColor: NonNullable<ChipProps['selectedColor']>;
   size: NonNullable<ChipProps['size']>;
   variant: NonNullable<ChipProps['variant']>;
+  focusableWhenDisabled: ChipProps['focusableWhenDisabled'];
 };
 
 const useUtilityClasses = (ownerState: ChipOwnerState) => {
@@ -54,7 +55,7 @@ export const ChipRoot = styled('div', {
   name: 'ESChip',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
+})<{ ownerState: ChipOwnerState }>(({ theme, ownerState }) => ({
   transition: theme.transitions.create(['background-color', 'color']),
   maxWidth: '100%',
   display: 'inline-flex',
@@ -101,6 +102,14 @@ export const ChipRoot = styled('div', {
       [`&:not(.${chipClasses.clickable})`]: {
         backgroundColor: theme.vars.palette.monoA.A50,
       },
+
+      ...(ownerState.focusableWhenDisabled && {
+        [`&.${chipClasses.clickable}`]: {
+          [`&.${buttonBaseClasses.root}:focus-visible`]: {
+            outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+          },
+        },
+      }),
     },
 
     [`&.${chipClasses.selected}`]: {
@@ -168,9 +177,13 @@ export const ChipRoot = styled('div', {
   [`&.${chipClasses.disabled}`]: {
     pointerEvents: 'none',
 
-    '&[aria-disabled="true"]:focus-visible': {
-      outline: 'none',
-    },
+    ...(ownerState.focusableWhenDisabled && {
+      [`&.${chipClasses.clickable}`]: {
+        [`&.${buttonBaseClasses.root}:focus-visible`]: {
+          outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+        },
+      },
+    }),
 
     [`& .${chipClasses.label}`]: {
       color: theme.vars.palette.monoA.A400,
@@ -358,7 +371,7 @@ export const ChipLabel = styled('span', {
   name: 'ESChip',
   slot: 'Label',
   overridesResolver: (props, styles) => styles.label,
-})<{ ownerState: ChipOwnerState }>(({ theme }) => ({
+})(({ theme }) => ({
   ...theme.typography.body100,
   color: theme.vars.palette.monoA.A900,
   display: 'block',
@@ -420,7 +433,16 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
   const chipRef = useRef<HTMLDivElement | null>(null);
   const handleRef = useForkRef(chipRef, ref);
 
-  const ownerState = { classes: inClasses, size, variant, selected, selectedColor, disabled, clickable };
+  const ownerState = {
+    classes: inClasses,
+    size,
+    variant,
+    selected,
+    selectedColor,
+    disabled,
+    clickable,
+    focusableWhenDisabled,
+  };
   const classes = useUtilityClasses(ownerState);
 
   const disabledProp =
@@ -528,6 +550,7 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
       as={component}
       className={clsx(classes.root, className)}
       {...disabledProp}
+      ownerState={ownerState}
       sx={sx}
       tabIndex={!focusableWhenDisabled && disabled ? -1 : tabIndex}
       onClick={onClick}
@@ -537,9 +560,7 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
       {...props}
     >
       {startIcon}
-      <ChipLabel className={classes.label} ownerState={ownerState}>
-        {children}
-      </ChipLabel>
+      <ChipLabel className={classes.label}>{children}</ChipLabel>
       {endIcon}
       {deleteIcon}
     </ChipRoot>
