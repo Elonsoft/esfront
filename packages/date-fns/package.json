@@ -1,0 +1,20 @@
+{
+  "name": "@esfront/date-fns",
+  "version": "0.0.0",
+  "description": "",
+  "private": false,
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elonsoft/esfront.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Elonsoft/esfront/issues"
+  },
+  "homepage": "https://github.com/Elonsoft/esfront#readme",
+  "peerDependencies": {
+    "date-fns": "^2.27.0"
+  }
+}
