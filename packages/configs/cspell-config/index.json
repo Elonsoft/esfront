@@ -5,6 +5,7 @@
   "ignorePaths": ["**/node_modules/**"],
   "words": [
     "autodocs",
+    "beforeinput",
     "behaviour",
     "ccircle",
     "clsx",
