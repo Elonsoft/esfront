@@ -270,6 +270,7 @@ import {
   TableTextClassKey,
   TableTextProps,
 } from './components/Table';
+import { TagClassKey, TagProps } from './components/Tag';
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { buttonMixin, listItemMixin } from './theming/mixins';
@@ -462,6 +463,7 @@ declare module '@mui/material/styles/props' {
     ESTableRow: TableRowProps;
     ESTableScrollbar: TableScrollbarProps;
     ESTableText: TableTextProps;
+    ESTag: TagProps;
     ESTouchRipple: TouchRippleProps;
     ESTextFieldGroup: TextFieldGroupProps;
   }
@@ -597,6 +599,7 @@ declare module '@mui/material/styles/overrides' {
     ESTableRow: TableRowClassKey;
     ESTableScrollbar: TableScrollbarClassKey;
     ESTableText: TableTextClassKey;
+    ESTag: TagClassKey;
     ESTouchRipple: TouchRippleClassKey;
     ESTextFieldGroup: TextFieldGroupClassKey;
   }
@@ -1083,6 +1086,10 @@ declare module '@mui/material/styles/components' {
     ESTableText?: {
       defaultProps?: ComponentsProps['ESTableText'];
       styleOverrides?: ComponentsOverrides['ESTableText'];
+    };
+    ESTag?: {
+      defaultProps?: ComponentsProps['ESTag'];
+      styleOverrides: ComponentsOverrides['ESTag'];
     };
     ESTouchRipple?: {
       defaultProps?: ComponentsProps['ESTouchRipple'];
