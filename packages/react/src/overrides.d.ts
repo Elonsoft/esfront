@@ -29,6 +29,7 @@ import { CalendarButtonProps, CalendarHeadProps, CalendarProps } from './compone
 import { CheckboxProps, CheckboxIconProps } from './components/Checkbox';
 import { ChipProps } from './components/Chip';
 import { ChipsProps } from './components/Chips';
+import { ClearButtonProps } from './components/ClearButton';
 import {
   DialogActionsProps,
   DialogArrowProps,
@@ -198,6 +199,7 @@ declare module '@mui/material/styles/props' {
     ESCheckboxIcon: CheckboxIconProps;
     ESChip: ChipProps;
     ESChips: ChipsProps;
+    ESClearButton: ClearButtonProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
     ESDialogArrow: DialogArrowProps;
@@ -418,6 +420,9 @@ declare module '@mui/material/styles/components' {
     };
     ESChips?: {
       defaultProps?: ComponentsProps['ESChips'];
+    };
+    ESClearButton?: {
+      defaultProps?: ComponentsProps['ESClearButton'];
     };
     ESDialog?: {
       defaultProps?: ComponentsProps['ESDialog'];
