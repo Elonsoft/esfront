@@ -13,15 +13,13 @@ export type PhoneFieldProps = {
   preferredCountries?: CountryCode[];
 
   /** Used to determine the flag icon for a given country code. */
-  getCountryFlag?: (code: CountryCode) => ReactNode;
+  getCountryFlag?: (code: CountryCode | null) => ReactNode;
   /** Used to determine the country display name for a given country code. */
-  getCountryDisplayName?: (code: CountryCode) => ReactNode;
+  getCountryDisplayName?: (code: CountryCode) => string;
 
   /** Text for the menu button aria-label. */
   labelMenu?: string;
 
-  /** Icon for the menu button when country is undefined. */
-  iconMenu?: ReactNode;
   /** Icon for the menu button drop down arrow. */
   iconMenuArrow?: ReactNode;
 } & TextFieldProps;
