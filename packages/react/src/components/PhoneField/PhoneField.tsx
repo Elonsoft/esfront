@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { PhoneFieldProps } from './PhoneField.types';
 
@@ -14,33 +14,24 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { capitalize } from '@mui/material/utils';
 
-import parse, {
-  edit,
-  eraseSelection,
-  format,
-  getCaretPosition,
-  getSelection,
-  isReadOnly,
-  onChange as onFormatChange,
-  setCaretPosition,
-} from './format';
+import {
+  adjustSelection,
+  deleteContentBackward,
+  deleteSelection,
+  insertText,
+  PhoneFieldPatch,
+} from './PhoneField.functions';
 
+import { useEvent } from '../../hooks';
 import { useControlled } from '../../hooks/useControlled';
 import { IconGlobalLineW500, IconMenuDownW300 } from '../../icons';
 import { AutocompleteMenu } from '../AutocompleteMenu';
 import { Button, buttonClasses } from '../Button';
-import * as Flags from '../Flags/icons';
+import { buttonBaseClasses } from '../ButtonBase';
 import { svgIconClasses } from '../SvgIcon';
 
-import {
-  AsYouType,
-  CountryCode,
-  getCountryCallingCode,
-  parsePhoneNumberCharacter,
-  validatePhoneNumberLength,
-} from 'libphonenumber-js';
+import { AsYouType, CountryCode, getCountryCallingCode, validatePhoneNumberLength } from 'libphonenumber-js';
 import metadata from 'libphonenumber-js/metadata.min.json';
 
 type PhoneFieldOwnerState = {
@@ -90,12 +81,15 @@ const PhoneFieldMenuButton = styled(Button, {
 })(({ theme }) => ({
   [`&.${buttonClasses.root}.${buttonClasses.variantText}`]: {
     borderRadius: 0,
-    paddingLeft: '12px',
-    paddingRight: '2px',
     height: '100%',
 
-    '& > *:first-child': {
-      marginRight: '2px',
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      paddingLeft: '12px',
+      paddingRight: '2px',
+
+      '& > *:first-child': {
+        marginRight: '2px',
+      },
     },
 
     [`& .${svgIconClasses.root}`]: {
@@ -113,6 +107,7 @@ const PhoneFieldItem = styled('div', {
   display: 'flex',
   gap: '8px',
   justifyContent: 'space-between',
+  width: '100%',
 }));
 
 const PhoneFieldItemPrimary = styled('div', {
@@ -133,33 +128,26 @@ const PhoneFieldCountryDisplayName = styled(Typography, {
 })({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 }) as typeof Typography;
 
 const PhoneFieldCountryCallingCode = styled(Typography, {
   name: 'ESPhoneField',
   slot: 'CountryCallingCode',
   overridesResolver: (_props, styles) => styles.countryCallingCode,
-})({}) as typeof Typography;
+})({
+  marginLeft: 'auto',
+}) as typeof Typography;
 
-const regionNames = new (Intl as any).DisplayNames([], { type: 'region' });
+const regionNames = new Intl.DisplayNames([], { type: 'region' });
 
-function parseChar(character, prevParsedCharacters, context) {
-  if (context && context.ignoreRest) {
-    return;
-  }
+const getDefaultCountryFlag = () => {
+  return <IconGlobalLineW500 />;
+};
 
-  const emitEvent = (eventName) => {
-    if (context) {
-      switch (eventName) {
-        case 'end':
-          context.ignoreRest = true;
-          break;
-      }
-    }
-  };
-
-  return parsePhoneNumberCharacter(character, prevParsedCharacters, emitEvent);
-}
+const getDefaultCountryDisplayName = (code: CountryCode) => {
+  return regionNames.of(code);
+};
 
 export const PhoneField = (inProps: PhoneFieldProps) => {
   const {
@@ -169,13 +157,11 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
     countries,
     defaultCountry,
 
-    // eslint-disable-next-line no-use-before-define
-    getCountryFlag = (code: CountryCode) => getFlag(code),
-    getCountryDisplayName = (code: CountryCode) => regionNames.of(code),
+    getCountryFlag = getDefaultCountryFlag,
+    getCountryDisplayName = getDefaultCountryDisplayName,
 
     labelMenu,
 
-    iconMenu = <IconGlobalLineW500 />,
     iconMenuArrow = <IconMenuDownW300 container containerSize="16px" />,
 
     name,
@@ -190,11 +176,6 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
     name: 'ESPhoneField',
   });
 
-  const getFlag = (country: CountryCode | null) => {
-    const FlagComponent = country ? Flags[`Flag${capitalize(country.toLowerCase())}` as keyof typeof Flags] : null;
-    return FlagComponent ? <FlagComponent /> : iconMenu;
-  };
-
   const [country, setCountry] = useState<CountryCode | null>(
     countries.length === 1 ? countries[0] : defaultCountry || null
   );
@@ -204,7 +185,7 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
   const [search, setSearch] = useState('');
 
   const ref = useRef<HTMLDivElement | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [inputRef, setInputRef] = useState<HTMLInputElement | null>(null);
 
   const codesRegExp = useMemo(() => {
     const codes = countries.map((country) => getCountryCallingCode(country));
@@ -231,9 +212,11 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
   }, [countries]);
 
   const countriesOptions = useMemo(() => {
+    const s = search.toLowerCase();
+
     return countriesData
       .filter((e) => {
-        return e.displayName.toLowerCase().includes(search) || e.callingCode.includes(search);
+        return e.displayName.toLowerCase().includes(s) || e.callingCode.includes(s);
       })
       .map((e) => e.country);
   }, [countriesData, search]);
@@ -243,84 +226,106 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
     return asYouType;
   }, []);
 
-  const _format = useCallback(
+  const format = useCallback(
     (value: string) => {
       asYouType.reset();
       const text = asYouType.input(value);
       const template = asYouType.getTemplate();
+
       return { text, template };
     },
     [asYouType]
   );
 
-  const formatInputText = (input, _parse, operation) => {
-    // Get the `value` and `caret` position.
-    let { value, caret } = parse(input.value, getCaretPosition(input), _parse);
-
-    // If a user performed an operation ("Backspace", "Delete") then apply that operation and get the new `value` and `caret` position.
-    if (operation) {
-      const newValueAndCaret = edit(value, caret, operation);
-
-      value = newValueAndCaret.value;
-      caret = newValueAndCaret.caret;
-    }
-
-    const formatted = format(value, caret, _format);
-    let text = formatted.text;
-    caret = formatted.caret;
-
-    if (country && getCountryCallingCode(country) !== asYouType.getCallingCode()) {
-      if (countries.length === 1) {
-        value = '+' + getCountryCallingCode(country);
-        text = value;
-        caret = text.length;
-      } else {
-        setCountry(null);
-      }
-    }
-
-    if (value === '') {
-      value = '+';
-      text = value;
-      caret = text.length;
-    }
-
-    input.value = text;
-    setCaretPosition(input, caret);
-
-    setValue(value);
-    onChange?.({ target: { name, value } } as React.ChangeEvent<HTMLInputElement>);
-  };
-
-  const onCheckCaretPosition = (e: React.SyntheticEvent<HTMLElement>) => {
-    // requestAnimationFrame(() => {
-    if (inputRef.current && inputRef.current.selectionStart === inputRef.current.selectionEnd) {
-      if (inputRef.current.selectionStart !== null && inputRef.current.selectionStart < 2) {
+  const onCheckCaretPosition = useEvent((e: React.SyntheticEvent<HTMLElement>) => {
+    if (inputRef && inputRef.selectionStart === inputRef.selectionEnd) {
+      if (inputRef.selectionStart !== null && inputRef.selectionStart < 2) {
         e.preventDefault();
-        inputRef.current.setSelectionRange(2, 2);
+        inputRef.setSelectionRange(2, 2);
       }
     }
-    // });
-  };
+  });
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    const lengthResult = validatePhoneNumberLength(value);
+  const onBeforeInput = useEvent((event: InputEvent) => {
+    event.preventDefault();
 
-    if (lengthResult === 'TOO_LONG' || lengthResult === 'INVALID_LENGTH') {
+    if (!inputRef) {
       return;
     }
 
-    if (value.length > 1 && !codesRegExp.test(value)) {
+    const { selectionStart, selectionEnd, value } = inputRef;
+
+    if (!selectionStart || !selectionEnd) {
       return;
     }
 
-    return formatInputText(inputRef.current, parseChar, undefined);
-  };
+    const data = {
+      selectionStart,
+      selectionEnd,
+      value,
+      data: event.data,
+    };
+
+    let newData: PhoneFieldPatch | null = null;
+
+    // https://w3c.github.io/input-events/
+    switch (event.inputType) {
+      case 'deleteContentBackward':
+      // case 'deleteContentForward':
+      case 'deleteByCut': {
+        if (selectionStart === selectionEnd) {
+          newData = deleteContentBackward(data);
+        } else {
+          newData = deleteSelection(data);
+        }
+
+        break;
+      }
+      case 'insertFromPaste':
+      case 'insertText': {
+        newData = insertText(data);
+
+        break;
+      }
+    }
+
+    if (newData) {
+      const phone = newData.value.replace(/ /g, '');
+      const lengthResult = validatePhoneNumberLength(phone);
+
+      if (lengthResult === 'TOO_LONG' || lengthResult === 'INVALID_LENGTH') {
+        inputRef.setSelectionRange(selectionStart + 1, selectionStart + 1);
+        return;
+      }
+
+      if (phone.length > 1 && !codesRegExp.test(phone)) {
+        inputRef.setSelectionRange(selectionStart + 1, selectionStart + 1);
+        return;
+      }
+
+      const formatted = format(phone).text;
+
+      const { selectionStart: newSelectionStart, selectionEnd: newSelectionEnd } = adjustSelection(newData, formatted);
+
+      setValue(phone);
+      onChange?.({ target: { name, value: phone } } as React.ChangeEvent<HTMLInputElement>);
+
+      inputRef.setSelectionRange(newSelectionStart, newSelectionEnd);
+    }
+  });
+
+  useEffect(() => {
+    if (inputRef) {
+      inputRef.addEventListener('beforeinput', onBeforeInput);
+
+      return () => {
+        inputRef.removeEventListener('beforeinput', onBeforeInput);
+      };
+    }
+  }, [inputRef]);
 
   const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     props.onKeyDown?.(e);
-    // onCheckCaretPosition(e);
 
     if (
       !(
@@ -333,30 +338,6 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
       !(e.ctrlKey || e.altKey)
     ) {
       e.preventDefault();
-    }
-
-    if (e.defaultPrevented) {
-      return;
-    }
-
-    const input = e.target as HTMLInputElement;
-
-    if (input.hasAttribute('readonly')) {
-      return;
-    }
-
-    if (e.key === 'Delete' || e.key === 'Backspace') {
-      e.preventDefault();
-
-      const selection = getSelection(input);
-
-      if (selection) {
-        eraseSelection(input, selection);
-        return formatInputText(input, parseChar, undefined);
-      }
-
-      // Else, perform the (character erasing) operation manually.
-      return formatInputText(input, parseChar, e.key);
     }
   };
 
@@ -382,8 +363,8 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
       onChange?.({ target: { name, value } } as React.ChangeEvent<HTMLInputElement>);
 
       requestAnimationFrame(() => {
-        if (inputRef.current) {
-          inputRef.current.focus();
+        if (inputRef) {
+          inputRef.focus();
         }
       });
     }
@@ -392,7 +373,7 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
   const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);
 
-  const formatted = _format(value || '+').text;
+  const formatted = format(value || '+').text;
 
   return (
     <>
@@ -424,11 +405,10 @@ export const PhoneField = (inProps: PhoneFieldProps) => {
         }}
         className={clsx(classes.root, className)}
         classes={inClasses}
-        inputRef={inputRef}
+        inputRef={setInputRef}
         type="tel"
         value={formatted}
         {...props}
-        onChange={onInputChange}
         onKeyDown={onInputKeyDown}
         onMouseUp={(e) => {
           onCheckCaretPosition(e);
