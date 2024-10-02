@@ -71,6 +71,7 @@ import {
   CalendarProps,
 } from './components/Calendar';
 import { CheckboxClassKey, CheckboxProps, CheckboxIconClassKey, CheckboxIconProps } from './components/Checkbox';
+import { ClearButtonClassKey, ClearButtonProps } from './components/ClearButton';
 import {
   DialogActionsClassKey,
   DialogActionsProps,
@@ -361,6 +362,7 @@ declare module '@mui/material/styles/props' {
     ESCalendarHead: CalendarHeadProps;
     ESCheckbox: CheckboxProps;
     ESCheckboxIcon: CheckboxIconProps;
+    ESClearButton: ClearButtonProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
     ESDialogArrow: DialogArrowProps;
@@ -497,6 +499,7 @@ declare module '@mui/material/styles/overrides' {
     ESCalendarHead: CalendarHeadClassKey;
     ESCheckbox: CheckboxClassKey;
     ESCheckboxIcon: CheckboxIconClassKey;
+    ESClearButton: ClearButtonClassKey;
     ESDialog: DialogClassKey;
     ESDialogActions: DialogActionsClassKey;
     ESDialogArrow: DialogArrowClassKey;
@@ -715,6 +718,10 @@ declare module '@mui/material/styles/components' {
     ESCheckboxIcon?: {
       defaultProps?: ComponentsProps['ESCheckboxIcon'];
       styleOverrides?: ComponentsOverrides['ESCheckboxIcon'];
+    };
+    ESClearButton?: {
+      defaultProps?: ComponentsProps['ESClearButton'];
+      styleOverrides?: ComponentsOverrides['ESClearButton'];
     };
     ESDialog?: {
       defaultProps?: ComponentsProps['ESDialog'];
