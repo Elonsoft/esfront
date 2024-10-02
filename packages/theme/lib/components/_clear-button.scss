@@ -1,0 +1,18 @@
+@mixin include() {
+  .es-clear-button {
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    --text: var(--es-mono-a-a400);
+    --hovered: inherit;
+    --pressed: inherit;
+
+    &:hover {
+      --text: var(--es-mono-a-a500);
+    }
+
+    &:active {
+      --text: var(--es-mono-a-a600);
+    }
+  }
+}

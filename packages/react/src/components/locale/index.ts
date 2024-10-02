@@ -4,6 +4,7 @@ import { AutocompleteMenuProps } from '../AutocompleteMenu';
 import { BreadcrumbsProps } from '../Breadcrumbs';
 import { CalendarHeadProps } from '../Calendar';
 import { ChipsProps } from '../Chips';
+import { ClearButtonProps } from '../ClearButton';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
 import { FiltersFilterProps, FiltersFormGroupProps, FiltersHeaderProps } from '../Filters';
@@ -56,6 +57,9 @@ export interface Localization {
     };
     ESChips: {
       defaultProps: Pick<ChipsProps, 'labelHide' | 'labelShow'>;
+    };
+    ESClearButton: {
+      defaultProps: Pick<ClearButtonProps, 'label'>;
     };
     ESDialogArrow: {
       defaultProps: Pick<DialogArrowProps, 'labelPrev' | 'labelNext'>;
@@ -200,6 +204,11 @@ export const en: Localization = {
       defaultProps: {
         labelHide: 'Hide',
         labelShow: 'More',
+      },
+    },
+    ESClearButton: {
+      defaultProps: {
+        label: 'Clear',
       },
     },
     ESDialogArrow: {
@@ -419,6 +428,11 @@ export const ru: Localization = {
       defaultProps: {
         labelHide: 'Скрыть',
         labelShow: 'Ещё',
+      },
+    },
+    ESClearButton: {
+      defaultProps: {
+        label: 'Очистить',
       },
     },
     ESDialogArrow: {
