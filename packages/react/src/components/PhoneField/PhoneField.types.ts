@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import { TextFieldProps } from '@mui/material';
 
+import { AutocompleteMenuProps } from '../AutocompleteMenu';
+
 import { CountryCode } from 'libphonenumber-js';
 
 export type PhoneFieldProps = {
@@ -13,15 +15,38 @@ export type PhoneFieldProps = {
   preferredCountries?: CountryCode[];
 
   /** Used to determine the flag icon for a given country code. */
-  getCountryFlag?: (code: CountryCode) => ReactNode;
+  getCountryFlag?: (code: CountryCode | null) => ReactNode;
   /** Used to determine the country display name for a given country code. */
-  getCountryDisplayName?: (code: CountryCode) => ReactNode;
+  getCountryDisplayName?: (code: CountryCode) => string;
 
   /** Text for the menu button aria-label. */
   labelMenu?: string;
 
-  /** Icon for the menu button when country is undefined. */
-  iconMenu?: ReactNode;
   /** Icon for the menu button drop down arrow. */
   iconMenuArrow?: ReactNode;
-} & TextFieldProps;
+
+  /** Props applied to the menu component. */
+  MenuProps?: Partial<
+    Omit<
+      AutocompleteMenuProps<any>,
+      | 'value'
+      | 'onChange'
+      | 'multiple'
+      | 'getDisplayValue'
+      | 'options'
+      | 'getOptionLabel'
+      | 'getOptionValue'
+      | 'getOptionDisabled'
+      | 'groupBy'
+      | 'actions'
+    >
+  >;
+
+  /** Callback fired when the value is about to be modified. */
+  onBeforeInput?: (event: InputEvent) => void;
+  /**
+   * Callback fired when the value has been changed as a direct result of a user action.
+   * PhoneField uses this event in order to modify browser autocomplete.
+   */
+  onInput?: (event: Event) => void;
+} & Omit<TextFieldProps, 'onBeforeInput' | 'onInput'>;
