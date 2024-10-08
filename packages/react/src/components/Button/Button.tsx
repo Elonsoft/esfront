@@ -365,6 +365,15 @@ const ButtonRoot = styled(ButtonBase, {
     [`&.${buttonClasses.size700} `]: {
       borderRadius: '56px',
     },
+    [`&.${buttonClasses.size800} `]: {
+      borderRadius: '64px',
+    },
+    [`&.${buttonClasses.size900} `]: {
+      borderRadius: '72px',
+    },
+    [`&.${buttonClasses.size900} `]: {
+      borderRadius: '80px',
+    },
   },
 
   [`&.${buttonClasses.size100} .${buttonBaseClasses.wrapper}`]: {
@@ -536,6 +545,75 @@ const ButtonRoot = styled(ButtonBase, {
       padding: '0 12px',
       [`& > .${svgIconClasses.root}`]: {
         margin: '0 4px',
+      },
+    },
+  },
+  [`&.${buttonClasses.size800}`]: {
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      height: 64,
+      padding: '0 30px',
+      [`& .${buttonClasses.startIcon}`]: {
+        marginLeft: -4,
+        marginRight: 8,
+      },
+      [`& .${buttonClasses.endIcon}`]: {
+        marginLeft: 8,
+        marginRight: -4,
+      },
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 -10px',
+      },
+    },
+    [`&.${buttonClasses.variantText} .${buttonBaseClasses.wrapper}`]: {
+      padding: '0 12px',
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 8px',
+      },
+    },
+  },
+  [`&.${buttonClasses.size900}`]: {
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      height: 72,
+      padding: '0 34px',
+      [`& .${buttonClasses.startIcon}`]: {
+        marginLeft: -4,
+        marginRight: 8,
+      },
+      [`& .${buttonClasses.endIcon}`]: {
+        marginLeft: 8,
+        marginRight: -4,
+      },
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 -10px',
+      },
+    },
+    [`&.${buttonClasses.variantText} .${buttonBaseClasses.wrapper}`]: {
+      padding: '0 12px',
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 12px',
+      },
+    },
+  },
+  [`&.${buttonClasses.size1000}`]: {
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      height: 80,
+      padding: '0 36px',
+      [`& .${buttonClasses.startIcon}`]: {
+        marginLeft: -4,
+        marginRight: 8,
+      },
+      [`& .${buttonClasses.endIcon}`]: {
+        marginLeft: 8,
+        marginRight: -4,
+      },
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 -8px',
+      },
+    },
+    [`&.${buttonClasses.variantText} .${buttonBaseClasses.wrapper}`]: {
+      padding: '0 12px',
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 16px',
       },
     },
   },
