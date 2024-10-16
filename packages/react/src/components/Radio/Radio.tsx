@@ -70,15 +70,17 @@ const RadioRoot = styled(SwitchBase, {
     ];
   },
 })<{ ownerState: RadioOwnerState }>(({ theme }) => ({
-  [`&:not(.${radioClasses.checked}):not(.${radioClasses.disabled})`]: {
-    '&:hover': {
-      [`& .${radioIconClasses.circle}`]: {
-        background: theme.vars.palette.monoA.A400,
+  '@media (hover: hover)': {
+    [`&:not(.${radioClasses.checked}):not(.${radioClasses.disabled})`]: {
+      '&:hover': {
+        [`& .${radioIconClasses.circle}`]: {
+          background: theme.vars.palette.monoA.A400,
+        },
       },
-    },
-    '&:active': {
-      [`& .${radioIconClasses.circle}`]: {
-        background: theme.vars.palette.monoA.A600,
+      '&:active': {
+        [`& .${radioIconClasses.circle}`]: {
+          background: theme.vars.palette.monoA.A600,
+        },
       },
     },
   },
