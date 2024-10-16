@@ -1,0 +1,16 @@
+export { FolderIconIcon100 } from './FolderIconIcon100';
+export { FolderIconIcon200 } from './FolderIconIcon200';
+export { FolderIconIcon300 } from './FolderIconIcon300';
+export { FolderIconIcon400 } from './FolderIconIcon400';
+export { FolderIconIcon500 } from './FolderIconIcon500';
+export { FolderIconIcon600 } from './FolderIconIcon600';
+export { FolderIconIcon700 } from './FolderIconIcon700';
+export { FolderIconIcon800 } from './FolderIconIcon800';
+export { FolderIconOutlinedIcon100 } from './FolderIconOutlinedIcon100';
+export { FolderIconOutlinedIcon200 } from './FolderIconOutlinedIcon200';
+export { FolderIconOutlinedIcon300 } from './FolderIconOutlinedIcon300';
+export { FolderIconOutlinedIcon400 } from './FolderIconOutlinedIcon400';
+export { FolderIconOutlinedIcon500 } from './FolderIconOutlinedIcon500';
+export { FolderIconOutlinedIcon600 } from './FolderIconOutlinedIcon600';
+export { FolderIconOutlinedIcon700 } from './FolderIconOutlinedIcon700';
+export { FolderIconOutlinedIcon800 } from './FolderIconOutlinedIcon800';
