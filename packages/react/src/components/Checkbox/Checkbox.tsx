@@ -87,18 +87,21 @@ const CheckboxRoot = styled(SwitchBase, {
       stroke: 'transparent',
     },
   },
-  [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
-    '&:hover': {
-      '& svg': {
-        '& path': {
-          stroke: theme.vars.palette.monoA.A400,
+  // https://github.com/mdn/browser-compat-data/issues/21515
+  '@media (hover: hover)': {
+    [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
+      '&:hover': {
+        '& svg': {
+          '& path': {
+            stroke: theme.vars.palette.monoA.A400,
+          },
         },
       },
-    },
-    '&:active': {
-      '& svg': {
-        '& path': {
-          stroke: theme.vars.palette.monoA.A600,
+      '&:active': {
+        '& svg': {
+          '& path': {
+            stroke: theme.vars.palette.monoA.A600,
+          },
         },
       },
     },
@@ -216,18 +219,20 @@ const CheckboxRoot = styled(SwitchBase, {
         boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoB.A600}`,
       },
     },
-    [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
-      '&:hover': {
-        '& svg': {
-          '& path': {
-            stroke: theme.vars.palette.monoB.A400,
+    '@media (hover: hover)': {
+      [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
+        '&:hover': {
+          '& svg': {
+            '& path': {
+              stroke: theme.vars.palette.monoB.A400,
+            },
           },
         },
-      },
-      '&:active': {
-        '& svg': {
-          '& path': {
-            stroke: theme.vars.palette.monoB.A600,
+        '&:active': {
+          '& svg': {
+            '& path': {
+              stroke: theme.vars.palette.monoB.A600,
+            },
           },
         },
       },
@@ -273,18 +278,20 @@ const CheckboxRoot = styled(SwitchBase, {
         boxShadow: `inset 0 0 0 1px ${theme.vars.palette.black.A600}`,
       },
     },
-    [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
-      '&:hover': {
-        '& svg': {
-          '& path': {
-            stroke: theme.vars.palette.black.A400,
+    '@media (hover: hover)': {
+      [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
+        '&:hover': {
+          '& svg': {
+            '& path': {
+              stroke: theme.vars.palette.black.A400,
+            },
           },
         },
-      },
-      '&:active': {
-        '& svg': {
-          '& path': {
-            stroke: theme.vars.palette.black.A600,
+        '&:active': {
+          '& svg': {
+            '& path': {
+              stroke: theme.vars.palette.black.A600,
+            },
           },
         },
       },
@@ -326,18 +333,20 @@ const CheckboxRoot = styled(SwitchBase, {
         boxShadow: `inset 0 0 0 1px ${theme.vars.palette.white.A600}`,
       },
     },
-    [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
-      '&:hover': {
-        '& svg': {
-          '& path': {
-            stroke: theme.vars.palette.white.A400,
+    '@media (hover: hover)': {
+      [`&:not(.${checkboxClasses.checked}):not(.${checkboxClasses.disabled}):not(.${checkboxClasses.indeterminate})`]: {
+        '&:hover': {
+          '& svg': {
+            '& path': {
+              stroke: theme.vars.palette.white.A400,
+            },
           },
         },
-      },
-      '&:active': {
-        '& svg': {
-          '& path': {
-            stroke: theme.vars.palette.white.A600,
+        '&:active': {
+          '& svg': {
+            '& path': {
+              stroke: theme.vars.palette.white.A600,
+            },
           },
         },
       },
