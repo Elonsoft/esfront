@@ -126,6 +126,7 @@ import {
   FileInfoProps,
 } from './components/FileInfo';
 import { FlagClassKey } from './components/Flags';
+import { FolderIconClassKey, FolderIconProps } from './components/FolderIcon';
 import { FormatDateProps } from './components/FormatDate';
 import { FormatSizeProps } from './components/FormatSize';
 import {
@@ -386,6 +387,7 @@ declare module '@mui/material/styles/props' {
     ESFileInfoMeta: FileInfoMetaProps;
     ESFileInfoMetaSeparator: FileInfoMetaSeparatorProps;
     ESFileInfoName: FileInfoNameProps;
+    ESFolderIcon: FolderIconProps;
     ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
     ESGallery: GalleryProps;
@@ -523,6 +525,7 @@ declare module '@mui/material/styles/overrides' {
     ESFileInfoMetaSeparator: FileInfoMetaSeparatorClassKey;
     ESFileInfoName: FileInfoNameClassKey;
     ESFlag: FlagClassKey;
+    ESFolderIcon: FolderIconClassKey;
     ESGallery: GalleryClassKey;
     ESGalleryActions: GalleryActionsClassKey;
     ESGalleryActionsButtonGroup: GalleryActionsButtonGroupClassKey;
@@ -890,6 +893,10 @@ declare module '@mui/material/styles/components' {
     };
     ESFlag?: {
       styleOverrides?: ComponentsOverrides['ESFlag'];
+    };
+    ESFolderIcon?: {
+      defaultProps?: ComponentsProps['ESFolderIcon'];
+      styleOverrides?: ComponentsOverrides['ESFolderIcon'];
     };
     ESFormatDate?: {
       defaultProps?: ComponentsProps['ESFormatDate'];
