@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.9](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.8...@esfront/react@0.11.9) (2024-10-21)
+
+
+### Features
+
+* **BottomSheet:** add drag dom scope check ([1118ab1](https://github.com/Elonsoft/esfront/commit/1118ab1be57325ec72907d5461a55618469e8da2))
+* **Button:** add new sizes ([2817b2e](https://github.com/Elonsoft/esfront/commit/2817b2e2476473d422907da6f191d26a6c8a6da6))
+* **RibbonBadge:** add focus state ([0fbcc95](https://github.com/Elonsoft/esfront/commit/0fbcc959c303c06cb50b459c55e57aa98e8e5866))
+
+
+### Bug Fixes
+
+* **Badge:** add missing export type ([f89acb1](https://github.com/Elonsoft/esfront/commit/f89acb19388285d10aa8e01848e215e1d003404a))
+* **Checkbox:** disable hover state for touchscreen devices ([b0af42e](https://github.com/Elonsoft/esfront/commit/b0af42e07a09f876738a061b5d58f6c947b79560))
+
+
+
 ### [0.11.8](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.7...@esfront/react@0.11.8) (2024-09-27)
 
 
