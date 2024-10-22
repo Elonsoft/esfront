@@ -34,6 +34,7 @@ import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
 import { Checkbox } from '../Checkbox';
+import { listItemClasses } from '../ListItem';
 import { MenuItem } from '../MenuItem';
 import { SpinnerRing } from '../Spinner';
 import { svgIconClasses } from '../SvgIcon';
@@ -136,8 +137,11 @@ const AutocompleteMenuSentinel = styled(MenuItem, {
   slot: 'Sentinel',
   overridesResolver: (_props, styles) => styles.sentinel,
 })(() => ({
-  padding: 0,
-  minHeight: 0,
+  [`&.${listItemClasses.size200}`]: {
+    padding: 0,
+    minHeight: 0,
+    height: 0,
+  },
 }));
 
 const AutocompleteMenuCheckbox = styled(Checkbox, {
