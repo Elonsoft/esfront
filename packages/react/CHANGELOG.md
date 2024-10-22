@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.10](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.9...@esfront/react@0.11.10) (2024-10-22)
+
+
+### Bug Fixes
+
+* **MenuItem:** add forward ref ([92ddba9](https://github.com/Elonsoft/esfront/commit/92ddba93a4b79b1c2b15cf27375eb67083e6e4b4))
+
+
+
 ### [0.11.9](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.8...@esfront/react@0.11.9) (2024-10-21)
 
 
