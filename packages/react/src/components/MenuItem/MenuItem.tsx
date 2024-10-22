@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+
 import { MenuItemProps, MenuItemTypeMap } from './MenuItem.types';
 
 import clsx from 'clsx';
@@ -34,7 +36,7 @@ const MenuItemRoot = styled(ListItem, {
   },
 }));
 
-export const MenuItem: OverridableComponent<MenuItemTypeMap> = (inProps: MenuItemProps) => {
+export const MenuItem = forwardRef(function MenuItem(inProps, ref) {
   const {
     className,
     classes: inClasses,
@@ -55,6 +57,13 @@ export const MenuItem: OverridableComponent<MenuItemTypeMap> = (inProps: MenuIte
   }
 
   return (
-    <MenuItemRoot button className={clsx(className, classes.root)} role="menuitem" tabIndex={tabIndex} {...props} />
+    <MenuItemRoot
+      ref={ref}
+      button
+      className={clsx(className, classes.root)}
+      role="menuitem"
+      tabIndex={tabIndex}
+      {...props}
+    />
   );
-};
+}) as OverridableComponent<MenuItemTypeMap>;
