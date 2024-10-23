@@ -27,16 +27,13 @@ export const Alert = (inProps: AlertProps) => {
     action,
     actions,
     color,
-    breakpoint,
+    breakpoint = '0',
+    breakpointContent = '0',
     iconMapping = defaultIconMapping,
   } = useDefaultProps({
     props: inProps,
     name: 'ESAlert',
   });
-
-  const isWithActions = Array.isArray(children)
-    ? children.some((elem) => (typeof elem === 'object' ? elem.type?.displayName === 'AlertActions' : false))
-    : false;
 
   return (
     <div
@@ -44,18 +41,22 @@ export const Alert = (inProps: AlertProps) => {
         className,
         'es-alert',
         `es-alert--${variant}--${color || severity}`,
-        isWithActions && 'es-alert--with-actions'
+        breakpoint && `es-alert--breakpoint--${breakpoint}`
       )}
       style={style}
     >
       {icon !== false && <div className="es-alert__icon">{icon || iconMapping[severity]}</div>}
-      <div className={clsx('es-alert__content', breakpoint && `es-alert__content--breakpoint--${breakpoint}`)}>
+      <div
+        className={clsx(
+          'es-alert__content',
+          breakpointContent && `es-alert__content--breakpoint--${breakpointContent}`,
+          className
+        )}
+      >
         <div className="es-alert__message body100">{children}</div>
         {actions}
       </div>
-      {!!action && (
-        <div className={clsx('es-alert__action', isWithActions && 'es-alert__action--with-actions')}>{action}</div>
-      )}
+      {!!action && <div className="es-alert__action">{action}</div>}
     </div>
   );
 };

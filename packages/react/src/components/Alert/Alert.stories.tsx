@@ -67,7 +67,11 @@ const meta: Meta<Args> = {
       },
     },
     breakpoint: {
-      options: ['0', 'sm', 'lg'],
+      options: [null, '0', 'sm', 'lg'],
+      control: { type: 'select' },
+    },
+    breakpointContent: {
+      options: [null, '0', 'sm', 'lg'],
       control: { type: 'select' },
     },
   },
@@ -100,6 +104,7 @@ export const Demo: Story = {
           )
         }
         breakpoint={args.breakpoint}
+        breakpointContent={args.breakpointContent}
         color={args.color}
         icon={args.icon ? undefined : false}
         severity={args.severity}
