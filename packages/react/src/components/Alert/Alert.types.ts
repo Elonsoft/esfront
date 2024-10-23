@@ -43,11 +43,6 @@ export interface AlertProps {
   action?: ReactNode;
 
   /**
-   * The action to display. It renders after the message, at the end of the alert.
-   */
-  actions?: ReactNode;
-
-  /**
    * The component maps the severity prop to a range of different icons.
    * If you wish to change this mapping, you can provide your own.
    */
