@@ -29,19 +29,26 @@ export interface AlertProps {
   color?: 'success' | 'warning' | 'error' | 'info' | 'mono-a';
 
   /**
-   * The breakpoint at which the flex items are ordered along the cross axis.
-   */
-  breakpoint?: string;
-
-  /**
    * The action to display. It renders after the message, at the end of the alert.
    */
   action?: ReactNode;
 
   /**
-   * The action to display. It renders after the message, at the end of the alert.
+   * The actions to display.
    */
   actions?: ReactNode;
+
+  /**
+   * The breakpoint at which the flex items are ordered in row.
+   * @default '0'
+   */
+  breakpoint?: string | null;
+
+  /**
+   * The breakpoint at which the content flex items are ordered in row.
+   * @default '0'
+   */
+  breakpointContent?: string | null;
 
   /**
    * The component maps the severity prop to a range of different icons.
