@@ -125,7 +125,6 @@ export const Demo: Story = {
         <IconChevronDownW400 />
       );
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const theme = useTheme();
 
     const backgroundColor =

@@ -1,1 +1,1 @@
-module.exports = require('@esfront/prettier-config');
+export { default } from '@esfront/prettier-config';
