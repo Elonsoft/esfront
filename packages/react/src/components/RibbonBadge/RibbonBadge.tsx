@@ -55,6 +55,7 @@ const BadgeRoot = styled(ButtonBase, {
   position: 'relative',
   width: 'fit-content',
   overflow: 'visible',
+  pointerEvents: 'none',
 
   '&:after': {
     content: "''",
@@ -75,6 +76,8 @@ const BadgeRoot = styled(ButtonBase, {
 
   [`&.${ribbonBadgeClasses.clickable}`]: {
     cursor: 'pointer',
+    pointerEvents: 'auto',
+
     [`&.${ribbonBadgeClasses.root}`]: {
       [`& .${touchRippleClasses.root}`]: {
         display: 'block',
