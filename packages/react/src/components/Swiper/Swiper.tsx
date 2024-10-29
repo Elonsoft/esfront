@@ -346,13 +346,22 @@ export const Swiper = (inProps: SwiperProps) => {
   const setActiveSlideByStep = useCallback(
     (step: number, options?: { smooth?: boolean }) => {
       if (container.current) {
-        if (active === to && step > 0 && loop) {
+        if (
+          container.current[mapping.clientSize] + container.current[mapping.scrollPosition] >=
+            container.current[mapping.scrollSize] - 1 &&
+          step > 0 &&
+          loop
+        ) {
           container.current.scrollTo({ [mapping.start]: 0, behavior: 'smooth' });
           return;
         }
 
-        if (active === from && step < 0 && loop) {
-          container.current.scrollTo({ [mapping.start]: container.current[mapping.scrollSize], behavior: 'smooth' });
+        if (container.current[mapping.scrollPosition] === 0 && step < 0 && loop) {
+          container.current.scrollBy({
+            [mapping.start]: container.current[mapping.scrollSize],
+            behavior: 'smooth',
+          });
+
           return;
         }
 
