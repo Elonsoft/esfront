@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { Fragment, memo, useState } from 'react';
 
 import { PaginationPagesProps } from './PaginationPages.types';
 
@@ -246,10 +246,9 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     <PaginationPagesRoot className={clsx(classes.root, className)} sx={sx}>
       <PaginationPagesPagination className={classes.pagination}>
         {items.map((item) => {
-          switch (item.type) {
-            case 'previous':
-            case 'next':
-              return (
+          return (
+            <Fragment key={`${item.type}${item.page}`}>
+              {item.type === 'previous' || item.type === 'next' ? (
                 <PaginationPagesButton
                   aria-label={`${item.type === 'next' ? labelNextPage : labelPrevPage}`}
                   className={classes.button}
@@ -259,12 +258,9 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
                 >
                   {item.type === 'previous' ? iconPrevPage : iconNextPage}
                 </PaginationPagesButton>
-              );
-            case 'start-ellipsis':
-            case 'end-ellipsis':
-              return <PaginationPagesEllipsis className={classes.ellipsis}>{iconEllipsis}</PaginationPagesEllipsis>;
-            default:
-              return (
+              ) : item.type === 'start-ellipsis' || item.type === 'end-ellipsis' ? (
+                <PaginationPagesEllipsis className={classes.ellipsis}>{iconEllipsis}</PaginationPagesEllipsis>
+              ) : (
                 <PaginationPagesTooltip
                   arrow
                   className={classes.tooltip}
@@ -285,8 +281,9 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
                     {item.page}
                   </PaginationPagesPaginationItem>
                 </PaginationPagesTooltip>
-              );
-          }
+              )}
+            </Fragment>
+          );
         })}
       </PaginationPagesPagination>
       <PaginationPagesTextField
