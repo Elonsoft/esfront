@@ -73,6 +73,7 @@ export const ListItemRoot = styled('li', {
   textAlign: 'left',
   paddingLeft: '16px',
   paddingRight: '16px',
+  pointerEvents: 'auto',
 
   '--background': 'transparent',
   '--text': theme.vars.palette.monoA.A900,
@@ -155,6 +156,7 @@ export const ListItemRoot = styled('li', {
   [`&.${listItemClasses.disabled}`]: {
     '--text': theme.vars.palette.monoA.A500,
     cursor: 'not-allowed',
+    pointerEvents: 'none',
 
     [`& .${listItemTextClasses.primary}, & .${listItemTextClasses.secondary}`]: {
       color: theme.vars.palette.monoA.A500,
