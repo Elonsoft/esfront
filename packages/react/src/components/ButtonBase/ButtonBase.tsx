@@ -79,6 +79,11 @@ const ButtonBaseRoot = styled('button', {
   backgroundColor: 'var(--background)',
   color: 'var(--text)',
 
+  // https://github.com/mui/material-ui/issues/14455
+  [`&.${buttonBaseClasses.disabled}:not(button)`]: {
+    pointerEvents: 'none',
+  },
+
   '@media (hover: hover)': {
     [`&:not(.${buttonBaseClasses.disabled}):hover > .${touchRippleClasses.root}`]: {
       backgroundColor: 'var(--hovered)',
