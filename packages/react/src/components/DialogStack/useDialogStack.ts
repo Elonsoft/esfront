@@ -16,8 +16,8 @@ export const useDialogStack = (): DialogStackContextValue => {
 
   return {
     ...context,
-    open: (dialog) => {
-      const result = context.open(dialog);
+    open: (dialog, params) => {
+      const result = context.open(dialog, params);
       dialogs.current.push(result.id);
 
       result.afterClosed.then(() => {
