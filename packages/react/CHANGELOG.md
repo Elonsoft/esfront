@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.11](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.10...@esfront/react@0.11.11) (2024-11-27)
+
+
+### Features
+
+* **Chip:** add new component ([4fb62dd](https://github.com/Elonsoft/esfront/commit/4fb62ddc90b338acf49c4a1d720791c735993917))
+* **Chips:** add new component ([2279ca0](https://github.com/Elonsoft/esfront/commit/2279ca01aaf181ac76fc18d6c81d8b6470e52790))
+* **Tag:** add new component ([ebf86e7](https://github.com/Elonsoft/esfront/commit/ebf86e7dbc2b9d047d5b2bce7b0e2f31ef989928))
+
+
+### Bug Fixes
+
+* **PaginationPages:** add unique key prop ([186be00](https://github.com/Elonsoft/esfront/commit/186be00f62d5ab8c47648587e9c241ec21e976bd))
+* **Swiper:** change loop edges detection ([45f0a79](https://github.com/Elonsoft/esfront/commit/45f0a79898b33d4e2f5c937059d8db5ba5be971f))
+* **useDialogStack:** add missing params argument ([add073b](https://github.com/Elonsoft/esfront/commit/add073b461e5039f7f546775a512d51e6a9526b5))
+
+
+### Style Changes
+
+* upgrade eslint to v9 ([704dc1b](https://github.com/Elonsoft/esfront/commit/704dc1bbf0ca3ddfe8b6643c26b4e1ca532153ba))
+
+
+
 ### [0.11.10](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.9...@esfront/react@0.11.10) (2024-10-22)
 
 

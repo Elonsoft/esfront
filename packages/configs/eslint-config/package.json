@@ -1,6 +1,6 @@
 {
   "name": "@esfront/eslint-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "type": "module",
   "private": false,
@@ -16,9 +16,9 @@
   },
   "homepage": "https://github.com/Elonsoft/esfront#readme",
   "peerDependencies": {
+    "@eslint/js": "^9.0.0",
     "@stylistic/eslint-plugin": "^2.0.0",
     "eslint": "^9.0.0",
-    "@eslint/js": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.37.0",
