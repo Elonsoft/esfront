@@ -22,6 +22,7 @@ export * from './Dialog';
 export * from './DialogStack';
 export * from './Divider';
 export * from './Dropzone';
+export * from './DropzoneCompact';
 export * from './EmptyState';
 export * from './EmptyStateCompact';
 export * from './ErrorPage';

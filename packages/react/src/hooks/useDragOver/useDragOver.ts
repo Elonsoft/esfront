@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 /**
  * The hook that allows to watch over the drag over state.
@@ -7,17 +7,17 @@ import { useState } from 'react';
 export const useDragOver = () => {
   const [count, setCount] = useState(0);
 
-  const onDragEnter = () => {
+  const onDragEnter = useCallback(() => {
     setCount((c) => c + 1);
-  };
+  }, []);
 
-  const onDragLeave = () => {
+  const onDragLeave = useCallback(() => {
     setCount((c) => c - 1);
-  };
+  }, []);
 
-  const onDrop = () => {
+  const onDrop = useCallback(() => {
     setCount(0);
-  };
+  }, []);
 
   return { onDragEnter, onDragLeave, onDrop, isDragOver: count > 0 };
 };
