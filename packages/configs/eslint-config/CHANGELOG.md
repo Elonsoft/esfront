@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.1.0...@esfront/eslint-config@0.1.1) (2024-11-27)
+
+
+### Style Changes
+
+* upgrade eslint to v9 ([704dc1b](https://github.com/Elonsoft/esfront/commit/704dc1bbf0ca3ddfe8b6643c26b4e1ca532153ba))
+
+
+
 ## [0.1.0](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.0.1...@esfront/eslint-config@0.1.0) (2024-07-02)
 
 
