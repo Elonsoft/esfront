@@ -6,6 +6,7 @@ import { SwiperPaginationProps } from './SwiperPagination.types';
 
 import clsx from 'clsx';
 
+import { useId } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { useSwiperContext } from '../Swiper.context';
 import { SwiperPaginationItem } from '../SwiperPaginationItem';
@@ -28,7 +29,7 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
 
   const { direction, from, to, active, setActiveSlide } = useSwiperContext();
 
-  const name = useMemo(() => `pagination-${SwiperPagination.count++}`, []);
+  const name = `pagination-${useId().replace(/:/g, '')}`;
   const transition: { transitionDuration?: string } =
     !!transitionDuration || transitionDuration === 0 ? { transitionDuration: `${transitionDuration}ms` } : {};
 
@@ -88,5 +89,3 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
     </div>
   );
 };
-
-SwiperPagination.count = 0;

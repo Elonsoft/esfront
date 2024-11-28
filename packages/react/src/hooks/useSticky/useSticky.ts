@@ -5,6 +5,10 @@ import { MutableRefObject, useEffect, useLayoutEffect } from 'react';
 import { useLatest } from '../useLatest';
 import { useResizeObserver } from '../useResizeObserver';
 
+const setTransform = (element: HTMLElement, transform: string) => {
+  element.style.transform = transform;
+};
+
 /**
  * The hook that mimics position sticky via transform.
  * @param ref The ref of the elements.
@@ -18,27 +22,32 @@ export const useSticky = (
   options: { top?: number; bottom?: number; relativeTo?: HTMLElement | null }
 ) => {
   const update = () => {
-    if (!ref.current) {
+    const element = ref.current;
+
+    if (!element) {
       return;
     }
 
     if (typeof options.top === 'number') {
-      ref.current.style.transform = '';
-      const elementTop = ref.current.getBoundingClientRect().top;
+      setTransform(element, '');
+
+      const elementTop = element.getBoundingClientRect().top;
       const relativeTop = options.relativeTo ? options.relativeTo.getBoundingClientRect().top : 0;
-      ref.current.style.transform = `translate3d(0px, ${Math.max(0, relativeTop - elementTop + options.top)}px, 0px)`;
+
+      setTransform(element, `translate3d(0px, ${Math.max(0, relativeTop - elementTop + options.top)}px, 0px)`);
     } else if (typeof options.bottom === 'number') {
-      ref.current.style.transform = '';
-      const elementBottom = ref.current.getBoundingClientRect().bottom;
+      setTransform(element, '');
+
+      const elementBottom = element.getBoundingClientRect().bottom;
       const relativeTop = options.relativeTo ? options.relativeTo.getBoundingClientRect().top : 0;
       const relativeHeight = options.relativeTo ? options.relativeTo.clientHeight : window.innerHeight;
 
-      ref.current.style.transform = `translate3d(0px, ${-Math.max(
-        0,
-        elementBottom - relativeTop + options.bottom - relativeHeight
-      )}px, 0px)`;
+      setTransform(
+        element,
+        `translate3d(0px, ${-Math.max(0, elementBottom - relativeTop + options.bottom - relativeHeight)}px, 0px)`
+      );
     } else {
-      ref.current.style.transform = '';
+      setTransform(element, '');
     }
   };
 

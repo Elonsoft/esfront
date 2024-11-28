@@ -1,11 +1,10 @@
 'use client';
 
-import { useMemo } from 'react';
-
 import { SpinnerProps } from '../Spinner.types';
 
 import clsx from 'clsx';
 
+import { useId } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 
 /**
@@ -22,7 +21,7 @@ export const SpinnerFadingDoubleRing = (inProps: SpinnerProps) => {
     name: 'ESSpinnerFadingDoubleRing',
   });
 
-  const id = useMemo(() => `SpinnerFadingDoubleRing-${SpinnerFadingDoubleRing.count++}`, []);
+  const id = `SpinnerFadingDoubleRing-${useId().replace(/:/g, '')}`;
 
   return (
     <svg
@@ -48,5 +47,3 @@ export const SpinnerFadingDoubleRing = (inProps: SpinnerProps) => {
     </svg>
   );
 };
-
-SpinnerFadingDoubleRing.count = 0;

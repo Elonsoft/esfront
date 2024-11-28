@@ -9,6 +9,10 @@ import { DialogStackStateContext } from './DialogStackState.context';
 
 import { useLatest, useWindowEventListener } from '../../hooks';
 
+let dialogIdCounter = 1;
+
+const nextDialogId = () => dialogIdCounter++;
+
 /**
  * Renders the dialogs opened through `useDialogStack` as a stack over the tree it wraps.
  * @deprecated Use the `DialogStack` component instead. It renders the dialogs opened through `useDialogStackV2` and
@@ -46,7 +50,7 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
         dialog: (props: { close: (data?: any) => void }) => ReactElement<DialogStackProviderComponentInterface>,
         params?: { id?: string }
       ) => {
-        const dialogId = params?.id || DialogStackProvider.dialogId++;
+        const dialogId = params?.id || nextDialogId();
         let close: (data?: any) => void;
 
         const afterClosed = new Promise<any>((resolve) => {
@@ -145,5 +149,3 @@ export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogS
     </DialogStackContext.Provider>
   );
 };
-
-DialogStackProvider.dialogId = 1;

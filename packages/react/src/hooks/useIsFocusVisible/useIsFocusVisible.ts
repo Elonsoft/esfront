@@ -89,6 +89,10 @@ export const teardown = (doc: Document) => {
   doc.removeEventListener('visibilitychange', onVisibilityChange, true);
 };
 
+const setHadFocusVisibleRecently = (value: boolean) => {
+  hadFocusVisibleRecently = value;
+};
+
 const isEventFocusVisible = (event: FocusEvent): boolean => {
   const { target } = event;
 
@@ -128,10 +132,10 @@ export const useIsFocusVisible = (): UseIsFocusVisibleResult => {
     if (isFocusVisibleRef.current) {
       // To detect a tab/window switch, we look for a blur event followed rapidly by a visibility change. If we don't
       // see a visibility change within 100ms, it's probably a regular focus change.
-      hadFocusVisibleRecently = true;
+      setHadFocusVisibleRecently(true);
 
       hadFocusVisibleRecentlyTimeout.start(100, () => {
-        hadFocusVisibleRecently = false;
+        setHadFocusVisibleRecently(false);
       });
 
       isFocusVisibleRef.current = false;

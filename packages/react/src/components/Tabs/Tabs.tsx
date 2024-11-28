@@ -11,6 +11,7 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -204,7 +205,24 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     scrollbarWidth: 0,
   });
 
-  const valueToIndex = new Map();
+  // The map is built up front rather than while the children are cloned, so that the metadata helpers below can read
+  // it without depending on the order in which the render body runs.
+  const valueToIndex = useMemo(() => {
+    const map = new Map();
+    let index = 0;
+
+    Children.forEach(childrenProp, (child) => {
+      if (!isValidElement(child)) {
+        return;
+      }
+
+      map.set(child.props.value === undefined ? index : child.props.value, index);
+      index += 1;
+    });
+
+    return map;
+  }, [childrenProp]);
+
   const tabsRef = useRef<HTMLDivElement>(null);
   const tabListRef = useRef<HTMLDivElement>(null);
 
@@ -619,28 +637,23 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     />
   );
 
-  let childIndex = 0;
-  const children = Children.map(childrenProp, (child) => {
-    if (!isValidElement(child)) {
-      return null;
-    }
+  const children = Children.toArray(childrenProp)
+    .filter((child): child is ReactElement<any> => isValidElement(child))
+    .map((child, childIndex) => {
+      const childValue = child.props.value === undefined ? childIndex : child.props.value;
+      const selected = childValue === value;
 
-    const childValue = child.props.value === undefined ? childIndex : child.props.value;
-    valueToIndex.set(childValue, childIndex);
-    const selected = childValue === value;
-
-    childIndex += 1;
-    return cloneElement(child as ReactElement, {
-      fullWidth: variant === 'full-width',
-      indicator: selected && !mounted && indicator,
-      selected,
-      selectionFollowsFocus,
-      onChange,
-      rounded,
-      value: childValue,
-      ...(childIndex === 1 && value === false && !child.props.tabIndex ? { tabIndex: 0 } : {}),
+      return cloneElement(child as ReactElement, {
+        fullWidth: variant === 'full-width',
+        indicator: selected && !mounted && indicator,
+        selected,
+        selectionFollowsFocus,
+        onChange,
+        rounded,
+        value: childValue,
+        ...(childIndex === 0 && value === false && !child.props.tabIndex ? { tabIndex: 0 } : {}),
+      });
     });
-  });
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (tabListRef.current) {
