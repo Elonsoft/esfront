@@ -103,6 +103,7 @@ export const ChipRoot = styled('div', {
     '--pressed': theme.vars.palette.monoA.A150,
 
     [`&.${chipClasses.disabled}`]: {
+      cursor: 'not-allowed',
       '--background': theme.vars.palette.monoA.A50,
 
       [`& .${buttonBaseClasses.wrapper}`]: {
@@ -183,8 +184,6 @@ export const ChipRoot = styled('div', {
   },
 
   [`&.${chipClasses.disabled}`]: {
-    pointerEvents: 'none',
-
     [`&.${chipClasses.focusableWhenDisabled}.${chipClasses.clickable}`]: {
       [`&.${buttonBaseClasses.root}:focus-visible`]: {
         outline: `2px solid ${theme.vars.palette.monoA[500]}`,
@@ -193,10 +192,12 @@ export const ChipRoot = styled('div', {
 
     [`& .${chipClasses.label}`]: {
       color: theme.vars.palette.monoA.A400,
+      pointerEvents: 'none',
     },
 
     [`& .${chipClasses.startIcon}, & .${chipClasses.endIcon}, & .${chipClasses.deleteIconWrapper} .${chipClasses.deleteIcon}`]:
       {
+        pointerEvents: 'none',
         opacity: 0.5,
       },
   },
