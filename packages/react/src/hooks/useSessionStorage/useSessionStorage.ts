@@ -6,16 +6,17 @@ import { useCallback, useMemo, useState } from 'react';
  * @param initialValue The initial value to set, if value in `sessionStorage` is empty.
  * @param {Object} options The options object.
  * @param {boolean} [options.raw=true] If set true, hook will not attempt to JSON serialize stored values.
+ * @param {boolean} [options.writeInitialValue=false] If set true, writes the initial value to the storage when it does not exist.
  * @param {Object} [options.serializer=JSON.stringify] Custom serializer.
  * @param {Object} [options.deserializer=JSON.parse] Custom deserializer.
  * @returns The current `sessionStorage` value, a callback to update the value and a callback to remove the value.
  */
-
 export const useSessionStorage = <T = null>(
   key: string,
   initialValue?: T,
   options?: {
     raw?: boolean;
+    writeInitialValue?: boolean;
     serializer?: (value: T) => string;
     deserializer?: (value: string) => T;
   }
@@ -24,10 +25,14 @@ export const useSessionStorage = <T = null>(
 
   const initializer = useMemo(() => {
     try {
-      const storageValue = sessionStorage.getItem(key);
+      const storageValue = window.sessionStorage.getItem(key);
 
       if (storageValue) {
         return raw ? storageValue : deserializer(storageValue);
+      }
+
+      if (initialValue && options?.writeInitialValue) {
+        window.sessionStorage.setItem(key, raw ? (initialValue as unknown as string) : serializer(initialValue));
       }
 
       return initialValue ?? null;
