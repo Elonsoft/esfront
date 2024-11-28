@@ -188,7 +188,11 @@ export const ChipRoot = styled('div', {
   },
 
   [`&.${chipClasses.disabled}`]: {
-    pointerEvents: 'none',
+    cursor: 'not-allowed',
+
+    [`&.${chipClasses.focusableWhenDisabled}`]: {
+      pointerEvents: 'none',
+    },
 
     [`&.${chipClasses.focusableWhenDisabled}.${chipClasses.clickable}`]: {
       [`&.${buttonBaseClasses.root}:focus-visible`]: {
@@ -430,7 +434,7 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
     onKeyUp,
     onClick,
     component: InComponent,
-    focusableWhenDisabled = true,
+    focusableWhenDisabled = false,
     tabIndex,
     ...props
   } = useThemeProps({
