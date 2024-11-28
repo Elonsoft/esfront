@@ -40,3 +40,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           workingDir: packages/react
           buildScriptName: build:storybook
+          exitOnceUploaded: true

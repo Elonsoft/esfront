@@ -10,7 +10,15 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import Typography from '@mui/material/Typography';
 
-import { getDescription, getProperty, TableCode, TableContainer, TableDescription, TableRow } from './TableBase';
+import {
+  getDescription,
+  getFunctionDescription,
+  getProperty,
+  TableCode,
+  TableContainer,
+  TableDescription,
+  TableRow,
+} from './TableBase';
 
 import { Theme } from '../../src/testing';
 import json from '../../src/typedoc.json';
@@ -50,7 +58,7 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
             description: getDescription(child),
           }))
         : [];
-      const returns = { type: getProperty(signature.type), description: (signature as any)?.comment?.returns || null };
+      const returns = { type: getProperty(signature.type), description: getFunctionDescription(signature) };
       return { params, returns };
     }
 

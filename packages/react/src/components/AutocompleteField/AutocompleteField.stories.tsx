@@ -237,7 +237,7 @@ export const Demo: Story = {
     return (
       <Box sx={{ maxWidth: '500px' }}>
         {args.multiple ? (
-          <AutocompleteField
+          <AutocompleteField<User>
             multiple
             label={locale === 'en' ? 'Users' : 'Пользователи'}
             value={users}

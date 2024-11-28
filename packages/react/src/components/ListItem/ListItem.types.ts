@@ -62,9 +62,9 @@ export interface ListItemOwnProps {
   error?: boolean;
 }
 
-export interface ListItemTypeMap<P = {}, D extends React.ElementType = 'li'> {
-  props: P & ListItemOwnProps;
-  defaultComponent: D;
+export interface ListItemTypeMap<AdditionalProps = {}, RootComponent extends React.ElementType = 'li'> {
+  props: AdditionalProps & ListItemOwnProps;
+  defaultComponent: RootComponent;
 }
 
 export type ListItemProps<D extends React.ElementType = ListItemTypeMap['defaultComponent'], P = {}> = OverrideProps<

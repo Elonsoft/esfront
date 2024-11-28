@@ -43,7 +43,6 @@ type Story = StoryObj<typeof Chip>;
 
 export const Demo: Story = {
   render: (args, context) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [isChipDeleted, setChipDeleted] = useState(false);
 
     const locale = (context.globals.locale || 'en') as 'en' | 'ru';

@@ -13,7 +13,15 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import Typography from '@mui/material/Typography';
 
-import { getDescription, getField, TableCode, TableContainer, TableDescription, TableRow } from './TableBase';
+import {
+  getDefault,
+  getDescription,
+  getField,
+  TableCode,
+  TableContainer,
+  TableDescription,
+  TableRow,
+} from './TableBase';
 
 import { Theme } from '../../src/testing';
 import json from '../../src/typedoc.json';
@@ -49,7 +57,7 @@ const TableInterfaceBase = ({ name, variant }: TableInterfaceProps) => {
           name: child.name,
           isOptional: !!child.flags.isOptional,
           type: getField(child),
-          default: child.comment?.tags?.find((tag) => tag.tag === 'default')?.text,
+          default: getDefault(child),
           description: getDescription(child),
         }))
         .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
