@@ -9,13 +9,7 @@ interface DescriptionProps {
 export const Description = ({ name }: DescriptionProps) => {
   const description = useMemo(() => {
     const entry = json.children.find((e) => e.name === name);
-    const signature = entry?.signatures?.[0];
-
-    if (signature) {
-      return signature?.comment?.shortText || '';
-    }
-
-    return '';
+    return entry?.comment?.summary?.map((e) => e.text)?.join('') || '';
   }, [name]);
 
   return (

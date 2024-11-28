@@ -38,7 +38,27 @@ export const TableCode = styled('code')(({ theme }) => ({
 }));
 
 export const getDescription = (c) => {
-  return c.comment?.shortText || c.signatures?.[0]?.comment?.shortText || null;
+  return c.comment?.summary?.map((e) => e.text).join('') || null;
+};
+
+export const getFunctionDescription = (s) => {
+  const content = s.comment?.blockTags?.find((tag) => tag.tag === '@returns')?.content;
+
+  if (content) {
+    return content.map((e) => e.text).join('');
+  }
+
+  return null;
+};
+
+export const getDefault = (c) => {
+  const text = c.comment?.blockTags?.find((tag) => tag.tag === '@default')?.content?.[0]?.text;
+
+  if (text) {
+    return text.substring(6, text.length - 4);
+  }
+
+  return text;
 };
 
 export const getMethod = (m) => {
@@ -96,14 +116,16 @@ export const getProperty = (p) => {
   }
 };
 
-export const getField = (t) => {
-  if (t.kindString === 'Method') {
-    return getMethod(t);
-  }
+export const getField = (c) => {
+  return getProperty(c.type);
 
-  if (t.kindString === 'Property') {
-    return getProperty(t.type);
-  }
+  // if (t.kindString === 'Method') {
+  //   return getMethod(t);
+  // }
 
-  return '';
+  // if (t.kindString === 'Property') {
+  //   return getProperty(t.type);
+  // }
+
+  // return '';
 };

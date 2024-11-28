@@ -4,14 +4,17 @@ import { OverridableTypeMap, OverrideProps } from '@mui/material/OverridableComp
 
 import { ListItemTypeMap } from '../ListItem';
 
-export interface ExtendMuiMenuItemTypeMap<M extends OverridableTypeMap> {
-  props: M['props'] & ListItemTypeMap['props'];
-  defaultComponent: M['defaultComponent'];
+export interface ExtendMenuItemTypeMap<TypeMap extends OverridableTypeMap> {
+  props: TypeMap['props'] & ListItemTypeMap['props'];
+  defaultComponent: TypeMap['defaultComponent'];
 }
 
-export type MenuItemTypeMap<P = {}, D extends React.ElementType = 'li'> = ExtendMuiMenuItemTypeMap<{
-  props: P;
-  defaultComponent: D;
+export type MenuItemTypeMap<
+  AdditionalProps = {},
+  RootComponent extends React.ElementType = 'li',
+> = ExtendMenuItemTypeMap<{
+  props: AdditionalProps & {};
+  defaultComponent: RootComponent;
 }>;
 
 export type MenuItemProps<D extends React.ElementType = MenuItemTypeMap['defaultComponent'], P = {}> = OverrideProps<
