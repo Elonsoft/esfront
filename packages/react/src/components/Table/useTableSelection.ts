@@ -1,4 +1,4 @@
-import { MouseEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { MouseEvent, useCallback, useMemo, useRef, useState } from 'react';
 
 /**
  * The hook that manages selection of the table rows.
@@ -8,7 +8,6 @@ import { MouseEvent, useCallback, useEffect, useMemo, useState } from 'react';
  * @param [options.initialState] The initial selection value.
  * @returns The selection state and methods.
  */
-
 export const useTableSelection = <T extends object, K extends keyof T>(
   data: T[],
   options: { key: K; initialState?: Array<T[K]> }
@@ -16,7 +15,7 @@ export const useTableSelection = <T extends object, K extends keyof T>(
   type V = T[K];
 
   const [selected, setSelected] = useState<Array<V>>(options.initialState || []);
-  const [lastSelectedItem, setLastSelectedItem] = useState<T | null>(null);
+  const lastValue = useRef<V | null>(null);
 
   const isAllSelected = useMemo(() => {
     return data.every((row) => selected.includes(row[options.key]));
@@ -27,18 +26,37 @@ export const useTableSelection = <T extends object, K extends keyof T>(
   }, [data, selected, isAllSelected, options.key]);
 
   const toggle = useCallback(
-    (value: V, isSelected?: boolean) => {
-      const index = selected.indexOf(value);
+    (value: V, params: { isSelected?: boolean; event?: React.ChangeEvent<HTMLInputElement> } = {}) => {
+      const isSelected = params.isSelected ?? selected.indexOf(value) === -1;
 
-      if (isSelected ?? index === -1) {
-        setSelected(selected.concat(value));
-      } else {
-        const newSelected = selected.slice();
-        newSelected.splice(index, 1);
+      const currentIndex = data.findIndex((row) => row[options.key] === value);
+
+      let lastIndex =
+        params.event && (params.event.nativeEvent as unknown as MouseEvent).shiftKey && lastValue.current !== value
+          ? data.findIndex((row) => row[options.key] === lastValue.current)
+          : currentIndex;
+
+      if (lastIndex === -1) {
+        lastIndex = currentIndex;
+      }
+
+      const start = Math.min(currentIndex, lastIndex);
+      const end = Math.max(currentIndex, lastIndex);
+
+      lastValue.current = value;
+
+      if (start > -1 && end > -1) {
+        const range = data.slice(start, end + 1).map((row) => row[options.key]);
+        let newSelected = selected.filter((id) => !range.includes(id));
+
+        if (isSelected) {
+          newSelected = newSelected.concat(range);
+        }
+
         setSelected(newSelected);
       }
     },
-    [selected]
+    [data, selected, options.key]
   );
 
   const toggleAll = useCallback(
@@ -56,32 +74,5 @@ export const useTableSelection = <T extends object, K extends keyof T>(
     [data, selected, isAllSelected, options.key]
   );
 
-  const onChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>, item: T) => {
-      if ((event as unknown as MouseEvent).nativeEvent.shiftKey && lastSelectedItem !== item) {
-        const currentIndex = data.findIndex((x) => x === item);
-        const lastIndex = data.findIndex((x) => x === lastSelectedItem);
-        const start = Math.min(currentIndex, lastIndex);
-        const end = Math.max(currentIndex, lastIndex);
-        const isChecked = event.target.checked;
-
-        if (start > -1 && end > -1) {
-          const range = data.slice(start, end + 1).map((row) => row[options.key]);
-          setSelected(isChecked ? [...selected, ...range] : selected.filter((id) => !range.includes(id)));
-          setLastSelectedItem(item);
-          return;
-        }
-      } else {
-        setLastSelectedItem(item);
-      }
-      toggle(item[options.key], event.target.checked);
-    },
-    [data, selected, lastSelectedItem, toggle, options.key]
-  );
-
-  useEffect(() => {
-    setLastSelectedItem(null);
-  }, [data]);
-
-  return { selected, setSelected, isAllSelected, isSomeSelected, toggle, toggleAll, onChange };
+  return { selected, setSelected, isAllSelected, isSomeSelected, toggle, toggleAll };
 };
