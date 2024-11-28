@@ -34,5 +34,6 @@ export const useForkRef = <Instance>(...refs: Array<Ref<Instance> | undefined>):
         setRef(ref, instance);
       });
     };
+    // eslint-disable-next-line react-compiler/react-compiler
   }, refs);
 };

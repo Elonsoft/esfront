@@ -8,7 +8,7 @@ import clsx from 'clsx';
 
 import { useEnhancedEffect, useForkRef } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
-import { isFilled } from '../../../utils';
+import { isFilled, setRef } from '../../../utils';
 import { useFormFieldContext } from '../FormField.context';
 
 /** Names of the keyframes the theme runs on `:-webkit-autofill` to report that the browser has filled the input in. */
@@ -42,7 +42,7 @@ export const FormFieldInput = forwardRef<FormFieldInputElement, FormFieldInputPr
   // The context ref is widened to any element, so it is filled through a callback rather than forked directly.
   const setControl = useCallback(
     (node: FormFieldInputElement | null) => {
-      inputRef.current = node;
+      setRef(inputRef, node);
     },
     [inputRef]
   );

@@ -203,7 +203,6 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
   };
 
   const bind = useDrag(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ({ down, swipe: [_swipeX, swipeY], movement: [_mx, my], type, event }) => {
       // Allow only types starting with "touch".
       if (type[0] !== 't' || !containerRef.current || !contentRef.current || !wrapperRef) {

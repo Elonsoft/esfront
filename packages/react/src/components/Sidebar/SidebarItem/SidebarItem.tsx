@@ -223,7 +223,6 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
           {!!children && <Divider className="es-sidebar-item__tooltip-divider" />}
           {!!children &&
             React.Children.map(children, (child: any, idx: number) => {
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const { text, inset, onClick, ...rest } = child.props;
 
               return (

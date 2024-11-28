@@ -8,6 +8,7 @@ import clsx from 'clsx';
 
 import { useControlled, useEnhancedEffect, useForkRef, usePreviousValue } from '../../hooks';
 import { useDefaultProps } from '../../theming';
+import { setRef } from '../../utils';
 import { AutocompleteMenu, AutocompleteMenuImperativeActions } from '../AutocompleteMenu';
 import { FormFieldAdornment, FormFieldField, useFormFieldContext } from '../FormField';
 
@@ -66,7 +67,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   // The field focuses whatever sits in the context ref when its padding is clicked, so the control registers itself.
   const setControl = useCallback(
     (node: HTMLDivElement | null) => {
-      formField.inputRef.current = node;
+      setRef(formField.inputRef, node);
     },
     [formField.inputRef]
   );

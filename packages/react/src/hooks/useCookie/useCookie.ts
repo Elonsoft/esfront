@@ -42,6 +42,10 @@ function getCookie(name: string, data: string, attributes?: Attributes) {
   return cookie.join('; ');
 }
 
+function writeCookie(name: string, data: string, attributes?: Attributes) {
+  document.cookie = getCookie(name, data, attributes);
+}
+
 function readCookie(name: string) {
   const cookie = document.cookie.split('; ').find((c) => c.startsWith(`${encodeURIComponent(name)}=`));
 
@@ -100,7 +104,7 @@ export const useCookie = <T extends string | null = null>(
 
     try {
       if (readCookie(name) === null) {
-        document.cookie = getCookie(name, initialValue, writeInitialValueAttributes);
+        writeCookie(name, initialValue, writeInitialValueAttributes);
       }
     } catch {
       // The cookie is not accessible, nothing to write.
@@ -109,17 +113,17 @@ export const useCookie = <T extends string | null = null>(
 
   const update = useCallback(
     (data: string, attributes?: Attributes) => {
-      document.cookie = getCookie(name, data, attributes);
+      writeCookie(name, data, attributes);
       setState({ name, value: data });
     },
     [name]
   );
 
   const remove = useCallback(() => {
-    document.cookie = getCookie(name, '', { expires: new Date(0).toUTCString() });
+    writeCookie(name, '', { expires: new Date(0).toUTCString() });
 
     if (initialValue !== null && initialValue !== undefined && writeInitialValue) {
-      document.cookie = getCookie(name, initialValue, writeInitialValueAttributes);
+      writeCookie(name, initialValue, writeInitialValueAttributes);
     }
 
     setState({ name, value: (initialValue ?? null) as T });

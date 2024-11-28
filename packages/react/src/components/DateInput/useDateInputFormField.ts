@@ -3,6 +3,7 @@
 import { RefObject, useCallback, useContext, useEffect } from 'react';
 
 import { useForkRef, useId } from '../../hooks';
+import { setRef } from '../../utils';
 import { FormFieldContext } from '../FormField';
 
 export interface UseDateInputFormFieldParams {
@@ -37,9 +38,7 @@ export const useDateInputFormField = ({
   // The field focuses whatever sits in the context ref when its padding is clicked, so the control registers itself.
   const setControl = useCallback(
     (node: HTMLDivElement | null) => {
-      if (formField) {
-        formField.inputRef.current = node;
-      }
+      setRef(formField?.inputRef, node);
     },
     [formField?.inputRef]
   );
