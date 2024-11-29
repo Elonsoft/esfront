@@ -77,6 +77,7 @@ export default tseslint.config(
                 'Button',
                 'ButtonBase',
                 'Checkbox',
+                'CircularProgress',
                 'Dialog',
                 'DialogActions',
                 'DialogContent',
@@ -144,6 +145,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/Checkbox'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/CircularProgress'],
               importNames: ['default'],
             },
             {
