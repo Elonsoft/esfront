@@ -12,6 +12,7 @@ import { capitalize, createChainedFunction } from '@mui/material';
 
 import { RadioIcon, radioIconClasses } from './RadioIcon';
 
+import { buttonBaseClasses } from '../ButtonBase';
 import { useRadioGroup } from '../RadioGroup';
 import { SwitchBase } from '../SwitchBase';
 
@@ -99,6 +100,10 @@ const RadioRoot = styled(SwitchBase, {
       height: '24px !important',
       width: '24px !important',
     },
+
+    [`&:not(.${buttonBaseClasses.disabled}):has(:focus-visible)`]: {
+      outlineOffset: '-5px',
+    },
   },
   [`&.${radioClasses.sizeMedium}`]: {
     [`& .${radioIconClasses.root}`]: {
@@ -114,6 +119,10 @@ const RadioRoot = styled(SwitchBase, {
       height: '20px !important',
       width: '20px !important',
     },
+
+    [`&:not(.${buttonBaseClasses.disabled}):has(:focus-visible)`]: {
+      outlineOffset: '-3px',
+    },
   },
   [`&.${radioClasses.sizeSmall}`]: {
     [`& .${radioIconClasses.root}`]: {
@@ -128,6 +137,10 @@ const RadioRoot = styled(SwitchBase, {
       fontSize: '16px',
       height: '16px !important',
       width: '16px !important',
+    },
+
+    [`&:not(.${buttonBaseClasses.disabled}):has(:focus-visible)`]: {
+      outlineOffset: '-3px',
     },
   },
 
