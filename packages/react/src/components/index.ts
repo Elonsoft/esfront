@@ -60,5 +60,6 @@ export * from './TabBar';
 export * from './Table';
 export * from './Tag';
 export * from './TextFieldGroup';
+export * from './ToggleButtonGroup';
 export * from './TooltipEllipsis';
 export * from './TouchRipple';
