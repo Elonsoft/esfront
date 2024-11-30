@@ -158,6 +158,7 @@ import {
   GalleryThumbnailsItemProps,
   GalleryThumbnailsProps,
 } from './components/Gallery';
+import { InlineTextFieldClassKey, InlineTextField } from './components/InlineTextField';
 import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinearProgressClassKey, LinearProgressProps } from './components/LinearProgress';
 import { LinkClassKey, LinkProps } from './components/Link';
@@ -406,6 +407,7 @@ declare module '@mui/material/styles/props' {
     ESGalleryThumbnails: GalleryThumbnailsProps;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageProps;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemProps;
+    ESInlineTextField: InlineTextFieldProps;
     ESKbd: KbdProps;
     ESLinearProgress: LinearProgressProps;
     ESLink: LinkProps;
@@ -544,6 +546,7 @@ declare module '@mui/material/styles/overrides' {
     ESGalleryThumbnails: GalleryThumbnailsClassKey;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageClassKey;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemClassKey;
+    ESInlineTextField: InlineTextFieldClassKey;
     ESKbd: KbdClassKey;
     ESLinearProgress: LinearProgressClassKey;
     ESLink: LinkClassKey;
@@ -913,6 +916,10 @@ declare module '@mui/material/styles/components' {
     };
     ESFormatSize?: {
       defaultProps?: ComponentsProps['ESFormatSize'];
+    };
+    ESInlineTextField?: {
+      defaultProps?: ComponentsProps['ESInlineTextField'];
+      styleOverrides?: ComponentsOverrides['ESInlineTextField'];
     };
     ESKbd?: {
       defaultProps?: ComponentsProps['ESKbd'];
