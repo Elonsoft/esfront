@@ -9,6 +9,7 @@ import { FileInfoNameProps } from '../FileInfo';
 import { FormatSizeProps } from '../FormatSize';
 import { GalleryActionsProps, GalleryDescriptionProps, GalleryMetaProps, GallerySwiperProps } from '../Gallery';
 import { MadeByProps } from '../MadeBy';
+import { OnboardingPopperProps } from '../Onboarding';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
 import { SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
@@ -82,6 +83,9 @@ export interface Localization {
     };
     ESPasswordField: {
       defaultProps: Pick<PasswordFieldProps, 'labelHidePassword' | 'labelShowPassword'>;
+    };
+    ESOnboardingPopper: {
+      defaultProps: Pick<OnboardingPopperProps, 'labelNextButton' | 'labelBackButton'>;
     };
     ESSidebarToggle: {
       defaultProps: Pick<SidebarToggleProps, 'labelOpen' | 'labelHide'>;
@@ -241,6 +245,12 @@ export const en: Localization = {
         labelHidePassword: 'Hide',
         labelShowPassword: 'Show',
       },
+    },
+    ESOnboardingPopper: {
+      defaultProps: {
+        labelNextButton: 'Next',
+        labelBackButton: 'Back'
+      }
     },
     ESSidebarToggle: {
       defaultProps: {
@@ -422,6 +432,12 @@ export const ru: Localization = {
         labelHidePassword: 'Скрыть',
         labelShowPassword: 'Показать',
       },
+    },
+    ESOnboardingPopper: {
+      defaultProps: {
+        labelNextButton: 'Далее',
+        labelBackButton: 'Назад'
+      }
     },
     ESSidebarToggle: {
       defaultProps: {
