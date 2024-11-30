@@ -275,6 +275,7 @@ import {
 import { TagClassKey, TagProps } from './components/Tag';
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
+import { TooltipClassKey, TooltipProps } from './components/Tooltip';
 import { buttonMixin, listItemMixin } from './theming/mixins';
 import { AvatarProps } from './components';
 import { BadgeProps, BadgeClassKey } from './components/Badge';
@@ -470,6 +471,7 @@ declare module '@mui/material/styles/props' {
     ESTag: TagProps;
     ESTouchRipple: TouchRippleProps;
     ESTextFieldGroup: TextFieldGroupProps;
+    ESTooltip: TooltipProps;
   }
 }
 
@@ -608,6 +610,7 @@ declare module '@mui/material/styles/overrides' {
     ESTag: TagClassKey;
     ESTouchRipple: TouchRippleClassKey;
     ESTextFieldGroup: TextFieldGroupClassKey;
+    ESTooltip: TooltipClassKey;
   }
 }
 
@@ -1148,6 +1151,10 @@ declare module '@mui/material/styles/components' {
     ESTextFieldGroup?: {
       defaultProps?: ComponentsProps['ESTextFieldGroup'];
       styleOverrides?: ComponentsOverrides['ESTextFieldGroup'];
+    };
+    ESTooltip?: {
+      defaultProps?: ComponentsProps['ESTooltip'];
+      styleOverrides?: ComponentsOverrides['ESTooltip'];
     };
   }
 }
