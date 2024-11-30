@@ -10,7 +10,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import { unstable_composeClasses, useMediaQuery } from '@mui/material';
 import MenuList from '@mui/material/MenuList';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
+import Typography, { typographyClasses } from '@mui/material/Typography';
 
 import { IconSortAscending, IconSortDescending } from '../../icons';
 import { Button, buttonClasses } from '../Button';
@@ -18,7 +18,7 @@ import { buttonBaseClasses } from '../ButtonBase';
 import { Divider, dividerClasses } from '../Divider';
 import { Kbd, kbdClasses } from '../Kbd';
 import { Link } from '../Link';
-import { listItemClasses, ListItemText } from '../ListItem';
+import { listItemClasses, ListItemText, listItemTextClasses } from '../ListItem';
 import { MenuItem } from '../MenuItem';
 import { Switch, switchClasses } from '../Switch';
 
@@ -65,8 +65,7 @@ const SortingMenuRoot = styled(Popover, {
     overflowX: 'hidden',
 
     '& .MuiList-root': {
-      minWidth: '320px',
-      maxWidth: '100%',
+      width: '320px',
       padding: '0',
     },
   },
@@ -134,11 +133,23 @@ const SortingMenuItem = styled(MenuItem, {
     cursor: 'default',
 
     [`& > .${buttonBaseClasses.wrapper}`]: {
+      width: 'inherit',
       display: 'block',
     },
 
     [`& .${dividerClasses.root}`]: {
       margin: '8px 0',
+    },
+  },
+
+  [`& .${buttonBaseClasses.wrapper} .${listItemTextClasses.root}`]: {
+    display: 'inline-flex',
+    flexShrink: '1',
+
+    [`& .${typographyClasses.root}`]: {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
     },
   },
 }));
@@ -151,6 +162,7 @@ const SortingDirectionButton = styled(Button, {
   '--icon': theme.vars.palette.monoA.A600,
 
   [`&.${buttonClasses.root}`]: {
+    flexShrink: 0,
     textTransform: 'unset',
     position: 'relative',
     zIndex: 10,
