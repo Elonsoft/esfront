@@ -11,9 +11,16 @@ export type SortingMenuValue = {
   direction: SortingMenuDirection;
 };
 
-export interface SortingMenuOptionMap {
+export interface SortingMenuOption {
   value: string;
   label: string;
+  /** Text for the ascending label. */
+  labelAsc?: ReactNode;
+  /** Text for the descending label. */
+  labelDesc?: ReactNode;
+}
+
+export interface SortingMenuOptionMap extends SortingMenuOption {
   direction: SortingMenuDirection;
   i: number;
 }
@@ -23,10 +30,7 @@ export type SortingMenuProps = {
   classes?: Partial<SortingMenuClasses>;
 
   /** The sorting options. */
-  options?: {
-    value: string;
-    label: string;
-  }[];
+  options?: SortingMenuOption[];
 
   PopoverProps: PopoverProps;
 

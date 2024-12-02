@@ -419,7 +419,9 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
             onTouchStart={onStopRipple}
           >
             <SortingCaption className={classes.caption} variant="caption">
-              {item.direction === 'asc' ? labelAsc : labelDesc}
+              {item.direction === 'asc'
+                ? sortMap[item.value].labelAsc || labelAsc
+                : sortMap[item.value].labelDesc || labelDesc}
             </SortingCaption>
             <SortingDirectionButtonBadge className={classes.directionButtonBadge}>
               {item.direction === 'asc' ? iconItemAsc : iconItemDesc}

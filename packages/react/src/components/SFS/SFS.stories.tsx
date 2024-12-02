@@ -10,8 +10,8 @@ import { Divider } from '../Divider';
 import { SortingMenuValue } from '../SortingMenu';
 
 const sortingOptionsRu = [
-  { label: 'Кол-во квартир', value: 'byCount' },
-  { label: 'Площадь', value: 'bySquare' },
+  { label: 'Кол-во квартир', value: 'byCount', labelAsc: '0–9', labelDesc: '9–0' },
+  { label: 'Площадь', value: 'bySquare', labelAsc: '0–9', labelDesc: '9–0' },
   { label: 'Срок сдачи', value: 'byRent' },
   { label: 'Старт продаж', value: 'bySalesStart' },
   { label: 'Дата создания', value: 'byCreationDate' },
@@ -19,8 +19,8 @@ const sortingOptionsRu = [
 ];
 
 const sortingOptionsEn = [
-  { label: 'Number of apartments', value: 'byCount' },
-  { label: 'Square', value: 'bySquare' },
+  { label: 'Number of apartments', value: 'byCount', labelAsc: '0–9', labelDesc: '9–0' },
+  { label: 'Square', value: 'bySquare', labelAsc: '0–9', labelDesc: '9–0' },
   { label: 'Deadline', value: 'byRent' },
   { label: 'Start of sales', value: 'bySalesStart' },
   { label: 'Date of creation', value: 'byCreationDate' },
