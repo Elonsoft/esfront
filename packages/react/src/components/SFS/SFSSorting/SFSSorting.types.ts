@@ -4,7 +4,7 @@ import { SFSSortingClasses } from './SFSSorting.classes';
 
 import { SxProps, Theme } from '@mui/material';
 
-import { SortingMenuValue } from '../../SortingMenu';
+import { SortingMenuOption, SortingMenuValue } from '../../SortingMenu';
 
 export type SFSSortingProps = {
   /** Override or extend the styles applied to the component. */
@@ -15,7 +15,7 @@ export type SFSSortingProps = {
   className?: string;
 
   /** The sorting options. */
-  options: { value: string; label: string }[];
+  options: SortingMenuOption[];
 
   /** Text for the menu open button. */
   labelButton?: string;
