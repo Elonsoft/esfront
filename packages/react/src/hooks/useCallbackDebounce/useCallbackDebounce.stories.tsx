@@ -3,13 +3,12 @@ import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '@mui/material/Box';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 import { useCallbackDebounce } from './useCallbackDebounce';
 
-import { Checkbox } from '../../components';
+import { Checkbox, FormControlLabel } from '../../components';
 
 const meta: Meta = {
   tags: ['autodocs'],
