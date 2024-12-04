@@ -172,9 +172,6 @@ export interface TooltipProps {
   /**
    * The extra props for the slot components.
    * You can override the existing props or add new ones.
-   *
-   * This prop is an alias for the `componentsProps` prop, which will be deprecated in the future.
-   *
    * @default {}
    */
   slotProps?: {
@@ -185,9 +182,6 @@ export interface TooltipProps {
   };
   /**
    * The components used for each slot inside.
-   *
-   * This prop is an alias for the `components` prop, which will be deprecated in the future.
-   *
    * @default {}
    */
   slots?: {
