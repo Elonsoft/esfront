@@ -91,6 +91,7 @@ export default tseslint.config(
                 'ListItemIcon',
                 'ListItemText',
                 'MenuItem',
+                'FormControlLabel',
                 'Pagination',
                 'PaginationItem',
                 'Radio',
@@ -200,6 +201,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/MenuItem'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/FormControlLabel'],
               importNames: ['default'],
             },
             {

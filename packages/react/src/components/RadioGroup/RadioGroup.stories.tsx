@@ -2,10 +2,11 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { FormControl, FormControlLabel } from '@mui/material';
+import { FormControl } from '@mui/material';
 
 import { RadioGroup } from './RadioGroup';
 
+import { FormControlLabel } from '../FormControlLabel';
 import { Radio } from '../Radio';
 
 const LABELS = {
@@ -50,7 +51,7 @@ export const Demo: Story = {
           {...args}
         >
           {LABELS[locale].map((item) => (
-            <FormControlLabel key={item.value} control={<Radio />} label={item.label} value={item.value} />
+            <FormControlLabel key={item.value} control={<Radio value={item.value} />} label={item.label} />
           ))}
         </RadioGroup>
       </FormControl>

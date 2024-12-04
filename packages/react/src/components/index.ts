@@ -30,6 +30,7 @@ export * from './FileInfo';
 export * from './Flags';
 export * from './FormatDate';
 export * from './FormatSize';
+export * from './FormControlLabel';
 export * from './Gallery';
 export * from './InformationIcon';
 export * from './Kbd';

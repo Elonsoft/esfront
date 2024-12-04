@@ -38,6 +38,7 @@ import {
   AlertTitleProps,
 } from './components/Alert';
 import { AppBarClassKey, AppBarProps } from './components/AppBar';
+import { FormControlLabelClassKey, FormControlLabelProps } from './components/FormControlLabel';
 import { AudioPlayerClassKey, AudioPlayerProps } from './components/AudioPlayer';
 import { AutocompleteClassKey, AutocompleteProps } from './components/Autocomplete';
 import { AutocompleteFieldClassKey, AutocompleteFieldProps } from './components/AutocompleteField';
@@ -406,6 +407,7 @@ declare module '@mui/material/styles/props' {
     ESFileInfoName: FileInfoNameProps;
     ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
+    ESFormControlLabel: FormControlLabelProps;
     ESGallery: GalleryProps;
     ESGalleryActions: GalleryActionsProps;
     ESGalleryActionsButtonGroup: GalleryActionsButtonGroupProps;
@@ -550,6 +552,7 @@ declare module '@mui/material/styles/overrides' {
     ESFileInfoMeta: FileInfoMetaClassKey;
     ESFileInfoMetaSeparator: FileInfoMetaSeparatorClassKey;
     ESFileInfoName: FileInfoNameClassKey;
+    ESFormControlLabel: FormControlLabelClassKey;
     ESFlag: FlagClassKey;
     ESGallery: GalleryClassKey;
     ESGalleryActions: GalleryActionsClassKey;
@@ -876,6 +879,10 @@ declare module '@mui/material/styles/components' {
       defaultProps?: ComponentsProps['ESGalleryThumbnailsItem'];
       styleOverrides?: ComponentsOverrides['ESGalleryThumbnailsItem'];
     };
+    ESInformationIcon?: {
+      defaultProps?: ComponentsProps['ESInformationIcon'];
+      styleOverrides?: ComponentsOverrides['ESInformationIcon'];
+    };
     ESSwiper?: {
       defaultProps?: ComponentsProps['ESSwiper'];
       styleOverrides?: ComponentsOverrides['ESSwiper'];
@@ -941,9 +948,9 @@ declare module '@mui/material/styles/components' {
     ESFormatSize?: {
       defaultProps?: ComponentsProps['ESFormatSize'];
     };
-    ESInformationIcon?: {
-      defaultProps?: ComponentsProps['ESInformationIcon'];
-      styleOverrides?: ComponentsOverrides['ESInformationIcon'];
+    ESFormControlLabel?: {
+      defaultProps?: ComponentsProps['ESFormControlLabel'];
+      styleOverrides?: ComponentsOverrides['ESFormControlLabel'];
     };
     ESKbd?: {
       defaultProps?: ComponentsProps['ESKbd'];
