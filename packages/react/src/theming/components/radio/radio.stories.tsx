@@ -1,6 +1,7 @@
+/* eslint-disable no-restricted-imports */
+
 import { Meta, StoryObj } from '@storybook/react';
 
-// eslint-disable-next-line no-restricted-imports
 import { Radio } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import RadioGroup from '@mui/material/RadioGroup';
