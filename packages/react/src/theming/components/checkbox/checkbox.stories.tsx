@@ -1,6 +1,7 @@
+/* eslint-disable no-restricted-imports */
+
 import { Meta, StoryObj } from '@storybook/react';
 
-// eslint-disable-next-line no-restricted-imports
 import { Checkbox } from '@mui/material';
 
 const meta: Meta<typeof Checkbox> = {
