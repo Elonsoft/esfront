@@ -2,6 +2,7 @@ export { SFS } from './SFS';
 export { SFSClasses, sfsClasses, SFSClassKey } from './SFS.classes';
 export { SFSProps } from './SFS.types';
 export * from './SFSButton';
+export * from './SFSChips';
 export * from './SFSFilters';
 export * from './SFSFiltersGroup';
 export * from './SFSRow';
