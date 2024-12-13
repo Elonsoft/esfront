@@ -27,6 +27,7 @@ const SFSRowRoot = styled('div', {
   overridesResolver: (_, styles) => styles.root,
 })(() => ({
   display: 'flex',
+  padding: '8px',
 
   '& .MuiDivider-root': {
     margin: '8px 2px',

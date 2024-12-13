@@ -29,7 +29,6 @@ const SFSRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (_, styles) => styles.root,
 })(({ theme }) => ({
-  padding: '8px',
   backgroundColor: theme.vars.palette.surface[100],
   boxShadow: theme.vars.palette.shadow.down[100],
   borderRadius: '6px',
