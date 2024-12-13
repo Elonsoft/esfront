@@ -172,14 +172,28 @@ const TableCellContent = styled('div', {
       ownerState.align === 'flex-end' && styles.contentAlignFlexEnd,
     ];
   },
-})<{ ownerState: TableCellOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: TableCellOwnerState }>(({ theme }) => ({
   transition: `${theme.transitions.duration.short}ms`,
   width: '100%',
   height: '100%',
   overflow: 'hidden',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: ownerState.align,
+
+  [`&.${tableCellClasses.contentAlignFlexStart}`]: {
+    justifyContent: 'flex-start',
+    textAlign: 'left',
+  },
+
+  [`&.${tableCellClasses.contentAlignCenter}`]: {
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+
+  [`&.${tableCellClasses.contentAlignFlexEnd}`]: {
+    justifyContent: 'flex-end',
+    textAlign: 'right',
+  },
 }));
 
 const TableCellResize = styled('button', {
