@@ -97,6 +97,11 @@ export const ChipRoot = styled('div', {
     backgroundColor: 'var(--background)',
   },
 
+  // In order to make focusable when not ButtonBase.
+  [`&:not(.${chipClasses.disabled})[tabIndex]:focus-visible`]: {
+    outline: `2px solid ${theme.vars.palette.monoA[500]}`,
+  },
+
   [`&.${chipClasses.variantFilled}`]: {
     '--background': theme.vars.palette.monoA.A75,
     '--hovered': theme.vars.palette.monoA.A50,
