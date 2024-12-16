@@ -193,6 +193,8 @@ import { RibbonBadgeClassKey, RibbonBadgeProps } from './components/RibbonBadge'
 import {
   SFSButtonClassKey,
   SFSButtonProps,
+  SFSChipsProps,
+  SFSChipsClassKey,
   SFSClassKey,
   SFSFiltersClassKey,
   SFSFiltersGroupClassKey,
@@ -437,6 +439,7 @@ declare module '@mui/material/styles/props' {
     ESSidenavItem: SidenavItemProps;
     ESSFS: SFSProps;
     ESSFSButton: SFSButtonProps;
+    ESSFSChips: SFSChipsProps;
     ESSFSSearch: SFSSearchProps;
     ESSFSSorting: SFSSortingProps;
     ESSFSFilters: SFSFiltersProps;
@@ -575,6 +578,7 @@ declare module '@mui/material/styles/overrides' {
     ESSidenavItem: SidenavItemClassKey;
     ESSFS: SFSClassKey;
     ESSFSButton: SFSButtonClassKey;
+    ESSFSChips: SFSChipsClassKey;
     ESSFSSearch: SFSSearchClassKey;
     ESSFSSorting: SFSSortingClassKey;
     ESSFSFilters: SFSFiltersClassKey;
@@ -1000,6 +1004,10 @@ declare module '@mui/material/styles/components' {
     ESSFSButton?: {
       defaultProps?: ComponentsProps['ESSFSButton'];
       styleOverrides?: ComponentsOverrides['ESSFSButton'];
+    };
+    ESSFSChips?: {
+      defaultProps?: ComponentsProps['ESSFSChips'];
+      styleOverrides?: ComponentsOverrides['ESSFSChips'];
     };
     ESSFSSearch?: {
       defaultProps?: ComponentsProps['ESSFSSearch'];

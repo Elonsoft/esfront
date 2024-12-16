@@ -4,8 +4,10 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import TextField from '@mui/material/TextField';
 
-import { SFS, SFSFilters, SFSFiltersGroup, SFSRow, SFSSearch, SFSSorting } from '.';
+import { SFS, SFSChips, SFSFilters, SFSFiltersGroup, SFSRow, SFSSearch, SFSSorting } from '.';
 
+import { Chip } from '../Chip';
+import { Chips } from '../Chips';
 import { Divider } from '../Divider';
 import { SortingMenuValue } from '../SortingMenu';
 
@@ -33,7 +35,7 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: SFS,
   parameters: {
-    references: ['SFS', 'SFSFilters', 'SFSFiltersGroup', 'SFSRow', 'SFSSearch', 'SFSSorting'],
+    references: ['SFS', 'SFSChips', 'SFSFilters', 'SFSFiltersGroup', 'SFSRow', 'SFSSearch', 'SFSSorting'],
   },
   argTypes: {
     SFSSortingMultiple: {
@@ -74,6 +76,24 @@ export const Demo: Story = {
       setFilters({ ...filters, [e.target.name]: e.target.value });
     };
 
+    const onFiltersReset = () => {
+      setFilters({
+        '1': '',
+        '2': '',
+        '3': '',
+        '4': '',
+        '5': '',
+        '6': '',
+      });
+    };
+
+    const onFilterReset = (name: string) => () => {
+      setFilters({
+        ...filters,
+        [name]: '',
+      });
+    };
+
     return (
       <SFS>
         <SFSRow>
@@ -96,19 +116,7 @@ export const Demo: Story = {
             />
           )}
           <Divider orientation="vertical" />
-          <SFSFilters
-            count={Object.values(filters).filter(Boolean).length}
-            onReset={() =>
-              setFilters({
-                '1': '',
-                '2': '',
-                '3': '',
-                '4': '',
-                '5': '',
-                '6': '',
-              })
-            }
-          >
+          <SFSFilters count={Object.values(filters).filter(Boolean).length} onReset={onFiltersReset}>
             <SFSFiltersGroup title={locale === 'ru' ? 'Основное' : 'General'}>
               <TextField
                 label={locale === 'ru' ? 'Ответственный' : 'Responsible'}
@@ -157,6 +165,18 @@ export const Demo: Story = {
             </SFSFiltersGroup>
           </SFSFilters>
         </SFSRow>
+        {!!Object.values(filters).filter(Boolean).length && (
+          <SFSChips onDelete={onFiltersReset}>
+            <Chips>
+              {!!filters['1'] && <Chip onDelete={onFilterReset('1')}>{filters['1']}</Chip>}
+              {!!filters['2'] && <Chip onDelete={onFilterReset('2')}>{filters['2']}</Chip>}
+              {!!filters['3'] && <Chip onDelete={onFilterReset('3')}>{filters['3']}</Chip>}
+              {!!filters['4'] && <Chip onDelete={onFilterReset('4')}>{filters['4']}</Chip>}
+              {!!filters['5'] && <Chip onDelete={onFilterReset('5')}>{filters['5']}</Chip>}
+              {!!filters['6'] && <Chip onDelete={onFilterReset('6')}>{filters['6']}</Chip>}
+            </Chips>
+          </SFSChips>
+        )}
       </SFS>
     );
   },
