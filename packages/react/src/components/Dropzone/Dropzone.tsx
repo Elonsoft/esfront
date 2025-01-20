@@ -208,7 +208,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   };
 
   const onFileList = (event: React.ChangeEvent<unknown>, files: FileList) => {
-    const acceptedFiles: File[] = [];
+    let acceptedFiles: File[] = [];
     const rejectedFiles: FileRejection[] = [];
 
     for (let i = 0; i < files.length; i++) {
@@ -236,18 +236,22 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
       }
     }
 
-    if (rejectedFiles.length) {
-      onReject?.(event, rejectedFiles);
-    } else if (!multiple && acceptedFiles.length > 1) {
-      acceptedFiles.forEach((file) => {
+    if (!multiple && acceptedFiles.length > 1) {
+      acceptedFiles.slice(1).forEach((file) => {
         rejectedFiles.push({
           file,
           errors: ['too-many-files'],
         });
       });
 
+      acceptedFiles = [acceptedFiles[0]];
+    }
+
+    if (rejectedFiles.length) {
       onReject?.(event, rejectedFiles);
-    } else {
+    }
+
+    if (acceptedFiles.length) {
       onChange?.(event, acceptedFiles);
     }
   };
