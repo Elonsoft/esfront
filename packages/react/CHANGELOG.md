@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.12](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.11...@esfront/react@0.11.12) (2025-01-20)
+
+
+### Features
+
+* **SortingMenu:** add asc and desc labels override for options ([caa7555](https://github.com/Elonsoft/esfront/commit/caa755505b48c75c64d2db89ed3a69181c25e658))
+
+
+### Bug Fixes
+
+* **Dropzone:** fire onChange even when some files are rejected ([76a8715](https://github.com/Elonsoft/esfront/commit/76a871546e66ba1a40dc7a91aa4e66932cfa6d78))
+
+
+
 ## [0.11.11](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.10...@esfront/react@0.11.11) (2024-11-27)
 
 
