@@ -34,4 +34,7 @@ export interface SFSFiltersProps {
   iconFilters?: ReactNode;
   /** Icon for the close button. */
   iconClose?: ReactNode;
+
+  /** Props applied to the footer component. */
+  FooterProps?: { children?: ReactNode };
 }
