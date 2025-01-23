@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.13](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.12...@esfront/react@0.11.13) (2025-01-23)
+
+
+### Features
+
+* **SFSFilters:** add FooterProps ([8c20f9a](https://github.com/Elonsoft/esfront/commit/8c20f9a1fbec384e15e5381347ac3a1db4e134c6))
+
+
+
 ## [0.11.12](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.11...@esfront/react@0.11.12) (2025-01-20)
 
 
