@@ -143,6 +143,8 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
     iconFilters = <IconFilter />,
     iconClose = <IconCloseW600 />,
 
+    FooterProps,
+
     ...props
   } = useThemeProps({
     props: inProps,
@@ -197,16 +199,20 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
 
         {count ? (
           <SFSFiltersFooter className={classes.footer}>
-            <SFSFiltersResetButton
-              fullWidth
-              className={classes.resetButton}
-              color="error"
-              size="600"
-              variant="outlined"
-              onClick={onReset}
-            >
-              {labelReset}
-            </SFSFiltersResetButton>
+            {FooterProps ? (
+              FooterProps.children
+            ) : (
+              <SFSFiltersResetButton
+                fullWidth
+                className={classes.resetButton}
+                color="error"
+                size="600"
+                variant="outlined"
+                onClick={onReset}
+              >
+                {labelReset}
+              </SFSFiltersResetButton>
+            )}
           </SFSFiltersFooter>
         ) : null}
       </SFSFiltersDrawer>
