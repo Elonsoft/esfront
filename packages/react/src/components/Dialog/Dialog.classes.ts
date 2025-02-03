@@ -11,6 +11,8 @@ export type DialogClasses = {
   wrapper: string;
   /** Styles applied to the wrapper element if align='center'. */
   wrapperAlignCenter: string;
+  /** Styles applied to the wrapper element if align='flex-end'. */
+  wrapperAlignFlexEnd: string;
   /** Styles applied to the wrapper element if align='flex-start'. */
   wrapperAlignFlexStart: string;
   /** Styles applied to the wrapper element if fullScreen=true. */
@@ -39,6 +41,7 @@ export const dialogClasses: DialogClasses = generateUtilityClasses('ESDialog', [
   'wrapper',
   'wrapperAlignCenter',
   'wrapperAlignFlexStart',
+  'wrapperAlignFlexEnd',
   'wrapperFullScreen',
   'content',
   'contentFullWidth',

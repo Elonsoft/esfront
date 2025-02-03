@@ -35,22 +35,34 @@ const DialogArrowRoot = styled('div', {
     } = props;
     return [styles.root, styles[direction]];
   },
-})<{ ownerState: DialogArrowOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: DialogArrowOwnerState }>(({ theme }) => ({
   display: 'none',
   position: 'absolute',
   top: 0,
   height: '100%',
 
-  ...(ownerState.direction === 'prev' && {
-    left: '0',
-  }),
-  ...(ownerState.direction === 'next' && {
-    right: '0',
-  }),
-
   [theme.breakpoints.up('tabletXS')]: {
     display: 'block',
   },
+
+  variants: [
+    {
+      props: {
+        direction: 'prev',
+      },
+      style: {
+        left: '0',
+      },
+    },
+    {
+      props: {
+        direction: 'next',
+      },
+      style: {
+        right: '0',
+      },
+    },
+  ],
 }));
 
 const DialogArrowButton = styled(Button, {
