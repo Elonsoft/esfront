@@ -38,7 +38,7 @@ const EmptyStateRoot = styled('div', {
 
     return [styles.root, styles[size]];
   },
-})(() => ({
+})<{ ownerState: EmptyStateOwnerState }>(() => ({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
@@ -49,20 +49,57 @@ const EmptyStateIcon = styled('div', {
   name: 'ESEmptyState',
   slot: 'Icon',
   overridesResolver: (props, styles) => styles.icon,
-})<{ ownerState: EmptyStateOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: EmptyStateOwnerState }>(({ theme }) => ({
   display: 'flex',
   color: theme.vars.palette.monoA.A150,
-  marginBottom: ownerState.size === 'medium' ? '12px' : '8px',
+
+  variants: [
+    {
+      props: {
+        size: 'medium',
+      },
+      style: {
+        marginBottom: '12px',
+      },
+    },
+    {
+      props: {
+        size: 'small',
+      },
+      style: {
+        marginBottom: '8px',
+      },
+    },
+  ],
 }));
 
 const EmptyStateText = styled('div', {
   name: 'ESEmptyState',
   slot: 'Text',
   overridesResolver: (props, styles) => styles.text,
-})<{ ownerState: EmptyStateOwnerState }>(({ ownerState }) => ({
-  '&:not(:last-child)': {
-    marginBottom: ownerState.size === 'medium' ? '12px' : '8px',
-  },
+})<{ ownerState: EmptyStateOwnerState }>(() => ({
+  variants: [
+    {
+      props: {
+        size: 'medium',
+      },
+      style: {
+        '&:not(:last-child)': {
+          marginBottom: '12px',
+        },
+      },
+    },
+    {
+      props: {
+        size: 'small',
+      },
+      style: {
+        '&:not(:last-child)': {
+          marginBottom: '8px',
+        },
+      },
+    },
+  ],
 }));
 
 const EmptyStateHeading = styled(Typography, {
@@ -116,7 +153,7 @@ export const EmptyState = (inProps: EmptyStateProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <EmptyStateRoot className={clsx(classes.root, className)} sx={sx}>
+    <EmptyStateRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {!!icon && (
         <EmptyStateIcon className={classes.icon} data-testid="icon" ownerState={ownerState}>
           {icon}
