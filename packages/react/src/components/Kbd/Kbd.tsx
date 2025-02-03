@@ -31,7 +31,7 @@ const KbdRoot = styled('kbd', {
     } = props;
     return [styles.root, styles[variant]];
   },
-})<{ ownerState: KbdOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: KbdOwnerState }>(({ theme }) => ({
   ...theme.typography.body100,
 
   color: theme.vars.palette.monoA.A900,
@@ -40,17 +40,34 @@ const KbdRoot = styled('kbd', {
   borderRadius: '4px',
   fontFamily: 'inherit',
 
-  ...(ownerState.variant === 'raised' && {
-    backgroundColor: theme.vars.palette.monoA.A75,
-    boxShadow: `0 1px 0 1px ${theme.vars.palette.monoA.A300}`,
-  }),
-  ...(ownerState.variant === 'contained' && {
-    backgroundColor: theme.vars.palette.monoA.A75,
-    boxShadow: `0 1px 0 ${theme.vars.palette.monoA.A300}, inset 0 0 0 1px ${theme.vars.palette.monoA.A50}`,
-  }),
-  ...(ownerState.variant === 'outlined' && {
-    boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A200}`,
-  }),
+  variants: [
+    {
+      props: {
+        variant: 'raised',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.monoA.A75,
+        boxShadow: `0 1px 0 1px ${theme.vars.palette.monoA.A300}`,
+      },
+    },
+    {
+      props: {
+        variant: 'contained',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.monoA.A75,
+        boxShadow: `0 1px 0 ${theme.vars.palette.monoA.A300}, inset 0 0 0 1px ${theme.vars.palette.monoA.A50}`,
+      },
+    },
+    {
+      props: {
+        variant: 'outlined',
+      },
+      style: {
+        boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A200}`,
+      },
+    },
+  ],
 }));
 
 /**
