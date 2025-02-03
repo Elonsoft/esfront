@@ -34,7 +34,7 @@ const DialogActionsRoot = styled('div', {
     } = props;
     return [styles.root, sticky && styles.sticky, sticky && stuck && styles.stuck];
   },
-})<{ ownerState: DialogActionsOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: DialogActionsOwnerState }>(({ theme }) => ({
   display: 'flex',
   justifyContent: 'flex-end',
   padding: '16px 24px 24px',
@@ -43,19 +43,31 @@ const DialogActionsRoot = styled('div', {
     marginLeft: 16,
   },
 
-  ...(ownerState.sticky && {
-    position: 'sticky',
-    bottom: -8,
-    backgroundColor: theme.vars.palette.surface[600],
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    zIndex: 1,
-
-    ...(ownerState.stuck && {
-      borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
-      borderRadius: 0,
-    }),
-  }),
+  variants: [
+    {
+      props: {
+        sticky: true,
+      },
+      style: {
+        position: 'sticky',
+        bottom: -8,
+        backgroundColor: theme.vars.palette.surface[600],
+        borderBottomLeftRadius: 8,
+        borderBottomRightRadius: 8,
+        zIndex: 1,
+      },
+    },
+    {
+      props: {
+        sticky: true,
+        stuck: true,
+      },
+      style: {
+        borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
+        borderRadius: 0,
+      },
+    },
+  ],
 }));
 
 export const DialogActions = (inProps: DialogActionsProps) => {

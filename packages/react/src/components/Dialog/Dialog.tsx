@@ -3,7 +3,7 @@ import { forwardRef, useRef } from 'react';
 import { DialogProps } from './Dialog.types';
 
 import clsx from 'clsx';
-import { dialogClasses, getDialogUtilityClass } from './Dialog.classes';
+import { getDialogUtilityClass } from './Dialog.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -92,10 +92,17 @@ const DialogContainer = styled('div', {
     height: 'auto',
   },
 
-  [`&.${dialogClasses.containerFullScreen}`]: {
-    ...theme.scrollbars.thinMonoA,
-    backgroundColor: theme.vars.palette.surface[600],
-  },
+  variants: [
+    {
+      props: {
+        fullScreen: true,
+      },
+      style: {
+        ...theme.scrollbars.thinMonoA,
+        backgroundColor: theme.vars.palette.surface[600],
+      },
+    },
+  ],
 }));
 
 const DialogWrapper = styled('div', {
@@ -112,20 +119,50 @@ const DialogWrapper = styled('div', {
       ownerState.fullScreen && styles.wrapperFullScreen,
     ];
   },
-})<{ ownerState: DialogOwnerState }>(({ ownerState }) => ({
+})<{ ownerState: DialogOwnerState }>(() => ({
   verticalAlign: 'middle',
   position: 'relative',
   width: '100%',
   minHeight: '100%',
   display: 'inline-flex',
-  alignItems: ownerState.align,
   justifyContent: 'center',
   margin: 0,
   overflow: 'visible',
 
-  [`&.${dialogClasses.wrapperFullScreen}`]: {
-    height: '100%',
-  },
+  variants: [
+    {
+      props: {
+        fullScreen: true,
+      },
+      style: {
+        height: '100%',
+      },
+    },
+    {
+      props: {
+        align: 'center',
+      },
+      style: {
+        alignItems: 'center',
+      },
+    },
+    {
+      props: {
+        align: 'flex-end',
+      },
+      style: {
+        alignItems: 'flex-end',
+      },
+    },
+    {
+      props: {
+        align: 'flex-start',
+      },
+      style: {
+        alignItems: 'flex-start',
+      },
+    },
+  ],
 }));
 
 const DialogContent = styled('div', {
@@ -157,23 +194,33 @@ const DialogContent = styled('div', {
     overflowY: 'visible',
   },
 
-  [`&.${dialogClasses.contentFullWidth}`]: {
-    width: '100%',
-  },
-
-  [`&.${dialogClasses.contentFullScreen}`]: {
-    margin: '0',
-    width: '100%',
-    maxWidth: '100%',
-    height: '100%',
-    maxHeight: 'none',
-    borderRadius: 0,
-
-    [`& > .${dialogClasses.paper}`]: {
-      minHeight: '100%',
-      borderRadius: 0,
+  variants: [
+    {
+      props: {
+        fullWidth: true,
+      },
+      style: {
+        width: '100%',
+      },
     },
-  },
+    {
+      props: {
+        fullScreen: true,
+      },
+      style: {
+        margin: '0',
+        width: '100%',
+        maxWidth: '100%',
+        height: '100%',
+        maxHeight: 'none',
+        borderRadius: 0,
+
+        [theme.breakpoints.up('tabletXS')]: {
+          margin: '0',
+        },
+      },
+    },
+  ],
 }));
 
 const DialogPaper = styled('div', {
@@ -200,6 +247,18 @@ const DialogPaper = styled('div', {
   '@media print': {
     boxShadow: 'none',
   },
+
+  variants: [
+    {
+      props: {
+        fullScreen: true,
+      },
+      style: {
+        minHeight: '100%',
+        borderRadius: 0,
+      },
+    },
+  ],
 }));
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
