@@ -39,27 +39,38 @@ const TableRowRoot = styled('div', {
     const { ownerState } = props;
     return [styles.root, ownerState.hover && styles.hover, ownerState.selected && styles.selected];
   },
-})<{ ownerState: TableRowOwnerState }>(({ theme, ownerState }) => ({
-  ...(ownerState.selected && {
-    [`& .${tableCellClasses.container}`]: {
-      backgroundColor: theme.vars.palette.secondary.A100,
-    },
-  }),
-
-  ...(ownerState.hover && {
-    '&:hover': {
-      [`& .${tableCellClasses.content}`]: {
-        backgroundColor: theme.vars.palette.monoA.A50,
+})<{ ownerState: TableRowOwnerState }>(({ theme }) => ({
+  variants: [
+    {
+      props: {
+        selected: true,
+      },
+      style: {
+        [`& .${tableCellClasses.container}`]: {
+          backgroundColor: theme.vars.palette.secondary.A100,
+        },
       },
     },
-  }),
+    {
+      props: {
+        hover: true,
+      },
+      style: {
+        '&:hover': {
+          [`& .${tableCellClasses.content}`]: {
+            backgroundColor: theme.vars.palette.monoA.A50,
+          },
+        },
+      },
+    },
+  ],
 }));
 
 const TableRowContent = styled(Box, {
   name: 'ESTableRow',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
-})<{ ownerState: TableRowOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: TableRowOwnerState }>(({ theme }) => ({
   display: 'grid',
   gridAutoRows: 'max-content',
   minWidth: '100%',
@@ -70,25 +81,32 @@ const TableRowContent = styled(Box, {
   outline: 'none',
   textDecoration: 'none',
 
-  ...(ownerState.hover && {
-    cursor: 'pointer',
+  variants: [
+    {
+      props: {
+        hover: true,
+      },
+      style: {
+        cursor: 'pointer',
 
-    '&:focus-visible': {
-      [`&, & + .${tableRowClasses.overlap}`]: {
-        [`& .${tableCellClasses.content}.${tableCellClasses.content}`]: {
-          backgroundColor: theme.vars.palette.monoA.A50,
+        '&:focus-visible': {
+          [`&, & + .${tableRowClasses.overlap}`]: {
+            [`& .${tableCellClasses.content}.${tableCellClasses.content}`]: {
+              backgroundColor: theme.vars.palette.monoA.A50,
+            },
+          },
+        },
+
+        '&:active': {
+          [`&, & + .${tableRowClasses.overlap}`]: {
+            [`& .${tableCellClasses.content}.${tableCellClasses.content}`]: {
+              backgroundColor: theme.vars.palette.monoA.A100,
+            },
+          },
         },
       },
     },
-
-    '&:active': {
-      [`&, & + .${tableRowClasses.overlap}`]: {
-        [`& .${tableCellClasses.content}.${tableCellClasses.content}`]: {
-          backgroundColor: theme.vars.palette.monoA.A100,
-        },
-      },
-    },
-  }),
+  ],
 }));
 
 export const TableRow = memo(

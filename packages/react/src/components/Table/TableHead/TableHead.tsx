@@ -16,15 +16,15 @@ import { TableCellContext } from '../TableCell';
 
 type TableHeadOwnerState = {
   classes?: TableHeadProps['classes'];
-  sticky?: number;
-  isStuck?: boolean;
+  isSticky: boolean;
+  isStuck: boolean;
 };
 
 const useUtilityClasses = (ownerState: TableHeadOwnerState) => {
-  const { classes, sticky, isStuck } = ownerState;
+  const { classes, isSticky, isStuck } = ownerState;
 
   const slots = {
-    root: ['root', sticky !== undefined && 'sticky', sticky !== undefined && isStuck && 'stuck'],
+    root: ['root', isSticky && 'sticky', isSticky && isStuck && 'stuck'],
     container: ['container'],
   };
 
@@ -36,30 +36,47 @@ const TableHeadRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { sticky, isStuck },
+      ownerState: { isSticky, isStuck },
     } = props;
-    return [styles.root, sticky !== undefined && styles.sticky, sticky !== undefined && isStuck && styles.stuck];
+    return [styles.root, isSticky && styles.sticky, isSticky && isStuck && styles.stuck];
   },
-})<{ ownerState: TableHeadOwnerState }>(({ ownerState }) => ({
+})<{ ownerState: TableHeadOwnerState }>({
   overflow: 'auto',
   position: 'relative',
   width: '100%',
   minWidth: '100%',
   maxWidth: '100%',
   zIndex: 2,
-  borderTopLeftRadius: ownerState.isStuck ? 0 : '6px',
-  borderTopRightRadius: ownerState.isStuck ? 0 : '6px',
+  borderTopLeftRadius: '6px',
+  borderTopRightRadius: '6px',
   scrollbarWidth: 'none',
 
   '&::-webkit-scrollbar': {
     display: 'none',
   },
 
-  ...(ownerState.sticky !== undefined && {
-    position: 'sticky',
-    top: ownerState.sticky || 0,
-  }),
-}));
+  variants: [
+    {
+      props: {
+        isSticky: true,
+      },
+      style: {
+        position: 'sticky',
+        top: 'var(--ESTableHead-top)',
+      },
+    },
+    {
+      props: {
+        isSticky: true,
+        isStuck: true,
+      },
+      style: {
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+      },
+    },
+  ],
+});
 
 const TableHeadContainer = styled('div', {
   name: 'ESTableBody',
@@ -90,7 +107,7 @@ export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
     { threshold: [1], rootMargin: `-${(sticky || 0) + 1}px 0px 0px` }
   );
 
-  const ownerState = { sticky, isStuck: sticky !== undefined && isStuck, ...props };
+  const ownerState = { isSticky: sticky !== undefined, isStuck: sticky !== undefined && isStuck, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
@@ -100,6 +117,7 @@ export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
         className={clsx(classes.root, className)}
         ownerState={ownerState}
         role="rowgroup"
+        style={sticky === undefined ? undefined : ({ '--ESTableHead-top': `${sticky || 0}px` } as React.CSSProperties)}
         sx={sx}
       >
         <TableHeadContainer className={classes.container}>{children}</TableHeadContainer>

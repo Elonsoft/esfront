@@ -67,33 +67,27 @@ const TableCellRoot = styled('div', {
       ownerState.isResizing && styles.resizing,
     ];
   },
-})<{ ownerState: TableCellOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: TableCellOwnerState }>(({ theme }) => ({
   position: 'relative',
   height: '100%',
+  gridColumnEnd: `span var(--ESTableCell-colSpan)`,
 
-  ...(ownerState.variant === 'head' && {
-    ...theme.typography.caption,
-    color: theme.vars.palette.monoA.A600,
-    backgroundColor: theme.vars.palette.surface[100],
-    position: 'relative',
-    zIndex: 1,
-    userSelect: 'none',
-    height: '49px',
-  }),
-
-  ...(ownerState.variant === 'body' && {
-    ...theme.typography.body100,
-    color: theme.vars.palette.monoA.A900,
-    backgroundColor: theme.vars.palette.surface[100],
-    height: '57px',
-  }),
-
-  ...(ownerState.pin && {
+  [`&.${tableCellClasses.pinLeft}, &.${tableCellClasses.pinRight}`]: {
     position: 'sticky',
-    boxShadow: `${ownerState.pin === 'left' ? '2px' : '-2px'} 0 0 0 ${theme.vars.palette.monoA.A100}`,
-    zIndex: ownerState.variant === 'body' ? 2 : 3,
-  }),
 
+    [`&.${tableCellClasses.head}`]: {
+      zIndex: 2,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      zIndex: 3,
+    },
+  },
+  [`&.${tableCellClasses.pinLeft}`]: {
+    boxShadow: `2px 0 0 0 ${theme.vars.palette.monoA.A100}`,
+  },
+  [`&.${tableCellClasses.pinRight}`]: {
+    boxShadow: `-2px 0 0 0 ${theme.vars.palette.monoA.A100}`,
+  },
   [`&.${tableCellClasses.pinRight} + .${tableCellClasses.pinRight}`]: {
     boxShadow: 'none',
   },
@@ -103,27 +97,6 @@ const TableCellRoot = styled('div', {
   [`&.${tableCellClasses.pinRight}:not(:nth-child(1 of .${tableCellClasses.pinRight}))`]: {
     boxShadow: 'none',
   },
-
-  ...(ownerState.colSpan && {
-    gridColumnEnd: `span ${ownerState.colSpan}`,
-  }),
-
-  ...(ownerState.padding === 'normal' && {
-    [`& .${tableCellClasses.content}`]: {
-      padding: '0 16px',
-    },
-  }),
-  ...(ownerState.padding === 'checkbox' && {
-    [`& .${tableCellClasses.content}`]: {
-      padding: '0 4px',
-    },
-    [`&:first-of-type .${tableCellClasses.content}`]: {
-      paddingLeft: '16px',
-    },
-    [`&:last-of-type .${tableCellClasses.content}`]: {
-      paddingRight: '16px',
-    },
-  }),
 
   [`&:hover .${tableCellClasses.resize}::after`]: {
     width: '1px',
@@ -140,12 +113,70 @@ const TableCellRoot = styled('div', {
     backgroundColor: theme.vars.palette.info.A600,
   },
 
-  ...(ownerState.isResizing && {
-    [`.${tableCellClasses.resize}.${tableCellClasses.resize}::after`]: {
-      width: '3px',
-      backgroundColor: theme.vars.palette.info.A600,
+  variants: [
+    {
+      props: {
+        variant: 'head',
+      },
+      style: {
+        ...theme.typography.caption,
+        color: theme.vars.palette.monoA.A600,
+        backgroundColor: theme.vars.palette.surface[100],
+        position: 'relative',
+        zIndex: 1,
+        userSelect: 'none',
+        height: '49px',
+      },
     },
-  }),
+    {
+      props: {
+        variant: 'body',
+      },
+      style: {
+        ...theme.typography.body100,
+        color: theme.vars.palette.monoA.A900,
+        backgroundColor: theme.vars.palette.surface[100],
+        height: '57px',
+      },
+    },
+    {
+      props: {
+        padding: 'normal',
+      },
+      style: {
+        [`& .${tableCellClasses.content}`]: {
+          padding: '0 16px',
+        },
+      },
+    },
+    {
+      props: {
+        padding: 'checkbox',
+      },
+      style: {
+        [`& .${tableCellClasses.content}`]: {
+          padding: '0 4px',
+        },
+        [`&:first-of-type .${tableCellClasses.content}`]: {
+          paddingLeft: '16px',
+        },
+        [`&:last-of-type .${tableCellClasses.content}`]: {
+          paddingRight: '16px',
+        },
+      },
+    },
+    {
+      props: {
+        isResizing: true,
+      },
+      style: {
+        [`.${tableCellClasses.resize}.${tableCellClasses.resize}::after`]: {
+          width: '3px',
+          backgroundColor: theme.vars.palette.info.A600,
+        },
+      },
+    },
+  ],
 }));
 
 const TableCellContainer = styled('div', {
@@ -203,7 +234,7 @@ const TableCellResize = styled('button', {
     const { ownerState } = props;
     return [styles.resize, ownerState.isResizing && styles.resizeResizing];
   },
-})<{ ownerState: TableCellOwnerState }>(({ ownerState }) => ({
+})<{ ownerState: TableCellOwnerState }>({
   position: 'absolute',
   right: 0,
   top: 0,
@@ -218,9 +249,6 @@ const TableCellResize = styled('button', {
   textDecoration: 'none',
 
   '&::after': {
-    ...(ownerState.isResizing && {
-      display: 'block !important',
-    }),
     content: '""',
     position: 'absolute',
     right: 0,
@@ -228,7 +256,20 @@ const TableCellResize = styled('button', {
     bottom: '12px',
     borderRadius: '3px',
   },
-}));
+
+  variants: [
+    {
+      props: {
+        isResizing: true,
+      },
+      style: {
+        '&::after': {
+          display: 'block !important',
+        },
+      },
+    },
+  ],
+});
 
 const RESIZE_STEPS: Record<string, number | undefined> = {
   ArrowLeft: -16,
@@ -247,6 +288,7 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
     id,
     onResize,
     onResizeCommit,
+    colSpan,
     minWidth,
     labelResize,
     sx,
@@ -350,6 +392,7 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
       id={id}
       ownerState={ownerState}
       role={variant === 'head' ? 'columnheader' : 'cell'}
+      style={{ '--ESTableCell-colSpan': colSpan } as React.CSSProperties}
       sx={sx}
       onClick={onClick}
     >
