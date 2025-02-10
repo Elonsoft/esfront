@@ -5,7 +5,7 @@ import { getLinkUtilityClass, linkClasses } from './Link.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled, useTheme, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
@@ -13,11 +13,10 @@ import { capitalize } from '@mui/material/utils';
 type LinkOwnerState = {
   classes?: LinkProps['classes'];
   variant?: LinkProps['variant'];
-  color?: LinkProps['color'];
   underline?: LinkProps['underline'];
   showVisited?: LinkProps['showVisited'];
-  startIcon?: LinkProps['startIcon'];
-  endIcon?: LinkProps['endIcon'];
+  startIcon?: boolean;
+  endIcon?: boolean;
 };
 
 export function getPath<P>(obj: any, path: string): P | null {
@@ -59,117 +58,175 @@ const LinkRoot = styled(Typography, {
       !!endIcon && styles.endIcon,
     ];
   },
-})<{ ownerState: LinkOwnerState }>(({ theme, ownerState }) => {
-  const color = getPath<string>(theme, `palette.${ownerState.color}`) || (ownerState.color as string);
+})<{ ownerState: LinkOwnerState }>(({ theme }) => ({
+  position: 'relative',
+  display: 'inline',
+  alignItems: 'baseline',
+  textDecorationLine: 'none',
+  color: 'var(--ESLink-color)',
 
-  const display = !!ownerState.startIcon || !!ownerState.endIcon ? 'inline-flex' : 'inline';
+  fontFamily: 'inherit',
+  WebkitTapHighlightColor: 'transparent',
+  backgroundColor: 'transparent',
+  outline: 0,
+  border: 0,
+  margin: 0,
+  borderRadius: 0,
+  padding: 0,
+  cursor: 'pointer',
+  userSelect: 'none',
+  MozAppearance: 'none',
+  WebkitAppearance: 'none',
+  '&::-moz-focus-inner': {
+    borderStyle: 'none',
+  },
 
-  return {
-    position: 'relative',
-    display,
-    alignItems: 'baseline',
-    textDecorationLine: 'none',
-    color,
-
-    fontFamily: 'inherit',
-    WebkitTapHighlightColor: 'transparent',
-    backgroundColor: 'transparent',
-    outline: 0,
-    border: 0,
-    margin: 0,
-    borderRadius: 0,
-    padding: 0,
-    cursor: 'pointer',
-    userSelect: 'none',
-    MozAppearance: 'none',
-    WebkitAppearance: 'none',
-    '&::-moz-focus-inner': {
-      borderStyle: 'none',
-    },
-
-    ...(ownerState.variant === 'inherit' && {
-      textDecorationThickness: 'inherit',
-    }),
-
-    ...(!!ownerState.showVisited && {
-      '&:visited': {
-        color: theme.vars.palette.common.linkVisited,
-      },
-    }),
-
+  '&:hover': {
     [`& .${linkClasses.children}`]: {
       textDecorationStyle: 'solid',
-      textDecorationColor: 'color-mix(in srgb, currentColor 40%, transparent)',
+      textDecorationColor: 'inherit',
+    },
+  },
 
-      ...(ownerState.underline === 'always' && {
-        textDecorationLine: 'underline',
-      }),
+  '&:focus': {
+    outline: 'none',
+  },
+
+  '&:focus-visible': {
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      top: '-1px',
+      bottom: '-1px',
+      left: '-4px',
+      right: '-4px',
+      border: `2px solid ${theme.vars.palette.monoA[500]}`,
+      borderRadius: '4px',
+      zIndex: 1,
     },
 
-    '&:hover': {
-      [`& .${linkClasses.children}`]: {
-        ...(ownerState.underline === 'hover' && {
+    [`& .${linkClasses.children}`]: {
+      textDecorationLine: 'none',
+    },
+  },
+
+  '&:active': {
+    [`& .${linkClasses.children}`]: {
+      textDecorationLine: 'none',
+    },
+  },
+
+  '&:disabled': {
+    color: theme.vars.palette.monoA.A400,
+    cursor: 'not-allowed',
+
+    [`& .${linkClasses.children}`]: {
+      textDecorationLine: 'none',
+    },
+  },
+
+  variants: [
+    {
+      props: {
+        endIcon: true,
+      },
+      style: {
+        display: 'inline-flex',
+      },
+    },
+    {
+      props: {
+        startIcon: true,
+      },
+      style: {
+        display: 'inline-flex',
+      },
+    },
+    {
+      props: {
+        variant: 'inherit',
+      },
+      style: {
+        textDecorationThickness: 'inherit',
+      },
+    },
+    {
+      props: {
+        showVisited: true,
+      },
+      style: {
+        '&:visited': {
+          color: theme.vars.palette.common.linkVisited,
+        },
+      },
+    },
+    {
+      props: {
+        underline: 'always',
+      },
+      style: {
+        [`& .${linkClasses.children}`]: {
           textDecorationLine: 'underline',
-        }),
-        textDecorationStyle: 'solid',
-        textDecorationColor: 'inherit',
+        },
       },
     },
-
-    '&:focus': {
-      outline: 'none',
-    },
-
-    '&:focus-visible': {
-      '&::after': {
-        content: '""',
-        position: 'absolute',
-        top: '-1px',
-        bottom: '-1px',
-        left: ownerState.startIcon ? '-1px' : '-4px',
-        right: ownerState.endIcon ? '-1px' : '-4px',
-        border: `2px solid ${theme.vars.palette.monoA[500]}`,
-        borderRadius: '4px',
-        zIndex: 1,
+    {
+      props: {
+        underline: 'hover',
       },
-
-      [`& .${linkClasses.children}`]: {
-        textDecorationLine: 'none',
+      style: {
+        '&:hover': {
+          [`& .${linkClasses.children}`]: {
+            textDecorationLine: 'underline',
+          },
+        },
       },
     },
-
-    '&:active': {
-      [`& .${linkClasses.children}`]: {
-        textDecorationLine: 'none',
+    {
+      props: {
+        startIcon: true,
+      },
+      style: {
+        '&:focus-visible': {
+          '&::after': {
+            left: '-1px',
+          },
+        },
       },
     },
-
-    '&:disabled': {
-      color: theme.vars.palette.monoA.A400,
-      cursor: 'not-allowed',
-      [`& .${linkClasses.children}`]: {
-        textDecorationLine: 'none',
+    {
+      props: {
+        endIcon: true,
+      },
+      style: {
+        '&:focus-visible': {
+          '&::after': {
+            right: '-1px',
+          },
+        },
       },
     },
-  };
-});
+  ],
+}));
 
 const LinkIcon = styled('span', {
   name: 'ESLink',
   slot: 'Icon',
-  overridesResolver: (props, styles) => styles.icon,
-})(() => ({
+  overridesResolver: (_props, styles) => styles.icon,
+})({
   display: 'inline-flex',
   alignSelf: 'center',
-}));
+});
 
 const LinkChildren = styled('span', {
   name: 'ESLink',
   slot: 'Children',
-  overridesResolver: (props, styles) => styles.children,
-})(() => ({
+  overridesResolver: (_props, styles) => styles.children,
+})({
+  textDecorationColor: 'color-mix(in srgb, currentColor 40%, transparent)',
+  textDecorationStyle: 'solid',
   textDecorationThickness: 'inherit',
-}));
+});
 
 /**
  * The Link component allows you to easily customize anchor elements with your theme colors and typography styles.
@@ -191,11 +248,24 @@ export const Link: OverridableComponent<LinkTypeMap> = (inProps: LinkProps) => {
     name: 'ESLink',
   });
 
-  const ownerState = { startIcon, endIcon, variant, color, underline, showVisited, ...props };
+  const theme = useTheme();
+
+  const ownerState = { startIcon: !!startIcon, endIcon: !!endIcon, variant, underline, showVisited, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <LinkRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx} variant={variant} {...props}>
+    <LinkRoot
+      className={clsx(classes.root, className)}
+      ownerState={ownerState}
+      style={
+        {
+          '--ESLink-color': getPath<string>(theme, `palette.${color}`) || (color as string),
+        } as React.CSSProperties
+      }
+      sx={sx}
+      variant={variant}
+      {...props}
+    >
       {!!startIcon && <LinkIcon className={classes.icon}>{startIcon}</LinkIcon>}
       <LinkChildren className={classes.children}>{children}</LinkChildren>
       {!!endIcon && <LinkIcon className={classes.icon}>{endIcon}</LinkIcon>}
