@@ -53,32 +53,45 @@ const SwiperRoot = styled('div', {
     } = props;
     return [styles.root, styles[direction]];
   },
-})<{ ownerState: SwiperOwnerState }>(({ ownerState }) => ({
+})<{ ownerState: SwiperOwnerState }>({
   position: 'relative',
   display: 'flex',
 
-  ...(ownerState.direction === 'horizontal' && {
-    flexDirection: 'column',
-    [`& .${swiperClasses.container}`]: {
-      gridAutoFlow: 'column',
+  variants: [
+    {
+      props: {
+        direction: 'horizontal',
+      },
+      style: {
+        flexDirection: 'column',
+        [`& .${swiperClasses.container}`]: {
+          gridAutoFlow: 'column',
+        },
+      },
     },
-  }),
+    {
+      props: {
+        direction: 'vertical',
+      },
+      style: {
+        flexDirection: 'row',
+        height: '100%',
+        width: 'max-content',
 
-  ...(ownerState.direction === 'vertical' && {
-    flexDirection: 'row',
-    height: '100%',
-    width: 'max-content',
-    [`& .${swiperClasses.container}`]: {
-      gridAutoFlow: 'row',
-      height: '100%',
+        [`& .${swiperClasses.container}`]: {
+          gridAutoFlow: 'row',
+          height: '100%',
+        },
+
+        [`& .${swiperClasses.button}.${buttonClasses.root}`]: {
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        },
+      },
     },
-    [`& .${swiperClasses.button}.${buttonClasses.root}`]: {
-      position: 'absolute',
-      left: '50%',
-      transform: 'translateX(-50%)',
-    },
-  }),
-}));
+  ],
+});
 
 const SwiperWrapper = styled('div', {
   name: 'ESSwiper',
@@ -102,33 +115,79 @@ const SwiperContainer = styled('div', {
       snap && alignment === 'start' && styles.containerSnapAlignStart,
     ];
   },
-})<{ ownerState: SwiperOwnerState }>(({ ownerState }) => ({
+})<{ ownerState: SwiperOwnerState }>({
   display: 'grid',
   justifyContent: 'flex-start',
   msOverflowStyle: 'none',
   overflow: 'scroll',
   outline: 'none',
   scrollbarWidth: 'none',
+  scrollSnapType: 'none',
 
   '&::-webkit-scrollbar': {
     display: 'none',
   },
 
-  '& > *': {
-    scrollSnapAlign: ownerState.alignment,
-    scrollSnapStop: ownerState.snapStop,
-    ...(ownerState.snap && {
-      '&:first-child': {
-        scrollSnapAlign: 'start',
+  variants: [
+    {
+      props: {
+        snap: true,
       },
-      '&:last-child': {
-        scrollSnapAlign: 'end',
-      },
-    }),
-  },
+      style: {
+        scrollSnapType: 'x mandatory',
 
-  scrollSnapType: ownerState.snap ? 'x mandatory' : 'none',
-}));
+        '& > *': {
+          '&:first-child': {
+            scrollSnapAlign: 'start',
+          },
+          '&:last-child': {
+            scrollSnapAlign: 'end',
+          },
+        },
+      },
+    },
+    {
+      props: {
+        snapStop: 'normal',
+      },
+      style: {
+        '& > *': {
+          scrollSnapStop: 'normal',
+        },
+      },
+    },
+    {
+      props: {
+        snapStop: 'always',
+      },
+      style: {
+        '& > *': {
+          scrollSnapStop: 'normal',
+        },
+      },
+    },
+    {
+      props: {
+        alignment: 'center',
+      },
+      style: {
+        '& > *': {
+          scrollSnapAlign: 'center',
+        },
+      },
+    },
+    {
+      props: {
+        alignment: 'start',
+      },
+      style: {
+        '& > *': {
+          scrollSnapAlign: 'start',
+        },
+      },
+    },
+  ],
+});
 
 /**
  * `Swiper` is a component for cycling through elements - images or slides of text - like a carousel.
