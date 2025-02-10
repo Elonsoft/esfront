@@ -135,7 +135,7 @@ const AudioPlayerCurrentTooltip = styled(
       ];
     },
   }
-)<{ ownerState: AudioPlayerOwnerState }>(({ theme, ownerState }) => ({
+)<{ ownerState: AudioPlayerOwnerState }>(({ theme }) => ({
   pointerEvents: 'none',
 
   [`&[data-popper-placement*="top"] .${tooltipClasses.arrow}`]: {
@@ -149,21 +149,66 @@ const AudioPlayerCurrentTooltip = styled(
 
     '&::after': {
       content: '""',
-      display: ownerState.isOverThumb ? 'none' : 'block',
+      display: 'block',
       position: 'absolute',
       width: 4,
       height: 4,
       borderRadius: 4,
-      backgroundColor: ownerState.isOverTrack
-        ? ownerState.isPlaying
-          ? theme.vars.palette.black.A400
-          : theme.vars.palette.monoA.A600
-        : theme.vars.palette.monoA.A150,
       left: '50%',
       transform: 'translateX(-2.3px)',
       top: 'calc(100% + 12px)',
     },
   },
+
+  variants: [
+    {
+      props: {
+        isOverThumb: true,
+      },
+      style: {
+        [`& .${tooltipClasses.tooltip}`]: {
+          ...theme.typography.caption,
+          color: theme.vars.palette.monoB[500],
+
+          '&::after': {
+            display: 'none',
+          },
+        },
+      },
+    },
+    {
+      props: {
+        isOverTrack: false,
+      },
+      style: {
+        [`& .${tooltipClasses.tooltip}::after`]: {
+          backgroundColor: theme.vars.palette.monoA.A150,
+        },
+      },
+    },
+    {
+      props: {
+        isOverTrack: true,
+        isPlaying: false,
+      },
+      style: {
+        [`& .${tooltipClasses.tooltip}::after`]: {
+          backgroundColor: theme.vars.palette.monoA.A600,
+        },
+      },
+    },
+    {
+      props: {
+        isOverTrack: true,
+        isPlaying: true,
+      },
+      style: {
+        [`& .${tooltipClasses.tooltip}::after`]: {
+          backgroundColor: theme.vars.palette.black.A400,
+        },
+      },
+    },
+  ],
 }));
 
 const AudioPlayerCurrentSlider = styled(Slider, {
@@ -175,7 +220,7 @@ const AudioPlayerCurrentSlider = styled(Slider, {
     } = props;
     return [styles.currentSlider, isPlaying && styles.currentSliderPlaying, !isPlaying && styles.currentSliderPaused];
   },
-})<{ ownerState: AudioPlayerOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: AudioPlayerOwnerState }>(({ theme }) => ({
   [`&.${sliderClasses.colorPrimary}`]: {
     padding: '18px 0',
 
@@ -197,20 +242,6 @@ const AudioPlayerCurrentSlider = styled(Slider, {
         boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A300}`,
       },
     },
-    ...(!ownerState.isPlaying && {
-      color: theme.vars.palette.monoA.A600,
-      [`& .${sliderClasses.thumb}`]: {
-        opacity: 0,
-        backdropFilter: 'blur(40px)',
-
-        [`&.${sliderClasses.focusVisible}`]: {
-          opacity: 1,
-          height: 10,
-          width: 10,
-          boxShadow: `0 0 0 9px ${theme.vars.palette.monoA.A75}`,
-        },
-      },
-    }),
   },
   [`& .${sliderClasses.thumb}`]: {
     opacity: 0,
@@ -226,6 +257,31 @@ const AudioPlayerCurrentSlider = styled(Slider, {
   [`& .${sliderClasses.rail}`]: {
     backgroundColor: theme.vars.palette.monoA.A100,
   },
+
+  variants: [
+    {
+      props: {
+        isPlaying: false,
+      },
+      style: {
+        [`&.${sliderClasses.colorPrimary}`]: {
+          color: theme.vars.palette.monoA.A600,
+
+          [`& .${sliderClasses.thumb}`]: {
+            opacity: 0,
+            backdropFilter: 'blur(40px)',
+
+            [`&.${sliderClasses.focusVisible}`]: {
+              opacity: 1,
+              height: 10,
+              width: 10,
+              boxShadow: `0 0 0 9px ${theme.vars.palette.monoA.A75}`,
+            },
+          },
+        },
+      },
+    },
+  ],
 }));
 
 const AudioPlayerTime = styled(Typography, {
