@@ -11,7 +11,6 @@ import { TooltipEllipsis, TooltipEllipsisProps } from '../../../components/Toolt
 
 type PageHGroupHeadingOwnerState = {
   classes?: PageHGroupHeadingProps['classes'];
-  maxLines: PageHGroupHeadingProps['maxLines'];
 };
 
 const useUtilityClasses = (ownerState: PageHGroupHeadingOwnerState) => {
@@ -28,8 +27,8 @@ const useUtilityClasses = (ownerState: PageHGroupHeadingOwnerState) => {
 const PageHGroupHeadingRoot = styled('h1', {
   name: 'ESPageHGroupHeading',
   slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})<{ ownerState: PageHGroupHeadingOwnerState }>(({ theme, ownerState }) => ({
+  overridesResolver: (_props, styles) => styles.root,
+})<{ ownerState: PageHGroupHeadingOwnerState }>(({ theme }) => ({
   ...theme.typography.h2,
   alignSelf: 'center',
   padding: 0,
@@ -41,7 +40,7 @@ const PageHGroupHeadingRoot = styled('h1', {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   display: '-webkit-box',
-  WebkitLineClamp: ownerState.maxLines,
+  WebkitLineClamp: 'var(--ESPageHGroupHeading-maxLines)',
   WebkitBoxOrient: 'vertical',
 }));
 
@@ -67,7 +66,7 @@ export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
     name: 'ESPageHGroupHeading',
   });
 
-  const ownerState = { ...props, maxLines };
+  const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
@@ -84,6 +83,7 @@ export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
           ref={ref as React.RefObject<HTMLHeadingElement>}
           className={clsx(classes.root, className)}
           ownerState={ownerState}
+          style={{ '--ESPageHGroupHeading-maxLines': maxLines } as React.CSSProperties}
           sx={sx}
         >
           {children}
