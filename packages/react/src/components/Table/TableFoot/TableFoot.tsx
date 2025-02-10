@@ -13,15 +13,15 @@ import { useIntersectionObserver } from '../../../hooks';
 
 type TableFootOwnerState = {
   classes?: TableFootProps['classes'];
-  sticky?: number;
-  isStuck?: boolean;
+  isSticky: boolean;
+  isStuck: boolean;
 };
 
 const useUtilityClasses = (ownerState: TableFootOwnerState) => {
-  const { classes, sticky, isStuck } = ownerState;
+  const { classes, isSticky, isStuck } = ownerState;
 
   const slots = {
-    root: ['root', sticky !== undefined && 'sticky', sticky !== undefined && isStuck && 'stuck'],
+    root: ['root', isSticky && 'sticky', isSticky && isStuck && 'stuck'],
   };
 
   return composeClasses(slots, getTableFootUtilityClass, classes);
@@ -32,22 +32,39 @@ const TableFootRoot = styled('div', {
   slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
-      ownerState: { sticky, isStuck },
+      ownerState: { isSticky, isStuck },
     } = props;
-    return [styles.root, sticky !== undefined && styles.sticky, sticky !== undefined && isStuck && styles.stuck];
+    return [styles.root, isSticky && styles.sticky, isSticky && isStuck && styles.stuck];
   },
-})<{ ownerState: TableFootOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: TableFootOwnerState }>(({ theme }) => ({
   backgroundColor: theme.vars.palette.surface[100],
   borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
   position: 'relative',
   zIndex: 2,
-  borderBottomLeftRadius: ownerState.isStuck ? 0 : '6px',
-  borderBottomRightRadius: ownerState.isStuck ? 0 : '6px',
+  borderBottomLeftRadius: '6px',
+  borderBottomRightRadius: '6px',
 
-  ...(ownerState.sticky !== undefined && {
-    position: 'sticky',
-    bottom: ownerState.sticky || 0,
-  }),
+  variants: [
+    {
+      props: {
+        isSticky: true,
+      },
+      style: {
+        position: 'sticky',
+        bottom: 'var(--ESTableFoot-bottom)',
+      },
+    },
+    {
+      props: {
+        isSticky: true,
+        isStuck: true,
+      },
+      style: {
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+      },
+    },
+  ],
 }));
 
 export const TableFoot = memo(function TableFoot(inProps: TableFootProps) {
@@ -68,11 +85,17 @@ export const TableFoot = memo(function TableFoot(inProps: TableFootProps) {
     { threshold: [1], rootMargin: `0px 0px -${(sticky || 0) + 1}px` }
   );
 
-  const ownerState = { sticky, isStuck: sticky !== undefined && isStuck, ...props };
+  const ownerState = { isSticky: sticky !== undefined, isStuck: sticky !== undefined && isStuck, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableFootRoot ref={ref} className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <TableFootRoot
+      ref={ref}
+      className={clsx(classes.root, className)}
+      ownerState={ownerState}
+      style={sticky === undefined ? undefined : ({ '--ESTableFoot-bottom': `${sticky || 0}px` } as React.CSSProperties)}
+      sx={sx}
+    >
       {children}
     </TableFootRoot>
   );
