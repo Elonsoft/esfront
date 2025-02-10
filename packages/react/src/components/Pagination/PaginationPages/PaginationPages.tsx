@@ -100,8 +100,8 @@ const PaginationPagesEllipsis = styled('div', {
 const PaginationPagesPaginationItem = styled(ButtonBase, {
   name: 'ESPaginationPages',
   slot: 'PaginationItem',
-  overridesResolver: (props, styles) => styles.paginationItem,
-})<{ ownerState: { selected: boolean } }>(({ ownerState, theme }) => ({
+  overridesResolver: (_props, styles) => styles.paginationItem,
+})<{ ownerState: { selected: boolean } }>(({ theme }) => ({
   [`&.${buttonBaseClasses.root}`]: {
     ...theme.typography.caption,
 
@@ -115,16 +115,25 @@ const PaginationPagesPaginationItem = styled(ButtonBase, {
     '--text': theme.vars.palette.monoA.A600,
     '--hovered': theme.vars.palette.monoA.A50,
     '--pressed': theme.vars.palette.monoA.A150,
-
-    ...(ownerState.selected && {
-      fontWeight: 700,
-
-      '--background': theme.vars.palette.secondary.A100,
-      '--text': theme.vars.palette.monoA.A800,
-      '--hovered': theme.vars.palette.secondary.A100,
-      '--pressed': theme.vars.palette.monoA.A150,
-    }),
   },
+
+  variants: [
+    {
+      props: {
+        selected: true,
+      },
+      style: {
+        [`&.${buttonBaseClasses.root}`]: {
+          fontWeight: 700,
+
+          '--background': theme.vars.palette.secondary.A100,
+          '--text': theme.vars.palette.monoA.A800,
+          '--hovered': theme.vars.palette.secondary.A100,
+          '--pressed': theme.vars.palette.monoA.A150,
+        },
+      },
+    },
+  ],
 }));
 
 const PaginationPagesTextField = styled(TextField, {
