@@ -14,15 +14,16 @@ import { useSwiperContext } from '../Swiper.context';
 
 type SwiperButtonOwnerState = {
   classes?: SwiperButtonProps['classes'];
-  step: number;
+  prev: boolean;
+  next: boolean;
   direction: SwiperDirection;
 };
 
 const useUtilityClasses = (ownerState: SwiperButtonOwnerState) => {
-  const { classes, step, direction } = ownerState;
+  const { classes, prev, next, direction } = ownerState;
 
   const slots = {
-    root: ['root', step < 0 && 'prev', step > 0 && 'next', direction],
+    root: ['root', prev && 'prev', next && 'next', direction],
   };
 
   return composeClasses(slots, getSwiperButtonUtilityClass, classes);
@@ -37,41 +38,71 @@ const SwiperButtonRoot = styled(Button, {
     } = props;
     return [styles.root, step < 0 && styles.prev, step > 0 && styles.next, styles[direction]];
   },
-})<{ ownerState: SwiperButtonOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: SwiperButtonOwnerState }>(({ theme }) => ({
   position: 'absolute',
-
-  ...(ownerState.direction === 'horizontal' && {
-    top: '50%',
-    transform: 'translateY(-50%)',
-
-    ...(ownerState.step < 0 && {
-      left: '16px',
-    }),
-
-    ...(ownerState.step > 0 && {
-      right: '16px',
-    }),
-  }),
-
-  ...(ownerState.direction === 'vertical' && {
-    left: '50%',
-    transform: 'translateX(-50%)',
-
-    ...(ownerState.step < 0 && {
-      top: '16px',
-    }),
-
-    ...(ownerState.step > 0 && {
-      bottom: '16px',
-    }),
-  }),
-
   backdropFilter: 'blur(10px)',
   borderRadius: 4,
 
   [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
     '--background': theme.vars.palette.black.A600,
   },
+
+  variants: [
+    {
+      props: {
+        direction: 'horizontal',
+      },
+      style: {
+        top: '50%',
+        transform: 'translateY(-50%)',
+      },
+    },
+    {
+      props: {
+        direction: 'horizontal',
+        prev: true,
+      },
+      style: {
+        left: '16px',
+      },
+    },
+    {
+      props: {
+        direction: 'horizontal',
+        next: true,
+      },
+      style: {
+        right: '16px',
+      },
+    },
+    {
+      props: {
+        direction: 'vertical',
+      },
+      style: {
+        left: '50%',
+        transform: 'translateX(-50%)',
+      },
+    },
+    {
+      props: {
+        direction: 'vertical',
+        prev: true,
+      },
+      style: {
+        top: '16px',
+      },
+    },
+    {
+      props: {
+        direction: 'vertical',
+        next: true,
+      },
+      style: {
+        bottom: '16px',
+      },
+    },
+  ],
 }));
 
 export const SwiperButton = (inProps: SwiperButtonProps) => {
@@ -97,7 +128,7 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
     setActiveSlideByStep(step);
   };
 
-  const ownerState = { ...props, step, direction };
+  const ownerState = { ...props, prev: step < 0, next: step > 0, direction };
   const classes = useUtilityClasses(ownerState);
 
   return (

@@ -39,61 +39,84 @@ const SwiperPaginationRoot = styled('div', {
     } = props;
     return [styles.root, styles[direction], styles[position], styles[variant]];
   },
-})<{ ownerState: SwiperPaginationOwnerState }>(({ ownerState }) => ({
+})<{ ownerState: SwiperPaginationOwnerState }>({
   alignItems: 'center',
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
 
-  ...(ownerState.direction === 'horizontal' && {
-    flexDirection: 'row',
-    width: '100%',
-    [`&.${swiperPaginationClasses.start}`]: {
-      marginBottom: 14,
-      marginTop: -2,
+  variants: [
+    {
+      props: {
+        direction: 'horizontal',
+      },
+      style: {
+        flexDirection: 'row',
+        width: '100%',
+        [`&.${swiperPaginationClasses.start}`]: {
+          marginBottom: 14,
+          marginTop: -2,
+        },
+        [`&.${swiperPaginationClasses.end}`]: {
+          marginBottom: -2,
+          marginTop: 14,
+        },
+      },
     },
-    [`&.${swiperPaginationClasses.end}`]: {
-      marginBottom: -2,
-      marginTop: 14,
+    {
+      props: {
+        direction: 'vertical',
+      },
+      style: {
+        flexDirection: 'column',
+        height: '100%',
+        [`&.${swiperPaginationClasses.start}`]: {
+          marginLeft: -2,
+          marginRight: 14,
+        },
+        [`&.${swiperPaginationClasses.end}`]: {
+          marginLeft: 14,
+          marginRight: -2,
+        },
+      },
     },
-  }),
-
-  ...(ownerState.direction === 'vertical' && {
-    flexDirection: 'column',
-    height: '100%',
-    [`&.${swiperPaginationClasses.start}`]: {
-      marginLeft: -2,
-      marginRight: 14,
+    {
+      props: {
+        position: 'start',
+      },
+      style: {
+        order: -1,
+      },
     },
-    [`&.${swiperPaginationClasses.end}`]: {
-      marginLeft: 14,
-      marginRight: -2,
+    {
+      props: {
+        variant: 'long',
+      },
+      style: {
+        [`&.${swiperPaginationClasses.horizontal} .${swiperPaginationClasses.bulletActive}`]: {
+          width: 16,
+        },
+        [`&.${swiperPaginationClasses.vertical} .${swiperPaginationClasses.bulletActive}`]: {
+          height: 16,
+        },
+      },
     },
-  }),
-
-  ...(ownerState.position === 'start' && {
-    order: -1,
-  }),
-
-  ...(ownerState.variant === 'long' && {
-    [`&.${swiperPaginationClasses.horizontal} .${swiperPaginationClasses.bulletActive}`]: {
-      width: 16,
+    {
+      props: {
+        variant: 'big',
+      },
+      style: {
+        [`& .${swiperPaginationClasses.itemActive}`]: {
+          padding: 2,
+        },
+        [`& .${swiperPaginationClasses.bulletActive}`]: {
+          height: 12,
+          width: 12,
+        },
+      },
     },
-    [`&.${swiperPaginationClasses.vertical} .${swiperPaginationClasses.bulletActive}`]: {
-      height: 16,
-    },
-  }),
-
-  ...(ownerState.variant === 'big' && {
-    [`& .${swiperPaginationClasses.itemActive}`]: {
-      padding: 2,
-    },
-    [`& .${swiperPaginationClasses.bulletActive}`]: {
-      height: 12,
-      width: 12,
-    },
-  }),
-}));
+  ],
+});
 
 export const SwiperPagination = (inProps: SwiperPaginationProps) => {
   const {
