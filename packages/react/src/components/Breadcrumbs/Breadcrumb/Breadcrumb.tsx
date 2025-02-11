@@ -45,7 +45,7 @@ const BreadcrumbRoot = styled(Typography, {
     } = props;
     return [styles.root, disabled && styles.disabled, shouldFirstShrink && styles.shouldFirstShrink];
   },
-})<{ ownerState: BreadcrumbOwnerState }>(({ ownerState }) => ({
+})<{ ownerState: BreadcrumbOwnerState }>(() => ({
   flexShrink: 0,
   display: 'flex',
   alignItems: 'center',
@@ -62,22 +62,6 @@ const BreadcrumbRoot = styled(Typography, {
     whiteSpace: 'nowrap',
   },
 
-  ...(ownerState.shouldFirstShrink && {
-    '&:first-of-type': {
-      flexShrink: '1',
-      flexGrow: 0,
-    },
-  }),
-
-  ...(ownerState.disabled && {
-    div: {
-      cursor: 'not-allowed',
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-    },
-  }),
-
   '&:last-of-type': {
     minWidth: '40px',
     flexGrow: 1,
@@ -88,6 +72,33 @@ const BreadcrumbRoot = styled(Typography, {
       display: 'none',
     },
   },
+
+  variants: [
+    {
+      props: {
+        shouldFirstShrink: true,
+      },
+      style: {
+        '&:first-of-type': {
+          flexShrink: '1',
+          flexGrow: 0,
+        },
+      },
+    },
+    {
+      props: {
+        disabled: true,
+      },
+      style: {
+        div: {
+          cursor: 'not-allowed',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+        },
+      },
+    },
+  ],
 })) as any;
 
 const BreadcrumbTooltip = styled(

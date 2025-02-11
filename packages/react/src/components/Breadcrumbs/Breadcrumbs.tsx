@@ -53,20 +53,27 @@ const BreadcrumbsList = styled('ol', {
   name: 'ESBreadcrumbs',
   slot: 'List',
   overridesResolver: (props, styles) => styles.list,
-})<{ ownerState: BreadcrumbsOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: BreadcrumbsOwnerState }>(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   listStyle: 'none',
   padding: 0,
   margin: 0,
 
-  ...(ownerState.open && {
-    [`.${breadcrumbsClasses.buttonMore}`]: {
-      [`.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
-        '--background': theme.vars.palette.monoA.A50,
+  variants: [
+    {
+      props: {
+        open: true,
+      },
+      style: {
+        [`.${breadcrumbsClasses.buttonMore}`]: {
+          [`.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
+            '--background': theme.vars.palette.monoA.A50,
+          },
+        },
       },
     },
-  }),
+  ],
 }));
 
 const BreadcrumbsMenu = styled(Menu, {
