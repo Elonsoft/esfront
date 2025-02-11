@@ -39,36 +39,22 @@ const SidenavItemRoot = styled(ListItem, {
   name: 'ESSidenavItem',
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root,
-})<{ ownerState: SidenavItemOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: SidenavItemOwnerState }>(({ theme }) => ({
   [`&.${listItemClasses.root}`]: {
     borderRadius: '6px',
     padding: '0',
     margin: '0 8px',
     justifyContent: 'center',
 
-    ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
-      '--text': theme.vars.palette.monoA.A800,
-      '--icon': theme.vars.palette.monoA.A500,
-      '--hovered': theme.vars.palette.monoA.A50,
-      '--pressed': theme.vars.palette.monoA.A150,
+    '--text': theme.vars.palette.monoA.A800,
+    '--icon': theme.vars.palette.monoA.A500,
+    '--hovered': theme.vars.palette.monoA.A50,
+    '--pressed': theme.vars.palette.monoA.A150,
 
-      [`&.${listItemClasses.selected}`]: {
-        '--icon': theme.vars.palette.monoA.A600,
-        '--background': theme.vars.palette.monoA.A100,
-      },
-    }),
-    ...(ownerState.color === 'primary' && {
-      '--text': theme.vars.palette.monoB.A800,
-      '--icon': theme.vars.palette.monoB.A800,
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoB.A150,
-
-      [`&.${listItemClasses.selected}`]: {
-        '--text': theme.vars.palette.monoB[500],
-        '--icon': theme.vars.palette.monoB[500],
-        '--background': theme.vars.palette.monoB.A100,
-      },
-    }),
+    [`&.${listItemClasses.selected}`]: {
+      '--icon': theme.vars.palette.monoA.A600,
+      '--background': theme.vars.palette.monoA.A100,
+    },
 
     [`& .${buttonBaseClasses.wrapper}`]: {
       justifyContent: 'center',
@@ -79,6 +65,28 @@ const SidenavItemRoot = styled(ListItem, {
       padding: 0,
     },
   },
+
+  variants: [
+    {
+      props: {
+        color: 'primary',
+      },
+      style: {
+        [`&.${listItemClasses.root}`]: {
+          '--text': theme.vars.palette.monoB.A800,
+          '--icon': theme.vars.palette.monoB.A800,
+          '--hovered': theme.vars.palette.monoB.A50,
+          '--pressed': theme.vars.palette.monoB.A150,
+
+          [`&.${listItemClasses.selected}`]: {
+            '--text': theme.vars.palette.monoB[500],
+            '--icon': theme.vars.palette.monoB[500],
+            '--background': theme.vars.palette.monoB.A100,
+          },
+        },
+      },
+    },
+  ],
 }));
 
 const SidenavItemWrapper = styled('div', {
