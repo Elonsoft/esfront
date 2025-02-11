@@ -60,7 +60,7 @@ const SidenavOverlay = styled('div', {
   name: 'ESSidenav',
   slot: 'Overlay',
   overridesResolver: (props, styles) => styles.overlay,
-})<{ ownerState: SidenavOwnerState }>(({ ownerState, theme }) => ({
+})<{ ownerState: SidenavOwnerState }>(({ theme }) => ({
   opacity: '0',
   userSelect: 'none',
   top: '0',
@@ -71,15 +71,26 @@ const SidenavOverlay = styled('div', {
   backgroundColor: theme.vars.palette.overlay[200],
   transition: 'opacity 0.3s',
 
-  ...(ownerState.hover && {
-    opacity: '1',
-  }),
-
-  [theme.breakpoints.down('desktopXS')]: {
-    ...(ownerState.open && {
-      opacity: '1',
-    }),
-  },
+  variants: [
+    {
+      props: {
+        hover: true,
+      },
+      style: {
+        opacity: '1',
+      },
+    },
+    {
+      props: {
+        open: true,
+      },
+      style: {
+        [theme.breakpoints.down('desktopXS')]: {
+          opacity: '1',
+        },
+      },
+    },
+  ],
 }));
 
 const SidenavRail = styled('div', {
@@ -107,7 +118,7 @@ const SidenavDrawer = styled('div', {
   name: 'ESSidenav',
   slot: 'Drawer',
   overridesResolver: (props, styles) => styles.drawer,
-})<{ ownerState: SidenavOwnerState }>(({ ownerState, theme }) => ({
+})<{ ownerState: SidenavOwnerState }>(({ theme }) => ({
   position: 'absolute',
   top: '0',
   left: '-57px',
@@ -116,16 +127,30 @@ const SidenavDrawer = styled('div', {
   height: '100%',
   transition: 'all 0.2s',
 
-  ...((ownerState.hover || ownerState.open) && {
-    left: '57px',
-    transform: 'translateX(0)',
-  }),
+  variants: [
+    {
+      props: {
+        hover: true,
+      },
+      style: {
+        left: '57px',
+        transform: 'translateX(0)',
+      },
+    },
+    {
+      props: {
+        open: true,
+      },
+      style: {
+        left: '57px',
+        transform: 'translateX(0)',
 
-  [theme.breakpoints.down('desktopXS')]: {
-    ...(ownerState.open && {
-      position: 'absolute',
-    }),
-  },
+        [theme.breakpoints.down('desktopXS')]: {
+          position: 'absolute',
+        },
+      },
+    },
+  ],
 }));
 
 /**
