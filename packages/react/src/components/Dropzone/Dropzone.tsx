@@ -68,7 +68,7 @@ const DropzoneDropzone = styled(ButtonBase, {
       isDragOverDocument && styles.dropzoneDragOverDocument,
     ];
   },
-})<{ ownerState: DropzoneOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: DropzoneOwnerState }>(({ theme }) => ({
   width: '100%',
   display: 'flex',
   padding: '22px 24px',
@@ -84,17 +84,35 @@ const DropzoneDropzone = styled(ButtonBase, {
   [`& .${buttonBaseClasses.wrapper}`]: {
     flexDirection: 'column',
   },
-  ...(ownerState.isDragOverDocument && {
-    '--background': theme.vars.palette.primary.A50,
-    border: `1px dashed ${theme.vars.palette.primary.A500}`,
-  }),
-  ...(ownerState.isDragOver && {
-    '--background': theme.vars.palette.primary.A100,
-  }),
-  ...(ownerState.error && {
-    '--background': theme.vars.palette.error.A50,
-    border: `1px dashed ${theme.vars.palette.error.A800}`,
-  }),
+
+  variants: [
+    {
+      props: {
+        isDragOverDocument: true,
+      },
+      style: {
+        '--background': theme.vars.palette.primary.A50,
+        border: `1px dashed ${theme.vars.palette.primary.A500}`,
+      },
+    },
+    {
+      props: {
+        isDragOver: true,
+      },
+      style: {
+        '--background': theme.vars.palette.primary.A100,
+      },
+    },
+    {
+      props: {
+        error: true,
+      },
+      style: {
+        '--background': theme.vars.palette.error.A50,
+        border: `1px dashed ${theme.vars.palette.error.A800}`,
+      },
+    },
+  ],
 }));
 
 const DropzoneHeading = styled('div', {
@@ -156,11 +174,19 @@ const DropzoneHelperText = styled(Typography, {
     } = props;
     return [styles.helperText, error && styles.helperTextError];
   },
-})<{ ownerState: DropzoneOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: DropzoneOwnerState }>(({ theme }) => ({
   color: theme.vars.palette.monoA.A700,
-  ...(ownerState.error && {
-    color: theme.vars.palette.error.A800,
-  }),
+
+  variants: [
+    {
+      props: {
+        error: true,
+      },
+      style: {
+        color: theme.vars.palette.error.A800,
+      },
+    },
+  ],
 }));
 
 /**
