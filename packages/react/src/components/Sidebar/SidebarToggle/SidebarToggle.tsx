@@ -63,11 +63,11 @@ const SidebarToggleButton = styled(Button, {
   name: 'ESSidebarToggle',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button,
-})<{ ownerState: SidebarToggleOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: SidebarToggleOwnerState }>(({ theme }) => ({
   transition: 'none',
   width: '20px',
   height: '20px',
-  marginLeft: ownerState.open ? '7px' : 0,
+  marginLeft: 0,
   boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A100}`,
   borderRadius: '20px',
   zIndex: '4',
@@ -77,22 +77,43 @@ const SidebarToggleButton = styled(Button, {
   top: '-9px',
 
   [`& .${svgIconClasses.root}`]: {
-    transform: `rotate(${ownerState.open ? '' : '18'}0deg)`,
+    transform: 'rotate(0deg)',
   },
 
   [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorMonoA}`]: {
-    ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
-      '--background': theme.vars.palette.surface.background2,
-      '--icon': theme.vars.palette.monoA.A500,
-    }),
-
-    ...(ownerState.color === 'primary' && {
-      '--background': theme.vars.palette.primary[300],
-      '--icon': theme.vars.palette.monoB[500],
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoA.A150,
-    }),
+    '--background': theme.vars.palette.surface.background2,
+    '--icon': theme.vars.palette.monoA.A500,
   },
+
+  variants: [
+    {
+      props: {
+        open: true,
+      },
+      style: {
+        marginLeft: '7px',
+
+        [`& .${svgIconClasses.root}`]: {
+          transform: 'rotate(180deg)',
+        },
+      },
+    },
+    {
+      props: {
+        color: {
+          primary: true,
+        },
+      },
+      style: {
+        [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorMonoA}`]: {
+          '--background': theme.vars.palette.primary[300],
+          '--icon': theme.vars.palette.monoB[500],
+          '--hovered': theme.vars.palette.monoB.A50,
+          '--pressed': theme.vars.palette.monoA.A150,
+        },
+      },
+    },
+  ],
 }));
 
 export const SidebarToggle = (inProps: SidebarToggleProps) => {
