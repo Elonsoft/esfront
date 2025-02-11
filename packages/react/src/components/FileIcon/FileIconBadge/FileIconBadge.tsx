@@ -32,7 +32,7 @@ const FileIconBadgeRoot = styled(Typography, {
     } = props;
     return [styles.root, styles[size]];
   },
-})<{ ownerState: FileIconBadgeOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: FileIconBadgeOwnerState }>(({ theme }) => ({
   alignSelf: 'flex-start',
   borderRadius: '4px',
   display: 'block',
@@ -41,17 +41,28 @@ const FileIconBadgeRoot = styled(Typography, {
   position: 'relative',
   textAlign: 'center',
 
-  ...(ownerState.size === 'md' && {
-    minWidth: '32px',
-    padding: '1px 2px',
-    top: '-3px',
-  }),
-
-  ...(ownerState.size === 'sm' && {
-    minWidth: '30px',
-    padding: '0 2px',
-    top: '-2px',
-  }),
+  variants: [
+    {
+      props: {
+        size: 'sm',
+      },
+      style: {
+        minWidth: '30px',
+        padding: '0 2px',
+        top: '-2px',
+      },
+    },
+    {
+      props: {
+        size: 'md',
+      },
+      style: {
+        minWidth: '32px',
+        padding: '1px 2px',
+        top: '-3px',
+      },
+    },
+  ],
 }));
 
 export const FileIconBadge = (inProps: FileIconBadgeProps) => {
