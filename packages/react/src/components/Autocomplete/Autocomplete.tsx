@@ -56,8 +56,19 @@ const AutocompleteMenu = styled(ESAutocompleteMenu, {
   name: 'ESAutocomplete',
   slot: 'Menu',
   overridesResolver: (_props, styles) => styles.menu,
-})<{ ownerState: AutocompleteOwnerState }>(({ ownerState }) => ({
-  pointerEvents: ownerState.inlineSearch ? 'none' : 'auto',
+})<{ ownerState: AutocompleteOwnerState }>(() => ({
+  pointerEvents: 'auto',
+
+  variants: [
+    {
+      props: {
+        inlineSearch: true,
+      },
+      style: {
+        pointerEvents: 'none',
+      },
+    },
+  ],
 })) as unknown as typeof ESAutocompleteMenu;
 
 const AutocompleteInputDisplayValue = styled('div', {
