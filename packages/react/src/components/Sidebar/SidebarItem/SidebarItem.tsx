@@ -38,10 +38,9 @@ type SidebarItemOwnerState = {
   icon?: ReactNode;
   open?: boolean;
   color?: TypographyProps['color'];
-  width: number;
   isNestedMenuOpen?: boolean | null;
   behaviour?: 'click' | 'hover';
-  children?: React.ReactNode;
+  children?: boolean;
 };
 
 const useUtilityClasses = (ownerState: SidebarItemOwnerState) => {
@@ -85,92 +84,130 @@ const SidebarItemButton = styled(ListItem, {
   name: 'ESSidebarItem',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button,
-})<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: SidebarItemOwnerState }>(({ theme }) => ({
   [`&.${listItemClasses.root}`]: {
     borderRadius: '4px',
     width: '100%',
 
+    '--text': theme.vars.palette.monoA.A800,
+    '--icon': theme.vars.palette.monoA.A500,
+    '--hovered': theme.vars.palette.monoA.A50,
+    '--pressed': theme.vars.palette.monoA.A150,
+
+    [`&.${listItemClasses.selected}`]: {
+      '--icon': theme.vars.palette.monoA.A600,
+      '--background': theme.vars.palette.monoA.A100,
+    },
+
     [`&.${listItemClasses.root}`]: {
       padding: '6px 8px',
     },
-
-    ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
-      '--text': theme.vars.palette.monoA.A800,
-      '--icon': theme.vars.palette.monoA.A500,
-      '--hovered': theme.vars.palette.monoA.A50,
-      '--pressed': theme.vars.palette.monoA.A150,
-
-      [`&.${listItemClasses.selected}`]: {
-        '--icon': theme.vars.palette.monoA.A600,
-        '--background': theme.vars.palette.monoA.A100,
-      },
-    }),
-    ...(ownerState.color === 'primary' && {
-      '--text': theme.vars.palette.monoB.A800,
-      '--icon': theme.vars.palette.monoB.A800,
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoB.A150,
-
-      [`&.${listItemClasses.selected}`]: {
-        '--text': theme.vars.palette.monoB[500],
-        '--icon': theme.vars.palette.monoB[500],
-        '--background': theme.vars.palette.monoB.A100,
-      },
-    }),
 
     [`& .${listItemIconClasses.root}`]: {
       color: 'var(--icon)',
       padding: 0,
     },
   },
+
+  variants: [
+    {
+      props: {
+        color: 'primary',
+      },
+      style: {
+        [`&.${listItemClasses.root}`]: {
+          '--text': theme.vars.palette.monoB.A800,
+          '--icon': theme.vars.palette.monoB.A800,
+          '--hovered': theme.vars.palette.monoB.A50,
+          '--pressed': theme.vars.palette.monoB.A150,
+
+          [`&.${listItemClasses.selected}`]: {
+            '--text': theme.vars.palette.monoB[500],
+            '--icon': theme.vars.palette.monoB[500],
+            '--background': theme.vars.palette.monoB.A100,
+          },
+        },
+      },
+    },
+  ],
 }));
 
 const SidebarItemSecondaryAction = styled(Button, {
   name: 'ESSidebarItem',
   slot: 'SecondaryAction',
   overridesResolver: (props, styles) => styles.secondaryAction,
-})<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: SidebarItemOwnerState }>(({ theme }) => ({
   cursor: 'pointer',
   position: 'absolute',
-  left: `${ownerState.width + 2}px`,
+  left: 'var(--ESSidebarItemSecondaryAction-width)',
   top: '8px',
   zIndex: '5',
   borderRadius: '50%',
 
-  ...(ownerState.behaviour === 'hover' && {
-    pointerEvents: 'none',
-  }),
+  '--background': 'transparent',
+  '--icon': theme.vars.palette.monoA.A500,
+  '--hovered': theme.vars.palette.monoA.A50,
+  '--pressed': theme.vars.palette.monoA.A150,
 
-  ...((ownerState.color === 'default' || ownerState.color === 'secondary') && {
-    '--background': 'transparent',
-    '--icon': theme.vars.palette.monoA.A500,
-    '--hovered': theme.vars.palette.monoA.A50,
-    '--pressed': theme.vars.palette.monoA.A150,
-  }),
-
-  ...(ownerState.color === 'primary' && {
-    '--background': 'transparent',
-    '--icon': theme.vars.palette.monoB.A800,
-    '--hovered': theme.vars.palette.monoB.A50,
-    '--pressed': theme.vars.palette.monoB.A150,
-  }),
+  [`& .${svgIconClasses.root}`]: {
+    transform: 'none',
+  },
 
   [`&.${buttonClasses.size300} .${ESbuttonBaseClasses.wrapper}`]: {
     padding: '0px 8px',
   },
 
-  [`& .${svgIconClasses.root}`]: {
-    transform: `${ownerState.isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`,
-  },
+  variants: [
+    {
+      props: {
+        behaviour: 'hover',
+      },
+      style: {
+        pointerEvents: 'none',
+      },
+    },
+    {
+      props: {
+        color: 'primary',
+      },
+      style: {
+        '--background': 'transparent',
+        '--icon': theme.vars.palette.monoB.A800,
+        '--hovered': theme.vars.palette.monoB.A50,
+        '--pressed': theme.vars.palette.monoB.A150,
+      },
+    },
+    {
+      props: {
+        isNestedMenuOpen: true,
+      },
+      style: {
+        [`& .${svgIconClasses.root}`]: {
+          transform: 'rotate(270deg)',
+        },
+      },
+    },
+  ],
 }));
 
 const SidebarItemText = styled(ListItemText, {
   name: 'ESSidebarItem',
   slot: 'Text',
   overridesResolver: (props, styles) => styles.text,
-})<{ ownerState: SidebarItemOwnerState }>(({ ownerState: { open } }) => ({
+})<{ ownerState: SidebarItemOwnerState }>(() => ({
   whiteSpace: 'nowrap',
-  display: `${open ? 'block' : 'none'}`,
+  display: 'none',
+
+  variants: [
+    {
+      props: {
+        open: true,
+      },
+      style: {
+        display: 'block',
+      },
+    },
+  ],
 
   [`&.${listItemTextClasses.inset}`]: {
     paddingLeft: '36px',
@@ -181,14 +218,27 @@ const SidebarItemIcon = styled(ListItemIcon, {
   name: 'ESSidebarItem',
   slot: 'Icon',
   overridesResolver: (props, styles) => styles.icon,
-})<{ ownerState: SidebarItemOwnerState }>(({ ownerState: { isNestedMenuOpen } }) => ({
+})<{ ownerState: SidebarItemOwnerState }>(() => ({
   '&:last-of-type': {
     marginLeft: '3.5px',
   },
 
   [`& .${svgIconClasses.root}`]: {
-    transform: `${isNestedMenuOpen ? 'rotate(270deg)' : 'none'}`,
+    transform: 'none',
   },
+
+  variants: [
+    {
+      props: {
+        isNestedMenuOpen: true,
+      },
+      style: {
+        [`& .${svgIconClasses.root}`]: {
+          transform: 'rotate(270deg)',
+        },
+      },
+    },
+  ],
 }));
 
 const SidebarItemContainer = styled('div', {
@@ -251,13 +301,20 @@ const SidebarItemTooltipTitle = styled(MenuList, {
   name: 'ESSidebarItem',
   slot: 'TooltipTitle',
   overridesResolver: (props, styles) => styles.tooltipTitle,
-})<{ ownerState: SidebarItemOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: SidebarItemOwnerState }>(({ theme }) => ({
   maxHeight: '100vh',
   ...theme.scrollbars.overlayMonoA,
 
-  ...(ownerState.children && {
-    paddingBottom: '8px',
-  }),
+  variants: [
+    {
+      props: {
+        children: true,
+      },
+      style: {
+        paddingBottom: '8px',
+      },
+    },
+  ],
 }));
 
 const SidebarItemTooltipItem = styled(MenuItem, {
@@ -417,7 +474,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     event.preventDefault();
   };
 
-  const ownerState = { children, icon, open, color, isNestedMenuOpen, width, behaviour, ...props };
+  const ownerState = { children: !!children, icon, open, color, isNestedMenuOpen, behaviour, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
@@ -518,6 +575,11 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
               className={clsx(classes.secondaryAction)}
               ownerState={ownerState}
               size="300"
+              style={
+                {
+                  '--ESSidebarItemSecondaryAction-width': `${width}px`,
+                } as React.CSSProperties
+              }
               onClick={onNestedMenuClick}
             >
               {iconToggle}

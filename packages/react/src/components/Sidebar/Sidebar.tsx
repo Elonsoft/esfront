@@ -15,9 +15,6 @@ import { useDocumentEventListener, useLatest, useWindowEventListener } from '../
 
 type SidebarOwnerState = {
   color?: 'default' | 'primary' | 'secondary';
-  width?: number;
-  minWidth?: number;
-  maxWidth?: number;
   open?: boolean;
   isMouseMove?: boolean;
   isMouseDown?: boolean;
@@ -46,55 +43,82 @@ const SidebarRoot = styled('div', {
     } = props;
     return [styles.root, open && styles.rootOpen];
   },
-})<{ ownerState: SidebarOwnerState }>(({ ownerState }) => ({
+})<{ ownerState: SidebarOwnerState }>(() => ({
   display: 'flex',
   height: '100%',
 
-  ...(ownerState.isMouseMove &&
-    ownerState.open && {
-      cursor: 'col-resize',
-    }),
+  variants: [
+    {
+      props: {
+        isMouseMove: true,
+        open: true,
+      },
+      style: {
+        cursor: 'col-resize',
+      },
+    },
+  ],
 }));
 
 const SidebarContent = styled('aside', {
   name: 'ESSidebar',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
-})<{ ownerState: SidebarOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: SidebarOwnerState }>(({ theme }) => ({
   display: 'flex',
   order: '1',
   flexDirection: 'column',
   width: '57px',
   backgroundColor: theme.vars.palette.surface.background,
   borderRight: `1px solid ${theme.vars.palette.monoA.A100}`,
-  maxWidth: `${ownerState.maxWidth}px`,
+  maxWidth: 'var(--ESSidebarContent-maxWidth)',
   transition: 'width 0.2s',
 
-  ...(ownerState.color === 'primary' && {
-    backgroundColor: theme.vars.palette.primary[300],
-  }),
-
-  ...(ownerState.color === 'secondary' && {
-    backgroundColor: theme.vars.palette.surface.background2,
-  }),
-
-  ...(ownerState.open && {
-    width: `${ownerState.width}px`,
-
-    ...(ownerState.isMouseMove && {
-      transition: 'none',
-      userSelect: 'none',
-      pointerEvents: 'none',
-      minWidth: `${ownerState.minWidth}px`,
-    }),
-  }),
+  variants: [
+    {
+      props: {
+        color: 'primary',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.primary[300],
+      },
+    },
+    {
+      props: {
+        color: 'secondary',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.surface.background2,
+      },
+    },
+    {
+      props: {
+        open: true,
+      },
+      style: {
+        width: 'var(--ESSidebarContent-width)',
+      },
+    },
+    {
+      props: {
+        open: true,
+        isMouseMove: true,
+      },
+      style: {
+        transition: 'none',
+        userSelect: 'none',
+        pointerEvents: 'none',
+        minWidth: 'var(--ESSidebarContent-minWidth)',
+      },
+    },
+  ],
 }));
 
 const SidebarHandler = styled('div', {
   name: 'ESSidebar',
   slot: 'Handler',
   overridesResolver: (props, styles) => styles.handler,
-})<{ ownerState: SidebarOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: SidebarOwnerState }>(({ theme }) => ({
   order: '2',
   height: '100%',
   width: '9px',
@@ -103,32 +127,44 @@ const SidebarHandler = styled('div', {
   display: 'flex',
   justifyContent: 'center',
 
-  ...(ownerState.open && {
-    transition: 'background-color 0.3s',
-    cursor: 'col-resize',
+  variants: [
+    {
+      props: {
+        open: true,
+      },
+      style: {
+        transition: 'background-color 0.3s',
+        cursor: 'col-resize',
 
-    '&:hover': {
-      backgroundColor: theme.vars.palette.monoA.A50,
+        '&:hover': {
+          backgroundColor: theme.vars.palette.monoA.A50,
 
-      [`& .${sidebarClasses.handlerLine}`]: {
-        backgroundColor: theme.vars.palette.monoA.A150,
+          [`& .${sidebarClasses.handlerLine}`]: {
+            backgroundColor: theme.vars.palette.monoA.A150,
+          },
+        },
       },
     },
-
-    ...(ownerState.isMouseDown && {
-      backgroundColor: 'transparent !important',
-
-      [`& + .${sidebarClasses.content}`]: {
-        borderColor: 'transparent',
+    {
+      props: {
+        open: true,
+        isMouseDown: true,
       },
+      style: {
+        backgroundColor: 'transparent !important',
 
-      [`& .${sidebarClasses.handlerLine}`]: {
-        width: '3px',
-        backgroundColor: `${theme.vars.palette.info.A600} !important`,
-        backdropFilter: 'blur(20px)',
+        [`& + .${sidebarClasses.content}`]: {
+          borderColor: 'transparent',
+        },
+
+        [`& .${sidebarClasses.handlerLine}`]: {
+          width: '3px',
+          backgroundColor: `${theme.vars.palette.info.A600} !important`,
+          backdropFilter: 'blur(20px)',
+        },
       },
-    }),
-  }),
+    },
+  ],
 }));
 
 const SidebarHandlerLine = styled('div', {
@@ -256,7 +292,7 @@ export const Sidebar = (inProps: SidebarProps) => {
 
   useWindowEventListener('selectstart', (e) => isActive.current && e.preventDefault());
 
-  const ownerState = { color, open, isMouseMove, isMouseDown, width, minWidth, maxWidth, ...props };
+  const ownerState = { color, open, isMouseMove, isMouseDown, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
@@ -277,7 +313,15 @@ export const Sidebar = (inProps: SidebarProps) => {
           ref={ref}
           className={clsx(classes.content)}
           ownerState={ownerState}
-          style={{ width: open ? `${width}px` : undefined }}
+          style={{
+            ...({
+              '--ESSidebarContent-width': `${width}px`,
+              '--ESSidebarContent-minWidth': `${minWidth}px`,
+              '--ESSidebarContent-maxWidth': `${maxWidth}px`,
+            } as React.CSSProperties),
+
+            width: open ? `${width}px` : undefined,
+          }}
         >
           {children}
         </SidebarContent>

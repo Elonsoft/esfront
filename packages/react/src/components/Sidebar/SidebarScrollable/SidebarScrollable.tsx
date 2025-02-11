@@ -32,14 +32,53 @@ const SidebarScrollableRoot = styled('div', {
   name: 'ESSidebarScrollable',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})<{ ownerState: SidebarScrollableOwnerState }>(({ theme, ownerState }) => ({
-  ...(ownerState.isScrollable && {
-    mask: `${ownerState.isBeforeScroll ? 'linear-gradient(to bottom, transparent 0, black 32px) top' : 'none'}, ${
-      ownerState.isAfterScroll ? 'linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom' : 'none'
-    }`,
-    maskSize: `${ownerState.isBeforeScroll ? '100%' : 'auto'}${ownerState.isAfterScroll ? '51%' : 'auto'}`,
-    maskRepeat: 'no-repeat',
-  }),
+})<{ ownerState: SidebarScrollableOwnerState }>(({ theme }) => ({
+  variants: [
+    {
+      props: {
+        isScrollable: true,
+      },
+      style: {
+        mask: 'none',
+        maskSize: 'auto',
+        maskRepeat: 'no-repeat',
+      },
+    },
+    {
+      props: {
+        isScrollable: true,
+        isBeforeScroll: true,
+        isAfterScroll: true,
+      },
+      style: {
+        mask: `linear-gradient(to bottom, transparent 0, black 32px) top, 
+              linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom`,
+        maskSize: '100%, 51%',
+      },
+    },
+    {
+      props: {
+        isScrollable: true,
+        isBeforeScroll: true,
+        isAfterScroll: false,
+      },
+      style: {
+        mask: 'linear-gradient(to bottom, transparent 0, black 32px) top, none',
+        maskSize: '100%, auto',
+      },
+    },
+    {
+      props: {
+        isScrollable: true,
+        isBeforeScroll: false,
+        isAfterScroll: true,
+      },
+      style: {
+        mask: 'none, linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom',
+        maskSize: 'auto, 100%',
+      },
+    },
+  ],
 
   ...theme.scrollbars.overlayMonoA,
 }));

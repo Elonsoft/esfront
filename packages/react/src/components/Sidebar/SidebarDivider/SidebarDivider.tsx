@@ -31,19 +31,41 @@ const SidebarDividerRoot = styled('div', {
   name: 'ESSidebarDivider',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})<{ ownerState: SidebarDividerOwnerState }>(({ theme, ownerState }) => ({
-  padding: `0 ${ownerState.open ? 16 : 8}px`,
+})<{ ownerState: SidebarDividerOwnerState }>(({ theme }) => ({
+  padding: '0 8px',
   transitionDuration: `${theme.transitions.duration.shortest}ms`,
   transitionTimingFunction: theme.transitions.easing.easeOut,
   transitionProperty: 'padding',
+
+  variants: [
+    {
+      props: {
+        open: true,
+      },
+      style: {
+        padding: '0 16px',
+      },
+    },
+  ],
 }));
 
 const SidebarDividerLine = styled(Divider, {
   name: 'ESSidebarDivider',
   slot: 'Line',
   overridesResolver: (props, styles) => styles.line,
-})<{ ownerState: SidebarDividerOwnerState }>(({ theme, ownerState: { color } }) => ({
-  color: `${color === 'default' || color === 'secondary' ? theme.vars.palette.monoA.A100 : theme.vars.palette.monoB.A200}`,
+})<{ ownerState: SidebarDividerOwnerState }>(({ theme }) => ({
+  color: theme.vars.palette.monoA.A100,
+
+  variants: [
+    {
+      props: {
+        color: 'primary',
+      },
+      style: {
+        color: theme.vars.palette.monoB.A200,
+      },
+    },
+  ],
 }));
 
 export const SidebarDivider = (inProps: SidebarDividerProps) => {
