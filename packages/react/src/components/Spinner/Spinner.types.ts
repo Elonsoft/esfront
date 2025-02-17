@@ -21,16 +21,4 @@ export interface SpinnerBaseProps<T> {
    * @default 'primary'
    **/
   color?: SpinnerColor;
-
-  /**
-   * Duration of the spinner animation in milliseconds.
-   * @default 1000
-   **/
-  duration?: number;
-
-  /**
-   * Easing function of the spinner animation.
-   * @default 'linear'
-   **/
-  ease?: string;
 }

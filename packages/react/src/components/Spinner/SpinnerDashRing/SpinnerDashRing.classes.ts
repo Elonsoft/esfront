@@ -3,8 +3,6 @@ import { generateUtilityClass, generateUtilityClasses } from '@mui/material';
 export type SpinnerDashRingClasses = {
   /** Styles applied to the root element. */
   root: string;
-  /** Styles applied to the dashAnimate element. */
-  circle: string;
   /** Styles applied to the root element if `color='primary'`. */
   primary: string;
   /** Styles applied to the root element if `color='secondary'`. */
@@ -22,7 +20,6 @@ export function getSpinnerDashRingUtilityClass(slot: string): string {
 
 export const spinnerDashRingClasses: SpinnerDashRingClasses = generateUtilityClasses('ESSpinnerDashRing', [
   'root',
-  'circle',
   'primary',
   'secondary',
   'monoA',

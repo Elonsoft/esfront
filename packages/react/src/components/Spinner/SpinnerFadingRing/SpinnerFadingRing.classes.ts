@@ -3,8 +3,6 @@ import { generateUtilityClass, generateUtilityClasses } from '@mui/material';
 export type SpinnerFadingRingClasses = {
   /** Styles applied to the root element. */
   root: string;
-  /** Styles applied to the animate element. */
-  circle: string;
   /** Styles applied to the root element if `color='primary'`. */
   primary: string;
   /** Styles applied to the root element if `color='secondary'`. */
@@ -22,7 +20,6 @@ export function getSpinnerFadingRingUtilityClass(slot: string): string {
 
 export const spinnerFadingRingClasses: SpinnerFadingRingClasses = generateUtilityClasses('ESSpinnerFadingRing', [
   'root',
-  'circle',
   'primary',
   'secondary',
   'monoA',
