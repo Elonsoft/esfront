@@ -7,15 +7,11 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
-import { spinnerOpacityAnimation } from '../Spinner.animations';
-import { useSpinnerColor } from '../useSpinnerColor';
+import { generateDelayedOpacityAnimationStyles, generateStyleColorVariants, opacityKeyframe } from '../Spinner.utils';
 
 type SpinnerFadingBarsOwnerState = {
   classes?: SpinnerFadingBarsProps['classes'];
   color: string;
-  spinnerColor: string;
-  duration: number;
-  ease: string;
 };
 
 const useUtilityClasses = (ownerState: SpinnerFadingBarsOwnerState) => {
@@ -37,19 +33,18 @@ const SpinnerFadingBarsRoot = styled('svg', {
     } = props;
     return [styles.root, styles[color]];
   },
-})<{ ownerState: SpinnerFadingBarsOwnerState }>(
-  ({ ownerState }) => ({
-    color: ownerState.spinnerColor,
-    '& > *': {
-      fill: 'currentColor',
-      height: '10px',
-      width: '4px',
-    },
-  }),
-  ({ ownerState }) => ({
-    ...spinnerOpacityAnimation('& > *', ownerState.duration, ownerState.ease),
-  })
-);
+})<{ ownerState: SpinnerFadingBarsOwnerState }>(({ theme }) => ({
+  variants: generateStyleColorVariants(theme),
+
+  '& > rect': {
+    fill: 'currentColor',
+    height: '10px',
+    width: '4px',
+
+    animation: `${opacityKeyframe} 1000ms linear infinite`,
+    ...generateDelayedOpacityAnimationStyles(),
+  },
+}));
 
 export const SpinnerFadingBars = (inProps: SpinnerFadingBarsProps) => {
   const {
@@ -57,16 +52,13 @@ export const SpinnerFadingBars = (inProps: SpinnerFadingBarsProps) => {
     sx,
     size = 40,
     color = 'primary',
-    duration = 1000,
-    ease = 'linear',
     ...props
   } = useThemeProps({
     props: inProps,
     name: 'ESSpinnerFadingBars',
   });
 
-  const spinnerColor = useSpinnerColor(color);
-  const ownerState = { ...props, color, spinnerColor, duration, ease };
+  const ownerState = { ...props, color };
   const classes = useUtilityClasses(ownerState);
 
   return (

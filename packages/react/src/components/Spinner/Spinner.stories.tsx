@@ -20,20 +20,6 @@ const meta: Meta<typeof SpinnerDashRing> = {
       'SpinnerRing',
     ],
   },
-  argTypes: {
-    dashEase: {
-      description: 'Easing function for spinner dashStroke animation.',
-      control: { type: 'text' },
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-  },
-  args: {
-    dashEase: 'ease-in-out',
-  },
 };
 
 export default meta;
@@ -51,12 +37,12 @@ export const Demo: Story = {
           justifyContent: 'flex-start',
         }}
       >
-        <SpinnerFadingRing color={args.color} duration={args.duration} ease={args.ease} size={args.size} />
-        <SpinnerFadingDots color={args.color} duration={args.duration} ease={args.ease} size={args.size} />
-        <SpinnerFadingBars color={args.color} duration={args.duration} ease={args.ease} size={args.size} />
-        <SpinnerRing color={args.color} duration={args.duration} ease={args.ease} size={args.size} />
+        <SpinnerFadingRing {...args} />
+        <SpinnerFadingDots {...args} />
+        <SpinnerFadingBars {...args} />
+        <SpinnerRing {...args} />
         <SpinnerDashRing {...args} />
-        <SpinnerFadingDoubleRing color={args.color} duration={args.duration} ease={args.ease} size={args.size} />
+        <SpinnerFadingDoubleRing {...args} />
       </div>
     );
   },

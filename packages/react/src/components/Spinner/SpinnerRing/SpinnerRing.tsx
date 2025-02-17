@@ -7,15 +7,11 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
-import { spinnerRotateAnimation } from '../Spinner.animations';
-import { useSpinnerColor } from '../useSpinnerColor';
+import { generateStyleColorVariants, rotateKeyframe } from '../Spinner.utils';
 
 type SpinnerRingOwnerState = {
   classes?: SpinnerRingProps['classes'];
   color: string;
-  spinnerColor: string;
-  duration: number;
-  ease: string;
 };
 
 const useUtilityClasses = (ownerState: SpinnerRingOwnerState) => {
@@ -37,18 +33,18 @@ const SpinnerRingRoot = styled('svg', {
     } = props;
     return [styles.root, styles[color]];
   },
-})<{ ownerState: SpinnerRingOwnerState }>(
-  ({ ownerState }) => ({
-    color: ownerState.spinnerColor,
-    '& > path': {
-      fill: 'currentColor',
-    },
-    '& > circle': {
-      stroke: 'currentColor',
-    },
-  }),
-  ({ ownerState }) => spinnerRotateAnimation('& > *', ownerState.duration, ownerState.ease)
-);
+})<{ ownerState: SpinnerRingOwnerState }>(({ theme }) => ({
+  variants: generateStyleColorVariants(theme),
+
+  '& > circle': {
+    stroke: 'currentColor',
+  },
+  '& > path': {
+    fill: 'currentColor',
+    transformOrigin: 'center',
+    animation: `${rotateKeyframe} 1000ms linear infinite`,
+  },
+}));
 
 export const SpinnerRing = (inProps: SpinnerRingProps) => {
   const {
@@ -56,22 +52,18 @@ export const SpinnerRing = (inProps: SpinnerRingProps) => {
     sx,
     size = 40,
     color = 'primary',
-    duration = 1000,
-    ease = 'linear',
     ...props
   } = useThemeProps({
     props: inProps,
     name: 'ESSpinnerRing',
   });
 
-  const spinnerColor = useSpinnerColor(color);
-  const ownerState = { ...props, color, spinnerColor, duration, ease };
+  const ownerState = { ...props, color };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <SpinnerRingRoot
       className={clsx(classes.root, className)}
-      data-testid="svg"
       fill="none"
       height={size}
       ownerState={ownerState}

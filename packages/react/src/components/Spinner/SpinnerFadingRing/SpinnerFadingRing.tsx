@@ -9,16 +9,11 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
-import { spinnerRotateAnimation } from '../Spinner.animations';
-import { isSafari, setGradient } from '../Spinner.utils';
-import { useSpinnerColor } from '../useSpinnerColor';
+import { generateStyleColorVariants, rotateKeyframe } from '../Spinner.utils';
 
 type SpinnerFadingRingOwnerState = {
   classes?: SpinnerFadingRingProps['classes'];
   color: string;
-  spinnerColor: string;
-  duration: number;
-  ease: string;
   size: number;
 };
 
@@ -27,7 +22,6 @@ const useUtilityClasses = (ownerState: SpinnerFadingRingOwnerState) => {
 
   const slots = {
     root: ['root', color],
-    circle: ['circle'],
   };
 
   return composeClasses(slots, getSpinnerFadingRingUtilityClass, classes);
@@ -42,30 +36,17 @@ const SpinnerFadingRingRoot = styled('svg', {
     } = props;
     return [styles.root, styles[color]];
   },
-})<{ ownerState: SpinnerFadingRingOwnerState }>(
-  ({ ownerState }) => ({
-    '& > *': {
-      fill: 'currentColor',
-    },
+})<{ ownerState: SpinnerFadingRingOwnerState }>(({ theme }) => ({
+  variants: generateStyleColorVariants(theme),
 
-    color: ownerState.spinnerColor,
-  }),
-  ({ ownerState }) =>
-    spinnerRotateAnimation(isSafari() ? '&' : '& > foreignObject', ownerState.duration, ownerState.ease)
-);
+  transformOrigin: 'center',
+  animation: `${rotateKeyframe} 1000ms linear infinite`,
 
-const SpinnerFadingRingCircle = styled('div', {
-  name: 'ESSpinnerFadingRing',
-  slot: 'Circle',
-  overridesResolver: (props, styles) => styles.circle,
-})<{ ownerState: SpinnerFadingRingOwnerState }>(({ theme, ownerState }) => ({
-  width: '100%',
-  height: '100%',
-  background: `conic-gradient(from 187deg at 50% 50%, rgba(255, 255, 255, ${setGradient(
-    // eslint-disable-next-line no-restricted-properties
-    theme.palette.mode,
-    0.5
-  )}) 61deg, ${ownerState.spinnerColor} 360deg)`,
+  '& > foreignObject > div': {
+    width: '100%',
+    height: '100%',
+    background: `conic-gradient(from 187deg, rgba(255, 255, 255, 0) 17%, currentColor 100%)`,
+  },
 }));
 
 export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
@@ -74,8 +55,6 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
     sx,
     size = 40,
     color = 'primary',
-    duration = 1000,
-    ease = 'linear',
     ...props
   } = useThemeProps({
     props: inProps,
@@ -83,14 +62,12 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
   });
 
   const id = useMemo(() => `SpinnerFadingRing-${SpinnerFadingRing.count++}`, []);
-  const spinnerColor = useSpinnerColor(color);
-  const ownerState = { ...props, color, spinnerColor, duration, ease, size };
+  const ownerState = { ...props, color, size };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <SpinnerFadingRingRoot
       className={clsx(classes.root, className)}
-      data-testid="svg"
       fill="none"
       height={size}
       ownerState={ownerState}
@@ -106,7 +83,7 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
         />
       </clipPath>
       <foreignObject clipPath={`url(#${id})`} height="40" width="40">
-        <SpinnerFadingRingCircle className={classes.circle} ownerState={ownerState} />
+        <div />
       </foreignObject>
     </SpinnerFadingRingRoot>
   );
