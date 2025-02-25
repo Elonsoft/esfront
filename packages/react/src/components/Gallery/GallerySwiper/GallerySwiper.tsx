@@ -65,7 +65,7 @@ const GallerySwiperSwiper = styled(Swiper, {
   },
 }));
 
-const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ theme, ownerState }) => ({
+const GallerySwiperButton = styled('div')<{ ownerState: { prev?: boolean; next?: boolean } }>(({ theme }) => ({
   position: 'absolute',
   alignItems: 'center',
   cursor: 'pointer',
@@ -84,20 +84,6 @@ const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ t
     },
   },
 
-  ...(ownerState.step < 0 && {
-    justifyContent: 'flex-start',
-    left: 0,
-    paddingLeft: 24,
-    paddingRight: 8,
-  }),
-
-  ...(ownerState.step > 0 && {
-    justifyContent: 'flex-end',
-    right: 0,
-    paddingRight: 24,
-    paddingLeft: 8,
-  }),
-
   [`& .${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorTertiary}`]: {
     backdropFilter: 'blur(10px)',
     borderRadius: 4,
@@ -107,6 +93,31 @@ const GallerySwiperButton = styled('div')<{ ownerState: { step: number } }>(({ t
     '--hovered': theme.vars.palette.white.A50,
     '--pressed': theme.vars.palette.white.A150,
   },
+
+  variants: [
+    {
+      props: {
+        prev: true,
+      },
+      style: {
+        justifyContent: 'flex-start',
+        left: 0,
+        paddingLeft: 24,
+        paddingRight: 8,
+      },
+    },
+    {
+      props: {
+        next: true,
+      },
+      style: {
+        justifyContent: 'flex-end',
+        right: 0,
+        paddingRight: 24,
+        paddingLeft: 8,
+      },
+    },
+  ],
 }));
 
 const GallerySwiperButtonPrev = ({ icon, label }: { icon: ReactNode; label?: string }) => {
@@ -127,7 +138,7 @@ const GallerySwiperButtonPrev = ({ icon, label }: { icon: ReactNode; label?: str
       sx={{ '&[data-popper-placement*="right"] .MuiTooltip-tooltip': { marginLeft: '6px !important' } }}
       title={label || ''}
     >
-      <GallerySwiperButton ownerState={{ step: -1 }} onClick={onClick} onPointerDown={onPointerDown}>
+      <GallerySwiperButton ownerState={{ prev: true }} onClick={onClick} onPointerDown={onPointerDown}>
         <Button aria-label={label}>{icon}</Button>
       </GallerySwiperButton>
     </GalleryTooltip>
@@ -152,7 +163,7 @@ const GallerySwiperButtonNext = ({ icon, label }: { icon: ReactNode; label?: str
       sx={{ '&[data-popper-placement*="left"] .MuiTooltip-tooltip': { marginRight: '6px !important' } }}
       title={label || ''}
     >
-      <GallerySwiperButton ownerState={{ step: 1 }} onClick={onClick} onPointerDown={onPointerDown}>
+      <GallerySwiperButton ownerState={{ next: true }} onClick={onClick} onPointerDown={onPointerDown}>
         <Button aria-label={label}>{icon}</Button>
       </GallerySwiperButton>
     </GalleryTooltip>

@@ -34,7 +34,7 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
     } = props;
     return [styles.root, isActive && styles.active];
   },
-})<{ ownerState: GalleryThumbnailsItemOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: GalleryThumbnailsItemOwnerState }>(({ theme }) => ({
   padding: 0,
   borderRadius: 6,
   height: 56,
@@ -50,13 +50,6 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
     inset: 0,
     borderRadius: 6,
     zIndex: 1,
-
-    ...(ownerState.isActive && {
-      boxShadow: `inset 0 0 0 2px ${theme.vars.palette.white.A800}`,
-    }),
-    ...(!ownerState.isActive && {
-      backgroundColor: theme.vars.palette.black.A500,
-    }),
   },
 
   '&:hover::after': {
@@ -69,6 +62,29 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
   [`& .${touchRippleClasses.root}`]: {
     zIndex: 2,
   },
+
+  variants: [
+    {
+      props: {
+        isActive: true,
+      },
+      style: {
+        '&::after': {
+          boxShadow: `inset 0 0 0 2px ${theme.vars.palette.white.A800}`,
+        },
+      },
+    },
+    {
+      props: {
+        isActive: false,
+      },
+      style: {
+        '&::after': {
+          backgroundColor: theme.vars.palette.black.A500,
+        },
+      },
+    },
+  ],
 }));
 
 export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {

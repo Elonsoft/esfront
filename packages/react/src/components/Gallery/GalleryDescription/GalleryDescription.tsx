@@ -49,7 +49,7 @@ const GalleryDescriptionContent = styled('div', {
   name: 'ESGalleryDescription',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
-})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme }) => ({
   display: 'flex',
   alignItems: 'flex-start',
   flexGrow: 1,
@@ -59,25 +59,45 @@ const GalleryDescriptionContent = styled('div', {
   paddingLeft: 16,
   paddingRight: 8,
 
-  ...(ownerState.isExpanded && {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    ...(ownerState.position === 'top' && {
-      top: 0,
-    }),
-    ...(ownerState.position === 'bottom' && {
-      bottom: 0,
-    }),
-    background: `linear-gradient(to ${ownerState.position}, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`,
-  }),
+  variants: [
+    {
+      props: {
+        isExpanded: true,
+      },
+      style: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+      },
+    },
+    {
+      props: {
+        isExpanded: true,
+        position: 'top',
+      },
+      style: {
+        top: 0,
+        background: `linear-gradient(to top, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`,
+      },
+    },
+    {
+      props: {
+        isExpanded: true,
+        position: 'bottom',
+      },
+      style: {
+        bottom: 0,
+        background: `linear-gradient(to bottom, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`,
+      },
+    },
+  ],
 }));
 
 const GalleryDescriptionText = styled('div', {
   name: 'ESGalleryDescription',
   slot: 'Text',
   overridesResolver: (props, styles) => styles.text,
-})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme }) => ({
   color: theme.vars.palette.white.A800,
   overflow: 'hidden',
   flexGrow: 1,
@@ -86,18 +106,25 @@ const GalleryDescriptionText = styled('div', {
   padding: '4px 0',
   textAlign: 'left',
 
-  ...(!ownerState.isExpanded && {
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    textAlign: 'center',
-  }),
+  variants: [
+    {
+      props: {
+        isExpanded: false,
+      },
+      style: {
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        textAlign: 'center',
+      },
+    },
+  ],
 }));
 
 const GalleryDescriptionButton = styled(Button, {
   name: 'ESGalleryDescription',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button,
-})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme }) => ({
   flexShrink: 0,
   position: 'sticky',
   top: 0,
@@ -108,9 +135,17 @@ const GalleryDescriptionButton = styled(Button, {
       '--icon': theme.vars.palette.white.A500,
     },
   },
-  ...(ownerState.position === 'top' && {
-    transform: 'scaleY(-1)',
-  }),
+
+  variants: [
+    {
+      props: {
+        position: 'top',
+      },
+      style: {
+        transform: 'scaleY(-1)',
+      },
+    },
+  ],
 }));
 
 const IconDoubleChevronUp = (props: SvgIconProps) => {

@@ -162,7 +162,7 @@ const SwiperContainer = styled('div', {
       },
       style: {
         '& > *': {
-          scrollSnapStop: 'normal',
+          scrollSnapStop: 'always',
         },
       },
     },

@@ -69,7 +69,7 @@ const GalleryThumbnailsSwiper = styled(Swiper, {
   },
 }));
 
-const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(({ theme, ownerState }) => ({
+const GalleryThumbnailsButton = styled('div')<{ ownerState: { prev?: boolean; next?: boolean } }>(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: 4,
@@ -85,16 +85,6 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(
     },
   },
 
-  ...(ownerState.step < 0 && {
-    left: 0,
-    paddingLeft: 8,
-  }),
-
-  ...(ownerState.step > 0 && {
-    right: 0,
-    paddingRight: 8,
-  }),
-
   [`& .${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorTertiary}`]: {
     backdropFilter: 'blur(10px)',
     borderRadius: '50%',
@@ -104,6 +94,27 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { step: number } }>(
     '--hovered': theme.vars.palette.black.A50,
     '--pressed': theme.vars.palette.black.A150,
   },
+
+  variants: [
+    {
+      props: {
+        prev: true,
+      },
+      style: {
+        left: 0,
+        paddingLeft: 8,
+      },
+    },
+    {
+      props: {
+        next: true,
+      },
+      style: {
+        right: 0,
+        paddingRight: 8,
+      },
+    },
+  ],
 }));
 
 const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?: string }) => {
@@ -118,7 +129,7 @@ const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?:
   };
 
   return (
-    <GalleryThumbnailsButton ownerState={{ step: -1 }} onClick={onClick} onPointerDown={onPointerDown}>
+    <GalleryThumbnailsButton ownerState={{ prev: true }} onClick={onClick} onPointerDown={onPointerDown}>
       <Button aria-label={label} size="400">
         {icon}
       </Button>
@@ -138,7 +149,7 @@ const GalleryThumbnailsButtonNext = ({ icon, label }: { icon: ReactNode; label?:
   };
 
   return (
-    <GalleryThumbnailsButton ownerState={{ step: 1 }} onClick={onClick} onPointerDown={onPointerDown}>
+    <GalleryThumbnailsButton ownerState={{ next: true }} onClick={onClick} onPointerDown={onPointerDown}>
       <Button aria-label={label} size="400">
         {icon}
       </Button>
