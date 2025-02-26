@@ -40,7 +40,7 @@ const AppBarRoot = styled('div', {
 
     return [styles.root, stuck && styles.stuck];
   },
-})(({ theme }) => ({
+})<{ ownerState: AppBarOwnerState }>(({ theme }) => ({
   ...theme.typography.h6,
   position: 'sticky',
   top: 0,
@@ -93,7 +93,15 @@ const AppBarAdornment = styled('div', {
  * The AppBar displays information and actions relating to the current screen.
  */
 export const AppBar = (inProps: AppBarProps) => {
-  const { className, children, sx, startAdornment, endAdornment, prominent, ...props } = useThemeProps({
+  const {
+    className,
+    classes: inClasses,
+    children,
+    sx,
+    startAdornment,
+    endAdornment,
+    prominent,
+  } = useThemeProps({
     props: inProps,
     name: 'ESAppBar',
   });
@@ -125,13 +133,13 @@ export const AppBar = (inProps: AppBarProps) => {
     { threshold: [1], rootMargin: `${prominentHeight - height}px 0px 0px` }
   );
 
-  const ownerState = { ...props, stuck };
+  const ownerState = { classes: inClasses, stuck };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <>
       {sentinel}
-      <AppBarRoot ref={ref} className={clsx(className, classes.root)} sx={sx}>
+      <AppBarRoot ref={ref} className={clsx(className, classes.root)} ownerState={ownerState} sx={sx}>
         {startAdornment && <AppBarAdornment className={classes.adornment}>{startAdornment}</AppBarAdornment>}
         <AppBarTitle className={classes.title}>{!prominent || isTitleVisible ? children : '\u00A0'}</AppBarTitle>
         {endAdornment && <AppBarAdornment className={classes.adornment}>{endAdornment}</AppBarAdornment>}
