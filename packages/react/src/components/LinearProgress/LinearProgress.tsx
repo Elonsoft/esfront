@@ -8,7 +8,7 @@ import { getLinearProgressUtilityClass } from './LinearProgress.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { css, keyframes } from '@mui/system';
+import { keyframes } from '@mui/system';
 import { capitalize } from '@mui/material';
 
 const TRANSITION_DURATION = 4;
@@ -87,32 +87,68 @@ const LinearProgressRoot = styled('span', {
 
     return [styles.root, styles[`color${capitalize(ownerState.color)}`], styles[ownerState.variant]];
   },
-})<{ ownerState: LinearProgressOwnerState }>(({ ownerState, theme }) => ({
+})<{ ownerState: LinearProgressOwnerState }>(({ theme }) => ({
   position: 'relative',
   overflow: 'hidden',
   display: 'block',
-  height: `${ownerState.width}px`,
-  borderRadius: `${ownerState.width / 2}px`,
+  height: 'var(--ESLinearProgress-width)',
+  borderRadius: 'calc(var(--ESLinearProgress-width) / 2)',
   zIndex: 0,
+
   '@media print': {
     colorAdjust: 'exact',
   },
+
   backgroundColor: theme.vars.palette.monoA.A200,
-  ...(ownerState.color === 'inherit' &&
-    ownerState.variant !== 'buffer' && {
-      backgroundColor: 'none',
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'transparent',
-        opacity: 0.3,
+
+  variants: [
+    {
+      props: {
+        color: 'inherit',
+        variant: 'indeterminate',
       },
-    }),
-  ...(ownerState.variant === 'buffer' && { backgroundColor: 'transparent' }),
+      style: {
+        backgroundColor: 'none',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'transparent',
+          opacity: 0.3,
+        },
+      },
+    },
+    {
+      props: {
+        color: 'inherit',
+        variant: 'determinate',
+      },
+      style: {
+        backgroundColor: 'none',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'transparent',
+          opacity: 0.3,
+        },
+      },
+    },
+    {
+      props: {
+        variant: 'buffer',
+      },
+      style: {
+        backgroundColor: 'transparent',
+      },
+    },
+  ],
 }));
 
 const LinearProgressDashed = styled('span', {
@@ -123,7 +159,7 @@ const LinearProgressDashed = styled('span', {
 
     return [styles.dashed, styles[`dashedColor${capitalize(ownerState.color)}`]];
   },
-})<{ ownerState: LinearProgressOwnerState }>(({ ownerState, theme }) => {
+})<{ ownerState: LinearProgressOwnerState }>(({ theme }) => {
   const backgroundColor = theme.vars.palette.monoA.A200;
 
   return {
@@ -131,12 +167,20 @@ const LinearProgressDashed = styled('span', {
     marginTop: 0,
     height: '100%',
     width: '100%',
-    ...(ownerState.color === 'inherit' && {
-      opacity: 0.3,
-    }),
     backgroundImage: `radial-gradient(${backgroundColor} 0%, ${backgroundColor} 20%, transparent 0%)`,
-    backgroundSize: `${ownerState.width * 3}px ${ownerState.width * 3}px`,
-    backgroundPosition: `0 ${ownerState.width * 2}px`,
+    backgroundSize: 'calc(var(--ESLinearProgress-width) * 3) calc(var(--ESLinearProgress-width) * 3)',
+    backgroundPosition: '0 calc(var(--ESLinearProgress-width) * 2)',
+
+    variants: [
+      {
+        props: {
+          color: 'inherit',
+        },
+        style: {
+          opacity: 0.3,
+        },
+      },
+    ],
   };
 });
 
@@ -154,32 +198,94 @@ const LinearProgressBar1 = styled('span', {
       ownerState.variant === 'buffer' && styles.bar1Buffer,
     ];
   },
-})<{ ownerState: LinearProgressOwnerState }>(
-  ({ ownerState, theme }) => ({
-    width: '100%',
-    position: 'absolute',
-    left: 0,
-    bottom: 0,
-    top: 0,
-    transition: 'transform 0.2s linear',
-    transformOrigin: 'left',
-    borderRadius: `${ownerState.width / 2}px`,
-    backgroundColor: ownerState.color === 'inherit' ? 'currentColor' : theme.vars.palette[ownerState.color][300],
-    ...(ownerState.variant === 'determinate' && {
-      transition: `transform .${TRANSITION_DURATION}s linear`,
-    }),
-    ...(ownerState.variant === 'buffer' && {
-      zIndex: 1,
-      transition: `transform .${TRANSITION_DURATION}s linear`,
-    }),
-  }),
-  ({ ownerState }) =>
-    ownerState.variant === 'indeterminate' &&
-    css`
-      width: auto;
-      animation: ${indeterminate1Keyframe} 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-    `
-);
+})<{ ownerState: LinearProgressOwnerState }>(({ theme }) => ({
+  width: '100%',
+  position: 'absolute',
+  left: 0,
+  bottom: 0,
+  top: 0,
+  transition: 'transform 0.2s linear',
+  transformOrigin: 'left',
+  borderRadius: 'calc(var(--ESLinearProgress-width) / 2)',
+  backgroundColor: 'currentColor',
+
+  variants: [
+    {
+      props: {
+        color: 'primary',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.primary[300],
+      },
+    },
+    {
+      props: {
+        color: 'secondary',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.secondary[300],
+      },
+    },
+    {
+      props: {
+        color: 'error',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.error[300],
+      },
+    },
+    {
+      props: {
+        color: 'warning',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.warning[300],
+      },
+    },
+    {
+      props: {
+        color: 'info',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.info[300],
+      },
+    },
+    {
+      props: {
+        color: 'success',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.success[300],
+      },
+    },
+    {
+      props: {
+        variant: 'determinate',
+      },
+      style: {
+        transition: `transform .${TRANSITION_DURATION}s linear`,
+      },
+    },
+    {
+      props: {
+        variant: 'buffer',
+      },
+      style: {
+        zIndex: 1,
+        transition: `transform .${TRANSITION_DURATION}s linear`,
+      },
+    },
+    {
+      props: {
+        variant: 'indeterminate',
+      },
+      style: {
+        width: 'auto',
+        animation: `${indeterminate1Keyframe} 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite`,
+      },
+    },
+  ],
+}));
 
 const LinearProgressBar2 = styled('span', {
   name: 'ESLinearProgress',
@@ -194,36 +300,107 @@ const LinearProgressBar2 = styled('span', {
       ownerState.variant === 'buffer' && styles.bar2Buffer,
     ];
   },
-})<{ ownerState: LinearProgressOwnerState }>(
-  ({ ownerState, theme }) => ({
-    width: '100%',
-    position: 'absolute',
-    left: 0,
-    bottom: 0,
-    top: 0,
-    transition: 'transform 0.2s linear',
-    transformOrigin: 'right',
-    borderRadius: `${ownerState.width / 2}px`,
+})<{ ownerState: LinearProgressOwnerState }>(({ theme }) => ({
+  width: '100%',
+  position: 'absolute',
+  left: 0,
+  bottom: 0,
+  top: 0,
+  transition: `transform .${TRANSITION_DURATION}s linear`,
+  transformOrigin: 'right',
+  borderRadius: 'calc(var(--ESLinearProgress-width) / 2)',
 
-    ...(ownerState.variant === 'determinate' && {
-      backgroundColor: ownerState.color === 'inherit' ? 'currentColor' : theme.vars.palette[ownerState.color].A400,
-    }),
-
-    ...(ownerState.variant === 'buffer' && {
-      backgroundColor: theme.vars.palette.monoA.A200,
-    }),
-
-    ...(ownerState.variant !== 'indeterminate' && {
-      transition: `transform .${TRANSITION_DURATION}s linear`,
-    }),
-  }),
-  ({ ownerState }) =>
-    ownerState.variant === 'indeterminate' &&
-    css`
-      width: auto;
-      animation: ${indeterminate2Keyframe} 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) 1.15s infinite;
-    `
-);
+  variants: [
+    {
+      props: {
+        variant: 'determinate',
+        color: 'inherit',
+      },
+      style: {
+        backgroundColor: 'currentColor',
+      },
+    },
+    {
+      props: {
+        variant: 'determinate',
+        color: 'primary',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.primary.A400,
+      },
+    },
+    {
+      props: {
+        variant: 'determinate',
+        color: 'secondary',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.secondary.A400,
+      },
+    },
+    {
+      props: {
+        variant: 'determinate',
+        color: 'error',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.error.A400,
+      },
+    },
+    {
+      props: {
+        variant: 'determinate',
+        color: 'warning',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.warning.A400,
+      },
+    },
+    {
+      props: {
+        variant: 'determinate',
+        color: 'info',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.info.A400,
+      },
+    },
+    {
+      props: {
+        variant: 'determinate',
+        color: 'success',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.success.A400,
+      },
+    },
+    {
+      props: {
+        variant: 'buffer',
+      },
+      style: {
+        backgroundColor: theme.vars.palette.monoA.A200,
+      },
+    },
+    {
+      props: {
+        variant: 'indeterminate',
+      },
+      style: {
+        width: 'auto',
+        animation: `${indeterminate2Keyframe} 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) 1.15s infinite`,
+      },
+    },
+    {
+      props: {
+        variant: 'indeterminate',
+      },
+      style: {
+        transition: 'transform 0.2s linear',
+      },
+    },
+  ],
+}));
 
 /** Express an unspecified wait time or display the length of a process. */
 export const LinearProgress = forwardRef<HTMLButtonElement, LinearProgressProps>(function LinearProgress(
@@ -279,6 +456,11 @@ export const LinearProgress = forwardRef<HTMLButtonElement, LinearProgressProps>
       className={clsx(classes.root, className)}
       ownerState={ownerState}
       role="progressbar"
+      style={
+        {
+          '--ESLinearProgress-width': `${width}px`,
+        } as React.CSSProperties
+      }
       {...rootProps}
       ref={ref}
       {...other}
