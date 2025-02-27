@@ -10,7 +10,10 @@ import { enUS, ruRU } from '@mui/material/locale';
 
 import { DateAdapterProvider, en, ru } from '../../components';
 import { DialogStackProvider } from '../../components/DialogStack';
+import { PhoneFieldProvider } from '../../components/PhoneField';
 import { createTheme, palettes, ThemeProvider } from '../../theming';
+
+import metadata from 'libphonenumber-js/max/metadata';
 
 function ColorScheme({ isDarkMode }: { isDarkMode?: boolean }) {
   const { setMode } = useColorScheme();
@@ -44,7 +47,7 @@ export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
       <ColorScheme isDarkMode={isDarkMode} />
       <DialogStackProvider enableHistoryOverride>
         <DateAdapterProvider adapter={DateFnsAdapter} locale={locale === 'ru' ? dateRU : dateEN}>
-          {children}
+          <PhoneFieldProvider metadata={metadata}>{children}</PhoneFieldProvider>
         </DateAdapterProvider>
       </DialogStackProvider>
     </ThemeProvider>
