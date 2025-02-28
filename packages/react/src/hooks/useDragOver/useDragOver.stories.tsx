@@ -22,12 +22,20 @@ export const Demo: Story = {
     return (
       <Typography
         component="div"
-        sx={(theme) => ({
-          padding: '16px',
-          border: `1px dashed ${theme.vars.palette.monoA.A500}`,
-          borderRadius: '2px',
-          backgroundColor: isDragOver ? theme.vars.palette.monoA.A50 : 'transparent',
-        })}
+        sx={[
+          (theme) => ({
+            padding: '16px',
+            border: `1px dashed ${theme.vars.palette.monoA.A500}`,
+            borderRadius: '2px',
+          }),
+          isDragOver
+            ? (theme) => ({
+                backgroundColor: theme.vars.palette.monoA.A50,
+              })
+            : {
+                backgroundColor: 'transparent',
+              },
+        ]}
         variant="body100"
         {...props}
       >

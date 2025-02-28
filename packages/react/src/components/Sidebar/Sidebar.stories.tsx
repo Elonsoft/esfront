@@ -93,12 +93,37 @@ export const Demo: Story = {
             sx={{ padding: '16px 16px 15px', overflow: 'hidden', flexShrink: '0', height: 'auto !important' }}
           >
             <ListItemIcon>
-              <IconAt sx={{ color: color === 'primary' ? 'monoB.A800' : 'monoA.A500' }} />
+              <IconAt
+                sx={[
+                  color === 'primary'
+                    ? {
+                        color: 'monoB.A800',
+                      }
+                    : {
+                        color: 'monoA.A500',
+                      },
+                ]}
+              />
             </ListItemIcon>
             <ListItemText
               primary="CRM"
               primaryTypographyProps={{ variant: 'h6', color: color === 'primary' ? 'monoB.A800' : 'monoA.A900' }}
-              sx={{ my: '0', display: `${isOpen ? 'block' : 'none'}` }}
+              sx={[
+                {
+                  my: '0',
+                },
+                isOpen
+                  ? {
+                      display: {
+                        display: 'block',
+                      },
+                    }
+                  : {
+                      display: {
+                        display: 'none',
+                      },
+                    },
+              ]}
             />
           </ListItem>
 
