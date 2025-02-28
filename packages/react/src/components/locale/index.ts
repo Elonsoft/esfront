@@ -11,7 +11,7 @@ import { GalleryActionsProps, GalleryDescriptionProps, GalleryMetaProps, Gallery
 import { MadeByProps } from '../MadeBy';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
-import { SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
+import { SFSChipsProps, SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
 import { SortingMenuProps } from '../SortingMenu';
 import { SwiperButtonProps } from '../Swiper';
@@ -97,6 +97,9 @@ export interface Localization {
     };
     ESSFSFilters: {
       defaultProps: Pick<SFSFiltersProps, 'labelButton' | 'labelHeader' | 'labelClose' | 'labelReset'>;
+    };
+    ESSFSChips: {
+      defaultProps: Pick<SFSChipsProps, 'labelDelete'>;
     };
     ESSortingMenu: {
       defaultProps: Pick<
@@ -272,6 +275,11 @@ export const en: Localization = {
         labelHeader: 'Filters',
         labelClose: 'Close',
         labelReset: 'Reset all filters',
+      },
+    },
+    ESSFSChips: {
+      defaultProps: {
+        labelDelete: 'Reset all filters',
       },
     },
     ESSortingMenu: {
@@ -453,6 +461,11 @@ export const ru: Localization = {
         labelHeader: 'Фильтры',
         labelClose: 'Закрыть',
         labelReset: 'Сбросить все фильтры',
+      },
+    },
+    ESSFSChips: {
+      defaultProps: {
+        labelDelete: 'Сбросить все фильтры',
       },
     },
     ESSortingMenu: {
