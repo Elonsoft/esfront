@@ -3,9 +3,8 @@ import { SFSRowProps } from './SFSRow.types';
 import clsx from 'clsx';
 import { getSFSRowUtilityClass } from './SFSRow.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type SFSRowOwnerState = {
   classes?: SFSRowProps['classes'];

@@ -6,14 +6,13 @@ import clsx from 'clsx';
 import { breadcrumbClasses } from './Breadcrumb/Breadcrumb.classes';
 import { breadcrumbsClasses, getBreadcrumbsUtilityClass } from './Breadcrumbs.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { paperClasses } from '@mui/material';
 import Menu, { menuClasses } from '@mui/material/Menu';
 import { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 

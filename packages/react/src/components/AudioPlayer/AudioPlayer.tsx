@@ -5,14 +5,13 @@ import { AudioPlayerProps } from './AudioPlayer.types';
 import clsx from 'clsx';
 import { getAudioPlayerUtilityClass } from './AudioPlayer.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useAudioPlayerContext } from './AudioPlayer.context';
 

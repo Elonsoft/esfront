@@ -5,8 +5,6 @@ import { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';
 import clsx from 'clsx';
 import { getSidebarItemUtilityClass, sidebarItemClasses } from './SidebarItem.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
@@ -14,6 +12,7 @@ import MenuList from '@mui/material/MenuList';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
 import { IconChevronLeftW200 } from '../../../icons';

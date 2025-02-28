@@ -5,10 +5,9 @@ import { SidebarToggleProps } from './SidebarToggle.types';
 import clsx from 'clsx';
 import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconChevronLeftW300 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';

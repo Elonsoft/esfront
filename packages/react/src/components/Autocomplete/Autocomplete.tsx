@@ -5,13 +5,12 @@ import { AutocompleteProps } from './Autocomplete.types';
 import clsx from 'clsx';
 import { autocompleteClasses, getAutocompleteUtilityClass } from './Autocomplete.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { useFormControl } from '@mui/material/FormControl';
 import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { useForkRef } from '@mui/material/utils';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled, usePreviousValue } from '../../hooks';
 import { AutocompleteMenu as ESAutocompleteMenu, AutocompleteMenuImperativeActions } from '../AutocompleteMenu';

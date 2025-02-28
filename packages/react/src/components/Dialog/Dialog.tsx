@@ -5,13 +5,12 @@ import { DialogProps } from './Dialog.types';
 import clsx from 'clsx';
 import { getDialogUtilityClass } from './Dialog.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { duration, styled, useThemeProps } from '@mui/material/styles';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import { unstable_useId as useId } from '@mui/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { dialogActionsClasses } from './DialogActions';
 

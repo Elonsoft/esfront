@@ -3,9 +3,8 @@ import { PageHGroupBreadcrumbsProps } from './PageHGroupBreadcrumbs.types';
 import clsx from 'clsx';
 import { getPageHGroupBreadcrumbsUtilityClass } from './PageHGroupBreadcrumbs.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupBreadcrumbsOwnerState = {
   classes?: PageHGroupBreadcrumbsProps['classes'];

@@ -5,10 +5,9 @@ import { MenuItemProps, MenuItemTypeMap } from './MenuItem.types';
 import clsx from 'clsx';
 import { getMenuItemUtilityClass } from './MenuItem.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { ListItem, listItemClasses } from '../ListItem';
 

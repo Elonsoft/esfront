@@ -5,12 +5,11 @@ import { PaginationPagesProps } from './PaginationPages.types';
 import clsx from 'clsx';
 import { getPaginationPagesUtilityClass } from './PaginationPages.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { outlinedInputClasses } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useDocumentEventListener, usePagination } from '../../../hooks';
 import {

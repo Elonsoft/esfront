@@ -5,10 +5,9 @@ import { AvatarProps } from './Avatar.types';
 import clsx from 'clsx';
 import { avatarClasses, getAvatarUtilityClass } from './Avatar.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { svgIconClasses } from '../SvgIcon';
 

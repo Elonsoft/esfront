@@ -3,9 +3,8 @@ import { SvgIconProps } from './SvgIcon.types';
 import clsx from 'clsx';
 import { getSvgIconUtilityClass } from './SvgIcon.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type SvgIconOwnerState = {
   classes?: SvgIconProps['classes'];

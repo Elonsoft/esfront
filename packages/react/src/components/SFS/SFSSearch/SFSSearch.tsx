@@ -5,11 +5,10 @@ import { SFSSearchProps } from './SFSSearch.types';
 import clsx from 'clsx';
 import { getSFSSearchUtilityClass } from './SFSSearch.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350, IconMagnify2W400 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';

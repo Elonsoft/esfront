@@ -3,9 +3,8 @@ import { BadgePlacementControlProps } from './BadgePlacementControl.types';
 import clsx from 'clsx';
 import { badgePlacementControlClasses, getBadgePlacementControlUtilityClass } from './BadgePlacementControl.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { capitalize, styled, useThemeProps } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 type BadgePlacementControlOwnerState = {
   classes: BadgePlacementControlProps['classes'];

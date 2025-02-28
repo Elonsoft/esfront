@@ -3,11 +3,10 @@ import { AlertProps } from './Alert.types';
 import clsx from 'clsx';
 import { alertClasses, getAlertUtilityClass } from './Alert.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500 } from '../../icons';
 
