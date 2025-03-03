@@ -6,7 +6,6 @@ import { enUS } from '@mui/material/locale';
 import { en } from '../../components/locale';
 import { breakpoints as defaultBreakpoints } from '../breakpoints';
 import { createComponents as createDefaultComponents } from '../components';
-import { buttonMixin, listItemMixin } from '../mixins';
 import { palettes as defaultPalettes } from '../palettes';
 import { createScrollbars as createDefaultScrollbars } from '../scrollbars';
 import { createTypography as createDefaultTypography } from '../typography';
@@ -61,7 +60,6 @@ export const createTheme = (
 ) => {
   const cssVarPrefix = 'es';
 
-  const mixins = { button: buttonMixin, listItem: listItemMixin };
   const dark = createPalette(paletteDark);
   const light = createPalette(paletteLight);
 
@@ -80,7 +78,6 @@ export const createTheme = (
         ...breakpoints,
       },
     },
-    mixins,
   });
 
   const scrollbars = { ...createDefaultScrollbars(theme), ...(createScrollbars ? createScrollbars(theme) : {}) };
@@ -108,7 +105,6 @@ export const createTheme = (
       },
       components,
       scrollbars,
-      mixins,
       typography: {
         fontFamily: "'Roboto', sans-serif",
         ...typography,

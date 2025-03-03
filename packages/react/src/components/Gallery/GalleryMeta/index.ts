@@ -1,3 +1,4 @@
 export { GalleryMeta } from './GalleryMeta';
-export { GalleryMetaClasses, galleryMetaClasses, GalleryMetaClassKey } from './GalleryMeta.classes';
-export { GalleryMetaProps } from './GalleryMeta.types';
+export type { GalleryMetaClasses, GalleryMetaClassKey } from './GalleryMeta.classes';
+export { galleryMetaClasses } from './GalleryMeta.classes';
+export type { GalleryMetaProps } from './GalleryMeta.types';

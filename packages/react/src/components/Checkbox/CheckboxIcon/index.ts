@@ -1,3 +1,4 @@
 export { CheckboxIcon } from './CheckboxIcon';
-export { CheckboxIconClasses, checkboxIconClasses, CheckboxIconClassKey } from './CheckboxIcon.classes';
-export { CheckboxIconProps } from './CheckboxIcon.types';
+export type { CheckboxIconClasses, CheckboxIconClassKey } from './CheckboxIcon.classes';
+export { checkboxIconClasses } from './CheckboxIcon.classes';
+export type { CheckboxIconProps } from './CheckboxIcon.types';

@@ -1,3 +1,4 @@
 export { ErrorPageActions } from './ErrorPageActions';
-export { ErrorPageActionsClasses, errorPageActionsClasses, ErrorPageActionsClassKey } from './ErrorPageActions.classes';
-export { ErrorPageActionsProps } from './ErrorPageActions.types';
+export type { ErrorPageActionsClasses, ErrorPageActionsClassKey } from './ErrorPageActions.classes';
+export { errorPageActionsClasses } from './ErrorPageActions.classes';
+export type { ErrorPageActionsProps } from './ErrorPageActions.types';

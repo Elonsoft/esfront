@@ -5,7 +5,8 @@ import { SwitchProps } from './Switch.types';
 import clsx from 'clsx';
 import { getSwitchUtilityClass, switchClasses } from './Switch.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks/useControlled';
@@ -50,7 +51,7 @@ const SwitchRoot = styled('div', {
       styles[size],
     ];
   },
-})<{ ownerState: SwitchOwnerState }>(({ ownerState: { color }, theme }) => ({
+})<{ ownerState: SwitchOwnerState }>(({ theme }) => ({
   position: 'relative',
   display: 'inline-flex',
   alignItems: 'center',
@@ -59,7 +60,7 @@ const SwitchRoot = styled('div', {
   color: theme.vars.palette.monoA.A500,
 
   [`&.${switchClasses.checked}`]: {
-    color: theme.vars.palette[color][300],
+    // color: theme.vars.palette[color][300],
 
     [`& .${switchClasses.input}`]: {
       transform: 'translateX(-12px)',
@@ -77,7 +78,7 @@ const SwitchRoot = styled('div', {
     [`& .${switchClasses.button}`]: {
       transform: 'translateX(12px)',
       '&:hover': {
-        '--background': theme.vars.palette[color].A50,
+        // '--background': theme.vars.palette[color].A50,
 
         '@media (hover: none)': {
           '--background': 'transparent',
@@ -85,10 +86,10 @@ const SwitchRoot = styled('div', {
       },
 
       [`&:not(:disabled):has(:focus-visible) .${touchRippleClasses.root}`]: {
-        backgroundColor: theme.vars.palette[color].A200,
+        // backgroundColor: theme.vars.palette[color].A200,
       },
 
-      '--pressed': theme.vars.palette[color].A150,
+      // '--pressed': theme.vars.palette[color].A150,
     },
   },
 
@@ -150,7 +151,7 @@ const SwitchRoot = styled('div', {
   },
 
   [`&.${switchClasses.indeterminate}`]: {
-    color: theme.vars.palette[color][300],
+    // color: theme.vars.palette[color][300],
     [`&.${switchClasses.large}`]: {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(8px)',
@@ -194,7 +195,7 @@ const SwitchRoot = styled('div', {
 
     [`& .${switchClasses.button}`]: {
       '&:hover': {
-        '--background': theme.vars.palette[color].A50,
+        // '--background': theme.vars.palette[color].A50,
 
         '@media (hover: none)': {
           '--background': 'transparent',
@@ -202,10 +203,10 @@ const SwitchRoot = styled('div', {
       },
 
       [`&:not(:disabled):has(:focus-visible) .${touchRippleClasses.root}`]: {
-        backgroundColor: theme.vars.palette[color].A200,
+        // backgroundColor: theme.vars.palette[color].A200,
       },
 
-      '--pressed': theme.vars.palette[color].A150,
+      // '--pressed': theme.vars.palette[color].A150,
     },
   },
 }));
@@ -291,9 +292,9 @@ export const Switch = (inProps: SwitchProps) => {
     name,
     readOnly,
     value,
-    sx,
+
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSwitch',
   });
@@ -324,7 +325,7 @@ export const Switch = (inProps: SwitchProps) => {
   };
 
   return (
-    <SwitchRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <SwitchRoot className={clsx(classes.root, className)} ownerState={ownerState}>
       <SwitchButton disableTouchRipple className={classes.button} component="span" disabled={disabled} tabIndex={-1}>
         <SwitchInput
           autoFocus={autoFocus}

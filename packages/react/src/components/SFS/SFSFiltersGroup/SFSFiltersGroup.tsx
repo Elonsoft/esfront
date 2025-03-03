@@ -3,11 +3,12 @@ import { SFSFiltersGroupProps } from './SFSFiltersGroup.types';
 import clsx from 'clsx';
 import { getSFSFiltersGroupUtilityClass } from './SFSFiltersGroup.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { formLabelClasses } from '@mui/material/FormLabel';
 import { inputLabelClasses } from '@mui/material/InputLabel';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type SFSFiltersGroupOwnerState = {
@@ -59,7 +60,7 @@ const SFSFiltersGroupTitle = styled(Typography, {
 })(() => ({})) as typeof Typography;
 
 export const SFSFiltersGroup = (inProps: SFSFiltersGroupProps) => {
-  const { className, children, sx, title, ...props } = useThemeProps({
+  const { className, children, title, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESSFSFiltersGroup',
   });
@@ -68,7 +69,7 @@ export const SFSFiltersGroup = (inProps: SFSFiltersGroupProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <SFSFiltersGroupRoot className={clsx(classes.root, className)} sx={sx}>
+    <SFSFiltersGroupRoot className={clsx(classes.root, className)}>
       {!!title && (
         <SFSFiltersGroupTitle className={classes.title} component="div" variant="body200Medium">
           {title}

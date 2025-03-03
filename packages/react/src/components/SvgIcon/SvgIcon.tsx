@@ -3,7 +3,8 @@ import { SvgIconProps } from './SvgIcon.types';
 import clsx from 'clsx';
 import { getSvgIconUtilityClass } from './SvgIcon.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type SvgIconOwnerState = {
@@ -26,14 +27,14 @@ const SvgIconRoot = styled('div', {
   name: 'ESSvgIcon',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   userSelect: 'none',
   display: 'inline-flex',
   flexShrink: 0,
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',
-}));
+});
 
 const SvgIconSvg = styled('svg', {
   name: 'ESSvgIcon',
@@ -42,12 +43,12 @@ const SvgIconSvg = styled('svg', {
     const { ownerState } = props;
     return [styles.svg, !ownerState.container && styles.root];
   },
-})(() => ({
+})({
   userSelect: 'none',
   display: 'inline-flex',
   fill: 'none',
   flexShrink: 0,
-}));
+});
 
 /**
  * Wrapper component for the svg icons.
@@ -58,6 +59,7 @@ export const SvgIcon = (inProps: SvgIconProps) => {
     className,
     classes: inClasses,
     sx,
+
     size,
     width,
     height,
@@ -68,7 +70,7 @@ export const SvgIcon = (inProps: SvgIconProps) => {
     title,
     ContainerProps,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESSvgIcon' });
+  } = useDefaultProps({ props: inProps, name: 'ESSvgIcon' });
 
   const ownerState = { classes: inClasses, container };
   const classes = useUtilityClasses(ownerState);

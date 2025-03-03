@@ -3,8 +3,9 @@ import { TableItemProps } from './TableItem.types';
 import clsx from 'clsx';
 import { getTableItemUtilityClass } from './TableItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type TableItemOwnerState = {
@@ -64,13 +65,13 @@ const TableItemSecondary = styled(Typography, {
 export const TableItem = (inProps: TableItemProps) => {
   const {
     className,
-    sx,
+
     avatar,
     primary,
     secondary,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESTableItem',
   });
@@ -79,7 +80,7 @@ export const TableItem = (inProps: TableItemProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableItemRoot className={clsx(classes.root, className)} sx={sx}>
+    <TableItemRoot className={clsx(classes.root, className)}>
       {avatar}
       <TableItemContent className={classes.content}>
         {!!primary && (

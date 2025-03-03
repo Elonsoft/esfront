@@ -5,7 +5,8 @@ import { FileIconProps } from './FileIcon.types';
 import clsx from 'clsx';
 import { getFileIconUtilityClass } from './FileIcon.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { FileIconIcon } from './icons';
@@ -58,13 +59,13 @@ const FileIconChildren = styled('div', {
 export const FileIcon = (inProps: FileIconProps) => {
   const {
     className,
-    sx,
+
     icon = FileIconIcon,
     width = 36,
     height = 48,
     children,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESFileIcon',
   });
@@ -87,7 +88,7 @@ export const FileIcon = (inProps: FileIconProps) => {
   }, [iconRef.current, rootIconRef.current, width, height]);
 
   return (
-    <FileIconRoot ref={rootIconRef} className={clsx(classes.root, className)} sx={sx}>
+    <FileIconRoot ref={rootIconRef} className={clsx(classes.root, className)}>
       <Icon ref={iconRef} className={classes.icon} height={height} width={width} />
       {!!children && (
         <FileIconChildren className={classes.children} style={{ paddingTop: `${Math.round(paddingTop)}px` }}>

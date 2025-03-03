@@ -18,9 +18,10 @@ import { TabsProps } from './Tabs.types';
 import clsx from 'clsx';
 import { getTabsUtilityClass, tabsClasses } from './Tabs.classes';
 
-import { keyframes, styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { debounce, ownerDocument, ownerWindow, useEventCallback } from '@mui/material/utils';
 import useEnhancedEffect from '@mui/material/utils/useEnhancedEffect';
+import { keyframes, styled, useTheme } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { animate } from './animate';
@@ -460,7 +461,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     variant = 'standard',
     visibleScrollbar = false,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESTabs' });
+  } = useDefaultProps({ props: inProps, name: 'ESTabs' });
   const theme = useTheme();
   const isRtl = theme.direction === 'rtl';
 

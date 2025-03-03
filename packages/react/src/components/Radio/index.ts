@@ -1,4 +1,5 @@
 export { Radio } from './Radio';
-export { RadioClasses, radioClasses, RadioClassKey } from './Radio.classes';
-export { RadioProps } from './Radio.types';
+export type { RadioClasses, RadioClassKey } from './Radio.classes';
+export { radioClasses } from './Radio.classes';
+export type { RadioProps } from './Radio.types';
 export * from './RadioIcon';

@@ -1,7 +1,4 @@
 export { SpinnerFadingDots } from './SpinnerFadingDots';
-export {
-  SpinnerFadingDotsClasses,
-  spinnerFadingDotsClasses,
-  SpinnerFadingDotsClassKey,
-} from './SpinnerFadingDots.classes';
-export { SpinnerFadingDotsProps } from './SpinnerFadingDots.types';
+export type { SpinnerFadingDotsClasses, SpinnerFadingDotsClassKey } from './SpinnerFadingDots.classes';
+export { spinnerFadingDotsClasses } from './SpinnerFadingDots.classes';
+export type { SpinnerFadingDotsProps } from './SpinnerFadingDots.types';

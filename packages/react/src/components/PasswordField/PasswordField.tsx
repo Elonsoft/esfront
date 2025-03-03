@@ -5,12 +5,13 @@ import { PasswordFieldProps } from './PasswordField.types';
 import clsx from 'clsx';
 import { getPasswordFieldUtilityClass } from './PasswordField.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import { inputBaseClasses } from '@mui/material/InputBase';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks';
@@ -70,7 +71,7 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
     InputProps,
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESPasswordField',
   });

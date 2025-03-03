@@ -5,7 +5,8 @@ import { TableFootProps } from './TableFoot.types';
 import clsx from 'clsx';
 import { getTableFootUtilityClass } from './TableFoot.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver } from '../../../hooks';
@@ -67,7 +68,7 @@ const TableFootRoot = styled('div', {
 }));
 
 export const TableFoot = memo(function TableFoot(inProps: TableFootProps) {
-  const { children, className, sticky, sx, ...props } = useThemeProps({
+  const { children, className, sticky, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESTableFoot',
   });
@@ -93,7 +94,6 @@ export const TableFoot = memo(function TableFoot(inProps: TableFootProps) {
       className={clsx(classes.root, className)}
       ownerState={ownerState}
       style={sticky === undefined ? undefined : ({ '--ESTableFoot-bottom': `${sticky || 0}px` } as React.CSSProperties)}
-      sx={sx}
     >
       {children}
     </TableFootRoot>

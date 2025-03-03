@@ -3,8 +3,9 @@ import { DialogCloseProps } from './DialogClose.types';
 import clsx from 'clsx';
 import { getDialogCloseUtilityClass } from './DialogClose.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { Typography } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600 } from '../../../icons';
@@ -93,13 +94,13 @@ const DialogCloseEscapeKey = styled(Typography, {
 export const DialogClose = (inProps: DialogCloseProps) => {
   const {
     className,
-    sx,
+
     onClick,
     label,
     labelEscapeKey,
     icon = <IconCloseW600 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDialogClose',
   });
@@ -108,7 +109,7 @@ export const DialogClose = (inProps: DialogCloseProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <DialogCloseRoot className={clsx(classes.root, className)} sx={sx}>
+    <DialogCloseRoot className={clsx(classes.root, className)}>
       <DialogCloseButton aria-label={label} className={classes.button} color="white" onClick={onClick}>
         {icon}
         <DialogCloseEscapeKey className={classes.escapeKey} variant="caption">

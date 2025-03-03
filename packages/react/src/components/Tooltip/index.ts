@@ -1,4 +1,5 @@
 export * from './icons';
 export { Tooltip } from './Tooltip';
-export { TooltipClasses, tooltipClasses, TooltipClassKey } from './Tooltip.classes';
-export { TooltipComponentsPropsOverrides, TooltipProps } from './Tooltip.types';
+export type { TooltipClasses, TooltipClassKey } from './Tooltip.classes';
+export { tooltipClasses } from './Tooltip.classes';
+export type { TooltipComponentsPropsOverrides, TooltipProps } from './Tooltip.types';

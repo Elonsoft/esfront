@@ -3,9 +3,10 @@ import { CalendarButtonProps } from './CalendarButton.types';
 import clsx from 'clsx';
 import { calendarButtonClasses, getCalendarButtonUtilityClass } from './CalendarButton.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';
@@ -255,7 +256,7 @@ export const CalendarButton = (inProps: CalendarButtonProps) => {
   const {
     children,
     className,
-    sx,
+
     disabled,
     inactive,
     selected,
@@ -266,7 +267,7 @@ export const CalendarButton = (inProps: CalendarButtonProps) => {
     onHover,
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESCalendarButton',
   });
@@ -278,7 +279,6 @@ export const CalendarButton = (inProps: CalendarButtonProps) => {
     <CalendarButtonRoot
       className={clsx(className, classes.root)}
       ownerState={ownerState}
-      sx={sx}
       onClick={onClick}
       onFocus={onHover}
       onMouseEnter={onHover}

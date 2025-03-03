@@ -3,7 +3,8 @@ import { SidebarDividerProps } from './SidebarDivider.types';
 import clsx from 'clsx';
 import { getSidebarDividerUtilityClass } from './SidebarDivider.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { Divider } from '../../Divider';
@@ -68,7 +69,7 @@ const SidebarDividerLine = styled(Divider, {
 }));
 
 export const SidebarDivider = (inProps: SidebarDividerProps) => {
-  const { className, sx, ...props } = useThemeProps({
+  const { className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarDivider',
   });
@@ -79,7 +80,7 @@ export const SidebarDivider = (inProps: SidebarDividerProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <SidebarDividerRoot className={clsx(className, classes.root)} ownerState={ownerState} sx={sx}>
+    <SidebarDividerRoot className={clsx(className, classes.root)} ownerState={ownerState}>
       <SidebarDividerLine className={clsx(className)} ownerState={ownerState} />
     </SidebarDividerRoot>
   );

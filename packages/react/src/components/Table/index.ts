@@ -1,7 +1,9 @@
 export { Table } from './Table';
-export { TableClasses, tableClasses, TableClassKey } from './Table.classes';
-export { TableContext, TableContextValue, useTableContext } from './Table.context';
-export { TableProps } from './Table.types';
+export type { TableClasses, TableClassKey } from './Table.classes';
+export { tableClasses } from './Table.classes';
+export type { TableContextValue } from './Table.context';
+export { TableContext, useTableContext } from './Table.context';
+export type { TableProps } from './Table.types';
 export * from './TableActions';
 export * from './TableBody';
 export * from './TableCell';

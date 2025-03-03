@@ -3,7 +3,8 @@ import { AlertCloseProps } from './AlertClose.types';
 import clsx from 'clsx';
 import { getAlertCloseUtilityClass } from './AlertClose.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW500 } from '../../../icons';
@@ -34,12 +35,12 @@ const AlertCloseRoot = styled(Button, {
 export const AlertClose = (inProps: AlertCloseProps) => {
   const {
     className,
-    sx,
+
     label,
     icon = <IconCloseW500 container containerSize="20px" />,
     onClick,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAlertClose',
   });
@@ -55,7 +56,6 @@ export const AlertClose = (inProps: AlertCloseProps) => {
       className={clsx(classes.root, className)}
       color="tertiary"
       size="300"
-      sx={sx}
       onClick={onClick}
     >
       {Icon}

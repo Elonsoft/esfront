@@ -3,7 +3,8 @@ import { GalleryThumbnailsImageProps } from './GalleryThumbnailsImage.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsImageUtilityClass } from './GalleryThumbnailsImage.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type GalleryThumbnailsImageOwnerState = {
@@ -32,7 +33,7 @@ const GalleryThumbnailsImageRoot = styled('img', {
 }));
 
 export const GalleryThumbnailsImage = (inProps: GalleryThumbnailsImageProps) => {
-  const { className, sx, src, alt, ...props } = useThemeProps({
+  const { className, src, alt, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryThumbnailsImage',
   });
@@ -40,5 +41,5 @@ export const GalleryThumbnailsImage = (inProps: GalleryThumbnailsImageProps) => 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return <GalleryThumbnailsImageRoot alt={alt} className={clsx(classes.root, className)} src={src} sx={sx} />;
+  return <GalleryThumbnailsImageRoot alt={alt} className={clsx(classes.root, className)} src={src} />;
 };

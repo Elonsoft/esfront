@@ -3,8 +3,9 @@ import { DividerProps } from './Divider.types';
 import clsx from 'clsx';
 import { getDividerUtilityClass } from './Divider.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type DividerOwnerState = {
@@ -183,14 +184,14 @@ export const Divider = (inProps: DividerProps) => {
   const {
     className,
     children,
-    sx,
+
     color = 'monoA.A100',
     width = 1,
     orientation = 'horizontal',
     textAlign = 'center',
     flexItem,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDivider',
   });
@@ -210,7 +211,6 @@ export const Divider = (inProps: DividerProps) => {
           '--ESDivider-width': `${width}px`,
         } as React.CSSProperties
       }
-      sx={sx}
     >
       {children ? <DividerWrapper className={classes.wrapper}>{children}</DividerWrapper> : null}
     </DividerRoot>

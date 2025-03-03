@@ -5,7 +5,8 @@ import { DialogProps } from './Dialog.types';
 import clsx from 'clsx';
 import { getDialogUtilityClass } from './Dialog.classes';
 
-import { duration, styled, useThemeProps } from '@mui/material/styles';
+import { duration, styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
@@ -266,7 +267,7 @@ const defaultTransitionDuration = { enter: duration.enteringScreen, exit: durati
  * Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
  */
 export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Dialog(inProps, ref) {
-  const props = useThemeProps({ props: inProps, name: 'MuiDialog' });
+  const props = useDefaultProps({ props: inProps, name: 'MuiDialog' });
   const {
     'aria-describedby': ariaDescribedby,
     'aria-labelledby': ariaLabelledbyProp,

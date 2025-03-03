@@ -1,3 +1,4 @@
 export { ListItemIcon } from './ListItemIcon';
-export { ListItemIconClasses, listItemIconClasses, ListItemIconClassKey } from './ListItemIcon.classes';
-export { ListItemIconProps } from './ListItemIcon.types';
+export type { ListItemIconClasses, ListItemIconClassKey } from './ListItemIcon.classes';
+export { listItemIconClasses } from './ListItemIcon.classes';
+export type { ListItemIconProps } from './ListItemIcon.types';

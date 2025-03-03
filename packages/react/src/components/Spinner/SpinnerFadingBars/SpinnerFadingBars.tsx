@@ -3,7 +3,8 @@ import { SpinnerFadingBarsProps } from './SpinnerFadingBars.types';
 import clsx from 'clsx';
 import { getSpinnerFadingBarsUtilityClass } from './SpinnerFadingBars.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { generateDelayedOpacityAnimationStyles, generateStyleColorVariants, opacityKeyframe } from '../Spinner.utils';
@@ -48,11 +49,11 @@ const SpinnerFadingBarsRoot = styled('svg', {
 export const SpinnerFadingBars = (inProps: SpinnerFadingBarsProps) => {
   const {
     className,
-    sx,
+
     size = 40,
     color = 'primary',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSpinnerFadingBars',
   });
@@ -67,7 +68,6 @@ export const SpinnerFadingBars = (inProps: SpinnerFadingBarsProps) => {
       fill="none"
       height={size}
       ownerState={ownerState}
-      sx={sx}
       viewBox="0 0 40 40"
       width={size}
     >

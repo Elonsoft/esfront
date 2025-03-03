@@ -4,9 +4,10 @@ import clsx from 'clsx';
 import { bannerClasses, getBannerUtilityClass } from './Banner.classes';
 import { bannerTitleClasses } from './BannerTitle/BannerTitle.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500 } from '../../icons';
@@ -141,18 +142,18 @@ const BannerContent = styled('div', {
   name: 'ESBanner',
   slot: 'Wrapper',
   overridesResolver: (_props, styles) => styles.content,
-})<{ ownerState: { breakpoint: BannerProps['breakpoint'] } }>(({ ownerState: { breakpoint }, theme }) => ({
+})<{ ownerState: { breakpoint: BannerProps['breakpoint'] } }>(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '6px',
   flexGrow: 1,
 
-  ...(!!breakpoint && {
-    [theme.breakpoints.up(breakpoint)]: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-  }),
+  // ...(!!breakpoint && {
+  //   [theme.breakpoints.up(breakpoint)]: {
+  //     flexDirection: 'row',
+  //     justifyContent: 'space-between',
+  //   },
+  // }),
 }));
 
 const BannerMessage = styled(Typography, {
@@ -199,7 +200,7 @@ export const Banner = (inProps: BannerProps) => {
   const {
     className,
     children,
-    sx,
+
     icon,
     variant = 'colored',
     severity = 'success',
@@ -209,7 +210,7 @@ export const Banner = (inProps: BannerProps) => {
     color,
     iconMapping = defaultIconMapping,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESBanner',
   });
@@ -218,7 +219,7 @@ export const Banner = (inProps: BannerProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <BannerRoot className={clsx(classes.root, className)} sx={sx}>
+    <BannerRoot className={clsx(classes.root, className)}>
       <BannerWrapper className={classes.wrapper}>
         {icon !== false && <BannerIcon className={classes.icon}>{icon || iconMapping[severity]}</BannerIcon>}
         <BannerContent className={classes.content} ownerState={{ breakpoint }}>

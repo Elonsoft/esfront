@@ -3,7 +3,8 @@ import { PageHGroupProps } from './PageHGroup.types';
 import clsx from 'clsx';
 import { getPageHGroupUtilityClass } from './PageHGroup.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupOwnerState = {
@@ -33,7 +34,7 @@ const PageHGroupRoot = styled('div', {
  * This component represents a heading and related content.
  */
 export const PageHGroup = (inProps: PageHGroupProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESPageHGroup',
   });
@@ -41,9 +42,5 @@ export const PageHGroup = (inProps: PageHGroupProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <PageHGroupRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </PageHGroupRoot>
-  );
+  return <PageHGroupRoot className={clsx(classes.root, className)}>{children}</PageHGroupRoot>;
 };

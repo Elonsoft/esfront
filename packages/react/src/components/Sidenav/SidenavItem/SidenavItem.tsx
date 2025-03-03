@@ -6,10 +6,11 @@ import clsx from 'clsx';
 import { sidenavClasses } from '../Sidenav.classes';
 import { getSidenavItemUtilityClass } from './SidenavItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { TypographyProps } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonBaseClasses } from '../../ButtonBase';
@@ -120,7 +121,7 @@ const SidenavItemTooltip = styled(
 export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: SidenavItemProps) => {
   const {
     className,
-    sx,
+
     id = null,
     icon,
     text,
@@ -130,7 +131,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     onKeyDown,
     onFocus,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidenavItem',
   });
@@ -242,7 +243,6 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
           data-id={id}
           ownerState={ownerState}
           selected={selected}
-          sx={sx}
           onClick={onItemClick}
           onFocus={onItemFocus}
           onKeyDown={onItemKeyDown}

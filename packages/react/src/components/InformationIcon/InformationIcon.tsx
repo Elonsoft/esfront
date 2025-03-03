@@ -5,10 +5,10 @@ import { InformationIconProps, InformationIconTypeMap } from './InformationIcon.
 import clsx from 'clsx';
 import { getInformationIconUtilityClass, informationIconClasses } from './InformationIcon.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconInformationFillW200, IconInformationLineW200, IconQuestionFill, IconQuestionLine } from '../../icons';
 
@@ -148,7 +148,7 @@ export const InformationIcon = forwardRef(function InformationIcon(
     slotProps = {},
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESInformationIcon',
   });

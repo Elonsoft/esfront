@@ -5,9 +5,9 @@ import { LinearProgressProps } from './LinearProgress.types';
 import clsx from 'clsx';
 import { getLinearProgressUtilityClass } from './LinearProgress.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
-import { keyframes } from '@mui/system';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { keyframes, styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 const TRANSITION_DURATION = 4;
@@ -406,7 +406,7 @@ export const LinearProgress = forwardRef<HTMLButtonElement, LinearProgressProps>
   inProps: LinearProgressProps,
   ref
 ) {
-  const props = useThemeProps({ props: inProps, name: 'ESLinearProgress' });
+  const props = useDefaultProps({ props: inProps, name: 'ESLinearProgress' });
 
   const { className, width = 4, color = 'primary', value, valueBuffer, variant = 'indeterminate', ...other } = props;
 

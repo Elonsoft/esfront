@@ -5,7 +5,8 @@ import { GalleryThumbnailsProps } from './GalleryThumbnails.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsUtilityClass } from './GalleryThumbnails.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useGalleryThumbnailsContext } from './GalleryThumbnails.context';
@@ -160,14 +161,13 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
   const {
     children,
     className,
-    sx,
     SwiperProps,
     labelNext,
     labelPrev,
     iconNext = <IconChevronRightW400 />,
     iconPrev = <IconChevronLeftW400 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryThumbnails',
   });
@@ -201,11 +201,7 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <GalleryThumbnailsRoot
-      className={clsx(classes.root, className)}
-      style={{ display: isVisible ? 'block' : '' }}
-      sx={sx}
-    >
+    <GalleryThumbnailsRoot className={clsx(classes.root, className)} style={{ display: isVisible ? 'block' : '' }}>
       <GalleryThumbnailsSwiper
         draggable
         buttonNext={<GalleryThumbnailsButtonNext icon={iconNext} label={labelNext} />}

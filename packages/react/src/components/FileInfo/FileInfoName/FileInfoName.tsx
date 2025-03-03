@@ -3,7 +3,8 @@ import { FileInfoNameProps } from './FileInfoName.types';
 import clsx from 'clsx';
 import { getFileInfoNameUtilityClass } from './FileInfoName.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350 } from '../../../icons';
@@ -51,12 +52,12 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
   const {
     children,
     className,
-    sx,
+
     onDelete,
     labelDelete,
     iconDelete = <IconCloseW350 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESFileInfoName',
   });
@@ -68,7 +69,7 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
     <FileInfoNameRoot className={clsx(classes.root, className)}>
       {children}
       {!!onDelete && (
-        <FileInfoNameButton aria-label={labelDelete} className={classes.button} size="300" sx={sx} onClick={onDelete}>
+        <FileInfoNameButton aria-label={labelDelete} className={classes.button} size="300" onClick={onDelete}>
           {iconDelete}
         </FileInfoNameButton>
       )}

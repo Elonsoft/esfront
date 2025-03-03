@@ -3,9 +3,10 @@ import { AlertProps } from './Alert.types';
 import clsx from 'clsx';
 import { alertClasses, getAlertUtilityClass } from './Alert.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500 } from '../../icons';
@@ -43,10 +44,10 @@ const AlertRoot = styled('div', {
 
     return [styles.root, styles[variant], styles[`${variant}${capitalize(color || severity)}`]];
   },
-})<{ ownerState: AlertOwnerState }>(({ ownerState: { isWithActions }, theme }) => ({
+})<{ ownerState: AlertOwnerState }>(({ theme }) => ({
   display: 'flex',
   borderRadius: '4px',
-  padding: `${isWithActions ? '11px' : '7px'} 15px`,
+  padding: `${false ? '11px' : '7px'} 15px`,
 
   [`&.${alertClasses.standardSuccess}`]: {
     backgroundColor: theme.vars.palette.success.A100,
@@ -88,18 +89,18 @@ const AlertContent = styled('div', {
   name: 'ESAlert',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
-})<{ ownerState: { breakpoint: AlertProps['breakpoint'] } }>(({ ownerState: { breakpoint }, theme }) => ({
+})<{ ownerState: { breakpoint: AlertProps['breakpoint'] } }>(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '6px',
   flexGrow: 1,
 
-  ...(!!breakpoint && {
-    [theme.breakpoints.up(breakpoint)]: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-  }),
+  // ...(!!breakpoint && {
+  //   [theme.breakpoints.up(breakpoint)]: {
+  //     flexDirection: 'row',
+  //     justifyContent: 'space-between',
+  //   },
+  // }),
 }));
 
 const AlertMessage = styled(Typography, {
@@ -119,8 +120,8 @@ const AlertAction = styled('div', {
   name: 'ESAlert',
   slot: 'Action',
   overridesResolver: (props, styles) => styles.action,
-})<{ ownerState: AlertOwnerState }>(({ ownerState: { isWithActions } }) => ({
-  margin: `${isWithActions ? '4px' : '8px'} 0 0 8px`,
+})<{ ownerState: AlertOwnerState }>(() => ({
+  margin: `${false ? '4px' : '8px'} 0 0 8px`,
 }));
 
 const defaultIconMapping = {
@@ -137,7 +138,7 @@ export const Alert = (inProps: AlertProps) => {
   const {
     className,
     children,
-    sx,
+
     icon,
     variant = 'standard',
     severity = 'success',
@@ -147,7 +148,7 @@ export const Alert = (inProps: AlertProps) => {
     breakpoint,
     iconMapping = defaultIconMapping,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAlert',
   });
@@ -160,7 +161,7 @@ export const Alert = (inProps: AlertProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <AlertRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <AlertRoot className={clsx(classes.root, className)} ownerState={ownerState}>
       {icon !== false && <AlertIcon className={classes.icon}>{icon || iconMapping[severity]}</AlertIcon>}
       <AlertContent className={classes.content} ownerState={{ breakpoint }}>
         <AlertMessage className={classes.message} color="monoA.A900" component="div" variant="body100">

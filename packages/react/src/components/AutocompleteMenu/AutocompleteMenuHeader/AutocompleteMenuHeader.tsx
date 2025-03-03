@@ -3,7 +3,8 @@ import { AutocompleteMenuHeaderProps } from './AutocompleteMenuHeader.types';
 import clsx from 'clsx';
 import { getAutocompleteMenuHeaderUtilityClass } from './AutocompleteMenuHeader.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 type AutocompleteMenuHeaderOwnerState = {
   classes?: AutocompleteMenuHeaderProps['classes'];
@@ -33,12 +34,11 @@ const AutocompleteMenuHeaderRoot = styled('div', {
 export const AutocompleteMenuHeader = (inProps: AutocompleteMenuHeaderProps) => {
   const {
     className,
-    sx,
 
     children,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAutocompleteMenuHeader',
   });
@@ -46,9 +46,5 @@ export const AutocompleteMenuHeader = (inProps: AutocompleteMenuHeaderProps) => 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <AutocompleteMenuHeaderRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </AutocompleteMenuHeaderRoot>
-  );
+  return <AutocompleteMenuHeaderRoot className={clsx(classes.root, className)}>{children}</AutocompleteMenuHeaderRoot>;
 };

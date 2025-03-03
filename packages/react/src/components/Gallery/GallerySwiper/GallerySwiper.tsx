@@ -5,7 +5,8 @@ import { GallerySwiperProps } from './GallerySwiper.types';
 import clsx from 'clsx';
 import { getGallerySwiperUtilityClass } from './GallerySwiper.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useGallerySwiperContext } from './GallerySwiper.context';
@@ -173,14 +174,14 @@ export const GallerySwiper = (inProps: GallerySwiperProps) => {
   const {
     children,
     className,
-    sx,
+
     SwiperProps,
     labelNext,
     labelPrev,
     iconNext = <IconChevronRightW400 />,
     iconPrev = <IconChevronLeftW400 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGallerySwiper',
   });
@@ -205,7 +206,7 @@ export const GallerySwiper = (inProps: GallerySwiperProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <GallerySwiperRoot className={clsx(classes.root, className)} sx={sx} {...bind()}>
+    <GallerySwiperRoot className={clsx(classes.root, className)} {...bind()}>
       <GallerySwiperSwiper
         snap
         buttonNext={<GallerySwiperButtonNext icon={iconNext} label={labelNext} />}

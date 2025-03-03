@@ -5,9 +5,10 @@ import { ChipProps, ChipTypeMap } from './Chip.types';
 import clsx from 'clsx';
 import { chipClasses, getChipUtilityClass } from './Chip.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { capitalize, useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseLineW350 } from '../../icons';
@@ -414,7 +415,7 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
     className,
     classes: inClasses,
     children,
-    sx,
+
     size = '100',
     variant = 'filled',
     disabled,
@@ -432,7 +433,7 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
     focusableWhenDisabled = true,
     tabIndex,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESChip',
   });
@@ -560,7 +561,6 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
       as={component}
       className={clsx(classes.root, className)}
       {...disabledProp}
-      sx={sx}
       tabIndex={!focusableWhenDisabled && disabled ? -1 : tabIndex}
       onClick={onClick}
       onKeyDown={handleKeyDown}

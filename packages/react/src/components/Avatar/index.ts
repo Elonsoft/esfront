@@ -1,3 +1,4 @@
 export { Avatar } from './Avatar';
-export { AvatarClasses, avatarClasses, AvatarClassKey } from './Avatar.classes';
-export { AvatarProps } from './Avatar.types';
+export type { AvatarClasses, AvatarClassKey } from './Avatar.classes';
+export { avatarClasses } from './Avatar.classes';
+export type { AvatarProps } from './Avatar.types';

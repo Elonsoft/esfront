@@ -1,7 +1,7 @@
 export { SpinnerFadingDoubleRing } from './SpinnerFadingDoubleRing';
-export {
+export type {
   SpinnerFadingDoubleRingClasses,
-  spinnerFadingDoubleRingClasses,
   SpinnerFadingDoubleRingClassKey,
 } from './SpinnerFadingDoubleRing.classes';
-export { SpinnerFadingDoubleRingProps } from './SpinnerFadingDoubleRing.types';
+export { spinnerFadingDoubleRingClasses } from './SpinnerFadingDoubleRing.classes';
+export type { SpinnerFadingDoubleRingProps } from './SpinnerFadingDoubleRing.types';

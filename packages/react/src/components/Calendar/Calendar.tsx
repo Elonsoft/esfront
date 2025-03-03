@@ -3,8 +3,9 @@ import { CalendarProps } from './Calendar.types';
 import clsx from 'clsx';
 import { calendarClasses, getCalendarUtilityClass } from './Calendar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { CalendarButton, CalendarButtonProps } from './CalendarButton';
@@ -52,7 +53,7 @@ const CalendarRoot = styled('div', {
 export const Calendar = (inProps: CalendarProps) => {
   const {
     className,
-    sx,
+
     year,
     month,
     weekStart = 1,
@@ -66,7 +67,7 @@ export const Calendar = (inProps: CalendarProps) => {
     getButtonDisabled,
     getButtonTooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESCalendar',
   });
@@ -143,7 +144,7 @@ export const Calendar = (inProps: CalendarProps) => {
   };
 
   return (
-    <CalendarRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <CalendarRoot className={clsx(classes.root, className)} ownerState={ownerState}>
       {prevDates.map((date) =>
         showPrevMonth ? (
           <CalendarButton key={date} inactive {...getButtonProps(year, month - 1, date)}>

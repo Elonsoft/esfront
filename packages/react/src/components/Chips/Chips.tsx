@@ -5,7 +5,8 @@ import { ChipsProps } from './Chips.types';
 import clsx from 'clsx';
 import { chipsClasses, getChipsUtilityClass } from './Chips.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -61,7 +62,7 @@ export const Chips = (inProps: ChipsProps) => {
     className,
     classes: inClasses,
     children,
-    sx,
+
     maxLines: inMaxLines = 1,
 
     labelHide,
@@ -71,7 +72,7 @@ export const Chips = (inProps: ChipsProps) => {
     iconShow = <IconChevronDownW200 container containerSize="16px" />,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESChips',
   });
@@ -140,7 +141,7 @@ export const Chips = (inProps: ChipsProps) => {
   }, [open]);
 
   return (
-    <ChipsRoot ref={ref} className={clsx(classes.root, className)} sx={sx} {...props}>
+    <ChipsRoot ref={ref} className={clsx(classes.root, className)} {...props}>
       {children}
       <ChipsButton
         key={`${open}`}

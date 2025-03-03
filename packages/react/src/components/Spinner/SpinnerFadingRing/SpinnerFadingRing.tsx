@@ -5,7 +5,8 @@ import { SpinnerFadingRingProps } from './SpinnerFadingRing.types';
 import clsx from 'clsx';
 import { getSpinnerFadingRingUtilityClass } from './SpinnerFadingRing.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { generateStyleColorVariants, rotateKeyframe } from '../Spinner.utils';
@@ -51,11 +52,11 @@ const SpinnerFadingRingRoot = styled('svg', {
 export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
   const {
     className,
-    sx,
+
     size = 40,
     color = 'primary',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSpinnerFadingRing',
   });
@@ -70,7 +71,6 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
       fill="none"
       height={size}
       ownerState={ownerState}
-      sx={sx}
       viewBox="0 0 40 40"
       width={size}
     >

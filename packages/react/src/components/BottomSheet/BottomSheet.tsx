@@ -5,11 +5,13 @@ import { BottomSheetProps } from './BottomSheet.types';
 import clsx from 'clsx';
 import { getBottomSheetUtilityClass } from './BottomSheet.classes';
 
-import { duration, styled, useThemeProps } from '@mui/material/styles';
+import { duration } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Slide from '@mui/material/Slide';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useId as useId } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -66,78 +68,84 @@ const BottomSheetContainer = styled('div', {
   name: 'ESBottomSheet',
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container,
-})<{ ownerState: BottomSheetOwnerState }>({
-  // We disable the focus ring for mouse, touch and keyboard users.
-  outline: 0,
-  height: '100%',
-  overflowX: 'hidden',
-  overflowY: 'scroll',
-  textAlign: 'center',
-  overscrollBehavior: 'none',
-  scrollbarGutter: 'stable',
-
-  '&, & *': {
-    touchAction: 'none',
-  },
-
-  '&:after': {
-    content: '""',
-    display: 'inline-block',
-    verticalAlign: 'middle',
+})<{ ownerState: BottomSheetOwnerState }>(
+  {
+    // We disable the focus ring for mouse, touch and keyboard users.
+    outline: 0,
     height: '100%',
-    width: '0',
-  },
-  '@media print': {
-    height: 'auto',
-  },
+    overflowX: 'hidden',
+    overflowY: 'scroll',
+    textAlign: 'center',
+    overscrollBehavior: 'none',
+    scrollbarGutter: 'stable',
 
-  variants: [
-    {
-      props: {
-        isLastSnapPoint: true,
-      },
-      style: {
-        '&, & *': {
-          touchAction: 'auto',
+    '&, & *': {
+      touchAction: 'none',
+    },
+
+    '&:after': {
+      content: '""',
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      height: '100%',
+      width: '0',
+    },
+    '@media print': {
+      height: 'auto',
+    },
+  },
+  {
+    variants: [
+      {
+        props: {
+          isLastSnapPoint: true,
+        },
+        style: {
+          '&, & *': {
+            touchAction: 'auto',
+          },
         },
       },
-    },
-  ],
-});
+    ],
+  }
+);
 
 const BottomSheetWrapper = styled('div', {
   name: 'ESBottomSheet',
   slot: 'Wrapper',
   overridesResolver: (props, styles) => styles.wrapper,
-})<{ ownerState: BottomSheetOwnerState }>({
-  verticalAlign: 'middle',
-  position: 'relative',
-  width: '100%',
-  minHeight: '100%',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  margin: 0,
-  overflow: 'visible',
-
-  variants: [
-    {
-      props: {
-        align: 'flex-end',
+})<{ ownerState: BottomSheetOwnerState }>(
+  {
+    verticalAlign: 'middle',
+    position: 'relative',
+    width: '100%',
+    minHeight: '100%',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    margin: 0,
+    overflow: 'visible',
+  },
+  {
+    variants: [
+      {
+        props: {
+          align: 'flex-end',
+        },
+        style: {
+          alignItems: 'flex-end',
+        },
       },
-      style: {
-        alignItems: 'flex-end',
+      {
+        props: {
+          align: 'stretch',
+        },
+        style: {
+          alignItems: 'stretch',
+        },
       },
-    },
-    {
-      props: {
-        align: 'stretch',
-      },
-      style: {
-        alignItems: 'stretch',
-      },
-    },
-  ],
-});
+    ],
+  }
+);
 
 const BottomSheetContent = styled('div', {
   name: 'ESBottomSheet',
@@ -157,7 +165,11 @@ const BottomSheetContent = styled('div', {
     '@media print': {
       overflowY: 'visible',
     },
-
+  }),
+  () => ({
+    marginTop: 'calc(100dvh - var(--ESBottomSheet-snapPoint))',
+  }),
+  {
     variants: [
       {
         props: {
@@ -168,10 +180,7 @@ const BottomSheetContent = styled('div', {
         },
       },
     ],
-  }),
-  () => ({
-    marginTop: 'calc(100dvh - var(--ESBottomSheet-snapPoint))',
-  })
+  }
 );
 
 const BottomSheetPaper = styled('div', {
@@ -182,45 +191,48 @@ const BottomSheetPaper = styled('div', {
 
     return [styles.paper, ownerState.fullScreen && styles.paperFullScreen];
   },
-})<{ ownerState: BottomSheetOwnerState }>(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-  textAlign: 'left',
-  width: '100%',
-  minHeight: '100%',
-  boxShadow: theme.vars.palette.shadow.up[700],
-  backgroundColor: theme.vars.palette.surface[600],
-  paddingBottom: '1px',
+})<{ ownerState: BottomSheetOwnerState }>(
+  ({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    textAlign: 'left',
+    width: '100%',
+    minHeight: '100%',
+    boxShadow: theme.vars.palette.shadow.up[700],
+    backgroundColor: theme.vars.palette.surface[600],
+    paddingBottom: '1px',
 
-  '&::after': {
-    content: "''",
-    position: 'absolute',
-    top: '-12px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '40px',
-    height: '4px',
-    borderRadius: '4px',
-    backgroundColor: theme.vars.palette.white.A500,
-  },
-
-  '@media print': {
-    boxShadow: 'none',
-  },
-
-  variants: [
-    {
-      props: {
-        isFullHeight: true,
-      },
-      style: {
-        borderTopLeftRadius: 16,
-        borderTopRightRadius: 16,
-      },
+    '&::after': {
+      content: "''",
+      position: 'absolute',
+      top: '-12px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '40px',
+      height: '4px',
+      borderRadius: '4px',
+      backgroundColor: theme.vars.palette.white.A500,
     },
-  ],
-}));
+
+    '@media print': {
+      boxShadow: 'none',
+    },
+  }),
+  {
+    variants: [
+      {
+        props: {
+          isFullHeight: true,
+        },
+        style: {
+          borderTopLeftRadius: 16,
+          borderTopRightRadius: 16,
+        },
+      },
+    ],
+  }
+);
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.enteringScreen };
 
@@ -258,7 +270,7 @@ const getPixelsFromCssUnits = (cssValue: string) => {
  * Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.
  */
 export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(function BottomSheet(inProps, ref) {
-  const props = useThemeProps({ props: inProps, name: 'MuiBottomSheet' });
+  const props = useDefaultProps({ props: inProps, name: 'MuiBottomSheet' });
   const {
     'aria-describedby': ariaDescribedby,
     'aria-labelledby': ariaLabelledbyProp,

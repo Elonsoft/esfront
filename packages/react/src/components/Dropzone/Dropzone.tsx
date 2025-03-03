@@ -5,8 +5,9 @@ import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 import clsx from 'clsx';
 import { getDropzoneUtilityClass } from './Dropzone.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { Typography } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { validateFileType } from './validateFileType';
@@ -194,7 +195,7 @@ const DropzoneHelperText = styled(Typography, {
 export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   const {
     className,
-    sx,
+
     heading,
     subheading,
     dragHeading,
@@ -209,7 +210,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
     onChange,
     onReject,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDropzone',
   });
@@ -308,7 +309,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <DropzoneRoot ref={ref} className={clsx(classes.root, className)} sx={sx}>
+    <DropzoneRoot ref={ref} className={clsx(classes.root, className)}>
       <DropzoneDropzone
         className={clsx(classes.dropzone)}
         data-testid="dropzone"

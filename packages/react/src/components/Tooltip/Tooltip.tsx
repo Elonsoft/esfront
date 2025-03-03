@@ -19,14 +19,12 @@ import { TooltipProps } from './Tooltip.types';
 import clsx from 'clsx';
 import { getTooltipUtilityClass, tooltipClasses } from './Tooltip.classes';
 
-import { appendOwnerState, unstable_composeClasses as composeClasses } from '@mui/base';
-
-import styled from '@mui/material/styles/styled';
-import useTheme from '@mui/material/styles/useTheme';
-import useThemeProps from '@mui/material/styles/useThemeProps';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Fade from '@mui/material/Fade';
 import Popper from '@mui/material/Popper';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import capitalize from '@mui/utils/capitalize';
+import composeClasses from '@mui/utils/composeClasses';
 import useControlled from '@mui/utils/useControlled';
 import useEventCallback from '@mui/utils/useEventCallback';
 import useId from '@mui/utils/useId';
@@ -540,7 +538,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     TransitionComponent: TransitionComponentProp = Fade,
     TransitionProps,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESTooltip' });
+  } = useDefaultProps({ props: inProps, name: 'ESTooltip' });
 
   // to prevent runtime errors, developers will need to provide a child as a React element anyway.
   const children = isValidElement(childrenProp) ? childrenProp : <span>{childrenProp}</span>;
@@ -1009,39 +1007,23 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
   const TooltipComponent = slots.tooltip ?? TooltipTooltip;
   const ArrowComponent = slots.arrow ?? TooltipArrow;
 
-  const popperProps = appendOwnerState(
-    PopperComponent,
-    {
-      ...PopperProps,
-      ...slotProps.popper,
-      className: clsx(classes.popper, PopperProps?.className, slotProps.popper?.className),
-    },
-    ownerState
-  );
+  const popperProps = {
+    ...PopperProps,
+    ...slotProps.popper,
+    className: clsx(classes.popper, PopperProps?.className, slotProps.popper?.className),
+  };
 
-  const transitionProps = appendOwnerState(
-    TransitionComponent,
-    { ...TransitionProps, ...slotProps.transition },
-    ownerState
-  );
+  const transitionProps = { ...TransitionProps, ...slotProps.transition };
 
-  const tooltipProps = appendOwnerState(
-    TooltipComponent,
-    {
-      ...slotProps.tooltip,
-      className: clsx(classes.tooltip, slotProps.tooltip?.className),
-    },
-    ownerState
-  );
+  const tooltipProps = {
+    ...slotProps.tooltip,
+    className: clsx(classes.tooltip, slotProps.tooltip?.className),
+  };
 
-  const tooltipArrowProps = appendOwnerState(
-    ArrowComponent,
-    {
-      ...slotProps.arrow,
-      className: clsx(classes.arrow, slotProps.arrow?.className),
-    },
-    ownerState
-  );
+  const tooltipArrowProps = {
+    ...slotProps.arrow,
+    className: clsx(classes.arrow, slotProps.arrow?.className),
+  };
 
   return (
     <>

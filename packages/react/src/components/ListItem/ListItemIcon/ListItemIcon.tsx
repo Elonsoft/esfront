@@ -3,7 +3,8 @@ import { ListItemIconProps } from './ListItemIcon.types';
 import clsx from 'clsx';
 import { getListItemIconUtilityClass } from './ListItemIcon.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ListItemIconOwnerState = {
@@ -34,7 +35,7 @@ const ListItemIconRoot = styled('div', {
 }));
 
 export const ListItemIcon = (inProps: ListItemIconProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESListItemIcon',
   });
@@ -42,9 +43,5 @@ export const ListItemIcon = (inProps: ListItemIconProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <ListItemIconRoot className={clsx(className, classes.root)} sx={sx}>
-      {children}
-    </ListItemIconRoot>
-  );
+  return <ListItemIconRoot className={clsx(className, classes.root)}>{children}</ListItemIconRoot>;
 };

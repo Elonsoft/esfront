@@ -3,7 +3,8 @@ import { ErrorPageProps } from './ErrorPage.types';
 import clsx from 'clsx';
 import { getErrorPageUtilityClass } from './ErrorPage.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageOwnerState = {
@@ -59,7 +60,7 @@ export const ErrorPageRoot = styled('div', {
 );
 
 export const ErrorPage = (inProps: ErrorPageProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESErrorPage',
   });
@@ -67,9 +68,5 @@ export const ErrorPage = (inProps: ErrorPageProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <ErrorPageRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </ErrorPageRoot>
-  );
+  return <ErrorPageRoot className={clsx(classes.root, className)}>{children}</ErrorPageRoot>;
 };

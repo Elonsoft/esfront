@@ -5,7 +5,8 @@ import { PaginationProps } from './Pagination.types';
 import clsx from 'clsx';
 import { getPaginationUtilityClass } from './Pagination.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { PaginationContext } from './Pagination.context';
@@ -47,8 +48,8 @@ const PaginationRoot = styled('div', {
  * The Pagination component enables the user to select a specific page from a range of pages.
  */
 export const Pagination = memo(function Pagination(inProps: PaginationProps) {
-  const { className, sx, children, count, itemsPerPage, page, onPageChange, onItemsPerPageChange, ...props } =
-    useThemeProps({
+  const { className, children, count, itemsPerPage, page, onPageChange, onItemsPerPageChange, ...props } =
+    useDefaultProps({
       props: inProps,
       name: 'ESPagination',
     });
@@ -68,9 +69,7 @@ export const Pagination = memo(function Pagination(inProps: PaginationProps) {
 
   return (
     <PaginationContext.Provider value={value}>
-      <PaginationRoot className={clsx(classes.root, className)} sx={sx}>
-        {children}
-      </PaginationRoot>
+      <PaginationRoot className={clsx(classes.root, className)}>{children}</PaginationRoot>
     </PaginationContext.Provider>
   );
 });

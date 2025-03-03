@@ -3,7 +3,8 @@ import { DialogArrowProps } from './DialogArrow.types';
 import clsx from 'clsx';
 import { getDialogArrowUtilityClass } from './DialogArrow.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowLeftW500, IconArrowRightW500 } from '../../../icons';
@@ -91,7 +92,7 @@ const DialogArrowButton = styled(Button, {
 export const DialogArrow = (inProps: DialogArrowProps) => {
   const {
     className,
-    sx,
+
     direction,
     onClick,
     labelPrev,
@@ -99,7 +100,7 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
     iconPrev = <IconArrowLeftW500 />,
     iconNext = <IconArrowRightW500 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDialogArrow',
   });
@@ -108,7 +109,7 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <DialogArrowRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <DialogArrowRoot className={clsx(classes.root, className)} ownerState={ownerState}>
       <DialogArrowButton
         aria-label={direction === 'prev' ? labelPrev : labelNext}
         className={classes.button}

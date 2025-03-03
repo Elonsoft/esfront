@@ -5,7 +5,8 @@ import { TabProps } from './Tab.types';
 import clsx from 'clsx';
 import { getTabUtilityClass, tabClasses } from './Tab.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';
@@ -158,7 +159,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps:
     selectionFollowsFocus,
     value,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESTab' });
+  } = useDefaultProps({ props: inProps, name: 'ESTab' });
 
   const ownerState = {
     ...props,

@@ -3,7 +3,8 @@ import { TagProps } from './Tag.types';
 import clsx from 'clsx';
 import { getTagUtilityClass, tagClasses } from './Tag.classes';
 
-import { capitalize, styled, Typography, typographyClasses, useThemeProps } from '@mui/material';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { capitalize, styled, Typography, typographyClasses } from '@mui/material';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase } from '../ButtonBase';
@@ -159,14 +160,14 @@ export const Tag = (inProps: TagProps) => {
     children,
     classes: inClasses,
     className,
-    sx,
+
     clickable = false,
     color = 'primary',
     startIcon,
     endIcon,
     variant = 'overline',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESTag',
   });
@@ -177,7 +178,7 @@ export const Tag = (inProps: TagProps) => {
   const component = clickable ? ButtonBase : 'div';
 
   return (
-    <TagRoot className={clsx(classes.root, className)} component={component} sx={sx} {...props}>
+    <TagRoot className={clsx(classes.root, className)} component={component} {...props}>
       {!!startIcon && <TagStartIcon className={classes.startIcon}>{startIcon}</TagStartIcon>}
       <Typography component="span" variant={variant}>
         {children}

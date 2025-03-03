@@ -3,8 +3,9 @@ import { TabBarItemProps, TabBarItemTypeMap } from './TabBarItem.types';
 import clsx from 'clsx';
 import { getTabBarItemUtilityClass, tabBarItemClasses } from './TabBarItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { Button, buttonClasses } from '../../Button';
@@ -75,14 +76,14 @@ export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: Tab
   const {
     className,
     classes: inClasses,
-    sx,
+
     icon,
     label,
     selected,
     // eslint-disable-next-line
     color,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESTabBarItem',
   });
@@ -91,7 +92,7 @@ export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: Tab
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TabBarItemRoot className={clsx(classes.root, className)} color="tertiary" sx={sx} {...props}>
+    <TabBarItemRoot className={clsx(classes.root, className)} color="tertiary" {...props}>
       {!!icon && <TabBarItemIcon className={classes.icon}>{icon}</TabBarItemIcon>}
       {!!label && <TabBarItemLabel className={classes.label}>{label}</TabBarItemLabel>}
     </TabBarItemRoot>

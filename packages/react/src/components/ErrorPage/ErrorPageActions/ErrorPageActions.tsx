@@ -3,7 +3,8 @@ import { ErrorPageActionsProps } from './ErrorPageActions.types';
 import clsx from 'clsx';
 import { getErrorPageActionsUtilityClass } from './ErrorPageActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageActionsOwnerState = {
@@ -32,7 +33,7 @@ export const ErrorPageActionsRoot = styled('div', {
 }));
 
 export const ErrorPageActions = (inProps: ErrorPageActionsProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESErrorPageActions',
   });
@@ -40,9 +41,5 @@ export const ErrorPageActions = (inProps: ErrorPageActionsProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <ErrorPageActionsRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </ErrorPageActionsRoot>
-  );
+  return <ErrorPageActionsRoot className={clsx(classes.root, className)}>{children}</ErrorPageActionsRoot>;
 };

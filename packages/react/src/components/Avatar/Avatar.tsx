@@ -5,8 +5,9 @@ import { AvatarProps } from './Avatar.types';
 import clsx from 'clsx';
 import { avatarClasses, getAvatarUtilityClass } from './Avatar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { svgIconClasses } from '../SvgIcon';
@@ -78,10 +79,10 @@ const AvatarRoot = styled('div', {
 
     return [styles.root, styles[`variant${capitalize(variant)}`], outlined && styles.outlined];
   },
-})<{ ownerState: AvatarOwnerState }>(({ theme, ownerState: { size } }) => ({
+})<{ ownerState: AvatarOwnerState }>(({ theme }) => ({
   ...theme.typography.body100,
-  height: `${size}px`,
-  width: `${size}px`,
+  height: 'var(--ESAvatar-size)',
+  width: 'var(--ESAvatar-size)',
   backgroundColor: theme.vars.palette.monoA.A100,
   backgroundSize: '100%',
   flexShrink: 0,
@@ -141,7 +142,7 @@ export const Avatar = (inProps: AvatarProps) => {
     size = 40,
     outlined = false,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAvatar',
   });
@@ -163,7 +164,12 @@ export const Avatar = (inProps: AvatarProps) => {
   }
 
   return (
-    <AvatarRoot className={clsx(className, classes.root)} ownerState={ownerState} {...props}>
+    <AvatarRoot
+      className={clsx(className, classes.root)}
+      ownerState={ownerState}
+      {...props}
+      style={{ '--ESAvatar-size': `${size}px`, ...props.style } as React.CSSProperties}
+    >
       {child}
     </AvatarRoot>
   );

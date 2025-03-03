@@ -1,7 +1,4 @@
 export { ErrorPageDescription } from './ErrorPageDescription';
-export {
-  ErrorPageDescriptionClasses,
-  errorPageDescriptionClasses,
-  ErrorPageDescriptionClassKey,
-} from './ErrorPageDescription.classes';
-export { ErrorPageDescriptionProps } from './ErrorPageDescription.types';
+export type { ErrorPageDescriptionClasses, ErrorPageDescriptionClassKey } from './ErrorPageDescription.classes';
+export { errorPageDescriptionClasses } from './ErrorPageDescription.classes';
+export type { ErrorPageDescriptionProps } from './ErrorPageDescription.types';

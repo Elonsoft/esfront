@@ -1,3 +1,4 @@
 export { SFSChips } from './SFSChips';
-export { SFSChipsClasses, sfsChipsClasses, SFSChipsClassKey } from './SFSChips.classes';
-export { SFSChipsProps } from './SFSChips.types';
+export type { SFSChipsClasses, SFSChipsClassKey } from './SFSChips.classes';
+export { sfsChipsClasses } from './SFSChips.classes';
+export type { SFSChipsProps } from './SFSChips.types';

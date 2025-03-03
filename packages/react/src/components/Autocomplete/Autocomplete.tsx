@@ -5,10 +5,11 @@ import { AutocompleteProps } from './Autocomplete.types';
 import clsx from 'clsx';
 import { autocompleteClasses, getAutocompleteUtilityClass } from './Autocomplete.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useFormControl } from '@mui/material/FormControl';
 import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -96,7 +97,6 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const {
     className,
     classes: inClasses,
-    sx,
 
     id,
     inputRef: inInputRef,
@@ -131,7 +131,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     onBlur,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAutocomplete',
   });
@@ -329,7 +329,6 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         placeholder={inlineSearch ? placeholder : undefined}
         required={formControl.required}
         startAdornment={startAdornment}
-        sx={sx}
         value={inlineSearch && formControl.focused ? SearchProps?.value : null}
         onChange={
           inlineSearch && formControl.focused

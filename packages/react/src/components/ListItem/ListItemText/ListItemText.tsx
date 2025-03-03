@@ -3,8 +3,9 @@ import { ListItemTextProps } from './ListItemText.types';
 import clsx from 'clsx';
 import { getListItemTextUtilityClass, listItemTextClasses } from './ListItemText.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ListItemTextOwnerState = {
@@ -52,7 +53,7 @@ export const ListItemText = (inProps: ListItemTextProps) => {
   const {
     className,
     children,
-    sx,
+
     disableTypography,
     inset,
     primary: inPrimary = null,
@@ -60,7 +61,7 @@ export const ListItemText = (inProps: ListItemTextProps) => {
     secondary: inSecondary = null,
     secondaryTypographyProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESListItemText',
   });
@@ -100,7 +101,7 @@ export const ListItemText = (inProps: ListItemTextProps) => {
   }
 
   return (
-    <ListItemTextRoot className={clsx(classes.root, className)} sx={sx}>
+    <ListItemTextRoot className={clsx(classes.root, className)}>
       {primary}
       {secondary}
     </ListItemTextRoot>

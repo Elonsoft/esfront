@@ -1,3 +1,4 @@
 export { ErrorPageHeading } from './ErrorPageHeading';
-export { ErrorPageHeadingClasses, errorPageHeadingClasses, ErrorPageHeadingClassKey } from './ErrorPageHeading.classes';
-export { ErrorPageHeadingProps } from './ErrorPageHeading.types';
+export type { ErrorPageHeadingClasses, ErrorPageHeadingClassKey } from './ErrorPageHeading.classes';
+export { errorPageHeadingClasses } from './ErrorPageHeading.classes';
+export type { ErrorPageHeadingProps } from './ErrorPageHeading.types';

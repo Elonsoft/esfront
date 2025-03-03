@@ -5,7 +5,8 @@ import { TouchRippleProps } from './TouchRipple.types';
 import clsx from 'clsx';
 import { getTouchRippleUtilityClass } from './TouchRipple.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type TouchRippleOwnerState = {
@@ -52,7 +53,7 @@ const TouchRippleRoot = styled('div', {
  * The TouchRipple.
  */
 export const TouchRipple = forwardRef<HTMLDivElement, TouchRippleProps>(function TouchRipple(inProps, ref) {
-  const { className, sx, ...props } = useThemeProps({
+  const { className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESTouchRipple',
   });
@@ -60,5 +61,5 @@ export const TouchRipple = forwardRef<HTMLDivElement, TouchRippleProps>(function
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return <TouchRippleRoot ref={ref} className={clsx(className, classes.root)} sx={sx} />;
+  return <TouchRippleRoot ref={ref} className={clsx(className, classes.root)} />;
 });

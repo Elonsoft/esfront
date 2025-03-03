@@ -4,7 +4,8 @@ import { SwiperButtonProps } from './SwiperButton.types';
 import clsx from 'clsx';
 import { getSwiperButtonUtilityClass } from './SwiperButton.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowDownW500, IconArrowLeftW500, IconArrowRightW500, IconArrowUpW500 } from '../../../icons';
@@ -107,7 +108,7 @@ const SwiperButtonRoot = styled(Button, {
 export const SwiperButton = (inProps: SwiperButtonProps) => {
   const {
     className,
-    sx,
+
     step,
     labelPrev,
     labelNext,
@@ -116,7 +117,7 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
     iconLeft = <IconArrowLeftW500 />,
     iconRight = <IconArrowRightW500 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSwiperButton',
   });
@@ -136,7 +137,6 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
       className={clsx(classes.root, className)}
       color="white"
       ownerState={ownerState}
-      sx={sx}
       onClick={onClick}
     >
       {direction === 'vertical' ? (step < 0 ? iconUp : iconDown) : step < 0 ? iconLeft : iconRight}

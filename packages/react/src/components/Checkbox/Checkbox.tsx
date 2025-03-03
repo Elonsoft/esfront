@@ -5,8 +5,9 @@ import { CheckboxProps } from './Checkbox.types';
 import clsx from 'clsx';
 import { checkboxClasses, getCheckboxUtilityClass } from './Checkbox.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { CheckboxIcon, checkboxIconClasses } from './CheckboxIcon';
@@ -497,7 +498,7 @@ const defaultIndeterminateIcon = {
 };
 
 export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(function Checkbox(inProps, ref) {
-  const props = useThemeProps({ props: inProps, name: 'ESCheckbox' });
+  const props = useDefaultProps({ props: inProps, name: 'ESCheckbox' });
   const {
     size = 'medium',
     variant = 'contained',

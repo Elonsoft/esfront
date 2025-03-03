@@ -5,7 +5,8 @@ import { TableTextProps } from './TableText.types';
 import clsx from 'clsx';
 import { getTableTextUtilityClass } from './TableText.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../TooltipEllipsis';
@@ -49,11 +50,11 @@ export const TableText = memo(function TableText(inProps: TableTextProps) {
   const {
     children,
     className,
-    sx,
+
     tooltip = true,
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESTableText',
   });
@@ -72,11 +73,7 @@ export const TableText = memo(function TableText(inProps: TableTextProps) {
         {...TooltipProps}
       >
         {({ ref }) => (
-          <TableTextRoot
-            ref={ref as MutableRefObject<HTMLDivElement | null>}
-            className={clsx(classes.root, className)}
-            sx={sx}
-          >
+          <TableTextRoot ref={ref as MutableRefObject<HTMLDivElement | null>} className={clsx(classes.root, className)}>
             {children}
           </TableTextRoot>
         )}
@@ -84,9 +81,5 @@ export const TableText = memo(function TableText(inProps: TableTextProps) {
     );
   }
 
-  return (
-    <TableTextRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </TableTextRoot>
-  );
+  return <TableTextRoot className={clsx(classes.root, className)}>{children}</TableTextRoot>;
 });

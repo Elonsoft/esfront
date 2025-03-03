@@ -3,8 +3,9 @@ import { FileInfoMetaProps } from './FileInfoMeta.types';
 import clsx from 'clsx';
 import { getFileInfoMetaUtilityClass } from './FileInfoMeta.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FileInfoMetaOwnerState = {
@@ -32,13 +33,13 @@ const FileInfoMetaRoot = styled(Typography, {
 }));
 
 export const FileInfoMeta = (inProps: FileInfoMetaProps) => {
-  const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoMeta' });
+  const { children, className, ...props } = useDefaultProps({ props: inProps, name: 'ESFileInfoMeta' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <FileInfoMetaRoot className={clsx(classes.root, className)} sx={sx} variant="caption">
+    <FileInfoMetaRoot className={clsx(classes.root, className)} variant="caption">
       {children}
     </FileInfoMetaRoot>
   );

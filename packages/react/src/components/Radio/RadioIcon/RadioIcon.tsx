@@ -5,7 +5,8 @@ import { RadioIconProps } from './RadioIcon.types';
 import clsx from 'clsx';
 import { getRadioIconUtilityClass } from './RadioIcon.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type RadioIconOwnerState = {
@@ -52,13 +53,13 @@ const RadioIconCircle = styled('div', {
 }));
 
 export const RadioIcon = (inProps: RadioIconProps) => {
-  const { className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESRadioIcon' });
+  const { className, ...props } = useDefaultProps({ props: inProps, name: 'ESRadioIcon' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <RadioIconRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx} {...props}>
+    <RadioIconRoot className={clsx(classes.root, className)} ownerState={ownerState} {...props}>
       <RadioIconCircle className={classes.circle} ownerState={ownerState} />
     </RadioIconRoot>
   );

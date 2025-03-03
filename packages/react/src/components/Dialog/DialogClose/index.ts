@@ -1,3 +1,4 @@
 export { DialogClose } from './DialogClose';
-export { DialogCloseClasses, dialogCloseClasses, DialogCloseClassKey } from './DialogClose.classes';
-export { DialogCloseProps } from './DialogClose.types';
+export type { DialogCloseClasses, DialogCloseClassKey } from './DialogClose.classes';
+export { dialogCloseClasses } from './DialogClose.classes';
+export type { DialogCloseProps } from './DialogClose.types';

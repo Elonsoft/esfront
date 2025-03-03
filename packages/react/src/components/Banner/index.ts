@@ -1,5 +1,6 @@
 export { Banner } from './Banner';
-export { BannerClasses, bannerClasses, BannerClassKey } from './Banner.classes';
-export { BannerProps } from './Banner.types';
+export type { BannerClasses, BannerClassKey } from './Banner.classes';
+export { bannerClasses } from './Banner.classes';
+export type { BannerProps } from './Banner.types';
 export * from './BannerActions';
 export * from './BannerTitle';

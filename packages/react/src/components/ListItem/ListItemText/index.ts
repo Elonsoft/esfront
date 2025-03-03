@@ -1,3 +1,4 @@
 export { ListItemText } from './ListItemText';
-export { ListItemTextClasses, listItemTextClasses, ListItemTextClassKey } from './ListItemText.classes';
-export { ListItemTextProps } from './ListItemText.types';
+export type { ListItemTextClasses, ListItemTextClassKey } from './ListItemText.classes';
+export { listItemTextClasses } from './ListItemText.classes';
+export type { ListItemTextProps } from './ListItemText.types';

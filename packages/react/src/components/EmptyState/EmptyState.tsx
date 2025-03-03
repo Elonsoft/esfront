@@ -3,8 +3,9 @@ import { EmptyStateProps } from './EmptyState.types';
 import clsx from 'clsx';
 import { getEmptyStateUtilityClass } from './EmptyState.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type EmptyStateOwnerState = {
@@ -48,35 +49,38 @@ const EmptyStateIcon = styled('div', {
   name: 'ESEmptyState',
   slot: 'Icon',
   overridesResolver: (props, styles) => styles.icon,
-})<{ ownerState: EmptyStateOwnerState }>(({ theme }) => ({
-  display: 'flex',
-  color: theme.vars.palette.monoA.A150,
-
-  variants: [
-    {
-      props: {
-        size: 'medium',
+})<{ ownerState: EmptyStateOwnerState }>(
+  ({ theme }) => ({
+    display: 'flex',
+    color: theme.vars.palette.monoA.A150,
+  }),
+  {
+    variants: [
+      {
+        props: {
+          size: 'medium',
+        },
+        style: {
+          marginBottom: '12px',
+        },
       },
-      style: {
-        marginBottom: '12px',
+      {
+        props: {
+          size: 'small',
+        },
+        style: {
+          marginBottom: '8px',
+        },
       },
-    },
-    {
-      props: {
-        size: 'small',
-      },
-      style: {
-        marginBottom: '8px',
-      },
-    },
-  ],
-}));
+    ],
+  }
+);
 
 const EmptyStateText = styled('div', {
   name: 'ESEmptyState',
   slot: 'Text',
   overridesResolver: (props, styles) => styles.text,
-})<{ ownerState: EmptyStateOwnerState }>(() => ({
+})<{ ownerState: EmptyStateOwnerState }>({
   variants: [
     {
       props: {
@@ -99,7 +103,7 @@ const EmptyStateText = styled('div', {
       },
     },
   ],
-}));
+});
 
 const EmptyStateHeading = styled(Typography, {
   name: 'ESEmptyState',
@@ -137,13 +141,13 @@ export const EmptyState = (inProps: EmptyStateProps) => {
   const {
     children,
     className,
-    sx,
+
     size = 'medium',
     icon,
     heading,
     subheading,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESEmptyState',
   });
@@ -152,7 +156,7 @@ export const EmptyState = (inProps: EmptyStateProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <EmptyStateRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <EmptyStateRoot className={clsx(classes.root, className)} ownerState={ownerState}>
       {!!icon && (
         <EmptyStateIcon className={classes.icon} data-testid="icon" ownerState={ownerState}>
           {icon}

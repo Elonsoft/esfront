@@ -5,8 +5,9 @@ import { CalendarHeadProps } from './CalendarHead.types';
 import clsx from 'clsx';
 import { getCalendarHeadUtilityClass } from './CalendarHead.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type CalendarHeadOwnerState = {
@@ -50,11 +51,11 @@ const CalenderHeadDay = styled(Typography, {
 export const CalendarHead = (inProps: CalendarHeadProps) => {
   const {
     className,
-    sx,
+
     weekStart = 1,
     getWeekDays,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESCalendarHead',
   });
@@ -73,7 +74,7 @@ export const CalendarHead = (inProps: CalendarHeadProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <CalendarHeadRoot className={clsx(className, classes.root)} sx={sx}>
+    <CalendarHeadRoot className={clsx(className, classes.root)}>
       {days.map((day, index) => (
         <CalenderHeadDay key={index} color="monoA.A500" variant="caption">
           {day}

@@ -5,7 +5,8 @@ import { SwiperAlignment, SwiperDirection, SwiperProps } from './Swiper.types';
 import clsx from 'clsx';
 import { getSwiperUtilityClass, swiperClasses } from './Swiper.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SwiperContext } from './Swiper.context';
@@ -196,7 +197,7 @@ export const Swiper = (inProps: SwiperProps) => {
     children,
     ref,
     className,
-    sx,
+
     direction = 'horizontal',
     alignment = 'center',
     gap = 16,
@@ -213,7 +214,7 @@ export const Swiper = (inProps: SwiperProps) => {
     buttonNext = <SwiperButton step={1} />,
     pagination,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSwiper',
   });
@@ -591,7 +592,6 @@ export const Swiper = (inProps: SwiperProps) => {
         className={clsx(classes.root, className)}
         ownerState={ownerState}
         role="group"
-        sx={sx}
       >
         <SwiperWrapper className={classes.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           {isPrevVisible && !!buttonPrev && buttonPrev}

@@ -5,8 +5,9 @@ import { ButtonBaseProps, ButtonBaseTypeMap } from './ButtonBase.types';
 import clsx from 'clsx';
 import { buttonBaseClasses, getButtonBaseUtilityClass } from './ButtonBase.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useForkRef } from '../../hooks';
@@ -134,7 +135,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     children,
     classes: inClasses,
     className,
-    sx,
+
     disabled,
     disableTouchRipple,
     type = 'button',
@@ -147,7 +148,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     onKeyDown,
     TouchRippleProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESButtonBase',
   });
@@ -209,7 +210,6 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
       as={component}
       className={clsx(className, classes.root)}
       disabled={disabled}
-      sx={sx}
       type={type}
       {...props}
       {...bind}

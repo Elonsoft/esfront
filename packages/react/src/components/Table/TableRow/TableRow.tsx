@@ -5,9 +5,10 @@ import { TableRowProps, TableRowTypeMap } from './TableRow.types';
 import clsx from 'clsx';
 import { getTableRowUtilityClass, tableRowClasses } from './TableRow.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Box from '@mui/material/Box';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableContext } from '../Table.context';
@@ -110,7 +111,7 @@ const TableRowContent = styled(Box, {
 
 export const TableRow = memo(
   forwardRef((inProps: TableRowProps, ref) => {
-    const { children, className, sx, selected, hover, ...props } = useThemeProps({
+    const { children, className, selected, hover, ...props } = useDefaultProps({
       props: inProps,
       name: 'ESTableRow',
     });
@@ -121,7 +122,7 @@ export const TableRow = memo(
     const classes = useUtilityClasses(ownerState);
 
     return (
-      <TableRowRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+      <TableRowRoot className={clsx(classes.root, className)} ownerState={ownerState}>
         <TableRowContent
           ref={ref}
           className={classes.content}

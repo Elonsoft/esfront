@@ -3,7 +3,8 @@ import { GalleryActionsProps } from './GalleryActions.types';
 import clsx from 'clsx';
 import { getGalleryActionsUtilityClass } from './GalleryActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600, IconImageMultiple } from '../../../icons';
@@ -68,13 +69,13 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
   const {
     children,
     className,
-    sx,
+
     labelClose,
     labelThumbnails,
     iconClose = <IconCloseW600 />,
     iconThumbnails = <IconImageMultiple />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryActions',
   });
@@ -90,7 +91,7 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <GalleryActionsRoot className={clsx(classes.root, className)} sx={sx}>
+    <GalleryActionsRoot className={clsx(classes.root, className)}>
       <GalleryTooltip arrow title={labelThumbnails || ''}>
         <GalleryActionsButtonThumbnails
           aria-label={labelThumbnails}

@@ -3,7 +3,8 @@ import { GalleryThumbnailsItemProps } from './GalleryThumbnailsItem.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsItemUtilityClass } from './GalleryThumbnailsItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase } from '../../ButtonBase';
@@ -87,7 +88,7 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
 }));
 
 export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {
-  const { className, sx, isActive, onClick, children, ...props } = useThemeProps({
+  const { className, isActive, onClick, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryThumbnailsItem',
   });
@@ -96,12 +97,7 @@ export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <GalleryThumbnailsItemRoot
-      className={clsx(classes.root, className)}
-      ownerState={ownerState}
-      sx={sx}
-      onClick={onClick}
-    >
+    <GalleryThumbnailsItemRoot className={clsx(classes.root, className)} ownerState={ownerState} onClick={onClick}>
       {children}
     </GalleryThumbnailsItemRoot>
   );

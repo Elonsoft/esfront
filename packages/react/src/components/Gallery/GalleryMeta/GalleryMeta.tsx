@@ -3,7 +3,8 @@ import { GalleryMetaProps } from './GalleryMeta.types';
 import clsx from 'clsx';
 import { getGalleryMetaUtilityClass } from './GalleryMeta.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowLeftW500 } from '../../../icons';
@@ -73,11 +74,11 @@ export const GalleryMeta = (inProps: GalleryMetaProps) => {
   const {
     children,
     className,
-    sx,
+
     labelClose,
     iconClose = <IconArrowLeftW500 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryMeta',
   });
@@ -88,7 +89,7 @@ export const GalleryMeta = (inProps: GalleryMetaProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <GalleryMetaRoot className={clsx(classes.root, className)} sx={sx}>
+    <GalleryMetaRoot className={clsx(classes.root, className)}>
       <GalleryTooltip arrow title={labelClose || ''}>
         <GalleryMetaButtonClose aria-label={labelClose} className={classes.buttonClose} size="500" onClick={onClose}>
           {iconClose}

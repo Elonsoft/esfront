@@ -5,13 +5,14 @@ import { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';
 import clsx from 'clsx';
 import { getSidebarItemUtilityClass, sidebarItemClasses } from './SidebarItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import MenuList from '@mui/material/MenuList';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
@@ -354,11 +355,11 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     onTouchStart,
     labelOpen,
     labelHide,
-    sx,
+
     text,
     id,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarItem',
   });
@@ -535,7 +536,6 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     >
       <SidebarItemRoot
         className={clsx(classes.root, className)}
-        sx={sx}
         onMouseEnter={onNestedMenuHover}
         onMouseLeave={onNestedMenuHover}
       >

@@ -6,8 +6,9 @@ import { ButtonOwnProps, ButtonTypeMap } from './Button.types';
 import clsx from 'clsx';
 import { buttonClasses, getButtonUtilityClass } from './Button.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase, buttonBaseClasses } from '../ButtonBase';
@@ -644,7 +645,7 @@ export const Button = forwardRef(function Button(inProps, ref) {
     children,
     classes: inClasses,
     className,
-    sx,
+
     fullWidth,
     color = 'tertiary',
     size = '500',
@@ -653,7 +654,7 @@ export const Button = forwardRef(function Button(inProps, ref) {
     startIcon,
     endIcon,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESButton',
   });
@@ -662,7 +663,7 @@ export const Button = forwardRef(function Button(inProps, ref) {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <ButtonRoot ref={ref as any} className={clsx(className, classes.root)} ownerState={ownerState} sx={sx} {...props}>
+    <ButtonRoot ref={ref as any} className={clsx(className, classes.root)} ownerState={ownerState} {...props}>
       {startIcon && <ButtonStartIcon className={classes.startIcon}>{startIcon}</ButtonStartIcon>}
       {children}
       {endIcon && <ButtonEndIcon className={classes.endIcon}>{endIcon}</ButtonEndIcon>}

@@ -3,7 +3,8 @@ import { DialogContentProps } from './DialogContent.types';
 import clsx from 'clsx';
 import { getDialogContentUtilityClass } from './DialogContent.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type DialogContentOwnerState = {
@@ -34,7 +35,7 @@ const DialogContentRoot = styled('div', {
 }));
 
 export const DialogContent = (inProps: DialogContentProps) => {
-  const { className, sx, children, ...props } = useThemeProps({
+  const { className, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESDialogContent',
   });
@@ -42,9 +43,5 @@ export const DialogContent = (inProps: DialogContentProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <DialogContentRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </DialogContentRoot>
-  );
+  return <DialogContentRoot className={clsx(classes.root, className)}>{children}</DialogContentRoot>;
 };

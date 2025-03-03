@@ -1,2 +1,2 @@
 export { SwiperPaginationItem } from './SwiperPaginationItem';
-export { SwiperPaginationItemProps } from './SwiperPaginationItem.types';
+export type { SwiperPaginationItemProps } from './SwiperPaginationItem.types';

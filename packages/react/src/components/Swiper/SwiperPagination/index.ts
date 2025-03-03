@@ -1,8 +1,4 @@
 export { SwiperPagination } from './SwiperPagination';
-export {
-  getSwiperPaginationUtilityClass,
-  SwiperPaginationClasses,
-  swiperPaginationClasses,
-  SwiperPaginationClassKey,
-} from './SwiperPagination.classes';
-export { SwiperPaginationProps } from './SwiperPagination.types';
+export type { SwiperPaginationClasses, SwiperPaginationClassKey } from './SwiperPagination.classes';
+export { getSwiperPaginationUtilityClass, swiperPaginationClasses } from './SwiperPagination.classes';
+export type { SwiperPaginationProps } from './SwiperPagination.types';

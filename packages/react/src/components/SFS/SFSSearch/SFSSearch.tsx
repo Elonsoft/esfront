@@ -5,9 +5,10 @@ import { SFSSearchProps } from './SFSSearch.types';
 import clsx from 'clsx';
 import { getSFSSearchUtilityClass } from './SFSSearch.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350, IconMagnify2W400 } from '../../../icons';
@@ -128,7 +129,7 @@ const SFSSearchClear = styled(Button, {
 export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
   const {
     className,
-    sx,
+
     onClear,
     ariaLabel,
     labelClear,
@@ -136,7 +137,7 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
     iconClear = <IconCloseW350 />,
     iconSearch = <IconMagnify2W400 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSFSSearch',
   });
@@ -145,7 +146,7 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <SFSSearchRoot className={clsx(classes.root, className)} sx={sx}>
+    <SFSSearchRoot className={clsx(classes.root, className)}>
       <SFSSearchInput
         InputProps={{
           startAdornment: <InputAdornment position="start">{iconSearch}</InputAdornment>,

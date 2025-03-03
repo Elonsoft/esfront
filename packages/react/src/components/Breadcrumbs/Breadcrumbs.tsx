@@ -6,11 +6,12 @@ import clsx from 'clsx';
 import { breadcrumbClasses } from './Breadcrumb/Breadcrumb.classes';
 import { breadcrumbsClasses, getBreadcrumbsUtilityClass } from './Breadcrumbs.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { paperClasses } from '@mui/material';
 import Menu, { menuClasses } from '@mui/material/Menu';
 import { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -52,28 +53,31 @@ const BreadcrumbsList = styled('ol', {
   name: 'ESBreadcrumbs',
   slot: 'List',
   overridesResolver: (props, styles) => styles.list,
-})<{ ownerState: BreadcrumbsOwnerState }>(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  listStyle: 'none',
-  padding: 0,
-  margin: 0,
-
-  variants: [
-    {
-      props: {
-        open: true,
-      },
-      style: {
-        [`.${breadcrumbsClasses.buttonMore}`]: {
-          [`.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
-            '--background': theme.vars.palette.monoA.A50,
+})<{ ownerState: BreadcrumbsOwnerState }>(
+  {
+    display: 'flex',
+    alignItems: 'center',
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+  },
+  ({ theme }) => ({
+    variants: [
+      {
+        props: {
+          open: true,
+        },
+        style: {
+          [`.${breadcrumbsClasses.buttonMore}`]: {
+            [`.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
+              '--background': theme.vars.palette.monoA.A50,
+            },
           },
         },
       },
-    },
-  ],
-}));
+    ],
+  })
+);
 
 const BreadcrumbsMenu = styled(Menu, {
   name: 'ESBreadcrumbs',
@@ -126,9 +130,9 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
     className,
     iconButtonMore = <IconDotsHorizontal2W300 />,
     labelButtonMore,
-    sx,
+
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESBreadcrumbs' });
+  } = useDefaultProps({ props: inProps, name: 'ESBreadcrumbs' });
 
   const [lastIndex, setLastIndex] = useState(Children.count(children) - 1);
 
@@ -184,7 +188,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <BreadcrumbsRoot className={clsx(classes.root, className)} component="nav" sx={sx} {...props}>
+    <BreadcrumbsRoot className={clsx(classes.root, className)} component="nav" {...props}>
       <BreadcrumbsList
         ref={ref}
         itemScope

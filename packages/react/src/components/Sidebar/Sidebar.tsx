@@ -5,7 +5,8 @@ import { SidebarProps } from './Sidebar.types';
 import clsx from 'clsx';
 import { getSidebarUtilityClass, sidebarClasses } from './Sidebar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidebarContext } from './Sidebar.context';
@@ -183,7 +184,7 @@ export const Sidebar = (inProps: SidebarProps) => {
   const {
     className,
     children,
-    sx,
+
     open,
     color = 'default',
     width = 280,
@@ -192,7 +193,7 @@ export const Sidebar = (inProps: SidebarProps) => {
     onWidthChange,
     onWidthChangeCommit,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebar',
   });
@@ -296,7 +297,7 @@ export const Sidebar = (inProps: SidebarProps) => {
 
   return (
     <SidebarContext.Provider value={value}>
-      <SidebarRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+      <SidebarRoot className={clsx(classes.root, className)} ownerState={ownerState}>
         {(onWidthChange || onWidthChangeCommitLatest) && (
           <SidebarHandler
             className={clsx(classes.handler)}

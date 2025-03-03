@@ -5,8 +5,9 @@ import { SidebarToggleProps } from './SidebarToggle.types';
 import clsx from 'clsx';
 import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconChevronLeftW300 } from '../../../icons';
@@ -118,14 +119,14 @@ const SidebarToggleButton = styled(Button, {
 export const SidebarToggle = (inProps: SidebarToggleProps) => {
   const {
     className,
-    sx,
+
     open,
     icon = <IconChevronLeftW300 container containerSize="20px" />,
     labelOpen,
     labelHide,
     onClick,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarToggle',
   });
@@ -153,7 +154,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
   };
 
   return (
-    <SidebarToggleRoot className={clsx(classes.root, className)} sx={sx}>
+    <SidebarToggleRoot className={clsx(classes.root, className)}>
       <SidebarDivider />
 
       <SidebarToggleTooltip

@@ -3,7 +3,8 @@ import { SFSProps } from './SFS.types';
 import clsx from 'clsx';
 import { getSFSUtilityClass } from './SFS.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type SFSOwnerState = {
@@ -34,7 +35,7 @@ const SFSRoot = styled('div', {
 }));
 
 export const SFS = (inProps: SFSProps) => {
-  const { className, sx, children, ...props } = useThemeProps({
+  const { className, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESSFS',
   });
@@ -42,9 +43,5 @@ export const SFS = (inProps: SFSProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <SFSRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </SFSRoot>
-  );
+  return <SFSRoot className={clsx(classes.root, className)}>{children}</SFSRoot>;
 };

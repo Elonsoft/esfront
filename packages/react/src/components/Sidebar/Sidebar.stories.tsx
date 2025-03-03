@@ -2,8 +2,6 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
-
 import { Sidebar } from './Sidebar';
 import { SidebarDivider } from './SidebarDivider';
 import { SidebarItem } from './SidebarItem';
@@ -78,7 +76,7 @@ export const Demo: Story = {
     const [width, setWidth] = useState(280);
 
     return (
-      <Box sx={{ height: '100vh', m: '-16px', display: 'flex', gap: '20px', overflow: 'auto' }}>
+      <div sx={{ height: '100vh', m: '-16px', display: 'flex', gap: '20px', overflow: 'auto' }}>
         <Sidebar
           color={color}
           maxWidth={maxWidth}
@@ -282,7 +280,7 @@ export const Demo: Story = {
             nam dolor minus eius, eveniet aut deserunt maxime distinctio facilis. Excepturi, quia dolorem.
           </p>
         </div>
-      </Box>
+      </div>
     );
   },
 };

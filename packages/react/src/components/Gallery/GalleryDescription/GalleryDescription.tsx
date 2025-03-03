@@ -5,8 +5,9 @@ import { GalleryDescriptionProps } from './GalleryDescription.types';
 import clsx from 'clsx';
 import { getGalleryDescriptionUtilityClass } from './GalleryDescription.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useWindowEventListener } from '../../../hooks';
@@ -166,14 +167,14 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
   const {
     children,
     className,
-    sx,
+
     position = galleryPanelContext?.position || 'bottom',
     labelCollapse,
     labelExpand,
     iconCollapse = <IconCloseW350 />,
     iconExpand = <IconDoubleChevronUp />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryDescription',
   });
@@ -246,7 +247,6 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
       ref={rootRef}
       className={clsx(classes.root, className)}
       component="div"
-      sx={sx}
       variant="caption"
       onClick={onClick}
     >

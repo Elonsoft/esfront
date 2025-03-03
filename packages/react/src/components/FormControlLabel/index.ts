@@ -1,3 +1,4 @@
 export { FormControlLabel } from './FormControlLabel';
-export { FormControlLabelClasses, formControlLabelClasses, FormControlLabelClassKey } from './FormControlLabel.classes';
-export { FormControlLabelProps } from './FormControlLabel.types';
+export type { FormControlLabelClasses, FormControlLabelClassKey } from './FormControlLabel.classes';
+export { formControlLabelClasses } from './FormControlLabel.classes';
+export type { FormControlLabelProps } from './FormControlLabel.types';

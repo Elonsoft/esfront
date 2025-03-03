@@ -1,5 +1,6 @@
 export { ListItem } from './ListItem';
-export { ListItemClasses, listItemClasses, ListItemClassKey } from './ListItem.classes';
-export { ListItemOwnProps, ListItemProps, ListItemTypeMap } from './ListItem.types';
+export type { ListItemClasses, ListItemClassKey } from './ListItem.classes';
+export { listItemClasses } from './ListItem.classes';
+export type { ListItemOwnProps, ListItemProps, ListItemTypeMap } from './ListItem.types';
 export * from './ListItemIcon';
 export * from './ListItemText';

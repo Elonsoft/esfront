@@ -5,7 +5,8 @@ import { SidenavProps } from './Sidenav.types';
 import clsx from 'clsx';
 import { getSidenavUtilityClass, sidenavClasses } from './Sidenav.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidenavContext } from './Sidenav.context';
@@ -156,7 +157,7 @@ const SidenavDrawer = styled('div', {
  * The Sidenav component is a fixed-position toggleable slide out box.
  */
 export const Sidenav = (inProps: SidenavProps) => {
-  const { className, children, open, sx, disableEscapeKeyDown, disableItemHover, onClose, ...props } = useThemeProps({
+  const { className, children, open, disableEscapeKeyDown, disableItemHover, onClose, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESSidenav',
   });
@@ -275,7 +276,7 @@ export const Sidenav = (inProps: SidenavProps) => {
 
   return (
     <SidenavContext.Provider value={value}>
-      <SidenavRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+      <SidenavRoot className={clsx(classes.root, className)} ownerState={ownerState}>
         <SidenavContainer className={clsx(classes.container)} onMouseLeave={onMouseLeaveSidenav}>
           {React.Children.map(children as React.ReactElement[], (child, idx: number) => {
             if (idx) {

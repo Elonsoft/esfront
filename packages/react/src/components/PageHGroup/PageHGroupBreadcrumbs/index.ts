@@ -1,7 +1,4 @@
 export { PageHGroupBreadcrumbs } from './PageHGroupBreadcrumbs';
-export {
-  PageHGroupBreadcrumbsClasses,
-  pageHGroupBreadcrumbsClasses,
-  PageHGroupBreadcrumbsClassKey,
-} from './PageHGroupBreadcrumbs.classes';
-export { PageHGroupBreadcrumbsProps } from './PageHGroupBreadcrumbs.types';
+export type { PageHGroupBreadcrumbsClasses, PageHGroupBreadcrumbsClassKey } from './PageHGroupBreadcrumbs.classes';
+export { pageHGroupBreadcrumbsClasses } from './PageHGroupBreadcrumbs.classes';
+export type { PageHGroupBreadcrumbsProps } from './PageHGroupBreadcrumbs.types';

@@ -1,3 +1,4 @@
 export { SFSSorting } from './SFSSorting';
-export { SFSSortingClasses, sfsSortingClasses, SFSSortingClassKey } from './SFSSorting.classes';
-export { SFSSortingProps } from './SFSSorting.types';
+export type { SFSSortingClasses, SFSSortingClassKey } from './SFSSorting.classes';
+export { sfsSortingClasses } from './SFSSorting.classes';
+export type { SFSSortingProps } from './SFSSorting.types';

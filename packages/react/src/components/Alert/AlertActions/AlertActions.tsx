@@ -3,7 +3,8 @@ import { AlertActionsProps } from './AlertActions.types';
 import clsx from 'clsx';
 import { getAlertActionsUtilityClass } from './AlertActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type AlertActionsOwnerState = {
@@ -29,15 +30,11 @@ const AlertActionsRoot = styled('div', {
 }));
 
 export const AlertActions = (inProps: AlertActionsProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESAlertActions',
   });
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
-  return (
-    <AlertActionsRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </AlertActionsRoot>
-  );
+  return <AlertActionsRoot className={clsx(classes.root, className)}>{children}</AlertActionsRoot>;
 };

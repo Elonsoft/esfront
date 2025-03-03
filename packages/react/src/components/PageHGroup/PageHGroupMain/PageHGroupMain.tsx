@@ -3,7 +3,8 @@ import { PageHGroupMainProps } from './PageHGroupMain.types';
 import clsx from 'clsx';
 import { getPageHGroupMainUtilityClass } from './PageHGroupMain.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupMainOwnerState = {
@@ -33,7 +34,7 @@ const PageHGroupMainRoot = styled('div', {
 }));
 
 export const PageHGroupMain = (inProps: PageHGroupMainProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESPageHGroupMain',
   });
@@ -41,9 +42,5 @@ export const PageHGroupMain = (inProps: PageHGroupMainProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <PageHGroupMainRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </PageHGroupMainRoot>
-  );
+  return <PageHGroupMainRoot className={clsx(classes.root, className)}>{children}</PageHGroupMainRoot>;
 };

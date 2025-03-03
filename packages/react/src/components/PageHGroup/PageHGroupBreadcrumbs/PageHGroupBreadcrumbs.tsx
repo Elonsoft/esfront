@@ -3,7 +3,8 @@ import { PageHGroupBreadcrumbsProps } from './PageHGroupBreadcrumbs.types';
 import clsx from 'clsx';
 import { getPageHGroupBreadcrumbsUtilityClass } from './PageHGroupBreadcrumbs.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupBreadcrumbsOwnerState = {
@@ -29,7 +30,7 @@ const PageHGroupBreadcrumbsRoot = styled('div', {
 }));
 
 export const PageHGroupBreadcrumbs = (inProps: PageHGroupBreadcrumbsProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESPageHGroupBreadcrumbs',
   });
@@ -37,9 +38,5 @@ export const PageHGroupBreadcrumbs = (inProps: PageHGroupBreadcrumbsProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <PageHGroupBreadcrumbsRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </PageHGroupBreadcrumbsRoot>
-  );
+  return <PageHGroupBreadcrumbsRoot className={clsx(classes.root, className)}>{children}</PageHGroupBreadcrumbsRoot>;
 };

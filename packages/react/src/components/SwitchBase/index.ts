@@ -1,3 +1,4 @@
 export { SwitchBase } from './SwitchBase';
-export { SwitchBaseClasses, switchBaseClasses, SwitchBaseClassKey } from './SwitchBase.classes';
-export { SwitchBaseProps } from './SwitchBase.types';
+export type { SwitchBaseClasses, SwitchBaseClassKey } from './SwitchBase.classes';
+export { switchBaseClasses } from './SwitchBase.classes';
+export type { SwitchBaseProps } from './SwitchBase.types';

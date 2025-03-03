@@ -4,10 +4,11 @@ import clsx from 'clsx';
 import { breadcrumbsClasses } from '../Breadcrumbs.classes';
 import { breadcrumbClasses, getBreadcrumbUtilityClass } from './Breadcrumb.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { tooltipClasses } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconBreadcrumbArrowRight } from '../../../icons';
@@ -168,7 +169,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
     children,
     itemContent,
     className,
-    sx,
+
     style,
     separator = <IconBreadcrumbArrowRight container containerWidth="16px" />,
     disabled,
@@ -176,7 +177,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
     shouldFirstShrink,
 
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESBreadcrumb' });
+  } = useDefaultProps({ props: inProps, name: 'ESBreadcrumb' });
 
   const ownerState = { disabled, shouldFirstShrink, ...props };
   const classes = useUtilityClasses(ownerState);
@@ -192,7 +193,6 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
       itemType={position ? 'https://schema.org/ListItem' : undefined}
       ownerState={ownerState}
       style={style}
-      sx={sx}
     >
       <BreadcrumbTooltip
         arrow

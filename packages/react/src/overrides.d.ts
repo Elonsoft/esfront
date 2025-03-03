@@ -3,6 +3,7 @@ import type {} from '@mui/material/themeCssVarsAugmentation';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+  SxProps,
   BreakpointOverrides,
   Palette,
   PaletteColor,
@@ -289,7 +290,6 @@ import {
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { TooltipClassKey, TooltipProps } from './components/Tooltip';
-import { buttonMixin, listItemMixin } from './theming/mixins';
 import { AvatarProps } from './components';
 import { BadgeProps, BadgeClassKey } from './components/Badge';
 import { BadgePlacementControlProps, BadgePlacementControlClassKey } from './components/BadgePlacementControl';
@@ -1436,15 +1436,6 @@ declare module '@mui/material/styles' {
   }
 }
 
-declare module '@mui/material/styles/createMixins' {
-  interface Mixins {
-    /** @deprecated Use our own `Button` implementation instead. */
-    button: typeof buttonMixin;
-    /** @deprecated Use our own `Button` implementation instead. */
-    listItem: typeof listItemMixin;
-  }
-}
-
 declare module '@mui/material/styles/createPalette' {
   interface CommonColors {
     link: string;
@@ -1553,5 +1544,21 @@ declare module '@mui/material/Typography' {
     micro: true;
     body1: false;
     body2: false;
+  }
+}
+
+declare module '@mui/material-pigment-css' {
+  interface ThemeArgs {
+    theme: Theme;
+  }
+}
+declare global {
+  namespace React {
+    interface HTMLAttributes<T> {
+      sx?: SxProps<Theme>;
+    }
+    interface SVGProps<T> {
+      sx?: SxProps<Theme>;
+    }
   }
 }

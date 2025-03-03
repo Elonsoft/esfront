@@ -5,7 +5,8 @@ import { TableScrollbarProps } from './TableScrollbar.types';
 import clsx from 'clsx';
 import { getTableScrollbarUtilityClass } from './TableScrollbar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableScrollbarContext } from './TableScrollbar.context';
@@ -34,7 +35,7 @@ const TableScrollbarRoot = styled('div', {
 }));
 
 export const TableScrollbar = memo(function TableScrollbar(inProps: TableScrollbarProps) {
-  const { className, sx, ...props } = useThemeProps({
+  const { className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESTableScrollbar',
   });
@@ -45,7 +46,7 @@ export const TableScrollbar = memo(function TableScrollbar(inProps: TableScrollb
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableScrollbarRoot ref={setRef} className={clsx(className, classes.root)} sx={sx}>
+    <TableScrollbarRoot ref={setRef} className={clsx(className, classes.root)}>
       <div style={{ width: `${width}px`, height: '1px' }} />
     </TableScrollbarRoot>
   );

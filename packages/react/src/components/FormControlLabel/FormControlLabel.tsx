@@ -3,10 +3,10 @@ import { FormControlLabelProps } from './FormControlLabel.types';
 import clsx from 'clsx';
 import { formControlLabelClasses, getFormControlLabelUtilityClass } from './FormControlLabel.classes';
 
-import { appendOwnerState, unstable_composeClasses as composeClasses } from '@mui/base';
-
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize, Typography } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { checkboxClasses } from '../Checkbox';
 import { radioClasses } from '../Radio';
@@ -124,23 +124,19 @@ export const FormControlLabel = (inProps: FormControlLabelProps) => {
     slots = {},
     slotProps = {},
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESFormControlLabel' });
+  } = useDefaultProps({ props: inProps, name: 'ESFormControlLabel' });
 
   const ownerState = { ...props, labelPlacement };
   const classes = useUtilityClasses(ownerState);
 
   const LabelComponent = slots.typography ?? FormControlLabelLabel;
 
-  const labelProps = appendOwnerState(
-    LabelComponent,
-    {
-      component: 'div',
-      variant: 'subtitle1',
-      ...slotProps.typography,
-      className: clsx(classes.label, slotProps.typography?.className),
-    },
-    ownerState
-  );
+  const labelProps = {
+    component: 'div',
+    variant: 'subtitle1',
+    ...slotProps.typography,
+    className: clsx(classes.label, slotProps.typography?.className),
+  };
 
   return (
     <FormControlLabelRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>

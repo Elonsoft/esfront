@@ -1,7 +1,4 @@
 export { GalleryThumbnailsImage } from './GalleryThumbnailsImage';
-export {
-  GalleryThumbnailsImageClasses,
-  galleryThumbnailsImageClasses,
-  GalleryThumbnailsImageClassKey,
-} from './GalleryThumbnailsImage.classes';
-export { GalleryThumbnailsImageProps } from './GalleryThumbnailsImage.types';
+export type { GalleryThumbnailsImageClasses, GalleryThumbnailsImageClassKey } from './GalleryThumbnailsImage.classes';
+export { galleryThumbnailsImageClasses } from './GalleryThumbnailsImage.classes';
+export type { GalleryThumbnailsImageProps } from './GalleryThumbnailsImage.types';

@@ -5,8 +5,9 @@ import { GalleryPanelProps } from './GalleryPanel.types';
 import clsx from 'clsx';
 import { galleryPanelClasses, getGalleryPanelUtilityClass } from './GalleryPanel.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { GalleryPanelContext } from './GalleryPanel.context';
@@ -91,7 +92,7 @@ const GalleryPanelContent = styled('div', {
 }));
 
 export const GalleryPanel = (inProps: GalleryPanelProps) => {
-  const { children, className, sx, position, direction, ...props } = useThemeProps({
+  const { children, className, position, direction, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryPanel',
   });
@@ -165,7 +166,6 @@ export const GalleryPanel = (inProps: GalleryPanelProps) => {
         ref={rootRef}
         className={clsx(classes.root, className)}
         style={{ [position]: 0 }}
-        sx={sx}
         onBlur={onBlur}
         onFocus={onFocus}
         onMouseEnter={onMouseEnter}

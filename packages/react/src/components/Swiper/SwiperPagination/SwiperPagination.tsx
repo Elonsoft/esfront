@@ -6,7 +6,8 @@ import { SwiperPaginationProps } from './SwiperPagination.types';
 import clsx from 'clsx';
 import { getSwiperPaginationUtilityClass, swiperPaginationClasses } from './SwiperPagination.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useSwiperContext } from '../Swiper.context';
@@ -38,95 +39,98 @@ const SwiperPaginationRoot = styled('div', {
     } = props;
     return [styles.root, styles[direction], styles[position], styles[variant]];
   },
-})<{ ownerState: SwiperPaginationOwnerState }>({
-  alignItems: 'center',
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-
-  variants: [
-    {
-      props: {
-        direction: 'horizontal',
-      },
-      style: {
-        flexDirection: 'row',
-        width: '100%',
-        [`&.${swiperPaginationClasses.start}`]: {
-          marginBottom: 14,
-          marginTop: -2,
+})<{ ownerState: SwiperPaginationOwnerState }>(
+  {
+    alignItems: 'center',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  {
+    variants: [
+      {
+        props: {
+          direction: 'horizontal',
         },
-        [`&.${swiperPaginationClasses.end}`]: {
-          marginBottom: -2,
-          marginTop: 14,
-        },
-      },
-    },
-    {
-      props: {
-        direction: 'vertical',
-      },
-      style: {
-        flexDirection: 'column',
-        height: '100%',
-        [`&.${swiperPaginationClasses.start}`]: {
-          marginLeft: -2,
-          marginRight: 14,
-        },
-        [`&.${swiperPaginationClasses.end}`]: {
-          marginLeft: 14,
-          marginRight: -2,
+        style: {
+          flexDirection: 'row',
+          width: '100%',
+          [`&.${swiperPaginationClasses.start}`]: {
+            marginBottom: 14,
+            marginTop: -2,
+          },
+          [`&.${swiperPaginationClasses.end}`]: {
+            marginBottom: -2,
+            marginTop: 14,
+          },
         },
       },
-    },
-    {
-      props: {
-        position: 'start',
-      },
-      style: {
-        order: -1,
-      },
-    },
-    {
-      props: {
-        variant: 'long',
-      },
-      style: {
-        [`&.${swiperPaginationClasses.horizontal} .${swiperPaginationClasses.bulletActive}`]: {
-          width: 16,
+      {
+        props: {
+          direction: 'vertical',
         },
-        [`&.${swiperPaginationClasses.vertical} .${swiperPaginationClasses.bulletActive}`]: {
-          height: 16,
+        style: {
+          flexDirection: 'column',
+          height: '100%',
+          [`&.${swiperPaginationClasses.start}`]: {
+            marginLeft: -2,
+            marginRight: 14,
+          },
+          [`&.${swiperPaginationClasses.end}`]: {
+            marginLeft: 14,
+            marginRight: -2,
+          },
         },
       },
-    },
-    {
-      props: {
-        variant: 'big',
-      },
-      style: {
-        [`& .${swiperPaginationClasses.itemActive}`]: {
-          padding: 2,
+      {
+        props: {
+          position: 'start',
         },
-        [`& .${swiperPaginationClasses.bulletActive}`]: {
-          height: 12,
-          width: 12,
+        style: {
+          order: -1,
         },
       },
-    },
-  ],
-});
+      {
+        props: {
+          variant: 'long',
+        },
+        style: {
+          [`&.${swiperPaginationClasses.horizontal} .${swiperPaginationClasses.bulletActive}`]: {
+            width: 16,
+          },
+          [`&.${swiperPaginationClasses.vertical} .${swiperPaginationClasses.bulletActive}`]: {
+            height: 16,
+          },
+        },
+      },
+      {
+        props: {
+          variant: 'big',
+        },
+        style: {
+          [`& .${swiperPaginationClasses.itemActive}`]: {
+            padding: 2,
+          },
+          [`& .${swiperPaginationClasses.bulletActive}`]: {
+            height: 12,
+            width: 12,
+          },
+        },
+      },
+    ],
+  }
+);
 
 export const SwiperPagination = (inProps: SwiperPaginationProps) => {
   const {
     className,
-    sx,
+
     position = 'end',
     variant = 'small',
     siblingCount,
     transitionDuration,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSwiperPagination',
   });
@@ -169,7 +173,7 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
   }
 
   return (
-    <SwiperPaginationRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <SwiperPaginationRoot className={clsx(classes.root, className)} ownerState={ownerState}>
       {bullets.map((index) => (
         <SwiperPaginationItem
           key={index}

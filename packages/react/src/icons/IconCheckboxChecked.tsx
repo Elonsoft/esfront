@@ -1,6 +1,6 @@
-import { useTheme } from '@mui/material/styles';
 // eslint-disable-next-line no-restricted-imports
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
+import { useTheme } from '@mui/material-pigment-css';
 
 export const IconCheckboxChecked = (props: SvgIconProps) => {
   const theme = useTheme();

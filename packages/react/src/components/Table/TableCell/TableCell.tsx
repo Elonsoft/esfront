@@ -5,7 +5,8 @@ import { TableCellProps } from './TableCell.types';
 import clsx from 'clsx';
 import { getTableCellUtilityClass, tableCellClasses } from './TableCell.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableCellContext } from './TableCell.context';
@@ -175,7 +176,7 @@ const TableCellRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const TableCellContainer = styled('div', {
@@ -233,42 +234,45 @@ const TableCellResize = styled('button', {
     const { ownerState } = props;
     return [styles.resize, ownerState.isResizing && styles.resizeResizing];
   },
-})<{ ownerState: TableCellOwnerState }>({
-  position: 'absolute',
-  right: 0,
-  top: 0,
-  bottom: 0,
-  width: '8px',
-  cursor: 'col-resize',
-  border: 0,
-  padding: 0,
-  margin: 0,
-  background: 'none',
-  outline: 'none',
-  textDecoration: 'none',
-
-  '&::after': {
-    content: '""',
+})<{ ownerState: TableCellOwnerState }>(
+  {
     position: 'absolute',
     right: 0,
-    top: '12px',
-    bottom: '12px',
-    borderRadius: '3px',
-  },
+    top: 0,
+    bottom: 0,
+    width: '8px',
+    cursor: 'col-resize',
+    border: 0,
+    padding: 0,
+    margin: 0,
+    background: 'none',
+    outline: 'none',
+    textDecoration: 'none',
 
-  variants: [
-    {
-      props: {
-        isResizing: true,
-      },
-      style: {
-        '&::after': {
-          display: 'block !important',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      right: 0,
+      top: '12px',
+      bottom: '12px',
+      borderRadius: '3px',
+    },
+  },
+  {
+    variants: [
+      {
+        props: {
+          isResizing: true,
+        },
+        style: {
+          '&::after': {
+            display: 'block !important',
+          },
         },
       },
-    },
-  ],
-});
+    ],
+  }
+);
 
 const RESIZE_STEPS: Record<string, number | undefined> = {
   ArrowLeft: -16,
@@ -290,10 +294,10 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
     colSpan,
     minWidth,
     labelResize,
-    sx,
+
     pin,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESTableCell',
   });
@@ -392,7 +396,6 @@ export const TableCell = memo(function TableCell(inProps: TableCellProps) {
       ownerState={ownerState}
       role={variant === 'head' ? 'columnheader' : 'cell'}
       style={{ '--ESTableCell-colSpan': colSpan } as React.CSSProperties}
-      sx={sx}
       onClick={onClick}
     >
       <TableCellContainer className={classes.container}>

@@ -3,7 +3,8 @@ import { GalleryMetaSeparatorProps } from './GalleryMetaSeparator.types';
 import clsx from 'clsx';
 import { getGalleryMetaSeparatorUtilityClass } from './GalleryMetaSeparator.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type GalleryMetaSeparatorOwnerState = {
@@ -39,7 +40,7 @@ const GalleryMetaSeparatorRoot = styled('div', {
 }));
 
 export const GalleryMetaSeparator = (inProps: GalleryMetaSeparatorProps) => {
-  const { className, sx, ...props } = useThemeProps({
+  const { className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryMetaSeparator',
   });
@@ -47,5 +48,5 @@ export const GalleryMetaSeparator = (inProps: GalleryMetaSeparatorProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return <GalleryMetaSeparatorRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx} />;
+  return <GalleryMetaSeparatorRoot className={clsx(classes.root, className)} ownerState={ownerState} />;
 };

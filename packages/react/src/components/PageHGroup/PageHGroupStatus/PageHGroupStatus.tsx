@@ -3,7 +3,8 @@ import { PageHGroupStatusProps } from './PageHGroupStatus.types';
 import clsx from 'clsx';
 import { getPageHGroupStatusUtilityClass } from './PageHGroupStatus.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupStatusOwnerState = {
@@ -30,7 +31,7 @@ const PageHGroupStatusRoot = styled('div', {
 }));
 
 export const PageHGroupStatus = (inProps: PageHGroupStatusProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESPageHGroupStatus',
   });
@@ -38,9 +39,5 @@ export const PageHGroupStatus = (inProps: PageHGroupStatusProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <PageHGroupStatusRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </PageHGroupStatusRoot>
-  );
+  return <PageHGroupStatusRoot className={clsx(classes.root, className)}>{children}</PageHGroupStatusRoot>;
 };

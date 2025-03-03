@@ -5,10 +5,11 @@ import { PaginationPagesProps } from './PaginationPages.types';
 import clsx from 'clsx';
 import { getPaginationPagesUtilityClass } from './PaginationPages.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { outlinedInputClasses } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useDocumentEventListener, usePagination } from '../../../hooks';
@@ -185,7 +186,7 @@ const REGEX = /^[0-9]*$/;
 export const PaginationPages = memo(function PaginationPages(inProps: PaginationPagesProps) {
   const {
     className,
-    sx,
+
     boundaryCount,
     siblingCount,
     labelPrevPage,
@@ -197,7 +198,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     iconTooltipPrevPage = <IconArrowLeft2W300 />,
     iconTooltipNextPage = <IconArrowRight2W300 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESPaginationPages',
   });
@@ -251,7 +252,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
   });
 
   return (
-    <PaginationPagesRoot className={clsx(classes.root, className)} sx={sx}>
+    <PaginationPagesRoot className={clsx(classes.root, className)}>
       <PaginationPagesPagination className={classes.pagination}>
         {items.map((item) => {
           return (

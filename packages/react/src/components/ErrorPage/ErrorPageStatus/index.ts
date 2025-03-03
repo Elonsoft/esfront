@@ -1,3 +1,4 @@
 export { ErrorPageStatus } from './ErrorPageStatus';
-export { ErrorPageStatusClasses, errorPageStatusClasses, ErrorPageStatusClassKey } from './ErrorPageStatus.classes';
-export { ErrorPageStatusProps } from './ErrorPageStatus.types';
+export type { ErrorPageStatusClasses, ErrorPageStatusClassKey } from './ErrorPageStatus.classes';
+export { errorPageStatusClasses } from './ErrorPageStatus.classes';
+export type { ErrorPageStatusProps } from './ErrorPageStatus.types';

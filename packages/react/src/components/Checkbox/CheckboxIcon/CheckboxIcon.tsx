@@ -5,7 +5,8 @@ import { CheckboxIconProps } from './CheckboxIcon.types';
 import clsx from 'clsx';
 import { getCheckboxIconUtilityClass } from './CheckboxIcon.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type CheckboxIconOwnerState = {
@@ -35,10 +36,10 @@ const CheckboxIconRoot = styled('div', {
 }));
 
 export const CheckboxIcon = (inProps: CheckboxIconProps) => {
-  const { className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESCheckboxIcon' });
+  const { className, ...props } = useDefaultProps({ props: inProps, name: 'ESCheckboxIcon' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return <CheckboxIconRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx} {...props} />;
+  return <CheckboxIconRoot className={clsx(classes.root, className)} ownerState={ownerState} {...props} />;
 };

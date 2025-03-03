@@ -3,7 +3,8 @@ import { PageHGroupHeadingProps } from './PageHGroupHeading.types';
 import clsx from 'clsx';
 import { getPageHGroupHeadingUtilityClass } from './PageHGroupHeading.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../../components/TooltipEllipsis';
@@ -82,12 +83,12 @@ export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
   const {
     className,
     children,
-    sx,
+
     maxLines = 1,
     endAdornment,
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESPageHGroupHeading',
   });

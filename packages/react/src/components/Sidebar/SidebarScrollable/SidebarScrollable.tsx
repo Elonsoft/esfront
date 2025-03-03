@@ -5,7 +5,8 @@ import { SidebarScrollableProps } from './SidebarScrollable.types';
 import clsx from 'clsx';
 import { getSidebarScrollableUtilityClass } from './SidebarScrollable.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
@@ -83,7 +84,7 @@ const SidebarScrollableRoot = styled('div', {
 }));
 
 export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
-  const { className, sx, beforeScroll, afterScroll, children, ...props } = useThemeProps({
+  const { className, beforeScroll, afterScroll, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarScrollable',
   });
@@ -118,7 +119,6 @@ export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
         ref={ref}
         className={clsx(classes.root, className)}
         ownerState={ownerState}
-        sx={sx}
         tabIndex={-1}
         onScroll={onScroll}
       >

@@ -3,10 +3,10 @@ import { SFSChipsProps } from './SFSChips.types';
 import clsx from 'clsx';
 import { getSFSChipsUtilityClass } from './SFSChips.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { Tooltip } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW400 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
@@ -88,7 +88,7 @@ export const SFSChips = (inProps: SFSChipsProps) => {
     onDelete,
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSFSChips',
   });

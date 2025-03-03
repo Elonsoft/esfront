@@ -1,4 +1,6 @@
 export { TableHead } from './TableHead';
-export { TableHeadClasses, tableHeadClasses, TableHeadClassKey } from './TableHead.classes';
-export { TableHeadContext, TableHeadContextValue, useTableHeadContext } from './TableHead.context';
-export { TableHeadProps } from './TableHead.types';
+export type { TableHeadClasses, TableHeadClassKey } from './TableHead.classes';
+export { tableHeadClasses } from './TableHead.classes';
+export type { TableHeadContextValue } from './TableHead.context';
+export { TableHeadContext, useTableHeadContext } from './TableHead.context';
+export type { TableHeadProps } from './TableHead.types';

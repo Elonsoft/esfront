@@ -5,7 +5,8 @@ import { TableHeadProps } from './TableHead.types';
 import clsx from 'clsx';
 import { getTableHeadUtilityClass } from './TableHead.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableHeadContext } from './TableHead.context';
@@ -89,7 +90,7 @@ const TableHeadContainer = styled('div', {
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
 
 export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
-  const { children, className, sticky, sx, ...props } = useThemeProps({
+  const { children, className, sticky, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESTableHead',
   });
@@ -117,7 +118,6 @@ export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
         ownerState={ownerState}
         role="rowgroup"
         style={sticky === undefined ? undefined : ({ '--ESTableHead-top': `${sticky || 0}px` } as React.CSSProperties)}
-        sx={sx}
       >
         <TableHeadContainer className={classes.container}>{children}</TableHeadContainer>
       </TableHeadRoot>

@@ -5,11 +5,12 @@ import { SFSFiltersProps } from './SFSFilters.types';
 import clsx from 'clsx';
 import { getSFSFiltersUtilityClass } from './SFSFilters.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { backdropClasses } from '@mui/material/Backdrop';
 import Drawer from '@mui/material/Drawer';
 import { paperClasses } from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600, IconFilter } from '../../../icons';
@@ -129,7 +130,6 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
     button,
 
     className,
-    sx,
 
     count,
     onReset,
@@ -145,7 +145,7 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
     FooterProps,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSFSFilters',
   });
@@ -164,7 +164,7 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <SFSFiltersRoot className={clsx(className, classes.root)} color="tertiary" sx={sx} {...props}>
+    <SFSFiltersRoot className={clsx(className, classes.root)} color="tertiary" {...props}>
       {button ? (
         button({ open: isOpen, setOpen })
       ) : (

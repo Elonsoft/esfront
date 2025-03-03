@@ -1,5 +1,6 @@
 export { Pagination } from './Pagination';
-export { PaginationClasses, paginationClasses, PaginationClassKey } from './Pagination.classes';
-export { PaginationProps } from './Pagination.types';
+export type { PaginationClasses, PaginationClassKey } from './Pagination.classes';
+export { paginationClasses } from './Pagination.classes';
+export type { PaginationProps } from './Pagination.types';
 export * from './PaginationPages';
 export * from './PaginationRange';

@@ -3,7 +3,8 @@ import { TabBarProps } from './TabBar.types';
 import clsx from 'clsx';
 import { getTabBarUtilityClass } from './TabBar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type TabBarOwnerState = {
@@ -36,7 +37,7 @@ const TabBarRoot = styled('div', {
  * TabBar allows movement between primary destinations in an app.
  */
 export const TabBar = (inProps: TabBarProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESTabBar',
   });
@@ -44,9 +45,5 @@ export const TabBar = (inProps: TabBarProps) => {
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);
 
-  return (
-    <TabBarRoot className={clsx(classes.root, className)} sx={sx}>
-      {children}
-    </TabBarRoot>
-  );
+  return <TabBarRoot className={clsx(classes.root, className)}>{children}</TabBarRoot>;
 };

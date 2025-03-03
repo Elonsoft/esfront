@@ -3,8 +3,9 @@ import { ErrorPageFooterProps } from './ErrorPageFooter.types';
 import clsx from 'clsx';
 import { getErrorPageFooterUtilityClass } from './ErrorPageFooter.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageFooterOwnerState = {
@@ -33,7 +34,7 @@ export const ErrorPageFooterRoot = styled(Typography, {
 }));
 
 export const ErrorPageFooter = (inProps: ErrorPageFooterProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESErrorPageFooter',
   });
@@ -42,7 +43,7 @@ export const ErrorPageFooter = (inProps: ErrorPageFooterProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <ErrorPageFooterRoot className={clsx(classes.root, className)} sx={sx} variant="body100">
+    <ErrorPageFooterRoot className={clsx(classes.root, className)} variant="body100">
       {children}
     </ErrorPageFooterRoot>
   );

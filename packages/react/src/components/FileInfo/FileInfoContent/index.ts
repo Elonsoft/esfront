@@ -1,3 +1,4 @@
 export { FileInfoContent } from './FileInfoContent';
-export { FileInfoContentClasses, fileInfoContentClasses, FileInfoContentClassKey } from './FileInfoContent.classes';
-export { FileInfoContentProps } from './FileInfoContent.types';
+export type { FileInfoContentClasses, FileInfoContentClassKey } from './FileInfoContent.classes';
+export { fileInfoContentClasses } from './FileInfoContent.classes';
+export type { FileInfoContentProps } from './FileInfoContent.types';

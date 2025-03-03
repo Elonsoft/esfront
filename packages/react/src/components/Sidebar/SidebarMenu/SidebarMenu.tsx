@@ -5,7 +5,8 @@ import { SidebarMenuProps } from './SidebarMenu.types';
 import clsx from 'clsx';
 import { getSidebarMenuUtilityClass } from './SidebarMenu.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidebarMenuContext } from './SidebarMenu.context';
@@ -44,9 +45,9 @@ export const SidebarMenu = (inProps: SidebarMenuProps) => {
     children,
     behaviour = 'click',
     exclusive = false,
-    sx,
+
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarMenu',
   });
@@ -74,7 +75,7 @@ export const SidebarMenu = (inProps: SidebarMenuProps) => {
 
   return (
     <SidebarMenuContext.Provider value={value}>
-      <SidebarMenuRoot className={clsx(className, classes.root)} sx={sx} {...props}>
+      <SidebarMenuRoot className={clsx(className, classes.root)} {...props}>
         {children}
       </SidebarMenuRoot>
     </SidebarMenuContext.Provider>

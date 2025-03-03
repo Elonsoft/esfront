@@ -1,3 +1,4 @@
 export { Tag } from './Tag';
-export { TagClasses, tagClasses, TagClassKey } from './Tag.classes';
-export { TagProps, TagTypeMap } from './Tag.types';
+export type { TagClasses, TagClassKey } from './Tag.classes';
+export { tagClasses } from './Tag.classes';
+export type { TagProps, TagTypeMap } from './Tag.types';

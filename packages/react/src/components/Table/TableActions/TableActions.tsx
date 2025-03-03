@@ -5,9 +5,10 @@ import { TableActionsProps } from './TableActions.types';
 import clsx from 'clsx';
 import { getTableActionsUtilityClass } from './TableActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { dividerClasses } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonClasses } from '../../Button';
@@ -74,7 +75,7 @@ const TableActionsChildren = styled('div', {
  * This component displays actions for the selected table rows.
  */
 export const TableActions = memo(function TableActions(inProps: TableActionsProps) {
-  const { className, sx, label, count, children, ...props } = useThemeProps({
+  const { className, label, count, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESTableActions',
   });
@@ -83,7 +84,7 @@ export const TableActions = memo(function TableActions(inProps: TableActionsProp
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableActionsRoot className={clsx(classes.root, className)} sx={sx}>
+    <TableActionsRoot className={clsx(classes.root, className)}>
       <TableActionsText className={classes.text} variant="body200">
         {label} {count}
       </TableActionsText>

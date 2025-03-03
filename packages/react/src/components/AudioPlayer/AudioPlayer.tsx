@@ -5,12 +5,13 @@ import { AudioPlayerProps } from './AudioPlayer.types';
 import clsx from 'clsx';
 import { getAudioPlayerUtilityClass } from './AudioPlayer.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useAudioPlayerContext } from './AudioPlayer.context';
@@ -479,7 +480,7 @@ const AudioPlayerTimeValue = ({ time }: { time: number }) => {
 export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const {
     className,
-    sx,
+
     src,
     rates = DEFAULT_RATES,
     step = 10,
@@ -536,7 +537,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAudioPlayer',
   });
@@ -1069,7 +1070,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <AudioPlayerRoot className={clsx(classes.root, className)} sx={sx}>
+    <AudioPlayerRoot className={clsx(classes.root, className)}>
       <AudioPlayerIconButton aria-label={isPlaying ? labelPause : labelPlay} size="400" onClick={onTogglePlay}>
         {isPlaying ? iconPause : iconPlay}
       </AudioPlayerIconButton>

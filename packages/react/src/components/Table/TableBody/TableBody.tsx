@@ -5,7 +5,8 @@ import { TableBodyProps } from './TableBody.types';
 import clsx from 'clsx';
 import { getTableBodyUtilityClass } from './TableBody.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableBodyContext } from './TableBody.context';
@@ -64,7 +65,7 @@ const TableBodyContainer = styled('div', {
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
 export const TableBody = memo(function TableBody(inProps: TableBodyProps) {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESTableBody',
   });
@@ -76,7 +77,7 @@ export const TableBody = memo(function TableBody(inProps: TableBodyProps) {
 
   return (
     <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
-      <TableBodyRoot ref={setRef} className={clsx(classes.root, className)} role="rowgroup" sx={sx}>
+      <TableBodyRoot ref={setRef} className={clsx(classes.root, className)} role="rowgroup">
         <TableBodyContainer className={classes.container}>{children}</TableBodyContainer>
       </TableBodyRoot>
     </TableCellContext.Provider>

@@ -1,3 +1,4 @@
 export { FileIconBadge } from './FileIconBadge';
-export { FileIconBadgeClasses, fileIconBadgeClasses, FileIconBadgeClassKey } from './FileIconBadge.classes';
-export { FileIconBadgeProps } from './FileIconBadge.types';
+export type { FileIconBadgeClasses, FileIconBadgeClassKey } from './FileIconBadge.classes';
+export { fileIconBadgeClasses } from './FileIconBadge.classes';
+export type { FileIconBadgeProps } from './FileIconBadge.types';
