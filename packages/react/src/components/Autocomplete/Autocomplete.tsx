@@ -255,7 +255,8 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
       onMenuOpen();
     }
 
-    if (['Escape', 'Tab'].indexOf(event.key) !== -1) {
+    if (['Escape', 'Tab'].indexOf(event.key) !== -1 && open) {
+      event.stopPropagation();
       setOpen(false);
       onClose?.();
     }
