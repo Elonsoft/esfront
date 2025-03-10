@@ -2,9 +2,9 @@ import {
   ForwardedRef,
   forwardRef,
   Fragment,
+  KeyboardEvent,
   ReactNode,
   useCallback,
-  useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -30,7 +30,7 @@ import Popper from '@mui/material/Popper';
 import TextField from '@mui/material/TextField';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
-import { useIntersectionObserver, useLatest, useScrollLock } from '../../hooks';
+import { useIntersectionObserver, useScrollLock } from '../../hooks';
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
@@ -308,8 +308,6 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     [trapFocusEnabled]
   );
 
-  const onCloseLatest = useLatest(onClose);
-
   useScrollLock(!disableScrollLock && open, container);
 
   const valueArray = useMemo(
@@ -330,20 +328,6 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     }
   });
 
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && onCloseLatest.current) {
-        onCloseLatest.current(e, 'escapeKeyDown');
-      }
-    };
-
-    if (open && onClose && !disableEscapeKeyDown) {
-      document.addEventListener('keydown', onKeyDown);
-    }
-
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [open, disableEscapeKeyDown]);
-
   const onMenuItemClick = useCallback(
     (option: any) => () => {
       if (props.onChange) {
@@ -362,6 +346,13 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     },
     [props.multiple, props.value, props.onChange]
   );
+
+  const onMenuKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape' && open && !disableEscapeKeyDown) {
+      e.stopPropagation();
+      onClose?.(e, 'escapeKeyDown');
+    }
+  };
 
   const onEnter = useCallback(() => {
     if (menuListRef.current && !disableAutoScrollToSelected) {
@@ -453,6 +444,10 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
             ]),
         ...(PopperProps?.modifiers || []),
       ]}
+      onKeyDown={(e) => {
+        onMenuKeyDown(e);
+        PopperProps?.onKeyDown?.(e);
+      }}
     >
       {({ TransitionProps }) => (
         <Grow
