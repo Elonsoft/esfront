@@ -151,8 +151,8 @@ const AutocompleteMenuCheckbox = styled(Checkbox, {
   slot: 'Checkbox',
   overridesResolver: (_props, styles) => styles.checkbox,
 })(() => ({
-  marginLeft: '-9px',
-  marginRight: '3px',
+  marginLeft: '-8px',
+  marginRight: '4px',
 }));
 
 const AutocompleteMenuEmptyState = styled('div', {
