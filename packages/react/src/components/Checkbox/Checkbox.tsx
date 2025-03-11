@@ -107,41 +107,42 @@ const CheckboxRoot = styled(SwitchBase, {
     },
   },
   [`&.${checkboxClasses.sizeLarge}`]: {
+    padding: '8px',
+
     [`& .${checkboxIconClasses.root}`]: {
       borderRadius: '6px',
-      height: '22px',
-      width: '22px',
-    },
-    '& svg': {
-      fontSize: '24px',
-      height: '24px !important',
-      width: '24px !important',
+      height: '24px',
+      width: '24px',
+
+      '& svg': {
+        margin: '1px',
+      },
     },
   },
   [`&.${checkboxClasses.sizeMedium}`]: {
+    padding: '8px',
+
     [`& .${checkboxIconClasses.root}`]: {
       borderRadius: '4px',
-      height: '18px',
-      width: '18px',
-    },
-    '& svg': {
-      borderRadius: '4px',
-      fontSize: '20px',
-      height: '20px !important',
-      width: '20px !important',
+      height: '20px',
+      width: '20px',
+
+      '& svg': {
+        margin: '1px',
+      },
     },
   },
   [`&.${checkboxClasses.sizeSmall}`]: {
+    padding: '10px',
+
     [`& .${checkboxIconClasses.root}`]: {
       borderRadius: '4px',
-      height: '14px',
-      width: '14px',
-    },
-    '& svg': {
-      borderRadius: '4px',
-      fontSize: '16px',
-      height: '16px !important',
-      width: '16px !important',
+      height: '16px',
+      width: '16px',
+
+      '& svg': {
+        margin: '1px',
+      },
     },
   },
 

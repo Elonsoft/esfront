@@ -86,6 +86,8 @@ const RadioRoot = styled(SwitchBase, {
   },
 
   [`&.${radioClasses.sizeLarge}`]: {
+    padding: '8px',
+
     [`& .${radioIconClasses.root}`]: {
       height: '24px',
       width: '24px',
@@ -94,13 +96,10 @@ const RadioRoot = styled(SwitchBase, {
       height: '7px',
       width: '7px',
     },
-    '& svg': {
-      fontSize: '24px',
-      height: '24px !important',
-      width: '24px !important',
-    },
   },
   [`&.${radioClasses.sizeMedium}`]: {
+    padding: '8px',
+
     [`& .${radioIconClasses.root}`]: {
       height: '20px',
       width: '20px',
@@ -109,13 +108,10 @@ const RadioRoot = styled(SwitchBase, {
       height: '6px',
       width: '6px',
     },
-    '& svg': {
-      fontSize: '20px',
-      height: '20px !important',
-      width: '20px !important',
-    },
   },
   [`&.${radioClasses.sizeSmall}`]: {
+    padding: '10px',
+
     [`& .${radioIconClasses.root}`]: {
       height: '16px',
       width: '16px',
@@ -123,11 +119,6 @@ const RadioRoot = styled(SwitchBase, {
     [`& .${radioIconClasses.circle}`]: {
       height: '5px',
       width: '5px',
-    },
-    '& svg': {
-      fontSize: '16px',
-      height: '16px !important',
-      width: '16px !important',
     },
   },
 
