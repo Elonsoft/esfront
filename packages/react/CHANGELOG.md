@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.14](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.13...@esfront/react@0.11.14) (2025-03-12)
+
+
+### Features
+
+* **AudioPlayer:** remove dynamic styles ([04e3f18](https://github.com/Elonsoft/esfront/commit/04e3f1878a45fda9d1422b49b923314208b28598))
+* **AutocompleteMenu:** add auto scroll to selected menu item ([e50900a](https://github.com/Elonsoft/esfront/commit/e50900a53b9a5db96db842800eb245190979c987))
+* **Autocomplete:** remove dynamic styles ([b200f8b](https://github.com/Elonsoft/esfront/commit/b200f8baa665e45b6ffe74bcf191913a89e77256))
+* **BottomSheet:** remove dynamic styles ([9ecb18b](https://github.com/Elonsoft/esfront/commit/9ecb18b2aea86c692a01a44a07aac2ccc1aa5eb1))
+* **Breadcrumbs:** remove dynamic styles ([f764c08](https://github.com/Elonsoft/esfront/commit/f764c0809ec459c47a0887ce60f63a0cddfb4b32))
+* **Dialog:** remove dynamic styles ([8549bac](https://github.com/Elonsoft/esfront/commit/8549bacf7d0ec8930e5b6ce00a16897c7f22f370))
+* **Divider:** remove dynamic styles ([6d5135e](https://github.com/Elonsoft/esfront/commit/6d5135ed91ef15fe8030f9bde9ce7f02953e2670))
+* **Dropzone:** remove dynamic styles ([2cab118](https://github.com/Elonsoft/esfront/commit/2cab1187c175b6c6a5b4ae1ea406321b77107a20))
+* **EmptyState:** remove dynamic styles ([fbbe32c](https://github.com/Elonsoft/esfront/commit/fbbe32c6d4cb6de3c7135e7bbb6022c5161ab80e))
+* **FileIconBadge:** remove dynamic styles ([e298b67](https://github.com/Elonsoft/esfront/commit/e298b67769a92516bad295f5f9a9a5ec55bc13ec))
+* **Gallery:** remove dynamic styles ([7723e34](https://github.com/Elonsoft/esfront/commit/7723e3430a6eaad83fcf7d4d2b69d0ef896a2348))
+* **Kbd:** remove dynamic styles ([515db82](https://github.com/Elonsoft/esfront/commit/515db8209613de1ce57db851b4377ed51682b4ad))
+* **LinearProgress:** remove dynamic styles ([44db3e5](https://github.com/Elonsoft/esfront/commit/44db3e53529a45083bdf062149b1464394322dee))
+* **Link:** remove dynamic styles ([1c438ee](https://github.com/Elonsoft/esfront/commit/1c438ee4d47427efb6af30002eef6f272fd063db))
+* **MenuGroup:** add new component ([5ff617b](https://github.com/Elonsoft/esfront/commit/5ff617b0f565f7cc01bf752b9aa3024e6ce9f76e))
+* **PageHGroupHeading:** remove dynamic styles ([7861fa3](https://github.com/Elonsoft/esfront/commit/7861fa366af22e06092b2515a61f8cbd0e04c81a))
+* **PaginationPages:** remove dynamic styles ([b9c1231](https://github.com/Elonsoft/esfront/commit/b9c1231707af54fba6b71ca450032a39b951ccc6))
+* **SFSChips:** add new component ([12dd86d](https://github.com/Elonsoft/esfront/commit/12dd86db5c347da4078375c6aa4195f1a4b4e824))
+* **Sidebar:** remove dynamic styles ([5573374](https://github.com/Elonsoft/esfront/commit/557337454665b76bb030867c6c79480c32396d9a))
+* **Sidenav:** remove dynamic styles ([352a9f1](https://github.com/Elonsoft/esfront/commit/352a9f11afc27c6bb89497ce687e5e0eb5d8fabd))
+* **SortingMenu:** add ellipsis for menu item text ([d8082f6](https://github.com/Elonsoft/esfront/commit/d8082f6e5667508903ea5eadf5332c4b7e25a6cb))
+* **Spinner:** remove dynamic styles ([1964576](https://github.com/Elonsoft/esfront/commit/196457617c2ae44da07e087aa300beec067e38ac))
+* **Swiper:** remove dynamic styles ([751254a](https://github.com/Elonsoft/esfront/commit/751254af619c34aa60c320e787045ca722352298))
+* **TableCell:** add text-align ([29348e9](https://github.com/Elonsoft/esfront/commit/29348e9d0fae0949bfa11943eb5f1072dd608542))
+* **Table:** remove dynamic styles ([caa69f3](https://github.com/Elonsoft/esfront/commit/caa69f3e081001c9b0088f123163d53cca6c5e24))
+* **Tabs:** add new component ([b8f3ceb](https://github.com/Elonsoft/esfront/commit/b8f3cebb5308cb0db13b258a09547ed9194aa163))
+* **Tooltip:** add new component ([f7ef8b1](https://github.com/Elonsoft/esfront/commit/f7ef8b15e7217d1ffd677ac09277101e77f29e85))
+* **useScrollDirection:** add new hook ([6f6064e](https://github.com/Elonsoft/esfront/commit/6f6064ebfb66d4be2c6e9dfd18127f53bf7e8b5e))
+
+
+### Bug Fixes
+
+* **AppBar:** add ownerState to root element ([56ca66c](https://github.com/Elonsoft/esfront/commit/56ca66c2db4d3bb7765879a67f89524aa24dac34))
+
+
+
 ## [0.11.13](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.12...@esfront/react@0.11.13) (2025-01-23)
 
 
