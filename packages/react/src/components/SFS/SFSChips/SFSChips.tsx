@@ -6,13 +6,13 @@ import { getSFSChipsUtilityClass } from './SFSChips.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { Tooltip } from '@mui/material';
 
 import { IconCloseW400 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
 import { chipClasses } from '../../Chip';
 import { chipsClasses } from '../../Chips';
+import { Tooltip } from '../../Tooltip';
 
 type SFSChipsOwnerState = {
   classes?: SFSChipsProps['classes'];
@@ -100,7 +100,7 @@ export const SFSChips = (inProps: SFSChipsProps) => {
     <SFSChipsRoot className={clsx(classes.root, className)} sx={sx}>
       {children}
       {!!onDelete && (
-        <Tooltip placement="left" title={labelDelete} {...TooltipProps}>
+        <Tooltip distance={2} placement="left" title={labelDelete} {...TooltipProps}>
           <SFSChipsButton
             rounded
             aria-label={labelDelete}

@@ -8,11 +8,11 @@ import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { IconChevronLeftW300 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { svgIconClasses } from '../../SvgIcon';
+import { Tooltip, TooltipProps } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';
 import { SidebarDivider } from '../SidebarDivider';
 
@@ -50,14 +50,7 @@ const SidebarToggleTooltip = styled(
     slot: 'Tooltip',
     overridesResolver: (props, styles) => styles.tooltip,
   }
-)(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    ...theme.typography.caption,
-  },
-  [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
-    marginLeft: '9px !important',
-  },
-}));
+)(() => ({}));
 
 const SidebarToggleButton = styled(Button, {
   name: 'ESSidebarToggle',

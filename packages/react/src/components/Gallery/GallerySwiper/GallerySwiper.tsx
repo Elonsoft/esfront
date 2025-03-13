@@ -132,12 +132,7 @@ const GallerySwiperButtonPrev = ({ icon, label }: { icon: ReactNode; label?: str
   };
 
   return (
-    <GalleryTooltip
-      arrow
-      placement="right"
-      sx={{ '&[data-popper-placement*="right"] .MuiTooltip-tooltip': { marginLeft: '6px !important' } }}
-      title={label || ''}
-    >
+    <GalleryTooltip color="whiteA600" distance={0} placement="right" title={label || ''}>
       <GallerySwiperButton ownerState={{ prev: true }} onClick={onClick} onPointerDown={onPointerDown}>
         <Button aria-label={label}>{icon}</Button>
       </GallerySwiperButton>
@@ -157,12 +152,7 @@ const GallerySwiperButtonNext = ({ icon, label }: { icon: ReactNode; label?: str
   };
 
   return (
-    <GalleryTooltip
-      arrow
-      placement="left"
-      sx={{ '&[data-popper-placement*="left"] .MuiTooltip-tooltip': { marginRight: '6px !important' } }}
-      title={label || ''}
-    >
+    <GalleryTooltip distance={0} placement="left" title={label || ''}>
       <GallerySwiperButton ownerState={{ next: true }} onClick={onClick} onPointerDown={onPointerDown}>
         <Button aria-label={label}>{icon}</Button>
       </GallerySwiperButton>

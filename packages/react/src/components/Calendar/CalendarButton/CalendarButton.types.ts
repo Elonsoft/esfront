@@ -3,7 +3,8 @@ import { ReactNode } from 'react';
 import { CalendarButtonClasses } from './CalendarButton.classes';
 
 import { SxProps, Theme } from '@mui/material';
-import { TooltipProps } from '@mui/material/Tooltip';
+
+import { TooltipProps } from '../../Tooltip';
 
 export interface CalendarButtonProps {
   children?: ReactNode;

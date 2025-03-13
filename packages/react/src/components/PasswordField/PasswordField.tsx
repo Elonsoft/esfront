@@ -12,11 +12,11 @@ import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornm
 import { inputBaseClasses } from '@mui/material/InputBase';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
-import Tooltip from '@mui/material/Tooltip';
 
 import { useControlled } from '../../hooks';
 import { IconEye, IconEyeOff } from '../../icons';
 import { Button, buttonClasses } from '../Button';
+import { Tooltip } from '../Tooltip';
 
 type PasswordFieldOwnerState = {
   classes?: PasswordFieldProps['classes'];
