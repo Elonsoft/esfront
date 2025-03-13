@@ -10,7 +10,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { outlinedInputClasses } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { useDocumentEventListener, usePagination } from '../../../hooks';
 import {
@@ -22,6 +21,7 @@ import {
 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { ButtonBase, buttonBaseClasses, buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
+import { Tooltip, tooltipClasses, TooltipProps } from '../../Tooltip';
 import { usePaginationContext } from '../Pagination.context';
 
 type PaginationPagesOwnerState = {

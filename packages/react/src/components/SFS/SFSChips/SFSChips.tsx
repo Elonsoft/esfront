@@ -6,13 +6,13 @@ import { getSFSChipsUtilityClass } from './SFSChips.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { Tooltip } from '@mui/material';
 
 import { IconCloseW400 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
 import { chipClasses } from '../../Chip';
 import { chipsClasses } from '../../Chips';
+import { Tooltip } from '../../Tooltip';
 
 type SFSChipsOwnerState = {
   classes?: SFSChipsProps['classes'];

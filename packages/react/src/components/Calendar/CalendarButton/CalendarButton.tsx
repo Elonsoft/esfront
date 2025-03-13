@@ -6,10 +6,10 @@ import { calendarButtonClasses, getCalendarButtonUtilityClass } from './Calendar
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import { capitalize } from '@mui/material/utils';
 
 import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';
+import { Tooltip, TooltipProps } from '../../Tooltip';
 
 type CalendarButtonOwnerState = {
   classes?: CalendarButtonProps['classes'];
@@ -246,11 +246,7 @@ const CalendarButtonTooltip = styled(
     slot: 'Tooltip',
     overridesResolver: (_props, styles) => styles.tooltip,
   }
-)(() => ({
-  [`&[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]: {
-    marginBottom: '12px !important',
-  },
-}));
+)(() => ({}));
 
 export const CalendarButton = (inProps: CalendarButtonProps) => {
   const {
@@ -288,7 +284,6 @@ export const CalendarButton = (inProps: CalendarButtonProps) => {
         <CalendarButtonTooltip
           disableInteractive
           className={clsx(classes.tooltip)}
-          placement="top"
           {...TooltipProps}
           TransitionProps={{ timeout: 0, ...TooltipProps?.TransitionProps }}
           title={TooltipProps?.title || ''}
