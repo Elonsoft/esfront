@@ -2,9 +2,8 @@ import { useRef, useState } from 'react';
 
 import { TooltipEllipsisProps } from './TooltipEllipsis.types';
 
-import Tooltip from '@mui/material/Tooltip';
-
 import { useResizeObserver } from '../../hooks';
+import { Tooltip } from '../Tooltip';
 
 export const TooltipEllipsis = ({ children, ...props }: TooltipEllipsisProps) => {
   const [overflow, setOverflow] = useState(false);

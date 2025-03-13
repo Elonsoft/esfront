@@ -2,9 +2,8 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import { Box, useTheme } from '@mui/material';
-
-import { Tooltip } from '.';
+// eslint-disable-next-line no-restricted-imports
+import { Box, Tooltip, useTheme } from '@mui/material';
 
 import { Button } from '../Button';
 
@@ -31,11 +30,6 @@ const meta: Meta<Args> = {
       },
     },
     children: {
-      table: {
-        disable: true,
-      },
-    },
-    arrowIconMapping: {
       table: {
         disable: true,
       },
@@ -110,7 +104,7 @@ export const Demo: Story = {
       >
         <Tooltip {...args} title={args.title || getTooltipText(context)}>
           <Button color="primary" variant="contained">
-            {getButtonText(context)}
+            {getButtonText(context)} 123
           </Button>
         </Tooltip>
       </Box>
