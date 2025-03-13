@@ -11,7 +11,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { paperClasses } from '@mui/material';
 import Menu, { menuClasses } from '@mui/material/Menu';
-import { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
@@ -98,14 +97,7 @@ const BreadcrumbsTooltip = styled(
     slot: 'Tooltip',
     overridesResolver: (props, styles) => styles.tooltip,
   }
-)(() => ({
-  [`&[data-popper-placement*="left"] .${tooltipClasses.tooltip}`]: {
-    marginLeft: '10px !important',
-  },
-  [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
-    marginRight: '10px !important',
-  },
-}));
+)(() => ({}));
 
 const BreadcrumbsMenuItem = styled(MenuItem, {
   name: 'ESBreadcrumbs',

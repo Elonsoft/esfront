@@ -3,7 +3,8 @@ import { Ref } from 'react';
 import { AudioPlayerClasses } from './AudioPlayer.classes';
 
 import { SxProps, Theme } from '@mui/material';
-import { TooltipProps } from '@mui/material/Tooltip';
+
+import { TooltipProps } from '../Tooltip';
 
 export interface AudioPlayerProps {
   /** Override or extend the styles applied to the component. */

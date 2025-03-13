@@ -12,7 +12,6 @@ import { useMediaQuery } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import MenuList from '@mui/material/MenuList';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 
 import { useResizeObserver } from '../../../hooks';
@@ -30,6 +29,7 @@ import {
 } from '../../ListItem';
 import { MenuItem, menuItemClasses } from '../../MenuItem';
 import { svgIconClasses } from '../../SvgIcon';
+import { Tooltip, tooltipClasses, TooltipProps } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';
 import { useSidebarMenuContext } from '../SidebarMenu/SidebarMenu.context';
 
@@ -282,7 +282,6 @@ const SidebarItemTooltip = styled(
     maxWidth: '288px',
     background: theme.vars.palette.surface[400],
     boxShadow: theme.vars.palette.shadow.down[600],
-    marginLeft: '10px !important',
     color: theme.vars.palette.monoA.A900,
     borderRadius: '4px',
 

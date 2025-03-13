@@ -90,7 +90,7 @@ export const GalleryMeta = (inProps: GalleryMetaProps) => {
 
   return (
     <GalleryMetaRoot className={clsx(classes.root, className)} sx={sx}>
-      <GalleryTooltip arrow title={labelClose || ''}>
+      <GalleryTooltip arrow color="whiteA600" distance={8} title={labelClose || ''}>
         <GalleryMetaButtonClose aria-label={labelClose} className={classes.buttonClose} size="500" onClick={onClose}>
           {iconClose}
         </GalleryMetaButtonClose>
