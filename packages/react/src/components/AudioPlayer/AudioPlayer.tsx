@@ -10,7 +10,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
@@ -34,6 +33,7 @@ import { Button } from '../Button';
 import { Divider, dividerClasses } from '../Divider';
 import { ListItemIcon, ListItemText, listItemTextClasses } from '../ListItem';
 import { MenuItem } from '../MenuItem';
+import { Tooltip, tooltipClasses, TooltipProps } from '../Tooltip';
 
 import { Instance } from '@popperjs/core';
 
@@ -136,17 +136,7 @@ const AudioPlayerCurrentTooltip = styled(
     },
   }
 )<{ ownerState: AudioPlayerOwnerState }>(({ theme }) => ({
-  pointerEvents: 'none',
-
-  [`&[data-popper-placement*="top"] .${tooltipClasses.arrow}`]: {
-    height: 7.8,
-    marginBottom: '-8px',
-  },
-
   [`& .${tooltipClasses.tooltip}`]: {
-    ...theme.typography.caption,
-    color: theme.vars.palette.monoB[500],
-
     '&::after': {
       content: '""',
       display: 'block',
@@ -159,7 +149,6 @@ const AudioPlayerCurrentTooltip = styled(
       top: 'calc(100% + 12px)',
     },
   },
-
   variants: [
     {
       props: {
@@ -1080,6 +1069,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
       <AudioPlayerCurrent className={classes.current}>
         <AudioPlayerCurrentTooltip
           arrow
+          disableInteractive
           PopperProps={{
             popperRef,
             anchorEl: {
@@ -1089,6 +1079,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
             },
           }}
           className={classes.currentTooltip}
+          distance={8}
           open={isFocused || isOverRail}
           ownerState={ownerState}
           placement="top"
@@ -1117,8 +1108,10 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
         arrow
         disableFocusListener
         disableTouchListener
+        arrowSize="8"
         className={classes.tooltip}
-        placement="top"
+        distance={8}
+        followCursor={undefined}
         title={
           <AudioPlayerVolume>
             <AudioPlayerVolumeSlider
@@ -1134,6 +1127,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
           </AudioPlayerVolume>
         }
         {...TooltipProps}
+        placement="top"
       >
         <AudioPlayerVolumeButton
           aria-label={isMuted || volume === 0 ? labelUnmute : labelMute}
@@ -1149,7 +1143,9 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
         disableHoverListener
         disableTouchListener
         TransitionProps={{ onExited: onMenuExited }}
+        arrowSize="8"
         className={classes.menu}
+        distance={8}
         open={isMenuOpen}
         placement="top"
         title={

@@ -92,7 +92,7 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
 
   return (
     <GalleryActionsRoot className={clsx(classes.root, className)} sx={sx}>
-      <GalleryTooltip arrow title={labelThumbnails || ''}>
+      <GalleryTooltip color="whiteA600" distance={8} title={labelThumbnails || ''}>
         <GalleryActionsButtonThumbnails
           aria-label={labelThumbnails}
           className={clsx(classes.buttonThumbnails)}
@@ -103,7 +103,7 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
         </GalleryActionsButtonThumbnails>
       </GalleryTooltip>
       {children}
-      <GalleryTooltip arrow title={labelClose || ''}>
+      <GalleryTooltip color="whiteA600" distance={8} title={labelClose || ''}>
         <GalleryActionsButtonClose
           aria-label={labelClose}
           className={clsx(classes.buttonClose)}

@@ -7,7 +7,6 @@ import { breadcrumbClasses, getBreadcrumbUtilityClass } from './Breadcrumb.class
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { tooltipClasses } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 
@@ -108,14 +107,7 @@ const BreadcrumbTooltip = styled(
     slot: 'Tooltip',
     overridesResolver: (props, styles) => styles.tooltip,
   }
-)(() => ({
-  [`&[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]: {
-    marginBottom: '10px !important',
-  },
-  [`&[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]: {
-    marginBottom: '10px !important',
-  },
-}));
+)(() => ({}));
 
 const BreadcrumbContent = styled(Button, {
   name: 'ESBreadcrumb',
@@ -196,10 +188,8 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
       sx={sx}
     >
       <BreadcrumbTooltip
-        arrow
         disableInteractive
         className={clsx(classes.tooltip)}
-        placement="top"
         title={<Typography variant="caption">{children}</Typography>}
         {...(position ? {} : { disableHoverListener: true, disableFocusListener: true, disableTouchListener: true })}
       >

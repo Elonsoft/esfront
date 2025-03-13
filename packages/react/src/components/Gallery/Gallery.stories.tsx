@@ -150,19 +150,19 @@ export const Demo: Story = {
                 <GalleryActions>
                   {isTablet ? (
                     <GalleryActionsButtonGroup>
-                      <GalleryTooltip arrow title={t('download')}>
+                      <GalleryTooltip color="whiteA600" distance={8} title={t('download')}>
                         <GalleryActionsButton size="500">
                           <IconDownloadW400 />
                         </GalleryActionsButton>
                       </GalleryTooltip>
-                      <GalleryTooltip arrow title={t('share')}>
+                      <GalleryTooltip color="whiteA600" distance={8} title={t('share')}>
                         <GalleryActionsButton size="500">
                           <IconShare />
                         </GalleryActionsButton>
                       </GalleryTooltip>
                     </GalleryActionsButtonGroup>
                   ) : (
-                    <GalleryTooltip arrow title={t('menu')}>
+                    <GalleryTooltip color="whiteA600" distance={8} title={t('menu')}>
                       <GalleryActionsButton size="500">
                         <IconDotsVerticalW500 />
                       </GalleryActionsButton>

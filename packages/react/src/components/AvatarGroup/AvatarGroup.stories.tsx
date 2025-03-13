@@ -1,11 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Tooltip from '@mui/material/Tooltip';
-
 import { AvatarGroup } from '.';
 
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
+import { Tooltip } from '../Tooltip';
 
 const meta: Meta<typeof AvatarGroup> = {
   tags: ['autodocs'],

@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 
 import { TextFieldProps } from '@mui/material';
-import { TooltipProps } from '@mui/material/Tooltip';
+
+import { TooltipProps } from '../Tooltip';
 
 export type PasswordFieldProps = {
   /** If true, the password is visible. */

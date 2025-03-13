@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Tooltip } from '@mui/material';
+// eslint-disable-next-line no-restricted-imports
+import Tooltip from '@mui/material/Tooltip';
 
 import { Button } from '../../../components/Button';
 

@@ -105,6 +105,7 @@ export default tseslint.config(
                 'TablePagination',
                 'TableRow',
                 'TableText',
+                'Tooltip',
               ],
             },
             {
@@ -261,6 +262,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/TableText'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Tooltip'],
               importNames: ['default'],
             },
           ],

@@ -53,6 +53,6 @@ export const DemoBase: Story = {
 
 export const Demo: Story = {
   render: (args, context) => {
-    return <Box sx={{ padding: '25px 0' }}>{DemoBase.render?.(args, context)} </Box>;
+    return <Box sx={{ padding: '30px 0' }}>{DemoBase.render?.(args, context)} </Box>;
   },
 };

@@ -11,11 +11,11 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { TypographyProps } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { buttonBaseClasses } from '../../ButtonBase';
 import { ListItem, listItemClasses, ListItemIcon, listItemIconClasses } from '../../ListItem';
 import { useSidebarContext } from '../../Sidebar/Sidebar.context';
+import { Tooltip, tooltipClasses, TooltipProps } from '../../Tooltip';
 import { useSidenavContext } from '../Sidenav.context';
 
 type SidenavItemOwnerState = {
@@ -107,9 +107,7 @@ const SidenavItemTooltip = styled(
 )(({ theme }) => ({
   [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
     padding: '4px 8px',
-    marginLeft: '1px !important',
     maxWidth: '288px',
-
     ...theme.typography.caption,
   },
   '&[data-popper-reference-hidden]': {
@@ -227,6 +225,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
       disableInteractive
       arrow={!!text}
       className={classes.tooltip}
+      distance={-5}
       enterNextDelay={200}
       leaveDelay={120}
       open={isTooltipOpen}
