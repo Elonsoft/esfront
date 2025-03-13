@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
-import Tooltip from '@mui/material/Tooltip';
 
+import { Tooltip } from '../../components/Tooltip';
 import * as icons from '../../icons';
 
 const IconsDemoRoot = styled('div')(() => ({

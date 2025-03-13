@@ -275,7 +275,11 @@ export const Swiper = (inProps: SwiperProps) => {
         if (children) {
           const start =
             children[mapping.offset] - container.current[mapping.clientSize] / 2 + children[mapping.clientSize] / 2;
-          container.current.scrollTo({ [mapping.start]: start, behavior: options?.smooth ?? true ? 'smooth' : 'auto' });
+
+          container.current.scrollTo({
+            [mapping.start]: start,
+            behavior: options?.smooth ?? true ? 'smooth' : 'auto',
+          });
         }
       }
     },

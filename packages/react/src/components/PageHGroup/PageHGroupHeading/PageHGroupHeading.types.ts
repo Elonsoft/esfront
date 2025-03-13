@@ -2,7 +2,9 @@ import { ReactNode } from 'react';
 
 import { PageHGroupHeadingClasses } from './PageHGroupHeading.classes';
 
-import { SxProps, Theme, TooltipProps } from '@mui/material';
+import { SxProps, Theme } from '@mui/material';
+
+import { TooltipProps } from '../../Tooltip';
 
 export interface PageHGroupHeadingProps {
   children?: ReactNode;
