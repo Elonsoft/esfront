@@ -2,6 +2,7 @@ import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import prettier from 'eslint-plugin-prettier/recommended';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
+import reactCompiler from 'eslint-plugin-react-compiler';
 import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
@@ -14,6 +15,7 @@ export default tseslint.config(
   reactRecommended,
   {
     plugins: {
+      'react-compiler': reactCompiler,
       'react-hooks': reactHooks,
       'simple-import-sort': simpleImportSort,
       '@stylistic': stylistic,
@@ -350,6 +352,7 @@ export default tseslint.config(
         },
       ],
 
+      'react-compiler/react-compiler': 'error',
       'react-hooks/rules-of-hooks': 'error',
 
       'simple-import-sort/imports': 'error',
