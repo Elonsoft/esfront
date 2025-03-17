@@ -11,7 +11,6 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { paperClasses } from '@mui/material';
 import Menu, { menuClasses } from '@mui/material/Menu';
-import { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
@@ -21,6 +20,7 @@ import { useResizeObserver } from '../../hooks';
 import { IconDotsHorizontal2W300 } from '../../icons';
 import { buttonClasses } from '../Button';
 import { MenuItem } from '../MenuItem';
+import { tooltipClasses } from '../Tooltip';
 import { TooltipEllipsis, TooltipEllipsisProps } from '../TooltipEllipsis';
 
 type BreadcrumbsOwnerState = {

@@ -7,7 +7,6 @@ import { breadcrumbClasses, getBreadcrumbUtilityClass } from './Breadcrumb.class
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { tooltipClasses } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 
@@ -15,6 +14,7 @@ import { IconBreadcrumbArrowRight } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
 import { svgIconClasses } from '../../SvgIcon';
+import { tooltipClasses } from '../../Tooltip';
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../TooltipEllipsis';
 
 type BreadcrumbOwnerState = {

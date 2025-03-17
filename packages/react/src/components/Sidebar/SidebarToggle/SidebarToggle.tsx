@@ -8,11 +8,11 @@ import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
 import { IconChevronLeftW300 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { svgIconClasses } from '../../SvgIcon';
+import { Tooltip, tooltipClasses, TooltipProps } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';
 import { SidebarDivider } from '../SidebarDivider';
 
@@ -53,9 +53,6 @@ const SidebarToggleTooltip = styled(
 )(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     ...theme.typography.caption,
-  },
-  [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
-    marginLeft: '9px !important',
   },
 }));
 
@@ -162,6 +159,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
         disableInteractive
         TransitionProps={{ timeout: { enter: theme.transitions.duration.enteringScreen, exit: 0 } }}
         className={clsx(classes.tooltip)}
+        distance={3}
         enterDelay={100}
         enterNextDelay={200}
         open={isTooltipOpen}
