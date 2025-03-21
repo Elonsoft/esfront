@@ -153,7 +153,7 @@ const TooltipPopper = styled(Popper, {
       style: {
         [`&[data-popper-placement*="bottom"]`]: {
           [`& .${tooltipClasses.tooltip}`]: {
-            marginTop: '6px',
+            marginTop: 'calc(6px + var(--ESTooltip-distance))',
           },
 
           [`& .${tooltipClasses.arrow}`]: {
@@ -164,7 +164,7 @@ const TooltipPopper = styled(Popper, {
 
           [`&.${tooltipClasses.arrowSize8}`]: {
             [`& .${tooltipClasses.tooltip}`]: {
-              marginTop: '8px',
+              marginTop: 'calc(8px + var(--ESTooltip-distance))',
             },
 
             [`& .${tooltipClasses.arrow}`]: {
@@ -175,7 +175,7 @@ const TooltipPopper = styled(Popper, {
 
           [`&.${tooltipClasses.arrowSize10}`]: {
             [`& .${tooltipClasses.tooltip}`]: {
-              marginTop: '10px',
+              marginTop: 'calc(10px + var(--ESTooltip-distance))',
             },
 
             [`& .${tooltipClasses.arrow}`]: {
@@ -186,7 +186,7 @@ const TooltipPopper = styled(Popper, {
         },
         [`&[data-popper-placement*="top"]`]: {
           [`& .${tooltipClasses.tooltip}`]: {
-            marginBottom: '6px',
+            marginBottom: 'calc(6px + var(--ESTooltip-distance))',
           },
 
           [`& .${tooltipClasses.arrow}`]: {
@@ -201,7 +201,7 @@ const TooltipPopper = styled(Popper, {
 
           [`&.${tooltipClasses.arrowSize8}`]: {
             [`& .${tooltipClasses.tooltip}`]: {
-              marginBottom: '8px',
+              marginBottom: 'calc(8px + var(--ESTooltip-distance))',
             },
 
             [`& .${tooltipClasses.arrow}`]: {
@@ -212,7 +212,7 @@ const TooltipPopper = styled(Popper, {
 
           [`&.${tooltipClasses.arrowSize10}`]: {
             [`& .${tooltipClasses.tooltip}`]: {
-              marginBottom: '10px',
+              marginBottom: 'calc(10px + var(--ESTooltip-distance))',
             },
 
             [`& .${tooltipClasses.arrow}`]: {
@@ -223,7 +223,7 @@ const TooltipPopper = styled(Popper, {
         },
         [`&[data-popper-placement*="right"]`]: {
           [`& .${tooltipClasses.tooltip}`]: {
-            marginLeft: '6px',
+            marginLeft: 'calc(6px + var(--ESTooltip-distance))',
           },
 
           [`& .${tooltipClasses.arrow}`]: {
@@ -238,7 +238,7 @@ const TooltipPopper = styled(Popper, {
 
           [`&.${tooltipClasses.arrowSize8}`]: {
             [`& .${tooltipClasses.tooltip}`]: {
-              marginLeft: '8px',
+              marginLeft: 'calc(8px + var(--ESTooltip-distance))',
             },
 
             [`& .${tooltipClasses.arrow}`]: {
@@ -249,7 +249,7 @@ const TooltipPopper = styled(Popper, {
 
           [`&.${tooltipClasses.arrowSize10}`]: {
             [`& .${tooltipClasses.tooltip}`]: {
-              marginLeft: '10px',
+              marginLeft: 'calc(10px + var(--ESTooltip-distance))',
             },
 
             [`& .${tooltipClasses.arrow}`]: {
@@ -260,7 +260,7 @@ const TooltipPopper = styled(Popper, {
         },
         [`&[data-popper-placement*="left"]`]: {
           [`& .${tooltipClasses.tooltip}`]: {
-            marginRight: '6px',
+            marginRight: 'calc(6px + var(--ESTooltip-distance))',
           },
 
           [`& .${tooltipClasses.arrow}`]: {
@@ -275,7 +275,7 @@ const TooltipPopper = styled(Popper, {
 
           [`&.${tooltipClasses.arrowSize8}`]: {
             [`& .${tooltipClasses.tooltip}`]: {
-              marginRight: '8px',
+              marginRight: 'calc(8px + var(--ESTooltip-distance))',
             },
 
             [`& .${tooltipClasses.arrow}`]: {
@@ -286,7 +286,7 @@ const TooltipPopper = styled(Popper, {
 
           [`&.${tooltipClasses.arrowSize10}`]: {
             [`& .${tooltipClasses.tooltip}`]: {
-              marginRight: '10px',
+              marginRight: 'calc(10px + var(--ESTooltip-distance))',
             },
 
             [`& .${tooltipClasses.arrow}`]: {
@@ -940,7 +940,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
                   -(reference.width / 2 - arrowHalfWidth - padding - arrowOffsetX),
                   -(reference.width / 2 - popper.width / 2)
                 ),
-                distance,
+                0,
               ];
             }
 
@@ -950,7 +950,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
                   reference.width / 2 - arrowHalfWidth - padding - arrowOffsetX,
                   reference.width / 2 - popper.width / 2
                 ),
-                distance,
+                0,
               ];
             }
 
@@ -960,7 +960,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
                   -(reference.height / 2 - arrowHalfWidth - padding - arrowOffsetY),
                   -(reference.height / 2 - popper.height / 2)
                 ),
-                distance,
+                0,
               ];
             }
 
@@ -970,11 +970,11 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
                   reference.height / 2 - arrowHalfWidth - padding - arrowOffsetY,
                   reference.height / 2 - popper.height / 2
                 ),
-                distance,
+                0,
               ];
             }
 
-            return [0, distance];
+            return [0, 0];
           },
         },
       },
@@ -1015,6 +1015,11 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
       ...PopperProps,
       ...slotProps.popper,
       className: clsx(classes.popper, PopperProps?.className, slotProps.popper?.className),
+      style: {
+        '--ESTooltip-distance': `${distance || 0}px`,
+        ...PopperProps?.style,
+        ...slotProps.popper?.style,
+      } as React.CSSProperties,
     },
     ownerState
   );
