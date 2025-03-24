@@ -7,7 +7,6 @@ import {
   MutableRefObject,
   SyntheticEvent,
   TouchEvent,
-  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -28,13 +27,13 @@ import Fade from '@mui/material/Fade';
 import Popper from '@mui/material/Popper';
 import capitalize from '@mui/utils/capitalize';
 import useControlled from '@mui/utils/useControlled';
-import useEventCallback from '@mui/utils/useEventCallback';
 import useId from '@mui/utils/useId';
 import useIsFocusVisible from '@mui/utils/useIsFocusVisible';
+import useTimeout, { Timeout } from '@mui/utils/useTimeout';
 
 import { IconPolygon, IconPolygon2, IconPolygon3 } from './icons';
 
-import { useForkRef } from '../../hooks';
+import { useEvent, useForkRef } from '../../hooks';
 import { svgIconClasses } from '../SvgIcon';
 
 type TooltipOwnerState = {
@@ -476,16 +475,13 @@ const TooltipArrow = styled('span', {
   ],
 }));
 
-let hysteresisOpen = false;
-let hysteresisTimer: ReturnType<typeof setTimeout>;
+let hystersisOpen = false;
+const hystersisTimer = new Timeout();
 let cursorPosition = { x: 0, y: 0 };
 
 export function testReset() {
-  hysteresisOpen = false;
-
-  if (hysteresisTimer) {
-    clearTimeout(hysteresisTimer);
-  }
+  hystersisOpen = false;
+  hystersisTimer.clear();
 }
 
 function composeEventHandler<T extends MouseEvent | FocusEvent | TouchEvent>(
@@ -553,10 +549,10 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   const disableInteractive = disableInteractiveProp || !!followCursor;
 
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const enterTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const touchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const closeTimer = useTimeout();
+  const enterTimer = useTimeout();
+  const leaveTimer = useTimeout();
+  const touchTimer = useTimeout();
 
   const [openState, setOpenState] = useControlled({
     controlled: openProp,
@@ -596,32 +592,25 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
   const id = useId(idProp);
 
   const prevUserSelect = useRef<string>();
-  const stopTouchInteraction = useCallback(() => {
+
+  const stopTouchInteraction = useEvent(() => {
     if (prevUserSelect.current !== undefined) {
-      document.body.style.userSelect = prevUserSelect.current;
+      (document.body.style as any).WebkitUserSelect = prevUserSelect.current;
       prevUserSelect.current = undefined;
     }
 
-    if (touchTimer.current) {
-      clearTimeout(touchTimer.current);
-    }
-  }, []);
+    touchTimer.clear();
+  });
 
   useEffect(() => {
     return () => {
-      if (closeTimer.current && enterTimer.current && leaveTimer.current) {
-        clearTimeout(closeTimer.current);
-        clearTimeout(enterTimer.current);
-        clearTimeout(leaveTimer.current);
-      }
-
       stopTouchInteraction();
     };
   }, [stopTouchInteraction]);
 
   const handleOpen = (event: MouseEvent | FocusEvent | TouchEvent) => {
-    clearTimeout(hysteresisTimer);
-    hysteresisOpen = true;
+    hystersisTimer.clear();
+    hystersisOpen = true;
 
     // The mouseover event will trigger for every nested element in the tooltip.
     // We can skip rerendering when the tooltip is already open.
@@ -633,12 +622,10 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     }
   };
 
-  const handleClose = useEventCallback((event: MouseEvent | FocusEvent | TouchEvent | KeyboardEvent) => {
-    clearTimeout(hysteresisTimer);
-
-    hysteresisTimer = setTimeout(() => {
-      hysteresisOpen = false;
-    }, 800 + leaveDelay);
+  const handleClose = useEvent((event: MouseEvent | FocusEvent | TouchEvent | KeyboardEvent) => {
+    hystersisTimer.start(800 + leaveDelay, () => {
+      hystersisOpen = false;
+    });
 
     setOpenState(false);
 
@@ -646,16 +633,12 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
       onClose(event);
     }
 
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current);
-    }
-
-    closeTimer.current = setTimeout(() => {
+    closeTimer.start(theme.transitions.duration.shortest, () => {
       ignoreNonTouchEvents.current = false;
-    }, theme.transitions.duration.shortest);
+    });
   });
 
-  const handleEnter = (event: MouseEvent | FocusEvent | TouchEvent) => {
+  const handleMouseOver = (event: MouseEvent | FocusEvent | TouchEvent) => {
     if (ignoreNonTouchEvents.current && event.type !== 'touchstart') {
       return;
     }
@@ -667,32 +650,24 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
       childNode.removeAttribute('title');
     }
 
-    if (enterTimer.current && leaveTimer.current) {
-      clearTimeout(enterTimer.current);
-      clearTimeout(leaveTimer.current);
-    }
+    enterTimer.clear();
+    leaveTimer.clear();
 
-    if (enterDelay || (hysteresisOpen && enterNextDelay)) {
-      enterTimer.current = setTimeout(
-        () => {
-          handleOpen(event);
-        },
-        hysteresisOpen ? enterNextDelay : enterDelay
-      );
+    if (enterDelay || (hystersisOpen && enterNextDelay)) {
+      enterTimer.start(hystersisOpen ? enterNextDelay : enterDelay, () => {
+        handleOpen(event);
+      });
     } else {
       handleOpen(event);
     }
   };
 
-  const handleLeave = (event: MouseEvent | FocusEvent) => {
-    if (enterTimer.current && leaveTimer.current) {
-      clearTimeout(enterTimer.current);
-      clearTimeout(leaveTimer.current);
-    }
+  const handleMouseLeave = (event: MouseEvent | FocusEvent) => {
+    enterTimer.clear();
 
-    leaveTimer.current = setTimeout(() => {
+    leaveTimer.start(leaveDelay, () => {
       handleClose(event);
-    }, leaveDelay);
+    });
   };
 
   const {
@@ -710,11 +685,12 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
     if (isFocusVisibleRef.current === false) {
       setChildIsFocusVisible(false);
-      handleLeave(event);
+      handleMouseLeave(event);
     }
   };
 
   const handleFocus = (event: FocusEvent) => {
+    // Workaround for https://github.com/facebook/react/issues/7769
     // The autoFocus of React might trigger the event before the componentDidMount.
     // We need to account for this eventuality.
     if (!childNode && event.currentTarget instanceof HTMLElement) {
@@ -725,7 +701,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
     if (isFocusVisibleRef.current === true) {
       setChildIsFocusVisible(true);
-      handleEnter(event);
+      handleMouseOver(event);
     }
   };
 
@@ -739,29 +715,20 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     }
   };
 
-  const handleMouseOver = handleEnter;
-  const handleMouseLeave = handleLeave;
-
   const handleTouchStart = (event: TouchEvent) => {
     detectTouchStart(event);
-
-    if (leaveTimer.current && closeTimer.current) {
-      clearTimeout(leaveTimer.current);
-      clearTimeout(closeTimer.current);
-    }
-
+    leaveTimer.clear();
+    closeTimer.clear();
     stopTouchInteraction();
 
-    prevUserSelect.current = document.body.style.userSelect;
+    prevUserSelect.current = (document.body.style as any).WebkitUserSelect;
     // Prevent iOS text selection on long-tap.
-    document.body.style.userSelect = 'none';
+    (document.body.style as any).WebkitUserSelect = 'none';
 
-    touchTimer.current = setTimeout(() => {
-      if (prevUserSelect.current) {
-        document.body.style.userSelect = prevUserSelect.current;
-        handleEnter(event);
-      }
-    }, enterTouchDelay);
+    touchTimer.start(enterTouchDelay, () => {
+      (document.body.style as any).WebkitUserSelect = prevUserSelect.current;
+      handleMouseOver(event);
+    });
   };
 
   const handleTouchEnd = (event: TouchEvent) => {
@@ -771,13 +738,9 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
     stopTouchInteraction();
 
-    if (leaveTimer.current) {
-      clearTimeout(leaveTimer.current);
-    }
-
-    leaveTimer.current = setTimeout(() => {
+    leaveTimer.start(leaveTouchDelay, () => {
       handleClose(event);
-    }, leaveTouchDelay);
+    });
   };
 
   useEffect(() => {

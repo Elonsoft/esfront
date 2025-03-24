@@ -26,6 +26,7 @@
     "geolocation",
     "geometrychange",
     "greyscale",
+    "hystersis",
     "jsnext",
     "kanban",
     "kbd",
