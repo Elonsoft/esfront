@@ -193,7 +193,7 @@ export const Demo: Story = {
                     checked={isSelected}
                     color="secondary"
                     inputProps={{ 'aria-labelledby': labelId }}
-                    onChange={() => toggle(row.id)}
+                    onChange={(event) => toggle(row.id, { event })}
                   />
                 </TableCell>
 
