@@ -4,9 +4,8 @@ import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import { Box, useTheme } from '@mui/material';
 
-import { Tooltip } from '.';
-
 import { Button } from '../Button';
+import { Tooltip } from '../Tooltip';
 
 type Args = ComponentProps<typeof Tooltip>;
 
@@ -31,11 +30,6 @@ const meta: Meta<Args> = {
       },
     },
     children: {
-      table: {
-        disable: true,
-      },
-    },
-    arrowIconMapping: {
       table: {
         disable: true,
       },
@@ -110,7 +104,7 @@ export const Demo: Story = {
       >
         <Tooltip {...args} title={args.title || getTooltipText(context)}>
           <Button color="primary" variant="contained">
-            {getButtonText(context)}
+            {getButtonText(context)} 123
           </Button>
         </Tooltip>
       </Box>

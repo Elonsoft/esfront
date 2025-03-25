@@ -3,7 +3,6 @@ import { ComponentProps, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import TextField from '@mui/material/TextField';
-import Tooltip from '@mui/material/Tooltip';
 
 import { SFS, SFSChips, SFSFilters, SFSFiltersGroup, SFSRow, SFSSearch, SFSSorting } from '.';
 
@@ -11,6 +10,7 @@ import { Chip } from '../Chip';
 import { Chips } from '../Chips';
 import { Divider } from '../Divider';
 import { SortingMenuValue } from '../SortingMenu';
+import { Tooltip } from '../Tooltip';
 
 const sortingOptionsRu = [
   { label: 'Кол-во квартир', value: 'byCount', labelAsc: '0–9', labelDesc: '9–0' },
@@ -48,34 +48,12 @@ const meta: Meta<Args> = {
 };
 
 const SFSChipsTooltipProps = {
-  slotProps: {
-    popper: {
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, -4],
-          },
-        },
-      ],
-    },
-  },
+  distance: 2,
 };
 
 const ChipTooltipProps = {
   placement: 'top' as const,
-  slotProps: {
-    popper: {
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, -4],
-          },
-        },
-      ],
-    },
-  },
+  distance: 2,
 };
 
 export default meta;

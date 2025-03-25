@@ -2,7 +2,9 @@ import { ReactNode } from 'react';
 
 import { SFSChipsClasses } from './SFSChips.classes';
 
-import { SxProps, Theme, TooltipProps } from '@mui/material';
+import { SxProps, Theme } from '@mui/material';
+
+import { TooltipProps } from '../../Tooltip';
 
 export interface SFSChipsProps {
   children?: ReactNode;
