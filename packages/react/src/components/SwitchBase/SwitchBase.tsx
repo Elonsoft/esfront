@@ -10,7 +10,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize, useFormControl } from '@mui/material';
 
-import { useControlled } from '../../hooks';
+import { useControlled, useEvent } from '../../hooks';
 import { ButtonBase } from '../ButtonBase';
 
 type SwitchBaseOwnerState = {
@@ -115,7 +115,7 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
 
   const muiFormControl = useFormControl();
 
-  const handleFocus = (event: React.FocusEvent<HTMLButtonElement, Element>) => {
+  const handleFocus = useEvent((event: React.FocusEvent<HTMLButtonElement, Element>) => {
     if (onFocus) {
       onFocus(event);
     }
@@ -123,9 +123,9 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
     if (muiFormControl && muiFormControl.onFocus) {
       muiFormControl.onFocus(event as never);
     }
-  };
+  });
 
-  const handleBlur = (event: React.FocusEvent<HTMLButtonElement, Element>) => {
+  const handleBlur = useEvent((event: React.FocusEvent<HTMLButtonElement, Element>) => {
     if (onBlur) {
       onBlur(event);
     }
@@ -133,9 +133,9 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
     if (muiFormControl && muiFormControl.onBlur) {
       muiFormControl.onBlur(event as never);
     }
-  };
+  });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = useEvent((event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.nativeEvent.defaultPrevented) {
       return;
     }
@@ -147,7 +147,7 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
     if (onChange) {
       onChange(event, newChecked);
     }
-  };
+  });
 
   let disabled = disabledProp;
 

@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 
 import { PaginationRangeProps } from './PaginationRange.types';
 
@@ -104,9 +104,9 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
 
   const { count, itemsPerPage, page, onItemsPerPageChange, onPageChange } = usePaginationContext();
 
-  const onClickListItem = (event: React.MouseEvent<HTMLElement>) => {
+  const onClickListItem = useCallback((event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
-  };
+  }, []);
 
   const onMenuItemClick = (_event: React.MouseEvent<HTMLElement>, index: number) => {
     setAnchorEl(null);
@@ -115,9 +115,9 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
     onPageChange(1);
   };
 
-  const onClose = () => {
+  const onClose = useCallback(() => {
     setAnchorEl(null);
-  };
+  }, []);
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);

@@ -306,7 +306,6 @@ export default tseslint.config(
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-var-requires': 'off',
-
       // 'react/hook-use-state': 'error',
       // 'react/no-array-index-key': 'error',
       // 'react/jsx-handler-names': [
@@ -320,6 +319,16 @@ export default tseslint.config(
       // ],
       'react/jsx-boolean-value': 'error',
       'react/jsx-fragments': 'error',
+      'react/jsx-no-bind': [
+        'warn',
+        {
+          ignoreDOMComponents: true,
+          ignoreRefs: true,
+          allowArrowFunctions: false,
+          allowFunctions: false,
+          allowBind: false,
+        },
+      ],
       'react/jsx-no-constructed-context-values': 'error',
       'react/no-object-type-as-default-prop': 'error',
       'react/prop-types': 'off',

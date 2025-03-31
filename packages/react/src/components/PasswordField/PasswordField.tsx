@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { PasswordFieldProps } from './PasswordField.types';
 
@@ -14,7 +14,7 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 
-import { useControlled } from '../../hooks';
+import { useControlled, useEvent } from '../../hooks';
 import { IconEye, IconEyeOff } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 
@@ -78,23 +78,23 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
 
   const [visible, setVisible] = useControlled(false, inVisible);
 
-  const onClick = () => {
+  const onClick = useEvent(() => {
     setVisible(!visible);
 
     if (onVisibilityChange) {
       onVisibilityChange(!visible);
     }
-  };
+  });
 
-  const onMouseDown = (e: React.MouseEvent) => {
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
     // Prevent input from losing focus.
     e.preventDefault();
-  };
+  }, []);
 
-  const onMouseUp = (e: React.MouseEvent) => {
+  const onMouseUp = useCallback((e: React.MouseEvent) => {
     // Prevent caret from changing position.
     e.preventDefault();
-  };
+  }, []);
 
   const ownerState = { classes: inClasses };
   const classes = useUtilityClasses(ownerState);

@@ -1,4 +1,4 @@
-import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import { AudioPlayerProps } from './AudioPlayer.types';
 
@@ -582,68 +582,74 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const sliderRef = useRef<HTMLElement | null>(null);
   const popperRef = useRef<Instance | null>(null);
 
-  const onFocus = () => {
+  const onFocus = useCallback(() => {
     requestAnimationFrame(() => {
       if (sliderRef.current) {
         const focusedThumb = sliderRef.current.querySelector(`.${sliderClasses.thumb}.${sliderClasses.focusVisible}`);
         setFocused(!!focusedThumb);
       }
     });
-  };
+  }, [sliderRef]);
 
-  const onBlur = () => {
+  const onBlur = useCallback(() => {
     setFocused(false);
-  };
+  }, []);
 
-  const onPointerMove = (event: React.PointerEvent | PointerEvent) => {
-    if (sliderRef.current) {
-      const { left, right, top, bottom } = sliderRef.current.getBoundingClientRect();
-      const clientX = Math.min(right, Math.max(left, event.clientX));
-      setHover((clientX - left) / (right - left));
+  const onPointerMove = useCallback(
+    (event: React.PointerEvent | PointerEvent) => {
+      if (sliderRef.current) {
+        const { left, right, top, bottom } = sliderRef.current.getBoundingClientRect();
+        const clientX = Math.min(right, Math.max(left, event.clientX));
+        setHover((clientX - left) / (right - left));
 
-      if (popperRef.current) {
-        positionRef.current = { x: clientX, y: (top + bottom) / 2 };
-        popperRef.current.update();
+        if (popperRef.current) {
+          positionRef.current = { x: clientX, y: (top + bottom) / 2 };
+          popperRef.current.update();
+        }
       }
-    }
-  };
+    },
+    [sliderRef, popperRef]
+  );
 
-  const onPointerEnter = (event: React.PointerEvent) => {
-    setOverRail(true);
+  const onPointerEnter = useCallback(
+    (event: React.PointerEvent) => {
+      setOverRail(true);
 
-    requestAnimationFrame(() => {
-      onPointerMove(event);
-    });
-  };
+      requestAnimationFrame(() => {
+        onPointerMove(event);
+      });
+    },
+    [onPointerMove]
+  );
 
-  const onPointerLeave = () => {
+  const onPointerLeave = useCallback(() => {
     setOverRail(false);
-  };
+  }, []);
 
-  const onMenuClick = () => {
+  const onMenuClick = useCallback(() => {
     setMenuOpen(!isMenuOpen);
-  };
+  }, [isMenuOpen]);
 
-  const onMenuClose = (e: Event | React.SyntheticEvent<Element, Event>) => {
+  const onMenuClose = useCallback((e: Event | React.SyntheticEvent<Element, Event>) => {
     // Workaround for blur event right after menu button click.
     if (e.type !== 'blur' || e.target !== menuButtonRef.current) {
       setMenuOpen(false);
     }
-  };
+  }, []);
 
-  const onMenuExited = () => {
+  const onMenuExited = useCallback(() => {
     setRateMenuOpen(false);
-  };
+  }, []);
 
-  const onRateMenuClick = () => {
+  const onRateMenuClick = useCallback(() => {
     setRateMenuOpen(!isRateMenuOpen);
-  };
+  }, [isRateMenuOpen]);
 
-  const onRateMenuClose = () => {
+  const onRateMenuClose = useCallback(() => {
     setRateMenuOpen(false);
-  };
+  }, []);
 
-  const onRateMenuKeyDown = (event: React.KeyboardEvent) => {
+  const onRateMenuKeyDown = useCallback((event: React.KeyboardEvent) => {
     if (event.key === 'ArrowRight') {
       setRateMenuOpen(true);
     }
@@ -651,17 +657,17 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     if (event.key === 'ArrowLeft') {
       setRateMenuOpen(false);
     }
-  };
+  }, []);
 
-  const onTogglePlay = () => {
+  const onTogglePlay = useCallback(() => {
     if (isPlaying) {
       audio.pause();
     } else {
       audio.play();
     }
-  };
+  }, [audio, isPlaying]);
 
-  const onToggleMute = () => {
+  const onToggleMute = useCallback(() => {
     if (audio.muted || volume === 0) {
       if (volume === 0) {
         audio.volume = 1;
@@ -671,7 +677,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     } else {
       audio.muted = true;
     }
-  };
+  }, [audio, volume]);
 
   const onTimeChange = (event: Event, value: number | number[]) => {
     if (isMenuOpen) {
@@ -702,19 +708,22 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     setCurrentVisible(true);
   };
 
-  const onVolumeInputChange = (_: unknown, value: number | number[]) => {
-    audio.muted = false;
-    audio.volume = (value as number) / 100;
-  };
+  const onVolumeInputChange = useCallback(
+    (_: unknown, value: number | number[]) => {
+      audio.muted = false;
+      audio.volume = (value as number) / 100;
+    },
+    [audio]
+  );
 
   const onRateInputChange = (value: number) => () => {
     audio.playbackRate = value;
   };
 
-  const onMouseDown = (event: React.MouseEvent) => {
+  const onMouseDown = useCallback((event: React.MouseEvent) => {
     event.stopPropagation();
     event.preventDefault();
-  };
+  }, []);
 
   const onAbortLatest = useLatest((event: Event) => {
     if (onAbort) {

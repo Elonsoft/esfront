@@ -120,9 +120,9 @@ export const Demo: Story = {
     const isTablet = useMediaQuery((theme: Theme) => theme.breakpoints.up('tabletXS'));
     const [isOpen, setOpen] = useState(false);
 
-    const onOpen = () => {
+    const onOpen = useCallback(() => {
       setOpen(true);
-    };
+    }, []);
 
     const onClose = useCallback(() => {
       setOpen(false);

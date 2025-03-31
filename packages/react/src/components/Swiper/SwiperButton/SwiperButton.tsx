@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import { SwiperDirection } from '../Swiper.types';
 import { SwiperButtonProps } from './SwiperButton.types';
 
@@ -124,9 +126,9 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
 
   const { direction, setActiveSlideByStep } = useSwiperContext();
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     setActiveSlideByStep(step);
-  };
+  }, [setActiveSlideByStep]);
 
   const ownerState = { ...props, prev: step < 0, next: step > 0, direction };
   const classes = useUtilityClasses(ownerState);

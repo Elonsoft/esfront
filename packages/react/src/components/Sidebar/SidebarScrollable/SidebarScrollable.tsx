@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { SidebarScrollableProps } from './SidebarScrollable.types';
 
@@ -101,13 +101,13 @@ export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
     }
   });
 
-  const onScroll = () => {
+  const onScroll = useCallback(() => {
     if (ref.current) {
       const { scrollTop, scrollHeight, clientHeight } = ref.current;
       setBeforeScroll(scrollTop > 0);
       setAfterScroll(!(scrollTop >= scrollHeight - clientHeight));
     }
-  };
+  }, [ref]);
 
   const ownerState = { isScrollable, isBeforeScroll, isAfterScroll, afterScroll, ...props };
   const classes = useUtilityClasses(ownerState);

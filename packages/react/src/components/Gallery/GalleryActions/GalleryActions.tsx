@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import { GalleryActionsProps } from './GalleryActions.types';
 
 import clsx from 'clsx';
@@ -83,9 +85,9 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
   const { onClose } = useGalleryContext();
   const { setVisible } = useGalleryThumbnailsContext();
 
-  const onThumbnailsClick = () => {
+  const onThumbnailsClick = useCallback(() => {
     setVisible((isVisible) => !isVisible);
-  };
+  }, []);
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);

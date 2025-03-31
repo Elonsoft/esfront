@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { SwiperDirection } from '../Swiper.types';
 import { SwiperPaginationProps } from './SwiperPagination.types';
@@ -158,9 +158,12 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
     return { siblingFrom, siblingTo };
   }, [from, to, active, siblingCount]);
 
-  const onSlideChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setActiveSlide(+event.target.value);
-  };
+  const onSlideChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setActiveSlide(+event.target.value);
+    },
+    [setActiveSlide]
+  );
 
   const ownerState = { ...props, direction, position, variant };
   const classes = useUtilityClasses(ownerState);

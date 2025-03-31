@@ -9,6 +9,7 @@ import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
 
+import { useEvent } from '../../../hooks';
 import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';
 
 type TabOwnerState = {
@@ -176,7 +177,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps:
 
   const classes = useUtilityClasses(ownerState);
 
-  const handleClick = (event: MouseEvent) => {
+  const handleClick = useEvent((event: MouseEvent) => {
     if (!selected && onChange) {
       onChange(event, value);
     }
@@ -184,9 +185,9 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps:
     if (onClick) {
       onClick(event);
     }
-  };
+  });
 
-  const handleFocus = (event: FocusEvent) => {
+  const handleFocus = useEvent((event: FocusEvent) => {
     if (selectionFollowsFocus && !selected && onChange) {
       onChange(event, value);
     }
@@ -194,7 +195,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps:
     if (onFocus) {
       onFocus(event);
     }
-  };
+  });
 
   return (
     <TabRoot

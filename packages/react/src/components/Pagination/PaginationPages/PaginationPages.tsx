@@ -1,4 +1,4 @@
-import { Fragment, memo, useState } from 'react';
+import { Fragment, memo, useCallback, useState } from 'react';
 
 import { PaginationPagesProps } from './PaginationPages.types';
 
@@ -12,7 +12,7 @@ import { outlinedInputClasses } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 
-import { useDocumentEventListener, usePagination } from '../../../hooks';
+import { useDocumentEventListener, useEvent, usePagination } from '../../../hooks';
 import {
   IconArrowLeft2W300,
   IconArrowRight2W300,
@@ -207,20 +207,20 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
 
   const [state, setState] = useState('');
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     if (REGEX.test(event.target.value)) {
       setState(event.target.value);
     }
-  };
+  }, []);
 
-  const onKeyPress = (event: React.KeyboardEvent) => {
+  const onKeyPress = useEvent((event: React.KeyboardEvent) => {
     const inputValue = (event.target as HTMLInputElement).value;
 
     if (event.key === 'Enter' && inputValue) {
       onPageChange(Math.min(Math.ceil(count / itemsPerPage), Math.max(1, +state)));
       setState('');
     }
-  };
+  });
 
   const onPaginationPageChange = (event: React.ChangeEvent<unknown>, page: number | null) => {
     if (page) {
