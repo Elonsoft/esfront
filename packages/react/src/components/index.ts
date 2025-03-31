@@ -28,6 +28,7 @@ export * from './ErrorPage';
 export * from './FileIcon';
 export * from './FileInfo';
 export * from './Flags';
+export * from './FolderIcon';
 export * from './FormatDate';
 export * from './FormatSize';
 export * from './FormControlLabel';
