@@ -1,9 +1,24 @@
 # Migration Guide
 
+- [0.11.14 → 0.12.0](#01114--0120)
+  - [Markup and Style Changes](#markup-and-style-changes)
+  - [Tooltip Replacement](#tooltip-replacement)
 - [0.10.1 → 0.11.0](#0101--0110)
   - [Package Name](#package-name)
   - [CSS Theme Variables](#css-theme-variables)
   - [Components Replacement](#components-replacement)
+
+## 0.11.14 → 0.12.0
+
+### Markup and Style Changes
+
+We changed markup and/or styles of `AutocompleteMenu`, `Checkbox`, `PageHGroupHeading` and `TableCell` components, so
+there may be some breaking changes if this components are styled.
+
+### Tooltip Replacement
+
+The `Tooltip` component has been copied and extended for our needs. If you are using this components, please import it
+from `@esfront/react` instead of `@mui/material`.
 
 ## 0.10.1 → 0.11.0
 
