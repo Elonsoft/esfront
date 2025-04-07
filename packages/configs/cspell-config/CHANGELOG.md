@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.4](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.3...@esfront/cspell-config@0.0.4) (2025-04-07)
+
+
+### Bug Fixes
+
+* **Tooltip:** handle touch event ([7f6c87a](https://github.com/Elonsoft/esfront/commit/7f6c87aec3f33617930919725028e505ecdfe262))
+
+
+
 ## [0.0.3](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.2...@esfront/cspell-config@0.0.3) (2025-01-20)
 
 

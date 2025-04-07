@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.14...@esfront/react@0.12.0) (2025-04-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Table:** add style variants
+* **AutocompleteMenu:** add tooltip for overflowing text
+* **Checkbox:** update paddings
+* **PageHGroupHeading:** add endAdornment prop
+
+### Features
+
+* **AutocompleteMenu:** add tooltip for overflowing text ([22a6412](https://github.com/Elonsoft/esfront/commit/22a6412c5cb681543a179b1a76c78fda67afdbd2))
+* **FormControlLabel:** add new component ([92ca310](https://github.com/Elonsoft/esfront/commit/92ca310c9cc72d2866e2857d24c322db5c7c154c))
+* **InformationIcon:** add new component ([8219285](https://github.com/Elonsoft/esfront/commit/821928555953b554d0e1affaccf2c1c507cd96ae))
+* **PageHGroupHeading:** add endAdornment prop ([3118fc2](https://github.com/Elonsoft/esfront/commit/3118fc25bfcaa7d85f4ff61eb49febfc76027375))
+* **Snackbar:** add new component ([a0d9454](https://github.com/Elonsoft/esfront/commit/a0d9454302dfd6b79e946fd33983192520ca5552))
+* **Table:** add style variants ([d0850da](https://github.com/Elonsoft/esfront/commit/d0850da91f133521ba0bf2e54732817cdd8a1cbc))
+* **Tooltip:** change imports ([3ce8cc1](https://github.com/Elonsoft/esfront/commit/3ce8cc139581ca8a5dc66ec4eca39ebe1998b1ff))
+
+
+### Bug Fixes
+
+* **AutocompleteMenu:** stop onKeyDown propagation ([20fd687](https://github.com/Elonsoft/esfront/commit/20fd687343f1b46d7aa7c11f6be93fd2fa15ea20))
+* **ButtonBase:** disable pointer events for disabled non button elements ([d814d72](https://github.com/Elonsoft/esfront/commit/d814d725e7ac2189375741a75473b7189207009c))
+* **Checkbox:** update paddings ([f12d8ab](https://github.com/Elonsoft/esfront/commit/f12d8ab6085af361a9f648aad0cf9b5e85c5d463))
+* **Chip:** update disabled styles ([b9442e0](https://github.com/Elonsoft/esfront/commit/b9442e0c7ef212f74009efd9f6b5d2db90b30fb8))
+* **Dropzone:** update styles ([114199a](https://github.com/Elonsoft/esfront/commit/114199a14748d35a799fd12ab040593f7e40e3a4))
+* **RibbonBadge:** add pointer events styles ([7feed59](https://github.com/Elonsoft/esfront/commit/7feed59cd8593f001f6dee90389900099eb86e52))
+* **Tooltip:** add distance via margin ([e87baa6](https://github.com/Elonsoft/esfront/commit/e87baa6292320051d99ab9d923695f452f7d5827))
+* **Tooltip:** handle touch event ([7f6c87a](https://github.com/Elonsoft/esfront/commit/7f6c87aec3f33617930919725028e505ecdfe262))
+
+
+
 ## [0.11.14](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.11.13...@esfront/react@0.11.14) (2025-03-12)
 
 

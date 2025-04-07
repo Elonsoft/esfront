@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.1.2...@esfront/eslint-config@0.1.3) (2025-04-07)
+
+
+### Features
+
+* **FormControlLabel:** add new component ([92ca310](https://github.com/Elonsoft/esfront/commit/92ca310c9cc72d2866e2857d24c322db5c7c154c))
+* **Tooltip:** change imports ([3ce8cc1](https://github.com/Elonsoft/esfront/commit/3ce8cc139581ca8a5dc66ec4eca39ebe1998b1ff))
+
+
+
 ## [0.1.2](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.1.1...@esfront/eslint-config@0.1.2) (2025-01-20)
 
 **Note:** Version bump only for package @esfront/eslint-config
