@@ -3,6 +3,7 @@ import {
   forwardRef,
   Fragment,
   KeyboardEvent,
+  MutableRefObject,
   ReactNode,
   RefObject,
   useCallback,
@@ -281,6 +282,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     disableEscapeKeyDown,
     disableRestoreFocus,
     disableScrollLock,
+    disableTooltip,
 
     labelNoOptions,
     labelNoMatches,
@@ -412,43 +414,49 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
       );
     }
 
-    groupedOptions.push(
-      <AutocompleteMenuTooltip
-        key={value}
-        disableInteractive
-        title={label}
-        {...TooltipProps}
-        className={clsx(classes.tooltip, TooltipProps?.className)}
+    const getMenuItem = ({
+      ref,
+      childrenRef,
+    }: {
+      ref?: MutableRefObject<HTMLElement | null>;
+      childrenRef?: MutableRefObject<HTMLElement | null>;
+    } = {}) => (
+      <AutocompleteMenuMenuItem
+        ref={ref && (ref as RefObject<HTMLLIElement>)}
+        autoFocus={!disabled && tabIndex && !SearchProps && !disableAutoFocus}
+        className={classes.menuItem}
+        disabled={disabled}
+        selected={selected}
+        tabIndex={!disabled && tabIndex ? 0 : -1}
+        onClick={disabled ? undefined : onMenuItemClick(option)}
       >
-        {({ ref, childrenRef }) => (
-          <AutocompleteMenuMenuItem
-            ref={ref && (ref as RefObject<HTMLLIElement>)}
-            autoFocus={!disabled && tabIndex && !SearchProps && !disableAutoFocus}
-            className={classes.menuItem}
-            disabled={disabled}
-            selected={selected}
-            tabIndex={!disabled && tabIndex ? 0 : -1}
-            onClick={disabled ? undefined : onMenuItemClick(option)}
-          >
-            {!!props.multiple && (
-              <AutocompleteMenuCheckbox
-                readOnly
-                checked={selected}
-                color="secondary"
-                disabled={disabled}
-                tabIndex={-1}
-              />
-            )}
-            <AutocompleteMenuMenuItemText
-              ref={childrenRef && (childrenRef as RefObject<HTMLDivElement>)}
-              className={classes.menuItemText}
-            >
-              {label}
-            </AutocompleteMenuMenuItemText>
-          </AutocompleteMenuMenuItem>
+        {!!props.multiple && (
+          <AutocompleteMenuCheckbox readOnly checked={selected} color="secondary" disabled={disabled} tabIndex={-1} />
         )}
-      </AutocompleteMenuTooltip>
+        <AutocompleteMenuMenuItemText
+          ref={childrenRef && (childrenRef as RefObject<HTMLDivElement>)}
+          className={classes.menuItemText}
+        >
+          {label}
+        </AutocompleteMenuMenuItemText>
+      </AutocompleteMenuMenuItem>
     );
+
+    if (disableTooltip) {
+      groupedOptions.push(getMenuItem());
+    } else {
+      groupedOptions.push(
+        <AutocompleteMenuTooltip
+          key={value}
+          disableInteractive
+          title={label}
+          {...TooltipProps}
+          className={clsx(classes.tooltip, TooltipProps?.className)}
+        >
+          {getMenuItem}
+        </AutocompleteMenuTooltip>
+      );
+    }
 
     if (!disabled) {
       tabIndex = false;
