@@ -125,6 +125,8 @@ export type AutocompleteMenuProps<T> = {
   disableRestoreFocus?: boolean;
   /** Disable the scroll lock behavior. */
   disableScrollLock?: boolean;
+  /** If true, the default overflow tooltip is removed. */
+  disableTooltip?: boolean;
 
   /** Text for the empty state. */
   labelNoOptions?: ReactNode;
