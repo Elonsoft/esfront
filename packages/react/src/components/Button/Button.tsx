@@ -80,62 +80,62 @@ const ButtonRoot = styled(ButtonBase, {
   },
 
   [`&.${buttonClasses.variantContained}`]: {
-    '--hovered': theme.vars.palette.monoB.A50,
-    '--pressed': theme.vars.palette.monoB.A150,
+    '--hovered': theme.vars.palette.monoB.A150,
+    '--pressed': theme.vars.palette.monoB.A300,
 
     [`&.${buttonClasses.colorTertiary}`]: {
       '--background': theme.vars.palette.monoA.A100,
       '--text': theme.vars.palette.monoA.A800,
-      '--hovered': theme.vars.palette.monoA.A50,
-      '--pressed': theme.vars.palette.monoA.A150,
+      '--hovered': theme.vars.palette.monoA.A100,
+      '--pressed': theme.vars.palette.monoA.A200,
     },
     [`&.${buttonClasses.colorPrimary}`]: {
       '--background': theme.vars.palette.primary[300],
       '--text': theme.vars.palette.monoB[500],
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoB.A150,
+      '--hovered': theme.vars.palette.monoB.A150,
+      '--pressed': theme.vars.palette.monoB.A300,
     },
     [`&.${buttonClasses.colorSecondary}`]: {
       '--background': theme.vars.palette.secondary[300],
       '--text': theme.vars.palette.black[500],
-      '--hovered': theme.vars.palette.black.A50,
-      '--pressed': theme.vars.palette.black.A150,
+      '--hovered': theme.vars.palette.black.A100,
+      '--pressed': theme.vars.palette.black.A200,
     },
     [`&.${buttonClasses.colorInfo}`]: {
       '--background': theme.vars.palette.info[300],
       '--text': theme.vars.palette.monoB[500],
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoB.A150,
+      '--hovered': theme.vars.palette.monoB.A150,
+      '--pressed': theme.vars.palette.monoB.A300,
     },
     [`&.${buttonClasses.colorWarning}`]: {
       '--background': theme.vars.palette.warning[300],
       '--text': theme.vars.palette.monoB[500],
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoB.A150,
+      '--hovered': theme.vars.palette.monoB.A150,
+      '--pressed': theme.vars.palette.monoB.A300,
     },
     [`&.${buttonClasses.colorError}`]: {
       '--background': theme.vars.palette.error[300],
       '--text': theme.vars.palette.monoB[500],
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoB.A150,
+      '--hovered': theme.vars.palette.monoB.A150,
+      '--pressed': theme.vars.palette.monoB.A300,
     },
     [`&.${buttonClasses.colorSuccess}`]: {
       '--background': theme.vars.palette.success[300],
       '--text': theme.vars.palette.monoB[500],
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoB.A150,
+      '--hovered': theme.vars.palette.monoB.A150,
+      '--pressed': theme.vars.palette.monoB.A300,
     },
     [`&.${buttonClasses.colorMonoA}`]: {
       '--background': theme.vars.palette.monoA[500],
       '--text': theme.vars.palette.monoB[500],
-      '--hovered': theme.vars.palette.monoB.A50,
-      '--pressed': theme.vars.palette.monoB.A150,
+      '--hovered': theme.vars.palette.monoB.A150,
+      '--pressed': theme.vars.palette.monoB.A300,
     },
     [`&.${buttonClasses.colorMonoB}`]: {
       '--background': theme.vars.palette.monoB[500],
       '--text': theme.vars.palette.monoA[500],
-      '--hovered': theme.vars.palette.monoA.A50,
-      '--pressed': theme.vars.palette.monoA.A150,
+      '--hovered': theme.vars.palette.monoA.A100,
+      '--pressed': theme.vars.palette.monoA.A200,
 
       [`&.${buttonBaseClasses.disabled}`]: {
         '--background': theme.vars.palette.monoB.A75,
@@ -146,8 +146,8 @@ const ButtonRoot = styled(ButtonBase, {
     [`&.${buttonClasses.colorWhite}`]: {
       '--background': theme.vars.palette.white[500],
       '--text': theme.vars.palette.black[500],
-      '--hovered': theme.vars.palette.black.A50,
-      '--pressed': theme.vars.palette.black.A150,
+      '--hovered': theme.vars.palette.black.A100,
+      '--pressed': theme.vars.palette.black.A200,
 
       [`&.${buttonBaseClasses.disabled}`]: {
         '--background': theme.vars.palette.white.A75,
@@ -158,8 +158,8 @@ const ButtonRoot = styled(ButtonBase, {
     [`&.${buttonClasses.colorBlack}`]: {
       '--background': theme.vars.palette.black[500],
       '--text': theme.vars.palette.white[500],
-      '--hovered': theme.vars.palette.white.A50,
-      '--pressed': theme.vars.palette.white.A150,
+      '--hovered': theme.vars.palette.white.A150,
+      '--pressed': theme.vars.palette.white.A300,
 
       [`&.${buttonBaseClasses.disabled}`]: {
         '--background': theme.vars.palette.black.A75,
