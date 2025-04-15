@@ -128,6 +128,22 @@ import {
   FileInfoNameProps,
   FileInfoProps,
 } from './components/FileInfo';
+import {
+  FiltersClassKey,
+  FiltersProps,
+  FiltersContentClassKey,
+  FiltersContentProps,
+  FiltersFilterClassKey,
+  FiltersFilterProps,
+  FiltersFooterClassKey,
+  FiltersFooterProps,
+  FiltersFormControlLabelClassKey,
+  FiltersFormControlLabelProps,
+  FiltersFormGroupClassKey,
+  FiltersFormGroupProps,
+  FiltersHeaderClassKey,
+  FiltersHeaderProps,
+} from './components/Filters';
 import { FlagClassKey } from './components/Flags';
 import { FormatDateProps } from './components/FormatDate';
 import { FormatSizeProps } from './components/FormatSize';
@@ -193,6 +209,7 @@ import { PasswordFieldClassKey, PasswordFieldProps } from './components/Password
 import { RadioClassKey, RadioIconClassKey, RadioIconProps, RadioProps } from './components/Radio';
 import { RadioGroupClassKey, RadioGroupProps } from './components/RadioGroup';
 import { RibbonBadgeClassKey, RibbonBadgeProps } from './components/RibbonBadge';
+import { SearchClassKey, SearchProps } from './components/Search';
 import {
   SFSButtonClassKey,
   SFSButtonProps,
@@ -406,6 +423,13 @@ declare module '@mui/material/styles/props' {
     ESFileInfoMeta: FileInfoMetaProps;
     ESFileInfoMetaSeparator: FileInfoMetaSeparatorProps;
     ESFileInfoName: FileInfoNameProps;
+    ESFilters: FiltersProps;
+    ESFiltersContent: FiltersContentProps;
+    ESFiltersFilter: FiltersFilterProps;
+    ESFiltersFooter: FiltersFooterProps;
+    ESFiltersFormControlLabel: FiltersFormControlLabelProps;
+    ESFiltersFormGroup: FiltersFormGroupProps;
+    ESFiltersHeader: FiltersHeaderProps;
     ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
     ESFormControlLabel: FormControlLabelProps;
@@ -444,6 +468,7 @@ declare module '@mui/material/styles/props' {
     ESRadioIcon: RadioIconProps;
     ESRadioGroup: RadioGroupProps;
     ESRibbonBadge: RibbonBadgeProps;
+    ESSearch: SearchProps;
     ESSidebar: SidebarProps;
     ESSidebarSpacer: SidebarSpacerProps;
     ESSidebarToggle: SidebarToggleProps;
@@ -555,6 +580,13 @@ declare module '@mui/material/styles/overrides' {
     ESFileInfoMeta: FileInfoMetaClassKey;
     ESFileInfoMetaSeparator: FileInfoMetaSeparatorClassKey;
     ESFileInfoName: FileInfoNameClassKey;
+    ESFilters: FiltersClassKey;
+    ESFiltersContent: FiltersContentClassKey;
+    ESFiltersFilter: FiltersFilterClassKey;
+    ESFiltersFooter: FiltersFooterClassKey;
+    ESFiltersFormControlLabel: FiltersFormControlLabelClassKey;
+    ESFiltersFormGroup: FiltersFormGroupClassKey;
+    ESFiltersHeader: FiltersHeaderClassKey;
     ESFormControlLabel: FormControlLabelClassKey;
     ESFlag: FlagClassKey;
     ESGallery: GalleryClassKey;
@@ -592,6 +624,7 @@ declare module '@mui/material/styles/overrides' {
     ESRadioIcon: RadioIconClassKey;
     ESRadioGroup: RadioGroupClassKey;
     ESRibbonBadge: RibbonBadgeClassKey;
+    ESSearch: SearchClassKey;
     ESSidebar: SidebarClassKey;
     ESSidebarItem: SidebarItemClassKey;
     ESSidebarToggle: SidebarToggleClassKey;
@@ -944,6 +977,34 @@ declare module '@mui/material/styles/components' {
       defaultProps?: ComponentsProps['ESFileInfoName'];
       styleOverrides?: ComponentsOverrides['ESFileInfoName'];
     };
+    ESFilters?: {
+      defaultProps?: ComponentsProps['ESFilters'];
+      styleOverrides?: ComponentsOverrides['ESFilters'];
+    };
+    ESFiltersContent?: {
+      defaultProps?: ComponentsProps['ESFiltersContent'];
+      styleOverrides?: ComponentsOverrides['ESFiltersContent'];
+    };
+    ESFiltersFilter?: {
+      defaultProps?: ComponentsProps['ESFiltersFilter'];
+      styleOverrides?: ComponentsOverrides['ESFiltersFilter'];
+    };
+    ESFiltersFooter?: {
+      defaultProps?: ComponentsProps['ESFiltersFooter'];
+      styleOverrides?: ComponentsOverrides['ESFiltersFooter'];
+    };
+    ESFiltersFormControlLabel?: {
+      defaultProps?: ComponentsProps['ESFiltersFormControlLabel'];
+      styleOverrides?: ComponentsOverrides['ESFiltersFormControlLabel'];
+    };
+    ESFiltersFormGroup?: {
+      defaultProps?: ComponentsProps['ESFiltersFormGroup'];
+      styleOverrides?: ComponentsOverrides['ESFiltersFormGroup'];
+    };
+    ESFiltersHeader?: {
+      defaultProps?: ComponentsProps['ESFiltersHeader'];
+      styleOverrides?: ComponentsOverrides['ESFiltersHeader'];
+    };
     ESFlag?: {
       styleOverrides?: ComponentsOverrides['ESFlag'];
     };
@@ -1039,6 +1100,10 @@ declare module '@mui/material/styles/components' {
     ESRibbonBadge?: {
       defaultProps?: ComponentsProps['ESRibbonBadge'];
       styleOverrides?: ComponentsOverrides['ESRibbonBadge'];
+    };
+    ESSearch?: {
+      defaultProps?: ComponentsProps['ESSearch'];
+      styleOverrides?: ComponentsOverrides['ESSearch'];
     };
     ESSFS?: {
       defaultProps?: ComponentsProps['ESSFS'];
