@@ -37,23 +37,13 @@ const SidebarScrollableRoot = styled('div', {
     {
       props: {
         isScrollable: true,
-      },
-      style: {
-        mask: 'none',
-        maskSize: 'auto',
-        maskRepeat: 'no-repeat',
-      },
-    },
-    {
-      props: {
-        isScrollable: true,
         isBeforeScroll: true,
         isAfterScroll: true,
       },
       style: {
-        mask: `linear-gradient(to bottom, transparent 0, black 32px) top, 
-              linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom`,
-        maskSize: '100%, 51%',
+        mask: 'linear-gradient(to bottom, transparent 0, black 32px) top, linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom',
+        maskSize: '100% 51%',
+        maskRepeat: 'no-repeat',
       },
     },
     {
@@ -64,7 +54,8 @@ const SidebarScrollableRoot = styled('div', {
       },
       style: {
         mask: 'linear-gradient(to bottom, transparent 0, black 32px) top, none',
-        maskSize: '100%, auto',
+        maskSize: '100% auto',
+        maskRepeat: 'no-repeat',
       },
     },
     {
@@ -75,7 +66,8 @@ const SidebarScrollableRoot = styled('div', {
       },
       style: {
         mask: 'none, linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom',
-        maskSize: 'auto, 100%',
+        maskSize: 'auto 100%',
+        maskRepeat: 'no-repeat',
       },
     },
   ],
@@ -109,7 +101,7 @@ export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
     }
   };
 
-  const ownerState = { isScrollable, isBeforeScroll, isAfterScroll, afterScroll, ...props };
+  const ownerState = { isScrollable, isBeforeScroll, isAfterScroll, ...props };
   const classes = useUtilityClasses(ownerState);
 
   return (
