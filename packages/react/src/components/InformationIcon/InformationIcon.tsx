@@ -58,8 +58,6 @@ const InformationIconRoot = styled('div', {
   color: theme.vars.palette.monoA.A300,
   cursor: 'help',
   display: 'inline-flex',
-  width: '24px',
-  height: '24px',
 
   '&::-moz-focus-inner': {
     // Remove Firefox dotted outline.
@@ -169,8 +167,18 @@ export const InformationIcon = forwardRef(function InformationIcon(
       {...props}
       as={component}
     >
-      <Icon {...slotProps.icon} className={clsx(classes.icon, slotProps.icon?.className)} />
-      <ActiveIcon {...slotProps.activeIcon} className={clsx(classes.activeIcon, slotProps.activeIcon?.className)} />
+      <Icon
+        container
+        containerSize="16px"
+        {...slotProps.icon}
+        className={clsx(classes.icon, slotProps.icon?.className)}
+      />
+      <ActiveIcon
+        container
+        containerSize="16px"
+        {...slotProps.activeIcon}
+        className={clsx(classes.activeIcon, slotProps.activeIcon?.className)}
+      />
     </InformationIconRoot>
   );
 }) as OverridableComponent<InformationIconTypeMap>;

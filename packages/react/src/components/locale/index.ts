@@ -6,6 +6,7 @@ import { CalendarHeadProps } from '../Calendar';
 import { ChipsProps } from '../Chips';
 import { DialogArrowProps, DialogCloseProps } from '../Dialog';
 import { FileInfoNameProps } from '../FileInfo';
+import { FiltersFilterProps, FiltersFormGroupProps, FiltersHeaderProps } from '../Filters';
 import { FormatSizeProps } from '../FormatSize';
 import { GalleryActionsProps, GalleryDescriptionProps, GalleryMetaProps, GallerySwiperProps } from '../Gallery';
 import { MadeByProps } from '../MadeBy';
@@ -62,6 +63,15 @@ export interface Localization {
     };
     ESFileInfoName: {
       defaultProps: Pick<FileInfoNameProps, 'labelDelete'>;
+    };
+    ESFiltersFilter: {
+      defaultProps: Pick<FiltersFilterProps, 'labelHide' | 'labelShow'>;
+    };
+    ESFiltersHeader: {
+      defaultProps: Pick<FiltersHeaderProps, 'labelFilters' | 'labelReset'>;
+    };
+    ESFiltersFormGroup: {
+      defaultProps: Pick<FiltersFormGroupProps, 'labelHide' | 'labelShow'>;
     };
     ESGalleryActions: {
       defaultProps: Pick<GalleryActionsProps, 'labelClose' | 'labelThumbnails'>;
@@ -199,6 +209,24 @@ export const en: Localization = {
     ESFileInfoName: {
       defaultProps: {
         labelDelete: 'Delete',
+      },
+    },
+    ESFiltersFilter: {
+      defaultProps: {
+        labelHide: 'Hide',
+        labelShow: 'Show',
+      },
+    },
+    ESFiltersHeader: {
+      defaultProps: {
+        labelFilters: 'Filters',
+        labelReset: 'Reset all',
+      },
+    },
+    ESFiltersFormGroup: {
+      defaultProps: {
+        labelHide: 'Hide',
+        labelShow: 'Show all',
       },
     },
     ESFormatSize: {
@@ -390,6 +418,24 @@ export const ru: Localization = {
     ESFileInfoName: {
       defaultProps: {
         labelDelete: 'Удалить',
+      },
+    },
+    ESFiltersFilter: {
+      defaultProps: {
+        labelHide: 'Скрыть',
+        labelShow: 'Показать',
+      },
+    },
+    ESFiltersHeader: {
+      defaultProps: {
+        labelFilters: 'Фильтры',
+        labelReset: 'Сбросить всё',
+      },
+    },
+    ESFiltersFormGroup: {
+      defaultProps: {
+        labelHide: 'Скрыть',
+        labelShow: 'Показать всё',
       },
     },
     ESFormatSize: {

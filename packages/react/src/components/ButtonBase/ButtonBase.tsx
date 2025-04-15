@@ -78,6 +78,7 @@ const ButtonBaseRoot = styled('button', {
 
   backgroundColor: 'var(--background)',
   color: 'var(--text)',
+  flexShrink: 0,
 
   // https://github.com/mui/material-ui/issues/14455
   [`&.${buttonBaseClasses.disabled}:not(button)`]: {
