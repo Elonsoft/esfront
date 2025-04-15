@@ -48,6 +48,7 @@ export * from './PasswordField';
 export * from './Radio';
 export * from './RadioGroup';
 export * from './RibbonBadge';
+export * from './Search';
 export * from './SFS';
 export * from './Sidebar';
 export * from './Sidenav';
