@@ -110,6 +110,7 @@ const meta: Meta<typeof Gallery> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Gallery>;
 
 export const Demo: Story = {

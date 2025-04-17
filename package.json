@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "cspell": "cspell --no-progress .",

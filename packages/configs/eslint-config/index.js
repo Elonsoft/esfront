@@ -305,6 +305,9 @@ export default tseslint.config(
         { blankLine: 'always', prev: 'multiline-expression', next: '*' },
         { blankLine: 'never', prev: 'case', next: 'case' },
         { blankLine: 'never', prev: 'case', next: 'default' },
+        { blankLine: 'always', prev: '*', next: 'interface' },
+        { blankLine: 'always', prev: '*', next: 'type' },
+        { blankLine: 'always', prev: '*', next: 'enum' },
       ],
 
       '@typescript-eslint/explicit-function-return-type': 'off',

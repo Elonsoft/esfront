@@ -15,6 +15,7 @@ const meta: Meta<typeof TabBar> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof TabBar>;
 
 export const Demo: Story = {

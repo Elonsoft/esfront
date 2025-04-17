@@ -39,6 +39,7 @@ const meta: Meta<typeof Chip> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Chip>;
 
 export const Demo: Story = {

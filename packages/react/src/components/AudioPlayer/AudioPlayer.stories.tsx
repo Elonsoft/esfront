@@ -36,6 +36,7 @@ const meta: Meta<typeof AudioPlayer> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof AudioPlayer>;
 
 export const Demo: Story = {

@@ -15,6 +15,7 @@ const meta: Meta<typeof EmptyStateCompact> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof EmptyStateCompact>;
 
 export const Demo: Story = {

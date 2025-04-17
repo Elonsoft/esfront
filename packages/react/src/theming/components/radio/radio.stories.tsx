@@ -27,6 +27,7 @@ const meta: Meta<typeof Radio> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Radio>;
 
 export const Demo: Story = {

@@ -23,6 +23,7 @@ const meta: Meta<typeof FileInfo> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof FileInfo>;
 
 export const Demo: Story = {

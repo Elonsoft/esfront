@@ -38,6 +38,7 @@ const meta: Meta<Args> = {
 };
 
 export default meta;
+
 type Story = StoryObj<Args>;
 
 const DemoWrapper = ({ locale, multiple }: { locale: string; multiple: boolean }) => {

@@ -32,6 +32,7 @@ const meta: Meta<typeof FormatSize> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof FormatSize>;
 
 export const Demo: Story = {

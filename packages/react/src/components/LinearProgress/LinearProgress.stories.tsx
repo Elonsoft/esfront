@@ -29,6 +29,7 @@ const meta: Meta<typeof LinearProgress> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof LinearProgress>;
 
 export const Demo: Story = {

@@ -28,6 +28,7 @@ const meta: Meta<typeof PasswordField> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof PasswordField>;
 
 export const Demo: Story = {

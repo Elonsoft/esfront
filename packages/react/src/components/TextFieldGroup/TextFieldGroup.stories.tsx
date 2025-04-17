@@ -20,6 +20,7 @@ const meta: Meta<typeof TextFieldGroup> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof TextFieldGroup>;
 
 export const Demo: Story = {

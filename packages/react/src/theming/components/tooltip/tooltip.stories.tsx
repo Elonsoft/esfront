@@ -16,6 +16,7 @@ const meta: Meta<Args> = {
 };
 
 export default meta;
+
 type Story = StoryObj<Args>;
 
 export const Demo: Story = {

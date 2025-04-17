@@ -24,6 +24,7 @@ const meta: Meta<typeof Kbd> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Kbd>;
 
 export const Demo: Story = {

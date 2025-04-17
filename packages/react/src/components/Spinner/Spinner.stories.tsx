@@ -23,6 +23,7 @@ const meta: Meta<typeof SpinnerDashRing> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof SpinnerDashRing>;
 
 /* Spinner` is a component for express an unspecified wait time. The animation works with CSS, not JavaScript. */
