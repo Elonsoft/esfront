@@ -75,6 +75,7 @@ const meta: Meta<typeof EmptyState> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof EmptyState>;
 
 export const Demo: Story = {

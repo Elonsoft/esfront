@@ -98,6 +98,7 @@ const meta: Meta<typeof Dropzone> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Dropzone>;
 
 export const Demo: Story = {

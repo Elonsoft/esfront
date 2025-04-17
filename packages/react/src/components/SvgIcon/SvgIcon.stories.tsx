@@ -27,6 +27,7 @@ const meta: Meta<typeof SvgIcon> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof SvgIcon>;
 
 export const Demo: Story = {

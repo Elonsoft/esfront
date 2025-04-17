@@ -62,6 +62,7 @@ export interface UsePaginationProps {
    */
   siblingCount?: number;
 }
+
 type UsePaginationItemType = 'page' | 'first' | 'last' | 'next' | 'previous' | 'start-ellipsis' | 'end-ellipsis';
 
 export interface UsePaginationItem {

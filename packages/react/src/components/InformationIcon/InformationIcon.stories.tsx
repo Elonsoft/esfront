@@ -32,6 +32,7 @@ const meta: Meta<typeof InformationIcon> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof InformationIcon>;
 
 export const Demo: Story = {

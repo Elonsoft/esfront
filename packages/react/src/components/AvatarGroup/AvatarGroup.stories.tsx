@@ -15,6 +15,7 @@ const meta: Meta<typeof AvatarGroup> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof AvatarGroup>;
 
 export const Demo: Story = {

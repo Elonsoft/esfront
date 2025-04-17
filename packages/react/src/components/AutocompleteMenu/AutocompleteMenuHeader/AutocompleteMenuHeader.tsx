@@ -6,6 +6,7 @@ import { getAutocompleteMenuHeaderUtilityClass } from './AutocompleteMenuHeader.
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+
 type AutocompleteMenuHeaderOwnerState = {
   classes?: AutocompleteMenuHeaderProps['classes'];
 };

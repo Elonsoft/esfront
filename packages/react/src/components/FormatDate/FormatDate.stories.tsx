@@ -46,6 +46,7 @@ const meta: Meta<typeof FormatDate> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof FormatDate>;
 
 export const Demo: Story = {

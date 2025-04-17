@@ -37,6 +37,7 @@ const meta: Meta<typeof AppBar> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof AppBar>;
 
 export const Demo: Story = {
