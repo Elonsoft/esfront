@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.1.3...@esfront/eslint-config@0.1.4) (2025-04-17)
+
+
+### Style Changes
+
+* update padding-line-between-statements rule ([eb6a260](https://github.com/Elonsoft/esfront/commit/eb6a260f735c4e57af2469ff5bd26bedcbc2ff3c))
+
+
+
 ## [0.1.3](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.1.2...@esfront/eslint-config@0.1.3) (2025-04-07)
 
 
