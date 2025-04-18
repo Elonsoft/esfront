@@ -17,6 +17,7 @@ export * from './Calendar';
 export * from './Checkbox';
 export * from './Chip';
 export * from './Chips';
+export * from './CircularProgress';
 export * from './DateAdapter';
 export * from './Dialog';
 export * from './DialogStack';
