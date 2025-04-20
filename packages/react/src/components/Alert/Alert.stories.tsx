@@ -2,6 +2,7 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
+import { AlertContent } from './AlertContent/AlertContent';
 import { Alert, AlertActions, AlertClose, AlertTitle } from '.';
 
 import { Button } from '../Button';
@@ -88,25 +89,29 @@ export const Demo: Story = {
     return (
       <Alert
         action={args.action ? <AlertClose /> : null}
-        actions={
-          !!args.actions && (
-            <AlertActions>
-              <Button color="tertiary" size="400" sx={{ mr: '8px' }} variant="contained">
-                {getButtonText(context)}
-              </Button>
-              <Button color="tertiary" size="400" variant="text">
-                {getCancelButtonText(context)}
-              </Button>
-            </AlertActions>
-          )
-        }
-        breakpoint={args.breakpoint}
+        breakpoint={320}
         color={args.color}
         icon={args.icon ? undefined : false}
         severity={args.severity}
       >
-        {!!args.title && <AlertTitle>{args.title}</AlertTitle>}
-        {args.text || getText(context)}
+        <AlertContent
+          actions={
+            args.actions ? (
+              <AlertActions>
+                <Button color="tertiary" size="400" sx={{ mr: '8px' }} variant="contained">
+                  {getButtonText(context)}
+                </Button>
+                <Button color="tertiary" size="400" variant="text">
+                  {getCancelButtonText(context)}
+                </Button>
+              </AlertActions>
+            ) : null
+          }
+          breakpoint={args.breakpoint}
+        >
+          {!!args.title && <AlertTitle>{args.title}</AlertTitle>}
+          {args.text || getText(context)}
+        </AlertContent>
       </Alert>
     );
   },
