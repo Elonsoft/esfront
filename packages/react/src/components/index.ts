@@ -45,6 +45,7 @@ export * from './MenuItem';
 export * from './PageHGroup';
 export * from './Pagination';
 export * from './PasswordField';
+export * from './Property';
 export * from './Radio';
 export * from './RadioGroup';
 export * from './RibbonBadge';
