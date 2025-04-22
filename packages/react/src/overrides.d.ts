@@ -159,6 +159,14 @@ import {
   GalleryThumbnailsItemProps,
   GalleryThumbnailsProps,
 } from './components/Gallery';
+import {
+  HeaderClassKey,
+  HeaderProps,
+  HeaderActionsClassKey,
+  HeaderActionsProps,
+  HeaderLineClassKey,
+  HeaderLineProps,
+} from './components/Header';
 import { InformationIconClassKey, InformationIconProps } from './components/InformationIcon';
 import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinearProgressClassKey, LinearProgressProps } from './components/LinearProgress';
@@ -422,6 +430,10 @@ declare module '@mui/material/styles/props' {
     ESGalleryThumbnails: GalleryThumbnailsProps;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageProps;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemProps;
+    ESHeader: HeaderProps;
+    ESHeaderActions: HeaderActionsProps;
+    ESHeaderLine: HeaderLineProps;
+    ESHeaderNavigation: HeaderNavigationProps;
     ESInformationIcon: InformationIconProps;
     ESKbd: KbdProps;
     ESLinearProgress: LinearProgressProps;
@@ -570,6 +582,10 @@ declare module '@mui/material/styles/overrides' {
     ESGalleryThumbnails: GalleryThumbnailsClassKey;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageClassKey;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemClassKey;
+    ESHeader: HeaderClassKey;
+    ESHeaderActions: HeaderActionsClassKey;
+    ESHeaderLine: HeaderLineClassKey;
+    ESHeaderNavigation: HeaderNavigationClassKey;
     ESInformationIcon: InformationIconClassKey;
     ESKbd: KbdClassKey;
     ESLinearProgress: LinearProgressClassKey;
@@ -883,6 +899,22 @@ declare module '@mui/material/styles/components' {
     ESGalleryThumbnailsItem?: {
       defaultProps?: ComponentsProps['ESGalleryThumbnailsItem'];
       styleOverrides?: ComponentsOverrides['ESGalleryThumbnailsItem'];
+    };
+    ESHeader?: {
+      defaultProps?: ComponentsProps['ESHeader'];
+      styleOverrides?: ComponentsOverrides['ESHeader'];
+    };
+    ESHeaderActions?: {
+      defaultProps?: ComponentsProps['ESHeaderActions'];
+      styleOverrides?: ComponentsOverrides['ESHeaderActions'];
+    };
+    ESHeaderLine?: {
+      defaultProps?: ComponentsProps['ESHeaderLine'];
+      styleOverrides?: ComponentsOverrides['ESHeaderLine'];
+    };
+    ESHeaderNavigation?: {
+      defaultProps?: ComponentsProps['ESHeaderNavigation'];
+      styleOverrides?: ComponentsOverrides['ESHeaderNavigation'];
     };
     ESInformationIcon?: {
       defaultProps?: ComponentsProps['ESInformationIcon'];
