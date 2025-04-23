@@ -392,7 +392,7 @@ const ButtonRoot = styled(ButtonBase, {
       marginRight: -2,
     },
     [`& > .${svgIconClasses.root}`]: {
-      margin: '0 -4px',
+      margin: '0 -6px',
     },
   },
   [`&.${buttonClasses.size200}`]: {
