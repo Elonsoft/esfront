@@ -290,6 +290,12 @@ import {
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { TooltipClassKey, TooltipProps } from './components/Tooltip';
+import {
+  ToggleButtonClassKey,
+  ToggleButtonGroupClassKey,
+  ToggleButtonGroupProps,
+  ToggleButtonProps,
+} from './components/ToggleButtonGroup';
 import { buttonMixin, listItemMixin } from './theming/mixins';
 import { AvatarProps } from './components';
 import { BadgeProps, BadgeClassKey } from './components/Badge';
@@ -494,6 +500,8 @@ declare module '@mui/material/styles/props' {
     ESTabScrollButton: TabScrollButtonProps;
     ESTouchRipple: TouchRippleProps;
     ESTextFieldGroup: TextFieldGroupProps;
+    ESToggleButtonGroup: ToggleButtonGroupProps;
+    ESToggleButton: ToggleButtonProps;
     ESTooltip: TooltipProps;
   }
 }
@@ -642,6 +650,8 @@ declare module '@mui/material/styles/overrides' {
     ESTag: TagClassKey;
     ESTouchRipple: TouchRippleClassKey;
     ESTextFieldGroup: TextFieldGroupClassKey;
+    ESToggleButtonGroup: ToggleButtonGroupClassKey;
+    ESToggleButton: ToggleButtonClassKey;
     ESTooltip: TooltipClassKey;
   }
 }
@@ -1219,6 +1229,14 @@ declare module '@mui/material/styles/components' {
     ESTextFieldGroup?: {
       defaultProps?: ComponentsProps['ESTextFieldGroup'];
       styleOverrides?: ComponentsOverrides['ESTextFieldGroup'];
+    };
+    ESToggleButtonGroup?: {
+      defaultProps?: ComponentsProps['ESToggleButtonGroup'];
+      styleOverrides?: ComponentsOverrides['ESToggleButtonGroup'];
+    };
+    ESToggleButton?: {
+      defaultProps?: ComponentsProps['ESToggleButton'];
+      styleOverrides?: ComponentsOverrides['ESToggleButton'];
     };
     ESTooltip?: {
       defaultProps?: ComponentsProps['ESTooltip'];
