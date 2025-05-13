@@ -27,60 +27,69 @@ export const TextFieldGroupRoot = styled('div', {
   name: 'ESTextFieldGroup',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})<{ ownerState: TextFieldGroupOwnerState }>(({ ownerState: { breakpoint }, theme }) => ({
+})<{ ownerState: TextFieldGroupOwnerState }>(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   flex: '1',
   gap: '24px',
 
-  [theme.breakpoints.up(breakpoint)]: {
-    flexDirection: 'row',
-    gap: 0,
+  variants: [
+    {
+      props: (props: { breakpoint: number | Breakpoint }) => !!props.breakpoint,
+      style: (props: { breakpoint: number | Breakpoint }) => ({
+        [theme.breakpoints.up(props.breakpoint)]: {
+          flexDirection: 'row',
+          gap: 0,
 
-    [`& .${textFieldClasses.root}:first-of-type .${outlinedInputClasses.root}`]: {
-      borderRadius: '4px 0 0 4px',
-    },
+          [`& .${textFieldClasses.root}:first-of-type .${outlinedInputClasses.root}`]: {
+            borderRadius: '4px 0 0 4px',
+          },
 
-    [`& .${textFieldClasses.root} .${outlinedInputClasses.root}`]: {
-      borderRadius: '0',
-    },
+          [`& .${textFieldClasses.root} .${outlinedInputClasses.root}`]: {
+            borderRadius: '0',
+          },
 
-    [`& .${textFieldClasses.root}:last-of-type .${outlinedInputClasses.root}`]: {
-      borderRadius: '0 4px 4px 0',
-    },
+          [`& .${textFieldClasses.root}:last-of-type .${outlinedInputClasses.root}`]: {
+            borderRadius: '0 4px 4px 0',
+          },
 
-    [`& .${textFieldClasses.root}:not(:last-of-type) .${outlinedInputClasses.root}`]: {
-      [`&:hover .${outlinedInputClasses.notchedOutline}, 
+          [`& .${textFieldClasses.root}:not(:last-of-type) .${outlinedInputClasses.root}`]: {
+            [`&:hover .${outlinedInputClasses.notchedOutline}, 
         &.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
-        borderRightWidth: '2px',
-      },
+              borderRightWidth: '2px',
+            },
 
-      [`& .${outlinedInputClasses.notchedOutline}`]: {
-        borderRightWidth: '0.5px',
-      },
-    },
+            [`& .${outlinedInputClasses.notchedOutline}`]: {
+              borderRightWidth: '0.5px',
+            },
+          },
 
-    [`& .${textFieldClasses.root}:not(:first-of-type) .${outlinedInputClasses.root}`]: {
-      [`&:hover .${outlinedInputClasses.notchedOutline}, 
+          [`& .${textFieldClasses.root}:not(:first-of-type) .${outlinedInputClasses.root}`]: {
+            [`&:hover .${outlinedInputClasses.notchedOutline}, 
         &.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
-        borderLeftWidth: '2px',
-      },
+              borderLeftWidth: '2px',
+            },
 
-      [`& .${outlinedInputClasses.notchedOutline}`]: {
-        borderLeftWidth: '0.5px',
-      },
-    },
+            [`& .${outlinedInputClasses.notchedOutline}`]: {
+              borderLeftWidth: '0.5px',
+            },
+          },
 
-    [`& .${textFieldClasses.root}`]: {
-      flex: 1,
+          [`& .${textFieldClasses.root}`]: {
+            flex: 1,
 
-      [`& .${outlinedInputClasses.root}.${outlinedInputClasses.error}`]: {
-        [`& .${outlinedInputClasses.notchedOutline}`]: {
-          borderWidth: '2px',
+            [`& .${outlinedInputClasses.root}.${outlinedInputClasses.error}`]: {
+              [`& .${outlinedInputClasses.notchedOutline}`]: {
+                borderWidth: '2px',
+              },
+            },
+          },
         },
-      },
+      }),
     },
-  },
+  ],
+
+  //
 }));
 
 /**

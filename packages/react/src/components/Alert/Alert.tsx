@@ -3,7 +3,7 @@ import { AlertProps } from './Alert.types';
 import clsx from 'clsx';
 import { alertClasses, getAlertUtilityClass } from './Alert.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { Breakpoint, styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
@@ -43,10 +43,21 @@ const AlertRoot = styled('div', {
 
     return [styles.root, styles[variant], styles[`${variant}${capitalize(color || severity)}`]];
   },
-})<{ ownerState: AlertOwnerState }>(({ ownerState: { isWithActions }, theme }) => ({
+})<{ ownerState: AlertOwnerState }>(({ theme }) => ({
   display: 'flex',
   borderRadius: '4px',
-  padding: `${isWithActions ? '11px' : '7px'} 15px`,
+  padding: '7px 15px',
+
+  variants: [
+    {
+      props: {
+        isWithActions: true,
+      },
+      style: {
+        padding: '11px 15px',
+      },
+    },
+  ],
 
   [`&.${alertClasses.standardSuccess}`]: {
     backgroundColor: theme.vars.palette.success.A100,
@@ -88,18 +99,23 @@ const AlertContent = styled('div', {
   name: 'ESAlert',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
-})<{ ownerState: { breakpoint: AlertProps['breakpoint'] } }>(({ ownerState: { breakpoint }, theme }) => ({
+})<{ ownerState: { breakpoint: AlertProps['breakpoint'] } }>(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '6px',
   flexGrow: 1,
 
-  ...(!!breakpoint && {
-    [theme.breakpoints.up(breakpoint)]: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+  variants: [
+    {
+      props: (props: { breakpoint: AlertProps['breakpoint'] }) => !!props.breakpoint,
+      style: (props: { breakpoint: number | Breakpoint }) => ({
+        [theme.breakpoints.up(props.breakpoint)]: {
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        },
+      }),
     },
-  }),
+  ],
 }));
 
 const AlertMessage = styled(Typography, {
@@ -119,8 +135,19 @@ const AlertAction = styled('div', {
   name: 'ESAlert',
   slot: 'Action',
   overridesResolver: (props, styles) => styles.action,
-})<{ ownerState: AlertOwnerState }>(({ ownerState: { isWithActions } }) => ({
-  margin: `${isWithActions ? '4px' : '8px'} 0 0 8px`,
+})<{ ownerState: AlertOwnerState }>(() => ({
+  margin: '8px 0 0 8px',
+
+  variants: [
+    {
+      props: {
+        isWithActions: true,
+      },
+      style: {
+        margin: '4px 0 0 8px',
+      },
+    },
+  ],
 }));
 
 const defaultIconMapping = {
