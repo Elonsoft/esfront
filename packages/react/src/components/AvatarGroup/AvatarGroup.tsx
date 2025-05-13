@@ -33,65 +33,70 @@ const AvatarGroupRoot = styled('div', {
   name: 'ESAvatarGroup',
   slot: 'Root',
   overridesResolver: (props, styles) => [styles.root, styles[props.ownerState.direction]],
-})<{ ownerState: AvatarGroupOwnerState }>(
-  ({ ownerState: { spacing = -6, size = 32, direction = 'rtl', cutoutWidth = 2 } }) => ({
-    display: 'flex',
+})<{ ownerState: AvatarGroupOwnerState }>(() => ({
+  display: 'flex',
 
-    [`& .${avatarGroupClasses.avatar}`]: {
-      width: `${size}px`,
-      height: `${size}px`,
+  variants: [
+    {
+      props: true,
+      style: (props: { spacing: number; size: number; direction: 'rtl' | 'ltr'; cutoutWidth: number }) => ({
+        [`& .${avatarGroupClasses.avatar}`]: {
+          width: `${props.size}px`,
+          height: `${props.size}px`,
 
-      '&:not(:nth-of-type(1))': {
-        marginLeft: `${spacing}px`,
-      },
+          '&:not(:nth-of-type(1))': {
+            marginLeft: `${props.spacing}px`,
+          },
 
-      '& > *': {
-        borderRadius: '50%',
-        width: `${size}px`,
-        height: `${size}px`,
-      },
+          '& > *': {
+            borderRadius: '50%',
+            width: `${props.size}px`,
+            height: `${props.size}px`,
+          },
 
-      [`&:not(:${direction === 'ltr' ? 'first' : 'last'}-of-type)`]: {
-        // safari
-        '@supports selector(:nth-child(1 of x))': {
-          overflow: 'visible',
+          [`&:not(:${props.direction === 'ltr' ? 'first' : 'last'}-of-type)`]: {
+            // safari
+            '@supports selector(:nth-child(1 of x))': {
+              overflow: 'visible',
+            },
+
+            WebkitMaskImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${props.size} ${props.size}'%3E%3Ccircle cx='${
+              props.size / 2
+            }' cy='${props.size / 2}' r='${
+              props.size / 2
+            }' fill='black' /%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${props.size} ${props.size}'%3E%3Ccircle cx='${
+              props.size / 2
+            }' cy='${props.size / 2}' fill='white' r='${props.size / 2}'/%3E%3C/svg%3E")`,
+            WebkitMaskSize: `${props.cutoutWidth === 0 ? props.size : props.size + props.cutoutWidth * 2}px, ${props.size}px`,
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: `${getCuttingOffset(props.size, props.direction, props.spacing, props.cutoutWidth)}, center`,
+
+            // safari ios
+            '@supports (-webkit-touch-callout: none)': {
+              maskComposite: 'exclude',
+            },
+
+            // firefox chrome safari
+            '@supports (not (-webkit-touch-callout: none))': {
+              WebkitMaskComposite: 'destination-out',
+              maskComposite: 'exclude',
+            },
+
+            // firefox
+            '@supports ( -moz-appearance:none )': {
+              WebkitMaskSize: `${+props.size + props.cutoutWidth * 2}px, ${+props.size + 0.5}px`,
+            },
+
+            // chrome safari
+            '@supports (not( -moz-appearance:none ))': {
+              WebkitMaskSize: `${+props.size + props.cutoutWidth * 2}px, ${+props.size}px`,
+            },
+          },
         },
-
-        WebkitMaskImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${size} ${size}'%3E%3Ccircle cx='${
-          size / 2
-        }' cy='${size / 2}' r='${
-          size / 2
-        }' fill='black' /%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${size} ${size}'%3E%3Ccircle cx='${
-          size / 2
-        }' cy='${size / 2}' fill='white' r='${size / 2}'/%3E%3C/svg%3E")`,
-        WebkitMaskSize: `${cutoutWidth === 0 ? size : size + cutoutWidth * 2}px, ${size}px`,
-        WebkitMaskRepeat: 'no-repeat',
-        WebkitMaskPosition: `${getCuttingOffset(size, direction, spacing, cutoutWidth)}, center`,
-
-        // safari ios
-        '@supports (-webkit-touch-callout: none)': {
-          maskComposite: 'exclude',
-        },
-
-        // firefox chrome safari
-        '@supports (not (-webkit-touch-callout: none))': {
-          WebkitMaskComposite: 'destination-out',
-          maskComposite: 'exclude',
-        },
-
-        // firefox
-        '@supports ( -moz-appearance:none )': {
-          WebkitMaskSize: `${+size + cutoutWidth * 2}px, ${+size + 0.5}px`,
-        },
-
-        // chrome safari
-        '@supports (not( -moz-appearance:none ))': {
-          WebkitMaskSize: `${+size + cutoutWidth * 2}px, ${+size}px`,
-        },
-      },
+      }),
     },
-  })
-);
+  ],
+}));
 
 /**
  * AvatarGroup renders its children as a stack.

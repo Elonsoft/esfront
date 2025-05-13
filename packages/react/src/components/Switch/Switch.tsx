@@ -49,7 +49,7 @@ const SwitchRoot = styled('div', {
       styles[size],
     ];
   },
-})<{ ownerState: SwitchOwnerState }>(({ ownerState: { color }, theme }) => ({
+})<{ ownerState: SwitchOwnerState }>(({ theme }) => ({
   position: 'relative',
   display: 'inline-flex',
   alignItems: 'center',
@@ -58,7 +58,7 @@ const SwitchRoot = styled('div', {
   color: theme.vars.palette.monoA.A500,
 
   [`&.${switchClasses.checked}`]: {
-    color: theme.vars.palette[color][300],
+    color: theme.vars.palette.primary[300],
 
     [`& .${switchClasses.input}`]: {
       transform: 'translateX(-12px)',
@@ -76,76 +76,19 @@ const SwitchRoot = styled('div', {
     [`& .${switchClasses.button}`]: {
       transform: 'translateX(12px)',
       '&:hover': {
-        '--background': theme.vars.palette[color].A50,
+        '--background': theme.vars.palette.primary.A50,
 
         '@media (hover: none)': {
           '--background': 'transparent',
         },
       },
 
-      '--pressed': theme.vars.palette[color].A150,
-    },
-  },
-
-  [`&.${switchClasses.disabled}`]: {
-    opacity: '0.3',
-    cursor: 'not-allowed',
-  },
-
-  [`&.${switchClasses.large}`]: {
-    height: '36px',
-    width: '56px',
-    [`& .${switchClasses.track}`]: {
-      borderRadius: '20px',
-      width: '38px',
-      height: '24px',
-    },
-    [`& .${switchClasses.input}`]: {
-      width: '56px',
-    },
-    [`& .${switchClasses.thumb}`]: {
-      width: '24px',
-      height: '24px',
-    },
-  },
-
-  [`&.${switchClasses.medium}`]: {
-    height: '36px',
-    width: '48px',
-    [`& .${switchClasses.track}`]: {
-      width: '32px',
-      height: '14px',
-    },
-    [`& .${switchClasses.input}`]: {
-      width: '48px',
-    },
-    [`& .${switchClasses.thumb}`]: {
-      width: '20px',
-      height: '20px',
-    },
-  },
-
-  [`&.${switchClasses.small}`]: {
-    height: '32px',
-    width: '46px',
-    [`& .${switchClasses.track}`]: {
-      width: '28px',
-      height: '4px',
-    },
-    [`& .${switchClasses.input}`]: {
-      width: '46px',
-    },
-    [`& .${switchClasses.button}`]: {
-      left: '1px',
-    },
-    [`& .${switchClasses.thumb}`]: {
-      width: '16px',
-      height: '16px',
+      '--pressed': theme.vars.palette.primary.A150,
     },
   },
 
   [`&.${switchClasses.indeterminate}`]: {
-    color: theme.vars.palette[color][300],
+    color: theme.vars.palette.primary[300],
     [`&.${switchClasses.large}`]: {
       [`& .${switchClasses.button}`]: {
         transform: 'translateX(8px)',
@@ -201,14 +144,224 @@ const SwitchRoot = styled('div', {
 
     [`& .${switchClasses.button}`]: {
       '&:hover': {
-        '--background': theme.vars.palette[color].A50,
+        '--background': theme.vars.palette.primary.A50,
 
         '@media (hover: none)': {
           '--background': 'transparent',
         },
       },
 
-      '--pressed': theme.vars.palette[color].A150,
+      '--pressed': theme.vars.palette.primary.A150,
+    },
+  },
+
+  variants: [
+    {
+      props: {
+        color: 'secondary',
+      },
+      style: {
+        [`&.${switchClasses.checked}`]: {
+          color: theme.vars.palette.secondary[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.secondary.A50,
+            },
+
+            '--pressed': theme.vars.palette.secondary.A150,
+          },
+        },
+
+        [`&.${switchClasses.indeterminate}`]: {
+          color: theme.vars.palette.secondary[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.secondary.A50,
+            },
+
+            '--pressed': theme.vars.palette.secondary.A150,
+          },
+        },
+      },
+    },
+    {
+      props: {
+        color: 'error',
+      },
+      style: {
+        [`&.${switchClasses.checked}`]: {
+          color: theme.vars.palette.error[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.error.A50,
+            },
+
+            '--pressed': theme.vars.palette.error.A150,
+          },
+        },
+
+        [`&.${switchClasses.indeterminate}`]: {
+          color: theme.vars.palette.error[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.error.A50,
+            },
+
+            '--pressed': theme.vars.palette.error.A150,
+          },
+        },
+      },
+    },
+    {
+      props: {
+        color: 'info',
+      },
+      style: {
+        [`&.${switchClasses.checked}`]: {
+          color: theme.vars.palette.info[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.info.A50,
+            },
+
+            '--pressed': theme.vars.palette.info.A150,
+          },
+        },
+
+        [`&.${switchClasses.indeterminate}`]: {
+          color: theme.vars.palette.info[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.info.A50,
+            },
+
+            '--pressed': theme.vars.palette.info.A150,
+          },
+        },
+      },
+    },
+    {
+      props: {
+        color: 'success',
+      },
+      style: {
+        [`&.${switchClasses.checked}`]: {
+          color: theme.vars.palette.success[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.success.A50,
+            },
+
+            '--pressed': theme.vars.palette.success.A150,
+          },
+        },
+
+        [`&.${switchClasses.indeterminate}`]: {
+          color: theme.vars.palette.success[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.success.A50,
+            },
+
+            '--pressed': theme.vars.palette.success.A150,
+          },
+        },
+      },
+    },
+    {
+      props: {
+        color: 'warning',
+      },
+      style: {
+        [`&.${switchClasses.checked}`]: {
+          color: theme.vars.palette.warning[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.warning.A50,
+            },
+
+            '--pressed': theme.vars.palette.warning.A150,
+          },
+        },
+
+        [`&.${switchClasses.indeterminate}`]: {
+          color: theme.vars.palette.warning[300],
+
+          [`& .${switchClasses.button}`]: {
+            '&:hover': {
+              '--background': theme.vars.palette.warning.A50,
+            },
+
+            '--pressed': theme.vars.palette.warning.A150,
+          },
+        },
+      },
+    },
+  ],
+
+  [`&.${switchClasses.disabled}`]: {
+    opacity: '0.3',
+    cursor: 'not-allowed',
+  },
+
+  [`&.${switchClasses.large}`]: {
+    height: '36px',
+    width: '56px',
+    [`& .${switchClasses.track}`]: {
+      borderRadius: '20px',
+      width: '38px',
+      height: '24px',
+    },
+    [`& .${switchClasses.input}`]: {
+      width: '56px',
+    },
+    [`& .${switchClasses.thumb}`]: {
+      width: '24px',
+      height: '24px',
+    },
+  },
+
+  [`&.${switchClasses.medium}`]: {
+    height: '36px',
+    width: '48px',
+    [`& .${switchClasses.track}`]: {
+      width: '32px',
+      height: '14px',
+    },
+    [`& .${switchClasses.input}`]: {
+      width: '48px',
+    },
+    [`& .${switchClasses.thumb}`]: {
+      width: '20px',
+      height: '20px',
+    },
+  },
+
+  [`&.${switchClasses.small}`]: {
+    height: '32px',
+    width: '46px',
+    [`& .${switchClasses.track}`]: {
+      width: '28px',
+      height: '4px',
+    },
+    [`& .${switchClasses.input}`]: {
+      width: '46px',
+    },
+    [`& .${switchClasses.button}`]: {
+      left: '1px',
+    },
+    [`& .${switchClasses.thumb}`]: {
+      width: '16px',
+      height: '16px',
     },
   },
 }));

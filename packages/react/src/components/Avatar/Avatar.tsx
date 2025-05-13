@@ -78,10 +78,8 @@ const AvatarRoot = styled('div', {
 
     return [styles.root, styles[`variant${capitalize(variant)}`], outlined && styles.outlined];
   },
-})<{ ownerState: AvatarOwnerState }>(({ theme, ownerState: { size } }) => ({
+})<{ ownerState: AvatarOwnerState }>(({ theme }) => ({
   ...theme.typography.body100,
-  height: `${size}px`,
-  width: `${size}px`,
   backgroundColor: theme.vars.palette.monoA.A100,
   backgroundSize: '100%',
   flexShrink: 0,
@@ -92,6 +90,16 @@ const AvatarRoot = styled('div', {
   justifyContent: 'center',
   overflow: 'hidden',
   color: theme.vars.palette.monoA.A500,
+
+  variants: [
+    {
+      props: true,
+      style: (props: { size: number }) => ({
+        height: `${props.size}px`,
+        width: `${props.size}px`,
+      }),
+    },
+  ],
 
   [`& .${svgIconClasses.root}`]: {
     color: theme.vars.palette.monoA.A400,

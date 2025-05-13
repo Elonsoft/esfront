@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { bannerClasses, getBannerUtilityClass } from './Banner.classes';
 import { bannerTitleClasses } from './BannerTitle/BannerTitle.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { Breakpoint, styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
@@ -141,18 +141,23 @@ const BannerContent = styled('div', {
   name: 'ESBanner',
   slot: 'Wrapper',
   overridesResolver: (_props, styles) => styles.content,
-})<{ ownerState: { breakpoint: BannerProps['breakpoint'] } }>(({ ownerState: { breakpoint }, theme }) => ({
+})<{ ownerState: { breakpoint: BannerProps['breakpoint'] } }>(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '6px',
   flexGrow: 1,
 
-  ...(!!breakpoint && {
-    [theme.breakpoints.up(breakpoint)]: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+  variants: [
+    {
+      props: (props: { breakpoint: BannerProps['breakpoint'] }) => !!props.breakpoint,
+      style: (props: { breakpoint: number | Breakpoint }) => ({
+        [theme.breakpoints.up(props.breakpoint)]: {
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        },
+      }),
     },
-  }),
+  ],
 }));
 
 const BannerMessage = styled(Typography, {
