@@ -56,7 +56,7 @@ const InformationIconRoot = styled('div', {
   background: 'none',
 
   color: theme.vars.palette.monoA.A300,
-  cursor: 'pointer',
+  cursor: 'help',
   display: 'inline-flex',
   width: '24px',
   height: '24px',
