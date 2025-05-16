@@ -45,7 +45,7 @@ const SpinnerFadingRingRoot = styled('svg', {
   '& > foreignObject > div': {
     width: '100%',
     height: '100%',
-    background: `conic-gradient(from 187deg, rgba(255, 255, 255, 0) 17%, currentColor 100%)`,
+    background: `conic-gradient(from 190deg, rgba(255, 255, 255, 0) 17%, currentColor 100%)`,
   },
 }));
 
@@ -53,7 +53,7 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
   const {
     className,
     sx,
-    size = 40,
+    size = 32,
     color = 'primary',
     ...props
   } = useThemeProps({
@@ -72,17 +72,17 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
       height={size}
       ownerState={ownerState}
       sx={sx}
-      viewBox="0 0 40 40"
+      viewBox="0 0 32 32"
       width={size}
     >
       <clipPath id={id}>
         <path
           clipRule="evenodd"
-          d="M20 4C11.1634 4 4 11.1634 4 20C4 27.5387 9.21559 33.8641 16.2376 35.5556L15.3009 39.4444C6.52338 37.33 0 29.4292 0 20C0 8.9543 8.9543 0 20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40C18.8954 40 18 39.1046 18 38C18 36.8954 18.8954 36 20 36C28.8366 36 36 28.8366 36 20C36 11.1634 28.8366 4 20 4Z"
+          d="M16 4C9.37258 4 4 9.37258 4 16C4 21.1789 7.28177 25.5964 11.8857 27.2767C12.9233 27.6554 13.4575 28.8035 13.0788 29.8412C12.7001 30.8788 11.5519 31.413 10.5143 31.0343C4.38262 28.7964 0 22.9126 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C14.8954 32 14 31.1046 14 30C14 28.8954 14.8954 28 16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4Z"
           fillRule="evenodd"
         />
       </clipPath>
-      <foreignObject clipPath={`url(#${id})`} height="40" width="40">
+      <foreignObject clipPath={`url(#${id})`} height="32" width="32">
         <div />
       </foreignObject>
     </SpinnerFadingRingRoot>

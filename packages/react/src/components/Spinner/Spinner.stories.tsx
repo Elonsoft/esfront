@@ -33,7 +33,7 @@ export const Demo: Story = {
       <div
         style={{
           display: 'grid',
-          gap: '24px',
+          gap: '16x',
           gridAutoFlow: 'column',
           justifyContent: 'flex-start',
         }}

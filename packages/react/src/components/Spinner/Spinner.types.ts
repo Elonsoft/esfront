@@ -12,7 +12,7 @@ export interface SpinnerBaseProps<T> {
 
   /**
    * Size of the spinner component.
-   * @default 40
+   * @default 32
    **/
   size?: number;
 
