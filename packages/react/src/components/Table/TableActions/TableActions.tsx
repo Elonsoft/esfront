@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { forwardRef, memo } from 'react';
 
 import { TableActionsProps } from './TableActions.types';
 
@@ -74,21 +74,23 @@ const TableActionsChildren = styled('div', {
 /**
  * This component displays actions for the selected table rows.
  */
-export const TableActions = memo(function TableActions(inProps: TableActionsProps) {
-  const { className, sx, label, count, children, ...props } = useThemeProps({
-    props: inProps,
-    name: 'ESTableActions',
-  });
+export const TableActions = memo(
+  forwardRef<HTMLDivElement, TableActionsProps>(function TableActions(inProps, ref) {
+    const { className, sx, label, count, children, ...props } = useThemeProps({
+      props: inProps,
+      name: 'ESTableActions',
+    });
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
+    const ownerState = { ...props };
+    const classes = useUtilityClasses(ownerState);
 
-  return (
-    <TableActionsRoot className={clsx(classes.root, className)} sx={sx}>
-      <TableActionsText className={classes.text} variant="body200">
-        {label} {count}
-      </TableActionsText>
-      <TableActionsChildren className={classes.children}>{children}</TableActionsChildren>
-    </TableActionsRoot>
-  );
-});
+    return (
+      <TableActionsRoot ref={ref} className={clsx(classes.root, className)} sx={sx}>
+        <TableActionsText className={classes.text} variant="body200">
+          {label} {count}
+        </TableActionsText>
+        <TableActionsChildren className={classes.children}>{children}</TableActionsChildren>
+      </TableActionsRoot>
+    );
+  })
+);

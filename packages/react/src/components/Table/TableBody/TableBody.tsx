@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { forwardRef, memo, useMemo } from 'react';
 
 import { TableBodyProps } from './TableBody.types';
 
@@ -8,6 +8,7 @@ import { getTableBodyUtilityClass } from './TableBody.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+import { useForkRef } from '@mui/material/utils';
 
 import { useTableBodyContext } from './TableBody.context';
 
@@ -84,40 +85,44 @@ const TableBodyContainer = styled('div', {
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
-export const TableBody = memo(function TableBody(inProps: TableBodyProps) {
-  const {
-    children,
-    className,
-    sx,
-    rowDividers = true,
-    colDividers = false,
-    striped,
-    ...props
-  } = useThemeProps({
-    props: inProps,
-    name: 'ESTableBody',
-  });
+export const TableBody = memo(
+  forwardRef<HTMLDivElement, TableBodyProps>(function TableBody(inProps, ref) {
+    const {
+      children,
+      className,
+      sx,
+      rowDividers = true,
+      colDividers = false,
+      striped,
+      ...props
+    } = useThemeProps({
+      props: inProps,
+      name: 'ESTableBody',
+    });
 
-  const { setRef } = useTableBodyContext();
+    const { setRef } = useTableBodyContext();
 
-  const value = useMemo(() => {
-    return { ...TABLE_CELL_CONTEXT_VALUE, rowDividers, colDividers };
-  }, [rowDividers, colDividers]);
+    const rootRef = useForkRef(setRef, ref);
 
-  const ownerState = { striped, ...props };
-  const classes = useUtilityClasses(ownerState);
+    const value = useMemo(() => {
+      return { ...TABLE_CELL_CONTEXT_VALUE, rowDividers, colDividers };
+    }, [rowDividers, colDividers]);
 
-  return (
-    <TableCellContext.Provider value={value}>
-      <TableBodyRoot
-        ref={setRef}
-        className={clsx(classes.root, className)}
-        ownerState={ownerState}
-        role="rowgroup"
-        sx={sx}
-      >
-        <TableBodyContainer className={classes.container}>{children}</TableBodyContainer>
-      </TableBodyRoot>
-    </TableCellContext.Provider>
-  );
-});
+    const ownerState = { striped, ...props };
+    const classes = useUtilityClasses(ownerState);
+
+    return (
+      <TableCellContext.Provider value={value}>
+        <TableBodyRoot
+          ref={rootRef}
+          className={clsx(classes.root, className)}
+          ownerState={ownerState}
+          role="rowgroup"
+          sx={sx}
+        >
+          <TableBodyContainer className={classes.container}>{children}</TableBodyContainer>
+        </TableBodyRoot>
+      </TableCellContext.Provider>
+    );
+  })
+);

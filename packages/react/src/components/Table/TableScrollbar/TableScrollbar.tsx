@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { forwardRef, memo } from 'react';
 
 import { TableScrollbarProps } from './TableScrollbar.types';
 
@@ -8,6 +8,7 @@ import { getTableScrollbarUtilityClass } from './TableScrollbar.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+import { useForkRef } from '@mui/material/utils';
 
 import { useTableScrollbarContext } from './TableScrollbar.context';
 
@@ -34,20 +35,24 @@ const TableScrollbarRoot = styled('div', {
   overflowX: 'auto',
 }));
 
-export const TableScrollbar = memo(function TableScrollbar(inProps: TableScrollbarProps) {
-  const { className, sx, ...props } = useThemeProps({
-    props: inProps,
-    name: 'ESTableScrollbar',
-  });
+export const TableScrollbar = memo(
+  forwardRef<HTMLDivElement, TableScrollbarProps>(function TableScrollbar(inProps, inRef) {
+    const { className, sx, ...props } = useThemeProps({
+      props: inProps,
+      name: 'ESTableScrollbar',
+    });
 
-  const { width, setRef } = useTableScrollbarContext();
+    const { width, setRef } = useTableScrollbarContext();
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
+    const rootRef = useForkRef(setRef, inRef);
 
-  return (
-    <TableScrollbarRoot ref={setRef} className={clsx(className, classes.root)} sx={sx}>
-      <div style={{ width: `${width}px`, height: '1px' }} />
-    </TableScrollbarRoot>
-  );
-});
+    const ownerState = { ...props };
+    const classes = useUtilityClasses(ownerState);
+
+    return (
+      <TableScrollbarRoot ref={rootRef} className={clsx(className, classes.root)} sx={sx}>
+        <div style={{ width: `${width}px`, height: '1px' }} />
+      </TableScrollbarRoot>
+    );
+  })
+);

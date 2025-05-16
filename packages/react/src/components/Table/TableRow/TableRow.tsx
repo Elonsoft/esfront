@@ -110,7 +110,7 @@ const TableRowContent = styled(Box, {
 }));
 
 export const TableRow = memo(
-  forwardRef((inProps: TableRowProps, ref) => {
+  forwardRef(function TableRow(inProps: TableRowProps, ref) {
     const { children, className, sx, selected, hover, ...props } = useThemeProps({
       props: inProps,
       name: 'ESTableRow',
@@ -137,7 +137,3 @@ export const TableRow = memo(
     );
   })
 ) as OverridableComponent<TableRowTypeMap>;
-
-// eslint-disable-next-line
-// @ts-ignore
-TableRow.displayName = 'TableRow';
