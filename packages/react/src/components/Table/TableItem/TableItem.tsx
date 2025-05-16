@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+
 import { TableItemProps } from './TableItem.types';
 
 import clsx from 'clsx';
@@ -62,7 +64,7 @@ const TableItemSecondary = styled(Typography, {
   wordBreak: 'break-word',
 })) as typeof Typography;
 
-export const TableItem = (inProps: TableItemProps) => {
+export const TableItem = forwardRef<HTMLDivElement, TableItemProps>((inProps, ref) => {
   const {
     className,
     sx,
@@ -80,7 +82,7 @@ export const TableItem = (inProps: TableItemProps) => {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <TableItemRoot className={clsx(classes.root, className)} sx={sx}>
+    <TableItemRoot ref={ref} className={clsx(classes.root, className)} sx={sx}>
       {avatar}
       <TableItemContent className={classes.content}>
         {!!primary && (
@@ -96,4 +98,6 @@ export const TableItem = (inProps: TableItemProps) => {
       </TableItemContent>
     </TableItemRoot>
   );
-};
+});
+
+TableItem.displayName = 'TableItem';
