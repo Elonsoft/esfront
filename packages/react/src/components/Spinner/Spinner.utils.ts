@@ -22,20 +22,21 @@ export const rotateKeyframe = keyframes`
   }
 `;
 
-export const strokeArrayKeyframe = keyframes`
-  0% {
-    stroke-dasharray: 1px, 200px;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 100px, 200px;
-    stroke-dashoffset: -15px;
-  }
-  100% {
-    stroke-dasharray: 100px, 200px;
-    stroke-dashoffset: -110px;
-  }
-`;
+// TODO: maybe remove
+// export const strokeArrayKeyframe = keyframes`
+//   0% {
+//     stroke-dasharray: 1px, 200px;
+//     stroke-dashoffset: 0;
+//   }
+//   50% {
+//     stroke-dasharray: 100px, 200px;
+//     stroke-dashoffset: -15px;
+//   }
+//   100% {
+//     stroke-dasharray: 100px, 200px;
+//     stroke-dashoffset: -110px;
+//   }
+// `;
 
 export const generateStyleColorVariants = (theme: Theme) => [
   {
