@@ -1,4 +1,4 @@
-import { memo, useMemo, useState } from 'react';
+import { forwardRef, memo, useMemo, useState } from 'react';
 
 import { TableHeadProps } from './TableHead.types';
 
@@ -8,6 +8,7 @@ import { getTableHeadUtilityClass } from './TableHead.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+import { useForkRef } from '@mui/material/utils';
 
 import { useTableHeadContext } from './TableHead.context';
 
@@ -89,51 +90,56 @@ const TableHeadContainer = styled('div', {
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
 
-export const TableHead = memo(function TableHead(inProps: TableHeadProps) {
-  const {
-    children,
-    className,
-    sticky,
-    sx,
-    rowDividers = true,
-    colDividers = false,
-    ...props
-  } = useThemeProps({
-    props: inProps,
-    name: 'ESTableHead',
-  });
+export const TableHead = memo(
+  forwardRef<HTMLDivElement, TableHeadProps>(function TableHead(inProps, inRef) {
+    const {
+      children,
+      className,
+      sticky,
+      sx,
+      rowDividers = true,
+      colDividers = false,
+      ...props
+    } = useThemeProps({
+      props: inProps,
+      name: 'ESTableHead',
+    });
 
-  const [isStuck, setStuck] = useState(false);
+    const [isStuck, setStuck] = useState(false);
 
-  const { ref, setRef } = useTableHeadContext();
+    const { ref, setRef } = useTableHeadContext();
+    const rootRef = useForkRef(setRef, inRef);
 
-  useIntersectionObserver(
-    { current: ref },
-    (entries) => {
-      setStuck(entries[0].intersectionRatio < 1);
-    },
-    { threshold: [1], rootMargin: `-${(sticky || 0) + 1}px 0px 0px` }
-  );
+    useIntersectionObserver(
+      { current: ref },
+      (entries) => {
+        setStuck(entries[0].intersectionRatio < 1);
+      },
+      { threshold: [1], rootMargin: `-${(sticky || 0) + 1}px 0px 0px` }
+    );
 
-  const value = useMemo(() => {
-    return { ...TABLE_CELL_CONTEXT_VALUE, rowDividers, colDividers };
-  }, [rowDividers, colDividers]);
+    const value = useMemo(() => {
+      return { ...TABLE_CELL_CONTEXT_VALUE, rowDividers, colDividers };
+    }, [rowDividers, colDividers]);
 
-  const ownerState = { isSticky: sticky !== undefined, isStuck: sticky !== undefined && isStuck, ...props };
-  const classes = useUtilityClasses(ownerState);
+    const ownerState = { isSticky: sticky !== undefined, isStuck: sticky !== undefined && isStuck, ...props };
+    const classes = useUtilityClasses(ownerState);
 
-  return (
-    <TableCellContext.Provider value={value}>
-      <TableHeadRoot
-        ref={setRef}
-        className={clsx(classes.root, className)}
-        ownerState={ownerState}
-        role="rowgroup"
-        style={sticky === undefined ? undefined : ({ '--ESTableHead-top': `${sticky || 0}px` } as React.CSSProperties)}
-        sx={sx}
-      >
-        <TableHeadContainer className={classes.container}>{children}</TableHeadContainer>
-      </TableHeadRoot>
-    </TableCellContext.Provider>
-  );
-});
+    return (
+      <TableCellContext.Provider value={value}>
+        <TableHeadRoot
+          ref={rootRef}
+          className={clsx(classes.root, className)}
+          ownerState={ownerState}
+          role="rowgroup"
+          style={
+            sticky === undefined ? undefined : ({ '--ESTableHead-top': `${sticky || 0}px` } as React.CSSProperties)
+          }
+          sx={sx}
+        >
+          <TableHeadContainer className={classes.container}>{children}</TableHeadContainer>
+        </TableHeadRoot>
+      </TableCellContext.Provider>
+    );
+  })
+);

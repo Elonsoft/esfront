@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from 'react';
+import { forwardRef, memo, useRef, useState } from 'react';
 
 import { TableFootProps } from './TableFoot.types';
 
@@ -8,6 +8,7 @@ import { getTableFootUtilityClass } from './TableFoot.classes';
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+import { useForkRef } from '@mui/material/utils';
 
 import { useIntersectionObserver } from '../../../hooks';
 
@@ -67,36 +68,42 @@ const TableFootRoot = styled('div', {
   ],
 }));
 
-export const TableFoot = memo(function TableFoot(inProps: TableFootProps) {
-  const { children, className, sticky, sx, ...props } = useThemeProps({
-    props: inProps,
-    name: 'ESTableFoot',
-  });
+export const TableFoot = memo(
+  forwardRef<HTMLDivElement, TableFootProps>(function TableFoot(inProps, inRef) {
+    const { children, className, sticky, sx, ...props } = useThemeProps({
+      props: inProps,
+      name: 'ESTableFoot',
+    });
 
-  const [isStuck, setStuck] = useState(false);
+    const [isStuck, setStuck] = useState(false);
 
-  const ref = useRef<HTMLDivElement | null>(null);
+    const ref = useRef<HTMLDivElement | null>(null);
 
-  useIntersectionObserver(
-    ref,
-    (entries) => {
-      setStuck(entries[0].intersectionRatio < 1);
-    },
-    { threshold: [1], rootMargin: `0px 0px -${(sticky || 0) + 1}px` }
-  );
+    const rootRef = useForkRef(ref, inRef);
 
-  const ownerState = { isSticky: sticky !== undefined, isStuck: sticky !== undefined && isStuck, ...props };
-  const classes = useUtilityClasses(ownerState);
+    useIntersectionObserver(
+      ref,
+      (entries) => {
+        setStuck(entries[0].intersectionRatio < 1);
+      },
+      { threshold: [1], rootMargin: `0px 0px -${(sticky || 0) + 1}px` }
+    );
 
-  return (
-    <TableFootRoot
-      ref={ref}
-      className={clsx(classes.root, className)}
-      ownerState={ownerState}
-      style={sticky === undefined ? undefined : ({ '--ESTableFoot-bottom': `${sticky || 0}px` } as React.CSSProperties)}
-      sx={sx}
-    >
-      {children}
-    </TableFootRoot>
-  );
-});
+    const ownerState = { isSticky: sticky !== undefined, isStuck: sticky !== undefined && isStuck, ...props };
+    const classes = useUtilityClasses(ownerState);
+
+    return (
+      <TableFootRoot
+        ref={rootRef}
+        className={clsx(classes.root, className)}
+        ownerState={ownerState}
+        style={
+          sticky === undefined ? undefined : ({ '--ESTableFoot-bottom': `${sticky || 0}px` } as React.CSSProperties)
+        }
+        sx={sx}
+      >
+        {children}
+      </TableFootRoot>
+    );
+  })
+);

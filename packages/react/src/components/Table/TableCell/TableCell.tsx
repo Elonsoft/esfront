@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, memo, useEffect, useRef, useState } from 'react';
 
 import { TableCellProps } from './TableCell.types';
 
@@ -8,6 +8,7 @@ import { getTableCellUtilityClass, tableCellClasses } from './TableCell.classes'
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
 import { styled, useThemeProps } from '@mui/material/styles';
+import { useForkRef } from '@mui/material/utils';
 
 import { useTableCellContext } from './TableCell.context';
 
@@ -321,145 +322,149 @@ const RESIZE_STEPS: Record<string, number | undefined> = {
   ArrowRight: 16,
 };
 
-export const TableCell = memo(function TableCell(inProps: TableCellProps) {
-  const context = useTableCellContext();
+export const TableCell = memo(
+  forwardRef<HTMLDivElement, TableCellProps>(function TableCell(inProps, inRef) {
+    const context = useTableCellContext();
 
-  const {
-    children,
-    className,
-    variant = context.variant,
-    rowDivider = context.rowDividers,
-    colDivider = context.colDividers,
-    padding = 'normal',
-    align = 'flex-start',
-    id,
-    onResize,
-    onResizeCommit,
-    colSpan,
-    minWidth,
-    labelResize,
-    sx,
-    pin,
-    ...props
-  } = useThemeProps({
-    props: inProps,
-    name: 'ESTableCell',
-  });
+    const {
+      children,
+      className,
+      variant = context.variant,
+      rowDivider = context.rowDividers,
+      colDivider = context.colDividers,
+      padding = 'normal',
+      align = 'flex-start',
+      id,
+      onResize,
+      onResizeCommit,
+      colSpan,
+      minWidth,
+      labelResize,
+      sx,
+      pin,
+      ...props
+    } = useThemeProps({
+      props: inProps,
+      name: 'ESTableCell',
+    });
 
-  const ref = useRef<HTMLDivElement | null>(null);
-  const screenX = useRef<number | null>(null);
+    const ref = useRef<HTMLDivElement | null>(null);
+    const rootRef = useForkRef(ref, inRef);
 
-  const [isResizing, setResizing] = useState(false);
+    const screenX = useRef<number | null>(null);
 
-  const onResizeLatest = useLatest(onResize);
-  const onResizeCommitLatest = useLatest(onResizeCommit);
+    const [isResizing, setResizing] = useState(false);
 
-  const onMouseMoveLatest = useLatest((event: MouseEvent) => {
-    if (onResizeLatest.current && ref.current) {
-      if (screenX.current !== null) {
+    const onResizeLatest = useLatest(onResize);
+    const onResizeCommitLatest = useLatest(onResizeCommit);
+
+    const onMouseMoveLatest = useLatest((event: MouseEvent) => {
+      if (onResizeLatest.current && ref.current) {
+        if (screenX.current !== null) {
+          const width = Math.max(
+            minWidth || 0,
+            ref.current.getBoundingClientRect().width + (event.screenX - screenX.current)
+          );
+          onResizeLatest.current(width, ref.current);
+        }
+
+        screenX.current = event.screenX;
+      }
+    });
+
+    const onMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
+      screenX.current = event.screenX;
+      setResizing(true);
+    };
+
+    const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      const step = RESIZE_STEPS[event.key];
+
+      if (onResizeLatest.current && ref.current && step) {
+        event.preventDefault();
         const width = Math.max(
           minWidth || 0,
-          ref.current.getBoundingClientRect().width + (event.screenX - screenX.current)
+          ref.current.getBoundingClientRect().width + (event.shiftKey ? step * 3 : step)
         );
         onResizeLatest.current(width, ref.current);
       }
+    };
 
-      screenX.current = event.screenX;
-    }
-  });
+    const onKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      if ((event.key === 'ArrowLeft' || event.key === 'ArrowRight') && onResizeCommitLatest.current && ref.current) {
+        onResizeCommitLatest.current(ref.current.getBoundingClientRect().width, ref.current);
+      }
+    };
 
-  const onMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
-    screenX.current = event.screenX;
-    setResizing(true);
-  };
+    const onClick = (event: React.MouseEvent) => {
+      if (props.overlap) {
+        event.stopPropagation();
+      }
+    };
 
-  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    const step = RESIZE_STEPS[event.key];
+    useEffect(() => {
+      if (isResizing) {
+        const onMouseMove = (event: MouseEvent) => {
+          onMouseMoveLatest.current(event);
+        };
 
-    if (onResizeLatest.current && ref.current && step) {
-      event.preventDefault();
-      const width = Math.max(
-        minWidth || 0,
-        ref.current.getBoundingClientRect().width + (event.shiftKey ? step * 3 : step)
-      );
-      onResizeLatest.current(width, ref.current);
-    }
-  };
+        const onMouseUp = () => {
+          screenX.current = null;
+          setResizing(false);
 
-  const onKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    if ((event.key === 'ArrowLeft' || event.key === 'ArrowRight') && onResizeCommitLatest.current && ref.current) {
-      onResizeCommitLatest.current(ref.current.getBoundingClientRect().width, ref.current);
-    }
-  };
+          if (onResizeCommitLatest.current && ref.current) {
+            onResizeCommitLatest.current(ref.current.getBoundingClientRect().width, ref.current);
+          }
+        };
 
-  const onClick = (event: React.MouseEvent) => {
-    if (props.overlap) {
-      event.stopPropagation();
-    }
-  };
+        const style = document.createElement('STYLE');
+        style.textContent = `* { cursor: col-resize !important; } .${tableCellClasses.resize}::after { display: none; }`;
 
-  useEffect(() => {
-    if (isResizing) {
-      const onMouseMove = (event: MouseEvent) => {
-        onMouseMoveLatest.current(event);
-      };
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+        document.head.appendChild(style);
 
-      const onMouseUp = () => {
-        screenX.current = null;
-        setResizing(false);
+        return () => {
+          document.removeEventListener('mousemove', onMouseMove);
+          document.removeEventListener('mouseup', onMouseUp);
+          document.head.removeChild(style);
+        };
+      }
+    }, [isResizing]);
 
-        if (onResizeCommitLatest.current && ref.current) {
-          onResizeCommitLatest.current(ref.current.getBoundingClientRect().width, ref.current);
-        }
-      };
+    const ownerState = { variant, padding, align, pin, isResizing, rowDivider, colDivider, ...props };
+    const classes = useUtilityClasses(ownerState);
 
-      const style = document.createElement('STYLE');
-      style.textContent = `* { cursor: col-resize !important; } .${tableCellClasses.resize}::after { display: none; }`;
-
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
-      document.head.appendChild(style);
-
-      return () => {
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-        document.head.removeChild(style);
-      };
-    }
-  }, [isResizing]);
-
-  const ownerState = { variant, padding, align, pin, isResizing, rowDivider, colDivider, ...props };
-  const classes = useUtilityClasses(ownerState);
-
-  return (
-    <TableCellRoot
-      ref={ref}
-      className={clsx(classes.root, className)}
-      data-minwidth={minWidth}
-      id={id}
-      ownerState={ownerState}
-      role={variant === 'head' ? 'columnheader' : 'cell'}
-      style={{ '--ESTableCell-colSpan': colSpan } as React.CSSProperties}
-      sx={sx}
-      onClick={onClick}
-    >
-      <TableCellWrapper className={classes.wrapper}>
-        <TableCellContainer className={classes.container}>
-          <TableCellContent className={classes.content} ownerState={ownerState}>
-            {children}
-          </TableCellContent>
-          {!!onResize && (
-            <TableCellResize
-              aria-label={labelResize}
-              className={classes.resize}
-              ownerState={ownerState}
-              onKeyDown={onKeyDown}
-              onKeyUp={onKeyUp}
-              onMouseDown={onMouseDown}
-            />
-          )}
-        </TableCellContainer>
-      </TableCellWrapper>
-    </TableCellRoot>
-  );
-});
+    return (
+      <TableCellRoot
+        ref={rootRef}
+        className={clsx(classes.root, className)}
+        data-minwidth={minWidth}
+        id={id}
+        ownerState={ownerState}
+        role={variant === 'head' ? 'columnheader' : 'cell'}
+        style={{ '--ESTableCell-colSpan': colSpan } as React.CSSProperties}
+        sx={sx}
+        onClick={onClick}
+      >
+        <TableCellWrapper className={classes.wrapper}>
+          <TableCellContainer className={classes.container}>
+            <TableCellContent className={classes.content} ownerState={ownerState}>
+              {children}
+            </TableCellContent>
+            {!!onResize && (
+              <TableCellResize
+                aria-label={labelResize}
+                className={classes.resize}
+                ownerState={ownerState}
+                onKeyDown={onKeyDown}
+                onKeyUp={onKeyUp}
+                onMouseDown={onMouseDown}
+              />
+            )}
+          </TableCellContainer>
+        </TableCellWrapper>
+      </TableCellRoot>
+    );
+  })
+);
