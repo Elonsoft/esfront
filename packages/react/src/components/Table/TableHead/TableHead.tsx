@@ -5,10 +5,9 @@ import { TableHeadProps } from './TableHead.types';
 import clsx from 'clsx';
 import { getTableHeadUtilityClass } from './TableHead.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { useForkRef } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableHeadContext } from './TableHead.context';
 

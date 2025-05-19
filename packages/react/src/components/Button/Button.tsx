@@ -6,10 +6,9 @@ import { ButtonOwnProps, ButtonTypeMap } from './Button.types';
 import clsx from 'clsx';
 import { buttonClasses, getButtonUtilityClass } from './Button.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase, buttonBaseClasses } from '../ButtonBase';
 import { svgIconClasses } from '../SvgIcon';

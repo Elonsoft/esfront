@@ -3,9 +3,8 @@ import { FiltersHeaderProps } from './FiltersHeader.types';
 import clsx from 'clsx';
 import { getFiltersHeaderUtilityClass } from './FiltersHeader.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { Button } from '../../Button';
 

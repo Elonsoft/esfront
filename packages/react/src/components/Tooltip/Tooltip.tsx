@@ -18,14 +18,12 @@ import { TooltipProps } from './Tooltip.types';
 import clsx from 'clsx';
 import { getTooltipUtilityClass, tooltipClasses } from './Tooltip.classes';
 
-import { appendOwnerState, unstable_composeClasses as composeClasses } from '@mui/base';
-
-import styled from '@mui/material/styles/styled';
-import useTheme from '@mui/material/styles/useTheme';
-import useThemeProps from '@mui/material/styles/useThemeProps';
+import { styled, useTheme, useThemeProps } from '@mui/material/styles';
 import Fade from '@mui/material/Fade';
 import Popper from '@mui/material/Popper';
+import appendOwnerState from '@mui/utils/appendOwnerState';
 import capitalize from '@mui/utils/capitalize';
+import composeClasses from '@mui/utils/composeClasses';
 import useControlled from '@mui/utils/useControlled';
 import useId from '@mui/utils/useId';
 import useIsFocusVisible from '@mui/utils/useIsFocusVisible';

@@ -3,9 +3,8 @@ import { GalleryThumbnailsItemProps } from './GalleryThumbnailsItem.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsItemUtilityClass } from './GalleryThumbnailsItem.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase } from '../../ButtonBase';
 import { touchRippleClasses } from '../../TouchRipple';

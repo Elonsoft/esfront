@@ -3,9 +3,8 @@ import { AlertActionsProps } from './AlertActions.types';
 import clsx from 'clsx';
 import { getAlertActionsUtilityClass } from './AlertActions.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type AlertActionsOwnerState = {
   classes?: AlertActionsProps['classes'];

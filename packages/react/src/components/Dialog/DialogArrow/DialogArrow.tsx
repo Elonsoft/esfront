@@ -3,9 +3,8 @@ import { DialogArrowProps } from './DialogArrow.types';
 import clsx from 'clsx';
 import { getDialogArrowUtilityClass } from './DialogArrow.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowLeftW500, IconArrowRightW500 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';

@@ -3,9 +3,8 @@ import { FiltersContentProps } from './FiltersContent.types';
 import clsx from 'clsx';
 import { getFiltersContentUtilityClass } from './FiltersContent.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type FiltersContentOwnerState = {
   classes?: FiltersContentProps['classes'];

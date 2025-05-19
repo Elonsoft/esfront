@@ -5,11 +5,10 @@ import { LinearProgressProps } from './LinearProgress.types';
 import clsx from 'clsx';
 import { getLinearProgressUtilityClass } from './LinearProgress.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { keyframes } from '@mui/system';
 import { capitalize } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 const TRANSITION_DURATION = 4;
 

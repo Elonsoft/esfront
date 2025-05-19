@@ -5,10 +5,9 @@ import { SFSSortingProps } from './SFSSorting.types';
 import clsx from 'clsx';
 import { getSFSSortingUtilityClass } from './SFSSorting.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconSortAscending2, IconSortDescending2, IconSortOff } from '../../../icons';
 import { SortingMenu } from '../../SortingMenu';

@@ -3,9 +3,8 @@ import { FiltersFilterProps } from './FiltersFilter.types';
 import clsx from 'clsx';
 import { getFiltersFilterUtilityClass } from './FiltersFilter.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean } from '../../../hooks';
 import { IconChevronDownW300, IconChevronUpW300 } from '../../../icons';

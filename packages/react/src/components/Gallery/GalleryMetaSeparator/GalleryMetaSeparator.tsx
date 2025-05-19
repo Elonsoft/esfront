@@ -3,9 +3,8 @@ import { GalleryMetaSeparatorProps } from './GalleryMetaSeparator.types';
 import clsx from 'clsx';
 import { getGalleryMetaSeparatorUtilityClass } from './GalleryMetaSeparator.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type GalleryMetaSeparatorOwnerState = {
   classes?: GalleryMetaSeparatorProps['classes'];

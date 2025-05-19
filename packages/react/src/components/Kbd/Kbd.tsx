@@ -3,9 +3,8 @@ import { KbdProps } from './Kbd.types';
 import clsx from 'clsx';
 import { getKbdUtilityClass } from './Kbd.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type KbdOwnerState = {
   classes?: KbdProps['classes'];

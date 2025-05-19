@@ -3,11 +3,10 @@ import { BadgeProps, BadgeTypeMap } from './Badge.types';
 import clsx from 'clsx';
 import { badgeClasses, getBadgeUtilityClass } from './Badge.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { useThemeProps } from '@mui/material/styles';
 import { capitalize, styled } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase } from '../ButtonBase';
 import { touchRippleClasses } from '../TouchRipple';

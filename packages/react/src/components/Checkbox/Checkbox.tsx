@@ -5,10 +5,9 @@ import { CheckboxProps } from './Checkbox.types';
 import clsx from 'clsx';
 import { checkboxClasses, getCheckboxUtilityClass } from './Checkbox.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { CheckboxIcon, checkboxIconClasses } from './CheckboxIcon';
 import {

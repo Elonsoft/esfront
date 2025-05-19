@@ -5,14 +5,13 @@ import { BottomSheetProps } from './BottomSheet.types';
 import clsx from 'clsx';
 import { getBottomSheetUtilityClass } from './BottomSheet.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { duration, styled, useThemeProps } from '@mui/material/styles';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Slide from '@mui/material/Slide';
 import { unstable_useId as useId } from '@mui/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { BottomSheetContext } from './BottomSheet.context';
 
@@ -268,7 +267,6 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
     disableEscapeKeyDown = false,
     maxWidth = '100%',
     align = 'flex-end',
-    onBackdropClick,
     onClose,
     open,
     TransitionComponent = Fade,
@@ -316,10 +314,6 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
     }
 
     backdropClick.current = null;
-
-    if (onBackdropClick) {
-      onBackdropClick(event);
-    }
 
     if (onClose) {
       onClose(event, 'backdropClick');

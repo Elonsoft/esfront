@@ -3,12 +3,11 @@ import { LinkProps, LinkTypeMap } from './Link.types';
 import clsx from 'clsx';
 import { getLinkUtilityClass, linkClasses } from './Link.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 type LinkOwnerState = {
   classes?: LinkProps['classes'];

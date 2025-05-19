@@ -3,9 +3,8 @@ import { FiltersFormControlLabelProps } from './FiltersFormControlLabel.types';
 import clsx from 'clsx';
 import { getFiltersFormControlLabelUtilityClass } from './FiltersFormControlLabel.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { checkboxClasses } from '../../Checkbox';
 import { FormControlLabel, formControlLabelClasses } from '../../FormControlLabel';
