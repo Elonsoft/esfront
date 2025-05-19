@@ -1,3 +1,4 @@
 export { CalendarHead } from './CalendarHead';
-export { CalendarHeadClasses, calendarHeadClasses, CalendarHeadClassKey } from './CalendarHead.classes';
-export { CalendarHeadProps } from './CalendarHead.types';
+export type { CalendarHeadClasses, CalendarHeadClassKey } from './CalendarHead.classes';
+export { calendarHeadClasses } from './CalendarHead.classes';
+export type { CalendarHeadProps } from './CalendarHead.types';

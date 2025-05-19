@@ -1,3 +1,4 @@
 export { RadioIcon } from './RadioIcon';
-export { RadioIconClasses, radioIconClasses, RadioIconClassKey } from './RadioIcon.classes';
-export { RadioIconProps } from './RadioIcon.types';
+export type { RadioIconClasses, RadioIconClassKey } from './RadioIcon.classes';
+export { radioIconClasses } from './RadioIcon.classes';
+export type { RadioIconProps } from './RadioIcon.types';

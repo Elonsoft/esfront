@@ -1,3 +1,4 @@
 export { TableItem } from './TableItem';
-export { TableItemClasses, tableItemClasses, TableItemClassKey } from './TableItem.classes';
-export { TableItemProps } from './TableItem.types';
+export type { TableItemClasses, TableItemClassKey } from './TableItem.classes';
+export { tableItemClasses } from './TableItem.classes';
+export type { TableItemProps } from './TableItem.types';

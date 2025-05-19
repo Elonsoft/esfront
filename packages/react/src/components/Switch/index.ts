@@ -1,3 +1,4 @@
 export { Switch } from './Switch';
-export { SwitchClasses, switchClasses, SwitchClassKey } from './Switch.classes';
-export { SwitchProps } from './Switch.types';
+export type { SwitchClasses, SwitchClassKey } from './Switch.classes';
+export { switchClasses } from './Switch.classes';
+export type { SwitchProps } from './Switch.types';

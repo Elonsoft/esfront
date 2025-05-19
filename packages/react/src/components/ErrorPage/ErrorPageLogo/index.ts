@@ -1,3 +1,4 @@
 export { ErrorPageLogo } from './ErrorPageLogo';
-export { ErrorPageLogoClasses, errorPageLogoClasses, ErrorPageLogoClassKey } from './ErrorPageLogo.classes';
-export { ErrorPageLogoProps } from './ErrorPageLogo.types';
+export type { ErrorPageLogoClasses, ErrorPageLogoClassKey } from './ErrorPageLogo.classes';
+export { errorPageLogoClasses } from './ErrorPageLogo.classes';
+export type { ErrorPageLogoProps } from './ErrorPageLogo.types';

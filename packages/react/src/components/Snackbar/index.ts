@@ -1,6 +1,7 @@
 export { Snackbar } from './Snackbar';
-export { SnackbarClasses, snackbarClasses, SnackbarClassKey } from './Snackbar.classes';
-export {
+export type { SnackbarClasses, SnackbarClassKey } from './Snackbar.classes';
+export { snackbarClasses } from './Snackbar.classes';
+export type {
   SnackbarProps,
   SnackbarPropsColor,
   SnackbarPropsColorOverrides,

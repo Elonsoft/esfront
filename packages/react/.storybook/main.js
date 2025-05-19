@@ -3,7 +3,8 @@
 import { dirname, join } from 'path';
 const path = require('path');
 
-const toPath = (filePath) => path.join(process.cwd(), filePath);
+import remarkGfm from 'remark-gfm';
+
 const getAbsolutePath = (value) => dirname(require.resolve(join(value, 'package.json')));
 
 module.exports = {
@@ -21,32 +22,38 @@ module.exports = {
   staticDirs: ['./assets'],
 
   addons: [
-    getAbsolutePath('@storybook/addon-links'),
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
     {
       name: '@storybook/addon-essentials',
       options: {
         backgrounds: false,
       },
     },
+    getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('storybook-dark-mode'),
-    getAbsolutePath('@storybook/addon-mdx-gfm'),
-    '@storybook/addon-webpack5-compiler-babel',
   ],
 
-  webpackFinal: (config) => {
-    return {
-      ...config,
+  async viteFinal(config) {
+    const { mergeConfig } = await import('vite');
+
+    return mergeConfig(config, {
+      plugins: [],
       resolve: {
-        ...config.resolve,
         alias: {
-          ...config.resolve.alias,
-          '@emotion/core': toPath('node_modules/@emotion/react'),
-          'emotion-theming': toPath('node_modules/@emotion/react'),
           '~storybook': path.resolve(__dirname),
         },
       },
-    };
+    });
   },
   core: {
     disableTelemetry: true,
@@ -56,7 +63,7 @@ module.exports = {
     reactDocgen: 'react-docgen-typescript',
   },
   framework: {
-    name: getAbsolutePath('@storybook/react-webpack5'),
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
   docs: {

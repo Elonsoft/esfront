@@ -1,3 +1,4 @@
 export { TableActions } from './TableActions';
-export { TableActionsClasses, tableActionsClasses, TableActionsClassKey } from './TableActions.classes';
-export { TableActionsProps } from './TableActions.types';
+export type { TableActionsClasses, TableActionsClassKey } from './TableActions.classes';
+export { tableActionsClasses } from './TableActions.classes';
+export type { TableActionsProps } from './TableActions.types';

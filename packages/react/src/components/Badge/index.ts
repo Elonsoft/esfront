@@ -1,3 +1,4 @@
 export { Badge } from './Badge';
-export { BadgeClasses, badgeClasses, BadgeClassKey } from './Badge.classes';
-export { BadgeProps, BadgePropsColorOverrides, BadgePropsSizeOverrides, BadgeTypeMap } from './Badge.types';
+export type { BadgeClasses, BadgeClassKey } from './Badge.classes';
+export { badgeClasses } from './Badge.classes';
+export type { BadgeProps, BadgePropsColorOverrides, BadgePropsSizeOverrides, BadgeTypeMap } from './Badge.types';

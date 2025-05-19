@@ -1,6 +1,7 @@
 export { InformationIcon } from './InformationIcon';
-export { InformationIconClasses, informationIconClasses, InformationIconClassKey } from './InformationIcon.classes';
-export {
+export type { InformationIconClasses, InformationIconClassKey } from './InformationIcon.classes';
+export { informationIconClasses } from './InformationIcon.classes';
+export type {
   InformationIconProps,
   InformationIconPropsVariantOverrides,
   InformationIconTypeMap,

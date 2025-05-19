@@ -1,7 +1,4 @@
 export { BadgePlacementControl } from './BadgePlacementControl';
-export {
-  BadgePlacementControlClasses,
-  badgePlacementControlClasses,
-  BadgePlacementControlClassKey,
-} from './BadgePlacementControl.classes';
-export { BadgePlacementControlProps } from './BadgePlacementControl.types';
+export type { BadgePlacementControlClasses, BadgePlacementControlClassKey } from './BadgePlacementControl.classes';
+export { badgePlacementControlClasses } from './BadgePlacementControl.classes';
+export type { BadgePlacementControlProps } from './BadgePlacementControl.types';

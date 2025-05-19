@@ -1,2 +1,2 @@
 export { FormatSize } from './FormatSize';
-export { FormatSizeProps } from './FormatSize.types';
+export type { FormatSizeProps } from './FormatSize.types';

@@ -1,3 +1,4 @@
 export { getLoadingButtonSpinnerSize, LoadingButton } from './LoadingButton';
-export { LoadingButtonClasses, loadingButtonClasses, LoadingButtonClassKey } from './LoadingButton.classes';
-export { LoadingButtonOwnProps, LoadingButtonProps, LoadingButtonTypeMap } from './LoadingButton.types';
+export type { LoadingButtonClasses, LoadingButtonClassKey } from './LoadingButton.classes';
+export { loadingButtonClasses } from './LoadingButton.classes';
+export type { LoadingButtonOwnProps, LoadingButtonProps, LoadingButtonTypeMap } from './LoadingButton.types';

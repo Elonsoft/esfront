@@ -1,3 +1,4 @@
 export { PageHGroupMain } from './PageHGroupMain';
-export { PageHGroupMainClasses, pageHGroupMainClasses, PageHGroupMainClassKey } from './PageHGroupMain.classes';
-export { PageHGroupMainProps } from './PageHGroupMain.types';
+export type { PageHGroupMainClasses, PageHGroupMainClassKey } from './PageHGroupMain.classes';
+export { pageHGroupMainClasses } from './PageHGroupMain.classes';
+export type { PageHGroupMainProps } from './PageHGroupMain.types';

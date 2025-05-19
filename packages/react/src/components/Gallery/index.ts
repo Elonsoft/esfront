@@ -1,6 +1,7 @@
 export { Gallery } from './Gallery';
-export { GalleryClasses, galleryClasses, GalleryClassKey } from './Gallery.classes';
-export { GalleryProps } from './Gallery.types';
+export type { GalleryClasses, GalleryClassKey } from './Gallery.classes';
+export { galleryClasses } from './Gallery.classes';
+export type { GalleryProps } from './Gallery.types';
 export * from './GalleryActions';
 export * from './GalleryActionsButton';
 export * from './GalleryActionsButtonGroup';

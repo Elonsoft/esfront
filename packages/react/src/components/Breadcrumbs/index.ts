@@ -1,4 +1,5 @@
 export * from './Breadcrumb';
 export { Breadcrumbs } from './Breadcrumbs';
-export { BreadcrumbsClasses, breadcrumbsClasses, BreadcrumbsClassKey } from './Breadcrumbs.classes';
-export { BreadcrumbsProps } from './Breadcrumbs.types';
+export type { BreadcrumbsClasses, BreadcrumbsClassKey } from './Breadcrumbs.classes';
+export { breadcrumbsClasses } from './Breadcrumbs.classes';
+export type { BreadcrumbsProps } from './Breadcrumbs.types';

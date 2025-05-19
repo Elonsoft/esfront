@@ -1,3 +1,4 @@
 export { GalleryActions } from './GalleryActions';
-export { GalleryActionsClasses, galleryActionsClasses, GalleryActionsClassKey } from './GalleryActions.classes';
-export { GalleryActionsProps } from './GalleryActions.types';
+export type { GalleryActionsClasses, GalleryActionsClassKey } from './GalleryActions.classes';
+export { galleryActionsClasses } from './GalleryActions.classes';
+export type { GalleryActionsProps } from './GalleryActions.types';

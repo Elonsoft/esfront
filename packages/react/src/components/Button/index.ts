@@ -1,6 +1,7 @@
 export { Button } from './Button';
-export { ButtonClasses, buttonClasses, ButtonClassKey } from './Button.classes';
-export {
+export type { ButtonClasses, ButtonClassKey } from './Button.classes';
+export { buttonClasses } from './Button.classes';
+export type {
   ButtonOwnProps,
   ButtonPropsColorOverrides,
   ButtonPropsSizeOverrides,

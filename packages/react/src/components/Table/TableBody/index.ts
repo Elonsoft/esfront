@@ -1,4 +1,6 @@
 export { TableBody } from './TableBody';
-export { TableBodyClasses, tableBodyClasses, TableBodyClassKey } from './TableBody.classes';
-export { TableBodyContext, TableBodyContextValue, useTableBodyContext } from './TableBody.context';
-export { TableBodyProps } from './TableBody.types';
+export type { TableBodyClasses, TableBodyClassKey } from './TableBody.classes';
+export { tableBodyClasses } from './TableBody.classes';
+export type { TableBodyContextValue } from './TableBody.context';
+export { TableBodyContext, useTableBodyContext } from './TableBody.context';
+export type { TableBodyProps } from './TableBody.types';

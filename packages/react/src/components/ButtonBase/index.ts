@@ -1,6 +1,7 @@
 export { ButtonBase } from './ButtonBase';
-export { ButtonBaseClasses, buttonBaseClasses, ButtonBaseClassKey } from './ButtonBase.classes';
-export {
+export type { ButtonBaseClasses, ButtonBaseClassKey } from './ButtonBase.classes';
+export { buttonBaseClasses } from './ButtonBase.classes';
+export type {
   ButtonBaseOwnProps,
   ButtonBaseProps,
   ButtonBaseTypeMap,

@@ -1,3 +1,4 @@
 export { Tab } from './Tab';
-export { TabClasses, tabClasses, TabClassKey } from './Tab.classes';
-export { TabProps } from './Tab.types';
+export type { TabClasses, TabClassKey } from './Tab.classes';
+export { tabClasses } from './Tab.classes';
+export type { TabProps } from './Tab.types';

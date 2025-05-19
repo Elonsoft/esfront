@@ -1,6 +1,9 @@
 export { GalleryPanel } from './GalleryPanel';
-export { GalleryPanelClasses, galleryPanelClasses, GalleryPanelClassKey } from './GalleryPanel.classes';
-export { GalleryPanelContext, GalleryPanelContextValue, useGalleryPanelContext } from './GalleryPanel.context';
-export { GalleryPanelProps } from './GalleryPanel.types';
-export { GalleryPanelsContext, GalleryPanelsContextValue, useGalleryPanelsContext } from './GalleryPanels.context';
+export type { GalleryPanelClasses, GalleryPanelClassKey } from './GalleryPanel.classes';
+export { galleryPanelClasses } from './GalleryPanel.classes';
+export type { GalleryPanelContextValue } from './GalleryPanel.context';
+export { GalleryPanelContext, useGalleryPanelContext } from './GalleryPanel.context';
+export type { GalleryPanelProps } from './GalleryPanel.types';
+export type { GalleryPanelsContextValue } from './GalleryPanels.context';
+export { GalleryPanelsContext, useGalleryPanelsContext } from './GalleryPanels.context';
 export { GalleryPanelsProvider } from './GalleryPanels.provider';

@@ -1,3 +1,4 @@
 export { SidebarSpacer } from './SidebarSpacer';
-export { SidebarSpacerClasses, sidebarSpacerClasses, SidebarSpacerClassKey } from './SidebarSpacer.classes';
-export { SidebarSpacerProps } from './SidebarSpacer.types';
+export type { SidebarSpacerClasses, SidebarSpacerClassKey } from './SidebarSpacer.classes';
+export { sidebarSpacerClasses } from './SidebarSpacer.classes';
+export type { SidebarSpacerProps } from './SidebarSpacer.types';

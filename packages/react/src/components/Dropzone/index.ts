@@ -1,3 +1,4 @@
 export { Dropzone } from './Dropzone';
-export { DropzoneClasses, dropzoneClasses, DropzoneClassKey } from './Dropzone.classes';
-export { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
+export type { DropzoneClasses, DropzoneClassKey } from './Dropzone.classes';
+export { dropzoneClasses } from './Dropzone.classes';
+export type { DropzoneProps, FileError, FileRejection } from './Dropzone.types';

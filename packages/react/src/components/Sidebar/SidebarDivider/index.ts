@@ -1,3 +1,4 @@
 export { SidebarDivider } from './SidebarDivider';
-export { SidebarDividerClasses, sidebarDividerClasses, SidebarDividerClassKey } from './SidebarDivider.classes';
-export { SidebarDividerProps } from './SidebarDivider.types';
+export type { SidebarDividerClasses, SidebarDividerClassKey } from './SidebarDivider.classes';
+export { sidebarDividerClasses } from './SidebarDivider.classes';
+export type { SidebarDividerProps } from './SidebarDivider.types';

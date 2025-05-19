@@ -1,6 +1,7 @@
 export { RibbonBadge } from './RibbonBadge';
-export { RibbonBadgeClasses, ribbonBadgeClasses, RibbonBadgeClassKey } from './RibbonBadge.classes';
-export {
+export type { RibbonBadgeClasses, RibbonBadgeClassKey } from './RibbonBadge.classes';
+export { ribbonBadgeClasses } from './RibbonBadge.classes';
+export type {
   RibbonBadgeProps,
   RibbonBadgePropsColorOverrides,
   RibbonBadgePropsOrientationOverrides,

@@ -1,3 +1,4 @@
 export { PageHGroupStatus } from './PageHGroupStatus';
-export { PageHGroupStatusClasses, pageHGroupStatusClasses, PageHGroupStatusClassKey } from './PageHGroupStatus.classes';
-export { PageHGroupStatusProps } from './PageHGroupStatus.types';
+export type { PageHGroupStatusClasses, PageHGroupStatusClassKey } from './PageHGroupStatus.classes';
+export { pageHGroupStatusClasses } from './PageHGroupStatus.classes';
+export type { PageHGroupStatusProps } from './PageHGroupStatus.types';

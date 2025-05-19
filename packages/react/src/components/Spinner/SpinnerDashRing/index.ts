@@ -1,3 +1,4 @@
 export { SpinnerDashRing } from './SpinnerDashRing';
-export { SpinnerDashRingClasses, spinnerDashRingClasses, SpinnerDashRingClassKey } from './SpinnerDashRing.classes';
-export { SpinnerDashRingProps } from './SpinnerDashRing.types';
+export type { SpinnerDashRingClasses, SpinnerDashRingClassKey } from './SpinnerDashRing.classes';
+export { spinnerDashRingClasses } from './SpinnerDashRing.classes';
+export type { SpinnerDashRingProps } from './SpinnerDashRing.types';

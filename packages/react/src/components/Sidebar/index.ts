@@ -1,7 +1,9 @@
 export { Sidebar } from './Sidebar';
-export { SidebarClasses, sidebarClasses, SidebarClassKey } from './Sidebar.classes';
-export { SidebarContext, SidebarContextValue, useSidebarContext } from './Sidebar.context';
-export { SidebarProps } from './Sidebar.types';
+export type { SidebarClasses, SidebarClassKey } from './Sidebar.classes';
+export { sidebarClasses } from './Sidebar.classes';
+export type { SidebarContextValue } from './Sidebar.context';
+export { SidebarContext, useSidebarContext } from './Sidebar.context';
+export type { SidebarProps } from './Sidebar.types';
 export * from './SidebarDivider';
 export * from './SidebarItem';
 export * from './SidebarMenu';

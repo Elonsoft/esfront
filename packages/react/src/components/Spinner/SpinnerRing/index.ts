@@ -1,3 +1,4 @@
 export { SpinnerRing } from './SpinnerRing';
-export { SpinnerRingClasses, spinnerRingClasses, SpinnerRingClassKey } from './SpinnerRing.classes';
-export { SpinnerRingProps } from './SpinnerRing.types';
+export type { SpinnerRingClasses, SpinnerRingClassKey } from './SpinnerRing.classes';
+export { spinnerRingClasses } from './SpinnerRing.classes';
+export type { SpinnerRingProps } from './SpinnerRing.types';

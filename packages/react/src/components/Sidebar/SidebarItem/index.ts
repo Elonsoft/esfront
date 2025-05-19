@@ -1,3 +1,4 @@
 export { SidebarItem } from './SidebarItem';
-export { SidebarItemClasses, sidebarItemClasses, SidebarItemClassKey } from './SidebarItem.classes';
-export { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';
+export type { SidebarItemClasses, SidebarItemClassKey } from './SidebarItem.classes';
+export { sidebarItemClasses } from './SidebarItem.classes';
+export type { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';

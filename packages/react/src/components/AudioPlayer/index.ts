@@ -1,10 +1,12 @@
 export { AudioPlayer } from './AudioPlayer';
-export { AudioPlayerClasses, audioPlayerClasses, AudioPlayerClassKey } from './AudioPlayer.classes';
-export { AudioPlayerContext, AudioPlayerContextValue, useAudioPlayerContext } from './AudioPlayer.context';
-export { AudioPlayerProps } from './AudioPlayer.types';
+export type { AudioPlayerClasses, AudioPlayerClassKey } from './AudioPlayer.classes';
+export { audioPlayerClasses } from './AudioPlayer.classes';
+export type { AudioPlayerContextValue } from './AudioPlayer.context';
+export { AudioPlayerContext, useAudioPlayerContext } from './AudioPlayer.context';
+export type { AudioPlayerProps } from './AudioPlayer.types';
 export {
   AudioPlayerProvider,
   AudioPlayerProviderVolumeStorageLocal,
   AudioPlayerProviderVolumeStorageMemory,
 } from './AudioPlayerProvider';
-export { AudioPlayerProviderProps, AudioPlayerProviderVolumeStorage } from './AudioPlayerProvider.types';
+export type { AudioPlayerProviderProps, AudioPlayerProviderVolumeStorage } from './AudioPlayerProvider.types';

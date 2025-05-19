@@ -1,3 +1,4 @@
 export { AppBar } from './AppBar';
-export { AppBarClasses, appBarClasses, AppBarClassKey } from './AppBar.classes';
-export { AppBarProps } from './AppBar.types';
+export type { AppBarClasses, AppBarClassKey } from './AppBar.classes';
+export { appBarClasses } from './AppBar.classes';
+export type { AppBarProps } from './AppBar.types';

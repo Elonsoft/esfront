@@ -1,3 +1,3 @@
 export { createTheme } from './createTheme';
 export { ThemeProvider } from './ThemeProvider';
-export { ThemeOptions, ThemeProviderProps } from './ThemeProvider.types';
+export type { ThemeOptions, ThemeProviderProps } from './ThemeProvider.types';

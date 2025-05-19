@@ -1,2 +1,2 @@
 export { TooltipEllipsis } from './TooltipEllipsis';
-export { TooltipEllipsisProps } from './TooltipEllipsis.types';
+export type { TooltipEllipsisProps } from './TooltipEllipsis.types';

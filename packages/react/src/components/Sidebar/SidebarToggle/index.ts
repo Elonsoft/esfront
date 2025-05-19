@@ -1,3 +1,4 @@
 export { SidebarToggle } from './SidebarToggle';
-export { SidebarToggleClasses, sidebarToggleClasses, SidebarToggleClassKey } from './SidebarToggle.classes';
-export { SidebarToggleProps } from './SidebarToggle.types';
+export type { SidebarToggleClasses, SidebarToggleClassKey } from './SidebarToggle.classes';
+export { sidebarToggleClasses } from './SidebarToggle.classes';
+export type { SidebarToggleProps } from './SidebarToggle.types';

@@ -1,4 +1,5 @@
 export { EmptyState } from './EmptyState';
-export { EmptyStateClasses, emptyStateClasses, EmptyStateClassKey } from './EmptyState.classes';
-export { EmptyStateProps } from './EmptyState.types';
+export type { EmptyStateClasses, EmptyStateClassKey } from './EmptyState.classes';
+export { emptyStateClasses } from './EmptyState.classes';
+export type { EmptyStateProps } from './EmptyState.types';
 export * from './icons';

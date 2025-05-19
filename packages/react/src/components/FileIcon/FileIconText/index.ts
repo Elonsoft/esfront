@@ -1,3 +1,4 @@
 export { FileIconText } from './FileIconText';
-export { FileIconTextClasses, fileIconTextClasses, FileIconTextClassKey } from './FileIconText.classes';
-export { FileIconTextProps } from './FileIconText.types';
+export type { FileIconTextClasses, FileIconTextClassKey } from './FileIconText.classes';
+export { fileIconTextClasses } from './FileIconText.classes';
+export type { FileIconTextProps } from './FileIconText.types';

@@ -1,7 +1,4 @@
 export { AutocompleteMenuHeader } from './AutocompleteMenuHeader';
-export {
-  AutocompleteMenuHeaderClasses,
-  autocompleteMenuHeaderClasses,
-  AutocompleteMenuHeaderClassKey,
-} from './AutocompleteMenuHeader.classes';
-export { AutocompleteMenuHeaderProps } from './AutocompleteMenuHeader.types';
+export type { AutocompleteMenuHeaderClasses, AutocompleteMenuHeaderClassKey } from './AutocompleteMenuHeader.classes';
+export { autocompleteMenuHeaderClasses } from './AutocompleteMenuHeader.classes';
+export type { AutocompleteMenuHeaderProps } from './AutocompleteMenuHeader.types';

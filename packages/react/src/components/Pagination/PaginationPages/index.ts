@@ -1,3 +1,4 @@
 export { PaginationPages } from './PaginationPages';
-export { PaginationPagesClasses, paginationPagesClasses, PaginationPagesClassKey } from './PaginationPages.classes';
-export { PaginationPagesProps } from './PaginationPages.types';
+export type { PaginationPagesClasses, PaginationPagesClassKey } from './PaginationPages.classes';
+export { paginationPagesClasses } from './PaginationPages.classes';
+export type { PaginationPagesProps } from './PaginationPages.types';
