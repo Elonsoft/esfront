@@ -5,13 +5,12 @@ import { SFSFiltersProps } from './SFSFilters.types';
 import clsx from 'clsx';
 import { getSFSFiltersUtilityClass } from './SFSFilters.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { backdropClasses } from '@mui/material/Backdrop';
 import Drawer from '@mui/material/Drawer';
 import { paperClasses } from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600, IconFilter } from '../../../icons';
 import { Button } from '../../Button';

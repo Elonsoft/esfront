@@ -7,10 +7,11 @@ import { sortingMenuClasses } from '../SortingMenu/SortingMenu.classes';
 import { getSortingMenuUtilityClass } from './SortingMenu.classes';
 
 import { styled, useThemeProps } from '@mui/material/styles';
-import { unstable_composeClasses, useMediaQuery } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import MenuList from '@mui/material/MenuList';
 import Popover from '@mui/material/Popover';
 import Typography, { typographyClasses } from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconSortAscending, IconSortDescending } from '../../icons';
 import { Button, buttonClasses } from '../Button';
@@ -46,7 +47,7 @@ const useUtilityClasses = (ownerState: SortingMenuOwnerState) => {
     caption: ['caption'],
   };
 
-  return unstable_composeClasses(slots, getSortingMenuUtilityClass, classes);
+  return composeClasses(slots, getSortingMenuUtilityClass, classes);
 };
 
 const SortingMenuRoot = styled(Popover, {

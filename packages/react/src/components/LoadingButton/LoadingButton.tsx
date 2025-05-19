@@ -4,10 +4,9 @@ import { LoadingButtonOwnProps, LoadingButtonTypeMap } from './LoadingButton.typ
 
 import { getLoadingButtonUtilityClass, loadingButtonClasses } from './LoadingButton.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { unstable_useId as useId } from '@mui/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { Button, buttonClasses, ButtonOwnProps, ExtendButton } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';

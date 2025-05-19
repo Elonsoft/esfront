@@ -3,9 +3,8 @@ import { AlertCloseProps } from './AlertClose.types';
 import clsx from 'clsx';
 import { getAlertCloseUtilityClass } from './AlertClose.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW500 } from '../../../icons';
 import { Button } from '../../Button';

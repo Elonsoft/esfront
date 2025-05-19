@@ -3,11 +3,10 @@ import { MadeByProps, MadeByTypeMap } from './MadeBy.types';
 import clsx from 'clsx';
 import { getMadeByUtilityClass, madeByClasses } from './MadeBy.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { useThemeProps } from '@mui/material/styles';
 import { styled } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconElonsoft } from '../../icons';
 import { svgIconClasses } from '../SvgIcon';

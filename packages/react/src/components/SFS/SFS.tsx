@@ -3,9 +3,8 @@ import { SFSProps } from './SFS.types';
 import clsx from 'clsx';
 import { getSFSUtilityClass } from './SFS.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type SFSOwnerState = {
   classes?: SFSProps['classes'];

@@ -3,10 +3,9 @@ import { BannerTitleProps } from './BannerTitle.types';
 import clsx from 'clsx';
 import { getBannerTitleUtilityClass } from './BannerTitle.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 type BannerTitleOwnerState = {
   classes?: BannerTitleProps['classes'];

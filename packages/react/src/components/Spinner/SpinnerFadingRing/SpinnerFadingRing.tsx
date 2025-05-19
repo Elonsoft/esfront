@@ -5,9 +5,8 @@ import { SpinnerFadingRingProps } from './SpinnerFadingRing.types';
 import clsx from 'clsx';
 import { getSpinnerFadingRingUtilityClass } from './SpinnerFadingRing.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { generateStyleColorVariants, rotateKeyframe } from '../Spinner.utils';
 

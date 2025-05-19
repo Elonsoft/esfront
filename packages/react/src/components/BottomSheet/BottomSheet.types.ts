@@ -35,8 +35,6 @@ export interface BottomSheetProps {
    * @default 'flex-end'
    */
   align?: 'flex-end' | 'stretch';
-  /** Callback fired when the backdrop is clicked. */
-  onBackdropClick?: ModalProps['onBackdropClick'];
   /** If true, the backdrop is not rendered. */
   hideBackdrop?: ModalProps['hideBackdrop'];
   /**

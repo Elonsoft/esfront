@@ -5,11 +5,10 @@ import { PaginationRangeProps } from './PaginationRange.types';
 import clsx from 'clsx';
 import { getPaginationRangeUtilityClass } from './PaginationRange.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import Typography from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconMenuDownW300 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';

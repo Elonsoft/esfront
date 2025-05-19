@@ -4,9 +4,8 @@ import { SwiperButtonProps } from './SwiperButton.types';
 import clsx from 'clsx';
 import { getSwiperButtonUtilityClass } from './SwiperButton.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowDownW500, IconArrowLeftW500, IconArrowRightW500, IconArrowUpW500 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';

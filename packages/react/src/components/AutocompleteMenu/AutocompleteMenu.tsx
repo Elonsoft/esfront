@@ -18,8 +18,6 @@ import { AutocompleteMenuProps } from './AutocompleteMenu.types';
 import clsx from 'clsx';
 import { getAutocompleteMenuUtilityClass } from './AutocompleteMenu.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -31,6 +29,7 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import Popper from '@mui/material/Popper';
 import TextField from '@mui/material/TextField';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver, useScrollLock } from '../../hooks';
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';

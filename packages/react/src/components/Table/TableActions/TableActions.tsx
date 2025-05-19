@@ -5,11 +5,10 @@ import { TableActionsProps } from './TableActions.types';
 import clsx from 'clsx';
 import { getTableActionsUtilityClass } from './TableActions.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { dividerClasses } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonClasses } from '../../Button';
 

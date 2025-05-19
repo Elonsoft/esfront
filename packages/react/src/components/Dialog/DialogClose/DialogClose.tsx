@@ -3,10 +3,9 @@ import { DialogCloseProps } from './DialogClose.types';
 import clsx from 'clsx';
 import { getDialogCloseUtilityClass } from './DialogClose.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { Typography } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';

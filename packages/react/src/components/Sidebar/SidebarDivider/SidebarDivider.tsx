@@ -3,9 +3,8 @@ import { SidebarDividerProps } from './SidebarDivider.types';
 import clsx from 'clsx';
 import { getSidebarDividerUtilityClass } from './SidebarDivider.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { Divider } from '../../Divider';
 import { useSidebarContext } from '../Sidebar.context';

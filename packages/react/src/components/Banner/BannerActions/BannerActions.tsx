@@ -3,9 +3,8 @@ import { BannerActionsProps } from './BannerActions.types';
 import clsx from 'clsx';
 import { getBannerActionsUtilityClass } from './BannerActions.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type BannerActionsOwnerState = {
   classes?: BannerActionsProps['classes'];

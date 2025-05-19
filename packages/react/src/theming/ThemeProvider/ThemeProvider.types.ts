@@ -1,7 +1,13 @@
 import { ReactNode } from 'react';
 
-import { Breakpoint, Components, CssVarsTheme, PaletteOptions, Theme } from '@mui/material/styles';
-import { TypographyOptions } from '@mui/material/styles/createTypography';
+import {
+  Breakpoint,
+  Components,
+  CssVarsTheme,
+  PaletteOptions,
+  Theme,
+  TypographyVariantsOptions,
+} from '@mui/material/styles';
 
 export interface ThemeProviderProps {
   children: ReactNode;
@@ -19,10 +25,10 @@ export interface ThemeOptions {
   /** Function to create a components object from the typography and the theme with breakpoints and palette. */
   components?: (
     theme: Theme,
-    typography: TypographyOptions
+    typography: TypographyVariantsOptions
   ) => Components<Omit<Theme, 'components' | 'palette'> & CssVarsTheme>;
   /** Function to create a scrollbars object from the theme with breakpoints and palette. */
   scrollbars?: (theme: Theme) => any;
   /** Function to create a typography object from the theme with breakpoints and palette. */
-  typography?: (theme: Theme) => TypographyOptions;
+  typography?: (theme: Theme) => TypographyVariantsOptions;
 }

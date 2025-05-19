@@ -25,7 +25,7 @@ export const useScrollLock = (lock: boolean, container: HTMLElement) => {
       const restoreStyle: Array<{ value: string; property: string; el: HTMLElement | SVGElement }> = [];
 
       if (isOverflowing(container)) {
-        const scrollbarSize = getScrollbarSize(ownerDocument(container));
+        const scrollbarSize = getScrollbarSize(ownerWindow(container));
 
         restoreStyle.push({
           value: container.style.paddingRight,

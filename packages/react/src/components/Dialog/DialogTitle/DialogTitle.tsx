@@ -3,9 +3,8 @@ import { DialogTitleProps } from './DialogTitle.types';
 import clsx from 'clsx';
 import { getDialogTitleUtilityClass } from './DialogTitle.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useStuckSentinel } from '../../../hooks';
 

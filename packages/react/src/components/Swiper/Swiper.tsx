@@ -5,9 +5,8 @@ import { SwiperAlignment, SwiperDirection, SwiperProps } from './Swiper.types';
 import clsx from 'clsx';
 import { getSwiperUtilityClass, swiperClasses } from './Swiper.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { SwiperContext } from './Swiper.context';
 import { SwiperButton } from './SwiperButton';
