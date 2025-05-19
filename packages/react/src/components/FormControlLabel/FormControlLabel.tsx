@@ -3,10 +3,10 @@ import { FormControlLabelProps } from './FormControlLabel.types';
 import clsx from 'clsx';
 import { formControlLabelClasses, getFormControlLabelUtilityClass } from './FormControlLabel.classes';
 
-import { appendOwnerState, unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize, Typography } from '@mui/material';
+import appendOwnerState from '@mui/utils/appendOwnerState';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { checkboxClasses } from '../Checkbox';
 import { radioClasses } from '../Radio';

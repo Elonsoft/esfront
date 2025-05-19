@@ -3,14 +3,13 @@ import { AutocompleteFieldProps } from './AutocompleteField.types';
 import clsx from 'clsx';
 import { getAutocompleteFieldUtilityClass } from './AutocompleteField.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import { textFieldClasses } from '@mui/material/TextField';
 import { unstable_useId as useId } from '@mui/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks';
 import { Autocomplete } from '../Autocomplete';

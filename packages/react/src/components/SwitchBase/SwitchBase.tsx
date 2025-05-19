@@ -5,10 +5,9 @@ import { SwitchBaseProps } from './SwitchBase.types';
 import clsx from 'clsx';
 import { getSwitchBaseUtilityClass, switchBaseClasses } from './SwitchBase.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize, useFormControl } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks';
 import { ButtonBase, buttonBaseClasses } from '../ButtonBase';

@@ -3,9 +3,8 @@ import { TabBarProps } from './TabBar.types';
 import clsx from 'clsx';
 import { getTabBarUtilityClass } from './TabBar.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type TabBarOwnerState = {
   classes?: TabBarProps['classes'];

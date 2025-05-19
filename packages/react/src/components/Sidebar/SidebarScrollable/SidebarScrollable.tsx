@@ -5,9 +5,8 @@ import { SidebarScrollableProps } from './SidebarScrollable.types';
 import clsx from 'clsx';
 import { getSidebarScrollableUtilityClass } from './SidebarScrollable.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
 

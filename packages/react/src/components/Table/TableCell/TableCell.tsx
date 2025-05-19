@@ -5,10 +5,9 @@ import { TableCellProps } from './TableCell.types';
 import clsx from 'clsx';
 import { getTableCellUtilityClass, tableCellClasses } from './TableCell.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { useForkRef } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableCellContext } from './TableCell.context';
 

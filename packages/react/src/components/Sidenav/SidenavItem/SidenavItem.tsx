@@ -6,11 +6,10 @@ import clsx from 'clsx';
 import { sidenavClasses } from '../Sidenav.classes';
 import { getSidenavItemUtilityClass } from './SidenavItem.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { TypographyProps } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonBaseClasses } from '../../ButtonBase';
 import { ListItem, listItemClasses, ListItemIcon, listItemIconClasses } from '../../ListItem';

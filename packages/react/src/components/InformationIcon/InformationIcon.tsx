@@ -5,10 +5,9 @@ import { InformationIconProps, InformationIconTypeMap } from './InformationIcon.
 import clsx from 'clsx';
 import { getInformationIconUtilityClass, informationIconClasses } from './InformationIcon.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconInformationFillW200, IconInformationLineW200, IconQuestionFill, IconQuestionLine } from '../../icons';
 

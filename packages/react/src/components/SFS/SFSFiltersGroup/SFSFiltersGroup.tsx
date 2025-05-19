@@ -3,13 +3,12 @@ import { SFSFiltersGroupProps } from './SFSFiltersGroup.types';
 import clsx from 'clsx';
 import { getSFSFiltersGroupUtilityClass } from './SFSFiltersGroup.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { formLabelClasses } from '@mui/material/FormLabel';
 import { inputLabelClasses } from '@mui/material/InputLabel';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import Typography from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 type SFSFiltersGroupOwnerState = {
   classes?: SFSFiltersGroupProps['classes'];

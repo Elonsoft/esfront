@@ -5,9 +5,8 @@ import { SidebarProps } from './Sidebar.types';
 import clsx from 'clsx';
 import { getSidebarUtilityClass, sidebarClasses } from './Sidebar.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { SidebarContext } from './Sidebar.context';
 

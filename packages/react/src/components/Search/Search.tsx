@@ -5,12 +5,11 @@ import { SearchProps } from './Search.types';
 import clsx from 'clsx';
 import { getSearchUtilityClass } from './Search.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { inputBaseClasses, inputLabelClasses, outlinedInputClasses } from '@mui/material';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';
 import { Button, buttonClasses } from '../Button';

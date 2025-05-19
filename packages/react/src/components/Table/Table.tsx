@@ -5,10 +5,9 @@ import { TableProps } from './Table.types';
 import clsx from 'clsx';
 import { getTableUtilityClass } from './Table.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { useForkRef } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { TableContext } from './Table.context';
 import { TableBodyContext } from './TableBody';

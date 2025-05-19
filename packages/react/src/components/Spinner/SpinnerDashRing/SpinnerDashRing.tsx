@@ -3,9 +3,8 @@ import { SpinnerDashRingProps } from './SpinnerDashRing.types';
 import clsx from 'clsx';
 import { getSpinnerDashRingUtilityClass } from './SpinnerDashRing.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { generateStyleColorVariants, rotateKeyframe, strokeArrayKeyframe } from '../Spinner.utils';
 

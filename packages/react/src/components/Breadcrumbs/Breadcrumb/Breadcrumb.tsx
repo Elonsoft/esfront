@@ -4,11 +4,10 @@ import clsx from 'clsx';
 import { breadcrumbsClasses } from '../Breadcrumbs.classes';
 import { breadcrumbClasses, getBreadcrumbUtilityClass } from './Breadcrumb.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconBreadcrumbArrowRight } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';

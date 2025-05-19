@@ -3,9 +3,8 @@ import { GalleryActionsProps } from './GalleryActions.types';
 import clsx from 'clsx';
 import { getGalleryActionsUtilityClass } from './GalleryActions.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600, IconImageMultiple } from '../../../icons';
 import { useGalleryContext } from '../Gallery.context';

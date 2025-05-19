@@ -5,10 +5,9 @@ import { TabScrollButtonProps } from './TabScrollButton.types';
 import clsx from 'clsx';
 import { getTabScrollButtonUtilityClass, tabScrollButtonClasses } from './TabScrollButton.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
 import { capitalize } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconChevronLeftW400, IconChevronRightW400 } from '../../../icons';
 import { ButtonBase } from '../../ButtonBase';

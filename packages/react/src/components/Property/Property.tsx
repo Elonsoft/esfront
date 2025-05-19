@@ -3,10 +3,9 @@ import { PropertyProps } from './Property.types';
 import clsx from 'clsx';
 import { getPropertyUtilityClass, propertyClasses } from './Property.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 type PropertyOwnerState = {
   classes?: PropertyProps['classes'];

@@ -3,9 +3,8 @@ import { PageHGroupProps } from './PageHGroup.types';
 import clsx from 'clsx';
 import { getPageHGroupUtilityClass } from './PageHGroup.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupOwnerState = {
   classes?: PageHGroupProps['classes'];

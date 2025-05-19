@@ -1,4 +1,4 @@
-// eslint-disable-next-line simple-import-sort/imports
+// eslint-disable-next-line
 import type {} from '@mui/material/themeCssVarsAugmentation';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -12,13 +12,15 @@ import {
   ThemeOptions,
   TypographyVariants,
   TypographyVariantsOptions,
+  Components,
+  Mixins,
+  ComponentNameToClassKey,
+  ComponentsOverrides,
+  ThemeVars,
+  CommonColors,
+  ComponentsProps,
+  ComponentsPropsList,
 } from '@mui/material/styles';
-import { Components } from '@mui/material/styles/components';
-import { Mixins } from '@mui/material/styles/createMixins';
-import { CommonColors } from '@mui/material/styles/createPalette';
-import { ThemeVars } from '@mui/material/styles/experimental_extendTheme';
-import { ComponentNameToClassKey, ComponentsOverrides } from '@mui/material/styles/overrides';
-import { ComponentsProps, ComponentsPropsList } from '@mui/material/styles/props';
 import { Color, ComponentsVariants } from '@mui/material';
 import { ButtonPropsSizeOverrides } from '@mui/material/Button';
 import { FormControlPropsSizeOverrides } from '@mui/material/FormControl';

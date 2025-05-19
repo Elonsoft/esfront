@@ -5,10 +5,9 @@ import { FiltersFormGroupProps } from './FiltersFormGroup.types';
 import clsx from 'clsx';
 import { getFiltersFormGroupUtilityClass } from './FiltersFormGroup.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { outlinedInputClasses } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean, useResizeObserver } from '../../../hooks';
 import { Link } from '../../Link';
