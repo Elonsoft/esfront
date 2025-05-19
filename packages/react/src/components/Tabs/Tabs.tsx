@@ -18,12 +18,10 @@ import { TabsProps } from './Tabs.types';
 import clsx from 'clsx';
 import { getTabsUtilityClass, tabsClasses } from './Tabs.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { keyframes, styled, useTheme, useThemeProps } from '@mui/material/styles';
 import { debounce, ownerDocument, ownerWindow, useEventCallback } from '@mui/material/utils';
-import useEnhancedEffect from '@mui/material/utils/useEnhancedEffect';
-import { detectScrollType, getNormalizedScrollLeft } from '@mui/utils/scrollLeft';
+import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { animate } from './animate';
 import { TabScrollButton, tabScrollButtonClasses } from './TabScrollButton';
@@ -529,7 +527,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
         clientWidth: tabsNode.clientWidth,
         scrollLeft: tabsNode.scrollLeft,
         scrollTop: tabsNode.scrollTop,
-        scrollLeftNormalized: getNormalizedScrollLeft(tabsNode, isRtl ? 'rtl' : 'ltr'),
         scrollWidth: tabsNode.scrollWidth,
         top: rect.top,
         bottom: rect.bottom,
@@ -595,11 +592,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     let modifiedIndicatorWidth = 0;
 
     if (tabMeta && tabsMeta) {
-      const correction = isRtl
-        ? tabsMeta.scrollLeftNormalized + tabsMeta.clientWidth - tabsMeta.scrollWidth
-        : tabsMeta.scrollLeft;
-
-      startValue = (isRtl ? -1 : 1) * (tabMeta[startIndicator] - tabsMeta[startIndicator] + correction);
+      startValue = (isRtl ? -1 : 1) * (tabMeta[startIndicator] - tabsMeta[startIndicator] + tabsMeta.scrollLeft);
     }
 
     if (tabMeta && indicatorStyle[size] && TabIndicatorAlignment) {
@@ -661,8 +654,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
       let scrollValue = tabsRef.current[scrollStart];
 
       scrollValue += delta * (isRtl ? -1 : 1);
-      // Fix for Edge
-      scrollValue *= isRtl && detectScrollType() === 'reverse' ? -1 : 1;
 
       scroll(scrollValue);
     }

@@ -5,9 +5,8 @@ import { SidenavProps } from './Sidenav.types';
 import clsx from 'clsx';
 import { getSidenavUtilityClass, sidenavClasses } from './Sidenav.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { SidenavContext } from './Sidenav.context';
 import { sidenavItemClasses } from './SidenavItem';

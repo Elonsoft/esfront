@@ -5,9 +5,8 @@ import { FileIconProps } from './FileIcon.types';
 import clsx from 'clsx';
 import { getFileIconUtilityClass } from './FileIcon.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { FileIconIcon } from './icons';
 

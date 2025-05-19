@@ -3,11 +3,10 @@ import { TextFieldGroupProps } from './TextFieldGroup.types';
 import clsx from 'clsx';
 import { getTextFieldGroupUtilityClass } from './TextFieldGroup.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { Breakpoint, styled, useThemeProps } from '@mui/material/styles';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import { textFieldClasses } from '@mui/material/TextField';
+import composeClasses from '@mui/utils/composeClasses';
 
 type TextFieldGroupOwnerState = {
   classes?: TextFieldGroupProps['classes'];

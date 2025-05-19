@@ -3,9 +3,8 @@ import { GalleryMetaProps } from './GalleryMeta.types';
 import clsx from 'clsx';
 import { getGalleryMetaUtilityClass } from './GalleryMeta.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowLeftW500 } from '../../../icons';
 import { useGalleryContext } from '../Gallery.context';

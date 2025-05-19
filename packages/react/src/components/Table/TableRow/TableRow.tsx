@@ -5,11 +5,10 @@ import { TableRowProps, TableRowTypeMap } from './TableRow.types';
 import clsx from 'clsx';
 import { getTableRowUtilityClass, tableRowClasses } from './TableRow.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableContext } from '../Table.context';
 import { tableCellClasses } from '../TableCell';

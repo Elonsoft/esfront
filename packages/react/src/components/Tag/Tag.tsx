@@ -3,9 +3,8 @@ import { TagProps } from './Tag.types';
 import clsx from 'clsx';
 import { getTagUtilityClass, tagClasses } from './Tag.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { capitalize, styled, Typography, typographyClasses, useThemeProps } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase } from '../ButtonBase';
 import { touchRippleClasses } from '../TouchRipple';

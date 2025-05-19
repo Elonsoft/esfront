@@ -3,9 +3,8 @@ import { ErrorPageActionsProps } from './ErrorPageActions.types';
 import clsx from 'clsx';
 import { getErrorPageActionsUtilityClass } from './ErrorPageActions.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageActionsOwnerState = {
   classes?: ErrorPageActionsProps['classes'];

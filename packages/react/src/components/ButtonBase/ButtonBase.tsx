@@ -5,10 +5,9 @@ import { ButtonBaseProps, ButtonBaseTypeMap } from './ButtonBase.types';
 import clsx from 'clsx';
 import { buttonBaseClasses, getButtonBaseUtilityClass } from './ButtonBase.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useForkRef } from '../../hooks';
 import { TouchRipple, touchRippleClasses, useTouchRipple } from '../TouchRipple';

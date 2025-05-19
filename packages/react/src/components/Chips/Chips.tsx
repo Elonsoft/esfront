@@ -5,10 +5,9 @@ import { ChipsProps } from './Chips.types';
 import clsx from 'clsx';
 import { chipsClasses, getChipsUtilityClass } from './Chips.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean, useResizeObserver } from '../../hooks';
 import { IconChevronDownW200, IconChevronUpW200 } from '../../icons';

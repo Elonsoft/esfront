@@ -5,13 +5,12 @@ import { PasswordFieldProps } from './PasswordField.types';
 import clsx from 'clsx';
 import { getPasswordFieldUtilityClass } from './PasswordField.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import { inputBaseClasses } from '@mui/material/InputBase';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks';
 import { IconEye, IconEyeOff } from '../../icons';

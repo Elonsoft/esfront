@@ -5,9 +5,8 @@ import { TableTextProps } from './TableText.types';
 import clsx from 'clsx';
 import { getTableTextUtilityClass } from './TableText.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../TooltipEllipsis';
 

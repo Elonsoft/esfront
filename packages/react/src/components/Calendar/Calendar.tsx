@@ -3,10 +3,9 @@ import { CalendarProps } from './Calendar.types';
 import clsx from 'clsx';
 import { calendarClasses, getCalendarUtilityClass } from './Calendar.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { CalendarButton, CalendarButtonProps } from './CalendarButton';
 import { useCalendar } from './useCalendar';

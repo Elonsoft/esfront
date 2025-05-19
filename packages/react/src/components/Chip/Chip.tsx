@@ -5,11 +5,10 @@ import { ChipProps, ChipTypeMap } from './Chip.types';
 import clsx from 'clsx';
 import { chipClasses, getChipUtilityClass } from './Chip.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { capitalize, useForkRef } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseLineW350 } from '../../icons';
 import { avatarClasses } from '../Avatar';

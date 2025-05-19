@@ -3,10 +3,9 @@ import { TabBarItemProps, TabBarItemTypeMap } from './TabBarItem.types';
 import clsx from 'clsx';
 import { getTabBarItemUtilityClass, tabBarItemClasses } from './TabBarItem.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';

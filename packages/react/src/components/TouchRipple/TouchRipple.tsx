@@ -5,9 +5,8 @@ import { TouchRippleProps } from './TouchRipple.types';
 import clsx from 'clsx';
 import { getTouchRippleUtilityClass } from './TouchRipple.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type TouchRippleOwnerState = {
   classes?: TouchRippleProps['classes'];

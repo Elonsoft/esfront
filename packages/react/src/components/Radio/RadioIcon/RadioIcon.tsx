@@ -5,9 +5,8 @@ import { RadioIconProps } from './RadioIcon.types';
 import clsx from 'clsx';
 import { getRadioIconUtilityClass } from './RadioIcon.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 type RadioIconOwnerState = {
   classes?: RadioIconProps['classes'];

@@ -1,11 +1,6 @@
 import { ThemeOptions } from './ThemeProvider.types';
 
-import {
-  alpha as generateAlpha,
-  experimental_extendTheme as extendMUITheme,
-  Palette,
-  PaletteOptions,
-} from '@mui/material/styles';
+import { alpha as generateAlpha, extendTheme as extendMUITheme, Palette, PaletteOptions } from '@mui/material/styles';
 import { enUS } from '@mui/material/locale';
 
 import { en } from '../../components/locale';
@@ -72,6 +67,7 @@ export const createTheme = (
 
   const theme = extendMUITheme({
     cssVarPrefix,
+    colorSchemeSelector: '.mode-%s',
     colorSchemes: {
       dark: {
         palette: dark,
@@ -98,6 +94,7 @@ export const createTheme = (
   return extendMUITheme(
     {
       cssVarPrefix,
+      colorSchemeSelector: '.mode-%s',
       colorSchemes: {
         dark: {
           palette: dark,

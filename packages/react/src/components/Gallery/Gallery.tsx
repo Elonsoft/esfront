@@ -5,10 +5,9 @@ import { GalleryProps } from './Gallery.types';
 import clsx from 'clsx';
 import { getGalleryUtilityClass } from './Gallery.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { duration, styled, useThemeProps } from '@mui/material/styles';
 import { backdropClasses, Fade, Modal } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { GalleryContext } from './Gallery.context';
 import { GalleryPanelsProvider } from './GalleryPanel';

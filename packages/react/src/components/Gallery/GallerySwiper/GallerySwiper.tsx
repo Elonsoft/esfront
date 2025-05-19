@@ -5,9 +5,8 @@ import { GallerySwiperProps } from './GallerySwiper.types';
 import clsx from 'clsx';
 import { getGallerySwiperUtilityClass } from './GallerySwiper.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { useGallerySwiperContext } from './GallerySwiper.context';
 

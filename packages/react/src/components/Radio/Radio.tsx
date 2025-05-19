@@ -5,10 +5,9 @@ import { RadioProps } from './Radio.types';
 import clsx from 'clsx';
 import { getRadioUtilityClass, radioClasses } from './Radio.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize, createChainedFunction } from '@mui/material';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { RadioIcon, radioIconClasses } from './RadioIcon';
 

@@ -3,10 +3,9 @@ import { DividerProps } from './Divider.types';
 import clsx from 'clsx';
 import { getDividerUtilityClass } from './Divider.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useTheme, useThemeProps } from '@mui/material/styles';
 import { capitalize } from '@mui/material/utils';
+import composeClasses from '@mui/utils/composeClasses';
 
 type DividerOwnerState = {
   classes?: DividerProps['classes'];

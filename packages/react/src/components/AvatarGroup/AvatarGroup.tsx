@@ -5,9 +5,8 @@ import { AvatarGroupProps } from './AvatarGroup.types';
 import clsx from 'clsx';
 import { avatarGroupClasses, getAlertUtilityClass } from './AvatarGroup.classes';
 
-import { unstable_composeClasses as composeClasses } from '@mui/base';
-
 import { styled, useThemeProps } from '@mui/material/styles';
+import composeClasses from '@mui/utils/composeClasses';
 
 import { getCuttingOffset } from './AvatarGroup.utils';
 

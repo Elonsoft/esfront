@@ -1,5 +1,4 @@
-import { Components, CssVarsTheme, Theme } from '@mui/material/styles';
-import { TypographyOptions } from '@mui/material/styles/createTypography';
+import { Components, CssVarsTheme, Theme, TypographyVariantsOptions } from '@mui/material/styles';
 
 import { createButton } from './button';
 export { createButton } from './button';
@@ -49,7 +48,7 @@ import {
 } from './menu';
 export { createMenu } from './menu';
 
-export const createComponents = (theme: Theme, typography: TypographyOptions) => {
+export const createComponents = (theme: Theme, typography: TypographyVariantsOptions) => {
   const MuiButton = createButton(theme, typography);
   const MuiCheckbox = createCheckbox(theme, typography);
 
