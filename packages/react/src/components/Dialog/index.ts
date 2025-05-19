@@ -1,6 +1,7 @@
 export { Dialog } from './Dialog';
-export { DialogClasses, dialogClasses, DialogClassKey } from './Dialog.classes';
-export { DialogProps } from './Dialog.types';
+export type { DialogClasses, DialogClassKey } from './Dialog.classes';
+export { dialogClasses } from './Dialog.classes';
+export type { DialogProps } from './Dialog.types';
 export * from './DialogActions';
 export * from './DialogArrow';
 export * from './DialogClose';

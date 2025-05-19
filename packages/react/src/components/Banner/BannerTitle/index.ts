@@ -1,3 +1,4 @@
 export { BannerTitle } from './BannerTitle';
-export { BannerTitleClasses, bannerTitleClasses, BannerTitleClassKey } from './BannerTitle.classes';
-export { BannerTitleProps } from './BannerTitle.types';
+export type { BannerTitleClasses, BannerTitleClassKey } from './BannerTitle.classes';
+export { bannerTitleClasses } from './BannerTitle.classes';
+export type { BannerTitleProps } from './BannerTitle.types';

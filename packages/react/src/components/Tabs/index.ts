@@ -1,5 +1,6 @@
 export * from './Tab';
 export { Tabs } from './Tabs';
-export { TabsClasses, tabsClasses, TabsClassKey } from './Tabs.classes';
-export { TabsProps } from './Tabs.types';
+export type { TabsClasses, TabsClassKey } from './Tabs.classes';
+export { tabsClasses } from './Tabs.classes';
+export type { TabsProps } from './Tabs.types';
 export * from './TabScrollButton';

@@ -1,3 +1,3 @@
 export { SortingMenu } from './SortingMenu';
-export { SortingMenuClasses, SortingMenuClassKey } from './SortingMenu.classes';
-export { SortingMenuDirection, SortingMenuOption, SortingMenuProps, SortingMenuValue } from './SortingMenu.types';
+export type { SortingMenuClasses, SortingMenuClassKey } from './SortingMenu.classes';
+export type { SortingMenuDirection, SortingMenuOption, SortingMenuProps, SortingMenuValue } from './SortingMenu.types';

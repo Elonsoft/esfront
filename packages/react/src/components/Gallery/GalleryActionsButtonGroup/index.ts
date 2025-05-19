@@ -1,7 +1,7 @@
 export { GalleryActionsButtonGroup } from './GalleryActionsButtonGroup';
-export {
+export type {
   GalleryActionsButtonGroupClasses,
-  galleryActionsButtonGroupClasses,
   GalleryActionsButtonGroupClassKey,
 } from './GalleryActionsButtonGroup.classes';
-export { GalleryActionsButtonGroupProps } from './GalleryActionsButtonGroup.types';
+export { galleryActionsButtonGroupClasses } from './GalleryActionsButtonGroup.classes';
+export type { GalleryActionsButtonGroupProps } from './GalleryActionsButtonGroup.types';

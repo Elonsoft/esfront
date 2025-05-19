@@ -1,3 +1,4 @@
 export { DialogArrow } from './DialogArrow';
-export { DialogArrowClasses, dialogArrowClasses, DialogArrowClassKey } from './DialogArrow.classes';
-export { DialogArrowDirection, DialogArrowProps } from './DialogArrow.types';
+export type { DialogArrowClasses, DialogArrowClassKey } from './DialogArrow.classes';
+export { dialogArrowClasses } from './DialogArrow.classes';
+export type { DialogArrowDirection, DialogArrowProps } from './DialogArrow.types';

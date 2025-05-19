@@ -1,6 +1,7 @@
 export { ErrorPage } from './ErrorPage';
-export { ErrorPageClasses, errorPageClasses, ErrorPageClassKey } from './ErrorPage.classes';
-export { ErrorPageProps } from './ErrorPage.types';
+export type { ErrorPageClasses, ErrorPageClassKey } from './ErrorPage.classes';
+export { errorPageClasses } from './ErrorPage.classes';
+export type { ErrorPageProps } from './ErrorPage.types';
 export * from './ErrorPageActions';
 export * from './ErrorPageDescription';
 export * from './ErrorPageFooter';

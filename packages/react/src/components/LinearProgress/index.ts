@@ -1,3 +1,4 @@
 export { LinearProgress } from './LinearProgress';
-export { LinearProgressClasses, linearProgressClasses, LinearProgressClassKey } from './LinearProgress.classes';
-export { LinearProgressProps } from './LinearProgress.types';
+export type { LinearProgressClasses, LinearProgressClassKey } from './LinearProgress.classes';
+export { linearProgressClasses } from './LinearProgress.classes';
+export type { LinearProgressProps } from './LinearProgress.types';

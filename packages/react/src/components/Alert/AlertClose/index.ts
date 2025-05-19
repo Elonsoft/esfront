@@ -1,3 +1,4 @@
 export { AlertClose } from './AlertClose';
-export { AlertCloseClasses, alertCloseClasses, AlertCloseClassKey } from './AlertClose.classes';
-export { AlertCloseProps } from './AlertClose.types';
+export type { AlertCloseClasses, AlertCloseClassKey } from './AlertClose.classes';
+export { alertCloseClasses } from './AlertClose.classes';
+export type { AlertCloseProps } from './AlertClose.types';

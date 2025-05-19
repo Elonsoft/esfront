@@ -1,3 +1,4 @@
 export { Chips } from './Chips';
-export { ChipsClasses, chipsClasses, ChipsClassKey } from './Chips.classes';
-export { ChipsProps } from './Chips.types';
+export type { ChipsClasses, ChipsClassKey } from './Chips.classes';
+export { chipsClasses } from './Chips.classes';
+export type { ChipsProps } from './Chips.types';

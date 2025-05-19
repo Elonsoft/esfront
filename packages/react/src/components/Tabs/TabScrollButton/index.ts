@@ -1,3 +1,4 @@
 export { TabScrollButton } from './TabScrollButton';
-export { TabScrollButtonClasses, tabScrollButtonClasses, TabScrollButtonClassKey } from './TabScrollButton.classes';
-export { TabScrollButtonProps } from './TabScrollButton.types';
+export type { TabScrollButtonClasses, TabScrollButtonClassKey } from './TabScrollButton.classes';
+export { tabScrollButtonClasses } from './TabScrollButton.classes';
+export type { TabScrollButtonProps } from './TabScrollButton.types';

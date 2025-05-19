@@ -1,3 +1,4 @@
 export { PasswordField } from './PasswordField';
-export { PasswordFieldClasses, passwordFieldClasses, PasswordFieldClassKey } from './PasswordField.classes';
-export { PasswordFieldProps } from './PasswordField.types';
+export type { PasswordFieldClasses, PasswordFieldClassKey } from './PasswordField.classes';
+export { passwordFieldClasses } from './PasswordField.classes';
+export type { PasswordFieldProps } from './PasswordField.types';

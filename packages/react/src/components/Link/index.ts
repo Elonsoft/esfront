@@ -1,3 +1,4 @@
 export { Link } from './Link';
-export { LinkClasses, linkClasses, LinkClassKey } from './Link.classes';
-export { LinkProps, LinkTypeMap } from './Link.types';
+export type { LinkClasses, LinkClassKey } from './Link.classes';
+export { linkClasses } from './Link.classes';
+export type { LinkProps, LinkTypeMap } from './Link.types';

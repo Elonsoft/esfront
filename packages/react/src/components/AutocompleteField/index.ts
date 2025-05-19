@@ -1,7 +1,4 @@
 export { AutocompleteField } from './AutocompleteField';
-export {
-  AutocompleteFieldClasses,
-  autocompleteFieldClasses,
-  AutocompleteFieldClassKey,
-} from './AutocompleteField.classes';
-export { AutocompleteFieldProps } from './AutocompleteField.types';
+export type { AutocompleteFieldClasses, AutocompleteFieldClassKey } from './AutocompleteField.classes';
+export { autocompleteFieldClasses } from './AutocompleteField.classes';
+export type { AutocompleteFieldProps } from './AutocompleteField.types';

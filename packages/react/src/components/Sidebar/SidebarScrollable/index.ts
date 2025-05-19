@@ -1,7 +1,4 @@
 export { SidebarScrollable } from './SidebarScrollable';
-export {
-  SidebarScrollableClasses,
-  sidebarScrollableClasses,
-  SidebarScrollableClassKey,
-} from './SidebarScrollable.classes';
-export { SidebarScrollableProps } from './SidebarScrollable.types';
+export type { SidebarScrollableClasses, SidebarScrollableClassKey } from './SidebarScrollable.classes';
+export { sidebarScrollableClasses } from './SidebarScrollable.classes';
+export type { SidebarScrollableProps } from './SidebarScrollable.types';

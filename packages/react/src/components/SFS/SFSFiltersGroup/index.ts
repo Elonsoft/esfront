@@ -1,3 +1,4 @@
 export { SFSFiltersGroup } from './SFSFiltersGroup';
-export { SFSFiltersGroupClasses, sfsFiltersGroupClasses, SFSFiltersGroupClassKey } from './SFSFiltersGroup.classes';
-export { SFSFiltersGroupProps } from './SFSFiltersGroup.types';
+export type { SFSFiltersGroupClasses, SFSFiltersGroupClassKey } from './SFSFiltersGroup.classes';
+export { sfsFiltersGroupClasses } from './SFSFiltersGroup.classes';
+export type { SFSFiltersGroupProps } from './SFSFiltersGroup.types';

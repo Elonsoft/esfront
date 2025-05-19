@@ -1,7 +1,4 @@
 export { SpinnerFadingBars } from './SpinnerFadingBars';
-export {
-  SpinnerFadingBarsClasses,
-  spinnerFadingBarsClasses,
-  SpinnerFadingBarsClassKey,
-} from './SpinnerFadingBars.classes';
-export { SpinnerFadingBarsProps } from './SpinnerFadingBars.types';
+export type { SpinnerFadingBarsClasses, SpinnerFadingBarsClassKey } from './SpinnerFadingBars.classes';
+export { spinnerFadingBarsClasses } from './SpinnerFadingBars.classes';
+export type { SpinnerFadingBarsProps } from './SpinnerFadingBars.types';

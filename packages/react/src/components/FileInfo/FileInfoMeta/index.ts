@@ -1,3 +1,4 @@
 export { FileInfoMeta } from './FileInfoMeta';
-export { FileInfoMetaClasses, fileInfoMetaClasses, FileInfoMetaClassKey } from './FileInfoMeta.classes';
-export { FileInfoMetaProps } from './FileInfoMeta.types';
+export type { FileInfoMetaClasses, FileInfoMetaClassKey } from './FileInfoMeta.classes';
+export { fileInfoMetaClasses } from './FileInfoMeta.classes';
+export type { FileInfoMetaProps } from './FileInfoMeta.types';

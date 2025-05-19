@@ -1,7 +1,4 @@
 export { PageHGroupActions } from './PageHGroupActions';
-export {
-  PageHGroupActionsClasses,
-  pageHGroupActionsClasses,
-  PageHGroupActionsClassKey,
-} from './PageHGroupActions.classes';
-export { PageHGroupActionsProps } from './PageHGroupActions.types';
+export type { PageHGroupActionsClasses, PageHGroupActionsClassKey } from './PageHGroupActions.classes';
+export { pageHGroupActionsClasses } from './PageHGroupActions.classes';
+export type { PageHGroupActionsProps } from './PageHGroupActions.types';

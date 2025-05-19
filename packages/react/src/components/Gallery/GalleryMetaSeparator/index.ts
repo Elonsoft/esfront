@@ -1,7 +1,4 @@
 export { GalleryMetaSeparator } from './GalleryMetaSeparator';
-export {
-  GalleryMetaSeparatorClasses,
-  galleryMetaSeparatorClasses,
-  GalleryMetaSeparatorClassKey,
-} from './GalleryMetaSeparator.classes';
-export { GalleryMetaSeparatorProps } from './GalleryMetaSeparator.types';
+export type { GalleryMetaSeparatorClasses, GalleryMetaSeparatorClassKey } from './GalleryMetaSeparator.classes';
+export { galleryMetaSeparatorClasses } from './GalleryMetaSeparator.classes';
+export type { GalleryMetaSeparatorProps } from './GalleryMetaSeparator.types';

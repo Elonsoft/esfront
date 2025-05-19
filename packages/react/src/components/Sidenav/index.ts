@@ -1,5 +1,7 @@
 export { Sidenav } from './Sidenav';
-export { SidenavClasses, sidenavClasses, SidenavClassKey } from './Sidenav.classes';
-export { SidenavContext, SidenavContextValue, useSidenavContext } from './Sidenav.context';
-export { SidenavProps } from './Sidenav.types';
+export type { SidenavClasses, SidenavClassKey } from './Sidenav.classes';
+export { sidenavClasses } from './Sidenav.classes';
+export type { SidenavContextValue } from './Sidenav.context';
+export { SidenavContext, useSidenavContext } from './Sidenav.context';
+export type { SidenavProps } from './Sidenav.types';
 export * from './SidenavItem';

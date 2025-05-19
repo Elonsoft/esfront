@@ -1,3 +1,4 @@
 export { DialogContent } from './DialogContent';
-export { DialogContentClasses, dialogContentClasses, DialogContentClassKey } from './DialogContent.classes';
-export { DialogContentProps } from './DialogContent.types';
+export type { DialogContentClasses, DialogContentClassKey } from './DialogContent.classes';
+export { dialogContentClasses } from './DialogContent.classes';
+export type { DialogContentProps } from './DialogContent.types';

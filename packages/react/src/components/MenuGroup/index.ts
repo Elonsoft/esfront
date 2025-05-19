@@ -1,3 +1,4 @@
 export { MenuGroup } from './MenuGroup';
-export { MenuGroupClasses, menuGroupClasses, MenuGroupClassKey } from './MenuGroup.classes';
-export { MenuGroupPaddingBottomOverrides, MenuGroupProps } from './MenuGroup.types';
+export type { MenuGroupClasses, MenuGroupClassKey } from './MenuGroup.classes';
+export { menuGroupClasses } from './MenuGroup.classes';
+export type { MenuGroupPaddingBottomOverrides, MenuGroupProps } from './MenuGroup.types';

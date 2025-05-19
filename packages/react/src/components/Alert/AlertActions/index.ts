@@ -1,3 +1,4 @@
 export { AlertActions } from './AlertActions';
-export { AlertActionsClasses, alertActionsClasses, AlertActionsClassKey } from './AlertActions.classes';
-export { AlertActionsProps } from './AlertActions.types';
+export type { AlertActionsClasses, AlertActionsClassKey } from './AlertActions.classes';
+export { alertActionsClasses } from './AlertActions.classes';
+export type { AlertActionsProps } from './AlertActions.types';

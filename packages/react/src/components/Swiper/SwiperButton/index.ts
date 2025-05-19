@@ -1,3 +1,4 @@
 export { SwiperButton } from './SwiperButton';
-export { SwiperButtonClasses, swiperButtonClasses, SwiperButtonClassKey } from './SwiperButton.classes';
-export { SwiperButtonProps } from './SwiperButton.types';
+export type { SwiperButtonClasses, SwiperButtonClassKey } from './SwiperButton.classes';
+export { swiperButtonClasses } from './SwiperButton.classes';
+export type { SwiperButtonProps } from './SwiperButton.types';

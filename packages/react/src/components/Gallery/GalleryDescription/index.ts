@@ -1,7 +1,4 @@
 export { GalleryDescription } from './GalleryDescription';
-export {
-  GalleryDescriptionClasses,
-  galleryDescriptionClasses,
-  GalleryDescriptionClassKey,
-} from './GalleryDescription.classes';
-export { GalleryDescriptionProps } from './GalleryDescription.types';
+export type { GalleryDescriptionClasses, GalleryDescriptionClassKey } from './GalleryDescription.classes';
+export { galleryDescriptionClasses } from './GalleryDescription.classes';
+export type { GalleryDescriptionProps } from './GalleryDescription.types';

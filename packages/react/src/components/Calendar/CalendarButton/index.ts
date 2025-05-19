@@ -1,3 +1,4 @@
 export { CalendarButton } from './CalendarButton';
-export { CalendarButtonClasses, calendarButtonClasses, CalendarButtonClassKey } from './CalendarButton.classes';
-export { CalendarButtonProps } from './CalendarButton.types';
+export type { CalendarButtonClasses, CalendarButtonClassKey } from './CalendarButton.classes';
+export { calendarButtonClasses } from './CalendarButton.classes';
+export type { CalendarButtonProps } from './CalendarButton.types';

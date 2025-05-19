@@ -1,4 +1,5 @@
 export { TouchRipple } from './TouchRipple';
-export { TouchRippleClasses, touchRippleClasses, TouchRippleClassKey } from './TouchRipple.classes';
-export { TouchRippleParams, TouchRippleProps } from './TouchRipple.types';
+export type { TouchRippleClasses, TouchRippleClassKey } from './TouchRipple.classes';
+export { touchRippleClasses } from './TouchRipple.classes';
+export type { TouchRippleParams, TouchRippleProps } from './TouchRipple.types';
 export { useTouchRipple } from './useTouchRipple';

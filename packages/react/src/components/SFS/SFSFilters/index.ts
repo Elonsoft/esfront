@@ -1,3 +1,4 @@
 export { SFSFilters } from './SFSFilters';
-export { SFSFiltersClasses, sfsFiltersClasses, SFSFiltersClassKey } from './SFSFilters.classes';
-export { SFSFiltersProps } from './SFSFilters.types';
+export type { SFSFiltersClasses, SFSFiltersClassKey } from './SFSFilters.classes';
+export { sfsFiltersClasses } from './SFSFilters.classes';
+export type { SFSFiltersProps } from './SFSFilters.types';

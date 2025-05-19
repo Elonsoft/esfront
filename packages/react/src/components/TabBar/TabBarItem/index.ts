@@ -1,3 +1,4 @@
 export { TabBarItem } from './TabBarItem';
-export { TabBarItemClasses, tabBarItemClasses, TabBarItemClassKey } from './TabBarItem.classes';
-export { TabBarItemProps } from './TabBarItem.types';
+export type { TabBarItemClasses, TabBarItemClassKey } from './TabBarItem.classes';
+export { tabBarItemClasses } from './TabBarItem.classes';
+export type { TabBarItemProps } from './TabBarItem.types';
