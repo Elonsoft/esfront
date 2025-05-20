@@ -28,6 +28,7 @@ const useUtilityClasses = (ownerState: ButtonOwnerState) => {
   const { classes, fullWidth, color, size, variant, rounded } = ownerState;
 
   const slots = {
+    variables: ['variables', `variablesSize${capitalize(size)}`],
     root: [
       'root',
       fullWidth && 'fullWidth',
@@ -42,6 +43,45 @@ const useUtilityClasses = (ownerState: ButtonOwnerState) => {
 
   return composeClasses(slots, getButtonUtilityClass, classes);
 };
+
+const ButtonVariables = styled('div', {
+  name: 'ESButton',
+  slot: 'Variables',
+  overridesResolver: (props, styles) => styles.variables,
+})({
+  display: 'contents',
+
+  [`&.${buttonClasses.variablesSize100} `]: {
+    '--size': '100',
+  },
+  [`&.${buttonClasses.variablesSize200} `]: {
+    '--size': '200',
+  },
+  [`&.${buttonClasses.variablesSize300} `]: {
+    '--size': '300',
+  },
+  [`&.${buttonClasses.variablesSize400} `]: {
+    '--size': '400',
+  },
+  [`&.${buttonClasses.variablesSize500} `]: {
+    '--size': '500',
+  },
+  [`&.${buttonClasses.variablesSize600} `]: {
+    '--size': '600',
+  },
+  [`&.${buttonClasses.variablesSize700} `]: {
+    '--size': '700',
+  },
+  [`&.${buttonClasses.variablesSize800} `]: {
+    '--size': '800',
+  },
+  [`&.${buttonClasses.variablesSize900} `]: {
+    '--size': '900',
+  },
+  [`&.${buttonClasses.variablesSize1000} `]: {
+    '--size': '1000',
+  },
+});
 
 const ButtonRoot = styled(ButtonBase, {
   name: 'ESButton',
@@ -344,58 +384,60 @@ const ButtonRoot = styled(ButtonBase, {
     },
   },
   [`&.${buttonClasses.rounded} `]: {
-    [`&.${buttonClasses.size100} `]: {
+    [`@container style(--size: 100)`]: {
       borderRadius: '16px',
     },
-    [`&.${buttonClasses.size200} `]: {
+    [`@container style(--size: 200)`]: {
       borderRadius: '20px',
     },
-    [`&.${buttonClasses.size300} `]: {
+    [`@container style(--size: 300)`]: {
       borderRadius: '24px',
     },
-    [`&.${buttonClasses.size400} `]: {
+    [`@container style(--size: 400)`]: {
       borderRadius: '32px',
     },
-    [`&.${buttonClasses.size500} `]: {
+    [`@container style(--size: 500)`]: {
       borderRadius: '40px',
     },
-    [`&.${buttonClasses.size600} `]: {
+    [`@container style(--size: 600)`]: {
       borderRadius: '48px',
     },
-    [`&.${buttonClasses.size700} `]: {
+    [`@container style(--size: 700)`]: {
       borderRadius: '56px',
     },
-    [`&.${buttonClasses.size800} `]: {
+    [`@container style(--size: 800)`]: {
       borderRadius: '64px',
     },
-    [`&.${buttonClasses.size900} `]: {
+    [`@container style(--size: 900)`]: {
       borderRadius: '72px',
     },
-    [`&.${buttonClasses.size1000} `]: {
+    [`@container style(--size: 1000)`]: {
       borderRadius: '80px',
     },
   },
 
-  [`&.${buttonClasses.size100} .${buttonBaseClasses.wrapper}`]: {
-    ...theme.typography.mini100,
-    fontWeight: 400,
-    height: 16,
-    padding: '0 6px',
-    textTransform: 'none',
+  [`@container style(--size: 100)`]: {
+    [`& .${buttonBaseClasses.wrapper}`]: {
+      ...theme.typography.mini100,
+      fontWeight: 400,
+      height: 16,
+      padding: '0 6px',
+      textTransform: 'none',
 
-    [`& .${buttonClasses.startIcon}`]: {
-      marginLeft: -2,
-      marginRight: 2,
-    },
-    [`& .${buttonClasses.endIcon}`]: {
-      marginLeft: 2,
-      marginRight: -2,
-    },
-    [`& > .${svgIconClasses.root}`]: {
-      margin: '0 -4px',
+      [`& .${buttonClasses.startIcon}`]: {
+        marginLeft: -2,
+        marginRight: 2,
+      },
+      [`& .${buttonClasses.endIcon}`]: {
+        marginLeft: 2,
+        marginRight: -2,
+      },
+      [`& > .${svgIconClasses.root}`]: {
+        margin: '0 -4px',
+      },
     },
   },
-  [`&.${buttonClasses.size200}`]: {
+  [`@container style(--size: 200)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       ...theme.typography.caption,
       fontWeight: 400,
@@ -424,7 +466,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size300}`]: {
+  [`@container style(--size: 300)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       ...theme.typography.body100,
       fontWeight: 400,
@@ -453,7 +495,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size400}`]: {
+  [`@container style(--size: 400)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       ...theme.typography.body100,
       height: 32,
@@ -479,7 +521,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size500}`]: {
+  [`@container style(--size: 500)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 40,
       padding: '0 16px',
@@ -502,7 +544,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size600}`]: {
+  [`@container style(--size: 600)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 48,
       padding: '0 16px',
@@ -525,7 +567,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size700}`]: {
+  [`@container style(--size: 700)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 56,
       padding: '0 20px',
@@ -548,7 +590,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size800}`]: {
+  [`@container style(--size: 800)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 64,
       padding: '0 30px',
@@ -571,7 +613,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size900}`]: {
+  [`@container style(--size: 900)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 72,
       padding: '0 34px',
@@ -594,7 +636,7 @@ const ButtonRoot = styled(ButtonBase, {
       },
     },
   },
-  [`&.${buttonClasses.size1000}`]: {
+  [`@container style(--size: 1000)`]: {
     [`& .${buttonBaseClasses.wrapper}`]: {
       height: 80,
       padding: '0 36px',
@@ -663,10 +705,12 @@ export const Button = forwardRef(function Button(inProps, ref) {
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <ButtonRoot ref={ref as any} className={clsx(className, classes.root)} ownerState={ownerState} sx={sx} {...props}>
-      {startIcon && <ButtonStartIcon className={classes.startIcon}>{startIcon}</ButtonStartIcon>}
-      {children}
-      {endIcon && <ButtonEndIcon className={classes.endIcon}>{endIcon}</ButtonEndIcon>}
-    </ButtonRoot>
+    <ButtonVariables className={classes.variables}>
+      <ButtonRoot ref={ref as any} className={clsx(className, classes.root)} ownerState={ownerState} sx={sx} {...props}>
+        {startIcon && <ButtonStartIcon className={classes.startIcon}>{startIcon}</ButtonStartIcon>}
+        {children}
+        {endIcon && <ButtonEndIcon className={classes.endIcon}>{endIcon}</ButtonEndIcon>}
+      </ButtonRoot>
+    </ButtonVariables>
   );
 }) as ExtendButtonBase<ButtonTypeMap>;
