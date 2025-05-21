@@ -55,6 +55,7 @@ export * from './Snackbar';
 export * from './SortingMenu';
 export * from './Spinner';
 export * from './Spinner';
+export * from './SplitButton';
 export * from './SvgIcon';
 export * from './Swiper';
 export * from './Swiper';
