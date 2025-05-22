@@ -11,6 +11,7 @@ import { GalleryActionsProps, GalleryDescriptionProps, GalleryMetaProps, Gallery
 import { MadeByProps } from '../MadeBy';
 import { PaginationPagesProps, PaginationRangeProps } from '../Pagination';
 import { PasswordFieldProps } from '../PasswordField';
+import { PriceProps } from '../Price';
 import { SFSChipsProps, SFSFiltersProps, SFSSearchProps, SFSSortingProps } from '../SFS';
 import { SidebarItemProps, SidebarToggleProps } from '../Sidebar';
 import { SnackbarCloseProps } from '../Snackbar';
@@ -83,6 +84,9 @@ export interface Localization {
     };
     ESPasswordField: {
       defaultProps: Pick<PasswordFieldProps, 'labelHidePassword' | 'labelShowPassword'>;
+    };
+    ESPrice: {
+      defaultProps: Pick<PriceProps, 'locales'>;
     };
     ESSidebarToggle: {
       defaultProps: Pick<SidebarToggleProps, 'labelOpen' | 'labelHide'>;
@@ -247,6 +251,11 @@ export const en: Localization = {
       defaultProps: {
         labelHidePassword: 'Hide',
         labelShowPassword: 'Show',
+      },
+    },
+    ESPrice: {
+      defaultProps: {
+        locales: 'en-US',
       },
     },
     ESSidebarToggle: {
@@ -438,6 +447,11 @@ export const ru: Localization = {
       defaultProps: {
         labelHidePassword: 'Скрыть',
         labelShowPassword: 'Показать',
+      },
+    },
+    ESPrice: {
+      defaultProps: {
+        locales: 'ru-RU',
       },
     },
     ESSidebarToggle: {
