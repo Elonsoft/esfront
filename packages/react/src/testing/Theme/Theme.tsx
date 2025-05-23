@@ -7,6 +7,7 @@ import { enUS as dateEN, ru as dateRU } from 'date-fns/locale';
 
 import { DateAdapterProvider, en, ru } from '../../components';
 import { DialogStackProvider } from '../../components/DialogStack';
+import { DialogStack } from '../../components/DialogStackV2';
 import { PhoneFieldProvider } from '../../components/PhoneField';
 import { DefaultPropsProvider } from '../../theming';
 
@@ -28,7 +29,10 @@ export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
     <DefaultPropsProvider value={components}>
       <DialogStackProvider enableHistoryOverride>
         <DateAdapterProvider adapter={DateFnsAdapter} locale={locale === 'ru' ? dateRU : dateEN}>
-          <PhoneFieldProvider metadata={metadata}>{children}</PhoneFieldProvider>
+          <PhoneFieldProvider metadata={metadata}>
+            {children}
+            <DialogStack />
+          </PhoneFieldProvider>
         </DateAdapterProvider>
       </DialogStackProvider>
     </DefaultPropsProvider>

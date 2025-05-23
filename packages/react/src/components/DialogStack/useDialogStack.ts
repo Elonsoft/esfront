@@ -4,6 +4,9 @@ import { useEffect, useRef } from 'react';
 
 import { DialogStackContextValue, useDialogStackContext } from './DialogStack.context';
 
+/**
+ * @deprecated Use `useDialogStackV2` instead.
+ */
 export const useDialogStack = (): DialogStackContextValue => {
   const context = useDialogStackContext();
   const dialogs = useRef<Array<number | string>>([]);

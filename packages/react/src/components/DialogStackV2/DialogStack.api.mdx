@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+import { TableInterface } from '~storybook/components/TableInterface';
+import { TableFunction } from '~storybook/components/TableFunction';
+
+<Meta title="Components API/DialogStack" />
+
+# DialogStack API
+
+```js
+import {
+  DialogStack,
+  useDialogStackV2 as useDialogStack,
+  useDialogStackStateV2 as useDialogStackState,
+} from '@esfront/react';
+```
+
+The `DialogStack` component renders the dialogs opened through `useDialogStack`. It should be mounted once, at the place
+in the tree where the dialogs have to be rendered.
+
+## `useDialogStack`
+
+<TableFunction name="useDialogStackV2" />
+
+<TableInterface name="DialogStackValue" variant="props" />
+
+<br />
+
+## `useDialogStackState`
+
+<TableFunction name="useDialogStackStateV2" />
+
+<TableInterface name="DialogStackStateValue" variant="props" />
+
+<br />
+
+## Demos
+
+<ul>
+  <li>
+    <LinkTo kind="components-Dialog" story="dialog-stack-v-2">
+      <code>Dialog / Stack V2</code>
+    </LinkTo>
+  </li>
+  <li>
+    <LinkTo kind="components-Dialog" story="demo">
+      <code>Dialog</code>
+    </LinkTo>
+  </li>
+</ul>

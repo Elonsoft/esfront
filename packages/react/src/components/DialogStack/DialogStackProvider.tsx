@@ -9,6 +9,10 @@ import { DialogStackStateContext } from './DialogStackState.context';
 
 import { useLatest, useWindowEventListener } from '../../hooks';
 
+/**
+ * @deprecated Use the `DialogStack` component instead. It renders the dialogs opened through `useDialogStackV2` and
+ * does not have to wrap the tree.
+ */
 export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogStackProviderProps) => {
   const [dialogs, setDialogs] = useState<
     Array<{
