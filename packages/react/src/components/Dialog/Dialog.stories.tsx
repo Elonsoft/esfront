@@ -11,6 +11,7 @@ import { DialogTitle } from './DialogTitle';
 
 import { Button } from '../Button';
 import { useDialogStack } from '../DialogStack';
+import { useDialogStackV2 } from '../DialogStackV2';
 
 const getOpenButtonText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Open dialog window' : 'Открыть диалоговое окно';
@@ -34,7 +35,15 @@ const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Dialog,
   parameters: {
-    references: ['Dialog', 'DialogActions', 'DialogArrow', 'DialogClose', 'DialogTitle', 'DialogStackProvider'],
+    references: [
+      'Dialog',
+      'DialogActions',
+      'DialogArrow',
+      'DialogClose',
+      'DialogTitle',
+      'DialogStack',
+      'DialogStackProvider',
+    ],
   },
   argTypes: {
     DialogTitleSticky: {
@@ -72,7 +81,7 @@ type Story = StoryObj<Args>;
 
 export const Demo: Story = {
   render: function Render(args, context) {
-    const dialogStack = useDialogStack();
+    const dialogStack = useDialogStackV2();
 
     const onOpen = () => {
       dialogStack
@@ -155,7 +164,7 @@ export const Demo: Story = {
 /** Dialogs can be aligned to the top of the screen. */
 export const Alignment: Story = {
   render: function Render(args, context) {
-    const dialogStack = useDialogStack();
+    const dialogStack = useDialogStackV2();
 
     const onOpen = () => {
       dialogStack
@@ -196,7 +205,7 @@ export const Alignment: Story = {
 /** Dialogs can be opened in `fullScreen` mode. */
 export const FullScreen: Story = {
   render: function Render(args, context) {
-    const dialogStack = useDialogStack();
+    const dialogStack = useDialogStackV2();
 
     const onOpen = () => {
       dialogStack
@@ -268,10 +277,53 @@ export const FullScreen: Story = {
   },
 };
 
-/** Dialogs can be easily stacked on top of each other with the help of the `DialogStackProvider`. */
+/**
+ * Dialogs can be easily stacked on top of each other with the help of the `DialogStackProvider`.
+ *
+ * @deprecated `DialogStackProvider` is deprecated. See the `Stack V2` story for the `DialogStack` component.
+ */
 export const Stack: Story = {
   render: function Render(_args, context) {
     const dialogStack = useDialogStack();
+
+    const onOpen = (i: number) => () => {
+      dialogStack.open(({ close }) => (
+        <Dialog fullWidth maxWidth="700px" onClose={() => close()}>
+          <DialogTitle>
+            {getHeadingText(context)} {i + 1}
+          </DialogTitle>
+          <DialogContent>
+            <div className="body200">
+              Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+              quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
+              fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+              consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
+              {getCancelButtonText(context)}
+            </Button>
+            <Button color="primary" size="500" variant="contained" onClick={onOpen(i + 1)}>
+              {getOpenButtonText(context)}
+            </Button>
+          </DialogActions>
+        </Dialog>
+      ));
+    };
+
+    return (
+      <Button color="primary" variant="contained" onClick={onOpen(0)}>
+        {getOpenButtonText(context)}
+      </Button>
+    );
+  },
+};
+
+export const DialogStackV2: Story = {
+  name: 'Stack V2',
+  render: function Render(_args, context) {
+    const dialogStack = useDialogStackV2();
 
     const onOpen = (i: number) => () => {
       dialogStack.open(({ close }) => (

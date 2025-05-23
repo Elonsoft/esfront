@@ -4,6 +4,9 @@ import { createContext, ReactElement, useContext } from 'react';
 
 import { DialogStackProviderComponentInterface } from './DialogStackProvider.types';
 
+/**
+ * @deprecated Use `DialogStackValue` instead.
+ */
 export interface DialogStackContextValue {
   /**
    * Opens a dialog.
@@ -24,8 +27,14 @@ export interface DialogStackContextValue {
   close: (id: number | string) => void;
 }
 
+/**
+ * @deprecated The `DialogStack` component keeps its dialogs in the `dialogStackState` store instead of a context.
+ */
 export const DialogStackContext = createContext<DialogStackContextValue | null>(null);
 
+/**
+ * @deprecated Use the `dialogStackState` store directly, or `useDialogStackV2` inside a component.
+ */
 export const useDialogStackContext = () => {
   const value = useContext(DialogStackContext);
 

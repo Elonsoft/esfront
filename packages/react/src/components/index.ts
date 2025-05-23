@@ -24,6 +24,7 @@ export * from './Collapse';
 export * from './DateAdapter';
 export * from './Dialog';
 export * from './DialogStack';
+export * from './DialogStackV2';
 export * from './Divider';
 export * from './Drawer';
 export * from './Dropzone';
