@@ -13,6 +13,7 @@ import { DialogTitle } from './DialogTitle';
 
 import { Button } from '../Button';
 import { useDialogStack } from '../DialogStack';
+import { useDialogStackV2 } from '../DialogStackV2';
 
 const getOpenButtonText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Open dialog window' : 'Открыть диалоговое окно';
@@ -274,6 +275,45 @@ export const FullScreen: Story = {
 export const Stack: Story = {
   render: function Render(_args, context) {
     const dialogStack = useDialogStack();
+
+    const onOpen = (i: number) => () => {
+      dialogStack.open(({ close }) => (
+        <Dialog fullWidth maxWidth="700px" onClose={() => close()}>
+          <DialogTitle>
+            {getHeadingText(context)} {i + 1}
+          </DialogTitle>
+          <DialogContent>
+            <Typography variant="body200">
+              Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+              quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
+              fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+              consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
+              {getCancelButtonText(context)}
+            </Button>
+            <Button color="primary" size="500" variant="contained" onClick={onOpen(i + 1)}>
+              {getOpenButtonText(context)}
+            </Button>
+          </DialogActions>
+        </Dialog>
+      ));
+    };
+
+    return (
+      <Button color="primary" variant="contained" onClick={onOpen(0)}>
+        {getOpenButtonText(context)}
+      </Button>
+    );
+  },
+};
+
+export const DialogStackV2: Story = {
+  name: 'Stack V2',
+  render: function Render(args, context) {
+    const dialogStack = useDialogStackV2();
 
     const onOpen = (i: number) => () => {
       dialogStack.open(({ close }) => (

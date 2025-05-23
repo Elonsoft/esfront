@@ -10,6 +10,7 @@ import { enUS, ruRU } from '@mui/material/locale';
 
 import { DateAdapterProvider, en, ru } from '../../components';
 import { DialogStackProvider } from '../../components/DialogStack';
+import { DialogStack } from '../../components/DialogStackV2';
 import { createTheme, palettes, ThemeProvider } from '../../theming';
 
 function ColorScheme({ isDarkMode }: { isDarkMode?: boolean }) {
@@ -45,6 +46,7 @@ export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
       <DialogStackProvider enableHistoryOverride>
         <DateAdapterProvider adapter={DateFnsAdapter} locale={locale === 'ru' ? dateRU : dateEN}>
           {children}
+          <DialogStack />
         </DateAdapterProvider>
       </DialogStackProvider>
     </ThemeProvider>
