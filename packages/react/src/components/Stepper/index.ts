@@ -1,5 +1,6 @@
 export * from './Step';
 export * from './StepLabel';
 export { Stepper } from './Stepper';
-export { StepperClasses, stepperClasses, StepperClassKey } from './Stepper.classes';
-export { StepperProps } from './Stepper.types';
+export type { StepperClasses, StepperClassKey } from './Stepper.classes';
+export { stepperClasses } from './Stepper.classes';
+export type { StepperProps } from './Stepper.types';

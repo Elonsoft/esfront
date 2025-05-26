@@ -43,7 +43,6 @@ const meta: Meta<typeof Stepper> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Stepper>;
 
 type StepStatus = 'completed' | 'inProgress' | 'error';
 
@@ -53,6 +52,8 @@ export interface Step {
   status: StepStatus;
   content?: React.ReactNode;
 }
+
+type Story = StoryObj<typeof Stepper>;
 
 export const Demo: Story = {
   render: (args, context) => {

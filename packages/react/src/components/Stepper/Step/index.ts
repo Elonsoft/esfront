@@ -1,3 +1,4 @@
 export { Step } from './Step';
-export { StepClasses, stepClasses, StepClassKey } from './Step.classes';
-export { StepProps } from './Step.types';
+export type { StepClasses, StepClassKey } from './Step.classes';
+export { stepClasses } from './Step.classes';
+export type { StepProps } from './Step.types';

@@ -26,7 +26,7 @@ const StepLabelRoot = styled(Typography, {
   slot: 'Indicator',
   overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: StepLabelOwnerState }>(({ theme }) => ({
-  color: theme.palette.monoA.A900,
+  color: theme.vars.palette.monoA.A900,
   textTransform: 'none',
 }));
 

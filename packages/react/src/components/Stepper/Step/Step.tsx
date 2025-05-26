@@ -84,24 +84,24 @@ const StepCircle = styled('div', {
   marginLeft: '8px',
   borderRadius: '50%',
   width: `${ownerState.size}px`,
-  color: theme.palette.monoB[500],
+  color: theme.vars.palette.monoB[500],
   height: `${ownerState.size}px`,
   display: 'flex',
   minWidth: `${ownerState.size}px`,
   alignItems: 'center',
   justifyContent: 'center',
-  background: theme.palette.monoA.A500,
+  background: theme.vars.palette.monoA.A500,
 
   ...((ownerState.completed || ownerState.activeStep) && {
-    background: theme.palette.primary[300],
+    background: theme.vars.palette.primary[300],
   }),
 
   ...(ownerState.error && {
-    background: theme.palette.error[300],
+    background: theme.vars.palette.error[300],
   }),
 
   ...(ownerState.disabled && {
-    background: theme.palette.monoA.A300,
+    background: theme.vars.palette.monoA.A300,
   }),
 }));
 

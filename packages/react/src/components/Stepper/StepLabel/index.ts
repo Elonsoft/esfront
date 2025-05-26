@@ -1,3 +1,4 @@
 export { StepLabel } from './StepLabel';
-export { StepLabelClasses, stepLabelClasses, StepLabelClassKey } from './StepLabel.classes';
-export { StepLabelProps } from './StepLabel.types';
+export type { StepLabelClasses, StepLabelClassKey } from './StepLabel.classes';
+export { stepLabelClasses } from './StepLabel.classes';
+export type { StepLabelProps } from './StepLabel.types';

@@ -82,26 +82,60 @@ const StepperConnectorLine = styled('div', {
 })<{ ownerState: StepperOwnerState; isActive: boolean }>(({ theme, isActive }) => ({
   position: 'absolute',
   height: '1px',
-  backgroundColor: isActive ? theme.palette.primary[300] : theme.palette.monoA.A300,
+  backgroundColor: isActive ? theme.vars.palette.primary[300] : theme.vars.palette.monoA.A300,
 
-  [`&.${stepperClasses.horizontal}`]: {
-    width: '100%',
-    marginLeft: '-4px',
-  },
+  // [`&.${stepperClasses.horizontal}`]: {
+  //   width: '100%',
+  //   marginLeft: '-4px',
+  // },
 
-  [`&.${stepperClasses.vertical}`]: {
-    left: '15px',
-    right: '-16px',
-    width: '34px',
-    transform: 'rotate(90deg)',
-  },
-  [`&.${stepperClasses.size24}`]: {
-    [`&.${stepperClasses.vertical}`]: {
-      left: '12px',
-      width: '34px',
-      transform: 'rotate(90deg)',
+  // [`&.${stepperClasses.vertical}`]: {
+  //   left: '15px',
+  //   right: '-16px',
+  //   width: '34px',
+  //   transform: 'rotate(90deg)',
+  // },
+  // [`&.${stepperClasses.size24}`]: {
+  //   [`&.${stepperClasses.vertical}`]: {
+  //     left: '12px',
+  //     width: '34px',
+  //     transform: 'rotate(90deg)',
+  //   },
+  // },
+
+  variants: [
+    {
+      props: {
+        orientation: 'horizontal',
+      },
+      style: {
+        width: '100%',
+        marginLeft: '-4px',
+      },
     },
-  },
+    {
+      props: {
+        orientation: 'vertical',
+      },
+      style: {
+        left: '15px',
+        right: '-16px',
+        width: '34px',
+        transform: 'rotate(90deg)',
+      },
+    },
+    {
+      props: {
+        orientation: 'vertical',
+        size24: true,
+      },
+      style: {
+        left: '12px',
+        width: '34px',
+        transform: 'rotate(90deg)',
+      },
+    },
+  ],
 }));
 
 export const Stepper = (inProps: StepperProps) => {
