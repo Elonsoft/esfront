@@ -64,7 +64,7 @@ const StepperConnectorRoot = styled('div', {
 }));
 
 const StepperContainer = styled('div', {
-  name: 'ESStepContainer',
+  name: 'ESStepperContainer',
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container,
 })(() => ({}));
@@ -83,25 +83,6 @@ const StepperConnectorLine = styled('div', {
   position: 'absolute',
   height: '1px',
   backgroundColor: isActive ? theme.vars.palette.primary[300] : theme.vars.palette.monoA.A300,
-
-  // [`&.${stepperClasses.horizontal}`]: {
-  //   width: '100%',
-  //   marginLeft: '-4px',
-  // },
-
-  // [`&.${stepperClasses.vertical}`]: {
-  //   left: '15px',
-  //   right: '-16px',
-  //   width: '34px',
-  //   transform: 'rotate(90deg)',
-  // },
-  // [`&.${stepperClasses.size24}`]: {
-  //   [`&.${stepperClasses.vertical}`]: {
-  //     left: '12px',
-  //     width: '34px',
-  //     transform: 'rotate(90deg)',
-  //   },
-  // },
 
   variants: [
     {

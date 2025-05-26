@@ -1,7 +1,7 @@
 import { StepProps } from './Step.types';
 
 import clsx from 'clsx';
-import { getStepUtilityClass, stepClasses } from './Step.classes';
+import { getStepUtilityClass } from './Step.classes';
 
 import { unstable_composeClasses as composeClasses } from '@mui/base';
 
@@ -59,15 +59,21 @@ const StepRoot = styled(Button, {
     justifyContent: 'flex-start',
   },
 
-  [`&.${stepClasses.positionBottom}`]: {
-    [`&:not(.${stepClasses.vertical})`]: {
-      '& .ESButtonBase-wrapper': {
-        flexDirection: 'column',
-        height: 'auto',
-        marginTop: '21px',
+  variants: [
+    {
+      props: {
+        position: 'bottom',
+        orientation: 'horizontal',
+      },
+      style: {
+        '& .ESButtonBase-wrapper': {
+          flexDirection: 'column',
+          height: 'auto',
+          marginTop: '21px',
+        },
       },
     },
-  },
+  ],
 }));
 
 const StepCircle = styled('div', {
@@ -92,17 +98,40 @@ const StepCircle = styled('div', {
   justifyContent: 'center',
   background: theme.vars.palette.monoA.A500,
 
-  ...((ownerState.completed || ownerState.activeStep) && {
-    background: theme.vars.palette.primary[300],
-  }),
-
-  ...(ownerState.error && {
-    background: theme.vars.palette.error[300],
-  }),
-
-  ...(ownerState.disabled && {
-    background: theme.vars.palette.monoA.A300,
-  }),
+  variants: [
+    {
+      props: {
+        completed: true,
+      },
+      style: {
+        background: theme.vars.palette.primary[300],
+      },
+    },
+    {
+      props: {
+        activeStep: true,
+      },
+      style: {
+        background: theme.vars.palette.primary[300],
+      },
+    },
+    {
+      props: {
+        error: true,
+      },
+      style: {
+        background: theme.vars.palette.error[300],
+      },
+    },
+    {
+      props: {
+        disabled: true,
+      },
+      style: {
+        background: theme.vars.palette.monoA.A300,
+      },
+    },
+  ],
 }));
 
 export const Step = (inProps: StepProps) => {
