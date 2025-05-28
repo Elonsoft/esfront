@@ -32,7 +32,7 @@ const useUtilityClasses = (ownerState: StepperOwnerState) => {
 };
 
 const StepperRoot = styled('div', {
-  name: 'ESStepperContainer',
+  name: 'ESStepper',
   slot: 'Container',
   overridesResolver: (props, styles) => {
     const {
@@ -65,7 +65,7 @@ const StepperConnectorRoot = styled('div', {
 
 const StepperContainer = styled('div', {
   name: 'ESStepperContainer',
-  slot: 'Container',
+  slot: 'Root',
   overridesResolver: (props, styles) => styles.container,
 })(() => ({}));
 
@@ -79,19 +79,27 @@ const StepperConnectorLine = styled('div', {
 
     return [styles.line, styles[orientation], styles[size], styles[size24]];
   },
-})<{ ownerState: StepperOwnerState; isActive: boolean }>(({ theme, isActive }) => ({
+})<{ ownerState: StepperOwnerState & { isActive: boolean } }>(({ theme }) => ({
   position: 'absolute',
   height: '1px',
-  backgroundColor: isActive ? theme.vars.palette.primary[300] : theme.vars.palette.monoA.A300,
+  backgroundColor: theme.vars.palette.monoA.A300,
 
   variants: [
+    {
+      props: {
+        isActive: true,
+      },
+      style: {
+        backgroundColor: theme.vars.palette.primary[300],
+      },
+    },
     {
       props: {
         orientation: 'horizontal',
       },
       style: {
         width: '100%',
-        marginLeft: '-4px',
+        left: '3px',
       },
     },
     {
@@ -99,8 +107,7 @@ const StepperConnectorLine = styled('div', {
         orientation: 'vertical',
       },
       style: {
-        left: '15px',
-        right: '-16px',
+        left: '7px',
         width: '34px',
         transform: 'rotate(90deg)',
       },
@@ -111,7 +118,7 @@ const StepperConnectorLine = styled('div', {
         size24: true,
       },
       style: {
-        left: '12px',
+        left: '4px',
         width: '34px',
         transform: 'rotate(90deg)',
       },
@@ -163,8 +170,7 @@ export const Stepper = (inProps: StepperProps) => {
             <StepperConnectorRoot>
               <StepperConnectorLine
                 className={clsx(className, classes.root)}
-                isActive={index < activeStep}
-                ownerState={ownerState}
+                ownerState={{ ...ownerState, isActive: index < activeStep }}
               />
             </StepperConnectorRoot>
           )}

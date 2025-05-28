@@ -54,7 +54,7 @@ const StepRoot = styled(ButtonBase, {
   minHeight: '57px',
   height: '100%',
   position: 'relative',
-  [`& .${buttonBaseClasses.wrapper}`]: {
+  [`&.${buttonBaseClasses.wrapper}`]: {
     display: 'flex',
     justifyContent: 'flex-start',
   },
@@ -66,7 +66,7 @@ const StepRoot = styled(ButtonBase, {
         orientation: 'horizontal',
       },
       style: {
-        [`& .${buttonBaseClasses.wrapper}`]: {
+        [`&.${buttonBaseClasses.wrapper}`]: {
           flexDirection: 'column',
           height: 'auto',
           marginTop: '21px',
@@ -85,20 +85,30 @@ const StepCircle = styled('div', {
     } = props;
     return [styles.button, completed && styles.completed, error && styles.error, disabled && styles.disabled];
   },
-})<{ ownerState: StepOwnerState }>(({ theme, ownerState }) => ({
+})<{ ownerState: StepOwnerState }>(({ theme }) => ({
   marginRight: '12px',
   marginLeft: '8px',
   borderRadius: '50%',
-  width: `${ownerState.size}px`,
   color: theme.vars.palette.monoB[500],
-  height: `${ownerState.size}px`,
+  height: '32px',
+  width: '32px',
+  minWidth: '32px',
   display: 'flex',
-  minWidth: `${ownerState.size}px`,
   alignItems: 'center',
   justifyContent: 'center',
   background: theme.vars.palette.monoA.A500,
 
   variants: [
+    {
+      props: {
+        size: '24',
+      },
+      style: {
+        height: '24px',
+        width: '24px',
+        minWidth: '24px',
+      },
+    },
     {
       props: {
         completed: true,
@@ -147,6 +157,8 @@ export const Step = (inProps: StepProps) => {
     position,
     size = '32',
     orientation,
+    iconCompleted = <IconCheckW500 size={size} />,
+    iconError = <IconExclamation size={size} />,
     ...props
   } = useThemeProps({
     props: inProps,
@@ -168,7 +180,7 @@ export const Step = (inProps: StepProps) => {
   return (
     <StepRoot className={clsx(className, classes.root)} disabled={disabled} ownerState={ownerState} sx={sx}>
       <StepCircle className={classes.circle} ownerState={ownerState}>
-        {completed ? <IconCheckW500 size={size} /> : error ? <IconExclamation size={size} /> : stepIndex}
+        {completed ? iconCompleted : error ? iconError : stepIndex}
       </StepCircle>
       {children}
     </StepRoot>

@@ -40,4 +40,10 @@ export interface StepProps {
    * @default 'horizontal'
    */
   orientation?: 'horizontal' | 'vertical';
+
+  /** Icon to display with completed step. */
+  iconCompleted?: ReactNode;
+
+  /** Icon to display with error step. */
+  iconError?: ReactNode;
 }
