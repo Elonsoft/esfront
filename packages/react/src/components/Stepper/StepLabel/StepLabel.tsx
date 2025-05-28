@@ -25,8 +25,7 @@ const StepLabelRoot = styled(Typography, {
   name: 'ESStepLabel',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})<{ ownerState: StepLabelOwnerState }>(({ theme }) => ({
-  color: theme.vars.palette.monoA.A900,
+})<{ ownerState: StepLabelOwnerState }>(() => ({
   textTransform: 'none',
 }));
 

@@ -42,19 +42,30 @@ const useUtilityClasses = (ownerState: StepOwnerState) => {
 };
 
 const StepRoot = styled(ButtonBase, {
-  name: 'ESStepRoot',
+  name: 'ESStep',
   slot: 'Root',
   overridesResolver: (_props, styles) => {
     const {
       ownerState: { orientation, position },
     } = _props;
-    return [styles.wrapper, styles[orientation], position && styles[`position${capitalize(position)}`]];
+    return [styles.root, styles[orientation], position && styles[`position${capitalize(position)}`]];
   },
-})<{ ownerState: StepOwnerState }>(() => ({
+})<{ ownerState: StepOwnerState }>(({ theme }) => ({
   minHeight: '57px',
   height: '100%',
   position: 'relative',
-  [`&.${buttonBaseClasses.wrapper}`]: {
+  '--text': theme.vars.palette.monoA.A800,
+  '--hovered': theme.vars.palette.monoA.A100,
+  '--pressed': theme.vars.palette.monoA.A200,
+  padding: '16px 28px 16px 20px',
+  borderRadius: '3px',
+
+  [`&.${buttonBaseClasses.disabled}`]: {
+    '--text': theme.vars.palette.monoA.A400,
+    '--icon': theme.vars.palette.monoA.A400,
+  },
+
+  [`& .${buttonBaseClasses.wrapper}`]: {
     display: 'flex',
     justifyContent: 'flex-start',
   },
@@ -66,24 +77,34 @@ const StepRoot = styled(ButtonBase, {
         orientation: 'horizontal',
       },
       style: {
-        [`&.${buttonBaseClasses.wrapper}`]: {
+        marginTop: '21px',
+        padding: '16px 20px',
+
+        [`& .${buttonBaseClasses.wrapper}`]: {
           flexDirection: 'column',
           height: 'auto',
-          marginTop: '21px',
         },
+      },
+    },
+    {
+      props: {
+        error: true,
+      },
+      style: {
+        '--text': theme.vars.palette.error[300],
       },
     },
   ],
 }));
 
 const StepCircle = styled('div', {
-  name: 'ESStepCircle',
+  name: 'ESStep',
   slot: 'Circle',
   overridesResolver: (props, styles) => {
     const {
       ownerState: { completed, error, disabled },
     } = props;
-    return [styles.button, completed && styles.completed, error && styles.error, disabled && styles.disabled];
+    return [styles.circle, completed && styles.completed, error && styles.error, disabled && styles.disabled];
   },
 })<{ ownerState: StepOwnerState }>(({ theme }) => ({
   marginRight: '12px',

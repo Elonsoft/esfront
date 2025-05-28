@@ -33,13 +33,13 @@ const useUtilityClasses = (ownerState: StepperOwnerState) => {
 
 const StepperRoot = styled('div', {
   name: 'ESStepper',
-  slot: 'Container',
+  slot: 'Root',
   overridesResolver: (props, styles) => {
     const {
       ownerState: { orientation },
     } = props;
 
-    return [styles.container, styles[orientation]];
+    return [styles.root, styles[orientation]];
   },
 })<{ ownerState: StepperOwnerState }>(() => ({
   display: 'flex',
@@ -54,23 +54,23 @@ const StepperRoot = styled('div', {
   },
 }));
 
-const StepperConnectorRoot = styled('div', {
-  name: 'ESStepperConnectorLine',
-  slot: 'Line',
+const StepperContainer = styled('div', {
+  name: 'ESStepper',
+  slot: 'Container',
   overridesResolver: (props, styles) => styles.container,
+})(() => ({}));
+
+const StepperConnectorRoot = styled('div', {
+  name: 'ESStepperConnector',
+  slot: 'Root',
+  overridesResolver: (props, styles) => styles.root,
 })(() => ({
   position: 'relative',
   width: '100%',
 }));
 
-const StepperContainer = styled('div', {
-  name: 'ESStepperContainer',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.container,
-})(() => ({}));
-
 const StepperConnectorLine = styled('div', {
-  name: 'ESStepperConnectorLine',
+  name: 'ESStepperConnector',
   slot: 'Line',
   overridesResolver: (props, styles) => {
     const {
@@ -98,8 +98,8 @@ const StepperConnectorLine = styled('div', {
         orientation: 'horizontal',
       },
       style: {
-        width: '100%',
-        left: '3px',
+        width: 'calc(100% + 40px)',
+        left: '-20px',
       },
     },
     {
@@ -107,7 +107,7 @@ const StepperConnectorLine = styled('div', {
         orientation: 'vertical',
       },
       style: {
-        left: '7px',
+        left: '27px',
         width: '34px',
         transform: 'rotate(90deg)',
       },
@@ -118,7 +118,7 @@ const StepperConnectorLine = styled('div', {
         size24: true,
       },
       style: {
-        left: '4px',
+        left: '24px',
         width: '34px',
         transform: 'rotate(90deg)',
       },
