@@ -9,7 +9,7 @@ import { styled, useThemeProps } from '@mui/material/styles';
 import { capitalize } from '@mui/material';
 
 import { IconCheckW500, IconExclamation } from '../../../icons';
-import { Button } from '../../Button';
+import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';
 
 type StepOwnerState = {
   classes?: StepProps['classes'];
@@ -30,7 +30,7 @@ const useUtilityClasses = (ownerState: StepOwnerState) => {
       'root',
       completed && 'completed',
       error && 'error',
-      size && 'size',
+      `size${size}`,
       position && `position${capitalize(position)}`,
       orientation,
     ],
@@ -41,7 +41,7 @@ const useUtilityClasses = (ownerState: StepOwnerState) => {
   return composeClasses(slots, getStepUtilityClass, classes);
 };
 
-const StepRoot = styled(Button, {
+const StepRoot = styled(ButtonBase, {
   name: 'ESStepRoot',
   slot: 'Root',
   overridesResolver: (_props, styles) => {
@@ -54,7 +54,7 @@ const StepRoot = styled(Button, {
   minHeight: '57px',
   height: '100%',
   position: 'relative',
-  '& .ESButtonBase-wrapper': {
+  [`& .${buttonBaseClasses.wrapper}`]: {
     display: 'flex',
     justifyContent: 'flex-start',
   },
@@ -66,7 +66,7 @@ const StepRoot = styled(Button, {
         orientation: 'horizontal',
       },
       style: {
-        '& .ESButtonBase-wrapper': {
+        [`& .${buttonBaseClasses.wrapper}`]: {
           flexDirection: 'column',
           height: 'auto',
           marginTop: '21px',
@@ -167,14 +167,8 @@ export const Step = (inProps: StepProps) => {
 
   return (
     <StepRoot className={clsx(className, classes.root)} disabled={disabled} ownerState={ownerState} sx={sx}>
-      <StepCircle className={clsx(className, classes.circle)} ownerState={ownerState}>
-        {completed ? (
-          <IconCheckW500 size={size} style={{ color: '#fff', padding: '4px' }} />
-        ) : error ? (
-          <IconExclamation size={size} style={{ color: '#fff' }} />
-        ) : (
-          stepIndex
-        )}
+      <StepCircle className={classes.circle} ownerState={ownerState}>
+        {completed ? <IconCheckW500 size={size} /> : error ? <IconExclamation size={size} /> : stepIndex}
       </StepCircle>
       {children}
     </StepRoot>

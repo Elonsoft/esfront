@@ -23,7 +23,7 @@ const useUtilityClasses = (ownerState: StepLabelOwnerState) => {
 
 const StepLabelRoot = styled(Typography, {
   name: 'ESStepLabelRoot',
-  slot: 'Indicator',
+  slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })<{ ownerState: StepLabelOwnerState }>(({ theme }) => ({
   color: theme.vars.palette.monoA.A900,
