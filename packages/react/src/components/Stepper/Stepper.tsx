@@ -50,7 +50,7 @@ const StepperRoot = styled('div', {
   [`&.${stepperClasses.vertical}`]: {
     flexDirection: 'column',
     alignItems: 'initial',
-    gap: '8px',
+    //gap: '8px',
   },
 }));
 
@@ -98,8 +98,8 @@ const StepperConnectorLine = styled('div', {
         orientation: 'horizontal',
       },
       style: {
-        width: 'calc(100% + 40px)',
-        left: '-20px',
+        width: 'calc(100% + 32px)',
+        left: '-16px',
       },
     },
     {
@@ -107,8 +107,8 @@ const StepperConnectorLine = styled('div', {
         orientation: 'vertical',
       },
       style: {
-        left: '27px',
-        width: '34px',
+        left: '28px',
+        width: '24px',
         transform: 'rotate(90deg)',
       },
     },
@@ -119,7 +119,7 @@ const StepperConnectorLine = styled('div', {
       },
       style: {
         left: '24px',
-        width: '34px',
+        width: '24px',
         transform: 'rotate(90deg)',
       },
     },

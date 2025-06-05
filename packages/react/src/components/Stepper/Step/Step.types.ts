@@ -46,4 +46,10 @@ export interface StepProps {
 
   /** Icon to display with error step. */
   iconError?: ReactNode;
+
+  /**
+   * If `true`, the `input` element is required.
+   * @default false
+   */
+  required?: boolean;
 }

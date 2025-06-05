@@ -51,18 +51,19 @@ const StepRoot = styled(ButtonBase, {
     return [styles.root, styles[orientation], position && styles[`position${capitalize(position)}`]];
   },
 })<{ ownerState: StepOwnerState }>(({ theme }) => ({
-  minHeight: '57px',
+  minHeight: '56px',
   height: '100%',
   position: 'relative',
-  '--text': theme.vars.palette.monoA.A800,
+  '--text': theme.vars.palette.monoA.A900,
   '--hovered': theme.vars.palette.monoA.A100,
   '--pressed': theme.vars.palette.monoA.A200,
-  padding: '16px 28px 16px 20px',
+  padding: '16px 24px 16px 16px',
   borderRadius: '3px',
 
   [`&.${buttonBaseClasses.disabled}`]: {
-    '--text': theme.vars.palette.monoA.A400,
+    '--text': theme.vars.palette.monoA.A500,
     '--icon': theme.vars.palette.monoA.A400,
+    cursor: 'not-allowed',
   },
 
   [`& .${buttonBaseClasses.wrapper}`]: {
@@ -78,11 +79,12 @@ const StepRoot = styled(ButtonBase, {
       },
       style: {
         marginTop: '21px',
-        padding: '16px 20px',
+        padding: '16px',
 
         [`& .${buttonBaseClasses.wrapper}`]: {
           flexDirection: 'column',
           height: 'auto',
+          gap: '8px',
         },
       },
     },
@@ -118,6 +120,7 @@ const StepCircle = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   background: theme.vars.palette.monoA.A500,
+  fontWeight: 700,
 
   variants: [
     {
@@ -162,6 +165,14 @@ const StepCircle = styled('div', {
         background: theme.vars.palette.monoA.A300,
       },
     },
+    {
+      props: {
+        position: 'bottom',
+      },
+      style: {
+        marginRight: '8px',
+      },
+    },
   ],
 }));
 
@@ -178,6 +189,7 @@ export const Step = (inProps: StepProps) => {
     position,
     size = '32',
     orientation,
+    required,
     iconCompleted = <IconCheckW500 size={size} />,
     iconError = <IconExclamation size={size} />,
     ...props
@@ -194,6 +206,7 @@ export const Step = (inProps: StepProps) => {
     disabled,
     position,
     orientation,
+    required,
   };
 
   const classes = useUtilityClasses(ownerState);
