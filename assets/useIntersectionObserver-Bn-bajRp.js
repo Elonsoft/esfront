@@ -1,0 +1,1 @@
+import{r as u}from"./index-DIDRz_s2.js";import{u as a}from"./useLatest-sVqXUmVb.js";const f=(e,c,r)=>{const s=a(c);u.useEffect(()=>{if(e.current){const t=new IntersectionObserver(n=>{s.current(n)},r);return t.observe(e.current),()=>{t.disconnect()}}},[e.current,r==null?void 0:r.rootMargin])};export{f as u};

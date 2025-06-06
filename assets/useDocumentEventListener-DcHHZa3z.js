@@ -1,0 +1,1 @@
+import{r as u}from"./index-DIDRz_s2.js";import{u as c}from"./useLatest-sVqXUmVb.js";const E=(e,r,n)=>{const s=c(r);u.useEffect(()=>{const t=o=>s.current(o);return document.addEventListener(e,t,n),()=>{document.removeEventListener(e,t)}},[])};export{E as u};

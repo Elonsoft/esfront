@@ -1,0 +1,1 @@
+import{r as u}from"./index-DIDRz_s2.js";import{u as n}from"./useLatest-sVqXUmVb.js";const b=(r,s,t)=>{const c=n(s);u.useEffect(()=>{if(r.current){const e=new ResizeObserver(o=>{c.current(o)});return e.observe(r.current,t),()=>{e.disconnect()}}},[r.current])};export{b as u};

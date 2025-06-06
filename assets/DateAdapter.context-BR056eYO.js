@@ -1,0 +1,1 @@
+import{r as e}from"./index-DIDRz_s2.js";const r=e.createContext(null),a=()=>{const t=e.useContext(r);if(t===null)throw new Error("No provider for DateAdapterContext.");return t};export{r as D,a as u};
