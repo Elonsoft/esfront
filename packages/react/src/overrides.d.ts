@@ -1640,6 +1640,12 @@ declare module '@mui/material/Typography' {
   }
 }
 
+declare module '@mui/material-pigment-css' {
+  interface ThemeArgs {
+    theme: Theme;
+  }
+}
+
 declare global {
   namespace React {
     interface HTMLAttributes<T> {

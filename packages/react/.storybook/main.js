@@ -52,6 +52,7 @@ module.exports = {
     return mergeConfig(config, {
       plugins: [
         pigment({
+          // transformLibraries: ['@mui/material'],
           theme,
         }),
       ],

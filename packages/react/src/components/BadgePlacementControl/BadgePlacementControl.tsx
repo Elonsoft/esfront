@@ -11,7 +11,6 @@ import composeClasses from '@mui/utils/composeClasses';
 type BadgePlacementControlOwnerState = {
   classes: BadgePlacementControlProps['classes'];
   placement: NonNullable<BadgePlacementControlProps['placement']>;
-  offset: NonNullable<BadgePlacementControlProps['offset']>;
   overlap: NonNullable<BadgePlacementControlProps['overlap']>;
 };
 
@@ -20,26 +19,6 @@ const capitalizeWithHyphen = (placement: BadgePlacementControlOwnerState['placem
     .split('-')
     .map((part) => capitalize(part))
     .join('');
-};
-
-const calculateTransform = (
-  placement: BadgePlacementControlOwnerState['placement'],
-  offset: BadgePlacementControlOwnerState['offset']
-) => {
-  const [offsetX, offsetY] = offset;
-
-  switch (placement) {
-    case 'top-right':
-      return `translate(calc(35% + ${offsetX}px), calc(-35% + ${offsetY}px))`;
-    case 'top-left':
-      return `translate(calc(-35% + ${offsetX}px), calc(-35% + ${offsetY}px))`;
-    case 'bottom-right':
-      return `translate(calc(35% + ${offsetX}px), calc(35% + ${offsetY}px))`;
-    case 'bottom-left':
-      return `translate(calc(-35% + ${offsetX}px), calc(35% + ${offsetY}px))`;
-    default:
-      return 'translate(35%, -35%)';
-  }
 };
 
 const useUtilityClasses = (ownerState: BadgePlacementControlOwnerState) => {
@@ -116,17 +95,46 @@ const BadgePlacementControlWrapper = styled('div', {
   name: 'ESBadgePlacementControl',
   slot: 'Wrapper',
   overridesResolver: (_props, styles) => styles.wrapper,
-})<{ ownerState: BadgePlacementControlOwnerState }>(({ ownerState }) => {
-  const { placement, offset } = ownerState;
+})<{ ownerState: BadgePlacementControlOwnerState }>({
+  display: 'inline-flex',
+  position: 'absolute',
+  zIndex: 1,
+  transform: 'translate(35%, -35%)',
 
-  const transform = calculateTransform(placement, offset);
-
-  return {
-    display: 'inline-flex',
-    position: 'absolute',
-    zIndex: 1,
-    transform,
-  };
+  variants: [
+    {
+      props: {
+        placement: 'top-right',
+      },
+      style: {
+        transform: `translate(calc(35% + var(--BadgePlacementControl-offsetX)), calc(-35% + var(--BadgePlacementControl-offsetY)))`,
+      },
+    },
+    {
+      props: {
+        placement: 'top-left',
+      },
+      style: {
+        transform: `translate(calc(-35% + var(--BadgePlacementControl-offsetX)), calc(-35% + var(--BadgePlacementControl-offsetY)))`,
+      },
+    },
+    {
+      props: {
+        placement: 'bottom-right',
+      },
+      style: {
+        transform: `translate(calc(35% + var(--BadgePlacementControl-offsetX)), calc(35% + var(--BadgePlacementControl-offsetY)))`,
+      },
+    },
+    {
+      props: {
+        placement: 'bottom-left',
+      },
+      style: {
+        transform: `translate(calc(-35% + var(--BadgePlacementControl-offsetX)), calc(35% + var(--BadgePlacementControl-offsetY)))`,
+      },
+    },
+  ],
 });
 
 export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
@@ -144,11 +152,20 @@ export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
     name: 'ESBadge',
   });
 
-  const ownerState = { classes: inClasses, offset, overlap, placement };
+  const ownerState = { classes: inClasses, overlap, placement };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <BadgePlacementControlRoot className={clsx(className, classes.root)} {...props}>
+    <BadgePlacementControlRoot
+      className={clsx(className, classes.root)}
+      style={
+        {
+          '--BadgePlacementControl-offsetX': `${offset[0]}px`,
+          '--BadgePlacementControl-offsetY': `${offset[1]}px`,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
       <BadgePlacementControlWrapper className={classes.wrapper} ownerState={ownerState}>
         {badge}
       </BadgePlacementControlWrapper>

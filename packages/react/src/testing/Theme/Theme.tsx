@@ -6,11 +6,14 @@ import DateFnsAdapter from '@date-io/date-fns';
 import { enUS as dateEN, ru as dateRU } from 'date-fns/locale';
 
 import { useColorScheme } from '@mui/material/styles';
+import DefaultPropsProvider from '@mui/material/DefaultPropsProvider';
 import { enUS, ruRU } from '@mui/material/locale';
+import { globalCss } from '@mui/material-pigment-css';
+
+import { theme } from './pigment-theme';
 
 import { DateAdapterProvider, en, ru } from '../../components';
 import { DialogStackProvider } from '../../components/DialogStack';
-import { createTheme, palettes, ThemeProvider } from '../../theming';
 
 function ColorScheme({ isDarkMode }: { isDarkMode?: boolean }) {
   const { setMode } = useColorScheme();
@@ -22,31 +25,28 @@ function ColorScheme({ isDarkMode }: { isDarkMode?: boolean }) {
   return null;
 }
 
-export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
-  const theme = useMemo(() => {
-    return createTheme(
-      {
-        paletteDark: {
-          ...palettes.common,
-          ...palettes.dark,
-        },
-        paletteLight: {
-          ...palettes.common,
-          ...palettes.light,
-        },
-      },
-      locale === 'ru' ? { ...ruRU, ...ru } : { ...enUS, ...en }
-    );
-  }, [locale]);
+// eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
+globalCss`
+  body {
+    font-family: ${theme.typography.fontFamily}
+  }
+`;
 
+export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <ColorScheme isDarkMode={isDarkMode} />
-      <DialogStackProvider enableHistoryOverride>
-        <DateAdapterProvider adapter={DateFnsAdapter} locale={locale === 'ru' ? dateRU : dateEN}>
-          {children}
-        </DateAdapterProvider>
-      </DialogStackProvider>
-    </ThemeProvider>
+      <DefaultPropsProvider
+        value={{
+          ...(locale === 'ru' ? { ...ruRU, ...ru } : { ...enUS, ...en }),
+        }}
+      >
+        <DialogStackProvider enableHistoryOverride>
+          <DateAdapterProvider adapter={DateFnsAdapter} locale={locale === 'ru' ? dateRU : dateEN}>
+            {children}
+          </DateAdapterProvider>
+        </DialogStackProvider>
+      </DefaultPropsProvider>
+    </>
   );
 };
