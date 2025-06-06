@@ -5,10 +5,10 @@ import { SFSSearchProps } from './SFSSearch.types';
 import clsx from 'clsx';
 import { getSFSSearchUtilityClass } from './SFSSearch.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350, IconMagnify2W400 } from '../../../icons';
@@ -35,11 +35,11 @@ const SFSSearchRoot = styled('div', {
   name: 'ESSFSSearch',
   slot: 'Root',
   overridesResolver: (_, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'center',
   flexGrow: 1,
-}));
+});
 
 const SFSSearchInput = styled(TextField, {
   name: 'ESSFSSearch',

@@ -137,21 +137,21 @@ const TagStartIcon = styled('span', {
   name: 'ESTag',
   slot: 'StartIcon',
   overridesResolver: (_props, styles) => [styles.icon, styles.startIcon],
-})(() => ({
+})({
   display: 'inherit',
   marginRight: '2px',
   color: 'var(--icon)',
-}));
+});
 
 const TagEndIcon = styled('span', {
   name: 'ESTag',
   slot: 'EndIcon',
   overridesResolver: (_props, styles) => [styles.icon, styles.endIcon],
-})(() => ({
+})({
   display: 'inherit',
   marginLeft: '2px',
   color: 'var(--icon)',
-}));
+});
 
 /**
  * The Tag component is used to categorize content.

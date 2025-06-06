@@ -48,7 +48,7 @@ const BottomSheetRoot = styled(Modal, {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })({
-  '@media print': {
+  ['@media print' as never]: {
     // Use !important to override the Modal inline-style.
     position: 'absolute !important',
   },
@@ -104,7 +104,7 @@ const BottomSheetContainer = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 });
 
 const BottomSheetWrapper = styled('div', {
@@ -138,7 +138,7 @@ const BottomSheetWrapper = styled('div', {
         alignItems: 'stretch',
       },
     },
-  ],
+  ] as never,
 });
 
 const BottomSheetContent = styled('div', {
@@ -169,7 +169,7 @@ const BottomSheetContent = styled('div', {
           transition: 'margin-top var(--ESBottomSheet-transitionDuration)',
         },
       },
-    ],
+    ] as never,
   }),
   () => ({
     marginTop: 'calc(100dvh - var(--ESBottomSheet-snapPoint))',
@@ -221,7 +221,7 @@ const BottomSheetPaper = styled('div', {
         borderTopRightRadius: 16,
       },
     },
-  ],
+  ] as never,
 }));
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.enteringScreen };

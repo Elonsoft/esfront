@@ -5,8 +5,8 @@ import { SidebarMenuProps } from './SidebarMenu.types';
 import clsx from 'clsx';
 import { getSidebarMenuUtilityClass } from './SidebarMenu.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidebarMenuContext } from './SidebarMenu.context';
@@ -29,7 +29,7 @@ const SidebarMenuRoot = styled('div', {
   name: 'ESSidebarMenu',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   flexDirection: 'column',
   flexShrink: '0',
@@ -37,7 +37,7 @@ const SidebarMenuRoot = styled('div', {
   textAlign: 'center',
   overflowX: 'hidden',
   padding: '8px 0',
-}));
+});
 
 export const SidebarMenu = (inProps: SidebarMenuProps) => {
   const {

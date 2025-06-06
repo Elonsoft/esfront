@@ -3,8 +3,8 @@ import { FiltersFilterProps } from './FiltersFilter.types';
 import clsx from 'clsx';
 import { getFiltersFilterUtilityClass } from './FiltersFilter.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean } from '../../../hooks';

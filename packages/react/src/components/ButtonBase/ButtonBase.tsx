@@ -5,9 +5,9 @@ import { ButtonBaseProps, ButtonBaseTypeMap } from './ButtonBase.types';
 import clsx from 'clsx';
 import { buttonBaseClasses, getButtonBaseUtilityClass } from './ButtonBase.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useForkRef } from '../../hooks';
@@ -123,14 +123,14 @@ const ButtonBaseWrapper = styled('div', {
   name: 'ESButtonBase',
   slot: 'Wrapper',
   overridesResolver: (_props, styles) => styles.wrapper,
-})(() => ({
+})({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
   height: '100%',
   zIndex: 1,
-}));
+});
 
 /**
  * The Button allows users to take actions, and make choices, with a single tap.

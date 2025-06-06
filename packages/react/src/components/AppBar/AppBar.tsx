@@ -5,9 +5,9 @@ import { AppBarProps } from './AppBar.types';
 import clsx from 'clsx';
 import { appBarClasses, getAppBarUtilityClass } from './AppBar.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver, useResizeObserver, useStuckSentinel } from '../../hooks';
@@ -71,10 +71,10 @@ const AppBarTitleProminent = styled(Typography, {
   name: 'ESAppBar',
   slot: 'TitleProminent',
   overridesResolver: (props, styles) => styles.titleProminent,
-})(() => ({
+})({
   padding: '8px 16px',
   wordBreak: 'break-word',
-})) as typeof Typography;
+}) as typeof Typography;
 
 const AppBarAdornment = styled('div', {
   name: 'ESAppBar',

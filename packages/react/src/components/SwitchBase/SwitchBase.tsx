@@ -5,9 +5,9 @@ import { SwitchBaseProps } from './SwitchBase.types';
 import clsx from 'clsx';
 import { getSwitchBaseUtilityClass, switchBaseClasses } from './SwitchBase.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize, useFormControl } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks';

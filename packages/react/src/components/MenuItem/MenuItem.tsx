@@ -5,9 +5,9 @@ import { MenuItemProps, MenuItemTypeMap } from './MenuItem.types';
 import clsx from 'clsx';
 import { getMenuItemUtilityClass } from './MenuItem.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ListItem, listItemClasses } from '../ListItem';

@@ -3,9 +3,9 @@ import { CalendarButtonProps } from './CalendarButton.types';
 import clsx from 'clsx';
 import { calendarButtonClasses, getCalendarButtonUtilityClass } from './CalendarButton.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';

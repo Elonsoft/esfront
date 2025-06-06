@@ -5,8 +5,8 @@ import { FileIconProps } from './FileIcon.types';
 import clsx from 'clsx';
 import { getFileIconUtilityClass } from './FileIcon.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { FileIconIcon } from './icons';
@@ -44,14 +44,14 @@ const FileIconChildren = styled('div', {
   name: 'ESFileIcon',
   slot: 'Children',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
   inset: 0,
   justifyContent: 'center',
   position: 'absolute',
-}));
+});
 
 /**
  * This component is for displaying file extensions.

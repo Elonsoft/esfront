@@ -3,8 +3,8 @@ import { SpinnerDashRingProps } from './SpinnerDashRing.types';
 import clsx from 'clsx';
 import { getSpinnerDashRingUtilityClass } from './SpinnerDashRing.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { generateStyleColorVariants, rotateKeyframe, strokeArrayKeyframe } from '../Spinner.utils';

@@ -3,8 +3,8 @@ import { FileInfoContentProps } from './FileInfoContent.types';
 import clsx from 'clsx';
 import { getFileInfoContentUtilityClass } from './FileInfoContent.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FileInfoContentOwnerState = {
@@ -25,9 +25,9 @@ const FileInfoContentRoot = styled('div', {
   name: 'ESFileInfoName',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   marginLeft: '12px',
-}));
+});
 
 export const FileInfoContent = (inProps: FileInfoContentProps) => {
   const { children, className, sx, ...props } = useDefaultProps({ props: inProps, name: 'ESFileInfoContent' });

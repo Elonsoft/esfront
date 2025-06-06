@@ -3,8 +3,8 @@ import { SnackbarCloseProps } from './SnackbarClose.types';
 import clsx from 'clsx';
 import { getSnackbarCloseUtilityClass } from './SnackbarClose.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350 } from '../../../icons';

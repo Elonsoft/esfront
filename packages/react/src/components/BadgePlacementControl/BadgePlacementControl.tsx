@@ -11,7 +11,6 @@ import composeClasses from '@mui/utils/composeClasses';
 type BadgePlacementControlOwnerState = {
   classes: BadgePlacementControlProps['classes'];
   placement: NonNullable<BadgePlacementControlProps['placement']>;
-  offset: NonNullable<BadgePlacementControlProps['offset']>;
   overlap: NonNullable<BadgePlacementControlProps['overlap']>;
 };
 
@@ -20,26 +19,6 @@ const capitalizeWithHyphen = (placement: BadgePlacementControlOwnerState['placem
     .split('-')
     .map((part) => capitalize(part))
     .join('');
-};
-
-const calculateTransform = (
-  placement: BadgePlacementControlOwnerState['placement'],
-  offset: BadgePlacementControlOwnerState['offset']
-) => {
-  const [offsetX, offsetY] = offset;
-
-  switch (placement) {
-    case 'top-right':
-      return `translate(calc(35% + ${offsetX}px), calc(-35% + ${offsetY}px))`;
-    case 'top-left':
-      return `translate(calc(-35% + ${offsetX}px), calc(-35% + ${offsetY}px))`;
-    case 'bottom-right':
-      return `translate(calc(35% + ${offsetX}px), calc(35% + ${offsetY}px))`;
-    case 'bottom-left':
-      return `translate(calc(-35% + ${offsetX}px), calc(35% + ${offsetY}px))`;
-    default:
-      return 'translate(35%, -35%)';
-  }
 };
 
 const useUtilityClasses = (ownerState: BadgePlacementControlOwnerState) => {
@@ -57,76 +36,103 @@ const BadgePlacementControlRoot = styled('div', {
   name: 'ESBadgePlacementControl',
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root,
-})(() => {
-  return {
-    position: 'relative',
-    display: 'inline-flex',
+})({
+  position: 'relative',
+  display: 'inline-flex',
 
-    [`&.${badgePlacementControlClasses.placementTopRight}`]: {
-      [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
-        top: 0,
-        right: 0,
-      },
-
-      [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
-        top: '5%',
-        right: '5%',
-      },
+  [`&.${badgePlacementControlClasses.placementTopRight}`]: {
+    [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
+      top: 0,
+      right: 0,
     },
 
-    [`&.${badgePlacementControlClasses.placementTopLeft}`]: {
-      [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
-        top: 0,
-        left: 0,
-      },
+    [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
+      top: '5%',
+      right: '5%',
+    },
+  },
 
-      [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
-        top: '5%',
-        left: '5%',
-      },
+  [`&.${badgePlacementControlClasses.placementTopLeft}`]: {
+    [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
+      top: 0,
+      left: 0,
     },
 
-    [`&.${badgePlacementControlClasses.placementBottomRight}`]: {
-      [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
-        bottom: 0,
-        right: 0,
-      },
+    [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
+      top: '5%',
+      left: '5%',
+    },
+  },
 
-      [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
-        bottom: '5%',
-        right: '5%',
-      },
+  [`&.${badgePlacementControlClasses.placementBottomRight}`]: {
+    [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
+      bottom: 0,
+      right: 0,
     },
 
-    [`&.${badgePlacementControlClasses.placementBottomLeft}`]: {
-      [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
-        bottom: 0,
-        left: 0,
-      },
-
-      [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
-        bottom: '5%',
-        left: '5%',
-      },
+    [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
+      bottom: '5%',
+      right: '5%',
     },
-  };
+  },
+
+  [`&.${badgePlacementControlClasses.placementBottomLeft}`]: {
+    [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
+      bottom: 0,
+      left: 0,
+    },
+
+    [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
+      bottom: '5%',
+      left: '5%',
+    },
+  },
 });
 
 const BadgePlacementControlWrapper = styled('div', {
   name: 'ESBadgePlacementControl',
   slot: 'Wrapper',
   overridesResolver: (_props, styles) => styles.wrapper,
-})<{ ownerState: BadgePlacementControlOwnerState }>(({ ownerState }) => {
-  const { placement, offset } = ownerState;
+})<{ ownerState: BadgePlacementControlOwnerState }>({
+  display: 'inline-flex',
+  position: 'absolute',
+  zIndex: 1,
+  transform: 'translate(35%, -35%)',
 
-  const transform = calculateTransform(placement, offset);
-
-  return {
-    display: 'inline-flex',
-    position: 'absolute',
-    zIndex: 1,
-    transform,
-  };
+  variants: [
+    {
+      props: {
+        placement: 'top-right',
+      },
+      style: {
+        transform: `translate(calc(35% + var(--BadgePlacementControl-offsetX)), calc(-35% + var(--BadgePlacementControl-offsetY)))`,
+      },
+    },
+    {
+      props: {
+        placement: 'top-left',
+      },
+      style: {
+        transform: `translate(calc(-35% + var(--BadgePlacementControl-offsetX)), calc(-35% + var(--BadgePlacementControl-offsetY)))`,
+      },
+    },
+    {
+      props: {
+        placement: 'bottom-right',
+      },
+      style: {
+        transform: `translate(calc(35% + var(--BadgePlacementControl-offsetX)), calc(35% + var(--BadgePlacementControl-offsetY)))`,
+      },
+    },
+    {
+      props: {
+        placement: 'bottom-left',
+      },
+      style: {
+        transform: `translate(calc(-35% + var(--BadgePlacementControl-offsetX)), calc(35% + var(--BadgePlacementControl-offsetY)))`,
+      },
+    },
+  ] as never,
 });
 
 export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
@@ -144,11 +150,20 @@ export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
     name: 'ESBadge',
   });
 
-  const ownerState = { classes: inClasses, offset, overlap, placement };
+  const ownerState = { classes: inClasses, overlap, placement };
   const classes = useUtilityClasses(ownerState);
 
   return (
-    <BadgePlacementControlRoot className={clsx(className, classes.root)} {...props}>
+    <BadgePlacementControlRoot
+      className={clsx(className, classes.root)}
+      style={
+        {
+          '--BadgePlacementControl-offsetX': `${offset[0]}px`,
+          '--BadgePlacementControl-offsetY': `${offset[1]}px`,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
       <BadgePlacementControlWrapper className={classes.wrapper} ownerState={ownerState}>
         {badge}
       </BadgePlacementControlWrapper>

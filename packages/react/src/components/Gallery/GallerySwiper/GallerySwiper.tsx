@@ -5,8 +5,8 @@ import { GallerySwiperProps } from './GallerySwiper.types';
 import clsx from 'clsx';
 import { getGallerySwiperUtilityClass } from './GallerySwiper.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useGallerySwiperContext } from './GallerySwiper.context';
@@ -43,17 +43,17 @@ const GallerySwiperRoot = styled('div', {
   overridesResolver: (props, styles) => {
     return [styles.root];
   },
-})(() => ({
+})({
   flexGrow: 1,
   width: '100%',
   minHeight: 0,
-}));
+});
 
 const GallerySwiperSwiper = styled(Swiper, {
   name: 'ESGallerySwiper',
   slot: 'Swiper',
   overridesResolver: (props, styles) => styles.swiper,
-})(() => ({
+})({
   height: '100%',
 
   '& .ESSwiper-wrapper': {
@@ -63,7 +63,7 @@ const GallerySwiperSwiper = styled(Swiper, {
     gridAutoColumns: '100%',
     height: '100%',
   },
-}));
+});
 
 const GallerySwiperButton = styled('div')<{ ownerState: { prev?: boolean; next?: boolean } }>(({ theme }) => ({
   position: 'absolute',
@@ -117,7 +117,7 @@ const GallerySwiperButton = styled('div')<{ ownerState: { prev?: boolean; next?:
         paddingLeft: 8,
       },
     },
-  ],
+  ] as never,
 }));
 
 const GallerySwiperButtonPrev = ({ icon, label }: { icon: ReactNode; label?: string }) => {

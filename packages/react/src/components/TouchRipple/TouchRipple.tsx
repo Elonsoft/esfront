@@ -5,8 +5,8 @@ import { TouchRippleProps } from './TouchRipple.types';
 import clsx from 'clsx';
 import { getTouchRippleUtilityClass } from './TouchRipple.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type TouchRippleOwnerState = {

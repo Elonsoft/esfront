@@ -3,8 +3,8 @@ import { FiltersFormControlLabelProps } from './FiltersFormControlLabel.types';
 import clsx from 'clsx';
 import { getFiltersFormControlLabelUtilityClass } from './FiltersFormControlLabel.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { checkboxClasses } from '../../Checkbox';
@@ -30,7 +30,7 @@ const FiltersFormControlLabelRoot = styled(FormControlLabel, {
   name: 'ESFiltersFormControlLabel',
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root,
-})(() => ({
+})({
   minHeight: '32px',
 
   [`&.${formControlLabelClasses.root}`]: {
@@ -47,7 +47,7 @@ const FiltersFormControlLabelRoot = styled(FormControlLabel, {
       margin: '-8px',
     },
   },
-}));
+});
 
 const FiltersFormControlLabelCount = styled('span', {
   name: 'ESFiltersFormControlLabel',

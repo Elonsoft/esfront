@@ -164,7 +164,7 @@ const DividerRoot = styled('div', {
         height: 'auto',
       },
     },
-  ],
+  ] as never,
 });
 
 const DividerWrapper = styled('span', {

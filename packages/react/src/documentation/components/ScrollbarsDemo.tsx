@@ -1,6 +1,6 @@
+import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material-pigment-css';
 import Box from '@mui/material-pigment-css/Box';
-import Typography from '@mui/material/Typography';
 
 const ScrollbarsDemoName = styled(Typography)(({ theme }) => ({
   display: 'inline-block',

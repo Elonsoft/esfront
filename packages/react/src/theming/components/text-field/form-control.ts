@@ -132,6 +132,6 @@ export const createFormControl: Component<'MuiFormControl'> = () => {
           },
         },
       },
-    ],
+    ] as never,
   };
 };

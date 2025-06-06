@@ -6,11 +6,11 @@ import clsx from 'clsx';
 import { breadcrumbClasses } from './Breadcrumb/Breadcrumb.classes';
 import { breadcrumbsClasses, getBreadcrumbsUtilityClass } from './Breadcrumbs.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { paperClasses } from '@mui/material';
 import Menu, { menuClasses } from '@mui/material/Menu';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -46,7 +46,7 @@ const BreadcrumbsRoot = styled(Typography, {
   name: 'ESBreadcrumbs',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({})) as typeof Typography;
+})({}) as typeof Typography;
 
 const BreadcrumbsList = styled('ol', {
   name: 'ESBreadcrumbs',
@@ -72,14 +72,14 @@ const BreadcrumbsList = styled('ol', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const BreadcrumbsMenu = styled(Menu, {
   name: 'ESBreadcrumbs',
   slot: 'Menu',
   overridesResolver: (props, styles) => styles.menu,
-})(() => ({
+})({
   [`& .${menuClasses.list}`]: {
     padding: '4px 0',
     maxWidth: '240px',
@@ -88,7 +88,7 @@ const BreadcrumbsMenu = styled(Menu, {
   [`.${paperClasses.root}`]: {
     marginTop: '4px',
   },
-})) as typeof Menu;
+}) as typeof Menu;
 
 const BreadcrumbsTooltip = styled(
   ({ className, ...props }: TooltipEllipsisProps) => <TooltipEllipsis {...props} classes={{ popper: className }} />,

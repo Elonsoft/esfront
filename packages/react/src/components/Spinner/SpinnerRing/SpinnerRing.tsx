@@ -3,8 +3,8 @@ import { SpinnerRingProps } from './SpinnerRing.types';
 import clsx from 'clsx';
 import { getSpinnerRingUtilityClass } from './SpinnerRing.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { generateStyleColorVariants, rotateKeyframe } from '../Spinner.utils';

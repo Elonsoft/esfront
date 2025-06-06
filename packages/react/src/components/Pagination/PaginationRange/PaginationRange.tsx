@@ -5,10 +5,10 @@ import { PaginationRangeProps } from './PaginationRange.types';
 import clsx from 'clsx';
 import { getPaginationRangeUtilityClass } from './PaginationRange.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Menu from '@mui/material/Menu';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconMenuDownW300 } from '../../../icons';
@@ -38,10 +38,10 @@ const PaginationRangeRoot = styled('div', {
   name: 'ESPaginationRange',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'center',
-}));
+});
 
 const PaginationRangeLabel = styled(Typography, {
   name: 'ESPaginationRange',

@@ -3,8 +3,8 @@ import { ComponentProps } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { FormHelperText } from '@mui/material';
-import Box from '@mui/material-pigment-css/Box';
 import FormControl from '@mui/material/FormControl';
+import Box from '@mui/material-pigment-css/Box';
 
 import { FormControlLabel } from '.';
 

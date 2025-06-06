@@ -4,10 +4,10 @@ import clsx from 'clsx';
 import { breadcrumbsClasses } from '../Breadcrumbs.classes';
 import { breadcrumbClasses, getBreadcrumbUtilityClass } from './Breadcrumb.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconBreadcrumbArrowRight } from '../../../icons';
@@ -97,7 +97,7 @@ const BreadcrumbRoot = styled(Typography, {
         },
       },
     },
-  ],
+  ] as never,
 })) as any;
 
 const BreadcrumbTooltip = styled(

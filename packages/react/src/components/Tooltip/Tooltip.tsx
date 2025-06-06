@@ -295,7 +295,7 @@ const TooltipPopper = styled(Popper, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const TooltipTooltip = styled('div', {
@@ -395,7 +395,7 @@ const TooltipTooltip = styled('div', {
         color: theme.vars.palette.monoA.A900,
       },
     },
-  ],
+  ] as never,
 }));
 
 const TooltipArrow = styled('span', {
@@ -471,7 +471,7 @@ const TooltipArrow = styled('span', {
         color: theme.vars.palette.white.A600,
       },
     },
-  ],
+  ] as never,
 }));
 
 let hystersisOpen = false;
@@ -1036,7 +1036,6 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
               }
             : childNode
         }
-        as={PopperComponentProp ?? Popper}
         id={id}
         open={childNode ? open : false}
         placement={placement}
@@ -1044,6 +1043,10 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
         {...interactiveWrapperListeners}
         {...popperProps}
         popperOptions={popperOptions}
+        slots={{
+          root: PopperComponentProp ?? Popper,
+          ...popperProps?.slots,
+        }}
       >
         {({ TransitionProps: TransitionPropsInner }) => (
           // eslint-disable-next-line

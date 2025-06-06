@@ -4,10 +4,11 @@ import clsx from 'clsx';
 import { bannerClasses, getBannerUtilityClass } from './Banner.classes';
 import { bannerTitleClasses } from './BannerTitle/BannerTitle.classes';
 
+import { Breakpoint } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
-import { Breakpoint, styled } from '@mui/material-pigment-css';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500 } from '../../icons';
@@ -133,10 +134,10 @@ const BannerWrapper = styled('div', {
   name: 'ESBanner',
   slot: 'Wrapper',
   overridesResolver: (_props, styles) => styles.wrapper,
-})(() => ({
+})({
   display: 'flex',
   margin: '0 auto',
-}));
+});
 
 const BannerContent = styled('div', {
   name: 'ESBanner',
@@ -158,38 +159,38 @@ const BannerContent = styled('div', {
         },
       }),
     },
-  ],
+  ] as never,
 }));
 
 const BannerMessage = styled(Typography, {
   name: 'ESBanner',
   slot: 'Message',
   overridesResolver: (_props, styles) => styles.message,
-})(() => ({
+})({
   wordBreak: 'break-word',
   minHeight: '40px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-})) as typeof Typography;
+}) as typeof Typography;
 
 const BannerAction = styled('div', {
   name: 'ESBanner',
   slot: 'Action',
   overridesResolver: (_props, styles) => styles.action,
-})(() => ({
+})({
   paddingTop: '4px',
   marginLeft: '8px',
-}));
+});
 
 const BannerIcon = styled('div', {
   name: 'ESBanner',
   slot: 'Icon',
   overridesResolver: (_props, styles) => styles.icon,
-})(() => ({
+})({
   paddingTop: '8px',
   marginRight: '8px',
-}));
+});
 
 const defaultIconMapping = {
   success: <IconCheckCircleW500 />,

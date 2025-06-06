@@ -3,8 +3,8 @@ import { FileInfoProps } from './FileInfo.types';
 import clsx from 'clsx';
 import { getFileInfoUtilityClass } from './FileInfo.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FileInfoOwnerState = {
@@ -25,10 +25,10 @@ const FileInfoRoot = styled('div', {
   name: 'ESFileInfo',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'center',
-}));
+});
 
 /**
  * This component displays file information.

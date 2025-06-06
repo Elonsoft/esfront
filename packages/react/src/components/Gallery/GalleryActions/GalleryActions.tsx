@@ -3,8 +3,8 @@ import { GalleryActionsProps } from './GalleryActions.types';
 import clsx from 'clsx';
 import { getGalleryActionsUtilityClass } from './GalleryActions.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600, IconImageMultiple } from '../../../icons';
@@ -59,11 +59,11 @@ const GalleryActionsButtonThumbnails = styled(GalleryActionsButton, {
   name: 'ESGalleryActions',
   slot: 'ButtonThumbnails',
   overridesResolver: (props, styles) => styles.buttonThumbnails,
-})(() => ({
+})({
   '@media (min-height: 450px)': {
     display: 'none',
   },
-}));
+});
 
 export const GalleryActions = (inProps: GalleryActionsProps) => {
   const {

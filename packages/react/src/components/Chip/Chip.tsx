@@ -5,10 +5,10 @@ import { ChipProps, ChipTypeMap } from './Chip.types';
 import clsx from 'clsx';
 import { chipClasses, getChipUtilityClass } from './Chip.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { capitalize, useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseLineW350 } from '../../icons';
@@ -380,7 +380,7 @@ export const ChipRoot = styled('div', {
       },
     },
   },
-}));
+})) as any;
 
 export const ChipLabel = styled('span', {
   name: 'ESChip',
@@ -400,11 +400,11 @@ export const ChipDeleteIconWrapper = styled('div', {
   name: 'ESChip',
   slot: 'DeleteIconWrapper',
   overridesResolver: (props, styles) => styles.label,
-})(() => ({
+})({
   display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',
-}));
+});
 
 function isDeleteKeyboardEvent(event: React.KeyboardEvent) {
   return event.key === 'Backspace' || event.key === 'Delete';

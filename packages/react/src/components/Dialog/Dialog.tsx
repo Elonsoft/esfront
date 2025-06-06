@@ -48,7 +48,7 @@ const DialogRoot = styled(Modal, {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })({
-  '@media print': {
+  ['@media print' as never]: {
     // Use !important to override the Modal inline-style.
     position: 'absolute !important',
   },
@@ -103,7 +103,7 @@ const DialogContainer = styled('div', {
         backgroundColor: theme.vars.palette.surface[600],
       },
     },
-  ],
+  ] as never,
 }));
 
 const DialogWrapper = styled('div', {
@@ -163,7 +163,7 @@ const DialogWrapper = styled('div', {
         alignItems: 'flex-start',
       },
     },
-  ],
+  ] as never,
 }));
 
 const DialogContent = styled('div', {
@@ -221,7 +221,7 @@ const DialogContent = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const DialogPaper = styled('div', {
@@ -259,7 +259,7 @@ const DialogPaper = styled('div', {
         borderRadius: 0,
       },
     },
-  ],
+  ] as never,
 }));
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };

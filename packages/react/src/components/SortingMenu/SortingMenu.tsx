@@ -6,12 +6,12 @@ import clsx from 'clsx';
 import { sortingMenuClasses } from '../SortingMenu/SortingMenu.classes';
 import { getSortingMenuUtilityClass } from './SortingMenu.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
 import MenuList from '@mui/material/MenuList';
 import Popover from '@mui/material/Popover';
 import Typography, { typographyClasses } from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconSortAscending, IconSortDescending } from '../../icons';
@@ -77,11 +77,11 @@ const SortingMenuHeader = styled('div', {
   name: 'ESSortingMenu',
   slot: 'MenuHeader',
   overridesResolver: (_, styles) => styles.menuHeader,
-})(() => ({
+})({
   display: 'flex',
   justifyContent: 'space-between',
   padding: '14px 16px 6px 16px',
-}));
+});
 
 const SortingMenuFooter = styled('div', {
   name: 'ESSortingMenu',
@@ -120,7 +120,7 @@ const SortingMenuItem = styled(MenuItem, {
   name: 'ESSortingMenu',
   slot: 'MenuItem',
   overridesResolver: (_, styles) => styles.menuItem,
-})(() => ({
+})({
   [`&:not(.${listItemClasses.disabled})`]: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -154,7 +154,7 @@ const SortingMenuItem = styled(MenuItem, {
       textOverflow: 'ellipsis',
     },
   },
-}));
+});
 
 const SortingDirectionButton = styled(Button, {
   name: 'ESSortingMenu',

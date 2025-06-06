@@ -3,8 +3,8 @@ import { GalleryMetaProps } from './GalleryMeta.types';
 import clsx from 'clsx';
 import { getGalleryMetaUtilityClass } from './GalleryMeta.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowLeftW500 } from '../../../icons';
@@ -49,13 +49,13 @@ const GalleryMetaContent = styled('div', {
   name: 'ESGalleryMeta',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
-})(() => ({
+})({
   whiteSpace: 'nowrap',
   '&, & *': {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
-}));
+});
 
 const GalleryMetaButtonClose = styled(GalleryActionsButton, {
   name: 'ESGalleryMeta',

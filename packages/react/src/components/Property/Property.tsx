@@ -3,9 +3,9 @@ import { PropertyProps } from './Property.types';
 import clsx from 'clsx';
 import { getPropertyUtilityClass, propertyClasses } from './Property.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PropertyOwnerState = {
@@ -62,7 +62,7 @@ const PropertyRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const PropertyName = styled('div', {

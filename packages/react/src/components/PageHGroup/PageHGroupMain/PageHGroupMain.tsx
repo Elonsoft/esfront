@@ -3,8 +3,8 @@ import { PageHGroupMainProps } from './PageHGroupMain.types';
 import clsx from 'clsx';
 import { getPageHGroupMainUtilityClass } from './PageHGroupMain.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupMainOwnerState = {
@@ -25,13 +25,13 @@ const PageHGroupMainRoot = styled('div', {
   name: 'ESPageHGroupMain',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'flex-start',
   justifyContent: 'space-between',
   padding: '4px 0 8px',
   gap: '24px',
-}));
+});
 
 export const PageHGroupMain = (inProps: PageHGroupMainProps) => {
   const { className, children, sx, ...props } = useDefaultProps({

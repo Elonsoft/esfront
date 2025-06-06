@@ -1,5 +1,5 @@
-import { styled } from '@mui/material-pigment-css';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 
 import { svgIconClasses } from '../../SvgIcon';
 

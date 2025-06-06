@@ -3,9 +3,9 @@ import { ErrorPageDescriptionProps } from './ErrorPageDescription.types';
 import clsx from 'clsx';
 import { getErrorPageDescriptionUtilityClass } from './ErrorPageDescription.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageDescriptionOwnerState = {

@@ -5,8 +5,8 @@ import { AvatarGroupProps } from './AvatarGroup.types';
 import clsx from 'clsx';
 import { avatarGroupClasses, getAlertUtilityClass } from './AvatarGroup.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { getCuttingOffset } from './AvatarGroup.utils';
@@ -96,7 +96,7 @@ const AvatarGroupRoot = styled('div', {
         },
       }),
     },
-  ],
+  ] as never,
 }));
 
 /**

@@ -3,9 +3,9 @@ import { ListItemTextProps } from './ListItemText.types';
 import clsx from 'clsx';
 import { getListItemTextUtilityClass, listItemTextClasses } from './ListItemText.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ListItemTextOwnerState = {
@@ -41,13 +41,13 @@ const ListItemTextRoot = styled('div', {
       ownerState.primary && ownerState.secondary && styles.multiline,
     ];
   },
-})(() => ({
+})({
   flex: '1 1 auto',
   flexShrink: 0,
   minWidth: 0,
   marginTop: 4,
   marginBottom: 4,
-}));
+});
 
 export const ListItemText = (inProps: ListItemTextProps) => {
   const {

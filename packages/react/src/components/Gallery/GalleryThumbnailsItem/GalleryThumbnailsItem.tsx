@@ -3,8 +3,8 @@ import { GalleryThumbnailsItemProps } from './GalleryThumbnailsItem.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsItemUtilityClass } from './GalleryThumbnailsItem.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase } from '../../ButtonBase';
@@ -84,7 +84,7 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {

@@ -5,10 +5,10 @@ import { LinearProgressProps } from './LinearProgress.types';
 import clsx from 'clsx';
 import { getLinearProgressUtilityClass } from './LinearProgress.classes';
 
-import { styled } from '@mui/material-pigment-css';
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { keyframes } from '@mui/system';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 const TRANSITION_DURATION = 4;
@@ -148,7 +148,7 @@ const LinearProgressRoot = styled('span', {
         backgroundColor: 'transparent',
       },
     },
-  ],
+  ] as never,
 }));
 
 const LinearProgressDashed = styled('span', {
@@ -180,7 +180,7 @@ const LinearProgressDashed = styled('span', {
           opacity: 0.3,
         },
       },
-    ],
+    ] as never,
   };
 });
 
@@ -284,7 +284,7 @@ const LinearProgressBar1 = styled('span', {
         animation: `${indeterminate1Keyframe} 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite`,
       },
     },
-  ],
+  ] as never,
 }));
 
 const LinearProgressBar2 = styled('span', {
@@ -399,7 +399,7 @@ const LinearProgressBar2 = styled('span', {
         transition: 'transform 0.2s linear',
       },
     },
-  ],
+  ] as never,
 }));
 
 /** Express an unspecified wait time or display the length of a process. */

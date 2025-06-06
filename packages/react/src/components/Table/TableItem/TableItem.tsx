@@ -5,9 +5,9 @@ import { TableItemProps } from './TableItem.types';
 import clsx from 'clsx';
 import { getTableItemUtilityClass } from './TableItem.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type TableItemOwnerState = {
@@ -31,38 +31,38 @@ const TableItemRoot = styled('div', {
   name: 'ESTableItem',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   overflow: 'hidden',
   display: 'flex',
   gap: '16px',
-}));
+});
 
 const TableItemContent = styled('div', {
   name: 'ESTableItem',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
-})(() => ({
+})({
   overflow: 'hidden',
   display: 'flex',
   flexDirection: 'column',
   gap: '4px',
-}));
+});
 
 const TableItemPrimary = styled(Typography, {
   name: 'ESTableItem',
   slot: 'Primary',
   overridesResolver: (props, styles) => styles.primary,
-})(() => ({
+})({
   wordBreak: 'break-word',
-})) as typeof Typography;
+}) as typeof Typography;
 
 const TableItemSecondary = styled(Typography, {
   name: 'ESTableItem',
   slot: 'Secondary',
   overridesResolver: (props, styles) => styles.secondary,
-})(() => ({
+})({
   wordBreak: 'break-word',
-})) as typeof Typography;
+}) as typeof Typography;
 
 export const TableItem = forwardRef<HTMLDivElement, TableItemProps>(function TableItem(inProps, ref) {
   const { className, sx, avatar, primary, secondary, ...props } = useDefaultProps({

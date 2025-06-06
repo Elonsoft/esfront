@@ -3,8 +3,8 @@ import { SidebarDividerProps } from './SidebarDivider.types';
 import clsx from 'clsx';
 import { getSidebarDividerUtilityClass } from './SidebarDivider.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { Divider } from '../../Divider';
@@ -46,7 +46,7 @@ const SidebarDividerRoot = styled('div', {
         padding: '0 16px',
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidebarDividerLine = styled(Divider, {
@@ -65,7 +65,7 @@ const SidebarDividerLine = styled(Divider, {
         color: theme.vars.palette.monoB.A200,
       },
     },
-  ],
+  ] as never,
 }));
 
 export const SidebarDivider = (inProps: SidebarDividerProps) => {

@@ -6,8 +6,8 @@ import { SwiperPaginationProps } from './SwiperPagination.types';
 import clsx from 'clsx';
 import { getSwiperPaginationUtilityClass, swiperPaginationClasses } from './SwiperPagination.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useSwiperContext } from '../Swiper.context';
@@ -115,7 +115,7 @@ const SwiperPaginationRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 });
 
 export const SwiperPagination = (inProps: SwiperPaginationProps) => {

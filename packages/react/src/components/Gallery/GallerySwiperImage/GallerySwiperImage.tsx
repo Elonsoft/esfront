@@ -3,8 +3,8 @@ import { GallerySwiperImageProps } from './GallerySwiperImage.types';
 import clsx from 'clsx';
 import { getGallerySwiperImageUtilityClass } from './GallerySwiperImage.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type GallerySwiperImageOwnerState = {
@@ -26,14 +26,14 @@ const GallerySwiperImageRoot = styled('div', {
   name: 'ESGallerySwiperImage',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
   width: '100%',
   minHeight: 0,
-}));
+});
 
 const GallerySwiperImageImage = styled('img', {
   name: 'ESGallerySwiperImage',

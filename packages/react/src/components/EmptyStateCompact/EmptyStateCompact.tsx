@@ -3,9 +3,9 @@ import { EmptyStateCompactProps } from './EmptyStateCompact.types';
 import clsx from 'clsx';
 import { getEmptyStateUtilityClass } from './EmptyStateCompact.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type EmptyStateCompactOwnerState = {

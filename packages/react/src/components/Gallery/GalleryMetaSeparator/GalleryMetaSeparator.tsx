@@ -3,8 +3,8 @@ import { GalleryMetaSeparatorProps } from './GalleryMetaSeparator.types';
 import clsx from 'clsx';
 import { getGalleryMetaSeparatorUtilityClass } from './GalleryMetaSeparator.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type GalleryMetaSeparatorOwnerState = {

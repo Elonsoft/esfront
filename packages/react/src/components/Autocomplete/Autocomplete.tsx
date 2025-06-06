@@ -5,11 +5,11 @@ import { AutocompleteProps } from './Autocomplete.types';
 import clsx from 'clsx';
 import { autocompleteClasses, getAutocompleteUtilityClass } from './Autocomplete.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useFormControl } from '@mui/material/FormControl';
 import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -39,7 +39,7 @@ const AutocompleteRoot = styled(OutlinedInput, {
   name: 'ESAutocomplete',
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root,
-})(() => ({
+})({
   cursor: 'pointer',
 
   [`& .${autocompleteClasses.input}`]: {
@@ -50,7 +50,7 @@ const AutocompleteRoot = styled(OutlinedInput, {
     display: 'inline-flex',
     alignItems: 'center',
   },
-})) as unknown as FC<OutlinedInputProps & { children?: ReactNode }>;
+}) as unknown as FC<OutlinedInputProps & { children?: ReactNode }>;
 
 const AutocompleteMenu = styled(ESAutocompleteMenu, {
   name: 'ESAutocomplete',
@@ -68,18 +68,18 @@ const AutocompleteMenu = styled(ESAutocompleteMenu, {
         pointerEvents: 'none',
       },
     },
-  ],
+  ] as never,
 })) as unknown as typeof ESAutocompleteMenu;
 
 const AutocompleteInputDisplayValue = styled('div', {
   name: 'ESAutocomplete',
   slot: 'DisplayValue',
   overridesResolver: (_props, styles) => styles.displayValue,
-})(() => ({
+})({
   minWidth: 0,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-}));
+});
 
 const AutocompleteInputPlaceholder = styled('div', {
   name: 'ESAutocomplete',

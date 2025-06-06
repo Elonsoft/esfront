@@ -3,10 +3,11 @@ import { AlertProps } from './Alert.types';
 import clsx from 'clsx';
 import { alertClasses, getAlertUtilityClass } from './Alert.classes';
 
+import { Breakpoint } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
-import { Breakpoint, styled } from '@mui/material-pigment-css';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500 } from '../../icons';
@@ -58,7 +59,7 @@ const AlertRoot = styled('div', {
         padding: '11px 15px',
       },
     },
-  ],
+  ] as never,
 
   [`&.${alertClasses.standardSuccess}`]: {
     backgroundColor: theme.vars.palette.success.A100,
@@ -91,10 +92,10 @@ const AlertIcon = styled('div', {
   name: 'ESAlert',
   slot: 'Icon',
   overridesResolver: (props, styles) => styles.icon,
-})(() => ({
+})({
   paddingTop: '8px',
   marginRight: '8px',
-}));
+});
 
 const AlertContent = styled('div', {
   name: 'ESAlert',
@@ -116,21 +117,21 @@ const AlertContent = styled('div', {
         },
       }),
     },
-  ],
+  ] as never,
 }));
 
 const AlertMessage = styled(Typography, {
   name: 'ESAlert',
   slot: 'Message',
   overridesResolver: (props, styles) => styles.message,
-})(() => ({
+})({
   wordBreak: 'break-word',
   marginRight: 'auto',
   minHeight: '40px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-})) as typeof Typography;
+}) as typeof Typography;
 
 const AlertAction = styled('div', {
   name: 'ESAlert',
@@ -148,7 +149,7 @@ const AlertAction = styled('div', {
         margin: '4px 0 0 8px',
       },
     },
-  ],
+  ] as never,
 }));
 
 const defaultIconMapping = {

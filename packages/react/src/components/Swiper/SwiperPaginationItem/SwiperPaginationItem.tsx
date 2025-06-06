@@ -77,7 +77,7 @@ const SwiperPaginationItemRoot = styled('label', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SwiperPaginationItemBullet = styled('div', {
@@ -115,7 +115,7 @@ const SwiperPaginationItemBullet = styled('div', {
         width: 4,
       },
     },
-  ],
+  ] as never,
 }));
 
 const SwiperPaginationItemInput = styled('input', {

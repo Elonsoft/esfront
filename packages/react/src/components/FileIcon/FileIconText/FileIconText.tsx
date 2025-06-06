@@ -3,9 +3,9 @@ import { FileIconTextProps } from './FileIconText.types';
 import clsx from 'clsx';
 import { getFileIconTextUtilityClass } from './FileIconText.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FileIconTextOwnerState = {
@@ -26,10 +26,10 @@ const FileIconTextRoot = styled(Typography, {
   name: 'ESFileIconText',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   position: 'relative',
   top: '-2px',
-})) as typeof Typography;
+}) as typeof Typography;
 
 export const FileIconText = (inProps: FileIconTextProps) => {
   const { className, children, sx, ...props } = useDefaultProps({

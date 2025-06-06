@@ -5,9 +5,9 @@ import { SnackbarProps, SnackbarPropsColor, SnackbarPropsSeverity } from './Snac
 import clsx from 'clsx';
 import { getSnackbarUtilityClass, snackbarClasses } from './Snackbar.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useForkRef } from '../../hooks';
@@ -206,7 +206,7 @@ const SnackbarRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SnackbarProgress = styled('div', {
@@ -262,11 +262,11 @@ const SnackbarActions = styled('div', {
   name: 'ESSnackbar',
   slot: 'Actions',
   overridesResolver: (props, styles) => styles.actions,
-})(() => ({
+})({
   alignItems: 'center',
   display: 'flex',
   marginLeft: 'auto',
-}));
+});
 
 const defaultColorMapping: Record<SnackbarPropsSeverity, SnackbarPropsColor> = {
   default: 'monoA',

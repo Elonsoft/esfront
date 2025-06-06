@@ -5,9 +5,9 @@ import { AvatarProps } from './Avatar.types';
 import clsx from 'clsx';
 import { avatarClasses, getAvatarUtilityClass } from './Avatar.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { svgIconClasses } from '../SvgIcon';
@@ -100,7 +100,7 @@ const AvatarRoot = styled('div', {
         width: `${props.size}px`,
       }),
     },
-  ],
+  ] as never,
 
   [`& .${svgIconClasses.root}`]: {
     color: theme.vars.palette.monoA.A400,

@@ -3,12 +3,12 @@ import { SFSFiltersGroupProps } from './SFSFiltersGroup.types';
 import clsx from 'clsx';
 import { getSFSFiltersGroupUtilityClass } from './SFSFiltersGroup.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { formLabelClasses } from '@mui/material/FormLabel';
 import { inputLabelClasses } from '@mui/material/InputLabel';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type SFSFiltersGroupOwnerState = {
@@ -57,7 +57,7 @@ const SFSFiltersGroupTitle = styled(Typography, {
   name: 'ESSFSFiltersGroup',
   slot: 'Title',
   overridesResolver: (_, styles) => styles.title,
-})(() => ({})) as typeof Typography;
+})({}) as typeof Typography;
 
 export const SFSFiltersGroup = (inProps: SFSFiltersGroupProps) => {
   const { className, children, sx, title, ...props } = useDefaultProps({

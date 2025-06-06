@@ -3,8 +3,8 @@ import { GalleryActionsButtonGroupProps } from './GalleryActionsButtonGroup.type
 import clsx from 'clsx';
 import { getGalleryActionsButtonGroupUtilityClass } from './GalleryActionsButtonGroup.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonClasses } from '../../Button';

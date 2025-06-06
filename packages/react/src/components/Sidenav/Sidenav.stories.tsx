@@ -2,12 +2,12 @@ import { ComponentProps, Fragment, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { styled } from '@mui/material-pigment-css';
 import { listItemButtonClasses, outlinedInputClasses } from '@mui/material';
-import Box from '@mui/material-pigment-css/Box';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
+import Box from '@mui/material-pigment-css/Box';
 
 import { Sidenav } from './Sidenav';
 import { SidenavContext } from './Sidenav.context';

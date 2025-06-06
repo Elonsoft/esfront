@@ -5,8 +5,8 @@ import { SidenavProps } from './Sidenav.types';
 import clsx from 'clsx';
 import { getSidenavUtilityClass, sidenavClasses } from './Sidenav.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidenavContext } from './Sidenav.context';
@@ -51,10 +51,10 @@ const SidenavContainer = styled('div', {
   name: 'ESSidenav',
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container,
-})(() => ({
+})({
   display: 'flex',
   height: '100%',
-}));
+});
 
 const SidenavOverlay = styled('div', {
   name: 'ESSidenav',
@@ -90,7 +90,7 @@ const SidenavOverlay = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidenavRail = styled('div', {
@@ -150,7 +150,7 @@ const SidenavDrawer = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 /**

@@ -5,12 +5,12 @@ import { SFSFiltersProps } from './SFSFilters.types';
 import clsx from 'clsx';
 import { getSFSFiltersUtilityClass } from './SFSFilters.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { backdropClasses } from '@mui/material/Backdrop';
 import Drawer from '@mui/material/Drawer';
 import { paperClasses } from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600, IconFilter } from '../../../icons';
@@ -44,9 +44,9 @@ const SFSFiltersRoot = styled('div', {
   name: 'ESSFSFilters',
   slot: 'Root',
   overridesResolver: (_, styles) => styles.root,
-})(() => ({
+})({
   position: 'relative',
-}));
+});
 
 const SFSFiltersButton = styled(SFSButton, {
   name: 'ESSFSFilters',

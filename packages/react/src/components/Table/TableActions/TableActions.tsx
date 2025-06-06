@@ -5,10 +5,10 @@ import { TableActionsProps } from './TableActions.types';
 import clsx from 'clsx';
 import { getTableActionsUtilityClass } from './TableActions.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { dividerClasses } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonClasses } from '../../Button';

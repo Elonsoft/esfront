@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material-pigment-css/Box';
 
 import { usePermission } from './usePermission';
 

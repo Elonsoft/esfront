@@ -5,9 +5,9 @@ import { TableFootProps } from './TableFoot.types';
 import clsx from 'clsx';
 import { getTableFootUtilityClass } from './TableFoot.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver } from '../../../hooks';
@@ -65,7 +65,7 @@ const TableFootRoot = styled('div', {
         borderBottomRightRadius: 0,
       },
     },
-  ],
+  ] as never,
 }));
 
 export const TableFoot = memo(

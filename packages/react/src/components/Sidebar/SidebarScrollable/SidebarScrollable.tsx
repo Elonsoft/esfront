@@ -5,8 +5,8 @@ import { SidebarScrollableProps } from './SidebarScrollable.types';
 import clsx from 'clsx';
 import { getSidebarScrollableUtilityClass } from './SidebarScrollable.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
@@ -70,7 +70,7 @@ const SidebarScrollableRoot = styled('div', {
         maskRepeat: 'no-repeat',
       },
     },
-  ],
+  ] as never,
 
   ...theme.scrollbars.overlayMonoA,
 }));

@@ -5,9 +5,9 @@ import { TableBodyProps } from './TableBody.types';
 import clsx from 'clsx';
 import { getTableBodyUtilityClass } from './TableBody.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableBodyContext } from './TableBody.context';
@@ -71,17 +71,17 @@ const TableBodyRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const TableBodyContainer = styled('div', {
   name: 'ESTableBody',
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container,
-})(() => ({
+})({
   minWidth: '100%',
   width: 'fit-content',
-}));
+});
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 

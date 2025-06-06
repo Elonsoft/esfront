@@ -5,11 +5,11 @@ import { SearchProps } from './Search.types';
 import clsx from 'clsx';
 import { getSearchUtilityClass } from './Search.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { inputBaseClasses, inputLabelClasses, outlinedInputClasses } from '@mui/material';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350, IconMagnify2W400 } from '../../icons';

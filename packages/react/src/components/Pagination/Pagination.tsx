@@ -5,8 +5,8 @@ import { PaginationProps } from './Pagination.types';
 import clsx from 'clsx';
 import { getPaginationUtilityClass } from './Pagination.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { PaginationContext } from './Pagination.context';
@@ -29,7 +29,7 @@ const PaginationRoot = styled('div', {
   name: 'ESPagination',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'center',
   flexWrap: 'wrap',
@@ -42,7 +42,7 @@ const PaginationRoot = styled('div', {
     flexGrow: 0.5,
     justifyContent: 'flex-end',
   },
-}));
+});
 
 /**
  * The Pagination component enables the user to select a specific page from a range of pages.

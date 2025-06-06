@@ -5,8 +5,8 @@ import { ChipsProps } from './Chips.types';
 import clsx from 'clsx';
 import { chipsClasses, getChipsUtilityClass } from './Chips.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 

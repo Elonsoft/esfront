@@ -18,7 +18,6 @@ import { AutocompleteMenuProps } from './AutocompleteMenu.types';
 import clsx from 'clsx';
 import { getAutocompleteMenuUtilityClass } from './AutocompleteMenu.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -30,6 +29,7 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import Popper from '@mui/material/Popper';
 import TextField from '@mui/material/TextField';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver, useScrollLock } from '../../hooks';
@@ -73,7 +73,7 @@ const AutocompleteMenuRoot = styled(Popper, {
   name: 'ESAutocompleteMenu',
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root,
-})(() => ({
+})({
   zIndex: 1300,
 
   '& *': {
@@ -83,7 +83,7 @@ const AutocompleteMenuRoot = styled(Popper, {
   '& > div': {
     transformOrigin: `50% 0 0`,
   },
-}));
+});
 
 const AutocompleteMenuPaper = styled('div', {
   name: 'ESAutocompleteMenu',
@@ -122,17 +122,17 @@ const AutocompleteMenuMenuItem = styled(MenuItem, {
   name: 'ESAutocompleteMenu',
   slot: 'MenuItem',
   overridesResolver: (_props, styles) => styles.menuItem,
-})(() => ({}));
+})({});
 
 const AutocompleteMenuMenuItemText = styled('div', {
   name: 'ESAutocompleteMenu',
   slot: 'MenuItemText',
   overridesResolver: (_props, styles) => styles.menuItemText,
-})(() => ({
+})({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-}));
+});
 
 const AutocompleteMenuMenuGroup = styled(MenuGroup, {
   name: 'ESAutocompleteMenu',
@@ -152,23 +152,23 @@ const AutocompleteMenuSentinel = styled(MenuItem, {
   name: 'ESAutocompleteMenu',
   slot: 'Sentinel',
   overridesResolver: (_props, styles) => styles.sentinel,
-})(() => ({
+})({
   [`&.${listItemClasses.size200}`]: {
     padding: 0,
     minHeight: 0,
     height: 0,
   },
-}));
+});
 
 const AutocompleteMenuCheckbox = styled(Checkbox, {
   name: 'ESAutocompleteMenu',
   slot: 'Checkbox',
   overridesResolver: (_props, styles) => styles.checkbox,
-})(() => ({
+})({
   marginLeft: '-8px',
   marginRight: '4px',
   flexShrink: 0,
-}));
+});
 
 const AutocompleteMenuEmptyState = styled('div', {
   name: 'ESAutocompleteMenu',

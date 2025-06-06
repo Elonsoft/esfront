@@ -206,7 +206,7 @@ const LinkRoot = styled(Typography, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const LinkIcon = styled('span', {

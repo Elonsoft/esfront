@@ -3,8 +3,8 @@ import { PageHGroupHeadingProps } from './PageHGroupHeading.types';
 import clsx from 'clsx';
 import { getPageHGroupHeadingUtilityClass } from './PageHGroupHeading.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../../components/TooltipEllipsis';
@@ -71,13 +71,13 @@ const PageHGroupHeadingEndAdornment = styled('div', {
   name: 'ESPageHGroupHeading',
   slot: 'EndAdornment',
   overridesResolver: (_props, styles) => styles.endAdornment,
-})(() => ({
+})({
   alignItems: 'center',
   display: 'inline-flex',
   flexShrink: 0,
   height: '1lh',
   lineHeight: 'inherit',
-}));
+});
 
 export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
   const {

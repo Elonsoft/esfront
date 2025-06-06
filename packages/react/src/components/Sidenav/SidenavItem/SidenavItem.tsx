@@ -6,10 +6,10 @@ import clsx from 'clsx';
 import { sidenavClasses } from '../Sidenav.classes';
 import { getSidenavItemUtilityClass } from './SidenavItem.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { TypographyProps } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonBaseClasses } from '../../ButtonBase';
@@ -86,7 +86,7 @@ const SidenavItemRoot = styled(ListItem, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidenavItemWrapper = styled('div', {

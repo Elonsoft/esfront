@@ -3,8 +3,8 @@ import { PageHGroupProps } from './PageHGroup.types';
 import clsx from 'clsx';
 import { getPageHGroupUtilityClass } from './PageHGroup.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupOwnerState = {
@@ -25,10 +25,10 @@ const PageHGroupRoot = styled('div', {
   name: 'ESPageHGroup',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   width: '100%',
   padding: '28px 0 24px',
-}));
+});
 
 /**
  * This component represents a heading and related content.

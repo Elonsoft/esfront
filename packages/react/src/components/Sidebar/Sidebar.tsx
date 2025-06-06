@@ -5,8 +5,8 @@ import { SidebarProps } from './Sidebar.types';
 import clsx from 'clsx';
 import { getSidebarUtilityClass, sidebarClasses } from './Sidebar.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidebarContext } from './Sidebar.context';
@@ -57,7 +57,7 @@ const SidebarRoot = styled('div', {
         cursor: 'col-resize',
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidebarContent = styled('aside', {
@@ -111,7 +111,7 @@ const SidebarContent = styled('aside', {
         minWidth: 'var(--ESSidebarContent-minWidth)',
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidebarHandler = styled('div', {
@@ -164,18 +164,18 @@ const SidebarHandler = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidebarHandlerLine = styled('div', {
   name: 'ESSidebar',
   slot: 'HandlerLine',
   overridesResolver: (props, styles) => styles.handlerLine,
-})(() => ({
+})({
   height: '100%',
   width: '1px',
   transition: 'background-color 0.3s',
-}));
+});
 
 /**
  * The Sidebar component is a fixed-position toggleable slide out box.

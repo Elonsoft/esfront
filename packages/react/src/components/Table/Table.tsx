@@ -5,9 +5,9 @@ import { TableProps } from './Table.types';
 import clsx from 'clsx';
 import { getTableUtilityClass } from './Table.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { TableContext } from './Table.context';

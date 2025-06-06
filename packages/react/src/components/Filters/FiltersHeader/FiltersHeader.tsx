@@ -3,8 +3,8 @@ import { FiltersHeaderProps } from './FiltersHeader.types';
 import clsx from 'clsx';
 import { getFiltersHeaderUtilityClass } from './FiltersHeader.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { Button } from '../../Button';
@@ -29,9 +29,9 @@ const FiltersHeaderRoot = styled('div', {
   name: 'ESFiltersHeader',
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root,
-})(() => ({
+})({
   padding: '16px 16px 8px',
-}));
+});
 
 const FiltersHeaderTitle = styled('div', {
   name: 'ESFiltersHeader',
@@ -50,9 +50,9 @@ const FiltersHeaderChildren = styled('div', {
   name: 'ESFiltersHeader',
   slot: 'Children',
   overridesResolver: (_props, styles) => styles.children,
-})(() => ({
+})({
   marginTop: '16px',
-}));
+});
 
 export const FiltersHeader = (inProps: FiltersHeaderProps) => {
   const { children, className, sx, onClear, labelFilters, labelReset, ...props } = useDefaultProps({

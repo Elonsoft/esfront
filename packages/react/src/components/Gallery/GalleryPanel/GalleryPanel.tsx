@@ -5,9 +5,9 @@ import { GalleryPanelProps } from './GalleryPanel.types';
 import clsx from 'clsx';
 import { galleryPanelClasses, getGalleryPanelUtilityClass } from './GalleryPanel.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { GalleryPanelContext } from './GalleryPanel.context';

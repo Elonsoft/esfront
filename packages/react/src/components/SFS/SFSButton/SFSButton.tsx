@@ -4,8 +4,8 @@ import { SFSButtonOwnProps, SFSButtonTypeMap } from './SFSButton.types';
 
 import { getSFSButtonUtilityClass, sfsButtonClasses } from './SFSButton.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { Button, buttonClasses, ExtendButton } from '../../Button';

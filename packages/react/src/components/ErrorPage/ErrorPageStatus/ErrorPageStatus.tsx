@@ -3,8 +3,8 @@ import { ErrorPageStatusProps } from './ErrorPageStatus.types';
 import clsx from 'clsx';
 import { getErrorPageStatusUtilityClass } from './ErrorPageStatus.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageStatusOwnerState = {

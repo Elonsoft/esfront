@@ -49,11 +49,11 @@ const GalleryContent = styled('div', {
   name: 'ESGallery',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
-})(() => ({
+})({
   display: 'flex',
   flexDirection: 'column',
   height: '100%',
-}));
+});
 
 const transitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
 

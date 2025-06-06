@@ -3,8 +3,8 @@ import { PriceProps } from './Price.types';
 import clsx from 'clsx';
 import { getPriceUtilityClass, priceClasses } from './Price.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PriceOwnerState = {
@@ -58,7 +58,7 @@ const PriceRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const PricePrice = styled('span', {

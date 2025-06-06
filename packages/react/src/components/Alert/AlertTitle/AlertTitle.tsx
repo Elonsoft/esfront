@@ -3,9 +3,9 @@ import { AlertTitleProps } from './AlertTitle.types';
 import clsx from 'clsx';
 import { getAlertTitleUtilityClass } from './AlertTitle.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type AlertTitleOwnerState = {
@@ -26,7 +26,7 @@ const AlertTitleRoot = styled(Typography, {
   name: 'ESAlertTitle',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({}));
+})({});
 
 export const AlertTitle = (inProps: AlertTitleProps) => {
   const { className, children, sx, ...props } = useDefaultProps({

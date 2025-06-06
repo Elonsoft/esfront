@@ -3,9 +3,9 @@ import { MenuGroupProps } from './MenuGroup.types';
 import clsx from 'clsx';
 import { getMenuGroupUtilityClass } from './MenuGroup.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type MenuGroupOwnerState = {
@@ -77,7 +77,7 @@ const MenuGroupRoot = styled('div', {
         zIndex: 2,
       },
     },
-  ],
+  ] as never,
 }));
 
 export const MenuGroup = (inProps: MenuGroupProps) => {

@@ -3,8 +3,8 @@ import { DialogActionsProps } from './DialogActions.types';
 import clsx from 'clsx';
 import { getDialogActionsUtilityClass } from './DialogActions.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useStuckSentinel } from '../../../hooks';
@@ -67,7 +67,7 @@ const DialogActionsRoot = styled('div', {
         borderRadius: 0,
       },
     },
-  ],
+  ] as never,
 }));
 
 export const DialogActions = (inProps: DialogActionsProps) => {

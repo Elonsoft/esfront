@@ -3,8 +3,8 @@ import { SFSChipsProps } from './SFSChips.types';
 import clsx from 'clsx';
 import { getSFSChipsUtilityClass } from './SFSChips.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW400 } from '../../../icons';

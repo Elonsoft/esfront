@@ -5,10 +5,10 @@ import { TableRowProps, TableRowTypeMap } from './TableRow.types';
 import clsx from 'clsx';
 import { getTableRowUtilityClass, tableRowClasses } from './TableRow.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Box from '@mui/material-pigment-css/Box';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
+import Box from '@mui/material-pigment-css/Box';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableContext } from '../Table.context';
@@ -63,7 +63,7 @@ const TableRowRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const TableRowContent = styled(Box, {
@@ -106,7 +106,7 @@ const TableRowContent = styled(Box, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 export const TableRow = memo(

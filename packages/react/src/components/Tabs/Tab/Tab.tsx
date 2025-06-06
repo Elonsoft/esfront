@@ -5,8 +5,8 @@ import { TabProps } from './Tab.types';
 import clsx from 'clsx';
 import { getTabUtilityClass, tabClasses } from './Tab.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';
@@ -129,17 +129,17 @@ const TabStartIcon = styled('span', {
   name: 'ESTab',
   slot: 'StartIcon',
   overridesResolver: (props, styles) => [styles.startIcon],
-})(() => ({
+})({
   display: 'inherit',
-}));
+});
 
 const TabEndIcon = styled('span', {
   name: 'ESTab',
   slot: 'EndIcon',
   overridesResolver: (props, styles) => [styles.endIcon],
-})(() => ({
+})({
   display: 'inherit',
-}));
+});
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps: TabProps, ref) {
   const {

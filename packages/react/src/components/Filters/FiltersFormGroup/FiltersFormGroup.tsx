@@ -5,9 +5,9 @@ import { FiltersFormGroupProps } from './FiltersFormGroup.types';
 import clsx from 'clsx';
 import { getFiltersFormGroupUtilityClass } from './FiltersFormGroup.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { outlinedInputClasses } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean, useResizeObserver } from '../../../hooks';
@@ -38,7 +38,7 @@ const FiltersFormGroupRoot = styled('div', {
   name: 'ESFiltersFormGroup',
   slot: 'Root',
   overridesResolver: (_props, styles) => styles.root,
-})(() => ({}));
+})({});
 
 const FiltersFormGroupContent = styled('div', {
   name: 'ESFiltersFormGroup',
@@ -89,7 +89,7 @@ const FiltersFormGroupContent = styled('div', {
         maskRepeat: 'no-repeat',
       },
     },
-  ],
+  ] as never,
 }));
 
 const FiltersFormGroupHeader = styled('div', {
@@ -114,10 +114,10 @@ const FiltersFormGroupFooter = styled('div', {
   name: 'ESFiltersFormGroup',
   slot: 'Footer',
   overridesResolver: (_props, styles) => styles.footer,
-})(() => ({
+})({
   display: 'flex',
   padding: '6px 8px',
-}));
+});
 
 export const FiltersFormGroup = (inProps: FiltersFormGroupProps) => {
   const { children, header, className, sx, maxLines, labelShow, labelHide, ...props } = useDefaultProps({

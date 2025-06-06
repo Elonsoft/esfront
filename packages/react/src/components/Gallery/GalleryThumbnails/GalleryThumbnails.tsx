@@ -5,8 +5,8 @@ import { GalleryThumbnailsProps } from './GalleryThumbnails.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsUtilityClass } from './GalleryThumbnails.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useGalleryThumbnailsContext } from './GalleryThumbnails.context';
@@ -56,7 +56,7 @@ const GalleryThumbnailsSwiper = styled(Swiper, {
   name: 'ESGalleryThumbnails',
   slot: 'Swiper',
   overridesResolver: (props, styles) => styles.swiper,
-})(() => ({
+})({
   '& .ESSwiper-container': {
     '&::before, &::after': {
       content: '""',
@@ -67,7 +67,7 @@ const GalleryThumbnailsSwiper = styled(Swiper, {
   '& .ESSwiperButton-root': {
     zIndex: 1,
   },
-}));
+});
 
 const GalleryThumbnailsButton = styled('div')<{ ownerState: { prev?: boolean; next?: boolean } }>(({ theme }) => ({
   display: 'flex',
@@ -114,7 +114,7 @@ const GalleryThumbnailsButton = styled('div')<{ ownerState: { prev?: boolean; ne
         paddingRight: 8,
       },
     },
-  ],
+  ] as never,
 }));
 
 const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?: string }) => {

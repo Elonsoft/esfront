@@ -89,7 +89,7 @@ export const TextFieldGroupRoot = styled('div', {
         },
       }),
     },
-  ],
+  ] as never,
 
   //
 }));

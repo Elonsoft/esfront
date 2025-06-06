@@ -5,9 +5,9 @@ import { SFSSortingProps } from './SFSSorting.types';
 import clsx from 'clsx';
 import { getSFSSortingUtilityClass } from './SFSSorting.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconSortAscending2, IconSortDescending2, IconSortOff } from '../../../icons';

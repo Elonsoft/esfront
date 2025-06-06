@@ -221,7 +221,7 @@ const TabsRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const TabsScroller = styled('div', {
@@ -301,7 +301,7 @@ const TabsScroller = styled('div', {
         overflowY: 'hidden',
       },
     },
-  ],
+  ] as never,
 }));
 
 const FlexContainer = styled('div', {
@@ -324,7 +324,7 @@ const FlexContainer = styled('div', {
         justifyContent: 'center',
       },
     },
-  ],
+  ] as never,
 }));
 
 const TabsIndicator = styled('span', {
@@ -387,7 +387,7 @@ const TabsIndicator = styled('span', {
         backgroundColor: theme.vars.palette.secondary[300],
       },
     },
-  ],
+  ] as never,
 }));
 
 const TabsScrollbarSize = styled(ScrollbarSize)({
@@ -430,7 +430,7 @@ const TabsDivider = styled(Divider, {
         top: 0,
       },
     },
-  ],
+  ] as never,
 }));
 
 const defaultIndicatorStyle: { [key: string]: number } = {};

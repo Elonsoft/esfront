@@ -3,8 +3,8 @@ import { FileInfoMetaSeparatorProps } from './FileInfoMetaSeparator.types';
 import clsx from 'clsx';
 import { getFileInfoMetaSeparatorUtilityClass } from './FileInfoMetaSeparator.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FileInfoMetaSeparatorOwnerState = {

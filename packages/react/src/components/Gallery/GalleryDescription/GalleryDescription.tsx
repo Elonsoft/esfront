@@ -40,11 +40,11 @@ const GalleryDescriptionRoot = styled(Typography, {
   name: 'ESGalleryDescription',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   height: '32px',
   position: 'relative',
-})) as typeof Typography;
+}) as typeof Typography;
 
 const GalleryDescriptionContent = styled('div', {
   name: 'ESGalleryDescription',
@@ -91,7 +91,7 @@ const GalleryDescriptionContent = styled('div', {
         background: `linear-gradient(to bottom, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`,
       },
     },
-  ],
+  ] as never,
 }));
 
 const GalleryDescriptionText = styled('div', {
@@ -118,7 +118,7 @@ const GalleryDescriptionText = styled('div', {
         textAlign: 'center',
       },
     },
-  ],
+  ] as never,
 }));
 
 const GalleryDescriptionButton = styled(Button, {
@@ -146,7 +146,7 @@ const GalleryDescriptionButton = styled(Button, {
         transform: 'scaleY(-1)',
       },
     },
-  ],
+  ] as never,
 }));
 
 const IconDoubleChevronUp = (props: SvgIconProps) => {

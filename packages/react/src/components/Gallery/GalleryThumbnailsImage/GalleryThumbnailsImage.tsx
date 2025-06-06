@@ -3,8 +3,8 @@ import { GalleryThumbnailsImageProps } from './GalleryThumbnailsImage.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsImageUtilityClass } from './GalleryThumbnailsImage.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type GalleryThumbnailsImageOwnerState = {
@@ -25,12 +25,12 @@ const GalleryThumbnailsImageRoot = styled('img', {
   name: 'ESGalleryThumbnailsImage',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   borderRadius: 6,
   height: 56,
   objectFit: 'cover',
   width: 56,
-}));
+});
 
 export const GalleryThumbnailsImage = (inProps: GalleryThumbnailsImageProps) => {
   const { className, sx, src, alt, ...props } = useDefaultProps({

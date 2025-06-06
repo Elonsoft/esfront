@@ -3,7 +3,7 @@
 import { dirname, join } from 'path';
 const path = require('path');
 
-import { theme } from '../src/testing/Theme/pigment-theme';
+import { createTheme } from '../src/theming';
 
 import { pigment } from '@pigment-css/vite-plugin';
 import remarkGfm from 'remark-gfm';
@@ -52,7 +52,8 @@ module.exports = {
     return mergeConfig(config, {
       plugins: [
         pigment({
-          theme,
+          transformLibraries: ['@mui/material'],
+          theme: createTheme({}),
         }),
       ],
       resolve: {

@@ -3,8 +3,8 @@ import { SidebarSpacerProps } from './SidebarSpacer.types';
 import clsx from 'clsx';
 import { getSidebarSpacerUtilityClass } from './SidebarSpacer.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type SidebarSpacerOwnerState = {
@@ -25,9 +25,9 @@ const SidebarSpacerRoot = styled('div', {
   name: 'ESSidebarSpacer',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   flexGrow: '1',
-}));
+});
 
 export const SidebarSpacer = (inProps: SidebarSpacerProps) => {
   const { className, sx, ...props } = useDefaultProps({

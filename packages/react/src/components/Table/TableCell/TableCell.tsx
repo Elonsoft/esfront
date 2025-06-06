@@ -5,9 +5,9 @@ import { TableCellProps } from './TableCell.types';
 import clsx from 'clsx';
 import { getTableCellUtilityClass, tableCellClasses } from './TableCell.classes';
 
-import { styled } from '@mui/material-pigment-css';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableCellContext } from './TableCell.context';
@@ -213,17 +213,17 @@ const TableCellRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const TableCellWrapper = styled('div', {
   name: 'ESTableCell',
   slot: 'Wrapper',
   overridesResolver: (props, styles) => styles.wrapper,
-})(() => ({
+})({
   width: '100%',
   height: '100%',
-}));
+});
 
 const TableCellContainer = styled('div', {
   name: 'ESTableCell',
@@ -314,7 +314,7 @@ const TableCellResize = styled('button', {
         },
       },
     },
-  ],
+  ] as never,
 });
 
 const RESIZE_STEPS: Record<string, number | undefined> = {
