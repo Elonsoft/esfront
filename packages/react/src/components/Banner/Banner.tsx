@@ -4,9 +4,10 @@ import clsx from 'clsx';
 import { bannerClasses, getBannerUtilityClass } from './Banner.classes';
 import { bannerTitleClasses } from './BannerTitle/BannerTitle.classes';
 
-import { Breakpoint, styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
+import { Breakpoint, styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500 } from '../../icons';
@@ -214,7 +215,7 @@ export const Banner = (inProps: BannerProps) => {
     color,
     iconMapping = defaultIconMapping,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESBanner',
   });

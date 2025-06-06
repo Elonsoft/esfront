@@ -3,7 +3,8 @@ import { FiltersFooterProps } from './FiltersFooter.types';
 import clsx from 'clsx';
 import { getFiltersFooterUtilityClass } from './FiltersFooter.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonClasses } from '../../Button';
@@ -40,7 +41,7 @@ const FiltersFooterRoot = styled('div', {
 }));
 
 export const FiltersFooter = (inProps: FiltersFooterProps) => {
-  const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFiltersFooter' });
+  const { children, className, sx, ...props } = useDefaultProps({ props: inProps, name: 'ESFiltersFooter' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);

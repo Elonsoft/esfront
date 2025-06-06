@@ -5,8 +5,10 @@ import { GalleryProps } from './Gallery.types';
 import clsx from 'clsx';
 import { getGalleryUtilityClass } from './Gallery.classes';
 
-import { duration, styled, useThemeProps } from '@mui/material/styles';
+import { duration } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { backdropClasses, Fade, Modal } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { GalleryContext } from './Gallery.context';
@@ -68,7 +70,7 @@ export const Gallery = (inProps: GalleryProps) => {
     BackdropProps,
     TransitionProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGallery',
   });

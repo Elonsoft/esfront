@@ -5,7 +5,8 @@ import { TableScrollbarProps } from './TableScrollbar.types';
 import clsx from 'clsx';
 import { getTableScrollbarUtilityClass } from './TableScrollbar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -36,7 +37,7 @@ const TableScrollbarRoot = styled('div', {
 
 export const TableScrollbar = memo(
   forwardRef<HTMLDivElement, TableScrollbarProps>(function TableScrollbar(inProps, inRef) {
-    const { className, sx, ...props } = useThemeProps({
+    const { className, sx, ...props } = useDefaultProps({
       props: inProps,
       name: 'ESTableScrollbar',
     });

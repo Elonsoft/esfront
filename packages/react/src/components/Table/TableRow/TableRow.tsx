@@ -5,8 +5,9 @@ import { TableRowProps, TableRowTypeMap } from './TableRow.types';
 import clsx from 'clsx';
 import { getTableRowUtilityClass, tableRowClasses } from './TableRow.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import Box from '@mui/material-pigment-css/Box';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -110,7 +111,7 @@ const TableRowContent = styled(Box, {
 
 export const TableRow = memo(
   forwardRef(function TableRow(inProps: TableRowProps, ref) {
-    const { children, className, sx, selected, hover, ...props } = useThemeProps({
+    const { children, className, sx, selected, hover, ...props } = useDefaultProps({
       props: inProps,
       name: 'ESTableRow',
     });

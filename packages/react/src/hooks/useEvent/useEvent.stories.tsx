@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { TextField } from '@mui/material';
-import Box from '@mui/material/Box';
+import Box from '@mui/material-pigment-css/Box';
 
 import { useEvent } from './useEvent';
 

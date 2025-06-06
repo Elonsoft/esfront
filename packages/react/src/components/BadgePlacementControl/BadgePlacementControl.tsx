@@ -3,7 +3,9 @@ import { BadgePlacementControlProps } from './BadgePlacementControl.types';
 import clsx from 'clsx';
 import { badgePlacementControlClasses, getBadgePlacementControlUtilityClass } from './BadgePlacementControl.classes';
 
-import { capitalize, styled, useThemeProps } from '@mui/material';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { capitalize } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type BadgePlacementControlOwnerState = {
@@ -137,7 +139,7 @@ export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
     overlap = 'rectangular',
     placement = 'top-right',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESBadge',
   });

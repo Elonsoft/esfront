@@ -5,7 +5,8 @@ import { SidebarMenuProps } from './SidebarMenu.types';
 import clsx from 'clsx';
 import { getSidebarMenuUtilityClass } from './SidebarMenu.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidebarMenuContext } from './SidebarMenu.context';
@@ -47,7 +48,7 @@ export const SidebarMenu = (inProps: SidebarMenuProps) => {
     sx,
     defaultOpenIds = [],
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarMenu',
   });

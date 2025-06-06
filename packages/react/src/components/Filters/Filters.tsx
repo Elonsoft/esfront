@@ -3,7 +3,8 @@ import { FiltersProps } from './Filters.types';
 import clsx from 'clsx';
 import { getFiltersUtilityClass } from './Filters.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FiltersOwnerState = {
@@ -30,7 +31,7 @@ const FiltersRoot = styled('div', {
 
 /** The collection of components for building a ecommerce filters. */
 export const Filters = (inProps: FiltersProps) => {
-  const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFilters' });
+  const { children, className, sx, ...props } = useDefaultProps({ props: inProps, name: 'ESFilters' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);

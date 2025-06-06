@@ -5,7 +5,8 @@ import { SFSSearchProps } from './SFSSearch.types';
 import clsx from 'clsx';
 import { getSFSSearchUtilityClass } from './SFSSearch.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import composeClasses from '@mui/utils/composeClasses';
@@ -136,7 +137,7 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
     iconClear = <IconCloseW350 />,
     iconSearch = <IconMagnify2W400 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSFSSearch',
   });

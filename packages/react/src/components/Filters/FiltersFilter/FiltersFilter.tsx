@@ -3,7 +3,8 @@ import { FiltersFilterProps } from './FiltersFilter.types';
 import clsx from 'clsx';
 import { getFiltersFilterUtilityClass } from './FiltersFilter.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean } from '../../../hooks';
@@ -161,7 +162,7 @@ export const FiltersFilter = (inProps: FiltersFilterProps) => {
     iconHide = <IconChevronDownW300 container containerSize="20px" />,
     iconShow = <IconChevronUpW300 container containerSize="20px" />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESFiltersFilter',
   });

@@ -5,7 +5,8 @@ import { TableProps } from './Table.types';
 import clsx from 'clsx';
 import { getTableUtilityClass } from './Table.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -46,7 +47,7 @@ const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 /** Tables display information in a way that's easy to scan, so that users can look for patterns and insights. */
 export const Table = memo(
   forwardRef<HTMLDivElement, TableProps>(function Table(inProps, inRef) {
-    const { children, className, columns, sx, ...props } = useThemeProps({
+    const { children, className, columns, sx, ...props } = useDefaultProps({
       props: inProps,
       name: 'ESTable',
     });

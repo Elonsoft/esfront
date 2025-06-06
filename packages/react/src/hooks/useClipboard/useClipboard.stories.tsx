@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
+import Box from '@mui/material-pigment-css/Box';
 import TextField from '@mui/material/TextField';
 
 import { useClipboard } from './useClipboard';

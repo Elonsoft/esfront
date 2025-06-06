@@ -3,7 +3,8 @@ import { DialogTitleProps } from './DialogTitle.types';
 import clsx from 'clsx';
 import { getDialogTitleUtilityClass } from './DialogTitle.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useStuckSentinel } from '../../../hooks';
@@ -78,7 +79,7 @@ const DialogTitleRoot = styled('div', {
 }));
 
 export const DialogTitle = (inProps: DialogTitleProps) => {
-  const { className, sx, sticky, children, ...props } = useThemeProps({
+  const { className, sx, sticky, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESDialogTitle',
   });

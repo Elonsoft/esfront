@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
+import Box from '@mui/material-pigment-css/Box';
 
 import {
   Filters,

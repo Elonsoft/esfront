@@ -5,7 +5,8 @@ import { ListItemProps, ListItemTypeMap } from './ListItem.types';
 import clsx from 'clsx';
 import { getListItemUtilityClass, listItemClasses } from './ListItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
@@ -193,7 +194,7 @@ export const ListItemRoot = styled('li', {
 }));
 
 export const ListItem = forwardRef(function ListItem(inProps, ref) {
-  const props = useThemeProps({ props: inProps, name: 'ESListItem' });
+  const props = useDefaultProps({ props: inProps, name: 'ESListItem' });
   const {
     className,
     classes: inClasses,

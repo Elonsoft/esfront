@@ -20,6 +20,7 @@ import {
   CommonColors,
   ComponentsProps,
   ComponentsPropsList,
+  SxProps,
 } from '@mui/material/styles';
 import { Color, ComponentsVariants } from '@mui/material';
 import { ButtonPropsSizeOverrides } from '@mui/material/Button';
@@ -1647,5 +1648,17 @@ declare module '@mui/material/Typography' {
     micro: true;
     body1: false;
     body2: false;
+  }
+}
+
+declare global {
+  namespace React {
+    interface HTMLAttributes<T> {
+      sx?: SxProps<Theme>;
+    }
+
+    interface SVGProps<T> {
+      sx?: SxProps<Theme>;
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '@mui/material';
+import Box from '@mui/material-pigment-css/Box';
 
 import { Property } from '.';
 

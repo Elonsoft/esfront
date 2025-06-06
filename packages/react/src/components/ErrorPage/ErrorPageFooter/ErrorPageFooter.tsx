@@ -3,7 +3,8 @@ import { ErrorPageFooterProps } from './ErrorPageFooter.types';
 import clsx from 'clsx';
 import { getErrorPageFooterUtilityClass } from './ErrorPageFooter.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -33,7 +34,7 @@ export const ErrorPageFooterRoot = styled(Typography, {
 }));
 
 export const ErrorPageFooter = (inProps: ErrorPageFooterProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESErrorPageFooter',
   });

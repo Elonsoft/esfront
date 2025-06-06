@@ -3,7 +3,8 @@ import { PageHGroupActionsProps } from './PageHGroupActions.types';
 import clsx from 'clsx';
 import { getPageHGroupActionsUtilityClass } from './PageHGroupActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PageHGroupActionsOwnerState = {
@@ -30,7 +31,7 @@ const PageHGroupActionsRoot = styled('div', {
 }));
 
 export const PageHGroupActions = (inProps: PageHGroupActionsProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESPageHGroupActions',
   });

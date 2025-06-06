@@ -2,7 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../src/overrides.d.ts" />
 
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
 import { tableCellClasses } from '@mui/material';
 import MuiTableContainer from '@mui/material/TableContainer';
 import MuiTableRow, { tableRowClasses } from '@mui/material/TableRow';

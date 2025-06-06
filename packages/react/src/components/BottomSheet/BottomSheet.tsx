@@ -5,11 +5,13 @@ import { BottomSheetProps } from './BottomSheet.types';
 import clsx from 'clsx';
 import { getBottomSheetUtilityClass } from './BottomSheet.classes';
 
-import { duration, styled, useThemeProps } from '@mui/material/styles';
+import { duration } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Slide from '@mui/material/Slide';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useId as useId } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -258,7 +260,7 @@ const getPixelsFromCssUnits = (cssValue: string) => {
  * Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.
  */
 export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(function BottomSheet(inProps, ref) {
-  const props = useThemeProps({ props: inProps, name: 'MuiBottomSheet' });
+  const props = useDefaultProps({ props: inProps, name: 'MuiBottomSheet' });
   const {
     'aria-describedby': ariaDescribedby,
     'aria-labelledby': ariaLabelledbyProp,

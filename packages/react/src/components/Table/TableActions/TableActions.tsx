@@ -5,7 +5,8 @@ import { TableActionsProps } from './TableActions.types';
 import clsx from 'clsx';
 import { getTableActionsUtilityClass } from './TableActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { dividerClasses } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
@@ -75,7 +76,7 @@ const TableActionsChildren = styled('div', {
  */
 export const TableActions = memo(
   forwardRef<HTMLDivElement, TableActionsProps>(function TableActions(inProps, ref) {
-    const { className, sx, label, count, children, ...props } = useThemeProps({
+    const { className, sx, label, count, children, ...props } = useDefaultProps({
       props: inProps,
       name: 'ESTableActions',
     });

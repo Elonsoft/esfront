@@ -5,7 +5,8 @@ import { TableItemProps } from './TableItem.types';
 import clsx from 'clsx';
 import { getTableItemUtilityClass } from './TableItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -64,7 +65,7 @@ const TableItemSecondary = styled(Typography, {
 })) as typeof Typography;
 
 export const TableItem = forwardRef<HTMLDivElement, TableItemProps>(function TableItem(inProps, ref) {
-  const { className, sx, avatar, primary, secondary, ...props } = useThemeProps({
+  const { className, sx, avatar, primary, secondary, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESTableItem',
   });
