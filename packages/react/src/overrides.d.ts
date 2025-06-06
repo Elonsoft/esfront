@@ -13,7 +13,6 @@ import {
   TypographyVariants,
   TypographyVariantsOptions,
   Components,
-  Mixins,
   ComponentNameToClassKey,
   ComponentsOverrides,
   ThemeVars,
@@ -312,7 +311,6 @@ import {
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { TooltipClassKey, TooltipProps } from './components/Tooltip';
-import { buttonMixin, listItemMixin } from './theming/mixins';
 import { AvatarProps } from './components';
 import { BadgeProps, BadgeClassKey } from './components/Badge';
 import { BadgePlacementControlProps, BadgePlacementControlClassKey } from './components/BadgePlacementControl';
@@ -1528,15 +1526,6 @@ declare module '@mui/material/styles' {
       overlayWhite: React.CSSProperties;
       overlayBlack: React.CSSProperties;
     };
-  }
-}
-
-declare module '@mui/material/styles/createMixins' {
-  interface Mixins {
-    /** @deprecated Use our own `Button` implementation instead. */
-    button: typeof buttonMixin;
-    /** @deprecated Use our own `Button` implementation instead. */
-    listItem: typeof listItemMixin;
   }
 }
 
