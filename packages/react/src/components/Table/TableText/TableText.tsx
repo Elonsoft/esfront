@@ -5,7 +5,8 @@ import { TableTextProps } from './TableText.types';
 import clsx from 'clsx';
 import { getTableTextUtilityClass } from './TableText.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../TooltipEllipsis';
@@ -54,7 +55,7 @@ export const TableText = memo(
       tooltip = true,
       TooltipProps,
       ...props
-    } = useThemeProps({
+    } = useDefaultProps({
       props: inProps,
       name: 'ESTableText',
     });

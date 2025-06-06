@@ -5,7 +5,8 @@ import { SidenavProps } from './Sidenav.types';
 import clsx from 'clsx';
 import { getSidenavUtilityClass, sidenavClasses } from './Sidenav.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidenavContext } from './Sidenav.context';
@@ -156,7 +157,7 @@ const SidenavDrawer = styled('div', {
  * The Sidenav component is a fixed-position toggleable slide out box.
  */
 export const Sidenav = (inProps: SidenavProps) => {
-  const { className, children, open, sx, disableEscapeKeyDown, disableItemHover, onClose, ...props } = useThemeProps({
+  const { className, children, open, sx, disableEscapeKeyDown, disableItemHover, onClose, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESSidenav',
   });

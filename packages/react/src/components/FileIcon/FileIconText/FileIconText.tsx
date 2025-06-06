@@ -3,7 +3,8 @@ import { FileIconTextProps } from './FileIconText.types';
 import clsx from 'clsx';
 import { getFileIconTextUtilityClass } from './FileIconText.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -31,7 +32,7 @@ const FileIconTextRoot = styled(Typography, {
 })) as typeof Typography;
 
 export const FileIconText = (inProps: FileIconTextProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESFileIconText',
   });

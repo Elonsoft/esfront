@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
 
 import { useSwiperContext } from './Swiper.context';
 import { Swiper, SwiperPagination, SwiperPaginationProps } from '.';

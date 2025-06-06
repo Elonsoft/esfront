@@ -3,7 +3,8 @@ import { SnackbarCloseProps } from './SnackbarClose.types';
 import clsx from 'clsx';
 import { getSnackbarCloseUtilityClass } from './SnackbarClose.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350 } from '../../../icons';
@@ -68,7 +69,7 @@ export const SnackbarClose = (inProps: SnackbarCloseProps) => {
     progress,
     onClick,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSnackbarClose',
   });

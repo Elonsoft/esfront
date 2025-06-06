@@ -5,7 +5,8 @@ import { TableBodyProps } from './TableBody.types';
 import clsx from 'clsx';
 import { getTableBodyUtilityClass } from './TableBody.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -94,7 +95,7 @@ export const TableBody = memo(
       colDividers = false,
       striped,
       ...props
-    } = useThemeProps({
+    } = useDefaultProps({
       props: inProps,
       name: 'ESTableBody',
     });

@@ -5,7 +5,8 @@ import { GalleryThumbnailsProps } from './GalleryThumbnails.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsUtilityClass } from './GalleryThumbnails.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useGalleryThumbnailsContext } from './GalleryThumbnails.context';
@@ -167,7 +168,7 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
     iconNext = <IconChevronRightW400 />,
     iconPrev = <IconChevronLeftW400 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryThumbnails',
   });

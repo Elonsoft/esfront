@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
+import Box from '@mui/material-pigment-css/Box';
 import Typography from '@mui/material/Typography';
 
 import { useValueGate } from './useValueGate';

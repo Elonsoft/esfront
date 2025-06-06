@@ -5,7 +5,8 @@ import { SearchProps } from './Search.types';
 import clsx from 'clsx';
 import { getSearchUtilityClass } from './Search.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { inputBaseClasses, inputLabelClasses, outlinedInputClasses } from '@mui/material';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
@@ -158,7 +159,7 @@ export const Search = memo(function Search(inProps: SearchProps) {
     iconSearch = <IconMagnify2W400 />,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSearch',
   });

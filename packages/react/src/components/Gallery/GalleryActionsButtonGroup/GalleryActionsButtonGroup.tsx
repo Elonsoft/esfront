@@ -3,7 +3,8 @@ import { GalleryActionsButtonGroupProps } from './GalleryActionsButtonGroup.type
 import clsx from 'clsx';
 import { getGalleryActionsButtonGroupUtilityClass } from './GalleryActionsButtonGroup.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonClasses } from '../../Button';
@@ -40,7 +41,7 @@ const GalleryActionsButtonGroupRoot = styled('div', {
 }));
 
 export const GalleryActionsButtonGroup = (inProps: GalleryActionsButtonGroupProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryActionsButtonGroup',
   });

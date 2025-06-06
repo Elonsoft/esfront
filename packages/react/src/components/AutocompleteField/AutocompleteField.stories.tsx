@@ -2,7 +2,7 @@ import { ComponentProps, useEffect, useRef, useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
+import Box from '@mui/material-pigment-css/Box';
 
 import { AutocompleteField, AutocompleteFieldProps } from '.';
 

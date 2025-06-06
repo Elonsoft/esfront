@@ -5,7 +5,8 @@ import { MenuItemProps, MenuItemTypeMap } from './MenuItem.types';
 import clsx from 'clsx';
 import { getMenuItemUtilityClass } from './MenuItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -41,7 +42,7 @@ export const MenuItem = forwardRef(function MenuItem(inProps, ref) {
     classes: inClasses,
     tabIndex: inTabIndex,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESMenuItem',
   });

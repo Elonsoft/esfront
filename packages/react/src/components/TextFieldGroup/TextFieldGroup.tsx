@@ -3,9 +3,11 @@ import { TextFieldGroupProps } from './TextFieldGroup.types';
 import clsx from 'clsx';
 import { getTextFieldGroupUtilityClass } from './TextFieldGroup.classes';
 
-import { Breakpoint, styled, useThemeProps } from '@mui/material/styles';
+import { Breakpoint } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import { textFieldClasses } from '@mui/material/TextField';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type TextFieldGroupOwnerState = {
@@ -102,7 +104,7 @@ export const TextFieldGroup = (inProps: TextFieldGroupProps) => {
     sx,
     breakpoint = 'tabletXS',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESTextFieldGroup',
   });

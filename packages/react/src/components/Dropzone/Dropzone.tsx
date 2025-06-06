@@ -5,7 +5,8 @@ import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 import clsx from 'clsx';
 import { dropzoneClasses, getDropzoneUtilityClass } from './Dropzone.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { Typography } from '@mui/material';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -204,7 +205,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
     onChange,
     onReject,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDropzone',
   });

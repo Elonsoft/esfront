@@ -5,7 +5,8 @@ import { AvatarProps } from './Avatar.types';
 import clsx from 'clsx';
 import { avatarClasses, getAvatarUtilityClass } from './Avatar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -149,7 +150,7 @@ export const Avatar = (inProps: AvatarProps) => {
     size = 40,
     outlined = false,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAvatar',
   });

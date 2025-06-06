@@ -3,7 +3,8 @@ import { ErrorPageLogoProps } from './ErrorPageLogo.types';
 import clsx from 'clsx';
 import { getErrorPageLogoUtilityClass } from './ErrorPageLogo.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageLogoOwnerState = {
@@ -31,7 +32,7 @@ export const ErrorPageLogoRoot = styled('div', {
 }));
 
 export const ErrorPageLogo = (inProps: ErrorPageLogoProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESErrorPageLogo',
   });

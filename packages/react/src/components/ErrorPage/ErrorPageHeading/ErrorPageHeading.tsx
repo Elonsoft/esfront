@@ -3,7 +3,8 @@ import { ErrorPageHeadingProps } from './ErrorPageHeading.types';
 import clsx from 'clsx';
 import { getErrorPageHeadingUtilityClass } from './ErrorPageHeading.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -32,7 +33,7 @@ export const ErrorPageHeadingRoot = styled(Typography, {
 })) as typeof Typography;
 
 export const ErrorPageHeading = (inProps: ErrorPageHeadingProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESErrorPageHeading',
   });

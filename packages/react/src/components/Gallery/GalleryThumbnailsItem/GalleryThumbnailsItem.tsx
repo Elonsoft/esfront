@@ -3,7 +3,8 @@ import { GalleryThumbnailsItemProps } from './GalleryThumbnailsItem.types';
 import clsx from 'clsx';
 import { getGalleryThumbnailsItemUtilityClass } from './GalleryThumbnailsItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase } from '../../ButtonBase';
@@ -87,7 +88,7 @@ const GalleryThumbnailsItemRoot = styled(ButtonBase, {
 }));
 
 export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {
-  const { className, sx, isActive, onClick, children, ...props } = useThemeProps({
+  const { className, sx, isActive, onClick, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryThumbnailsItem',
   });

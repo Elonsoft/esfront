@@ -3,7 +3,8 @@ import { EmptyStateCompactProps } from './EmptyStateCompact.types';
 import clsx from 'clsx';
 import { getEmptyStateUtilityClass } from './EmptyStateCompact.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -40,7 +41,7 @@ const EmptyStateCompactRoot = styled(Typography, {
  * This component is a placeholder to use on pages without content.
  */
 export const EmptyStateCompact = (inProps: EmptyStateCompactProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESEmptyStateCompact',
   });

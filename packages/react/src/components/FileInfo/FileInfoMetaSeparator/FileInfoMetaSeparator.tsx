@@ -3,7 +3,8 @@ import { FileInfoMetaSeparatorProps } from './FileInfoMetaSeparator.types';
 import clsx from 'clsx';
 import { getFileInfoMetaSeparatorUtilityClass } from './FileInfoMetaSeparator.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FileInfoMetaSeparatorOwnerState = {
@@ -30,7 +31,7 @@ const FileInfoMetaSeparatorRoot = styled('div', {
 }));
 
 export const FileInfoMetaSeparator = (inProps: FileInfoMetaSeparatorProps) => {
-  const { className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfoMetaSeparator' });
+  const { className, sx, ...props } = useDefaultProps({ props: inProps, name: 'ESFileInfoMetaSeparator' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);

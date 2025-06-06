@@ -3,7 +3,7 @@ import { MadeByProps, MadeByTypeMap } from './MadeBy.types';
 import clsx from 'clsx';
 import { getMadeByUtilityClass, madeByClasses } from './MadeBy.classes';
 
-import { useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { styled } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import composeClasses from '@mui/utils/composeClasses';
@@ -74,7 +74,7 @@ export const MadeBy: OverridableComponent<MadeByTypeMap> = (inProps: MadeByProps
     text,
     icon = <IconElonsoft height="19" width="96px" />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESMadeBy',
   });

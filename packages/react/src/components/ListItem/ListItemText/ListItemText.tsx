@@ -3,7 +3,8 @@ import { ListItemTextProps } from './ListItemText.types';
 import clsx from 'clsx';
 import { getListItemTextUtilityClass, listItemTextClasses } from './ListItemText.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -60,7 +61,7 @@ export const ListItemText = (inProps: ListItemTextProps) => {
     secondary: inSecondary = null,
     secondaryTypographyProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESListItemText',
   });

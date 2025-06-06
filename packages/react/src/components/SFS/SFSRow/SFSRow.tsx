@@ -3,7 +3,8 @@ import { SFSRowProps } from './SFSRow.types';
 import clsx from 'clsx';
 import { getSFSRowUtilityClass } from './SFSRow.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type SFSRowOwnerState = {
@@ -35,7 +36,7 @@ const SFSRowRoot = styled('div', {
 }));
 
 export const SFSRow = (inProps: SFSRowProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESSFSRow',
   });

@@ -5,8 +5,9 @@ import { TabScrollButtonProps } from './TabScrollButton.types';
 import clsx from 'clsx';
 import { getTabScrollButtonUtilityClass, tabScrollButtonClasses } from './TabScrollButton.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconChevronLeftW400, IconChevronRightW400 } from '../../../icons';
@@ -139,7 +140,7 @@ export const TabScrollButton = forwardRef<HTMLButtonElement, TabScrollButtonProp
     slots = {},
     tabListHeight,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESTabScrollButton' });
+  } = useDefaultProps({ props: inProps, name: 'ESTabScrollButton' });
 
   const theme = useTheme();
   const isRtl = theme.direction === 'rtl';

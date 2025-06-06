@@ -5,7 +5,8 @@ import { TableHeadProps } from './TableHead.types';
 import clsx from 'clsx';
 import { getTableHeadUtilityClass } from './TableHead.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -99,7 +100,7 @@ export const TableHead = memo(
       rowDividers = true,
       colDividers = false,
       ...props
-    } = useThemeProps({
+    } = useDefaultProps({
       props: inProps,
       name: 'ESTableHead',
     });

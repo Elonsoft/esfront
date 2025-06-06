@@ -5,7 +5,8 @@ import { PaginationRangeProps } from './PaginationRange.types';
 import clsx from 'clsx';
 import { getPaginationRangeUtilityClass } from './PaginationRange.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Menu from '@mui/material/Menu';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
@@ -96,7 +97,7 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
     labelOf,
     iconItemsPerPage = <IconMenuDownW300 container containerSize="16px" />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESPaginationRange',
   });

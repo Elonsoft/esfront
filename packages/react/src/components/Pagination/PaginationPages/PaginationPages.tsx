@@ -5,7 +5,8 @@ import { PaginationPagesProps } from './PaginationPages.types';
 import clsx from 'clsx';
 import { getPaginationPagesUtilityClass } from './PaginationPages.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { outlinedInputClasses } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import composeClasses from '@mui/utils/composeClasses';
@@ -197,7 +198,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     iconTooltipPrevPage = <IconArrowLeft2W300 />,
     iconTooltipNextPage = <IconArrowRight2W300 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESPaginationPages',
   });

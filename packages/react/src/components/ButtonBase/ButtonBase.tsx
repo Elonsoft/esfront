@@ -5,7 +5,8 @@ import { ButtonBaseProps, ButtonBaseTypeMap } from './ButtonBase.types';
 import clsx from 'clsx';
 import { buttonBaseClasses, getButtonBaseUtilityClass } from './ButtonBase.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -153,7 +154,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     onKeyDown,
     TouchRippleProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESButtonBase',
   });

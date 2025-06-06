@@ -5,7 +5,8 @@ import { TableFootProps } from './TableFoot.types';
 import clsx from 'clsx';
 import { getTableFootUtilityClass } from './TableFoot.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -69,7 +70,7 @@ const TableFootRoot = styled('div', {
 
 export const TableFoot = memo(
   forwardRef<HTMLDivElement, TableFootProps>(function TableFoot(inProps, inRef) {
-    const { children, className, sticky, sx, ...props } = useThemeProps({
+    const { children, className, sticky, sx, ...props } = useDefaultProps({
       props: inProps,
       name: 'ESTableFoot',
     });

@@ -2,7 +2,7 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
+import Box from '@mui/material-pigment-css/Box';
 
 import { Sidebar } from './Sidebar';
 import { SidebarDivider } from './SidebarDivider';

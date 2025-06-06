@@ -3,10 +3,11 @@ import { LinkProps, LinkTypeMap } from './Link.types';
 import clsx from 'clsx';
 import { getLinkUtilityClass, linkClasses } from './Link.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type LinkOwnerState = {
@@ -242,7 +243,7 @@ export const Link: OverridableComponent<LinkTypeMap> = (inProps: LinkProps) => {
     underline = 'always',
     showVisited,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESLink',
   });

@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import { useTheme } from '@mui/material';
+import { useTheme } from '@mui/material-pigment-css';
 
 import { Button } from '.';
 

@@ -3,7 +3,7 @@ import { BadgeProps, BadgeTypeMap } from './Badge.types';
 import clsx from 'clsx';
 import { badgeClasses, getBadgeUtilityClass } from './Badge.classes';
 
-import { useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize, styled } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import composeClasses from '@mui/utils/composeClasses';
@@ -190,7 +190,7 @@ export const Badge: OverridableComponent<BadgeTypeMap> = (inProps: BadgeProps) =
     size = '700',
     clickable = false,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESBadge',
   });

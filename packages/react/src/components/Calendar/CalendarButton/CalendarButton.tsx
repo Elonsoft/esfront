@@ -3,7 +3,8 @@ import { CalendarButtonProps } from './CalendarButton.types';
 import clsx from 'clsx';
 import { calendarButtonClasses, getCalendarButtonUtilityClass } from './CalendarButton.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -262,7 +263,7 @@ export const CalendarButton = (inProps: CalendarButtonProps) => {
     onHover,
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESCalendarButton',
   });

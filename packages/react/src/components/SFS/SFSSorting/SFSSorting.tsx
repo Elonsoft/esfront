@@ -5,7 +5,8 @@ import { SFSSortingProps } from './SFSSorting.types';
 import clsx from 'clsx';
 import { getSFSSortingUtilityClass } from './SFSSorting.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -62,7 +63,7 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
     iconDesc = <IconSortDescending2 container containerSize="16px" />,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSFSSorting',
   });

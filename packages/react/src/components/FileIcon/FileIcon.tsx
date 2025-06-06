@@ -5,7 +5,8 @@ import { FileIconProps } from './FileIcon.types';
 import clsx from 'clsx';
 import { getFileIconUtilityClass } from './FileIcon.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { FileIconIcon } from './icons';
@@ -64,7 +65,7 @@ export const FileIcon = (inProps: FileIconProps) => {
     height = 48,
     children,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESFileIcon',
   });
