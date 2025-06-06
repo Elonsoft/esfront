@@ -7,6 +7,7 @@ import { themeDark, themeLight } from './themes';
 
 import { Theme } from '../src/testing';
 
+import '@pigment-css/react/styles.css';
 import { useDarkMode } from 'storybook-dark-mode';
 
 export const parameters = {

@@ -32,8 +32,6 @@
     "@babel/preset-react": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
     "@date-io/date-fns": "^2.11.0",
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
     "@mui/material": "^7.1.0",
     "@mui/material-pigment-css": "^7.1.1",
     "@pigment-css/react": "^0.0.30",
@@ -79,9 +77,8 @@
   },
   "peerDependencies": {
     "@date-io/core": "^2.11.0",
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
     "@mui/material": "^7.0.0",
+    "@mui/material-pigment-css": "^7.0.0",
     "@use-gesture/react": "^10.2.27",
     "react": "^18.2.0"
   },

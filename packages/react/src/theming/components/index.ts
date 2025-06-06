@@ -1,17 +1,5 @@
 import { Components, CssVarsTheme, Theme, TypographyVariantsOptions } from '@mui/material/styles';
 
-import { createButton } from './button';
-export { createButton } from './button';
-
-import { createCheckbox } from './checkbox';
-export { createCheckbox } from './checkbox';
-
-import { createIconButton } from './icon-button';
-export { createIconButton } from './icon-button';
-
-import { createRadio } from './radio';
-export { createRadio } from './radio';
-
 import { createSlider } from './slider';
 export { createSlider } from './slider';
 
@@ -34,9 +22,6 @@ export {
   createTextField,
 } from './text-field';
 
-import { createTooltip } from './tooltip';
-export { createTooltip } from './tooltip';
-
 import {
   createList,
   createListItem,
@@ -49,13 +34,6 @@ import {
 export { createMenu } from './menu';
 
 export const createComponents = (theme: Theme, typography: TypographyVariantsOptions) => {
-  const MuiButton = createButton(theme, typography);
-  const MuiCheckbox = createCheckbox(theme, typography);
-
-  const MuiIconButton = createIconButton(theme, typography);
-
-  const MuiRadio = createRadio(theme, typography);
-
   const MuiSlider = createSlider(theme, typography);
 
   const MuiFormControl = createFormControl(theme, typography);
@@ -65,7 +43,6 @@ export const createComponents = (theme: Theme, typography: TypographyVariantsOpt
   const MuiOutlinedInput = createOutlinedInput(theme, typography);
   const MuiSelect = createSelect(theme, typography);
   const MuiTextField = createTextField(theme, typography);
-  const MuiTooltip = createTooltip(theme, typography);
 
   const MuiMenu = createMenu(theme, typography);
   const MuiMenuItem = createMenuItem(theme, typography);
@@ -76,13 +53,6 @@ export const createComponents = (theme: Theme, typography: TypographyVariantsOpt
   const MuiListItemButton = createListItemButton(theme, typography);
 
   const components: Components<Omit<Theme, 'components' | 'palette'> & CssVarsTheme> = {
-    MuiButton,
-    MuiCheckbox,
-
-    MuiIconButton,
-
-    MuiRadio,
-
     MuiSlider,
 
     MuiFormControl,
@@ -92,7 +62,6 @@ export const createComponents = (theme: Theme, typography: TypographyVariantsOpt
     MuiOutlinedInput,
     MuiSelect,
     MuiTextField,
-    MuiTooltip,
 
     MuiMenu,
     MuiMenuItem,

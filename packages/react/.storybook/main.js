@@ -3,6 +3,9 @@
 import { dirname, join } from 'path';
 const path = require('path');
 
+import { theme } from '../src/testing/Theme/pigment-theme';
+
+import { pigment } from '@pigment-css/vite-plugin';
 import remarkGfm from 'remark-gfm';
 
 const getAbsolutePath = (value) => dirname(require.resolve(join(value, 'package.json')));
@@ -47,7 +50,11 @@ module.exports = {
     const { mergeConfig } = await import('vite');
 
     return mergeConfig(config, {
-      plugins: [],
+      plugins: [
+        pigment({
+          theme,
+        }),
+      ],
       resolve: {
         alias: {
           '~storybook': path.resolve(__dirname),
