@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.5](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.4...@esfront/cspell-config@0.0.5) (2025-06-06)
+
+
+### Features
+
+* **Filters:** add new component ([2353119](https://github.com/Elonsoft/esfront/commit/23531196e3f8e57355c03b8c334a1810d99e12f1))
+
+
+
 ## [0.0.4](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.3...@esfront/cspell-config@0.0.4) (2025-04-07)
 
 

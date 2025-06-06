@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.12.1...@esfront/react@0.12.2) (2025-06-06)
+
+
+### Features
+
+* **AutocompleteMenu:** add disableTooltip prop ([8b564b0](https://github.com/Elonsoft/esfront/commit/8b564b0a5e844732a71249624ddbddd0c47a47d6))
+* **Button:** update contained button styles ([6adce42](https://github.com/Elonsoft/esfront/commit/6adce42c51aea0ee49b36d5e08b90a59f81694ca))
+* **Filters:** add new component ([2353119](https://github.com/Elonsoft/esfront/commit/23531196e3f8e57355c03b8c334a1810d99e12f1))
+* **InformationIcon:** add cursor help ([8e1d912](https://github.com/Elonsoft/esfront/commit/8e1d9123f7e93c71786e57017d2352a107175648))
+* **Price:** add new component ([b533457](https://github.com/Elonsoft/esfront/commit/b533457de2af879a9eb4c9a374199b78927511c5))
+* **Property:** add new component ([b650cbb](https://github.com/Elonsoft/esfront/commit/b650cbb3c3ff65f1e57f948860550a8153d22855))
+* **SwitchBase:** update focus styles ([2f8739c](https://github.com/Elonsoft/esfront/commit/2f8739c177ebf93705b49ec12dc163d9c9897b15))
+* **Table:** add forward ref ([63f40fe](https://github.com/Elonsoft/esfront/commit/63f40fee78e52f277c9c247b4af2e6ab4694a3b2))
+
+
+
 ## [0.12.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.12.0...@esfront/react@0.12.1) (2025-04-17)
 
 
