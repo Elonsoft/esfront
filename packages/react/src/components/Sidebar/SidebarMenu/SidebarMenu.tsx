@@ -45,13 +45,14 @@ export const SidebarMenu = (inProps: SidebarMenuProps) => {
     behaviour = 'click',
     exclusive = false,
     sx,
+    defaultOpenIds = [],
     ...props
   } = useThemeProps({
     props: inProps,
     name: 'ESSidebarMenu',
   });
 
-  const [openedItems, setItems] = useState<string[]>([]);
+  const [openedItems, setItems] = useState<string[]>(defaultOpenIds);
 
   const onOpen = (id: string) => {
     if (exclusive) {
