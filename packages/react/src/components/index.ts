@@ -20,6 +20,7 @@ export * from './Chips';
 export * from './DateAdapter';
 export * from './Dialog';
 export * from './DialogStack';
+export * from './DialogStackV2';
 export * from './Divider';
 export * from './Dropzone';
 export * from './EmptyState';
