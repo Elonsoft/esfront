@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.12.2...@esfront/react@0.13.0) (2025-06-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade @mui/material to v7
+
+### Features
+
+* remove dynamic styles ([fb70a9d](https://github.com/Elonsoft/esfront/commit/fb70a9d942ef4aacda55eef0895308ea4a813ab3))
+* **SidebarMenu:** add defaultOpenIds prop ([40cb4e4](https://github.com/Elonsoft/esfront/commit/40cb4e42e894413f83eb98a0888242d6047ebd21))
+
+
+### Build Changes
+
+* upgrade @mui/material to v7 ([39d0f73](https://github.com/Elonsoft/esfront/commit/39d0f734ba9c49570af5adeeb9033ce9412b13ea))
+
+
+
 ## [0.12.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.12.1...@esfront/react@0.12.2) (2025-06-06)
 
 
