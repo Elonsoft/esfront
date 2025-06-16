@@ -19,4 +19,6 @@ export interface SidebarMenuProps {
   behaviour?: 'click' | 'hover';
   /** If `true`, only one menu item can be opened at the same time. */
   exclusive?: boolean;
+  /** `SidebarItems` ids that should be open on initial render. */
+  defaultOpenIds?: string[];
 }
