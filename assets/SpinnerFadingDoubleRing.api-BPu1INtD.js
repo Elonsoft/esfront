@@ -1,0 +1,14 @@
+import{j as n}from"./jsx-runtime-BoZ7yaty.js";import{useMDXComponents as t}from"./index-EQ2lhxnn.js";import{M as p}from"./index-CR0xhVal.js";import{r as m}from"./index-BHhzso0z.js";import{T as o}from"./TableInterface-DJc824hh.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-D9CsFLId.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./TableBase-BjsCrGHq.js";import"./typedoc-D7CvdepJ.js";import"./styled-B0X8gopH.js";import"./identifier-DA8c-tJk.js";import"./memoTheme-CJcpijc4.js";import"./DefaultPropsProvider-Di_N6kFi.js";import"./TableRow-6p7BA5nb.js";import"./index-F6OnwOzB.js";import"./emotion-react.browser.esm-BV4sMx87.js";import"./IconRadio-CpLevN9d.js";import"./SvgIcon-U0LES8Ux.js";import"./useTheme-D4EsW5Cf.js";import"./useTheme-B2nYkSwK.js";import"./Fade-D0jgUazQ.js";import"./getReactElementRef-BCGM00pR.js";import"./TransitionGroupContext-8frXp1f-.js";import"./useForkRef-Cmn-Dh7x.js";import"./listItemButtonClasses-6HG0w3st.js";import"./touchRippleClasses-D5TjYvbi.js";import"./listItemTextClasses-DeMIuhcn.js";import"./buttonClasses-DxHc3XIB.js";import"./useEnhancedEffect-BGNjlb7u.js";import"./index-CycuZXML.js";import"./index-BubGiXqi.js";import"./extendSxProp-ftMfNaJf.js";import"./DialogStack.context-2qgfTuH8.js";import"./useLatest-sVqXUmVb.js";import"./useWindowEventListener-DbdMtNlQ.js";import"./DateAdapter.context-BR056eYO.js";import"./Typography-CtYhM0r3.js";import"./createSimplePaletteValueFilter-bm0fmN_7.js";function e(i){const r={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...t(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{title:"Components API/SpinnerFadingDoubleRing"}),`
+`,n.jsx(r.h1,{id:"spinnerfadingdoublering-api",children:"SpinnerFadingDoubleRing API"}),`
+`,n.jsx(r.pre,{children:n.jsx(r.code,{className:"language-js",children:`import { SpinnerFadingDoubleRing } from '@esfront/react';
+`})}),`
+`,n.jsx(r.h2,{id:"component-name",children:"Component name"}),`
+`,n.jsxs(r.p,{children:["The name ",n.jsx(r.code,{children:"ESSpinnerFadingDoubleRing"})," can be used when providing default props or style overrides in the theme."]}),`
+`,n.jsx(r.h2,{id:"props",children:"Props"}),`
+`,n.jsx(o,{variant:"props",name:"SpinnerFadingDoubleRingProps"}),`
+`,n.jsx("br",{}),`
+`,n.jsx(r.h2,{id:"css",children:"CSS"}),`
+`,n.jsx(o,{variant:"css",name:"SpinnerFadingDoubleRingClasses"}),`
+`,n.jsx("br",{}),`
+`,n.jsx(r.h2,{id:"demos",children:"Demos"}),`
+`,n.jsx("ul",{children:n.jsx("li",{children:n.jsx(m,{kind:"components-spinner",story:"demo",children:n.jsx("code",{children:"Spinner"})})})})]})}function Y(i={}){const{wrapper:r}={...t(),...i.components};return r?n.jsx(r,{...i,children:n.jsx(e,{...i})}):e(i)}export{Y as default};

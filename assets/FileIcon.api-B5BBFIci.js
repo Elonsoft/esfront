@@ -1,0 +1,14 @@
+import{j as o}from"./jsx-runtime-BoZ7yaty.js";import{useMDXComponents as m}from"./index-EQ2lhxnn.js";import{M as p}from"./index-CR0xhVal.js";import{r as e}from"./index-BHhzso0z.js";import{T as n}from"./TableInterface-DJc824hh.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-D9CsFLId.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./TableBase-BjsCrGHq.js";import"./typedoc-D7CvdepJ.js";import"./styled-B0X8gopH.js";import"./identifier-DA8c-tJk.js";import"./memoTheme-CJcpijc4.js";import"./DefaultPropsProvider-Di_N6kFi.js";import"./TableRow-6p7BA5nb.js";import"./index-F6OnwOzB.js";import"./emotion-react.browser.esm-BV4sMx87.js";import"./IconRadio-CpLevN9d.js";import"./SvgIcon-U0LES8Ux.js";import"./useTheme-D4EsW5Cf.js";import"./useTheme-B2nYkSwK.js";import"./Fade-D0jgUazQ.js";import"./getReactElementRef-BCGM00pR.js";import"./TransitionGroupContext-8frXp1f-.js";import"./useForkRef-Cmn-Dh7x.js";import"./listItemButtonClasses-6HG0w3st.js";import"./touchRippleClasses-D5TjYvbi.js";import"./listItemTextClasses-DeMIuhcn.js";import"./buttonClasses-DxHc3XIB.js";import"./useEnhancedEffect-BGNjlb7u.js";import"./index-CycuZXML.js";import"./index-BubGiXqi.js";import"./extendSxProp-ftMfNaJf.js";import"./DialogStack.context-2qgfTuH8.js";import"./useLatest-sVqXUmVb.js";import"./useWindowEventListener-DbdMtNlQ.js";import"./DateAdapter.context-BR056eYO.js";import"./Typography-CtYhM0r3.js";import"./createSimplePaletteValueFilter-bm0fmN_7.js";function t(i){const r={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...m(),...i.components};return o.jsxs(o.Fragment,{children:[o.jsx(p,{title:"Components API/FileIcon"}),`
+`,o.jsx(r.h1,{id:"fileicon-api",children:"FileIcon API"}),`
+`,o.jsx(r.pre,{children:o.jsx(r.code,{className:"language-js",children:`import { FileIcon } from '@esfront/react';
+`})}),`
+`,o.jsx(r.h2,{id:"component-name",children:"Component name"}),`
+`,o.jsxs(r.p,{children:["The name ",o.jsx(r.code,{children:"ESFileIcon"})," can be used when providing default props or style overrides in the theme."]}),`
+`,o.jsx(r.h2,{id:"props",children:"Props"}),`
+`,o.jsx(n,{variant:"props",name:"FileIconProps"}),`
+`,o.jsx("br",{}),`
+`,o.jsx(r.h2,{id:"css",children:"CSS"}),`
+`,o.jsx(n,{variant:"css",name:"FileIconClasses"}),`
+`,o.jsx("br",{}),`
+`,o.jsx(r.h2,{id:"demos",children:"Demos"}),`
+`,o.jsxs("ul",{children:[o.jsx("li",{children:o.jsx(e,{kind:"components-FileIcon",story:"demo",children:o.jsx("code",{children:"FileIcon"})})}),o.jsx("li",{children:o.jsx(e,{kind:"components-FileInfo",story:"demo",children:o.jsx("code",{children:"FileInfo"})})})]})]})}function Y(i={}){const{wrapper:r}={...m(),...i.components};return r?o.jsx(r,{...i,children:o.jsx(t,{...i})}):t(i)}export{Y as default};

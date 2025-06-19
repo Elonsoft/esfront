@@ -1,5 +1,0 @@
-import{j as a}from"./jsx-runtime-BoZ7yaty.js";import{B as s}from"./Badge-DldY_ecW.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./clsx.m-C7bORDfW.js";import"./generateUtilityClasses-D4qQEpRV.js";import"./useThemeProps-DJft-tfL.js";import"./ButtonBase-B9dD5NpA.js";import"./useForkRef-DJnV46t9.js";const x={tags:["autodocs"],component:s,parameters:{references:["Badge"]},argTypes:{component:{table:{disable:!0}},size:{options:["100","200","300","400","500","600","700"],control:{type:"select"}},color:{options:["success","warning","error","info","secondary","primary","monoA","monoB","monoB500"],control:{type:"select"}},clickable:{control:{type:"boolean"}},children:{control:{type:"text"}}},args:{children:"1",size:"700",color:"monoA"}},o={render:n=>a.jsx(s,{...n})};var r,e,t;o.parameters={...o.parameters,docs:{...(r=o.parameters)==null?void 0:r.docs,source:{originalSource:`{
-  render: args => {
-    return <Badge {...args} />;
-  }
-}`,...(t=(e=o.parameters)==null?void 0:e.docs)==null?void 0:t.source}}};const B=["Demo"];export{o as Demo,B as __namedExportsOrder,x as default};
