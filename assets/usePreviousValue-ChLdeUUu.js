@@ -1,5 +1,0 @@
-import{j as e}from"./jsx-runtime-BoZ7yaty.js";import{useMDXComponents as s}from"./index-EQ2lhxnn.js";import{M as i}from"./index-DJc1-Z6-.js";import{r as n}from"./index--6LawEGE.js";import{D as u}from"./Description-DL0lS6V5.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-DO54u3bl.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-BdTD4kTD.js";function t(o){const r={h1:"h1",h2:"h2",...s(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{title:"Hooks/usePreviousValue",parameters:{docs:{source:{type:"code"}}}}),`
-`,e.jsx(r.h1,{id:"usepreviousvalue",children:"usePreviousValue"}),`
-`,e.jsx(u,{name:"usePreviousValue"}),`
-`,e.jsx(r.h2,{id:"api",children:"API"}),`
-`,e.jsx("ul",{children:e.jsx("li",{children:e.jsx(n,{kind:"hooks-api-usePreviousValue",story:"page",children:e.jsx("code",{children:"usePreviousValue"})})})})]})}function D(o={}){const{wrapper:r}={...s(),...o.components};return r?e.jsx(r,{...o,children:e.jsx(t,{...o})}):t(o)}export{D as default};

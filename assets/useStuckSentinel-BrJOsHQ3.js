@@ -1,5 +1,0 @@
-import{j as e}from"./jsx-runtime-BoZ7yaty.js";import{useMDXComponents as r}from"./index-EQ2lhxnn.js";import{M as i}from"./index-DJc1-Z6-.js";import{r as s}from"./index--6LawEGE.js";import{D as c}from"./Description-DL0lS6V5.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-DO54u3bl.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-BdTD4kTD.js";function o(t){const n={h1:"h1",h2:"h2",...r(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{title:"Hooks/useStuckSentinel",parameters:{docs:{source:{type:"code"}}}}),`
-`,e.jsx(n.h1,{id:"usestucksentinel",children:"useStuckSentinel"}),`
-`,e.jsx(c,{name:"useStuckSentinel"}),`
-`,e.jsx(n.h2,{id:"api",children:"API"}),`
-`,e.jsx("ul",{children:e.jsx("li",{children:e.jsx(s,{kind:"hooks-api-useStuckSentinel",story:"page",children:e.jsx("code",{children:"useStuckSentinel"})})})})]})}function D(t={}){const{wrapper:n}={...r(),...t.components};return n?e.jsx(n,{...t,children:e.jsx(o,{...t})}):o(t)}export{D as default};

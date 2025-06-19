@@ -1,0 +1,1 @@
+import{g as e}from"./styled-B0X8gopH.js";const i=e("MuiDivider",["root","absolute","fullWidth","inset","middle","flexItem","light","vertical","withChildren","withChildrenVertical","textAlignRight","textAlignLeft","wrapper","wrapperVertical"]);export{i as d};

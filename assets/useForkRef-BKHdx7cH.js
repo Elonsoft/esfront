@@ -1,0 +1,5 @@
+import{j as e}from"./jsx-runtime-BoZ7yaty.js";import{useMDXComponents as n}from"./index-EQ2lhxnn.js";import{M as s}from"./index-CR0xhVal.js";import{r as i}from"./index-BHhzso0z.js";import{D as m}from"./Description-DaRgO0kh.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-D9CsFLId.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-D7CvdepJ.js";function t(o){const r={h1:"h1",h2:"h2",...n(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(s,{title:"Hooks/useForkRef",parameters:{docs:{source:{type:"code"}}}}),`
+`,e.jsx(r.h1,{id:"useforkref",children:"useForkRef"}),`
+`,e.jsx(m,{name:"useForkRef"}),`
+`,e.jsx(r.h2,{id:"api",children:"API"}),`
+`,e.jsx("ul",{children:e.jsx("li",{children:e.jsx(i,{kind:"hooks-api-useForkRef",story:"page",children:e.jsx("code",{children:"useForkRef"})})})})]})}function R(o={}){const{wrapper:r}={...n(),...o.components};return r?e.jsx(r,{...o,children:e.jsx(t,{...o})}):t(o)}export{R as default};
