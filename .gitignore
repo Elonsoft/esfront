@@ -4,5 +4,5 @@ storybook-static/
 typedoc.json
 .env
 yarn-error.log
-.DS_Store/
+.DS_Store
 .cache/
