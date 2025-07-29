@@ -276,6 +276,15 @@ import {
 } from './components/Swiper';
 import { SwitchClassKey, SwitchProps } from './components/Switch';
 import { SwitchBaseClassKey, SwitchBaseProps } from './components/SwitchBase';
+import {
+  StepperClassKey,
+  StepperProps,
+  StepClassKey,
+  StepProps,
+  StepLabelClassKey,
+  StepLabelProps,
+} from './components/Stepper';
+
 import { TabBarClassKey, TabBarItemClassKey, TabBarItemProps, TabBarProps } from './components/TabBar';
 import {
   TableActionsClassKey,
@@ -505,6 +514,9 @@ declare module '@mui/material/styles/props' {
     ESSwiper: SwiperProps;
     ESSwitch: SwitchProps;
     ESSwitchBase: SwitchBaseProps;
+    ESStepper: StepperProps;
+    ESStep: StepProps;
+    ESStepLabel: StepLabelProps;
     ESSwiperButton: SwiperButtonProps;
     ESSwiperPagination: SwiperPaginationProps;
     ESTabBar: TabBarProps;
@@ -663,6 +675,9 @@ declare module '@mui/material/styles/overrides' {
     ESSwiper: SwiperClassKey;
     ESSwitch: SwitchClassKey;
     ESSwitchBase: SwitchBaseClassKey;
+    ESStepper: StepperClassKey;
+    ESStep: StepClassKey;
+    ESStepLabel: StepLabelClassKey;
     ESSwiperButton: SwiperButtonClassKey;
     ESSwiperPagination: SwiperPaginationClassKey;
     ESTabBar: TabBarClassKey;
@@ -940,6 +955,18 @@ declare module '@mui/material/styles/components' {
     ESSwitchBase?: {
       defaultProps?: ComponentsProps['ESSwitchBase'];
       styleOverrides?: ComponentsOverrides['ESSwitchBase'];
+    };
+    ESStepper?: {
+      defaultProps?: ComponentsProps['ESStepper'];
+      styleOverrides?: ComponentsOverrides['ESStepper'];
+    };
+    ESStep?: {
+      defaultProps?: ComponentsProps['ESStep'];
+      styleOverrides?: ComponentsOverrides['ESStep'];
+    };
+    ESStepLabel?: {
+      defaultProps?: ComponentsProps['ESStepLabel'];
+      styleOverrides?: ComponentsOverrides['ESStepLabel'];
     };
     ESSwiperButton?: {
       defaultProps?: ComponentsProps['ESSwiperButton'];
