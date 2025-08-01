@@ -3,7 +3,7 @@ import { SwiperPaginationItemProps } from './SwiperPaginationItem.types';
 
 import { getSwiperPaginationUtilityClass, swiperPaginationClasses } from '../SwiperPagination/SwiperPagination.classes';
 
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type SwiperPaginationItemOwnerState = {
@@ -77,7 +77,7 @@ const SwiperPaginationItemRoot = styled('label', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SwiperPaginationItemBullet = styled('div', {
@@ -115,7 +115,7 @@ const SwiperPaginationItemBullet = styled('div', {
         width: 4,
       },
     },
-  ],
+  ] as never,
 }));
 
 const SwiperPaginationItemInput = styled('input', {

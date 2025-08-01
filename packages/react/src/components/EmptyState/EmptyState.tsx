@@ -3,8 +3,9 @@ import { EmptyStateProps } from './EmptyState.types';
 import clsx from 'clsx';
 import { getEmptyStateUtilityClass } from './EmptyState.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type EmptyStateOwnerState = {
@@ -69,7 +70,7 @@ const EmptyStateIcon = styled('div', {
         marginBottom: '8px',
       },
     },
-  ],
+  ] as never,
 }));
 
 const EmptyStateText = styled('div', {
@@ -98,7 +99,7 @@ const EmptyStateText = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const EmptyStateHeading = styled(Typography, {
@@ -126,9 +127,9 @@ const EmptyStateChildren = styled('div', {
   name: 'ESEmptyState',
   slot: 'Children',
   overridesResolver: (props, styles) => styles.children,
-})(() => ({
+})({
   padding: '8px 0',
-}));
+});
 
 /**
  * This component is a placeholder to use on pages without content.
@@ -143,7 +144,7 @@ export const EmptyState = (inProps: EmptyStateProps) => {
     heading,
     subheading,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESEmptyState',
   });

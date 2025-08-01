@@ -1,12 +1,13 @@
 import { Component } from '../component';
 
+export const listItemTextDefaultProps = {
+  primaryTypographyProps: {
+    variant: 'body100' as const,
+  },
+};
+
 export const createListItemText: Component<'MuiListItemText'> = (theme) => {
   return {
-    defaultProps: {
-      primaryTypographyProps: {
-        variant: 'body100',
-      },
-    },
     styleOverrides: {
       root: {
         color: theme.vars.palette.monoA.A900,

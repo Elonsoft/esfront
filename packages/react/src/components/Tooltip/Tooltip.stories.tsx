@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import { Box, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material-pigment-css';
 
 import { Tooltip } from '.';
 
@@ -100,7 +100,7 @@ export const Demo: Story = {
     const backgroundColor = isLightColor ? theme.vars.palette.monoA.A400 : undefined;
 
     return (
-      <Box
+      <div
         sx={{
           width: '100%',
           padding: '120px 40px',
@@ -114,7 +114,7 @@ export const Demo: Story = {
             {getButtonText(context)}
           </Button>
         </Tooltip>
-      </Box>
+      </div>
     );
   },
 };

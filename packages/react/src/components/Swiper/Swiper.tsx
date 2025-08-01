@@ -5,7 +5,8 @@ import { SwiperAlignment, SwiperDirection, SwiperProps } from './Swiper.types';
 import clsx from 'clsx';
 import { getSwiperUtilityClass, swiperClasses } from './Swiper.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SwiperContext } from './Swiper.context';
@@ -89,16 +90,16 @@ const SwiperRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 });
 
 const SwiperWrapper = styled('div', {
   name: 'ESSwiper',
   slot: 'Wrapper',
   overridesResolver: (_props, styles) => styles.wrapper,
-})(() => ({
+})({
   position: 'relative',
-}));
+});
 
 const SwiperContainer = styled('div', {
   name: 'ESSwiper',
@@ -185,7 +186,7 @@ const SwiperContainer = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 });
 
 /**
@@ -213,7 +214,7 @@ export const Swiper = (inProps: SwiperProps) => {
     buttonNext = <SwiperButton step={1} />,
     pagination,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSwiper',
   });

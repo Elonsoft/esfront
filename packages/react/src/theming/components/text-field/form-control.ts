@@ -1,10 +1,11 @@
 import { Component } from '../component';
 
+export const formControlDefaultProps = {
+  variant: 'outlined' as const,
+};
+
 export const createFormControl: Component<'MuiFormControl'> = () => {
   return {
-    defaultProps: {
-      variant: 'outlined',
-    },
     styleOverrides: {
       root: {
         '& .MuiOutlinedInput-root': {
@@ -132,6 +133,6 @@ export const createFormControl: Component<'MuiFormControl'> = () => {
           },
         },
       },
-    ],
+    ] as never,
   };
 };

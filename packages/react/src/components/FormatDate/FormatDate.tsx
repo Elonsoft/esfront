@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { FormatDateProps } from './FormatDate.types';
 
-import { useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { useDateAdapterContext } from '../DateAdapter';
 
@@ -10,7 +10,7 @@ import { useDateAdapterContext } from '../DateAdapter';
  * This component formats the date with the format string.
  */
 export const FormatDate = (inProps: FormatDateProps) => {
-  const { children, format, formatString } = useThemeProps({
+  const { children, format, formatString } = useDefaultProps({
     props: inProps,
     name: 'ESFormatDate',
   });

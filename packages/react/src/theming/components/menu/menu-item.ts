@@ -37,24 +37,6 @@ export const createMenuItem: Component<'MuiMenuItem'> = (theme, typography) => {
             animationName: `${enterKeyframe} !important`,
             opacity: '1 !important',
           },
-
-          ...theme.mixins.listItem({
-            background: 'transparent',
-            color: theme.vars.palette.monoA.A900,
-            hover: theme.vars.palette.monoA.A50,
-            focus: theme.vars.palette.monoA.A75,
-            active: theme.vars.palette.monoA.A150,
-          }),
-
-          '&.Mui-selected': {
-            ...theme.mixins.listItem({
-              background: theme.vars.palette.secondary.A100,
-              color: theme.vars.palette.monoA.A900,
-              hover: theme.vars.palette.monoA.A50,
-              focus: theme.vars.palette.monoA.A75,
-              active: theme.vars.palette.monoA.A150,
-            }),
-          },
         },
       },
     },

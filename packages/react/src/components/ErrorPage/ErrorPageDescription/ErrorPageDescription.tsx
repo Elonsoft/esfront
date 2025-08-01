@@ -3,8 +3,9 @@ import { ErrorPageDescriptionProps } from './ErrorPageDescription.types';
 import clsx from 'clsx';
 import { getErrorPageDescriptionUtilityClass } from './ErrorPageDescription.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageDescriptionOwnerState = {
@@ -33,7 +34,7 @@ export const ErrorPageDescriptionRoot = styled(Typography, {
 }));
 
 export const ErrorPageDescription = (inProps: ErrorPageDescriptionProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESErrorPageDescription',
   });

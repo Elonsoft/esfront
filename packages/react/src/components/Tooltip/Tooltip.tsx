@@ -18,9 +18,10 @@ import { TooltipProps } from './Tooltip.types';
 import clsx from 'clsx';
 import { getTooltipUtilityClass, tooltipClasses } from './Tooltip.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Fade from '@mui/material/Fade';
 import Popper from '@mui/material/Popper';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import appendOwnerState from '@mui/utils/appendOwnerState';
 import capitalize from '@mui/utils/capitalize';
 import composeClasses from '@mui/utils/composeClasses';
@@ -294,7 +295,7 @@ const TooltipPopper = styled(Popper, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const TooltipTooltip = styled('div', {
@@ -394,7 +395,7 @@ const TooltipTooltip = styled('div', {
         color: theme.vars.palette.monoA.A900,
       },
     },
-  ],
+  ] as never,
 }));
 
 const TooltipArrow = styled('span', {
@@ -470,7 +471,7 @@ const TooltipArrow = styled('span', {
         color: theme.vars.palette.white.A600,
       },
     },
-  ],
+  ] as never,
 }));
 
 let hystersisOpen = false;
@@ -534,7 +535,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     TransitionComponent: TransitionComponentProp = Fade,
     TransitionProps,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESTooltip' });
+  } = useDefaultProps({ props: inProps, name: 'ESTooltip' });
 
   // to prevent runtime errors, developers will need to provide a child as a React element anyway.
   const children = isValidElement(childrenProp) ? childrenProp : <span>{childrenProp}</span>;

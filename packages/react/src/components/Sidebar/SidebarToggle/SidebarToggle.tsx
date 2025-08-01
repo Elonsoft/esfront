@@ -5,7 +5,8 @@ import { SidebarToggleProps } from './SidebarToggle.types';
 import clsx from 'clsx';
 import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconChevronLeftW300 } from '../../../icons';
@@ -37,10 +38,10 @@ const SidebarToggleRoot = styled('div', {
   name: 'ESSidebarToggle',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   position: 'relative',
   zIndex: '10',
-}));
+});
 
 const SidebarToggleTooltip = styled(
   ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
@@ -105,7 +106,7 @@ const SidebarToggleButton = styled(Button, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 export const SidebarToggle = (inProps: SidebarToggleProps) => {
@@ -118,7 +119,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
     labelHide,
     onClick,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarToggle',
   });

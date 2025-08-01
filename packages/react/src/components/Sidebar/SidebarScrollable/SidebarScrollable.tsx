@@ -5,7 +5,8 @@ import { SidebarScrollableProps } from './SidebarScrollable.types';
 import clsx from 'clsx';
 import { getSidebarScrollableUtilityClass } from './SidebarScrollable.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
@@ -69,13 +70,13 @@ const SidebarScrollableRoot = styled('div', {
         maskRepeat: 'no-repeat',
       },
     },
-  ],
+  ] as never,
 
   ...theme.scrollbars.overlayMonoA,
 }));
 
 export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
-  const { className, sx, beforeScroll, afterScroll, children, ...props } = useThemeProps({
+  const { className, sx, beforeScroll, afterScroll, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarScrollable',
   });

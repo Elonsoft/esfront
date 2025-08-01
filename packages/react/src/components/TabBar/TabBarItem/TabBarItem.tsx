@@ -3,8 +3,9 @@ import { TabBarItemProps, TabBarItemTypeMap } from './TabBarItem.types';
 import clsx from 'clsx';
 import { getTabBarItemUtilityClass, tabBarItemClasses } from './TabBarItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { Button, buttonClasses } from '../../Button';
@@ -57,9 +58,9 @@ const TabBarItemIcon = styled('span', {
   name: 'ESTabBarItem',
   slot: 'Icon',
   overridesResolver: (_props, styles) => styles.icon,
-})(() => ({
+})({
   display: 'flex',
-}));
+});
 
 const TabBarItemLabel = styled('span', {
   name: 'ESTabBarItem',
@@ -82,7 +83,7 @@ export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: Tab
     // eslint-disable-next-line
     color,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESTabBarItem',
   });

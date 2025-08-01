@@ -1,14 +1,12 @@
 import { ThemeOptions } from './ThemeProvider.types';
 
-import { alpha as generateAlpha, extendTheme as extendMUITheme, Palette, PaletteOptions } from '@mui/material/styles';
-import { enUS } from '@mui/material/locale';
+import { alpha as generateAlpha, createTheme as createMUITheme, Palette, PaletteOptions } from '@mui/material/styles';
 
-import { en } from '../../components/locale';
+import { palettes as defaultPalettes } from '../../theming/palettes';
+import { createScrollbars as createDefaultScrollbars } from '../../theming/scrollbars';
+import { createTypography as createDefaultTypography } from '../../theming/typography';
 import { breakpoints as defaultBreakpoints } from '../breakpoints';
 import { createComponents as createDefaultComponents } from '../components';
-import { palettes as defaultPalettes } from '../palettes';
-import { createScrollbars as createDefaultScrollbars } from '../scrollbars';
-import { createTypography as createDefaultTypography } from '../typography';
 
 const defaultPaletteDark = {
   mode: 'dark' as const,
@@ -35,9 +33,6 @@ const createPalette = ({ alpha = defaultPalettes.common.alpha, ...palette }: Pal
     }
   }
 
-  // FIXME: Remove after introduction of our own buttons.
-  (palette as any).tertiary = { main: '#fff' };
-
   return palette as Palette;
 };
 
@@ -59,13 +54,16 @@ export const createTheme = (
   ...args: any
 ) => {
   const cssVarPrefix = 'es';
+  const colorSchemeSelector = '.mode-%s';
 
   const dark = createPalette(paletteDark);
   const light = createPalette(paletteLight);
 
-  const theme = extendMUITheme({
-    cssVarPrefix,
-    colorSchemeSelector: '.mode-%s',
+  const theme = createMUITheme({
+    cssVariables: {
+      cssVarPrefix,
+      colorSchemeSelector,
+    },
     colorSchemes: {
       dark: {
         palette: dark,
@@ -88,10 +86,12 @@ export const createTheme = (
     ...(createComponents ? createComponents(theme, typography) : {}),
   };
 
-  return extendMUITheme(
+  return createMUITheme(
     {
-      cssVarPrefix,
-      colorSchemeSelector: '.mode-%s',
+      cssVariables: {
+        cssVarPrefix,
+        colorSchemeSelector,
+      },
       colorSchemes: {
         dark: {
           palette: dark,
@@ -102,7 +102,7 @@ export const createTheme = (
       },
       breakpoints: {
         values: {
-          ...theme.breakpoints.values,
+          ...breakpoints,
         },
       },
       components,
@@ -112,8 +112,6 @@ export const createTheme = (
         ...typography,
       },
     },
-    enUS,
-    en,
-    ...(args as any)
+    ...args
   );
 };

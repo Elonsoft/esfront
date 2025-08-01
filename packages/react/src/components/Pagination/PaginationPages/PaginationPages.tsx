@@ -5,9 +5,10 @@ import { PaginationPagesProps } from './PaginationPages.types';
 import clsx from 'clsx';
 import { getPaginationPagesUtilityClass } from './PaginationPages.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { outlinedInputClasses } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useDocumentEventListener, usePagination } from '../../../hooks';
@@ -47,23 +48,23 @@ const PaginationPagesRoot = styled('div', {
   name: 'ESPaginationPages',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'center',
-}));
+});
 
 const PaginationPagesPagination = styled('ul', {
   name: 'ESPaginationPages',
   slot: 'Pagination',
   overridesResolver: (props, styles) => styles.pagination,
-})(() => ({
+})({
   display: 'flex',
   flexWrap: 'nowrap',
   alignItems: 'center',
   padding: 0,
   margin: 0,
   listStyle: 'none',
-}));
+});
 
 const PaginationPagesButton = styled(Button, {
   name: 'ESPaginationPages',
@@ -132,7 +133,7 @@ const PaginationPagesPaginationItem = styled(ButtonBase, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const PaginationPagesTextField = styled(TextField, {
@@ -197,7 +198,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     iconTooltipPrevPage = <IconArrowLeft2W300 />,
     iconTooltipNextPage = <IconArrowRight2W300 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESPaginationPages',
   });

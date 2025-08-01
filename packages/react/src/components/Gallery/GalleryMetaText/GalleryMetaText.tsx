@@ -3,8 +3,9 @@ import { GalleryMetaTextProps } from './GalleryMetaText.types';
 import clsx from 'clsx';
 import { galleryMetaTextClasses, getGalleryMetaTextUtilityClass } from './GalleryMetaText.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type GalleryMetaTextOwnerState = {
@@ -51,7 +52,7 @@ const GalleryMetaTextRoot = styled(Typography, {
 }));
 
 export const GalleryMetaText = (inProps: GalleryMetaTextProps) => {
-  const { children, className, sx, primary, ...props } = useThemeProps({
+  const { children, className, sx, primary, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryMetaText',
   });

@@ -5,11 +5,12 @@ import { AudioPlayerProps } from './AudioPlayer.types';
 import clsx from 'clsx';
 import { getAudioPlayerUtilityClass } from './AudioPlayer.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useAudioPlayerContext } from './AudioPlayer.context';
@@ -107,14 +108,14 @@ const AudioPlayerCurrent = styled('div', {
   name: 'ESAudioPlayer',
   slot: 'Current',
   overridesResolver: (props, styles) => styles.current,
-})(() => ({
+})({
   marginLeft: 11,
   marginRight: 11,
   position: 'relative',
   flexGrow: 1,
   display: 'flex',
   alignItems: 'center',
-}));
+});
 
 const AudioPlayerCurrentTooltip = styled(
   ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
@@ -196,7 +197,7 @@ const AudioPlayerCurrentTooltip = styled(
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const AudioPlayerCurrentSlider = styled(Slider, {
@@ -269,7 +270,7 @@ const AudioPlayerCurrentSlider = styled(Slider, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const AudioPlayerTime = styled(Typography, {
@@ -298,6 +299,7 @@ const AudioPlayerTooltip = styled(
 const AudioPlayerMenu = styled(
   ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
   {
+    shouldForwardProp: () => true,
     name: 'ESAudioPlayer',
     slot: 'Menu',
     overridesResolver: (props, styles) => styles.menu,
@@ -327,11 +329,11 @@ const AudioPlayerMenuList = styled(MenuList, {
   name: 'ESAudioPlayer',
   slot: 'MenuList',
   overridesResolver: (props, styles) => styles.menuList,
-})(() => ({
+})({
   padding: '8px 0',
   width: 168,
   outline: 'none',
-}));
+});
 
 const AudioPlayerMenuItem = styled(MenuItem, {
   name: 'ESAudioPlayer',
@@ -349,7 +351,7 @@ const AudioPlayerListItemIcon = styled(ListItemIcon, {
   name: 'ESAudioPlayer',
   slot: 'ListItemIcon',
   overridesResolver: (props, styles) => styles.listItemIcon,
-})(() => ({}));
+})({});
 
 const AudioPlayerListItemText = styled(ListItemText, {
   name: 'ESAudioPlayer',
@@ -525,7 +527,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAudioPlayer',
   });

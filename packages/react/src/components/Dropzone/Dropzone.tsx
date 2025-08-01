@@ -5,8 +5,9 @@ import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 import clsx from 'clsx';
 import { dropzoneClasses, getDropzoneUtilityClass } from './Dropzone.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { Typography } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { validateFileType } from './validateFileType';
@@ -48,11 +49,11 @@ const DropzoneRoot = styled('div', {
   name: 'ESDropzone',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'grid',
   gap: 8,
   gridAutoFlow: 'row',
-}));
+});
 
 const DropzoneDropzone = styled(ButtonBase, {
   name: 'ESDropzone',
@@ -106,7 +107,7 @@ const DropzoneDropzone = styled(ButtonBase, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const DropzoneHeading = styled('div', {
@@ -145,19 +146,19 @@ const DropzoneIcon = styled('div', {
   name: 'ESDropzone',
   slot: 'Subheading',
   overridesResolver: (props, styles) => styles.icon,
-})(() => ({
+})({
   alignItems: 'center',
   display: 'flex',
   justifyContent: 'center',
-}));
+});
 
 const DropzoneInput = styled('input', {
   name: 'ESDropzone',
   slot: 'Input',
   overridesResolver: (props, styles) => styles.input,
-})(() => ({
+})({
   display: 'none',
-}));
+});
 
 const DropzoneHelperText = styled(Typography, {
   name: 'ESDropzone',
@@ -180,7 +181,7 @@ const DropzoneHelperText = styled(Typography, {
         color: theme.vars.palette.error.A800,
       },
     },
-  ],
+  ] as never,
 }));
 
 /**
@@ -204,7 +205,7 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
     onChange,
     onReject,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDropzone',
   });

@@ -3,8 +3,9 @@ import { FileIconBadgeProps } from './FileIconBadge.types';
 import clsx from 'clsx';
 import { getFileIconBadgeUtilityClass } from './FileIconBadge.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FileIconBadgeOwnerState = {
@@ -61,7 +62,7 @@ const FileIconBadgeRoot = styled(Typography, {
         top: '-3px',
       },
     },
-  ],
+  ] as never,
 }));
 
 export const FileIconBadge = (inProps: FileIconBadgeProps) => {
@@ -72,7 +73,7 @@ export const FileIconBadge = (inProps: FileIconBadgeProps) => {
     color,
     size = 'md',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESFileIconBadge',
   });

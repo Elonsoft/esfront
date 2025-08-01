@@ -5,8 +5,9 @@ import { GalleryDescriptionProps } from './GalleryDescription.types';
 import clsx from 'clsx';
 import { getGalleryDescriptionUtilityClass } from './GalleryDescription.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useWindowEventListener } from '../../../hooks';
@@ -38,11 +39,11 @@ const GalleryDescriptionRoot = styled(Typography, {
   name: 'ESGalleryDescription',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   height: '32px',
   position: 'relative',
-})) as typeof Typography;
+}) as typeof Typography;
 
 const GalleryDescriptionContent = styled('div', {
   name: 'ESGalleryDescription',
@@ -89,7 +90,7 @@ const GalleryDescriptionContent = styled('div', {
         background: `linear-gradient(to bottom, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`,
       },
     },
-  ],
+  ] as never,
 }));
 
 const GalleryDescriptionText = styled('div', {
@@ -116,7 +117,7 @@ const GalleryDescriptionText = styled('div', {
         textAlign: 'center',
       },
     },
-  ],
+  ] as never,
 }));
 
 const GalleryDescriptionButton = styled(Button, {
@@ -144,7 +145,7 @@ const GalleryDescriptionButton = styled(Button, {
         transform: 'scaleY(-1)',
       },
     },
-  ],
+  ] as never,
 }));
 
 const IconDoubleChevronUp = (props: SvgIconProps) => {
@@ -173,14 +174,12 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     iconCollapse = <IconCloseW350 />,
     iconExpand = <IconDoubleChevronUp />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryDescription',
   });
 
   const { rectTop, rectBottom } = useGalleryPanelsContext();
-
-  const theme = useTheme();
 
   const rootRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -199,7 +198,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     if (galleryPanelContext) {
       galleryPanelContext.setExpanded(isExpanded);
     }
-  }, [theme, isExpanded]);
+  }, [isExpanded]);
 
   useEffect(() => {
     if (rootRef.current) {

@@ -3,7 +3,8 @@ import { DialogArrowProps } from './DialogArrow.types';
 import clsx from 'clsx';
 import { getDialogArrowUtilityClass } from './DialogArrow.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowLeftW500, IconArrowRightW500 } from '../../../icons';
@@ -61,7 +62,7 @@ const DialogArrowRoot = styled('div', {
         right: '0',
       },
     },
-  ],
+  ] as never,
 }));
 
 const DialogArrowButton = styled(Button, {
@@ -99,7 +100,7 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
     iconPrev = <IconArrowLeftW500 />,
     iconNext = <IconArrowRightW500 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDialogArrow',
   });

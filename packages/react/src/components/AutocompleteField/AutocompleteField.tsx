@@ -3,11 +3,12 @@ import { AutocompleteFieldProps } from './AutocompleteField.types';
 import clsx from 'clsx';
 import { getAutocompleteFieldUtilityClass } from './AutocompleteField.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import { textFieldClasses } from '@mui/material/TextField';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useId as useId } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -62,7 +63,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
     onChange,
 
     ...rest
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAutocompleteField',
   });

@@ -6,9 +6,10 @@ import clsx from 'clsx';
 import { sidenavClasses } from '../Sidenav.classes';
 import { getSidenavItemUtilityClass } from './SidenavItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { TypographyProps } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { buttonBaseClasses } from '../../ButtonBase';
@@ -85,7 +86,7 @@ const SidenavItemRoot = styled(ListItem, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidenavItemWrapper = styled('div', {
@@ -128,7 +129,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     onKeyDown,
     onFocus,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidenavItem',
   });

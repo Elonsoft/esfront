@@ -4,7 +4,8 @@ import { LoadingButtonOwnProps, LoadingButtonTypeMap } from './LoadingButton.typ
 
 import { getLoadingButtonUtilityClass, loadingButtonClasses } from './LoadingButton.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useId as useId } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -47,14 +48,14 @@ const LoadingButtonRoot = styled(Button, {
     } = props;
     return [styles.root, loading && styles.loading];
   },
-})(() => ({
+})({
   [`&.${loadingButtonClasses.loading}.${buttonClasses.root}.${buttonBaseClasses.disabled}`]: {
     '--text': 'transparent',
   },
   [`&.${loadingButtonClasses.loading}.${buttonClasses.root}`]: {
     '--icon': 'transparent',
   },
-}));
+});
 
 const LoadingButtonLoadingIndicator = styled('span', {
   name: 'ESLoadingButton',
@@ -97,7 +98,7 @@ export const LoadingButton = forwardRef(function LoadingButton(inProps, ref) {
     loading = false,
     loadingIndicator: loadingIndicatorProp,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESLoadingButton' });
+  } = useDefaultProps({ props: inProps, name: 'ESLoadingButton' });
 
   const id = useId(inId);
   const loadingIndicator = loadingIndicatorProp ?? (

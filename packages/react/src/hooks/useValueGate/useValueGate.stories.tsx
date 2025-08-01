@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import { useValueGate } from './useValueGate';
@@ -43,7 +42,7 @@ export const Demo: Story = {
 
     return (
       <div>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
+        <div sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
           <FormControlLabel
             control={<Checkbox checked={signal} onChange={(event) => setSignal(event.target.checked)} />}
             label="Signal"
@@ -58,7 +57,7 @@ export const Demo: Story = {
             control={<Checkbox checked={falling} onChange={(event) => setFalling(event.target.checked)} />}
             label="Falling"
           />
-        </Box>
+        </div>
 
         <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">
           Gated value: {gatedValue}

@@ -3,6 +3,9 @@
 import { dirname, join } from 'path';
 const path = require('path');
 
+import { createTheme } from '../src/theming';
+
+import { pigment } from '@pigment-css/vite-plugin';
 import remarkGfm from 'remark-gfm';
 
 const getAbsolutePath = (value) => dirname(require.resolve(join(value, 'package.json')));
@@ -47,7 +50,12 @@ module.exports = {
     const { mergeConfig } = await import('vite');
 
     return mergeConfig(config, {
-      plugins: [],
+      plugins: [
+        pigment({
+          transformLibraries: ['@mui/material'],
+          theme: createTheme({}),
+        }),
+      ],
       resolve: {
         alias: {
           '~storybook': path.resolve(__dirname),

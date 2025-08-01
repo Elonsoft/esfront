@@ -3,8 +3,9 @@ import { BannerTitleProps } from './BannerTitle.types';
 import clsx from 'clsx';
 import { getBannerTitleUtilityClass } from './BannerTitle.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type BannerTitleOwnerState = {
@@ -25,10 +26,10 @@ const BannerTitleRoot = styled(Typography, {
   name: 'ESBannerTitle',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({}));
+})({});
 
 export const BannerTitle = (inProps: BannerTitleProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESBannerTitle',
   });

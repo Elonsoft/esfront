@@ -5,8 +5,9 @@ import { RadioProps } from './Radio.types';
 import clsx from 'clsx';
 import { getRadioUtilityClass, radioClasses } from './Radio.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize, createChainedFunction } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { RadioIcon, radioIconClasses } from './RadioIcon';
@@ -317,7 +318,7 @@ const defaultCheckedIcon = <RadioIcon />;
 const defaultIcon = <RadioIcon />;
 
 export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(function Radio(inProps, ref) {
-  const props = useThemeProps({ props: inProps, name: 'ESRadio' });
+  const props = useDefaultProps({ props: inProps, name: 'ESRadio' });
   const {
     checkedIcon = defaultCheckedIcon,
     color = 'primary',

@@ -7,6 +7,7 @@ import { themeDark, themeLight } from './themes';
 
 import { Theme } from '../src/testing';
 
+import '@pigment-css/react/styles.css';
 import { useDarkMode } from 'storybook-dark-mode';
 
 export const parameters = {
@@ -22,6 +23,9 @@ export const parameters = {
   darkMode: {
     light: themeLight,
     dark: themeDark,
+    lightClass: ['light', 'mode-light'],
+    darkClass: ['dark', 'mode-dark'],
+    stylePreview: true,
   },
   options: {
     storySort: {
@@ -68,10 +72,9 @@ export const parameters = {
 export const decorators = [
   (Story, context) => {
     const locale = context.globals.locale;
-    const isDarkMode = useDarkMode();
 
     return (
-      <Theme isDarkMode={isDarkMode} locale={locale}>
+      <Theme locale={locale}>
         <Story />
       </Theme>
     );

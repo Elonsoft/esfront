@@ -2,7 +2,6 @@ import { ComponentProps, useCallback, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 import { Table } from './Table';
@@ -348,8 +347,8 @@ export const ColumnPinning: Story = {
     };
 
     return (
-      <Box>
-        <Box
+      <div>
+        <div
           sx={(theme) => ({
             display: 'flex',
             flexDirection: 'column',
@@ -389,7 +388,7 @@ export const ColumnPinning: Story = {
               </MenuItem>
             ))}
           </TextField>
-        </Box>
+        </div>
         <Table ref={ref} columns={columns}>
           <TableHead colDividers={colDividers} sticky={0}>
             <TableRow ref={rowRef}>
@@ -500,7 +499,7 @@ export const ColumnPinning: Story = {
             </Pagination>
           </TableFoot>
         </Table>
-      </Box>
+      </div>
     );
   },
 };

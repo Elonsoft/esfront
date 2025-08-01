@@ -5,7 +5,8 @@ import { TableTextProps } from './TableText.types';
 import clsx from 'clsx';
 import { getTableTextUtilityClass } from './TableText.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { TooltipEllipsis, TooltipEllipsisProps } from '../../TooltipEllipsis';
@@ -29,12 +30,12 @@ const TableTextRoot = styled('div', {
   name: 'ESTableText',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
   minWidth: 0,
-}));
+});
 
 const TableTextTooltip = styled(
   ({ className, ...props }: TooltipEllipsisProps) => <TooltipEllipsis {...props} classes={{ popper: className }} />,
@@ -54,7 +55,7 @@ export const TableText = memo(
       tooltip = true,
       TooltipProps,
       ...props
-    } = useThemeProps({
+    } = useDefaultProps({
       props: inProps,
       name: 'ESTableText',
     });

@@ -5,12 +5,13 @@ import { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';
 import clsx from 'clsx';
 import { getSidebarItemUtilityClass, sidebarItemClasses } from './SidebarItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import MenuList from '@mui/material/MenuList';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
@@ -67,17 +68,17 @@ const SidebarItemRoot = styled('div', {
   name: 'ESSidebarItem',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   margin: '0 8px',
-}));
+});
 
 const SidebarItemWrapper = styled('div', {
   name: 'ESSidebarItem',
   slot: 'Wrapper',
   overridesResolver: (props, styles) => styles.wrapper,
-})(() => ({
+})({
   position: 'relative',
-}));
+});
 
 const SidebarItemButton = styled(ListItem, {
   name: 'ESSidebarItem',
@@ -128,7 +129,7 @@ const SidebarItemButton = styled(ListItem, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidebarItemSecondaryAction = styled(Button, {
@@ -186,7 +187,7 @@ const SidebarItemSecondaryAction = styled(Button, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidebarItemText = styled(ListItemText, {
@@ -206,7 +207,7 @@ const SidebarItemText = styled(ListItemText, {
         display: 'block',
       },
     },
-  ],
+  ] as never,
 
   [`&.${listItemTextClasses.inset}`]: {
     paddingLeft: '36px',
@@ -237,27 +238,27 @@ const SidebarItemIcon = styled(ListItemIcon, {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const SidebarItemContainer = styled('div', {
   name: 'ESSidebarItem',
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'center',
 
   [`& .${listItemIconClasses.root}:first-of-type`]: {
     marginRight: '12px',
   },
-}));
+});
 
 const SidebarItemNestedMenu = styled('div', {
   name: 'ESSidebarItem',
   slot: 'NestedMenu',
   overridesResolver: (props, styles) => styles.nestedMenu,
-})(() => ({
+})({
   display: 'flex',
   flexDirection: 'column',
   gap: '2px',
@@ -266,7 +267,7 @@ const SidebarItemNestedMenu = styled('div', {
   [`& .${sidebarItemClasses.root}`]: {
     margin: '0',
   },
-}));
+});
 
 const SidebarItemTooltip = styled(
   ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
@@ -319,7 +320,7 @@ const SidebarItemTooltipItem = styled(MenuItem, {
   name: 'ESSidebarItem',
   slot: 'TooltipItem',
   overridesResolver: (props, styles) => styles.tooltipItem,
-})(() => ({
+})({
   [`&.${menuItemClasses.root}`]: {
     width: '100%',
 
@@ -331,15 +332,15 @@ const SidebarItemTooltipItem = styled(MenuItem, {
       opacity: '1',
     },
   },
-})) as typeof MenuItem;
+}) as typeof MenuItem;
 
 const SidebarItemTooltipDivider = styled(Divider, {
   name: 'ESSidebarItem',
   slot: 'TooltipDivider',
   overridesResolver: (props, styles) => styles.tooltipDivider,
-})(() => ({
+})({
   marginBottom: '8px',
-}));
+});
 
 export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: SidebarItemProps) => {
   const {
@@ -357,7 +358,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     text,
     id,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarItem',
   });

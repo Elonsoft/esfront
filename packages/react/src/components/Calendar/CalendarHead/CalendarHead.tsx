@@ -5,8 +5,9 @@ import { CalendarHeadProps } from './CalendarHead.types';
 import clsx from 'clsx';
 import { getCalendarHeadUtilityClass } from './CalendarHead.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 type CalendarHeadOwnerState = {
@@ -54,7 +55,7 @@ export const CalendarHead = (inProps: CalendarHeadProps) => {
     weekStart = 1,
     getWeekDays,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESCalendarHead',
   });

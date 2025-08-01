@@ -7,19 +7,18 @@ import {
   Palette,
   PaletteColor,
   PaletteColorOptions,
-  styled,
   Theme,
   ThemeOptions,
   TypographyVariants,
   TypographyVariantsOptions,
   Components,
-  Mixins,
   ComponentNameToClassKey,
   ComponentsOverrides,
   ThemeVars,
   CommonColors,
   ComponentsProps,
   ComponentsPropsList,
+  SxProps,
 } from '@mui/material/styles';
 import { Color, ComponentsVariants } from '@mui/material';
 import { ButtonPropsSizeOverrides } from '@mui/material/Button';
@@ -311,7 +310,6 @@ import {
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { TooltipClassKey, TooltipProps } from './components/Tooltip';
-import { buttonMixin, listItemMixin } from './theming/mixins';
 import { AvatarProps } from './components';
 import { BadgeProps, BadgeClassKey } from './components/Badge';
 import { BadgePlacementControlProps, BadgePlacementControlClassKey } from './components/BadgePlacementControl';
@@ -1530,15 +1528,6 @@ declare module '@mui/material/styles' {
   }
 }
 
-declare module '@mui/material/styles/createMixins' {
-  interface Mixins {
-    /** @deprecated Use our own `Button` implementation instead. */
-    button: typeof buttonMixin;
-    /** @deprecated Use our own `Button` implementation instead. */
-    listItem: typeof listItemMixin;
-  }
-}
-
 declare module '@mui/material/styles/createPalette' {
   interface CommonColors {
     link: string;
@@ -1647,5 +1636,23 @@ declare module '@mui/material/Typography' {
     micro: true;
     body1: false;
     body2: false;
+  }
+}
+
+declare module '@mui/material-pigment-css' {
+  interface ThemeArgs {
+    theme: Theme;
+  }
+}
+
+declare global {
+  namespace React {
+    interface HTMLAttributes<T> {
+      sx?: SxProps<Theme>;
+    }
+
+    interface SVGProps<T> {
+      sx?: SxProps<Theme>;
+    }
   }
 }

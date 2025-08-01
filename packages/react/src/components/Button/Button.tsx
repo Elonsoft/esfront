@@ -6,8 +6,9 @@ import { ButtonOwnProps, ButtonTypeMap } from './Button.types';
 import clsx from 'clsx';
 import { buttonClasses, getButtonUtilityClass } from './Button.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { ButtonBase, buttonBaseClasses } from '../ButtonBase';
@@ -622,19 +623,19 @@ const ButtonStartIcon = styled('span', {
   name: 'ESButton',
   slot: 'StartIcon',
   overridesResolver: (_props, styles) => [styles.icon, styles.startIcon],
-})(() => ({
+})({
   display: 'inherit',
   color: 'var(--icon)',
-}));
+});
 
 const ButtonEndIcon = styled('span', {
   name: 'ESButton',
   slot: 'EndIcon',
   overridesResolver: (_props, styles) => [styles.icon, styles.endIcon],
-})(() => ({
+})({
   display: 'inherit',
   color: 'var(--icon)',
-}));
+});
 
 /**
  * The Button allows users to take actions, and make choices, with a single tap.
@@ -653,7 +654,7 @@ export const Button = forwardRef(function Button(inProps, ref) {
     startIcon,
     endIcon,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESButton',
   });

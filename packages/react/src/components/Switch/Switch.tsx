@@ -5,7 +5,8 @@ import { SwitchProps } from './Switch.types';
 import clsx from 'clsx';
 import { getSwitchUtilityClass, switchClasses } from './Switch.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks/useControlled';
@@ -306,7 +307,7 @@ const SwitchRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 
   [`&.${switchClasses.disabled}`]: {
     opacity: '0.3',
@@ -370,11 +371,11 @@ const SwitchTrack = styled('div', {
   name: 'ESSwitch',
   slot: 'Track',
   overridesResolver: (props, styles) => styles.track,
-})(() => ({
+})({
   borderRadius: '8px',
   backgroundColor: 'currentColor',
   zIndex: -1,
-}));
+});
 
 const SwitchThumb = styled('div', {
   name: 'ESSwitch',
@@ -420,7 +421,7 @@ const SwitchInput = styled('input', {
   name: 'ESSwitch',
   slot: 'Input',
   overridesResolver: (props, styles) => styles.input,
-})(() => ({
+})({
   cursor: 'inherit',
   position: 'absolute',
   opacity: 0,
@@ -430,7 +431,7 @@ const SwitchInput = styled('input', {
   margin: 0,
   padding: 0,
   zIndex: 1,
-}));
+});
 
 /**
  * Switches toggle the state of a single setting on or off.
@@ -453,7 +454,7 @@ export const Switch = (inProps: SwitchProps) => {
     value,
     sx,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSwitch',
   });

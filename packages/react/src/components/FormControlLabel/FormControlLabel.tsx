@@ -3,8 +3,9 @@ import { FormControlLabelProps } from './FormControlLabel.types';
 import clsx from 'clsx';
 import { formControlLabelClasses, getFormControlLabelUtilityClass } from './FormControlLabel.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize, Typography } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import appendOwnerState from '@mui/utils/appendOwnerState';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -100,7 +101,7 @@ const FormControlLabelRoot = styled('label', {
         flexDirection: 'column-reverse',
       },
     },
-  ],
+  ] as never,
 }));
 
 const FormControlLabelLabel = styled(Typography, {
@@ -124,7 +125,7 @@ export const FormControlLabel = (inProps: FormControlLabelProps) => {
     slots = {},
     slotProps = {},
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESFormControlLabel' });
+  } = useDefaultProps({ props: inProps, name: 'ESFormControlLabel' });
 
   const ownerState = { ...props, labelPlacement };
   const classes = useUtilityClasses(ownerState);

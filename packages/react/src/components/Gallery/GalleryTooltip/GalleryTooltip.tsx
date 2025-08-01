@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material-pigment-css';
 
 import { Tooltip, TooltipProps } from '../../Tooltip';
 

@@ -5,8 +5,9 @@ import { TableHeadProps } from './TableHead.types';
 import clsx from 'clsx';
 import { getTableHeadUtilityClass } from './TableHead.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableHeadContext } from './TableHead.context';
@@ -75,17 +76,17 @@ const TableHeadRoot = styled('div', {
         borderTopRightRadius: 0,
       },
     },
-  ],
+  ] as never,
 });
 
 const TableHeadContainer = styled('div', {
   name: 'ESTableBody',
   slot: 'Container',
   overridesResolver: (props, styles) => styles.container,
-})(() => ({
+})({
   minWidth: '100%',
   width: 'fit-content',
-}));
+});
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
 
@@ -99,7 +100,7 @@ export const TableHead = memo(
       rowDividers = true,
       colDividers = false,
       ...props
-    } = useThemeProps({
+    } = useDefaultProps({
       props: inProps,
       name: 'ESTableHead',
     });

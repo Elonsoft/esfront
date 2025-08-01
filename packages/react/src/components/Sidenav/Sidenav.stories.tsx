@@ -2,12 +2,11 @@ import { ComponentProps, Fragment, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { styled } from '@mui/material/styles';
 import { listItemButtonClasses, outlinedInputClasses } from '@mui/material';
-import Box from '@mui/material/Box';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material-pigment-css';
 
 import { Sidenav } from './Sidenav';
 import { SidenavContext } from './Sidenav.context';
@@ -149,7 +148,7 @@ export const Demo: Story = {
     };
 
     return (
-      <Box sx={{ height: '100vh', margin: '-1rem', display: 'flex', gap: '20px', overflow: 'auto' }}>
+      <div sx={{ height: '100vh', margin: '-1rem', display: 'flex', gap: '20px', overflow: 'auto' }}>
         <Sidenav
           disableEscapeKeyDown={disableEscapeKeyDown}
           disableItemHover={disableItemHover}
@@ -479,7 +478,7 @@ export const Demo: Story = {
             eligendi eveniet optio itaque, necessitatibus commodi omnis quibusdam magnam cupiditate laboriosam.
           </p>
         </Content>
-      </Box>
+      </div>
     );
   },
 };

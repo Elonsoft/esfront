@@ -268,6 +268,14 @@ export default tseslint.config(
               group: ['@mui/material/Tooltip'],
               importNames: ['default'],
             },
+            {
+              group: ['@mui/material'],
+              importNames: ['styled'],
+            },
+            {
+              group: ['@mui/material/styles'],
+              importNames: ['styled'],
+            },
           ],
         },
       ],
@@ -330,6 +338,7 @@ export default tseslint.config(
       'react/jsx-fragments': 'error',
       'react/jsx-no-constructed-context-values': 'error',
       'react/no-object-type-as-default-prop': 'error',
+      'react/no-unknown-property': ['error', { ignore: ['sx'] }],
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/void-dom-elements-no-children': 'error',

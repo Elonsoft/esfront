@@ -5,15 +5,15 @@ import { AvatarProps } from './Avatar.types';
 import clsx from 'clsx';
 import { avatarClasses, getAvatarUtilityClass } from './Avatar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { svgIconClasses } from '../SvgIcon';
 
 type AvatarOwnerState = {
   classes?: AvatarProps['classes'];
-  size: NonNullable<AvatarProps['size']>;
   variant: NonNullable<AvatarProps['variant']>;
   outlined: NonNullable<AvatarProps['outlined']>;
 };
@@ -90,16 +90,8 @@ const AvatarRoot = styled('div', {
   justifyContent: 'center',
   overflow: 'hidden',
   color: theme.vars.palette.monoA.A500,
-
-  variants: [
-    {
-      props: true,
-      style: (props: { size: number }) => ({
-        height: `${props.size}px`,
-        width: `${props.size}px`,
-      }),
-    },
-  ],
+  height: 'var(--ESAvatar-size)',
+  width: 'var(--ESAvatar-size)',
 
   [`& .${svgIconClasses.root}`]: {
     color: theme.vars.palette.monoA.A400,
@@ -149,12 +141,12 @@ export const Avatar = (inProps: AvatarProps) => {
     size = 40,
     outlined = false,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAvatar',
   });
 
-  const ownerState = { ...props, variant, size, outlined };
+  const ownerState = { ...props, variant, outlined };
   const classes = useUtilityClasses(ownerState);
 
   const hasImgLoaded = useLoaded(src || '') === 'loaded';
@@ -171,7 +163,16 @@ export const Avatar = (inProps: AvatarProps) => {
   }
 
   return (
-    <AvatarRoot className={clsx(className, classes.root)} ownerState={ownerState} {...props}>
+    <AvatarRoot
+      className={clsx(className, classes.root)}
+      ownerState={ownerState}
+      style={
+        {
+          '--ESAvatar-size': `${size}px`,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
       {child}
     </AvatarRoot>
   );

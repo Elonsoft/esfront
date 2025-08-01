@@ -3,7 +3,8 @@ import { FileInfoNameProps } from './FileInfoName.types';
 import clsx from 'clsx';
 import { getFileInfoNameUtilityClass } from './FileInfoName.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350 } from '../../../icons';
@@ -29,23 +30,23 @@ const FileInfoNameRoot = styled('div', {
   name: 'ESFileInfoName',
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
-})(() => ({
+})({
   display: 'flex',
   alignItems: 'center',
-}));
+});
 
 const FileInfoNameButton = styled(Button, {
   name: 'ESFileInfoName',
   slot: 'Button',
   overridesResolver: (props, styles) => styles.button,
-})(() => ({
+})({
   marginLeft: 4,
   borderRadius: '50%',
 
   [`&.${buttonClasses.size300} .${buttonBaseClasses.wrapper}`]: {
     padding: '0px 4px',
   },
-}));
+});
 
 export const FileInfoName = (inProps: FileInfoNameProps) => {
   const {
@@ -56,7 +57,7 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
     labelDelete,
     iconDelete = <IconCloseW350 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESFileInfoName',
   });

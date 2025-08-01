@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -117,7 +116,7 @@ export const Demo: Story = {
 export const DemoList: Story = {
   render: (_args, context) => {
     return (
-      <Box
+      <div
         sx={(theme) => ({
           maxWidth: '360px',
           boxShadow: theme.vars.palette.shadow.down[500],
@@ -155,7 +154,7 @@ export const DemoList: Story = {
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItem>
         </List>
-      </Box>
+      </div>
     );
   },
 };
@@ -163,7 +162,7 @@ export const DemoList: Story = {
 export const DemoListButton: Story = {
   render: (_args, context) => {
     return (
-      <Box
+      <div
         sx={(theme) => ({
           maxWidth: '360px',
           boxShadow: theme.vars.palette.shadow.down[500],
@@ -198,7 +197,7 @@ export const DemoListButton: Story = {
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItemButton>
         </List>
-      </Box>
+      </div>
     );
   },
 };

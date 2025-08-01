@@ -5,11 +5,13 @@ import { BottomSheetProps } from './BottomSheet.types';
 import clsx from 'clsx';
 import { getBottomSheetUtilityClass } from './BottomSheet.classes';
 
-import { duration, styled, useThemeProps } from '@mui/material/styles';
+import { duration } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Slide from '@mui/material/Slide';
+import { styled } from '@mui/material-pigment-css';
 import { unstable_useId as useId } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -46,7 +48,7 @@ const BottomSheetRoot = styled(Modal, {
   slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })({
-  '@media print': {
+  ['@media print' as never]: {
     // Use !important to override the Modal inline-style.
     position: 'absolute !important',
   },
@@ -102,7 +104,7 @@ const BottomSheetContainer = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 });
 
 const BottomSheetWrapper = styled('div', {
@@ -136,7 +138,7 @@ const BottomSheetWrapper = styled('div', {
         alignItems: 'stretch',
       },
     },
-  ],
+  ] as never,
 });
 
 const BottomSheetContent = styled('div', {
@@ -167,7 +169,7 @@ const BottomSheetContent = styled('div', {
           transition: 'margin-top var(--ESBottomSheet-transitionDuration)',
         },
       },
-    ],
+    ] as never,
   }),
   () => ({
     marginTop: 'calc(100dvh - var(--ESBottomSheet-snapPoint))',
@@ -219,7 +221,7 @@ const BottomSheetPaper = styled('div', {
         borderTopRightRadius: 16,
       },
     },
-  ],
+  ] as never,
 }));
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.enteringScreen };
@@ -258,7 +260,7 @@ const getPixelsFromCssUnits = (cssValue: string) => {
  * Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.
  */
 export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(function BottomSheet(inProps, ref) {
-  const props = useThemeProps({ props: inProps, name: 'MuiBottomSheet' });
+  const props = useDefaultProps({ props: inProps, name: 'MuiBottomSheet' });
   const {
     'aria-describedby': ariaDescribedby,
     'aria-labelledby': ariaLabelledbyProp,

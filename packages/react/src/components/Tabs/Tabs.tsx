@@ -18,8 +18,10 @@ import { TabsProps } from './Tabs.types';
 import clsx from 'clsx';
 import { getTabsUtilityClass, tabsClasses } from './Tabs.classes';
 
-import { keyframes, styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { keyframes } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { debounce, ownerDocument, ownerWindow, useEventCallback } from '@mui/material/utils';
+import { styled, useTheme } from '@mui/material-pigment-css';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -219,7 +221,7 @@ const TabsRoot = styled('div', {
         },
       },
     },
-  ],
+  ] as never,
 }));
 
 const TabsScroller = styled('div', {
@@ -299,7 +301,7 @@ const TabsScroller = styled('div', {
         overflowY: 'hidden',
       },
     },
-  ],
+  ] as never,
 }));
 
 const FlexContainer = styled('div', {
@@ -322,7 +324,7 @@ const FlexContainer = styled('div', {
         justifyContent: 'center',
       },
     },
-  ],
+  ] as never,
 }));
 
 const TabsIndicator = styled('span', {
@@ -385,7 +387,7 @@ const TabsIndicator = styled('span', {
         backgroundColor: theme.vars.palette.secondary[300],
       },
     },
-  ],
+  ] as never,
 }));
 
 const TabsScrollbarSize = styled(ScrollbarSize)({
@@ -428,7 +430,7 @@ const TabsDivider = styled(Divider, {
         top: 0,
       },
     },
-  ],
+  ] as never,
 }));
 
 const defaultIndicatorStyle: { [key: string]: number } = {};
@@ -460,7 +462,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     variant = 'standard',
     visibleScrollbar = false,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESTabs' });
+  } = useDefaultProps({ props: inProps, name: 'ESTabs' });
   const theme = useTheme();
   const isRtl = theme.direction === 'rtl';
 
