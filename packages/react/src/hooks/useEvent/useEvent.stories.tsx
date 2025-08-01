@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { TextField } from '@mui/material';
-import Box from '@mui/material-pigment-css/Box';
 
 import { useEvent } from './useEvent';
 
@@ -42,12 +41,12 @@ export const Demo: Story = {
 
     return (
       <>
-        <Box sx={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <div sx={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
           <TextField fullWidth label="Value" size="40" value={text} onChange={(event) => setText(event.target.value)} />
           <Chat />
-        </Box>
-        <Box sx={{ margin: '8px' }}>Text: {text}</Box>
-        <Box sx={{ margin: '8px' }}>Message: {message}</Box>
+        </div>
+        <div sx={{ margin: '8px' }}>Text: {text}</div>
+        <div sx={{ margin: '8px' }}>Message: {message}</div>
       </>
     );
   },

@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material-pigment-css/Box';
 
 import { useIntersectionObserver } from './useIntersectionObserver';
 
@@ -29,7 +28,7 @@ export const Demo: Story = {
     });
 
     return (
-      <Box
+      <div
         sx={{
           height: 'min(calc(100vh - 32px), 300px)',
           overflow: 'auto',
@@ -44,9 +43,9 @@ export const Demo: Story = {
         >
           Bottom element is intersecting: {isIntersecting.toString()}
         </Typography>
-        <Box sx={{ height: '600px' }} />
-        <Box ref={ref} sx={{ height: '64px', backgroundColor: 'primary.300' }} />
-      </Box>
+        <div sx={{ height: '600px' }} />
+        <div ref={ref} sx={{ height: '64px', backgroundColor: 'primary.300' }} />
+      </div>
     );
   },
 };

@@ -299,6 +299,7 @@ const AudioPlayerTooltip = styled(
 const AudioPlayerMenu = styled(
   ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
   {
+    shouldForwardProp: () => true,
     name: 'ESAudioPlayer',
     slot: 'Menu',
     overridesResolver: (props, styles) => styles.menu,

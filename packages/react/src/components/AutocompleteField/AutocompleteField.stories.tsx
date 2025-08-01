@@ -2,8 +2,6 @@ import { ComponentProps, useEffect, useRef, useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import { AutocompleteField, AutocompleteFieldProps } from '.';
 
 import { AutocompleteMenuFooter, AutocompleteMenuHeader } from '../AutocompleteMenu';
@@ -260,7 +258,7 @@ export const Demo: Story = {
     };
 
     return (
-      <Box sx={{ maxWidth: '500px' }}>
+      <div sx={{ maxWidth: '500px' }}>
         {args.multiple ? (
           <AutocompleteField<User>
             multiple
@@ -277,7 +275,7 @@ export const Demo: Story = {
             {...props}
           />
         )}
-      </Box>
+      </div>
     );
   },
 };
@@ -297,7 +295,7 @@ export const Groups: Story = {
     }, [locale]);
 
     return (
-      <Box sx={{ maxWidth: '500px' }}>
+      <div sx={{ maxWidth: '500px' }}>
         <AutocompleteField<User>
           fullWidth
           multiple
@@ -316,7 +314,7 @@ export const Groups: Story = {
           value={users}
           onChange={onChangeUsers}
         />
-      </Box>
+      </div>
     );
   },
 };
@@ -335,7 +333,7 @@ export const Customization: Story = {
     }, [locale]);
 
     return (
-      <Box sx={{ maxWidth: '500px' }}>
+      <div sx={{ maxWidth: '500px' }}>
         <AutocompleteField<User>
           fullWidth
           multiple
@@ -347,7 +345,7 @@ export const Customization: Story = {
           value={users}
           onChange={onChangeUsers}
         />
-      </Box>
+      </div>
     );
   },
 };
@@ -367,7 +365,7 @@ export const Controlled: Story = {
     }, [locale]);
 
     return (
-      <Box sx={{ maxWidth: '500px' }}>
+      <div sx={{ maxWidth: '500px' }}>
         <AutocompleteField<User>
           fullWidth
           multiple
@@ -380,7 +378,7 @@ export const Controlled: Story = {
           value={users}
           onChange={onChangeUsers}
         />
-      </Box>
+      </div>
     );
   },
 };

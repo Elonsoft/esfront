@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material-pigment-css/Box';
 
 import { useClipboard } from './useClipboard';
 
@@ -38,7 +37,7 @@ export const Demo: Story = {
     };
 
     return (
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
+      <div sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
         <TextField fullWidth label="Value" size="40" value={value} onChange={(event) => setValue(event.target.value)} />
         <Button color="primary" size="400" variant="contained" onClick={onCopy}>
           Copy
@@ -48,7 +47,7 @@ export const Demo: Story = {
             Paste
           </Button>
         )}
-      </Box>
+      </div>
     );
   },
 };

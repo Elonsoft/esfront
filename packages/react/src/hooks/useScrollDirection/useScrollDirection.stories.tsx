@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Typography } from '@mui/material';
-import Box from '@mui/material-pigment-css/Box';
 
 import { useScrollDirection } from './useScrollDirection';
 
@@ -38,7 +37,7 @@ export const Demo: Story = {
         <Typography sx={{ position: 'fixed' }} variant="overline">
           {scrollDirection ? scrollDirection : `the page hasn't been scrolled`}
         </Typography>
-        <Box sx={{ height: '150vh' }} />
+        <div sx={{ height: '150vh' }} />
       </>
     );
   },

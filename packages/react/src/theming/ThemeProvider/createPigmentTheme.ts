@@ -6,6 +6,7 @@ import { palettes as defaultPalettes } from '../../theming/palettes';
 import { createScrollbars as createDefaultScrollbars } from '../../theming/scrollbars';
 import { createTypography as createDefaultTypography } from '../../theming/typography';
 import { breakpoints as defaultBreakpoints } from '../breakpoints';
+import { createComponents as createDefaultComponents } from '../components';
 
 const defaultPaletteDark = {
   mode: 'dark' as const,
@@ -80,6 +81,10 @@ export const createTheme = (
 
   const scrollbars = { ...createDefaultScrollbars(theme), ...(createScrollbars ? createScrollbars(theme) : {}) };
   const typography = { ...createDefaultTypography(theme), ...(createTypography ? createTypography(theme) : {}) };
+  const components = {
+    ...createDefaultComponents(theme, typography),
+    ...(createComponents ? createComponents(theme, typography) : {}),
+  };
 
   return createMUITheme(
     {
@@ -100,6 +105,7 @@ export const createTheme = (
           ...breakpoints,
         },
       },
+      components,
       scrollbars,
       typography: {
         fontFamily: "'Roboto', sans-serif",

@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material-pigment-css/Box';
 
 import { usePermission } from './usePermission';
 
@@ -33,7 +32,7 @@ export const Demo: Story = {
 
     return (
       <>
-        <Box sx={{ maxWidth: '320px' }}>
+        <div sx={{ maxWidth: '320px' }}>
           <TextField fullWidth select label="Permission" size="40" value={permission} onChange={onChange}>
             <MenuItem value="camera">camera</MenuItem>
             <MenuItem value="geolocation">geolocation</MenuItem>
@@ -46,7 +45,7 @@ export const Demo: Story = {
             <MenuItem value="speaker">speaker</MenuItem>
             <MenuItem value="xr-spatial-tracking">xr-spatial-tracking</MenuItem>
           </TextField>
-        </Box>
+        </div>
         <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">
           Permission status: {JSON.stringify(state, null, 2)}
         </Typography>

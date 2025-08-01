@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import { Avatar } from '.';
 
 import { IconAccountLc, IconAccountRoundedLc } from '../../icons';
@@ -43,13 +41,13 @@ export const Demo: Story = {
   },
   render: ({ children, src, ...args }) => {
     return (
-      <Box display="flex" flexDirection="column" gap="10px">
+      <div sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <Avatar src={src} {...args}>
           {children}
         </Avatar>
         <Avatar {...args}>{children}</Avatar>
         <Avatar {...args}>{args.variant === 'circle' ? <IconAccountRoundedLc /> : <IconAccountLc />}</Avatar>
-      </Box>
+      </div>
     );
   },
 };

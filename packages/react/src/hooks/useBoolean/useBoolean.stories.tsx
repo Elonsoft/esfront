@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import { useBoolean } from './useBoolean';
 
 import { Button } from '../../components/Button';
@@ -22,7 +20,7 @@ export const Demo: Story = {
   render: function Render() {
     const [on, toggle] = useBoolean(true);
     return (
-      <Box sx={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+      <div sx={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
         <div>{on ? 'ON' : 'OFF'}</div>
         <Button color="primary" variant="contained" onClick={toggle}>
           Toggle
@@ -33,7 +31,7 @@ export const Demo: Story = {
         <Button color="primary" variant="contained" onClick={() => toggle(false)}>
           set OFF
         </Button>
-      </Box>
+      </div>
     );
   },
 };

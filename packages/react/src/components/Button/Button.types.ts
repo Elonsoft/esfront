@@ -24,8 +24,7 @@ export interface ButtonOwnProps {
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
-  // sx?: SxProps<Theme>;
-  sx?: SxProp;
+  sx?: SxProps<Theme>;
   /**
    * The color of the component.
    * It supports both default and custom theme colors, which can be added as shown in the

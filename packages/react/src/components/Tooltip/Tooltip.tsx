@@ -1036,6 +1036,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
               }
             : childNode
         }
+        as={PopperComponentProp ?? Popper}
         id={id}
         open={childNode ? open : false}
         placement={placement}
@@ -1043,10 +1044,6 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
         {...interactiveWrapperListeners}
         {...popperProps}
         popperOptions={popperOptions}
-        slots={{
-          root: PopperComponentProp ?? Popper,
-          ...popperProps?.slots,
-        }}
       >
         {({ TransitionProps: TransitionPropsInner }) => (
           // eslint-disable-next-line

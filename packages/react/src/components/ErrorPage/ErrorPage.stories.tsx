@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import {
   ErrorPage,
   ErrorPageActions,
@@ -33,7 +31,7 @@ export const Demo: Story = {
     const locale = (context.globals.locale || 'en') as 'en' | 'ru';
 
     return (
-      <Box margin="-1rem">
+      <div sx={{ margin: '1rem' }}>
         <ErrorPage sx={{ backgroundImage: 'url(https://placehold.co/100x100)' }}>
           <ErrorPageLogo>LOGO</ErrorPageLogo>
 
@@ -60,7 +58,7 @@ export const Demo: Story = {
 
           <ErrorPageFooter>{locale === 'ru' ? 'Код ошибки 403' : 'Error code 403'}</ErrorPageFooter>
         </ErrorPage>
-      </Box>
+      </div>
     );
   },
 };

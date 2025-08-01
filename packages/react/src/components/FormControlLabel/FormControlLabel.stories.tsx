@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { FormHelperText } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
-import Box from '@mui/material-pigment-css/Box';
 
 import { FormControlLabel } from '.';
 
@@ -71,11 +70,11 @@ export const Demo: Story = {
     };
 
     return (
-      <Box alignItems="flex-start" display="flex" flexDirection="column" gap="16px">
+      <div sx={{ alignItems: 'flex-start', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <FormControlLabel control={<Checkbox disabled={args.disabled} size={args.size} />} {...props} />
         <FormControlLabel control={<Checkbox disabled={args.disabled} size={args.size} />} {...props} />
         <FormControlLabel control={<Checkbox disabled={args.disabled} size={args.size} />} {...props} />
-      </Box>
+      </div>
     );
   },
 };
@@ -123,7 +122,7 @@ export const Radio: Story = {
 export const HelperText: Story = {
   render: (args) => {
     return (
-      <Box alignItems="flex-start" display="flex" flexDirection="column" gap="16px">
+      <div sx={{ alignItems: 'flex-start', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div>
           <FormControlLabel control={<Checkbox size="large" />} label={args.label || 'Control'} />
           <FormHelperText sx={{ margin: '2px 0 0 32px' }}>Helper text</FormHelperText>
@@ -140,7 +139,7 @@ export const HelperText: Story = {
           />
           <FormHelperText sx={{ margin: '4px 0 0 24px' }}>Helper text</FormHelperText>
         </div>
-      </Box>
+      </div>
     );
   },
 };

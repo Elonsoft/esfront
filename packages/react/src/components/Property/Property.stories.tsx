@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import { Property } from '.';
 
 import { InformationIcon } from '../InformationIcon';
@@ -36,7 +34,7 @@ export const Demo: Story = {
     const locale = context.globals.locale;
 
     return (
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <div sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         <Property {...args} name={locale === 'ru' ? 'Цвет' : 'Color'} value={locale === 'ru' ? 'Черный' : 'Black'} />
         <Property
           {...args}
@@ -50,7 +48,7 @@ export const Demo: Story = {
           }
           value={locale === 'ru' ? '10см / 10см / 30см' : '10cm / 10cm / 30cm'}
         />
-      </Box>
+      </div>
     );
   },
 };

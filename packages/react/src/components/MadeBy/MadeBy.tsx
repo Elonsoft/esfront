@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import { getMadeByUtilityClass, madeByClasses } from './MadeBy.classes';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { styled } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { styled } from '@mui/material-pigment-css';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconElonsoft } from '../../icons';

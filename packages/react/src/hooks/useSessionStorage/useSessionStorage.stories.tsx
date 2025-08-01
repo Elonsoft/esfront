@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material-pigment-css/Box';
 
 import { useSessionStorage } from './useSessionStorage';
 
@@ -24,7 +23,7 @@ export const Demo: Story = {
     const [value, update, remove] = useSessionStorage('useSessionStorage', '');
 
     return (
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '360px' }}>
+      <div sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '360px' }}>
         <TextField
           fullWidth
           aria-label="SessionStorage"
@@ -36,7 +35,7 @@ export const Demo: Story = {
         <Button color="primary" size="400" variant="contained" onClick={() => remove()}>
           Remove
         </Button>
-      </Box>
+      </div>
     );
   },
 };

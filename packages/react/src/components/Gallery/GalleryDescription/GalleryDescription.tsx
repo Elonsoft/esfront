@@ -5,7 +5,6 @@ import { GalleryDescriptionProps } from './GalleryDescription.types';
 import clsx from 'clsx';
 import { getGalleryDescriptionUtilityClass } from './GalleryDescription.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material-pigment-css';
@@ -182,8 +181,6 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
 
   const { rectTop, rectBottom } = useGalleryPanelsContext();
 
-  const theme = useTheme();
-
   const rootRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
@@ -201,7 +198,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     if (galleryPanelContext) {
       galleryPanelContext.setExpanded(isExpanded);
     }
-  }, [theme, isExpanded]);
+  }, [isExpanded]);
 
   useEffect(() => {
     if (rootRef.current) {

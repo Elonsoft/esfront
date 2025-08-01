@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import { Divider } from '.';
 
 const meta: Meta<typeof Divider> = {
@@ -36,9 +34,9 @@ type Story = StoryObj<typeof Divider>;
 export const Demo: Story = {
   render: (args) => {
     return (
-      <Box height="200px" width="200px">
+      <div sx={{ height: '200px', width: '200px' }}>
         <Divider {...args} />
-      </Box>
+      </div>
     );
   },
 };
@@ -47,9 +45,9 @@ export const Demo: Story = {
 export const WithText: Story = {
   render: (args, context) => {
     return (
-      <Box height="200px" width="200px">
+      <div sx={{ height: '200px', width: '200px' }}>
         <Divider {...args}>{context.globals.locale === 'en' ? 'Text' : 'Текст'}</Divider>
-      </Box>
+      </div>
     );
   },
 };

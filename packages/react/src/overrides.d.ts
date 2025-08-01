@@ -7,7 +7,6 @@ import {
   Palette,
   PaletteColor,
   PaletteColorOptions,
-  styled,
   Theme,
   ThemeOptions,
   TypographyVariants,

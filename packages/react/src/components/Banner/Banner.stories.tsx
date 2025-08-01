@@ -2,8 +2,6 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import { Banner, BannerActions, BannerTitle } from '.';
 
 import { IconCloseW600 } from '../../icons';
@@ -90,7 +88,7 @@ type Story = StoryObj<Args>;
 export const Demo: Story = {
   render: (args, context) => {
     return (
-      <Box margin="-1rem">
+      <div sx={{ margin: '-1rem' }}>
         <Banner
           action={
             args.action ? (
@@ -152,7 +150,7 @@ export const Demo: Story = {
           {!!args.title && <BannerTitle>{args.title}</BannerTitle>}
           {args.text || getText(context)}
         </Banner>
-      </Box>
+      </div>
     );
   },
 };

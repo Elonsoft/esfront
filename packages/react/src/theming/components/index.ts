@@ -1,7 +1,7 @@
 import { Components, CssVarsTheme, Theme, TypographyVariantsOptions } from '@mui/material/styles';
 
-import { createSlider } from './slider';
-export { createSlider } from './slider';
+import { createSlider, sliderDefaultProps } from './slider';
+export { createSlider, sliderDefaultProps } from './slider';
 
 import {
   createFormControl,
@@ -11,6 +11,8 @@ import {
   createOutlinedInput,
   createSelect,
   createTextField,
+  formControlDefaultProps,
+  textFieldDefaultProps,
 } from './text-field';
 export {
   createFormControl,
@@ -20,6 +22,8 @@ export {
   createOutlinedInput,
   createSelect,
   createTextField,
+  formControlDefaultProps,
+  textFieldDefaultProps,
 } from './text-field';
 
 import {
@@ -30,8 +34,9 @@ import {
   createListItemText,
   createMenu,
   createMenuItem,
+  listItemTextDefaultProps,
 } from './menu';
-export { createMenu } from './menu';
+export { createMenu, listItemTextDefaultProps } from './menu';
 
 export const createComponents = (theme: Theme, typography: TypographyVariantsOptions) => {
   const MuiSlider = createSlider(theme, typography);
@@ -73,4 +78,11 @@ export const createComponents = (theme: Theme, typography: TypographyVariantsOpt
   };
 
   return components;
+};
+
+export const defaultProps = {
+  MuiSlider: sliderDefaultProps,
+  MuiFormControl: formControlDefaultProps,
+  MuiTextField: textFieldDefaultProps,
+  MuiListItemText: listItemTextDefaultProps,
 };

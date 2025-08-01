@@ -1,10 +1,11 @@
-import { Component } from '../component';
+import { Theme, TypographyVariantsOptions } from '@mui/material/styles';
 
-export const createSlider: Component<'MuiSlider'> = (theme, typography) => {
+export const sliderDefaultProps = {
+  color: 'secondary' as const,
+};
+
+export const createSlider = (theme: Theme, typography: TypographyVariantsOptions) => {
   return {
-    defaultProps: {
-      color: 'secondary',
-    },
     styleOverrides: {
       root: {
         borderRadius: '8px',

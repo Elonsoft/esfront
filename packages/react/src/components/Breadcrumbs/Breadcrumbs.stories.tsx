@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 import { Breadcrumbs } from './Breadcrumbs';
 
@@ -54,6 +52,6 @@ export const DemoBase: Story = {
 
 export const Demo: Story = {
   render: (args, context) => {
-    return <Box sx={{ padding: '30px 0' }}>{DemoBase.render?.(args, context)} </Box>;
+    return <div sx={{ padding: '30px 0' }}>{DemoBase.render?.(args, context)} </div>;
   },
 };

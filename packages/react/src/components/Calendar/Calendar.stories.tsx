@@ -2,8 +2,6 @@ import { useCallback, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material-pigment-css/Box';
-
 import { Calendar, CalendarHead } from '.';
 
 import { useDateAdapterContext } from '../DateAdapter';
@@ -94,7 +92,7 @@ export const Demo: Story = {
     );
 
     return (
-      <Box sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.vars.palette.shadow.down[600], maxWidth: '400px' })}>
+      <div sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.vars.palette.shadow.down[600], maxWidth: '400px' })}>
         <CalendarHead weekStart={args.weekStart} />
         <Calendar
           month={args.month}
@@ -106,7 +104,7 @@ export const Demo: Story = {
           year={args.year}
           onSelectionChange={onSelectionChange}
         />
-      </Box>
+      </div>
     );
   },
 };
@@ -117,7 +115,7 @@ export const Range: Story = {
     const { selection, hover, onSelectionChange, onHover, onHoverDelete } = useRangeDatePicker();
 
     return (
-      <Box
+      <div
         sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.vars.palette.shadow.down[600], maxWidth: '400px' })}
         onMouseLeave={onHoverDelete}
       >
@@ -134,7 +132,7 @@ export const Range: Story = {
           onHover={onHover}
           onSelectionChange={onSelectionChange}
         />
-      </Box>
+      </div>
     );
   },
 };
@@ -145,7 +143,7 @@ export const DualRange: Story = {
     const { selection, hover, onSelectionChange, onHover, onHoverDelete } = useRangeDatePicker();
 
     return (
-      <Box
+      <div
         sx={(theme) => ({
           borderRadius: '8px',
           boxShadow: theme.vars.palette.shadow.down[600],
@@ -154,7 +152,7 @@ export const DualRange: Story = {
         })}
         onMouseLeave={onHoverDelete}
       >
-        <Box flex="1" sx={(theme) => ({ borderRight: `1px solid ${theme.vars.palette.monoA.A100}` })}>
+        <div sx={(theme) => ({ borderRight: `1px solid ${theme.vars.palette.monoA.A100}`, flex: '1' })}>
           <CalendarHead weekStart={args.weekStart} />
           <Calendar
             showPrevMonth
@@ -167,8 +165,8 @@ export const DualRange: Story = {
             onHover={onHover}
             onSelectionChange={onSelectionChange}
           />
-        </Box>
-        <Box flex="1">
+        </div>
+        <div sx={{ flex: '1' }}>
           <CalendarHead weekStart={args.weekStart} />
           <Calendar
             showNextMonth
@@ -181,8 +179,8 @@ export const DualRange: Story = {
             onHover={onHover}
             onSelectionChange={onSelectionChange}
           />
-        </Box>
-      </Box>
+        </div>
+      </div>
     );
   },
 };
@@ -196,7 +194,7 @@ export const DisabledAndTooltips: Story = {
     const { selection, hover, onSelectionChange, onHover, onHoverDelete } = useRangeDatePicker();
 
     return (
-      <Box
+      <div
         sx={(theme) => ({ borderRadius: '8px', boxShadow: theme.vars.palette.shadow.down[600], maxWidth: '400px' })}
         onMouseLeave={onHoverDelete}
       >
@@ -241,7 +239,7 @@ export const DisabledAndTooltips: Story = {
           onHover={onHover}
           onSelectionChange={onSelectionChange}
         />
-      </Box>
+      </div>
     );
   },
 };

@@ -8,7 +8,6 @@ import { getTableRowUtilityClass, tableRowClasses } from './TableRow.classes';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { styled } from '@mui/material-pigment-css';
-import Box from '@mui/material-pigment-css/Box';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableContext } from '../Table.context';
@@ -66,7 +65,7 @@ const TableRowRoot = styled('div', {
   ] as never,
 }));
 
-const TableRowContent = styled(Box, {
+const TableRowContent = styled('div', {
   name: 'ESTableRow',
   slot: 'Content',
   overridesResolver: (props, styles) => styles.content,

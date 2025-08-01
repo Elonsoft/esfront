@@ -11,7 +11,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Box from '@mui/material-pigment-css/Box';
 
 import { Button } from '../../../components/Button';
 import { Divider } from '../../../components/Divider';
@@ -117,7 +116,7 @@ export const Demo: Story = {
 export const DemoList: Story = {
   render: (_args, context) => {
     return (
-      <Box
+      <div
         sx={(theme) => ({
           maxWidth: '360px',
           boxShadow: theme.vars.palette.shadow.down[500],
@@ -155,7 +154,7 @@ export const DemoList: Story = {
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItem>
         </List>
-      </Box>
+      </div>
     );
   },
 };
@@ -163,7 +162,7 @@ export const DemoList: Story = {
 export const DemoListButton: Story = {
   render: (_args, context) => {
     return (
-      <Box
+      <div
         sx={(theme) => ({
           maxWidth: '360px',
           boxShadow: theme.vars.palette.shadow.down[500],
@@ -198,7 +197,7 @@ export const DemoListButton: Story = {
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItemButton>
         </List>
-      </Box>
+      </div>
     );
   },
 };

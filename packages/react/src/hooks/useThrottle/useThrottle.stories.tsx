@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material-pigment-css/Box';
 
 import { useThrottle } from './useThrottle';
 
@@ -35,7 +34,7 @@ export const Demo: Story = {
 
     return (
       <div>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
+        <div sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
           <TextField
             fullWidth
             label="Value"
@@ -43,7 +42,7 @@ export const Demo: Story = {
             value={value}
             onChange={(event) => setValue(event.target.value)}
           />
-        </Box>
+        </div>
 
         <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">
           Value: {value}

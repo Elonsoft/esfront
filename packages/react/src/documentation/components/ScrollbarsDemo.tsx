@@ -1,6 +1,5 @@
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material-pigment-css';
-import Box from '@mui/material-pigment-css/Box';
 
 const ScrollbarsDemoName = styled(Typography)(({ theme }) => ({
   display: 'inline-block',
@@ -23,9 +22,9 @@ export const ScrollbarsDemo = () => {
   );
 
   return (
-    <Box>
+    <div>
       <ScrollbarsDemoName component="code">normalMonoA</ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'monoB.A75',
@@ -34,11 +33,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         normalMonoB
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'monoA.A800',
@@ -47,11 +46,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         normalBlack
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'white.A800',
@@ -60,11 +59,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         normalWhite
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'black.A800',
@@ -73,11 +72,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         thinMonoA
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'monoA.A75',
@@ -85,11 +84,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         thinMonoB
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'monoA.A800',
@@ -98,11 +97,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         thinBlack
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'white.A800',
@@ -111,11 +110,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         thinWhite
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'black.A800',
@@ -124,11 +123,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         overlayMonoA
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'monoB.A75',
@@ -137,11 +136,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         overlayMonoB
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'monoA.A800',
@@ -150,11 +149,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         overlayBlack
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'white.A800',
@@ -163,11 +162,11 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
+      </div>
       <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
         overlayWhite
       </ScrollbarsDemoName>
-      <Box
+      <div
         sx={(theme) => ({
           height: '150px',
           backgroundColor: 'black.A800',
@@ -176,7 +175,7 @@ export const ScrollbarsDemo = () => {
         })}
       >
         {content}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };

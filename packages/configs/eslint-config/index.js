@@ -268,6 +268,14 @@ export default tseslint.config(
               group: ['@mui/material/Tooltip'],
               importNames: ['default'],
             },
+            {
+              group: ['@mui/material'],
+              importNames: ['styled'],
+            },
+            {
+              group: ['@mui/material/styles'],
+              importNames: ['styled'],
+            },
           ],
         },
       ],

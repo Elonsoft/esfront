@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { TextField } from '@mui/material';
-import Box from '@mui/material-pigment-css/Box';
 
 import {
   Filters,
@@ -64,12 +63,12 @@ export const Demo: Story = {
         </FiltersHeader>
         <FiltersContent>
           <FiltersFilter title={context.globals.locale === 'ru' ? 'Мощность' : 'Power'}>
-            <Box sx={{ padding: '4px 8px 8px' }}>
+            <div sx={{ padding: '4px 8px 8px' }}>
               <TextFieldGroup>
                 <TextField fullWidth label="От" size="40" />
                 <TextField fullWidth label="До" size="40" />
               </TextFieldGroup>
-            </Box>
+            </div>
           </FiltersFilter>
           <FiltersFilter endAdornment={<Switch />} title={context.globals.locale === 'ru' ? 'В наличии' : 'In stock'} />
           <FiltersFilter

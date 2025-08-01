@@ -14,7 +14,6 @@ import { svgIconClasses } from '../SvgIcon';
 
 type AvatarOwnerState = {
   classes?: AvatarProps['classes'];
-  size: NonNullable<AvatarProps['size']>;
   variant: NonNullable<AvatarProps['variant']>;
   outlined: NonNullable<AvatarProps['outlined']>;
 };
@@ -91,16 +90,8 @@ const AvatarRoot = styled('div', {
   justifyContent: 'center',
   overflow: 'hidden',
   color: theme.vars.palette.monoA.A500,
-
-  variants: [
-    {
-      props: true,
-      style: (props: { size: number }) => ({
-        height: `${props.size}px`,
-        width: `${props.size}px`,
-      }),
-    },
-  ] as never,
+  height: 'var(--ESAvatar-size)',
+  width: 'var(--ESAvatar-size)',
 
   [`& .${svgIconClasses.root}`]: {
     color: theme.vars.palette.monoA.A400,
@@ -155,7 +146,7 @@ export const Avatar = (inProps: AvatarProps) => {
     name: 'ESAvatar',
   });
 
-  const ownerState = { ...props, variant, size, outlined };
+  const ownerState = { ...props, variant, outlined };
   const classes = useUtilityClasses(ownerState);
 
   const hasImgLoaded = useLoaded(src || '') === 'loaded';
@@ -172,7 +163,16 @@ export const Avatar = (inProps: AvatarProps) => {
   }
 
   return (
-    <AvatarRoot className={clsx(className, classes.root)} ownerState={ownerState} {...props}>
+    <AvatarRoot
+      className={clsx(className, classes.root)}
+      ownerState={ownerState}
+      style={
+        {
+          '--ESAvatar-size': `${size}px`,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
       {child}
     </AvatarRoot>
   );
