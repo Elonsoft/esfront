@@ -1,0 +1,88 @@
+/* stylelint-disable at-rule-empty-line-before */
+
+@use 'sass:map';
+
+@use '../settings';
+@use '../helpers/breakpoints';
+
+@function -get-value($value) {
+  @if $value == 'auto' {
+    @return $value;
+  } @else {
+    @return #{$value}px;
+  }
+}
+
+@mixin include() {
+  @include breakpoints.adaptive-classes() using ($prefix) {
+    @each $value in map.get(settings.$utilities, 'padding') {
+      .#{$prefix}pt-#{$value} {
+        padding-top: -get-value($value);
+      }
+
+      .#{$prefix}pb-#{$value} {
+        padding-bottom: -get-value($value);
+      }
+
+      .#{$prefix}pl-#{$value} {
+        padding-left: -get-value($value);
+      }
+
+      .#{$prefix}pr-#{$value} {
+        padding-right: -get-value($value);
+      }
+
+      .#{$prefix}px-#{$value} {
+        padding-left: -get-value($value);
+        padding-right: -get-value($value);
+      }
+
+      .#{$prefix}py-#{$value} {
+        padding-bottom: -get-value($value);
+        padding-top: -get-value($value);
+      }
+    }
+
+    @each $value in map.get(settings.$utilities, 'margin') {
+      .#{$prefix}mt-#{$value} {
+        margin-top: -get-value($value);
+      }
+
+      .#{$prefix}mb-#{$value} {
+        margin-bottom: -get-value($value);
+      }
+
+      .#{$prefix}ml-#{$value} {
+        margin-left: -get-value($value);
+      }
+
+      .#{$prefix}mr-#{$value} {
+        margin-right: -get-value($value);
+      }
+
+      .#{$prefix}mx-#{$value} {
+        margin-left: -get-value($value);
+        margin-right: -get-value($value);
+      }
+
+      .#{$prefix}my-#{$value} {
+        margin-bottom: -get-value($value);
+        margin-top: -get-value($value);
+      }
+    }
+
+    @each $value in map.get(settings.$utilities, 'gap') {
+      .#{$prefix}gap-#{$value} {
+        gap: -get-value($value);
+      }
+
+      .#{$prefix}gap-x-#{$value} {
+        column-gap: -get-value($value);
+      }
+
+      .#{$prefix}gap-y-#{$value} {
+        row-gap: -get-value($value);
+      }
+    }
+  }
+}

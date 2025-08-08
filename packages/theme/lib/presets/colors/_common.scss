@@ -1,0 +1,11 @@
+@use '../../helpers/colors';
+
+@mixin common() {
+  --es-black-500: #000;
+
+  @include colors.color-alphas('es-black', #000);
+
+  --es-white-500: #fff;
+
+  @include colors.color-alphas('es-white', #fff);
+}

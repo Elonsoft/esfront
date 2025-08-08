@@ -1,0 +1,57 @@
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable scss/dollar-variable-empty-line-before */
+
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../settings';
+
+@use './breakpoints';
+
+@function rem($pixels) {
+  @return #{math.div($pixels, 16)}rem;
+}
+
+@mixin level-properties($level) {
+  @if map.has-key($level, 'font-size') {
+    font-size: rem(map.get($level, 'font-size'));
+  }
+
+  @if map.has-key($level, 'font-weight') {
+    font-weight: map.get($level, 'font-weight');
+  }
+
+  @if map.has-key($level, 'letter-spacing') {
+    letter-spacing: rem(map.get($level, 'letter-spacing'));
+  }
+
+  @if map.has-key($level, 'line-height') {
+    line-height: rem(map.get($level, 'line-height'));
+  }
+
+  @if map.has-key($level, 'text-decoration-thickness') {
+    text-decoration-thickness: rem(map.get($level, 'text-decoration-thickness'));
+  }
+
+  @if map.has-key($level, 'text-underline-offset') {
+    text-underline-offset: rem(map.get($level, 'text-underline-offset'));
+  }
+}
+
+@mixin level($name) {
+  @if not map.has-key(settings.$typography, $name) {
+    @error "Level #{$name} is not defined.";
+  }
+
+  $level: map.get(settings.$typography, $name);
+
+  @include level-properties($level);
+
+  @if map.has-key($level, 'breakpoints') {
+    @each $breakpoint, $breakpoint-level in map.get($level, 'breakpoints') {
+      @include breakpoints.up($breakpoint) {
+        @include level-properties($breakpoint-level);
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable media-feature-name-no-unknown */
+
+@use 'sass:list';
+@use 'sass:map';
+
+@use '../settings';
+
+@function breakpoint-next($name) {
+  $breakpoint-names: map.keys(settings.$breakpoints);
+  $n: list.index($breakpoint-names, $name);
+
+  @if not $n {
+    @error "Breakpoint #{$name} is not defined.";
+  }
+
+  @return if($n < list.length($breakpoint-names), list.nth($breakpoint-names, $n + 1), null);
+}
+
+@mixin adaptive-classes() {
+  @each $name, $value in settings.$breakpoints {
+    @if $value == 0 {
+      @content ('');
+    } @else {
+      @media (width >= #{$value}px) {
+        @content ('#{$name}\\:');
+      }
+    }
+  }
+}
+
+@mixin up($name) {
+  @if not map.has-key(settings.$breakpoints, $name) {
+    @error "Breakpoint #{$name} is not defined.";
+  }
+
+  @media (width >= #{map.get(settings.$breakpoints, $name)}px) {
+    @content;
+  }
+}
+
+@mixin down($name) {
+  @if not map.has-key(settings.$breakpoints, $name) {
+    @error "Breakpoint #{$name} is not defined.";
+  }
+
+  @media (width < #{map.get(settings.$breakpoints, $name)}px) {
+    @content;
+  }
+}
+
+@mixin between($lower, $upper) {
+  @if not map.has-key(settings.$breakpoints, $lower) {
+    @error "Breakpoint #{$lower} is not defined.";
+  }
+
+  @if not map.has-key(settings.$breakpoints, $upper) {
+    @error "Breakpoint #{$upper} is not defined.";
+  }
+
+  @media (#{map.get(settings.$breakpoints, $lower)}px <= width < #{map.get(settings.$breakpoints, $upper)}px) {
+    @content;
+  }
+}
+
+@mixin only($name) {
+  @if not map.has-key(settings.$breakpoints, $name) {
+    @error "Breakpoint #{$name} is not defined.";
+  }
+
+  $min: map.get(settings.$breakpoints, $name);
+  $next: breakpoint-next($name, settings.$breakpoints);
+  $max: map.get(settings.$breakpoints, $next);
+
+  @if $min != null and $max != null {
+    @media (#{$min} <= width < #{$max}px) {
+      @content;
+    }
+  } @else if $max == null {
+    @include up($name, settings.$breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include down($next, settings.$breakpoints) {
+      @content;
+    }
+  }
+}

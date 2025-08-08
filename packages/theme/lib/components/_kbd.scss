@@ -1,0 +1,25 @@
+@mixin include() {
+  .es-kbd {
+    border-radius: 4px;
+    color: var(--es-mono-a-a900);
+    display: inline-block;
+    font-family: inherit;
+    padding: 0 4px;
+
+    &--contained {
+      background-color: var(--es-mono-a-a75);
+      box-shadow:
+        0 1px 0 var(--es-mono-a-a300),
+        inset 0 0 0 1px var(--es-mono-a-a50);
+    }
+
+    &--outlined {
+      box-shadow: inset 0 0 0 1px var(--es-mono-a-a200);
+    }
+
+    &--raised {
+      background-color: var(--es-mono-a-a75);
+      box-shadow: 0 1px 0 1px var(--es-mono-a-a300);
+    }
+  }
+}

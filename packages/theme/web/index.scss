@@ -1,0 +1,53 @@
+/* stylelint-disable at-rule-empty-line-before */
+
+@use '../lib/settings' with (
+  $overrides: (
+    alphas: (
+      a25: false,
+    ),
+    breakpoints: (
+      lg: 1200,
+    ),
+    typography: (
+      display100: (
+        font-size: 40,
+        font-weight: 500,
+        letter-spacing: 0.2,
+        line-height: 46,
+      ),
+      h4: false,
+      h5: false,
+      h6: false,
+    ),
+    utilities: (
+      gap: (
+        0,
+        2,
+        4,
+        8,
+      ),
+    ),
+  )
+);
+
+@use '../lib/utilities';
+@use '../lib/components';
+
+@use '../lib/presets/colors' as colorsPresets;
+@use '../lib/presets/shadows' as shadowsPresets;
+
+@include settings.include;
+@include utilities.include;
+@include components.include;
+
+:root {
+  @include colorsPresets.common;
+
+  @include colorsPresets.light;
+  @include shadowsPresets.light;
+
+  @media (prefers-color-scheme: dark) {
+    @include colorsPresets.dark;
+    @include shadowsPresets.dark;
+  }
+}
