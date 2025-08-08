@@ -1,0 +1,48 @@
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable scss/dollar-variable-empty-line-before */
+
+@use 'sass:map';
+
+@use './settings-default-alphas';
+@use './settings-default-breakpoints';
+@use './settings-default-typography';
+@use './settings-default-utilities';
+
+$overrides: () !default;
+
+$alphas: settings-default-alphas.$alphas;
+$breakpoints: settings-default-breakpoints.$breakpoints;
+$typography: settings-default-typography.$typography;
+$utilities: settings-default-utilities.$utilities;
+
+@function -map-override($target, $override) {
+  $new: $target;
+
+  @each $name, $value in $override {
+    @if $value == false {
+      $new: map.remove($new, $name);
+    } @else {
+      $new: map.set($new, $name, $value);
+    }
+  }
+
+  @return $new;
+}
+
+@mixin include() {
+  @if map.has-key($overrides, 'alphas') {
+    $alphas: -map-override($alphas, map.get($overrides, 'alphas')) !global;
+  }
+
+  @if map.has-key($overrides, 'breakpoints') {
+    $breakpoints: -map-override($breakpoints, map.get($overrides, 'breakpoints')) !global;
+  }
+
+  @if map.has-key($overrides, 'typography') {
+    $typography: -map-override($typography, map.get($overrides, 'typography')) !global;
+  }
+
+  @if map.has-key($overrides, 'utilities') {
+    $utilities: -map-override($utilities, map.get($overrides, 'utilities')) !global;
+  }
+}

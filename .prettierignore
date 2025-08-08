@@ -1,4 +1,4 @@
-lib/
+packages/react/lib/
 storybook-static/
 CHANGELOG.md
 typedoc.json
