@@ -1,0 +1,14 @@
+@use 'sass:math';
+
+@function rem($pixels) {
+  @return #{math.div($pixels, 16)}rem;
+}
+
+@mixin body100() {
+  font-size: rem(14);
+  font-weight: 400;
+  letter-spacing: rem(0.25);
+  line-height: rem(20);
+  text-decoration-thickness: rem(1);
+  text-underline-offset: rem(1);
+}

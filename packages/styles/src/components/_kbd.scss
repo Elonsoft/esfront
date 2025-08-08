@@ -1,0 +1,27 @@
+@use '../typography';
+
+.es-kbd {
+  @include typography.body100();
+
+  border-radius: 4px;
+  color: var(--mono-a-a900);
+  display: inline-block;
+  font-family: inherit;
+  padding: 0 4px;
+
+  &--contained {
+    background-color: var(--mono-a-a75);
+    box-shadow:
+      0 1px 0 var(--mono-a-a300),
+      inset 0 0 0 1px var(--mono-a-a50);
+  }
+
+  &--outlined {
+    box-shadow: inset 0 0 0 1px var(--mono-a-a200);
+  }
+
+  &--raised {
+    background-color: var(--mono-a-a75);
+    box-shadow: 0 1px 0 1px var(--mono-a-a300);
+  }
+}
