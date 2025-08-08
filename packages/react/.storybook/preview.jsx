@@ -9,6 +9,8 @@ import { Theme } from '../src/testing';
 
 import { useDarkMode } from 'storybook-dark-mode';
 
+import '../src/testing/_theme.scss';
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {

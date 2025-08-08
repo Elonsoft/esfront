@@ -9,7 +9,8 @@
     "packages/configs/eslint-config",
     "packages/configs/prettier-config",
     "packages/configs/stylelint-config",
-    "packages/react"
+    "packages/react",
+    "packages/theme"
   ],
   "scripts": {
     "eslint": "eslint .",
