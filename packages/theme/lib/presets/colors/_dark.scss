@@ -1,0 +1,320 @@
+/* stylelint-disable custom-property-empty-line-before */
+@use '../../helpers/colors';
+
+@mixin dark() {
+  --es-primary-50: #44447d;
+  --es-primary-100: #605caa;
+  --es-primary-200: #7b73d7;
+  --es-primary-300: #9a8cff;
+  --es-primary-400: #a89eff;
+  --es-primary-500: #b5afff;
+  --es-primary-600: #c3c1ff;
+  --es-primary-700: #d3d3ff;
+  --es-primary-800: #e5e6ff;
+  --es-primary-900: #f5f6ff;
+
+  @include colors.color-alphas('es-primary', #9a8cff);
+
+  --es-secondary-50: #a16600;
+  --es-secondary-100: #c4810e;
+  --es-secondary-200: #e3a136;
+  --es-secondary-300: #ffc45a;
+  --es-secondary-400: #ffd17d;
+  --es-secondary-500: #fcd79a;
+  --es-secondary-600: #fadcaf;
+  --es-secondary-700: #fce4c0;
+  --es-secondary-800: #ffefd6;
+  --es-secondary-900: #fff6eb;
+
+  @include colors.color-alphas('es-secondary', #ffc45a);
+
+  --es-error-50: #941e1e;
+  --es-error-100: #b82e2b;
+  --es-error-200: #db423b;
+  --es-error-300: #ff594d;
+  --es-error-400: #ff7169;
+  --es-error-500: #ff8a85;
+  --es-error-600: #ffa4a1;
+  --es-error-700: #ffbebd;
+  --es-error-800: #ffd9d9;
+  --es-error-900: #fff5f5;
+
+  @include colors.color-alphas('es-error', #ff594d);
+
+  --es-info-50: #216094;
+  --es-info-100: #3179b8;
+  --es-info-200: #4593db;
+  --es-info-300: #5daeff;
+  --es-info-400: #75bfff;
+  --es-info-500: #8cceff;
+  --es-info-600: #a4dbff;
+  --es-info-700: #bbe7ff;
+  --es-info-800: #d3f1ff;
+  --es-info-900: #ebf9ff;
+
+  @include colors.color-alphas('es-info', #5daeff);
+
+  --es-warning-50: #8a5731;
+  --es-warning-100: #b06f35;
+  --es-warning-200: #d68736;
+  --es-warning-300: #fca032;
+  --es-warning-400: #fdac50;
+  --es-warning-500: #fdb96f;
+  --es-warning-600: #fec78e;
+  --es-warning-700: #fed6ad;
+  --es-warning-800: #ffe5cb;
+  --es-warning-900: #fff4ea;
+
+  @include colors.color-alphas('es-warning', #fca032);
+
+  --es-success-50: #226b5b;
+  --es-success-100: #318e76;
+  --es-success-200: #3fb28f;
+  --es-success-300: #47d6a3;
+  --es-success-400: #6ee8bb;
+  --es-success-500: #92f6cf;
+  --es-success-600: #b0ffdf;
+  --es-success-700: #c9ffeb;
+  --es-success-800: #ddfff2;
+  --es-success-900: #edfff7;
+
+  @include colors.color-alphas('es-success', #47d6a3);
+
+  --es-surface-50: #1c1c1f;
+  --es-surface-100: #27272a;
+  --es-surface-200: #2c2c2f;
+  --es-surface-300: #2e2e31;
+  --es-surface-400: #303033;
+  --es-surface-500: #353538;
+  --es-surface-600: #37373a;
+  --es-surface-700: #3c3c3e;
+  --es-surface-800: #3e3e41;
+  --es-surface-900: #404043;
+  --es-surface-background: #1c1c1f;
+  --es-surface-background2: #111314;
+  --es-surface-on: rgb(255 255 255 / 3%);
+
+  --es-common-link: #62a7ff;
+  --es-common-link-visited: #be95ff;
+  --es-common-switch: #18181a;
+
+  --es-mono-a-500: #fff;
+
+  @include colors.color-alphas('es-mono-a', #fff);
+
+  --es-mono-b-500: #000;
+
+  @include colors.color-alphas('es-mono-b', #000);
+
+  --es-overlay-100: rgb(74 75 78 / 12%);
+  --es-overlay-200: rgb(74 75 78 / 30%);
+  --es-overlay-300: rgb(74 75 78 / 43%);
+  --es-overlay-700: rgb(94 94 97 / 65%);
+  --es-overlay-900: rgb(36 36 36 / 94%);
+
+  --es-grayscale-50: #13171d;
+  --es-grayscale-100: #2b313a;
+  --es-grayscale-200: #424954;
+  --es-grayscale-300: #59606d;
+  --es-grayscale-400: #707784;
+  --es-grayscale-500: #888f9c;
+  --es-grayscale-600: #a7aebb;
+  --es-grayscale-700: #c2c9d4;
+  --es-grayscale-800: #dce1e9;
+  --es-grayscale-900: #f5f7fa;
+
+  --es-lime-50: #63982d;
+  --es-lime-100: #79b13c;
+  --es-lime-200: #90cb4c;
+  --es-lime-300: #a9e45f;
+  --es-lime-400: #b6e875;
+  --es-lime-500: #c2ed8b;
+  --es-lime-600: #cff1a3;
+  --es-lime-700: #dcf5bb;
+  --es-lime-800: #e9f9d3;
+  --es-lime-900: #f6feed;
+
+  @include colors.color-alphas('es-lime', #a9e45f);
+
+  --es-lightblue-50: #2e75bd;
+  --es-lightblue-100: #3988d1;
+  --es-lightblue-200: #4ba3e6;
+  --es-lightblue-300: #61c0ff;
+  --es-lightblue-400: #75c8ff;
+  --es-lightblue-500: #88cfff;
+  --es-lightblue-600: #9ad7ff;
+  --es-lightblue-700: #b0e0ff;
+  --es-lightblue-800: #c8e9ff;
+  --es-lightblue-900: #dff2ff;
+
+  @include colors.color-alphas('es-lightblue', #61c0ff);
+
+  --es-red-50: #992a2a;
+  --es-red-100: #b42f2f;
+  --es-red-200: #da3a3a;
+  --es-red-300: #ff4f4f;
+  --es-red-400: #ff6b6b;
+  --es-red-500: #ff8686;
+  --es-red-600: #ffa8a8;
+  --es-red-700: #ffc9c9;
+  --es-red-800: #ffe3e3;
+  --es-red-900: #fff5f5;
+
+  @include colors.color-alphas('es-red', #ff4f4f);
+
+  --es-brown-50: #8c5235;
+  --es-brown-100: #a1603e;
+  --es-brown-200: #b6714c;
+  --es-brown-300: #cb8761;
+  --es-brown-400: #d49b7b;
+  --es-brown-500: #dcb39b;
+  --es-brown-600: #e5caba;
+  --es-brown-700: #eeded4;
+  --es-brown-800: #f6ede7;
+  --es-brown-900: #fff9f5;
+
+  @include colors.color-alphas('es-brown', #cb8761);
+
+  --es-orange-50: #9e4b21;
+  --es-orange-100: #b95918;
+  --es-orange-200: #dc7313;
+  --es-orange-300: #ff9514;
+  --es-orange-400: #ffa241;
+  --es-orange-500: #ffb673;
+  --es-orange-600: #ffcba2;
+  --es-orange-700: #ffdec7;
+  --es-orange-800: #ffece2;
+  --es-orange-900: #fff7f3;
+
+  @include colors.color-alphas('es-orange', #ff9514);
+
+  --es-yellow-50: #b37635;
+  --es-yellow-100: #cc8c2d;
+  --es-yellow-200: #e6a928;
+  --es-yellow-300: #ffcd29;
+  --es-yellow-400: #ffd452;
+  --es-yellow-500: #ffdd80;
+  --es-yellow-600: #ffe7ab;
+  --es-yellow-700: #fff0ce;
+  --es-yellow-800: #fff7e6;
+  --es-yellow-900: #fffbf5;
+
+  @include colors.color-alphas('es-yellow', #ffcd29);
+
+  --es-green-50: #3d9c38;
+  --es-green-100: #3cb23e;
+  --es-green-200: #43c850;
+  --es-green-300: #51de68;
+  --es-green-400: #6de47a;
+  --es-green-500: #8ee993;
+  --es-green-600: #afefaf;
+  --es-green-700: #ccf4c9;
+  --es-green-800: #e0fadd;
+  --es-green-900: #eeffeb;
+
+  @include colors.color-alphas('es-green', #51de68);
+
+  --es-marine-50: #329a91;
+  --es-marine-100: #34ad9f;
+  --es-marine-200: #3ec4b2;
+  --es-marine-300: #49d4c0;
+  --es-marine-400: #66dbca;
+  --es-marine-500: #88e2d5;
+  --es-marine-600: #a9eae0;
+  --es-marine-700: #c5f1ea;
+  --es-marine-800: #dbf8f3;
+  --es-marine-900: #ebfffc;
+
+  @include colors.color-alphas('es-marine', #49d4c0);
+
+  --es-sky-50: #2f97ac;
+  --es-sky-100: #37acc3;
+  --es-sky-200: #3bc5de;
+  --es-sky-300: #33d5f1;
+  --es-sky-400: #55dcf3;
+  --es-sky-500: #7be3f6;
+  --es-sky-600: #a0eaf8;
+  --es-sky-700: #bff1fa;
+  --es-sky-800: #d8f7fd;
+  --es-sky-900: #ebfcff;
+
+  @include colors.color-alphas('es-sky', #33d5f1);
+
+  --es-blue-50: #205797;
+  --es-blue-100: #2363b3;
+  --es-blue-200: #2671d9;
+  --es-blue-300: #3887ff;
+  --es-blue-400: #5c9fff;
+  --es-blue-500: #85b8ff;
+  --es-blue-600: #abcfff;
+  --es-blue-700: #c9e1ff;
+  --es-blue-800: #deedff;
+  --es-blue-900: #ebf4ff;
+
+  @include colors.color-alphas('es-blue', #3887ff);
+
+  --es-violet-50: #5843a4;
+  --es-violet-100: #6d53c6;
+  --es-violet-200: #8467e0;
+  --es-violet-300: #9e7dff;
+  --es-violet-400: #af95ff;
+  --es-violet-500: #c3b0ff;
+  --es-violet-600: #d6caff;
+  --es-violet-700: #e4ddff;
+  --es-violet-800: #eee9ff;
+  --es-violet-900: #f3f0ff;
+
+  @include colors.color-alphas('es-violet', #9e7dff);
+
+  --es-purple-50: #85369c;
+  --es-purple-100: #a044bb;
+  --es-purple-200: #b85fd2;
+  --es-purple-300: #d373f5;
+  --es-purple-400: #dc8cf7;
+  --es-purple-500: #e6a8f8;
+  --es-purple-600: #eec3fa;
+  --es-purple-700: #f5d8fc;
+  --es-purple-800: #f9e6fd;
+  --es-purple-900: #fcf0ff;
+
+  @include colors.color-alphas('es-purple', #d373f5);
+
+  --es-pink-50: #b53179;
+  --es-pink-100: #cd448f;
+  --es-pink-200: #e85ca8;
+  --es-pink-300: #ff75c0;
+  --es-pink-400: #ff96d1;
+  --es-pink-500: #ffb3e0;
+  --es-pink-600: #ffcbeb;
+  --es-pink-700: #ffdef3;
+  --es-pink-800: #ffecf8;
+  --es-pink-900: #fff5fc;
+
+  @include colors.color-alphas('es-pink', #ff75c0);
+
+  --es-teal-50: #19706a;
+  --es-teal-100: #137d77;
+  --es-teal-200: #11918b;
+  --es-teal-300: #14a59f;
+  --es-teal-400: #3bbab4;
+  --es-teal-500: #67cbc6;
+  --es-teal-600: #91dbd7;
+  --es-teal-700: #beebe8;
+  --es-teal-800: #dcf7f5;
+  --es-teal-900: #edfcfb;
+
+  @include colors.color-alphas('es-teal', #14a59f);
+
+  --es-gray-50: #7d8087;
+  --es-gray-100: #8a8d96;
+  --es-gray-200: #9699a6;
+  --es-gray-300: #a2a6b5;
+  --es-gray-400: #b0b4c1;
+  --es-gray-500: #bfc2ce;
+  --es-gray-600: #cdd1da;
+  --es-gray-700: #dcdfe6;
+  --es-gray-800: #eaedf3;
+  --es-gray-900: #f5f7fc;
+
+  @include colors.color-alphas('es-gray', #a2a6b5);
+}

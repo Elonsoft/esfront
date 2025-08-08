@@ -1,0 +1,5 @@
+@use './kbd';
+
+@mixin include() {
+  @include kbd.include;
+}

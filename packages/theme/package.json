@@ -1,0 +1,69 @@
+{
+  "name": "@esfront/theme",
+  "version": "0.0.0",
+  "description": "",
+  "sideEffects": false,
+  "scripts": {
+    "start": "vite --force"
+  },
+  "exports": {
+    "./*.scss": {
+      "sass": "lib/*.scss"
+    },
+    "./components": {
+      "sass": "lib/components/_index.scss"
+    },
+    "./components/*.scss": {
+      "sass": "lib/components/*.scss"
+    },
+    "./helpers/*.scss": {
+      "sass": "lib/helpers/*.scss"
+    },
+    "./presets/shadows": {
+      "sass": "lib/presets/_shadows.scss"
+    },
+    "./presets/colors": {
+      "sass": "lib/presets/colors/_index.scss"
+    },
+    "./presets/colors/*.scss": {
+      "sass": "lib/presets/colors/*.scss"
+    },
+    "./settings": {
+      "sass": "lib/settings/_index.scss"
+    },
+    "./settings/*.scss": {
+      "sass": "lib/settings/*.scss"
+    },
+    "./utilities": {
+      "sass": "lib/utilities/_index.scss"
+    },
+    "./utilities/*.scss": {
+      "sass": "lib/utilities/*.scss"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elonsoft/esfront.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Elonsoft/esfront/issues"
+  },
+  "homepage": "https://github.com/Elonsoft/esfront#readme",
+  "devDependencies": {
+    "cssnano": "^7.1.2",
+    "postcss": "^8.5.6",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.90.0",
+    "vite": "^7.1.12"
+  },
+  "peerDependencies": {
+    "sass": "^1.90.0"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "lib"
+  ]
+}

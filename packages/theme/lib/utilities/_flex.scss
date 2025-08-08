@@ -1,0 +1,69 @@
+@use '../helpers/breakpoints';
+
+@mixin include() {
+  @include breakpoints.adaptive-classes() using ($prefix) {
+    // align-items
+
+    .#{$prefix}align-items-start {
+      align-items: flex-start;
+    }
+
+    .#{$prefix}align-items-end {
+      align-items: flex-end;
+    }
+
+    .#{$prefix}align-items-center {
+      align-items: center;
+    }
+
+    .#{$prefix}align-items-baseline {
+      align-items: baseline;
+    }
+
+    .#{$prefix}align-items-baseline-last {
+      align-items: last baseline;
+    }
+
+    .#{$prefix}align-items-stretch {
+      align-items: stretch;
+    }
+
+    // justify-content
+
+    .#{$prefix}justify-content-start {
+      justify-content: start;
+    }
+
+    .#{$prefix}justify-content-end {
+      justify-content: end;
+    }
+
+    .#{$prefix}justify-content-center {
+      justify-content: center;
+    }
+
+    .#{$prefix}justify-content-between {
+      justify-content: space-between;
+    }
+
+    .#{$prefix}justify-content-around {
+      justify-content: space-around;
+    }
+
+    .#{$prefix}justify-content-evenly {
+      justify-content: space-evenly;
+    }
+
+    .#{$prefix}justify-content-stretch {
+      justify-content: stretch;
+    }
+
+    .#{$prefix}justify-content-baseline {
+      justify-content: baseline;
+    }
+
+    .#{$prefix}justify-content-normal {
+      justify-content: normal;
+    }
+  }
+}

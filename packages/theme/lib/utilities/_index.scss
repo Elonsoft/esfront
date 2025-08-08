@@ -1,0 +1,11 @@
+@use './display';
+@use './flex';
+@use './spacing';
+@use './typography';
+
+@mixin include() {
+  @include display.include;
+  @include flex.include;
+  @include spacing.include;
+  @include typography.include;
+}
