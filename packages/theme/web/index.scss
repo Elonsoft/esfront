@@ -1,0 +1,52 @@
+/* stylelint-disable at-rule-empty-line-before */
+
+@use 'sass:map';
+
+@use '../lib/breakpoints';
+@use '../lib/typography';
+
+@use '../lib/presets/colors' as colorsPresets;
+@use '../lib/presets/shadows' as shadowsPresets;
+
+@use '../lib/components' as *;
+@use '../lib/utility-classes/typography' as typographyUtilityClasses;
+
+@include typography.configure(
+  $overrides: (
+    display1: (
+      font-size: 40,
+      font-weight: 500,
+      letter-spacing: 0.2,
+      line-height: 46,
+    ),
+    h4: false,
+    h5: false,
+    h6: false,
+  )
+);
+
+@include typographyUtilityClasses.include;
+
+:root {
+  @include colorsPresets.common;
+
+  @include colorsPresets.light;
+  @include shadowsPresets.light;
+
+  @media (prefers-color-scheme: dark) {
+    @include colorsPresets.dark;
+    @include shadowsPresets.dark;
+  }
+}
+
+@include breakpoints.adaptive-classes('pb-4') {
+  padding-bottom: 4px;
+}
+
+@include breakpoints.adaptive-classes('pb-8') {
+  padding-bottom: 8px;
+}
+
+@include breakpoints.adaptive-classes('pb-16') {
+  padding-bottom: 16px;
+}
