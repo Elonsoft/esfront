@@ -1,0 +1,21 @@
+$breakpoints: (
+  xs: 0,
+  sm: 640,
+  lg: 1280,
+);
+
+@mixin adaptive-classes($selector) {
+  @each $name, $value in $breakpoints {
+    @if $value == 0 {
+      .#{$selector} {
+        @content;
+      }
+    } @else {
+      @media (width >= #{$value}px) {
+        .#{$name}:#{$selector} {
+          @content;
+        }
+      }
+    }
+  }
+}

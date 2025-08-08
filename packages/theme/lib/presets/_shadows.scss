@@ -1,0 +1,111 @@
+/* stylelint-disable custom-property-empty-line-before */
+
+@mixin light() {
+  --es-shadow-down-50: 0px 1px 0px rgb(0 0 0 / 6%);
+  --es-shadow-down-100: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 1px 2px rgb(0 0 0 / 7%);
+  --es-shadow-down-200: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 1px 0px rgb(0 0 0 / 2%), 0px 2px 4px rgb(0 0 0 / 6%);
+  --es-shadow-down-300: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 1px 2px rgb(0 0 0 / 3%), 0px 3px 6px rgb(0 0 0 / 6%);
+  --es-shadow-down-400: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 1px 2px rgb(0 0 0 / 4%), 0px 4px 8px rgb(0 0 0 / 6%);
+  --es-shadow-down-500: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 2px 4px rgb(0 0 0 / 2%), 0px 6px 12px rgb(0 0 0 / 7%);
+  --es-shadow-down-600: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 3px 6px rgb(0 0 0 / 3%), 0px 8px 16px rgb(0 0 0 / 7%);
+  --es-shadow-down-700: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 4px 8px rgb(0 0 0 / 3%), 0px 12px 24px rgb(0 0 0 / 8%);
+  --es-shadow-down-800: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 2%), 0px 5px 10px rgb(0 0 0 / 3%),
+    0px 16px 32px rgb(0 0 0 / 9%);
+  --es-shadow-down-900: 0px -0.5px 2px 1px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 2%), 0px 6px 12px rgb(0 0 0 / 3%),
+    0px 24px 48px rgb(0 0 0 / 12%);
+
+  --es-shadow-up-50: 0px -1px 0px rgb(0 0 0 / 6%);
+  --es-shadow-up-100: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px -1px 2px rgb(0 0 0 / 7%);
+  --es-shadow-up-200: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px -1px 0px rgb(0 0 0 / 2%), 0px -2px 4px rgb(0 0 0 / 6%);
+  --es-shadow-up-300: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px -1px 2px rgb(0 0 0 / 3%), 0px -3px 6px rgb(0 0 0 / 6%);
+  --es-shadow-up-400: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px -1px 2px rgb(0 0 0 / 4%), 0px -4px 8px rgb(0 0 0 / 6%);
+  --es-shadow-up-500: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px -2px 4px rgb(0 0 0 / 2%), 0px -6px 12px rgb(0 0 0 / 7%);
+  --es-shadow-up-600: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px -3px 6px rgb(0 0 0 / 3%), 0px -8px 16px rgb(0 0 0 / 7%);
+  --es-shadow-up-700: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px -4px 8px rgb(0 0 0 / 3%), 0px -12px 24px rgb(0 0 0 / 8%);
+  --es-shadow-up-800: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 2%), 0px -5px 10px rgb(0 0 0 / 3%),
+    0px -16px 32px rgb(0 0 0 / 9%);
+  --es-shadow-up-900: 0px 0.5px 2px 1px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 2%), 0px -6px 12px rgb(0 0 0 / 3%),
+    0px -24px 48px rgb(0 0 0 / 12%);
+
+  --es-shadow-left-50: -1px 0px 0px rgb(0 0 0 / 6%);
+  --es-shadow-left-100: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), -1px 0px 2px rgb(0 0 0 / 7%);
+  --es-shadow-left-200: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), -1px 0px 0px rgb(0 0 0 / 2%), -2px 0px 4px rgb(0 0 0 / 6%);
+  --es-shadow-left-300: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), -1px 0px 2px rgb(0 0 0 / 3%), -3px 0px 6px rgb(0 0 0 / 6%);
+  --es-shadow-left-400: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), -1px 0px 2px rgb(0 0 0 / 4%), -4px 0px 8px rgb(0 0 0 / 6%);
+  --es-shadow-left-500: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), -2px 0px 4px rgb(0 0 0 / 2%), -6px 0px 12px rgb(0 0 0 / 7%);
+  --es-shadow-left-600: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), -3px 0px 6px rgb(0 0 0 / 3%), -8px 0px 16px rgb(0 0 0 / 7%);
+  --es-shadow-left-700: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), -4px 0px 8px rgb(0 0 0 / 3%), -12px 0px 24px rgb(0 0 0 / 8%);
+  --es-shadow-left-800: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 2%), -5px 0px 10px rgb(0 0 0 / 3%),
+    -16px 0px 32px rgb(0 0 0 / 9%);
+  --es-shadow-left-900: 0.5px 0px 2px 1px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 2%), -6px 0px 12px rgb(0 0 0 / 3%),
+    -24px 0px 48px rgb(0 0 0 / 12%);
+
+  --es-shadow-right-50: 1px 0px 0px rgb(0 0 0 / 6%);
+  --es-shadow-right-100: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 1px 0px 2px rgb(0 0 0 / 7%);
+  --es-shadow-right-200: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 1px 0px 0px rgb(0 0 0 / 2%), 2px 0px 4px rgb(0 0 0 / 6%);
+  --es-shadow-right-300: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 1px 0px 2px rgb(0 0 0 / 3%), 3px 0px 6px rgb(0 0 0 / 6%);
+  --es-shadow-right-400: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 1px 0px 2px rgb(0 0 0 / 4%), 4px 0px 8px rgb(0 0 0 / 6%);
+  --es-shadow-right-500: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 2px 0px 4px rgb(0 0 0 / 2%), 6px 0px 12px rgb(0 0 0 / 7%);
+  --es-shadow-right-600: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 3px 0px 6px rgb(0 0 0 / 3%), 8px 0px 16px rgb(0 0 0 / 7%);
+  --es-shadow-right-700: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 4px 0px 8px rgb(0 0 0 / 3%), 12px 0px 24px rgb(0 0 0 / 8%);
+  --es-shadow-right-800: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 2%), 5px 0px 10px rgb(0 0 0 / 3%),
+    16px 0px 32px rgb(0 0 0 / 9%);
+  --es-shadow-right-900: -0.5px 0px 2px 1px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 2%), 6px 0px 12px rgb(0 0 0 / 3%),
+    24px 0px 48px rgb(0 0 0 / 12%);
+}
+
+@mixin dark() {
+  --es-shadow-down-50: 0px 1px 0px rgb(0 0 0 / 12%);
+  --es-shadow-down-100: 0.5px -0.5px 2px 1px rgb(0 0 0 / 8%), -1px 0px 2px rgb(0 0 0 / 28%);
+  --es-shadow-down-200: 0px -0.5px 1px 1px rgb(0 0 0 / 8%), 0px 1px 0px rgb(0 0 0 / 8%), 0px 2px 4px rgb(0 0 0 / 24%);
+  --es-shadow-down-300: 0px -0.5px 2px 1px rgb(0 0 0 / 8%), 0px 1px 2px rgb(0 0 0 / 12%), 0px 3px 6px rgb(0 0 0 / 24%);
+  --es-shadow-down-400: 0px -0.5px 2px 1px rgb(0 0 0 / 8%), 0px 1px 2px rgb(0 0 0 / 16%), 0px 4px 8px rgb(0 0 0 / 24%);
+  --es-shadow-down-500: 0px -0.5px 2px 1px rgb(0 0 0 / 8%), 0px 2px 4px rgb(0 0 0 / 8%), 0px 6px 12px rgb(0 0 0 / 28%);
+  --es-shadow-down-600: 0px -0.5px 2px 1px rgb(0 0 0 / 8%), 0px 3px 6px rgb(0 0 0 / 12%), 0px 8px 16px rgb(0 0 0 / 28%);
+  --es-shadow-down-700: 0px -0.5px 2px 1px rgb(0 0 0 / 8%), 0px 4px 8px rgb(0 0 0 / 12%), 0px 12px 24px rgb(0 0 0 / 32%);
+  --es-shadow-down-800: 0px -0.5px 2px 1px rgb(0 0 0 / 8%), 0px 0px 2px rgb(0 0 0 / 8%), 0px 5px 10px rgb(0 0 0 / 12%),
+    0px 16px 32px rgb(0 0 0 / 36%);
+  --es-shadow-down-900: 0px -0.5px 2px 1px rgb(0 0 0 / 8%), 0px 0px 2px rgb(0 0 0 / 8%), 0px 6px 12px rgb(0 0 0 / 12%),
+    0px 24px 48px rgb(0 0 0 / 48%);
+
+  --es-shadow-up-50: 0px -1px 0px rgb(0 0 0 / 12%);
+  --es-shadow-up-100: 0px 0.5px 2px 1px rgb(0 0 0 / 8%), 0px -1px 2px rgb(0 0 0 / 28%);
+  --es-shadow-up-200: 0px 0.5px 1px 1px rgb(0 0 0 / 8%), 0px -1px 0px rgb(0 0 0 / 8%), 0px -2px 4px rgb(0 0 0 / 24%);
+  --es-shadow-up-300: 0px 0.5px 2px 1px rgb(0 0 0 / 8%), 0px -1px 2px rgb(0 0 0 / 12%), 0px -3px 6px rgb(0 0 0 / 24%);
+  --es-shadow-up-400: 0px 0.5px 2px 1px rgb(0 0 0 / 8%), 0px -1px 2px rgb(0 0 0 / 16%), 0px -4px 8px rgb(0 0 0 / 24%);
+  --es-shadow-up-500: 0px 0.5px 2px 1px rgb(0 0 0 / 8%), 0px -2px 4px rgb(0 0 0 / 8%), 0px -6px 12px rgb(0 0 0 / 28%);
+  --es-shadow-up-600: 0px 0.5px 2px 1px rgb(0 0 0 / 8%), 0px -3px 6px rgb(0 0 0 / 12%), 0px -8px 16px rgb(0 0 0 / 28%);
+  --es-shadow-up-700: 0px 0.5px 2px 1px rgb(0 0 0 / 8%), 0px -4px 8px rgb(0 0 0 / 12%), 0px -12px 24px rgb(0 0 0 / 32%);
+  --es-shadow-up-800: 0px 0.5px 2px 1px rgb(0 0 0 / 8%), 0px 0px 2px rgb(0 0 0 / 8%), 0px -5px 10px rgb(0 0 0 / 12%),
+    0px -16px 32px rgb(0 0 0 / 36%);
+  --es-shadow-up-900: 0px 0.5px 2px 1px rgb(0 0 0 / 8%), 0px 0px 2px rgb(0 0 0 / 8%), 0px -6px 12px rgb(0 0 0 / 12%),
+    0px -24px 48px rgb(0 0 0 / 48%);
+
+  --es-shadow-left-50: -1px 0px 0px rgb(0 0 0 / 12%);
+  --es-shadow-left-100: 0.5px -0.5px 2px 1px rgb(0 0 0 / 8%), -1px 0px 2px rgb(0 0 0 / 28%);
+  --es-shadow-left-200: 0.5px 0px 1px 1px rgb(0 0 0 / 8%), -1px 0px 0px rgb(0 0 0 / 8%), -2px 0px 4px rgb(0 0 0 / 24%);
+  --es-shadow-left-300: 0.5px 0px 2px 1px rgb(0 0 0 / 8%), -1px 0px 2px rgb(0 0 0 / 12%), -3px 0px 6px rgb(0 0 0 / 24%);
+  --es-shadow-left-400: 0.5px 0px 2px 1px rgb(0 0 0 / 8%), -1px 0px 2px rgb(0 0 0 / 16%), -4px 0px 8px rgb(0 0 0 / 24%);
+  --es-shadow-left-500: 0.5px 0px 2px 1px rgb(0 0 0 / 8%), -2px 0px 4px rgb(0 0 0 / 8%), -6px 0px 12px rgb(0 0 0 / 28%);
+  --es-shadow-left-600: 0.5px 0px 2px 1px rgb(0 0 0 / 8%), -3px 0px 6px rgb(0 0 0 / 12%), -8px 0px 16px rgb(0 0 0 / 28%);
+  --es-shadow-left-700: 0.5px 0px 2px 1px rgb(0 0 0 / 8%), -4px 0px 8px rgb(0 0 0 / 12%),
+    -12px 0px 24px rgb(0 0 0 / 32%);
+  --es-shadow-left-800: 0.5px 0px 2px 1px rgb(0 0 0 / 8%), 0px 0px 2px rgb(0 0 0 / 8%), -5px 0px 10px rgb(0 0 0 / 12%),
+    -16px 0px 32px rgb(0 0 0 / 36%);
+  --es-shadow-left-900: 0.5px 0px 2px 1px rgb(0 0 0 / 8%), 0px 0px 2px rgb(0 0 0 / 8%), -6px 0px 12px rgb(0 0 0 / 12%),
+    -24px 0px 48px rgb(0 0 0 / 48%);
+
+  --es-shadow-right-50: 1px 0px 0px rgb(0 0 0 / 12%);
+  --es-shadow-right-100: -0.5px 0px 2px 1px rgb(0 0 0 / 8%), 1px 0px 2px rgb(0 0 0 / 28%);
+  --es-shadow-right-200: -0.5px 0px 1px 1px rgb(0 0 0 / 8%), 1px 0px 0px rgb(0 0 0 / 8%), 2px 0px 4px rgb(0 0 0 / 24%);
+  --es-shadow-right-300: -0.5px 0px 2px 1px rgb(0 0 0 / 8%), 1px 0px 2px rgb(0 0 0 / 12%), 3px 0px 6px rgb(0 0 0 / 24%);
+  --es-shadow-right-400: -0.5px 0px 2px 1px rgb(0 0 0 / 8%), 1px 0px 2px rgb(0 0 0 / 16%), 4px 0px 8px rgb(0 0 0 / 24%);
+  --es-shadow-right-500: -0.5px 0px 2px 1px rgb(0 0 0 / 8%), 2px 0px 4px rgb(0 0 0 / 8%), 6px 0px 12px rgb(0 0 0 / 28%);
+  --es-shadow-right-600: -0.5px 0px 2px 1px rgb(0 0 0 / 8%), 3px 0px 6px rgb(0 0 0 / 12%), 8px 0px 16px rgb(0 0 0 / 28%);
+  --es-shadow-right-700: -0.5px 0px 2px 1px rgb(0 0 0 / 8%), 4px 0px 8px rgb(0 0 0 / 12%),
+    12px 0px 24px rgb(0 0 0 / 32%);
+  --es-shadow-right-800: -0.5px 0px 2px 1px rgb(0 0 0 / 8%), 0px 0px 2px rgb(0 0 0 / 8%), 5px 0px 10px rgb(0 0 0 / 12%),
+    16px 0px 32px rgb(0 0 0 / 36%);
+  --es-shadow-right-900: -0.5px 0px 2px 1px rgb(0 0 0 / 8%), 0px 0px 2px rgb(0 0 0 / 8%), 6px 0px 12px rgb(0 0 0 / 12%),
+    24px 0px 48px rgb(0 0 0 / 48%);
+}
