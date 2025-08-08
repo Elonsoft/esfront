@@ -1,0 +1,31 @@
+{
+  "name": "@esfront/styles",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/node/index.js",
+  "module": "lib/index.js",
+  "jsnext:main": "lib/index.js",
+  "sideEffects": false,
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elonsoft/esfront.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Elonsoft/esfront/issues"
+  },
+  "homepage": "https://github.com/Elonsoft/esfront#readme",
+  "devDependencies": {
+    "sass": "^1.90.0"
+  },
+  "peerDependencies": {
+    "sass": "^1.90.0"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "src"
+  ]
+}

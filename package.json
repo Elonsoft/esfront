@@ -8,7 +8,8 @@
     "packages/configs/cspell-config",
     "packages/configs/eslint-config",
     "packages/configs/prettier-config",
-    "packages/react"
+    "packages/react",
+    "packages/styles"
   ],
   "scripts": {
     "eslint": "eslint .",
