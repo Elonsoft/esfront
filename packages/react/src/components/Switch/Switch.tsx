@@ -5,7 +5,8 @@ import { SwitchProps } from './Switch.types';
 import clsx from 'clsx';
 import { getSwitchUtilityClass, switchClasses } from './Switch.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks/useControlled';
@@ -453,7 +454,7 @@ export const Switch = (inProps: SwitchProps) => {
     value,
     sx,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSwitch',
   });

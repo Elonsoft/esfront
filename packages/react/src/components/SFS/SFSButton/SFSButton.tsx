@@ -4,7 +4,8 @@ import { SFSButtonOwnProps, SFSButtonTypeMap } from './SFSButton.types';
 
 import { getSFSButtonUtilityClass, sfsButtonClasses } from './SFSButton.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { Button, buttonClasses, ExtendButton } from '../../Button';
@@ -81,7 +82,7 @@ const SFSButtonRoot = styled(Button, {
 }));
 
 export const SFSButton = forwardRef(function SFSButton(inProps, ref) {
-  const { classes: inClasses, active, ...props } = useThemeProps({ props: inProps, name: 'ESSFSButton' });
+  const { classes: inClasses, active, ...props } = useDefaultProps({ props: inProps, name: 'ESSFSButton' });
 
   const ownerState = {
     classes: inClasses,

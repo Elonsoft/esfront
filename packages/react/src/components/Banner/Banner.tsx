@@ -4,7 +4,8 @@ import clsx from 'clsx';
 import { bannerClasses, getBannerUtilityClass } from './Banner.classes';
 import { bannerTitleClasses } from './BannerTitle/BannerTitle.classes';
 
-import { Breakpoint, styled, useThemeProps } from '@mui/material/styles';
+import { Breakpoint, styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
@@ -214,7 +215,7 @@ export const Banner = (inProps: BannerProps) => {
     color,
     iconMapping = defaultIconMapping,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESBanner',
   });

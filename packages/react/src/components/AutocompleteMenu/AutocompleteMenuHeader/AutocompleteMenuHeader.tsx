@@ -3,7 +3,8 @@ import { AutocompleteMenuHeaderProps } from './AutocompleteMenuHeader.types';
 import clsx from 'clsx';
 import { getAutocompleteMenuHeaderUtilityClass } from './AutocompleteMenuHeader.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type AutocompleteMenuHeaderOwnerState = {
@@ -39,7 +40,7 @@ export const AutocompleteMenuHeader = (inProps: AutocompleteMenuHeaderProps) => 
     children,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAutocompleteMenuHeader',
   });

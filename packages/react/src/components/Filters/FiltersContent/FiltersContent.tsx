@@ -3,7 +3,8 @@ import { FiltersContentProps } from './FiltersContent.types';
 import clsx from 'clsx';
 import { getFiltersContentUtilityClass } from './FiltersContent.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FiltersContentOwnerState = {
@@ -29,7 +30,7 @@ const FiltersContentRoot = styled('div', {
 });
 
 export const FiltersContent = (inProps: FiltersContentProps) => {
-  const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFiltersContent' });
+  const { children, className, sx, ...props } = useDefaultProps({ props: inProps, name: 'ESFiltersContent' });
 
   const ownerState = { ...props };
   const classes = useUtilityClasses(ownerState);

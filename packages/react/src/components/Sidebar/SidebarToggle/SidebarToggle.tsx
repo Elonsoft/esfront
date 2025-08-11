@@ -5,7 +5,8 @@ import { SidebarToggleProps } from './SidebarToggle.types';
 import clsx from 'clsx';
 import { getSidebarToggleUtilityClass } from './SidebarToggle.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconChevronLeftW300 } from '../../../icons';
@@ -118,7 +119,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
     labelHide,
     onClick,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarToggle',
   });

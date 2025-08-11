@@ -5,7 +5,8 @@ import { SFSFiltersProps } from './SFSFilters.types';
 import clsx from 'clsx';
 import { getSFSFiltersUtilityClass } from './SFSFilters.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { backdropClasses } from '@mui/material/Backdrop';
 import Drawer from '@mui/material/Drawer';
 import { paperClasses } from '@mui/material/Paper';
@@ -145,7 +146,7 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
     FooterProps,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSFSFilters',
   });

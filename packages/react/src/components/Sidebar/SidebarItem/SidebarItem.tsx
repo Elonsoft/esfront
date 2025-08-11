@@ -5,7 +5,8 @@ import { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';
 import clsx from 'clsx';
 import { getSidebarItemUtilityClass, sidebarItemClasses } from './SidebarItem.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import MenuList from '@mui/material/MenuList';
@@ -357,7 +358,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     text,
     id,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarItem',
   });

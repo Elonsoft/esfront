@@ -3,7 +3,8 @@ import { FileInfoProps } from './FileInfo.types';
 import clsx from 'clsx';
 import { getFileInfoUtilityClass } from './FileInfo.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type FileInfoOwnerState = {
@@ -33,7 +34,7 @@ const FileInfoRoot = styled('div', {
  * This component displays file information.
  */
 export const FileInfo = (inProps: FileInfoProps) => {
-  const { children, className, sx, ...props } = useThemeProps({ props: inProps, name: 'ESFileInfo' });
+  const { children, className, sx, ...props } = useDefaultProps({ props: inProps, name: 'ESFileInfo' });
   const ownerState = { ...props };
 
   const classes = useUtilityClasses(ownerState);

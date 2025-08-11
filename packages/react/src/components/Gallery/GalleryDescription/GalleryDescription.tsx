@@ -5,7 +5,8 @@ import { GalleryDescriptionProps } from './GalleryDescription.types';
 import clsx from 'clsx';
 import { getGalleryDescriptionUtilityClass } from './GalleryDescription.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -173,7 +174,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     iconCollapse = <IconCloseW350 />,
     iconExpand = <IconDoubleChevronUp />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryDescription',
   });

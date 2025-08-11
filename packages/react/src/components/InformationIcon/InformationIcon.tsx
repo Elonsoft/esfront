@@ -5,7 +5,8 @@ import { InformationIconProps, InformationIconTypeMap } from './InformationIcon.
 import clsx from 'clsx';
 import { getInformationIconUtilityClass, informationIconClasses } from './InformationIcon.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -145,7 +146,7 @@ export const InformationIcon = forwardRef(function InformationIcon(
     slotProps = {},
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESInformationIcon',
   });

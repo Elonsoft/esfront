@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { FormatSizeProps } from './FormatSize.types';
 
-import { useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 /**
  * This component formats the size based on the metric or binary unit prefix.
@@ -13,7 +13,7 @@ export const FormatSize = (inProps: FormatSizeProps) => {
     prefix = 'metric',
     metricUnits,
     binaryUnits,
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESFormatSize',
   });

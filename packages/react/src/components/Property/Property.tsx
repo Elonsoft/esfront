@@ -3,7 +3,8 @@ import { PropertyProps } from './Property.types';
 import clsx from 'clsx';
 import { getPropertyUtilityClass, propertyClasses } from './Property.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -97,7 +98,7 @@ const PropertyDivider = styled('div', {
  * Display attributes are characteristics that describe a entity.
  */
 export const Property = (inProps: PropertyProps) => {
-  const { name, value, className, sx, size = 'm', ...props } = useThemeProps({ props: inProps, name: 'ESProperty' });
+  const { name, value, className, sx, size = 'm', ...props } = useDefaultProps({ props: inProps, name: 'ESProperty' });
 
   const ownerState = { ...props, size };
   const classes = useUtilityClasses(ownerState);

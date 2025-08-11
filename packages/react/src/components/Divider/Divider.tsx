@@ -3,7 +3,8 @@ import { DividerProps } from './Divider.types';
 import clsx from 'clsx';
 import { getDividerUtilityClass } from './Divider.classes';
 
-import { styled, useTheme, useThemeProps } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -190,7 +191,7 @@ export const Divider = (inProps: DividerProps) => {
     textAlign = 'center',
     flexItem,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDivider',
   });

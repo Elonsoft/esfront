@@ -5,7 +5,8 @@ import { SidebarProps } from './Sidebar.types';
 import clsx from 'clsx';
 import { getSidebarUtilityClass, sidebarClasses } from './Sidebar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { SidebarContext } from './Sidebar.context';
@@ -192,7 +193,7 @@ export const Sidebar = (inProps: SidebarProps) => {
     onWidthChange,
     onWidthChangeCommit,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSidebar',
   });

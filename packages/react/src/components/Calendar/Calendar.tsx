@@ -3,7 +3,8 @@ import { CalendarProps } from './Calendar.types';
 import clsx from 'clsx';
 import { calendarClasses, getCalendarUtilityClass } from './Calendar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -66,7 +67,7 @@ export const Calendar = (inProps: CalendarProps) => {
     getButtonDisabled,
     getButtonTooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESCalendar',
   });

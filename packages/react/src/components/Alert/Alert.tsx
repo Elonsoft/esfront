@@ -3,7 +3,8 @@ import { AlertProps } from './Alert.types';
 import clsx from 'clsx';
 import { alertClasses, getAlertUtilityClass } from './Alert.classes';
 
-import { Breakpoint, styled, useThemeProps } from '@mui/material/styles';
+import { Breakpoint, styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
@@ -174,7 +175,7 @@ export const Alert = (inProps: AlertProps) => {
     breakpoint,
     iconMapping = defaultIconMapping,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAlert',
   });

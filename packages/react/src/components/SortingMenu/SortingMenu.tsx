@@ -6,7 +6,8 @@ import clsx from 'clsx';
 import { sortingMenuClasses } from '../SortingMenu/SortingMenu.classes';
 import { getSortingMenuUtilityClass } from './SortingMenu.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
 import MenuList from '@mui/material/MenuList';
 import Popover from '@mui/material/Popover';
@@ -273,7 +274,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     iconItemDesc = <IconSortDescending container containerHeight="12px" containerWidth="8px" />,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSortingMenu',
   });

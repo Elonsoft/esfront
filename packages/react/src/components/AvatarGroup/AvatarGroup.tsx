@@ -5,7 +5,8 @@ import { AvatarGroupProps } from './AvatarGroup.types';
 import clsx from 'clsx';
 import { avatarGroupClasses, getAlertUtilityClass } from './AvatarGroup.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { getCuttingOffset } from './AvatarGroup.utils';
@@ -111,7 +112,7 @@ export const AvatarGroup = (inProps: AvatarGroupProps) => {
     size = 32,
     sx,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAvatarGroup',
   });

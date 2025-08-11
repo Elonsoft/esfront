@@ -3,7 +3,8 @@ import { ErrorPageStatusProps } from './ErrorPageStatus.types';
 import clsx from 'clsx';
 import { getErrorPageStatusUtilityClass } from './ErrorPageStatus.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type ErrorPageStatusOwnerState = {
@@ -35,7 +36,7 @@ export const ErrorPageStatusRoot = styled('div', {
 }));
 
 export const ErrorPageStatus = (inProps: ErrorPageStatusProps) => {
-  const { children, className, sx, ...props } = useThemeProps({
+  const { children, className, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESErrorPageStatus',
   });

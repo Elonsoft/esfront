@@ -3,7 +3,7 @@ import { RibbonBadgeProps, RibbonBadgeTypeMap } from './RibbonBadge.types';
 import clsx from 'clsx';
 import { getRibbonBadgeUtilityClass, ribbonBadgeClasses } from './RibbonBadge.classes';
 
-import { useThemeProps } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize, styled } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import composeClasses from '@mui/utils/composeClasses';
@@ -215,7 +215,7 @@ export const RibbonBadge: OverridableComponent<RibbonBadgeTypeMap> = (inProps: R
     orientation = 'left',
     clickable,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESRibbonBadge',
   });

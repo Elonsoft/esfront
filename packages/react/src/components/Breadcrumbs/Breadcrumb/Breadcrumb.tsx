@@ -4,7 +4,8 @@ import clsx from 'clsx';
 import { breadcrumbsClasses } from '../Breadcrumbs.classes';
 import { breadcrumbClasses, getBreadcrumbUtilityClass } from './Breadcrumb.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
@@ -168,7 +169,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
     shouldFirstShrink,
 
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESBreadcrumb' });
+  } = useDefaultProps({ props: inProps, name: 'ESBreadcrumb' });
 
   const ownerState = { disabled, shouldFirstShrink, ...props };
   const classes = useUtilityClasses(ownerState);

@@ -3,7 +3,8 @@ import { KbdProps } from './Kbd.types';
 import clsx from 'clsx';
 import { getKbdUtilityClass } from './Kbd.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type KbdOwnerState = {
@@ -73,7 +74,7 @@ const KbdRoot = styled('kbd', {
  * Display keyboard button or keys combination.
  */
 export const Kbd = (inProps: KbdProps) => {
-  const { children, className, sx, variant = 'raised', ...props } = useThemeProps({ props: inProps, name: 'ESKbd' });
+  const { children, className, sx, variant = 'raised', ...props } = useDefaultProps({ props: inProps, name: 'ESKbd' });
 
   const ownerState = { ...props, variant };
   const classes = useUtilityClasses(ownerState);

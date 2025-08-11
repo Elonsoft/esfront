@@ -3,7 +3,8 @@ import { EmptyStateProps } from './EmptyState.types';
 import clsx from 'clsx';
 import { getEmptyStateUtilityClass } from './EmptyState.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -143,7 +144,7 @@ export const EmptyState = (inProps: EmptyStateProps) => {
     heading,
     subheading,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESEmptyState',
   });

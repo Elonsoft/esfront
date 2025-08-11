@@ -3,7 +3,8 @@ import { SpinnerDashRingProps } from './SpinnerDashRing.types';
 import clsx from 'clsx';
 import { getSpinnerDashRingUtilityClass } from './SpinnerDashRing.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { generateStyleColorVariants, rotateKeyframe, strokeArrayKeyframe } from '../Spinner.utils';
@@ -52,7 +53,7 @@ export const SpinnerDashRing = (inProps: SpinnerDashRingProps) => {
     size = 40,
     color = 'primary',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSpinnerDashRing',
   });

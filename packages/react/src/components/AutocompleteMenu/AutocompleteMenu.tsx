@@ -18,7 +18,8 @@ import { AutocompleteMenuProps } from './AutocompleteMenu.types';
 import clsx from 'clsx';
 import { getAutocompleteMenuUtilityClass } from './AutocompleteMenu.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
@@ -303,7 +304,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     iconSearchClear = <IconCloseW350 />,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAutocompleteMenu',
   });
