@@ -1,0 +1,23 @@
+{
+  "name": "@esfront/stylelint-config",
+  "version": "0.0.0",
+  "description": "",
+  "private": false,
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elonsoft/esfront.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Elonsoft/esfront/issues"
+  },
+  "homepage": "https://github.com/Elonsoft/esfront#readme",
+  "peerDependencies": {
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard-scss": "^15.0.0",
+    "stylelint-order": "^7.0.0",
+    "stylelint-prettier": "^5.0.0"
+  }
+}
