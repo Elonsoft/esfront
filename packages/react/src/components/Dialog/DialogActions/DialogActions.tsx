@@ -3,7 +3,8 @@ import { DialogActionsProps } from './DialogActions.types';
 import clsx from 'clsx';
 import { getDialogActionsUtilityClass } from './DialogActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useStuckSentinel } from '../../../hooks';
@@ -70,7 +71,7 @@ const DialogActionsRoot = styled('div', {
 }));
 
 export const DialogActions = (inProps: DialogActionsProps) => {
-  const { className, sx, sticky, children, ...props } = useThemeProps({
+  const { className, sx, sticky, children, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESDialogActions',
   });

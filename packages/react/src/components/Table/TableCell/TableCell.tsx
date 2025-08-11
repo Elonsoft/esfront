@@ -5,7 +5,8 @@ import { TableCellProps } from './TableCell.types';
 import clsx from 'clsx';
 import { getTableCellUtilityClass, tableCellClasses } from './TableCell.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -342,7 +343,7 @@ export const TableCell = memo(
       sx,
       pin,
       ...props
-    } = useThemeProps({
+    } = useDefaultProps({
       props: inProps,
       name: 'ESTableCell',
     });

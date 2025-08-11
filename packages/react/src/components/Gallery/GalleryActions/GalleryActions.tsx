@@ -3,7 +3,8 @@ import { GalleryActionsProps } from './GalleryActions.types';
 import clsx from 'clsx';
 import { getGalleryActionsUtilityClass } from './GalleryActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW600, IconImageMultiple } from '../../../icons';
@@ -74,7 +75,7 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
     iconClose = <IconCloseW600 />,
     iconThumbnails = <IconImageMultiple />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryActions',
   });

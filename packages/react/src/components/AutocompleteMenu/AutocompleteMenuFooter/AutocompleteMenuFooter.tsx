@@ -3,7 +3,8 @@ import { AutocompleteMenuFooterProps } from './AutocompleteMenuFooter.types';
 import clsx from 'clsx';
 import { getAutocompleteMenuFooterUtilityClass } from './AutocompleteMenuFooter.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type AutocompleteMenuFooterOwnerState = {
@@ -39,7 +40,7 @@ export const AutocompleteMenuFooter = (inProps: AutocompleteMenuFooterProps) => 
     children,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAutocompleteMenuFooter',
   });

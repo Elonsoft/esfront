@@ -5,7 +5,8 @@ import { SnackbarProps, SnackbarPropsColor, SnackbarPropsSeverity } from './Snac
 import clsx from 'clsx';
 import { getSnackbarUtilityClass, snackbarClasses } from './Snackbar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -308,7 +309,7 @@ export const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(function Snack
 
     onClose,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSnackbar',
   });

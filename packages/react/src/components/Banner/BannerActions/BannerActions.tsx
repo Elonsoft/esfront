@@ -3,7 +3,8 @@ import { BannerActionsProps } from './BannerActions.types';
 import clsx from 'clsx';
 import { getBannerActionsUtilityClass } from './BannerActions.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type BannerActionsOwnerState = {
@@ -30,7 +31,7 @@ const BannerActionsRoot = styled('div', {
 }));
 
 export const BannerActions = (inProps: BannerActionsProps) => {
-  const { className, children, sx, ...props } = useThemeProps({
+  const { className, children, sx, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESBannerActions',
   });

@@ -3,7 +3,8 @@ import { PriceProps } from './Price.types';
 import clsx from 'clsx';
 import { getPriceUtilityClass, priceClasses } from './Price.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type PriceOwnerState = {
@@ -118,7 +119,7 @@ export const Price = (inProps: PriceProps) => {
     minimumFractionDigits,
     maximumFractionDigits,
     disableMicrodata,
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESPrice',
   });

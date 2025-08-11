@@ -3,7 +3,8 @@ import { GallerySwiperImageProps } from './GallerySwiperImage.types';
 import clsx from 'clsx';
 import { getGallerySwiperImageUtilityClass } from './GallerySwiperImage.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type GallerySwiperImageOwnerState = {
@@ -55,7 +56,7 @@ const GallerySwiperImageImage = styled('img', {
 }));
 
 export const GallerySwiperImage = (inProps: GallerySwiperImageProps) => {
-  const { className, sx, src, alt, ...props } = useThemeProps({
+  const { className, sx, src, alt, ...props } = useDefaultProps({
     props: inProps,
     name: 'ESGallerySwiperImage',
   });

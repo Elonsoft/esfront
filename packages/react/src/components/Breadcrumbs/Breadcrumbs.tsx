@@ -6,7 +6,8 @@ import clsx from 'clsx';
 import { breadcrumbClasses } from './Breadcrumb/Breadcrumb.classes';
 import { breadcrumbsClasses, getBreadcrumbsUtilityClass } from './Breadcrumbs.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { paperClasses } from '@mui/material';
 import Menu, { menuClasses } from '@mui/material/Menu';
 import Typography from '@mui/material/Typography';
@@ -120,7 +121,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
     labelButtonMore,
     sx,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESBreadcrumbs' });
+  } = useDefaultProps({ props: inProps, name: 'ESBreadcrumbs' });
 
   const [lastIndex, setLastIndex] = useState(Children.count(children) - 1);
 

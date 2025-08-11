@@ -3,7 +3,8 @@ import { FileInfoNameProps } from './FileInfoName.types';
 import clsx from 'clsx';
 import { getFileInfoNameUtilityClass } from './FileInfoName.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseW350 } from '../../../icons';
@@ -56,7 +57,7 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
     labelDelete,
     iconDelete = <IconCloseW350 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESFileInfoName',
   });

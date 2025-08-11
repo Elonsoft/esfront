@@ -5,7 +5,8 @@ import { AppBarProps } from './AppBar.types';
 import clsx from 'clsx';
 import { appBarClasses, getAppBarUtilityClass } from './AppBar.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -100,7 +101,7 @@ export const AppBar = (inProps: AppBarProps) => {
     startAdornment,
     endAdornment,
     prominent,
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAppBar',
   });

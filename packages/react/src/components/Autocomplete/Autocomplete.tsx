@@ -5,7 +5,8 @@ import { AutocompleteProps } from './Autocomplete.types';
 import clsx from 'clsx';
 import { autocompleteClasses, getAutocompleteUtilityClass } from './Autocomplete.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useFormControl } from '@mui/material/FormControl';
 import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { useForkRef } from '@mui/material/utils';
@@ -131,7 +132,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     onBlur,
 
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAutocomplete',
   });

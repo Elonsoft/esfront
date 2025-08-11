@@ -5,7 +5,8 @@ import { SpinnerFadingRingProps } from './SpinnerFadingRing.types';
 import clsx from 'clsx';
 import { getSpinnerFadingRingUtilityClass } from './SpinnerFadingRing.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { generateStyleColorVariants, rotateKeyframe } from '../Spinner.utils';
@@ -55,7 +56,7 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
     size = 40,
     color = 'primary',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSpinnerFadingRing',
   });

@@ -5,7 +5,8 @@ import { AudioPlayerProps } from './AudioPlayer.types';
 import clsx from 'clsx';
 import { getAudioPlayerUtilityClass } from './AudioPlayer.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
@@ -525,7 +526,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
     TooltipProps,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESAudioPlayer',
   });

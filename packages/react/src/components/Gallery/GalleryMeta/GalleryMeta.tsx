@@ -3,7 +3,8 @@ import { GalleryMetaProps } from './GalleryMeta.types';
 import clsx from 'clsx';
 import { getGalleryMetaUtilityClass } from './GalleryMeta.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { IconArrowLeftW500 } from '../../../icons';
@@ -77,7 +78,7 @@ export const GalleryMeta = (inProps: GalleryMetaProps) => {
     labelClose,
     iconClose = <IconArrowLeftW500 />,
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryMeta',
   });

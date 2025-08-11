@@ -3,7 +3,8 @@ import { SvgIconProps } from './SvgIcon.types';
 import clsx from 'clsx';
 import { getSvgIconUtilityClass } from './SvgIcon.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 type SvgIconOwnerState = {
@@ -68,7 +69,7 @@ export const SvgIcon = (inProps: SvgIconProps) => {
     title,
     ContainerProps,
     ...props
-  } = useThemeProps({ props: inProps, name: 'ESSvgIcon' });
+  } = useDefaultProps({ props: inProps, name: 'ESSvgIcon' });
 
   const ownerState = { classes: inClasses, container };
   const classes = useUtilityClasses(ownerState);

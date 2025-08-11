@@ -3,7 +3,8 @@ import { SpinnerFadingDotsProps } from './SpinnerFadingDots.types';
 import clsx from 'clsx';
 import { getSpinnerFadingDotsUtilityClass } from './SpinnerFadingDots.classes';
 
-import { styled, useThemeProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { generateDelayedOpacityAnimationStyles, generateStyleColorVariants, opacityKeyframe } from '../Spinner.utils';
@@ -52,7 +53,7 @@ export const SpinnerFadingDots = (inProps: SpinnerFadingDotsProps) => {
     size = 40,
     color = 'primary',
     ...props
-  } = useThemeProps({
+  } = useDefaultProps({
     props: inProps,
     name: 'ESSpinnerFadingDots',
   });
