@@ -1,0 +1,51 @@
+/* stylelint-disable at-rule-empty-line-before */
+
+// @use '@esfront/theme/colors' with (
+//   $alphas: (
+//     a25: 0.02,
+//     a50: 0.04,
+//     a75: 0.06,
+//     a100: 0.08,
+//     a150: 0.1,
+//     a200: 0.12,
+//     a300: 0.16,
+//     a400: 0.24,
+//     a500: 0.34,
+//     a550: 0.44,
+//     a600: 0.54,
+//     a700: 0.6,
+//     a800: 0.72,
+//     a900: 0.88,
+//   )
+// );
+
+@use '@esfront/theme/presets/colors' as colorsPresets;
+@use '@esfront/theme/presets/shadows' as shadowsPresets;
+
+@use '@esfront/theme/components' as *;
+
+// @use '@esfront/theme/components/button' as *;
+// @use '@esfront/theme/components/checkbox' as *;
+// @use '@esfront/theme/components/radio' as *;
+// @use '@esfront/theme/components/text-field' as *;
+// @use '@esfront/theme/components/kbd' as *;
+
+@use '@esfront/theme/utility-classes' as *;
+
+@use './colors-overrides' as colorsOverrides;
+
+:root {
+  @include colorsPresets.common;
+
+  @include colorsPresets.light;
+  @include colorsOverrides.light;
+
+  @include shadowsPresets.light;
+
+  @media (prefers-color-scheme: dark) {
+    @include colorsPresets.dark;
+    @include colorsOverrides.dark;
+
+    @include shadowsPresets.dark;
+  }
+}
