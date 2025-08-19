@@ -50,7 +50,7 @@ export const SpinnerFadingDots = (inProps: SpinnerFadingDotsProps) => {
   const {
     className,
     sx,
-    size = 40,
+    size = 32,
     color = 'primary',
     ...props
   } = useDefaultProps({
@@ -68,17 +68,17 @@ export const SpinnerFadingDots = (inProps: SpinnerFadingDotsProps) => {
       height={size}
       ownerState={ownerState}
       sx={sx}
-      viewBox="0 0 40 40"
+      viewBox="0 0 32 32"
       width={size}
     >
-      <circle cx="19" cy="3" r="3" />
-      <circle cx="30.3145" cy="7.68652" r="3" />
-      <circle cx="35" cy="19" r="3" />
-      <circle cx="30.3145" cy="30.3135" r="3" />
-      <circle cx="19" cy="35" r="3" />
-      <circle cx="7.68555" cy="30.3135" r="3" />
-      <circle cx="3" cy="19" r="3" />
-      <circle cx="7.68555" cy="7.68652" r="3" />
+      <circle cx="16" cy="29.5" r="2.5" />
+      <circle cx="6.49957" cy="25.5" opacity="0.125" r="2.5" />
+      <circle cx="2.49957" cy="16" opacity="0.25" r="2.5" />
+      <circle cx="6.49957" cy="6.5" opacity="0.375" r="2.5" />
+      <circle cx="16" cy="2.5" opacity="0.5" r="2.5" />
+      <circle cx="25.4996" cy="6.5" opacity="0.625" r="2.5" />
+      <circle cx="29.4996" cy="16" opacity="0.75" r="2.5" />
+      <circle cx="25.4996" cy="25.5" opacity="0.875" r="2.5" />
     </SpinnerFadingDotsRoot>
   );
 };
