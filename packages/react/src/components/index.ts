@@ -33,6 +33,7 @@ export * from './FormatDate';
 export * from './FormatSize';
 export * from './FormControlLabel';
 export * from './Gallery';
+export * from './Header';
 export * from './InformationIcon';
 export * from './Kbd';
 export * from './LinearProgress';
