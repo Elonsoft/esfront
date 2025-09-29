@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@function rem($pixels) {
+  @return #{math.div($pixels, 16)}rem;
+}
+
+$levels: (
+  body400: (
+    font-size: 20,
+    font-weight: 400,
+    letter-spacing: 0.5,
+    line-height: 32,
+    text-decoration-thickness: 2,
+    text-underline-offset: 2,
+  ),
+  body300: (
+    font-size: 18,
+    font-weight: 400,
+    letter-spacing: 0.1,
+    line-height: 28,
+    text-decoration-thickness: 2,
+    text-underline-offset: 2,
+  ),
+  body200: (
+    font-size: 16,
+    font-weight: 400,
+    letter-spacing: 0.5,
+    line-height: 24,
+    text-decoration-thickness: 1,
+    text-underline-offset: 2,
+  ),
+  body100: (
+    font-size: 14,
+    font-weight: 400,
+    letter-spacing: 0.25,
+    line-height: 20,
+    text-decoration-thickness: 1,
+    text-underline-offset: 1,
+  ),
+);
+
+@mixin level($name) {
+  @if not map.has-key($levels, $name) {
+    @error "Level #{$name} is not defined.";
+  }
+
+  $level: map.get($levels, $name);
+
+  font-size: rem(map.get($level, 'font-size'));
+  font-weight: map.get($level, 'font-weight');
+  letter-spacing: rem(map.get($level, 'letter-spacing'));
+  line-height: rem(map.get($level, 'line-height'));
+  text-decoration-thickness: rem(map.get($level, 'text-decoration-thickness'));
+  text-underline-offset: rem(map.get($level, 'text-underline-offset'));
+}

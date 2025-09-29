@@ -1,7 +1,6 @@
 import { KbdProps } from './Kbd.types';
 
 import clsx from 'clsx';
-import { getKbdUtilityClass } from './Kbd.classes';
 
 import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
@@ -76,12 +75,5 @@ const KbdRoot = styled('kbd', {
 export const Kbd = (inProps: KbdProps) => {
   const { children, className, sx, variant = 'raised', ...props } = useDefaultProps({ props: inProps, name: 'ESKbd' });
 
-  const ownerState = { ...props, variant };
-  const classes = useUtilityClasses(ownerState);
-
-  return (
-    <KbdRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
-      {children}
-    </KbdRoot>
-  );
+  return <kbd className={clsx('es-kbd', `es-kbd--${variant}`, 'body100', className)}>{children}</kbd>;
 };

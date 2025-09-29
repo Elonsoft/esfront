@@ -1,0 +1,9 @@
+@use 'sass:map';
+@use '../breakpoints';
+@use '../typography';
+
+@each $name in map.keys(typography.$levels) {
+  @include breakpoints.adaptive-classes($name) {
+    @include typography.level($name);
+  }
+}
