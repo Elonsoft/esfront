@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+
 import { ReactNode } from 'react';
 
 import { CheckboxClasses } from './Checkbox.classes';
@@ -5,6 +7,14 @@ import { CheckboxClasses } from './Checkbox.classes';
 import { SxProps, Theme } from '@mui/material';
 
 import { SwitchBaseProps } from '../SwitchBase';
+
+import { OverridableStringUnion } from '@mui/types';
+
+export interface CheckboxPropsVariantOverrides {}
+
+export interface CheckboxPropsColorOverrides {}
+
+export interface CheckboxPropsSizeOverrides {}
 
 export interface CheckboxProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'color' | 'icon' | 'type'> {
   /** The system prop that allows defining system overrides as well as additional CSS styles. */
@@ -37,13 +47,16 @@ export interface CheckboxProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'co
    * The color of the component.
    * @default 'primary'
    */
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'monoA' | 'monoB' | 'black' | 'white';
+  color?: OverridableStringUnion<
+    'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'monoA' | 'monoB' | 'black' | 'white',
+    CheckboxPropsColorOverrides
+  >;
 
   /**
    * The variant of the component.
    * @default 'contained'
    */
-  variant?: 'contained' | 'outlined' | 'hybrid';
+  variant?: OverridableStringUnion<'contained' | 'outlined' | 'hybrid', CheckboxPropsVariantOverrides>;
 
   /**
    * The default checked state. Use when the component is not controlled.
@@ -124,7 +137,7 @@ export interface CheckboxProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'co
    * `small` is equivalent to the dense checkbox styling.
    * @default 'medium'
    */
-  size?: 'large' | 'medium' | 'small';
+  size?: OverridableStringUnion<'large' | 'medium' | 'small', CheckboxPropsSizeOverrides>;
 
   /**
    * The value of the component. The DOM API casts this to a string.
