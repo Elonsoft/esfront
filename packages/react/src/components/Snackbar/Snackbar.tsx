@@ -31,6 +31,7 @@ const useUtilityClasses = (ownerState: SnackbarOwnerState) => {
     progress: ['progress'],
     content: ['content'],
     icon: ['icon'],
+    heading: ['heading'],
     message: ['message'],
     actions: ['actions'],
   };
@@ -243,6 +244,15 @@ const SnackbarIcon = styled('div', {
   display: 'flex',
 });
 
+const SnackbarHeading = styled('div', {
+  name: 'ESSnackbar',
+  slot: 'Heading',
+  overridesResolver: (props, styles) => styles.heading,
+})(({ theme }) => ({
+  ...theme.typography.body100Medium,
+  marginBottom: '2px',
+}));
+
 const SnackbarMessage = styled('div', {
   name: 'ESSnackbar',
   slot: 'Message',
@@ -252,6 +262,10 @@ const SnackbarMessage = styled('div', {
   padding: '4px 0',
   minWidth: 0,
   wordBreak: 'break-word',
+
+  [`&:has(.${snackbarClasses.heading})`]: {
+    paddingBottom: '6px',
+  },
 
   '&:first-of-type': {
     paddingLeft: '12px',
@@ -290,6 +304,7 @@ export const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(function Snack
     className,
     sx,
 
+    heading,
     message,
     icon,
 
@@ -353,7 +368,10 @@ export const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(function Snack
         {size !== 's' && icon !== false && (
           <SnackbarIcon className={classes.icon}>{icon || iconMapping[severity]}</SnackbarIcon>
         )}
-        <SnackbarMessage className={classes.message}>{message}</SnackbarMessage>
+        <SnackbarMessage className={classes.message}>
+          {!!heading && <SnackbarHeading className={classes.heading}>{heading}</SnackbarHeading>}
+          {!!message && <div>{message}</div>}
+        </SnackbarMessage>
         <SnackbarActions className={classes.actions}>{!!action && action}</SnackbarActions>
       </SnackbarContent>
     </SnackbarRoot>

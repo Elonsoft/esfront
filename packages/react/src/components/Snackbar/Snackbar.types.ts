@@ -34,6 +34,8 @@ export interface SnackbarProps {
   /** The system prop that allows defining system overrides as well as additional CSS styles. */
   sx?: SxProps<Theme>;
 
+  /* The heading to display. */
+  heading?: ReactNode;
   /* The message to display. */
   message?: ReactNode;
   /** The icon to display. */
