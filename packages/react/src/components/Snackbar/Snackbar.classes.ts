@@ -9,6 +9,8 @@ export type SnackbarClasses = {
   content: string;
   /** Styles applied to the icon element. */
   icon: string;
+  /** Styles applied to the heading element. */
+  heading: string;
   /** Styles applied to the message element. */
   message: string;
   /** Styles applied to the actions element. */
@@ -57,6 +59,7 @@ export const snackbarClasses: SnackbarClasses = generateUtilityClasses('ESSnackb
   'progress',
   'content',
   'icon',
+  'heading',
   'message',
   'actions',
 

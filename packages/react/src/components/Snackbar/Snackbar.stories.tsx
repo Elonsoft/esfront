@@ -24,6 +24,11 @@ const meta: Meta<Args> = {
     references: ['Snackbar', 'SnackbarClose'],
   },
   argTypes: {
+    heading: {
+      control: {
+        type: 'text',
+      },
+    },
     message: {
       control: {
         type: 'text',
