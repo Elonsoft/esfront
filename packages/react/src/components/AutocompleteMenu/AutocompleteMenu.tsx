@@ -1,7 +1,6 @@
 import {
   ForwardedRef,
   forwardRef,
-  Fragment,
   KeyboardEvent,
   MutableRefObject,
   ReactNode,
@@ -399,51 +398,62 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     const group = groupBy?.(option);
 
     if (!!groupBy && (index === 0 || group !== groupBy(options[index - 1]))) {
+      if (index > 0) {
+        groupedOptions.push(
+          <AutocompleteMenuMenuGroupDivider
+            key={`${value}-${group}-divider`}
+            className={classes.menuGroupDivider}
+            color="monoA.A100"
+          />
+        );
+      }
+
       groupedOptions.push(
-        <Fragment key={`${value}-${group}`}>
-          {index > 0 && <AutocompleteMenuMenuGroupDivider className={classes.menuGroupDivider} color="monoA.A100" />}
-          <AutocompleteMenuMenuGroup
-            aria-disabled
-            tabIndex={-1}
-            {...MenuGroupProps}
-            className={clsx(classes.menuGroup, MenuGroupProps?.className)}
-          >
-            {group}
-          </AutocompleteMenuMenuGroup>
-        </Fragment>
+        <AutocompleteMenuMenuGroup
+          key={`${value}-${group}`}
+          aria-disabled
+          tabIndex={-1}
+          {...MenuGroupProps}
+          className={clsx(classes.menuGroup, MenuGroupProps?.className)}
+        >
+          {group}
+        </AutocompleteMenuMenuGroup>
       );
     }
 
-    const getMenuItem = ({
-      ref,
-      childrenRef,
-    }: {
-      ref?: MutableRefObject<HTMLElement | null>;
-      childrenRef?: MutableRefObject<HTMLElement | null>;
-    } = {}) => (
-      <AutocompleteMenuMenuItem
-        ref={ref && (ref as RefObject<HTMLLIElement>)}
-        autoFocus={!disabled && tabIndex && !SearchProps && !disableAutoFocus}
-        className={classes.menuItem}
-        disabled={disabled}
-        selected={selected}
-        tabIndex={!disabled && tabIndex ? 0 : -1}
-        onClick={disabled ? undefined : onMenuItemClick(option)}
-      >
-        {!!props.multiple && (
-          <AutocompleteMenuCheckbox readOnly checked={selected} color="secondary" disabled={disabled} tabIndex={-1} />
-        )}
-        <AutocompleteMenuMenuItemText
-          ref={childrenRef && (childrenRef as RefObject<HTMLDivElement>)}
-          className={classes.menuItemText}
+    const getMenuItem =
+      (tabIndex: boolean) =>
+      // eslint-disable-next-line react/display-name
+      ({
+        ref,
+        childrenRef,
+      }: {
+        ref?: MutableRefObject<HTMLElement | null>;
+        childrenRef?: MutableRefObject<HTMLElement | null>;
+      } = {}) => (
+        <AutocompleteMenuMenuItem
+          ref={ref && (ref as RefObject<HTMLLIElement>)}
+          autoFocus={!disabled && tabIndex && !SearchProps && !disableAutoFocus}
+          className={classes.menuItem}
+          disabled={disabled}
+          selected={selected}
+          tabIndex={!disabled && tabIndex ? 0 : -1}
+          onClick={disabled ? undefined : onMenuItemClick(option)}
         >
-          {label}
-        </AutocompleteMenuMenuItemText>
-      </AutocompleteMenuMenuItem>
-    );
+          {!!props.multiple && (
+            <AutocompleteMenuCheckbox readOnly checked={selected} color="secondary" disabled={disabled} tabIndex={-1} />
+          )}
+          <AutocompleteMenuMenuItemText
+            ref={childrenRef && (childrenRef as RefObject<HTMLDivElement>)}
+            className={classes.menuItemText}
+          >
+            {label}
+          </AutocompleteMenuMenuItemText>
+        </AutocompleteMenuMenuItem>
+      );
 
     if (disableTooltip) {
-      groupedOptions.push(getMenuItem());
+      groupedOptions.push(getMenuItem(tabIndex)());
     } else {
       groupedOptions.push(
         <AutocompleteMenuTooltip
@@ -453,7 +463,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
           {...TooltipProps}
           className={clsx(classes.tooltip, TooltipProps?.className)}
         >
-          {getMenuItem}
+          {getMenuItem(tabIndex)}
         </AutocompleteMenuTooltip>
       );
     }
