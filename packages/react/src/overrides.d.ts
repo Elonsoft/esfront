@@ -35,6 +35,8 @@ import {
   AlertClassKey,
   AlertCloseClassKey,
   AlertCloseProps,
+  AlertContentClassKey,
+  AlertContentProps,
   AlertProps,
   AlertTitleClassKey,
   AlertTitleProps,
@@ -378,6 +380,7 @@ declare module '@mui/material/styles/props' {
     ESAppBar: AppBarProps;
     ESAvatar: AvatarProps;
     ESAvatarGroup: AvatarGroupProps;
+    ESAlertContent: AlertContentProps;
     ESAlertTitle: AlertTitleProps;
     ESAudioPlayer: AudioPlayerProps;
     ESAutocomplete: AutocompleteProps<any>;
@@ -537,6 +540,7 @@ declare module '@mui/material/styles/overrides' {
     ESAppBar: AppBarClassKey;
     ESAvatar: AvatarClasses;
     ESAvatarGroup: AvatarGroupClassKey;
+    ESAlertContent: AlertContentClassKey;
     ESAlertTitle: AlertTitleClassKey;
     ESAudioPlayer: AudioPlayerClassKey;
     ESAutocomplete: AutocompleteClassKey;
@@ -704,6 +708,10 @@ declare module '@mui/material/styles/components' {
     ESAlertClose?: {
       defaultProps?: ComponentsProps['ESAlertClose'];
       styleOverrides?: ComponentsOverrides['ESAlertClose'];
+    };
+    ESAlertContent?: {
+      defaultProps?: ComponentsProps['ESAlertContent'];
+      styleOverrides?: ComponentsOverrides['ESAlertContent'];
     };
     ESAlertActions?: {
       defaultProps?: ComponentsProps['ESAlertActions'];

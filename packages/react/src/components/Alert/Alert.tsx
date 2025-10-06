@@ -5,7 +5,6 @@ import { alertClasses, getAlertUtilityClass } from './Alert.classes';
 
 import { Breakpoint, styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
@@ -17,7 +16,6 @@ type AlertOwnerState = {
   color?: AlertProps['color'];
   severity: 'success' | 'warning' | 'error' | 'info';
   variant: 'standard';
-  isWithActions?: boolean;
 };
 
 const useUtilityClasses = (ownerState: AlertOwnerState) => {
@@ -26,8 +24,6 @@ const useUtilityClasses = (ownerState: AlertOwnerState) => {
   const slots = {
     root: ['root', `${variant}${capitalize(color || severity)}`, `${variant}`],
     icon: ['icon'],
-    content: ['content'],
-    message: ['message'],
     action: ['action'],
   };
 
@@ -45,18 +41,23 @@ const AlertRoot = styled('div', {
     return [styles.root, styles[variant], styles[`${variant}${capitalize(color || severity)}`]];
   },
 })<{ ownerState: AlertOwnerState }>(({ theme }) => ({
-  display: 'flex',
+  display: 'grid',
+  gridTemplateAreas: '"icon content action"',
+  gridTemplateColumns: 'auto 1fr auto',
+  alignItems: 'flex-start',
   borderRadius: '4px',
   padding: '7px 15px',
+  position: 'relative',
 
   variants: [
     {
-      props: {
-        isWithActions: true,
-      },
-      style: {
-        padding: '11px 15px',
-      },
+      props: (props: { breakpoint: AlertProps['breakpoint'] }) => !!props.breakpoint,
+      style: (props: { breakpoint: number | Breakpoint }) => ({
+        [theme.breakpoints.down(props.breakpoint)]: {
+          gridTemplateAreas: '"icon . action" "content content content"',
+          paddingBottom: '11px',
+        },
+      }),
     },
   ],
 
@@ -92,63 +93,19 @@ const AlertIcon = styled('div', {
   slot: 'Icon',
   overridesResolver: (props, styles) => styles.icon,
 })(() => ({
-  paddingTop: '8px',
-  marginRight: '8px',
-}));
-
-const AlertContent = styled('div', {
-  name: 'ESAlert',
-  slot: 'Content',
-  overridesResolver: (props, styles) => styles.content,
-})<{ ownerState: { breakpoint: AlertProps['breakpoint'] } }>(({ theme }) => ({
   display: 'flex',
-  flexDirection: 'column',
-  gap: '6px',
-  flexGrow: 1,
-
-  variants: [
-    {
-      props: (props: { breakpoint: AlertProps['breakpoint'] }) => !!props.breakpoint,
-      style: (props: { breakpoint: number | Breakpoint }) => ({
-        [theme.breakpoints.up(props.breakpoint)]: {
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        },
-      }),
-    },
-  ],
+  margin: '8px 8px 8px 0',
+  gridArea: 'icon',
 }));
-
-const AlertMessage = styled(Typography, {
-  name: 'ESAlert',
-  slot: 'Message',
-  overridesResolver: (props, styles) => styles.message,
-})(() => ({
-  wordBreak: 'break-word',
-  marginRight: 'auto',
-  minHeight: '40px',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-})) as typeof Typography;
 
 const AlertAction = styled('div', {
   name: 'ESAlert',
   slot: 'Action',
   overridesResolver: (props, styles) => styles.action,
-})<{ ownerState: AlertOwnerState }>(() => ({
-  margin: '8px 0 0 8px',
-
-  variants: [
-    {
-      props: {
-        isWithActions: true,
-      },
-      style: {
-        margin: '4px 0 0 8px',
-      },
-    },
-  ],
+})(() => ({
+  display: 'flex',
+  margin: '8px 0 8px 8px',
+  gridArea: 'action',
 }));
 
 const defaultIconMapping = {
@@ -170,7 +127,6 @@ export const Alert = (inProps: AlertProps) => {
     variant = 'standard',
     severity = 'success',
     action,
-    actions,
     color,
     breakpoint,
     iconMapping = defaultIconMapping,
@@ -180,27 +136,14 @@ export const Alert = (inProps: AlertProps) => {
     name: 'ESAlert',
   });
 
-  const isWithActions = Array.isArray(children)
-    ? children.some((elem) => (typeof elem === 'object' ? elem.type?.displayName === 'AlertActions' : false))
-    : false;
-
-  const ownerState = { ...props, variant, severity, color, isWithActions, breakpoint };
+  const ownerState = { ...props, variant, severity, color, breakpoint };
   const classes = useUtilityClasses(ownerState);
 
   return (
     <AlertRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
       {icon !== false && <AlertIcon className={classes.icon}>{icon || iconMapping[severity]}</AlertIcon>}
-      <AlertContent className={classes.content} ownerState={{ breakpoint }}>
-        <AlertMessage className={classes.message} color="monoA.A900" component="div" variant="body100">
-          {children}
-        </AlertMessage>
-        {actions}
-      </AlertContent>
-      {!!action && (
-        <AlertAction className={classes.action} ownerState={ownerState}>
-          {action}
-        </AlertAction>
-      )}
+      {children}
+      {!!action && <AlertAction className={classes.action}>{action}</AlertAction>}
     </AlertRoot>
   );
 };
