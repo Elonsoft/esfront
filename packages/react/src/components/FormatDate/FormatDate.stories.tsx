@@ -1,5 +1,5 @@
-import { Controls, Description, Markdown, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
-import { Meta, StoryObj } from '@storybook/react';
+import { Controls, Description, Markdown, Primary, Stories, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import requirements from './FormatDate.stories.requirements.md?raw';
 import { FormatDate } from '.';

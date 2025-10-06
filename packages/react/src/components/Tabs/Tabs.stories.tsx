@@ -1,6 +1,6 @@
 import { SyntheticEvent, useRef, useState } from 'react';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Tab, Tabs, tabsClasses } from '.';
 

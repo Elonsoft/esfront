@@ -4,6 +4,8 @@
 
 import { useMemo } from 'react';
 
+import { useDarkMode } from '@storybook-community/storybook-dark-mode';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -22,8 +24,6 @@ import {
 
 import { Theme } from '../../src/testing';
 import json from '../../src/typedoc.json';
-
-import { useDarkMode } from 'storybook-dark-mode';
 
 interface TableFunctionProps {
   name: string;

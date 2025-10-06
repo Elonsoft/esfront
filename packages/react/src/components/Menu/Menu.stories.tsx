@@ -1,6 +1,6 @@
 import { ComponentProps, useState } from 'react';
 
-import { Meta, StoryContext, StoryObj } from '@storybook/react';
+import { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';

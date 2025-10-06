@@ -1,4 +1,4 @@
-import { Args, Meta, StoryContext, StoryObj } from '@storybook/react';
+import { Args, Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
 import { EmptyStateCompact } from '.';
 

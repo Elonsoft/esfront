@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import Box from '@mui/material/Box';
 
