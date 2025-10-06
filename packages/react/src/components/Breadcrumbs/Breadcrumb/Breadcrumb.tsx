@@ -63,6 +63,7 @@ const BreadcrumbRoot = styled(Typography, {
 
   '&:last-of-type': {
     minWidth: '40px',
+    maxWidth: 'max-content',
     flexGrow: 1,
     flexShrink: '1',
     flexBasis: '0px',
