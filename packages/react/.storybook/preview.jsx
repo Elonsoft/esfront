@@ -1,13 +1,17 @@
 import React from 'react';
 
-import { Controls, Description, DocsContainer, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
+import { Controls, Description, DocsContainer, Primary, Stories, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 import { ReferencesList } from './components/ReferencesList';
 import { themeDark, themeLight } from './themes';
 
 import { Theme } from '../src/testing';
 
-import { useDarkMode } from 'storybook-dark-mode';
+import { useDarkMode, DARK_MODE_EVENT_NAME } from '@storybook-community/storybook-dark-mode';
+
+import { addons } from 'storybook/preview-api';
+
+const channel = addons.getChannel();
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -22,6 +26,7 @@ export const parameters = {
   darkMode: {
     light: themeLight,
     dark: themeDark,
+    stylePreview: true,
   },
   options: {
     storySort: {
@@ -39,7 +44,13 @@ export const parameters = {
   },
   docs: {
     container: function Container(props) {
-      const isDarkMode = useDarkMode();
+      const [isDarkMode, setDark] = React.useState();
+
+      React.useEffect(() => {
+        channel.on(DARK_MODE_EVENT_NAME, setDark);
+        return () => channel.removeListener(DARK_MODE_EVENT_NAME, setDark);
+      }, [channel, setDark]);
+
       const currentProps = { ...props };
       currentProps.theme = isDarkMode ? themeDark : themeLight;
 

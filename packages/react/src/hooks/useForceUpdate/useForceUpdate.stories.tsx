@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import Typography from '@mui/material/Typography';
 

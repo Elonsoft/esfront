@@ -1,4 +1,4 @@
-import { Meta, StoryContext, StoryObj } from '@storybook/react';
+import { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
 // eslint-disable-next-line no-restricted-imports
 import Button from '@mui/material/Button';

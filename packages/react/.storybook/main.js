@@ -20,10 +20,9 @@ module.exports = {
     },
   ],
   staticDirs: ['./assets'],
-
   addons: [
     {
-      name: '@storybook/addon-docs',
+      name: getAbsolutePath('@storybook/addon-docs'),
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
@@ -32,17 +31,10 @@ module.exports = {
         },
       },
     },
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false,
-      },
-    },
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('storybook-dark-mode'),
+    getAbsolutePath('@storybook-community/storybook-dark-mode'),
   ],
-
   async viteFinal(config) {
     const { mergeConfig } = await import('vite');
 
@@ -66,7 +58,7 @@ module.exports = {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
+  features: {
+    backgrounds: false,
   },
 };

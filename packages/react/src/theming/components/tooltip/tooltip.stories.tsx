@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 // eslint-disable-next-line no-restricted-imports
 import Tooltip from '@mui/material/Tooltip';

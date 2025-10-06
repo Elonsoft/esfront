@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Theme, useMediaQuery } from '@mui/material';
 

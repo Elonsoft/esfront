@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { FileInfo, FileInfoContent, FileInfoMeta, FileInfoMetaSeparator, FileInfoName } from '.';
 

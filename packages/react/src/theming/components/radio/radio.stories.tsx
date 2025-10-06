@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-imports */
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Radio } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
