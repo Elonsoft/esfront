@@ -177,6 +177,7 @@ import {
   GalleryThumbnailsItemProps,
   GalleryThumbnailsProps,
 } from './components/Gallery';
+import { ImageZoomClassKey, ImageZoomProps } from './components/ImageZoom';
 import { InformationIconClassKey, InformationIconProps } from './components/InformationIcon';
 import { KbdClassKey, KbdProps } from './components/Kbd';
 import { LinearProgressClassKey, LinearProgressProps } from './components/LinearProgress';
@@ -451,6 +452,7 @@ declare module '@mui/material/styles/props' {
     ESGalleryThumbnails: GalleryThumbnailsProps;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageProps;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemProps;
+    ESImageZoom: ImageZoomProps;
     ESInformationIcon: InformationIconProps;
     ESKbd: KbdProps;
     ESLinearProgress: LinearProgressProps;
@@ -610,6 +612,7 @@ declare module '@mui/material/styles/overrides' {
     ESGalleryThumbnails: GalleryThumbnailsClassKey;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageClassKey;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemClassKey;
+    ESImageZoom: ImageZoomClassKey;
     ESInformationIcon: InformationIconClassKey;
     ESKbd: KbdClassKey;
     ESLinearProgress: LinearProgressClassKey;
@@ -927,6 +930,10 @@ declare module '@mui/material/styles/components' {
     ESGalleryThumbnailsItem?: {
       defaultProps?: ComponentsProps['ESGalleryThumbnailsItem'];
       styleOverrides?: ComponentsOverrides['ESGalleryThumbnailsItem'];
+    };
+    ESImageZoom?: {
+      defaultProps?: ComponentsProps['ESImageZoom'];
+      styleOverrides?: ComponentsOverrides['ESImageZoom'];
     };
     ESInformationIcon?: {
       defaultProps?: ComponentsProps['ESInformationIcon'];
