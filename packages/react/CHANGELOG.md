@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.13.0...@esfront/react@0.13.1) (2025-10-13)
+
+
+### Features
+
+* **Checkbox:** add props overrides ([18f2155](https://github.com/Elonsoft/esfront/commit/18f21550e3447ded10ea5218eb3b8f78ec41f83d))
+* **PhoneField:** add new component ([698c680](https://github.com/Elonsoft/esfront/commit/698c68010aa65fa5f3b583227225aa03a57e83e7))
+* replace useThemeProps with useDefaultProps ([ead4812](https://github.com/Elonsoft/esfront/commit/ead481202f14de9f6a843f911edacad7b9efc1f7))
+* **Snackbar:** add heading ([7ae7dff](https://github.com/Elonsoft/esfront/commit/7ae7dff3bd1fcda1937d3a245754c54970823aef))
+
+
+### Bug Fixes
+
+* **AutocompleteMenu:** add tabIndex to first menu item ([2d526b7](https://github.com/Elonsoft/esfront/commit/2d526b7881757bd8413bfa66fe8bc6de5da1a45d))
+* **Breadcrumb:** add maxWidth to last breadcrumb ([1fba7e5](https://github.com/Elonsoft/esfront/commit/1fba7e52c92b9933c2e161d53238aa2cceaecc23))
+
+
+
 ## [0.13.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.12.2...@esfront/react@0.13.0) (2025-06-16)
 
 

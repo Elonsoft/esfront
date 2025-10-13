@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.6...@esfront/cspell-config@0.0.7) (2025-10-13)
+
+
+### Features
+
+* **PhoneField:** add new component ([698c680](https://github.com/Elonsoft/esfront/commit/698c68010aa65fa5f3b583227225aa03a57e83e7))
+
+
+
 ## [0.0.6](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.5...@esfront/cspell-config@0.0.6) (2025-06-16)
 
 **Note:** Version bump only for package @esfront/cspell-config
