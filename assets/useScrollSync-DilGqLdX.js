@@ -1,5 +1,0 @@
-import{j as o}from"./jsx-runtime-BoZ7yaty.js";import{useMDXComponents as t}from"./index-EQ2lhxnn.js";import{M as s}from"./index-CR0xhVal.js";import{r as c}from"./index-BHhzso0z.js";import{D as i}from"./Description-DaRgO0kh.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-D9CsFLId.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-D7CvdepJ.js";function n(r){const e={h1:"h1",h2:"h2",...t(),...r.components};return o.jsxs(o.Fragment,{children:[o.jsx(s,{title:"Hooks/useScrollSync",parameters:{docs:{source:{type:"code"}}}}),`
-`,o.jsx(e.h1,{id:"usescrollsync",children:"useScrollSync"}),`
-`,o.jsx(i,{name:"useScrollSync"}),`
-`,o.jsx(e.h2,{id:"api",children:"API"}),`
-`,o.jsx("ul",{children:o.jsx("li",{children:o.jsx(c,{kind:"hooks-api-useScrollSync",story:"page",children:o.jsx("code",{children:"useScrollSync"})})})})]})}function D(r={}){const{wrapper:e}={...t(),...r.components};return e?o.jsx(e,{...r,children:o.jsx(n,{...r})}):n(r)}export{D as default};

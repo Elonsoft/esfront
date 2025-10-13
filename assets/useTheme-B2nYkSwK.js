@@ -1,1 +1,0 @@
-import{b as n,e as r}from"./identifier-DA8c-tJk.js";import{r as s}from"./index-DIDRz_s2.js";function o(e){return Object.keys(e).length===0}function m(e=null){const t=s.useContext(n);return!t||o(t)?e:t}const u=r();function h(e=u){return m(e)}export{m as a,h as u};
