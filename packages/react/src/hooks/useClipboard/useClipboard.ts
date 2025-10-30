@@ -21,5 +21,11 @@ export const useClipboard = () => {
     return window.navigator.clipboard.read();
   }, []);
 
-  return { writeText, write, readText, read, isReadSupported: !!window?.navigator?.clipboard?.readText };
+  return {
+    writeText,
+    write,
+    readText,
+    read,
+    isReadSupported: typeof window !== 'undefined' && !!window?.navigator?.clipboard?.readText,
+  };
 };
