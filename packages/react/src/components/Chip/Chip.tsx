@@ -71,7 +71,7 @@ export const ChipRoot = styled('div', {
       styles[`variant${capitalize(variant)}`],
     ];
   },
-})(({ theme }) => ({
+})<{ ownerState: ChipOwnerState }>(({ theme }) => ({
   alignItems: 'center',
   border: 0,
   borderRadius: '1000px',
@@ -399,7 +399,7 @@ export const ChipLabel = styled('span', {
 export const ChipDeleteIconWrapper = styled('div', {
   name: 'ESChip',
   slot: 'DeleteIconWrapper',
-  overridesResolver: (props, styles) => styles.label,
+  overridesResolver: (props, styles) => styles.deleteIconWrapper,
 })(() => ({
   display: 'inline-flex',
   justifyContent: 'center',
@@ -564,6 +564,7 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
       ref={handleRef}
       as={component}
       className={clsx(classes.root, className)}
+      ownerState={ownerState}
       {...disabledProp}
       sx={sx}
       tabIndex={!focusableWhenDisabled && disabled ? -1 : tabIndex}
