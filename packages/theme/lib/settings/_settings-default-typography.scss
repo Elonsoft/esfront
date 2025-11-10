@@ -1,0 +1,307 @@
+/* stylelint-disable scss/dollar-variable-empty-line-before */
+
+@use 'sass:map';
+
+$h1: (
+  font-size: 30,
+  font-weight: 500,
+  letter-spacing: 0.2,
+  line-height: 36,
+  text-decoration-thickness: 3,
+  text-underline-offset: 2,
+
+  breakpoints: (
+    sm: (
+      font-size: 34,
+      line-height: 40,
+    ),
+    lg: (
+      font-size: 40,
+      line-height: 48,
+      text-underline-offset: 3,
+    ),
+  ),
+);
+
+$h2: (
+  font-size: 26,
+  font-weight: 500,
+  letter-spacing: 0.1,
+  line-height: 32,
+  text-decoration-thickness: 2,
+  text-underline-offset: 2,
+
+  breakpoints: (
+    sm: (
+      font-size: 30,
+      line-height: 36,
+      text-decoration-thickness: 3,
+    ),
+    lg: (
+      font-size: 32,
+      line-height: 40,
+      text-underline-offset: 3,
+    ),
+  ),
+);
+
+$h3: (
+  font-size: 24,
+  font-weight: 500,
+  letter-spacing: 0,
+  line-height: 28,
+  text-decoration-thickness: 2,
+  text-underline-offset: 2,
+
+  breakpoints: (
+    sm: (
+      font-size: 26,
+      line-height: 32,
+    ),
+    lg: (
+      font-size: 28,
+      line-height: 36,
+      text-underline-offset: 3,
+    ),
+  ),
+);
+
+$h4: (
+  font-size: 22,
+  font-weight: 500,
+  letter-spacing: 0.15,
+  line-height: 28,
+  text-decoration-thickness: 2,
+  text-underline-offset: 2,
+
+  breakpoints: (
+    sm: (
+      font-size: 24,
+      line-height: 28,
+    ),
+  ),
+);
+
+$h5: (
+  font-size: 20,
+  font-weight: 500,
+  letter-spacing: 0.2,
+  line-height: 24,
+  text-decoration-thickness: 2,
+  text-underline-offset: 2,
+);
+
+$h6: (
+  font-size: 18,
+  font-weight: 500,
+  letter-spacing: 0.15,
+  line-height: 24,
+  text-decoration-thickness: 2,
+  text-underline-offset: 2,
+);
+
+$subtitle1: (
+  font-size: 16,
+  font-weight: 400,
+  letter-spacing: 0.15,
+  line-height: 24,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$subtitle2: (
+  font-size: 14,
+  font-weight: 500,
+  letter-spacing: 0.1,
+  line-height: 20,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$body400: (
+  font-size: 20,
+  font-weight: 400,
+  letter-spacing: 0.5,
+  line-height: 32,
+  text-decoration-thickness: 2,
+  text-underline-offset: 2,
+);
+
+$body300: (
+  font-size: 18,
+  font-weight: 400,
+  letter-spacing: 0.1,
+  line-height: 28,
+  text-decoration-thickness: 2,
+  text-underline-offset: 2,
+);
+
+$body200: (
+  font-size: 16,
+  font-weight: 400,
+  letter-spacing: 0.5,
+  line-height: 24,
+  text-decoration-thickness: 1,
+  text-underline-offset: 2,
+);
+
+$body100: (
+  font-size: 14,
+  font-weight: 400,
+  letter-spacing: 0.25,
+  line-height: 20,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$mini200: (
+  font-size: 11,
+  font-weight: 700,
+  letter-spacing: 0,
+  line-height: 16,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$mini100: (
+  font-size: 9,
+  font-weight: 500,
+  letter-spacing: 0.6,
+  line-height: 12,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$micro: (
+  font-size: 10,
+  font-weight: 500,
+  letter-spacing: 0.4,
+  line-height: 12,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$button: (
+  font-size: 14,
+  font-weight: 500,
+  letter-spacing: 0.5,
+  line-height: 16,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$caption: (
+  font-size: 12,
+  font-weight: 400,
+  letter-spacing: 0.4,
+  line-height: 16,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$overline: (
+  font-size: 10,
+  font-weight: 500,
+  letter-spacing: 1.2,
+  line-height: 16,
+  text-decoration-thickness: 1,
+  text-underline-offset: 1,
+);
+
+$typography: (
+  h1: $h1,
+  h2: $h2,
+  h3: $h3,
+  h4: $h4,
+  h5: $h5,
+  h6: $h6,
+  subtitle1: $subtitle1,
+  subtitle2: $subtitle2,
+  body400: $body400,
+  body400-medium:
+    map.merge(
+      $body400,
+      (
+        font-weight: 500,
+      )
+    ),
+  body400-bold:
+    map.merge(
+      $body400,
+      (
+        font-weight: 700,
+      )
+    ),
+  body300: $body300,
+  body300-medium:
+    map.merge(
+      $body300,
+      (
+        font-weight: 500,
+      )
+    ),
+  body300-bold:
+    map.merge(
+      $body300,
+      (
+        font-weight: 700,
+      )
+    ),
+  body200: $body200,
+  body200-medium:
+    map.merge(
+      $body200,
+      (
+        font-weight: 500,
+      )
+    ),
+  body200-bold:
+    map.merge(
+      $body200,
+      (
+        font-weight: 700,
+      )
+    ),
+  body100: $body100,
+  body100-medium:
+    map.merge(
+      $body100,
+      (
+        font-weight: 500,
+      )
+    ),
+  body100-bold:
+    map.merge(
+      $body100,
+      (
+        font-weight: 700,
+      )
+    ),
+  mini200: $mini200,
+  mini100: $mini100,
+  mini100-bold:
+    map.merge(
+      $mini100,
+      (
+        font-weight: 700,
+      )
+    ),
+  micro: $micro,
+  button: $button,
+  caption: $caption,
+  caption-medium:
+    map.merge(
+      $caption,
+      (
+        font-weight: 500,
+      )
+    ),
+  caption-bold:
+    map.merge(
+      $caption,
+      (
+        font-weight: 700,
+      )
+    ),
+  overline: $overline,
+);

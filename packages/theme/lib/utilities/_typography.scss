@@ -1,0 +1,18 @@
+/* stylelint-disable at-rule-empty-line-before */
+
+@use 'sass:map';
+
+@use '../settings';
+
+@use '../helpers/breakpoints';
+@use '../helpers/typography';
+
+@mixin include() {
+  @include breakpoints.adaptive-classes() using ($prefix) {
+    @each $name in map.keys(settings.$typography) {
+      .#{$prefix}#{$name} {
+        @include typography.level($name);
+      }
+    }
+  }
+}
