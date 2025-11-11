@@ -313,6 +313,7 @@ import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFi
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { TooltipClassKey, TooltipProps } from './components/Tooltip';
 import { buttonMixin, listItemMixin } from './theming/mixins';
+import { SplitButtonClassKey, SplitButtonProps } from './components/SplitButton';
 import { AvatarProps } from './components';
 import { BadgeProps, BadgeClassKey } from './components/Badge';
 import { BadgePlacementControlProps, BadgePlacementControlClassKey } from './components/BadgePlacementControl';
@@ -396,6 +397,7 @@ declare module '@mui/material/styles/props' {
     ESBottomSheet: BottomSheetProps;
     ESButton: ButtonOwnProps;
     ESButtonBase: ButtonBaseProps;
+    ESSplitButton: SplitButtonProps;
     ESCalendar: CalendarProps;
     ESCalendarButton: CalendarButtonProps;
     ESCalendarHead: CalendarHeadProps;
@@ -556,6 +558,7 @@ declare module '@mui/material/styles/overrides' {
     ESBottomSheet: BottomSheetClassKey;
     ESButton: ButtonClassKey;
     ESButtonBase: ButtonBaseClassKey;
+    ESSplitButton: SplitButtonClassKey;
     ESCalendar: CalendarClassKey;
     ESCalendarButton: CalendarButtonClassKey;
     ESCalendarHead: CalendarHeadClassKey;
@@ -783,6 +786,10 @@ declare module '@mui/material/styles/components' {
     ESButtonBase?: {
       defaultProps?: ComponentsProps['ESButtonBase'];
       styleOverrides?: ComponentsOverrides['ESButtonBase'];
+    };
+    ESSplitButton?: {
+      defaultProps?: ComponentsProps['ESSplitButton'];
+      styleOverrides?: ComponentsOverrides['ESSplitButton'];
     };
     ESCalendar?: {
       defaultProps?: ComponentsProps['ESCalendar'];
