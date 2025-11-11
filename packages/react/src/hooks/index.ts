@@ -24,6 +24,7 @@ export { usePreviousValue } from './usePreviousValue';
 export { useResizeObserver } from './useResizeObserver';
 export { useScrollDirection } from './useScrollDirection';
 export { useScrollLock } from './useScrollLock';
+export { useScrollSpy } from './useScrollSpy';
 export { useScrollSync } from './useScrollSync';
 export { useSessionStorage } from './useSessionStorage';
 export { useSticky } from './useSticky';
