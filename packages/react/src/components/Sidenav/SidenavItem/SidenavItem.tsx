@@ -43,7 +43,6 @@ const SidenavItemRoot = styled(ListItem, {
   [`&.${listItemClasses.root}`]: {
     borderRadius: '6px',
     padding: '0',
-    margin: '0 8px',
     justifyContent: 'center',
 
     '--text': theme.vars.palette.monoA.A800,
@@ -94,7 +93,7 @@ const SidenavItemWrapper = styled('div', {
   slot: 'Wrapper',
   overridesResolver: (_props, styles) => styles.wrapper,
 })({
-  display: 'flex',
+  margin: '0 8px',
 });
 
 const SidenavItemTooltip = styled(
