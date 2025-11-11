@@ -70,7 +70,7 @@ const SidebarToggleButton = styled(Button, {
   top: '-9px',
 
   [`& .${svgIconClasses.root}`]: {
-    transform: 'rotate(0deg)',
+    transform: 'rotate(180deg)',
   },
 
   [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorMonoA}`]: {
@@ -87,7 +87,7 @@ const SidebarToggleButton = styled(Button, {
         marginLeft: '7px',
 
         [`& .${svgIconClasses.root}`]: {
-          transform: 'rotate(180deg)',
+          transform: 'rotate(0deg)',
         },
       },
     },
