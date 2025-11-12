@@ -1,7 +1,7 @@
 import { PropertyProps } from './Property.types';
 
 import clsx from 'clsx';
-import { getPropertyUtilityClass, propertyClasses } from './Property.classes';
+import { getPropertyUtilityClass } from './Property.classes';
 
 import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
@@ -47,9 +47,7 @@ const PropertyRoot = styled('div', {
         size: 's',
       },
       style: {
-        [`& .${propertyClasses.value}`]: {
-          ...theme.typography.body100,
-        },
+        ...theme.typography.body100,
       },
     },
     {
@@ -57,9 +55,7 @@ const PropertyRoot = styled('div', {
         size: 'm',
       },
       style: {
-        [`& .${propertyClasses.value}`]: {
-          ...theme.typography.body200,
-        },
+        ...theme.typography.body200,
       },
     },
   ],
@@ -70,7 +66,6 @@ const PropertyName = styled('div', {
   slot: 'Name',
   overridesResolver: (props, styles) => styles.name,
 })(({ theme }) => ({
-  ...theme.typography.body100,
   alignItems: 'center',
   color: theme.vars.palette.monoA.A600,
   display: 'flex',
