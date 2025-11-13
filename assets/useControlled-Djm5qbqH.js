@@ -1,0 +1,5 @@
+import{j as o}from"./jsx-runtime-BoZ7yaty.js";import{useMDXComponents as n}from"./index-EQ2lhxnn.js";import{M as s}from"./index-KGiTaVI6.js";import{r as i}from"./index-Cjy4_adW.js";import{D as m}from"./Description-SNPoS_O8.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-BuK3RciO.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-BLp9HImB.js";function r(e){const t={h1:"h1",h2:"h2",...n(),...e.components};return o.jsxs(o.Fragment,{children:[o.jsx(s,{title:"Hooks/useControlled",parameters:{docs:{source:{type:"code"}}}}),`
+`,o.jsx(t.h1,{id:"usecontrolled",children:"useControlled"}),`
+`,o.jsx(m,{name:"useControlled"}),`
+`,o.jsx(t.h2,{id:"api",children:"API"}),`
+`,o.jsx("ul",{children:o.jsx("li",{children:o.jsx(i,{kind:"hooks-api-useControlled",story:"page",children:o.jsx("code",{children:"useControlled"})})})})]})}function k(e={}){const{wrapper:t}={...n(),...e.components};return t?o.jsx(t,{...e,children:o.jsx(r,{...e})}):r(e)}export{k as default};

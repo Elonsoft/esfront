@@ -1,5 +1,0 @@
-import{j as o}from"./jsx-runtime-BoZ7yaty.js";import{useMDXComponents as n}from"./index-EQ2lhxnn.js";import{M as s}from"./index-BxE58K3t.js";import{r as c}from"./index-W-re9OkC.js";import{D as i}from"./Description-DiAaCwGC.js";import"./index-DIDRz_s2.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-BTlDL1jm.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-DfORO7w5.js";function t(r){const e={h1:"h1",h2:"h2",...n(),...r.components};return o.jsxs(o.Fragment,{children:[o.jsx(s,{title:"Hooks/useScrollLock",parameters:{docs:{source:{type:"code"}}}}),`
-`,o.jsx(e.h1,{id:"usescrolllock",children:"useScrollLock"}),`
-`,o.jsx(i,{name:"useScrollLock"}),`
-`,o.jsx(e.h2,{id:"api",children:"API"}),`
-`,o.jsx("ul",{children:o.jsx("li",{children:o.jsx(c,{kind:"hooks-api-useScrollLock",story:"page",children:o.jsx("code",{children:"useScrollLock"})})})})]})}function D(r={}){const{wrapper:e}={...n(),...r.components};return e?o.jsx(e,{...r,children:o.jsx(t,{...r})}):t(r)}export{D as default};
