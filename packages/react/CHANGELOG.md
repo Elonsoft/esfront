@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.13.2...@esfront/react@0.13.3) (2025-11-13)
+
+
+### Features
+
+* **Property:** update typography styles ([b188b6c](https://github.com/Elonsoft/esfront/commit/b188b6c577bfb4ceb7a08e6a3cabb25efb2458af))
+
+
+### Bug Fixes
+
+* **Chip:** add ownerState to root element ([f26d3b1](https://github.com/Elonsoft/esfront/commit/f26d3b1fbe0ead5d154ad9b6129af03a5d083c03))
+* **SidebarToggle:** mirror arrow icon ([f7c9a3a](https://github.com/Elonsoft/esfront/commit/f7c9a3a52492b3ee6665e09a11de83c38ebdf3e6))
+* **SidenavItem:** move margin to wrapper element ([a4c78bf](https://github.com/Elonsoft/esfront/commit/a4c78bf8f58eb272a903fdd543ca169aa047a384))
+* **useClipboard:** add window type check ([dee85e8](https://github.com/Elonsoft/esfront/commit/dee85e8580780a7eb8def052afe4ae81c1c9518b))
+
+
+
 ## [0.13.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.13.1...@esfront/react@0.13.2) (2025-10-21)
 
 **Note:** Version bump only for package @esfront/react
