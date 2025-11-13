@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { capitalize } from '@mui/material/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconAlertW500, IconCheckCircleW500, IconErrorW500, IconInformation2W500 } from '../../icons';
+import { IconAlertFillW500, IconCheckCircleFillW500, IconErrorFillW500, IconInformation2FillW500 } from '../../icons';
 
 type BannerOwnerState = {
   classes?: BannerProps['classes'];
@@ -192,10 +192,10 @@ const BannerIcon = styled('div', {
 }));
 
 const defaultIconMapping = {
-  success: <IconCheckCircleW500 />,
-  warning: <IconAlertW500 />,
-  error: <IconErrorW500 />,
-  info: <IconInformation2W500 />,
+  success: <IconCheckCircleFillW500 />,
+  warning: <IconAlertFillW500 />,
+  error: <IconErrorFillW500 />,
+  info: <IconInformation2FillW500 />,
 };
 
 /**

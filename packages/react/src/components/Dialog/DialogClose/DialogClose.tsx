@@ -8,7 +8,7 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { Typography } from '@mui/material';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconCloseW600 } from '../../../icons';
+import { IconCloseLineW600 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 
 type DialogCloseOwnerState = {
@@ -98,7 +98,7 @@ export const DialogClose = (inProps: DialogCloseProps) => {
     onClick,
     label,
     labelEscapeKey,
-    icon = <IconCloseW600 />,
+    icon = <IconCloseLineW600 />,
     ...props
   } = useDefaultProps({
     props: inProps,

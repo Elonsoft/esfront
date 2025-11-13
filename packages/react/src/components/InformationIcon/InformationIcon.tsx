@@ -10,7 +10,12 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconInformationFillW200, IconInformationLineW200, IconQuestionFill, IconQuestionLine } from '../../icons';
+import {
+  IconInformationFillW200,
+  IconInformationLineW200,
+  IconQuestionFillW200,
+  IconQuestionLineW200,
+} from '../../icons';
 
 type InformationIconOwnerState = {
   classes?: InformationIconProps['classes'];
@@ -120,12 +125,12 @@ const InformationIconRoot = styled('div', {
 
 const defaultIconMapping = {
   info: IconInformationLineW200,
-  question: IconQuestionLine,
+  question: IconQuestionLineW200,
 };
 
 const defaultActiveIconMapping = {
   info: IconInformationFillW200,
-  question: IconQuestionFill,
+  question: IconQuestionFillW200,
 };
 
 /**

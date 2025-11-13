@@ -3,14 +3,8 @@ import { Components, CssVarsTheme, Theme, TypographyVariantsOptions } from '@mui
 import { createButton } from './button';
 export { createButton } from './button';
 
-import { createCheckbox } from './checkbox';
-export { createCheckbox } from './checkbox';
-
 import { createIconButton } from './icon-button';
 export { createIconButton } from './icon-button';
-
-import { createRadio } from './radio';
-export { createRadio } from './radio';
 
 import { createSlider } from './slider';
 export { createSlider } from './slider';
@@ -50,11 +44,8 @@ export { createMenu } from './menu';
 
 export const createComponents = (theme: Theme, typography: TypographyVariantsOptions) => {
   const MuiButton = createButton(theme, typography);
-  const MuiCheckbox = createCheckbox(theme, typography);
 
   const MuiIconButton = createIconButton(theme, typography);
-
-  const MuiRadio = createRadio(theme, typography);
 
   const MuiSlider = createSlider(theme, typography);
 
@@ -77,11 +68,8 @@ export const createComponents = (theme: Theme, typography: TypographyVariantsOpt
 
   const components: Components<Omit<Theme, 'components' | 'palette'> & CssVarsTheme> = {
     MuiButton,
-    MuiCheckbox,
 
     MuiIconButton,
-
-    MuiRadio,
 
     MuiSlider,
 

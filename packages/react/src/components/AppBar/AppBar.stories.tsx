@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 
 import { AppBar } from '.';
 
-import { IconArrowLeftW500, IconCheckW500 } from '../../icons';
+import { IconArrowLeftLineW500, IconCheckLineW500 } from '../../icons';
 import { Button } from '../Button';
 
 const meta: Meta<typeof AppBar> = {
@@ -51,14 +51,14 @@ export const Demo: Story = {
           endAdornment={
             endAdornment ? (
               <Button color="tertiary" size="500">
-                <IconCheckW500 />
+                <IconCheckLineW500 />
               </Button>
             ) : null
           }
           startAdornment={
             startAdornment ? (
               <Button color="tertiary" size="500">
-                <IconArrowLeftW500 />
+                <IconArrowLeftLineW500 />
               </Button>
             ) : null
           }

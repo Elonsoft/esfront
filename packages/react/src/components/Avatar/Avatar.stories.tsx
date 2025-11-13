@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 import { Avatar } from '.';
 
-import { IconAccountLc, IconAccountRoundedLc } from '../../icons';
+import { IconAccountFillW500Lc, IconAccountRoundedFillW500Lc } from '../../icons';
 
 const meta: Meta<typeof Avatar> = {
   tags: ['autodocs'],
@@ -48,7 +48,9 @@ export const Demo: Story = {
           {children}
         </Avatar>
         <Avatar {...args}>{children}</Avatar>
-        <Avatar {...args}>{args.variant === 'circle' ? <IconAccountRoundedLc /> : <IconAccountLc />}</Avatar>
+        <Avatar {...args}>
+          {args.variant === 'circle' ? <IconAccountRoundedFillW500Lc /> : <IconAccountFillW500Lc />}
+        </Avatar>
       </Box>
     );
   },

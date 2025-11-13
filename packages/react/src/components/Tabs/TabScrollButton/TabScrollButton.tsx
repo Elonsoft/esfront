@@ -10,7 +10,7 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { capitalize } from '@mui/material';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconChevronLeftW400, IconChevronRightW400 } from '../../../icons';
+import { IconChevronLeftLineW400, IconChevronRightLineW400 } from '../../../icons';
 import { ButtonBase } from '../../ButtonBase';
 import { Divider, dividerClasses } from '../../Divider';
 
@@ -165,7 +165,7 @@ export const TabScrollButton = forwardRef<HTMLButtonElement, TabScrollButtonProp
             {slots.StartScrollButtonIcon ? (
               slots.StartScrollButtonIcon
             ) : (
-              <IconChevronLeftW400 sx={{ color: theme.vars.palette.monoA.A600 }} />
+              <IconChevronLeftLineW400 sx={{ color: theme.vars.palette.monoA.A600 }} />
             )}
           </TabScrollButtonIcon>
           <TabScrollButtonDivider flexItem className={classes.divider} orientation="vertical" />
@@ -179,7 +179,7 @@ export const TabScrollButton = forwardRef<HTMLButtonElement, TabScrollButtonProp
             {slots.EndScrollButtonIcon ? (
               slots.EndScrollButtonIcon
             ) : (
-              <IconChevronRightW400 sx={{ color: theme.vars.palette.monoA.A600 }} />
+              <IconChevronRightLineW400 sx={{ color: theme.vars.palette.monoA.A600 }} />
             )}
           </TabScrollButtonIcon>
         </>

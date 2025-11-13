@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useSwiperContext } from './Swiper.context';
 import { Swiper, SwiperPagination, SwiperPaginationProps } from '.';
 
-import { IconChevronLeftW400, IconChevronRightW400 } from '../../icons';
+import { IconChevronLeftLineW400, IconChevronRightLineW400 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 
 const Image = (props: { src: string; width?: string }) => {
@@ -258,7 +258,7 @@ const CustomizationButtonPrev = () => {
 
   return (
     <CustomizationButton prev color="black" onClick={onClick}>
-      <IconChevronLeftW400 />
+      <IconChevronLeftLineW400 />
     </CustomizationButton>
   );
 };
@@ -272,7 +272,7 @@ const CustomizationButtonNext = () => {
 
   return (
     <CustomizationButton next color="black" onClick={onClick}>
-      <IconChevronRightW400 />
+      <IconChevronRightLineW400 />
     </CustomizationButton>
   );
 };

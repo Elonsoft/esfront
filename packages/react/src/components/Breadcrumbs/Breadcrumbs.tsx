@@ -17,7 +17,7 @@ import composeClasses from '@mui/utils/composeClasses';
 import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 
 import { useResizeObserver } from '../../hooks';
-import { IconDotsHorizontal2W300 } from '../../icons';
+import { IconDotsHorizontal2LineW300 } from '../../icons';
 import { buttonClasses } from '../Button';
 import { MenuItem } from '../MenuItem';
 import { TooltipEllipsis, TooltipEllipsisProps } from '../TooltipEllipsis';
@@ -117,7 +117,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
   const {
     children,
     className,
-    iconButtonMore = <IconDotsHorizontal2W300 />,
+    iconButtonMore = <IconDotsHorizontal2LineW300 />,
     labelButtonMore,
     sx,
     ...props

@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconArrowLeftW500 } from '../../../icons';
+import { IconArrowLeftLineW500 } from '../../../icons';
 import { useGalleryContext } from '../Gallery.context';
 import { GalleryActionsButton } from '../GalleryActionsButton';
 import { GalleryTooltip } from '../GalleryTooltip';
@@ -76,7 +76,7 @@ export const GalleryMeta = (inProps: GalleryMetaProps) => {
     className,
     sx,
     labelClose,
-    iconClose = <IconArrowLeftW500 />,
+    iconClose = <IconArrowLeftLineW500 />,
     ...props
   } = useDefaultProps({
     props: inProps,

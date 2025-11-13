@@ -9,7 +9,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconChevronLeftW300 } from '../../../icons';
+import { IconChevronLeftLineW300 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { svgIconClasses } from '../../SvgIcon';
 import { Tooltip, TooltipProps } from '../../Tooltip';
@@ -114,7 +114,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
     className,
     sx,
     open,
-    icon = <IconChevronLeftW300 container containerSize="20px" />,
+    icon = <IconChevronLeftLineW300 container containerSize="20px" />,
     labelOpen,
     labelHide,
     onClick,

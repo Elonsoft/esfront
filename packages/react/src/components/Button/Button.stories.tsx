@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material';
 
 import { Button } from '.';
 
-import { IconChevronDownW400 } from '../../icons';
+import { IconChevronDownLineW400 } from '../../icons';
 
 const getText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Button' : 'Кнопка';
@@ -117,13 +117,13 @@ export const Demo: Story = {
     const text = getText(context);
     const icon =
       args.size === '100' ? (
-        <IconChevronDownW400 size="12px" />
+        <IconChevronDownLineW400 size="12px" />
       ) : args.size === '200' ? (
-        <IconChevronDownW400 size="16px" />
+        <IconChevronDownLineW400 size="16px" />
       ) : args.size === '300' ? (
-        <IconChevronDownW400 size="20px" />
+        <IconChevronDownLineW400 size="20px" />
       ) : (
-        <IconChevronDownW400 />
+        <IconChevronDownLineW400 />
       );
 
     const theme = useTheme();

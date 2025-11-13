@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 import { Button } from '../../../components/Button';
 import { Divider } from '../../../components/Divider';
-import { IconDotsVerticalW400, IconUpload } from '../../../icons';
+import { IconDotsVerticalLineW400, IconUploadFillW500 } from '../../../icons';
 
 const getButtonText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Open menu' : 'Открыть меню';
@@ -76,19 +76,19 @@ export const Demo: Story = {
         <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={onClose}>
           <MenuItem>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
           </MenuItem>
           <MenuItem>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
           </MenuItem>
           <MenuItem>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </MenuItem>
@@ -104,7 +104,7 @@ export const Demo: Story = {
           </MenuItem>
           <MenuItem>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getErrorActionText(context)}</ListItemText>
           </MenuItem>
@@ -128,19 +128,19 @@ export const DemoList: Story = {
         <List>
           <ListItem>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </ListItem>
@@ -148,7 +148,7 @@ export const DemoList: Story = {
           <ListItem>
             <ListItemText>{getActionText(context)}</ListItemText>
             <Button color="tertiary" size="400" sx={{ borderRadius: '50%' }}>
-              <IconDotsVerticalW400 />
+              <IconDotsVerticalLineW400 />
             </Button>
           </ListItem>
           <ListItem>
@@ -174,19 +174,19 @@ export const DemoListButton: Story = {
         <List>
           <ListItemButton>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
           </ListItemButton>
           <ListItemButton>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
           </ListItemButton>
           <ListItemButton>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </ListItemButton>

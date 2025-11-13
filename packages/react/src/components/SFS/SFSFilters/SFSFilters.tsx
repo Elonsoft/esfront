@@ -13,7 +13,7 @@ import { paperClasses } from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconCloseW600, IconFilter } from '../../../icons';
+import { IconCloseLineW600, IconFilterLineW300 } from '../../../icons';
 import { Button } from '../../Button';
 import { SFSButton } from '../SFSButton';
 import { SFSButtonBadge } from '../SFSButtonBadge';
@@ -140,8 +140,8 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
     labelClose,
     labelReset,
 
-    iconFilters = <IconFilter />,
-    iconClose = <IconCloseW600 />,
+    iconFilters = <IconFilterLineW300 />,
+    iconClose = <IconCloseLineW600 />,
 
     FooterProps,
 

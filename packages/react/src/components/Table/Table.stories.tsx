@@ -18,7 +18,7 @@ import { TableText } from './TableText';
 import { useTableResize } from './useTableResize';
 import { useTableSelection } from './useTableSelection';
 
-import { IconCloseW600, IconDotsVerticalW500, IconPencilW500 } from '../../icons';
+import { IconCloseLineW600, IconDotsVerticalLineW500, IconPencilLineW500 } from '../../icons';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
@@ -234,7 +234,7 @@ export const Demo: Story = {
                 <TableCell padding="none" />
                 <TableCell overlap align="flex-end">
                   <Button rounded aria-label={locale === 'en' ? 'More' : 'Ещё'}>
-                    <IconDotsVerticalW500 />
+                    <IconDotsVerticalLineW500 />
                   </Button>
                 </TableCell>
               </TableRow>
@@ -249,11 +249,11 @@ export const Demo: Story = {
               sx={(theme) => ({ borderBottom: `1px solid ${theme.vars.palette.monoA.A100}` })}
             >
               <Button aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
-                <IconPencilW500 />
+                <IconPencilLineW500 />
               </Button>
               <Divider flexItem orientation="vertical" />
               <Button aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
-                <IconCloseW600 />
+                <IconCloseLineW600 />
               </Button>
             </TableActions>
           )}
@@ -459,7 +459,7 @@ export const ColumnPinning: Story = {
                   <TableCell padding="none" pin={getPin('city')} />
                   <TableCell overlap align="flex-end" pin={getPin('menu')}>
                     <Button rounded aria-label={locale === 'en' ? 'More' : 'Ещё'}>
-                      <IconDotsVerticalW500 />
+                      <IconDotsVerticalLineW500 />
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -474,11 +474,11 @@ export const ColumnPinning: Story = {
                 sx={(theme) => ({ borderBottom: `1px solid ${theme.vars.palette.monoA.A100}` })}
               >
                 <Button aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
-                  <IconPencilW500 />
+                  <IconPencilLineW500 />
                 </Button>
                 <Divider flexItem orientation="vertical" />
                 <Button aria-label={locale === 'en' ? 'Unselect all' : 'Снять всё выделение'} onClick={onClose}>
-                  <IconCloseW600 />
+                  <IconCloseLineW600 />
                 </Button>
               </TableActions>
             )}

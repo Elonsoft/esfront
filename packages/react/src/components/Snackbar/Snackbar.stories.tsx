@@ -4,7 +4,7 @@ import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import { Snackbar, SnackbarClose } from '.';
 
-import { IconCloseW350 } from '../../icons';
+import { IconCloseLineW350 } from '../../icons';
 import { Button } from '../Button';
 
 const getMessage = (context: StoryContext<unknown>) => {
@@ -77,7 +77,7 @@ export const Demo: Story = {
               {getCancelText(context)}
             </Button>
             <SnackbarClose
-              icon={args.size === 's' ? <IconCloseW350 container containerSize="20px" /> : undefined}
+              icon={args.size === 's' ? <IconCloseLineW350 container containerSize="20px" /> : undefined}
               progress={!!args.autoHideDuration}
               size={args.size === 's' ? '300' : undefined}
             />
@@ -100,7 +100,7 @@ export const ProgressOnContainer: Story = {
               {getCancelText(context)}
             </Button>
             <SnackbarClose
-              icon={args.size === 's' ? <IconCloseW350 container containerSize="20px" /> : undefined}
+              icon={args.size === 's' ? <IconCloseLineW350 container containerSize="20px" /> : undefined}
               size={args.size === 's' ? '300' : undefined}
             />
           </>

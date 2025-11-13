@@ -13,7 +13,7 @@ import { Sidenav } from './Sidenav';
 import { SidenavContext } from './Sidenav.context';
 import { SidenavItem } from './SidenavItem';
 
-import { IconAccountLc, IconAt } from '../../icons';
+import { IconAccountFillW500Lc, IconAtLineW500 } from '../../icons';
 import { buttonClasses } from '../Button';
 import { Sidebar, SidebarProps } from '../Sidebar';
 import { SidebarDivider } from '../Sidebar/SidebarDivider';
@@ -159,14 +159,14 @@ export const Demo: Story = {
         >
           <Sidebar color={color}>
             <SidebarMenu>
-              <SidenavItem icon={<IconAt />} selected={page === 1} onClick={() => setPage(1)} />
+              <SidenavItem icon={<IconAtLineW500 />} selected={page === 1} onClick={() => setPage(1)} />
             </SidebarMenu>
 
             <SidebarToggle open={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
             <SidebarMenu>
               <SidenavItem
-                icon={<IconAt />}
+                icon={<IconAtLineW500 />}
                 id="1"
                 selected={page === 2}
                 text={locale === 'en' ? 'Projects' : 'Проекты'}
@@ -176,7 +176,7 @@ export const Demo: Story = {
                 }}
               />
               <SidenavItem
-                icon={<IconAt />}
+                icon={<IconAtLineW500 />}
                 id="2"
                 selected={page === 3}
                 text={locale === 'en' ? 'Reports' : 'Отчеты'}
@@ -192,7 +192,7 @@ export const Demo: Story = {
 
             <SidebarMenu>
               <SidenavItem
-                icon={<IconAccountLc container containerSize="24px" />}
+                icon={<IconAccountFillW500Lc container containerSize="24px" />}
                 text={locale === 'en' ? 'Profile' : 'Профиль'}
               />
             </SidebarMenu>
@@ -234,7 +234,7 @@ export const Demo: Story = {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <IconAt />
+                                <IconAtLineW500 />
                               </InputAdornment>
                             ),
                           }}
@@ -247,12 +247,12 @@ export const Demo: Story = {
                           <SidebarCaption title={locale === 'en' ? 'Favorites' : 'Избранное'} />
                           <SidebarMenu>
                             <SidebarMenuItem
-                              icon={<IconAt />}
+                              icon={<IconAtLineW500 />}
                               text={locale === 'en' ? 'All projects' : 'Все проекты'}
                               onClick={onProjectClick(() => console.info(`All projects`))}
                             />
                             <SidebarMenuItem
-                              icon={<IconAt />}
+                              icon={<IconAtLineW500 />}
                               id="1"
                               text={locale === 'en' ? 'Documents' : 'Документы'}
                               onClick={onProjectClick(() => console.info(`Selected`))}
@@ -267,7 +267,7 @@ export const Demo: Story = {
                               ))}
                             </SidebarMenuItem>
                             <SidebarMenuItem
-                              icon={<IconAt />}
+                              icon={<IconAtLineW500 />}
                               id="2"
                               text={locale === 'en' ? 'New projects' : 'Новые проекты'}
                               onClick={() => console.info(`Projects`)}
@@ -288,7 +288,7 @@ export const Demo: Story = {
                             {[...Array(5)].map((_, idx) => (
                               <SidebarMenuItem
                                 key={idx}
-                                icon={<IconAt />}
+                                icon={<IconAtLineW500 />}
                                 text={(locale === 'en' ? 'Current project' : 'Текущий проект') + ' №' + idx}
                                 onClick={onProjectClick(() => console.info(`Current project ${idx}`))}
                               />
@@ -310,7 +310,7 @@ export const Demo: Story = {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <IconAt />
+                                <IconAtLineW500 />
                               </InputAdornment>
                             ),
                           }}
@@ -323,13 +323,13 @@ export const Demo: Story = {
                           <SidebarCaption title={locale === 'en' ? 'Favorites' : 'Избранное'} />
                           <SidebarMenu>
                             <SidebarMenuItem
-                              icon={<IconAt />}
+                              icon={<IconAtLineW500 />}
                               id="1"
                               text={locale === 'en' ? 'All reports' : 'Все отчеты'}
                               onClick={onReportClick(() => console.info(`All reports`))}
                             />
                             <SidebarMenuItem
-                              icon={<IconAt />}
+                              icon={<IconAtLineW500 />}
                               id="2"
                               text={locale === 'en' ? 'Saved reports' : 'Сохраненные отчеты'}
                               onClick={onReportClick(() => console.info(`Saved reports`))}
@@ -345,7 +345,7 @@ export const Demo: Story = {
                             </SidebarMenuItem>
 
                             <SidebarMenuItem
-                              icon={<IconAt />}
+                              icon={<IconAtLineW500 />}
                               id="3"
                               text={locale === 'en' ? 'Scheduled reports' : 'Запланированные отчеты'}
                             >
@@ -365,7 +365,7 @@ export const Demo: Story = {
                             {[...Array(5)].map((_, idx) => (
                               <SidebarMenuItem
                                 key={idx}
-                                icon={<IconAt />}
+                                icon={<IconAtLineW500 />}
                                 text={(locale === 'en' ? 'Current report' : 'Текущий отчет') + ' №' + idx}
                                 onClick={onReportClick(() => console.info(`Current report ${idx}`))}
                               />

@@ -10,7 +10,7 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconSortAscending2, IconSortDescending2, IconSortOff } from '../../../icons';
+import { IconSortAscending2LineW100, IconSortDescending2LineW100, IconSortOffLineW200 } from '../../../icons';
 import { SortingMenu } from '../../SortingMenu';
 import { SFSButton } from '../SFSButton';
 import { SFSButtonBadge } from '../SFSButtonBadge';
@@ -58,9 +58,9 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
     options,
 
     labelButton,
-    iconSort = <IconSortOff />,
-    iconAsc = <IconSortAscending2 container containerSize="16px" />,
-    iconDesc = <IconSortDescending2 container containerSize="16px" />,
+    iconSort = <IconSortOffLineW200 />,
+    iconAsc = <IconSortAscending2LineW100 container containerSize="16px" />,
+    iconDesc = <IconSortDescending2LineW100 container containerSize="16px" />,
 
     ...props
   } = useDefaultProps({

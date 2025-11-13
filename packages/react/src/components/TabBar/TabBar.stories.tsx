@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { TabBar, TabBarItem } from '.';
 
-import { IconAt } from '../../icons';
+import { IconAtLineW500 } from '../../icons';
 
 const meta: Meta<typeof TabBar> = {
   tags: ['autodocs'],
@@ -33,9 +33,9 @@ export const Demo: Story = {
           zIndex: 1,
         }}
       >
-        <TabBarItem aria-label={label} icon={<IconAt />} selected={index === 0} onClick={() => setIndex(0)} />
-        <TabBarItem aria-label={label} icon={<IconAt />} selected={index === 1} onClick={() => setIndex(1)} />
-        <TabBarItem aria-label={label} icon={<IconAt />} selected={index === 2} onClick={() => setIndex(2)} />
+        <TabBarItem aria-label={label} icon={<IconAtLineW500 />} selected={index === 0} onClick={() => setIndex(0)} />
+        <TabBarItem aria-label={label} icon={<IconAtLineW500 />} selected={index === 1} onClick={() => setIndex(1)} />
+        <TabBarItem aria-label={label} icon={<IconAtLineW500 />} selected={index === 2} onClick={() => setIndex(2)} />
       </TabBar>
     );
   },
@@ -57,9 +57,9 @@ export const WithLabels: Story = {
           zIndex: 1,
         }}
       >
-        <TabBarItem icon={<IconAt />} label={label} selected={index === 0} onClick={() => setIndex(0)} />
-        <TabBarItem icon={<IconAt />} label={label} selected={index === 1} onClick={() => setIndex(1)} />
-        <TabBarItem icon={<IconAt />} label={label} selected={index === 2} onClick={() => setIndex(2)} />
+        <TabBarItem icon={<IconAtLineW500 />} label={label} selected={index === 0} onClick={() => setIndex(0)} />
+        <TabBarItem icon={<IconAtLineW500 />} label={label} selected={index === 1} onClick={() => setIndex(1)} />
+        <TabBarItem icon={<IconAtLineW500 />} label={label} selected={index === 2} onClick={() => setIndex(2)} />
       </TabBar>
     );
   },

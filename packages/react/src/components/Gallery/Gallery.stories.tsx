@@ -21,7 +21,7 @@ import {
   GalleryThumbnailsImage,
 } from '.';
 
-import { IconDotsVerticalW500, IconDownloadW400, IconShare } from '../../icons';
+import { IconDotsVerticalLineW500, IconDownloadLineW400, IconShareLineW400 } from '../../icons';
 import { Button } from '../Button';
 import { FormatDate } from '../FormatDate';
 import { FormatSize } from '../FormatSize';
@@ -153,19 +153,19 @@ export const Demo: Story = {
                     <GalleryActionsButtonGroup>
                       <GalleryTooltip color="whiteA600" distance={8} title={t('download')}>
                         <GalleryActionsButton size="500">
-                          <IconDownloadW400 />
+                          <IconDownloadLineW400 />
                         </GalleryActionsButton>
                       </GalleryTooltip>
                       <GalleryTooltip color="whiteA600" distance={8} title={t('share')}>
                         <GalleryActionsButton size="500">
-                          <IconShare />
+                          <IconShareLineW400 />
                         </GalleryActionsButton>
                       </GalleryTooltip>
                     </GalleryActionsButtonGroup>
                   ) : (
                     <GalleryTooltip color="whiteA600" distance={8} title={t('menu')}>
                       <GalleryActionsButton size="500">
-                        <IconDotsVerticalW500 />
+                        <IconDotsVerticalLineW500 />
                       </GalleryActionsButton>
                     </GalleryTooltip>
                   )}

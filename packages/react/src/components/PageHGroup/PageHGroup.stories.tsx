@@ -11,7 +11,7 @@ import {
   PageHGroupStatus,
 } from '.';
 
-import { IconDotsHorizontalW500, IconInformation2W400, IconPlusW400 } from '../../icons';
+import { IconDotsHorizontalLineW500, IconInformation2FillW400, IconPlusLineW400 } from '../../icons';
 import { DemoBase as BreadcrumbsDemo } from '../Breadcrumbs/Breadcrumbs.stories';
 import { Button } from '../Button';
 
@@ -64,17 +64,17 @@ export const Demo: Story = {
         <PageHGroupBreadcrumbs>{BreadcrumbsDemo.render?.({}, context)}</PageHGroupBreadcrumbs>
         <PageHGroupMain>
           <PageHGroupHeading
-            endAdornment={<IconInformation2W400 sx={{ color: 'monoA.A400' }} />}
+            endAdornment={<IconInformation2FillW400 sx={{ color: 'monoA.A400' }} />}
             maxLines={args.maxLines}
           >
             {args.children || (locale === 'en' ? 'Schedule' : 'Расписание')}
           </PageHGroupHeading>
           <PageHGroupActions>
-            <Button color="primary" startIcon={<IconPlusW400 />} variant="contained">
+            <Button color="primary" startIcon={<IconPlusLineW400 />} variant="contained">
               {locale === 'en' ? 'Create' : 'Создать'}
             </Button>
             <Button color="tertiary" variant="outlined">
-              <IconDotsHorizontalW500 />
+              <IconDotsHorizontalLineW500 />
             </Button>
           </PageHGroupActions>
         </PageHGroupMain>

@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 
 import { Banner, BannerActions, BannerTitle } from '.';
 
-import { IconCloseW600 } from '../../icons';
+import { IconCloseLineW600 } from '../../icons';
 import { Button } from '../Button';
 
 const getText = (context: StoryContext<unknown>) => {
@@ -104,7 +104,7 @@ export const Demo: Story = {
                 }
                 size="400"
               >
-                <IconCloseW600
+                <IconCloseLineW600
                   sx={{ color: args.variant === 'monoB' || args.color === 'monoA' ? 'monoA.A500' : 'inherit' }}
                 />
               </Button>

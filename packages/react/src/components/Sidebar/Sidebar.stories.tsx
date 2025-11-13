@@ -12,7 +12,7 @@ import { SidebarScrollable } from './SidebarScrollable';
 import { SidebarSpacer } from './SidebarSpacer';
 import { SidebarToggle } from './SidebarToggle';
 
-import { IconAccountLc, IconAt, IconBellFill, IconMagnify } from '../../icons';
+import { IconAccountFillW500Lc, IconAtLineW500, IconBellFillW500, IconMagnifyLineW500 } from '../../icons';
 import { ListItem, ListItemIcon, ListItemText } from '../ListItem';
 
 type Args = ComponentProps<typeof Sidebar> & { behaviour?: SidebarMenuProps['behaviour']; exclusive?: boolean };
@@ -94,7 +94,7 @@ export const Demo: Story = {
             sx={{ padding: '16px 16px 15px', overflow: 'hidden', flexShrink: '0', height: 'auto !important' }}
           >
             <ListItemIcon>
-              <IconAt sx={{ color: color === 'primary' ? 'monoB.A800' : 'monoA.A500' }} />
+              <IconAtLineW500 sx={{ color: color === 'primary' ? 'monoB.A800' : 'monoA.A500' }} />
             </ListItemIcon>
             <ListItemText
               primary="CRM"
@@ -107,7 +107,7 @@ export const Demo: Story = {
 
           <SidebarMenu>
             <SidebarItem
-              icon={<IconAt />}
+              icon={<IconAtLineW500 />}
               text={locale === 'en' ? 'Time tracking' : 'Рабочее время'}
               onClick={() => console.info(`Time tracking`)}
             />
@@ -120,7 +120,7 @@ export const Demo: Story = {
               <SidebarItem
                 selected
                 component="button"
-                icon={<IconAt />}
+                icon={<IconAtLineW500 />}
                 id="0"
                 text={locale === 'en' ? 'Projects' : 'Проекты'}
                 onClick={() => console.info(`Projects`)}
@@ -135,7 +135,7 @@ export const Demo: Story = {
                   />
                 ))}
               </SidebarItem>
-              <SidebarItem icon={<IconAt />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
+              <SidebarItem icon={<IconAtLineW500 />} id="1" text={locale === 'en' ? 'Files' : 'Файлы'}>
                 {[...Array(8)].map((_, i) => (
                   <SidebarItem
                     key={i}
@@ -146,22 +146,22 @@ export const Demo: Story = {
                 ))}
               </SidebarItem>
               <SidebarItem
-                icon={<IconAt />}
+                icon={<IconAtLineW500 />}
                 text={locale === 'en' ? 'Infographic' : 'Инфографика'}
                 onClick={() => console.info(`Infographic`)}
               />
               <SidebarItem
-                icon={<IconAt />}
+                icon={<IconAtLineW500 />}
                 text={locale === 'en' ? 'Schedule' : 'Расписание'}
                 onClick={() => console.info(`Schedule`)}
               />
               <SidebarItem
-                icon={<IconAt />}
+                icon={<IconAtLineW500 />}
                 text={locale === 'en' ? 'Messages' : 'Сообщения'}
                 onClick={() => console.info(`Messages`)}
               />
               <SidebarItem
-                icon={<IconAt />}
+                icon={<IconAtLineW500 />}
                 text={locale === 'en' ? 'Inbox' : 'Входящие'}
                 onClick={() => console.info(`Inbox`)}
               />
@@ -171,12 +171,12 @@ export const Demo: Story = {
 
           <SidebarMenu>
             <SidebarItem
-              icon={<IconMagnify />}
+              icon={<IconMagnifyLineW500 />}
               text={locale === 'en' ? 'Search' : 'Поиск'}
               onClick={() => console.info(`Search`)}
             />
             <SidebarItem
-              icon={<IconBellFill />}
+              icon={<IconBellFillW500 />}
               text={locale === 'en' ? 'Notifications' : 'Уведомления'}
               onClick={() => console.info(`Notifications`)}
             />
@@ -186,7 +186,7 @@ export const Demo: Story = {
 
           <SidebarMenu>
             <SidebarItem
-              icon={<IconAccountLc container containerSize="24px" />}
+              icon={<IconAccountFillW500Lc container containerSize="24px" />}
               text={locale === 'en' ? 'Name' : 'Имя'}
             />
           </SidebarMenu>

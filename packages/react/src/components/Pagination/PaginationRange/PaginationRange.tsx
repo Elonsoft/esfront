@@ -11,7 +11,7 @@ import Menu from '@mui/material/Menu';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconMenuDownW300 } from '../../../icons';
+import { IconMenuDownFillW300 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
 import { MenuItem } from '../../MenuItem';
@@ -95,7 +95,7 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
     options = OPTIONS,
     labelItemsPerPage,
     labelOf,
-    iconItemsPerPage = <IconMenuDownW300 container containerSize="16px" />,
+    iconItemsPerPage = <IconMenuDownFillW300 container containerSize="16px" />,
     ...props
   } = useDefaultProps({
     props: inProps,

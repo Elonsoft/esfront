@@ -27,7 +27,7 @@ import {
 } from './PhoneField.functions';
 
 import { useControlled, useEvent, useLatest, useMenu, useMenuVisibility } from '../../hooks';
-import { IconGlobalLineW500, IconMenuDownW300 } from '../../icons';
+import { IconGlobalLineW500, IconMenuDownFillW300 } from '../../icons';
 import { AutocompleteMenu } from '../AutocompleteMenu';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
@@ -181,7 +181,7 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
 
     labelMenu,
 
-    iconMenuArrow = <IconMenuDownW300 container containerSize="16px" />,
+    iconMenuArrow = <IconMenuDownFillW300 container containerSize="16px" />,
 
     name,
     value: inValue,
