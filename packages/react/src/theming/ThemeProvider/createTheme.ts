@@ -112,7 +112,7 @@ export const createTheme = (
       scrollbars,
       mixins,
       typography: {
-        fontFamily: "'Roboto', sans-serif",
+        fontFamily: "'Nunito Sans', sans-serif",
         ...typography,
       },
     },
