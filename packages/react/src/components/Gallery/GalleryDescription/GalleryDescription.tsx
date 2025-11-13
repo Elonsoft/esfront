@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useWindowEventListener } from '../../../hooks';
-import { IconCloseW350 } from '../../../icons';
+import { IconCloseLineW350 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { SvgIcon, SvgIconProps } from '../../SvgIcon';
 import { useGalleryPanelContext, useGalleryPanelsContext } from '../GalleryPanel';
@@ -171,7 +171,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     position = galleryPanelContext?.position || 'bottom',
     labelCollapse,
     labelExpand,
-    iconCollapse = <IconCloseW350 />,
+    iconCollapse = <IconCloseLineW350 />,
     iconExpand = <IconDoubleChevronUp />,
     ...props
   } = useDefaultProps({

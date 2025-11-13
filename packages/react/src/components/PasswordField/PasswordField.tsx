@@ -14,7 +14,7 @@ import TextField, { textFieldClasses } from '@mui/material/TextField';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks';
-import { IconEye, IconEyeOff } from '../../icons';
+import { IconEyeLineW500, IconEyeOffLineW500 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { Tooltip } from '../Tooltip';
 
@@ -65,8 +65,8 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
     labelHidePassword,
     labelShowPassword,
 
-    iconHidePassword = <IconEyeOff />,
-    iconShowPassword = <IconEye />,
+    iconHidePassword = <IconEyeOffLineW500 />,
+    iconShowPassword = <IconEyeLineW500 />,
 
     InputProps,
     TooltipProps,

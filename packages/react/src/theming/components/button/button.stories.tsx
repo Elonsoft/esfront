@@ -3,7 +3,7 @@ import { Meta, StoryContext, StoryObj } from '@storybook/react';
 // eslint-disable-next-line no-restricted-imports
 import Button from '@mui/material/Button';
 
-import { IconChevronDownW400 } from '../../../icons';
+import { IconChevronDownLineW400 } from '../../../icons';
 
 const getText = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Button' : 'Кнопка';
@@ -56,13 +56,13 @@ export const Demo: Story = {
     const text = getText(context);
     const icon =
       args.size === '16' ? (
-        <IconChevronDownW400 size="12px" />
+        <IconChevronDownLineW400 size="12px" />
       ) : args.size === '20' ? (
-        <IconChevronDownW400 size="16px" />
+        <IconChevronDownLineW400 size="16px" />
       ) : args.size === '24' ? (
-        <IconChevronDownW400 size="20px" />
+        <IconChevronDownLineW400 size="20px" />
       ) : (
-        <IconChevronDownW400 />
+        <IconChevronDownLineW400 />
       );
 
     return (

@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconCloseW400 } from '../../../icons';
+import { IconCloseLineW400 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
 import { chipClasses } from '../../Chip';
@@ -84,7 +84,7 @@ export const SFSChips = (inProps: SFSChipsProps) => {
     children,
     sx,
     labelDelete,
-    iconDelete = <IconCloseW400 container containerSize="20px" />,
+    iconDelete = <IconCloseLineW400 container containerSize="20px" />,
     onDelete,
     TooltipProps,
     ...props

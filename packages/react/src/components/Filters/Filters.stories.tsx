@@ -14,7 +14,7 @@ import {
   FiltersHeader,
 } from '.';
 
-import { IconCloseW350, IconTrashLine } from '../../icons';
+import { IconCloseLineW350, IconTrashLineW500 } from '../../icons';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { Search } from '../Search';
@@ -78,7 +78,7 @@ export const Demo: Story = {
             endAdornment={
               <Tooltip placement="top-end" title={context.globals.locale === 'ru' ? 'Сбросить' : 'Reset'}>
                 <Button color="tertiary" size="300" variant="text">
-                  <IconCloseW350 container containerSize="20px" />
+                  <IconCloseLineW350 container containerSize="20px" />
                 </Button>
               </Tooltip>
             }
@@ -116,7 +116,7 @@ export const Demo: Story = {
             size="500"
             variant="outlined"
           >
-            <IconTrashLine />
+            <IconTrashLineW500 />
           </Button>
         </FiltersFooter>
       </Filters>

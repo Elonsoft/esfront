@@ -10,7 +10,7 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Typography from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconBreadcrumbArrowRight } from '../../../icons';
+import { IconBreadcrumbArrowRightLineW500 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
 import { svgIconClasses } from '../../SvgIcon';
@@ -164,7 +164,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
     className,
     sx,
     style,
-    separator = <IconBreadcrumbArrowRight container containerWidth="16px" />,
+    separator = <IconBreadcrumbArrowRightLineW500 container containerWidth="16px" />,
     disabled,
     position,
     shouldFirstShrink,

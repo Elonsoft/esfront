@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconCloseW600, IconImageMultiple } from '../../../icons';
+import { IconCloseLineW600, IconImageMultipleLineW500 } from '../../../icons';
 import { useGalleryContext } from '../Gallery.context';
 import { GalleryActionsButton } from '../GalleryActionsButton';
 import { useGalleryThumbnailsContext } from '../GalleryThumbnails';
@@ -72,8 +72,8 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
     sx,
     labelClose,
     labelThumbnails,
-    iconClose = <IconCloseW600 />,
-    iconThumbnails = <IconImageMultiple />,
+    iconClose = <IconCloseLineW600 />,
+    iconThumbnails = <IconImageMultipleLineW500 />,
     ...props
   } = useDefaultProps({
     props: inProps,

@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconCloseW500 } from '../../../icons';
+import { IconCloseLineW500 } from '../../../icons';
 import { Button } from '../../Button';
 
 type AlertCloseOwnerState = {
@@ -37,7 +37,7 @@ export const AlertClose = (inProps: AlertCloseProps) => {
     className,
     sx,
     label,
-    icon = <IconCloseW500 container containerSize="20px" />,
+    icon = <IconCloseLineW500 container containerSize="20px" />,
     onClick,
     ...props
   } = useDefaultProps({

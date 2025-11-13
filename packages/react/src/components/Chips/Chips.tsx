@@ -11,7 +11,7 @@ import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean, useResizeObserver } from '../../hooks';
-import { IconChevronDownW200, IconChevronUpW200 } from '../../icons';
+import { IconChevronDownLineW200, IconChevronUpLineW200 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
 import { chipClasses } from '../Chip';
@@ -68,8 +68,8 @@ export const Chips = (inProps: ChipsProps) => {
     labelHide,
     labelShow,
 
-    iconHide = <IconChevronUpW200 container containerSize="16px" />,
-    iconShow = <IconChevronDownW200 container containerSize="16px" />,
+    iconHide = <IconChevronUpLineW200 container containerSize="16px" />,
+    iconShow = <IconChevronDownLineW200 container containerSize="16px" />,
 
     ...props
   } = useDefaultProps({

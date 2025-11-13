@@ -6,7 +6,7 @@ import MuiTypography from '@mui/material/Typography';
 
 import { Link, LinkProps } from '.';
 
-import { IconBookmark } from '../../icons';
+import { IconBookmarkLineW200 } from '../../icons';
 
 const getLink = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'en' ? 'Link' : 'Ссылка';
@@ -89,7 +89,7 @@ export const Demo: Story = {
         <Link
           {...args}
           component="a"
-          endIcon={<IconBookmark container containerSize="20px" />}
+          endIcon={<IconBookmarkLineW200 container containerSize="20px" />}
           href="https://google.com"
           target="_blank"
         >
@@ -106,7 +106,7 @@ export const Alignment: Story = {
     return (
       <MuiTypography component="div" variant="body100">
         Lorem ipsum dolor sit amet,{' '}
-        <Link component="a" endIcon={<IconBookmark container containerSize="20px" />} href="#" target="_blank">
+        <Link component="a" endIcon={<IconBookmarkLineW200 container containerSize="20px" />} href="#" target="_blank">
           consectetur
         </Link>{' '}
         adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -115,7 +115,12 @@ export const Alignment: Story = {
           reprehenderit
         </Link>{' '}
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat{' '}
-        <Link disabled component="button" startIcon={<IconBookmark container containerSize="20px" />} variant="body100">
+        <Link
+          disabled
+          component="button"
+          startIcon={<IconBookmarkLineW200 container containerSize="20px" />}
+          variant="body100"
+        >
           non proident
         </Link>
         , sunt in culpa qui officia deserunt mollit anim id est laborum.

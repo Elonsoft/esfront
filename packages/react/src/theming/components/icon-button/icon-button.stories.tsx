@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 // eslint-disable-next-line no-restricted-imports
 import IconButton from '@mui/material/IconButton';
 
-import { IconChevronDownW400 } from '../../../icons';
+import { IconChevronDownLineW400 } from '../../../icons';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Overrides/IconButton',
@@ -45,13 +45,13 @@ export const Demo: Story = {
   render: (args) => {
     const icon =
       args.size === '16' ? (
-        <IconChevronDownW400 size="12px" />
+        <IconChevronDownLineW400 size="12px" />
       ) : args.size === '20' ? (
-        <IconChevronDownW400 size="16px" />
+        <IconChevronDownLineW400 size="16px" />
       ) : args.size === '24' ? (
-        <IconChevronDownW400 size="20px" />
+        <IconChevronDownLineW400 size="20px" />
       ) : (
-        <IconChevronDownW400 />
+        <IconChevronDownLineW400 />
       );
     return <IconButton {...args}>{icon}</IconButton>;
   },

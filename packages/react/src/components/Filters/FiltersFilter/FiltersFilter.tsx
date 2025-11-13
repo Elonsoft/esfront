@@ -8,7 +8,7 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean } from '../../../hooks';
-import { IconChevronDownW300, IconChevronUpW300 } from '../../../icons';
+import { IconChevronDownLineW300, IconChevronUpLineW300 } from '../../../icons';
 import { buttonClasses } from '../../Button';
 import { InformationIcon } from '../../InformationIcon';
 import { switchClasses } from '../../Switch';
@@ -159,8 +159,8 @@ export const FiltersFilter = (inProps: FiltersFilterProps) => {
     TooltipProps,
     labelHide,
     labelShow,
-    iconHide = <IconChevronDownW300 container containerSize="20px" />,
-    iconShow = <IconChevronUpW300 container containerSize="20px" />,
+    iconHide = <IconChevronDownLineW300 container containerSize="20px" />,
+    iconShow = <IconChevronUpLineW300 container containerSize="20px" />,
     ...props
   } = useDefaultProps({
     props: inProps,

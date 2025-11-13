@@ -1,0 +1,14 @@
+import { SvgIcon, SvgIconProps } from '../components/SvgIcon';
+
+export const IconBellDotLineLineW500 = (props: SvgIconProps) => {
+  return (
+    <SvgIcon size="24px" viewBox="0 0 24 24" {...props}>
+      <path
+        clipRule="evenodd"
+        d="M13.8427 3.22116C13.539 2.50352 12.8283 2 12 2C10.8954 2 10 2.89543 10 4V4.28988C7.10851 5.15043 5 7.82898 5 11V17L3 19V20H5H7H17H19H21V19L19 17V11C19 10.9667 18.9998 10.9334 18.9993 10.9001C18.6764 10.9656 18.3422 11 18 11C17.6572 11 17.3224 10.9655 16.999 10.8998C16.9997 10.9331 17 10.9665 17 11V18H7V11C7 8.23858 9.23858 6 12 6C12.3428 6 12.6776 6.0345 13.001 6.10022C13.0003 6.06689 13 6.03348 13 6C13 4.97168 13.3104 4.01587 13.8427 3.22116ZM10 21C10 22.1046 10.8954 23 12 23C13.1046 23 14 22.1046 14 21H10Z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
+    </SvgIcon>
+  );
+};

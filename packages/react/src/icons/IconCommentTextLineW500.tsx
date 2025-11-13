@@ -1,0 +1,14 @@
+import { SvgIcon, SvgIconProps } from '../components/SvgIcon';
+
+export const IconCommentTextLineW500 = (props: SvgIconProps) => {
+  return (
+    <SvgIcon size="24px" viewBox="0 0 24 24" {...props}>
+      <path
+        clipRule="evenodd"
+        d="M5.99938 8.29844V9L5.99938 18H18.9994V6H4.16063L5.56112 7.75061L5.99938 8.29844ZM2.08 4H3.99938H18.9994C20.1039 4 20.9994 4.89543 20.9994 6V18C20.9994 19.1046 20.1039 20 18.9994 20H5.99938C4.89481 20 3.99938 19.1046 3.99938 18L3.99938 9L1.29913 5.62469C0.775323 4.96993 1.2415 4 2.08 4ZM8 10C8 9.44772 8.44772 9 9 9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H9C8.44772 11 8 10.5523 8 10ZM9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15H14C14.5523 15 15 14.5523 15 14C15 13.4477 14.5523 13 14 13H9Z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
+    </SvgIcon>
+  );
+};

@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconCloseW350 } from '../../../icons';
+import { IconCloseLineW350 } from '../../../icons';
 import { Button } from '../../Button';
 
 type SnackbarCloseOwnerState = {
@@ -63,7 +63,7 @@ export const SnackbarClose = (inProps: SnackbarCloseProps) => {
   const {
     className,
     label,
-    icon = <IconCloseW350 />,
+    icon = <IconCloseLineW350 />,
     sx,
     size = '400',
     progress,

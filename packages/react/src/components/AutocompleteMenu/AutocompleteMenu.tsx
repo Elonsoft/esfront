@@ -32,7 +32,7 @@ import TrapFocus from '@mui/material/Unstable_TrapFocus';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver, useScrollLock } from '../../hooks';
-import { IconCloseW350, IconMagnify2W400 } from '../../icons';
+import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
 import { Checkbox } from '../Checkbox';
@@ -300,8 +300,8 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     onClose,
     onLoadMore,
 
-    iconSearch = <IconMagnify2W400 />,
-    iconSearchClear = <IconCloseW350 />,
+    iconSearch = <IconMagnify2LineW400 />,
+    iconSearchClear = <IconCloseLineW350 />,
 
     ...props
   } = useDefaultProps({

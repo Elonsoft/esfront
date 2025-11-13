@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { LoadingButton } from '.';
 
-import { IconChevronDownW400 } from '../../icons';
+import { IconChevronDownLineW400 } from '../../icons';
 
 type Args = Pick<ComponentProps<typeof LoadingButton>, 'variant' | 'color' | 'size' | 'disabled' | 'loading'>;
 
@@ -44,13 +44,13 @@ export const Demo: Story = {
   render: (args, context) => {
     const icon =
       args.size === '100' ? (
-        <IconChevronDownW400 size="12px" />
+        <IconChevronDownLineW400 size="12px" />
       ) : args.size === '200' ? (
-        <IconChevronDownW400 size="16px" />
+        <IconChevronDownLineW400 size="16px" />
       ) : args.size === '300' ? (
-        <IconChevronDownW400 size="20px" />
+        <IconChevronDownLineW400 size="20px" />
       ) : (
-        <IconChevronDownW400 />
+        <IconChevronDownLineW400 />
       );
 
     return (

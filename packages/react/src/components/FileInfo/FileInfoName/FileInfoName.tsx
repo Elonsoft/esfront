@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconCloseW350 } from '../../../icons';
+import { IconCloseLineW350 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
 
@@ -55,7 +55,7 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
     sx,
     onDelete,
     labelDelete,
-    iconDelete = <IconCloseW350 />,
+    iconDelete = <IconCloseLineW350 />,
     ...props
   } = useDefaultProps({
     props: inProps,

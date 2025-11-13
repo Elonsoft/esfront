@@ -13,11 +13,11 @@ import composeClasses from '@mui/utils/composeClasses';
 
 import { useDocumentEventListener, usePagination } from '../../../hooks';
 import {
-  IconArrowLeft2W300,
-  IconArrowRight2W300,
-  IconChevronLeftW400,
-  IconChevronRightW400,
-  IconDotsHorizontalW100,
+  IconArrowLeft2LineW300,
+  IconArrowRight2LineW300,
+  IconChevronLeftLineW400,
+  IconChevronRightLineW400,
+  IconDotsHorizontalLineW100,
 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { ButtonBase, buttonBaseClasses, buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
@@ -192,11 +192,11 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     labelPrevPage,
     labelNextPage,
     labelPage,
-    iconPrevPage = <IconChevronLeftW400 />,
-    iconNextPage = <IconChevronRightW400 />,
-    iconEllipsis = <IconDotsHorizontalW100 />,
-    iconTooltipPrevPage = <IconArrowLeft2W300 />,
-    iconTooltipNextPage = <IconArrowRight2W300 />,
+    iconPrevPage = <IconChevronLeftLineW400 />,
+    iconNextPage = <IconChevronRightLineW400 />,
+    iconEllipsis = <IconDotsHorizontalLineW100 />,
+    iconTooltipPrevPage = <IconArrowLeft2LineW300 />,
+    iconTooltipNextPage = <IconArrowRight2LineW300 />,
     ...props
   } = useDefaultProps({
     props: inProps,

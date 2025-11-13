@@ -8,7 +8,12 @@ import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconArrowDownW500, IconArrowLeftW500, IconArrowRightW500, IconArrowUpW500 } from '../../../icons';
+import {
+  IconArrowDownLineW500,
+  IconArrowLeftLineW500,
+  IconArrowRightLineW500,
+  IconArrowUpLineW500,
+} from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { useSwiperContext } from '../Swiper.context';
 
@@ -112,10 +117,10 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
     step,
     labelPrev,
     labelNext,
-    iconUp = <IconArrowUpW500 />,
-    iconDown = <IconArrowDownW500 />,
-    iconLeft = <IconArrowLeftW500 />,
-    iconRight = <IconArrowRightW500 />,
+    iconUp = <IconArrowUpLineW500 />,
+    iconDown = <IconArrowDownLineW500 />,
+    iconLeft = <IconArrowLeftLineW500 />,
+    iconRight = <IconArrowRightLineW500 />,
     ...props
   } = useDefaultProps({
     props: inProps,

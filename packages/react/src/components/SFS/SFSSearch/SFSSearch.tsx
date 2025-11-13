@@ -11,7 +11,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconCloseW350, IconMagnify2W400 } from '../../../icons';
+import { IconCloseLineW350, IconMagnify2LineW400 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses } from '../../ButtonBase';
 
@@ -134,8 +134,8 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
     ariaLabel,
     labelClear,
     placeholder,
-    iconClear = <IconCloseW350 />,
-    iconSearch = <IconMagnify2W400 />,
+    iconClear = <IconCloseLineW350 />,
+    iconSearch = <IconMagnify2LineW400 />,
     ...props
   } = useDefaultProps({
     props: inProps,

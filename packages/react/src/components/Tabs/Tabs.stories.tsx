@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Tab, Tabs, tabsClasses } from '.';
 
-import { IconAt } from '../../icons';
+import { IconAtLineW500 } from '../../icons';
 
 const meta: Meta<typeof Tabs> = {
   tags: ['autodocs'],
@@ -144,9 +144,9 @@ export const Demo: Story = {
             ref={(el) => {
               tabRefs.current[index] = el || undefined;
             }}
-            endIcon={<IconAt size="24px" />}
+            endIcon={<IconAtLineW500 size="24px" />}
             label={label}
-            startIcon={<IconAt size="24px" />}
+            startIcon={<IconAtLineW500 size="24px" />}
           />
         ))}
       </Tabs>

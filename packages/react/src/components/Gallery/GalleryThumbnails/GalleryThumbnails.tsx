@@ -12,7 +12,7 @@ import composeClasses from '@mui/utils/composeClasses';
 import { useGalleryThumbnailsContext } from './GalleryThumbnails.context';
 
 import { useForkRef } from '../../../hooks';
-import { IconChevronLeftW400, IconChevronRightW400 } from '../../../icons';
+import { IconChevronLeftLineW400, IconChevronRightLineW400 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { Swiper, SwiperImperativeActions, useSwiperContext } from '../../Swiper';
 import { touchRippleClasses } from '../../TouchRipple';
@@ -165,8 +165,8 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
     SwiperProps,
     labelNext,
     labelPrev,
-    iconNext = <IconChevronRightW400 />,
-    iconPrev = <IconChevronLeftW400 />,
+    iconNext = <IconChevronRightLineW400 />,
+    iconPrev = <IconChevronLeftLineW400 />,
     ...props
   } = useDefaultProps({
     props: inProps,

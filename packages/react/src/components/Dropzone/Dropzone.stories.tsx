@@ -2,7 +2,7 @@ import { Args, Meta, StoryContext, StoryObj } from '@storybook/react';
 
 import { Dropzone } from '.';
 
-import { IconUpload } from '../../icons';
+import { IconUploadFillW500 } from '../../icons';
 
 const getHeading = (args: Args, context: StoryContext<unknown>) => {
   return args.heading || (context.globals.locale === 'en' ? 'Choose files' : 'Выберите файлы');
@@ -110,7 +110,7 @@ export const Demo: Story = {
         dragSubheading={getDragSubheading(args, context)}
         heading={getHeading(args, context)}
         helperText={getHelperText(args, context)}
-        icon={<IconUpload />}
+        icon={<IconUploadFillW500 />}
         subheading={getSubheading(args, context)}
       />
     );

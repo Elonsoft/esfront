@@ -14,7 +14,7 @@ import Popover from '@mui/material/Popover';
 import Typography, { typographyClasses } from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconSortAscending, IconSortDescending } from '../../icons';
+import { IconSortAscendingLineW200, IconSortDescendingLineW200 } from '../../icons';
 import { Button, buttonClasses } from '../Button';
 import { buttonBaseClasses } from '../ButtonBase';
 import { Divider, dividerClasses } from '../Divider';
@@ -270,8 +270,8 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
     labelMultisortMobileOn,
     labelMultisortMobileOff,
 
-    iconItemAsc = <IconSortAscending container containerHeight="12px" containerWidth="8px" />,
-    iconItemDesc = <IconSortDescending container containerHeight="12px" containerWidth="8px" />,
+    iconItemAsc = <IconSortAscendingLineW200 container containerHeight="12px" containerWidth="8px" />,
+    iconItemDesc = <IconSortDescendingLineW200 container containerHeight="12px" containerWidth="8px" />,
 
     ...props
   } = useDefaultProps({

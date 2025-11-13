@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Chip } from './Chip';
 
-import { IconAt } from '../../icons';
+import { IconAtLineW500 } from '../../icons';
 import { Avatar } from '../Avatar';
 
 const ICON_SIZE_MAP = {
@@ -73,7 +73,7 @@ export const Demo: Story = {
         </Chip>
         <Chip
           component="button"
-          startIcon={<IconAt size="24px" sx={(theme) => ({ color: theme.vars.palette.monoA.A500 })} />}
+          startIcon={<IconAtLineW500 size="24px" sx={(theme) => ({ color: theme.vars.palette.monoA.A500 })} />}
           {...args}
         >
           {locale === 'ru' ? 'Алексеев Алексей Алексеевич' : 'John Lennon'}

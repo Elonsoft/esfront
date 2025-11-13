@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import composeClasses from '@mui/utils/composeClasses';
 
-import { IconArrowLeftW500, IconArrowRightW500 } from '../../../icons';
+import { IconArrowLeftLineW500, IconArrowRightLineW500 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 
 type DialogArrowOwnerState = {
@@ -97,8 +97,8 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
     onClick,
     labelPrev,
     labelNext,
-    iconPrev = <IconArrowLeftW500 />,
-    iconNext = <IconArrowRightW500 />,
+    iconPrev = <IconArrowLeftLineW500 />,
+    iconNext = <IconArrowRightLineW500 />,
     ...props
   } = useDefaultProps({
     props: inProps,

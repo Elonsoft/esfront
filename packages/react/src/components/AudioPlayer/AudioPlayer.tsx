@@ -17,17 +17,17 @@ import { useAudioPlayerContext } from './AudioPlayer.context';
 
 import { useLatest, useWindowEventListener } from '../../hooks';
 import {
-  IconArrowLeftW500,
-  IconCheckW400,
-  IconChevronRightW400,
-  IconDotsVerticalW400,
-  IconDownloadW400,
-  IconPauseW400,
-  IconPlayW400,
-  IconSpeedometer,
-  IconVolumeHigh,
-  IconVolumeLow,
-  IconVolumeMute,
+  IconArrowLeftLineW500,
+  IconCheckLineW400,
+  IconChevronRightLineW400,
+  IconDotsVerticalLineW400,
+  IconDownloadLineW400,
+  IconPauseFillW400,
+  IconPlayFillW400,
+  IconSpeedometerLineW500,
+  IconVolumeHighFillW500,
+  IconVolumeLowFillW500,
+  IconVolumeMuteFillW500,
 } from '../../icons';
 import { Button } from '../Button';
 import { Divider, dividerClasses } from '../Divider';
@@ -512,17 +512,17 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     labelCurrent,
     labelVolume,
 
-    iconBack = <IconArrowLeftW500 />,
-    iconDownload = <IconDownloadW400 />,
-    iconOptions = <IconDotsVerticalW400 />,
-    iconPause = <IconPauseW400 />,
-    iconPlay = <IconPlayW400 />,
-    iconRate = <IconSpeedometer />,
-    iconRateOpen = <IconChevronRightW400 />,
-    iconRateCheck = <IconCheckW400 />,
-    iconVolumeHigh = <IconVolumeHigh />,
-    iconVolumeLow = <IconVolumeLow />,
-    iconVolumeOff = <IconVolumeMute />,
+    iconBack = <IconArrowLeftLineW500 />,
+    iconDownload = <IconDownloadLineW400 />,
+    iconOptions = <IconDotsVerticalLineW400 />,
+    iconPause = <IconPauseFillW400 />,
+    iconPlay = <IconPlayFillW400 />,
+    iconRate = <IconSpeedometerLineW500 />,
+    iconRateOpen = <IconChevronRightLineW400 />,
+    iconRateCheck = <IconCheckLineW400 />,
+    iconVolumeHigh = <IconVolumeHighFillW500 />,
+    iconVolumeLow = <IconVolumeLowFillW500 />,
+    iconVolumeOff = <IconVolumeMuteFillW500 />,
 
     TooltipProps,
     ...props

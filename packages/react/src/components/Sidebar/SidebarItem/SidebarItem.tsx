@@ -15,7 +15,7 @@ import Typography, { TypographyProps } from '@mui/material/Typography';
 import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
-import { IconChevronLeftW200 } from '../../../icons';
+import { IconChevronLeftLineW200 } from '../../../icons';
 import { Button, buttonClasses } from '../../Button';
 import { buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
 import { Divider } from '../../Divider';
@@ -347,7 +347,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     children,
     className,
     icon,
-    iconToggle = <IconChevronLeftW200 container containerSize="20px" />,
+    iconToggle = <IconChevronLeftLineW200 container containerSize="20px" />,
     inset,
     onClick,
     onKeyDown,

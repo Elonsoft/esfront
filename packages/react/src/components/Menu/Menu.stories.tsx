@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Menu from '@mui/material/Menu';
 
-import { IconUpload } from '../../icons';
+import { IconUploadFillW500 } from '../../icons';
 import { Button } from '../Button';
 import { Divider } from '../Divider';
 import { ListItem, ListItemIcon, ListItemText } from '../ListItem';
@@ -89,19 +89,19 @@ export const Demo: Story = {
         >
           <MenuItem selected size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
           </MenuItem>
           <MenuItem disabled size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
           </MenuItem>
           <MenuItem size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </MenuItem>
@@ -117,7 +117,7 @@ export const Demo: Story = {
           </MenuItem>
           <MenuItem error size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getErrorActionText(context)}</ListItemText>
           </MenuItem>
@@ -141,19 +141,19 @@ export const DemoList: Story = {
         <List>
           <ListItem size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
           </ListItem>
           <ListItem size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
           </ListItem>
           <ListItem size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </ListItem>
@@ -184,19 +184,19 @@ export const DemoListButton: Story = {
         <List>
           <ListItem button selected size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCutText(context)}</ListItemText>
           </ListItem>
           <ListItem button disabled size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getCopyText(context)}</ListItemText>
           </ListItem>
           <ListItem button size={args.size}>
             <ListItemIcon>
-              <IconUpload />
+              <IconUploadFillW500 />
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </ListItem>
