@@ -1,0 +1,8 @@
+@use 'sass:color';
+@use '../settings';
+
+@mixin color-alphas($name, $color) {
+  @each $level, $alpha in settings.$alphas {
+    --#{$name}-#{$level}: #{color.change($color, $alpha: $alpha)};
+  }
+}

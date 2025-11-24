@@ -1,0 +1,29 @@
+@use '../helpers/breakpoints';
+
+@mixin include() {
+  @include breakpoints.adaptive-classes() using ($prefix) {
+    .#{$prefix}hidden {
+      display: none;
+    }
+
+    .#{$prefix}inline {
+      display: inline;
+    }
+
+    .#{$prefix}block {
+      display: block;
+    }
+
+    .#{$prefix}inline-block {
+      display: inline-block;
+    }
+
+    .#{$prefix}flex {
+      display: flex;
+    }
+
+    .#{$prefix}grid {
+      display: grid;
+    }
+  }
+}
