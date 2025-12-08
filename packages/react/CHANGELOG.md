@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.13.3...@esfront/react@0.14.0) (2025-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* change font to Nunito Sans
+* update icons
+
+### Features
+
+* change font to Nunito Sans ([0cbc5e1](https://github.com/Elonsoft/esfront/commit/0cbc5e1e32cb174410d5c289f8f155f68f6d0b5d))
+* **ImageZoom:** add new component ([e14d62b](https://github.com/Elonsoft/esfront/commit/e14d62ba28573a8ab50a418eeb2b585b40e227f9))
+* **theme:** add new package ([f1b3be7](https://github.com/Elonsoft/esfront/commit/f1b3be7a546f1b70933d65235dc220053c2532b3))
+* update icons ([2c7dfa4](https://github.com/Elonsoft/esfront/commit/2c7dfa4f430de13d89122bcd2c90c62bec7d8bbe))
+
+
+
 ## [0.13.3](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.13.2...@esfront/react@0.13.3) (2025-11-13)
 
 

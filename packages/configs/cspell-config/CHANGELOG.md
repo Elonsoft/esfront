@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.0](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.7...@esfront/cspell-config@0.1.0) (2025-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* change font to Nunito Sans
+
+### Features
+
+* change font to Nunito Sans ([0cbc5e1](https://github.com/Elonsoft/esfront/commit/0cbc5e1e32cb174410d5c289f8f155f68f6d0b5d))
+
+
+
 ## [0.0.7](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.6...@esfront/cspell-config@0.0.7) (2025-10-13)
 
 
