@@ -1,0 +1,18 @@
+import{j as r}from"./jsx-runtime-BoZ7yaty.js";import{r as o}from"./index-DIDRz_s2.js";import{P as n,a as h,b as x}from"./PaginationRange-GV9eat1C.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./clsx.m-C7bORDfW.js";import"./identifier-haEvzVNA.js";import"./DefaultPropsProvider-BgzOhfjl.js";import"./styled-CkBBDypc.js";import"./IconChevronLeftLineW400-nVdt9Ngh.js";import"./SvgIcon-DUjU_dba.js";import"./SvgIcon.classes-BQruNm0T.js";import"./IconChevronRightLineW400-eQkwD-oX.js";import"./IconDotsHorizontalLineW100-CnXiZF7K.js";import"./useDocumentEventListener-DcHHZa3z.js";import"./useLatest-sVqXUmVb.js";import"./useControlled-DdQm0pQX.js";import"./Button-DhPfczDk.js";import"./ButtonBase-CDV15rsf.js";import"./useForkRef-DJnV46t9.js";import"./Tooltip-CJy9C140.js";import"./Fade-EMyAcTYj.js";import"./useTheme-B7wNoq1D.js";import"./useTheme-Bas6BIKa.js";import"./getReactElementRef-BCGM00pR.js";import"./TransitionGroupContext-8frXp1f-.js";import"./index-BqLR6Ykc.js";import"./index-B9nU-LZm.js";import"./useForkRef-Cmn-Dh7x.js";import"./useTimeout-BgqVTnbA.js";import"./useControlled-BX5XFdR0.js";import"./useId-DHFVogFr.js";import"./useEvent-B4f6aq-e.js";import"./appendOwnerState-BTP2NS_9.js";import"./Popper-g9x5hpqb.js";import"./index-CycuZXML.js";import"./ownerDocument-DW-IO8s5.js";import"./Portal-Cdjvc33M.js";import"./useEnhancedEffect-BGNjlb7u.js";import"./useSlotProps-CexWkmt_.js";import"./mergeSlotProps-fp1W1fei.js";import"./DefaultPropsProvider-DX0NN56D.js";import"./TextField-D_RGTig6.js";import"./memoTheme-DCKoxpDd.js";import"./useSlot-CFc0_OMk.js";import"./useFormControl-Crkhef2u.js";import"./FormControl-BHVgFtT5.js";import"./isMuiElement-DbqDAyDR.js";import"./createSimplePaletteValueFilter-bm0fmN_7.js";import"./isHostComponent-DVu5iVWx.js";import"./index-CrbC6HhZ.js";import"./extendSxProp-gK8sWd8Z.js";import"./emotion-react.browser.esm-DrFEIfPJ.js";import"./ownerWindow-HkKU3E4x.js";import"./useEventCallback-B5h_k30D.js";import"./debounce-Be36O1Ab.js";import"./FormHelperText-gfZl3CJm.js";import"./Menu-CgxVvckE.js";import"./Popover-BLlr3l9T.js";import"./Grow-BwlAxJrJ.js";import"./Modal-DZyPzB9s.js";import"./getScrollbarSize-CaCM53D3.js";import"./createChainedFunction-BO_9K8Jh.js";import"./FocusTrap-vTo9pgoY.js";import"./MenuList-BFLSMrOv.js";import"./SvgIcon-5liiqC3t.js";import"./IconMenuDownFillW300-BzMVeO_c.js";import"./Typography-56Df3xvc.js";import"./MenuItem-CqODWihV.js";const kt={tags:["autodocs"],component:n,parameters:{references:["Pagination","PaginationPages","PaginationRange"]},argTypes:{itemsPerPage:{table:{disable:!0}},page:{table:{disable:!0}}},args:{count:100}},t={render:function({count:p}){const[s,g]=o.useState(1),[P,c]=o.useState(10),u=e=>{c(e)},d=e=>{g(e)};return r.jsxs(n,{count:p,itemsPerPage:P,page:s,onItemsPerPageChange:u,onPageChange:d,children:[r.jsx(h,{}),r.jsx(x,{})]})}};var i,m,a;t.parameters={...t.parameters,docs:{...(i=t.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  render: function Render({
+    count
+  }) {
+    const [page, setPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+    const onItemsPerPageChange = (event: number) => {
+      setItemsPerPage(event);
+    };
+    const onPageChange = (page: number) => {
+      setPage(page);
+    };
+    return <Pagination count={count} itemsPerPage={itemsPerPage} page={page} onItemsPerPageChange={onItemsPerPageChange} onPageChange={onPageChange}>
+        <PaginationRange />
+        <PaginationPages />
+      </Pagination>;
+  }
+}`,...(a=(m=t.parameters)==null?void 0:m.docs)==null?void 0:a.source}}};const qt=["Demo"];export{t as Demo,qt as __namedExportsOrder,kt as default};
