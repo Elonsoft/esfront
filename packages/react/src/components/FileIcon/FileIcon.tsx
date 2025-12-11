@@ -3,55 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { FileIconProps } from './FileIcon.types';
 
 import clsx from 'clsx';
-import { getFileIconUtilityClass } from './FileIcon.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { FileIconIcon } from './icons';
-
-type FileIconOwnerState = {
-  classes?: FileIconProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: FileIconOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    children: ['children'],
-    icon: ['icon'],
-  };
-
-  return composeClasses(slots, getFileIconUtilityClass, classes);
-};
-
-const FileIconRoot = styled('div', {
-  name: 'ESFileIcon',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A500,
-  display: 'flex',
-  fontWeight: 700,
-  height: 'auto',
-  justifyContent: 'center',
-  position: 'relative',
-}));
-
-const FileIconChildren = styled('div', {
-  name: 'ESFileIcon',
-  slot: 'Children',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({
-  alignItems: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  inset: 0,
-  justifyContent: 'center',
-  position: 'absolute',
-}));
 
 /**
  * This component is for displaying file extensions.
@@ -59,19 +14,15 @@ const FileIconChildren = styled('div', {
 export const FileIcon = (inProps: FileIconProps) => {
   const {
     className,
-    sx,
+    style,
     icon = FileIconIcon,
     width = 36,
     height = 48,
     children,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESFileIcon',
   });
-
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
 
   const iconRef = useRef<SVGPathElement>(null);
   const rootIconRef = useRef<HTMLDivElement>(null);
@@ -88,13 +39,13 @@ export const FileIcon = (inProps: FileIconProps) => {
   }, [iconRef.current, rootIconRef.current, width, height]);
 
   return (
-    <FileIconRoot ref={rootIconRef} className={clsx(classes.root, className)} sx={sx}>
-      <Icon ref={iconRef} className={classes.icon} height={height} width={width} />
+    <div ref={rootIconRef} className={clsx('es-file-icon', className)} style={style}>
+      <Icon ref={iconRef} className="es-file-icon__icon" height={`${height}px`} width={`${width}px`} />
       {!!children && (
-        <FileIconChildren className={classes.children} style={{ paddingTop: `${Math.round(paddingTop)}px` }}>
+        <div className="es-file-icon__children" style={{ paddingTop: `${Math.round(paddingTop)}px` }}>
           {children}
-        </FileIconChildren>
+        </div>
       )}
-    </FileIconRoot>
+    </div>
   );
 };

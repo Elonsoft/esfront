@@ -1,21 +1,21 @@
 import { Component } from '../component';
 
-export const createMenu: Component<'MuiMenu'> = (theme) => {
+export const createMenu: Component<'MuiMenu'> = () => {
   return {
     styleOverrides: {
       root: {
         '& .MuiDivider-root': {
-          borderColor: theme.vars.palette.monoA.A100,
+          borderColor: 'var(--es-mono-a-a100)',
         },
       },
       paper: {
         '&.MuiMenu-paper': {
           backgroundImage: 'none',
-          backgroundColor: theme.vars.palette.surface[400],
-          boxShadow: theme.vars.palette.shadow.down[600],
+          backgroundColor: 'var(--es-surface-400)',
+          boxShadow: 'var(--es-shadow-down-600)',
         },
         '& .MuiListItemIcon-root': {
-          color: theme.vars.palette.monoA.A500,
+          color: 'var(--es-mono-a-a500)',
         },
       },
     },

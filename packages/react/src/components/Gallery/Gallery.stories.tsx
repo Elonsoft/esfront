@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Theme, useMediaQuery } from '@mui/material';
 
-import { GalleryTooltip } from './GalleryTooltip';
 import {
   Gallery,
   GalleryActions,
@@ -19,6 +18,7 @@ import {
   GallerySwiperImage,
   GalleryThumbnails,
   GalleryThumbnailsImage,
+  GalleryTooltip,
 } from '.';
 
 import { IconDotsVerticalLineW500, IconDownloadLineW400, IconShareLineW400 } from '../../icons';
@@ -151,19 +151,19 @@ export const Demo: Story = {
                 <GalleryActions>
                   {isTablet ? (
                     <GalleryActionsButtonGroup>
-                      <GalleryTooltip color="whiteA600" distance={8} title={t('download')}>
+                      <GalleryTooltip color="white-a600" distance={8} title={t('download')}>
                         <GalleryActionsButton size="500">
                           <IconDownloadLineW400 />
                         </GalleryActionsButton>
                       </GalleryTooltip>
-                      <GalleryTooltip color="whiteA600" distance={8} title={t('share')}>
+                      <GalleryTooltip color="white-a600" distance={8} title={t('share')}>
                         <GalleryActionsButton size="500">
                           <IconShareLineW400 />
                         </GalleryActionsButton>
                       </GalleryTooltip>
                     </GalleryActionsButtonGroup>
                   ) : (
-                    <GalleryTooltip color="whiteA600" distance={8} title={t('menu')}>
+                    <GalleryTooltip color="white-a600" distance={8} title={t('menu')}>
                       <GalleryActionsButton size="500">
                         <IconDotsVerticalLineW500 />
                       </GalleryActionsButton>

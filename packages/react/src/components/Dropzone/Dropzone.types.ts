@@ -1,8 +1,4 @@
-import React from 'react';
-
-import { DropzoneClasses } from './Dropzone.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import React, { CSSProperties } from 'react';
 
 export type FileError = 'file-too-large' | 'file-invalid-type' | 'too-many-files';
 
@@ -15,10 +11,9 @@ export interface DropzoneProps {
   ref?: React.Ref<HTMLDivElement>;
   /** Class applied to the root element. */
   className?: string;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<DropzoneClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
+
   /** Heading text. */
   heading?: string;
   /** Subheading text. */

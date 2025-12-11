@@ -3,225 +3,20 @@ import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 import { BottomSheetProps } from './BottomSheet.types';
 
 import clsx from 'clsx';
-import { getBottomSheetUtilityClass } from './BottomSheet.classes';
 
-import { duration, styled } from '@mui/material/styles';
+import { duration } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Slide from '@mui/material/Slide';
 import { unstable_useId as useId } from '@mui/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { BottomSheetContext } from './BottomSheet.context';
 
 import { useIntersectionObserver, useResizeObserver, useWindowEventListener } from '../../hooks';
 
 import { useDrag } from '@use-gesture/react';
-
-type BottomSheetOwnerState = {
-  classes?: BottomSheetProps['classes'];
-  isFullHeight: boolean;
-  isLastSnapPoint: boolean;
-  isOpen: boolean;
-  align: BottomSheetProps['align'];
-};
-
-const useUtilityClasses = (ownerState: BottomSheetOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    wrapper: ['wrapper'],
-    container: ['container'],
-    content: ['content'],
-    paper: ['paper'],
-  };
-
-  return composeClasses(slots, getBottomSheetUtilityClass, classes);
-};
-
-const BottomSheetRoot = styled(Modal, {
-  name: 'ESBottomSheet',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})({
-  '@media print': {
-    // Use !important to override the Modal inline-style.
-    position: 'absolute !important',
-  },
-});
-
-const BottomSheetBackdrop = styled(Backdrop, {
-  name: 'ESBottomSheet',
-  slot: 'Backdrop',
-  overridesResolver: (props, styles) => styles.backdrop,
-})(({ theme }) => ({
-  // Improve scrollable dialog support.
-  zIndex: -1,
-  backgroundColor: theme.vars.palette.overlay[700],
-}));
-
-const BottomSheetContainer = styled('div', {
-  name: 'ESBottomSheet',
-  slot: 'Container',
-  overridesResolver: (props, styles) => styles.container,
-})<{ ownerState: BottomSheetOwnerState }>({
-  // We disable the focus ring for mouse, touch and keyboard users.
-  outline: 0,
-  height: '100%',
-  overflowX: 'hidden',
-  overflowY: 'scroll',
-  textAlign: 'center',
-  overscrollBehavior: 'none',
-  scrollbarGutter: 'stable',
-
-  '&, & *': {
-    touchAction: 'none',
-  },
-
-  '&:after': {
-    content: '""',
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    height: '100%',
-    width: '0',
-  },
-  '@media print': {
-    height: 'auto',
-  },
-
-  variants: [
-    {
-      props: {
-        isLastSnapPoint: true,
-      },
-      style: {
-        '&, & *': {
-          touchAction: 'auto',
-        },
-      },
-    },
-  ],
-});
-
-const BottomSheetWrapper = styled('div', {
-  name: 'ESBottomSheet',
-  slot: 'Wrapper',
-  overridesResolver: (props, styles) => styles.wrapper,
-})<{ ownerState: BottomSheetOwnerState }>({
-  verticalAlign: 'middle',
-  position: 'relative',
-  width: '100%',
-  minHeight: '100%',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  margin: 0,
-  overflow: 'visible',
-
-  variants: [
-    {
-      props: {
-        align: 'flex-end',
-      },
-      style: {
-        alignItems: 'flex-end',
-      },
-    },
-    {
-      props: {
-        align: 'stretch',
-      },
-      style: {
-        alignItems: 'stretch',
-      },
-    },
-  ],
-});
-
-const BottomSheetContent = styled('div', {
-  name: 'ESBottomSheet',
-  slot: 'Content',
-  overridesResolver: (props, styles) => styles.content,
-})<{ ownerState: BottomSheetOwnerState }>(
-  () => ({
-    position: 'relative',
-    overflow: 'visible',
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    width: '100%',
-    marginTop: 'calc(100vh - var(--ESBottomSheet-snapPoint))',
-    transition: 'none',
-    willChange: 'auto',
-
-    '@media print': {
-      overflowY: 'visible',
-    },
-
-    variants: [
-      {
-        props: {
-          isOpen: true,
-        },
-        style: {
-          transition: 'margin-top var(--ESBottomSheet-transitionDuration)',
-        },
-      },
-    ],
-  }),
-  () => ({
-    marginTop: 'calc(100dvh - var(--ESBottomSheet-snapPoint))',
-  })
-);
-
-const BottomSheetPaper = styled('div', {
-  name: 'ESBottomSheet',
-  slot: 'Paper',
-  overridesResolver: (props, styles) => {
-    const { ownerState } = props;
-
-    return [styles.paper, ownerState.fullScreen && styles.paperFullScreen];
-  },
-})<{ ownerState: BottomSheetOwnerState }>(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-  textAlign: 'left',
-  width: '100%',
-  minHeight: '100%',
-  boxShadow: theme.vars.palette.shadow.up[700],
-  backgroundColor: theme.vars.palette.surface[600],
-  paddingBottom: '1px',
-
-  '&::after': {
-    content: "''",
-    position: 'absolute',
-    top: '-12px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '40px',
-    height: '4px',
-    borderRadius: '4px',
-    backgroundColor: theme.vars.palette.white.A500,
-  },
-
-  '@media print': {
-    boxShadow: 'none',
-  },
-
-  variants: [
-    {
-      props: {
-        isFullHeight: true,
-      },
-      style: {
-        borderTopLeftRadius: 16,
-        borderTopRightRadius: 16,
-      },
-    },
-  ],
-}));
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.enteringScreen };
 
@@ -487,31 +282,22 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
   const point = activeSnapPoints[snapPointIndex].point;
   const snapPoint = point === 'auto' ? `min(100dvh, var(--client-height))` : point;
 
-  const ownerState = {
-    ...props,
-    align,
-    isFullHeight,
-    isLastSnapPoint,
-    isOpen,
-  };
-
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <BottomSheetRoot
+    <Modal
       ref={ref}
       closeAfterTransition
-      BackdropComponent={BottomSheetBackdrop}
+      BackdropComponent={Backdrop}
       BackdropProps={{
+        className: 'es-bottom-sheet__backdrop',
         transitionDuration,
       }}
-      className={clsx(classes.root, className)}
+      className={clsx('es-bottom-sheet', className)}
       disableEscapeKeyDown={disableEscapeKeyDown}
       open={open}
       style={
         {
-          '--ESBottomSheet-snapPoint': snapPoint,
-          '--ESBottomSheet-transitionDuration': `${duration}ms`,
+          '--es-bottom-sheet-snap-point': snapPoint,
+          '--es-bottom-sheet-transition-duration': `${duration}ms`,
         } as React.CSSProperties
       }
       onClick={onBottomSheetBackdropClick}
@@ -519,38 +305,41 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
       {...other}
     >
       <TransitionComponent appear in={open} role="presentation" timeout={transitionDuration} {...TransitionProps}>
-        <BottomSheetContainer
+        <div
           ref={containerRef}
-          className={classes.container}
-          ownerState={ownerState}
+          className={clsx(
+            'es-bottom-sheet__container',
+            isLastSnapPoint && 'es-bottom-sheet__container--last-snap-point'
+          )}
           onMouseDown={onMouseDown}
           onScroll={onScroll}
         >
-          <BottomSheetWrapper
+          <div
             ref={setWrapperRef}
             aria-describedby={ariaDescribedby}
             aria-labelledby={ariaLabelledby}
-            className={classes.wrapper}
-            ownerState={ownerState}
+            className={clsx('es-bottom-sheet__wrapper', `es-bottom-sheet__wrapper--align--${align}`)}
             role="dialog"
             {...bind()}
           >
-            <BottomSheetContent
+            <div
               ref={contentRef}
-              className={classes.content}
-              ownerState={ownerState}
+              className={clsx('es-bottom-sheet__content', isOpen && 'es-bottom-sheet__content--open')}
               style={{ maxWidth }}
             >
               <Slide direction="up" in={open} timeout={transitionDuration} onEnter={onEnter} onEntered={onEntered}>
-                <BottomSheetPaper ref={paperRef} className={classes.paper} ownerState={ownerState}>
+                <div
+                  ref={paperRef}
+                  className={clsx('es-bottom-sheet__paper', isFullHeight && 'es-bottom-sheet__paper--full-height')}
+                >
                   <div ref={sentinelRef} />
                   <BottomSheetContext.Provider value={value}>{children}</BottomSheetContext.Provider>
-                </BottomSheetPaper>
+                </div>
               </Slide>
-            </BottomSheetContent>
-          </BottomSheetWrapper>
-        </BottomSheetContainer>
+            </div>
+          </div>
+        </div>
       </TransitionComponent>
-    </BottomSheetRoot>
+    </Modal>
   );
 });

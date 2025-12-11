@@ -1,0 +1,23 @@
+@use '../helpers/typography';
+
+@mixin include() {
+  .es-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+
+    &__button {
+      border-radius: 1000px;
+
+      &.es-button--size--300.es-button--variant--text {
+        --text: var(--es-mono-a-a550);
+        --icon: var(--es-mono-a-a500);
+
+        .es-button-base__wrapper {
+          @include typography.level('caption');
+        }
+      }
+    }
+  }
+}

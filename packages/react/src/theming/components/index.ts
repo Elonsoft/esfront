@@ -1,11 +1,5 @@
 import { Components, CssVarsTheme, Theme, TypographyVariantsOptions } from '@mui/material/styles';
 
-import { createButton } from './button';
-export { createButton } from './button';
-
-import { createIconButton } from './icon-button';
-export { createIconButton } from './icon-button';
-
 import { createSlider } from './slider';
 export { createSlider } from './slider';
 
@@ -28,25 +22,10 @@ export {
   createTextField,
 } from './text-field';
 
-import { createTooltip } from './tooltip';
-export { createTooltip } from './tooltip';
-
-import {
-  createList,
-  createListItem,
-  createListItemButton,
-  createListItemIcon,
-  createListItemText,
-  createMenu,
-  createMenuItem,
-} from './menu';
+import { createList, createMenu } from './menu';
 export { createMenu } from './menu';
 
 export const createComponents = (theme: Theme, typography: TypographyVariantsOptions) => {
-  const MuiButton = createButton(theme, typography);
-
-  const MuiIconButton = createIconButton(theme, typography);
-
   const MuiSlider = createSlider(theme, typography);
 
   const MuiFormControl = createFormControl(theme, typography);
@@ -56,21 +35,12 @@ export const createComponents = (theme: Theme, typography: TypographyVariantsOpt
   const MuiOutlinedInput = createOutlinedInput(theme, typography);
   const MuiSelect = createSelect(theme, typography);
   const MuiTextField = createTextField(theme, typography);
-  const MuiTooltip = createTooltip(theme, typography);
 
   const MuiMenu = createMenu(theme, typography);
-  const MuiMenuItem = createMenuItem(theme, typography);
+
   const MuiList = createList(theme, typography);
-  const MuiListItem = createListItem(theme, typography);
-  const MuiListItemIcon = createListItemIcon(theme, typography);
-  const MuiListItemText = createListItemText(theme, typography);
-  const MuiListItemButton = createListItemButton(theme, typography);
 
   const components: Components<Omit<Theme, 'components' | 'palette'> & CssVarsTheme> = {
-    MuiButton,
-
-    MuiIconButton,
-
     MuiSlider,
 
     MuiFormControl,
@@ -80,15 +50,9 @@ export const createComponents = (theme: Theme, typography: TypographyVariantsOpt
     MuiOutlinedInput,
     MuiSelect,
     MuiTextField,
-    MuiTooltip,
 
     MuiMenu,
-    MuiMenuItem,
     MuiList,
-    MuiListItem,
-    MuiListItemButton,
-    MuiListItemIcon,
-    MuiListItemText,
   };
 
   return components;

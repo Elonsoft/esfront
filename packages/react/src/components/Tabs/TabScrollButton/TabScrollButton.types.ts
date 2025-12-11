@@ -1,23 +1,11 @@
-import { ReactNode } from 'react';
-
-import { TabScrollButtonClasses } from './TabScrollButton.classes';
-
-import { Theme } from '@mui/material/styles';
-import { SxProps } from '@mui/system';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface TabScrollButtonProps {
-  /**
-   * The content of the component.
-   */
-  children?: ReactNode;
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<TabScrollButtonClasses>;
-  /**
-   * The CSS class applied to the root element.
-   */
+  /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
+
   /**
    * The direction the button should indicate.
    */
@@ -38,8 +26,4 @@ export interface TabScrollButtonProps {
     StartScrollButtonIcon?: ReactNode;
     EndScrollButtonIcon?: ReactNode;
   };
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: SxProps<Theme>;
 }

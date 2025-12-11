@@ -3,12 +3,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { GalleryPanelProps } from './GalleryPanel.types';
 
 import clsx from 'clsx';
-import { galleryPanelClasses, getGalleryPanelUtilityClass } from './GalleryPanel.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { capitalize } from '@mui/material/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { GalleryPanelContext } from './GalleryPanel.context';
 import { useGalleryPanelsContext } from './GalleryPanels.context';
@@ -16,83 +12,8 @@ import { useGalleryPanelsContext } from './GalleryPanels.context';
 import { useResizeObserver } from '../../../hooks';
 import { useGalleryContext } from '../Gallery.context';
 
-type GalleryPanelOwnerState = {
-  classes?: GalleryPanelProps['classes'];
-  position: GalleryPanelProps['position'];
-  isVisible: boolean;
-  expanded: boolean;
-};
-
-const useUtilityClasses = (ownerState: GalleryPanelOwnerState) => {
-  const { classes, isVisible, expanded, position } = ownerState;
-
-  const slots = {
-    root: ['root', `position${capitalize(position)}`],
-    content: ['content', isVisible && 'contentVisible', expanded && 'contentExpanded'],
-  };
-
-  return composeClasses(slots, getGalleryPanelUtilityClass, classes);
-};
-
-const GalleryPanelRoot = styled('div', {
-  name: 'ESGalleryPanel',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { position },
-    } = props;
-    return [styles.root, styles[`position${capitalize(position)}`]];
-  },
-})(({ theme }) => ({
-  position: 'absolute',
-  width: '100%',
-  zIndex: 1,
-
-  '@media (min-height: 450px)': {
-    position: 'static',
-
-    [theme.breakpoints.up('tabletXS')]: {
-      [`&.${galleryPanelClasses.positionBottom}`]: {
-        paddingTop: '8px',
-      },
-    },
-  },
-}));
-
-const GalleryPanelContent = styled('div', {
-  name: 'ESGalleryMeta',
-  slot: 'Content',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { isVisible, expanded },
-    } = props;
-    return [styles.content, isVisible && styles.contentVisible, expanded && styles.expanded];
-  },
-})<{ ownerState: GalleryPanelOwnerState }>(({ theme }) => ({
-  display: 'flex',
-  transition: `opacity ${theme.transitions.duration.shortest}ms`,
-
-  [`&.${galleryPanelClasses.content}.${galleryPanelClasses.contentVisible}`]: {
-    opacity: 1,
-  },
-
-  [`&.${galleryPanelClasses.contentExpanded}`]: {
-    backgroundColor: theme.vars.palette.overlay[900],
-  },
-
-  '@media (max-height: 449px)': {
-    backdropFilter: 'blur(40px)',
-    backgroundColor: theme.vars.palette.black.A700,
-    opacity: 0,
-
-    [`&.${galleryPanelClasses.contentExpanded}`]: {
-      backgroundColor: theme.vars.palette.overlay[900],
-    },
-  },
-}));
-
 export const GalleryPanel = (inProps: GalleryPanelProps) => {
-  const { children, className, sx, position, direction, ...props } = useDefaultProps({
+  const { children, className, style, position, direction } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryPanel',
   });
@@ -157,25 +78,28 @@ export const GalleryPanel = (inProps: GalleryPanelProps) => {
     return { position, expanded, setExpanded };
   }, [expanded, setExpanded, position]);
 
-  const ownerState = { ...props, isVisible, position, expanded };
-  const classes = useUtilityClasses(ownerState);
-
   return (
     <GalleryPanelContext.Provider value={value}>
-      <GalleryPanelRoot
+      <div
         ref={rootRef}
-        className={clsx(classes.root, className)}
-        style={{ [position]: 0 }}
-        sx={sx}
+        className={clsx('es-gallery-panel', `es-gallery-panel--position--${position}`, className)}
+        style={{ [position]: 0, ...style }}
         onBlur={onBlur}
         onFocus={onFocus}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <GalleryPanelContent className={classes.content} ownerState={ownerState} style={{ flexDirection: direction }}>
+        <div
+          className={clsx(
+            'es-gallery-panel__content',
+            isVisible && 'es-gallery-panel__content--visible',
+            expanded && 'es-gallery-panel__content--expanded'
+          )}
+          style={{ flexDirection: direction }}
+        >
           {children(items[item], item)}
-        </GalleryPanelContent>
-      </GalleryPanelRoot>
+        </div>
+      </div>
     </GalleryPanelContext.Provider>
   );
 };

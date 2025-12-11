@@ -67,9 +67,8 @@ const meta: Meta<Args> = {
       },
     },
     breakpoint: {
-      control: {
-        type: 'number',
-      },
+      options: ['0', 'sm', 'lg'],
+      control: { type: 'select' },
     },
   },
   args: {
@@ -91,7 +90,7 @@ export const Demo: Story = {
         actions={
           !!args.actions && (
             <AlertActions>
-              <Button color="tertiary" size="400" sx={{ mr: '8px' }} variant="contained">
+              <Button className="mr-8" color="tertiary" size="400" variant="contained">
                 {getButtonText(context)}
               </Button>
               <Button color="tertiary" size="400" variant="text">

@@ -1,74 +1,26 @@
-import { SpinnerFadingBarsProps } from './SpinnerFadingBars.types';
+import { SpinnerProps } from '../Spinner.types';
 
 import clsx from 'clsx';
-import { getSpinnerFadingBarsUtilityClass } from './SpinnerFadingBars.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
-import { generateDelayedOpacityAnimationStyles, generateStyleColorVariants, opacityKeyframe } from '../Spinner.utils';
-
-type SpinnerFadingBarsOwnerState = {
-  classes?: SpinnerFadingBarsProps['classes'];
-  color: string;
-};
-
-const useUtilityClasses = (ownerState: SpinnerFadingBarsOwnerState) => {
-  const { classes, color } = ownerState;
-
-  const slots = {
-    root: ['root', color],
-  };
-
-  return composeClasses(slots, getSpinnerFadingBarsUtilityClass, classes);
-};
-
-const SpinnerFadingBarsRoot = styled('svg', {
-  name: 'ESSpinnerFadingBars',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { color },
-    } = props;
-    return [styles.root, styles[color]];
-  },
-})<{ ownerState: SpinnerFadingBarsOwnerState }>(({ theme }) => ({
-  variants: generateStyleColorVariants(theme),
-
-  '& > rect': {
-    fill: 'currentColor',
-    height: '10px',
-    width: '4px',
-
-    animation: `${opacityKeyframe} 1000ms linear infinite`,
-    ...generateDelayedOpacityAnimationStyles(),
-  },
-}));
-
-export const SpinnerFadingBars = (inProps: SpinnerFadingBarsProps) => {
+export const SpinnerFadingBars = (inProps: SpinnerProps) => {
   const {
     className,
-    sx,
+    style,
     size = 40,
     color = 'primary',
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESSpinnerFadingBars',
   });
 
-  const ownerState = { ...props, color };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <SpinnerFadingBarsRoot
-      className={clsx(classes.root, className)}
-      data-testid="svg"
+    <svg
+      className={clsx('es-spinner', `es-spinner--color--${color}`, 'es-spinner-fading-bars', className)}
       fill="none"
       height={size}
-      ownerState={ownerState}
-      sx={sx}
+      style={style}
       viewBox="0 0 40 40"
       width={size}
     >
@@ -80,6 +32,6 @@ export const SpinnerFadingBars = (inProps: SpinnerFadingBarsProps) => {
       <rect rx="2" transform="rotate(-135 7.27148 35.5566)" x="7.27148" y="35.5566" />
       <rect rx="2" transform="rotate(-90 0 22)" y="22" />
       <rect rx="2" transform="rotate(-45 4.44336 7.27246)" x="4.44336" y="7.27246" />
-    </SpinnerFadingBarsRoot>
+    </svg>
   );
 };

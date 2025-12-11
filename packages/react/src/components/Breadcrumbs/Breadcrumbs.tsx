@@ -3,111 +3,17 @@ import { Children, cloneElement, CSSProperties, Fragment, isValidElement, useRef
 import { BreadcrumbsProps } from './Breadcrumbs.types';
 
 import clsx from 'clsx';
-import { breadcrumbClasses } from './Breadcrumb/Breadcrumb.classes';
-import { breadcrumbsClasses, getBreadcrumbsUtilityClass } from './Breadcrumbs.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { paperClasses } from '@mui/material';
-import Menu, { menuClasses } from '@mui/material/Menu';
-import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 
 import { useResizeObserver } from '../../hooks';
 import { IconDotsHorizontal2LineW300 } from '../../icons';
-import { buttonClasses } from '../Button';
 import { MenuItem } from '../MenuItem';
-import { TooltipEllipsis, TooltipEllipsisProps } from '../TooltipEllipsis';
-
-type BreadcrumbsOwnerState = {
-  classes?: BreadcrumbsProps['classes'];
-  open?: boolean;
-};
-
-const useUtilityClasses = (ownerState: BreadcrumbsOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    list: ['list'],
-    buttonMore: ['buttonMore'],
-    menu: ['menu'],
-    menuItem: ['menuItem'],
-    tooltip: ['tooltip'],
-  };
-
-  return composeClasses(slots, getBreadcrumbsUtilityClass, classes);
-};
-
-const BreadcrumbsRoot = styled(Typography, {
-  name: 'ESBreadcrumbs',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({})) as typeof Typography;
-
-const BreadcrumbsList = styled('ol', {
-  name: 'ESBreadcrumbs',
-  slot: 'List',
-  overridesResolver: (props, styles) => styles.list,
-})<{ ownerState: BreadcrumbsOwnerState }>(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  listStyle: 'none',
-  padding: 0,
-  margin: 0,
-
-  variants: [
-    {
-      props: {
-        open: true,
-      },
-      style: {
-        [`.${breadcrumbsClasses.buttonMore}`]: {
-          [`.${buttonClasses.root}.${breadcrumbClasses.content}`]: {
-            '--background': theme.vars.palette.monoA.A50,
-          },
-        },
-      },
-    },
-  ],
-}));
-
-const BreadcrumbsMenu = styled(Menu, {
-  name: 'ESBreadcrumbs',
-  slot: 'Menu',
-  overridesResolver: (props, styles) => styles.menu,
-})(() => ({
-  [`& .${menuClasses.list}`]: {
-    padding: '4px 0',
-    maxWidth: '240px',
-  },
-
-  [`.${paperClasses.root}`]: {
-    marginTop: '4px',
-  },
-})) as typeof Menu;
-
-const BreadcrumbsTooltip = styled(
-  ({ className, ...props }: TooltipEllipsisProps) => <TooltipEllipsis {...props} classes={{ popper: className }} />,
-  {
-    name: 'ESBreadcrumbs',
-    slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip,
-  }
-)(() => ({}));
-
-const BreadcrumbsMenuItem = styled(MenuItem, {
-  name: 'ESBreadcrumbs',
-  slot: 'MenuItem',
-  overridesResolver: (props, styles) => styles.menuItem,
-})(({ theme }) => ({
-  padding: '8px 16px',
-  width: '100%',
-  ...theme.typography.caption,
-})) as typeof MenuItem;
+import { TooltipEllipsis } from '../TooltipEllipsis';
 
 /**
  * Breadcrumbs consist of a list of links that help a user visualize a page's location
@@ -117,10 +23,9 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
   const {
     children,
     className,
+    style,
     iconButtonMore = <IconDotsHorizontal2LineW300 />,
     labelButtonMore,
-    sx,
-    ...props
   } = useDefaultProps({ props: inProps, name: 'ESBreadcrumbs' });
 
   const [lastIndex, setLastIndex] = useState(Children.count(children) - 1);
@@ -145,8 +50,8 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
   useResizeObserver(ref, () => {
     if (typeof window !== 'undefined' && ref.current) {
       let width = 0;
-      const nodes = ref.current.querySelectorAll(`.${breadcrumbClasses.root}:not(.${breadcrumbsClasses.buttonMore})`);
-      const button = ref.current.querySelector(`.${breadcrumbsClasses.buttonMore}`);
+      const nodes = ref.current.querySelectorAll('.es-breadcrumb:not(.es-breadcrumbs__button-more)');
+      const button = ref.current.querySelector('.es-breadcrumbs__button-more');
 
       nodes.forEach((item) => {
         (item as HTMLElement).style.display = 'flex';
@@ -173,17 +78,13 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
     }
   });
 
-  const ownerState = { open, ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <BreadcrumbsRoot className={clsx(classes.root, className)} component="nav" sx={sx} {...props}>
-      <BreadcrumbsList
+    <nav className={clsx('es-breadcrumbs', className)} style={style}>
+      <ol
         ref={ref}
         itemScope
-        className={clsx(classes.list)}
+        className={clsx('es-breadcrumbs__list', open && 'es-breadcrumbs__list--open')}
         itemType="https://schema.org/BreadcrumbList"
-        ownerState={ownerState}
       >
         {Children.map(children, (child, idx) => {
           if (!isValidElement(child)) {
@@ -203,7 +104,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
               {idx === 0 && (
                 <Breadcrumb
                   aria-label={labelButtonMore}
-                  className={clsx(classes.buttonMore)}
+                  className="es-breadcrumbs__button-more"
                   style={{ display: lastIndex > 1 ? 'flex' : 'none' }}
                   onClick={onOpenMenu}
                 >
@@ -213,9 +114,9 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
             </Fragment>
           );
         })}
-      </BreadcrumbsList>
+      </ol>
 
-      <BreadcrumbsMenu anchorEl={anchorEl} className={clsx(classes.menu)} open={open} onClose={onCloseMenu}>
+      <Menu anchorEl={anchorEl} className="es-breadcrumbs__menu" open={open} onClose={onCloseMenu}>
         {Children.map(children, (child, idx) => {
           if (!isValidElement(child)) {
             return null;
@@ -225,26 +126,26 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
 
           if (idx >= 1 && idx < lastIndex) {
             return (
-              <BreadcrumbsTooltip
+              <TooltipEllipsis
                 arrow
                 disableInteractive
-                className={clsx(classes.tooltip)}
-                title={<Typography variant="caption">{children}</Typography>}
+                slotProps={{ popper: { className: 'es-breadcrumbs__tooltip' } }}
+                title={<span className="caption">{children}</span>}
               >
                 {({ ref, childrenRef }) => (
-                  <BreadcrumbsMenuItem ref={ref} className={clsx(classes.menuItem)} size="100" {...rest}>
-                    <Typography ref={childrenRef} noWrap>
+                  <MenuItem ref={ref} className={clsx('es-breadcrumbs__menu-item')} size="100" {...rest}>
+                    <span ref={childrenRef} style={{ textWrap: 'nowrap' }}>
                       {children}
-                    </Typography>
-                  </BreadcrumbsMenuItem>
+                    </span>
+                  </MenuItem>
                 )}
-              </BreadcrumbsTooltip>
+              </TooltipEllipsis>
             );
           }
 
           return null;
         })}
-      </BreadcrumbsMenu>
-    </BreadcrumbsRoot>
+      </Menu>
+    </nav>
   );
 };

@@ -2,8 +2,6 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import { useTheme } from '@mui/material';
-
 import { Button } from '.';
 
 import { IconChevronDownLineW400 } from '../../icons';
@@ -126,10 +124,7 @@ export const Demo: Story = {
         <IconChevronDownLineW400 />
       );
 
-    const theme = useTheme();
-
-    const backgroundColor =
-      args.color === 'monoB' || args.color === 'white' ? theme.vars.palette.monoA.A800 : undefined;
+    const backgroundColor = args.color === 'mono-b' || args.color === 'white' ? 'var(--es-mono-a-a800)' : undefined;
 
     const props = {
       ...args,

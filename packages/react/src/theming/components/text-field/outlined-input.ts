@@ -4,29 +4,29 @@ export const createOutlinedInput: Component<'MuiOutlinedInput'> = (theme, typogr
   return {
     styleOverrides: {
       root: {
-        color: theme.vars.palette.monoA.A900,
+        color: 'var(--es-mono-a-a900)',
         '&:hover .MuiOutlinedInput-notchedOutline': {
           borderWidth: '2px',
-          borderColor: theme.vars.palette.monoA.A200,
+          borderColor: 'var(--es-mono-a-a200)',
           top: '-4.5px',
         },
         '&.Mui-disabled': {
-          color: theme.vars.palette.monoA.A500,
+          color: 'var(--es-mono-a-a500)',
           '& .MuiOutlinedInput-notchedOutline': {
             borderWidth: '1px',
-            borderColor: theme.vars.palette.monoA.A200,
+            borderColor: 'var(--es-mono-a-a200)',
             top: '-5px',
           },
           '& .MuiInputAdornment-root .MuiIcon-root': {
-            color: theme.vars.palette.monoA.A400,
+            color: 'var(--es-mono-a-a400)',
           },
         },
         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.vars.palette.primary[300],
+          borderColor: 'var(--es-primary-300)',
           top: '-4.5px',
         },
         '&.Mui-error .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.vars.palette.error[300],
+          borderColor: 'var(--es-error-300)',
           borderWidth: '2px',
           top: '-4.5px',
         },
@@ -37,12 +37,12 @@ export const createOutlinedInput: Component<'MuiOutlinedInput'> = (theme, typogr
           WebkitTextFillColor: 'currentColor',
         },
         '&::placeholder': {
-          color: theme.vars.palette.monoA.A400,
+          color: 'var(--es-mono-a-a400)',
           opacity: 1,
         },
       },
       notchedOutline: {
-        borderColor: theme.vars.palette.monoA.A200,
+        borderColor: 'var(--es-mono-a-a200)',
         padding: '0 6px',
       },
     },

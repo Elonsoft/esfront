@@ -3,15 +3,11 @@ import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { AudioPlayerProps } from './AudioPlayer.types';
 
 import clsx from 'clsx';
-import { getAudioPlayerUtilityClass } from './AudioPlayer.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
-import Typography from '@mui/material/Typography';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useAudioPlayerContext } from './AudioPlayer.context';
 
@@ -30,426 +26,12 @@ import {
   IconVolumeMuteFillW500,
 } from '../../icons';
 import { Button } from '../Button';
-import { Divider, dividerClasses } from '../Divider';
-import { ListItemIcon, ListItemText, listItemTextClasses } from '../ListItem';
+import { Divider } from '../Divider';
+import { ListItemIcon, ListItemText } from '../ListItem';
 import { MenuItem } from '../MenuItem';
-import { Tooltip, tooltipClasses, TooltipProps } from '../Tooltip';
+import { Tooltip } from '../Tooltip';
 
 import { Instance } from '@popperjs/core';
-
-type AudioPlayerOwnerState = {
-  classes?: AudioPlayerProps['classes'];
-  isPlaying: boolean;
-  isOverTrack: boolean;
-  isOverThumb: boolean;
-};
-
-const useUtilityClasses = (ownerState: AudioPlayerOwnerState) => {
-  const { classes, isPlaying, isOverTrack, isOverThumb } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    time: ['time'],
-    iconButton: ['iconButton'],
-    current: ['current'],
-    currentTooltip: [
-      'currentTooltip',
-      isPlaying && 'currentTooltipPlaying',
-      !isPlaying && 'currentTooltipPaused',
-      isOverTrack && 'currentTooltipOverTrack',
-      isOverThumb && 'currentTooltipOverThumb',
-    ],
-    currentSlider: ['currentSlider', isPlaying && 'currentSliderPlaying', !isPlaying && 'currentSliderPaused'],
-    tooltip: ['tooltip'],
-    menu: ['menu'],
-    menuList: ['menuList'],
-    menuItem: ['menuItem'],
-    mainMenuItem: ['mainMenuItem'],
-    listItemIcon: ['listItemIcon'],
-    listItemText: ['listItemText'],
-    listDivider: ['listDivider'],
-    rateOpen: ['rateOpen'],
-    rateCheck: ['rateCheck'],
-    volume: ['volume'],
-    volumeSlider: ['volumeSlider'],
-  };
-
-  return composeClasses(slots, getAudioPlayerUtilityClass, classes);
-};
-
-const AudioPlayerRoot = styled('div', {
-  name: 'ESAudioPlayer',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
-  alignItems: 'center',
-  backgroundColor: theme.vars.palette.monoA.A50,
-  borderRadius: 44,
-  display: 'flex',
-  padding: '0 4px',
-
-  '&:hover': {
-    [`& .${sliderClasses.thumb}`]: {
-      opacity: 1,
-    },
-  },
-}));
-
-const AudioPlayerIconButton = styled(Button, {
-  name: 'ESAudioPlayer',
-  slot: 'IconButton',
-  overridesResolver: (props, styles) => styles.iconButton,
-})(({ theme }) => ({
-  borderRadius: '50%',
-  '--icon': theme.vars.palette.monoA.A600,
-}));
-
-const AudioPlayerCurrent = styled('div', {
-  name: 'ESAudioPlayer',
-  slot: 'Current',
-  overridesResolver: (props, styles) => styles.current,
-})(() => ({
-  marginLeft: 11,
-  marginRight: 11,
-  position: 'relative',
-  flexGrow: 1,
-  display: 'flex',
-  alignItems: 'center',
-}));
-
-const AudioPlayerCurrentTooltip = styled(
-  ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
-  {
-    name: 'ESAudioPlayer',
-    slot: 'CurrentTooltip',
-    overridesResolver: (props, styles) => {
-      const {
-        ownerState: { isPlaying, isOverTrack, isOverThumb },
-      } = props;
-      return [
-        styles.currentTooltip,
-        isPlaying && styles.currentTooltipPlaying,
-        !isPlaying && styles.currentTooltipPaused,
-        isOverTrack && styles.currentTooltipOverTrack,
-        isOverThumb && styles.currentTooltipOverThumb,
-      ];
-    },
-  }
-)<{ ownerState: AudioPlayerOwnerState }>(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    '&::after': {
-      content: '""',
-      display: 'block',
-      position: 'absolute',
-      width: 4,
-      height: 4,
-      borderRadius: 4,
-      left: '50%',
-      transform: 'translateX(-2.3px)',
-      top: 'calc(100% + 12px)',
-    },
-  },
-  variants: [
-    {
-      props: {
-        isOverThumb: true,
-      },
-      style: {
-        [`& .${tooltipClasses.tooltip}`]: {
-          ...theme.typography.caption,
-          color: theme.vars.palette.monoB[500],
-
-          '&::after': {
-            display: 'none',
-          },
-        },
-      },
-    },
-    {
-      props: {
-        isOverTrack: false,
-      },
-      style: {
-        [`& .${tooltipClasses.tooltip}::after`]: {
-          backgroundColor: theme.vars.palette.monoA.A150,
-        },
-      },
-    },
-    {
-      props: {
-        isOverTrack: true,
-        isPlaying: false,
-      },
-      style: {
-        [`& .${tooltipClasses.tooltip}::after`]: {
-          backgroundColor: theme.vars.palette.monoA.A600,
-        },
-      },
-    },
-    {
-      props: {
-        isOverTrack: true,
-        isPlaying: true,
-      },
-      style: {
-        [`& .${tooltipClasses.tooltip}::after`]: {
-          backgroundColor: theme.vars.palette.black.A400,
-        },
-      },
-    },
-  ],
-}));
-
-const AudioPlayerCurrentSlider = styled(Slider, {
-  name: 'ESAudioPlayer',
-  slot: 'CurrentSlider',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { isPlaying },
-    } = props;
-    return [styles.currentSlider, isPlaying && styles.currentSliderPlaying, !isPlaying && styles.currentSliderPaused];
-  },
-})<{ ownerState: AudioPlayerOwnerState }>(({ theme }) => ({
-  [`&.${sliderClasses.colorPrimary}`]: {
-    padding: '18px 0',
-
-    [`& .${sliderClasses.thumb}`]: {
-      '&:hover': {
-        height: 8,
-        width: 8,
-        boxShadow: `0 0 0 10px ${theme.vars.palette.primary.A150}`,
-      },
-      [`&.${sliderClasses.focusVisible}`]: {
-        opacity: 1,
-        height: 10,
-        width: 10,
-        boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A400}`,
-      },
-      [`&.${sliderClasses.active}`]: {
-        height: 10,
-        width: 10,
-        boxShadow: `0 0 0 9px ${theme.vars.palette.primary.A300}`,
-      },
-    },
-  },
-  [`& .${sliderClasses.thumb}`]: {
-    opacity: 0,
-    height: 8,
-    width: 8,
-
-    '&::after': {
-      width: 12,
-      height: 30,
-      borderRadius: 0,
-    },
-  },
-  [`& .${sliderClasses.rail}`]: {
-    backgroundColor: theme.vars.palette.monoA.A100,
-  },
-
-  variants: [
-    {
-      props: {
-        isPlaying: false,
-      },
-      style: {
-        [`&.${sliderClasses.colorPrimary}`]: {
-          color: theme.vars.palette.monoA.A600,
-
-          [`& .${sliderClasses.thumb}`]: {
-            opacity: 0,
-            backdropFilter: 'blur(40px)',
-
-            [`&.${sliderClasses.focusVisible}`]: {
-              opacity: 1,
-              height: 10,
-              width: 10,
-              boxShadow: `0 0 0 9px ${theme.vars.palette.monoA.A75}`,
-            },
-          },
-        },
-      },
-    },
-  ],
-}));
-
-const AudioPlayerTime = styled(Typography, {
-  name: 'ESAudioPlayer',
-  slot: 'Time',
-  overridesResolver: (props, styles) => styles.time,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A800,
-  fontVariantNumeric: 'tabular-nums',
-  whiteSpace: 'nowrap',
-})) as typeof Typography;
-
-const AudioPlayerTooltip = styled(
-  ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
-  {
-    name: 'ESAudioPlayer',
-    slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip,
-  }
-)(() => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    padding: 0,
-  },
-}));
-
-const AudioPlayerMenu = styled(
-  ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
-  {
-    name: 'ESAudioPlayer',
-    slot: 'Menu',
-    overridesResolver: (props, styles) => styles.menu,
-  }
-)(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    padding: 0,
-    backgroundColor: theme.vars.palette.surface[400],
-    boxShadow: theme.vars.palette.shadow.down[600],
-    backdropFilter: 'none',
-    borderRadius: '6px',
-
-    [`& .${tooltipClasses.arrow}`]: {
-      color: theme.vars.palette.surface[400],
-      backdropFilter: 'none',
-    },
-  },
-  [`&[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]: {
-    boxShadow: theme.vars.palette.shadow.down[600],
-  },
-  [`&[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]: {
-    boxShadow: theme.vars.palette.shadow.up[600],
-  },
-}));
-
-const AudioPlayerMenuList = styled(MenuList, {
-  name: 'ESAudioPlayer',
-  slot: 'MenuList',
-  overridesResolver: (props, styles) => styles.menuList,
-})(() => ({
-  padding: '8px 0',
-  width: 168,
-  outline: 'none',
-}));
-
-const AudioPlayerMenuItem = styled(MenuItem, {
-  name: 'ESAudioPlayer',
-  slot: 'MenuItem',
-  overridesResolver: (props, styles) => styles.menuItem,
-})({});
-
-const AudioPlayerMainMenuItem = styled(AudioPlayerMenuItem, {
-  name: 'ESAudioPlayer',
-  slot: 'MainMenuItem',
-  overridesResolver: (props, styles) => styles.mainMenuItem,
-})({});
-
-const AudioPlayerListItemIcon = styled(ListItemIcon, {
-  name: 'ESAudioPlayer',
-  slot: 'ListItemIcon',
-  overridesResolver: (props, styles) => styles.listItemIcon,
-})(() => ({}));
-
-const AudioPlayerListItemText = styled(ListItemText, {
-  name: 'ESAudioPlayer',
-  slot: 'ListItemText',
-  overridesResolver: (props, styles) => styles.listItemText,
-})(({ theme }) => ({
-  [`& .${listItemTextClasses.primary}`]: {
-    fontWeight: 400,
-    ...theme.typography.body100,
-  },
-  [`& .${listItemTextClasses.secondary}`]: {
-    marginTop: 2,
-  },
-}));
-
-const AudioPlayerListDivider = styled(Divider, {
-  name: 'ESAudioPlayer',
-  slot: 'ListDivider',
-  overridesResolver: (props, styles) => styles.listDivider,
-})(({ theme }) => ({
-  [`&.${dividerClasses.root}`]: {
-    color: theme.vars.palette.monoA.A100,
-    margin: '8px 0',
-  },
-}));
-
-const AudioPlayerRateOpen = styled('div', {
-  name: 'ESAudioPlayer',
-  slot: 'RateOpen',
-  overridesResolver: (props, styles) => styles.rateOpen,
-})(({ theme }) => ({
-  display: 'inline-flex',
-  marginLeft: '12px',
-  color: theme.vars.palette.monoA.A500,
-}));
-
-const AudioPlayerRateCheck = styled('div', {
-  name: 'ESAudioPlayer',
-  slot: 'RateCheck',
-  overridesResolver: (props, styles) => styles.rateCheck,
-})(({ theme }) => ({
-  display: 'flex',
-  color: theme.vars.palette.monoA.A500,
-  marginRight: '-4px',
-}));
-
-const AudioPlayerVolume = styled(Typography, {
-  name: 'ESAudioPlayer',
-  slot: 'Volume',
-  overridesResolver: (props, styles) => styles.volume,
-})(({ theme }) => ({
-  display: 'grid',
-  gap: 6,
-  width: 40,
-  paddingTop: 12,
-  paddingBottom: 10,
-  color: theme.vars.palette.monoB[500],
-  justifyContent: 'center',
-  textAlign: 'center',
-  fontWeight: 400,
-})) as typeof Typography;
-
-const AudioPlayerVolumeButton = styled(AudioPlayerIconButton, {
-  name: 'ESAudioPlayer',
-  slot: 'VolumeButton',
-  overridesResolver: (props, styles) => styles.volumeButton,
-})({
-  display: 'none',
-  '@media (hover) and (pointer: fine)': {
-    display: 'flex',
-  },
-});
-
-const AudioPlayerVolumeSlider = styled(Slider, {
-  name: 'ESAudioPlayer',
-  slot: 'VolumeSlider',
-  overridesResolver: (props, styles) => styles.volumeSlider,
-})(({ theme }) => ({
-  margin: '3px 0',
-  height: 86,
-  [`&.${sliderClasses.colorPrimary}`]: {
-    color: theme.vars.palette.monoB[500],
-
-    [`& .${sliderClasses.thumb}`]: {
-      '&:hover': {
-        boxShadow: `0 0 0 8px ${theme.vars.palette.monoB.A50}`,
-      },
-      [`&.${sliderClasses.focusVisible}`]: {
-        boxShadow: `0 0 0 7px ${theme.vars.palette.monoB.A150}`,
-      },
-      [`&.${sliderClasses.active}`]: {
-        boxShadow: `0 0 0 6px ${theme.vars.palette.monoB.A200}`,
-      },
-    },
-  },
-  [`& .${sliderClasses.rail}`]: {
-    backgroundColor: theme.vars.palette.monoB.A400,
-  },
-}));
 
 const DEFAULT_RATES = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
 
@@ -469,7 +51,7 @@ const AudioPlayerTimeValue = ({ time }: { time: number }) => {
 export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const {
     className,
-    sx,
+    style,
     src,
     rates = DEFAULT_RATES,
     step = 10,
@@ -525,7 +107,6 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
     iconVolumeOff = <IconVolumeMuteFillW500 />,
 
     TooltipProps,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESAudioPlayer',
@@ -1050,27 +631,32 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   useWindowEventListener('pointermove', onPointerMove);
 
   const isOverTrack = duration * hover < current;
-  const ownerState = {
-    ...props,
-    isPlaying,
-    isOverThumb: isOverThumb || isChanging || (isFocused && !isOverRail),
-    isOverTrack,
-  };
-  const classes = useUtilityClasses(ownerState);
 
   return (
-    <AudioPlayerRoot className={clsx(classes.root, className)} sx={sx}>
-      <AudioPlayerIconButton aria-label={isPlaying ? labelPause : labelPlay} size="400" onClick={onTogglePlay}>
+    <div className={clsx('es-audio-player', className)} style={style}>
+      <Button
+        aria-label={isPlaying ? labelPause : labelPlay}
+        className="es-audio-player__icon-button"
+        size="400"
+        onClick={onTogglePlay}
+      >
         {isPlaying ? iconPause : iconPlay}
-      </AudioPlayerIconButton>
-      <AudioPlayerTime className={classes.time} variant="caption">
+      </Button>
+      <div className="es-audio-player__time caption">
         <AudioPlayerTimeValue time={isCurrentVisible ? (reverse ? duration - current : current) : duration} />
-      </AudioPlayerTime>
-      <AudioPlayerCurrent className={classes.current}>
-        <AudioPlayerCurrentTooltip
+      </div>
+      <div className="es-audio-player__current">
+        <Tooltip
           arrow
           disableInteractive
           PopperProps={{
+            className: clsx(
+              'es-audio-player__current-tooltip',
+              isPlaying && 'es-audio-player__current-tooltip--playing',
+              !isPlaying && 'es-audio-player__current-tooltip--paused',
+              isOverTrack && 'es-audio-player__current-tooltip--over-track',
+              isOverThumb && 'es-audio-player__current-tooltip--over-thumb'
+            ),
             popperRef,
             anchorEl: {
               getBoundingClientRect: () => {
@@ -1078,21 +664,22 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
               },
             },
           }}
-          className={classes.currentTooltip}
           distance={8}
           open={isFocused || isOverRail}
-          ownerState={ownerState}
           placement="top"
           title={<AudioPlayerTimeValue time={isChanging ? currentChanging : isOverRail ? duration * hover : current} />}
         >
-          <AudioPlayerCurrentSlider
+          <Slider
             ref={sliderRef}
             aria-label={labelCurrent}
-            className={classes.currentSlider}
+            className={clsx(
+              'es-audio-player__current-slider',
+              isPlaying && 'es-audio-player__current-slider--playing',
+              !isPlaying && 'es-audio-player__current-slider--paused'
+            )}
             color="primary"
             max={duration}
             min={0}
-            ownerState={ownerState}
             step={step}
             value={isChanging ? currentChanging : current}
             onBlur={onBlur}
@@ -1102,20 +689,20 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
             onPointerEnter={onPointerEnter}
             onPointerLeave={onPointerLeave}
           />
-        </AudioPlayerCurrentTooltip>
-      </AudioPlayerCurrent>
-      <AudioPlayerTooltip
+        </Tooltip>
+      </div>
+      <Tooltip
         arrow
         disableFocusListener
         disableTouchListener
         arrowSize="8"
-        className={classes.tooltip}
         distance={8}
         followCursor={undefined}
         title={
-          <AudioPlayerVolume>
-            <AudioPlayerVolumeSlider
+          <div className="es-audio-player__volume">
+            <Slider
               aria-label={labelVolume}
+              className="es-audio-player__volume-slider"
               color="primary"
               max={100}
               min={0}
@@ -1123,28 +710,34 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
               value={isMuted ? 0 : volume}
               onChange={onVolumeInputChange}
             />
-            <Typography variant="body100">{isMuted ? 0 : volume}</Typography>
-          </AudioPlayerVolume>
+            <span className="body100">{isMuted ? 0 : volume}</span>
+          </div>
         }
         {...TooltipProps}
         placement="top"
+        slotProps={{
+          ...TooltipProps?.slotProps,
+          popper: {
+            ...TooltipProps?.slotProps?.popper,
+            className: clsx('es-audio-player__tooltip', TooltipProps?.slotProps?.popper?.className),
+          },
+        }}
       >
-        <AudioPlayerVolumeButton
+        <Button
           aria-label={isMuted || volume === 0 ? labelUnmute : labelMute}
-          className={classes.iconButton}
+          className="es-audio-player__icon-button es-audio-player__volume-button"
           size="400"
           onClick={onToggleMute}
         >
           {isMuted || volume === 0 ? iconVolumeOff : volume <= 50 ? iconVolumeLow : iconVolumeHigh}
-        </AudioPlayerVolumeButton>
-      </AudioPlayerTooltip>
-      <AudioPlayerMenu
+        </Button>
+      </Tooltip>
+      <Tooltip
         arrow
         disableHoverListener
         disableTouchListener
         TransitionProps={{ onExited: onMenuExited }}
         arrowSize="8"
-        className={classes.menu}
         distance={8}
         open={isMenuOpen}
         placement="top"
@@ -1152,73 +745,82 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
           isRateMenuOpen ? (
             <TrapFocus open={isMenuOpen}>
               <div style={{ outline: 'none' }} tabIndex={-1} onKeyDown={onRateMenuKeyDown} onMouseDown={onMouseDown}>
-                <AudioPlayerMenuList className={classes.menuList}>
-                  <AudioPlayerMenuItem autoFocus className={classes.menuItem} size="100" onClick={onRateMenuClose}>
-                    <AudioPlayerListItemIcon className={classes.listItemIcon}>{iconBack}</AudioPlayerListItemIcon>
-                    <AudioPlayerListItemText className={classes.listItemText} primary={labelBack} />
-                  </AudioPlayerMenuItem>
-                  <AudioPlayerListDivider className={classes.listDivider} />
+                <MenuList className="es-audio-player__menu-list">
+                  <MenuItem autoFocus className="es-audio-player__menu-item" size="100" onClick={onRateMenuClose}>
+                    <ListItemIcon className="es-audio-player__list-item-icon">{iconBack}</ListItemIcon>
+                    <ListItemText className="es-audio-player__list-item-text" primary={labelBack} />
+                  </MenuItem>
+                  <Divider className="es-audio-player__list-divider" />
                   {rates.map((r) => (
-                    <AudioPlayerMenuItem
+                    <MenuItem
                       key={r}
-                      className={classes.menuItem}
+                      className="es-audio-player__menu-item"
                       selected={r === rate}
                       size="100"
                       onClick={onRateInputChange(r)}
                     >
-                      <AudioPlayerListItemText
-                        className={classes.listItemText}
+                      <ListItemText
+                        className="es-audio-player__list-item-text"
                         primary={r === 1 ? labelRateNormal : r}
                       />
-                      {r === rate && (
-                        <AudioPlayerRateCheck className={classes.rateCheck}>{iconRateCheck}</AudioPlayerRateCheck>
-                      )}
-                    </AudioPlayerMenuItem>
+                      {r === rate && <div className="es-audio-player__rate-check">{iconRateCheck}</div>}
+                    </MenuItem>
                   ))}
-                </AudioPlayerMenuList>
+                </MenuList>
               </div>
             </TrapFocus>
           ) : (
             <TrapFocus open={isMenuOpen}>
-              <AudioPlayerMenuList className={classes.menuList} tabIndex={-1} onMouseDown={onMouseDown}>
-                <AudioPlayerMainMenuItem
+              <MenuList className="es-audio-player__menu-list" tabIndex={-1} onMouseDown={onMouseDown}>
+                <MenuItem
                   autoFocus
-                  className={classes.mainMenuItem}
+                  className="es-audio-player__menu-item s-audio-player__main-menu-item"
                   size="300"
                   onClick={onRateMenuClick}
                   onKeyDown={onRateMenuKeyDown}
                 >
-                  <AudioPlayerListItemIcon className={classes.listItemIcon}>{iconRate}</AudioPlayerListItemIcon>
-                  <AudioPlayerListItemText
-                    className={classes.listItemText}
+                  <ListItemIcon className="es-audio-player__list-item-icon">{iconRate}</ListItemIcon>
+                  <ListItemText
+                    className="es-audio-player__list-item-text"
                     primary={labelRate}
                     secondary={rate === 1 ? labelRateNormal : rate}
                   />
-                  <AudioPlayerRateOpen className={classes.rateOpen}>{iconRateOpen}</AudioPlayerRateOpen>
-                </AudioPlayerMainMenuItem>
+                  <div className="es-audio-player__rate-open">{iconRateOpen}</div>
+                </MenuItem>
                 {!!onDownloadClick && (
-                  <AudioPlayerMainMenuItem className={classes.mainMenuItem} size="300" onClick={onDownloadClick}>
-                    <AudioPlayerListItemIcon className={classes.listItemIcon}>{iconDownload}</AudioPlayerListItemIcon>
-                    <AudioPlayerListItemText className={classes.listItemText} primary={labelDownload} />
-                  </AudioPlayerMainMenuItem>
+                  <MenuItem
+                    className="es-audio-player__menu-item s-audio-player__main-menu-item"
+                    size="300"
+                    onClick={onDownloadClick}
+                  >
+                    <ListItemIcon className="es-audio-player__list-item-icon">{iconDownload}</ListItemIcon>
+                    <ListItemText className="es-audio-player__list-item-text" primary={labelDownload} />
+                  </MenuItem>
                 )}
-              </AudioPlayerMenuList>
+              </MenuList>
             </TrapFocus>
           )
         }
         onClose={onMenuClose}
         {...TooltipProps}
+        slotProps={{
+          ...TooltipProps?.slotProps,
+          popper: {
+            ...TooltipProps?.slotProps?.popper,
+            className: clsx('es-audio-player__menu', TooltipProps?.slotProps?.popper?.className),
+          },
+        }}
       >
-        <AudioPlayerIconButton
+        <Button
           ref={menuButtonRef}
           aria-label={labelOptions}
-          className={classes.iconButton}
+          className="es-audio-player__icon-button"
           size="400"
           onClick={onMenuClick}
         >
           {iconOptions}
-        </AudioPlayerIconButton>
-      </AudioPlayerMenu>
-    </AudioPlayerRoot>
+        </Button>
+      </Tooltip>
+    </div>
   );
 };

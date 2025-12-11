@@ -1,0 +1,57 @@
+@mixin include() {
+  .es-form-control-label {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 8px;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+
+    & .es-switch-base {
+      flex-shrink: 0;
+    }
+
+    &:has(.Mui-disabled, .es-checkbox--disabled, .es-radio--disabled) {
+      cursor: not-allowed;
+
+      & .es-form-control-label__label {
+        color: var(--es-mono-a-a500);
+      }
+    }
+
+    & .es-checkbox--size--large,
+    & .es-radio--size--large {
+      margin: -8px;
+    }
+
+    & .es-checkbox--size--medium,
+    & .es-radio--size--medium {
+      margin: -8px;
+    }
+
+    & .es-checkbox--size--small,
+    & .es-radio--size--small {
+      margin: -10px;
+    }
+
+    &--label-placement--end {
+      flex-direction: row;
+    }
+
+    &--label-placement--start {
+      flex-direction: row-reverse;
+    }
+
+    &--label-placement--bottom {
+      flex-direction: column;
+    }
+
+    &--label-placement--top {
+      flex-direction: column-reverse;
+    }
+
+    &__label {
+      color: var(--es-mono-a-a900);
+    }
+  }
+}

@@ -3,150 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import { GalleryDescriptionProps } from './GalleryDescription.types';
 
 import clsx from 'clsx';
-import { getGalleryDescriptionUtilityClass } from './GalleryDescription.classes';
 
-import { styled, useTheme } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Typography from '@mui/material/Typography';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useWindowEventListener } from '../../../hooks';
 import { IconCloseLineW350 } from '../../../icons';
-import { Button, buttonClasses } from '../../Button';
+import { Button } from '../../Button';
 import { SvgIcon, SvgIconProps } from '../../SvgIcon';
 import { useGalleryPanelContext, useGalleryPanelsContext } from '../GalleryPanel';
-
-type GalleryDescriptionOwnerState = {
-  classes?: GalleryDescriptionProps['classes'];
-  position: GalleryDescriptionProps['position'];
-  isExpanded: boolean;
-};
-
-const useUtilityClasses = (ownerState: GalleryDescriptionOwnerState) => {
-  const { classes, position, isExpanded } = ownerState;
-
-  const slots = {
-    root: ['root', position],
-    content: ['content', position, isExpanded && 'expanded'],
-    text: ['text', isExpanded && 'expanded'],
-    button: ['button'],
-  };
-
-  return composeClasses(slots, getGalleryDescriptionUtilityClass, classes);
-};
-
-const GalleryDescriptionRoot = styled(Typography, {
-  name: 'ESGalleryDescription',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({
-  display: 'flex',
-  height: '32px',
-  position: 'relative',
-})) as typeof Typography;
-
-const GalleryDescriptionContent = styled('div', {
-  name: 'ESGalleryDescription',
-  slot: 'Content',
-  overridesResolver: (props, styles) => styles.content,
-})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'flex-start',
-  flexGrow: 1,
-  minWidth: 0,
-  overflowY: 'auto',
-  padding: 4,
-  paddingLeft: 16,
-  paddingRight: 8,
-
-  variants: [
-    {
-      props: {
-        isExpanded: true,
-      },
-      style: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-      },
-    },
-    {
-      props: {
-        isExpanded: true,
-        position: 'top',
-      },
-      style: {
-        top: 0,
-        background: `linear-gradient(to top, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`,
-      },
-    },
-    {
-      props: {
-        isExpanded: true,
-        position: 'bottom',
-      },
-      style: {
-        bottom: 0,
-        background: `linear-gradient(to bottom, ${theme.vars.palette.overlay[900]} calc(100% - 32px), transparent calc(100% - 32px))`,
-      },
-    },
-  ],
-}));
-
-const GalleryDescriptionText = styled('div', {
-  name: 'ESGalleryDescription',
-  slot: 'Text',
-  overridesResolver: (props, styles) => styles.text,
-})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme }) => ({
-  color: theme.vars.palette.white.A800,
-  overflow: 'hidden',
-  flexGrow: 1,
-  minWidth: 0,
-  marginRight: 4,
-  padding: '4px 0',
-  textAlign: 'left',
-
-  variants: [
-    {
-      props: {
-        isExpanded: false,
-      },
-      style: {
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        textAlign: 'center',
-      },
-    },
-  ],
-}));
-
-const GalleryDescriptionButton = styled(Button, {
-  name: 'ESGalleryDescription',
-  slot: 'Button',
-  overridesResolver: (props, styles) => styles.button,
-})<{ ownerState: GalleryDescriptionOwnerState }>(({ theme }) => ({
-  flexShrink: 0,
-  position: 'sticky',
-  top: 0,
-  width: 24,
-  [`&.${buttonClasses.root}`]: {
-    [`&.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
-      '--background': 'transparent',
-      '--icon': theme.vars.palette.white.A500,
-    },
-  },
-
-  variants: [
-    {
-      props: {
-        position: 'top',
-      },
-      style: {
-        transform: 'scaleY(-1)',
-      },
-    },
-  ],
-}));
 
 const IconDoubleChevronUp = (props: SvgIconProps) => {
   return (
@@ -167,21 +31,18 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
   const {
     children,
     className,
-    sx,
+    style,
     position = galleryPanelContext?.position || 'bottom',
     labelCollapse,
     labelExpand,
     iconCollapse = <IconCloseLineW350 />,
     iconExpand = <IconDoubleChevronUp />,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryDescription',
   });
 
   const { rectTop, rectBottom } = useGalleryPanelsContext();
-
-  const theme = useTheme();
 
   const rootRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -200,7 +61,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     if (galleryPanelContext) {
       galleryPanelContext.setExpanded(isExpanded);
     }
-  }, [theme, isExpanded]);
+  }, [isExpanded]);
 
   useEffect(() => {
     if (rootRef.current) {
@@ -239,37 +100,37 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
     onResize();
   }, [textRef.current, children]);
 
-  const ownerState = { position, isExpanded, ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <GalleryDescriptionRoot
+    <div
       ref={rootRef}
-      className={clsx(classes.root, className)}
-      component="div"
-      sx={sx}
-      variant="caption"
+      className={clsx('es-gallery-description', `es-gallery-description--position--${position}`, 'caption', className)}
+      style={style}
       onClick={onClick}
     >
-      <GalleryDescriptionContent
-        className={classes.content}
-        ownerState={ownerState}
+      <div
+        className={clsx(
+          'es-gallery-description__content',
+          `es-gallery-description__content--position--${position}`,
+          isExpanded && 'es-gallery-description__content--expanded'
+        )}
         style={{ maxHeight: `${maxHeight}px` }}
       >
-        <GalleryDescriptionText ref={textRef} className={classes.text} ownerState={ownerState}>
+        <div
+          ref={textRef}
+          className={clsx('es-gallery-description__text', isExpanded && 'es-gallery-description__text--expanded')}
+        >
           {children}
-        </GalleryDescriptionText>
-        <GalleryDescriptionButton
+        </div>
+        <Button
           aria-label={isExpanded ? labelCollapse : labelExpand}
-          className={classes.button}
+          className="es-gallery-description__button"
           color="white"
-          ownerState={ownerState}
           size="300"
           style={!isExpanded && !isTruncated ? { display: 'none' } : {}}
         >
           {isExpanded ? iconCollapse : iconExpand}
-        </GalleryDescriptionButton>
-      </GalleryDescriptionContent>
-    </GalleryDescriptionRoot>
+        </Button>
+      </div>
+    </div>
   );
 };

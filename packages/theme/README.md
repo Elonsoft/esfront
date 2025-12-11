@@ -25,8 +25,8 @@ npx install-peerdeps --dev @esfront/theme
 @use '@esfront/theme/presets/shadows' as shadowsPresets;
 
 @include settings.include;
-@include utilities.include;
 @include components.include;
+@include utilities.include;
 
 :root {
   @include colorsPresets.common;

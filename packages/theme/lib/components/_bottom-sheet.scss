@@ -1,0 +1,117 @@
+@mixin include() {
+  .es-bottom-sheet {
+    @media print {
+      // Use !important to override the Modal inline-style.
+      position: absolute !important;
+    }
+
+    &__backdrop.MuiBackdrop-root {
+      background-color: var(--es-overlay-700);
+      z-index: -1;
+    }
+
+    &__container {
+      height: 100%;
+      outline: 0;
+      overflow: hidden scroll;
+      overscroll-behavior: none;
+      scrollbar-gutter: stable;
+      text-align: center;
+
+      &,
+      & * {
+        touch-action: none;
+      }
+
+      &::after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        width: 0;
+      }
+
+      @media print {
+        height: auto;
+      }
+
+      &--last-snap-point {
+        &,
+        & * {
+          touch-action: auto;
+        }
+      }
+    }
+
+    &__wrapper {
+      display: inline-flex;
+      justify-content: center;
+      margin: 0;
+      min-height: 100%;
+      overflow: visible;
+      position: relative;
+      vertical-align: middle;
+      width: 100%;
+
+      &--align-flex-end {
+        align-items: flex-end;
+      }
+
+      &--align--stretch {
+        align-items: stretch;
+      }
+    }
+
+    &__content {
+      display: inline-block;
+      margin-top: calc(100dvh - var(--es-bottom-sheet-snap-point));
+      overflow: visible;
+      position: relative;
+      transition: none;
+      vertical-align: middle;
+      width: 100%;
+      will-change: auto;
+
+      @media print {
+        overflow-y: visible;
+      }
+
+      &--open {
+        transition: margin-top var(--es-bottom-sheet-transition-duration);
+      }
+    }
+
+    &__paper {
+      background-color: var(--es-surface-600);
+      box-shadow: var(--es-shadow-up-700);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding-bottom: 1px;
+      position: relative;
+      text-align: left;
+      width: 100%;
+
+      &::after {
+        background-color: var(--es-white-a500);
+        border-radius: 4px;
+        content: '';
+        height: 4px;
+        left: 50%;
+        position: absolute;
+        top: -12px;
+        transform: translateX(-50%);
+        width: 40px;
+      }
+
+      @media print {
+        box-shadow: none;
+      }
+
+      &--full-height {
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+      }
+    }
+  }
+}

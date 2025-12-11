@@ -3,435 +3,11 @@ import React from 'react';
 import { SwitchProps } from './Switch.types';
 
 import clsx from 'clsx';
-import { getSwitchUtilityClass, switchClasses } from './Switch.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks/useControlled';
 import { ButtonBase } from '../ButtonBase';
-
-type SwitchOwnerState = {
-  classes?: SwitchProps['classes'];
-  checked?: boolean;
-  disabled?: boolean;
-  color: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
-  size: 'large' | 'medium' | 'small';
-  indeterminate?: boolean;
-};
-
-const useUtilityClasses = (ownerState: SwitchOwnerState) => {
-  const { classes, checked, disabled, size, indeterminate } = ownerState;
-
-  const slots = {
-    root: ['root', checked && 'checked', disabled && 'disabled', size && size, indeterminate && 'indeterminate'],
-    track: ['track'],
-    input: ['input'],
-    thumb: ['thumb'],
-    button: ['button'],
-  };
-
-  return composeClasses(slots, getSwitchUtilityClass, classes);
-};
-
-const SwitchRoot = styled('div', {
-  name: 'ESSwitch',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { disabled, checked, indeterminate, size },
-    } = props;
-    return [
-      styles.root,
-      disabled && styles.disabled,
-      checked && styles.checked,
-      indeterminate && styles.indeterminate,
-      styles[size],
-    ];
-  },
-})<{ ownerState: SwitchOwnerState }>(({ theme }) => ({
-  position: 'relative',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  zIndex: 0,
-  color: theme.vars.palette.monoA.A500,
-
-  [`&.${switchClasses.checked}`]: {
-    color: theme.vars.palette.primary[300],
-
-    [`& .${switchClasses.input}`]: {
-      transform: 'translateX(-12px)',
-    },
-
-    [`&.${switchClasses.large}`]: {
-      [`& .${switchClasses.input}`]: {
-        transform: 'translateX(-16px)',
-      },
-      [`& .${switchClasses.button}`]: {
-        transform: 'translateX(16px)',
-      },
-    },
-
-    [`& .${switchClasses.button}`]: {
-      transform: 'translateX(12px)',
-      '&:hover': {
-        '--background': theme.vars.palette.primary.A50,
-
-        '@media (hover: none)': {
-          '--background': 'transparent',
-        },
-      },
-
-      '--pressed': theme.vars.palette.primary.A150,
-    },
-  },
-
-  [`&.${switchClasses.indeterminate}`]: {
-    color: theme.vars.palette.primary[300],
-    [`&.${switchClasses.large}`]: {
-      [`& .${switchClasses.button}`]: {
-        transform: 'translateX(8px)',
-        padding: '17.5px 13px',
-
-        [`&:not(:disabled):has(:focus-visible)`]: {
-          [`& .${switchClasses.thumb}`]: {
-            outlineOffset: 0,
-          },
-        },
-      },
-      [`& .${switchClasses.thumb}`]: {
-        width: '14px',
-        height: '5px',
-        borderRadius: '2.5px',
-        borderColor: 'transparent',
-      },
-      [`& .${switchClasses.input}`]: {
-        transform: 'translateX(-8px)',
-      },
-    },
-
-    [`&.${switchClasses.medium}`]: {
-      [`& .${switchClasses.button}`]: {
-        transform: 'translateX(6px)',
-        padding: '16px 12px',
-
-        [`&:not(:disabled):has(:focus-visible)`]: {
-          [`& .${switchClasses.thumb}`]: {
-            outlineOffset: 0,
-          },
-        },
-      },
-      [`& .${switchClasses.thumb}`]: {
-        width: '12px',
-        height: '4px',
-        borderRadius: '2px',
-        borderColor: 'transparent',
-      },
-      [`& .${switchClasses.input}`]: {
-        transform: 'translateX(-6px)',
-      },
-    },
-
-    [`&.${switchClasses.small}`]: {
-      [`& .${switchClasses.button}`]: {
-        transform: 'translateX(6px)',
-      },
-      [`& .${switchClasses.input}`]: {
-        transform: 'translateX(-6px)',
-      },
-    },
-
-    [`& .${switchClasses.button}`]: {
-      '&:hover': {
-        '--background': theme.vars.palette.primary.A50,
-
-        '@media (hover: none)': {
-          '--background': 'transparent',
-        },
-      },
-
-      '--pressed': theme.vars.palette.primary.A150,
-    },
-  },
-
-  variants: [
-    {
-      props: {
-        color: 'secondary',
-      },
-      style: {
-        [`&.${switchClasses.checked}`]: {
-          color: theme.vars.palette.secondary[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.secondary.A50,
-            },
-
-            '--pressed': theme.vars.palette.secondary.A150,
-          },
-        },
-
-        [`&.${switchClasses.indeterminate}`]: {
-          color: theme.vars.palette.secondary[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.secondary.A50,
-            },
-
-            '--pressed': theme.vars.palette.secondary.A150,
-          },
-        },
-      },
-    },
-    {
-      props: {
-        color: 'error',
-      },
-      style: {
-        [`&.${switchClasses.checked}`]: {
-          color: theme.vars.palette.error[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.error.A50,
-            },
-
-            '--pressed': theme.vars.palette.error.A150,
-          },
-        },
-
-        [`&.${switchClasses.indeterminate}`]: {
-          color: theme.vars.palette.error[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.error.A50,
-            },
-
-            '--pressed': theme.vars.palette.error.A150,
-          },
-        },
-      },
-    },
-    {
-      props: {
-        color: 'info',
-      },
-      style: {
-        [`&.${switchClasses.checked}`]: {
-          color: theme.vars.palette.info[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.info.A50,
-            },
-
-            '--pressed': theme.vars.palette.info.A150,
-          },
-        },
-
-        [`&.${switchClasses.indeterminate}`]: {
-          color: theme.vars.palette.info[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.info.A50,
-            },
-
-            '--pressed': theme.vars.palette.info.A150,
-          },
-        },
-      },
-    },
-    {
-      props: {
-        color: 'success',
-      },
-      style: {
-        [`&.${switchClasses.checked}`]: {
-          color: theme.vars.palette.success[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.success.A50,
-            },
-
-            '--pressed': theme.vars.palette.success.A150,
-          },
-        },
-
-        [`&.${switchClasses.indeterminate}`]: {
-          color: theme.vars.palette.success[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.success.A50,
-            },
-
-            '--pressed': theme.vars.palette.success.A150,
-          },
-        },
-      },
-    },
-    {
-      props: {
-        color: 'warning',
-      },
-      style: {
-        [`&.${switchClasses.checked}`]: {
-          color: theme.vars.palette.warning[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.warning.A50,
-            },
-
-            '--pressed': theme.vars.palette.warning.A150,
-          },
-        },
-
-        [`&.${switchClasses.indeterminate}`]: {
-          color: theme.vars.palette.warning[300],
-
-          [`& .${switchClasses.button}`]: {
-            '&:hover': {
-              '--background': theme.vars.palette.warning.A50,
-            },
-
-            '--pressed': theme.vars.palette.warning.A150,
-          },
-        },
-      },
-    },
-  ],
-
-  [`&.${switchClasses.disabled}`]: {
-    opacity: '0.3',
-    cursor: 'not-allowed',
-  },
-
-  [`&.${switchClasses.large}`]: {
-    height: '36px',
-    width: '56px',
-    [`& .${switchClasses.track}`]: {
-      borderRadius: '20px',
-      width: '38px',
-      height: '24px',
-    },
-    [`& .${switchClasses.input}`]: {
-      width: '56px',
-    },
-    [`& .${switchClasses.thumb}`]: {
-      width: '24px',
-      height: '24px',
-    },
-  },
-
-  [`&.${switchClasses.medium}`]: {
-    height: '36px',
-    width: '48px',
-    [`& .${switchClasses.track}`]: {
-      width: '32px',
-      height: '14px',
-    },
-    [`& .${switchClasses.input}`]: {
-      width: '48px',
-    },
-    [`& .${switchClasses.thumb}`]: {
-      width: '20px',
-      height: '20px',
-    },
-  },
-
-  [`&.${switchClasses.small}`]: {
-    height: '32px',
-    width: '46px',
-    [`& .${switchClasses.track}`]: {
-      width: '28px',
-      height: '4px',
-    },
-    [`& .${switchClasses.input}`]: {
-      width: '46px',
-    },
-    [`& .${switchClasses.button}`]: {
-      left: '1px',
-    },
-    [`& .${switchClasses.thumb}`]: {
-      width: '16px',
-      height: '16px',
-    },
-  },
-}));
-
-const SwitchTrack = styled('div', {
-  name: 'ESSwitch',
-  slot: 'Track',
-  overridesResolver: (props, styles) => styles.track,
-})(() => ({
-  borderRadius: '8px',
-  backgroundColor: 'currentColor',
-  zIndex: -1,
-}));
-
-const SwitchThumb = styled('div', {
-  name: 'ESSwitch',
-  slot: 'Thumb',
-  overridesResolver: (_props, styles) => styles.thumb,
-})(({ theme }) => ({
-  backgroundColor: theme.vars.palette.common.switch,
-  border: '2px solid currentColor',
-  borderRadius: '50%',
-  transition: `${theme.transitions.duration.shortest}ms`,
-  transitionProperty: 'width, height, border, border-radius',
-}));
-
-const SwitchButton = styled(ButtonBase, {
-  name: 'ESSwitch',
-  slot: 'Button',
-  overridesResolver: (_props, styles) => styles.button,
-})(({ theme }) => ({
-  borderRadius: '50%',
-  padding: '8px',
-  left: 0,
-  zIndex: 1,
-  position: 'absolute',
-  transition: `${theme.transitions.duration.shortest}ms`,
-
-  '--text': 'currentColor',
-  '--hovered': theme.vars.palette.monoA.A50,
-  '--pressed': theme.vars.palette.monoA.A150,
-
-  [`&:not(:disabled):has(:focus-visible)`]: {
-    [`& .${switchClasses.thumb}`]: {
-      outline: `2px solid ${theme.vars.palette.monoA[500]}`,
-      outlineOffset: '-2px',
-    },
-  },
-
-  '@media (hover: none)': {
-    '--background': 'transparent',
-  },
-})) as typeof ButtonBase;
-
-const SwitchInput = styled('input', {
-  name: 'ESSwitch',
-  slot: 'Input',
-  overridesResolver: (props, styles) => styles.input,
-})(() => ({
-  cursor: 'inherit',
-  position: 'absolute',
-  opacity: 0,
-  height: '100%',
-  top: 0,
-  left: 0,
-  margin: 0,
-  padding: 0,
-  zIndex: 1,
-}));
 
 /**
  * Switches toggle the state of a single setting on or off.
@@ -452,16 +28,12 @@ export const Switch = (inProps: SwitchProps) => {
     name,
     readOnly,
     value,
-    sx,
-    ...props
+    style,
   } = useDefaultProps({
     props: inProps,
     name: 'ESSwitch',
   });
   const [checked, setCheckedState] = useControlled(defaultChecked, checkedProp);
-
-  const ownerState = { ...props, disabled, color, indeterminate, checked: !indeterminate && checked, size };
-  const classes = useUtilityClasses(ownerState);
 
   const onSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!readOnly) {
@@ -485,12 +57,23 @@ export const Switch = (inProps: SwitchProps) => {
   };
 
   return (
-    <SwitchRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
-      <SwitchButton disableTouchRipple className={classes.button} component="span" disabled={disabled} tabIndex={-1}>
-        <SwitchInput
+    <div
+      className={clsx(
+        'es-switch',
+        checked && 'es-switch--checked',
+        disabled && 'es-switch--disabled',
+        indeterminate && 'es-switch--indeterminate',
+        `es-switch--size--${size}`,
+        `es-switch--color--${color}`,
+        className
+      )}
+      style={style}
+    >
+      <ButtonBase disableTouchRipple className="es-switch__button" component="span" disabled={disabled} tabIndex={-1}>
+        <input
           autoFocus={autoFocus}
           checked={!!checked}
-          className={classes.input}
+          className="es-switch__input"
           defaultChecked={defaultChecked}
           disabled={disabled}
           id={id}
@@ -501,9 +84,9 @@ export const Switch = (inProps: SwitchProps) => {
           onChange={onSwitchChange}
           onKeyDown={type === 'button' ? onKeyDown : undefined}
         />
-        <SwitchThumb className={classes.thumb} />
-      </SwitchButton>
-      <SwitchTrack className={classes.track} />
-    </SwitchRoot>
+        <div className="es-switch__thumb" />
+      </ButtonBase>
+      <div className="es-switch__track" />
+    </div>
   );
 };

@@ -15,245 +15,32 @@ import {
 import { AutocompleteMenuProps } from './AutocompleteMenu.types';
 
 import clsx from 'clsx';
-import { getAutocompleteMenuUtilityClass } from './AutocompleteMenu.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
-import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
-import { inputBaseClasses } from '@mui/material/InputBase';
-import { inputLabelClasses } from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
 import MenuList from '@mui/material/MenuList';
-import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import Popper from '@mui/material/Popper';
 import TextField from '@mui/material/TextField';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver, useScrollLock } from '../../hooks';
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
-import { Button, buttonClasses } from '../Button';
-import { buttonBaseClasses } from '../ButtonBase';
+import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { Divider } from '../Divider';
-import { listItemClasses } from '../ListItem';
 import { MenuGroup } from '../MenuGroup';
 import { MenuItem } from '../MenuItem';
 import { SpinnerRing } from '../Spinner';
-import { svgIconClasses } from '../SvgIcon';
-import { TooltipEllipsis, TooltipEllipsisProps } from '../TooltipEllipsis';
-
-type AutocompleteMenuOwnerState = {
-  classes?: AutocompleteMenuProps<unknown>['classes'];
-};
-
-const useUtilityClasses = (ownerState: AutocompleteMenuOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    paper: ['paper'],
-    menuList: ['menuList'],
-    menuGroup: ['menuGroup'],
-    menuGroupDivider: ['menuGroupDivider'],
-    menuItem: ['menuItem'],
-    menuItemText: ['menuItemText'],
-    sentinel: ['sentinel'],
-    emptyState: ['emptyState'],
-    search: ['search'],
-    tooltip: ['tooltip'],
-  };
-
-  return composeClasses(slots, getAutocompleteMenuUtilityClass, classes);
-};
-
-const AutocompleteMenuRoot = styled(Popper, {
-  name: 'ESAutocompleteMenu',
-  slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root,
-})(() => ({
-  zIndex: 1300,
-
-  '& *': {
-    outline: 'none',
-  },
-
-  '& > div': {
-    transformOrigin: `50% 0 0`,
-  },
-}));
-
-const AutocompleteMenuPaper = styled('div', {
-  name: 'ESAutocompleteMenu',
-  slot: 'Paper',
-  overridesResolver: (_props, styles) => styles.paper,
-})(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  backgroundColor: theme.vars.palette.surface[400],
-  boxShadow: theme.vars.palette.shadow.down[600],
-  borderRadius: '6px',
-  userSelect: 'none',
-  overflow: 'hidden',
-  pointerEvents: 'auto',
-}));
-
-const AutocompleteMenuMenuList = styled(MenuList, {
-  name: 'ESAutocompleteMenuMenuList',
-  slot: 'MenuList',
-  overridesResolver: (_props, styles) => styles.menuList,
-})(({ theme }) => ({
-  ...theme.scrollbars.overlayMonoA,
-  maxHeight: '228px',
-}));
-
-const AutocompleteMenuTooltip = styled(
-  ({ className, ...props }: TooltipEllipsisProps) => <TooltipEllipsis {...props} classes={{ popper: className }} />,
-  {
-    name: 'ESAutocompleteMenu',
-    slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip,
-  }
-)({});
-
-const AutocompleteMenuMenuItem = styled(MenuItem, {
-  name: 'ESAutocompleteMenu',
-  slot: 'MenuItem',
-  overridesResolver: (_props, styles) => styles.menuItem,
-})(() => ({}));
-
-const AutocompleteMenuMenuItemText = styled('div', {
-  name: 'ESAutocompleteMenu',
-  slot: 'MenuItemText',
-  overridesResolver: (_props, styles) => styles.menuItemText,
-})(() => ({
-  flexGrow: 1,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-}));
-
-const AutocompleteMenuMenuGroup = styled(MenuGroup, {
-  name: 'ESAutocompleteMenu',
-  slot: 'MenuGroup',
-  overridesResolver: (_props, styles) => styles.menuGroup,
-})({});
-
-const AutocompleteMenuMenuGroupDivider = styled(Divider, {
-  name: 'ESAutocompleteMenu',
-  slot: 'MenuGroupDivider',
-  overridesResolver: (_props, styles) => styles.menuGroupDivider,
-})({
-  margin: '8px 0',
-});
-
-const AutocompleteMenuSentinel = styled(MenuItem, {
-  name: 'ESAutocompleteMenu',
-  slot: 'Sentinel',
-  overridesResolver: (_props, styles) => styles.sentinel,
-})(() => ({
-  [`&.${listItemClasses.size200}`]: {
-    padding: 0,
-    minHeight: 0,
-    height: 0,
-  },
-}));
-
-const AutocompleteMenuCheckbox = styled(Checkbox, {
-  name: 'ESAutocompleteMenu',
-  slot: 'Checkbox',
-  overridesResolver: (_props, styles) => styles.checkbox,
-})(() => ({
-  marginLeft: '-8px',
-  marginRight: '4px',
-  flexShrink: 0,
-}));
-
-const AutocompleteMenuEmptyState = styled('div', {
-  name: 'ESAutocompleteMenu',
-  slot: 'EmptyState',
-  overridesResolver: (_props, styles) => styles.emptyState,
-})(({ theme }) => ({
-  ...theme.typography.caption,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: '8px',
-  padding: '12px 16px',
-  color: theme.vars.palette.monoA.A600,
-}));
-
-const AutocompleteMenuSearch = styled(TextField, {
-  name: 'ESAutocompleteMenu',
-  slot: 'Search',
-  overridesResolver: (_props, styles) => styles.search,
-})(({ theme }) => ({
-  borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
-
-  [`& .${outlinedInputClasses.root}.${inputBaseClasses.adornedEnd}`]: {
-    paddingRight: '8px',
-  },
-
-  [`& .${inputLabelClasses.root}`]: {
-    opacity: 0,
-  },
-
-  [`& .${inputAdornmentClasses.positionStart}`]: {
-    color: theme.vars.palette.monoA.A500,
-  },
-
-  [`&:hover .${inputAdornmentClasses.positionStart} .${svgIconClasses.root}`]: {
-    color: theme.vars.palette.monoA.A600,
-  },
-
-  [`& .${inputAdornmentClasses.positionEnd}`]: {
-    marginLeft: '6px',
-
-    [`& .${buttonClasses.root}`]: {
-      height: '40px',
-      flexShrink: 0,
-      '--icon': theme.vars.palette.monoA.A400,
-
-      [`& .${buttonBaseClasses.wrapper}`]: {
-        padding: '0 7px',
-      },
-
-      [`&.${buttonClasses.variantText}`]: {
-        '--hovered': 'inherit',
-        '--pressed': 'inherit',
-      },
-
-      '&:hover': {
-        '--icon': theme.vars.palette.monoA.A500,
-      },
-
-      '&:active': {
-        '--icon': theme.vars.palette.monoA.A600,
-      },
-    },
-  },
-
-  [`& .${outlinedInputClasses.notchedOutline}`]: {
-    border: 'none',
-
-    [`&.${inputBaseClasses.adornedEnd}`]: {
-      paddingRight: '4px',
-    },
-  },
-
-  [`& .${outlinedInputClasses.input}`]: {
-    ...theme.typography.body100,
-  },
-}));
+import { TooltipEllipsis } from '../TooltipEllipsis';
 
 export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, ref) {
   const {
     paperRef,
 
     className,
-    classes: inClasses,
-    sx,
+    style,
     width,
     offset = [0, 4],
 
@@ -373,7 +160,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
 
   const onEnter = useCallback(() => {
     if (menuListRef.current && !disableAutoScrollToSelected) {
-      const element = menuListRef.current.querySelector(`.${listItemClasses.selected}`) as HTMLElement;
+      const element = menuListRef.current.querySelector('.es-list-item--selected') as HTMLElement;
 
       if (element) {
         menuListRef.current.scrollTop =
@@ -381,9 +168,6 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
       }
     }
   }, [disableAutoScrollToSelected]);
-
-  const ownerState = { classes: inClasses };
-  const classes = useUtilityClasses(ownerState);
 
   const groupedOptions: ReactNode[] = [];
   let tabIndex = true;
@@ -401,24 +185,20 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     if (!!groupBy && (index === 0 || group !== groupBy(options[index - 1]))) {
       if (index > 0) {
         groupedOptions.push(
-          <AutocompleteMenuMenuGroupDivider
-            key={`${value}-${group}-divider`}
-            className={classes.menuGroupDivider}
-            color="monoA.A100"
-          />
+          <Divider key={`${value}-${group}-divider`} className="es-autocomplete-menu__menu-group-divider" />
         );
       }
 
       groupedOptions.push(
-        <AutocompleteMenuMenuGroup
+        <MenuGroup
           key={`${value}-${group}`}
           aria-disabled
           tabIndex={-1}
           {...MenuGroupProps}
-          className={clsx(classes.menuGroup, MenuGroupProps?.className)}
+          className={clsx('es-autocomplete-menu__menu-group', MenuGroupProps?.className)}
         >
           {group}
-        </AutocompleteMenuMenuGroup>
+        </MenuGroup>
       );
     }
 
@@ -432,40 +212,47 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
         ref?: MutableRefObject<HTMLElement | null>;
         childrenRef?: MutableRefObject<HTMLElement | null>;
       } = {}) => (
-        <AutocompleteMenuMenuItem
+        <MenuItem
           ref={ref && (ref as RefObject<HTMLLIElement>)}
           autoFocus={!disabled && tabIndex && !SearchProps && !disableAutoFocus}
-          className={classes.menuItem}
+          className="es-autocomplete-menu__menu-item"
           disabled={disabled}
           selected={selected}
           tabIndex={!disabled && tabIndex ? 0 : -1}
           onClick={disabled ? undefined : onMenuItemClick(option)}
         >
           {!!props.multiple && (
-            <AutocompleteMenuCheckbox readOnly checked={selected} color="secondary" disabled={disabled} tabIndex={-1} />
+            <Checkbox
+              readOnly
+              checked={selected}
+              className="es-autocomplete-menu__checkbox"
+              color="secondary"
+              disabled={disabled}
+              tabIndex={-1}
+            />
           )}
-          <AutocompleteMenuMenuItemText
+          <div
             ref={childrenRef && (childrenRef as RefObject<HTMLDivElement>)}
-            className={classes.menuItemText}
+            className="es-autocomplete-menu__menu-item-text"
           >
             {label}
-          </AutocompleteMenuMenuItemText>
-        </AutocompleteMenuMenuItem>
+          </div>
+        </MenuItem>
       );
 
     if (disableTooltip) {
       groupedOptions.push(getMenuItem(tabIndex)());
     } else {
       groupedOptions.push(
-        <AutocompleteMenuTooltip
+        <TooltipEllipsis
           key={value}
           disableInteractive
           title={label}
           {...TooltipProps}
-          className={clsx(classes.tooltip, TooltipProps?.className)}
+          className={clsx('es-autocomplete-menu__tooltip', TooltipProps?.className)}
         >
           {getMenuItem(tabIndex)}
-        </AutocompleteMenuTooltip>
+        </TooltipEllipsis>
       );
     }
 
@@ -475,14 +262,14 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
   }
 
   return (
-    <AutocompleteMenuRoot
+    <Popper
       ref={ref}
       transition
       anchorEl={anchorEl}
-      className={clsx(className, classes.root)}
+      className={clsx(className, 'es-autocomplete-menu')}
       open={open}
       placement="bottom"
-      sx={sx}
+      style={style}
       {...PopperProps}
       modifiers={[
         {
@@ -539,16 +326,16 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                     onClose?.(e, 'clickAway');
                   }}
                 >
-                  <AutocompleteMenuPaper
+                  <div
                     ref={paperRef}
-                    className={classes.paper}
+                    className="es-autocomplete-menu__paper"
                     style={{ width, maxHeight: disableScrollLock ? undefined : 'calc(100dvh - 16px)' }}
                   >
                     {!!SearchProps && !inlineSearch && (
-                      <AutocompleteMenuSearch
+                      <TextField
                         fullWidth
                         autoFocus={!disableAutoFocus}
-                        className={classes.search}
+                        className="es-autocomplete-menu__search"
                         inputRef={searchInputRef}
                         placeholder={labelSearch}
                         size="40"
@@ -559,7 +346,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                             <InputAdornment position="end">
                               <Button
                                 aria-label={labelSearchClear}
-                                color="monoA"
+                                color="mono-a"
                                 size="300"
                                 onClick={() => {
                                   if (SearchProps.onChange) {
@@ -581,35 +368,35 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                     )}
                     {header}
                     {loading ? (
-                      <AutocompleteMenuEmptyState className={classes.emptyState}>
-                        <SpinnerRing color="monoA" size={16} /> {labelLoading}
-                      </AutocompleteMenuEmptyState>
+                      <div className={clsx('es-autocomplete-menu__empty-state', 'caption')}>
+                        <SpinnerRing color="mono-a" size={16} /> {labelLoading}
+                      </div>
                     ) : options.length ? (
-                      <AutocompleteMenuMenuList ref={menuListRef} className={classes.menuList}>
+                      <MenuList ref={menuListRef} className="es-autocomplete-menu__menu-list">
                         {groupedOptions}
                         {!!onLoadMore && (
-                          <AutocompleteMenuSentinel
+                          <MenuItem
                             ref={setSentinelRef}
                             disabled
-                            className={classes.sentinel}
+                            className="es-autocomplete-menu__sentinel"
                             tabIndex={-1}
                           />
                         )}
-                      </AutocompleteMenuMenuList>
+                      </MenuList>
                     ) : (
-                      <AutocompleteMenuEmptyState className={classes.emptyState}>
+                      <div className={clsx('es-autocomplete-menu__empty-state', 'caption')}>
                         {SearchProps?.value ? labelNoMatches : labelNoOptions}
-                      </AutocompleteMenuEmptyState>
+                      </div>
                     )}
                     {footer}
-                  </AutocompleteMenuPaper>
+                  </div>
                 </ClickAwayListener>
               </div>
             </TrapFocus>
           </div>
         </Grow>
       )}
-    </AutocompleteMenuRoot>
+    </Popper>
   );
   // eslint-disable-next-line no-use-before-define
 }) as <T>(props: AutocompleteMenuProps<T> & { ref?: ForwardedRef<HTMLDivElement> }) => JSX.Element;

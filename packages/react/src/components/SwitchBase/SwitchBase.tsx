@@ -3,88 +3,18 @@ import { forwardRef } from 'react';
 import { SwitchBaseProps } from './SwitchBase.types';
 
 import clsx from 'clsx';
-import { getSwitchBaseUtilityClass, switchBaseClasses } from './SwitchBase.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { capitalize, useFormControl } from '@mui/material';
-import composeClasses from '@mui/utils/composeClasses';
+import { useFormControl } from '@mui/material';
 
 import { useControlled } from '../../hooks';
-import { ButtonBase, buttonBaseClasses } from '../ButtonBase';
-
-type SwitchBaseOwnerState = {
-  classes: SwitchBaseProps['classes'];
-  disabled: SwitchBaseProps['disabled'];
-  edge: SwitchBaseProps['edge'];
-  checked: SwitchBaseProps['checked'];
-};
-
-const useUtilityClasses = (ownerState: SwitchBaseOwnerState) => {
-  const { classes, checked, disabled, edge } = ownerState;
-
-  const slots = {
-    root: ['root', checked && 'checked', disabled && 'disabled', edge && `edge${capitalize(edge)}`],
-    input: ['input'],
-  };
-
-  return composeClasses(slots, getSwitchBaseUtilityClass, classes);
-};
-
-const SwitchBaseRoot = styled(ButtonBase, {
-  name: 'ESSwitchBase',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { disabled, edge, checked },
-    } = props;
-
-    return [
-      styles.root,
-      checked && styles.checked,
-      disabled && styles.disabled,
-      edge && styles[`edge${capitalize(edge)}`],
-    ];
-  },
-})(({ theme }) => ({
-  padding: 9,
-  borderRadius: '50%',
-  [`&.${switchBaseClasses.edgeStart}`]: {
-    marginLeft: -12,
-  },
-  [`&.${switchBaseClasses.edgeEnd}`]: {
-    marginRight: -12,
-  },
-
-  [`&:not(.${buttonBaseClasses.disabled}):has(:focus-visible)`]: {
-    outline: `2px solid ${theme.vars.palette.monoA[500]}`,
-    outlineOffset: '-2px',
-  },
-})) as typeof ButtonBase;
-
-const SwitchBaseInput = styled('input', {
-  name: 'ESSwitchBase',
-  slot: 'Input',
-  overridesResolver: (props, styles) => styles.input,
-})({
-  cursor: 'inherit',
-  position: 'absolute',
-  opacity: 0,
-  width: '100%',
-  height: '100%',
-  top: 0,
-  left: 0,
-  margin: 0,
-  padding: 0,
-  zIndex: 1,
-});
+import { ButtonBase } from '../ButtonBase';
 
 export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(function SwitchBase(
   inProps: SwitchBaseProps,
   ref
 ) {
   const {
-    classes: inClasses,
     autoFocus,
     checked: checkedProp,
     checkedIcon,
@@ -160,36 +90,31 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
 
   const hasLabelFor = type === 'checkbox' || type === 'radio';
 
-  const ownerState = {
-    classes: inClasses,
-    checked,
-    disabled,
-    disableFocusRipple,
-    edge,
-  };
-
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <SwitchBaseRoot
+    <ButtonBase
       ref={ref}
       centerRipple
-      className={clsx(classes.root, className)}
+      className={clsx(
+        className,
+        'es-switch-base',
+        checked && 'es-switch-base--checked',
+        disabled && 'es-switch-base--disabled',
+        edge && `es-switch-base--edge--${edge}`
+      )}
       component="span"
       disabled={disabled}
       focusRipple={!disableFocusRipple}
-      ownerState={ownerState}
       role={undefined}
       tabIndex={null}
       onBlur={handleBlur}
       onFocus={handleFocus}
       {...other}
     >
-      <SwitchBaseInput
+      <input
         ref={inputRef}
         autoFocus={autoFocus}
         checked={checkedProp}
-        className={classes.input}
+        className="es-switch-base__input"
         defaultChecked={defaultChecked}
         disabled={disabled}
         id={hasLabelFor ? id : undefined}
@@ -204,6 +129,6 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
         {...inputProps}
       />
       {checked ? checkedIcon : icon}
-    </SwitchBaseRoot>
+    </ButtonBase>
   );
 });

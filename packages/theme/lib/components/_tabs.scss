@@ -1,0 +1,291 @@
+@use '../helpers/breakpoints';
+@use '../helpers/typography';
+
+@mixin include() {
+  @keyframes es-tabs-expand-from-center-keyframe {
+    0% {
+      transform: scaleX(0);
+    }
+
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  .es-tabs {
+    display: flex;
+    min-height: 48px;
+    overflow: hidden;
+
+    // Add iOS momentum scrolling for iOS < 13.0
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+
+    &__scroll-buttons {
+      &--hide-mobile {
+        & .es-tabs__scroll-buttons {
+          @include breakpoints.down('sm') {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &__scroller {
+      display: inline-block;
+      flex: 1 1 auto;
+      position: relative;
+      white-space: nowrap;
+
+      &--overflow--visible {
+        overflow: visible;
+      }
+
+      &--overflow--hidden {
+        overflow: hidden;
+      }
+
+      &--overflow--clip {
+        overflow: clip;
+      }
+
+      &--overflow--scroll {
+        overflow: scroll;
+      }
+
+      &--overflow--auto {
+        overflow: auto;
+      }
+
+      &--visible-scrollbar {
+        margin-bottom: var(--es-tabs-scrollbar-width);
+      }
+
+      &--fixed {
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      &--hide-scrollbar {
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      &--scrollable-x {
+        overflow: auto hidden;
+      }
+    }
+
+    &__flex-container {
+      display: flex;
+      padding: 0 16px;
+
+      &--centered {
+        justify-content: center;
+      }
+    }
+
+    &__indicator {
+      height: 2px;
+      position: absolute;
+
+      &--sliding-animation--expand {
+        animation-duration: 200ms;
+        animation-name: es-tabs-expand-from-center-keyframe;
+      }
+
+      &--sliding-animation--slide {
+        transition-duration: 200ms;
+        transition-property: left, right, width;
+      }
+
+      &--position--bottom {
+        bottom: 0;
+      }
+
+      &--position--top {
+        top: 0;
+      }
+
+      &--color--primary {
+        background-color: var(--es-primary-300);
+      }
+
+      &--color--secondary {
+        background-color: var(--es-secondary-300);
+      }
+    }
+
+    &__scrollbar-size {
+      overflow: auto hidden;
+
+      // Hide dimensionless scrollbar on macOS
+      // Firefox
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        // Safari + Chrome
+        display: none;
+      }
+    }
+
+    &__tabs-divider {
+      border-color: var(--es-mono-a-a100);
+      position: absolute;
+      width: 100%;
+      z-index: 3;
+
+      &--position--bottom {
+        bottom: 0;
+      }
+
+      &--position--top {
+        top: 0;
+      }
+    }
+  }
+
+  .es-tab {
+    flex-shrink: 0;
+    font-family: inherit;
+    max-width: 360px;
+    min-height: 48px;
+    min-width: 90px;
+    overflow: hidden;
+    padding: 8px;
+    position: relative;
+
+    --text: var(--es-mono-a-a700);
+    --hovered: var(--es-mono-a-a50);
+    --pressed: var(--es-mono-a-a150);
+    --focused: var(--es-mono-a-a200);
+
+    &:not(.es-button-base--disabled):focus-visible {
+      box-shadow: inset 0 0 0 2px var(--es-mono-a-500);
+      outline: none;
+    }
+
+    & .es-button-base__wrapper {
+      gap: 8px;
+    }
+
+    &.es-tab--selected {
+      --text: var(--es-mono-a-a900);
+
+      & .es-button-base__wrapper .es-tab__start-Icon,
+      & .es-button-base__wrapper .es-tab__end-icon {
+        color: var(--es-mono-a-a800);
+      }
+    }
+
+    &.es-tab--rounded {
+      border-radius: 4px;
+      margin-bottom: 6px;
+      margin-top: 6px;
+      max-height: 36px;
+      min-height: inherit;
+    }
+
+    &.es-tab--full-width {
+      flex: 1 1 0;
+      max-width: none;
+    }
+
+    &.es-button-base--disabled {
+      --text: var(--es-mono-a-a400);
+    }
+
+    & .es-button-base__wrapper .es-tab__start-icon,
+    & .es-button-base__wrapper .es-tab__end-icon {
+      color: var(--es-mono-a-a600);
+    }
+
+    &__label-wrapper {
+      @include typography.level('body100');
+
+      overflow: hidden;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__start-icon,
+    &__end-icon {
+      display: inherit;
+    }
+  }
+
+  .es-tab-scroll-button {
+    flex-shrink: 0;
+    height: var(--es-tab-scroll-button-tab-list-height);
+    overflow: visible;
+    position: absolute;
+    width: 40px;
+    z-index: 2;
+
+    --background: var(--es-mono-b-500);
+    --hovered: var(--es-mono-a-a50);
+    --pressed: var(--es-mono-a-a150);
+    --focused: var(--es-mono-a-a200);
+
+    &.es-tab-scroll-button--disabled {
+      opacity: 0;
+    }
+
+    &.es-tab-scroll-button--direction--left {
+      left: -1px;
+
+      & .es-tab-scroll-button__divider.es-divider--vertical.es-divider--flex-item {
+        left: 11.5px;
+      }
+
+      & .es-tab-scroll-button__gradient {
+        background: linear-gradient(90deg, var(--es-mono-b-500) 0%, rgb(255 255 255 / 0%) 100%);
+        left: 11px;
+      }
+
+      & .es-tab-scroll-button__icon {
+        left: 5px;
+      }
+    }
+
+    &.es-tab-scroll-button--direction--right {
+      right: 0;
+
+      & .es-tab-scroll-button__divider.es-divider--vertical.es-divider--flex-item {
+        right: 11.5px;
+      }
+
+      & .es-tab-scroll-button__gradient {
+        background: linear-gradient(270deg, var(--es-mono-b-500) 0%, rgb(255 255 255 / 0%) 100%);
+        right: 11px;
+      }
+
+      & .es-tab-scroll-button__icon {
+        right: 5px;
+      }
+    }
+
+    &__divider {
+      &.es-divider--vertical.es-divider--flex-item {
+        align-self: center;
+        height: 75%;
+        position: relative;
+      }
+    }
+
+    &__gradient {
+      height: 100%;
+      position: relative;
+      width: 8px;
+    }
+
+    &__icon {
+      display: inline-flex;
+      position: relative;
+    }
+  }
+}

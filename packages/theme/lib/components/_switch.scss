@@ -1,0 +1,363 @@
+@mixin include() {
+  .es-switch {
+    align-items: center;
+    color: var(--es-mono-a-a500);
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+
+    &--checked {
+      color: var(--es-primary-300);
+
+      & .es-switch__input {
+        transform: translateX(-12px);
+      }
+
+      &.es-switch--size--large {
+        & .es-switch__input {
+          transform: translateX(-16px);
+        }
+
+        & .es-switch__button {
+          transform: translateX(16px);
+        }
+      }
+
+      & .es-switch__button {
+        transform: translateX(12px);
+
+        &:hover {
+          --background: var(--es-primary-a50);
+
+          @media (hover: none) {
+            --background: transparent;
+          }
+        }
+
+        --pressed: var(--es-primary-a150);
+      }
+    }
+
+    &--indeterminate {
+      color: var(--es-primary-300);
+
+      &.es-switch--size--large {
+        & .es-switch__button {
+          padding: 17.5px 13px;
+          transform: translateX(8px);
+
+          &:not(:disabled):has(:focus-visible) {
+            & .es-switch__thumb {
+              outline-offset: 0;
+            }
+          }
+        }
+
+        & .es-switch__thumb {
+          border-color: transparent;
+          border-radius: 2.5px;
+          height: 5px;
+          width: 14px;
+        }
+
+        & .es-switch__input {
+          transform: translateX(-8px);
+        }
+      }
+
+      &.es-switch--size--medium {
+        & .es-switch__button {
+          padding: 16px 12px;
+          transform: translateX(6px);
+
+          &:not(:disabled):has(:focus-visible) {
+            & .es-switch__thumb {
+              outline-offset: 0;
+            }
+          }
+        }
+
+        & .es-switch__thumb {
+          border-color: transparent;
+          border-radius: 2px;
+          height: 4px;
+          width: 12px;
+        }
+
+        & .es-switch__input {
+          transform: translateX(-6px);
+        }
+      }
+
+      &.es-switch--size--small {
+        & .es-switch__button {
+          transform: translateX(6px);
+        }
+
+        & .es-switch__input {
+          transform: translateX(-6px);
+        }
+      }
+
+      & .es-switch__button {
+        &:hover {
+          --background: var(--es-primary-a50);
+
+          @media (hover: none) {
+            --background: transparent;
+          }
+        }
+
+        --pressed: var(--es-primary-a150);
+      }
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+    }
+
+    &--size--large {
+      height: 36px;
+      width: 56px;
+
+      & .es-switch__track {
+        border-radius: 20px;
+        height: 24px;
+        width: 38px;
+      }
+
+      & .es-switch__input {
+        width: 56px;
+      }
+
+      & .es-switch__thumb {
+        height: 24px;
+        width: 24px;
+      }
+    }
+
+    &--size--medium {
+      height: 36px;
+      width: 48px;
+
+      & .es-switch__track {
+        height: 14px;
+        width: 32px;
+      }
+
+      & .es-switch__input {
+        width: 48px;
+      }
+
+      & .es-switch__thumb {
+        height: 20px;
+        width: 20px;
+      }
+    }
+
+    &--size--small {
+      height: 32px;
+      width: 46px;
+
+      & .es-switch__track {
+        height: 4px;
+        width: 28px;
+      }
+
+      & .es-switch__input {
+        width: 46px;
+      }
+
+      & .es-switch__button {
+        left: 1px;
+      }
+
+      & .es-switch__thumb {
+        height: 16px;
+        width: 16px;
+      }
+    }
+
+    &--color--secondary {
+      &.es-switch--checked {
+        color: var(--es-secondary-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-secondary-a50);
+          }
+
+          --pressed: var(--es-secondary-a150);
+        }
+      }
+
+      &.es-switch--indeterminate {
+        color: var(--es-secondary-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-secondary-a50);
+          }
+
+          --pressed: var(--es-secondary-a150);
+        }
+      }
+    }
+
+    &--color--error {
+      &.es-switch--checked {
+        color: var(--es-error-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-error-a50);
+          }
+
+          --pressed: var(--es-error-a150);
+        }
+      }
+
+      &.es-switch--indeterminate {
+        color: var(--es-error-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-error-a50);
+          }
+
+          --pressed: var(--es-error-a150);
+        }
+      }
+    }
+
+    &--color--info {
+      &.es-switch--checked {
+        color: var(--es-info-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-info-a50);
+          }
+
+          --pressed: var(--es-info-a150);
+        }
+      }
+
+      &.es-switch--indeterminate {
+        color: var(--es-info-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-info-a50);
+          }
+
+          --pressed: var(--es-info-a150);
+        }
+      }
+    }
+
+    &--color--success {
+      &.es-switch--checked {
+        color: var(--es-success-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-success-a50);
+          }
+
+          --pressed: var(--es-success-a150);
+        }
+      }
+
+      &.es-switch--indeterminate {
+        color: var(--es-success-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-success-a50);
+          }
+
+          --pressed: var(--es-success-a150);
+        }
+      }
+    }
+
+    &--color--warning {
+      &.es-switch--checked {
+        color: var(--es-warning-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-warning-a50);
+          }
+
+          --pressed: var(--es-warning-a150);
+        }
+      }
+
+      &.es-switch--indeterminate {
+        color: var(--es-warning-300);
+
+        & .es-switch__button {
+          &:hover {
+            --background: var(--es-warning-a50);
+          }
+
+          --pressed: var(--es-warning-a150);
+        }
+      }
+    }
+
+    &__track {
+      background-color: currentcolor;
+      border-radius: 8px;
+      z-index: -1;
+    }
+
+    &__thumb {
+      background-color: var(--es-common-switch);
+      border: 2px solid currentcolor;
+      border-radius: 50%;
+      transition: 150ms;
+      transition-property: width, height, border, border-radius;
+    }
+
+    &__button {
+      border-radius: 50%;
+      left: 0;
+      padding: 8px;
+      position: absolute;
+      transition: 150ms;
+      z-index: 1;
+
+      --text: currentcolor;
+      --hovered: var(--es-mono-a-a50);
+      --pressed: var(--es-mono-a-a150);
+
+      &:not(:disabled):has(:focus-visible) {
+        & .es-switch__thumb {
+          outline: 2px solid var(--es-mono-a-500);
+          outline-offset: -2px;
+        }
+      }
+
+      @media (hover: none) {
+        --background: transparent;
+      }
+    }
+
+    &__input {
+      cursor: inherit;
+      height: 100%;
+      left: 0;
+      margin: 0;
+      opacity: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+    }
+  }
+}

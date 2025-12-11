@@ -1,8 +1,6 @@
-import { ForwardedRef, ReactNode, Ref } from 'react';
+import { CSSProperties, ForwardedRef, ReactNode, Ref } from 'react';
 
-import { AutocompleteMenuClasses } from './AutocompleteMenu.classes';
-
-import { PopperProps, SxProps, TextFieldProps, Theme } from '@mui/material';
+import { PopperProps, TextFieldProps } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 
 import { MenuGroupProps } from '../MenuGroup';
@@ -15,12 +13,10 @@ export interface AutocompleteMenuImperativeActions {
 export type AutocompleteMenuProps<T> = {
   paperRef?: ForwardedRef<HTMLDivElement>;
 
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<AutocompleteMenuClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /**
    * The `container` will have the portal children appended to it.

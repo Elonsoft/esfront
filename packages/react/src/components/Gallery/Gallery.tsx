@@ -3,12 +3,10 @@ import { useMemo, useRef, useState } from 'react';
 import { GalleryProps } from './Gallery.types';
 
 import clsx from 'clsx';
-import { getGalleryUtilityClass } from './Gallery.classes';
 
-import { duration, styled } from '@mui/material/styles';
+import { duration } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { backdropClasses, Fade, Modal } from '@mui/material';
-import composeClasses from '@mui/utils/composeClasses';
+import { Fade, Modal } from '@mui/material';
 
 import { GalleryContext } from './Gallery.context';
 import { GalleryPanelsProvider } from './GalleryPanel';
@@ -16,43 +14,6 @@ import { GallerySwiperProvider } from './GallerySwiper';
 import { GalleryThumbnailsProvider } from './GalleryThumbnails';
 
 import { useDocumentEventListener } from '../../hooks';
-
-type GalleryOwnerState = {
-  classes?: GalleryProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: GalleryOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    content: ['content'],
-  };
-
-  return composeClasses(slots, getGalleryUtilityClass, classes);
-};
-
-const GalleryRoot = styled(Modal, {
-  name: 'ESGallery',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
-  height: '100dvh',
-
-  [`.${backdropClasses.root}`]: {
-    backgroundColor: theme.vars.palette.overlay[900],
-  },
-}));
-
-const GalleryContent = styled('div', {
-  name: 'ESGallery',
-  slot: 'Content',
-  overridesResolver: (props, styles) => styles.content,
-})(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-}));
 
 const transitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
 
@@ -62,13 +23,13 @@ const transitionDuration = { enter: duration.enteringScreen, exit: duration.leav
 export const Gallery = (inProps: GalleryProps) => {
   const {
     className,
+    style,
     children,
     items,
     open = true,
     onClose,
     BackdropProps,
     TransitionProps,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESGallery',
@@ -93,26 +54,24 @@ export const Gallery = (inProps: GalleryProps) => {
     };
   }, [items, item, setItem, onClose]);
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
     <GalleryContext.Provider value={value}>
       <GallerySwiperProvider>
         <GalleryPanelsProvider>
           <GalleryThumbnailsProvider>
-            <GalleryRoot
-              className={clsx(classes.root, className)}
+            <Modal
+              className={clsx('es-gallery', className)}
               open={open}
               slotProps={{ backdrop: BackdropProps }}
+              style={style}
               onClose={onClose}
             >
               <Fade appear in={open} role="presentation" timeout={transitionDuration} {...TransitionProps}>
-                <GalleryContent ref={contentRef} className={classes.content}>
+                <div ref={contentRef} className="es-gallery__content">
                   {children}
-                </GalleryContent>
+                </div>
               </Fade>
-            </GalleryRoot>
+            </Modal>
           </GalleryThumbnailsProvider>
         </GalleryPanelsProvider>
       </GallerySwiperProvider>

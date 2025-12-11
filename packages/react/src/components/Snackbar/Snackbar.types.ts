@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { ReactNode } from 'react';
-
-import { SnackbarClasses } from './Snackbar.classes';
-
-import { SxProps, Theme } from '@mui/material/styles';
+import { CSSProperties, ReactNode } from 'react';
 
 import { OverridableStringUnion } from '@mui/types';
 
@@ -20,19 +16,17 @@ export type SnackbarPropsSeverity = OverridableStringUnion<
 >;
 
 export type SnackbarPropsColor = OverridableStringUnion<
-  'success' | 'warning' | 'error' | 'info' | 'monoA',
+  'success' | 'warning' | 'error' | 'info' | 'mono-a',
   SnackbarPropsSeverityOverrides
 >;
 
 export type SnackbarPropsSize = OverridableStringUnion<'s' | 'm' | 'l' | 'xl', SnackbarPropsSeverityOverrides>;
 
 export interface SnackbarProps {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<SnackbarClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /* The heading to display. */
   heading?: ReactNode;

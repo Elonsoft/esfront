@@ -1,10 +1,6 @@
-import { ElementType, HTMLAttributes, ReactNode, RefObject, SyntheticEvent } from 'react';
+import { CSSProperties, ElementType, HTMLAttributes, ReactNode, RefObject, SyntheticEvent } from 'react';
 
 import { TabScrollButtonProps } from './TabScrollButton/TabScrollButton.types';
-
-import { TabsClasses } from './Tabs.classes';
-
-import { SxProps, Theme } from '@mui/material';
 
 export type TabIndicatorSlidingAnimation =
   | 'expandFromCenter'
@@ -48,14 +44,10 @@ export interface TabsProps {
    * The content of the component.
    */
   children?: ReactNode;
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<TabsClasses>;
-  /**
-   * @ignore
-   */
+  /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
   /**
    * The component used for the root node.
    * Either a string to use a HTML element or a component.
@@ -103,10 +95,6 @@ export interface TabsProps {
     StartScrollButtonIcon?: ElementType;
     EndScrollButtonIcon?: ElementType;
   };
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: SxProps<Theme>;
   /**
    * If 'true' each nested Tab component will be smaller and have rounded corners.
    */
@@ -165,7 +153,7 @@ export interface TabsProps {
    *  - `standard` will render the default state.
    * @default 'standard'
    */
-  variant?: 'fullWidth' | 'scrollable' | 'standard';
+  variant?: 'full-width' | 'scrollable' | 'standard';
   /**
    * If `true`, the scrollbar is visible. It can be useful when displaying
    * a long vertical list of tabs.

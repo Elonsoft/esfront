@@ -3,124 +3,14 @@ import { Children, useRef, useState } from 'react';
 import { FiltersFormGroupProps } from './FiltersFormGroup.types';
 
 import clsx from 'clsx';
-import { getFiltersFormGroupUtilityClass } from './FiltersFormGroup.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { outlinedInputClasses } from '@mui/material';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean, useResizeObserver } from '../../../hooks';
 import { Link } from '../../Link';
-import { searchClasses } from '../../Search';
-
-type FiltersFormGroupOwnerState = {
-  classes?: FiltersFormGroupProps['classes'];
-  isScrollable?: boolean;
-  isBeforeScroll?: boolean;
-  isAfterScroll?: boolean;
-};
-
-const useUtilityClasses = (ownerState: FiltersFormGroupOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    content: ['content'],
-    header: ['header'],
-    footer: ['footer'],
-  };
-
-  return composeClasses(slots, getFiltersFormGroupUtilityClass, classes);
-};
-
-const FiltersFormGroupRoot = styled('div', {
-  name: 'ESFiltersFormGroup',
-  slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root,
-})(() => ({}));
-
-const FiltersFormGroupContent = styled('div', {
-  name: 'ESFiltersFormGroup',
-  slot: 'Content',
-  overridesResolver: (_props, styles) => styles.content,
-})<{ ownerState: FiltersFormGroupOwnerState }>(({ theme }) => ({
-  ...theme.scrollbars.overlayMonoA,
-  display: 'flex',
-  flexDirection: 'column',
-  padding: '0 8px',
-  alignItems: 'flex-start',
-  maxHeight: '288px',
-
-  variants: [
-    {
-      props: {
-        isScrollable: true,
-        isBeforeScroll: true,
-        isAfterScroll: true,
-      },
-      style: {
-        mask: 'linear-gradient(to bottom, transparent 0, black 40px) top, linear-gradient(to bottom, black calc(100% - 40px), transparent 100%) bottom',
-        maskSize: '100% 51%',
-        maskRepeat: 'no-repeat',
-      },
-    },
-    {
-      props: {
-        isScrollable: true,
-        isBeforeScroll: true,
-        isAfterScroll: false,
-      },
-      style: {
-        mask: 'linear-gradient(to bottom, transparent 0, black 40px) top, none',
-        maskSize: '100% auto',
-        maskRepeat: 'no-repeat',
-      },
-    },
-    {
-      props: {
-        isScrollable: true,
-        isBeforeScroll: false,
-        isAfterScroll: true,
-      },
-      style: {
-        mask: 'none, linear-gradient(to bottom, black calc(100% - 40px), transparent 100%) bottom',
-        maskSize: 'auto 100%',
-        maskRepeat: 'no-repeat',
-      },
-    },
-  ],
-}));
-
-const FiltersFormGroupHeader = styled('div', {
-  name: 'ESFiltersFormGroup',
-  slot: 'Header',
-  overridesResolver: (_props, styles) => styles.header,
-})(({ theme }) => ({
-  padding: '4px 8px 8px',
-
-  [`& .${searchClasses.root}`]: {
-    [`& .${outlinedInputClasses.root}`]: {
-      backgroundColor: 'transparent',
-    },
-
-    [`& .${outlinedInputClasses.notchedOutline}`]: {
-      border: `1px solid ${theme.vars.palette.monoA.A100}`,
-    },
-  },
-}));
-
-const FiltersFormGroupFooter = styled('div', {
-  name: 'ESFiltersFormGroup',
-  slot: 'Footer',
-  overridesResolver: (_props, styles) => styles.footer,
-})(() => ({
-  display: 'flex',
-  padding: '6px 8px',
-}));
 
 export const FiltersFormGroup = (inProps: FiltersFormGroupProps) => {
-  const { children, header, className, sx, maxLines, labelShow, labelHide, ...props } = useDefaultProps({
+  const { children, header, className, style, maxLines, labelShow, labelHide } = useDefaultProps({
     props: inProps,
     name: 'ESFiltersFormGroup',
   });
@@ -147,19 +37,26 @@ export const FiltersFormGroup = (inProps: FiltersFormGroupProps) => {
     }
   };
 
-  const ownerState = { isScrollable, isBeforeScroll, isAfterScroll, ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <FiltersFormGroupRoot className={clsx(classes.root, className)} sx={sx}>
-      {!!header && <FiltersFormGroupHeader className={classes.header}>{header}</FiltersFormGroupHeader>}
-      <FiltersFormGroupContent ref={ref} className={classes.content} ownerState={ownerState} onScroll={onScroll}>
+    <div className={clsx('es-filters-form-group', className)} style={style}>
+      {!!header && <div className="es-filters-form-group__header">{header}</div>}
+      <div
+        ref={ref}
+        className={clsx(
+          'es-filters-form-group__content',
+          isScrollable && 'es-filters-form-group__content--scrollable',
+          isBeforeScroll && 'es-filters-form-group__content--scroll-before',
+          isAfterScroll && 'es-filters-form-group__content--scroll-after',
+          'scrollbar-overlay-mono-a'
+        )}
+        onScroll={onScroll}
+      >
         {!!maxLines && !open ? Children.toArray(children).slice(0, maxLines) : children}
-      </FiltersFormGroupContent>
+      </div>
       {!!maxLines && Children.count(children) > maxLines && (
-        <FiltersFormGroupFooter className={classes.footer}>
+        <div className="es-filters-form-group__footer">
           <Link
-            color="monoA.A600"
+            color="var(--es-mono-a-a600)"
             component="button"
             type="button"
             underline="none"
@@ -168,8 +65,8 @@ export const FiltersFormGroup = (inProps: FiltersFormGroupProps) => {
           >
             {open ? labelHide : labelShow}
           </Link>
-        </FiltersFormGroupFooter>
+        </div>
       )}
-    </FiltersFormGroupRoot>
+    </div>
   );
 };

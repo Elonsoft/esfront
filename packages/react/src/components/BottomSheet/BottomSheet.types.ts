@@ -1,16 +1,13 @@
-import { BottomSheetClasses } from './BottomSheet.classes';
+import { CSSProperties } from 'react';
 
-import { SxProps, Theme } from '@mui/material';
 import { ModalProps } from '@mui/material/Modal';
 import { TransitionProps } from '@mui/material/transitions';
 
 export interface BottomSheetProps {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<BottomSheetClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
   /** Bottom sheet children, usually the included sub-components. */
   children?: React.ReactNode;
   /** The id(s) of the element(s) that describe the dialog. */

@@ -1,66 +1,20 @@
 import { ListItemTextProps } from './ListItemText.types';
 
 import clsx from 'clsx';
-import { getListItemTextUtilityClass, listItemTextClasses } from './ListItemText.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Typography from '@mui/material/Typography';
-import composeClasses from '@mui/utils/composeClasses';
-
-type ListItemTextOwnerState = {
-  classes?: ListItemTextProps['classes'];
-  inset?: boolean;
-  primary?: boolean;
-  secondary?: boolean;
-};
-
-const useUtilityClasses = (ownerState: ListItemTextOwnerState) => {
-  const { classes, inset, primary, secondary } = ownerState;
-
-  const slots = {
-    root: ['root', inset && 'inset', primary && secondary && 'multiline'],
-    primary: ['primary'],
-    secondary: ['secondary'],
-  };
-
-  return composeClasses(slots, getListItemTextUtilityClass, classes);
-};
-
-const ListItemTextRoot = styled('div', {
-  name: 'ESListItemText',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const { ownerState } = props;
-
-    return [
-      { [`& .${listItemTextClasses.primary}`]: styles.primary },
-      { [`& .${listItemTextClasses.secondary}`]: styles.secondary },
-      styles.root,
-      ownerState.inset && styles.inset,
-      ownerState.primary && ownerState.secondary && styles.multiline,
-    ];
-  },
-})(() => ({
-  flex: '1 1 auto',
-  flexShrink: 0,
-  minWidth: 0,
-  marginTop: 4,
-  marginBottom: 4,
-}));
 
 export const ListItemText = (inProps: ListItemTextProps) => {
   const {
-    className,
     children,
-    sx,
+    className,
+    style,
     disableTypography,
     inset,
     primary: inPrimary = null,
-    primaryTypographyProps,
+    primaryTypographyClassName,
     secondary: inSecondary = null,
-    secondaryTypographyProps,
-    ...props
+    secondaryTypographyClassName = 'caption',
   } = useDefaultProps({
     props: inProps,
     name: 'ESListItemText',
@@ -68,42 +22,26 @@ export const ListItemText = (inProps: ListItemTextProps) => {
   let primary = inPrimary === null ? children : inPrimary;
   let secondary = inSecondary;
 
-  const ownerState = { ...props, inset, primary: !!primary, secondary: !!secondary };
-  const classes = useUtilityClasses(ownerState);
-
   if (primary !== null && !disableTypography) {
-    primary = (
-      <Typography
-        className={classes.primary}
-        color="inherit"
-        component={primaryTypographyProps?.variant ? undefined : 'span'}
-        display="block"
-        variant="inherit"
-        {...primaryTypographyProps}
-      >
-        {primary}
-      </Typography>
-    );
+    primary = <span className={clsx('es-list-item-text__primary', primaryTypographyClassName)}>{primary}</span>;
   }
 
   if (secondary !== null && !disableTypography) {
-    secondary = (
-      <Typography
-        className={classes.secondary}
-        color="monoA.A600"
-        display="block"
-        variant="caption"
-        {...secondaryTypographyProps}
-      >
-        {secondary}
-      </Typography>
-    );
+    secondary = <span className={clsx('es-list-item-text__secondary', secondaryTypographyClassName)}>{secondary}</span>;
   }
 
   return (
-    <ListItemTextRoot className={clsx(classes.root, className)} sx={sx}>
+    <div
+      className={clsx(
+        className,
+        'es-list-item-text',
+        inset && 'es-list-item-text--inset',
+        primary && secondary && 'es-list-item-text--multiline'
+      )}
+      style={style}
+    >
       {primary}
       {secondary}
-    </ListItemTextRoot>
+    </div>
   );
 };

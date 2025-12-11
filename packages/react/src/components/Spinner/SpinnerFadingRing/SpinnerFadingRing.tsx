@@ -1,77 +1,30 @@
 import { useMemo } from 'react';
 
-import { SpinnerFadingRingProps } from './SpinnerFadingRing.types';
+import { SpinnerProps } from '../Spinner.types';
 
 import clsx from 'clsx';
-import { getSpinnerFadingRingUtilityClass } from './SpinnerFadingRing.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
-import { generateStyleColorVariants, rotateKeyframe } from '../Spinner.utils';
-
-type SpinnerFadingRingOwnerState = {
-  classes?: SpinnerFadingRingProps['classes'];
-  color: string;
-  size: number;
-};
-
-const useUtilityClasses = (ownerState: SpinnerFadingRingOwnerState) => {
-  const { classes, color } = ownerState;
-
-  const slots = {
-    root: ['root', color],
-  };
-
-  return composeClasses(slots, getSpinnerFadingRingUtilityClass, classes);
-};
-
-const SpinnerFadingRingRoot = styled('svg', {
-  name: 'ESSpinnerFadingRing',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { color },
-    } = props;
-    return [styles.root, styles[color]];
-  },
-})<{ ownerState: SpinnerFadingRingOwnerState }>(({ theme }) => ({
-  variants: generateStyleColorVariants(theme),
-
-  transformOrigin: 'center',
-  animation: `${rotateKeyframe} 1000ms linear infinite`,
-
-  '& > foreignObject > div': {
-    width: '100%',
-    height: '100%',
-    background: `conic-gradient(from 187deg, rgba(255, 255, 255, 0) 17%, currentColor 100%)`,
-  },
-}));
-
-export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
+export const SpinnerFadingRing = (inProps: SpinnerProps) => {
   const {
     className,
-    sx,
+    style,
     size = 40,
     color = 'primary',
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESSpinnerFadingRing',
   });
 
   const id = useMemo(() => `SpinnerFadingRing-${SpinnerFadingRing.count++}`, []);
-  const ownerState = { ...props, color, size };
-  const classes = useUtilityClasses(ownerState);
 
   return (
-    <SpinnerFadingRingRoot
-      className={clsx(classes.root, className)}
+    <svg
+      className={clsx('es-spinner', `es-spinner--color--${color}`, 'es-spinner-fading-ring', className)}
       fill="none"
       height={size}
-      ownerState={ownerState}
-      sx={sx}
+      style={style}
       viewBox="0 0 40 40"
       width={size}
     >
@@ -85,7 +38,7 @@ export const SpinnerFadingRing = (inProps: SpinnerFadingRingProps) => {
       <foreignObject clipPath={`url(#${id})`} height="40" width="40">
         <div />
       </foreignObject>
-    </SpinnerFadingRingRoot>
+    </svg>
   );
 };
 

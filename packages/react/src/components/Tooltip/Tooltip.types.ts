@@ -2,8 +2,6 @@
 
 import { ElementType, HTMLProps, JSXElementConstructor, ReactNode, SyntheticEvent } from 'react';
 
-import { TooltipClasses } from './Tooltip.classes';
-
 import { MUIStyledCommonProps, SxProps } from '@mui/system';
 import { Theme } from '@mui/material';
 import { PopperProps } from '@mui/material/Popper';
@@ -27,10 +25,6 @@ export interface TooltipProps {
    * Tooltip reference element.
    */
   children: ReactNode;
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<TooltipClasses>;
   /** Class applied to the root element. */
   className?: string;
   /**
@@ -44,10 +38,10 @@ export interface TooltipProps {
     | 'info'
     | 'success'
     | 'warning'
-    | 'monoAA600'
-    | 'monoB'
-    | 'monoBA600'
-    | 'whiteA600',
+    | 'mono-a-a600'
+    | 'mono-b'
+    | 'mono-b-a600'
+    | 'white-a600',
     TooltipPropsColorOverrides
   >;
   /**

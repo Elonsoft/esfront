@@ -3,80 +3,13 @@ import { useRef, useState } from 'react';
 import { SidebarScrollableProps } from './SidebarScrollable.types';
 
 import clsx from 'clsx';
-import { getSidebarScrollableUtilityClass } from './SidebarScrollable.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useResizeObserver } from '../../../hooks';
 
-type SidebarScrollableOwnerState = {
-  classes?: SidebarScrollableProps['classes'];
-  isScrollable?: boolean;
-  isBeforeScroll?: boolean;
-  isAfterScroll?: boolean;
-};
-
-const useUtilityClasses = (ownerState: SidebarScrollableOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-  };
-
-  return composeClasses(slots, getSidebarScrollableUtilityClass, classes);
-};
-
-const SidebarScrollableRoot = styled('div', {
-  name: 'ESSidebarScrollable',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})<{ ownerState: SidebarScrollableOwnerState }>(({ theme }) => ({
-  variants: [
-    {
-      props: {
-        isScrollable: true,
-        isBeforeScroll: true,
-        isAfterScroll: true,
-      },
-      style: {
-        mask: 'linear-gradient(to bottom, transparent 0, black 32px) top, linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom',
-        maskSize: '100% 51%',
-        maskRepeat: 'no-repeat',
-      },
-    },
-    {
-      props: {
-        isScrollable: true,
-        isBeforeScroll: true,
-        isAfterScroll: false,
-      },
-      style: {
-        mask: 'linear-gradient(to bottom, transparent 0, black 32px) top, none',
-        maskSize: '100% auto',
-        maskRepeat: 'no-repeat',
-      },
-    },
-    {
-      props: {
-        isScrollable: true,
-        isBeforeScroll: false,
-        isAfterScroll: true,
-      },
-      style: {
-        mask: 'none, linear-gradient(to bottom, black calc(100% - 32px), transparent 100%) bottom',
-        maskSize: 'auto 100%',
-        maskRepeat: 'no-repeat',
-      },
-    },
-  ],
-
-  ...theme.scrollbars.overlayMonoA,
-}));
-
 export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
-  const { className, sx, beforeScroll, afterScroll, children, ...props } = useDefaultProps({
+  const { className, style, beforeScroll, afterScroll, children } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarScrollable',
   });
@@ -101,22 +34,25 @@ export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
     }
   };
 
-  const ownerState = { isScrollable, isBeforeScroll, isAfterScroll, ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
     <>
       {isScrollable && beforeScroll}
-      <SidebarScrollableRoot
+      <div
         ref={ref}
-        className={clsx(classes.root, className)}
-        ownerState={ownerState}
-        sx={sx}
+        className={clsx(
+          'es-sidebar-scrollable',
+          isScrollable && 'es-sidebar-scrollable--scrollable',
+          isBeforeScroll && 'es-sidebar-scrollable--scroll-before',
+          isAfterScroll && 'es-sidebar-scrollable--scroll-after',
+          'scrollbar-overlay-mono-a',
+          className
+        )}
+        style={style}
         tabIndex={-1}
         onScroll={onScroll}
       >
         {children}
-      </SidebarScrollableRoot>
+      </div>
       {isScrollable && afterScroll}
     </>
   );

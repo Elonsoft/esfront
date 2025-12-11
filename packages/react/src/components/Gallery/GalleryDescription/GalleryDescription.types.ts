@@ -1,17 +1,11 @@
-import { ReactNode } from 'react';
-
-import { GalleryDescriptionClasses } from './GalleryDescription.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface GalleryDescriptionProps {
   children?: string;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<GalleryDescriptionClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /** Position of the description. Inherited from `GalleryPanel` by default. */
   position?: 'top' | 'bottom';

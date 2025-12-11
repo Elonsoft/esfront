@@ -1,29 +1,12 @@
 import { BadgePlacementControlProps } from './BadgePlacementControl.types';
 
 import clsx from 'clsx';
-import { badgePlacementControlClasses, getBadgePlacementControlUtilityClass } from './BadgePlacementControl.classes';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { capitalize, styled } from '@mui/material';
-import composeClasses from '@mui/utils/composeClasses';
-
-type BadgePlacementControlOwnerState = {
-  classes: BadgePlacementControlProps['classes'];
-  placement: NonNullable<BadgePlacementControlProps['placement']>;
-  offset: NonNullable<BadgePlacementControlProps['offset']>;
-  overlap: NonNullable<BadgePlacementControlProps['overlap']>;
-};
-
-const capitalizeWithHyphen = (placement: BadgePlacementControlOwnerState['placement']) => {
-  return placement
-    .split('-')
-    .map((part) => capitalize(part))
-    .join('');
-};
 
 const calculateTransform = (
-  placement: BadgePlacementControlOwnerState['placement'],
-  offset: BadgePlacementControlOwnerState['offset']
+  placement: NonNullable<BadgePlacementControlProps['placement']>,
+  offset: NonNullable<BadgePlacementControlProps['offset']>
 ) => {
   const [offsetX, offsetY] = offset;
 
@@ -41,117 +24,37 @@ const calculateTransform = (
   }
 };
 
-const useUtilityClasses = (ownerState: BadgePlacementControlOwnerState) => {
-  const { classes, placement, overlap } = ownerState;
-
-  const slots = {
-    root: ['root', `placement${capitalizeWithHyphen(placement)}`, `overlap${capitalize(overlap)}`],
-    wrapper: ['wrapper'],
-  };
-
-  return composeClasses(slots, getBadgePlacementControlUtilityClass, classes);
-};
-
-const BadgePlacementControlRoot = styled('div', {
-  name: 'ESBadgePlacementControl',
-  slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root,
-})(() => {
-  return {
-    position: 'relative',
-    display: 'inline-flex',
-
-    [`&.${badgePlacementControlClasses.placementTopRight}`]: {
-      [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
-        top: 0,
-        right: 0,
-      },
-
-      [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
-        top: '5%',
-        right: '5%',
-      },
-    },
-
-    [`&.${badgePlacementControlClasses.placementTopLeft}`]: {
-      [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
-        top: 0,
-        left: 0,
-      },
-
-      [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
-        top: '5%',
-        left: '5%',
-      },
-    },
-
-    [`&.${badgePlacementControlClasses.placementBottomRight}`]: {
-      [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
-        bottom: 0,
-        right: 0,
-      },
-
-      [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
-        bottom: '5%',
-        right: '5%',
-      },
-    },
-
-    [`&.${badgePlacementControlClasses.placementBottomLeft}`]: {
-      [`&.${badgePlacementControlClasses.overlapRectangular} .${badgePlacementControlClasses.wrapper}`]: {
-        bottom: 0,
-        left: 0,
-      },
-
-      [`&.${badgePlacementControlClasses.overlapCircular} .${badgePlacementControlClasses.wrapper}`]: {
-        bottom: '5%',
-        left: '5%',
-      },
-    },
-  };
-});
-
-const BadgePlacementControlWrapper = styled('div', {
-  name: 'ESBadgePlacementControl',
-  slot: 'Wrapper',
-  overridesResolver: (_props, styles) => styles.wrapper,
-})<{ ownerState: BadgePlacementControlOwnerState }>(({ ownerState }) => {
-  const { placement, offset } = ownerState;
-
-  const transform = calculateTransform(placement, offset);
-
-  return {
-    display: 'inline-flex',
-    position: 'absolute',
-    zIndex: 1,
-    transform,
-  };
-});
-
 export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
   const {
     badge,
-    classes: inClasses,
-    className,
     children,
-    offset = [0, 0],
+
+    className,
+    style,
+
     overlap = 'rectangular',
     placement = 'top-right',
-    ...props
+    offset = [0, 0],
   } = useDefaultProps({
     props: inProps,
-    name: 'ESBadge',
+    name: 'ESBadgePlacementControl',
   });
-
-  const ownerState = { classes: inClasses, offset, overlap, placement };
-  const classes = useUtilityClasses(ownerState);
+  const transform = calculateTransform(placement, offset);
 
   return (
-    <BadgePlacementControlRoot className={clsx(className, classes.root)} {...props}>
-      <BadgePlacementControlWrapper className={classes.wrapper} ownerState={ownerState}>
+    <div
+      className={clsx(
+        className,
+        'es-badge-placement-control',
+        `es-badge-placement-control--overlap--${overlap}`,
+        `es-badge-placement-control--placement--${placement}`
+      )}
+      style={style}
+    >
+      <div className="es-badge-placement-control__wrapper" style={{ transform }}>
         {badge}
-      </BadgePlacementControlWrapper>
+      </div>
       {children}
-    </BadgePlacementControlRoot>
+    </div>
   );
 };

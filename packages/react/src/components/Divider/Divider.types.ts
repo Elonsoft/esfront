@@ -1,24 +1,18 @@
-import { ReactNode } from 'react';
-
-import { DividerClasses } from './Divider.classes';
-
-import { SxProps, Theme } from '@mui/material';
-import { TypographyProps } from '@mui/material/Typography';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface DividerProps {
   children?: ReactNode;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<DividerClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+
   /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /**
    * The color of the divider.
-   * @default 'monoA.A100'
+   * @default 'var(--es-mono-a-a100)'
    */
-  color?: TypographyProps['color'];
+  color?: string;
 
   /**
    * The width of the divider line.

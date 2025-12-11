@@ -3,51 +3,19 @@ import { useMemo, useState } from 'react';
 import { SidebarMenuProps } from './SidebarMenu.types';
 
 import clsx from 'clsx';
-import { getSidebarMenuUtilityClass } from './SidebarMenu.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { SidebarMenuContext } from './SidebarMenu.context';
-
-type SidebarMenuOwnerState = {
-  classes?: SidebarMenuProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: SidebarMenuOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-  };
-
-  return composeClasses(slots, getSidebarMenuUtilityClass, classes);
-};
-
-const SidebarMenuRoot = styled('div', {
-  name: 'ESSidebarMenu',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  flexShrink: '0',
-  gap: '2px',
-  textAlign: 'center',
-  overflowX: 'hidden',
-  padding: '8px 0',
-}));
 
 export const SidebarMenu = (inProps: SidebarMenuProps) => {
   const {
     className,
+    style,
     children,
     behaviour = 'click',
     exclusive = false,
-    sx,
     defaultOpenIds = [],
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarMenu',
@@ -71,14 +39,11 @@ export const SidebarMenu = (inProps: SidebarMenuProps) => {
     return { openedItems, behaviour, onOpen, onClose };
   }, [openedItems, exclusive, behaviour, onOpen, onClose]);
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
     <SidebarMenuContext.Provider value={value}>
-      <SidebarMenuRoot className={clsx(className, classes.root)} sx={sx} {...props}>
+      <div className={clsx(className, 'es-sidebar-menu')} style={style}>
         {children}
-      </SidebarMenuRoot>
+      </div>
     </SidebarMenuContext.Provider>
   );
 };

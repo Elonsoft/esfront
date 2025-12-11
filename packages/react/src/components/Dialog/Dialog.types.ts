@@ -1,16 +1,13 @@
-import { DialogClasses } from './Dialog.classes';
+import { CSSProperties } from 'react';
 
-import { SxProps, Theme } from '@mui/material';
 import { ModalProps } from '@mui/material/Modal';
 import { TransitionProps } from '@mui/material/transitions';
 
 export interface DialogProps {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<DialogClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
   /** Dialog children, usually the included sub-components. */
   children?: React.ReactNode;
   /** Content inserted before the paper element. */

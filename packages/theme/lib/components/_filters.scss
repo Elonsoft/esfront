@@ -1,0 +1,203 @@
+@mixin include() {
+  .es-filters {
+    background-color: var(--es-surface-50);
+  }
+
+  .es-filters-content {
+    padding-bottom: 8px;
+  }
+
+  .es-filters-filter {
+    &__header {
+      align-items: center;
+      display: flex;
+      padding-top: 8px;
+    }
+
+    &__container {
+      align-items: center;
+      display: flex;
+      padding: 0 16px;
+    }
+
+    &__title {
+      align-items: center;
+      color: var(--es-mono-a-a800);
+      display: flex;
+      padding: 6px 0;
+
+      &:has(button) {
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+
+    &__toggle {
+      align-items: center;
+      appearance: none;
+      background: transparent;
+      border: 0;
+      border-radius: 50%;
+      box-sizing: border-box;
+      color: var(--es-mono-a-a400);
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      margin: 0;
+      margin-left: 2px;
+      outline: 0;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+      text-decoration: none;
+      user-select: none;
+      vertical-align: middle;
+
+      &::-moz-focus-inner {
+        border-style: none;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--es-mono-a-500);
+      }
+    }
+
+    &__information-icon.es-information-icon {
+      margin-left: 8px;
+    }
+
+    &__end-adornment {
+      margin-left: auto;
+      padding-right: 12px;
+
+      .es-button--variant--text.es-button--color--tertiary {
+        --icon: var(--es-mono-a-a400);
+      }
+
+      .es-switch {
+        margin: 0 -8px;
+      }
+    }
+
+    &__content {
+      padding: 0 8px 8px;
+    }
+  }
+
+  .es-filters-footer {
+    background-color: var(--es-surface-50);
+    border-top: 1px solid var(--es-mono-a-a100);
+    display: flex;
+    gap: 16px;
+    padding: 15px 16px 16px;
+
+    & .es-button--full-width {
+      flex-grow: 1;
+      width: auto;
+    }
+  }
+
+  .es-filters-form-control-label {
+    min-height: 32px;
+
+    &.es-form-control-label {
+      & .es-checkbox--size--large,
+      & .es-radio--size--large {
+        margin: -6px;
+        padding: 6px;
+      }
+
+      & .es-checkbox--size--medium,
+      & .es-radio--size--medium {
+        margin: -6px;
+        padding: 6px;
+      }
+
+      & .es-checkbox--size--small,
+      & .es-radio--size--small {
+        margin: -8px;
+        padding: 8px;
+      }
+    }
+
+    &__count {
+      color: var(--es-mono-a-a600);
+      line-height: inherit;
+      margin-left: 8px;
+    }
+  }
+
+  .es-filters-form-group {
+    &__content {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      max-height: 288px;
+      padding: 0 8px;
+
+      &--scrollable {
+        &.es-filters-form-group__content--scroll-before {
+          mask:
+            linear-gradient(to bottom, transparent 0, black 40px) top,
+            none;
+          mask-repeat: no-repeat;
+          mask-size: 100% auto;
+        }
+
+        &.es-filters-form-group__content--scroll-after {
+          mask:
+            none,
+            linear-gradient(to bottom, black calc(100% - 40px), transparent 100%) bottom;
+          mask-repeat: no-repeat;
+          mask-size: auto 100%;
+        }
+
+        &.es-filters-form-group__content--scroll-before.es-filters-form-group__content--scroll-after {
+          mask:
+            linear-gradient(to bottom, transparent 0, black 40px) top,
+            linear-gradient(to bottom, black calc(100% - 40px), transparent 100%) bottom;
+          mask-repeat: no-repeat;
+          mask-size: 100% 51%;
+        }
+      }
+    }
+
+    &__header {
+      padding: 4px 8px 8px;
+
+      & .es-search {
+        &.MuiTextField-root {
+          & .MuiOutlinedInput-root {
+            background-color: transparent;
+          }
+
+          & .MuiOutlinedInput-notchedOutline {
+            border: 1px solid var(--es-mono-a-a100);
+          }
+        }
+      }
+    }
+
+    &__footer {
+      display: flex;
+      padding: 6px 8px;
+    }
+  }
+
+  .es-filters-header {
+    padding: 16px 16px 8px;
+
+    &__title {
+      align-items: center;
+      color: var(--es-mono-a-a900);
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    &__children {
+      margin-top: 16px;
+    }
+  }
+}

@@ -3,85 +3,14 @@ import { memo, useState } from 'react';
 import { PaginationRangeProps } from './PaginationRange.types';
 
 import clsx from 'clsx';
-import { getPaginationRangeUtilityClass } from './PaginationRange.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Menu from '@mui/material/Menu';
-import Typography from '@mui/material/Typography';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { IconMenuDownFillW300 } from '../../../icons';
-import { Button, buttonClasses } from '../../Button';
-import { buttonBaseClasses } from '../../ButtonBase';
+import { Button } from '../../Button';
 import { MenuItem } from '../../MenuItem';
 import { usePaginationContext } from '../Pagination.context';
-
-type PaginationRangeOwnerState = {
-  classes?: PaginationRangeProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: PaginationRangeOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    label: ['label'],
-    button: ['button'],
-    value: ['value'],
-  };
-
-  return composeClasses(slots, getPaginationRangeUtilityClass, classes);
-};
-
-const PaginationRangeRoot = styled('div', {
-  name: 'ESPaginationRange',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({
-  display: 'flex',
-  alignItems: 'center',
-}));
-
-const PaginationRangeLabel = styled(Typography, {
-  name: 'ESPaginationRange',
-  slot: 'Label',
-  overridesResolver: (props, styles) => styles.label,
-})(({ theme }) => ({
-  display: 'inline-block',
-  color: theme.vars.palette.monoA.A600,
-}));
-
-const PaginationRangeButton = styled(Button, {
-  name: 'ESPaginationRange',
-  slot: 'Button',
-  overridesResolver: (props, styles) => styles.button,
-})(({ theme }) => ({
-  '--icon': theme.vars.palette.monoA.A500,
-
-  [`&.${buttonClasses.root}`]: {
-    [`& .${buttonBaseClasses.wrapper}:first-child`]: {
-      padding: '0 6px 0 4px',
-
-      '&, &:not(:disabled):hover, &:not(:disabled):active': {
-        color: theme.vars.palette.monoA.A900,
-      },
-    },
-
-    [` .${buttonBaseClasses.wrapper} .${buttonClasses.endIcon}`]: {
-      marginLeft: '2px',
-    },
-  },
-}));
-
-const PaginationRangeValue = styled(Typography, {
-  name: 'ESPaginationRange',
-  slot: 'Value',
-  overridesResolver: (props, styles) => styles.value,
-})(({ theme }) => ({
-  marginLeft: '16px',
-  color: theme.vars.palette.monoA.A600,
-}));
 
 const OPTIONS = [10, 25, 100];
 
@@ -91,12 +20,11 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
 
   const {
     className,
-    sx,
+    style,
     options = OPTIONS,
     labelItemsPerPage,
     labelOf,
     iconItemsPerPage = <IconMenuDownFillW300 container containerSize="16px" />,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESPaginationRange',
@@ -119,35 +47,32 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
     setAnchorEl(null);
   };
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <PaginationRangeRoot className={clsx(classes.root, className)} sx={sx}>
-      <PaginationRangeLabel variant="caption">{labelItemsPerPage}</PaginationRangeLabel>
+    <div className={clsx('es-pagination-range', className)} style={style}>
+      <div className="es-pagination-range__label caption">{labelItemsPerPage}</div>
 
-      <PaginationRangeButton
+      <Button
         aria-expanded={open ? 'true' : undefined}
-        className={clsx(classes.button, className)}
+        className={clsx('es-pagination-range__button', className)}
         color="tertiary"
         endIcon={iconItemsPerPage}
         size="400"
         onClick={onClickListItem}
       >
-        <Typography variant="caption">{itemsPerPage}</Typography>
-      </PaginationRangeButton>
+        <span className="caption">{itemsPerPage}</span>
+      </Button>
 
       <Menu anchorEl={anchorEl} open={open} onClose={onClose}>
         {options.map((option, index) => (
           <MenuItem key={option} selected={index === itemsPerPage} onClick={(event) => onMenuItemClick(event, index)}>
-            <Typography variant="caption">{option}</Typography>
+            <span className="caption">{option}</span>
           </MenuItem>
         ))}
       </Menu>
 
-      <PaginationRangeValue className={clsx(classes.value, className)} variant="caption">
+      <div className="es-pagination-range__value caption">
         {(page - 1) * itemsPerPage + (count ? 1 : 0)}–{Math.min(page * itemsPerPage, count)} {labelOf} {count}
-      </PaginationRangeValue>
-    </PaginationRangeRoot>
+      </div>
+    </div>
   );
 });

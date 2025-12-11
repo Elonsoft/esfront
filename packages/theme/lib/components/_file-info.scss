@@ -1,0 +1,35 @@
+@mixin include() {
+  .es-file-info {
+    align-items: center;
+    display: flex;
+  }
+
+  .es-file-info-content {
+    margin-left: 12px;
+  }
+
+  .es-file-info-meta {
+    align-items: center;
+    color: var(--es-mono-a-a500);
+    display: flex;
+  }
+
+  .es-file-info-meta-separator {
+    color: var(--es-mono-a-a600);
+    margin: 0 8px;
+  }
+
+  .es-file-info-name {
+    align-items: center;
+    display: flex;
+
+    &__button {
+      border-radius: 50%;
+      margin-left: 4px;
+
+      &.es-button--size--300.es-button--variant--text .es-button-base__wrapper {
+        padding: 0 4px;
+      }
+    }
+  }
+}

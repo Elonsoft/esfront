@@ -1,0 +1,333 @@
+@mixin include() {
+  .es-chip {
+    align-items: center;
+    border: 0;
+    border-radius: 1000px;
+    box-sizing: border-box;
+    color: var(--es-mono-a-a400);
+    cursor: default;
+    display: inline-flex;
+    flex-shrink: 0;
+    justify-content: center;
+    max-width: 100%;
+    outline: 0;
+    padding: 0;
+    text-decoration: none;
+    transition:
+      background-color 200ms,
+      color 200ms;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &.es-chip--clickable {
+      cursor: pointer;
+    }
+
+    &:not(.es-chip--clickable) {
+      background-color: var(--background);
+    }
+
+    // In order to make focusable when not ButtonBase.
+    &:not(.es-chip--disabled)[tab-index]:focus-visible {
+      outline: 2px solid var(--es-mono-a-500);
+    }
+
+    &.es-chip--variant--filled {
+      --background: var(--es-mono-a-a75);
+      --hovered: var(--es-mono-a-a50);
+      --pressed: var(--es-mono-a-a150);
+
+      &.es-chip--disabled {
+        --background: var(--es-mono-a-a50);
+
+        & .es-button-base__wrapper {
+          & .es-chip__label {
+            color: var(--es-mono-a-a400);
+          }
+
+          & .es-chip__start-icon,
+          & .es-chip__end-icon,
+          & .es-chip__delete-icon-wrapper .es-chip__delete-icon {
+            opacity: 0.5;
+          }
+        }
+
+        &.es-chip--focusable-when-disabled.es-chip--clickable {
+          &.es-button-base:focus-visible {
+            outline: 2px solid var(--es-mono-a-500);
+          }
+        }
+      }
+
+      &.es-chip--selected {
+        &.es-chip--selected-color--default {
+          --background: var(--es-mono-a-a100);
+
+          &.es-chip--disabled {
+            --background: var(--es-mono-a-a75);
+          }
+        }
+
+        &.es-chip--selected-color--colored {
+          --background: var(--es-secondary-a300);
+
+          &.es-chip--disabled {
+            --background: var(--es-secondary-a100);
+          }
+        }
+      }
+    }
+
+    &.es-chip--variant--outlined {
+      --background: transparent;
+      --hovered: var(--es-mono-a-a50);
+      --pressed: var(--es-mono-a-a150);
+
+      box-shadow: inset 0 0 0 1px var(--es-mono-a-a150);
+
+      &.es-chip--disabled {
+        box-shadow: inset 0 0 0 1px var(--es-mono-a-a100);
+
+        & .es-button-base__wrapper {
+          & .es-chip__label {
+            color: var(--es-mono-a-a400);
+          }
+
+          & .es-chip__start-icon & .es-chip__end-icon & .es-chip__delete-icon-wrapper .es-chip__delete-icon {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      &.es-chip--selected {
+        &.es-chip--selected-color--default {
+          --background: var(--es-mono-a-a75);
+
+          &.es-chip--disabled {
+            --background: var(--es-mono-a-a50);
+          }
+        }
+
+        &.es-chip--selected-color--colored {
+          --background: var(--es-secondary-a300);
+
+          &.es-chip--disabled {
+            --background: var(--es-secondary-a50);
+          }
+        }
+      }
+    }
+
+    &.es-chip--disabled {
+      cursor: not-allowed;
+
+      &.es-chip--focusable-when-disabled {
+        pointer-events: none;
+      }
+
+      &.es-chip--focusable-when-disabled.es-chip--clickable {
+        &.es-button-base:focus-visible {
+          outline: 2px solid var(--es-mono-a-500);
+        }
+      }
+
+      & .es-chip__label {
+        color: var(--es-mono-a-a400);
+      }
+
+      & .es-chip__start-icon & .es-chip__end-icon & .es-chip__delete-icon-wrapper .es-chip__delete-icon {
+        opacity: 0.5;
+      }
+    }
+
+    &.es-chip--size--100 {
+      height: 24px;
+
+      &:has(.es-chip__start-icon) {
+        &:has(.es-avatar) {
+          padding-left: 2px;
+
+          & .es-chip__label {
+            padding-left: 6px;
+          }
+        }
+
+        & .es-chip__label {
+          padding-left: 4px;
+        }
+      }
+
+      &:has(.es-chip__end-icon) {
+        &:has(.es-avatar) {
+          padding-right: 2px;
+        }
+
+        & .es-chip__label {
+          padding-right: 4px;
+        }
+
+        & .es-chip__delete-icon-wrapper {
+          padding-left: 4px;
+        }
+      }
+
+      &:has(.es-chip__delete-icon) {
+        padding-right: 0;
+
+        & .es-chip__label {
+          padding-right: 4px;
+        }
+      }
+
+      &:has(.es-chip__end-icon + .es-chip__delete-icon) {
+        & .es-chip__label {
+          padding-right: 6px;
+        }
+      }
+
+      & .es-chip__delete-icon-wrapper .es-chip__delete-icon {
+        &.es-button--size--300.es-button--variant--text .es-button-base__wrapper {
+          padding: 0 4px;
+        }
+      }
+    }
+
+    &.es-chip--size--200 {
+      height: 32px;
+
+      & .es-chip__label {
+        padding: 0 12px;
+      }
+
+      &:has(.es-chip__start-icon) {
+        padding-left: 4px;
+
+        & .es-chip__label {
+          padding-left: 8px;
+        }
+      }
+
+      &:has(.es-chip__end-icon) {
+        padding-right: 4px;
+
+        & .es-chip__label {
+          padding-right: 8px;
+        }
+
+        & .es-chip__delete-icon-wrapper {
+          padding-left: 6px;
+        }
+      }
+
+      &:has(.es-chip__delete-icon) {
+        padding-right: 4px;
+
+        & .es-chip__label {
+          padding-right: 6px;
+        }
+      }
+
+      &:has(.es-chip__end-icon + .es-chip__delete-icon) {
+        & .es-chip__label {
+          padding-right: 8px;
+        }
+      }
+
+      & .es-chip__delete-icon-wrapper {
+        padding-right: 1px;
+
+        & .es-chip__delete-icon .es-button-base__wrapper {
+          padding: 0 4px;
+        }
+      }
+    }
+
+    &.es-chip--size--300 {
+      height: 40px;
+
+      & .es-chip__label {
+        padding: 0 12px;
+      }
+
+      &:has(.es-chip__start-icon) {
+        padding-left: 8px;
+
+        &:has(.es-avatar) {
+          padding-left: 4px;
+        }
+
+        & .es-chip__label {
+          padding-left: 8px;
+        }
+      }
+
+      &:has(.es-chip__end-icon) {
+        padding-right: 8px;
+
+        &:has(.es-avatar) {
+          padding-right: 4px;
+        }
+
+        & .es-chip__label {
+          padding-right: 8px;
+        }
+
+        & .es-chip__delete-icon-wrapper {
+          padding-left: 6px;
+        }
+      }
+
+      &:has(.es-chip__delete-icon) {
+        padding-right: 4px;
+
+        & .es-chip__label {
+          padding-right: 6px;
+        }
+      }
+
+      &:has(.es-chip__end-icon + .es-chip__delete-icon) {
+        & .es-chip__label {
+          padding-right: 8px;
+        }
+      }
+
+      & .es-chip__delete-icon-wrapper {
+        height: 32px;
+        padding-left: 4px;
+        padding-right: 5px;
+
+        & .es-chip__delete-icon .es-button-base__wrapper {
+          padding: 0 4px;
+        }
+      }
+    }
+
+    & .es-chip__delete-icon.es-button--variant--text.es-button--color--tertiary {
+      border-radius: 50%;
+
+      --icon: var(--es-mono-a-a400);
+      --hovered: transparent;
+
+      @media (hover: hover) {
+        &:not(:disabled):hover .es-touch-ripple {
+          background-color: var(--es-mono-a-a50);
+        }
+      }
+    }
+
+    &__label {
+      color: var(--es-mono-a-a900);
+      display: block;
+      overflow: hidden;
+      padding: 0 8px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__delete-icon-wrapper {
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+    }
+  }
+}

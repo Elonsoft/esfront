@@ -1,73 +1,26 @@
-import { SpinnerFadingDotsProps } from './SpinnerFadingDots.types';
+import { SpinnerProps } from '../Spinner.types';
 
 import clsx from 'clsx';
-import { getSpinnerFadingDotsUtilityClass } from './SpinnerFadingDots.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
-import { generateDelayedOpacityAnimationStyles, generateStyleColorVariants, opacityKeyframe } from '../Spinner.utils';
-
-type SpinnerFadingDotsOwnerState = {
-  classes?: SpinnerFadingDotsProps['classes'];
-  color: string;
-};
-
-const useUtilityClasses = (ownerState: SpinnerFadingDotsOwnerState) => {
-  const { classes, color } = ownerState;
-
-  const slots = {
-    root: ['root', color],
-  };
-
-  return composeClasses(slots, getSpinnerFadingDotsUtilityClass, classes);
-};
-
-const SpinnerFadingDotsRoot = styled('svg', {
-  name: 'ESSpinnerFadingDots',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { color },
-    } = props;
-    return [styles.root, styles[color]];
-  },
-})<{ ownerState: SpinnerFadingDotsOwnerState }>(({ theme }) => ({
-  variants: generateStyleColorVariants(theme),
-
-  '& > circle': {
-    fill: 'currentColor',
-    height: '10px',
-    width: '4px',
-
-    animation: `${opacityKeyframe} 1000ms linear infinite`,
-    ...generateDelayedOpacityAnimationStyles(),
-  },
-}));
-
-export const SpinnerFadingDots = (inProps: SpinnerFadingDotsProps) => {
+export const SpinnerFadingDots = (inProps: SpinnerProps) => {
   const {
     className,
-    sx,
+    style,
     size = 40,
     color = 'primary',
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESSpinnerFadingDots',
   });
 
-  const ownerState = { ...props, color };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <SpinnerFadingDotsRoot
-      className={clsx(classes.root, className)}
+    <svg
+      className={clsx('es-spinner', `es-spinner--color--${color}`, 'es-spinner-fading-dots', className)}
       fill="none"
       height={size}
-      ownerState={ownerState}
-      sx={sx}
+      style={style}
       viewBox="0 0 40 40"
       width={size}
     >
@@ -79,6 +32,6 @@ export const SpinnerFadingDots = (inProps: SpinnerFadingDotsProps) => {
       <circle cx="7.68555" cy="30.3135" r="3" />
       <circle cx="3" cy="19" r="3" />
       <circle cx="7.68555" cy="7.68652" r="3" />
-    </SpinnerFadingDotsRoot>
+    </svg>
   );
 };

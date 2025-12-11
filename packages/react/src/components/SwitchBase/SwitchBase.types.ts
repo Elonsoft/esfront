@@ -1,5 +1,3 @@
-import { SwitchBaseClasses } from './SwitchBase.classes';
-
 import { ButtonBaseProps } from '../ButtonBase';
 
 export interface SwitchBaseProps extends Omit<ButtonBaseProps, 'children' | 'onChange' | 'type'> {
@@ -9,10 +7,6 @@ export interface SwitchBaseProps extends Omit<ButtonBaseProps, 'children' | 'onC
    */
   checked?: boolean;
   checkedIcon: React.ReactNode;
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<SwitchBaseClasses>;
 
   /**
    * The default checked state. Use when the component is not controlled.

@@ -2,7 +2,6 @@ import { ComponentProps, useCallback, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 import { Table } from './Table';
@@ -246,7 +245,7 @@ export const Demo: Story = {
             <TableActions
               count={selected.length}
               label={locale === 'en' ? 'Selected' : 'Выбрано'}
-              sx={(theme) => ({ borderBottom: `1px solid ${theme.vars.palette.monoA.A100}` })}
+              style={{ borderBottom: '1px solid var(--es-mono-a-a100)' }}
             >
               <Button aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
                 <IconPencilLineW500 />
@@ -262,7 +261,7 @@ export const Demo: Story = {
             count={100}
             itemsPerPage={10}
             page={1}
-            sx={{ padding: '12px', paddingLeft: '16px' }}
+            style={{ padding: '12px', paddingLeft: '16px' }}
             onItemsPerPageChange={() => {
               /* */
             }}
@@ -348,16 +347,12 @@ export const ColumnPinning: Story = {
     };
 
     return (
-      <Box>
-        <Box
-          sx={(theme) => ({
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px',
-            marginBottom: '16px',
+      <div>
+        <div
+          className="flex flex-col sm:flex-row gap-16 mb-16"
+          style={{
             maxWidth: '850px',
-            [theme.breakpoints.up('tabletXS')]: { flexDirection: 'row' },
-          })}
+          }}
         >
           <TextField
             fullWidth
@@ -389,7 +384,7 @@ export const ColumnPinning: Story = {
               </MenuItem>
             ))}
           </TextField>
-        </Box>
+        </div>
         <Table ref={ref} columns={columns}>
           <TableHead colDividers={colDividers} sticky={0}>
             <TableRow ref={rowRef}>
@@ -471,7 +466,7 @@ export const ColumnPinning: Story = {
               <TableActions
                 count={selected.length}
                 label={locale === 'en' ? 'Selected' : 'Выбрано'}
-                sx={(theme) => ({ borderBottom: `1px solid ${theme.vars.palette.monoA.A100}` })}
+                style={{ borderBottom: '1px solid var(--es-mono-a-a100)' }}
               >
                 <Button aria-label={locale === 'en' ? 'Edit' : 'Редактировать'}>
                   <IconPencilLineW500 />
@@ -487,7 +482,7 @@ export const ColumnPinning: Story = {
               count={100}
               itemsPerPage={10}
               page={1}
-              sx={{ padding: '12px', paddingLeft: '16px' }}
+              style={{ padding: '12px', paddingLeft: '16px' }}
               onItemsPerPageChange={() => {
                 /* */
               }}
@@ -500,7 +495,7 @@ export const ColumnPinning: Story = {
             </Pagination>
           </TableFoot>
         </Table>
-      </Box>
+      </div>
     );
   },
 };

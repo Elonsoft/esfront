@@ -1,0 +1,40 @@
+@mixin include() {
+  .es-tab-bar {
+    background-color: var(--es-surface-100);
+    box-shadow: var(--es-shadow-up-50);
+    display: flex;
+    height: 56px;
+    padding: 0 8px;
+  }
+
+  .es-tab-bar-item {
+    --icon: var(--es-mono-a-a500);
+
+    &.es-button {
+      border-radius: 0;
+      flex: 1;
+      height: 100%;
+    }
+
+    & .es-button-base__wrapper {
+      flex-direction: column;
+    }
+
+    &--selected {
+      --icon: var(--es-mono-a-a900);
+
+      & .es-tab-bar-item__label {
+        color: var(--es-mono-a-a800);
+      }
+    }
+
+    &__icon {
+      display: flex;
+    }
+
+    &__label {
+      color: var(--es-mono-a-a700);
+      text-transform: none;
+    }
+  }
+}

@@ -16,15 +16,11 @@ import {
 import { TooltipProps } from './Tooltip.types';
 
 import clsx from 'clsx';
-import { getTooltipUtilityClass, tooltipClasses } from './Tooltip.classes';
 
-import { styled, useTheme } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Fade from '@mui/material/Fade';
 import Popper from '@mui/material/Popper';
 import appendOwnerState from '@mui/utils/appendOwnerState';
-import capitalize from '@mui/utils/capitalize';
-import composeClasses from '@mui/utils/composeClasses';
 import useControlled from '@mui/utils/useControlled';
 import useId from '@mui/utils/useId';
 import useIsFocusVisible from '@mui/utils/useIsFocusVisible';
@@ -33,446 +29,6 @@ import useTimeout, { Timeout } from '@mui/utils/useTimeout';
 import { IconPolygon, IconPolygon2, IconPolygon3 } from './icons';
 
 import { useEvent, useForkRef } from '../../hooks';
-import { svgIconClasses } from '../SvgIcon';
-
-type TooltipOwnerState = {
-  classes: TooltipProps['classes'];
-  color: TooltipProps['color'];
-  arrow: TooltipProps['arrow'];
-  arrowSize?: TooltipProps['arrowSize'];
-  disableInteractive: TooltipProps['disableInteractive'];
-  placement: TooltipProps['placement'];
-  PopperComponentProp: TooltipProps['PopperComponent'];
-  touch: boolean;
-};
-
-const useUtilityClasses = (ownerState: TooltipOwnerState) => {
-  const { classes, disableInteractive, arrow, touch, placement, color, arrowSize } = ownerState;
-
-  const slots = {
-    popper: [
-      'popper',
-      !disableInteractive && 'popperInteractive',
-      arrow && 'popperArrow',
-      arrowSize && `arrowSize${arrowSize}`,
-    ],
-    tooltip: [
-      'tooltip',
-      arrow && 'tooltipArrow',
-      touch && 'touch',
-      placement && `tooltipPlacement${capitalize(placement.split('-')[0])}`,
-      color && `color${capitalize(color)}`,
-    ],
-    arrow: ['arrow'],
-  };
-
-  return composeClasses(slots, getTooltipUtilityClass, classes);
-};
-
-const TooltipPopper = styled(Popper, {
-  name: 'ESTooltip',
-  slot: 'Popper',
-  overridesResolver: (props, styles) => {
-    const { ownerState } = props;
-
-    return [
-      styles.popper,
-      styles[`arrowSize${ownerState.arrowSize}`],
-      !ownerState.disableInteractive && styles.popperInteractive,
-      ownerState.arrow && styles.popperArrow,
-      !ownerState.open && styles.popperClose,
-    ];
-  },
-})<{ ownerState: TooltipOwnerState }>(({ theme }) => ({
-  zIndex: theme.zIndex.tooltip,
-  pointerEvents: 'none',
-
-  [`&[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]: {
-    transformOrigin: 'center top',
-  },
-  [`&[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]: {
-    transformOrigin: 'center bottom',
-  },
-  [`&[data-popper-placement*="right"] .${tooltipClasses.tooltip}`]: {
-    transformOrigin: 'left center',
-  },
-  [`&[data-popper-placement*="left"] .${tooltipClasses.tooltip}`]: {
-    transformOrigin: 'right center',
-  },
-
-  variants: [
-    {
-      props: {
-        disableInteractive: false,
-      },
-      style: {
-        pointerEvents: 'auto',
-      },
-    },
-    {
-      props: {
-        open: false,
-      },
-      style: {
-        pointerEvents: 'none',
-      },
-    },
-    {
-      props: {
-        arrow: false,
-      },
-      style: {
-        [`&[data-popper-placement*="bottom"]`]: {
-          [`& .${tooltipClasses.tooltip}`]: {
-            marginTop: '0',
-          },
-        },
-        [`&[data-popper-placement*="top"]`]: {
-          [`& .${tooltipClasses.tooltip}`]: {
-            marginBottom: '0',
-          },
-        },
-        [`&[data-popper-placement*="right"]`]: {
-          [`& .${tooltipClasses.tooltip}`]: {
-            marginLeft: '0',
-          },
-        },
-        [`&[data-popper-placement*="left"]`]: {
-          [`& .${tooltipClasses.tooltip}`]: {
-            marginRight: '0',
-          },
-        },
-      },
-    },
-    {
-      props: {
-        arrow: true,
-      },
-      style: {
-        [`&[data-popper-placement*="bottom"]`]: {
-          [`& .${tooltipClasses.tooltip}`]: {
-            marginTop: 'calc(6px + var(--ESTooltip-distance))',
-          },
-
-          [`& .${tooltipClasses.arrow}`]: {
-            bottom: '100%',
-            height: '6px',
-            width: '10px',
-          },
-
-          [`&.${tooltipClasses.arrowSize8}`]: {
-            [`& .${tooltipClasses.tooltip}`]: {
-              marginTop: 'calc(8px + var(--ESTooltip-distance))',
-            },
-
-            [`& .${tooltipClasses.arrow}`]: {
-              height: '8px',
-              width: '12px',
-            },
-          },
-
-          [`&.${tooltipClasses.arrowSize10}`]: {
-            [`& .${tooltipClasses.tooltip}`]: {
-              marginTop: 'calc(10px + var(--ESTooltip-distance))',
-            },
-
-            [`& .${tooltipClasses.arrow}`]: {
-              height: '10px',
-              width: '16px',
-            },
-          },
-        },
-        [`&[data-popper-placement*="top"]`]: {
-          [`& .${tooltipClasses.tooltip}`]: {
-            marginBottom: 'calc(6px + var(--ESTooltip-distance))',
-          },
-
-          [`& .${tooltipClasses.arrow}`]: {
-            top: '100%',
-            height: '6px',
-            width: '10px',
-
-            [`& .${svgIconClasses.root}`]: {
-              transform: 'rotate(180deg)',
-            },
-          },
-
-          [`&.${tooltipClasses.arrowSize8}`]: {
-            [`& .${tooltipClasses.tooltip}`]: {
-              marginBottom: 'calc(8px + var(--ESTooltip-distance))',
-            },
-
-            [`& .${tooltipClasses.arrow}`]: {
-              height: '8px',
-              width: '12px',
-            },
-          },
-
-          [`&.${tooltipClasses.arrowSize10}`]: {
-            [`& .${tooltipClasses.tooltip}`]: {
-              marginBottom: 'calc(10px + var(--ESTooltip-distance))',
-            },
-
-            [`& .${tooltipClasses.arrow}`]: {
-              height: '10px',
-              width: '16px',
-            },
-          },
-        },
-        [`&[data-popper-placement*="right"]`]: {
-          [`& .${tooltipClasses.tooltip}`]: {
-            marginLeft: 'calc(6px + var(--ESTooltip-distance))',
-          },
-
-          [`& .${tooltipClasses.arrow}`]: {
-            right: '100%',
-            height: '10px',
-            width: '6px',
-
-            [`& .${svgIconClasses.root}`]: {
-              transform: 'rotate(270deg)',
-            },
-          },
-
-          [`&.${tooltipClasses.arrowSize8}`]: {
-            [`& .${tooltipClasses.tooltip}`]: {
-              marginLeft: 'calc(8px + var(--ESTooltip-distance))',
-            },
-
-            [`& .${tooltipClasses.arrow}`]: {
-              height: '12px',
-              width: '8px',
-            },
-          },
-
-          [`&.${tooltipClasses.arrowSize10}`]: {
-            [`& .${tooltipClasses.tooltip}`]: {
-              marginLeft: 'calc(10px + var(--ESTooltip-distance))',
-            },
-
-            [`& .${tooltipClasses.arrow}`]: {
-              height: '16px',
-              width: '10px',
-            },
-          },
-        },
-        [`&[data-popper-placement*="left"]`]: {
-          [`& .${tooltipClasses.tooltip}`]: {
-            marginRight: 'calc(6px + var(--ESTooltip-distance))',
-          },
-
-          [`& .${tooltipClasses.arrow}`]: {
-            left: '100%',
-            height: '10px',
-            width: '6px',
-
-            [`& .${svgIconClasses.root}`]: {
-              transform: 'rotate(90deg)',
-            },
-          },
-
-          [`&.${tooltipClasses.arrowSize8}`]: {
-            [`& .${tooltipClasses.tooltip}`]: {
-              marginRight: 'calc(8px + var(--ESTooltip-distance))',
-            },
-
-            [`& .${tooltipClasses.arrow}`]: {
-              height: '12px',
-              width: '8px',
-            },
-          },
-
-          [`&.${tooltipClasses.arrowSize10}`]: {
-            [`& .${tooltipClasses.tooltip}`]: {
-              marginRight: 'calc(10px + var(--ESTooltip-distance))',
-            },
-
-            [`& .${tooltipClasses.arrow}`]: {
-              height: '16px',
-              width: '10px',
-            },
-          },
-        },
-      },
-    },
-  ],
-}));
-
-const TooltipTooltip = styled('div', {
-  name: 'ESTooltip',
-  slot: 'Tooltip',
-  overridesResolver: (props, styles) => {
-    const { ownerState } = props;
-
-    return [
-      styles.tooltip,
-      ownerState.touch && styles.touch,
-      ownerState.arrow && styles.tooltipArrow,
-      styles[`tooltipPlacement${capitalize(ownerState.placement.split('-')[0])}`],
-    ];
-  },
-})<{ ownerState: TooltipOwnerState }>(({ theme }) => ({
-  ...theme.typography.caption,
-  backdropFilter: 'blur(40px)',
-  borderRadius: '4px',
-  color: theme.vars.palette.monoB[500],
-  margin: '8px',
-  maxWidth: '320px',
-  padding: '4px 8px',
-  wordWrap: 'break-word',
-
-  variants: [
-    {
-      props: {
-        arrow: true,
-      },
-      style: {
-        position: 'relative',
-      },
-    },
-    {
-      props: { color: 'primary' },
-      style: {
-        backgroundColor: theme.vars.palette.primary[300],
-      },
-    },
-    {
-      props: { color: 'secondary' },
-      style: {
-        backgroundColor: theme.vars.palette.secondary[300],
-        color: theme.vars.palette.black.A900,
-      },
-    },
-    {
-      props: { color: 'error' },
-      style: {
-        backgroundColor: theme.vars.palette.error[300],
-      },
-    },
-    {
-      props: { color: 'info' },
-      style: {
-        backgroundColor: theme.vars.palette.info[300],
-      },
-    },
-    {
-      props: { color: 'success' },
-      style: {
-        backgroundColor: theme.vars.palette.success[300],
-      },
-    },
-    {
-      props: { color: 'warning' },
-      style: {
-        backgroundColor: theme.vars.palette.warning[300],
-      },
-    },
-    {
-      props: { color: 'monoAA600' },
-      style: {
-        backgroundColor: theme.vars.palette.monoA.A600,
-      },
-    },
-    {
-      props: { color: 'monoB' },
-      style: {
-        backgroundColor: theme.vars.palette.monoB[500],
-        color: theme.vars.palette.monoA.A900,
-        boxShadow: `${theme.vars.palette.shadow.down[500]}`,
-      },
-    },
-    {
-      props: { color: 'monoBA600' },
-      style: {
-        backgroundColor: theme.vars.palette.monoB.A600,
-        color: theme.vars.palette.monoA.A900,
-      },
-    },
-    {
-      props: { color: 'whiteA600' },
-      style: {
-        backgroundColor: theme.vars.palette.white.A600,
-        color: theme.vars.palette.monoA.A900,
-      },
-    },
-  ],
-}));
-
-const TooltipArrow = styled('span', {
-  name: 'ESTooltip',
-  slot: 'Arrow',
-  overridesResolver: (props, styles) => styles.arrow,
-})<{ ownerState: TooltipOwnerState }>(({ theme }) => ({
-  alignItems: 'center',
-  boxSizing: 'border-box',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  overflow: 'hidden',
-  position: 'absolute',
-
-  variants: [
-    {
-      props: { color: 'primary' },
-      style: {
-        color: theme.vars.palette.primary[300],
-      },
-    },
-    {
-      props: { color: 'secondary' },
-      style: {
-        color: theme.vars.palette.secondary[300],
-      },
-    },
-    {
-      props: { color: 'error' },
-      style: {
-        color: theme.vars.palette.error[300],
-      },
-    },
-    {
-      props: { color: 'info' },
-      style: {
-        color: theme.vars.palette.info[300],
-      },
-    },
-    {
-      props: { color: 'success' },
-      style: {
-        color: theme.vars.palette.success[300],
-      },
-    },
-    {
-      props: { color: 'warning' },
-      style: {
-        color: theme.vars.palette.warning[300],
-      },
-    },
-    {
-      props: { color: 'monoAA600' },
-      style: {
-        color: theme.vars.palette.monoA.A600,
-      },
-    },
-    {
-      props: { color: 'monoB' },
-      style: {
-        color: theme.vars.palette.monoB[500],
-      },
-    },
-    {
-      props: { color: 'monoBA600' },
-      style: {
-        color: theme.vars.palette.monoB.A600,
-      },
-    },
-    {
-      props: { color: 'whiteA600' },
-      style: {
-        color: theme.vars.palette.white.A600,
-      },
-    },
-  ],
-}));
 
 let hystersisOpen = false;
 const hystersisTimer = new Timeout();
@@ -509,8 +65,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     arrowIconMapping = defaultArrowIconMapping,
     distance = 4,
     children: childrenProp,
-    classes: classesProp,
-    color = 'monoAA600',
+    color = 'mono-a-a600',
     describeChild = false,
     disableFocusListener = false,
     disableHoverListener = false,
@@ -539,8 +94,6 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   // to prevent runtime errors, developers will need to provide a child as a React element anyway.
   const children = isValidElement(childrenProp) ? childrenProp : <span>{childrenProp}</span>;
-
-  const theme = useTheme();
 
   const [childNode, setChildNode] = useState<HTMLElement>();
   const [arrowRef, setArrowRef] = useState(null);
@@ -632,7 +185,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
       onClose(event);
     }
 
-    closeTimer.start(theme.transitions.duration.shortest, () => {
+    closeTimer.start(150, () => {
       ignoreNonTouchEvents.current = false;
     });
   });
@@ -952,62 +505,59 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     };
   }, [arrowRef, PopperProps, distance, arrowSize]);
 
-  const ownerState = {
-    ...props,
-    classes: classesProp,
-    color,
-    arrow,
-    arrowSize: slots.arrow ? undefined : arrowSize,
-    disableInteractive,
-    placement,
-    PopperComponentProp,
-    touch: ignoreNonTouchEvents.current,
-  };
-
-  const classes = useUtilityClasses(ownerState);
-
-  const PopperComponent = slots.popper ?? TooltipPopper;
+  const PopperComponent = slots.popper ?? PopperComponentProp ?? Popper;
   const TransitionComponent = slots.transition ?? TransitionComponentProp ?? Fade;
-  const TooltipComponent = slots.tooltip ?? TooltipTooltip;
-  const ArrowComponent = slots.arrow ?? TooltipArrow;
+  const TooltipComponent = slots.tooltip ?? 'div';
+  const ArrowComponent = slots.arrow ?? 'span';
 
   const popperProps = appendOwnerState(
     PopperComponent,
     {
       ...PopperProps,
       ...slotProps.popper,
-      className: clsx(classes.popper, PopperProps?.className, slotProps.popper?.className),
+      className: clsx(
+        'es-tooltip__popper',
+        !disableInteractive && 'es-tooltip__popper--interactive',
+        arrow && 'es-tooltip__popper--arrow',
+        arrowSize && `es-tooltip__popper--arrow-size--${arrowSize}`,
+        PopperProps?.className,
+        slotProps.popper?.className
+      ),
       style: {
-        '--ESTooltip-distance': `${distance || 0}px`,
+        '--es-tooltip-distance': `${distance || 0}px`,
         ...PopperProps?.style,
         ...slotProps.popper?.style,
       } as React.CSSProperties,
     },
-    ownerState
+    {}
   );
 
-  const transitionProps = appendOwnerState(
-    TransitionComponent,
-    { ...TransitionProps, ...slotProps.transition },
-    ownerState
-  );
+  const transitionProps = appendOwnerState(TransitionComponent, { ...TransitionProps, ...slotProps.transition }, {});
 
   const tooltipProps = appendOwnerState(
     TooltipComponent,
     {
       ...slotProps.tooltip,
-      className: clsx(classes.tooltip, slotProps.tooltip?.className),
+      className: clsx(
+        'es-tooltip__tooltip',
+        arrow && 'es-tooltip__tooltip--arrow',
+        ignoreNonTouchEvents.current && 'es-tooltip__tooltip--touch',
+        placement && `es-tooltip__tooltip--placement--${placement}`,
+        color && `es-tooltip__tooltip--color--${color}`,
+        'caption',
+        slotProps.tooltip?.className
+      ),
     },
-    ownerState
+    {}
   );
 
   const tooltipArrowProps = appendOwnerState(
     ArrowComponent,
     {
       ...slotProps.arrow,
-      className: clsx(classes.arrow, slotProps.arrow?.className),
+      className: clsx('es-tooltip__arrow', color && `es-tooltip__arrow--color--${color}`, slotProps.arrow?.className),
     },
-    ownerState
+    {}
   );
 
   return (
@@ -1036,7 +586,6 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
               }
             : childNode
         }
-        as={PopperComponentProp ?? Popper}
         id={id}
         open={childNode ? open : false}
         placement={placement}
@@ -1048,11 +597,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
         {({ TransitionProps: TransitionPropsInner }) => (
           // eslint-disable-next-line
           // @ts-ignore
-          <TransitionComponent
-            timeout={theme.transitions.duration.shorter}
-            {...TransitionPropsInner}
-            {...transitionProps}
-          >
+          <TransitionComponent timeout={200} {...TransitionPropsInner} {...transitionProps}>
             <TooltipComponent {...tooltipProps}>
               {title}
               {arrow ? (

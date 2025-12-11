@@ -1,6 +1,4 @@
 export { SFS } from './SFS';
-export type { SFSClasses, SFSClassKey } from './SFS.classes';
-export { sfsClasses } from './SFS.classes';
 export type { SFSProps } from './SFS.types';
 export * from './SFSButton';
 export * from './SFSChips';

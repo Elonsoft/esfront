@@ -1,0 +1,138 @@
+@use '../helpers/typography';
+
+@mixin include() {
+  .es-autocomplete-menu {
+    z-index: 1300;
+
+    & * {
+      outline: none;
+    }
+
+    & > div {
+      transform-origin: 50% 0 0;
+    }
+
+    &__paper {
+      background-color: var(--es-surface-400);
+      border-radius: 6px;
+      box-shadow: var(--es-shadow-down-600);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      pointer-events: auto;
+      user-select: none;
+    }
+
+    &__menu-list {
+      max-height: 228px;
+    }
+
+    &__menu-item-text {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__menu-group-divider {
+      margin: 8px 0;
+    }
+
+    &__sentinel {
+      &.es-list-item--size--200 {
+        height: 0;
+        min-height: 0;
+        padding: 0;
+      }
+    }
+
+    &__checkbox {
+      flex-shrink: 0;
+      margin-left: -8px;
+      margin-right: 4px;
+    }
+
+    &__empty-state {
+      align-items: center;
+      color: tvar(--es-mono-a-a600);
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      padding: 12px 16px;
+    }
+
+    &__search {
+      &.MuiTextField-root {
+        border-bottom: 1px solid var(--es-mono-a-a100);
+      }
+
+      & .MuiOutlinedInput-root.MuiInputBase-adornedEnd {
+        padding-right: 8px;
+      }
+
+      & .MuiInputLabel-root {
+        opacity: 0;
+      }
+
+      & .MuiInputAdornment-positionStart {
+        color: var(--es-mono-a-a500);
+      }
+
+      &:hover .MuiInputAdornment-positionStart .es-svg-icon {
+        color: var(--es-mono-a-a600);
+      }
+
+      & .MuiInputAdornment-positionEnd {
+        margin-left: 6px;
+
+        & .es-button {
+          flex-shrink: 0;
+          height: 40px;
+
+          --icon: var(--es-mono-a-a400);
+
+          & .es-button-base__wrapper {
+            padding: 0 7px;
+          }
+
+          &.es-button--variant--text {
+            --hovered: inherit;
+            --pressed: inherit;
+          }
+
+          &:hover {
+            --icon: var(--es-mono-a-a500);
+          }
+
+          &:active {
+            --icon: var(--es-mono-a-a600);
+          }
+        }
+      }
+
+      & .MuiOutlinedInput-notchedOutline {
+        border: none;
+
+        &.MuiInputBase-adornedEnd {
+          padding-right: 4px;
+        }
+      }
+
+      & .MuiOutlinedInput-input {
+        @include typography.level('body100');
+      }
+    }
+  }
+
+  .es-autocomplete-menu-footer {
+    border-top: 1px solid var(--es-mono-a-a100);
+    color: var(--es-mono-a-a600);
+    padding: 5px 16px 6px;
+  }
+
+  .es-autocomplete-menu-header {
+    border-bottom: 1px solid var(--es-mono-a-a100);
+    color: var(--es-mono-a-a600);
+    padding: 6px 16px 5px;
+  }
+}

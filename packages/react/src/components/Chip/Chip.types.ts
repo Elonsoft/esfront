@@ -2,9 +2,6 @@
 
 import { ElementType, ReactNode } from 'react';
 
-import { ChipClasses } from './Chip.classes';
-
-import { SxProps, Theme } from '@mui/material/styles';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
 import { OverridableStringUnion } from '@mui/types';
@@ -22,10 +19,6 @@ export interface ChipTypeMap<P = {}, D extends React.ElementType = 'div'> {
 
     /** Class applied to the root element. */
     className?: string;
-    /** Override or extend the styles applied to the component. */
-    classes?: Partial<ChipClasses>;
-    /** The system prop that allows defining system overrides as well as additional CSS styles. */
-    sx?: SxProps<Theme>;
 
     /**
      * The size of the component.

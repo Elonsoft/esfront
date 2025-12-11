@@ -1,11 +1,11 @@
 import { Component } from '../component';
 
-export const createInputAdornment: Component<'MuiInputAdornment'> = (theme) => {
+export const createInputAdornment: Component<'MuiInputAdornment'> = () => {
   return {
     styleOverrides: {
       root: {
         '& .MuiIcon-root': {
-          color: theme.vars.palette.monoA.A600,
+          color: 'var(--es-mono-a-a600)',
         },
       },
     },

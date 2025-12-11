@@ -3,119 +3,18 @@ import { ReactNode, useEffect, useRef } from 'react';
 import { GalleryThumbnailsProps } from './GalleryThumbnails.types';
 
 import clsx from 'clsx';
-import { getGalleryThumbnailsUtilityClass } from './GalleryThumbnails.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useGalleryThumbnailsContext } from './GalleryThumbnails.context';
 
 import { useForkRef } from '../../../hooks';
 import { IconChevronLeftLineW400, IconChevronRightLineW400 } from '../../../icons';
-import { Button, buttonClasses } from '../../Button';
+import { Button } from '../../Button';
 import { Swiper, SwiperImperativeActions, useSwiperContext } from '../../Swiper';
-import { touchRippleClasses } from '../../TouchRipple';
 import { useGalleryContext } from '../Gallery.context';
 import { useGallerySwiperContext } from '../GallerySwiper';
 import { GalleryThumbnailsItem } from '../GalleryThumbnailsItem';
-
-type GalleryThumbnailsOwnerState = {
-  classes?: GalleryThumbnailsProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: GalleryThumbnailsOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    swiper: ['swiper'],
-  };
-
-  return composeClasses(slots, getGalleryThumbnailsUtilityClass, classes);
-};
-
-const GalleryThumbnailsRoot = styled('div', {
-  name: 'ESGalleryThumbnails',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
-  display: 'none',
-  paddingBottom: '16px',
-
-  [theme.breakpoints.up('tabletXS')]: {
-    paddingTop: '8px',
-  },
-
-  '@media (min-height: 450px)': {
-    display: 'block',
-  },
-}));
-
-const GalleryThumbnailsSwiper = styled(Swiper, {
-  name: 'ESGalleryThumbnails',
-  slot: 'Swiper',
-  overridesResolver: (props, styles) => styles.swiper,
-})(() => ({
-  '& .ESSwiper-container': {
-    '&::before, &::after': {
-      content: '""',
-      display: 'block',
-      width: 8,
-    },
-  },
-  '& .ESSwiperButton-root': {
-    zIndex: 1,
-  },
-}));
-
-const GalleryThumbnailsButton = styled('div')<{ ownerState: { prev?: boolean; next?: boolean } }>(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: 4,
-  zIndex: 4,
-  position: 'absolute',
-  height: '100%',
-  cursor: 'pointer',
-  WebkitTapHighlightColor: 'transparent',
-
-  '&:hover': {
-    [`& .${touchRippleClasses.root}`]: {
-      backgroundColor: theme.vars.palette.black.A50,
-    },
-  },
-
-  [`& .${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorTertiary}`]: {
-    backdropFilter: 'blur(10px)',
-    borderRadius: '50%',
-
-    '--background': theme.vars.palette.white.A600,
-    '--icon': theme.vars.palette.black[500],
-    '--hovered': theme.vars.palette.black.A50,
-    '--pressed': theme.vars.palette.black.A150,
-  },
-
-  variants: [
-    {
-      props: {
-        prev: true,
-      },
-      style: {
-        left: 0,
-        paddingLeft: 8,
-      },
-    },
-    {
-      props: {
-        next: true,
-      },
-      style: {
-        right: 0,
-        paddingRight: 8,
-      },
-    },
-  ],
-}));
 
 const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?: string }) => {
   const { active, setActiveSlide } = useSwiperContext();
@@ -129,11 +28,15 @@ const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?:
   };
 
   return (
-    <GalleryThumbnailsButton ownerState={{ prev: true }} onClick={onClick} onPointerDown={onPointerDown}>
+    <div
+      className="es-gallery-thumbnails__button es-gallery-thumbnails__button--prev"
+      onClick={onClick}
+      onPointerDown={onPointerDown}
+    >
       <Button aria-label={label} size="400">
         {icon}
       </Button>
-    </GalleryThumbnailsButton>
+    </div>
   );
 };
 
@@ -149,11 +52,15 @@ const GalleryThumbnailsButtonNext = ({ icon, label }: { icon: ReactNode; label?:
   };
 
   return (
-    <GalleryThumbnailsButton ownerState={{ next: true }} onClick={onClick} onPointerDown={onPointerDown}>
+    <div
+      className="es-gallery-thumbnails__button es-gallery-thumbnails__button--next"
+      onClick={onClick}
+      onPointerDown={onPointerDown}
+    >
       <Button aria-label={label} size="400">
         {icon}
       </Button>
-    </GalleryThumbnailsButton>
+    </div>
   );
 };
 
@@ -161,13 +68,12 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
   const {
     children,
     className,
-    sx,
+    style,
     SwiperProps,
     labelNext,
     labelPrev,
     iconNext = <IconChevronRightLineW400 />,
     iconPrev = <IconChevronLeftLineW400 />,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryThumbnails',
@@ -198,20 +104,13 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
 
   const actionsRef = useForkRef(actions, SwiperProps?.actions);
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <GalleryThumbnailsRoot
-      className={clsx(classes.root, className)}
-      style={{ display: isVisible ? 'block' : '' }}
-      sx={sx}
-    >
-      <GalleryThumbnailsSwiper
+    <div className={clsx('es-gallery-thumbnails', className)} style={{ display: isVisible ? 'block' : '', ...style }}>
+      <Swiper
         draggable
         buttonNext={<GalleryThumbnailsButtonNext icon={iconNext} label={labelNext} />}
         buttonPrev={<GalleryThumbnailsButtonPrev icon={iconPrev} label={labelPrev} />}
-        className={classes.swiper}
+        className="es-gallery-thumbnails__swiper"
         gap={8}
         {...SwiperProps}
         actions={actionsRef}
@@ -221,7 +120,7 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
             {children(i, index)}
           </GalleryThumbnailsItem>
         ))}
-      </GalleryThumbnailsSwiper>
-    </GalleryThumbnailsRoot>
+      </Swiper>
+    </div>
   );
 };

@@ -1,0 +1,76 @@
+@mixin include() {
+  .es-phone-field {
+    &.MuiTextField-root {
+      & .MuiOutlinedInput-root.MuiInputBase-adornedStart {
+        overflow: hidden;
+        padding-left: 0;
+      }
+
+      &:has(.MuiInputBase-inputAdornedStart) .MuiInputLabel-outlined:not(.MuiInputLabel-shrink) {
+        transform: translate(60px, 16px) scale(1);
+      }
+    }
+
+    &__start-adornment {
+      &.MuiInputAdornment-positionStart {
+        margin-right: 4px;
+      }
+    }
+
+    &__menu-button {
+      &.es-button.es-button--variant--text {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        height: 100%;
+        outline-offset: -2px;
+
+        &.es-phone-field__menu-button--open {
+          --background: var(--es-mono-a-a50);
+        }
+
+        &.es-button-base--disabled {
+          cursor: default;
+        }
+
+        & .es-button-base__wrapper {
+          padding-left: 12px;
+          padding-right: 2px;
+
+          & > *:first-child {
+            margin-right: 2px;
+          }
+        }
+
+        & .es-svg-icon {
+          color: var(--es-mono-a-a500);
+        }
+      }
+    }
+
+    &__item {
+      align-items: center;
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__item-primary {
+      align-items: center;
+      display: flex;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    &__country-display-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__country-calling-code {
+      color: var(--es-mono-a-a600);
+      margin-left: auto;
+    }
+  }
+}

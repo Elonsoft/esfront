@@ -1,108 +1,23 @@
 import { PropertyProps } from './Property.types';
 
 import clsx from 'clsx';
-import { getPropertyUtilityClass } from './Property.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { capitalize } from '@mui/material';
-import composeClasses from '@mui/utils/composeClasses';
-
-type PropertyOwnerState = {
-  classes?: PropertyProps['classes'];
-  size: NonNullable<PropertyProps['size']>;
-};
-
-const useUtilityClasses = (ownerState: PropertyOwnerState) => {
-  const { classes, size } = ownerState;
-
-  const slots = {
-    root: ['root', `size${capitalize(size)}`],
-    name: ['name'],
-    value: ['value'],
-    divider: ['divider'],
-  };
-
-  return composeClasses(slots, getPropertyUtilityClass, classes);
-};
-
-const PropertyRoot = styled('div', {
-  name: 'ESProperty',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { size },
-    } = props;
-    return [styles.root, styles[`size${capitalize(size)}`]];
-  },
-})<{ ownerState: PropertyOwnerState }>(({ theme }) => ({
-  alignItems: 'center',
-  display: 'flex',
-  gap: '8px',
-  padding: '2px 0',
-
-  variants: [
-    {
-      props: {
-        size: 's',
-      },
-      style: {
-        ...theme.typography.body100,
-      },
-    },
-    {
-      props: {
-        size: 'm',
-      },
-      style: {
-        ...theme.typography.body200,
-      },
-    },
-  ],
-}));
-
-const PropertyName = styled('div', {
-  name: 'ESProperty',
-  slot: 'Name',
-  overridesResolver: (props, styles) => styles.name,
-})(({ theme }) => ({
-  alignItems: 'center',
-  color: theme.vars.palette.monoA.A600,
-  display: 'flex',
-  gap: '4px',
-}));
-
-const PropertyValue = styled('div', {
-  name: 'ESProperty',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.value,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A800,
-}));
-
-const PropertyDivider = styled('div', {
-  name: 'ESProperty',
-  slot: 'Divider',
-  overridesResolver: (props, styles) => styles.divider,
-})(({ theme }) => ({
-  borderBottom: `2px dotted ${theme.vars.palette.monoA.A150}`,
-  flexGrow: 1,
-}));
 
 /**
  * Display attributes are characteristics that describe a entity.
  */
 export const Property = (inProps: PropertyProps) => {
-  const { name, value, className, sx, size = 'm', ...props } = useDefaultProps({ props: inProps, name: 'ESProperty' });
-
-  const ownerState = { ...props, size };
-  const classes = useUtilityClasses(ownerState);
+  const { name, value, className, style, size = 'm' } = useDefaultProps({ props: inProps, name: 'ESProperty' });
 
   return (
-    <PropertyRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
-      <PropertyName className={classes.name}>{name}</PropertyName>
-      <PropertyDivider className={classes.divider} />
-      <PropertyValue className={classes.value}>{value}</PropertyValue>
-    </PropertyRoot>
+    <div
+      className={clsx(className, 'es-property', `es-property--size--${size}`, size === 's' ? 'body100' : 'body200')}
+      style={style}
+    >
+      <div className="es-property__name">{name}</div>
+      <div className="es-property__divider" />
+      <div className="es-property__value">{value}</div>
+    </div>
   );
 };

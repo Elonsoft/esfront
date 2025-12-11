@@ -1,0 +1,38 @@
+@mixin include() {
+  .es-app-bar {
+    align-items: center;
+    background-color: var(--es-surface-50);
+    color: var(--es-mono-a-a900);
+    display: flex;
+    padding: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    &--stuck {
+      border-bottom: 1px solid var(--es-mono-a-a100);
+    }
+
+    &__title {
+      overflow: hidden;
+      padding: 8px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__title-prominent {
+      padding: 8px 16px;
+      /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated */
+      word-break: break-word;
+    }
+
+    &__adornment {
+      display: flex;
+      gap: 4px;
+
+      &:last-of-type {
+        margin-left: auto;
+      }
+    }
+  }
+}

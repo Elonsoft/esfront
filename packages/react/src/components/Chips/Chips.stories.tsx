@@ -26,7 +26,7 @@ const chips = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 export const Demo: Story = {
   render: (args, context) => {
     return (
-      <Chips key={args.maxLines} sx={{ maxWidth: '600px' }} {...args}>
+      <Chips key={args.maxLines} style={{ maxWidth: '600px' }} {...args}>
         {chips.map((chip) => (
           <Chip {...args} key={chip}>
             {context.globals.locale === 'ru' ? 'Иванов Иван' : 'John Doe'} {chip}

@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { Kbd } from '.';
 
 const meta: Meta<typeof Kbd> = {
@@ -30,9 +28,9 @@ type Story = StoryObj<typeof Kbd>;
 export const Demo: Story = {
   render: (args) => {
     return (
-      <Typography component="div" variant="body100">
+      <div className="body100">
         Lorem ipsum dolor sit amet <Kbd {...args} /> consectetur adipiscing elit.
-      </Typography>
+      </div>
     );
   },
 };

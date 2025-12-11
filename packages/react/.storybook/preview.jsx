@@ -6,6 +6,7 @@ import { ReferencesList } from './components/ReferencesList';
 import { themeDark, themeLight } from './themes';
 
 import { Theme } from '../src/testing';
+import '../src/testing/theme.scss';
 
 import { useDarkMode } from 'storybook-dark-mode';
 
@@ -17,7 +18,7 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-    exclude: /^(classes|className|component|ref|sx|slots|slotProps|(on|icon|label)[A-Z].*)$/,
+    exclude: /^(classes|className|style|component|ref|sx|slots|slotProps|(on|icon|label)[A-Z].*)$/,
   },
   darkMode: {
     light: themeLight,

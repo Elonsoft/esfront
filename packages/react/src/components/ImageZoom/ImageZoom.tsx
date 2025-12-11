@@ -3,31 +3,13 @@ import { useImperativeHandle, useRef } from 'react';
 import { ImageZoomProps } from './ImageZoom.types';
 
 import clsx from 'clsx';
-import { getImageZoomUtilityClass } from './ImageZoom.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { animated, useSpring } from '@react-spring/web';
 import { createUseGesture, dragAction, moveAction, pinchAction } from '@use-gesture/react';
 
 const useGesture = createUseGesture([dragAction, moveAction, pinchAction]);
-
-type ImageZoomOwnerState = {
-  classes?: ImageZoomProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: ImageZoomOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    transform: ['transform'],
-  };
-
-  return composeClasses(slots, getImageZoomUtilityClass, classes);
-};
 
 function getImageContainedSize(img: HTMLImageElement) {
   const ratio = img.naturalWidth / img.naturalHeight;
@@ -49,34 +31,6 @@ function clamp(x: number, min: number, max: number) {
   return Math.min(Math.max(x, min), max);
 }
 
-const ImageZoomRoot = styled('div', {
-  name: 'ESImageZoom',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({
-  overflow: 'hidden',
-  userSelect: 'none',
-}));
-
-const ImageZoomTransform = styled(animated.div, {
-  name: 'ESImageZoom',
-  slot: 'Transform',
-  overridesResolver: (props, styles) => styles.transform,
-})(() => ({
-  width: '100%',
-  height: '100%',
-  touchAction: 'none',
-  userSelect: 'none',
-
-  '& img': {
-    display: 'block',
-    width: '100%',
-    height: '100%',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-  },
-}));
-
 /**
  * Component for zooming, panning and pinching of images.
  */
@@ -84,7 +38,6 @@ export const ImageZoom = (inProps: ImageZoomProps) => {
   const {
     children,
     className,
-    sx,
     maxScale = 5,
     magnify,
     magnifyScale = 2,
@@ -95,7 +48,6 @@ export const ImageZoom = (inProps: ImageZoomProps) => {
     actions,
     ...props
   } = useDefaultProps({ props: inProps, name: 'ESImageZoom' });
-  const ownerState = { ...props };
 
   const ref = useRef<HTMLDivElement>(null);
   const transformRef = useRef<HTMLDivElement>(null);
@@ -301,13 +253,11 @@ export const ImageZoom = (inProps: ImageZoomProps) => {
     [style, api, maxScale]
   );
 
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <ImageZoomRoot ref={ref} className={clsx(classes.root, className)} sx={sx}>
-      <ImageZoomTransform ref={transformRef} className={classes.transform} style={style}>
+    <div ref={ref} className={clsx('es-image-zoom', className)} style={props.style}>
+      <animated.div ref={transformRef} className="es-image-zoom__transform" style={style}>
         {children}
-      </ImageZoomTransform>
-    </ImageZoomRoot>
+      </animated.div>
+    </div>
   );
 };

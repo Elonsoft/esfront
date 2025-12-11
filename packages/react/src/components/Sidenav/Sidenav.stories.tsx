@@ -3,43 +3,39 @@ import { ComponentProps, Fragment, useRef, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { styled } from '@mui/material/styles';
-import { listItemButtonClasses, outlinedInputClasses } from '@mui/material';
-import Box from '@mui/material/Box';
+import { outlinedInputClasses } from '@mui/material';
 import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
 import TextField, { textFieldClasses } from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 
 import { Sidenav } from './Sidenav';
 import { SidenavContext } from './Sidenav.context';
 import { SidenavItem } from './SidenavItem';
 
 import { IconAccountFillW500Lc, IconAtLineW500 } from '../../icons';
-import { buttonClasses } from '../Button';
 import { Sidebar, SidebarProps } from '../Sidebar';
 import { SidebarDivider } from '../Sidebar/SidebarDivider';
-import { SidebarItem, sidebarItemClasses } from '../Sidebar/SidebarItem';
+import { SidebarItem } from '../Sidebar/SidebarItem';
 import { SidebarMenu } from '../Sidebar/SidebarMenu';
 import { SidebarScrollable } from '../Sidebar/SidebarScrollable';
 import { SidebarSpacer } from '../Sidebar/SidebarSpacer';
 import { SidebarToggle } from '../Sidebar/SidebarToggle';
-import { svgIconClasses } from '../SvgIcon';
 
-const SearchField = styled(TextField)(({ theme }) => ({
+const SearchField = styled(TextField)(() => ({
   [`&.${textFieldClasses.root}`]: {
     margin: '12px 16px 16px',
 
     [`& .${outlinedInputClasses.root}`]: {
       padding: '0 4px',
 
-      [`& .${buttonClasses.root}`]: {
-        '--icon': theme.vars.palette.monoA.A500,
+      [`& .es-button`]: {
+        '--icon': 'var(--es-mono-a-a500)',
       },
 
       [`& .${inputAdornmentClasses.positionStart}`]: {
         marginRight: '4px',
 
-        [`& .${svgIconClasses.root}`]: {
-          color: theme.vars.palette.monoA.A400,
+        [`& .es-svg-icon`]: {
+          color: 'var(--es-mono-a-a400)',
         },
       },
     },
@@ -48,23 +44,26 @@ const SearchField = styled(TextField)(({ theme }) => ({
 
 const SidebarHeading = (props: { title: string }) => (
   <>
-    <Typography sx={{ padding: '16px', color: 'monoA.A900' }} variant="h6">
+    <div className="h6 px-16 py-16" style={{ color: 'var(--es-mono-a-a900)' }}>
       {props.title}
-    </Typography>
+    </div>
     <SidebarDivider />
   </>
 );
 
 const SidebarCaption = (props: { title: string }) => (
-  <Typography noWrap sx={{ padding: '0 16px', color: 'monoA.A600', flexShrink: '0' }} variant="caption">
+  <div
+    className="caption"
+    style={{ padding: '0 16px', color: 'var(--es-mono-a-a600)', flexShrink: '0', flexWrap: 'nowrap' }}
+  >
     {props.title}
-  </Typography>
+  </div>
 );
 
 const SidebarMenuItem = styled(SidebarItem)(() => ({
   margin: '0 16px',
 
-  [`& .${listItemButtonClasses.root}.${sidebarItemClasses.button}`]: {
+  [`& .es-list-item.es-sidebar-item__button`]: {
     padding: '4px',
   },
 }));
@@ -149,12 +148,12 @@ export const Demo: Story = {
     };
 
     return (
-      <Box sx={{ height: '100vh', margin: '-1rem', display: 'flex', gap: '20px', overflow: 'auto' }}>
+      <div style={{ height: '100vh', margin: '-1rem', display: 'flex', gap: '20px', overflow: 'auto' }}>
         <Sidenav
           disableEscapeKeyDown={disableEscapeKeyDown}
           disableItemHover={disableItemHover}
           open={isOpen}
-          sx={{ position: 'sticky', top: '0' }}
+          style={{ position: 'sticky', top: '0' }}
           onClose={() => setIsOpen(false)}
         >
           <Sidebar color={color}>
@@ -479,7 +478,7 @@ export const Demo: Story = {
             eligendi eveniet optio itaque, necessitatibus commodi omnis quibusdam magnam cupiditate laboriosam.
           </p>
         </Content>
-      </Box>
+      </div>
     );
   },
 };

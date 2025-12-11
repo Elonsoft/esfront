@@ -2,8 +2,6 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { Dialog } from './Dialog';
 import { DialogActions } from './DialogActions';
 import { DialogArrow } from './DialogArrow';
@@ -90,7 +88,7 @@ export const Demo: Story = {
             <DialogArrow direction="next" />
             <DialogTitle sticky={args.DialogTitleSticky}>{getHeadingText(context)}</DialogTitle>
             <DialogContent>
-              <Typography variant="body200">
+              <div className="body200">
                 Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
                 quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit
                 amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
@@ -129,7 +127,7 @@ export const Demo: Story = {
                 facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras
                 mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
                 quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </Typography>
+              </div>
             </DialogContent>
             <DialogActions sticky={args.DialogActionsSticky}>
               <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
@@ -165,12 +163,12 @@ export const Alignment: Story = {
           <Dialog fullWidth align="flex-start" maxWidth="700px" onClose={() => close()}>
             <DialogTitle sticky={args.DialogTitleSticky}>{getHeadingText(context)}</DialogTitle>
             <DialogContent>
-              <Typography variant="body200">
+              <div className="body200">
                 Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
                 quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit
                 amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
                 consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
-              </Typography>
+              </div>
             </DialogContent>
             <DialogActions sticky={args.DialogActionsSticky}>
               <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
@@ -206,7 +204,7 @@ export const FullScreen: Story = {
           <Dialog fullScreen align="flex-start" onClose={() => close()}>
             <DialogTitle sticky={args.DialogTitleSticky}>{getHeadingText(context)}</DialogTitle>
             <DialogContent>
-              <Typography variant="body200">
+              <div className="body200">
                 Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
                 quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit
                 amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
@@ -245,7 +243,7 @@ export const FullScreen: Story = {
                 facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras
                 mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
                 quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </Typography>
+              </div>
             </DialogContent>
             <DialogActions sticky={args.DialogActionsSticky}>
               <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>
@@ -282,12 +280,12 @@ export const Stack: Story = {
             {getHeadingText(context)} {i + 1}
           </DialogTitle>
           <DialogContent>
-            <Typography variant="body200">
+            <div className="body200">
               Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
               quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
               fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
               consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
-            </Typography>
+            </div>
           </DialogContent>
           <DialogActions>
             <Button color="tertiary" size="500" variant="outlined" onClick={() => close()}>

@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
-
 import { AppBar } from '.';
 
 import { IconArrowLeftLineW500, IconCheckLineW500 } from '../../icons';
@@ -45,7 +43,7 @@ export const Demo: Story = {
     const locale = (context.globals.locale || 'en') as 'en' | 'ru';
 
     return (
-      <Box margin="-1rem">
+      <div style={{ margin: '-1rem' }}>
         <AppBar
           {...args}
           endAdornment={
@@ -65,8 +63,8 @@ export const Demo: Story = {
         >
           {children || (locale === 'en' ? 'Schedule' : 'Расписание')}
         </AppBar>
-        <Box height="150vh" />
-      </Box>
+        <div style={{ height: '150vh' }} />
+      </div>
     );
   },
 };

@@ -1,8 +1,5 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
-import { tableCellClasses } from './TableCell/TableCell.classes';
-import { tableRowClasses } from './TableRow/TableRow.classes';
-
 /**
  * The hook that manages resizing of the table columns.
  * @param ref A ref for the `Table` component.
@@ -21,11 +18,11 @@ export const useTableResize = (
     (index: number, colSpan = 1) =>
     (width: number, element: HTMLElement) => {
       if (ref.current && rowRef.current) {
-        const rows = ref.current.querySelectorAll(`.${tableRowClasses.content},.${tableRowClasses.overlap}`);
+        const rows = ref.current.querySelectorAll('.es-table-row__content,.es-table-row__overlap');
 
         const newColumns = columns.slice();
 
-        const cells = Array.from(rowRef.current.querySelectorAll(`.${tableCellClasses.root}`));
+        const cells = Array.from(rowRef.current.querySelectorAll('.es-table-cell'));
         const currentWidth = element.getBoundingClientRect().width;
 
         cells.forEach((cell, i) => {
@@ -50,7 +47,7 @@ export const useTableResize = (
       if (rowRef.current) {
         const newColumns = columns.slice();
 
-        Array.from(rowRef.current.querySelectorAll(`.${tableCellClasses.root}`)).forEach((cell, i) => {
+        Array.from(rowRef.current.querySelectorAll('.es-table-cell')).forEach((cell, i) => {
           if (i < index + colSpan) {
             newColumns[i] = `${cell.getBoundingClientRect().width}px`;
           }

@@ -1,0 +1,162 @@
+@mixin include() {
+  .es-sorting-menu {
+    & .MuiPopover-paper {
+      background-color: var(--es-surface-400);
+      background-image: none;
+      box-shadow: var(--es-shadow-down-600);
+      margin-top: 4px;
+      overflow-x: hidden;
+      padding-bottom: 6px;
+      user-select: none;
+
+      & .MuiList-root {
+        padding: 0;
+        width: 320px;
+      }
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 16px 6px;
+    }
+
+    &__footer {
+      align-items: center;
+      border-top: 1px solid var(--es-mono-a-a100);
+      display: flex;
+      margin-top: 8px;
+      padding: 6px 3px 0 12px;
+
+      & .es-kbd:first-of-type {
+        margin-right: 3px;
+      }
+
+      & .es-kbd:last-of-type {
+        margin-left: 3px;
+        margin-right: 8px;
+      }
+
+      & .es-switch {
+        margin-left: auto;
+      }
+    }
+
+    &__reset-button {
+      color: var(--es-mono-a-a500);
+    }
+
+    &__menu-item {
+      &:not(.es-list-item--disabled) {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &.es-list-item--disabled {
+        color: inherit;
+        cursor: default;
+        display: block;
+        height: auto;
+        min-height: 0;
+        padding: 0 0 6px;
+
+        & > .es-button-base__wrapper {
+          display: block;
+          width: inherit;
+        }
+
+        & .es-divider {
+          margin: 8px 0;
+        }
+      }
+
+      & .es-button-base__wrapper .es-list-item-text {
+        display: inline-flex;
+        flex-shrink: 1;
+
+        & .es-list-item-text__primary {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    &__direction-button {
+      --icon: var(--es-mono-a-a600);
+
+      &.es-button {
+        border-radius: 0;
+        flex-shrink: 0;
+        padding: 0;
+        position: relative;
+        text-transform: unset;
+        z-index: 10;
+
+        &.es-button--size--400 {
+          --pressed: transparent;
+          --hovered: transparent;
+        }
+
+        & .es-button-base__wrapper {
+          gap: 6px;
+        }
+
+        &:not(.es-button-base--disabled):focus-visible {
+          outline: none;
+        }
+
+        &:focus-visible {
+          & .es-sorting-menu__caption {
+            color: var(--es-mono-a-a900);
+          }
+
+          & .es-sorting-menu__direction-button-badge {
+            background-color: var(--es-secondary-a550);
+          }
+        }
+
+        &:hover {
+          & .es-sorting-menu__direction-button-badge {
+            background-color: var(--es-secondary-a550);
+          }
+
+          & .es-sorting-menu__caption:first-of-type {
+            color: var(--es-mono-a-a900);
+          }
+        }
+
+        &:active {
+          & .es-sorting-menu__direction-button-badge {
+            background-color: var(--es-secondary-a400);
+          }
+
+          & .es-sorting-menu__caption:first-of-type {
+            color: var(--es-mono-a-a600);
+          }
+        }
+      }
+    }
+
+    &__direction-button-badge {
+      background-color: var(--es-secondary-a400);
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px var(--es-mono-a-a25);
+      display: flex;
+      padding: 3px 2px;
+    }
+
+    &__plus-sign {
+      color: var(--es-mono-a-a900);
+    }
+
+    &__caption {
+      color: var(--es-mono-a-a600);
+    }
+
+    &__sort-tooltip {
+      margin-top: 14px;
+      padding-left: 16px;
+    }
+  }
+}

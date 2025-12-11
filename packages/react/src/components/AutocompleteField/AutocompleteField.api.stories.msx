@@ -12,17 +12,11 @@ import { AutocompleteField } from '@esfront/react';
 
 ## Component name
 
-The name `ESAutocompleteField` can be used when providing default props or style overrides in the theme.
+The name `ESAutocompleteField` can be used when providing default props.
 
 ## Props
 
 <TableInterface name="AutocompleteFieldProps" variant="props" />
-
-<br />
-
-## CSS
-
-<TableInterface name="AutocompleteFieldClasses" variant="css" />
 
 <br />
 

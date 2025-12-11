@@ -1,12 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
-import { LinkClasses } from './Link.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
-import { TypographyProps } from '@mui/material/Typography';
 
 export interface LinkTypeMap<P = {}, D extends React.ElementType = 'a'> {
   props: P & {
@@ -14,15 +10,13 @@ export interface LinkTypeMap<P = {}, D extends React.ElementType = 'a'> {
     children?: React.ReactNode;
     /** Class applied to the root element. */
     className?: string;
-    /** Override or extend the styles applied to the component. */
-    classes?: Partial<LinkClasses>;
+    /** Style applied to the root element. */
+    style?: CSSProperties;
     /**
      * The color of the link.
-     * @default 'common.link'
+     * @default 'var(--es-common-link)'
      */
-    color?: TypographyProps['color'];
-    /** The system prop that allows defining system overrides as well as additional CSS styles. */
-    sx?: SxProps<Theme>;
+    color?: string;
     /** Element placed before the children. */
     startIcon?: ReactNode;
     /** Element placed after the children. */
@@ -38,7 +32,7 @@ export interface LinkTypeMap<P = {}, D extends React.ElementType = 'a'> {
      * Applies the theme typography styles.
      * @default 'inherit'
      */
-    variant?: TypographyProps['variant'];
+    variant?: string;
   };
   defaultComponent: D;
 }
@@ -46,4 +40,6 @@ export interface LinkTypeMap<P = {}, D extends React.ElementType = 'a'> {
 export type LinkProps<D extends React.ElementType = LinkTypeMap['defaultComponent'], P = {}> = OverrideProps<
   LinkTypeMap<P, D>,
   D
->;
+> & {
+  component?: React.ElementType;
+};

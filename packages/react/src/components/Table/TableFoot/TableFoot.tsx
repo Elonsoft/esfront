@@ -3,74 +3,15 @@ import { forwardRef, memo, useRef, useState } from 'react';
 import { TableFootProps } from './TableFoot.types';
 
 import clsx from 'clsx';
-import { getTableFootUtilityClass } from './TableFoot.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver } from '../../../hooks';
 
-type TableFootOwnerState = {
-  classes?: TableFootProps['classes'];
-  isSticky: boolean;
-  isStuck: boolean;
-};
-
-const useUtilityClasses = (ownerState: TableFootOwnerState) => {
-  const { classes, isSticky, isStuck } = ownerState;
-
-  const slots = {
-    root: ['root', isSticky && 'sticky', isSticky && isStuck && 'stuck'],
-  };
-
-  return composeClasses(slots, getTableFootUtilityClass, classes);
-};
-
-const TableFootRoot = styled('div', {
-  name: 'ESTableFoot',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { isSticky, isStuck },
-    } = props;
-    return [styles.root, isSticky && styles.sticky, isSticky && isStuck && styles.stuck];
-  },
-})<{ ownerState: TableFootOwnerState }>(({ theme }) => ({
-  backgroundColor: theme.vars.palette.surface[100],
-  borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
-  position: 'relative',
-  zIndex: 2,
-  borderBottomLeftRadius: '6px',
-  borderBottomRightRadius: '6px',
-
-  variants: [
-    {
-      props: {
-        isSticky: true,
-      },
-      style: {
-        position: 'sticky',
-        bottom: 'var(--ESTableFoot-bottom)',
-      },
-    },
-    {
-      props: {
-        isSticky: true,
-        isStuck: true,
-      },
-      style: {
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-      },
-    },
-  ],
-}));
-
 export const TableFoot = memo(
   forwardRef<HTMLDivElement, TableFootProps>(function TableFoot(inProps, inRef) {
-    const { children, className, sticky, sx, ...props } = useDefaultProps({
+    const { children, className, sticky, style } = useDefaultProps({
       props: inProps,
       name: 'ESTableFoot',
     });
@@ -89,21 +30,24 @@ export const TableFoot = memo(
       { threshold: [1], rootMargin: `0px 0px -${(sticky || 0) + 1}px` }
     );
 
-    const ownerState = { isSticky: sticky !== undefined, isStuck: sticky !== undefined && isStuck, ...props };
-    const classes = useUtilityClasses(ownerState);
-
     return (
-      <TableFootRoot
+      <div
         ref={rootRef}
-        className={clsx(classes.root, className)}
-        ownerState={ownerState}
+        className={clsx(
+          'es-table-foot',
+          sticky !== undefined && 'es-table-foot--sticky',
+          sticky !== undefined && isStuck && 'es-table-foot--stuck',
+          className
+        )}
         style={
-          sticky === undefined ? undefined : ({ '--ESTableFoot-bottom': `${sticky || 0}px` } as React.CSSProperties)
+          {
+            '--es-table-foot-bottom': sticky === undefined ? undefined : `${sticky || 0}px`,
+            ...style,
+          } as React.CSSProperties
         }
-        sx={sx}
       >
         {children}
-      </TableFootRoot>
+      </div>
     );
   })
 );

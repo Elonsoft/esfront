@@ -1,0 +1,10 @@
+@mixin include() {
+  .es-flag {
+    border-radius: 2px;
+    font-size: 24px;
+    height: 16px;
+    outline: 1px solid var(--es-mono-a-a50);
+    outline-offset: -1px;
+    width: 24px;
+  }
+}

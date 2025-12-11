@@ -2,8 +2,6 @@ import { useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { useMutationObserver } from './useMutationObserver';
 
 import { Button } from '../../components/Button';
@@ -49,9 +47,9 @@ export const Demo: Story = {
         >
           Set ID
         </Button>
-        <Typography ref={ref} component="div" marginTop="8px" variant="body100">
+        <div ref={ref} className="body100 mt-8">
           Attribute mutated: <b>{mutated}</b>
-        </Typography>
+        </div>
       </div>
     );
   },

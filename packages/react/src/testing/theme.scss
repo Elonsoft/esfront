@@ -1,0 +1,26 @@
+/* stylelint-disable at-rule-empty-line-before */
+
+@use '@esfront/theme/settings';
+
+@use '@esfront/theme/components';
+@use '@esfront/theme/utilities';
+
+@use '@esfront/theme/presets/colors' as colorsPresets;
+@use '@esfront/theme/presets/shadows' as shadowsPresets;
+
+@include settings.include;
+
+@include components.include;
+@include utilities.include;
+
+html {
+  @include colorsPresets.common;
+
+  @include colorsPresets.light;
+  @include shadowsPresets.light;
+
+  &.mode-dark {
+    @include colorsPresets.dark;
+    @include shadowsPresets.dark;
+  }
+}

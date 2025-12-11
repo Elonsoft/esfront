@@ -2,7 +2,10 @@ import { SyntheticEvent, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Tab, Tabs, tabsClasses } from '.';
+// eslint-disable-next-line no-restricted-imports
+import Box from '@mui/material/Box';
+
+import { Tab, Tabs } from '.';
 
 import { IconAtLineW500 } from '../../icons';
 
@@ -128,28 +131,21 @@ export const Demo: Story = {
     };
 
     return (
-      <Tabs
-        {...args}
-        sx={{
-          [`.${tabsClasses.flexContainer}`]: {
-            gap: `${gap}px`,
-          },
-        }}
-        value={value}
-        onChange={handleChange}
-      >
-        {(locale === 'en' ? tabsData.en : tabsData.ru).map((label, index) => (
-          <Tab
-            key={index}
-            ref={(el) => {
-              tabRefs.current[index] = el || undefined;
-            }}
-            endIcon={<IconAtLineW500 size="24px" />}
-            label={label}
-            startIcon={<IconAtLineW500 size="24px" />}
-          />
-        ))}
-      </Tabs>
+      <Box sx={{ '& .es-tabs__flex-container': { gap: `${gap}px` } }}>
+        <Tabs {...args} value={value} onChange={handleChange}>
+          {(locale === 'en' ? tabsData.en : tabsData.ru).map((label, index) => (
+            <Tab
+              key={index}
+              ref={(el) => {
+                tabRefs.current[index] = el || undefined;
+              }}
+              endIcon={<IconAtLineW500 size="24px" />}
+              label={label}
+              startIcon={<IconAtLineW500 size="24px" />}
+            />
+          ))}
+        </Tabs>
+      </Box>
     );
   },
 };

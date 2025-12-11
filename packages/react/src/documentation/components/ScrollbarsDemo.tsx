@@ -1,182 +1,168 @@
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import { ReactNode } from 'react';
 
-const ScrollbarsDemoName = styled(Typography)(({ theme }) => ({
-  display: 'inline-block',
-  marginBottom: '8px',
-  padding: '3px 5px',
-  borderRadius: '3px',
-  fontSize: '13px',
-  backgroundColor: theme.vars.palette.monoA.A50,
-  border: `1px solid ${theme.vars.palette.monoA.A75}`,
-})) as typeof Typography;
+const ScrollbarsDemoName = ({ children }: { children: ReactNode }) => {
+  return (
+    <code
+      style={{
+        display: 'inline-block',
+        marginBottom: '8px',
+        padding: '3px 5px',
+        borderRadius: '3px',
+        fontSize: '13px',
+        backgroundColor: 'var(--es-mono-a-a50)',
+        border: '1px solid var(--es-mono-a-a75)',
+        marginTop: '16px',
+      }}
+    >
+      {children}
+    </code>
+  );
+};
 
 export const ScrollbarsDemo = () => {
   const content = (
-    <Typography component="div" sx={{ height: '1000px', width: '1000px', padding: '8px' }} variant="body200">
+    <div className="body200" style={{ height: '1000px', width: '1000px', padding: '8px' }}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </Typography>
+    </div>
   );
 
   return (
-    <Box>
-      <ScrollbarsDemoName component="code">normalMonoA</ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+    <div>
+      <ScrollbarsDemoName>normalMonoA</ScrollbarsDemoName>
+      <div
+        className="scrollbar-normal-mono-a"
+        style={{
           height: '150px',
-          backgroundColor: 'monoB.A75',
-          color: 'monoA.A900',
-          ...theme.scrollbars.normalMonoA,
-        })}
+          backgroundColor: 'var(--es-mono-b-a75)',
+          color: 'var(--es-mono-a-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        normalMonoB
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>normalMonoB</ScrollbarsDemoName>
+      <div
+        className="scrollbar-normal-mono-b"
+        style={{
           height: '150px',
-          backgroundColor: 'monoA.A800',
-          color: 'monoB.A900',
-          ...theme.scrollbars.normalMonoB,
-        })}
+          backgroundColor: 'var(--es-mono-a-a800)',
+          color: 'var(--es-mono-b-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        normalBlack
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>normalBlack</ScrollbarsDemoName>
+      <div
+        className="scrollbar-normal-black"
+        style={{
           height: '150px',
-          backgroundColor: 'white.A800',
-          color: 'black.A900',
-          ...theme.scrollbars.normalBlack,
-        })}
+          backgroundColor: 'var(--es-white-a800)',
+          color: 'var(--es-black-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        normalWhite
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>normalWhite</ScrollbarsDemoName>
+      <div
+        className="scrollbar-normal-white"
+        style={{
           height: '150px',
-          backgroundColor: 'black.A800',
-          color: 'white.A900',
-          ...theme.scrollbars.normalWhite,
-        })}
+          backgroundColor: 'var(--es-black-a800)',
+          color: 'var(--es-white-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        thinMonoA
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>thinMonoA</ScrollbarsDemoName>
+      <div
+        className="scrollbar-thin-mono-a"
+        style={{
           height: '150px',
-          backgroundColor: 'monoA.A75',
-          ...theme.scrollbars.thinMonoA,
-        })}
+          backgroundColor: 'var(--es-mono-b-a75)',
+          color: 'var(--es-mono-a-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        thinMonoB
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>thinMonoB</ScrollbarsDemoName>
+      <div
+        className="scrollbar-thin-mono-b"
+        style={{
           height: '150px',
-          backgroundColor: 'monoA.A800',
-          color: 'monoB.A900',
-          ...theme.scrollbars.thinMonoB,
-        })}
+          backgroundColor: 'var(--es-mono-a-a800)',
+          color: 'var(--es-mono-b-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        thinBlack
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>thinBlack</ScrollbarsDemoName>
+      <div
+        className="scrollbar-thin-black"
+        style={{
           height: '150px',
-          backgroundColor: 'white.A800',
-          color: 'black.A900',
-          ...theme.scrollbars.thinBlack,
-        })}
+          backgroundColor: 'var(--es-white-a800)',
+          color: 'var(--es-black-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        thinWhite
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>thinWhite</ScrollbarsDemoName>
+      <div
+        className="scrollbar-thin-white"
+        style={{
           height: '150px',
-          backgroundColor: 'black.A800',
-          color: 'white.A900',
-          ...theme.scrollbars.thinWhite,
-        })}
+          backgroundColor: 'var(--es-black-a800)',
+          color: 'var(--es-white-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        overlayMonoA
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>overlayMonoA</ScrollbarsDemoName>
+      <div
+        className="scrollbar-overlay-mono-a"
+        style={{
           height: '150px',
-          backgroundColor: 'monoB.A75',
-          color: 'monoA.A900',
-          ...theme.scrollbars.overlayMonoA,
-        })}
+          backgroundColor: 'var(--es-mono-b-a75)',
+          color: 'var(--es-mono-a-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        overlayMonoB
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>overlayMonoB</ScrollbarsDemoName>
+      <div
+        className="scrollbar-overlay-mono-b"
+        style={{
           height: '150px',
-          backgroundColor: 'monoA.A800',
-          color: 'monoB.A900',
-          ...theme.scrollbars.overlayMonoB,
-        })}
+          backgroundColor: 'var(--es-mono-a-a800)',
+          color: 'var(--es-mono-b-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        overlayBlack
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>overlayBlack</ScrollbarsDemoName>
+      <div
+        className="scrollbar-overlay-black"
+        style={{
           height: '150px',
-          backgroundColor: 'white.A800',
-          color: 'black.A900',
-          ...theme.scrollbars.overlayBlack,
-        })}
+          backgroundColor: 'var(--es-white-a800)',
+          color: 'var(--es-black-a900)',
+        }}
       >
         {content}
-      </Box>
-      <ScrollbarsDemoName component="code" sx={{ marginTop: '16px' }}>
-        overlayWhite
-      </ScrollbarsDemoName>
-      <Box
-        sx={(theme) => ({
+      </div>
+      <ScrollbarsDemoName>overlayWhite</ScrollbarsDemoName>
+      <div
+        className="scrollbar-overlay-white"
+        style={{
           height: '150px',
-          backgroundColor: 'black.A800',
-          color: 'white.A900',
-          ...theme.scrollbars.overlayWhite,
-        })}
+          backgroundColor: 'var(--es-black-a800)',
+          color: 'var(--es-white-a900)',
+        }}
       >
         {content}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };

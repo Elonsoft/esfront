@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { InformationIconClasses } from './InformationIcon.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
 import { SvgIconProps } from '../SvgIcon';
@@ -13,10 +10,6 @@ export interface InformationIconPropsVariantOverrides {}
 
 export interface InformationIconTypeMap<P = {}, D extends React.ElementType = 'div'> {
   props: P & {
-    /** Override or extend the styles applied to the component. */
-    classes?: Partial<InformationIconClasses>;
-    /** The system prop that allows defining system overrides as well as additional CSS styles. */
-    sx?: SxProps<Theme>;
     /** Class applied to the root element. */
     className?: string;
 

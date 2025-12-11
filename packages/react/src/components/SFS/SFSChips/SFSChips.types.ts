@@ -1,19 +1,14 @@
-import { ReactNode } from 'react';
-
-import { SFSChipsClasses } from './SFSChips.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties, ReactNode } from 'react';
 
 import { TooltipProps } from '../../Tooltip';
 
 export interface SFSChipsProps {
   children?: ReactNode;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<SFSChipsClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+
   /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /** Text for the delete button label. */
   labelDelete?: string;

@@ -2,8 +2,6 @@ import { useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { useResizeObserver } from './useResizeObserver';
 
 const meta: Meta = {
@@ -30,15 +28,15 @@ export const Demo: Story = {
     });
 
     return (
-      <Typography variant="body100">
-        <Typography gutterBottom>Height of the element is {height} PX.</Typography>
+      <div className="body100">
+        <div className="mb-8">Height of the element is {height} PX.</div>
         <details ref={ref}>
           <summary>Click here in order to change element&apos;s height.</summary>
           <div>
             <code>ResizeObserver</code> is triggered upon this text&apos;s visibility change.
           </div>
         </details>
-      </Typography>
+      </div>
     );
   },
 };

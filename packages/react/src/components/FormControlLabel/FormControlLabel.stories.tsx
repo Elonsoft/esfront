@@ -3,7 +3,6 @@ import { ComponentProps } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { FormHelperText } from '@mui/material';
-import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 
 import { FormControlLabel } from '.';
@@ -65,17 +64,17 @@ export const Demo: Story = {
       labelPlacement: args.labelPlacement,
       slotProps: {
         typography: {
-          variant: args.size === 'small' ? ('body100' as const) : ('subtitle1' as const),
+          className: args.size === 'small' ? 'body100' : 'subtitle1',
         },
       },
     };
 
     return (
-      <Box alignItems="flex-start" display="flex" flexDirection="column" gap="16px">
+      <div className="flex flex-col align-items-start gap-16">
         <FormControlLabel control={<Checkbox disabled={args.disabled} size={args.size} />} {...props} />
         <FormControlLabel control={<Checkbox disabled={args.disabled} size={args.size} />} {...props} />
         <FormControlLabel control={<Checkbox disabled={args.disabled} size={args.size} />} {...props} />
-      </Box>
+      </div>
     );
   },
 };
@@ -87,7 +86,7 @@ export const Radio: Story = {
       labelPlacement: args.labelPlacement,
       slotProps: {
         typography: {
-          variant: args.size === 'small' ? ('body100' as const) : ('subtitle1' as const),
+          className: args.size === 'small' ? 'body100' : 'subtitle1',
         },
       },
     };
@@ -98,7 +97,7 @@ export const Radio: Story = {
           aria-labelledby="demo-radio-buttons-group-label"
           defaultValue="female"
           name="radio-buttons-group"
-          sx={{
+          style={{
             gap: '16px',
           }}
         >
@@ -123,24 +122,24 @@ export const Radio: Story = {
 export const HelperText: Story = {
   render: (args) => {
     return (
-      <Box alignItems="flex-start" display="flex" flexDirection="column" gap="16px">
+      <div className="flex flex-col align-items-start gap-16">
         <div>
           <FormControlLabel control={<Checkbox size="large" />} label={args.label || 'Control'} />
-          <FormHelperText sx={{ margin: '2px 0 0 32px' }}>Helper text</FormHelperText>
+          <FormHelperText style={{ margin: '2px 0 0 32px' }}>Helper text</FormHelperText>
         </div>
         <div>
           <FormControlLabel control={<Checkbox size="medium" />} label={args.label || 'Control'} />
-          <FormHelperText sx={{ margin: '2px 0 0 28px' }}>Helper text</FormHelperText>
+          <FormHelperText style={{ margin: '2px 0 0 28px' }}>Helper text</FormHelperText>
         </div>
         <div>
           <FormControlLabel
             control={<Checkbox size="small" />}
             label={args.label || 'Control'}
-            slotProps={{ typography: { variant: 'body100' } }}
+            slotProps={{ typography: { className: 'body100' } }}
           />
-          <FormHelperText sx={{ margin: '4px 0 0 24px' }}>Helper text</FormHelperText>
+          <FormHelperText style={{ margin: '4px 0 0 24px' }}>Helper text</FormHelperText>
         </div>
-      </Box>
+      </div>
     );
   },
 };

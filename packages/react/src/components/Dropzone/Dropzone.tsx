@@ -3,186 +3,13 @@ import React, { useRef } from 'react';
 import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 
 import clsx from 'clsx';
-import { dropzoneClasses, getDropzoneUtilityClass } from './Dropzone.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { Typography } from '@mui/material';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { validateFileType } from './validateFileType';
 
 import { useDocumentEventListener, useDragOver } from '../../hooks';
-import { ButtonBase, buttonBaseClasses } from '../ButtonBase';
-import { touchRippleClasses } from '../TouchRipple';
-
-type DropzoneOwnerState = {
-  classes?: DropzoneProps['classes'];
-  error: boolean;
-  isDragOver: boolean;
-  isDragOverDocument: boolean;
-};
-
-const useUtilityClasses = (ownerState: DropzoneOwnerState) => {
-  const { classes, error, isDragOver, isDragOverDocument } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    dropzone: [
-      'dropzone',
-      error && 'dropzoneError',
-      isDragOver && 'dropzoneDragOver',
-      isDragOverDocument && 'dropzoneDragOverDocument',
-    ],
-    input: ['input'],
-    icon: ['icon'],
-    heading: ['heading'],
-    headingText: ['headingText'],
-    subheading: ['subheading'],
-    helperText: ['helperText', error && 'helperTextError'],
-  };
-
-  return composeClasses(slots, getDropzoneUtilityClass, classes);
-};
-
-const DropzoneRoot = styled('div', {
-  name: 'ESDropzone',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({
-  display: 'grid',
-  gap: 8,
-  gridAutoFlow: 'row',
-}));
-
-const DropzoneDropzone = styled(ButtonBase, {
-  name: 'ESDropzone',
-  slot: 'Dropzone',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { error, isDragOver, isDragOverDocument },
-    } = props;
-    return [
-      styles.dropzone,
-      error && styles.dropzoneError,
-      isDragOver && styles.dropzoneDragOver,
-      isDragOverDocument && styles.dropzoneDragOverDocument,
-    ];
-  },
-})<{ ownerState: DropzoneOwnerState }>(({ theme }) => ({
-  width: '100%',
-  display: 'flex',
-  padding: '32px 24px',
-  border: `1px dashed ${theme.vars.palette.monoA.A200}`,
-  borderRadius: 4,
-  '--background': theme.vars.palette.monoA.A25,
-  '--hovered': theme.vars.palette.monoA.A50,
-  '--pressed': theme.vars.palette.monoA.A150,
-
-  [`& .${buttonBaseClasses.wrapper}`]: {
-    flexDirection: 'column',
-  },
-
-  variants: [
-    {
-      props: {
-        isDragOver: true,
-      },
-      style: {
-        [`& .${touchRippleClasses.root}`]: {
-          backgroundColor: 'var(--hovered)',
-        },
-      },
-    },
-    {
-      props: {
-        error: true,
-      },
-      style: {
-        '--background': theme.vars.palette.error.A50,
-        border: `1px dashed ${theme.vars.palette.error.A800}`,
-
-        [` .${dropzoneClasses.heading}`]: {
-          color: theme.vars.palette.error[300],
-        },
-      },
-    },
-  ],
-}));
-
-const DropzoneHeading = styled('div', {
-  name: 'ESDropzone',
-  slot: 'Heading',
-  overridesResolver: (props, styles) => styles.heading,
-})(({ theme }) => ({
-  alignItems: 'center',
-  color: theme.vars.palette.primary[300],
-  display: 'grid',
-  gap: '4px',
-  gridAutoFlow: 'column',
-  justifyContent: 'center',
-  minHeight: '32px',
-}));
-
-const DropzoneHeadingText = styled(Typography, {
-  name: 'ESDropzone',
-  slot: 'HeadingText',
-  overridesResolver: (props, styles) => styles.headingText,
-})({
-  paddingTop: '4px',
-  paddingBottom: '4px',
-});
-
-const DropzoneSubheading = styled(Typography, {
-  name: 'ESDropzone',
-  slot: 'Subheading',
-  overridesResolver: (props, styles) => styles.subheading,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A500,
-  marginTop: '4px',
-}));
-
-const DropzoneIcon = styled('div', {
-  name: 'ESDropzone',
-  slot: 'Subheading',
-  overridesResolver: (props, styles) => styles.icon,
-})(() => ({
-  alignItems: 'center',
-  display: 'flex',
-  justifyContent: 'center',
-}));
-
-const DropzoneInput = styled('input', {
-  name: 'ESDropzone',
-  slot: 'Input',
-  overridesResolver: (props, styles) => styles.input,
-})(() => ({
-  display: 'none',
-}));
-
-const DropzoneHelperText = styled(Typography, {
-  name: 'ESDropzone',
-  slot: 'HelperText',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { error },
-    } = props;
-    return [styles.helperText, error && styles.helperTextError];
-  },
-})<{ ownerState: DropzoneOwnerState }>(({ theme }) => ({
-  color: theme.vars.palette.monoA.A700,
-
-  variants: [
-    {
-      props: {
-        error: true,
-      },
-      style: {
-        color: theme.vars.palette.error.A800,
-      },
-    },
-  ],
-}));
+import { ButtonBase } from '../ButtonBase';
 
 /**
  * This component allows to select files on click or by drag and drop.
@@ -190,7 +17,7 @@ const DropzoneHelperText = styled(Typography, {
 export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   const {
     className,
-    sx,
+    style,
     heading,
     subheading,
     dragHeading,
@@ -204,7 +31,6 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
     ref,
     onChange,
     onReject,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESDropzone',
@@ -300,68 +126,51 @@ export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
   useDocumentEventListener('dragleave', callbacks.onDragLeave);
   useDocumentEventListener('drop', callbacks.onDrop);
 
-  const ownerState = { ...props, error, isDragOver, isDragOverDocument };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <DropzoneRoot ref={ref} className={clsx(classes.root, className)} sx={sx}>
-      <DropzoneDropzone
-        className={clsx(classes.dropzone)}
-        data-testid="dropzone"
-        ownerState={ownerState}
+    <div ref={ref} className={clsx('es-dropzone', className)} style={style}>
+      <ButtonBase
+        className={clsx(
+          'es-dropzone__dropzone',
+          error && 'es-dropzone__dropzone--error',
+          isDragOver && 'es-dropzone__dropzone--drag-over',
+          isDragOverDocument && 'es-dropzone__dropzone--drag-over-document'
+        )}
         onClick={onClick}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         onDragOver={onDragOver}
         onDrop={onDropzoneDrop}
       >
-        <DropzoneHeading className={classes.heading}>
-          {!!icon && !(isDragOverDocument && !!dragHeading) && (
-            <DropzoneIcon className={classes.icon} data-testid="icon">
-              {icon}
-            </DropzoneIcon>
-          )}
+        <div className="es-dropzone__heading">
+          {!!icon && !(isDragOverDocument && !!dragHeading) && <div className="es-dropzone__icon">{icon}</div>}
 
           {isDragOverDocument && !!dragHeading ? (
-            <DropzoneHeadingText className={classes.headingText} variant="body200">
-              {dragHeading}
-            </DropzoneHeadingText>
+            <div className="es-dropzone__heading-text body200">{dragHeading}</div>
           ) : (
-            !!heading && (
-              <DropzoneHeadingText className={classes.headingText} variant="body100">
-                {heading}
-              </DropzoneHeadingText>
-            )
+            !!heading && <div className="es-dropzone__heading-text body100">{heading}</div>
           )}
-        </DropzoneHeading>
+        </div>
 
         {isDragOverDocument && !!dragSubheading ? (
-          <DropzoneSubheading className={classes.subheading} variant="caption">
-            {dragSubheading}
-          </DropzoneSubheading>
+          <div className="es-dropzone__subheading caption">{dragSubheading}</div>
         ) : (
-          !!subheading && (
-            <DropzoneSubheading className={classes.subheading} variant="caption">
-              {subheading}
-            </DropzoneSubheading>
-          )
+          !!subheading && <div className="es-dropzone__subheading caption">{subheading}</div>
         )}
-      </DropzoneDropzone>
+      </ButtonBase>
 
       {!!helperText && (
-        <DropzoneHelperText className={classes.helperText} ownerState={ownerState} variant="caption">
+        <div className={clsx('es-dropzone__helper-text', error && 'es-dropzone__helper-text--error', 'caption')}>
           {helperText}
-        </DropzoneHelperText>
+        </div>
       )}
-      <DropzoneInput
+      <input
         ref={inputRef}
         accept={accept}
-        className={classes.input}
-        data-testid="input"
+        className="es-dropzone__input"
         multiple={multiple}
         type="file"
         onChange={onInputChange}
       />
-    </DropzoneRoot>
+    </div>
   );
 };

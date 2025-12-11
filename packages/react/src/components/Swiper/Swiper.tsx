@@ -1,193 +1,16 @@
 import { Children, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 
-import { SwiperAlignment, SwiperDirection, SwiperProps } from './Swiper.types';
+import { SwiperProps } from './Swiper.types';
 
 import clsx from 'clsx';
-import { getSwiperUtilityClass, swiperClasses } from './Swiper.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { SwiperContext } from './Swiper.context';
 import { SwiperButton } from './SwiperButton';
 import { usePropertiesMapping } from './usePropertiesMapping';
 
 import { useDocumentEventListener, useLatest, useResizeObserver } from '../../hooks';
-import { buttonClasses } from '../Button';
-
-type SwiperOwnerState = {
-  classes?: SwiperProps['classes'];
-  alignment: SwiperAlignment;
-  direction: SwiperDirection;
-  snap: boolean;
-  snapStop: NonNullable<SwiperProps['snapStop']>;
-};
-
-const useUtilityClasses = (ownerState: SwiperOwnerState) => {
-  const { classes, alignment, direction, snap } = ownerState;
-
-  const slots = {
-    root: ['root', direction],
-    wrapper: ['wrapper'],
-    container: [
-      'container',
-      snap && 'containerSnap',
-      snap && alignment === 'center' && 'containerSnapAlignCenter',
-      snap && alignment === 'start' && 'containerSnapAlignStart',
-    ],
-    button: ['button'],
-    buttonPrev: ['buttonPrev'],
-    buttonNext: ['buttonNext'],
-  };
-
-  return composeClasses(slots, getSwiperUtilityClass, classes);
-};
-
-const SwiperRoot = styled('div', {
-  name: 'ESSwiper',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { direction },
-    } = props;
-    return [styles.root, styles[direction]];
-  },
-})<{ ownerState: SwiperOwnerState }>({
-  position: 'relative',
-  display: 'flex',
-
-  variants: [
-    {
-      props: {
-        direction: 'horizontal',
-      },
-      style: {
-        flexDirection: 'column',
-        [`& .${swiperClasses.container}`]: {
-          gridAutoFlow: 'column',
-        },
-      },
-    },
-    {
-      props: {
-        direction: 'vertical',
-      },
-      style: {
-        flexDirection: 'row',
-        height: '100%',
-        width: 'max-content',
-
-        [`& .${swiperClasses.container}`]: {
-          gridAutoFlow: 'row',
-          height: '100%',
-        },
-
-        [`& .${swiperClasses.button}.${buttonClasses.root}`]: {
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-        },
-      },
-    },
-  ],
-});
-
-const SwiperWrapper = styled('div', {
-  name: 'ESSwiper',
-  slot: 'Wrapper',
-  overridesResolver: (_props, styles) => styles.wrapper,
-})(() => ({
-  position: 'relative',
-}));
-
-const SwiperContainer = styled('div', {
-  name: 'ESSwiper',
-  slot: 'Container',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { snap, alignment },
-    } = props;
-    return [
-      styles.container,
-      snap && styles.containerSnap,
-      snap && alignment === 'center' && styles.containerSnapAlignCenter,
-      snap && alignment === 'start' && styles.containerSnapAlignStart,
-    ];
-  },
-})<{ ownerState: SwiperOwnerState }>({
-  display: 'grid',
-  justifyContent: 'flex-start',
-  msOverflowStyle: 'none',
-  overflow: 'scroll',
-  outline: 'none',
-  scrollbarWidth: 'none',
-  scrollSnapType: 'none',
-
-  '&::-webkit-scrollbar': {
-    display: 'none',
-  },
-
-  variants: [
-    {
-      props: {
-        snap: true,
-      },
-      style: {
-        scrollSnapType: 'x mandatory',
-
-        '& > *': {
-          '&:first-child': {
-            scrollSnapAlign: 'start',
-          },
-          '&:last-child': {
-            scrollSnapAlign: 'end',
-          },
-        },
-      },
-    },
-    {
-      props: {
-        snapStop: 'normal',
-      },
-      style: {
-        '& > *': {
-          scrollSnapStop: 'normal',
-        },
-      },
-    },
-    {
-      props: {
-        snapStop: 'always',
-      },
-      style: {
-        '& > *': {
-          scrollSnapStop: 'always',
-        },
-      },
-    },
-    {
-      props: {
-        alignment: 'center',
-      },
-      style: {
-        '& > *': {
-          scrollSnapAlign: 'center',
-        },
-      },
-    },
-    {
-      props: {
-        alignment: 'start',
-      },
-      style: {
-        '& > *': {
-          scrollSnapAlign: 'start',
-        },
-      },
-    },
-  ],
-});
 
 /**
  * `Swiper` is a component for cycling through elements - images or slides of text - like a carousel.
@@ -197,7 +20,7 @@ export const Swiper = (inProps: SwiperProps) => {
     children,
     ref,
     className,
-    sx,
+    style,
     direction = 'horizontal',
     alignment = 'center',
     gap = 16,
@@ -213,7 +36,6 @@ export const Swiper = (inProps: SwiperProps) => {
     buttonPrev = <SwiperButton step={-1} />,
     buttonNext = <SwiperButton step={1} />,
     pagination,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESSwiper',
@@ -574,9 +396,6 @@ export const Swiper = (inProps: SwiperProps) => {
     }
   }, [autoPlay, autoPlayCount, isMouseDown, isMouseOver, isTouchDown, direction, alignment]);
 
-  const ownerState = { ...props, alignment, direction, snap: !!(snap && !isSnapDisabled), snapStop };
-  const classes = useUtilityClasses(ownerState);
-
   const value = useMemo(() => {
     return {
       direction,
@@ -590,21 +409,24 @@ export const Swiper = (inProps: SwiperProps) => {
 
   return (
     <SwiperContext.Provider value={value}>
-      <SwiperRoot
+      <div
         ref={ref}
         aria-roledescription="carousel"
-        className={clsx(classes.root, className)}
-        ownerState={ownerState}
+        className={clsx('es-swiper', `es-swiper--direction--${direction}`, className)}
         role="group"
-        sx={sx}
+        style={style}
       >
-        <SwiperWrapper className={classes.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div className="es-swiper__wrapper" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           {isPrevVisible && !!buttonPrev && buttonPrev}
           {isNextVisible && !!buttonNext && buttonNext}
-          <SwiperContainer
+          <div
             ref={container}
-            className={classes.container}
-            ownerState={ownerState}
+            className={clsx(
+              'es-swiper__container',
+              !isSnapDisabled && snap && 'es-swiper__container--snap',
+              !isSnapDisabled && snap && `es-swiper__container--snap-stop--${snapStop}`,
+              !isSnapDisabled && snap && `es-swiper__container--snap-align--${alignment}`
+            )}
             style={{ gap: `${gap}px`, cursor: draggable ? (isMouseDown ? 'grabbing' : 'grab') : 'unset' }}
             tabIndex={-1}
             onDragStart={onDragStart}
@@ -616,10 +438,10 @@ export const Swiper = (inProps: SwiperProps) => {
             onTouchStart={onTouchStart}
           >
             {children}
-          </SwiperContainer>
-        </SwiperWrapper>
+          </div>
+        </div>
         {!!pagination && pagination}
-      </SwiperRoot>
+      </div>
     </SwiperContext.Provider>
   );
 };

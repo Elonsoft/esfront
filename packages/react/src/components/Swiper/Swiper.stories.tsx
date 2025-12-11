@@ -8,7 +8,7 @@ import { useSwiperContext } from './Swiper.context';
 import { Swiper, SwiperPagination, SwiperPaginationProps } from '.';
 
 import { IconChevronLeftLineW400, IconChevronRightLineW400 } from '../../icons';
-import { Button, buttonClasses } from '../Button';
+import { Button } from '../Button';
 
 const Image = (props: { src: string; width?: string }) => {
   return (
@@ -134,7 +134,6 @@ const meta: Meta<Args> = {
       description: 'The length of time in ms a transition animation should take to complete.',
       table: {
         category: 'Pagination',
-        defaultValue: { summary: 'theme.transitions.duration.shortest' },
       },
       control: { type: 'number' },
     },
@@ -229,7 +228,7 @@ export const Vertical: Story = {
   },
 };
 
-const CustomizationButton = styled(Button)<{ prev?: boolean; next?: boolean }>(({ theme, prev, next }) => ({
+const CustomizationButton = styled(Button)<{ prev?: boolean; next?: boolean }>(({ prev, next }) => ({
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
@@ -244,8 +243,8 @@ const CustomizationButton = styled(Button)<{ prev?: boolean; next?: boolean }>((
 
   backdropFilter: 'blur(10px)',
 
-  [`&.${buttonClasses.root}.${buttonClasses.variantText}.${buttonClasses.colorBlack}`]: {
-    '--background': theme.vars.palette.white.A600,
+  [`&.es-button.es-button--variant--text.es-button--color--black`]: {
+    '--background': 'var(--es-white-a600)',
   },
 }));
 

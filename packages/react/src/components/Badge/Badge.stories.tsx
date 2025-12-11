@@ -25,7 +25,7 @@ const meta: Meta<Args> = {
       },
     },
     color: {
-      options: ['success', 'warning', 'error', 'info', 'secondary', 'primary', 'monoA', 'monoB', 'monoB500'],
+      options: ['success', 'warning', 'error', 'info', 'secondary', 'primary', 'mono-a', 'mono-b', 'mono-b-500'],
       control: {
         type: 'select',
       },
@@ -44,7 +44,7 @@ const meta: Meta<Args> = {
   args: {
     children: '1',
     size: '700',
-    color: 'monoA',
+    color: 'mono-a',
   },
 };
 

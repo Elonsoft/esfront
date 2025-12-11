@@ -1,0 +1,73 @@
+@mixin include() {
+  .es-information-icon {
+    appearance: none;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: var(--es-mono-a-a300);
+    cursor: help;
+    display: inline-flex;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    padding: 0;
+    -webkit-tap-highligh-tcolor: transparent;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+
+    &::-moz-focus-inner {
+      // Remove Firefox dotted outline.
+      border-style: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    & svg path:nth-of-type(2) {
+      color: var(--es-mono-a-a400);
+    }
+
+    & .es-information-icon__active-icon {
+      display: none;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &[aria-describedby] {
+      & .es-information-icon__icon {
+        display: none;
+      }
+
+      & .es-information-icon__active-icon {
+        display: inline-flex;
+      }
+    }
+
+    &--variant--info {
+      &:hover,
+      &:focus-visible,
+      &[aria-describedby] {
+        color: var(--es-info-300);
+
+        & svg path:nth-of-type(2) {
+          fill: var(--es-mono-b-500);
+        }
+      }
+    }
+
+    &--variant--question {
+      &:hover,
+      &:focus-visible,
+      &[aria-describedby] {
+        color: var(--es-secondary-300);
+
+        & svg path:nth-of-type(2) {
+          fill: var(--es-mono-b-500);
+        }
+      }
+    }
+  }
+}

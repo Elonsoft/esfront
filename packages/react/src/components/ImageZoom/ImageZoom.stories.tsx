@@ -33,11 +33,11 @@ export const Demo: Story = {
     return (
       <ImageZoom
         {...args}
-        sx={(theme) => ({
-          boxShadow: `0 0 0 1px ${theme.vars.palette.monoA[500]}`,
+        style={{
+          boxShadow: '0 0 0 1px var(--es-mono-a-500)',
           maxWidth: '400px',
           width: '100%',
-        })}
+        }}
       >
         <img src="./image-zoom/1.jpg" />
       </ImageZoom>
@@ -70,11 +70,11 @@ export const ImperativeActions: Story = {
         <ImageZoom
           {...args}
           actions={actions}
-          sx={(theme) => ({
-            boxShadow: `0 0 0 1px ${theme.vars.palette.monoA[500]}`,
+          style={{
+            boxShadow: '0 0 0 1px var(--es-mono-a-500)',
             maxWidth: '400px',
             width: '100%',
-          })}
+          }}
         >
           <img src="./image-zoom/1.jpg" />
         </ImageZoom>

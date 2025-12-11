@@ -7,11 +7,11 @@ export const createFormLabel: Component<'MuiFormLabel'> = (theme, typography) =>
         ...typography.subtitle1,
         lineHeight: '23px',
         '&, &.Mui-focused, &.Mui-error': {
-          color: theme.vars.palette.monoA.A700,
+          color: 'var(--es-mono-a-a700)',
         },
         '&.Mui-disabled': {
           '&, & .MuiFormLabel-asterisk': {
-            color: theme.vars.palette.monoA.A500,
+            color: 'var(--es-mono-a-a500)',
           },
         },
       },
@@ -19,7 +19,7 @@ export const createFormLabel: Component<'MuiFormLabel'> = (theme, typography) =>
         position: 'relative',
         top: 3,
         '&, &.Mui-error': {
-          color: theme.vars.palette.error[300],
+          color: 'var(--es-error-300)',
         },
       },
     },

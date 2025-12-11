@@ -1,6 +1,4 @@
 export { Table } from './Table';
-export type { TableClasses, TableClassKey } from './Table.classes';
-export { tableClasses } from './Table.classes';
 export type { TableContextValue } from './Table.context';
 export { TableContext, useTableContext } from './Table.context';
 export type { TableProps } from './Table.types';

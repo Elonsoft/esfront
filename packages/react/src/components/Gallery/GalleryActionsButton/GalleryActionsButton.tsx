@@ -1,25 +1,10 @@
-import { styled } from '@mui/material/styles';
+import { forwardRef } from 'react';
 
-import { Button, buttonClasses } from '../../Button';
+import clsx from 'clsx';
 
-export const GalleryActionsButton = styled(Button, {
-  name: 'ESGalleryActionsButton',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
-  [`&.${buttonClasses.root}`]: {
-    [`&.${buttonClasses.variantText}`]: {
-      '--background': 'transparent',
-      '--text': theme.vars.palette.white.A800,
-      '--hovered': theme.vars.palette.white.A50,
-      '--pressed': theme.vars.palette.white.A150,
+import { Button, ButtonTypeMap } from '../../Button';
+import { ExtendButtonBase } from '../../ButtonBase';
 
-      [theme.breakpoints.up('tabletXS')]: {
-        '--background': theme.vars.palette.white.A200,
-        '--text': theme.vars.palette.white[500],
-        '--hovered': theme.vars.palette.white.A50,
-        '--pressed': theme.vars.palette.white.A150,
-      },
-    },
-  },
-})) as typeof Button;
+export const GalleryActionsButton = forwardRef(function GalleryActionsButton({ className, ...props }, ref) {
+  return <Button ref={ref} className={clsx('es-gallery-actions-button', className)} {...props} />;
+}) as ExtendButtonBase<ButtonTypeMap>;

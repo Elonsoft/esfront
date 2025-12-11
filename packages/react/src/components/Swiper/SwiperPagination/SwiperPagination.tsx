@@ -1,132 +1,22 @@
 import { useMemo } from 'react';
 
-import { SwiperDirection } from '../Swiper.types';
 import { SwiperPaginationProps } from './SwiperPagination.types';
 
 import clsx from 'clsx';
-import { getSwiperPaginationUtilityClass, swiperPaginationClasses } from './SwiperPagination.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useSwiperContext } from '../Swiper.context';
 import { SwiperPaginationItem } from '../SwiperPaginationItem';
 
-type SwiperPaginationOwnerState = {
-  classes?: SwiperPaginationProps['classes'];
-  direction: SwiperDirection;
-  position: SwiperPaginationProps['position'];
-  variant: SwiperPaginationProps['variant'];
-};
-
-const useUtilityClasses = (ownerState: SwiperPaginationOwnerState) => {
-  const { classes, direction, position, variant } = ownerState;
-
-  const slots = {
-    root: ['root', direction, position, variant],
-  };
-
-  return composeClasses(slots, getSwiperPaginationUtilityClass, classes);
-};
-
-const SwiperPaginationRoot = styled('div', {
-  name: 'ESSwiperPagination',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { direction, position, variant },
-    } = props;
-    return [styles.root, styles[direction], styles[position], styles[variant]];
-  },
-})<{ ownerState: SwiperPaginationOwnerState }>({
-  alignItems: 'center',
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-
-  variants: [
-    {
-      props: {
-        direction: 'horizontal',
-      },
-      style: {
-        flexDirection: 'row',
-        width: '100%',
-        [`&.${swiperPaginationClasses.start}`]: {
-          marginBottom: 14,
-          marginTop: -2,
-        },
-        [`&.${swiperPaginationClasses.end}`]: {
-          marginBottom: -2,
-          marginTop: 14,
-        },
-      },
-    },
-    {
-      props: {
-        direction: 'vertical',
-      },
-      style: {
-        flexDirection: 'column',
-        height: '100%',
-        [`&.${swiperPaginationClasses.start}`]: {
-          marginLeft: -2,
-          marginRight: 14,
-        },
-        [`&.${swiperPaginationClasses.end}`]: {
-          marginLeft: 14,
-          marginRight: -2,
-        },
-      },
-    },
-    {
-      props: {
-        position: 'start',
-      },
-      style: {
-        order: -1,
-      },
-    },
-    {
-      props: {
-        variant: 'long',
-      },
-      style: {
-        [`&.${swiperPaginationClasses.horizontal} .${swiperPaginationClasses.bulletActive}`]: {
-          width: 16,
-        },
-        [`&.${swiperPaginationClasses.vertical} .${swiperPaginationClasses.bulletActive}`]: {
-          height: 16,
-        },
-      },
-    },
-    {
-      props: {
-        variant: 'big',
-      },
-      style: {
-        [`& .${swiperPaginationClasses.itemActive}`]: {
-          padding: 2,
-        },
-        [`& .${swiperPaginationClasses.bulletActive}`]: {
-          height: 12,
-          width: 12,
-        },
-      },
-    },
-  ],
-});
-
 export const SwiperPagination = (inProps: SwiperPaginationProps) => {
   const {
     className,
-    sx,
+    style,
     position = 'end',
     variant = 'small',
     siblingCount,
     transitionDuration,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESSwiperPagination',
@@ -162,15 +52,21 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
     setActiveSlide(+event.target.value);
   };
 
-  const ownerState = { ...props, direction, position, variant };
-  const classes = useUtilityClasses(ownerState);
-
   if (to <= from) {
     return null;
   }
 
   return (
-    <SwiperPaginationRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <div
+      className={clsx(
+        'es-swiper-pagination',
+        `es-swiper-pagination--direction--${direction}`,
+        `es-swiper-pagination--position--${position}`,
+        `es-swiper-pagination--variant--${variant}`,
+        className
+      )}
+      style={style}
+    >
       {bullets.map((index) => (
         <SwiperPaginationItem
           key={index}
@@ -185,7 +81,7 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
           onSlideChange={onSlideChange}
         />
       ))}
-    </SwiperPaginationRoot>
+    </div>
   );
 };
 

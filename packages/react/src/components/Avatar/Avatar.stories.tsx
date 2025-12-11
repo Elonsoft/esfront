@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '@mui/material';
-
 import { Avatar } from '.';
 
 import { IconAccountFillW500Lc, IconAccountRoundedFillW500Lc } from '../../icons';
@@ -43,7 +41,7 @@ export const Demo: Story = {
   },
   render: ({ children, src, ...args }) => {
     return (
-      <Box display="flex" flexDirection="column" gap="10px">
+      <div className="flex flex-col gap-12">
         <Avatar src={src} {...args}>
           {children}
         </Avatar>
@@ -51,7 +49,7 @@ export const Demo: Story = {
         <Avatar {...args}>
           {args.variant === 'circle' ? <IconAccountRoundedFillW500Lc /> : <IconAccountFillW500Lc />}
         </Avatar>
-      </Box>
+      </div>
     );
   },
 };

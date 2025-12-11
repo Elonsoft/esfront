@@ -18,19 +18,7 @@ import { ThemeProvider, FormatSize, ru } from '@esfront/react';
 import { ruRU } from '@mui/material/locale';
 
 const Application = () => {
-  const theme = createTheme(
-    {
-      paletteDark: {
-        ...palettes.common,
-        ...palettes.dark,
-      },
-      paletteLight: {
-        ...palettes.common,
-        ...palettes.light,
-      },
-    },
-    { ...ruRU, ru }
-  );
+  const theme = createTheme({}, { ...ruRU, ru });
 
   return (
     <ThemeProvider theme={theme}>

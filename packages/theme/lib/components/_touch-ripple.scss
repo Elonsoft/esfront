@@ -1,0 +1,20 @@
+@mixin include() {
+  .es-touch-ripple {
+    border-radius: inherit;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    transition: background-color 200ms;
+    z-index: 0;
+
+    &::after {
+      background: radial-gradient(closest-side, var(--pressed) 99%, transparent 100%);
+      content: '';
+      opacity: 0;
+      position: absolute;
+      transform-origin: center center;
+      transition: opacity 375ms linear;
+    }
+  }
+}

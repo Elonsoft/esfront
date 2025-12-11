@@ -3,105 +3,16 @@ import { useRef, useState } from 'react';
 import { AppBarProps } from './AppBar.types';
 
 import clsx from 'clsx';
-import { appBarClasses, getAppBarUtilityClass } from './AppBar.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Typography from '@mui/material/Typography';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useIntersectionObserver, useResizeObserver, useStuckSentinel } from '../../hooks';
-
-type AppBarOwnerState = {
-  classes?: AppBarProps['classes'];
-  stuck?: boolean;
-};
-
-const useUtilityClasses = (ownerState: AppBarOwnerState) => {
-  const { classes, stuck } = ownerState;
-
-  const slots = {
-    root: ['root', stuck && 'stuck'],
-    title: ['title'],
-    titleProminent: ['titleProminent'],
-    adornment: ['adornment'],
-  };
-
-  return composeClasses(slots, getAppBarUtilityClass, classes);
-};
-
-const AppBarRoot = styled('div', {
-  name: 'ESAppBar',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { stuck },
-    } = props;
-
-    return [styles.root, stuck && styles.stuck];
-  },
-})<{ ownerState: AppBarOwnerState }>(({ theme }) => ({
-  ...theme.typography.h6,
-  position: 'sticky',
-  top: 0,
-  zIndex: 1,
-  display: 'flex',
-  alignItems: 'center',
-  padding: '8px',
-  backgroundColor: theme.vars.palette.surface[50],
-  color: theme.vars.palette.monoA.A900,
-
-  [`&.${appBarClasses.stuck}`]: {
-    borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
-  },
-}));
-
-const AppBarTitle = styled('div', {
-  name: 'ESAppBar',
-  slot: 'Title',
-  overridesResolver: (props, styles) => styles.title,
-})({
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-  padding: '8px',
-});
-
-const AppBarTitleProminent = styled(Typography, {
-  name: 'ESAppBar',
-  slot: 'TitleProminent',
-  overridesResolver: (props, styles) => styles.titleProminent,
-})(() => ({
-  padding: '8px 16px',
-  wordBreak: 'break-word',
-})) as typeof Typography;
-
-const AppBarAdornment = styled('div', {
-  name: 'ESAppBar',
-  slot: 'Adornment',
-  overridesResolver: (props, styles) => styles.adornment,
-})({
-  display: 'flex',
-  gap: '4px',
-
-  '&:last-of-type': {
-    marginLeft: 'auto',
-  },
-});
 
 /**
  * The AppBar displays information and actions relating to the current screen.
  */
 export const AppBar = (inProps: AppBarProps) => {
-  const {
-    className,
-    classes: inClasses,
-    children,
-    sx,
-    startAdornment,
-    endAdornment,
-    prominent,
-  } = useDefaultProps({
+  const { className, style, children, startAdornment, endAdornment, prominent } = useDefaultProps({
     props: inProps,
     name: 'ESAppBar',
   });
@@ -133,27 +44,18 @@ export const AppBar = (inProps: AppBarProps) => {
     { threshold: [1], rootMargin: `${prominentHeight - height}px 0px 0px` }
   );
 
-  const ownerState = { classes: inClasses, stuck };
-  const classes = useUtilityClasses(ownerState);
-
   return (
     <>
       {sentinel}
-      <AppBarRoot ref={ref} className={clsx(className, classes.root)} ownerState={ownerState} sx={sx}>
-        {startAdornment && <AppBarAdornment className={classes.adornment}>{startAdornment}</AppBarAdornment>}
-        <AppBarTitle className={classes.title}>{!prominent || isTitleVisible ? children : '\u00A0'}</AppBarTitle>
-        {endAdornment && <AppBarAdornment className={classes.adornment}>{endAdornment}</AppBarAdornment>}
-      </AppBarRoot>
+      <div ref={ref} className={clsx(className, 'es-app-bar', stuck && 'es-app-bar--stuck', 'h6')} style={style}>
+        {startAdornment && <div className="es-app-bar__adornment">{startAdornment}</div>}
+        <div className="es-app-bar__title">{!prominent || isTitleVisible ? children : '\u00A0'}</div>
+        {endAdornment && <div className="es-app-bar__adornment">{endAdornment}</div>}
+      </div>
       {!!prominent && (
-        <AppBarTitleProminent
-          ref={prominentRef}
-          aria-hidden
-          className={classes.titleProminent}
-          component="div"
-          variant="h3"
-        >
+        <div ref={prominentRef} aria-hidden className="es-app-bar__title-prominent h3">
           {children}
-        </AppBarTitleProminent>
+        </div>
       )}
     </>
   );

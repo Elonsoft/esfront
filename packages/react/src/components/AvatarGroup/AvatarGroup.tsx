@@ -1,103 +1,12 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 import { AvatarGroupProps } from './AvatarGroup.types';
 
 import clsx from 'clsx';
-import { avatarGroupClasses, getAlertUtilityClass } from './AvatarGroup.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
-import { getCuttingOffset } from './AvatarGroup.utils';
-
-type AvatarGroupOwnerState = {
-  classes?: AvatarGroupProps['classes'];
-  size?: number;
-  direction?: AvatarGroupProps['direction'];
-  spacing?: number;
-  cutoutWidth?: number;
-};
-
-const useUtilityClasses = (ownerState: AvatarGroupOwnerState) => {
-  const { classes, direction } = ownerState;
-
-  const slots = {
-    root: ['root', direction],
-    avatar: ['avatar'],
-  };
-
-  return composeClasses(slots, getAlertUtilityClass, classes);
-};
-
-const AvatarGroupRoot = styled('div', {
-  name: 'ESAvatarGroup',
-  slot: 'Root',
-  overridesResolver: (props, styles) => [styles.root, styles[props.ownerState.direction]],
-})<{ ownerState: AvatarGroupOwnerState }>(() => ({
-  display: 'flex',
-
-  variants: [
-    {
-      props: true,
-      style: (props: { spacing: number; size: number; direction: 'rtl' | 'ltr'; cutoutWidth: number }) => ({
-        [`& .${avatarGroupClasses.avatar}`]: {
-          width: `${props.size}px`,
-          height: `${props.size}px`,
-
-          '&:not(:nth-of-type(1))': {
-            marginLeft: `${props.spacing}px`,
-          },
-
-          '& > *': {
-            borderRadius: '50%',
-            width: `${props.size}px`,
-            height: `${props.size}px`,
-          },
-
-          [`&:not(:${props.direction === 'ltr' ? 'first' : 'last'}-of-type)`]: {
-            // safari
-            '@supports selector(:nth-child(1 of x))': {
-              overflow: 'visible',
-            },
-
-            WebkitMaskImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${props.size} ${props.size}'%3E%3Ccircle cx='${
-              props.size / 2
-            }' cy='${props.size / 2}' r='${
-              props.size / 2
-            }' fill='black' /%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${props.size} ${props.size}'%3E%3Ccircle cx='${
-              props.size / 2
-            }' cy='${props.size / 2}' fill='white' r='${props.size / 2}'/%3E%3C/svg%3E")`,
-            WebkitMaskSize: `${props.cutoutWidth === 0 ? props.size : props.size + props.cutoutWidth * 2}px, ${props.size}px`,
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: `${getCuttingOffset(props.size, props.direction, props.spacing, props.cutoutWidth)}, center`,
-
-            // safari ios
-            '@supports (-webkit-touch-callout: none)': {
-              maskComposite: 'exclude',
-            },
-
-            // firefox chrome safari
-            '@supports (not (-webkit-touch-callout: none))': {
-              WebkitMaskComposite: 'destination-out',
-              maskComposite: 'exclude',
-            },
-
-            // firefox
-            '@supports ( -moz-appearance:none )': {
-              WebkitMaskSize: `${+props.size + props.cutoutWidth * 2}px, ${+props.size + 0.5}px`,
-            },
-
-            // chrome safari
-            '@supports (not( -moz-appearance:none ))': {
-              WebkitMaskSize: `${+props.size + props.cutoutWidth * 2}px, ${+props.size}px`,
-            },
-          },
-        },
-      }),
-    },
-  ],
-}));
+import { getCuttingOffset, getMaskImage } from './AvatarGroup.utils';
 
 /**
  * AvatarGroup renders its children as a stack.
@@ -105,28 +14,38 @@ const AvatarGroupRoot = styled('div', {
 export const AvatarGroup = (inProps: AvatarGroupProps) => {
   const {
     className,
+    style,
     children,
     direction = 'rtl',
     spacing = -6,
     cutoutWidth = 2,
     size = 32,
-    sx,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESAvatarGroup',
   });
 
-  const ownerState = { ...props, spacing, direction, cutoutWidth, size };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <AvatarGroupRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <div
+      className={clsx('es-avatar-group', `es-avatar-group--direction--${direction}`, className)}
+      style={
+        {
+          ...style,
+          '--es-avatar-group-size': `${size}px`,
+          '--es-avatar-group-spacing': `${spacing}px`,
+          '--es-avatar-group-mask-image': getMaskImage(size),
+          '--es-avatar-group-mask-position': `${getCuttingOffset(size, direction, spacing, cutoutWidth)}, center`,
+          '--es-avatar-group-mask-size': `${cutoutWidth === 0 ? size : size + cutoutWidth * 2}px, ${size}px`,
+          '--es-avatar-group-mask-size-firefox': `${+size + cutoutWidth * 2}px, ${+size + 0.5}px`,
+          '--es-avatar-group-mask-size-safari': `${+size + cutoutWidth * 2}px, ${+size}px`,
+        } as CSSProperties
+      }
+    >
       {React.Children.map(children, (child: any, i: number) => (
-        <div key={i} className={avatarGroupClasses.avatar}>
+        <div key={i} className="es-avatar-group__avatar">
           {child}
         </div>
       ))}
-    </AvatarGroupRoot>
+    </div>
   );
 };
