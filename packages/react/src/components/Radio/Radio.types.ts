@@ -1,14 +1,12 @@
-import { ReactNode } from 'react';
-
-import { RadioClasses } from './Radio.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties, ReactNode } from 'react';
 
 import { SwitchBaseProps } from '../SwitchBase';
 
 export interface RadioProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'color' | 'icon' | 'type'> {
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Class applied to the root element. */
+  className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /**
    * If `true`, the component is checked.
@@ -26,18 +24,10 @@ export interface RadioProps extends Omit<SwitchBaseProps, 'checkedIcon' | 'color
   checkedIcon?: ReactNode;
 
   /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<RadioClasses>;
-
-  /** Class applied to the root element. */
-  className?: string;
-
-  /**
    * The color of the component.
    * @default 'primary'
    */
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'monoA' | 'monoB' | 'black' | 'white';
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'mono-a' | 'mono-b' | 'black' | 'white';
 
   /**
    * The variant of the component.

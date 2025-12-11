@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { TextField } from '@mui/material';
-import Box from '@mui/material/Box';
 
 import { useEvent } from './useEvent';
 
@@ -34,7 +33,7 @@ export const Demo: Story = {
       });
 
       return (
-        <Button color="primary" sx={{ width: '220px' }} onClick={onClick}>
+        <Button color="primary" style={{ width: '220px' }} onClick={onClick}>
           Click {!!count && count}
         </Button>
       );
@@ -42,12 +41,12 @@ export const Demo: Story = {
 
     return (
       <>
-        <Box sx={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
           <TextField fullWidth label="Value" size="40" value={text} onChange={(event) => setText(event.target.value)} />
           <Chat />
-        </Box>
-        <Box sx={{ margin: '8px' }}>Text: {text}</Box>
-        <Box sx={{ margin: '8px' }}>Message: {message}</Box>
+        </div>
+        <div style={{ margin: '8px' }}>Text: {text}</div>
+        <div style={{ margin: '8px' }}>Message: {message}</div>
       </>
     );
   },

@@ -1,0 +1,121 @@
+@mixin include() {
+  .es-link {
+    align-items: baseline;
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    color: var(--es-link-color);
+    cursor: pointer;
+    display: inline;
+    font-family: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    -webkit-taphighlight-color: transparent;
+    text-decoration-line: none;
+    user-select: none;
+
+    &::-moz-focus-inner {
+      border-style: none;
+    }
+
+    &:hover {
+      & .es-link__children {
+        text-decoration-color: inherit;
+        text-decoration-style: solid;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      &::after {
+        border: 2px solid var(--es-mono-a-500);
+        border-radius: 4px;
+        content: '';
+        inset: -1px -4px;
+        position: absolute;
+        z-index: 1;
+      }
+
+      & .es-link__children {
+        text-decoration-line: none;
+      }
+    }
+
+    &:active {
+      & .es-link__children {
+        text-decoration-line: none;
+      }
+    }
+
+    &:disabled {
+      color: var(--es-mono-a-a400);
+      cursor: not-allowed;
+
+      & .es-link__children {
+        text-decoration-line: none;
+      }
+    }
+
+    &:has(.es-link__icon--start) {
+      &:focus-visible {
+        &::after {
+          left: -1px;
+        }
+      }
+    }
+
+    &:has(.es-link__icon--end) {
+      &:focus-visible {
+        &::after {
+          right: -1px;
+        }
+      }
+    }
+
+    &:has(.es-link__icon--start),
+    &:has(.es-link__icon--end) {
+      display: inline-flex;
+    }
+
+    &--variant-inherit {
+      text-decoration-thickness: inherit;
+    }
+
+    &--show-visited {
+      &:visited {
+        color: var(--es-common-link-visited);
+      }
+    }
+
+    &--underline--always {
+      & .es-link__children {
+        text-decoration-line: underline;
+      }
+    }
+
+    &--underline--hover {
+      &:hover {
+        & .es-link__children {
+          text-decoration-line: underline;
+        }
+      }
+    }
+
+    &__icon {
+      align-self: center;
+      display: inline-flex;
+    }
+
+    &__children {
+      text-decoration-color: color-mix(in srgb, current-color 40%, transparent);
+      text-decoration-style: solid;
+      text-decoration-thickness: inherit;
+    }
+  }
+}

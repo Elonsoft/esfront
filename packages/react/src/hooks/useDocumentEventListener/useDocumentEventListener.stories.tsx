@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { useDocumentEventListener } from './useDocumentEventListener';
 
 const meta: Meta = {
@@ -27,9 +25,9 @@ export const Demo: Story = {
     });
 
     return (
-      <Typography variant="body100">
+      <div className="body100">
         Count of clicks on this page: <b>{count}</b>.
-      </Typography>
+      </div>
     );
   },
 };

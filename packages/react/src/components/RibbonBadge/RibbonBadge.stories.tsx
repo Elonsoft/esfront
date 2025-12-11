@@ -25,7 +25,7 @@ const meta: Meta<Args> = {
       },
     },
     color: {
-      options: ['success', 'warning', 'error', 'info', 'secondary', 'primary', 'monoB500'],
+      options: ['success', 'warning', 'error', 'info', 'secondary', 'primary', 'mono-b-500'],
       control: {
         type: 'select',
       },

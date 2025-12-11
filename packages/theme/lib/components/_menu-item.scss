@@ -1,0 +1,7 @@
+@mixin include() {
+  .es-menu-item {
+    &.es-list-item--selected {
+      --background: var(--es-secondary-a100);
+    }
+  }
+}

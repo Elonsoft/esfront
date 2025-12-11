@@ -1,3 +1,4 @@
+export type { SpinnerProps } from './Spinner.types';
 export * from './SpinnerDashRing';
 export * from './SpinnerFadingBars';
 export * from './SpinnerFadingDots';

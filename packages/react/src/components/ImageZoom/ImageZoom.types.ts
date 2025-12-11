@@ -1,8 +1,4 @@
-import { ReactNode, Ref } from 'react';
-
-import { ImageZoomClasses } from './ImageZoom.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties, ReactNode, Ref } from 'react';
 
 export interface ImageZoomImperativeActions {
   /** Get the current scale. */
@@ -17,12 +13,11 @@ export interface ImageZoomImperativeActions {
 
 export interface ImageZoomProps {
   children?: ReactNode;
-  /** Override or extend the styles applied to the component. */
-  classes?: ImageZoomClasses;
+
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /**
    * Limit the scale to the given value.

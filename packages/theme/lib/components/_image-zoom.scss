@@ -1,0 +1,21 @@
+@mixin include() {
+  .es-image-zoom {
+    overflow: hidden;
+    user-select: none;
+
+    &__transform {
+      height: 100%;
+      touch-action: none;
+      user-select: none;
+      width: 100%;
+
+      & img {
+        display: block;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+        width: 100%;
+      }
+    }
+  }
+}

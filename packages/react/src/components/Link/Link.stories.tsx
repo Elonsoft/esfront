@@ -2,9 +2,7 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import MuiTypography from '@mui/material/Typography';
-
-import { Link, LinkProps } from '.';
+import { Link } from '.';
 
 import { IconBookmarkLineW200 } from '../../icons';
 
@@ -76,14 +74,14 @@ type Story = StoryObj<Args>;
 export const Demo: Story = {
   render: (args, context) => {
     return (
-      <MuiTypography style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }} variant="body100">
+      <div className="body100 flex gap-16" style={{ flexWrap: 'wrap' }}>
         <Link {...args} component="a" href="https://google.com" target="_blank">
           {getLink(context)}
         </Link>
-        <Link {...args} color="inherit" component="a" href="https://google.com" target="_blank">
+        <Link {...args} color="currentColor" component="a" href="https://google.com" target="_blank">
           {getLinkInherit(context)}
         </Link>
-        <Link {...args} color="secondary.300" component="a" href="https://google.com" target="_blank">
+        <Link {...args} color="var(--es-secondary-300)" component="a" href="https://google.com" target="_blank">
           {getLinkColor(context)}
         </Link>
         <Link
@@ -95,7 +93,7 @@ export const Demo: Story = {
         >
           {getLinkIcon(context)}
         </Link>
-      </MuiTypography>
+      </div>
     );
   },
 };
@@ -104,7 +102,7 @@ export const Demo: Story = {
 export const Alignment: Story = {
   render: () => {
     return (
-      <MuiTypography component="div" variant="body100">
+      <div className="body100">
         Lorem ipsum dolor sit amet,{' '}
         <Link component="a" endIcon={<IconBookmarkLineW200 container containerSize="20px" />} href="#" target="_blank">
           consectetur
@@ -124,7 +122,7 @@ export const Alignment: Story = {
           non proident
         </Link>
         , sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </MuiTypography>
+      </div>
     );
   },
 };
@@ -158,14 +156,7 @@ export const Typography: Story = {
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'baseline' }}>
         {variants.map((variant) => (
-          <Link
-            key={variant}
-            component="a"
-            href="#"
-            target="_blank"
-            variant={variant as LinkProps['variant']}
-            {...args}
-          >
+          <Link key={variant} component="a" href="#" target="_blank" variant={variant} {...args}>
             {text} {variant}
           </Link>
         ))}

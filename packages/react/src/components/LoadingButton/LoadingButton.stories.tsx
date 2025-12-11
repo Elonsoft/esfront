@@ -24,7 +24,7 @@ const meta: Meta<Args> = {
       control: { type: 'select' },
     },
     size: {
-      options: ['16', '20', '24', '32', '40', '48', '56'],
+      options: ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000'],
       control: { type: 'select' },
     },
     disabled: {

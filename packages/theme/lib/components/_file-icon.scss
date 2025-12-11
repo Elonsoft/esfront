@@ -1,0 +1,46 @@
+@mixin include() {
+  .es-file-icon {
+    color: var(--es-mono-a-a500);
+    display: flex;
+    font-weight: 700;
+    height: auto;
+    justify-content: center;
+    position: relative;
+
+    &__children {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      inset: 0;
+      justify-content: center;
+      position: absolute;
+    }
+  }
+
+  .es-file-icon-text {
+    position: relative;
+    top: -2px;
+  }
+
+  .es-file-icon-badge {
+    align-self: flex-start;
+    border-radius: 4px;
+    color: var(--es-mono-b-500);
+    display: block;
+    left: -5px;
+    position: relative;
+    text-align: center;
+
+    &--size--sm {
+      min-width: 30px;
+      padding: 0 2px;
+      top: -2px;
+    }
+
+    &--size--md {
+      min-width: 32px;
+      padding: 1px 2px;
+      top: -3px;
+    }
+  }
+}

@@ -1,5 +1,8 @@
 # Migration Guide
 
+- [0.14.0 → 0.15.0](#0140--0150)
+  - [Theme Package](#theme-package)
+  - [Class Names](#class-names)
 - [0.11.14 → 0.12.0](#01114--0120)
   - [Markup and Style Changes](#markup-and-style-changes)
   - [Tooltip Replacement](#tooltip-replacement)
@@ -7,6 +10,17 @@
   - [Package Name](#package-name)
   - [CSS Theme Variables](#css-theme-variables)
   - [Components Replacement](#components-replacement)
+
+## 0.14.0 → 0.15.0
+
+### Theme Package
+
+Usage of `@esfront/theme` package is now required. Color and typography tokens are removed from MUI theme.
+
+### Class Names
+
+We migrated all components to scss theme, so their class names are changed, e.g. `.ESAlert-content` now is
+`.es-alert__content`.
 
 ## 0.11.14 → 0.12.0
 

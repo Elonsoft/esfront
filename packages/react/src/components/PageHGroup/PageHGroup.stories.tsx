@@ -64,7 +64,7 @@ export const Demo: Story = {
         <PageHGroupBreadcrumbs>{BreadcrumbsDemo.render?.({}, context)}</PageHGroupBreadcrumbs>
         <PageHGroupMain>
           <PageHGroupHeading
-            endAdornment={<IconInformation2FillW400 sx={{ color: 'monoA.A400' }} />}
+            endAdornment={<IconInformation2FillW400 style={{ color: 'var(--es-mono-a-a400)' }} />}
             maxLines={args.maxLines}
           >
             {args.children || (locale === 'en' ? 'Schedule' : 'Расписание')}

@@ -1,45 +1,18 @@
 import { AlertTitleProps } from './AlertTitle.types';
 
 import clsx from 'clsx';
-import { getAlertTitleUtilityClass } from './AlertTitle.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Typography from '@mui/material/Typography';
-import composeClasses from '@mui/utils/composeClasses';
-
-type AlertTitleOwnerState = {
-  classes?: AlertTitleProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: AlertTitleOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-  };
-
-  return composeClasses(slots, getAlertTitleUtilityClass, classes);
-};
-
-const AlertTitleRoot = styled(Typography, {
-  name: 'ESAlertTitle',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({}));
 
 export const AlertTitle = (inProps: AlertTitleProps) => {
-  const { className, children, sx, ...props } = useDefaultProps({
+  const { className, children, style } = useDefaultProps({
     props: inProps,
     name: 'ESAlertTitle',
   });
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <AlertTitleRoot className={clsx(classes.root, className)} color="monoA.A900" sx={sx} variant="body100Bold">
+    <div className={clsx(className, 'es-alert-title', 'body100-bold')} style={style}>
       {children}
-    </AlertTitleRoot>
+    </div>
   );
 };

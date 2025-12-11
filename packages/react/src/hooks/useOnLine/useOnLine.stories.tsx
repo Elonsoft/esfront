@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { useOnLine } from './useOnLine';
 
 const meta: Meta = {
@@ -21,9 +19,9 @@ export const Demo: Story = {
     const isOnLine = useOnLine();
 
     return (
-      <Typography variant="body100">
+      <div className="body100">
         Network status is <b>{isOnLine ? 'ONLINE' : 'OFFLINE'}</b>.
-      </Typography>
+      </div>
     );
   },
 };

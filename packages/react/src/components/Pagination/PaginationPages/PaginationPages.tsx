@@ -3,13 +3,9 @@ import { Fragment, memo, useState } from 'react';
 import { PaginationPagesProps } from './PaginationPages.types';
 
 import clsx from 'clsx';
-import { getPaginationPagesUtilityClass } from './PaginationPages.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { outlinedInputClasses } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useDocumentEventListener, usePagination } from '../../../hooks';
 import {
@@ -19,174 +15,17 @@ import {
   IconChevronRightLineW400,
   IconDotsHorizontalLineW100,
 } from '../../../icons';
-import { Button, buttonClasses } from '../../Button';
-import { ButtonBase, buttonBaseClasses, buttonBaseClasses as ESbuttonBaseClasses } from '../../ButtonBase';
-import { Tooltip, tooltipClasses, TooltipProps } from '../../Tooltip';
+import { Button } from '../../Button';
+import { ButtonBase } from '../../ButtonBase';
+import { Tooltip } from '../../Tooltip';
 import { usePaginationContext } from '../Pagination.context';
-
-type PaginationPagesOwnerState = {
-  classes?: PaginationPagesProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: PaginationPagesOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    pagination: ['pagination'],
-    paginationItem: ['paginationItem'],
-    button: ['button'],
-    ellipsis: ['ellipsis'],
-    textField: ['textField'],
-    tooltip: ['tooltip'],
-  };
-
-  return composeClasses(slots, getPaginationPagesUtilityClass, classes);
-};
-
-const PaginationPagesRoot = styled('div', {
-  name: 'ESPaginationPages',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(() => ({
-  display: 'flex',
-  alignItems: 'center',
-}));
-
-const PaginationPagesPagination = styled('ul', {
-  name: 'ESPaginationPages',
-  slot: 'Pagination',
-  overridesResolver: (props, styles) => styles.pagination,
-})(() => ({
-  display: 'flex',
-  flexWrap: 'nowrap',
-  alignItems: 'center',
-  padding: 0,
-  margin: 0,
-  listStyle: 'none',
-}));
-
-const PaginationPagesButton = styled(Button, {
-  name: 'ESPaginationPages',
-  slot: 'Button',
-  overridesResolver: (props, styles) => styles.button,
-})(({ theme }) => ({
-  borderRadius: '50%',
-
-  [`&.${buttonClasses.root}`]: {
-    '&, &:not(:disabled):hover, &:not(:disabled):active': {
-      '--icon': theme.vars.palette.monoA.A500,
-    },
-
-    [`&.${ESbuttonBaseClasses.disabled}`]: {
-      '--icon': theme.vars.palette.monoA.A300,
-    },
-  },
-}));
-
-const PaginationPagesEllipsis = styled('div', {
-  name: 'ESPaginationPages',
-  slot: 'Ellipsis',
-  overridesResolver: (props, styles) => styles.ellipsis,
-})(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: 32,
-  height: 32,
-  color: theme.vars.palette.monoA.A500,
-}));
-
-const PaginationPagesPaginationItem = styled(ButtonBase, {
-  name: 'ESPaginationPages',
-  slot: 'PaginationItem',
-  overridesResolver: (_props, styles) => styles.paginationItem,
-})<{ ownerState: { selected: boolean } }>(({ theme }) => ({
-  [`&.${buttonBaseClasses.root}`]: {
-    ...theme.typography.caption,
-
-    margin: 0,
-    padding: '0 4px',
-    width: '32px',
-    height: '32px',
-    borderRadius: '50%',
-
-    '--background': 'transparent',
-    '--text': theme.vars.palette.monoA.A600,
-    '--hovered': theme.vars.palette.monoA.A50,
-    '--pressed': theme.vars.palette.monoA.A150,
-  },
-
-  variants: [
-    {
-      props: {
-        selected: true,
-      },
-      style: {
-        [`&.${buttonBaseClasses.root}`]: {
-          fontWeight: 700,
-
-          '--background': theme.vars.palette.secondary.A100,
-          '--text': theme.vars.palette.monoA.A800,
-          '--hovered': theme.vars.palette.secondary.A100,
-          '--pressed': theme.vars.palette.monoA.A150,
-        },
-      },
-    },
-  ],
-}));
-
-const PaginationPagesTextField = styled(TextField, {
-  name: 'ESPaginationPages',
-  slot: 'TextField',
-  overridesResolver: (props, styles) => styles.textField,
-})(({ theme }) => ({
-  [`& .${outlinedInputClasses.root}`]: {
-    marginLeft: '16px',
-    width: '64px',
-    [`& .${outlinedInputClasses.input}`]: {
-      ...theme.typography.caption,
-
-      color: theme.vars.palette.monoA.A600,
-      padding: '7px 8px',
-      '&::placeholder': {
-        color: theme.vars.palette.monoA.A600,
-      },
-      '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
-        appearance: 'none',
-        margin: 0,
-      },
-      '&[type=number]': {
-        appearance: 'textfield',
-      },
-    },
-  },
-}));
-
-const PaginationPagesTooltip = styled(
-  ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
-  {
-    name: 'ESPaginationPages',
-    slot: 'Tooltip',
-    overridesResolver: (props, styles) => styles.tooltip,
-  }
-)(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    ...theme.typography.caption,
-
-    alignItems: 'center',
-    display: 'grid',
-    gap: 4,
-    gridAutoFlow: 'column',
-  },
-}));
 
 const REGEX = /^[0-9]*$/;
 
 export const PaginationPages = memo(function PaginationPages(inProps: PaginationPagesProps) {
   const {
     className,
-    sx,
+    style,
     boundaryCount,
     siblingCount,
     labelPrevPage,
@@ -238,9 +77,6 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     }
   });
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   const { items } = usePagination({
     boundaryCount,
     page,
@@ -252,51 +88,54 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
   });
 
   return (
-    <PaginationPagesRoot className={clsx(classes.root, className)} sx={sx}>
-      <PaginationPagesPagination className={classes.pagination}>
+    <div className={clsx('es-pagination-pages', className)} style={style}>
+      <ul className="es-pagination-pages__pagination">
         {items.map((item) => {
           return (
             <Fragment key={`${item.type}${item.page}`}>
               {item.type === 'previous' || item.type === 'next' ? (
-                <PaginationPagesButton
+                <Button
                   aria-label={`${item.type === 'next' ? labelNextPage : labelPrevPage}`}
-                  className={classes.button}
+                  className="es-pagination-pages__button"
                   disabled={item.disabled}
                   size="400"
                   onClick={item.onClick}
                 >
                   {item.type === 'previous' ? iconPrevPage : iconNextPage}
-                </PaginationPagesButton>
+                </Button>
               ) : item.type === 'start-ellipsis' || item.type === 'end-ellipsis' ? (
-                <PaginationPagesEllipsis className={classes.ellipsis}>{iconEllipsis}</PaginationPagesEllipsis>
+                <div className="es-pagination-pages__ellipsis">{iconEllipsis}</div>
               ) : (
-                <PaginationPagesTooltip
+                <Tooltip
                   arrow
-                  className={classes.tooltip}
                   placement="top"
+                  slotProps={{ popper: { className: 'es-pagination-pages__tooltip' } }}
                   title={
                     <>
                       {iconTooltipPrevPage} Ctrl {iconTooltipNextPage}
                     </>
                   }
                 >
-                  <PaginationPagesPaginationItem
-                    className={clsx(classes.paginationItem)}
+                  <ButtonBase
+                    className={clsx(
+                      'es-pagination-pages__pagination-item',
+                      item.selected && 'es-pagination-pages__pagination-item--selected',
+                      'caption'
+                    )}
                     data-selected={item.selected}
                     disabled={item.disabled}
-                    ownerState={{ selected: item.selected }}
                     onClick={item.onClick}
                   >
                     {item.page}
-                  </PaginationPagesPaginationItem>
-                </PaginationPagesTooltip>
+                  </ButtonBase>
+                </Tooltip>
               )}
             </Fragment>
           );
         })}
-      </PaginationPagesPagination>
-      <PaginationPagesTextField
-        className={clsx(classes.textField)}
+      </ul>
+      <TextField
+        className="es-pagination-pages__text-field"
         placeholder={`${page} ${labelPage}`}
         size="32"
         type="text"
@@ -304,6 +143,6 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
         onChange={onChange}
         onKeyPress={onKeyPress}
       />
-    </PaginationPagesRoot>
+    </div>
   );
 });

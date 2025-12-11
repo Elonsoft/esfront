@@ -3,149 +3,15 @@ import { FocusEvent, forwardRef, MouseEvent } from 'react';
 import { TabProps } from './Tab.types';
 
 import clsx from 'clsx';
-import { getTabUtilityClass, tabClasses } from './Tab.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
-import { ButtonBase, buttonBaseClasses } from '../../ButtonBase';
-
-type TabOwnerState = {
-  classes?: TabProps['classes'];
-  fullWidth?: TabProps['fullWidth'];
-  icon?: boolean;
-  label?: boolean;
-  selected?: TabProps['selected'];
-  disabled?: TabProps['disabled'];
-  disableFocusRipple?: TabProps['disableFocusRipple'];
-  rounded?: TabProps['rounded'];
-};
-
-const useUtilityClasses = (ownerState: TabOwnerState) => {
-  const { classes, fullWidth, icon, label, rounded, selected, disabled } = ownerState;
-
-  const slots = {
-    root: [
-      'root',
-      icon && label && 'labelIcon',
-      fullWidth && 'fullWidth',
-      rounded && 'rounded',
-      selected && 'selected',
-      disabled && 'disabled',
-      'labelWrapper',
-    ],
-    startIcon: ['startIcon'],
-    endIcon: ['endIcon'],
-  };
-
-  return composeClasses(slots, getTabUtilityClass, classes);
-};
-
-const TabRoot = styled(ButtonBase, {
-  name: 'ESTab',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const { ownerState } = props;
-
-    return [
-      styles.root,
-      ownerState.label && ownerState.icon && styles.labelIcon,
-      ownerState.fullWidth && styles.fullWidth,
-      ownerState.rounded && styles.rounded,
-    ];
-  },
-})<{ ownerState: TabOwnerState }>(({ theme }) => ({
-  maxWidth: 360,
-  minWidth: 90,
-  minHeight: 48,
-  position: 'relative',
-  flexShrink: 0,
-  padding: '8px 8px',
-  overflow: 'hidden',
-  fontFamily: 'inherit',
-
-  '--text': theme.vars.palette.monoA.A700,
-  '--hovered': theme.vars.palette.monoA.A50,
-  '--pressed': theme.vars.palette.monoA.A150,
-  '--focused': theme.vars.palette.monoA.A200,
-
-  [`&:not(.${buttonBaseClasses.disabled}):focus-visible`]: {
-    outline: 'none',
-    boxShadow: `inset 0 0 0 2px ${theme.vars.palette.monoA[500]}`,
-  },
-
-  [`& .${buttonBaseClasses.wrapper}`]: {
-    gap: 8,
-  },
-
-  [`&.${tabClasses.selected}`]: {
-    '--text': theme.vars.palette.monoA.A900,
-
-    [`& .${buttonBaseClasses.wrapper} .${tabClasses.startIcon}, & .${buttonBaseClasses.wrapper} .${tabClasses.endIcon}`]:
-      {
-        color: theme.vars.palette.monoA.A800,
-      },
-  },
-
-  [`&.${tabClasses.rounded}`]: {
-    minHeight: 'inherit',
-    maxHeight: 36,
-    borderRadius: 4,
-    marginTop: 6,
-    marginBottom: 6,
-  },
-
-  [`&.${tabClasses.fullWidth}`]: {
-    flexShrink: 1,
-    flexGrow: 1,
-    flexBasis: 0,
-    maxWidth: 'none',
-  },
-
-  [`&.${buttonBaseClasses.disabled}`]: {
-    '--text': theme.vars.palette.monoA.A400,
-  },
-
-  [`& .${buttonBaseClasses.wrapper} .${tabClasses.startIcon}, & .${buttonBaseClasses.wrapper} .${tabClasses.endIcon}`]:
-    {
-      color: theme.vars.palette.monoA.A600,
-    },
-}));
-
-const TabLabelWrapper = styled('span', {
-  name: 'ESTab',
-  slot: 'LabelWrapper',
-  overridesResolver: (props, styles) => [styles.labelWrapper],
-})(({ theme }) => ({
-  textAlign: 'center',
-  textOverflow: 'ellipsis',
-  overflow: 'hidden',
-  whiteSpace: 'nowrap',
-  ...theme.typography.body100,
-}));
-
-const TabStartIcon = styled('span', {
-  name: 'ESTab',
-  slot: 'StartIcon',
-  overridesResolver: (props, styles) => [styles.startIcon],
-})(() => ({
-  display: 'inherit',
-}));
-
-const TabEndIcon = styled('span', {
-  name: 'ESTab',
-  slot: 'EndIcon',
-  overridesResolver: (props, styles) => [styles.endIcon],
-})(() => ({
-  display: 'inherit',
-}));
+import { ButtonBase } from '../../ButtonBase';
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps: TabProps, ref) {
   const {
     className,
     disabled = false,
-    disableFocusRipple = true,
     fullWidth,
     startIcon,
     endIcon,
@@ -160,21 +26,6 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps:
     value,
     ...props
   } = useDefaultProps({ props: inProps, name: 'ESTab' });
-
-  const ownerState = {
-    ...props,
-    disabled,
-    disableFocusRipple,
-    rounded,
-    selected,
-    startIcon,
-    endIcon,
-    icon: !!startIcon || !!endIcon,
-    label: !!label,
-    fullWidth,
-  };
-
-  const classes = useUtilityClasses(ownerState);
 
   const handleClick = (event: MouseEvent) => {
     if (!selected && onChange) {
@@ -197,22 +48,29 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps:
   };
 
   return (
-    <TabRoot
+    <ButtonBase
       ref={ref}
       aria-selected={selected}
-      className={clsx(classes.root, className)}
+      className={clsx(
+        'es-tab',
+        (!!startIcon || !!endIcon) && label && 'es-tab--label-icon',
+        fullWidth && 'es-tab--full-width',
+        rounded && 'es-tab--rounded',
+        selected && 'es-tab--selected',
+        disabled && 'es-tab--disabled',
+        className
+      )}
       disabled={disabled}
-      ownerState={ownerState}
       role="tab"
       tabIndex={selected ? 0 : -1}
       onClick={handleClick}
       onFocus={handleFocus}
       {...props}
     >
-      {!!startIcon && <TabStartIcon className={classes.startIcon}>{startIcon}</TabStartIcon>}
-      <TabLabelWrapper>{label}</TabLabelWrapper>
-      {!!endIcon && <TabEndIcon className={classes.endIcon}>{endIcon}</TabEndIcon>}
+      {!!startIcon && <span className="es-tab__start-icon">{startIcon}</span>}
+      <span className="es-tab__label-wrapper">{label}</span>
+      {!!endIcon && <span className="es-tab__end-icon">{endIcon}</span>}
       {indicator}
-    </TabRoot>
+    </ButtonBase>
   );
 });

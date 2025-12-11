@@ -2,8 +2,6 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
-
 import { Sidebar } from './Sidebar';
 import { SidebarDivider } from './SidebarDivider';
 import { SidebarItem } from './SidebarItem';
@@ -79,27 +77,30 @@ export const Demo: Story = {
     const [width, setWidth] = useState(280);
 
     return (
-      <Box sx={{ height: '100vh', m: '-16px', display: 'flex', gap: '20px', overflow: 'auto' }}>
+      <div style={{ height: '100vh', margin: '-16px', display: 'flex', gap: '20px', overflow: 'auto' }}>
         <Sidebar
           color={color}
           maxWidth={maxWidth}
           minWidth={minWidth}
           open={isOpen}
-          sx={{ position: 'sticky', top: '0' }}
+          style={{ position: 'sticky', top: '0' }}
           width={width}
           onWidthChangeCommit={(value: number) => setWidth(value)}
         >
           <ListItem
             component="div"
-            sx={{ padding: '16px 16px 15px', overflow: 'hidden', flexShrink: '0', height: 'auto !important' }}
+            style={{ padding: '16px 16px 15px 0px', overflow: 'hidden', flexShrink: '0', height: 'auto' }}
           >
             <ListItemIcon>
-              <IconAtLineW500 sx={{ color: color === 'primary' ? 'monoB.A800' : 'monoA.A500' }} />
+              <IconAtLineW500
+                style={{ color: color === 'primary' ? 'var(--es-mono-b-a800)' : 'var(--es-mono-a-a500)' }}
+              />
             </ListItemIcon>
             <ListItemText
               primary="CRM"
-              primaryTypographyProps={{ variant: 'h6', color: color === 'primary' ? 'monoB.A800' : 'monoA.A900' }}
-              sx={{ my: '0', display: `${isOpen ? 'block' : 'none'}` }}
+              // primaryTypographyProps={{ variant: 'h6', color: color === 'primary' ? 'monoB.A800' : 'monoA.A900' }}
+              primaryTypographyClassName="h6"
+              style={{ marginTop: '0', marginBottom: '0', display: `${isOpen ? 'block' : 'none'}` }}
             />
           </ListItem>
 
@@ -258,7 +259,7 @@ export const Demo: Story = {
             nam dolor minus eius, eveniet aut deserunt maxime distinctio facilis. Excepturi, quia dolorem.
           </p>
         </div>
-      </Box>
+      </div>
     );
   },
 };

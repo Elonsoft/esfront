@@ -1,46 +1,22 @@
 import { AutocompleteFieldProps } from './AutocompleteField.types';
 
 import clsx from 'clsx';
-import { getAutocompleteFieldUtilityClass } from './AutocompleteField.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import { textFieldClasses } from '@mui/material/TextField';
 import { unstable_useId as useId } from '@mui/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled } from '../../hooks';
 import { Autocomplete } from '../Autocomplete';
-
-type AutocompleteFieldOwnerState = {
-  classes?: AutocompleteFieldProps<unknown>['classes'];
-};
-
-const useUtilityClasses = (ownerState: AutocompleteFieldOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-  };
-
-  return composeClasses(slots, getAutocompleteFieldUtilityClass, classes);
-};
-
-const AutocompleteFieldRoot = styled(FormControl, {
-  name: 'ESAutocompleteField',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})({});
 
 /** The autocomplete is used to choose an item from a collection of options. */
 export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
   const {
     className,
-    classes: inClasses,
-    sx,
+    style,
 
     autoFocus,
     disabled,
@@ -75,9 +51,6 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
   const inputLabelId = label && id ? `${id}-label` : undefined;
   const { onClose, onOpen, ...restInputProps } = InputProps || {};
 
-  const ownerState = { classes: inClasses };
-  const classes = useUtilityClasses(ownerState);
-
   const handleChange = (e: T & T[]) => {
     if (onChange) {
       onChange(e);
@@ -90,15 +63,15 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
   };
 
   return (
-    <AutocompleteFieldRoot
-      className={clsx(classes.root, textFieldClasses.root, className)}
+    <FormControl
+      className={clsx('es-autocomplete-field', textFieldClasses.root, className)}
       disabled={disabled}
       error={error}
       focused={open || undefined}
       fullWidth={fullWidth}
       required={required}
       size={size}
-      sx={sx}
+      style={style}
     >
       {label !== null && label !== '' && (
         <InputLabel htmlFor={id} id={inputLabelId} required={required} {...InputLabelProps}>
@@ -132,6 +105,6 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
           {helperText}
         </FormHelperText>
       )}
-    </AutocompleteFieldRoot>
+    </FormControl>
   );
 };

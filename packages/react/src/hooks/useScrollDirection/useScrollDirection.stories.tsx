@@ -1,8 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Typography } from '@mui/material';
-import Box from '@mui/material/Box';
-
 import { useScrollDirection } from './useScrollDirection';
 
 type Args = { throttleTimeout?: number };
@@ -35,10 +32,10 @@ export const Demo: Story = {
 
     return (
       <>
-        <Typography sx={{ position: 'fixed' }} variant="overline">
+        <div className="overline" style={{ position: 'fixed' }}>
           {scrollDirection ? scrollDirection : `the page hasn't been scrolled`}
-        </Typography>
-        <Box sx={{ height: '150vh' }} />
+        </div>
+        <div style={{ height: '150vh' }} />
       </>
     );
   },

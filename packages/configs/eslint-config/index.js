@@ -73,6 +73,7 @@ export default tseslint.config(
                 'Autocomplete',
                 'Avatar',
                 'AvatarGroup',
+                'Box',
                 'Breadcrumbs',
                 'Button',
                 'ButtonBase',
@@ -106,6 +107,7 @@ export default tseslint.config(
                 'TableRow',
                 'TableText',
                 'Tooltip',
+                'Typography',
               ],
             },
             {
@@ -130,6 +132,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/AvatarGroup'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Box'],
               importNames: ['default'],
             },
             {
@@ -266,6 +272,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/Tooltip'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Typography'],
               importNames: ['default'],
             },
           ],

@@ -3,60 +3,21 @@ import React from 'react';
 import { PasswordFieldProps } from './PasswordField.types';
 
 import clsx from 'clsx';
-import { getPasswordFieldUtilityClass } from './PasswordField.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
-import { inputBaseClasses } from '@mui/material/InputBase';
-import { outlinedInputClasses } from '@mui/material/OutlinedInput';
-import TextField, { textFieldClasses } from '@mui/material/TextField';
-import composeClasses from '@mui/utils/composeClasses';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
 
 import { useControlled } from '../../hooks';
 import { IconEyeLineW500, IconEyeOffLineW500 } from '../../icons';
-import { Button, buttonClasses } from '../Button';
+import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
-
-type PasswordFieldOwnerState = {
-  classes?: PasswordFieldProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: PasswordFieldOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-  };
-
-  return composeClasses(slots, getPasswordFieldUtilityClass, classes);
-};
-
-const PasswordFieldRoot = styled(TextField, {
-  name: 'ESPasswordField',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
-  [`.${outlinedInputClasses.root}.${inputBaseClasses.adornedEnd}`]: {
-    paddingRight: '0px',
-  },
-  [`&.${textFieldClasses.root}`]: {
-    [`& .${inputAdornmentClasses.positionEnd}`]: {
-      paddingRight: '7px',
-
-      [`& .${buttonClasses.root}`]: {
-        '--icon': theme.vars.palette.monoA.A500,
-      },
-    },
-  },
-}));
 
 /**
  * The PasswordField allows users to input passwords with ability to toggle password visibility.
  */
 export const PasswordField = (inProps: PasswordFieldProps) => {
   const {
-    classes: inClasses,
     className,
 
     visible: inVisible,
@@ -96,11 +57,8 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
     e.preventDefault();
   };
 
-  const ownerState = { classes: inClasses };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <PasswordFieldRoot
+    <TextField
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -125,8 +83,7 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
         ),
         ...InputProps,
       }}
-      className={clsx(classes.root, className)}
-      classes={inClasses}
+      className={clsx('es-password-field', className)}
       type={visible ? 'text' : 'password'}
       {...props}
     />

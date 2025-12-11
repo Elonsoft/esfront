@@ -10,13 +10,6 @@ const meta: Meta<typeof TextFieldGroup> = {
   parameters: {
     references: ['TextFieldGroup'],
   },
-  argTypes: {
-    breakpoint: {
-      control: {
-        type: 'number',
-      },
-    },
-  },
 };
 
 export default meta;

@@ -3,101 +3,23 @@ import { FC, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from
 import { AutocompleteProps } from './Autocomplete.types';
 
 import clsx from 'clsx';
-import { autocompleteClasses, getAutocompleteUtilityClass } from './Autocomplete.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useFormControl } from '@mui/material/FormControl';
 import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { useForkRef } from '@mui/material/utils';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useControlled, usePreviousValue } from '../../hooks';
-import { AutocompleteMenu as ESAutocompleteMenu, AutocompleteMenuImperativeActions } from '../AutocompleteMenu';
+import { AutocompleteMenu, AutocompleteMenuImperativeActions } from '../AutocompleteMenu';
 
-type AutocompleteOwnerState = {
-  classes?: AutocompleteProps<unknown>['classes'];
-  inlineSearch?: boolean;
-};
-
-const useUtilityClasses = (ownerState: AutocompleteOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    input: ['input'],
-    menu: ['menu'],
-    displayValue: ['displayValue'],
-    inputPlaceholder: ['inputPlaceholder'],
-  };
-
-  return composeClasses(slots, getAutocompleteUtilityClass, classes);
-};
-
-const AutocompleteRoot = styled(OutlinedInput, {
-  name: 'ESAutocomplete',
-  slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root,
-})(() => ({
-  cursor: 'pointer',
-
-  [`& .${autocompleteClasses.input}`]: {
-    width: '100%',
-    outline: 'none',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    display: 'inline-flex',
-    alignItems: 'center',
-  },
-})) as unknown as FC<OutlinedInputProps & { children?: ReactNode }>;
-
-const AutocompleteMenu = styled(ESAutocompleteMenu, {
-  name: 'ESAutocomplete',
-  slot: 'Menu',
-  overridesResolver: (_props, styles) => styles.menu,
-})<{ ownerState: AutocompleteOwnerState }>(() => ({
-  pointerEvents: 'auto',
-
-  variants: [
-    {
-      props: {
-        inlineSearch: true,
-      },
-      style: {
-        pointerEvents: 'none',
-      },
-    },
-  ],
-})) as unknown as typeof ESAutocompleteMenu;
-
-const AutocompleteInputDisplayValue = styled('div', {
-  name: 'ESAutocomplete',
-  slot: 'DisplayValue',
-  overridesResolver: (_props, styles) => styles.displayValue,
-})(() => ({
-  minWidth: 0,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-}));
-
-const AutocompleteInputPlaceholder = styled('div', {
-  name: 'ESAutocomplete',
-  slot: 'InputPlaceholder',
-  overridesResolver: (_props, styles) => styles.inputPlaceholder,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A400,
-  minWidth: 0,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-}));
+const AutocompleteRoot = OutlinedInput as unknown as FC<OutlinedInputProps & { children?: ReactNode }>;
 
 /** The autocomplete is used to choose an item from a collection of options. */
 export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const {
     className,
-    classes: inClasses,
-    sx,
+    style,
 
     id,
     inputRef: inInputRef,
@@ -282,16 +204,13 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
 
   const notched = formControl.filled || formControl.focused || !!startAdornment || !!open;
 
-  const ownerState = { classes: inClasses, inlineSearch };
-  const classes = useUtilityClasses(ownerState);
-
   return (
     <>
       <AutocompleteRoot
         ref={ref}
         autoComplete={inlineSearch ? 'off' : undefined}
         autoFocus={inlineSearch ? formControl.focused : false}
-        className={clsx(className, classes.root)}
+        className={clsx(className, 'es-autocomplete')}
         disabled={formControl.disabled}
         endAdornment={endAdornment}
         error={formControl.error}
@@ -301,17 +220,11 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         inputProps={{
           children:
             inlineSearch && formControl.focused ? null : valueDisplay ? (
-              <AutocompleteInputDisplayValue className={classes.displayValue}>
-                {valueDisplay}
-              </AutocompleteInputDisplayValue>
+              <div className="es-autocomplete__display-value">{valueDisplay}</div>
             ) : (
-              (notched || !label) && (
-                <AutocompleteInputPlaceholder className={classes.inputPlaceholder}>
-                  {placeholder}
-                </AutocompleteInputPlaceholder>
-              )
+              (notched || !label) && <div className="es-autocomplete__input-placeholder">{placeholder}</div>
             ),
-          className: classes.input,
+          className: 'es-autocomplete__input',
           role: inlineSearch ? 'input' : 'button',
           tabIndex: formControl.disabled ? -1 : 0,
           onBlur: (e) => {
@@ -331,7 +244,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         placeholder={inlineSearch ? placeholder : undefined}
         required={formControl.required}
         startAdornment={startAdornment}
-        sx={sx}
+        style={style}
         value={inlineSearch && formControl.focused ? SearchProps?.value : null}
         onChange={
           inlineSearch && formControl.focused
@@ -360,7 +273,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         SearchProps={SearchProps}
         actions={actions}
         anchorEl={ref.current}
-        className={classes.menu}
+        className={clsx('es-autocomplete__menu', inlineSearch && 'es-autocomplete__menu--inline-search')}
         disableAutoFocus={!!inlineSearch}
         disableScrollLock={!!inlineSearch}
         footer={footer}
@@ -379,7 +292,6 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         onClose={onMenuClose}
         onLoadMore={onLoadMore}
         {...MenuProps}
-        {...{ ownerState }}
       />
     </>
   );

@@ -57,23 +57,19 @@ export const Demo: Story = {
         {isChipDeleted || (
           <Chip
             component="button"
-            startIcon={<Avatar src="./avatar/6.png" sx={{ width: size, height: size }} variant="circle" />}
+            startIcon={<Avatar size={size} src="./avatar/6.png" variant="circle" />}
             onDelete={() => setChipDeleted(true)}
             {...args}
           >
             {locale === 'ru' ? 'Петров Петр Петрович' : 'John Smith'}
           </Chip>
         )}
-        <Chip
-          component="button"
-          startIcon={<Avatar src="./avatar/6.png" sx={{ width: size, height: size }} variant="circle" />}
-          {...args}
-        >
+        <Chip component="button" startIcon={<Avatar size={size} src="./avatar/6.png" variant="circle" />} {...args}>
           {locale === 'ru' ? 'Сергеев Сергей Сергеевич' : 'John Wick'}
         </Chip>
         <Chip
           component="button"
-          startIcon={<IconAtLineW500 size="24px" sx={(theme) => ({ color: theme.vars.palette.monoA.A500 })} />}
+          startIcon={<IconAtLineW500 size="24px" style={{ color: 'var(--es-mono-a-a500)' }} />}
           {...args}
         >
           {locale === 'ru' ? 'Алексеев Алексей Алексеевич' : 'John Lennon'}

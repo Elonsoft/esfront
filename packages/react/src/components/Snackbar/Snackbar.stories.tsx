@@ -73,7 +73,7 @@ export const Demo: Story = {
         {...args}
         action={
           <>
-            <Button color="monoB" size={args.size === 's' ? '300' : '400'} variant="text">
+            <Button color="mono-b" size={args.size === 's' ? '300' : '400'} variant="text">
               {getCancelText(context)}
             </Button>
             <SnackbarClose
@@ -96,7 +96,7 @@ export const ProgressOnContainer: Story = {
         {...args}
         action={
           <>
-            <Button color="monoB" size={args.size === 's' ? '300' : '400'} variant="text">
+            <Button color="mono-b" size={args.size === 's' ? '300' : '400'} variant="text">
               {getCancelText(context)}
             </Button>
             <SnackbarClose

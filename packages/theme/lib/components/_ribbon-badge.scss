@@ -1,0 +1,169 @@
+@mixin include() {
+  .es-ribbon-badge {
+    align-items: center;
+    box-sizing: border-box;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+    padding: 2px 6px;
+    pointer-events: none;
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      border-style: solid;
+      border-width: 2.5px 4px;
+      bottom: -5px;
+      content: '';
+      display: block;
+      height: 5px;
+      position: absolute;
+      width: 8px;
+    }
+
+    &.es-ribbon-badge {
+      & .es-touch-ripple {
+        display: none;
+      }
+    }
+
+    &.es-ribbon-badge--clickable {
+      cursor: pointer;
+      pointer-events: auto;
+
+      &.es-ribbon-badge {
+        & .es-touch-ripple {
+          display: block;
+        }
+      }
+    }
+
+    &.es-ribbon-badge--color--success {
+      --background: var(--es-success-300);
+      --text: var(--es-mono-b-500);
+      --hovered: var(--es-mono-a-a50);
+      --pressed: var(--es-mono-a-a150);
+      --focused: var(--es-mono-a-a200);
+
+      &::after {
+        border-color: var(--es-success-400);
+      }
+    }
+
+    &.es-ribbon-badge--color--mono-b-500 {
+      --background: var(--es-mono-b-500);
+      --text: var(--es-mono-a-500);
+      --hovered: var(--es-mono-a-a50);
+      --focused: var(--es-mono-a-a200);
+      --pressed: var(--es-mono-a-a150);
+
+      &::after {
+        border-color: var(--es-mono-b-a800);
+      }
+    }
+
+    &.es-ribbon-badge--color--primary {
+      --background: var(--es-primary-300);
+      --text: var(--es-mono-b-500);
+      --hovered: var(--es-mono-a-a50);
+      --focused: var(--es-mono-a-a200);
+      --pressed: var(--es-mono-a-a150);
+
+      &::after {
+        border-color: var(--es-primary-400);
+      }
+    }
+
+    &.es-ribbon-badge--color--secondary {
+      --background: var(--es-secondary-300);
+      --text: var(--es-black-500);
+      --hovered: var(--es-mono-a-a50);
+      --focused: var(--es-mono-a-a200);
+      --pressed: var(--es-mono-a-a150);
+
+      &::after {
+        border-color: var(--es-secondary-400);
+      }
+    }
+
+    &.es-ribbon-badge--color--warning {
+      --background: var(--es-warning-300);
+      --text: var(--es-mono-b-500);
+      --hovered: var(--es-mono-a-a50);
+      --focused: var(--es-mono-a-a200);
+      --pressed: var(--es-mono-a-a150);
+
+      &::after {
+        border-color: var(--es-warning-400);
+      }
+    }
+
+    &.es-ribbon-badge--color--error {
+      --background: var(--es-error-300);
+      --text: var(--es-mono-b-500);
+      --hovered: var(--es-mono-a-a50);
+      --focused: var(--es-mono-a-a200);
+      --pressed: var(--es-mono-a-a150);
+
+      &::after {
+        border-color: var(--es-error-400);
+      }
+    }
+
+    &.es-ribbon-badge--color--info {
+      --background: var(--es-info-300);
+      --text: var(--es-mono-b-500);
+      --hovered: var(--es-mono-a-a50);
+      --focused: var(--es-mono-a-a200);
+      --pressed: var(--es-mono-a-a150);
+
+      &::after {
+        border-color: var(--es-info-400);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--es-mono-a-500);
+      outline-offset: -2px;
+
+      &::after {
+        border-color: var(--es-mono-a-500);
+      }
+    }
+
+    &.es-ribbon-badge--orientation--left {
+      border-radius: 4px 4px 4px 0;
+
+      &.es-ribbon-badge {
+        & .es-touch-ripple {
+          border-radius: 4px 4px 4px 0;
+          display: block;
+        }
+      }
+
+      &::after {
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        left: 0;
+      }
+    }
+
+    &.es-ribbon-badge--orientation--right {
+      border-radius: 4px 4px 0;
+
+      &.es-ribbon-badge {
+        & .es-touch-ripple {
+          border-radius: 4px 4px 0;
+          display: block;
+        }
+      }
+
+      &::after {
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        right: 0;
+      }
+    }
+  }
+}

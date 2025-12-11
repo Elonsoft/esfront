@@ -1,8 +1,4 @@
-import { ReactNode } from 'react';
-
-import { PropertyClasses } from './Property.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties, ReactNode } from 'react';
 
 import { OverridableStringUnion } from '@mui/types';
 
@@ -13,12 +9,10 @@ export interface PropertyProps {
   name?: ReactNode;
   value?: ReactNode;
 
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<PropertyClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /**
    * Size of the component.

@@ -15,6 +15,28 @@ You can use any of the components as demonstrated in the documentation. Please r
 
 Here's a quick example to get you started:
 
+```scss
+@use '@esfront/theme/settings';
+
+@use '@esfront/theme/components';
+@use '@esfront/theme/utilities';
+
+@use '@esfront/theme/presets/colors' as colorsPresets;
+@use '@esfront/theme/presets/shadows' as shadowsPresets;
+
+@include settings.include;
+
+@include components.include;
+@include utilities.include;
+
+html {
+  @include colorsPresets.common;
+
+  @include colorsPresets.light;
+  @include shadowsPresets.light;
+}
+```
+
 ```tsx
 import {} from '@esfront/react/lib/overrides';
 
@@ -22,6 +44,8 @@ import ReactDOM from 'react-dom';
 
 import { ThemeProvider, EmptyState } from '@esfront/react';
 import Button from '@mui/material/Button';
+
+import './theme.scss';
 
 const Application = () => {
   return (

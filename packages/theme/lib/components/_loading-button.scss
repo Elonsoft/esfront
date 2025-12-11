@@ -1,0 +1,23 @@
+@mixin include() {
+  .es-loading-button {
+    &--loading {
+      &.es-button.es-button-base--disabled {
+        --icon: transparent;
+        --text: transparent;
+      }
+    }
+
+    &__loading-indicator {
+      display: flex;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      visibility: visible;
+
+      & .ESSpinnerFadingDots-root {
+        color: var(--es-mono-a-a500);
+      }
+    }
+  }
+}

@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 
-import { SortingMenuClasses } from './SortingMenu.classes';
-
 import { PopoverProps } from '@mui/material';
 
 export type SortingMenuDirection = 'asc' | 'desc';
@@ -26,9 +24,6 @@ export interface SortingMenuOptionMap extends SortingMenuOption {
 }
 
 export type SortingMenuProps = {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<SortingMenuClasses>;
-
   /** The sorting options. */
   options?: SortingMenuOption[];
 

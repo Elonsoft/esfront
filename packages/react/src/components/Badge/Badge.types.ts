@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { BadgeClasses } from './Badge.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
 import { OverridableStringUnion } from '@mui/types';
@@ -13,10 +10,6 @@ export interface BadgePropsColorOverrides {}
 
 export interface BadgeTypeMap<P = {}, D extends React.ElementType = 'button'> {
   props: P & {
-    /** Override or extend the styles applied to the component. */
-    classes?: Partial<BadgeClasses>;
-    /** The system prop that allows defining system overrides as well as additional CSS styles. */
-    sx?: SxProps<Theme>;
     /** Class applied to the root element. */
     className?: string;
 
@@ -31,7 +24,7 @@ export interface BadgeTypeMap<P = {}, D extends React.ElementType = 'button'> {
      * @default monoA
      */
     color?: OverridableStringUnion<
-      'success' | 'warning' | 'error' | 'info' | 'secondary' | 'primary' | 'monoA' | 'monoB' | 'monoB500',
+      'success' | 'warning' | 'error' | 'info' | 'secondary' | 'primary' | 'mono-a' | 'mono-b' | 'mono-b-500',
       BadgePropsColorOverrides
     >;
 

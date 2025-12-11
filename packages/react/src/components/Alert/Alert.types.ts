@@ -1,17 +1,13 @@
-import { ReactNode } from 'react';
-
-import { AlertClasses } from './Alert.classes';
-
-import { Breakpoint, SxProps, Theme } from '@mui/material';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface AlertProps {
   children?: ReactNode;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<AlertClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+
   /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
+
   /** The icon displayed before the message. */
   icon?: ReactNode;
 
@@ -30,12 +26,12 @@ export interface AlertProps {
   /**
    * The color of the component. Unless provided, the value is taken from the `severity` prop.
    */
-  color?: 'success' | 'warning' | 'error' | 'info' | 'monoA';
+  color?: 'success' | 'warning' | 'error' | 'info' | 'mono-a';
 
-  /** The screen width at which the flex items are ordered along the cross axis.
-   * @default 'tabletXS'
+  /**
+   * The breakpoint at which the flex items are ordered along the cross axis.
    */
-  breakpoint?: number | Breakpoint;
+  breakpoint?: string;
 
   /**
    * The action to display. It renders after the message, at the end of the alert.

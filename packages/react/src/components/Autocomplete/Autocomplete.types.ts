@@ -1,18 +1,14 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
-import { AutocompleteClasses } from './Autocomplete.classes';
-
-import { OutlinedInputProps, SxProps, TextFieldProps, Theme } from '@mui/material';
+import { OutlinedInputProps, TextFieldProps } from '@mui/material';
 
 import { AutocompleteMenuProps } from '../AutocompleteMenu';
 
 export type AutocompleteProps<T> = {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<AutocompleteClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /** If true, it is possible to enter a search string in the input itself. */
   inlineSearch?: boolean;

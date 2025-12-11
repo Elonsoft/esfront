@@ -25,7 +25,7 @@ export const Demo: Story = {
 
     return (
       <TabBar
-        sx={{
+        style={{
           position: 'fixed',
           bottom: 0,
           left: 0,
@@ -49,7 +49,7 @@ export const WithLabels: Story = {
 
     return (
       <TabBar
-        sx={{
+        style={{
           position: 'fixed',
           bottom: 0,
           left: 0,

@@ -4,30 +4,16 @@ import type {} from '@mui/material/themeCssVarsAugmentation';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   BreakpointOverrides,
-  Palette,
-  PaletteColor,
-  PaletteColorOptions,
   styled,
-  Theme,
-  ThemeOptions,
-  TypographyVariants,
-  TypographyVariantsOptions,
   Components,
-  Mixins,
   ComponentNameToClassKey,
-  ComponentsOverrides,
-  ThemeVars,
-  CommonColors,
   ComponentsProps,
   ComponentsPropsList,
 } from '@mui/material/styles';
-import { Color, ComponentsVariants } from '@mui/material';
-import { ButtonPropsSizeOverrides } from '@mui/material/Button';
 import { FormControlPropsSizeOverrides } from '@mui/material/FormControl';
 import { IconButtonPropsSizeOverrides } from '@mui/material/IconButton';
 import { InputBasePropsSizeOverrides } from '@mui/material/InputBase';
 import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
-import { TypographyPropsVariantOverrides } from '@mui/material/Typography';
 
 import {
   AlertActionsClassKey,
@@ -179,7 +165,7 @@ import {
 } from './components/Gallery';
 import { ImageZoomClassKey, ImageZoomProps } from './components/ImageZoom';
 import { InformationIconClassKey, InformationIconProps } from './components/InformationIcon';
-import { KbdClassKey, KbdProps } from './components/Kbd';
+import { KbdProps } from './components/Kbd';
 import { LinearProgressClassKey, LinearProgressProps } from './components/LinearProgress';
 import { LinkClassKey, LinkProps } from './components/Link';
 import { LoadingButtonClassKey, LoadingButtonProps } from './components/LoadingButton';
@@ -313,64 +299,9 @@ import {
 import { TextFieldGroupClassKey, TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleClassKey, TouchRippleProps } from './components/TouchRipple';
 import { TooltipClassKey, TooltipProps } from './components/Tooltip';
-import { buttonMixin, listItemMixin } from './theming/mixins';
 import { AvatarProps } from './components';
 import { BadgeProps, BadgeClassKey } from './components/Badge';
 import { BadgePlacementControlProps, BadgePlacementControlClassKey } from './components/BadgePlacementControl';
-
-export interface ISurfacePalette {
-  background: string;
-  background2: string;
-  50: string;
-  100: string;
-  200: string;
-  300: string;
-  400: string;
-  500: string;
-  600: string;
-  700: string;
-  800: string;
-  900: string;
-  on: string;
-}
-
-export interface IShadowPalette {
-  50: string;
-  100: string;
-  200: string;
-  300: string;
-  400: string;
-  500: string;
-  600: string;
-  700: string;
-  800: string;
-  900: string;
-}
-
-export interface IOverlayPalette {
-  900: string;
-  700: string;
-  300: string;
-  200: string;
-  100: string;
-}
-
-interface IAlphaPalette {
-  A25: number;
-  A50: number;
-  A75: number;
-  A100: number;
-  A150: number;
-  A200: number;
-  A300: number;
-  A400: number;
-  A500: number;
-  A550: number;
-  A600: number;
-  A700: number;
-  A800: number;
-  A900: number;
-}
 
 declare module '@mui/material/styles/props' {
   interface ComponentsPropsList {
@@ -614,7 +545,6 @@ declare module '@mui/material/styles/overrides' {
     ESGalleryThumbnailsItem: GalleryThumbnailsItemClassKey;
     ESImageZoom: ImageZoomClassKey;
     ESInformationIcon: InformationIconClassKey;
-    ESKbd: KbdClassKey;
     ESLinearProgress: LinearProgressClassKey;
     ESLink: LinkClassKey;
     ESLoadingButton: LoadingButtonClassKey;
@@ -697,334 +627,249 @@ declare module '@mui/material/styles/components' {
   interface Components {
     ESAlert?: {
       defaultProps?: ComponentsProps['ESAlert'];
-      styleOverrides?: ComponentsOverrides['ESAlert'];
     };
     ESAvatar?: {
       defaultProps?: ComponentsProps['ESAvatar'];
-      styleOverrides?: ComponentsOverrides['ESAvatar'];
     };
     ESAvatarGroup?: {
       defaultProps?: ComponentsProps['ESAvatarGroup'];
-      styleOverrides?: ComponentsOverrides['ESAvatarGroup'];
     };
     ESAlertClose?: {
       defaultProps?: ComponentsProps['ESAlertClose'];
-      styleOverrides?: ComponentsOverrides['ESAlertClose'];
     };
     ESAlertActions?: {
       defaultProps?: ComponentsProps['ESAlertActions'];
-      styleOverrides?: ComponentsOverrides['ESAlertActions'];
     };
     ESAlertTitle?: {
       defaultProps?: ComponentsProps['ESAlertTitle'];
-      styleOverrides?: ComponentsOverrides['ESAlertTitle'];
     };
     ESAppBar?: {
       defaultProps?: ComponentsProps['ESAppBar'];
-      styleOverrides?: ComponentsOverrides['ESAppBar'];
     };
     ESAudioPlayer?: {
       defaultProps?: ComponentsProps['ESAudioPlayer'];
-      styleOverrides?: ComponentsOverrides['ESAudioPlayer'];
     };
     ESAutocomplete?: {
       defaultProps?: ComponentsProps['ESAutocomplete'];
-      styleOverrides?: ComponentsOverrides['ESAutocomplete'];
     };
     ESAutocompleteField?: {
       defaultProps?: ComponentsProps['ESAutocompleteField'];
-      styleOverrides?: ComponentsOverrides['ESAutocompleteField'];
     };
     ESAutocompleteMenu?: {
       defaultProps?: ComponentsProps['ESAutocompleteMenu'];
-      styleOverrides?: ComponentsOverrides['ESAutocompleteMenu'];
     };
     ESAutocompleteMenuFooter?: {
       defaultProps?: ComponentsProps['ESAutocompleteMenuFooter'];
-      styleOverrides?: ComponentsOverrides['ESAutocompleteMenuFooter'];
     };
     ESAutocompleteMenuHeader?: {
       defaultProps?: ComponentsProps['ESAutocompleteMenuHeader'];
-      styleOverrides?: ComponentsOverrides['ESAutocompleteMenuHeader'];
     };
     ESBanner?: {
       defaultProps?: ComponentsProps['ESBanner'];
-      styleOverrides?: ComponentsOverrides['ESBanner'];
     };
     ESBannerActions?: {
       defaultProps?: ComponentsProps['ESBannerActions'];
-      styleOverrides?: ComponentsOverrides['ESBannerActions'];
     };
     ESBannerTitle?: {
       defaultProps?: ComponentsProps['ESBannerTitle'];
-      styleOverrides?: ComponentsOverrides['ESBannerTitle'];
     };
     ESBadge?: {
       defaultProps?: ComponentsProps['ESBadge'];
-      styleOverrides?: ComponentsOverrides['ESBadge'];
     };
     ESBadgePlacementControl?: {
       defaultProps?: ComponentsProps['ESBadgePlacementControl'];
-      styleOverrides?: ComponentsOverrides['ESBadgePlacementControl'];
     };
     ESBreadcrumbs?: {
       defaultProps?: ComponentsProps['ESBreadcrumbs'];
-      styleOverrides?: ComponentsOverrides['ESBreadcrumbs'];
     };
     ESBreadcrumb?: {
       defaultProps?: ComponentsProps['ESBreadcrumb'];
-      styleOverrides?: ComponentsOverrides['ESBreadcrumb'];
     };
     ESBottomSheet?: {
       defaultProps?: ComponentsProps['ESBottomSheet'];
-      styleOverrides?: ComponentsOverrides['ESBottomSheet'];
     };
     ESButton?: {
       defaultProps?: ComponentsProps['ESButton'];
-      styleOverrides?: ComponentsOverrides['ESButton'];
     };
     ESButtonBase?: {
       defaultProps?: ComponentsProps['ESButtonBase'];
-      styleOverrides?: ComponentsOverrides['ESButtonBase'];
     };
     ESCalendar?: {
       defaultProps?: ComponentsProps['ESCalendar'];
-      styleOverrides?: ComponentsOverrides['ESCalendar'];
     };
     ESCalendarButton?: {
       defaultProps?: ComponentsProps['ESCalendarButton'];
-      styleOverrides?: ComponentsOverrides['ESCalendarButton'];
     };
     ESCalendarHead?: {
       defaultProps?: ComponentsProps['ESCalendarHead'];
-      styleOverrides?: ComponentsOverrides['ESCalendarHead'];
     };
     ESCheckbox?: {
       defaultProps?: ComponentsProps['ESCheckbox'];
-      styleOverrides?: ComponentsOverrides['ESCheckbox'];
     };
     ESCheckboxIcon?: {
       defaultProps?: ComponentsProps['ESCheckboxIcon'];
-      styleOverrides?: ComponentsOverrides['ESCheckboxIcon'];
     };
     ESChip?: {
       defaultProps?: ComponentsProps['ESChip'];
-      styleOverrides?: ComponentsOverrides['ESChip'];
     };
     ESChips?: {
       defaultProps?: ComponentsProps['ESChips'];
-      styleOverrides?: ComponentsOverrides['ESChips'];
     };
     ESDialog?: {
       defaultProps?: ComponentsProps['ESDialog'];
-      styleOverrides?: ComponentsOverrides['ESDialog'];
     };
     ESDialogActions?: {
       defaultProps?: ComponentsProps['ESDialogActions'];
-      styleOverrides?: ComponentsOverrides['ESDialogActions'];
     };
     ESDialogArrow?: {
       defaultProps?: ComponentsProps['ESDialogArrow'];
-      styleOverrides?: ComponentsOverrides['ESDialogArrow'];
     };
     ESDialogClose?: {
       defaultProps?: ComponentsProps['ESDialogClose'];
-      styleOverrides?: ComponentsOverrides['ESDialogClose'];
     };
     ESDialogContent?: {
       defaultProps?: ComponentsProps['ESDialogContent'];
-      styleOverrides?: ComponentsOverrides['ESDialogContent'];
     };
     ESDialogTitle?: {
       defaultProps?: ComponentsProps['ESDialogTitle'];
-      styleOverrides?: ComponentsOverrides['ESDialogTitle'];
     };
     ESDivider?: {
       defaultProps?: ComponentsProps['ESDivider'];
-      styleOverrides?: ComponentsOverrides['ESDivider'];
     };
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];
-      styleOverrides?: ComponentsOverrides['ESEmptyState'];
     };
     ESEmptyStateCompact?: {
       defaultProps?: ComponentsProps['ESEmptyStateCompact'];
-      styleOverrides?: ComponentsOverrides['ESEmptyStateCompact'];
     };
     ESErrorPage?: {
       defaultProps?: ComponentsProps['ESErrorPage'];
-      styleOverrides?: ComponentsOverrides['ESErrorPage'];
     };
     ESErrorPageActions?: {
       defaultProps?: ComponentsProps['ESErrorPageActions'];
-      styleOverrides?: ComponentsOverrides['ESErrorPageActions'];
     };
     ESErrorPageDescription?: {
       defaultProps?: ComponentsProps['ESErrorPageDescription'];
-      styleOverrides?: ComponentsOverrides['ESErrorPageDescription'];
     };
     ESErrorPageFooter?: {
       defaultProps?: ComponentsProps['ESErrorPageFooter'];
-      styleOverrides?: ComponentsOverrides['ESErrorPageFooter'];
     };
     ESErrorPageHeading?: {
       defaultProps?: ComponentsProps['ESErrorPageHeading'];
-      styleOverrides?: ComponentsOverrides['ESErrorPageHeading'];
     };
     ESErrorPageLogo?: {
       defaultProps?: ComponentsProps['ESErrorPageLogo'];
-      styleOverrides?: ComponentsOverrides['ESErrorPageLogo'];
     };
     ESErrorPageStatus?: {
       defaultProps?: ComponentsProps['ESErrorPageStatus'];
-      styleOverrides?: ComponentsOverrides['ESErrorPageStatus'];
     };
     ESGallery?: {
       defaultProps?: ComponentsProps['ESGallery'];
-      styleOverrides?: ComponentsOverrides['ESGallery'];
     };
     ESGalleryActions?: {
       defaultProps?: ComponentsProps['ESGalleryActions'];
-      styleOverrides?: ComponentsOverrides['ESGalleryActions'];
     };
     ESGalleryActionsButtonGroup?: {
       defaultProps?: ComponentsProps['ESGalleryActionsButtonGroup'];
-      styleOverrides?: ComponentsOverrides['ESGalleryActionsButtonGroup'];
     };
     ESGalleryDescription?: {
       defaultProps?: ComponentsProps['ESGalleryDescription'];
-      styleOverrides?: ComponentsOverrides['ESGalleryDescription'];
     };
     ESGalleryMeta?: {
       defaultProps?: ComponentsProps['ESGalleryMeta'];
-      styleOverrides?: ComponentsOverrides['ESGalleryMeta'];
     };
     ESGalleryMetaSeparator?: {
       defaultProps?: ComponentsProps['ESGalleryMetaSeparator'];
-      styleOverrides?: ComponentsOverrides['ESGalleryMetaSeparator'];
     };
     ESGalleryMetaText?: {
       defaultProps?: ComponentsProps['ESGalleryMetaText'];
-      styleOverrides?: ComponentsOverrides['ESGalleryMetaText'];
     };
     ESGalleryPanel?: {
       defaultProps?: ComponentsProps['ESGalleryPanel'];
-      styleOverrides?: ComponentsOverrides['ESGalleryPanel'];
     };
     ESGallerySwiper?: {
       defaultProps?: ComponentsProps['ESGallerySwiper'];
-      styleOverrides?: ComponentsOverrides['ESGallerySwiper'];
     };
     ESGallerySwiperImage?: {
       defaultProps?: ComponentsProps['ESGallerySwiperImage'];
-      styleOverrides?: ComponentsOverrides['ESGallerySwiperImage'];
     };
     ESGalleryThumbnails?: {
       defaultProps?: ComponentsProps['ESGalleryThumbnails'];
-      styleOverrides?: ComponentsOverrides['ESGalleryThumbnails'];
     };
     ESGalleryThumbnailsImage?: {
       defaultProps?: ComponentsProps['ESGalleryThumbnailsImage'];
-      styleOverrides?: ComponentsOverrides['ESGalleryThumbnailsImage'];
     };
     ESGalleryThumbnailsItem?: {
       defaultProps?: ComponentsProps['ESGalleryThumbnailsItem'];
-      styleOverrides?: ComponentsOverrides['ESGalleryThumbnailsItem'];
     };
     ESImageZoom?: {
       defaultProps?: ComponentsProps['ESImageZoom'];
-      styleOverrides?: ComponentsOverrides['ESImageZoom'];
     };
     ESInformationIcon?: {
       defaultProps?: ComponentsProps['ESInformationIcon'];
-      styleOverrides?: ComponentsOverrides['ESInformationIcon'];
     };
     ESSwiper?: {
       defaultProps?: ComponentsProps['ESSwiper'];
-      styleOverrides?: ComponentsOverrides['ESSwiper'];
     };
     ESSwitch?: {
       defaultProps?: ComponentsProps['ESSwitch'];
-      styleOverrides?: ComponentsOverrides['ESSwitch'];
     };
     ESSwitchBase?: {
       defaultProps?: ComponentsProps['ESSwitchBase'];
-      styleOverrides?: ComponentsOverrides['ESSwitchBase'];
     };
     ESSwiperButton?: {
       defaultProps?: ComponentsProps['ESSwiperButton'];
-      styleOverrides?: ComponentsOverrides['ESSwiperButton'];
     };
     ESSwiperPagination?: {
       defaultProps?: ComponentsProps['ESSwiperPagination'];
-      styleOverrides?: ComponentsOverrides['ESSwiperPagination'];
     };
     ESDropzone?: {
       defaultProps?: ComponentsProps['ESDropzone'];
-      styleOverrides?: ComponentsOverrides['ESDropzone'];
     };
     ESFileIcon?: {
       defaultProps?: ComponentsProps['ESFileIcon'];
-      styleOverrides?: ComponentsOverrides['ESFileIcon'];
     };
     ESFileIconBadge?: {
       defaultProps?: ComponentsProps['ESFileIconBadge'];
-      styleOverrides?: ComponentsOverrides['ESFileIconBadge'];
     };
     ESFileIconText?: {
       defaultProps?: ComponentsProps['ESFileIconText'];
-      styleOverrides?: ComponentsOverrides['ESFileIconText'];
     };
     ESFileInfo?: {
       defaultProps?: ComponentsProps['ESFileInfo'];
-      styleOverrides?: ComponentsOverrides['ESFileInfo'];
     };
     ESFileInfoContent?: {
       defaultProps?: ComponentsProps['ESFileInfoContent'];
-      styleOverrides?: ComponentsOverrides['ESFileInfoContent'];
     };
     ESFileInfoMeta?: {
       defaultProps?: ComponentsProps['ESFileInfoMeta'];
-      styleOverrides?: ComponentsOverrides['ESFileInfoMeta'];
     };
     ESFileInfoMetaSeparator?: {
       defaultProps?: ComponentsProps['ESFileInfoMetaSeparator'];
-      styleOverrides?: ComponentsOverrides['ESFileInfoMetaSeparator'];
     };
     ESFileInfoName?: {
       defaultProps?: ComponentsProps['ESFileInfoName'];
-      styleOverrides?: ComponentsOverrides['ESFileInfoName'];
     };
     ESFilters?: {
       defaultProps?: ComponentsProps['ESFilters'];
-      styleOverrides?: ComponentsOverrides['ESFilters'];
     };
     ESFiltersContent?: {
       defaultProps?: ComponentsProps['ESFiltersContent'];
-      styleOverrides?: ComponentsOverrides['ESFiltersContent'];
     };
     ESFiltersFilter?: {
       defaultProps?: ComponentsProps['ESFiltersFilter'];
-      styleOverrides?: ComponentsOverrides['ESFiltersFilter'];
     };
     ESFiltersFooter?: {
       defaultProps?: ComponentsProps['ESFiltersFooter'];
-      styleOverrides?: ComponentsOverrides['ESFiltersFooter'];
     };
     ESFiltersFormControlLabel?: {
       defaultProps?: ComponentsProps['ESFiltersFormControlLabel'];
-      styleOverrides?: ComponentsOverrides['ESFiltersFormControlLabel'];
     };
     ESFiltersFormGroup?: {
       defaultProps?: ComponentsProps['ESFiltersFormGroup'];
-      styleOverrides?: ComponentsOverrides['ESFiltersFormGroup'];
     };
     ESFiltersHeader?: {
       defaultProps?: ComponentsProps['ESFiltersHeader'];
-      styleOverrides?: ComponentsOverrides['ESFiltersHeader'];
-    };
-    ESFlag?: {
-      styleOverrides?: ComponentsOverrides['ESFlag'];
     };
     ESFormatDate?: {
       defaultProps?: ComponentsProps['ESFormatDate'];
@@ -1034,415 +879,224 @@ declare module '@mui/material/styles/components' {
     };
     ESFormControlLabel?: {
       defaultProps?: ComponentsProps['ESFormControlLabel'];
-      styleOverrides?: ComponentsOverrides['ESFormControlLabel'];
     };
     ESKbd?: {
       defaultProps?: ComponentsProps['ESKbd'];
     };
     ESLinearProgress?: {
       defaultProps?: ComponentsProps['ESLinearProgress'];
-      styleOverrides?: ComponentsOverrides['ESLinearProgress'];
     };
     ESLink?: {
       defaultProps?: ComponentsProps['ESLink'];
-      styleOverrides?: ComponentsOverrides['ESLink'];
     };
     ESLoadingButton?: {
       defaultProps?: ComponentsProps['ESLoadingButton'];
-      styleOverrides?: ComponentsOverrides['ESLoadingButton'];
     };
     ESMenuItem?: {
       defaultProps?: ComponentsProps['ESMenuItem'];
-      styleOverrides?: ComponentsOverrides['ESMenuItem'];
     };
     ESMenuGroup?: {
       defaultProps?: ComponentsProps['ESMenuGroup'];
-      styleOverrides?: ComponentsOverrides['ESMenuGroup'];
     };
     ESMadeBy?: {
       defaultProps?: ComponentsProps['ESMadeBy'];
-      styleOverrides?: ComponentsOverrides['ESMadeBy'];
     };
     ESPageHGroup?: {
       defaultProps?: ComponentsProps['ESPageHGroup'];
-      styleOverrides?: ComponentsOverrides['ESPageHGroup'];
     };
     ESPageHGroupActions?: {
       defaultProps?: ComponentsProps['ESPageHGroupActions'];
-      styleOverrides?: ComponentsOverrides['ESPageHGroupActions'];
     };
     ESPageHGroupBreadcrumbs?: {
       defaultProps?: ComponentsProps['ESPageHGroupBreadcrumbs'];
-      styleOverrides?: ComponentsOverrides['ESPageHGroupBreadcrumbs'];
     };
     ESPageHGroupHeading?: {
       defaultProps?: ComponentsProps['ESPageHGroupHeading'];
-      styleOverrides?: ComponentsOverrides['ESPageHGroupHeading'];
     };
     ESPageHGroupMain?: {
       defaultProps?: ComponentsProps['ESPageHGroupMain'];
-      styleOverrides?: ComponentsOverrides['ESPageHGroupMain'];
     };
     ESPageHGroupStatus?: {
       defaultProps?: ComponentsProps['ESPageHGroupStatus'];
-      styleOverrides?: ComponentsOverrides['ESPageHGroupStatus'];
     };
     ESPagination?: {
       defaultProps?: ComponentsProps['ESPagination'];
-      styleOverrides?: ComponentsOverrides['ESPagination'];
     };
     ESPaginationPages?: {
       defaultProps?: ComponentsProps['ESPaginationPages'];
-      styleOverrides?: ComponentsOverrides['ESPaginationPages'];
     };
     ESPaginationRange?: {
       defaultProps?: ComponentsProps['ESPaginationRange'];
-      styleOverrides?: ComponentsOverrides['ESPaginationRange'];
     };
     ESPasswordField?: {
       defaultProps?: ComponentsProps['ESPasswordField'];
-      styleOverrides?: ComponentsOverrides['ESPasswordField'];
     };
     ESPhoneField?: {
       defaultProps?: ComponentsProps['ESPhoneField'];
-      styleOverrides?: ComponentsOverrides['ESPhoneField'];
     };
     ESProperty?: {
       defaultProps?: ComponentsProps['ESProperty'];
-      styleOverrides?: ComponentsOverrides['ESProperty'];
     };
     ESPrice?: {
       defaultProps?: ComponentsProps['ESPrice'];
-      styleOverrides?: ComponentsOverrides['ESPrice'];
     };
     ESRadio?: {
       defaultProps?: ComponentsProps['ESRadio'];
-      styleOverrides?: ComponentsOverrides['ESRadio'];
     };
     ESRadioIcon?: {
       defaultProps?: ComponentsProps['ESRadioIcon'];
-      styleOverrides?: ComponentsOverrides['ESRadioIcon'];
     };
     ESRadioGroup?: {
       defaultProps?: ComponentsProps['ESRadioGroup'];
-      styleOverrides?: ComponentsOverrides['ESRadioGroup'];
     };
     ESRibbonBadge?: {
       defaultProps?: ComponentsProps['ESRibbonBadge'];
-      styleOverrides?: ComponentsOverrides['ESRibbonBadge'];
     };
     ESSearch?: {
       defaultProps?: ComponentsProps['ESSearch'];
-      styleOverrides?: ComponentsOverrides['ESSearch'];
     };
     ESSFS?: {
       defaultProps?: ComponentsProps['ESSFS'];
-      styleOverrides?: ComponentsOverrides['ESSFS'];
     };
     ESSFSButton?: {
       defaultProps?: ComponentsProps['ESSFSButton'];
-      styleOverrides?: ComponentsOverrides['ESSFSButton'];
     };
     ESSFSChips?: {
       defaultProps?: ComponentsProps['ESSFSChips'];
-      styleOverrides?: ComponentsOverrides['ESSFSChips'];
     };
     ESSFSSearch?: {
       defaultProps?: ComponentsProps['ESSFSSearch'];
-      styleOverrides?: ComponentsOverrides['ESSFSSearch'];
     };
     ESSFSSorting?: {
       defaultProps?: ComponentsProps['ESSFSSorting'];
-      styleOverrides?: ComponentsOverrides['ESSFSSorting'];
     };
     ESSFSFilters?: {
       defaultProps?: ComponentsProps['ESSFSFilters'];
-      styleOverrides?: ComponentsOverrides['ESSFSFilters'];
     };
     ESSFSFiltersGroup?: {
       defaultProps?: ComponentsProps['ESSFSFiltersGroup'];
-      styleOverrides?: ComponentsOverrides['ESSFSFiltersGroup'];
     };
     ESSFSRow?: {
       defaultProps?: ComponentsProps['ESSFSRow'];
-      styleOverrides?: ComponentsOverrides['ESSFSRow'];
     };
     ESSpinnerDashRing?: {
       defaultProps?: ComponentsProps['ESSpinnerDashRing'];
-      styleOverrides?: ComponentsOverrides['ESSpinnerDashRing'];
     };
     ESSpinnerFadingBars?: {
       defaultProps?: ComponentsProps['ESSpinnerFadingBars'];
-      styleOverrides?: ComponentsOverrides['ESSpinnerFadingBars'];
     };
     ESSpinnerFadingDots?: {
       defaultProps?: ComponentsProps['ESSpinnerFadingDots'];
-      styleOverrides?: ComponentsOverrides['ESSpinnerFadingDots'];
     };
     ESSpinnerFadingDoubleRing?: {
       defaultProps?: ComponentsProps['ESSpinnerFadingDoubleRing'];
-      styleOverrides?: ComponentsOverrides['ESSpinnerFadingDoubleRing'];
     };
     ESSpinnerFadingRing?: {
       defaultProps?: ComponentsProps['ESSpinnerFadingRing'];
-      styleOverrides?: ComponentsOverrides['ESSpinnerFadingRing'];
     };
     ESSpinnerRing?: {
       defaultProps?: ComponentsProps['ESSpinnerRing'];
-      styleOverrides?: ComponentsOverrides['ESSpinnerRing'];
     };
     ESSnackbar?: {
       defaultProps?: ComponentsProps['ESSnackbar'];
-      styleOverrides?: ComponentsOverrides['ESSnackbar'];
     };
     ESSnackbarClose?: {
       defaultProps?: ComponentsProps['ESSnackbarClose'];
-      styleOverrides?: ComponentsOverrides['ESSnackbarClose'];
     };
     ESSortingMenu?: {
       defaultProps?: ComponentsProps['ESSortingMenu'];
-      styleOverrides?: ComponentsOverrides['ESSortingMenu'];
     };
     ESSvgIcon?: {
       defaultProps?: ComponentsProps['ESSvgIcon'];
-      styleOverrides?: ComponentsOverrides['ESSvgIcon'];
     };
     ESTabBar?: {
       defaultProps?: ComponentsProps['ESTabBar'];
-      styleOverrides?: ComponentsOverrides['ESTabBar'];
     };
     ESTabBarItem?: {
       defaultProps?: ComponentsProps['ESTabBarItem'];
-      styleOverrides?: ComponentsOverrides['ESTabBarItem'];
     };
     ESTable?: {
       defaultProps?: ComponentsProps['ESTable'];
-      styleOverrides?: ComponentsOverrides['ESTable'];
     };
     ESTableActions?: {
       defaultProps?: ComponentsProps['ESTableActions'];
-      styleOverrides?: ComponentsOverrides['ESTableActions'];
     };
     ESTableItem?: {
       defaultProps?: ComponentsProps['ESTableItem'];
-      styleOverrides?: ComponentsOverrides['ESTableItem'];
     };
     ESTableBody?: {
       defaultProps?: ComponentsProps['ESTableBody'];
-      styleOverrides?: ComponentsOverrides['ESTableBody'];
     };
     ESTableCell?: {
       defaultProps?: ComponentsProps['ESTableCell'];
-      styleOverrides?: ComponentsOverrides['ESTableCell'];
     };
     ESTableFoot?: {
       defaultProps?: ComponentsProps['ESTableFoot'];
-      styleOverrides?: ComponentsOverrides['ESTableFoot'];
     };
     ESTableHead?: {
       defaultProps?: ComponentsProps['ESTableHead'];
-      styleOverrides?: ComponentsOverrides['ESTableHead'];
     };
     ESTableRow?: {
       defaultProps?: ComponentsProps['ESTableRow'];
-      styleOverrides?: ComponentsOverrides['ESTableRow'];
     };
     ESTableScrollbar?: {
       defaultProps?: ComponentsProps['ESTableScrollbar'];
-      styleOverrides?: ComponentsOverrides['ESTableScrollbar'];
     };
     ESTableText?: {
       defaultProps?: ComponentsProps['ESTableText'];
-      styleOverrides?: ComponentsOverrides['ESTableText'];
     };
     ESTag?: {
       defaultProps?: ComponentsProps['ESTag'];
-      styleOverrides: ComponentsOverrides['ESTag'];
     };
     ESTabs?: {
       defaultProps?: ComponentsProps['ESTabs'];
-      styleOverrides?: ComponentsOverrides['ESTabs'];
     };
     ESTab?: {
       defaultProps?: ComponentsProps['ESTab'];
-      styleOverrides?: ComponentsOverrides['ESTab'];
     };
     ESTabScrollButton?: {
       defaultProps?: ComponentsProps['ESTabScrollButton'];
-      styleOverrides?: ComponentsOverrides['ESTabScrollButton'];
     };
     ESTouchRipple?: {
       defaultProps?: ComponentsProps['ESTouchRipple'];
-      styleOverrides?: ComponentsOverrides['ESTouchRipple'];
     };
     ESSidebar?: {
       defaultProps?: ComponentsProps['ESSidebar'];
-      styleOverrides?: ComponentsOverrides['ESSidebar'];
     };
     ESSidebarMenu?: {
       defaultProps?: ComponentsProps['ESSidebarMenu'];
-      styleOverrides?: ComponentsOverrides['ESSidebarMenu'];
     };
     ESSidebarItem?: {
       defaultProps?: ComponentsProps['ESSidebarItem'];
-      styleOverrides?: ComponentsOverrides['ESSidebarItem'];
     };
     ESSidebarToggle?: {
       defaultProps?: ComponentsProps['ESSidebarToggle'];
-      styleOverrides?: ComponentsOverrides['ESSidebarToggle'];
     };
     ESSidebarDivider?: {
       defaultProps?: ComponentsProps['ESSidebarDivider'];
-      styleOverrides?: ComponentsOverrides['ESSidebarDivider'];
     };
     ESSidebarSpace?: {
       defaultProps?: ComponentsProps['ESSidebarSpacer'];
-      styleOverrides?: ComponentsOverrides['ESSidebarSpacer'];
     };
     ESSidebarScrollable?: {
       defaultProps?: ComponentsProps['ESSidebarScrollable'];
-      styleOverrides?: ComponentsOverrides['ESSidebarScrollable'];
     };
     ESSidenav?: {
       defaultProps?: ComponentsProps['ESSidenav'];
-      styleOverrides?: ComponentsOverrides['ESSidenav'];
     };
     ESSidenavItem?: {
       defaultProps?: ComponentsProps['ESSidenavItem'];
-      styleOverrides?: ComponentsOverrides['ESSidenavItem'];
     };
     ESTextFieldGroup?: {
       defaultProps?: ComponentsProps['ESTextFieldGroup'];
-      styleOverrides?: ComponentsOverrides['ESTextFieldGroup'];
     };
     ESTooltip?: {
       defaultProps?: ComponentsProps['ESTooltip'];
-      styleOverrides?: ComponentsOverrides['ESTooltip'];
     };
-  }
-}
-
-declare module '@mui/material' {
-  interface Color {
-    50: string;
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-    800: string;
-    900: string;
-    A25: string;
-    A50: string;
-    A75: string;
-    A100: string;
-    A150: string;
-    A200: string;
-    A300: string;
-    A400: string;
-    A500: string;
-    A550: string;
-    A600: string;
-    A700: string;
-    A800: string;
-    A900: string;
   }
 }
 
 declare module '@mui/material/styles' {
-  interface PaletteColor {
-    50: string;
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-    800: string;
-    900: string;
-    A25: string;
-    A50: string;
-    A75: string;
-    A100: string;
-    A150: string;
-    A200: string;
-    A300: string;
-    A400: string;
-    A500: string;
-    A550: string;
-    A600: string;
-    A700: string;
-    A800: string;
-    A900: string;
-  }
-
-  interface Palette {
-    monoA: PaletteColor;
-    monoB: PaletteColor;
-    white: PaletteColor;
-    black: PaletteColor;
-    red: PaletteColor;
-    brown: PaletteColor;
-    orange: PaletteColor;
-    yellow: PaletteColor;
-    lime: PaletteColor;
-    green: PaletteColor;
-    marine: PaletteColor;
-    sky: PaletteColor;
-    lightblue: PaletteColor;
-    blue: PaletteColor;
-    violet: PaletteColor;
-    purple: PaletteColor;
-    pink: PaletteColor;
-    teal: PaletteColor;
-    grey: Color;
-    greyscale: PaletteColor;
-    surface: ISurfacePalette;
-    shadow: {
-      down: IShadowPalette;
-      up: IShadowPalette;
-      left: IShadowPalette;
-      right: IShadowPalette;
-    };
-    overlay: IOverlayPalette;
-    alpha: IAlphaPalette;
-  }
-
-  interface PaletteOptions {
-    monoA?: PaletteColorOptions;
-    monoB?: PaletteColorOptions;
-    white?: PaletteColorOptions;
-    black?: PaletteColorOptions;
-    red?: PaletteColorOptions;
-    brown?: PaletteColorOptions;
-    orange?: PaletteColorOptions;
-    yellow?: PaletteColorOptions;
-    lime?: PaletteColorOptions;
-    green?: PaletteColorOptions;
-    marine?: PaletteColorOptions;
-    sky?: PaletteColorOptions;
-    lightblue?: PaletteColorOptions;
-    blue?: PaletteColorOptions;
-    violet?: PaletteColorOptions;
-    purple?: PaletteColorOptions;
-    pink?: PaletteColorOptions;
-    teal?: PaletteColorOptions;
-    grey?: Partial<Color>;
-    greyscale?: PaletteColorOptions;
-    surface?: Partial<ISurfacePalette>;
-    shadow?: Partial<{
-      down: IShadowPalette;
-      up: IShadowPalette;
-      left: IShadowPalette;
-      right: IShadowPalette;
-    }>;
-    overlay?: IOverlayPalette;
-    alpha?: IAlphaPalette;
-  }
-
   interface BreakpointOverrides {
     xs: false;
     sm: false;
@@ -1451,161 +1105,6 @@ declare module '@mui/material/styles' {
     xl: false;
     tabletXS: true;
     desktopXS: true;
-  }
-
-  interface TypographyVariants {
-    body400: React.CSSProperties;
-    body400Medium: React.CSSProperties;
-    body400Bold: React.CSSProperties;
-    body300: React.CSSProperties;
-    body300Medium: React.CSSProperties;
-    body300Bold: React.CSSProperties;
-    body200: React.CSSProperties;
-    body200Medium: React.CSSProperties;
-    body200Bold: React.CSSProperties;
-    body100: React.CSSProperties;
-    body100Medium: React.CSSProperties;
-    body100Bold: React.CSSProperties;
-    captionMedium: React.CSSProperties;
-    captionBold: React.CSSProperties;
-    mini200: React.CSSProperties;
-    mini100: React.CSSProperties;
-    mini100Bold: React.CSSProperties;
-    micro: React.CSSProperties;
-  }
-
-  interface TypographyVariantsOptions {
-    body400?: React.CSSProperties;
-    body400Medium?: React.CSSProperties;
-    body400Bold?: React.CSSProperties;
-    body300?: React.CSSProperties;
-    body300Medium?: React.CSSProperties;
-    body300Bold?: React.CSSProperties;
-    body200?: React.CSSProperties;
-    body200Medium?: React.CSSProperties;
-    body200Bold?: React.CSSProperties;
-    body100?: React.CSSProperties;
-    body100Medium?: React.CSSProperties;
-    body100Bold?: React.CSSProperties;
-    captionMedium?: React.CSSProperties;
-    captionBold?: React.CSSProperties;
-    mini200?: React.CSSProperties;
-    mini100?: React.CSSProperties;
-    mini100Bold?: React.CSSProperties;
-    micro?: React.CSSProperties;
-  }
-}
-
-declare module '@mui/material/styles' {
-  interface ThemeOptions {
-    scrollbars?: {
-      /** @deprecated Use normalMonoA instead. */
-      normal?: React.CSSProperties;
-      normalMonoA?: React.CSSProperties;
-      normalMonoB?: React.CSSProperties;
-      normalWhite?: React.CSSProperties;
-      normalBlack?: React.CSSProperties;
-      /** @deprecated Use thinMonoA instead. */
-      thin?: React.CSSProperties;
-      thinMonoA?: React.CSSProperties;
-      thinMonoB?: React.CSSProperties;
-      thinWhite?: React.CSSProperties;
-      thinBlack?: React.CSSProperties;
-      /** @deprecated Use overlayMonoA instead. */
-      overlay?: React.CSSProperties;
-      overlayMonoA?: React.CSSProperties;
-      overlayMonoB?: React.CSSProperties;
-      overlayWhite?: React.CSSProperties;
-      overlayBlack?: React.CSSProperties;
-    };
-  }
-
-  interface Theme {
-    scrollbars: {
-      /** @deprecated Use normalMonoA instead. */
-      normal: React.CSSProperties;
-      normalMonoA: React.CSSProperties;
-      normalMonoB: React.CSSProperties;
-      normalWhite: React.CSSProperties;
-      normalBlack: React.CSSProperties;
-      /** @deprecated Use thinMonoA instead. */
-      thin: React.CSSProperties;
-      thinMonoA: React.CSSProperties;
-      thinMonoB: React.CSSProperties;
-      thinWhite: React.CSSProperties;
-      thinBlack: React.CSSProperties;
-      /** @deprecated Use overlayMonoA instead. */
-      overlay: React.CSSProperties;
-      overlayMonoA: React.CSSProperties;
-      overlayMonoB: React.CSSProperties;
-      overlayWhite: React.CSSProperties;
-      overlayBlack: React.CSSProperties;
-    };
-  }
-}
-
-declare module '@mui/material/styles/createMixins' {
-  interface Mixins {
-    /** @deprecated Use our own `Button` implementation instead. */
-    button: typeof buttonMixin;
-    /** @deprecated Use our own `Button` implementation instead. */
-    listItem: typeof listItemMixin;
-  }
-}
-
-declare module '@mui/material/styles/createPalette' {
-  interface CommonColors {
-    link: string;
-    linkVisited: string;
-    switch: string;
-  }
-}
-
-declare module '@mui/material/Button' {
-  interface ButtonPropsSizeOverrides {
-    '16': true;
-    '20': true;
-    '24': true;
-    '32': true;
-    '40': true;
-    '48': true;
-    '56': true;
-    small: false;
-    medium: false;
-    large: false;
-  }
-
-  interface ButtonPropsColorOverrides {
-    tertiary: true;
-    success: true;
-    monoA: true;
-    monoB: true;
-    white: true;
-    black: true;
-  }
-}
-
-declare module '@mui/material/IconButton' {
-  interface IconButtonPropsSizeOverrides {
-    '16': true;
-    '20': true;
-    '24': true;
-    '32': true;
-    '40': true;
-    '48': true;
-    '56': true;
-    small: false;
-    medium: false;
-    large: false;
-  }
-
-  interface IconButtonPropsColorOverrides {
-    tertiary: true;
-    monoA: true;
-    monoB: true;
-    white: true;
-    black: true;
-    default: false;
   }
 }
 
@@ -1636,30 +1135,5 @@ declare module '@mui/material/TextField' {
     '40': true;
     '32': true;
     small: false;
-  }
-}
-
-declare module '@mui/material/Typography' {
-  interface TypographyPropsVariantOverrides {
-    body400: true;
-    body400Medium: true;
-    body400Bold: true;
-    body300: true;
-    body300Medium: true;
-    body300Bold: true;
-    body200: true;
-    body200Medium: true;
-    body200Bold: true;
-    body100: true;
-    body100Medium: true;
-    body100Bold: true;
-    captionMedium: true;
-    captionBold: true;
-    mini200: true;
-    mini100: true;
-    mini100Bold: true;
-    micro: true;
-    body1: false;
-    body2: false;
   }
 }

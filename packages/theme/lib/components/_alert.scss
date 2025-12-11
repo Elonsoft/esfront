@@ -1,0 +1,95 @@
+@use '../settings';
+
+@mixin include() {
+  .es-alert {
+    border-radius: 4px;
+    display: flex;
+    padding: 7px 15px;
+
+    &--with-actions {
+      padding: 11px 15px;
+    }
+
+    &--standard--success {
+      background-color: var(--es-success-a100);
+      border: 1px solid var(--es-success-a200);
+      color: var(--es-success-300);
+    }
+
+    &--standard--warning {
+      background-color: var(--es-warning-a100);
+      border: 1px solid var(--es-warning-a200);
+      color: var(--es-warning-300);
+    }
+
+    &--standard--error {
+      background-color: var(--es-error-a100);
+      border: 1px solid var(--es-error-a200);
+      color: var(--es-error-300);
+    }
+
+    &--standard--info {
+      background-color: var(--es-info-a100);
+      border: 1px solid var(--es-info-a200);
+      color: var(--es-info-300);
+    }
+
+    &--standard--mono-a {
+      background-color: var(--es-mono-a-a50);
+      border: 1px solid var(--es-mono-a-a100);
+      color: var(--es-mono-a-a500);
+    }
+
+    &__icon {
+      margin-right: 8px;
+      padding-top: 8px;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 6px;
+
+      @each $name, $value in settings.$breakpoints {
+        &--breakpoint--#{$name} {
+          @media (width >= #{$value}px) {
+            flex-direction: row;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+
+    &__message {
+      color: var(--es-mono-a-a900);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: auto;
+      min-height: 40px;
+      /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated */
+      word-break: break-word;
+    }
+
+    &__action {
+      margin: 8px 0 0 8px;
+
+      &--with-actions {
+        margin: 4px 0 0 8px;
+      }
+    }
+  }
+
+  .es-alert-actions {
+    padding: 4px 0;
+  }
+
+  .es-alert-close {
+    --icon: var(--es-mono-a-a500);
+  }
+
+  .es-alert-title {
+    color: var(--es-mono-a-a900);
+  }
+}

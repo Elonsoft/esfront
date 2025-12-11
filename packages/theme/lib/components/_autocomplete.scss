@@ -1,0 +1,35 @@
+@mixin include() {
+  .es-autocomplete {
+    cursor: pointer;
+
+    & .es-autocomplete__input {
+      align-items: center;
+      display: inline-flex;
+      outline: none;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    &__menu {
+      pointer-events: auto;
+
+      &--inline-search {
+        pointer-events: none;
+      }
+    }
+
+    &__display-value {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__input-placeholder {
+      color: var(--es-mono-a-a400);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

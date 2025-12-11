@@ -1,0 +1,29 @@
+@mixin include() {
+  .es-made-by {
+    align-items: center;
+    color: var(--es-mono-a-a500);
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: center;
+    width: fit-content;
+
+    & .es-svg-icon {
+      color: var(--es-mono-a-a300);
+    }
+
+    &.es-made-by--clickable {
+      cursor: pointer;
+
+      &:hover .es-svg-icon,
+      &:focus-visible .es-svg-icon {
+        color: var(--es-mono-a-a400);
+      }
+
+      &:active .es-svg-icon {
+        color: var(--es-mono-a-a500);
+      }
+    }
+  }
+}

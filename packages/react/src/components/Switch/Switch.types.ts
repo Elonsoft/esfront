@@ -1,13 +1,10 @@
-import { SwitchClasses } from './Switch.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties } from 'react';
 
 export interface SwitchProps {
+  /** Class applied to the root element. */
   className?: string;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<SwitchClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
   /** If `true`, the component is checked. */
   checked?: boolean;
   /** Callback fired when the state is changed. */

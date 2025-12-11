@@ -121,7 +121,7 @@ export const Demo: Story = {
         {...args}
         getCountryFlag={getDemoCountryFlag}
         label={getLabel(context)}
-        sx={{ width: '250px', marginTop: '30px' }}
+        style={{ width: '250px', marginTop: '30px' }}
       />
     );
   },
@@ -138,7 +138,7 @@ export const Controlled: Story = {
             {...args}
             getCountryFlag={getDemoCountryFlag}
             label={getLabel(context)}
-            sx={{ width: '250px', marginTop: '30px' }}
+            style={{ width: '250px', marginTop: '30px' }}
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
@@ -163,7 +163,7 @@ export const DefaultCountry: Story = {
         defaultCountry="RU"
         getCountryFlag={getDemoCountryFlag}
         label={getLabel(context)}
-        sx={{ width: '250px', marginTop: '30px' }}
+        style={{ width: '250px', marginTop: '30px' }}
       />
     );
   },
@@ -177,7 +177,7 @@ export const AllCountries: Story = {
         countries={COUNTRIES}
         getCountryFlag={getCountryFlag}
         label={getLabel(context)}
-        sx={{ width: '250px', marginTop: '30px' }}
+        style={{ width: '250px', marginTop: '30px' }}
       />
     );
   },

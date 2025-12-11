@@ -1,16 +1,11 @@
-import { ReactNode } from 'react';
-
-import { AlertCloseClasses } from './AlertClose.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface AlertCloseProps {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<AlertCloseClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
   /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
+
   /** Text for the button aria-label. */
   label?: string;
   /** Icon for the button. */

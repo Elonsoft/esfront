@@ -1,11 +1,8 @@
 import { GalleryActionsProps } from './GalleryActions.types';
 
 import clsx from 'clsx';
-import { getGalleryActionsUtilityClass } from './GalleryActions.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseLineW600, IconImageMultipleLineW500 } from '../../../icons';
 import { useGalleryContext } from '../Gallery.context';
@@ -13,68 +10,15 @@ import { GalleryActionsButton } from '../GalleryActionsButton';
 import { useGalleryThumbnailsContext } from '../GalleryThumbnails';
 import { GalleryTooltip } from '../GalleryTooltip';
 
-type GalleryActionsOwnerState = {
-  classes?: GalleryActionsProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: GalleryActionsOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    buttonClose: ['buttonClose'],
-    buttonThumbnails: ['buttonThumbnails'],
-  };
-
-  return composeClasses(slots, getGalleryActionsUtilityClass, classes);
-};
-
-const GalleryActionsRoot = styled('div', {
-  name: 'ESGalleryActions',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: '8px',
-  gap: '8px',
-  marginLeft: 'auto',
-
-  [theme.breakpoints.up('tabletXS')]: {
-    padding: '16px',
-  },
-}));
-
-const GalleryActionsButtonClose = styled(GalleryActionsButton, {
-  name: 'ESGalleryActions',
-  slot: 'ButtonClose',
-  overridesResolver: (props, styles) => styles.buttonClose,
-})(({ theme }) => ({
-  [theme.breakpoints.down('tabletXS')]: {
-    display: 'none',
-  },
-}));
-
-const GalleryActionsButtonThumbnails = styled(GalleryActionsButton, {
-  name: 'ESGalleryActions',
-  slot: 'ButtonThumbnails',
-  overridesResolver: (props, styles) => styles.buttonThumbnails,
-})(() => ({
-  '@media (min-height: 450px)': {
-    display: 'none',
-  },
-}));
-
 export const GalleryActions = (inProps: GalleryActionsProps) => {
   const {
     children,
     className,
-    sx,
+    style,
     labelClose,
     labelThumbnails,
     iconClose = <IconCloseLineW600 />,
     iconThumbnails = <IconImageMultipleLineW500 />,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryActions',
@@ -87,32 +31,29 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
     setVisible((isVisible) => !isVisible);
   };
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <GalleryActionsRoot className={clsx(classes.root, className)} sx={sx}>
-      <GalleryTooltip color="whiteA600" distance={8} title={labelThumbnails || ''}>
-        <GalleryActionsButtonThumbnails
+    <div className={clsx('es-gallery-actions', className)} style={style}>
+      <GalleryTooltip color="white-a600" distance={8} title={labelThumbnails || ''}>
+        <GalleryActionsButton
           aria-label={labelThumbnails}
-          className={clsx(classes.buttonThumbnails)}
+          className="es-gallery-actions__button-thumbnails"
           size="500"
           onClick={onThumbnailsClick}
         >
           {iconThumbnails}
-        </GalleryActionsButtonThumbnails>
+        </GalleryActionsButton>
       </GalleryTooltip>
       {children}
-      <GalleryTooltip color="whiteA600" distance={8} title={labelClose || ''}>
-        <GalleryActionsButtonClose
+      <GalleryTooltip color="white-a600" distance={8} title={labelClose || ''}>
+        <GalleryActionsButton
           aria-label={labelClose}
-          className={clsx(classes.buttonClose)}
+          className="es-gallery-actions__button-close"
           size="500"
           onClick={onClose}
         >
           {iconClose}
-        </GalleryActionsButtonClose>
+        </GalleryActionsButton>
       </GalleryTooltip>
-    </GalleryActionsRoot>
+    </div>
   );
 };

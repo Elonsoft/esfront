@@ -13,15 +13,15 @@ export const TableContainer = styled(MuiTableContainer)(() => ({
   fontFamily: 'monospace',
 }));
 
-export const TableRow = styled(MuiTableRow)(({ theme }) => ({
+export const TableRow = styled(MuiTableRow)(() => ({
   [`&.${tableRowClasses.head}`]: {
-    backgroundColor: theme.vars.palette.monoA.A50,
+    backgroundColor: 'var(--es-mono-a-a50)',
   },
   [`& .${tableCellClasses.root}`]: {
-    borderBottom: `1px solid ${theme.vars.palette.monoA.A150}`,
+    borderBottom: `1px solid var(--es-mono-a-a150)`,
   },
   [`&.${tableRowClasses.head}:last-child .${tableCellClasses.root}`]: {
-    borderBottom: `1px solid ${theme.vars.palette.monoA.A150}`,
+    borderBottom: `1px solid var(--es-mono-a-a150)`,
   },
 }));
 
@@ -29,12 +29,12 @@ export const TableDescription = styled('div')(() => ({
   marginBottom: 4,
 }));
 
-export const TableCode = styled('code')(({ theme }) => ({
+export const TableCode = styled('code')(() => ({
   display: 'inline-block',
   padding: '3px 5px',
   borderRadius: 3,
-  backgroundColor: theme.vars.palette.monoA.A50,
-  border: `1px solid ${theme.vars.palette.monoA.A150}`,
+  backgroundColor: 'var(--es-mono-a-a50)',
+  border: `1px solid var(--es-mono-a-a150)`,
 }));
 
 export const getDescription = (c) => {

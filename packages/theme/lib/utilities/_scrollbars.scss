@@ -1,0 +1,51 @@
+@use '../helpers/scrollbars';
+
+@mixin include() {
+  .scrollbar-normal-mono-a {
+    @include scrollbars.scrollbar-normal-mono-a;
+  }
+
+  .scrollbar-normal-mono-b {
+    @include scrollbars.scrollbar-normal-mono-b;
+  }
+
+  .scrollbar-normal-black {
+    @include scrollbars.scrollbar-normal-black;
+  }
+
+  .scrollbar-normal-white {
+    @include scrollbars.scrollbar-normal-white;
+  }
+
+  .scrollbar-thin-mono-a {
+    @include scrollbars.scrollbar-thin-mono-a;
+  }
+
+  .scrollbar-thin-mono-b {
+    @include scrollbars.scrollbar-thin-mono-b;
+  }
+
+  .scrollbar-thin-black {
+    @include scrollbars.scrollbar-thin-black;
+  }
+
+  .scrollbar-thin-white {
+    @include scrollbars.scrollbar-thin-white;
+  }
+
+  .scrollbar-overlay-mono-a {
+    @include scrollbars.scrollbar-overlay-mono-a;
+  }
+
+  .scrollbar-overlay-mono-b {
+    @include scrollbars.scrollbar-overlay-mono-b;
+  }
+
+  .scrollbar-overlay-black {
+    @include scrollbars.scrollbar-overlay-black;
+  }
+
+  .scrollbar-overlay-white {
+    @include scrollbars.scrollbar-overlay-white;
+  }
+}

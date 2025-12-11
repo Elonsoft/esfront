@@ -3,66 +3,21 @@ import { useRef, useState } from 'react';
 import { ChipsProps } from './Chips.types';
 
 import clsx from 'clsx';
-import { chipsClasses, getChipsUtilityClass } from './Chips.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useBoolean, useResizeObserver } from '../../hooks';
 import { IconChevronDownLineW200, IconChevronUpLineW200 } from '../../icons';
-import { Button, buttonClasses } from '../Button';
-import { buttonBaseClasses } from '../ButtonBase';
-import { chipClasses } from '../Chip';
-
-type ChipsOwnerState = {
-  classes?: ChipsProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: ChipsOwnerState) => {
-  const { classes } = ownerState;
-  const slots = {
-    root: ['root'],
-    button: ['button'],
-  };
-  return composeClasses(slots, getChipsUtilityClass, classes);
-};
-
-const ChipsRoot = styled('div', {
-  name: 'ESChips',
-  slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root,
-})({
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '8px',
-  position: 'relative',
-});
-
-const ChipsButton = styled(Button, {
-  name: 'ESChips',
-  slot: 'Button',
-  overridesResolver: (_props, styles) => styles.button,
-})(({ theme }) => ({
-  borderRadius: '1000px',
-
-  [`&.${buttonClasses.size300}.${buttonClasses.variantText}`]: {
-    '--text': theme.vars.palette.monoA.A550,
-    '--icon': theme.vars.palette.monoA.A500,
-
-    [`.${buttonBaseClasses.wrapper}`]: {
-      ...theme.typography.caption,
-    },
-  },
-}));
+import { Button } from '../Button';
 
 export const Chips = (inProps: ChipsProps) => {
   const {
-    className,
-    classes: inClasses,
     children,
-    sx,
+
+    className,
+    style,
+
     maxLines: inMaxLines = 1,
 
     labelHide,
@@ -70,8 +25,6 @@ export const Chips = (inProps: ChipsProps) => {
 
     iconHide = <IconChevronUpLineW200 container containerSize="16px" />,
     iconShow = <IconChevronDownLineW200 container containerSize="16px" />,
-
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESChips',
@@ -91,7 +44,7 @@ export const Chips = (inProps: ChipsProps) => {
       return;
     }
 
-    const chips = ref.current.querySelectorAll(`.${chipClasses.root}`);
+    const chips = ref.current.querySelectorAll('.es-chip');
     chips.forEach((chip) => (chip as HTMLElement).style.removeProperty('display'));
 
     if (!open) {
@@ -102,7 +55,7 @@ export const Chips = (inProps: ChipsProps) => {
       const containerWidth = ref.current.getBoundingClientRect().width;
       const columnGap = parseInt(window.getComputedStyle(ref.current).columnGap);
 
-      const button = ref.current.querySelector(`.${chipsClasses.button}`) as HTMLButtonElement;
+      const button = ref.current.querySelector('.es-chips__button') as HTMLButtonElement;
       const buttonWidth = button.getBoundingClientRect().width;
 
       setCollapsed(false);
@@ -131,9 +84,6 @@ export const Chips = (inProps: ChipsProps) => {
     }
   };
 
-  const ownerState = { classes: inClasses };
-  const classes = useUtilityClasses(ownerState);
-
   useResizeObserver(ref, onResize);
 
   useEnhancedEffect(() => {
@@ -141,20 +91,20 @@ export const Chips = (inProps: ChipsProps) => {
   }, [open]);
 
   return (
-    <ChipsRoot ref={ref} className={clsx(classes.root, className)} sx={sx} {...props}>
+    <div ref={ref} className={clsx('es-chips', className)} style={style}>
       {children}
-      <ChipsButton
+      <Button
         key={`${open}`}
         aria-label={open ? undefined : labelShow}
-        className={classes.button}
-        color="monoA"
+        className="es-chips__button"
+        color="mono-a"
         endIcon={open ? iconHide : iconShow}
         size="300"
         style={{ display: isCollapsed ? 'flex' : 'none' }}
         onClick={toggleOpen}
       >
         {open ? labelHide : `+${hiddenCount}`}
-      </ChipsButton>
-    </ChipsRoot>
+      </Button>
+    </div>
   );
 };

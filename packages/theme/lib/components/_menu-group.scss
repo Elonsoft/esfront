@@ -1,0 +1,28 @@
+@mixin include() {
+  .es-menu-group {
+    color: var(--es-mono-a-a600);
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    padding: 8px 16px;
+
+    &--padding-bottom--s {
+      padding-bottom: 0;
+    }
+
+    &--padding-bottom--m {
+      padding-bottom: 4px;
+    }
+
+    &--padding-bottom--l {
+      padding-bottom: 8px;
+    }
+
+    &--sticky {
+      background: var(--es-surface-400);
+      position: sticky;
+      top: -8px;
+      z-index: 2;
+    }
+  }
+}

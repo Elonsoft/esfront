@@ -1,8 +1,5 @@
 import { MutableRefObject, useEffect } from 'react';
 
-import { tableCellClasses } from './TableCell';
-import { tableRowClasses } from './TableRow';
-
 const getStickyOffset = (element: HTMLElement | null, pin: 'left' | 'right') => {
   let width = 0;
 
@@ -11,7 +8,7 @@ const getStickyOffset = (element: HTMLElement | null, pin: 'left' | 'right') => 
       let sibling = element.previousElementSibling;
 
       while (sibling) {
-        if (sibling.classList.contains(tableCellClasses.pinLeft)) {
+        if (sibling.classList.contains('es-table-cell--pin--left')) {
           width += sibling.clientWidth;
         }
 
@@ -23,7 +20,7 @@ const getStickyOffset = (element: HTMLElement | null, pin: 'left' | 'right') => 
       let sibling = element.nextElementSibling;
 
       while (sibling) {
-        if (sibling.classList.contains(tableCellClasses.pinRight)) {
+        if (sibling.classList.contains('es-table-cell--pin--right')) {
           width += sibling.clientWidth;
         }
 
@@ -44,11 +41,11 @@ export const useTableStickyOffset = (ref: MutableRefObject<HTMLDivElement | null
     if (ref.current) {
       const resizeObserver = new ResizeObserver(() => {
         if (ref.current) {
-          ref.current.querySelectorAll(`.${tableCellClasses.pinLeft}`).forEach((cell) => {
+          ref.current.querySelectorAll('.es-table-cell--pin--left').forEach((cell) => {
             (cell as HTMLElement).style.left = getStickyOffset(cell as HTMLElement, 'left');
           });
 
-          ref.current.querySelectorAll(`.${tableCellClasses.pinRight}`).forEach((cell) => {
+          ref.current.querySelectorAll('.es-table-cell--pin--right').forEach((cell) => {
             (cell as HTMLElement).style.right = getStickyOffset(cell as HTMLElement, 'right');
           });
         }
@@ -56,11 +53,9 @@ export const useTableStickyOffset = (ref: MutableRefObject<HTMLDivElement | null
 
       const observe = () => {
         if (ref.current) {
-          ref.current
-            .querySelectorAll(`.${tableCellClasses.pinLeft}, .${tableCellClasses.pinRight}`)
-            .forEach((element) => {
-              resizeObserver.observe(element);
-            });
+          ref.current.querySelectorAll('.es-table-cell--pin--left, .es-table-cell--pin--right').forEach((element) => {
+            resizeObserver.observe(element);
+          });
         }
       };
 
@@ -68,7 +63,7 @@ export const useTableStickyOffset = (ref: MutableRefObject<HTMLDivElement | null
         resizeObserver.disconnect();
 
         if (ref.current) {
-          ref.current.querySelectorAll(`.${tableCellClasses.root}`).forEach((element) => {
+          ref.current.querySelectorAll('.es-table-cell').forEach((element) => {
             (element as HTMLElement).style.removeProperty('left');
             (element as HTMLElement).style.removeProperty('right');
           });
@@ -77,12 +72,12 @@ export const useTableStickyOffset = (ref: MutableRefObject<HTMLDivElement | null
         }
       });
 
-      ref.current.querySelectorAll(`.${tableRowClasses.content}`).forEach((element) => {
+      ref.current.querySelectorAll('.es-table-row__content').forEach((element) => {
         mutationObserver.observe(element, { childList: true });
       });
 
-      ref.current.querySelectorAll(`.${tableCellClasses.root}`).forEach((element) => {
-        // TODO: ResizeObserver reconnected on every class change. We want to reconnect only when ESTableCell-pinLeft or ESTableCell-pinRight classes are changing.
+      ref.current.querySelectorAll('.es-table-cell').forEach((element) => {
+        // TODO: ResizeObserver reconnected on every class change. We want to reconnect only when .es-table-cell--pin--left or .es-table-cell--pin--right classes are changing.
         mutationObserver.observe(element, { attributeFilter: ['class'] });
       });
 

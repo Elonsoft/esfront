@@ -1,8 +1,4 @@
-import React, { ReactNode, Ref } from 'react';
-
-import { SwiperClasses } from './Swiper.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import React, { CSSProperties, ReactNode, Ref } from 'react';
 
 export type SwiperDirection = 'horizontal' | 'vertical';
 export type SwiperAlignment = 'center' | 'start';
@@ -26,10 +22,8 @@ export interface SwiperProps {
 
   /** Class applied to the root element. */
   className?: string;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<SwiperClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /**
    * The swiper direction.

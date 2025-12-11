@@ -8,7 +8,6 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
-import Typography from '@mui/material/Typography';
 
 import {
   getDescription,
@@ -81,9 +80,7 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
             <TableHead>
               <TableRow>
                 <TableCell colSpan={3}>
-                  <Typography component="code" variant="body100">
-                    Arguments
-                  </Typography>
+                  <code className="body100">Arguments</code>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -96,10 +93,10 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
               {data.params.map((e) => (
                 <TableRow key={e.id}>
                   <TableCell>
-                    <Typography component="code" variant="body100">
+                    <code className="body100">
                       {e.name}
                       {e.isOptional && '*'}
-                    </Typography>
+                    </code>
                   </TableCell>
                   <TableCell>
                     <TableDescription>{e.description}</TableDescription>
@@ -114,9 +111,7 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
         <TableHead>
           <TableRow>
             <TableCell colSpan={3}>
-              <Typography component="code" variant="body100">
-                Return Value
-              </Typography>
+              <code className="body100">Return Value</code>
             </TableCell>
           </TableRow>
         </TableHead>

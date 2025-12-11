@@ -1,20 +1,11 @@
-import { FocusEvent, MouseEvent, ReactElement, ReactNode } from 'react';
-
-import { TabClasses } from './Tab.classes';
-
-import { Theme } from '@mui/material/styles';
-import { SxProps } from '@mui/system';
+import { CSSProperties, FocusEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 
 export interface TabProps {
-  /**
-   * This prop isn't supported.
-   * Use the `component` prop if you need to change the children structure.
-   */
-  children?: null;
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<TabClasses>;
+  /** Class applied to the root element. */
+  className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
+
   /**
    * If `true`, the component is disabled.
    * @default false
@@ -30,10 +21,6 @@ export interface TabProps {
    */
   label?: ReactNode;
   /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: SxProps<Theme>;
-  /**
    * You can provide your own value. Otherwise, we fallback to the child position index.
    */
   value?: any;
@@ -41,10 +28,6 @@ export interface TabProps {
    * If 'true' the component will be smaller and have rounded corners.
    */
   rounded?: boolean;
-  /**
-   * CSS class to be applied to the root element of the component.
-   */
-  className?: string;
   /**
    * The indicator element for the current tab.
    */

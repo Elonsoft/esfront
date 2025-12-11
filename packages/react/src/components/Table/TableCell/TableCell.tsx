@@ -3,319 +3,13 @@ import React, { forwardRef, memo, useEffect, useRef, useState } from 'react';
 import { TableCellProps } from './TableCell.types';
 
 import clsx from 'clsx';
-import { getTableCellUtilityClass, tableCellClasses } from './TableCell.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '@mui/material/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { useTableCellContext } from './TableCell.context';
 
 import { useLatest } from '../../../hooks/useLatest';
-
-type TableCellOwnerState = {
-  classes?: TableCellProps['classes'];
-  variant: NonNullable<TableCellProps['variant']>;
-  padding: NonNullable<TableCellProps['padding']>;
-  align?: TableCellProps['align'];
-  pin?: TableCellProps['pin'];
-  colSpan?: number;
-  overlap?: boolean;
-  isResizing?: boolean;
-  rowDivider?: boolean;
-  colDivider?: boolean;
-};
-
-const useUtilityClasses = (ownerState: TableCellOwnerState) => {
-  const { classes, variant, padding, align, pin, overlap, isResizing, rowDivider, colDivider } = ownerState;
-
-  const slots = {
-    root: [
-      'root',
-      variant,
-      padding === 'none' && 'paddingNone',
-      padding === 'normal' && 'paddingNormal',
-      padding === 'checkbox' && 'paddingCheckbox',
-      pin === 'left' && 'pinLeft',
-      pin === 'right' && 'pinRight',
-      overlap && 'overlap',
-      isResizing && 'resizing',
-      rowDivider && 'rowDivider',
-      colDivider && 'colDivider',
-    ],
-    wrapper: ['wrapper'],
-    container: ['container'],
-    content: [
-      'content',
-      align === 'flex-start' && 'contentAlignFlexStart',
-      align === 'center' && 'contentAlignCenter',
-      align === 'flex-end' && 'contentAlignFlexEnd',
-    ],
-    resize: ['resize', isResizing && 'resizeResizing'],
-  };
-
-  return composeClasses(slots, getTableCellUtilityClass, classes);
-};
-
-const TableCellRoot = styled('div', {
-  name: 'ESTableCell',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const { ownerState } = props;
-    return [
-      styles.root,
-      styles[ownerState.variant],
-      ownerState.padding === 'none' && styles.paddingNone,
-      ownerState.padding === 'normal' && styles.paddingNormal,
-      ownerState.padding === 'checkbox' && styles.paddingCheckbox,
-      ownerState.overlap && styles.overlap,
-      ownerState.isResizing && styles.resizing,
-      ownerState.rowDivider && styles.rowDivider,
-      ownerState.colDivider && styles.colDivider,
-    ];
-  },
-})<{ ownerState: TableCellOwnerState }>(({ theme }) => ({
-  position: 'relative',
-  height: '100%',
-  gridColumnEnd: `span var(--ESTableCell-colSpan)`,
-
-  [`&.${tableCellClasses.pinLeft}, &.${tableCellClasses.pinRight}`]: {
-    position: 'sticky',
-
-    [`&.${tableCellClasses.head}`]: {
-      zIndex: 2,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      zIndex: 3,
-    },
-  },
-  [`&.${tableCellClasses.pinLeft}`]: {
-    boxShadow: `2px 0 0 0 ${theme.vars.palette.monoA.A100}`,
-  },
-  [`&.${tableCellClasses.pinRight}`]: {
-    boxShadow: `-2px 0 0 0 ${theme.vars.palette.monoA.A100}`,
-  },
-  [`&.${tableCellClasses.pinRight} + .${tableCellClasses.pinRight}`]: {
-    boxShadow: 'none',
-  },
-  [`&.${tableCellClasses.pinLeft}:not(:nth-last-child(1 of .${tableCellClasses.pinLeft}))`]: {
-    boxShadow: 'none',
-  },
-  [`&.${tableCellClasses.pinRight}:not(:nth-child(1 of .${tableCellClasses.pinRight}))`]: {
-    boxShadow: 'none',
-  },
-
-  [`&.${tableCellClasses.pinLeft}:nth-last-child(1 of .${tableCellClasses.pinLeft}) + .${tableCellClasses.colDivider}`]:
-    {
-      [`& .${tableCellClasses.container}`]: {
-        borderLeft: 0,
-      },
-    },
-
-  [`&:hover .${tableCellClasses.resize}::after`]: {
-    width: '1px',
-    backgroundColor: theme.vars.palette.monoA.A200,
-  },
-
-  [`.${tableCellClasses.resize}:hover::after`]: {
-    width: '3px',
-    backgroundColor: theme.vars.palette.monoA.A400,
-  },
-
-  [`.${tableCellClasses.resize}:focus-visible::after`]: {
-    width: '3px',
-    backgroundColor: theme.vars.palette.info.A600,
-  },
-
-  variants: [
-    {
-      props: {
-        variant: 'head',
-      },
-      style: {
-        ...theme.typography.caption,
-        color: theme.vars.palette.monoA.A600,
-        backgroundColor: theme.vars.palette.surface[100],
-        position: 'relative',
-        zIndex: 1,
-        userSelect: 'none',
-        height: '49px',
-      },
-    },
-    {
-      props: {
-        variant: 'body',
-      },
-      style: {
-        ...theme.typography.body100,
-        color: theme.vars.palette.monoA.A900,
-        backgroundColor: theme.vars.palette.surface[100],
-        height: '57px',
-      },
-    },
-    {
-      props: {
-        padding: 'normal',
-      },
-      style: {
-        [`& .${tableCellClasses.content}`]: {
-          padding: '0 16px',
-        },
-      },
-    },
-    {
-      props: {
-        padding: 'checkbox',
-      },
-      style: {
-        [`& .${tableCellClasses.content}`]: {
-          padding: '0 4px',
-        },
-        [`&:first-of-type .${tableCellClasses.content}`]: {
-          paddingLeft: '16px',
-        },
-        [`&:last-of-type .${tableCellClasses.content}`]: {
-          paddingRight: '16px',
-        },
-      },
-    },
-    {
-      props: {
-        isResizing: true,
-      },
-      style: {
-        [`.${tableCellClasses.resize}.${tableCellClasses.resize}::after`]: {
-          width: '3px',
-          backgroundColor: theme.vars.palette.info.A600,
-        },
-      },
-    },
-    {
-      props: {
-        rowDivider: true,
-      },
-      style: {
-        [`& .${tableCellClasses.container}`]: {
-          borderBottom: `1px solid ${theme.vars.palette.monoA.A100}`,
-        },
-      },
-    },
-    {
-      props: {
-        colDivider: true,
-      },
-      style: {
-        '&:not(:first-of-type)': {
-          [`& .${tableCellClasses.container}`]: {
-            borderLeft: `1px solid ${theme.vars.palette.monoA.A100}`,
-          },
-        },
-      },
-    },
-  ],
-}));
-
-const TableCellWrapper = styled('div', {
-  name: 'ESTableCell',
-  slot: 'Wrapper',
-  overridesResolver: (props, styles) => styles.wrapper,
-})(() => ({
-  width: '100%',
-  height: '100%',
-}));
-
-const TableCellContainer = styled('div', {
-  name: 'ESTableCell',
-  slot: 'Container',
-  overridesResolver: (props, styles) => styles.container,
-})(({ theme }) => ({
-  borderBottom: 0,
-  transition: `${theme.transitions.duration.short}ms, border-bottom 0ms`,
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-}));
-
-const TableCellContent = styled('div', {
-  name: 'ESTableCell',
-  slot: 'Content',
-  overridesResolver: (props, styles) => {
-    const { ownerState } = props;
-    return [
-      styles.content,
-      ownerState.align === 'flex-start' && styles.contentAlignFlexStart,
-      ownerState.align === 'center' && styles.contentAlignCenter,
-      ownerState.align === 'flex-end' && styles.contentAlignFlexEnd,
-    ];
-  },
-})<{ ownerState: TableCellOwnerState }>(({ theme }) => ({
-  transition: `${theme.transitions.duration.short}ms`,
-  width: '100%',
-  height: '100%',
-  overflow: 'hidden',
-  display: 'flex',
-  alignItems: 'center',
-
-  [`&.${tableCellClasses.contentAlignFlexStart}`]: {
-    justifyContent: 'flex-start',
-    textAlign: 'left',
-  },
-
-  [`&.${tableCellClasses.contentAlignCenter}`]: {
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-
-  [`&.${tableCellClasses.contentAlignFlexEnd}`]: {
-    justifyContent: 'flex-end',
-    textAlign: 'right',
-  },
-}));
-
-const TableCellResize = styled('button', {
-  name: 'ESTableCell',
-  slot: 'Resize',
-  overridesResolver: (props, styles) => {
-    const { ownerState } = props;
-    return [styles.resize, ownerState.isResizing && styles.resizeResizing];
-  },
-})<{ ownerState: TableCellOwnerState }>({
-  position: 'absolute',
-  right: 0,
-  top: 0,
-  bottom: 0,
-  width: '8px',
-  cursor: 'col-resize',
-  border: 0,
-  padding: 0,
-  margin: 0,
-  background: 'none',
-  outline: 'none',
-  textDecoration: 'none',
-
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    right: 0,
-    top: '12px',
-    bottom: '12px',
-    borderRadius: '3px',
-  },
-
-  variants: [
-    {
-      props: {
-        isResizing: true,
-      },
-      style: {
-        '&::after': {
-          display: 'block !important',
-        },
-      },
-    },
-  ],
-});
 
 const RESIZE_STEPS: Record<string, number | undefined> = {
   ArrowLeft: -16,
@@ -329,6 +23,7 @@ export const TableCell = memo(
     const {
       children,
       className,
+      style,
       variant = context.variant,
       rowDivider = context.rowDividers,
       colDivider = context.colDividers,
@@ -340,9 +35,8 @@ export const TableCell = memo(
       colSpan,
       minWidth,
       labelResize,
-      sx,
       pin,
-      ...props
+      overlap,
     } = useDefaultProps({
       props: inProps,
       name: 'ESTableCell',
@@ -397,7 +91,7 @@ export const TableCell = memo(
     };
 
     const onClick = (event: React.MouseEvent) => {
-      if (props.overlap) {
+      if (overlap) {
         event.stopPropagation();
       }
     };
@@ -418,7 +112,7 @@ export const TableCell = memo(
         };
 
         const style = document.createElement('STYLE');
-        style.textContent = `* { cursor: col-resize !important; } .${tableCellClasses.resize}::after { display: none; }`;
+        style.textContent = `* { cursor: col-resize !important; } .es-table-cell__resize::after { display: none; }`;
 
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
@@ -432,39 +126,42 @@ export const TableCell = memo(
       }
     }, [isResizing]);
 
-    const ownerState = { variant, padding, align, pin, isResizing, rowDivider, colDivider, ...props };
-    const classes = useUtilityClasses(ownerState);
-
     return (
-      <TableCellRoot
+      <div
         ref={rootRef}
-        className={clsx(classes.root, className)}
+        className={clsx(
+          'es-table-cell',
+          `es-table-cell--variant--${variant}`,
+          `es-table-cell--padding--${padding}`,
+          pin && `es-table-cell--pin--${pin}`,
+          overlap && 'es-table-cell--overlap',
+          isResizing && 'es-table-cell--resizing',
+          rowDivider && 'es-table-cell--row-divider',
+          colDivider && 'es-table-cell--col-divider',
+          variant === 'body' ? 'body100' : 'caption',
+          className
+        )}
         data-minwidth={minWidth}
         id={id}
-        ownerState={ownerState}
         role={variant === 'head' ? 'columnheader' : 'cell'}
-        style={{ '--ESTableCell-colSpan': colSpan } as React.CSSProperties}
-        sx={sx}
+        style={{ '--es-table-cell-col-span': colSpan, ...style } as React.CSSProperties}
         onClick={onClick}
       >
-        <TableCellWrapper className={classes.wrapper}>
-          <TableCellContainer className={classes.container}>
-            <TableCellContent className={classes.content} ownerState={ownerState}>
-              {children}
-            </TableCellContent>
+        <div className="es-table-cell__wrapper">
+          <div className="es-table-cell__container">
+            <div className={clsx('es-table-cell__content', `es-table-cell__content--align--${align}`)}>{children}</div>
             {!!onResize && (
-              <TableCellResize
+              <button
                 aria-label={labelResize}
-                className={classes.resize}
-                ownerState={ownerState}
+                className={clsx('es-table-cell__resize', isResizing && 'es-table-cell__resize--resizing')}
                 onKeyDown={onKeyDown}
                 onKeyUp={onKeyUp}
                 onMouseDown={onMouseDown}
               />
             )}
-          </TableCellContainer>
-        </TableCellWrapper>
-      </TableCellRoot>
+          </div>
+        </div>
+      </div>
     );
   })
 );

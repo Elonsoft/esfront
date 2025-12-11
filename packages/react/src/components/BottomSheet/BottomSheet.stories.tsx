@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { BottomSheet } from './BottomSheet';
 
 import { Button } from '../Button';
@@ -87,7 +85,7 @@ export const Demo: Story = {
         <BottomSheet {...args} open={isOpen} onClose={onClose}>
           <DialogTitle sticky>{getHeadingText(context)}</DialogTitle>
           <DialogContent>
-            <Typography variant="body200">
+            <div className="body200">
               Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
               quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
               fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
@@ -110,10 +108,10 @@ export const Demo: Story = {
               dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
               Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
               quam.
-            </Typography>
+            </div>
           </DialogContent>
           <DialogActions sticky>
-            <Button fullWidth color="monoA" size="500" variant="outlined" onClick={onClose}>
+            <Button fullWidth color="mono-a" size="500" variant="outlined" onClick={onClose}>
               {getCancelButtonText(context)}
             </Button>
             <Button fullWidth color="primary" size="500" variant="contained">

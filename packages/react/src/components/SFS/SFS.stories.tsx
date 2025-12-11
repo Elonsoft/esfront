@@ -105,7 +105,9 @@ export const Demo: Story = {
       <SFS>
         <SFSRow>
           <SFSSearch value={search} onChange={onSearchChange} onClear={search ? onClearSearch : undefined} />
-          {!!search && <Divider flexItem orientation="vertical" sx={{ color: 'monoA.A200', margin: '8px 0' }} />}
+          {!!search && (
+            <Divider flexItem orientation="vertical" style={{ color: 'var(--es-mono-a-a20)', margin: '8px 0' }} />
+          )}
           {args.SFSSortingMultiple ? (
             <SFSSorting
               key="1"

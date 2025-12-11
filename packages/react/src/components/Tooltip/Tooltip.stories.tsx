@@ -2,8 +2,6 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import { Box, useTheme } from '@mui/material';
-
 import { Tooltip } from '.';
 
 import { Button } from '../Button';
@@ -41,11 +39,6 @@ const meta: Meta<Args> = {
       },
     },
     describeChild: {
-      table: {
-        disable: true,
-      },
-    },
-    disableInteractive: {
       table: {
         disable: true,
       },
@@ -94,14 +87,12 @@ type Story = StoryObj<Args>;
 
 export const Demo: Story = {
   render: function Render(args, context) {
-    const theme = useTheme();
-
-    const isLightColor = args.color === 'monoB' || args.color === 'monoBA600' || args.color === 'whiteA600';
-    const backgroundColor = isLightColor ? theme.vars.palette.monoA.A400 : undefined;
+    const isLightColor = args.color === 'mono-b' || args.color === 'mono-b-a600' || args.color === 'white-a600';
+    const backgroundColor = isLightColor ? 'var(--es-mono-a-a400)' : undefined;
 
     return (
-      <Box
-        sx={{
+      <div
+        style={{
           width: '100%',
           padding: '120px 40px',
           display: 'flex',
@@ -114,7 +105,7 @@ export const Demo: Story = {
             {getButtonText(context)}
           </Button>
         </Tooltip>
-      </Box>
+      </div>
     );
   },
 };

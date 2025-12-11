@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { useDragOver } from './useDragOver';
 
 const meta: Meta = {
@@ -21,19 +19,18 @@ export const Demo: Story = {
     const { isDragOver, ...props } = useDragOver();
 
     return (
-      <Typography
-        component="div"
-        sx={(theme) => ({
+      <div
+        className="body100"
+        style={{
           padding: '16px',
-          border: `1px dashed ${theme.vars.palette.monoA.A500}`,
+          border: '1px dashed var(--es-mono-a-a500)',
           borderRadius: '2px',
-          backgroundColor: isDragOver ? theme.vars.palette.monoA.A50 : 'transparent',
-        })}
-        variant="body100"
+          backgroundColor: isDragOver ? 'var(--es-mono-a-a50)' : 'transparent',
+        }}
         {...props}
       >
         Drag&apos;n&apos;Drop
-      </Typography>
+      </div>
     );
   },
 };

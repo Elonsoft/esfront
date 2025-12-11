@@ -2,19 +2,12 @@
 
 import { ElementType, ReactNode } from 'react';
 
-import { SidebarItemClasses } from './SidebarItem.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
 export interface SidebarItemTypeMap<P = {}, D extends ElementType = `li`> {
   props: P & {
     /** The content of the component. */
     children?: ReactNode;
-    /** The system prop that allows defining system overrides as well as additional CSS styles. */
-    sx?: SxProps<Theme>;
-    /** Override or extend the styles applied to the component. */
-    classes?: Partial<SidebarItemClasses>;
     /** Class applied to the root element. */
     className?: string;
     /** The id of the element. */

@@ -2,17 +2,10 @@
 
 import { ReactNode } from 'react';
 
-import { MadeByClasses } from './MadeBy.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
 export interface MadeByTypeMap<P = {}, D extends React.ElementType = 'div'> {
   props: P & {
-    /** Override or extend the styles applied to the component. */
-    classes?: Partial<MadeByClasses>;
-    /** The system prop that allows defining system overrides as well as additional CSS styles. */
-    sx?: SxProps<Theme>;
     /** Class applied to the root element. */
     className?: string;
 

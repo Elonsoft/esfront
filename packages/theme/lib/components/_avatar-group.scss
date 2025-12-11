@@ -1,0 +1,54 @@
+@mixin include() {
+  .es-avatar-group {
+    display: flex;
+
+    & .es-avatar-group__avatar {
+      height: var(--es-avatar-group-size);
+      width: var(--es-avatar-group-size);
+
+      &:not(:nth-of-type(1)) {
+        margin-left: var(--es-avatar-group-spacing);
+      }
+
+      & > * {
+        border-radius: 50%;
+        height: var(--es-avatar-group-size);
+        width: var(--es-avatar-group-size);
+      }
+    }
+
+    &--direction--ltr .es-avatar-group__avatar:not(:first-of-type),
+    &--direction--rtl .es-avatar-group__avatar:not(:last-of-type) {
+      // safari
+      @supports selector(:nth-child(1 of x)) {
+        overflow: visible;
+      }
+
+      mask-image: var(--es-avatar-group-mask-image);
+      mask-position: var(--es-avatar-group-mask-position);
+      mask-repeat: no-repeat;
+      mask-size: var(--es-avatar-group-mask-size);
+
+      // safari ios
+      @supports (-webkit-touch-callout: none) {
+        mask-composite: exclude;
+      }
+
+      // firefox chrome safari
+      @supports (not (-webkit-touch-callout: none)) {
+        mask-composite: exclude;
+        mask-composite: destination-out;
+      }
+
+      // firefox
+      @supports (-moz-appearance: none) {
+        mask-size: var(--es-avatar-group-mask-size-firefox);
+      }
+
+      // chrome safari
+      @supports (not (-moz-appearance: none)) {
+        mask-size: var(--es-avatar-group-mask-size-safari);
+      }
+    }
+  }
+}

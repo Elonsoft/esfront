@@ -3,18 +3,10 @@ import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from '
 import { PhoneFieldProps } from './PhoneField.types';
 
 import clsx from 'clsx';
-import { getPhoneFieldUtilityClass, phoneFieldClasses } from './PhoneField.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { inputClasses } from '@mui/material/Input';
-import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
-import { inputBaseClasses } from '@mui/material/InputBase';
-import { inputLabelClasses } from '@mui/material/InputLabel';
-import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { usePhoneFieldContext } from './PhoneField.context';
 import {
@@ -29,133 +21,10 @@ import {
 import { useControlled, useEvent, useLatest, useMenu, useMenuVisibility } from '../../hooks';
 import { IconGlobalLineW500, IconMenuDownFillW300 } from '../../icons';
 import { AutocompleteMenu } from '../AutocompleteMenu';
-import { Button, buttonClasses } from '../Button';
-import { buttonBaseClasses } from '../ButtonBase';
-import { svgIconClasses } from '../SvgIcon';
+import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
 
 import { AsYouType, CountryCode, getCountryCallingCode, parsePhoneNumber } from 'libphonenumber-js/core';
-
-type PhoneFieldOwnerState = {
-  classes?: PhoneFieldProps['classes'];
-  open?: boolean;
-};
-
-const useUtilityClasses = (ownerState: PhoneFieldOwnerState) => {
-  const { classes, open } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    startAdornment: ['startAdornment'],
-    menuButton: ['menuButton', open && 'menuButtonOpen'],
-    item: ['item'],
-    itemPrimary: ['itemPrimary'],
-    countryDisplayName: ['countryDisplayName'],
-    countryCallingCode: ['countryCallingCode'],
-  };
-
-  return composeClasses(slots, getPhoneFieldUtilityClass, classes);
-};
-
-const PhoneFieldRoot = styled(TextField, {
-  name: 'ESPhoneField',
-  slot: 'Root',
-  overridesResolver: (_props, styles) => styles.root,
-})(() => ({
-  [`& .${outlinedInputClasses.root}.${inputBaseClasses.adornedStart}`]: {
-    paddingLeft: 0,
-    overflow: 'hidden',
-  },
-
-  [`&:has(.${inputClasses.inputAdornedStart}) .${inputLabelClasses.outlined}:not(.${inputLabelClasses.shrink})`]: {
-    transform: 'translate(60px, 16px) scale(1)',
-  },
-}));
-
-const PhoneFieldStartAdornment = styled(InputAdornment, {
-  name: 'ESPhoneField',
-  slot: 'StartAdornment',
-  overridesResolver: (_props, styles) => styles.startAdornment,
-})(() => ({
-  [`&.${inputAdornmentClasses.positionStart} `]: {
-    marginRight: '4px',
-  },
-}));
-
-const PhoneFieldMenuButton = styled(Button, {
-  name: 'ESPhoneField',
-  slot: 'MenuButton',
-  overridesResolver: (_props, styles) => styles.menuButton,
-})(({ theme }) => ({
-  [`&.${buttonClasses.root}.${buttonClasses.variantText}`]: {
-    borderBottomRightRadius: 0,
-    borderTopRightRadius: 0,
-    height: '100%',
-    outlineOffset: '-2px',
-
-    [`&.${phoneFieldClasses.menuButtonOpen}`]: {
-      '--background': theme.vars.palette.monoA.A50,
-    },
-
-    [`&.${buttonBaseClasses.disabled}`]: {
-      cursor: 'default',
-    },
-
-    [`& .${buttonBaseClasses.wrapper}`]: {
-      paddingLeft: '12px',
-      paddingRight: '2px',
-
-      '& > *:first-child': {
-        marginRight: '2px',
-      },
-    },
-
-    [`& .${svgIconClasses.root}`]: {
-      color: theme.vars.palette.monoA.A500,
-    },
-  },
-}));
-
-const PhoneFieldItem = styled('div', {
-  name: 'ESPhoneField',
-  slot: 'Item',
-  overridesResolver: (_props, styles) => styles.item,
-})(() => ({
-  alignItems: 'center',
-  display: 'flex',
-  gap: '8px',
-  justifyContent: 'space-between',
-  width: '100%',
-}));
-
-const PhoneFieldItemPrimary = styled('div', {
-  name: 'ESPhoneField',
-  slot: 'ItemPrimary',
-  overridesResolver: (_props, styles) => styles.itemPrimary,
-})(() => ({
-  alignItems: 'center',
-  display: 'flex',
-  gap: '12px',
-  minWidth: 0,
-}));
-
-const PhoneFieldCountryDisplayName = styled(Typography, {
-  name: 'ESPhoneField',
-  slot: 'CountryDisplayName',
-  overridesResolver: (_props, styles) => styles.countryDisplayName,
-})({
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-}) as typeof Typography;
-
-const PhoneFieldCountryCallingCode = styled(Typography, {
-  name: 'ESPhoneField',
-  slot: 'CountryCallingCode',
-  overridesResolver: (_props, styles) => styles.countryCallingCode,
-})({
-  marginLeft: 'auto',
-}) as typeof Typography;
 
 const regionNames = new Intl.DisplayNames([], { type: 'region' });
 
@@ -169,7 +38,6 @@ const getDefaultCountryDisplayName = (code: CountryCode) => {
 
 export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
   const {
-    classes: inClasses,
     className,
 
     countries,
@@ -554,15 +422,11 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
     }
   };
 
-  const ownerState = { classes: inClasses, open: !!anchorEl };
-  const classes = useUtilityClasses(ownerState);
-
   return (
     <>
-      <PhoneFieldRoot
+      <TextField
         ref={ref}
-        className={clsx(classes.root, className)}
-        classes={inClasses}
+        className={clsx('es-phone-field', className)}
         inputRef={setInputRef}
         name={name}
         slotProps={{
@@ -571,10 +435,10 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
           },
           input: {
             startAdornment: (
-              <PhoneFieldStartAdornment className={classes.startAdornment} position="start">
+              <InputAdornment className="es-phone-field__start-adornment" position="start">
                 <Tooltip enterDelay={200} placement="top-start" title={countries.length > 1 ? labelMenu : ''}>
-                  <PhoneFieldMenuButton
-                    className={classes.menuButton}
+                  <Button
+                    className={clsx('es-phone-field__menu-button', !!anchorEl && 'es-phone-field__menu-button--open')}
                     color="tertiary"
                     disabled={countries.length < 2}
                     variant="text"
@@ -583,9 +447,9 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
                   >
                     {getCountryFlag(countryCode)}
                     {countries.length > 1 && iconMenuArrow}
-                  </PhoneFieldMenuButton>
+                  </Button>
                 </Tooltip>
-              </PhoneFieldStartAdornment>
+              </InputAdornment>
             ),
             ...InputProps,
           },
@@ -623,17 +487,15 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
         }}
         anchorEl={ref.current}
         getOptionLabel={(option) => (
-          <PhoneFieldItem className={classes.item}>
-            <PhoneFieldItemPrimary className={classes.itemPrimary}>
+          <div className="es-phone-field__item">
+            <div className="es-phone-field__item-primary">
               {getCountryFlag(option)}
-              <PhoneFieldCountryDisplayName className={classes.countryDisplayName} component="div" variant="subtitle1">
-                {getCountryDisplayName(option)}
-              </PhoneFieldCountryDisplayName>
-            </PhoneFieldItemPrimary>
-            <PhoneFieldCountryCallingCode className={classes.countryCallingCode} color="monoA.A600" variant="caption">
+              <div className="es-phone-field__country-display-name subtitle1">{getCountryDisplayName(option)}</div>
+            </div>
+            <div className="es-phone-field__country-calling-code caption">
               +{getCountryCallingCode(option, metadata)}
-            </PhoneFieldCountryCallingCode>
-          </PhoneFieldItem>
+            </div>
+          </div>
         )}
         getOptionValue={(option) => option}
         groupBy={(option) => {

@@ -2,9 +2,7 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 
 import { useDebounce } from './useDebounce';
 
@@ -41,7 +39,7 @@ export const Demo: Story = {
 
     return (
       <div>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
           <TextField
             fullWidth
             label="Value"
@@ -59,11 +57,9 @@ export const Demo: Story = {
             control={<Checkbox checked={trailing} onChange={(event) => setTrailing(event.target.checked)} />}
             label="Trailing"
           />
-        </Box>
+        </div>
 
-        <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">
-          Debounced value: {debouncedValue}
-        </Typography>
+        <div className="body200 mt-8">Debounced value: {debouncedValue}</div>
       </div>
     );
   },

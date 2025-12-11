@@ -11,7 +11,7 @@ import { enUS, ruRU } from '@mui/material/locale';
 import { DateAdapterProvider, en, ru } from '../../components';
 import { DialogStackProvider } from '../../components/DialogStack';
 import { PhoneFieldProvider } from '../../components/PhoneField';
-import { createTheme, palettes, ThemeProvider } from '../../theming';
+import { createTheme, ThemeProvider } from '../../theming';
 
 import metadata from 'libphonenumber-js/max/metadata';
 
@@ -27,19 +27,7 @@ function ColorScheme({ isDarkMode }: { isDarkMode?: boolean }) {
 
 export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
   const theme = useMemo(() => {
-    return createTheme(
-      {
-        paletteDark: {
-          ...palettes.common,
-          ...palettes.dark,
-        },
-        paletteLight: {
-          ...palettes.common,
-          ...palettes.light,
-        },
-      },
-      locale === 'ru' ? { ...ruRU, ...ru } : { ...enUS, ...en }
-    );
+    return createTheme({}, locale === 'ru' ? { ...ruRU, ...ru } : { ...enUS, ...en });
   }, [locale]);
 
   return (

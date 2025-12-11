@@ -1,52 +1,18 @@
 import { SFSRowProps } from './SFSRow.types';
 
 import clsx from 'clsx';
-import { getSFSRowUtilityClass } from './SFSRow.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import composeClasses from '@mui/utils/composeClasses';
-
-type SFSRowOwnerState = {
-  classes?: SFSRowProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: SFSRowOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-  };
-
-  return composeClasses(slots, getSFSRowUtilityClass, classes);
-};
-
-const SFSRowRoot = styled('div', {
-  name: 'ESSFSRow',
-  slot: 'Root',
-  overridesResolver: (_, styles) => styles.root,
-})(() => ({
-  display: 'flex',
-  padding: '8px',
-
-  '& .MuiDivider-root': {
-    margin: '8px 2px',
-    height: '16px',
-  },
-}));
 
 export const SFSRow = (inProps: SFSRowProps) => {
-  const { className, children, sx, ...props } = useDefaultProps({
+  const { children, className, style } = useDefaultProps({
     props: inProps,
     name: 'ESSFSRow',
   });
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <SFSRowRoot className={clsx(classes.root, className)} sx={sx}>
+    <div className={clsx('es-sfs-row', className)} style={style}>
       {children}
-    </SFSRowRoot>
+    </div>
   );
 };

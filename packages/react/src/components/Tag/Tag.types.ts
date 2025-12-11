@@ -2,9 +2,6 @@
 
 import { ElementType, ReactNode } from 'react';
 
-import { TagClasses } from './Tag.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
 import { OverridableStringUnion } from '@mui/types';
@@ -18,10 +15,6 @@ export interface TagTypeMap<P = {}, D extends ElementType = 'button'> {
     /** Override or extend the styles applied to the component. */
     /** Class applied to the root element. */
     className?: string;
-    /** Override or extend the styles applied to the component. */
-    classes?: Partial<TagClasses>;
-    /** The system prop that allows defining system overrides as well as additional CSS styles. */
-    sx?: SxProps<Theme>;
     /**
      * The color of the component.
      * @default 'primary'
@@ -34,8 +27,8 @@ export interface TagTypeMap<P = {}, D extends ElementType = 'button'> {
       | 'error'
       | 'info'
       | 'warning'
-      | 'monoA'
-      | 'monoB'
+      | 'mono-a'
+      | 'mono-b'
       | 'black'
       | 'white',
       TagPropsColorOverrides

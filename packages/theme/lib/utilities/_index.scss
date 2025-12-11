@@ -1,11 +1,13 @@
 @use './display';
 @use './flex';
+@use './scrollbars';
 @use './spacing';
 @use './typography';
 
 @mixin include() {
   @include display.include;
   @include flex.include;
+  @include scrollbars.include;
   @include spacing.include;
   @include typography.include;
 }

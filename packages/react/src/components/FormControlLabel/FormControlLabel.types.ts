@@ -1,16 +1,10 @@
-import { ReactNode } from 'react';
-
-import { FormControlLabelClasses } from './FormControlLabel.classes';
-
-import { SxProps, Theme, TypographyProps } from '@mui/material';
+import { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 
 export interface FormControlLabelProps {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<FormControlLabelClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /** A control element. For instance, it can be a Radio or a Checkbox. */
   control: ReactNode;
@@ -29,7 +23,7 @@ export interface FormControlLabelProps {
    * @default {}
    */
   slotProps?: {
-    typography?: Partial<TypographyProps>;
+    typography?: Partial<HTMLAttributes<HTMLDivElement>>;
   };
   /**
    * The components used for each slot inside.

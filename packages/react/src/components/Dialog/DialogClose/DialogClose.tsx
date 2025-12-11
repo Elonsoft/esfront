@@ -1,121 +1,31 @@
 import { DialogCloseProps } from './DialogClose.types';
 
 import clsx from 'clsx';
-import { getDialogCloseUtilityClass } from './DialogClose.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { Typography } from '@mui/material';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { IconCloseLineW600 } from '../../../icons';
-import { Button, buttonClasses } from '../../Button';
-
-type DialogCloseOwnerState = {
-  classes?: DialogCloseProps['classes'];
-};
-
-const useUtilityClasses = (ownerState: DialogCloseOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    button: ['button'],
-    escapeKey: ['escapeKey'],
-  };
-
-  return composeClasses(slots, getDialogCloseUtilityClass, classes);
-};
-
-const DialogCloseRoot = styled('div', {
-  name: 'ESDialogClose',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root,
-})(({ theme }) => ({
-  zIndex: 1,
-  display: 'flex',
-  justifyContent: 'flex-start',
-  flexDirection: 'row-reverse',
-
-  [theme.breakpoints.up('tabletXS')]: {
-    position: 'sticky',
-    top: 16,
-  },
-}));
-
-const DialogCloseButton = styled(Button, {
-  name: 'ESDialogClose',
-  slot: 'Button',
-  overridesResolver: (props, styles) => styles.button,
-})(({ theme }) => ({
-  marginBottom: '16px',
-
-  [theme.breakpoints.up('tabletXS')]: {
-    position: 'absolute',
-    left: 'calc(100% + 16px)',
-    top: 0,
-    marginBottom: 0,
-  },
-
-  [`&.${buttonClasses.root}`]: {
-    backdropFilter: 'blur(10px)',
-    borderRadius: 4,
-    padding: 8,
-    width: 32,
-    height: 32,
-
-    [`&.${buttonClasses.variantText}.${buttonClasses.colorWhite}`]: {
-      '--background': theme.vars.palette.white.A200,
-    },
-
-    [theme.breakpoints.up('tabletXS')]: {
-      width: 40,
-      height: 40,
-    },
-  },
-}));
-
-const DialogCloseEscapeKey = styled(Typography, {
-  name: 'ESDialogClose',
-  slot: 'EscapeKey',
-  overridesResolver: (props, styles) => styles.escapeKey,
-})(({ theme }) => ({
-  color: theme.vars.palette.white.A800,
-  pointerEvents: 'none',
-  position: 'absolute',
-  right: 'calc(100% + 8px)',
-
-  [theme.breakpoints.up('tabletXS')]: {
-    right: 'unset',
-    top: 'calc(100% + 8px)',
-  },
-}));
+import { Button } from '../../Button';
 
 export const DialogClose = (inProps: DialogCloseProps) => {
   const {
     className,
-    sx,
+    style,
     onClick,
     label,
     labelEscapeKey,
     icon = <IconCloseLineW600 />,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESDialogClose',
   });
 
-  const ownerState = { ...props };
-  const classes = useUtilityClasses(ownerState);
-
   return (
-    <DialogCloseRoot className={clsx(classes.root, className)} sx={sx}>
-      <DialogCloseButton aria-label={label} className={classes.button} color="white" onClick={onClick}>
+    <div className={clsx('es-dialog-close', className)} style={style}>
+      <Button aria-label={label} className="es-dialog-close__button" color="white" onClick={onClick}>
         {icon}
-        <DialogCloseEscapeKey className={classes.escapeKey} variant="caption">
-          {labelEscapeKey}
-        </DialogCloseEscapeKey>
-      </DialogCloseButton>
-    </DialogCloseRoot>
+        <div className="es-dialog-close__escape-key caption">{labelEscapeKey}</div>
+      </Button>
+    </div>
   );
 };

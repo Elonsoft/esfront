@@ -1,0 +1,61 @@
+@use '../settings';
+
+@mixin include() {
+  .es-text-field-group {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 24px;
+
+    @each $name, $value in settings.$breakpoints {
+      &--breakpoint--#{$name} {
+        @media (width >= #{$value}px) {
+          flex-direction: row;
+          gap: 0;
+
+          & .MuiTextField-root:first-of-type .MuiOutlinedInput-root {
+            border-radius: 4px 0 0 4px;
+          }
+
+          & .MuiTextField-root .MuiOutlinedInput-root {
+            border-radius: 0;
+          }
+
+          & .MuiTextField-root:last-of-type .MuiOutlinedInput-root {
+            border-radius: 0 4px 4px 0;
+          }
+
+          & .MuiTextField-root:not(:last-of-type) .MuiOutlinedInput-root {
+            &:hover .MuiOutlinedInput-notchedOutline &.MuiOutlinedInput-focused .MuiOutlinedInput-notchedOutline {
+              border-right-width: 2px;
+            }
+
+            & .MuiOutlinedInput-notchedOutline {
+              border-right-width: 0.5px;
+            }
+          }
+
+          & .MuiTextField-root:not(:first-of-type) .MuiOutlinedInput-root {
+            &:hover .MuiOutlinedInput-notchedOutline &.MuiOutlinedInput-focused .MuiOutlinedInput-notchedOutline {
+              border-left-width: 2px;
+            }
+
+            & .MuiOutlinedInput-notchedOutline {
+              border-left-width: 0.5px;
+            }
+          }
+
+          & .MuiTextField-root {
+            flex: 1;
+
+            & .MuiOutlinedInput-root.MuiOutlinedInput-error {
+              & .MuiOutlinedInput-notchedOutline {
+                border-width: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use '../helpers/typography';
+
+@mixin include() {
+  .es-dropzone {
+    display: grid;
+    gap: 8px;
+    grid-auto-flow: row;
+
+    &__dropzone {
+      border: 1px dashed var(--es-mono-a-a200);
+      border-radius: 4px;
+      display: flex;
+      padding: 32px 24px;
+      width: 100%;
+
+      --background: var(--es-mono-a-a25);
+      --hovered: var(--es-mono-a-a50);
+      --pressed: var(--es-mono-a-a150);
+
+      & .es-button-base__wrapper {
+        flex-direction: column;
+      }
+
+      &--drag-over {
+        & .es-touch-ripple {
+          background-color: var(--hovered);
+        }
+      }
+
+      &--error {
+        --background: var(--es-error-a50);
+
+        border: 1px dashed var(--es-error-a800);
+
+        & .es-dropzone__heading {
+          color: var(--es-error-300);
+        }
+      }
+    }
+
+    &__heading {
+      align-items: center;
+      color: var(--es-primary-300);
+      display: grid;
+      gap: 4px;
+      grid-auto-flow: column;
+      justify-content: center;
+      min-height: 32px;
+    }
+
+    &__heading-text {
+      padding-bottom: 4px;
+      padding-top: 4px;
+    }
+
+    &__subheading {
+      color: var(--es-mono-a-a500);
+      margin-top: 4px;
+    }
+
+    &__icon {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__input {
+      display: none;
+    }
+
+    &__helper-text {
+      color: var(--es-mono-a-a700);
+
+      &--error {
+        color: var(--es-error-a800);
+      }
+    }
+  }
+}

@@ -1,0 +1,201 @@
+@use '../helpers/typography';
+
+@mixin include() {
+  .es-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 12px;
+    row-gap: 4px;
+
+    &--rows--max {
+      grid-template-rows: repeat(6, 1fr);
+    }
+  }
+
+  .es-calendar-head {
+    border-bottom: 1px solid var(--es-mono-a-a100);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0 12px;
+
+    &__day {
+      align-items: center;
+      color: var(--es-mono-a-a500);
+      display: flex;
+      height: 32px;
+      justify-content: center;
+    }
+  }
+
+  .es-calendar-button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+    position: relative;
+
+    &::before {
+      border: 0 dashed var(--es-mono-a-a300);
+      content: '';
+      inset: 0;
+      position: absolute;
+    }
+
+    &.es-calendar-button--hovered {
+      &.es-calendar-button--position--start::before {
+        border-bottom-left-radius: 8px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-left-radius: 8px;
+        border-top-width: 1px;
+      }
+
+      &.es-calendar-button--position--between::before {
+        border-bottom-width: 1px;
+        border-top-width: 1px;
+      }
+
+      &.es-calendar-button--position--end::before {
+        border-bottom-right-radius: 8px;
+        border-bottom-width: 1px;
+        border-right-width: 1px;
+        border-top-right-radius: 8px;
+        border-top-width: 1px;
+      }
+    }
+
+    &:nth-child(7n),
+    &:last-of-type {
+      &.es-calendar-button--hovered::before {
+        border-bottom-right-radius: 8px;
+        border-right-width: 1px;
+        border-top-right-radius: 8px;
+      }
+
+      & .es-calendar-button__wrapper {
+        border-bottom-right-radius: 6px;
+        border-top-right-radius: 6px;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &:nth-child(7n + 1),
+    &:first-of-type {
+      &.es-calendar-button--hovered::before {
+        border-bottom-left-radius: 8px;
+        border-left-width: 1px;
+        border-top-left-radius: 8px;
+      }
+
+      & .es-calendar-button__wrapper {
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 6px;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    &.es-calendar-button--selected.es-calendar-button--position--between .es-calendar-button__wrapper {
+      background: var(--es-secondary-a200);
+
+      &::before,
+      &::after {
+        content: '';
+      }
+    }
+
+    &.es-calendar-button--selected.es-calendar-button--position--start:has(~ .es-calendar-button--selected)
+      .es-calendar-button__wrapper {
+      background: linear-gradient(to right, transparent 50%, var(--es-secondary-a200) 50%);
+      border-bottom-left-radius: 6px;
+      border-top-left-radius: 6px;
+
+      &::after {
+        content: '';
+      }
+    }
+
+    &.es-calendar-button--selected
+      ~ .es-calendar-button--selected.es-calendar-button--position--end
+      .es-calendar-button__wrapper {
+      background: linear-gradient(to left, transparent 50%, var(--es-secondary-a200) 50%);
+      border-bottom-right-radius: 6px;
+      border-top-right-radius: 6px;
+
+      &::before {
+        content: '';
+      }
+    }
+
+    &__wrapper {
+      align-items: center;
+      display: flex;
+      height: 32px;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+
+      &::before,
+      &::after {
+        background: var(--es-secondary-a200);
+        bottom: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        width: 2px;
+      }
+
+      &::before {
+        left: -2px;
+      }
+
+      &::after {
+        right: -2px;
+      }
+    }
+
+    &__button {
+      &.es-button-base {
+        @include typography.level('body100');
+
+        align-items: center;
+        border-radius: 6px;
+        display: flex;
+        font-family: inherit;
+        height: 32px;
+        justify-content: center;
+        width: 100%;
+
+        --text: var(--es-mono-a-a900);
+        --hovered: var(--es-mono-a-a50);
+        --pressed: var(--es-mono-a-a150);
+
+        &.es-calendar-button__button--today {
+          @include typography.level('body100-bold');
+
+          border: 1px solid var(--es-mono-a-a400);
+        }
+
+        &.es-button-base.es-calendar-button__button--inactive {
+          --text: var(--es-mono-a-a550);
+        }
+
+        &.es-calendar-button__button--selected {
+          --background: var(--es-secondary-300);
+        }
+
+        &.es-button-base.es-button-base--disabled {
+          --text: var(--es-mono-a-a400);
+
+          cursor: not-allowed;
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+}

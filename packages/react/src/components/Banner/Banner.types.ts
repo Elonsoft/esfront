@@ -1,17 +1,15 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
-import { BannerClasses } from './Banner.classes';
-
-import { Breakpoint, SxProps, Theme } from '@mui/material/styles';
+import { Breakpoint } from '@mui/material/styles';
 
 export interface BannerProps {
   children?: ReactNode;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<BannerClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+
   /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
+
   /** The icon displayed before the message. */
   icon?: ReactNode;
 
@@ -19,7 +17,7 @@ export interface BannerProps {
    * The variant to use.
    * @default 'colored'
    */
-  variant?: 'colored' | 'monoB';
+  variant?: 'colored' | 'mono-b';
 
   /**
    * The severity of the alert. This defines the color and icon used.
@@ -30,7 +28,7 @@ export interface BannerProps {
   /**
    * The color of the component. Unless provided, the value is taken from the `severity` prop.
    */
-  color?: 'success' | 'warning' | 'error' | 'info' | 'monoA' | 'primary' | 'secondary';
+  color?: 'success' | 'warning' | 'error' | 'info' | 'mono-a' | 'primary' | 'secondary';
 
   /** The screen width at which the flex items are ordered along the cross axis.
    * @default 'tabletXS'

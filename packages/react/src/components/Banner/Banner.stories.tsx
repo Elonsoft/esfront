@@ -2,8 +2,6 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
-
 import { Banner, BannerActions, BannerTitle } from '.';
 
 import { IconCloseLineW600 } from '../../icons';
@@ -62,7 +60,7 @@ const meta: Meta<Args> = {
     },
     breakpoint: {
       control: {
-        type: 'number',
+        type: 'text',
       },
     },
     action: {
@@ -90,22 +88,24 @@ type Story = StoryObj<Args>;
 export const Demo: Story = {
   render: (args, context) => {
     return (
-      <Box margin="-1rem">
+      <div style={{ margin: '-1rem' }}>
         <Banner
           action={
             args.action ? (
               <Button
                 color={
-                  args.variant === 'monoB' || args.color === 'monoA'
+                  args.variant === 'mono-b' || args.color === 'mono-a'
                     ? 'tertiary'
                     : args.color === 'secondary'
                       ? 'black'
-                      : 'monoB'
+                      : 'mono-b'
                 }
                 size="400"
               >
                 <IconCloseLineW600
-                  sx={{ color: args.variant === 'monoB' || args.color === 'monoA' ? 'monoA.A500' : 'inherit' }}
+                  style={{
+                    color: args.variant === 'mono-b' || args.color === 'mono-a' ? 'var(--es-mono-a-a500)' : 'inherit',
+                  }}
                 />
               </Button>
             ) : null
@@ -115,25 +115,25 @@ export const Demo: Story = {
               <BannerActions>
                 <Button
                   color={
-                    args.variant === 'monoB' || args.color === 'monoA'
+                    args.variant === 'mono-b' || args.color === 'mono-a'
                       ? 'tertiary'
                       : args.color === 'secondary'
                         ? 'black'
-                        : 'monoB'
+                        : 'mono-b'
                   }
                   size="400"
-                  sx={{ mr: '8px' }}
+                  style={{ marginRight: '8px' }}
                   variant="contained"
                 >
                   {getButtonText(context)}
                 </Button>
                 <Button
                   color={
-                    args.variant === 'monoB' || args.color === 'monoA'
+                    args.variant === 'mono-b' || args.color === 'mono-a'
                       ? 'tertiary'
                       : args.color === 'secondary'
                         ? 'black'
-                        : 'monoB'
+                        : 'mono-b'
                   }
                   size="400"
                   variant="text"
@@ -152,7 +152,7 @@ export const Demo: Story = {
           {!!args.title && <BannerTitle>{args.title}</BannerTitle>}
           {args.text || getText(context)}
         </Banner>
-      </Box>
+      </div>
     );
   },
 };

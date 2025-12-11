@@ -1,17 +1,18 @@
-import { styled } from '@mui/material/styles';
+import clsx from 'clsx';
 
 import { Tooltip, TooltipProps } from '../../Tooltip';
 
-export const GalleryTooltip = styled(
-  ({ className, ...props }: TooltipProps) => <Tooltip {...props} classes={{ popper: className }} />,
-  {
-    name: 'ESGalleryTooltip',
-    slot: 'Root',
-    overridesResolver: (props, styles) => styles.root,
-  }
-)(() => ({
-  '&[data-popper-reference-hidden]': {
-    pointerEvents: 'none',
-    opacity: '0',
-  },
-}));
+export const GalleryTooltip = (props: TooltipProps) => {
+  return (
+    <Tooltip
+      {...props}
+      slotProps={{
+        ...props.slotProps,
+        popper: {
+          ...props.slotProps?.popper,
+          className: clsx('es-gallery-tooltip', props.slotProps?.popper?.className),
+        },
+      }}
+    />
+  );
+};

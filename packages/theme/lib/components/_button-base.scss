@@ -1,0 +1,79 @@
+@mixin include() {
+  .es-button-base {
+    --background: transparent;
+    --text: var(--es-mono-b-550);
+    --hovered: var(--es-mono-b-a50);
+    --pressed: var(--es-mono-b-a150);
+
+    align-items: center;
+    appearance: none;
+    background-color: var(--background);
+    border: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    justify-content: center;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+
+    &::-moz-focus-inner {
+      // Remove Firefox dotted outline.
+      border-style: none;
+    }
+
+    // https://github.com/mui/material-ui/issues/14455
+    &.es-button-base--disabled:not(button) {
+      pointer-events: none;
+    }
+
+    @media (hover: hover) {
+      &:not(.es-button-base--disabled):hover > .es-touch-ripple {
+        background-color: var(--hovered);
+      }
+    }
+
+    &:not(.es-button-base--disabled):focus-visible {
+      outline: 2px solid var(--es-mono-a-500);
+    }
+
+    &.es-button-base--pressed > .es-touch-ripple::after {
+      opacity: 1;
+      transition-duration: 105ms;
+    }
+
+    &.es-button-base--disable-touch-ripple {
+      & > .es-touch-ripple::after {
+        background: var(--pressed);
+        inset: 0;
+        transition: opacity 200ms;
+      }
+
+      &:active > .es-touch-ripple::after {
+        opacity: 1;
+      }
+    }
+
+    @media print {
+      color-adjust: exact;
+    }
+
+    &__wrapper {
+      align-items: center;
+      display: inline-flex;
+      height: 100%;
+      justify-content: center;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+}

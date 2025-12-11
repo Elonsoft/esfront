@@ -29,37 +29,37 @@ export const createSlider: Component<'MuiSlider'> = (theme, typography) => {
           },
         },
         '&.MuiSlider-colorPrimary': {
-          color: theme.vars.palette.primary[300],
+          color: 'var(--es-primary-300)',
           '& .MuiSlider-thumb': {
             '&:hover': {
-              boxShadow: `0 0 0 8px ${theme.vars.palette.primary.A150}`,
+              boxShadow: `0 0 0 8px var(--es-primary-a150)`,
             },
             '&.Mui-focusVisible': {
-              boxShadow: `0 0 0 8px ${theme.vars.palette.primary.A400}`,
+              boxShadow: `0 0 0 8px var(--es-primary-a400)`,
             },
             '&.Mui-active': {
-              boxShadow: `0 0 0 6px ${theme.vars.palette.primary.A300}`,
+              boxShadow: `0 0 0 6px var(--es-primary-a300)`,
             },
           },
         },
         '&.MuiSlider-colorSecondary': {
-          color: theme.vars.palette.secondary[300],
+          color: 'var(--es-secondary-300)',
           '& .MuiSlider-thumb': {
             '&:hover': {
-              boxShadow: `0 0 0 8px ${theme.vars.palette.secondary.A150}`,
+              boxShadow: `0 0 0 8px var(--es-secondary-a150)`,
             },
             '&.Mui-focusVisible': {
-              boxShadow: `0 0 0 7px ${theme.vars.palette.secondary.A400}`,
+              boxShadow: `0 0 0 7px var(--es-secondary-a400)`,
             },
             '&.Mui-active': {
-              boxShadow: `0 0 0 6px ${theme.vars.palette.secondary.A300}`,
+              boxShadow: `0 0 0 6px var(--es-secondary-a300)`,
             },
           },
         },
         '&.Mui-disabled': {
-          color: theme.vars.palette.monoA.A200,
+          color: 'var(--es-mono-a-a200)',
           '& .MuiSlider-rail': {
-            backgroundColor: theme.vars.palette.monoA.A200,
+            backgroundColor: 'var(--es-mono-a-a200)',
           },
           '& .MuiSlider-track': {
             display: 'none',
@@ -68,13 +68,13 @@ export const createSlider: Component<'MuiSlider'> = (theme, typography) => {
             width: '10px',
             height: '10px',
             backdropFilter: 'blur(100px)',
-            boxShadow: `0 0 0 2px ${theme.vars.palette.monoB[500]}`,
+            boxShadow: `0 0 0 2px var(--es-mono-b-500)`,
           },
         },
       },
       thumb: {
         height: '12px',
-        transitionDuration: `${theme.transitions.duration.shortest}ms`,
+        transitionDuration: `150ms`,
         transitionProperty: 'box-shadow, left, bottom, width, height, opacity',
         transitionTimingFunction: 'linear',
         width: '12px',
@@ -103,7 +103,7 @@ export const createSlider: Component<'MuiSlider'> = (theme, typography) => {
         },
       },
       rail: {
-        backgroundColor: theme.vars.palette.monoA.A400,
+        backgroundColor: 'var(--es-mono-a-a400)',
         opacity: 1,
       },
       track: {
@@ -111,28 +111,28 @@ export const createSlider: Component<'MuiSlider'> = (theme, typography) => {
         transitionTimingFunction: 'linear',
       },
       mark: {
-        backgroundColor: theme.vars.palette.monoA.A400,
+        backgroundColor: 'var(--es-mono-a-a400)',
         opacity: 1,
       },
       markActive: {
-        backgroundColor: theme.vars.palette.monoA.A400,
+        backgroundColor: 'var(--es-mono-a-a400)',
       },
       valueLabel: {
         ...typography.caption,
-        backgroundColor: theme.vars.palette.monoA.A600,
+        backgroundColor: 'var(--es-mono-a-a600)',
         borderRadius: '4px',
-        color: theme.vars.palette.monoB[500],
+        color: 'var(--es-mono-b-500)',
         fontWeight: 400,
         minWidth: '22px',
         padding: '4px',
         top: '-9px',
-        transitionDuration: `${theme.transitions.duration.shortest}ms`,
+        transitionDuration: `150ms`,
         transitionProperty: 'transform, top',
         transitionTimingFunction: 'linear',
 
         '&:before': {
           background: 'none',
-          borderColor: `${theme.vars.palette.monoA.A600} transparent transparent transparent`,
+          borderColor: `var(--es-mono-a-a600) transparent transparent transparent`,
           borderStyle: 'solid',
           borderWidth: '5px 5px 0 5px',
           height: 0,

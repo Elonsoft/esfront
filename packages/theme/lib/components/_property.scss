@@ -1,0 +1,24 @@
+@mixin include() {
+  .es-property {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    padding: 2px 0;
+
+    &__name {
+      align-items: center;
+      color: var(--es-mono-a-a600);
+      display: flex;
+      gap: 4px;
+    }
+
+    &__value {
+      color: var(--es-mono-a-a800);
+    }
+
+    &__divider {
+      border-bottom: 2px dotted var(--es-mono-a-a150);
+      flex-grow: 1;
+    }
+  }
+}

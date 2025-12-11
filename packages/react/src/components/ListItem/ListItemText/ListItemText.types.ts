@@ -1,17 +1,12 @@
-import { ReactNode } from 'react';
-
-import { ListItemTextClasses } from './ListItemText.classes';
-
-import { SxProps, Theme, TypographyProps } from '@mui/material';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface ListItemTextProps {
   children?: ReactNode;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<ListItemTextClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+
   /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /**
    * If `true`, the children won't be wrapped by a Typography component.
@@ -31,9 +26,9 @@ export interface ListItemTextProps {
   primary?: ReactNode;
 
   /**
-   * These props will be forwarded to the primary typography component (as long as disableTypography is not `true`).
+   * This class will be forwarded to the primary typography component (as long as disableTypography is not `true`).
    */
-  primaryTypographyProps?: TypographyProps;
+  primaryTypographyClassName?: string;
 
   /**
    * The secondary content element.
@@ -41,7 +36,8 @@ export interface ListItemTextProps {
   secondary?: ReactNode;
 
   /**
-   * These props will be forwarded to the secondary typography component (as long as disableTypography is not `true`).
+   * This class will be forwarded to the secondary typography component (as long as disableTypography is not `true`).
+   * @default 'caption'
    */
-  secondaryTypographyProps?: TypographyProps;
+  secondaryTypographyClassName?: string;
 }

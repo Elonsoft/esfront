@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { ButtonClasses } from './Button.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { OverridableComponent, OverridableTypeMap, OverrideProps } from '@mui/material/OverridableComponent';
 
 import { ExtendButtonBaseTypeMap } from '../ButtonBase';
@@ -18,14 +15,6 @@ export interface ButtonPropsSizeOverrides {}
 export interface ButtonOwnProps {
   children?: React.ReactNode;
   /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<ButtonClasses>;
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: SxProps<Theme>;
-  /**
    * The color of the component.
    * It supports both default and custom theme colors, which can be added as shown in the
    * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
@@ -39,8 +28,8 @@ export interface ButtonOwnProps {
     | 'error'
     | 'info'
     | 'warning'
-    | 'monoA'
-    | 'monoB'
+    | 'mono-a'
+    | 'mono-b'
     | 'black'
     | 'white',
     ButtonPropsColorOverrides

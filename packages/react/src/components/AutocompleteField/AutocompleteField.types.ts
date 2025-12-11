@@ -1,8 +1,5 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
-import { AutocompleteFieldClasses } from './AutocompleteField.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { FormHelperTextProps } from '@mui/material/FormHelperText';
 import { InputLabelProps } from '@mui/material/InputLabel';
 import { TextFieldProps } from '@mui/material/TextField';
@@ -10,12 +7,10 @@ import { TextFieldProps } from '@mui/material/TextField';
 import { AutocompleteProps } from '../Autocomplete';
 
 export type AutocompleteFieldProps<T> = {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<AutocompleteFieldClasses>;
   /** Class applied to the root element. */
   className?: string;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /** If true, the popover will close after menu item is selected. */
   closeAfterSelect?: boolean;

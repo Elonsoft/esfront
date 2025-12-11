@@ -1,0 +1,47 @@
+@mixin include() {
+  .es-avatar {
+    align-items: center;
+    background-color: var(--es-mono-a-a100);
+    background-size: 100%;
+    color: var(--es-mono-a-a500);
+    display: flex;
+    flex-shrink: 0;
+    height: var(--es-avatar-size);
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    width: var(--es-avatar-size);
+
+    & .es-svg-icon {
+      color: var(--es-mono-a-a400);
+    }
+
+    &--variant--square {
+      border-radius: 8px;
+    }
+
+    &--variant--circle {
+      border-radius: 50%;
+    }
+
+    &--outlined {
+      position: relative;
+
+      &::after {
+        border: 1px solid var(--es-mono-a-a100);
+        border-radius: inherit;
+        content: '';
+        inset: 0;
+        pointer-events: none;
+        position: absolute;
+      }
+    }
+
+    &__image {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+    }
+  }
+}

@@ -2,7 +2,6 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Menu from '@mui/material/Menu';
 
@@ -105,7 +104,7 @@ export const Demo: Story = {
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </MenuItem>
-          <Divider sx={{ my: '8px' }} />
+          <Divider className="my-8" />
           <MenuItem size={args.size}>
             <ListItemText>{getActionText(context)}</ListItemText>
           </MenuItem>
@@ -130,13 +129,13 @@ export const Demo: Story = {
 export const DemoList: Story = {
   render: (args, context) => {
     return (
-      <Box
-        sx={(theme) => ({
+      <div
+        style={{
           maxWidth: '360px',
-          boxShadow: theme.vars.palette.shadow.down[500],
-          backgroundColor: theme.vars.palette.surface[400],
+          boxShadow: 'var(--es-shadow-down-500)',
+          backgroundColor: 'var(--es-shadow-surface-400)',
           borderRadius: '4px',
-        })}
+        }}
       >
         <List>
           <ListItem size={args.size}>
@@ -157,7 +156,7 @@ export const DemoList: Story = {
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </ListItem>
-          <Divider sx={{ my: '8px' }} />
+          <Divider className="my-8" />
           <ListItem size={args.size}>
             <ListItemText>{getActionText(context)}</ListItemText>
           </ListItem>
@@ -165,7 +164,7 @@ export const DemoList: Story = {
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItem>
         </List>
-      </Box>
+      </div>
     );
   },
 };
@@ -173,13 +172,13 @@ export const DemoList: Story = {
 export const DemoListButton: Story = {
   render: (args, context) => {
     return (
-      <Box
-        sx={(theme) => ({
+      <div
+        style={{
           maxWidth: '360px',
-          boxShadow: theme.vars.palette.shadow.down[500],
-          backgroundColor: theme.vars.palette.surface[400],
+          boxShadow: 'var(--es-shadow-down-500)',
+          backgroundColor: 'var(--es-shadow-surface-400)',
           borderRadius: '4px',
-        })}
+        }}
       >
         <List>
           <ListItem button selected size={args.size}>
@@ -200,7 +199,7 @@ export const DemoListButton: Story = {
             </ListItemIcon>
             <ListItemText>{getPasteText(context)}</ListItemText>
           </ListItem>
-          <Divider sx={{ my: '8px' }} />
+          <Divider className="my-8" />
           <ListItem button size={args.size}>
             <ListItemText>{getActionText(context)}</ListItemText>
           </ListItem>
@@ -208,7 +207,7 @@ export const DemoListButton: Story = {
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItem>
         </List>
-      </Box>
+      </div>
     );
   },
 };

@@ -1,0 +1,201 @@
+@use '../helpers/typography';
+
+@mixin include() {
+  .es-snackbar {
+    backdrop-filter: blur(25px);
+    border-radius: 6px;
+    color: var(--es-mono-b-500);
+    overflow: hidden;
+    position: relative;
+
+    &--color--mono-a {
+      background-color: var(--es-mono-a-a800);
+    }
+
+    &--color--success {
+      background-color: var(--es-success-300);
+    }
+
+    &--color--warning {
+      background-color: var(--es-warning-300);
+    }
+
+    &--color--error {
+      background-color: var(--es-error-300);
+    }
+
+    &--color--info {
+      background-color: var(--es-info-300);
+    }
+
+    &--size--s {
+      max-width: max-content;
+      min-height: 32px;
+
+      & .es-snackbar__message {
+        &:first-of-type {
+          padding-left: 12px;
+        }
+      }
+
+      & .es-snackbar__actions {
+        padding: 4px 4px 4px 8px;
+      }
+    }
+
+    &--size--m {
+      min-height: 40px;
+
+      & .es-snackbar__icon {
+        padding: 8px 6px 8px 8px;
+      }
+
+      & .es-snackbar__message {
+        &:first-of-type {
+          padding-left: 12px;
+        }
+      }
+
+      & .es-snackbar__actions {
+        gap: 4px;
+        padding: 4px 4px 4px 16px;
+      }
+    }
+
+    &--size--l {
+      min-height: 48px;
+
+      & .es-snackbar__icon {
+        padding: 12px 8px 12px 12px;
+      }
+
+      & .es-snackbar__message {
+        &:first-of-type {
+          padding-left: 12px;
+        }
+      }
+
+      & .es-snackbar__actions {
+        gap: 8px;
+        padding: 8px 8px 8px 16px;
+
+        & .es-button--variant--text.es-button--color--mono-b {
+          @include typography.level('body100-medium');
+
+          --background: var(--es-mono-b-a100);
+          --text: var(--es-mono-b-500);
+
+          &.es-button--size--400 .es-button-base__wrapper {
+            padding: 0 12px;
+
+            & > .es-svg-icon {
+              margin: 0 -8px;
+            }
+          }
+        }
+      }
+    }
+
+    &--size--xl {
+      min-height: 56px;
+
+      & .es-snackbar__icon {
+        padding: 16px 8px 16px 16px;
+      }
+
+      & .es-snackbar__message {
+        &:first-of-type {
+          padding-left: 16px;
+        }
+      }
+
+      & .es-snackbar__actions {
+        gap: 8px;
+        padding: 12px 12px 12px 16px;
+
+        & .es-button--variant--text.es-button--color--mono-b {
+          @include typography.level('body100-medium');
+
+          --background: var(--es-mono-b-a100);
+          --text: var(--es-mono-b-500);
+
+          &.es-button--size--400 .es-button-base__wrapper {
+            padding: 0 12px;
+
+            & > .es-svg-icon {
+              margin: 0 -8px;
+            }
+          }
+        }
+      }
+    }
+
+    &__progress {
+      background-color: var(--es-mono-b-a100);
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transition: var(--es-snackbar-transition, none);
+      width: var(--es-snackbar-progress, 100%);
+      z-index: 1;
+    }
+
+    &__content {
+      align-items: center;
+      display: flex;
+      position: relative;
+      z-index: 2;
+    }
+
+    &__icon {
+      display: flex;
+    }
+
+    &__heading {
+      margin-bottom: 2px;
+    }
+
+    &__message {
+      min-width: 0;
+      padding: 4px 0;
+      /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated */
+      word-break: break-word;
+
+      &:has(.es-snackbar__heading) {
+        padding-bottom: 6px;
+      }
+
+      &:first-of-type {
+        padding-left: 12px;
+      }
+    }
+
+    &__actions {
+      align-items: center;
+      display: flex;
+      margin-left: auto;
+    }
+  }
+
+  .es-snackbar-close {
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+
+    &__button {
+      z-index: 1;
+    }
+
+    &__progress {
+      background-color: var(--es-mono-b-a200);
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transition: var(--es-snackbar-transition, none);
+      width: var(--es-snackbar-progress, 100%);
+      z-index: 0;
+    }
+  }
+}

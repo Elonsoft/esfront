@@ -1,0 +1,142 @@
+@mixin es-spinner-opacity-animation-delay {
+  @for $i from 0 through 7 {
+    &:nth-of-type(#{8 - $i}) {
+      animation-delay: calc(-1 * $i / 8 * 1000ms);
+    }
+  }
+}
+
+@mixin include() {
+  @keyframes es-spinner-opacity-keyframes {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes es-spinner-rotate-keyframes {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes es-spinner-stroke-keyframes {
+    0% {
+      stroke-dasharray: 1px, 200px;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: 100px, 200px;
+      stroke-dashoffset: -15px;
+    }
+
+    100% {
+      stroke-dasharray: 100px, 200px;
+      stroke-dashoffset: -110px;
+    }
+  }
+
+  .es-spinner {
+    &--color--inherit {
+      color: currentcolor;
+    }
+
+    &--color--mono-a {
+      color: var(--es-mono-a-500);
+    }
+
+    &--color--primary {
+      color: var(--es-primary-300);
+    }
+
+    &--color--secondary {
+      color: var(--es-secondary-300);
+    }
+  }
+
+  .es-spinner-dash-ring {
+    & > circle {
+      stroke: currentcolor;
+
+      &:nth-of-type(2) {
+        animation:
+          es-spinner-stroke-keyframes 1400ms ease-in-out infinite,
+          es-spinner-rotate-keyframes 1400ms linear infinite;
+        transform-origin: center;
+      }
+    }
+  }
+
+  .es-spinner-fading-bars {
+    & > rect {
+      animation: es-spinner-opacity-keyframes 1000ms linear infinite;
+      fill: currentcolor;
+      height: 10px;
+      width: 4px;
+
+      @include es-spinner-opacity-animation-delay;
+    }
+  }
+
+  .es-spinner-fading-dots {
+    & > circle {
+      animation: es-spinner-opacity-keyframes 1000ms linear infinite;
+      fill: currentcolor;
+      height: 10px;
+      width: 4px;
+
+      @include es-spinner-opacity-animation-delay;
+    }
+  }
+
+  .es-spinner-fading-double-ring {
+    animation: es-spinner-rotate-keyframes 1000ms linear infinite;
+    transform-origin: center;
+
+    & > foreignObject {
+      & > div {
+        height: 100%;
+        width: 100%;
+      }
+
+      &:nth-of-type(1) > div {
+        background: conic-gradient(from 179deg, rgb(255 255 255 / 0%) 69%, currentcolor 100%);
+      }
+
+      &:nth-of-type(2) > div {
+        background: conic-gradient(from 359deg, rgb(255 255 255 / 0%) 69%, currentcolor 100%);
+      }
+    }
+  }
+
+  .es-spinner-fading-ring {
+    animation: es-spinner-rotate-keyframes 1000ms linear infinite;
+    transform-origin: center;
+
+    & > foreignObject > div {
+      background: conic-gradient(from 187deg, rgb(255 255 255 / 0%) 17%, currentcolor 100%);
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .es-spinner-ring {
+    & > circle {
+      stroke: currentcolor;
+    }
+
+    & > path {
+      animation: es-spinner-rotate-keyframes 1000ms linear infinite;
+      fill: currentcolor;
+      transform-origin: center;
+    }
+  }
+}

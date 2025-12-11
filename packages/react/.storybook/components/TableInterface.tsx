@@ -11,7 +11,6 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
-import Typography from '@mui/material/Typography';
 
 import {
   getDefault,
@@ -80,9 +79,7 @@ const TableInterfaceBase = ({ name, variant }: TableInterfaceProps) => {
         <TableHead>
           <TableRow>
             <TableCell colSpan={variant === 'props' ? 3 : 2}>
-              <Typography component="code" variant="body100">
-                {name}
-              </Typography>
+              <code className="body100">{name}</code>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -95,10 +92,10 @@ const TableInterfaceBase = ({ name, variant }: TableInterfaceProps) => {
           {data.map((e) => (
             <TableRow key={e.id}>
               <TableCell>
-                <Typography component="code" variant="body100">
+                <code className="body100">
                   {e.name}
                   {variant === 'props' && !e.isOptional && '*'}
-                </Typography>
+                </code>
               </TableCell>
               <TableCell>
                 <TableDescription>{e.description}</TableDescription>

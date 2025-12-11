@@ -1,0 +1,35 @@
+@mixin include() {
+  .es-price {
+    align-items: center;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    width: max-content;
+
+    &--old {
+      & .es-price__price,
+      & .es-price__currency {
+        color: var(--es-mono-a-a600);
+      }
+    }
+
+    &__price {
+      color: var(--es-mono-a-a900);
+    }
+
+    &__currency {
+      color: var(--es-mono-a-a500);
+    }
+
+    &__line {
+      background-color: var(--es-error-a800);
+      border-radius: 4px;
+      height: 2px;
+      left: -1px;
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

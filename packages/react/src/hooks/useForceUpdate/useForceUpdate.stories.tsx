@@ -2,8 +2,6 @@ import { useRef } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { useForceUpdate } from './useForceUpdate';
 
 import { Button } from '../../components/Button';
@@ -38,9 +36,7 @@ export const Demo: Story = {
         <Button color="primary" size="400" variant="contained" onClick={update}>
           Update
         </Button>
-        <Typography component="div" sx={{ marginTop: '8px' }} variant="body200">
-          Time: {date.current}
-        </Typography>
+        <div className="body200 mt-8">Time: {date.current}</div>
       </>
     );
   },

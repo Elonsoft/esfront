@@ -1,0 +1,17 @@
+@mixin include() {
+  .es-svg-icon {
+    align-items: center;
+    display: inline-flex;
+    flex-shrink: 0;
+    justify-content: center;
+    overflow: hidden;
+    user-select: none;
+
+    &__svg {
+      display: inline-flex;
+      fill: none;
+      flex-shrink: 0;
+      user-select: none;
+    }
+  }
+}

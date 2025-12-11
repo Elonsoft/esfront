@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Typography from '@mui/material/Typography';
-
 import { useUpdateEffect } from './useUpdateEffect';
 
 const meta: Meta = {
@@ -38,18 +36,12 @@ export const Demo: Story = {
 
     return (
       <>
-        <Typography component="div" variant="body100">
-          Count: {count}
-        </Typography>
+        <div className="body100">Count: {count}</div>
         <button onClick={() => setCount(count + 1)}>Increment</button>
         <br />
         <br />
-        <Typography component="div" variant="body100">
-          Count from effect: {effectCount}
-        </Typography>
-        <Typography component="div" variant="body100">
-          Count from update effect: {updateEffectCount}
-        </Typography>
+        <div className="body100">Count from effect: {effectCount}</div>
+        <div className="body100">Count from update effect: {updateEffectCount}</div>
       </>
     );
   },

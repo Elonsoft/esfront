@@ -1,18 +1,14 @@
-import { PriceClasses } from './Price.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties } from 'react';
 
 export interface PriceProps {
   children: number;
   /** The currency to use in formatting. Possible values are the ISO 4217 currency codes. */
   currency: string;
 
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<PriceClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
   /** Class applied to the root element. */
   className?: string;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /** If true, the price is old. */
   old?: boolean;

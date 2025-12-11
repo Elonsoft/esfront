@@ -1,59 +1,19 @@
 import { CalendarProps } from './Calendar.types';
 
 import clsx from 'clsx';
-import { calendarClasses, getCalendarUtilityClass } from './Calendar.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { capitalize } from '@mui/material/utils';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { CalendarButton, CalendarButtonProps } from './CalendarButton';
 import { useCalendar } from './useCalendar';
 
 import { useDateAdapterContext } from '../DateAdapter';
 
-type CalendarOwnerState = {
-  classes?: CalendarProps['classes'];
-  rows: NonNullable<CalendarProps['rows']>;
-};
-
-const useUtilityClasses = (ownerState: CalendarOwnerState) => {
-  const { classes, rows } = ownerState;
-
-  const slots = {
-    root: ['root', `rows${capitalize(rows)}`],
-  };
-
-  return composeClasses(slots, getCalendarUtilityClass, classes);
-};
-
-const CalendarRoot = styled('div', {
-  name: 'ESCalendar',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState: { rows },
-    } = props;
-
-    return [styles.root, styles[`rows${capitalize(rows)}`]];
-  },
-})<{ ownerState: CalendarOwnerState }>(() => ({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(7, 1fr)',
-  rowGap: '4px',
-  padding: '12px',
-
-  [`&.${calendarClasses.rowsMax}`]: {
-    gridTemplateRows: 'repeat(6, 1fr)',
-  },
-}));
-
 /** The calendar allows users to pick a date or a range of dates. */
 export const Calendar = (inProps: CalendarProps) => {
   const {
     className,
-    sx,
+    style,
     year,
     month,
     weekStart = 1,
@@ -66,7 +26,6 @@ export const Calendar = (inProps: CalendarProps) => {
     onHover,
     getButtonDisabled,
     getButtonTooltipProps,
-    ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESCalendar',
@@ -79,9 +38,6 @@ export const Calendar = (inProps: CalendarProps) => {
   }
 
   const { dates, prevDates, nextDates } = useCalendar(year, month, weekStart);
-
-  const ownerState = { rows, ...props };
-  const classes = useUtilityClasses(ownerState);
 
   const getButtonProps = (year: number, month: number, date: number) => {
     const current = new Date(year, month, date);
@@ -144,7 +100,7 @@ export const Calendar = (inProps: CalendarProps) => {
   };
 
   return (
-    <CalendarRoot className={clsx(classes.root, className)} ownerState={ownerState} sx={sx}>
+    <div className={clsx('es-calendar', `es-calendar--rows--${rows}`, className)} style={style}>
       {prevDates.map((date) =>
         showPrevMonth ? (
           <CalendarButton key={date} inactive {...getButtonProps(year, month - 1, date)}>
@@ -168,6 +124,6 @@ export const Calendar = (inProps: CalendarProps) => {
           <span key={date} />
         )
       )}
-    </CalendarRoot>
+    </div>
   );
 };

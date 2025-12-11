@@ -1,0 +1,127 @@
+@use '../helpers/typography';
+
+@mixin include() {
+  .es-breadcrumbs {
+    &__list {
+      align-items: center;
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      &--open {
+        & .es-breadcrumbs__button-more {
+          & .es-button.es-breadcrumb__content {
+            --background: var(--es-mono-a-a50);
+          }
+        }
+      }
+    }
+
+    &__menu {
+      & .MuiMenu-list {
+        max-width: 240px;
+        padding: 4px 0;
+      }
+
+      & .MuiPaper-root {
+        margin-top: 4px;
+      }
+    }
+
+    &__menu-item.es-menu-item {
+      @include typography.level('caption');
+
+      padding: 8px 16px;
+      width: 100%;
+    }
+  }
+
+  .es-breadcrumb {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    min-width: 56px;
+    overflow: hidden;
+    text-align: center;
+    text-wrap: nowrap;
+
+    &.es-breadcrumbs__button-more {
+      min-width: 40px;
+    }
+
+    & span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &:last-of-type {
+      flex: 1 1 0px;
+      max-width: max-content;
+      min-width: 40px;
+
+      & .es-breadcrumb__separator {
+        display: none;
+      }
+    }
+
+    &--should-first-shrink {
+      &:first-of-type {
+        flex-grow: 0;
+        flex-shrink: 1;
+      }
+    }
+
+    &--disabled {
+      & div {
+        cursor: not-allowed;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    &__content.es-button {
+      &.es-button--size--300 .es-button-base__wrapper {
+        @include typography.level('caption');
+
+        padding: 0;
+      }
+
+      &.es-button.es-breadcrumb__content {
+        max-width: 400px;
+        padding: 0 4px;
+        width: 100%;
+
+        --text: var(--es-mono-a-a900);
+
+        &.es-button-base--disabled {
+          --text: var(--es-mono-a-a500);
+
+          pointer-events: none;
+        }
+
+        & .es-svg-icon {
+          color: var(--es-mono-a-a500);
+        }
+      }
+
+      &:not(:disabled):focus-visible {
+        box-shadow: inset 0 0 0 2px var(--es-mono-a-500);
+        outline: none;
+      }
+    }
+
+    &__separator {
+      align-items: center;
+      color: var(--es-mono-a-a500);
+      display: flex;
+      user-select: none;
+
+      & .es-svg-icon {
+        width: 16px;
+      }
+    }
+  }
+}

@@ -2,8 +2,6 @@ import { useRef } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '@mui/material/Box';
-
 import { AudioPlayer } from './AudioPlayer';
 import { AudioPlayerProvider } from './AudioPlayerProvider';
 
@@ -42,11 +40,11 @@ type Story = StoryObj<typeof AudioPlayer>;
 export const Demo: Story = {
   render: (args) => {
     return (
-      <Box paddingTop="16px">
+      <div className="pt-16">
         <AudioPlayerProvider>
           <AudioPlayer {...args} />
         </AudioPlayerProvider>
-      </Box>
+      </div>
     );
   },
 };
@@ -78,7 +76,7 @@ export const ImperativeActions: Story = {
     };
 
     return (
-      <Box paddingTop="16px">
+      <div className="pt-16">
         <AudioPlayerProvider>
           <AudioPlayer
             audioRef={firstAudioRef}
@@ -93,7 +91,7 @@ export const ImperativeActions: Story = {
             onPlay={onSecondPlay}
           />
         </AudioPlayerProvider>
-      </Box>
+      </div>
     );
   },
 };

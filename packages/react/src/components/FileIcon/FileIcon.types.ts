@@ -1,17 +1,11 @@
-import { ReactNode } from 'react';
-
-import { FileIconClasses } from './FileIcon.classes';
-
-import { SxProps, Theme } from '@mui/material';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface FileIconProps {
   children?: ReactNode;
   /** Class applied to the root element. */
   className?: string;
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<FileIconClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
+  /** Style applied to the root element. */
+  style?: CSSProperties;
 
   /**
    * The icon's width.

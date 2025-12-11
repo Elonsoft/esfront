@@ -3,243 +3,24 @@ import React, { memo, useRef, useState } from 'react';
 import { SortingMenuDirection, SortingMenuOptionMap, SortingMenuProps, SortingMenuValue } from './SortingMenu.types';
 
 import clsx from 'clsx';
-import { sortingMenuClasses } from '../SortingMenu/SortingMenu.classes';
-import { getSortingMenuUtilityClass } from './SortingMenu.classes';
 
-import { styled } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
 import MenuList from '@mui/material/MenuList';
 import Popover from '@mui/material/Popover';
-import Typography, { typographyClasses } from '@mui/material/Typography';
-import composeClasses from '@mui/utils/composeClasses';
 
 import { IconSortAscendingLineW200, IconSortDescendingLineW200 } from '../../icons';
-import { Button, buttonClasses } from '../Button';
-import { buttonBaseClasses } from '../ButtonBase';
-import { Divider, dividerClasses } from '../Divider';
-import { Kbd, kbdClasses } from '../Kbd';
+import { Button } from '../Button';
+import { Divider } from '../Divider';
+import { Kbd } from '../Kbd';
 import { Link } from '../Link';
-import { listItemClasses, ListItemText, listItemTextClasses } from '../ListItem';
+import { ListItemText } from '../ListItem';
 import { MenuItem } from '../MenuItem';
-import { Switch, switchClasses } from '../Switch';
+import { Switch } from '../Switch';
 
 const isMacintosh = () => {
   return navigator.userAgent.indexOf('Macintosh') > 0;
 };
-
-type SortingMenuOwnerState = {
-  classes?: SortingMenuProps['classes'];
-  isWithValue?: boolean;
-};
-
-const useUtilityClasses = (ownerState: SortingMenuOwnerState) => {
-  const { classes } = ownerState;
-
-  const slots = {
-    root: ['root'],
-    menuItem: ['menuItem'],
-    menuHeader: ['menuHeader'],
-    menuFooter: ['menuFooter'],
-    resetButton: ['resetButton'],
-    directionButton: ['directionButton'],
-    directionButtonBadge: ['directionButtonBadge'],
-    plusSign: ['plusSign'],
-    caption: ['caption'],
-  };
-
-  return composeClasses(slots, getSortingMenuUtilityClass, classes);
-};
-
-const SortingMenuRoot = styled(Popover, {
-  name: 'ESSortingMenu',
-  slot: 'Root',
-  overridesResolver: (_, styles) => styles.root,
-})(({ theme }) => ({
-  '& .MuiPopover-paper': {
-    ...theme.scrollbars.overlayMonoA,
-    marginTop: '4px',
-    paddingBottom: '6px',
-    backgroundImage: 'none',
-    backgroundColor: theme.vars.palette.surface[400],
-    boxShadow: theme.vars.palette.shadow.down[600],
-    userSelect: 'none',
-    overflowX: 'hidden',
-
-    '& .MuiList-root': {
-      width: '320px',
-      padding: '0',
-    },
-  },
-}));
-
-const SortingMenuHeader = styled('div', {
-  name: 'ESSortingMenu',
-  slot: 'MenuHeader',
-  overridesResolver: (_, styles) => styles.menuHeader,
-})(() => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  padding: '14px 16px 6px 16px',
-}));
-
-const SortingMenuFooter = styled('div', {
-  name: 'ESSortingMenu',
-  slot: 'MenuFooter',
-  overridesResolver: (_, styles) => styles.menuFooter,
-})(({ theme }) => ({
-  borderTop: `1px solid ${theme.vars.palette.monoA.A100}`,
-  marginTop: '8px',
-  padding: '6px 3px 0 12px',
-  display: 'flex',
-  alignItems: 'center',
-
-  [`& .${kbdClasses.root}:first-of-type`]: {
-    marginRight: '3px',
-  },
-
-  [`& .${kbdClasses.root}:last-of-type`]: {
-    marginLeft: '3px',
-    marginRight: '8px',
-  },
-
-  [`& .${switchClasses.root}`]: {
-    marginLeft: 'auto',
-  },
-}));
-
-const SortingResetButton = styled(Link, {
-  name: 'ESSortingMenu',
-  slot: 'ResetButton',
-  overridesResolver: (_, styles) => styles.resetButton,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A500,
-})) as typeof Link;
-
-const SortingMenuItem = styled(MenuItem, {
-  name: 'ESSortingMenu',
-  slot: 'MenuItem',
-  overridesResolver: (_, styles) => styles.menuItem,
-})(() => ({
-  [`&:not(.${listItemClasses.disabled})`]: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-
-  [`&.${listItemClasses.disabled}`]: {
-    color: 'inherit',
-    padding: '0 0 6px 0',
-    display: 'block',
-    minHeight: 0,
-    height: 'auto',
-    cursor: 'default',
-
-    [`& > .${buttonBaseClasses.wrapper}`]: {
-      width: 'inherit',
-      display: 'block',
-    },
-
-    [`& .${dividerClasses.root}`]: {
-      margin: '8px 0',
-    },
-  },
-
-  [`& .${buttonBaseClasses.wrapper} .${listItemTextClasses.root}`]: {
-    display: 'inline-flex',
-    flexShrink: '1',
-
-    [`& .${typographyClasses.root}`]: {
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    },
-  },
-}));
-
-const SortingDirectionButton = styled(Button, {
-  name: 'ESSortingMenu',
-  slot: 'DirectionButton',
-  overridesResolver: (_, styles) => styles.directionButton,
-})(({ theme }) => ({
-  '--icon': theme.vars.palette.monoA.A600,
-
-  [`&.${buttonClasses.root}`]: {
-    flexShrink: 0,
-    textTransform: 'unset',
-    position: 'relative',
-    zIndex: 10,
-    borderRadius: 0,
-    padding: 0,
-
-    [`&.${buttonClasses.size400}`]: {
-      '--pressed': 'transparent',
-      '--hovered': 'transparent',
-    },
-
-    [`& .${buttonBaseClasses.wrapper}`]: {
-      gap: '6px',
-    },
-
-    [`&:not(.${buttonBaseClasses.disabled}):focus-visible`]: {
-      outline: 'none',
-    },
-
-    '&:focus-visible': {
-      '& .MuiTypography-root': {
-        color: theme.vars.palette.monoA.A900,
-      },
-      [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.vars.palette.secondary.A550,
-      },
-    },
-
-    '&:hover': {
-      [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.vars.palette.secondary.A550,
-      },
-      '& .MuiTypography-root:first-of-type': {
-        color: theme.vars.palette.monoA.A900,
-      },
-    },
-
-    '&:active': {
-      [`& .${sortingMenuClasses.directionButtonBadge}`]: {
-        backgroundColor: theme.vars.palette.secondary.A400,
-      },
-      '& .MuiTypography-root:first-of-type': {
-        color: theme.vars.palette.monoA.A600,
-      },
-    },
-  },
-}));
-
-const SortingDirectionButtonBadge = styled('div', {
-  name: 'ESSortingMenu',
-  slot: 'DirectionButtonBadge',
-  overridesResolver: (_, styles) => styles.directionButtonBadge,
-})(({ theme }) => ({
-  display: 'flex',
-  borderRadius: '4px',
-  padding: '3px 2px',
-  backgroundColor: theme.vars.palette.secondary.A400,
-  boxShadow: `inset 0 0 0 1px ${theme.vars.palette.monoA.A25}`,
-}));
-
-const SortingPlusSign = styled(Typography, {
-  name: 'ESSortingMenu',
-  slot: 'PlusSign',
-  overridesResolver: (_, styles) => styles.plusSign,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A900,
-})) as typeof Typography;
-
-const SortingCaption = styled(Typography, {
-  name: 'ESSortingMenu',
-  slot: 'Caption',
-  overridesResolver: (_, styles) => styles.caption,
-})(({ theme }) => ({
-  color: theme.vars.palette.monoA.A600,
-})) as typeof Typography;
 
 const getNextItem = (elem: HTMLLIElement): HTMLLIElement | undefined => {
   if (elem.nextElementSibling && (elem.nextElementSibling as HTMLLIElement).getAttribute('aria-disabled') === 'true') {
@@ -280,9 +61,6 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
   });
 
   const values = props.multiple ? props.value : props.value ? [props.value] : [];
-
-  const ownerState = { classes: props.classes, isWithValue: !!values[0] };
-  const classes = useUtilityClasses(ownerState);
 
   const isTouchScreen = useMediaQuery('(hover: none) and (pointer: coarse)');
   const [isMultiple, setMultiple] = useState(props.multiple && values.length > 1);
@@ -410,9 +188,9 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
 
   const renderItem = (item: SortingMenuValue, i: number, isCalcTabIndex = false) => {
     return (
-      <SortingMenuItem
+      <MenuItem
         key={item.value}
-        className={classes.menuItem}
+        className="es-sorting-menu__menu-item"
         selected={!!item.direction}
         size="100"
         tabIndex={isCalcTabIndex ? (i === 0 ? 0 : -1) : -1}
@@ -421,9 +199,9 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
       >
         <ListItemText>{sortMap && sortMap[item.value].label}</ListItemText>
         {!!item.direction && (
-          <SortingDirectionButton
+          <Button
             disableTouchRipple
-            className={classes.directionButton}
+            className="es-sorting-menu__direction-button"
             color="tertiary"
             size="400"
             tabIndex={-1}
@@ -432,23 +210,23 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
             onPointerDown={onStopRipple}
             onTouchStart={onStopRipple}
           >
-            <SortingCaption className={classes.caption} variant="caption">
+            <span className="es-sorting-menu__caption caption">
               {item.direction === 'asc'
                 ? sortMap[item.value].labelAsc || labelAsc
                 : sortMap[item.value].labelDesc || labelDesc}
-            </SortingCaption>
-            <SortingDirectionButtonBadge className={classes.directionButtonBadge}>
+            </span>
+            <div className="es-sorting-menu__direction-button-badge">
               {item.direction === 'asc' ? iconItemAsc : iconItemDesc}
-              {isMultiple && <Typography variant="mini100Bold">{i + 1}</Typography>}
-            </SortingDirectionButtonBadge>
-          </SortingDirectionButton>
+              {isMultiple && <span className="mini100-bold">{i + 1}</span>}
+            </div>
+          </Button>
         )}
-      </SortingMenuItem>
+      </MenuItem>
     );
   };
 
   return (
-    <SortingMenuRoot
+    <Popover
       {...PopoverProps}
       TransitionProps={{
         ...PopoverProps.TransitionProps,
@@ -460,66 +238,55 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
           PopoverProps.TransitionProps?.onExited?.(...args);
         },
       }}
-      className={clsx(classes.root, PopoverProps.className)}
+      className={clsx('es-sorting-menu', PopoverProps.className)}
+      classes={{ ...PopoverProps.classes, paper: clsx('scrollbar-overlay-mono-a', PopoverProps.classes?.paper) }}
     >
-      <SortingMenuHeader className={classes.menuHeader}>
-        <SortingCaption className={classes.caption} variant="caption">
+      <div className="es-sorting-menu__header">
+        <span className="es-sorting-menu__caption caption">
           {isMultiple && !!values.length ? labelSortOrder : labelSortTooltip}
-        </SortingCaption>
+        </span>
         {!!values.length && (
-          <SortingResetButton
+          <Link
             autoFocus
-            className={classes.resetButton}
+            className="es-sorting-menu__reset-button"
             component="button"
             underline="hover"
             variant="caption"
             onClick={onResetSort}
           >
             {labelResetButton}
-          </SortingResetButton>
+          </Link>
         )}
-      </SortingMenuHeader>
+      </div>
       <MenuList ref={menuListRef} autoFocusItem={!values.length}>
         {isMultiple && values.map((item, i) => renderItem(sortMap[item.value], i, true))}
         {isMultiple && !!values.length && values.length !== options.length && (
-          <SortingMenuItem key="middleSortingDivider" disabled>
+          <MenuItem key="middleSortingDivider" disabled className="es-sorting-menu__menu-item">
             <Divider />
-            <SortingCaption
-              className={classes.caption}
-              component="div"
-              marginTop="14px"
-              paddingLeft="16px"
-              variant="caption"
-            >
-              {labelSortTooltip}
-            </SortingCaption>
-          </SortingMenuItem>
+            <div className="es-sorting-menu__caption es-sorting-menu__sort-tooltip caption">{labelSortTooltip}</div>
+          </MenuItem>
         )}
         {isMultiple &&
           options.filter((v) => !sortMap[v.value].direction).map((o, i) => renderItem(sortMap[o.value], i))}
         {!isMultiple && options.map((option, i) => renderItem(sortMap[option.value], i, true))}
       </MenuList>
       {props.multiple && (
-        <SortingMenuFooter className={classes.menuFooter}>
+        <div className="es-sorting-menu__footer">
           {isTouchScreen ? (
-            <SortingCaption className={classes.caption} variant="caption">
+            <span className="es-sorting-menu__caption caption">
               {isMultiple ? labelMultisortMobileOn : labelMultisortMobileOff}
-            </SortingCaption>
+            </span>
           ) : (
             <>
               <Kbd variant="outlined">{isMacintosh() ? '⌘' : 'Ctrl'}</Kbd>
-              <SortingPlusSign className={classes.plusSign} component="span" variant="caption">
-                +
-              </SortingPlusSign>
+              <span className="es-sorting-menu__plus-sign caption">+</span>
               <Kbd variant="outlined">{labelMultisortLMB}</Kbd>
-              <SortingCaption className={classes.caption} variant="caption">
-                {labelMultisortTitle}
-              </SortingCaption>
+              <span className="es-sorting-menu__caption caption">{labelMultisortTitle}</span>
             </>
           )}
           <Switch checked={isMultiple} size="small" type="button" onChange={onChangeSortMode} />
-        </SortingMenuFooter>
+        </div>
       )}
-    </SortingMenuRoot>
+    </Popover>
   );
 });

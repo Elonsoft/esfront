@@ -1,17 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { ButtonBaseClasses } from './ButtonBase.classes';
-
-import { SxProps, Theme } from '@mui/material';
 import { OverridableComponent, OverridableTypeMap, OverrideProps } from '@mui/material/OverridableComponent';
 
 import { TouchRippleParams } from '../TouchRipple';
 
 export interface ButtonBaseOwnProps {
-  /** Override or extend the styles applied to the component. */
-  classes?: Partial<ButtonBaseClasses>;
-  /** The system prop that allows defining system overrides as well as additional CSS styles. */
-  sx?: SxProps<Theme>;
   /** If true, the component is disabled. */
   disabled?: boolean;
   /** If true, the touch ripple effect is disabled. */

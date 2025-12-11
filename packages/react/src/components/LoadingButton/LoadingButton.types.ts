@@ -1,18 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { LoadingButtonClasses } from './LoadingButton.classes';
-
-import { Theme } from '@mui/material/styles';
-import { SxProps } from '@mui/material';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 
-import { ButtonClasses, ExtendButtonTypeMap } from '../Button';
+import { ExtendButtonTypeMap } from '../Button';
 
 export interface LoadingButtonOwnProps {
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<ButtonClasses> & LoadingButtonClasses;
   /**
    * If `true`, the loading indicator is shown and the button becomes disabled.
    * @default false
@@ -24,10 +16,6 @@ export interface LoadingButtonOwnProps {
    * By default we render a `SpinnerFadingDots` that is labelled by the button itself.
    */
   loadingIndicator?: React.ReactNode;
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: SxProps<Theme>;
 }
 
 export type LoadingButtonTypeMap<

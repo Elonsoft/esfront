@@ -9,14 +9,14 @@ const IconsDemoRoot = styled('div')(() => ({
   gap: '8px',
 }));
 
-const IconsDemoIcon = styled('div')(({ theme }) => ({
+const IconsDemoIcon = styled('div')(() => ({
   width: '48px',
   height: '48px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '2px',
-  border: `1px solid ${theme.vars.palette.monoA.A100}`,
+  border: `1px solid var(--es-mono-a-a100)`,
 }));
 
 export const IconsDemo = () => {
