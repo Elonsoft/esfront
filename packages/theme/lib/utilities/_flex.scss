@@ -2,6 +2,24 @@
 
 @mixin include() {
   @include breakpoints.adaptive-classes() using ($prefix) {
+    // flex-direction
+
+    .#{$prefix}flex-row {
+      flex-direction: row;
+    }
+
+    .#{$prefix}flex-row-reverse {
+      flex-direction: row-reverse;
+    }
+
+    .#{$prefix}flex-col {
+      flex-direction: column;
+    }
+
+    .#{$prefix}flex-col-reverse {
+      flex-direction: column-reverse;
+    }
+
     // align-items
 
     .#{$prefix}align-items-start {
