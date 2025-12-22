@@ -8,37 +8,37 @@
   },
   "exports": {
     "./*.scss": {
-      "sass": "lib/*.scss"
+      "sass": "./lib/*.scss"
     },
     "./components": {
-      "sass": "lib/components/_index.scss"
+      "sass": "./lib/components/_index.scss"
     },
     "./components/*.scss": {
-      "sass": "lib/components/*.scss"
+      "sass": "./lib/components/*.scss"
     },
     "./helpers/*.scss": {
-      "sass": "lib/helpers/*.scss"
+      "sass": "./lib/helpers/*.scss"
     },
     "./presets/shadows": {
-      "sass": "lib/presets/_shadows.scss"
+      "sass": "./lib/presets/_shadows.scss"
     },
     "./presets/colors": {
-      "sass": "lib/presets/colors/_index.scss"
+      "sass": "./lib/presets/colors/_index.scss"
     },
     "./presets/colors/*.scss": {
-      "sass": "lib/presets/colors/*.scss"
+      "sass": "./lib/presets/colors/*.scss"
     },
     "./settings": {
-      "sass": "lib/settings/_index.scss"
+      "sass": "./lib/settings/_index.scss"
     },
     "./settings/*.scss": {
-      "sass": "lib/settings/*.scss"
+      "sass": "./lib/settings/*.scss"
     },
     "./utilities": {
-      "sass": "lib/utilities/_index.scss"
+      "sass": "./lib/utilities/_index.scss"
     },
     "./utilities/*.scss": {
-      "sass": "lib/utilities/*.scss"
+      "sass": "./lib/utilities/*.scss"
     }
   },
   "repository": {
