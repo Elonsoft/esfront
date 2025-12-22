@@ -2,6 +2,7 @@ node_modules/
 storybook-static/
 typedoc.json
 .env
+.npmrc
 yarn-error.log
 .DS_Store/
 .cache/
