@@ -34,7 +34,14 @@ import { buttonBaseClasses } from '../ButtonBase';
 import { svgIconClasses } from '../SvgIcon';
 import { Tooltip } from '../Tooltip';
 
-import { AsYouType, CountryCode, getCountryCallingCode, parsePhoneNumber } from 'libphonenumber-js/core';
+import {
+  AsYouType,
+  CountryCode,
+  getCountryCallingCode,
+  getExampleNumber,
+  parsePhoneNumber,
+} from 'libphonenumber-js/core';
+import examples from 'libphonenumber-js/mobile/examples';
 
 type PhoneFieldOwnerState = {
   classes?: PhoneFieldProps['classes'];
@@ -79,6 +86,25 @@ const PhoneFieldStartAdornment = styled(InputAdornment, {
 })(() => ({
   [`&.${inputAdornmentClasses.positionStart} `]: {
     marginRight: '4px',
+  },
+}));
+
+const PhoneFieldMask = styled('div', {
+  name: 'ESPhoneField',
+  slot: 'Mask',
+  overridesResolver: (_props, styles) => styles.mask,
+})(({ theme }) => ({
+  ...theme.typography.subtitle1,
+  color: theme.vars.palette.monoA.A400,
+  left: '60px',
+  overflow: 'hidden',
+  pointerEvents: 'none',
+  position: 'absolute',
+  right: '12px',
+  userSelect: 'none',
+
+  '& span:first-of-type': {
+    visibility: 'hidden',
   },
 }));
 
@@ -278,10 +304,60 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
   const format = useCallback(
     (value: string) => {
       asYouType.reset();
-      const text = asYouType.input(value);
-      const template = asYouType.getTemplate();
+      asYouType.input(value);
+      // const text = asYouType.input(value);
+      // const template = asYouType.getTemplate();
+      const countryCode =
+        country ||
+        asYouType.getCountry() ||
+        metadata.country_calling_codes[asYouType.getCallingCode() || '']?.[0] ||
+        null;
 
-      return { text, template };
+      let text = value;
+      let mask = '';
+
+      if (countryCode) {
+        const phoneNumber = getExampleNumber(countryCode, examples, metadata);
+        const countryCallingCode = getCountryCallingCode(countryCode, metadata);
+
+        if (phoneNumber) {
+          let template = phoneNumber.formatNational();
+
+          if (['RU', 'KZ'].includes(countryCode)) {
+            template = template.replace(/^\d+\s/, ``);
+          }
+
+          template = template.replace(/[0-9]/g, 'x');
+          template = `+${countryCallingCode} ${template}`;
+
+          const valueWithoutCallingCode = (value || '').replace(`+${countryCallingCode}`, '').replace(/[^0-9]/g, '');
+          let f = template;
+
+          let s = countryCallingCode.length;
+
+          for (const c of valueWithoutCallingCode) {
+            const i = f.indexOf('x');
+
+            if (i >= 0) {
+              f = `${f.substring(0, i)}${c}${f.substring(i + 1)}`;
+              s = i;
+            } else {
+              f = `${f}${c}`;
+              s = -1;
+            }
+          }
+
+          if (s >= 0) {
+            text = f.substring(0, s + 1);
+          } else {
+            text = f;
+          }
+
+          mask = f.substring(text.length).replaceAll('x', '0');
+        }
+      }
+
+      return { text, mask };
     },
     [asYouType]
   );
@@ -477,9 +553,9 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
   const [visible, onEnter, onExited] = useMenuVisibility();
   const latestVisible = useLatest(visible);
 
-  const formatted = format(
+  const { text: formatted, mask } = format(
     value || (focused || visible ? `+${country ? getCountryCallingCode(country, metadata) : ''}` : '')
-  ).text;
+  );
 
   const onCheckCaretPosition = useEvent((e: React.SyntheticEvent<HTMLElement>) => {
     if (inputRef && inputRef.selectionStart === inputRef.selectionEnd) {
@@ -585,6 +661,10 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
                     {countries.length > 1 && iconMenuArrow}
                   </PhoneFieldMenuButton>
                 </Tooltip>
+                <PhoneFieldMask>
+                  <span>{formatted}</span>
+                  <span>{mask}</span>
+                </PhoneFieldMask>
               </PhoneFieldStartAdornment>
             ),
             ...InputProps,
