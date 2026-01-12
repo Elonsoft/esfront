@@ -7,17 +7,17 @@
     "start": "vite --force"
   },
   "exports": {
-    "./*.scss": {
-      "sass": "./lib/*.scss"
+    "./*": {
+      "sass": "./lib/*"
     },
     "./components": {
       "sass": "./lib/components/_index.scss"
     },
-    "./components/*.scss": {
-      "sass": "./lib/components/*.scss"
+    "./components/*": {
+      "sass": "./lib/components/*"
     },
-    "./helpers/*.scss": {
-      "sass": "./lib/helpers/*.scss"
+    "./helpers/*": {
+      "sass": "./lib/helpers/*"
     },
     "./presets/shadows": {
       "sass": "./lib/presets/_shadows.scss"
@@ -25,20 +25,20 @@
     "./presets/colors": {
       "sass": "./lib/presets/colors/_index.scss"
     },
-    "./presets/colors/*.scss": {
-      "sass": "./lib/presets/colors/*.scss"
+    "./presets/colors/*": {
+      "sass": "./lib/presets/colors/*"
     },
     "./settings": {
       "sass": "./lib/settings/_index.scss"
     },
-    "./settings/*.scss": {
-      "sass": "./lib/settings/*.scss"
+    "./settings/*": {
+      "sass": "./lib/settings/*"
     },
     "./utilities": {
       "sass": "./lib/utilities/_index.scss"
     },
-    "./utilities/*.scss": {
-      "sass": "./lib/utilities/*.scss"
+    "./utilities/*": {
+      "sass": "./lib/utilities/*"
     }
   },
   "repository": {
