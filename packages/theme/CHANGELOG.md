@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.3](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.0.2...@esfront/theme@0.0.3) (2026-01-12)
+
+
+### Bug Fixes
+
+* **theme:** change wildcard exports ([6d1ef12](https://github.com/Elonsoft/esfront/commit/6d1ef125ff97bfbea1d848f74f2359217d81cb67))
+
+
+
 ## [0.0.2](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.0.1...@esfront/theme@0.0.2) (2025-12-22)
 
 
