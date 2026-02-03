@@ -76,6 +76,7 @@ import {
 import { CheckboxClassKey, CheckboxProps, CheckboxIconClassKey, CheckboxIconProps } from './components/Checkbox';
 import { ChipClassKey, ChipProps } from './components/Chip';
 import { ChipsClassKey, ChipsProps } from './components/Chips';
+import { CircularProgressClassKey, CircularProgressProps } from './components/CircularProgress';
 import {
   DialogActionsClassKey,
   DialogActionsProps,
@@ -404,6 +405,7 @@ declare module '@mui/material/styles/props' {
     ESCheckboxIcon: CheckboxIconProps;
     ESChip: ChipProps;
     ESChips: ChipsProps;
+    ESCircularProgress: CircularProgressProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
     ESDialogArrow: DialogArrowProps;
@@ -565,6 +567,7 @@ declare module '@mui/material/styles/overrides' {
     ESCheckboxIcon: CheckboxIconClassKey;
     ESChip: ChipClassKey;
     ESChips: ChipsClassKey;
+    ESCircularProgress: CircularProgressClassKey;
     ESDialog: DialogClassKey;
     ESDialogActions: DialogActionsClassKey;
     ESDialogArrow: DialogArrowClassKey;
@@ -814,6 +817,10 @@ declare module '@mui/material/styles/components' {
     ESChips?: {
       defaultProps?: ComponentsProps['ESChips'];
       styleOverrides?: ComponentsOverrides['ESChips'];
+    };
+    ESCircularProgress?: {
+      defaultProps?: ComponentsProps['ESCircularProgress'];
+      styleOverrides?: ComponentsOverrides['ESCircularProgress'];
     };
     ESDialog?: {
       defaultProps?: ComponentsProps['ESDialog'];
