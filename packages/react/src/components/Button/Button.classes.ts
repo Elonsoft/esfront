@@ -19,6 +19,17 @@ export type ButtonClasses = {
   size900: string;
   size1000: string;
 
+  variablesSize100: string;
+  variablesSize200: string;
+  variablesSize300: string;
+  variablesSize400: string;
+  variablesSize500: string;
+  variablesSize600: string;
+  variablesSize700: string;
+  variablesSize800: string;
+  variablesSize900: string;
+  variablesSize1000: string;
+
   variantText: string;
   variantOutlined: string;
   variantContained: string;
@@ -59,6 +70,16 @@ export const buttonClasses: ButtonClasses = generateUtilityClasses('ESButton', [
   'size800',
   'size900',
   'size1000',
+  'variablesSize100',
+  'variablesSize200',
+  'variablesSize300',
+  'variablesSize400',
+  'variablesSize500',
+  'variablesSize600',
+  'variablesSize700',
+  'variablesSize800',
+  'variablesSize900',
+  'variablesSize1000',
   'variantText',
   'variantOutlined',
   'variantContained',
