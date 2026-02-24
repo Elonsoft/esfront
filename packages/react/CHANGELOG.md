@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.14.0...@esfront/react@0.15.0) (2026-02-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate components styles to theme
+
+### Features
+
+* migrate components styles to theme ([d052d92](https://github.com/Elonsoft/esfront/commit/d052d92cf4f25c9b8ee1667c430f5768bbf2b676))
+
+
+
 ## [0.14.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.13.3...@esfront/react@0.14.0) (2025-12-08)
 
 
