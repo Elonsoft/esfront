@@ -113,7 +113,7 @@
     }
 
     &__children {
-      text-decoration-color: color-mix(in srgb, current-color 40%, transparent);
+      text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
       text-decoration-style: solid;
       text-decoration-thickness: inherit;
     }
