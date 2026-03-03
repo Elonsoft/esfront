@@ -12,17 +12,23 @@ interface Attributes {
 /**
  * The hook that returns the current value of a cookie, a callback to update the cookie and a callback to remove the cookie.
  * @param name The name of the cookie.
+ * @param {boolean} [initial=true] If set true, hook will set initial value.
  * @returns The current value of a cookie, a callback to update the cookie and a callback to remove the cookie.
  */
 export const useCookie = <T extends string | null = null>(
   name: string,
-  defaultValue?: T
+  defaultValue?: T,
+  initial?: boolean
 ): [string | T, (data: string, attributes?: Attributes) => void, () => void] => {
   const initialValue = useMemo(() => {
     const cookie = document.cookie.split('; ').find((c) => c.startsWith(`${encodeURIComponent(name)}=`));
 
     if (cookie) {
       return decodeURIComponent(cookie.slice(cookie.indexOf('=') + 1));
+    }
+
+    if (initial && defaultValue) {
+      document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(defaultValue)}`;
     }
 
     return (defaultValue ?? null) as T;
