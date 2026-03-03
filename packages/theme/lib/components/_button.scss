@@ -370,7 +370,7 @@
       @include typography.level('mini100');
 
       font-weight: 400;
-      height: 16;
+      height: 16px;
       padding: 0 6px;
       text-transform: none;
 
@@ -394,7 +394,7 @@
         @include typography.level('caption');
 
         font-weight: 400;
-        height: 20;
+        height: 20px;
         padding: 0 8px;
         text-transform: none;
 
