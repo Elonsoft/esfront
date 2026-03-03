@@ -1,0 +1,5 @@
+import{j as t}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as r}from"./index-D-lIKX7U.js";import{M as i}from"./index-BrNVrlAA.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-q6DQJow7.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";function o(e){const n={a:"a",code:"code",h1:"h1",p:"p",pre:"pre",...r(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(i,{title:"Getting Started/Installation",parameters:{viewMode:"docs"}}),`
+`,t.jsx(n.h1,{id:"installation",children:"Installation"}),`
+`,t.jsx(n.pre,{children:t.jsx(n.code,{className:"language-bash",children:`npm install @esfront/react @esfront/theme @mui/material @emotion/react @emotion/styled sass
+`})}),`
+`,t.jsxs(n.p,{children:["Then follow the installation instructions for ",t.jsx(n.a,{href:"https://mui.com/getting-started/installation/",rel:"nofollow",children:"MUI"}),"."]})]})}function j(e={}){const{wrapper:n}={...r(),...e.components};return n?t.jsx(n,{...e,children:t.jsx(o,{...e})}):o(e)}export{j as default};

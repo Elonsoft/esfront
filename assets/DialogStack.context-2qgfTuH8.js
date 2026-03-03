@@ -1,1 +1,0 @@
-import{r as o}from"./index-DIDRz_s2.js";const r=o.createContext(null),a=()=>{const t=o.useContext(r);if(t===null)throw new Error("No provider for DialogStackContext.");return t};export{r as D,a as u};

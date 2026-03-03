@@ -1,0 +1,5 @@
+import{j as e}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as s}from"./index-D-lIKX7U.js";import{M as i}from"./index-BrNVrlAA.js";import{r as n}from"./index-DlWxdpUw.js";import{D as u}from"./Description-bAoMX-BV.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-q6DQJow7.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-DLE86rgN.js";function t(o){const r={h1:"h1",h2:"h2",...s(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{title:"Hooks/usePreviousValue",parameters:{docs:{source:{type:"code"}}}}),`
+`,e.jsx(r.h1,{id:"usepreviousvalue",children:"usePreviousValue"}),`
+`,e.jsx(u,{name:"usePreviousValue"}),`
+`,e.jsx(r.h2,{id:"api",children:"API"}),`
+`,e.jsx("ul",{children:e.jsx("li",{children:e.jsx(n,{kind:"hooks-api-usePreviousValue",story:"page",children:e.jsx("code",{children:"usePreviousValue"})})})})]})}function V(o={}){const{wrapper:r}={...s(),...o.components};return r?e.jsx(r,{...o,children:e.jsx(t,{...o})}):t(o)}export{V as default};

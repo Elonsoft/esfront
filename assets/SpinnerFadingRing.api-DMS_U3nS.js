@@ -1,0 +1,11 @@
+import{j as n}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as t}from"./index-D-lIKX7U.js";import{M as e}from"./index-BrNVrlAA.js";import{r as p}from"./index-DlWxdpUw.js";import{T as m}from"./TableInterface-DuFzo5fn.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-q6DQJow7.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./TableBase-Dcpn_zqT.js";import"./clsx-B-dksMZM.js";import"./memoTheme-Khho5aaB.js";import"./styled-BHLkoNCB.js";import"./defaultTheme-oBDS3u9v.js";import"./identifier-BWvkVwSG.js";import"./index-pH_Peplc.js";import"./generateUtilityClasses-CoM_PQv9.js";import"./DefaultPropsProvider-BZAQgGqI.js";import"./DefaultPropsProvider-BaGbio7E.js";import"./composeClasses-CAXbtk_0.js";import"./typedoc-DLE86rgN.js";import"./index-B48yt4gF.js";import"./Theme-BGw45g6v.js";import"./index-CkcRf-8q.js";import"./useTheme-LLMgoSjJ.js";import"./useEnhancedEffect-CGMGWzXh.js";import"./index-BL0FDXhk.js";import"./extendSxProp-VCSIJ4BA.js";import"./DialogStack.context-C-3qS0Ep.js";import"./useLatest-C1UtP6al.js";import"./useWindowEventListener-qwmc7qq6.js";import"./DateAdapter.context-DN26yuu8.js";import"./PhoneField.context-CviR8jaJ.js";function o(i){const r={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...t(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(e,{title:"Components API/SpinnerFadingRing"}),`
+`,n.jsx(r.h1,{id:"spinnerfadingring-api",children:"SpinnerFadingRing API"}),`
+`,n.jsx(r.pre,{children:n.jsx(r.code,{className:"language-js",children:`import { SpinnerFadingRing } from '@esfront/react';
+`})}),`
+`,n.jsx(r.h2,{id:"component-name",children:"Component name"}),`
+`,n.jsxs(r.p,{children:["The name ",n.jsx(r.code,{children:"ESSpinnerFadingRing"})," can be used when providing default props."]}),`
+`,n.jsx(r.h2,{id:"props",children:"Props"}),`
+`,n.jsx(m,{variant:"props",name:"SpinnerFadingRingProps"}),`
+`,n.jsx("br",{}),`
+`,n.jsx(r.h2,{id:"demos",children:"Demos"}),`
+`,n.jsx("ul",{children:n.jsx("li",{children:n.jsx(p,{kind:"components-spinner",story:"demo",children:n.jsx("code",{children:"Spinner"})})})})]})}function K(i={}){const{wrapper:r}={...t(),...i.components};return r?n.jsx(r,{...i,children:n.jsx(o,{...i})}):o(i)}export{K as default};

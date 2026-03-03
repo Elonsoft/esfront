@@ -1,0 +1,11 @@
+import{j as r}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as i}from"./index-D-lIKX7U.js";import{M as n}from"./index-BrNVrlAA.js";import{r as m}from"./index-DlWxdpUw.js";import{T as p}from"./TableInterface-DuFzo5fn.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-q6DQJow7.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./TableBase-Dcpn_zqT.js";import"./clsx-B-dksMZM.js";import"./memoTheme-Khho5aaB.js";import"./styled-BHLkoNCB.js";import"./defaultTheme-oBDS3u9v.js";import"./identifier-BWvkVwSG.js";import"./index-pH_Peplc.js";import"./generateUtilityClasses-CoM_PQv9.js";import"./DefaultPropsProvider-BZAQgGqI.js";import"./DefaultPropsProvider-BaGbio7E.js";import"./composeClasses-CAXbtk_0.js";import"./typedoc-DLE86rgN.js";import"./index-B48yt4gF.js";import"./Theme-BGw45g6v.js";import"./index-CkcRf-8q.js";import"./useTheme-LLMgoSjJ.js";import"./useEnhancedEffect-CGMGWzXh.js";import"./index-BL0FDXhk.js";import"./extendSxProp-VCSIJ4BA.js";import"./DialogStack.context-C-3qS0Ep.js";import"./useLatest-C1UtP6al.js";import"./useWindowEventListener-qwmc7qq6.js";import"./DateAdapter.context-DN26yuu8.js";import"./PhoneField.context-CviR8jaJ.js";function t(o){const e={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...i(),...o.components};return r.jsxs(r.Fragment,{children:[r.jsx(n,{title:"Components API/FiltersHeader"}),`
+`,r.jsx(e.h1,{id:"filtersheader-api",children:"FiltersHeader API"}),`
+`,r.jsx(e.pre,{children:r.jsx(e.code,{className:"language-js",children:`import { FiltersHeader } from '@esfront/react';
+`})}),`
+`,r.jsx(e.h2,{id:"component-name",children:"Component name"}),`
+`,r.jsxs(e.p,{children:["The name ",r.jsx(e.code,{children:"ESFiltersHeader"})," can be used when providing default props."]}),`
+`,r.jsx(e.h2,{id:"props",children:"Props"}),`
+`,r.jsx(p,{name:"FiltersHeaderProps",variant:"props"}),`
+`,r.jsx("br",{}),`
+`,r.jsx(e.h2,{id:"demos",children:"Demos"}),`
+`,r.jsx("ul",{children:r.jsx("li",{children:r.jsx(m,{kind:"components-Filters",story:"demo",children:r.jsx("code",{children:"Filters"})})})})]})}function K(o={}){const{wrapper:e}={...i(),...o.components};return e?r.jsx(e,{...o,children:r.jsx(t,{...o})}):t(o)}export{K as default};

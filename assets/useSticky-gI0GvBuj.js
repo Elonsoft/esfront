@@ -1,0 +1,5 @@
+import{j as t}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as i}from"./index-D-lIKX7U.js";import{M as n}from"./index-BrNVrlAA.js";import{r as s}from"./index-DlWxdpUw.js";import{D as c}from"./Description-bAoMX-BV.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-q6DQJow7.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-DLE86rgN.js";function r(e){const o={h1:"h1",h2:"h2",...i(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(n,{title:"Hooks/useSticky",parameters:{docs:{source:{type:"code"}}}}),`
+`,t.jsx(o.h1,{id:"usesticky",children:"useSticky"}),`
+`,t.jsx(c,{name:"useSticky"}),`
+`,t.jsx(o.h2,{id:"api",children:"API"}),`
+`,t.jsx("ul",{children:t.jsx("li",{children:t.jsx(s,{kind:"hooks-api-useSticky",story:"page",children:t.jsx("code",{children:"useSticky"})})})})]})}function S(e={}){const{wrapper:o}={...i(),...e.components};return o?t.jsx(o,{...e,children:t.jsx(r,{...e})}):r(e)}export{S as default};
