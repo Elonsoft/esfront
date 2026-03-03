@@ -25,7 +25,6 @@ export const Alert = (inProps: AlertProps) => {
     variant = 'standard',
     severity = 'success',
     action,
-    actions,
     color,
     breakpoint,
     iconMapping = defaultIconMapping,
@@ -34,28 +33,19 @@ export const Alert = (inProps: AlertProps) => {
     name: 'ESAlert',
   });
 
-  const isWithActions = Array.isArray(children)
-    ? children.some((elem) => (typeof elem === 'object' ? elem.type?.displayName === 'AlertActions' : false))
-    : false;
-
   return (
     <div
       className={clsx(
         className,
         'es-alert',
         `es-alert--${variant}--${color || severity}`,
-        isWithActions && 'es-alert--with-actions'
+        breakpoint && `es-alert--breakpoint--${breakpoint}`
       )}
       style={style}
     >
       {icon !== false && <div className="es-alert__icon">{icon || iconMapping[severity]}</div>}
-      <div className={clsx('es-alert__content', breakpoint && `es-alert__content--breakpoint--${breakpoint}`)}>
-        <div className="es-alert__message body100">{children}</div>
-        {actions}
-      </div>
-      {!!action && (
-        <div className={clsx('es-alert__action', isWithActions && 'es-alert__action--with-actions')}>{action}</div>
-      )}
+      {children}
+      {!!action && <div className="es-alert__action">{action}</div>}
     </div>
   );
 };
