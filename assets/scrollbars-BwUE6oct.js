@@ -1,4 +1,0 @@
-import{j as r}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as n}from"./index-D-lIKX7U.js";import{M as e,S as i}from"./index-BrNVrlAA.js";import{S as m,a}from"./scrollbars.stories-C4gN51-S.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-q6DQJow7.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";function s(o){const t={h1:"h1",p:"p",...n(),...o.components};return r.jsxs(r.Fragment,{children:[r.jsx(e,{of:m}),`
-`,r.jsx(t.h1,{id:"scrollbars",children:"Scrollbars"}),`
-`,r.jsx(t.p,{children:"Our library provides custom scrollbars for a webkit based browsers."}),`
-`,r.jsx(i,{of:a})]})}function w(o={}){const{wrapper:t}={...n(),...o.components};return t?r.jsx(t,{...o,children:r.jsx(s,{...o})}):s(o)}export{w as default};

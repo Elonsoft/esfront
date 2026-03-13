@@ -1,5 +1,0 @@
-import{j as t}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as r}from"./index-D-lIKX7U.js";import{M as i}from"./index-BrNVrlAA.js";import{r as s}from"./index-DlWxdpUw.js";import{D as c}from"./Description-bAoMX-BV.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-q6DQJow7.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-DLE86rgN.js";function o(e){const n={h1:"h1",h2:"h2",...r(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(i,{title:"Hooks/useStuckSentinel",parameters:{docs:{source:{type:"code"}}}}),`
-`,t.jsx(n.h1,{id:"usestucksentinel",children:"useStuckSentinel"}),`
-`,t.jsx(c,{name:"useStuckSentinel"}),`
-`,t.jsx(n.h2,{id:"api",children:"API"}),`
-`,t.jsx("ul",{children:t.jsx("li",{children:t.jsx(s,{kind:"hooks-api-useStuckSentinel",story:"page",children:t.jsx("code",{children:"useStuckSentinel"})})})})]})}function y(e={}){const{wrapper:n}={...r(),...e.components};return n?t.jsx(n,{...e,children:t.jsx(o,{...e})}):o(e)}export{y as default};

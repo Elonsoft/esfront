@@ -1,0 +1,5 @@
+import{j as e}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as r}from"./index-D-lIKX7U.js";import{M as i}from"./index-ByOq6pjr.js";import{r as s}from"./index-D-63Hkc8.js";import{D as m}from"./Description-DiYRbS8b.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-BhMO_e0U.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-CrUiJQVp.js";function o(t){const n={h1:"h1",h2:"h2",...r(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{title:"Hooks/useMenuAim",parameters:{docs:{source:{type:"code"}}}}),`
+`,e.jsx(n.h1,{id:"usemenuaim",children:"useMenuAim"}),`
+`,e.jsx(m,{name:"useMenuAim"}),`
+`,e.jsx(n.h2,{id:"api",children:"API"}),`
+`,e.jsx("ul",{children:e.jsx("li",{children:e.jsx(s,{kind:"hooks-api-useMenuAim",story:"page",children:e.jsx("code",{children:"useMenuAim"})})})})]})}function y(t={}){const{wrapper:n}={...r(),...t.components};return n?e.jsx(n,{...t,children:e.jsx(o,{...t})}):o(t)}export{y as default};

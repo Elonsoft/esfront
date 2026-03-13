@@ -1,5 +1,0 @@
-import{j as i}from"./jsx-runtime-BTJTZTIL.js";import{R as a}from"./Radio-DWyIOsEr.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./clsx.m-C7bORDfW.js";import"./DefaultPropsProvider-BaGbio7E.js";import"./createChainedFunction-BO_9K8Jh.js";import"./SwitchBase-CCu_Ebw1.js";import"./useControlled-CibYmksV.js";import"./useFormControl-B4OjCVsv.js";import"./ButtonBase-BhCJPokL.js";import"./useForkRef-CGhsnMYO.js";const y={tags:["autodocs"],component:a,parameters:{references:["Radio"]},argTypes:{checkedIcon:{table:{disable:!0}},icon:{table:{disable:!0}},inputProps:{table:{disable:!0}},inputRef:{table:{disable:!0}},value:{table:{disable:!0}}},args:{color:"primary"}},r={render:s=>i.jsx(a,{...s})};var e,t,o;r.parameters={...r.parameters,docs:{...(e=r.parameters)==null?void 0:e.docs,source:{originalSource:`{
-  render: args => {
-    return <Radio {...args} />;
-  }
-}`,...(o=(t=r.parameters)==null?void 0:t.docs)==null?void 0:o.source}}};const D=["Demo"];export{r as Demo,D as __namedExportsOrder,y as default};

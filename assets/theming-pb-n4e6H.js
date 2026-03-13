@@ -1,4 +1,0 @@
-import{j as t}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as r}from"./index-D-lIKX7U.js";import{M as i}from"./index-BrNVrlAA.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-q6DQJow7.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";function n(e){const o={a:"a",h1:"h1",p:"p",...r(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(i,{title:"Getting Started/Theming",parameters:{viewMode:"docs"}}),`
-`,t.jsx(o.h1,{id:"theming",children:"Theming"}),`
-`,t.jsxs(o.p,{children:[`Please refer to customization guide for
-`,t.jsx(o.a,{href:"https://github.com/Elonsoft/esfront/tree/master/packages/theme#customization",rel:"nofollow",children:"@esfront/theme"}),"."]})]})}function j(e={}){const{wrapper:o}={...r(),...e.components};return o?t.jsx(o,{...e,children:t.jsx(n,{...e})}):n(e)}export{j as default};
