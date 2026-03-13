@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.15.0...@esfront/react@0.15.1) (2026-03-13)
+
+
+### Features
+
+* **react:** remove ComponentNameToClassKey from overrides.d.ts ([9d1b806](https://github.com/Elonsoft/esfront/commit/9d1b8067821b7af7f843b90b69d528c67edb3629))
+
+
+
 ## [0.15.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.14.0...@esfront/react@0.15.0) (2026-02-24)
 
 

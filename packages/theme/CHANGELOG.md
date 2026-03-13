@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.1.0...@esfront/theme@0.1.1) (2026-03-13)
+
+
+### Bug Fixes
+
+* **theme,button:** add missing px units for height ([2745853](https://github.com/Elonsoft/esfront/commit/2745853ba9bbd6caf6d41e2f1e0ba507d3c9a39e))
+* **theme,link:** remove dash in currentColor keyword ([c426915](https://github.com/Elonsoft/esfront/commit/c4269159ca83e810ef2908c543ceb228c8addbd7))
+* **theme,table:** add missing px units ([58d5668](https://github.com/Elonsoft/esfront/commit/58d5668db7aa4fa17742daeb7c3e9d9cdb94ebd2))
+
+
+
 ## [0.1.0](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.0.3...@esfront/theme@0.1.0) (2026-02-24)
 
 
