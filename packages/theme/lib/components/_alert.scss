@@ -2,12 +2,21 @@
 
 @mixin include() {
   .es-alert {
+    align-items: flex-start;
     border-radius: 4px;
-    display: flex;
+    display: grid;
+    grid-template-areas: 'icon content action';
+    grid-template-columns: auto 1fr auto;
     padding: 7px 15px;
+    position: relative;
 
-    &--with-actions {
-      padding: 11px 15px;
+    @each $name, $value in settings.$breakpoints {
+      &--breakpoint--#{$name} {
+        @media (width < #{$value}px) {
+          grid-template-areas: 'icon . action' 'content content content';
+          padding-bottom: 11px;
+        }
+      }
     }
 
     &--standard--success {
@@ -41,22 +50,30 @@
     }
 
     &__icon {
-      margin-right: 8px;
-      padding-top: 8px;
+      display: flex;
+      grid-area: icon;
+      margin: 8px 8px 8px 0;
     }
 
-    &__content {
+    &__action {
       display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      gap: 6px;
+      grid-area: action;
+      margin: 8px 0 8px 8px;
+    }
+  }
 
-      @each $name, $value in settings.$breakpoints {
-        &--breakpoint--#{$name} {
-          @media (width >= #{$value}px) {
-            flex-direction: row;
-            justify-content: space-between;
-          }
+  .es-alert-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 6px 8px;
+    grid-area: content;
+
+    @each $name, $value in settings.$breakpoints {
+      &--breakpoint--#{$name} {
+        @media (width >= #{$value}px) {
+          flex-direction: row;
+          justify-content: space-between;
         }
       }
     }
@@ -71,22 +88,17 @@
       /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated */
       word-break: break-word;
     }
-
-    &__action {
-      margin: 8px 0 0 8px;
-
-      &--with-actions {
-        margin: 4px 0 0 8px;
-      }
-    }
   }
 
   .es-alert-actions {
+    flex-shrink: 0;
     padding: 4px 0;
   }
 
   .es-alert-close {
-    --icon: var(--es-mono-a-a500);
+    &.es-button {
+      --icon: var(--es-mono-a-a500);
+    }
   }
 
   .es-alert-title {

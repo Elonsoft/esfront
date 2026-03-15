@@ -8,7 +8,7 @@ import { IconButtonPropsSizeOverrides } from '@mui/material/IconButton';
 import { InputBasePropsSizeOverrides } from '@mui/material/InputBase';
 import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
 
-import { AlertActionsProps, AlertCloseProps, AlertProps, AlertTitleProps } from './components/Alert';
+import { AlertActionsProps, AlertCloseProps, AlertProps, AlertTitleProps, AlertContentProps } from './components/Alert';
 import { AppBarProps } from './components/AppBar';
 import { FormControlLabelProps } from './components/FormControlLabel';
 import { AudioPlayerProps } from './components/AudioPlayer';
@@ -174,6 +174,7 @@ declare module '@mui/material/styles/props' {
     ESAppBar: AppBarProps;
     ESAvatar: AvatarProps;
     ESAvatarGroup: AvatarGroupProps;
+    ESAlertContent: AlertContentProps;
     ESAlertTitle: AlertTitleProps;
     ESAudioPlayer: AudioPlayerProps;
     ESAutocomplete: AutocompleteProps<any>;
@@ -340,6 +341,9 @@ declare module '@mui/material/styles/components' {
     };
     ESAlertClose?: {
       defaultProps?: ComponentsProps['ESAlertClose'];
+    };
+    ESAlertContent?: {
+      defaultProps?: ComponentsProps['ESAlertContent'];
     };
     ESAlertActions?: {
       defaultProps?: ComponentsProps['ESAlertActions'];
