@@ -372,7 +372,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                         <SpinnerRing color="mono-a" size={16} /> {labelLoading}
                       </div>
                     ) : options.length ? (
-                      <MenuList ref={menuListRef} className="es-autocomplete-menu__menu-list">
+                      <MenuList ref={menuListRef} className="es-autocomplete-menu__menu-list scrollbar-overlay-mono-a">
                         {groupedOptions}
                         {!!onLoadMore && (
                           <MenuItem
