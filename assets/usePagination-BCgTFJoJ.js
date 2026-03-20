@@ -1,0 +1,5 @@
+import{j as t}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as e}from"./index-D-lIKX7U.js";import{M as r}from"./index-DsUuD2tb.js";import{r as s}from"./index-vV80_MOX.js";import{D as a}from"./Description-DXXG_lA2.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-xFydagNv.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-Czp7uDiA.js";function i(n){const o={h1:"h1",h2:"h2",...e(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(r,{title:"Hooks/usePagination",parameters:{docs:{source:{type:"code"}}}}),`
+`,t.jsx(o.h1,{id:"usepagination",children:"usePagination"}),`
+`,t.jsx(a,{name:"usePagination"}),`
+`,t.jsx(o.h2,{id:"api",children:"API"}),`
+`,t.jsx("ul",{children:t.jsx("li",{children:t.jsx(s,{kind:"hooks-api-usePagination",story:"page",children:t.jsx("code",{children:"usePagination"})})})})]})}function k(n={}){const{wrapper:o}={...e(),...n.components};return o?t.jsx(o,{...n,children:t.jsx(i,{...n})}):i(n)}export{k as default};

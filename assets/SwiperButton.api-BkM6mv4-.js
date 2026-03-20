@@ -1,0 +1,11 @@
+import{j as r}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as e}from"./index-D-lIKX7U.js";import{M as n}from"./index-DsUuD2tb.js";import{r as p}from"./index-vV80_MOX.js";import{T as m}from"./TableInterface-4wVAytZR.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-xFydagNv.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./TableBase-955aUCtR.js";import"./clsx-B-dksMZM.js";import"./memoTheme-Khho5aaB.js";import"./styled-BHLkoNCB.js";import"./defaultTheme-oBDS3u9v.js";import"./identifier-BWvkVwSG.js";import"./index-pH_Peplc.js";import"./generateUtilityClasses-CoM_PQv9.js";import"./DefaultPropsProvider-BZAQgGqI.js";import"./DefaultPropsProvider-BaGbio7E.js";import"./composeClasses-CAXbtk_0.js";import"./typedoc-Czp7uDiA.js";import"./index-7Uj_2sxb.js";import"./Theme-BGw45g6v.js";import"./index-CkcRf-8q.js";import"./useTheme-LLMgoSjJ.js";import"./useEnhancedEffect-CGMGWzXh.js";import"./index-BL0FDXhk.js";import"./extendSxProp-VCSIJ4BA.js";import"./DialogStack.context-C-3qS0Ep.js";import"./useLatest-C1UtP6al.js";import"./useWindowEventListener-qwmc7qq6.js";import"./DateAdapter.context-DN26yuu8.js";import"./PhoneField.context-CviR8jaJ.js";function i(t){const o={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...e(),...t.components};return r.jsxs(r.Fragment,{children:[r.jsx(n,{title:"Components API/SwiperButton"}),`
+`,r.jsx(o.h1,{id:"swiperbutton-api",children:"SwiperButton API"}),`
+`,r.jsx(o.pre,{children:r.jsx(o.code,{className:"language-js",children:`import { SwiperButton } from '@esfront/react';
+`})}),`
+`,r.jsx(o.h2,{id:"component-name",children:"Component name"}),`
+`,r.jsxs(o.p,{children:["The name ",r.jsx(o.code,{children:"ESSwiperButton"})," can be used when providing default props."]}),`
+`,r.jsx(o.h2,{id:"props",children:"Props"}),`
+`,r.jsx(m,{variant:"props",name:"SwiperButtonProps"}),`
+`,r.jsx("br",{}),`
+`,r.jsx(o.h2,{id:"demos",children:"Demos"}),`
+`,r.jsx("ul",{children:r.jsx("li",{children:r.jsx(p,{kind:"components-swiper",story:"demo",children:r.jsx("code",{children:"Swiper"})})})})]})}function K(t={}){const{wrapper:o}={...e(),...t.components};return o?r.jsx(o,{...t,children:r.jsx(i,{...t})}):i(t)}export{K as default};

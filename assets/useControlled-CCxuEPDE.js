@@ -1,5 +1,0 @@
-import{j as o}from"./jsx-runtime-BTJTZTIL.js";import{useMDXComponents as n}from"./index-D-lIKX7U.js";import{M as s}from"./index-ByOq6pjr.js";import{r as i}from"./index-D-63Hkc8.js";import{D as m}from"./Description-DiYRbS8b.js";import"./index-ChsGqxH_.js";import"./index-Wm5baAvf.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./iframe-BhMO_e0U.js";import"./index-COIHyg7t.js";import"./index-DdXvKv-Q.js";import"./index-CXQShRbs.js";import"./index-DzUv_9kz.js";import"./typedoc-CrUiJQVp.js";function r(t){const e={h1:"h1",h2:"h2",...n(),...t.components};return o.jsxs(o.Fragment,{children:[o.jsx(s,{title:"Hooks/useControlled",parameters:{docs:{source:{type:"code"}}}}),`
-`,o.jsx(e.h1,{id:"usecontrolled",children:"useControlled"}),`
-`,o.jsx(m,{name:"useControlled"}),`
-`,o.jsx(e.h2,{id:"api",children:"API"}),`
-`,o.jsx("ul",{children:o.jsx("li",{children:o.jsx(i,{kind:"hooks-api-useControlled",story:"page",children:o.jsx("code",{children:"useControlled"})})})})]})}function y(t={}){const{wrapper:e}={...n(),...t.components};return e?o.jsx(e,{...t,children:o.jsx(r,{...t})}):r(t)}export{y as default};
