@@ -93,7 +93,8 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     return valueArray.map((v) => getOptionLabel(v)).join(', ');
   }, [props.value, valueArray]);
 
-  useEnhancedEffect(() => {
+  // FIXME: formControl.filled in deps is required to override InputBase fill check.
+  useEffect(() => {
     if (valueArray.length) {
       formControl.onFilled();
     } else {
@@ -112,8 +113,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   }, [formControl.focused, previousFocused]);
 
   useEnhancedEffect(() => {
-    // FIXME: Wrong typing in MUI.
-    (formControl as any).setAdornedStart(!!startAdornment);
+    formControl.setAdornedStart(!!startAdornment);
   }, [!!startAdornment]);
 
   const onMenuOpen = useCallback((disableAutoFocus?: boolean) => {
