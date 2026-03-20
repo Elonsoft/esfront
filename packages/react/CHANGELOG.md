@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.15.1...@esfront/react@0.15.2) (2026-03-20)
+
+
+### Bug Fixes
+
+* **react,AutocompleteMenu:** add scroll to menu-list ([b70248f](https://github.com/Elonsoft/esfront/commit/b70248ff5a25d6ceca44d2f5185c1740971810a1))
+* **react,Autocomplete:** replace layout effect with effect for formControl fill/empty ([639a68a](https://github.com/Elonsoft/esfront/commit/639a68accb2b78f3200cb3ea22b7b760072822d4))
+
+
+
 ## [0.15.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.15.0...@esfront/react@0.15.1) (2026-03-13)
 
 
