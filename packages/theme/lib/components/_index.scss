@@ -27,6 +27,7 @@
 @use './filters';
 @use './flag';
 @use './form-control-label';
+@use './form-field';
 @use './gallery';
 @use './image-zoom';
 @use './information-icon';
@@ -95,6 +96,7 @@
   @include filters.include;
   @include flag.include;
   @include form-control-label.include;
+  @include form-field.include;
   @include gallery.include;
   @include image-zoom.include;
   @include information-icon.include;

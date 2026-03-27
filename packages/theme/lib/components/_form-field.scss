@@ -1,0 +1,300 @@
+@use 'sass:math';
+@use 'sass:map';
+@use '../settings';
+@use '../helpers/typography';
+
+@mixin include() {
+  $es-form-field-field-sizes: (
+    400: 32,
+    500: 40,
+    600: 48,
+    700: 56,
+    800: 64,
+    900: 72,
+    1000: 80,
+  );
+  $es-form-field-field-sizes-padding: (
+    400: 8,
+    500: 12,
+    600: 12,
+    700: 12,
+    800: 16,
+    900: 20,
+    1000: 24,
+  );
+  $es-form-field-field-adornment-sizes-padding: (
+    400: '0 4px 0 6px',
+    500: '0 8px 0 8px',
+    600: '0 8px 0 12px',
+    700: '0 8px 0 12px',
+    800: '0 8px 0 16px',
+    900: '0 8px 0 20px',
+    1000: '0 8px 0 20px',
+  );
+
+  .es-form-field {
+    --es-form-field-border-radius: 4px;
+
+    position: relative;
+
+    &--size {
+      @each $name, $value in $es-form-field-field-sizes-padding {
+        &--#{$name} {
+          --es-form-field-padding: #{$value}px;
+        }
+      }
+    }
+
+    &--full-width {
+      width: 100%;
+    }
+  }
+
+  .es-form-field-adornment {
+    align-items: center;
+    align-self: flex-start;
+    display: flex;
+
+    &--size {
+      @each $name, $value in $es-form-field-field-sizes {
+        &--#{$name} {
+          height: #{$value}px;
+
+          &.es-form-field-adornment--position--start {
+            padding: #{map.get($es-form-field-field-adornment-sizes-padding, $name)};
+          }
+        }
+      }
+    }
+
+    &--position {
+      &--start {
+        // padding: 0 4px 0 12px;
+      }
+
+      &--end {
+        padding: 0 12px 0 4px;
+      }
+    }
+
+    & .es-svg-icon {
+      color: var(--es-form-field-field-adornment-color);
+    }
+  }
+
+  .es-form-field-field {
+    --es-form-field-field-outline-width: 1px;
+    --es-form-field-field-outline-color: var(--es-mono-a-a200);
+    --es-form-field-field-adornment-color: var(--es-mono-a-a500);
+
+    align-items: center;
+    display: flex;
+    position: relative;
+
+    &:not(.es-form-field-field--disabled) {
+      &:hover,
+      &.es-form-field-field--focused,
+      &.es-form-field-field--error {
+        --es-form-field-field-outline-width: 2px;
+      }
+
+      &:hover {
+        --es-form-field-field-adornment-color: var(--es-mono-a-a600);
+      }
+    }
+
+    &:not(:has(.es-form-field-adornment--position--start)) {
+      padding-left: var(--es-form-field-padding);
+    }
+
+    &:not(:has(.es-form-field-adornment--position--end)) {
+      padding-right: var(--es-form-field-padding);
+    }
+
+    &--variant {
+      &--outlined,
+      &--outlined-notched {
+        border-radius: var(--es-form-field-border-radius);
+
+        .es-form-field-field__outline {
+          border-width: var(--es-form-field-field-outline-width);
+        }
+      }
+
+      &--filled {
+        background-color: var(--es-mono-a-a100);
+        border-radius: var(--es-form-field-border-radius) var(--es-form-field-border-radius) 0 0;
+
+        &.es-form-field-field--disabled {
+          background-color: var(--es-mono-a-a50);
+        }
+
+        .es-form-field-field__outline {
+          border-width: 0 0 var(--es-form-field-field-outline-width);
+        }
+      }
+    }
+
+    &--size {
+      @each $name, $value in $es-form-field-field-sizes {
+        &--#{$name} {
+          height: #{$value}px;
+        }
+      }
+    }
+
+    &--disabled {
+      --es-form-field-field-adornment-color: var(--es-mono-a-a400);
+    }
+
+    &--focused {
+      --es-form-field-field-outline-color: var(--es-primary-300);
+      --es-form-field-field-adornment-color: var(--es-mono-a-a600);
+    }
+
+    &--error {
+      --es-form-field-field-outline-color: var(--es-error-300);
+    }
+
+    &__outline {
+      border-color: var(--es-form-field-field-outline-color);
+      border-radius: inherit;
+      border-style: solid;
+      inset: 0;
+      margin: 0;
+      padding: 0 0 0 calc(9px - var(--es-form-field-field-outline-width));
+      pointer-events: none;
+      position: absolute;
+
+      & legend {
+        height: 0;
+        max-width: 0.01px;
+        padding: 0;
+        transition: 200ms;
+        visibility: hidden;
+      }
+
+      &--shrink {
+        & legend {
+          max-width: max-content;
+          padding: 0 4px;
+        }
+      }
+    }
+  }
+
+  .es-form-field-helper-text {
+    color: var(--es-mono-a-a700);
+    padding: 8px 12px 0;
+
+    &--disabled {
+      color: var(--es-mono-a-a500);
+    }
+
+    &--error {
+      color: var(--es-error-300);
+    }
+  }
+
+  .es-form-field-input {
+    background: none;
+    border: 0;
+    color: var(--es-mono-a-a900);
+    flex-grow: 1;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &,
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      &::placeholder {
+        color: var(--es-mono-a-a400);
+      }
+    }
+
+    &:disabled {
+      color: var(--es-mono-a-a400);
+    }
+
+    &--variant {
+      &--filled {
+        &:not(.es-form-field-input--size--400, .es-form-field-input--size--500) {
+          $level: map.get(settings.$typography, 'caption');
+
+          @if $level and map.has-key($level, 'line-height') {
+            padding-top: typography.rem(map.get($level, 'line-height'));
+          } @else {
+            padding-top: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .es-form-field-label {
+    color: var(--es-mono-a-a600);
+
+    &--variant {
+      &--outlined {
+        padding: 0 12px 4px;
+      }
+
+      &--outlined-notched,
+      &--filled {
+        left: var(--es-form-field-adornment-width, var(--es-form-field-padding));
+        pointer-events: none;
+        position: absolute;
+        transform: translateY(-50%);
+        transition: 200ms;
+
+        @each $name, $value in $es-form-field-field-sizes {
+          &.es-form-field-label--size--#{$name} {
+            top: #{math.div($value, 2)}px;
+          }
+        }
+      }
+
+      &--outlined-notched {
+        &.es-form-field-label--shrink {
+          left: 12px;
+          top: 0;
+        }
+      }
+
+      &--filled {
+        &.es-form-field-label--shrink {
+          &:is(.es-form-field-label--size--400, .es-form-field-label--size--500) {
+            display: none;
+          }
+
+          &:not(.es-form-field-label--size--400, .es-form-field-label--size--500) {
+            $level: map.get(settings.$typography, 'subtitle1');
+
+            @if $level and map.has-key($level, 'line-height') {
+              padding-bottom: typography.rem(map.get($level, 'line-height'));
+            } @else {
+              padding-bottom: 24px;
+            }
+          }
+        }
+      }
+    }
+
+    &--disabled {
+      color: var(--es-mono-a-a500);
+    }
+
+    &__asterisk {
+      color: var(--es-error-300);
+    }
+  }
+}
