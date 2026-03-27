@@ -3,10 +3,7 @@ import type {} from '@mui/material/themeCssVarsAugmentation';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { BreakpointOverrides, styled, Components, ComponentsProps, ComponentsPropsList } from '@mui/material/styles';
-import { FormControlPropsSizeOverrides } from '@mui/material/FormControl';
 import { IconButtonPropsSizeOverrides } from '@mui/material/IconButton';
-import { InputBasePropsSizeOverrides } from '@mui/material/InputBase';
-import { TextFieldPropsSizeOverrides } from '@mui/material/TextField';
 
 import { AlertActionsProps, AlertCloseProps, AlertProps, AlertTitleProps } from './components/Alert';
 import { AppBarProps } from './components/AppBar';
@@ -76,6 +73,14 @@ import {
 import { FocusTrapProps } from './components/FocusTrap';
 import { FormatDateProps } from './components/FormatDate';
 import { FormatSizeProps } from './components/FormatSize';
+import {
+  FormFieldAdornmentProps,
+  FormFieldFieldProps,
+  FormFieldHelperTextProps,
+  FormFieldInputProps,
+  FormFieldLabelProps,
+  FormFieldProps,
+} from './components/FormField';
 import {
   GalleryActionsButtonGroupProps,
   GalleryActionsProps,
@@ -174,6 +179,7 @@ import {
 } from './components/Table';
 import { TagProps } from './components/Tag';
 import { TabProps, TabScrollButtonProps, TabsProps } from './components/Tabs';
+import { TextFieldProps } from './components/TextField';
 import { TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleProps } from './components/TouchRipple';
 import { ZoomProps } from './components/Zoom';
@@ -256,6 +262,12 @@ declare module '@mui/material/styles/props' {
     ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
     ESFormControlLabel: FormControlLabelProps;
+    ESFormField: FormFieldProps;
+    ESFormFieldAdornment: FormFieldAdornmentProps;
+    ESFormFieldField: FormFieldFieldProps;
+    ESFormFieldHelperText: FormFieldHelperTextProps;
+    ESFormFieldInput: FormFieldInputProps;
+    ESFormFieldLabel: FormFieldLabelProps;
     ESGallery: GalleryProps;
     ESGalleryActions: GalleryActionsProps;
     ESGalleryActionsButtonGroup: GalleryActionsButtonGroupProps;
@@ -354,6 +366,7 @@ declare module '@mui/material/styles/props' {
     ESTab: TabProps;
     ESTabScrollButton: TabScrollButtonProps;
     ESTouchRipple: TouchRippleProps;
+    ESTextField: TextFieldProps;
     ESTextFieldGroup: TextFieldGroupProps;
     ESTooltip: TooltipProps;
     ESZoom: ZoomProps;
@@ -641,6 +654,24 @@ declare module '@mui/material/styles/components' {
     ESFormControlLabel?: {
       defaultProps?: ComponentsProps['ESFormControlLabel'];
     };
+    ESFormField?: {
+      defaultProps?: ComponentsProps['ESFormField'];
+    };
+    ESFormFieldAdornment?: {
+      defaultProps?: ComponentsProps['ESFormFieldAdornment'];
+    };
+    ESFormFieldField?: {
+      defaultProps?: ComponentsProps['ESFormFieldField'];
+    };
+    ESFormFieldHelperText?: {
+      defaultProps?: ComponentsProps['ESFormFieldHelperText'];
+    };
+    ESFormFieldInput?: {
+      defaultProps?: ComponentsProps['ESFormFieldInput'];
+    };
+    ESFormFieldLabel?: {
+      defaultProps?: ComponentsProps['ESFormFieldLabel'];
+    };
     ESKbd?: {
       defaultProps?: ComponentsProps['ESKbd'];
     };
@@ -872,6 +903,9 @@ declare module '@mui/material/styles/components' {
     ESSlider?: {
       defaultProps?: ComponentsProps['ESSlider'];
     };
+    ESTextField?: {
+      defaultProps?: ComponentsProps['ESTextField'];
+    };
     ESTextFieldGroup?: {
       defaultProps?: ComponentsProps['ESTextFieldGroup'];
     };
@@ -893,35 +927,5 @@ declare module '@mui/material/styles' {
     xl: false;
     tabletXS: true;
     desktopXS: true;
-  }
-}
-
-declare module '@mui/material/FormControl' {
-  interface FormControlPropsSizeOverrides {
-    '56': true;
-    '48': true;
-    '40': true;
-    '32': true;
-    small: false;
-  }
-}
-
-declare module '@mui/material/InputBase' {
-  interface InputBasePropsSizeOverrides {
-    '56': true;
-    '48': true;
-    '40': true;
-    '32': true;
-    small: false;
-  }
-}
-
-declare module '@mui/material/TextField' {
-  interface TextFieldPropsSizeOverrides {
-    '56': true;
-    '48': true;
-    '40': true;
-    '32': true;
-    small: false;
   }
 }

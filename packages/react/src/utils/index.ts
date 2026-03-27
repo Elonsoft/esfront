@@ -7,6 +7,7 @@ export { extractEventHandlers } from './extractEventHandlers';
 export { getActiveElement } from './getActiveElement';
 export { getReactElementRef } from './getReactElementRef';
 export { getScrollbarSize } from './getScrollbarSize';
+export { isFilled } from './isFilled';
 export { isFocusVisible } from './isFocusVisible';
 export { isHostComponent } from './isHostComponent';
 export { lockScroll } from './lockScroll';

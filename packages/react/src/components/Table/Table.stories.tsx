@@ -2,8 +2,6 @@ import { ComponentProps, useCallback, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { Table } from './Table';
 import { TableActions } from './TableActions';
 import { TableBody } from './TableBody';
@@ -18,11 +16,11 @@ import { useTableResize } from './useTableResize';
 import { useTableSelection } from './useTableSelection';
 
 import { IconCloseLineW600, IconDotsVerticalLineW500, IconPencilLineW500 } from '../../icons';
+import { AutocompleteField } from '../AutocompleteField';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { Divider } from '../Divider';
-import { MenuItem } from '../MenuItem';
 import { Pagination, PaginationPages, PaginationRange } from '../Pagination';
 
 const DATA: {
@@ -62,6 +60,10 @@ const NAMES = {
     menu: 'Меню',
   },
 };
+
+type FieldName = keyof (typeof NAMES)['en'];
+
+const FIELDS = Object.keys(NAMES.en);
 
 for (let i = 0; i < 50; i++) {
   DATA.en.push({
@@ -360,19 +362,18 @@ export const ColumnPinning: Story = {
       setSelected([]);
     };
 
-    const onPinChange = (pin: 'left' | 'right') => (event: React.ChangeEvent<HTMLInputElement>) => {
-      const {
-        target: { value },
-      } = event;
+    const getFieldLabel = (field: string) => NAMES[locale][field as FieldName];
+    const getFieldValue = (field: string) => field;
 
+    const onPinChange = (pin: 'left' | 'right') => (value: string[]) => {
       if (pin === 'left') {
         setPinRight((prev) => prev.filter((e) => !value.includes(e)));
-        setPinLeft(value as unknown as string[]);
+        setPinLeft(value);
       }
 
       if (pin === 'right') {
         setPinLeft((prev) => prev.filter((e) => !value.includes(e)));
-        setPinRight(value as unknown as string[]);
+        setPinRight(value);
       }
     };
 
@@ -396,36 +397,28 @@ export const ColumnPinning: Story = {
             maxWidth: '850px',
           }}
         >
-          <TextField
+          <AutocompleteField<string>
             fullWidth
-            select
-            SelectProps={{ multiple: true }}
+            multiple
+            getOptionLabel={getFieldLabel}
+            getOptionValue={getFieldValue}
             label={locale === 'en' ? 'Pin left' : 'Закрепить слева'}
-            size="40"
+            options={FIELDS}
+            size="500"
             value={pinLeft}
             onChange={onPinChange('left')}
-          >
-            {Object.entries(NAMES[locale]).map(([key, value]) => (
-              <MenuItem key={key} value={key}>
-                {value}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
+          />
+          <AutocompleteField<string>
             fullWidth
-            select
-            SelectProps={{ multiple: true }}
+            multiple
+            getOptionLabel={getFieldLabel}
+            getOptionValue={getFieldValue}
             label={locale === 'en' ? 'Pin right' : 'Закрепить справа'}
-            size="40"
+            options={FIELDS}
+            size="500"
             value={pinRight}
             onChange={onPinChange('right')}
-          >
-            {Object.entries(NAMES[locale]).map(([key, value]) => (
-              <MenuItem key={key} value={key}>
-                {value}
-              </MenuItem>
-            ))}
-          </TextField>
+          />
         </div>
         <Table ref={ref} columns={columns}>
           <TableHead colDividers={colDividers} sticky={0}>

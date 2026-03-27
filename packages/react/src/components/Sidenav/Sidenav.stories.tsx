@@ -3,15 +3,13 @@ import { ComponentProps, Fragment, useRef, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { styled } from '@mui/material/styles';
-import { outlinedInputClasses } from '@mui/material';
-import InputAdornment, { inputAdornmentClasses } from '@mui/material/InputAdornment';
-import TextField, { textFieldClasses } from '@mui/material/TextField';
 
 import { Sidenav } from './Sidenav';
 import { SidenavContext } from './Sidenav.context';
 import { SidenavItem } from './SidenavItem';
 
 import { IconAccountFillW500Lc, IconAtLineW500 } from '../../icons';
+import { FormFieldAdornment } from '../FormField';
 import { Sidebar, SidebarProps } from '../Sidebar';
 import { SidebarDivider } from '../Sidebar/SidebarDivider';
 import { SidebarItem } from '../Sidebar/SidebarItem';
@@ -19,25 +17,30 @@ import { SidebarMenu } from '../Sidebar/SidebarMenu';
 import { SidebarScrollable } from '../Sidebar/SidebarScrollable';
 import { SidebarSpacer } from '../Sidebar/SidebarSpacer';
 import { SidebarToggle } from '../Sidebar/SidebarToggle';
+import { TextField } from '../TextField';
 
 const SearchField = styled(TextField)(() => ({
-  [`&.${textFieldClasses.root}`]: {
+  '&.es-form-field': {
     margin: '12px 16px 16px',
 
-    [`& .${outlinedInputClasses.root}`]: {
+    '& .es-form-field-field': {
       padding: '0 4px',
 
-      [`& .es-button`]: {
+      '& .es-button': {
         '--icon': 'var(--es-mono-a-a500)',
       },
+    },
 
-      [`& .${inputAdornmentClasses.positionStart}`]: {
-        marginRight: '4px',
+    '& .es-form-field-adornment--position--start': {
+      padding: '0 4px 0 0',
 
-        [`& .es-svg-icon`]: {
-          color: 'var(--es-mono-a-a400)',
-        },
+      '& .es-svg-icon': {
+        color: 'var(--es-mono-a-a400)',
       },
+    },
+
+    '& .es-form-field-input::placeholder': {
+      color: 'var(--es-mono-a-a500)',
     },
   },
 }));
@@ -230,15 +233,14 @@ export const Demo: Story = {
                       <Fragment key="1">
                         <SidebarHeading title={locale === 'en' ? 'Projects' : 'Проекты'} />
                         <SearchField
-                          InputProps={{
-                            startAdornment: (
-                              <InputAdornment position="start">
-                                <IconAtLineW500 />
-                              </InputAdornment>
-                            ),
-                          }}
                           placeholder={locale === 'en' ? 'Search' : 'Поиск'}
-                          size="32"
+                          size="400"
+                          startAdornment={
+                            <FormFieldAdornment position="start">
+                              <IconAtLineW500 />
+                            </FormFieldAdornment>
+                          }
+                          variant="outlined"
                           onKeyDown={onInputKeyDown}
                         />
 
@@ -306,15 +308,14 @@ export const Demo: Story = {
                       <Fragment key="2">
                         <SidebarHeading title={locale === 'en' ? 'Reports' : 'Отчеты'} />
                         <SearchField
-                          InputProps={{
-                            startAdornment: (
-                              <InputAdornment position="start">
-                                <IconAtLineW500 />
-                              </InputAdornment>
-                            ),
-                          }}
                           placeholder={locale === 'en' ? 'Search' : 'Поиск'}
-                          size="32"
+                          size="400"
+                          startAdornment={
+                            <FormFieldAdornment position="start">
+                              <IconAtLineW500 />
+                            </FormFieldAdornment>
+                          }
+                          variant="outlined"
                           onKeyDown={onInputKeyDown}
                         />
 

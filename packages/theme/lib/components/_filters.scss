@@ -167,13 +167,16 @@
       padding: 4px 8px 8px;
 
       & .es-search {
-        &.MuiTextField-root {
-          & .MuiOutlinedInput-root {
+        &.es-form-field {
+          & .es-form-field-field {
             background-color: transparent;
+
+            --es-form-field-field-outline-width: 1px;
+            --es-form-field-field-outline-color: var(--es-mono-a-a100);
           }
 
-          & .MuiOutlinedInput-notchedOutline {
-            border: 1px solid var(--es-mono-a-a100);
+          & .es-form-field-field__outline {
+            border: var(--es-form-field-field-outline-width) solid var(--es-form-field-field-outline-color);
           }
         }
       }

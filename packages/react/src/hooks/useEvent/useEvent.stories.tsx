@@ -2,11 +2,10 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { TextField } from '@mui/material';
-
 import { useEvent } from './useEvent';
 
 import { Button } from '../../components/Button';
+import { TextField } from '../../components/TextField';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -42,7 +41,13 @@ export const Demo: Story = {
     return (
       <>
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-          <TextField fullWidth label="Value" size="40" value={text} onChange={(event) => setText(event.target.value)} />
+          <TextField
+            fullWidth
+            label="Value"
+            size="500"
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+          />
           <Chat />
         </div>
         <div style={{ margin: '8px' }}>Text: {text}</div>

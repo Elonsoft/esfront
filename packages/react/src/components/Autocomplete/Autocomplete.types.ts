@@ -1,14 +1,35 @@
-import { CSSProperties, ReactNode } from 'react';
-
-import { OutlinedInputProps, TextFieldProps } from '@mui/material';
+import { CSSProperties, HTMLAttributes, ReactNode, Ref } from 'react';
 
 import { AutocompleteMenuProps } from '../AutocompleteMenu';
+import { TextFieldProps } from '../TextField';
 
 export type AutocompleteProps<T> = {
   /** Class applied to the root element. */
   className?: string;
   /** Style applied to the root element. */
   style?: CSSProperties;
+
+  /** Id of the control. */
+  id?: string;
+  /** Ref forwarded to the control. */
+  inputRef?: Ref<HTMLDivElement | null>;
+  /** Name of the control, reported back by `onBlur`. */
+  name?: string;
+  /** Content of the label. Only used to cut the notch in the outline. */
+  label?: ReactNode;
+  /** Text shown while nothing is selected. */
+  placeholder?: string;
+  /** Id of the element that describes the control. */
+  'aria-describedby'?: string;
+  /** If true, the control is focused on mount. */
+  autoFocus?: boolean;
+  /** Props applied to the control element. */
+  inputProps?: HTMLAttributes<HTMLDivElement>;
+
+  /** Element rendered before the control. */
+  startAdornment?: ReactNode;
+  /** Element rendered after the control. */
+  endAdornment?: ReactNode;
 
   /** If true, it is possible to enter a search string in the input itself. */
   inlineSearch?: boolean;
@@ -67,22 +88,4 @@ export type AutocompleteProps<T> = {
     | 'header'
     | 'footer'
     | 'onLoadMore'
-  > &
-  Pick<
-    OutlinedInputProps,
-    | 'aria-describedby'
-    | 'autoFocus'
-    | 'disabled'
-    | 'endAdornment'
-    | 'error'
-    | 'fullWidth'
-    | 'id'
-    | 'inputProps'
-    | 'inputRef'
-    | 'label'
-    | 'name'
-    | 'placeholder'
-    | 'required'
-    | 'size'
-    | 'startAdornment'
   >;

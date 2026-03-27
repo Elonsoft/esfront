@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 
-import { TextFieldProps } from '@mui/material';
-
 import { AutocompleteMenuProps } from '../AutocompleteMenu';
+import { TextFieldProps } from '../TextField';
 
 import { CountryCode } from 'libphonenumber-js';
 

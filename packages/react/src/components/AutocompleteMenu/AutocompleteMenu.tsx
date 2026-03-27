@@ -20,8 +20,6 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
 import { useIntersectionObserver, useScrollLock } from '../../hooks';
@@ -29,6 +27,7 @@ import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { Divider } from '../Divider';
+import { FormFieldAdornment, FormFieldInputElement } from '../FormField';
 import { Grow } from '../Grow';
 import { MenuList } from '../Menu';
 import { MenuGroup } from '../MenuGroup';
@@ -36,6 +35,7 @@ import { MenuItem } from '../MenuItem';
 import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';
 import { Popper } from '../Popper';
 import { SpinnerRing } from '../Spinner';
+import { TextField } from '../TextField';
 import { TooltipEllipsis } from '../TooltipEllipsis';
 
 import { flip, hide, limitShift, Middleware, offset as offsetMiddleware, shift } from '@floating-ui/react-dom';
@@ -101,7 +101,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     name: 'ESAutocompleteMenu',
   });
 
-  const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const searchInputRef = useRef<FormFieldInputElement | null>(null);
   const menuListRef = useRef<HTMLUListElement | null>(null);
   const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
 
@@ -348,12 +348,13 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                         className="es-autocomplete-menu__search"
                         inputRef={searchInputRef}
                         placeholder={labelSearch}
-                        size="40"
+                        size="500"
+                        variant="outlined"
                         {...SearchProps}
-                        InputProps={{
-                          startAdornment: <InputAdornment position="start">{iconSearch}</InputAdornment>,
-                          endAdornment: !!SearchProps.value && (
-                            <InputAdornment position="end">
+                        endAdornment={
+                          SearchProps.endAdornment ??
+                          (!!SearchProps.value && (
+                            <FormFieldAdornment position="end">
                               <Button
                                 aria-label={labelSearchClear}
                                 color="mono-a"
@@ -370,10 +371,14 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                               >
                                 {iconSearchClear}
                               </Button>
-                            </InputAdornment>
-                          ),
-                          ...SearchProps.InputProps,
-                        }}
+                            </FormFieldAdornment>
+                          ))
+                        }
+                        startAdornment={
+                          SearchProps.startAdornment ?? (
+                            <FormFieldAdornment position="start">{iconSearch}</FormFieldAdornment>
+                          )
+                        }
                       />
                     )}
                     {header}

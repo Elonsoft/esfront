@@ -58,21 +58,6 @@ const meta: Meta<typeof PhoneField> = {
     getCountryDisplayName: {
       control: false,
     },
-    focused: {
-      table: {
-        disable: true,
-      },
-    },
-    hiddenLabel: {
-      table: {
-        disable: true,
-      },
-    },
-    margin: {
-      table: {
-        disable: true,
-      },
-    },
     MenuProps: {
       table: {
         disable: true,
@@ -196,6 +181,6 @@ export const SingleCountry: Story = {
 
 export const WithoutButton: Story = {
   render: (args, context) => {
-    return <PhoneField {...args} InputProps={{ startAdornment: null }} countries={['RU']} label={getLabel(context)} />;
+    return <PhoneField {...args} countries={['RU']} label={getLabel(context)} startAdornment={null} />;
   },
 };

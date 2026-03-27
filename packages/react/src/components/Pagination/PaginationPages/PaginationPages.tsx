@@ -5,7 +5,6 @@ import { PaginationPagesProps } from './PaginationPages.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import TextField from '@mui/material/TextField';
 
 import { useDocumentEventListener, usePagination } from '../../../hooks';
 import {
@@ -17,6 +16,7 @@ import {
 } from '../../../icons';
 import { Button } from '../../Button';
 import { ButtonBase } from '../../ButtonBase';
+import { TextField } from '../../TextField';
 import { Tooltip } from '../../Tooltip';
 import { usePaginationContext } from '../Pagination.context';
 
@@ -160,9 +160,10 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
       <TextField
         className="es-pagination-pages__text-field"
         placeholder={`${page} ${labelPage}`}
-        size="32"
+        size="400"
         type="text"
         value={state}
+        variant="outlined"
         onChange={onChange}
         onKeyPress={onKeyPress}
       />

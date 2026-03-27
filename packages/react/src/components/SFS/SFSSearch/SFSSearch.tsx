@@ -5,11 +5,11 @@ import { SFSSearchProps } from './SFSSearch.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
 
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../../icons';
 import { Button } from '../../Button';
+import { FormFieldAdornment } from '../../FormField';
+import { TextField } from '../../TextField';
 
 export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
   const {
@@ -30,28 +30,30 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
   return (
     <div className={clsx('es-sfs-search', className)} style={style}>
       <TextField
-        InputProps={{
-          startAdornment: <InputAdornment position="start">{iconSearch}</InputAdornment>,
-          endAdornment: onClear && (
-            <InputAdornment position="end" onClick={onClear}>
+        {...props}
+        fullWidth
+        aria-label={ariaLabel}
+        className="es-sfs-search__input"
+        endAdornment={
+          onClear && (
+            <FormFieldAdornment position="end">
               <Button
                 disableTouchRipple
                 aria-label={labelClear}
                 className="es-sfs-search__clear"
                 color="mono-a"
                 size="300"
+                onClick={onClear}
               >
                 {iconClear}
               </Button>
-            </InputAdornment>
-          ),
-        }}
-        {...props}
-        fullWidth
-        aria-label={ariaLabel}
-        className="es-sfs-search__input"
+            </FormFieldAdornment>
+          )
+        }
         placeholder={placeholder}
-        size="32"
+        size="400"
+        startAdornment={<FormFieldAdornment position="start">{iconSearch}</FormFieldAdornment>}
+        variant="outlined"
       />
     </div>
   );

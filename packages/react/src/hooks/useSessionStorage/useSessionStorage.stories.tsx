@@ -1,10 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { useSessionStorage } from './useSessionStorage';
 
 import { Button } from '../../components/Button';
+import { TextField } from '../../components/TextField';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -28,8 +27,9 @@ export const Demo: Story = {
           fullWidth
           aria-label="SessionStorage"
           helperText="This input's value is saved inside the sessionStorage in 'useSessionStorage' key."
-          size="40"
+          size="500"
           value={value || ''}
+          variant="outlined"
           onChange={(event) => update(event.target.value)}
         />
         <Button color="primary" size="400" variant="contained" onClick={() => remove()}>

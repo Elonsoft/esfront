@@ -2,11 +2,22 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { usePermission } from './usePermission';
 
-import { MenuItem } from '../../components/MenuItem';
+import { AutocompleteField } from '../../components/AutocompleteField';
+
+const PERMISSIONS = [
+  'camera',
+  'geolocation',
+  'microphone',
+  'midi',
+  'notifications',
+  'persistent-storage',
+  'push',
+  'screen-wake-lock',
+  'speaker',
+  'xr-spatial-tracking',
+];
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -25,25 +36,19 @@ export const Demo: Story = {
     const [permission, setPermission] = useState<any>('camera');
     const state = usePermission({ name: permission });
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setPermission(e.target.value);
-    };
-
     return (
       <>
         <div style={{ maxWidth: '320px' }}>
-          <TextField fullWidth select label="Permission" size="40" value={permission} onChange={onChange}>
-            <MenuItem value="camera">camera</MenuItem>
-            <MenuItem value="geolocation">geolocation</MenuItem>
-            <MenuItem value="microphone">microphone</MenuItem>
-            <MenuItem value="midi">midi</MenuItem>
-            <MenuItem value="notifications">notifications</MenuItem>
-            <MenuItem value="persistent-storage">persistent-storage</MenuItem>
-            <MenuItem value="push">push</MenuItem>
-            <MenuItem value="screen-wake-lock">screen-wake-lock</MenuItem>
-            <MenuItem value="speaker">speaker</MenuItem>
-            <MenuItem value="xr-spatial-tracking">xr-spatial-tracking</MenuItem>
-          </TextField>
+          <AutocompleteField
+            fullWidth
+            getOptionLabel={(option: string) => option}
+            getOptionValue={(option: string) => option}
+            label="Permission"
+            options={PERMISSIONS}
+            size="500"
+            value={permission}
+            onChange={(value) => setPermission(value)}
+          />
         </div>
         <div className="body200 mt-8">Permission status: {JSON.stringify(state, null, 2)}</div>
       </>

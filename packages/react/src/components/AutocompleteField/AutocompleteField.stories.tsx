@@ -102,7 +102,7 @@ const meta: Meta<Args> = {
       control: { type: 'boolean' },
     },
     size: {
-      options: ['56', '48', '40', '32'],
+      options: ['400', '500', '600', '700', '800', '900', '1000'],
       control: { type: 'select' },
     },
     helperText: {
@@ -230,6 +230,7 @@ export const Demo: Story = {
       | 'placeholder'
       | 'required'
       | 'size'
+      | 'variant'
       | 'InputProps'
       | 'onBlur'
     > = {
@@ -248,6 +249,7 @@ export const Demo: Story = {
       placeholder: args.placeholder,
       required: args.required,
       size: args.size,
+      variant: args.variant,
       InputProps: {
         SearchProps: {
           value: search,

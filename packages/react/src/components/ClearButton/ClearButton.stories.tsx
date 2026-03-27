@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { InputAdornment } from '@mui/material';
-import TextField from '@mui/material/TextField';
-
 import { ClearButton } from '.';
+
+import { FormFieldAdornment } from '../FormField';
+import { TextField } from '../TextField';
 
 const meta: Meta<typeof ClearButton> = {
   tags: ['autodocs'],
@@ -42,11 +42,13 @@ const DemoWrapper = ({ locale }: { locale: 'en' | 'ru' }) => {
     <div style={{ maxWidth: '360px' }}>
       <TextField
         fullWidth
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">{!!search && <ClearButton onClick={() => setSearch('')} />}</InputAdornment>
-          ),
-        }}
+        endAdornment={
+          !!search && (
+            <FormFieldAdornment position="end">
+              <ClearButton onClick={() => setSearch('')} />
+            </FormFieldAdornment>
+          )
+        }
         label={locale === 'en' ? 'Name' : 'Имя'}
         value={search}
         onChange={onSearchChange}
