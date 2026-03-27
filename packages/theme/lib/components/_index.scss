@@ -16,6 +16,7 @@
 @use './checkbox';
 @use './chip';
 @use './chips';
+@use './date-input';
 @use './dialog';
 @use './divider';
 @use './dropzone';
@@ -84,6 +85,7 @@
   @include checkbox.include;
   @include chip.include;
   @include chips.include;
+  @include date-input.include;
   @include dialog.include;
   @include divider.include;
   @include dropzone.include;
