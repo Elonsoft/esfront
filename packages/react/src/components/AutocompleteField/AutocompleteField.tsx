@@ -3,13 +3,10 @@ import { AutocompleteFieldProps } from './AutocompleteField.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import InputLabel from '@mui/material/InputLabel';
-import { textFieldClasses } from '@mui/material/TextField';
 
 import { useControlled, useId } from '../../hooks';
 import { Autocomplete } from '../Autocomplete';
+import { FormField, FormFieldHelperText, FormFieldLabel } from '../FormField';
 
 /** The autocomplete is used to choose an item from a collection of options. */
 export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
@@ -29,6 +26,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
     closeAfterSelect,
     helperText,
     size,
+    variant,
 
     InputProps,
     InputLabelProps,
@@ -46,8 +44,8 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
   const [open, setOpen] = useControlled(false, inOpen);
 
   const id = useId(inId);
-  const helperTextId = helperText && id ? `${id}-helper-text` : undefined;
-  const inputLabelId = label && id ? `${id}-label` : undefined;
+  const helperTextId = helperText ? `${id}-helper-text` : undefined;
+  const inputLabelId = label ? `${id}-label` : undefined;
   const { onClose, onOpen, ...restInputProps } = InputProps || {};
 
   const handleChange = (e: T & T[]) => {
@@ -62,31 +60,30 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
   };
 
   return (
-    <FormControl
-      className={clsx('es-autocomplete-field', textFieldClasses.root, className)}
+    <FormField
+      className={clsx('es-autocomplete-field', className)}
       disabled={disabled}
       error={error}
       focused={open || undefined}
       fullWidth={fullWidth}
+      id={id}
       required={required}
       size={size}
       style={style}
+      variant={variant}
     >
       {label !== null && label !== '' && (
-        <InputLabel htmlFor={id} id={inputLabelId} required={required} {...InputLabelProps}>
+        <FormFieldLabel id={inputLabelId} {...InputLabelProps}>
           {label}
-        </InputLabel>
+        </FormFieldLabel>
       )}
       <Autocomplete
         MenuGroupProps={MenuGroupProps}
         aria-describedby={helperTextId}
         autoFocus={autoFocus}
-        disabled={disabled}
-        fullWidth={fullWidth}
         id={id}
         label={label}
         open={open}
-        required={required}
         onChange={handleChange as never}
         onClose={() => {
           onClose?.();
@@ -100,10 +97,10 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
         {...restInputProps}
       />
       {!!helperText && (
-        <FormHelperText id={helperTextId} {...FormHelperTextProps}>
+        <FormFieldHelperText id={helperTextId} {...FormHelperTextProps}>
           {helperText}
-        </FormHelperText>
+        </FormFieldHelperText>
       )}
-    </FormControl>
+    </FormField>
   );
 };

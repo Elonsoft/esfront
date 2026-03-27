@@ -153,21 +153,6 @@
     &:not(:last-of-type) {
       padding-bottom: 0;
     }
-
-    & .MuiTextField-root {
-      & .MuiOutlinedInput-input,
-      & .MuiFormLabel-root {
-        @include typography.level('body100');
-      }
-
-      & .MuiInputLabel-outlined.MuiInputLabel-outlined {
-        transform: translate(12px, 14px) scale(1);
-
-        &.MuiInputLabel-shrink {
-          transform: translate(12px, -8.5px) scale(0.857);
-        }
-      }
-    }
   }
 
   .es-sfs-row {
@@ -185,58 +170,42 @@
     display: flex;
     flex-grow: 1;
 
-    &__input.MuiTextField-root {
-      & .MuiInputLabel-root {
-        opacity: 0;
-      }
+    &__input.es-form-field {
+      & .es-form-field-field {
+        --es-form-field-field-adornment-color: var(--es-mono-a-a500);
 
-      & .MuiOutlinedInput-root {
-        &.MuiInputBase-adornedEnd {
-          padding-right: 3px;
-        }
-
-        &.MuiInputBase-adornedStart {
-          padding-left: 2px;
-
-          &.Mui-focused {
-            & .MuiInputAdornment-positionStart .es-svg-icon {
-              color: var(--es-mono-a-a600);
-            }
+        &:not(.es-form-field-field--disabled) {
+          &:hover,
+          &.es-form-field-field--focused {
+            --es-form-field-field-adornment-color: var(--es-mono-a-a600);
           }
         }
-
-        & .MuiOutlinedInput-notchedOutline {
-          border: none;
-        }
-
-        & .MuiOutlinedInput-input {
-          @include typography.level('body100');
-
-          line-height: 23px;
-          padding-left: 0;
-        }
       }
 
-      & .MuiInputAdornment-positionEnd {
-        cursor: pointer;
-        flex-shrink: 0;
-        margin-left: 0;
-        width: 32px;
+      & .es-form-field-field__outline {
+        border: none;
       }
 
-      & .MuiInputAdornment-positionStart {
+      & .es-form-field-adornment--position--start {
         flex-shrink: 0;
         justify-content: center;
-        margin-right: 0;
+        padding: 0 0 0 2px;
         width: 32px;
       }
 
-      & .MuiInputAdornment-positionStart .es-svg-icon {
-        color: var(--es-mono-a-a500);
+      & .es-form-field-adornment--position--end {
+        cursor: pointer;
+        flex-shrink: 0;
+        padding: 0 3px 0 0;
       }
 
-      &:hover .MuiInputAdornment-positionStart .es-svg-icon {
-        color: var(--es-mono-a-a600);
+      & .es-form-field-input {
+        line-height: 23px;
+        padding-left: 0;
+
+        &::placeholder {
+          color: var(--es-mono-a-a500);
+        }
       }
     }
 

@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { TextField } from '@mui/material';
-
 import {
   Filters,
   FiltersContent,
@@ -19,6 +17,7 @@ import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { Search } from '../Search';
 import { Switch } from '../Switch';
+import { TextField } from '../TextField';
 import { TextFieldGroup } from '../TextFieldGroup';
 import { Tooltip } from '../Tooltip';
 
@@ -65,8 +64,8 @@ export const Demo: Story = {
           <FiltersFilter title={context.globals.locale === 'ru' ? 'Мощность' : 'Power'}>
             <div className="px-8 pt-4 pb-8">
               <TextFieldGroup>
-                <TextField fullWidth label="От" size="40" />
-                <TextField fullWidth label="До" size="40" />
+                <TextField fullWidth label="От" size="500" />
+                <TextField fullWidth label="До" size="500" />
               </TextFieldGroup>
             </div>
           </FiltersFilter>

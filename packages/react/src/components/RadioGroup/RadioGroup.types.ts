@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import { FormGroupProps } from '@mui/material';
-
-export interface RadioGroupProps extends Omit<FormGroupProps, 'onChange'> {
+export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
   /**
    * The default value. Use when the component is not controlled.
    */
@@ -21,9 +19,12 @@ export interface RadioGroupProps extends Omit<FormGroupProps, 'onChange'> {
    */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: string) => void;
   /**
+   * Display the radio buttons in a row.
+   * @default false
+   */
+  row?: boolean;
+  /**
    * Value of the selected radio button. The DOM API casts this to a string.
    */
   value?: any;
 }
-
-export type RadioGroupClassKey = keyof NonNullable<RadioGroupProps['classes']>;

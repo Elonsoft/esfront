@@ -1,14 +1,14 @@
-import { forwardRef } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { SwitchBaseProps } from './SwitchBase.types';
 
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { useFormControl } from '@mui/material';
 
 import { useControlled } from '../../hooks';
 import { ButtonBase } from '../ButtonBase';
+import { FormFieldContext } from '../FormField';
 
 export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(function SwitchBase(
   inProps: SwitchBaseProps,
@@ -44,15 +44,17 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
 
   const [checked, setCheckedState] = useControlled(Boolean(defaultChecked), checkedProp);
 
-  const muiFormControl = useFormControl();
+  // The switch is not always rendered inside a field, so the context is read directly instead of through
+  // `useFormFieldContext`, which throws when there is no provider.
+  const formField = useContext(FormFieldContext);
 
   const handleFocus = (event: React.FocusEvent<HTMLButtonElement, Element>) => {
     if (onFocus) {
       onFocus(event);
     }
 
-    if (muiFormControl && muiFormControl.onFocus) {
-      muiFormControl.onFocus(event as never);
+    if (formField) {
+      formField.onFocus();
     }
   };
 
@@ -61,8 +63,8 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
       onBlur(event);
     }
 
-    if (muiFormControl && muiFormControl.onBlur) {
-      muiFormControl.onBlur(event as never);
+    if (formField) {
+      formField.onBlur();
     }
   };
 
@@ -82,9 +84,9 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
 
   let disabled = disabledProp;
 
-  if (muiFormControl) {
+  if (formField) {
     if (typeof disabled === 'undefined') {
-      disabled = muiFormControl.disabled;
+      disabled = formField.disabled;
     }
   }
 

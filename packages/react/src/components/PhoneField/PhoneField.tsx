@@ -5,8 +5,6 @@ import { PhoneFieldProps } from './PhoneField.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
 
 import { usePhoneFieldContext } from './PhoneField.context';
 import {
@@ -22,6 +20,8 @@ import { useControlled, useEvent, useLatest, useMenu, useMenuVisibility } from '
 import { IconGlobalLineW500, IconMenuDownFillW300 } from '../../icons';
 import { AutocompleteMenu } from '../AutocompleteMenu';
 import { Button } from '../Button';
+import { FormFieldAdornment, FormFieldInputElement } from '../FormField';
+import { TextField } from '../TextField';
 import { Tooltip } from '../Tooltip';
 
 import { AsYouType, CountryCode, getCountryCallingCode, parsePhoneNumber } from 'libphonenumber-js/core';
@@ -54,7 +54,7 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
     name,
     value: inValue,
 
-    InputProps,
+    startAdornment,
     onChange,
     onFocus: onFocusProp,
     onBlur: onBlurProp,
@@ -85,7 +85,11 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
   const [search, setSearch] = useState('');
 
   const ref = useRef<HTMLDivElement | null>(null);
-  const [inputRef, setInputRef] = useState<HTMLInputElement | null>(null);
+  const [inputRef, setInputRefState] = useState<HTMLInputElement | null>(null);
+  // The field never renders a textarea, so the control it reports back is always an input.
+  const setInputRef = useCallback((node: FormFieldInputElement | null) => {
+    setInputRefState(node as HTMLInputElement | null);
+  }, []);
 
   const codes = useMemo(() => {
     return countries.map((country) => getCountryCallingCode(country, metadata));
@@ -422,6 +426,22 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
     }
   };
 
+  const start = startAdornment ?? (
+    <Tooltip enterDelay={200} placement="top-start" title={countries.length > 1 ? labelMenu : ''}>
+      <Button
+        className={clsx('es-phone-field__menu-button', !!anchorEl && 'es-phone-field__menu-button--open')}
+        color="tertiary"
+        disabled={countries.length < 2}
+        variant="text"
+        onClick={onMenuClick}
+        onMouseDown={onMenuMouseDown}
+      >
+        {getCountryFlag(countryCode)}
+        {countries.length > 1 && iconMenuArrow}
+      </Button>
+    </Tooltip>
+  );
+
   return (
     <>
       <TextField
@@ -429,31 +449,7 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
         className={clsx('es-phone-field', className)}
         inputRef={setInputRef}
         name={name}
-        slotProps={{
-          inputLabel: {
-            shrink: focused || !!formatted,
-          },
-          input: {
-            startAdornment: (
-              <InputAdornment className="es-phone-field__start-adornment" position="start">
-                <Tooltip enterDelay={200} placement="top-start" title={countries.length > 1 ? labelMenu : ''}>
-                  <Button
-                    className={clsx('es-phone-field__menu-button', !!anchorEl && 'es-phone-field__menu-button--open')}
-                    color="tertiary"
-                    disabled={countries.length < 2}
-                    variant="text"
-                    onClick={onMenuClick}
-                    onMouseDown={onMenuMouseDown}
-                  >
-                    {getCountryFlag(countryCode)}
-                    {countries.length > 1 && iconMenuArrow}
-                  </Button>
-                </Tooltip>
-              </InputAdornment>
-            ),
-            ...InputProps,
-          },
-        }}
+        startAdornment={!!start && <FormFieldAdornment position="start">{start}</FormFieldAdornment>}
         type="tel"
         value={formatted}
         {...props}

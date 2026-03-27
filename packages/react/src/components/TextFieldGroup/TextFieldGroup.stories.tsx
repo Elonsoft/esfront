@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { TextFieldGroup } from './TextFieldGroup';
+
+import { TextField } from '../TextField';
 
 const meta: Meta<typeof TextFieldGroup> = {
   tags: ['autodocs'],

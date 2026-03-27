@@ -2,21 +2,35 @@ import * as React from 'react';
 
 import { RadioGroupProps } from './RadioGroup.types';
 
-import { FormGroup, useControlled, useForkRef } from '@mui/material';
+import clsx from 'clsx';
+
+import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import RadioGroupContext from './RadioGroup.context';
 
-import { useId } from '../../hooks';
+import { useControlled, useForkRef, useId } from '../../hooks';
 
-export const RadioGroup = React.forwardRef<HTMLButtonElement, RadioGroupProps>(function RadioGroup(props, ref) {
-  const { children, defaultValue, name: nameProp, onChange, value: valueProp, ...other } = props;
-  const rootRef = React.useRef(null);
-
-  const [value, setValueState] = useControlled({
-    controlled: valueProp,
-    default: defaultValue,
-    name: 'RadioGroup',
+export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(function RadioGroup(
+  inProps: RadioGroupProps,
+  ref
+) {
+  const {
+    children,
+    className,
+    defaultValue,
+    name: nameProp,
+    onChange,
+    row = false,
+    value: valueProp,
+    ...other
+  } = useDefaultProps({
+    props: inProps,
+    name: 'ESRadioGroup',
   });
+
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+
+  const [value, setValueState] = useControlled(defaultValue, valueProp);
 
   const handleRef = useForkRef(ref, rootRef);
 
@@ -39,9 +53,14 @@ export const RadioGroup = React.forwardRef<HTMLButtonElement, RadioGroupProps>(f
 
   return (
     <RadioGroupContext.Provider value={contextValue}>
-      <FormGroup ref={handleRef} role="radiogroup" {...other}>
+      <div
+        ref={handleRef}
+        className={clsx(className, 'es-radio-group', row && 'es-radio-group--row')}
+        role="radiogroup"
+        {...other}
+      >
         {children}
-      </FormGroup>
+      </div>
     </RadioGroupContext.Provider>
   );
 });

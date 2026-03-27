@@ -1,18 +1,14 @@
-import { FC, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AutocompleteProps } from './Autocomplete.types';
 
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { useFormControl } from '@mui/material/FormControl';
-import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
-import { useForkRef } from '@mui/material/utils';
 
-import { useControlled, useEnhancedEffect, usePreviousValue } from '../../hooks';
+import { useControlled, useEnhancedEffect, useForkRef, usePreviousValue } from '../../hooks';
 import { AutocompleteMenu, AutocompleteMenuImperativeActions } from '../AutocompleteMenu';
-
-const AutocompleteRoot = OutlinedInput as unknown as FC<OutlinedInputProps & { children?: ReactNode }>;
+import { FormFieldAdornment, FormFieldField, useFormFieldContext } from '../FormField';
 
 /** The autocomplete is used to choose an item from a collection of options. */
 export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
@@ -25,6 +21,8 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     label,
     name,
     placeholder,
+    autoFocus,
+    inputProps,
     'aria-describedby': ariaDescribedby,
 
     startAdornment,
@@ -58,17 +56,20 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     name: 'ESAutocomplete',
   });
 
-  const formControl = useFormControl();
-
-  if (!formControl) {
-    throw new Error('No provider for FormControlContext.');
-  }
+  const formField = useFormFieldContext();
 
   const ref = useRef<HTMLDivElement | null>(null);
 
   const paperRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLDivElement | null>(null);
-  const inputNodeRef = useForkRef(inputRef, inInputRef);
+  // The field focuses whatever sits in the context ref when its padding is clicked, so the control registers itself.
+  const setControl = useCallback(
+    (node: HTMLDivElement | null) => {
+      formField.inputRef.current = node;
+    },
+    [formField.inputRef]
+  );
+  const inputNodeRef = useForkRef(inputRef, inInputRef, setControl);
 
   const actions = useRef<AutocompleteMenuImperativeActions>(null);
 
@@ -77,7 +78,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   const [open, setOpen] = useControlled(false, inOpen);
   const [menuWidthState, setMenuWidthState] = useState(0);
 
-  const previousFocused = usePreviousValue(formControl.focused);
+  const previousFocused = usePreviousValue(formField.focused);
 
   const valueArray = useMemo(
     () => (props.multiple ? props.value : props.value ? [props.value] : []),
@@ -92,27 +93,27 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     return valueArray.map((v) => getOptionLabel(v)).join(', ');
   }, [props.value, valueArray]);
 
-  // FIXME: formControl.filled in deps is required to override InputBase fill check.
+  // The value lives in the menu rather than in a text input, so the filled state is reported by hand.
   useEffect(() => {
     if (valueArray.length) {
-      formControl.onFilled();
+      formField.onFilled();
     } else {
-      formControl.onEmpty();
+      formField.onEmpty();
     }
-  }, [valueArray, formControl.onEmpty, formControl.onFilled, formControl.filled]);
+  }, [valueArray, formField.onEmpty, formField.onFilled, formField.filled]);
 
   useEffect(() => {
-    if (onBlur && !formControl.focused && previousFocused) {
+    if (onBlur && !formField.focused && previousFocused) {
       if (isInputFocusRequested.current) {
         isInputFocusRequested.current = false;
       } else {
         onBlur({ target: { name } });
       }
     }
-  }, [formControl.focused, previousFocused]);
+  }, [formField.focused, previousFocused]);
 
   useEnhancedEffect(() => {
-    formControl.setAdornedStart(!!startAdornment);
+    formField.setAdornedStart(!!startAdornment);
   }, [!!startAdornment]);
 
   const onMenuOpen = useCallback((disableAutoFocus?: boolean) => {
@@ -184,7 +185,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   };
 
   const onMouseDown = (event: React.MouseEvent<HTMLElement>) => {
-    if (formControl.disabled || event.button !== 0) {
+    if (formField.disabled || event.button !== 0) {
       return;
     }
 
@@ -201,62 +202,76 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     onMenuOpen(!!inlineSearch);
   };
 
-  const notched = formControl.filled || formControl.focused || !!startAdornment || !!open;
+  // The notch stays open while the menu is shown, otherwise it would snap shut behind it.
+  const shrink = formField.filled || formField.focused || !!open;
+
+  const isSearching = !!inlineSearch && formField.focused;
+
+  // The control replaces the input of the field, so it carries the classes that give it the type scale of its size.
+  const controlClassName = clsx(
+    'es-autocomplete__input',
+    'es-form-field-input',
+    `es-form-field-input--variant--${formField.variant}`,
+    `es-form-field-input--size--${formField.size}`,
+    formField.disabled && 'es-form-field-input--disabled',
+    formField.size === '400' || formField.size === '500' ? 'body100' : 'subtitle1'
+  );
 
   return (
     <>
-      <AutocompleteRoot
+      <FormFieldField
         ref={ref}
-        autoComplete={inlineSearch ? 'off' : undefined}
-        autoFocus={inlineSearch ? formControl.focused : false}
         className={clsx(className, 'es-autocomplete')}
-        disabled={formControl.disabled}
-        endAdornment={endAdornment}
-        error={formControl.error}
-        fullWidth={props.fullWidth}
-        id={id}
-        inputComponent={inlineSearch && formControl.focused ? 'input' : ('div' as never)}
-        inputProps={{
-          children:
-            inlineSearch && formControl.focused ? null : valueDisplay ? (
-              <div className="es-autocomplete__display-value">{valueDisplay}</div>
-            ) : (
-              (notched || !label) && <div className="es-autocomplete__input-placeholder">{placeholder}</div>
-            ),
-          className: 'es-autocomplete__input',
-          role: inlineSearch ? 'input' : 'button',
-          tabIndex: formControl.disabled ? -1 : 0,
-          onBlur: (e) => {
-            formControl.onBlur?.(e as never);
-          },
-          onFocus: (e) => {
-            formControl.onFocus?.(e as never);
-          },
-          onKeyDown,
-          'aria-describedby': ariaDescribedby,
-          ...props.inputProps,
-        }}
-        inputRef={inputNodeRef}
+        endAdornment={!!endAdornment && <FormFieldAdornment position="end">{endAdornment}</FormFieldAdornment>}
         label={label}
-        name={name}
-        notched={notched}
-        placeholder={inlineSearch ? placeholder : undefined}
-        required={formControl.required}
-        startAdornment={startAdornment}
+        shrink={shrink}
+        startAdornment={!!startAdornment && <FormFieldAdornment position="start">{startAdornment}</FormFieldAdornment>}
         style={style}
-        value={inlineSearch && formControl.focused ? SearchProps?.value : null}
-        onChange={
-          inlineSearch && formControl.focused
-            ? (e) => {
-                SearchProps?.onChange?.(e);
-                onMenuOpen(true);
-              }
-            : undefined
-        }
         onMouseDown={onMouseDown}
       >
-        {inlineSearch ? null : valueDisplay}
-      </AutocompleteRoot>
+        {isSearching ? (
+          <input
+            ref={inputNodeRef as React.Ref<HTMLInputElement>}
+            autoFocus
+            aria-describedby={ariaDescribedby}
+            autoComplete="off"
+            className={controlClassName}
+            disabled={formField.disabled}
+            id={id}
+            name={name}
+            placeholder={placeholder}
+            required={formField.required}
+            value={SearchProps?.value as string}
+            onBlur={formField.onBlur}
+            onChange={(e) => {
+              SearchProps?.onChange?.(e);
+              onMenuOpen(true);
+            }}
+            onFocus={formField.onFocus}
+            onKeyDown={onKeyDown}
+          />
+        ) : (
+          <div
+            {...inputProps}
+            ref={inputNodeRef}
+            aria-describedby={ariaDescribedby}
+            autoFocus={autoFocus}
+            className={controlClassName}
+            id={id}
+            role="button"
+            tabIndex={formField.disabled ? -1 : 0}
+            onBlur={formField.onBlur}
+            onFocus={formField.onFocus}
+            onKeyDown={onKeyDown}
+          >
+            {valueDisplay ? (
+              <div className="es-autocomplete__display-value">{valueDisplay}</div>
+            ) : (
+              (shrink || !label) && <div className="es-autocomplete__input-placeholder">{placeholder}</div>
+            )}
+          </div>
+        )}
+      </FormFieldField>
       <AutocompleteMenu
         {...({ value: props.value, multiple: props.multiple } as
           | {

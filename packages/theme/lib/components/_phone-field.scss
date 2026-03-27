@@ -1,19 +1,12 @@
 @mixin include() {
   .es-phone-field {
-    &.MuiTextField-root {
-      & .MuiOutlinedInput-root.MuiInputBase-adornedStart {
+    &.es-form-field {
+      & .es-form-field-field {
         overflow: hidden;
-        padding-left: 0;
       }
 
-      &:has(.MuiInputBase-inputAdornedStart) .MuiInputLabel-outlined:not(.MuiInputLabel-shrink) {
-        transform: translate(60px, 16px) scale(1);
-      }
-    }
-
-    &__start-adornment {
-      &.MuiInputAdornment-positionStart {
-        margin-right: 4px;
+      & .es-form-field-adornment--position--start {
+        padding: 0 4px 0 0;
       }
     }
 

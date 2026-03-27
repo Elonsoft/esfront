@@ -88,8 +88,17 @@ export default tseslint.config(
                 'Divider',
                 'Drawer',
                 'Fade',
+                'FilledInput',
+                'FormControl',
+                'FormGroup',
+                'FormHelperText',
+                'FormLabel',
                 'Grow',
                 'IconButton',
+                'Input',
+                'InputAdornment',
+                'InputBase',
+                'InputLabel',
                 'LinearProgress',
                 'Link',
                 'ListItem',
@@ -101,12 +110,14 @@ export default tseslint.config(
                 'MenuList',
                 'Modal',
                 'FormControlLabel',
+                'OutlinedInput',
                 'Pagination',
                 'PaginationItem',
                 'Popover',
                 'Popper',
                 'Portal',
                 'Radio',
+                'RadioGroup',
                 'Slide',
                 'Slider',
                 'SvgIcon',
@@ -119,9 +130,11 @@ export default tseslint.config(
                 'TablePagination',
                 'TableRow',
                 'TableText',
+                'TextField',
                 'Tooltip',
                 'Typography',
                 'Zoom',
+                'useFormControl',
               ],
             },
             {
@@ -209,11 +222,47 @@ export default tseslint.config(
               importNames: ['default'],
             },
             {
+              group: ['@mui/material/FilledInput'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/FormControl'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/FormGroup'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/FormHelperText'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/FormLabel'],
+              importNames: ['default'],
+            },
+            {
               group: ['@mui/material/Grow'],
               importNames: ['default'],
             },
             {
               group: ['@mui/material/IconButton'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Input'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/InputAdornment'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/InputBase'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/InputLabel'],
               importNames: ['default'],
             },
             {
@@ -261,6 +310,10 @@ export default tseslint.config(
               importNames: ['default'],
             },
             {
+              group: ['@mui/material/OutlinedInput'],
+              importNames: ['default'],
+            },
+            {
               group: ['@mui/material/Pagination'],
               importNames: ['default'],
             },
@@ -282,6 +335,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/Radio'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/RadioGroup'],
               importNames: ['default'],
             },
             {
@@ -334,6 +391,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/TableText'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/TextField'],
               importNames: ['default'],
             },
             {

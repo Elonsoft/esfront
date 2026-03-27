@@ -2,8 +2,6 @@ import { ComponentProps } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { FormControl } from '@mui/material';
-
 import { RadioGroup } from './RadioGroup';
 
 import { FormControlLabel } from '../FormControlLabel';
@@ -44,18 +42,16 @@ export const Demo: Story = {
   render: (args, context) => {
     const locale = (context.globals.locale || 'en') as 'en' | 'ru';
     return (
-      <FormControl>
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="female"
-          name="radio-buttons-group"
-          {...args}
-        >
-          {LABELS[locale].map((item) => (
-            <FormControlLabel key={item.value} control={<Radio value={item.value} />} label={item.label} />
-          ))}
-        </RadioGroup>
-      </FormControl>
+      <RadioGroup
+        aria-labelledby="demo-radio-buttons-group-label"
+        defaultValue="female"
+        name="radio-buttons-group"
+        {...args}
+      >
+        {LABELS[locale].map((item) => (
+          <FormControlLabel key={item.value} control={<Radio value={item.value} />} label={item.label} />
+        ))}
+      </RadioGroup>
     );
   },
 };

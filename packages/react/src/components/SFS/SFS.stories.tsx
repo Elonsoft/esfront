@@ -2,14 +2,13 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { SFS, SFSChips, SFSFilters, SFSFiltersGroup, SFSRow, SFSSearch, SFSSorting } from '.';
 
 import { Chip } from '../Chip';
 import { Chips } from '../Chips';
 import { Divider } from '../Divider';
 import { SortingMenuValue } from '../SortingMenu';
+import { TextField } from '../TextField';
 import { Tooltip } from '../Tooltip';
 
 const sortingOptionsRu = [
@@ -130,28 +129,28 @@ export const Demo: Story = {
               <TextField
                 label={locale === 'ru' ? 'Ответственный' : 'Responsible'}
                 name="1"
-                size="48"
+                size="600"
                 value={filters['1']}
                 onChange={onFiltersChange}
               />
               <TextField
                 label={locale === 'ru' ? 'Создатель' : 'Author'}
                 name="2"
-                size="48"
+                size="600"
                 value={filters['2']}
                 onChange={onFiltersChange}
               />
               <TextField
                 label={locale === 'ru' ? 'Статус задачи' : 'Task status'}
                 name="3"
-                size="48"
+                size="600"
                 value={filters['3']}
                 onChange={onFiltersChange}
               />
               <TextField
                 label={locale === 'ru' ? 'Этап выполнения' : 'Execution stage'}
                 name="4"
-                size="48"
+                size="600"
                 value={filters['4']}
                 onChange={onFiltersChange}
               />
@@ -160,14 +159,14 @@ export const Demo: Story = {
               <TextField
                 label={locale === 'ru' ? 'Срок выполнения' : 'Deadline'}
                 name="5"
-                size="48"
+                size="600"
                 value={filters['5']}
                 onChange={onFiltersChange}
               />
               <TextField
                 label={locale === 'ru' ? 'Закрытие' : 'Closure'}
                 name="6"
-                size="48"
+                size="600"
                 value={filters['6']}
                 onChange={onFiltersChange}
               />

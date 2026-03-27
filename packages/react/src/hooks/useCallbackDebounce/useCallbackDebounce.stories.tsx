@@ -2,11 +2,9 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { useCallbackDebounce } from './useCallbackDebounce';
 
-import { Checkbox, FormControlLabel } from '../../components';
+import { Checkbox, FormControlLabel, TextField } from '../../components';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -38,7 +36,7 @@ export const Demo: Story = {
     return (
       <div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
-          <TextField fullWidth label="Value" size="40" onChange={onChange} />
+          <TextField fullWidth label="Value" size="500" onChange={onChange} />
 
           <FormControlLabel
             control={<Checkbox checked={leading} onChange={(event) => setLeading(event.target.checked)} />}

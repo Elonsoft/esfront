@@ -14,5 +14,9 @@
     &:active {
       --text: var(--es-mono-a-a600);
     }
+
+    & .es-svg-icon {
+      --es-form-field-field-adornment-color: var(--text);
+    }
   }
 }

@@ -1,10 +1,7 @@
 import { CSSProperties, ReactNode } from 'react';
 
-import { FormHelperTextProps } from '@mui/material/FormHelperText';
-import { InputLabelProps } from '@mui/material/InputLabel';
-import { TextFieldProps } from '@mui/material/TextField';
-
 import { AutocompleteProps } from '../Autocomplete';
+import { FormFieldHelperTextProps, FormFieldLabelProps, FormFieldProps } from '../FormField';
 
 export type AutocompleteFieldProps<T> = {
   /** Class applied to the root element. */
@@ -17,7 +14,9 @@ export type AutocompleteFieldProps<T> = {
   /** The helper text content. */
   helperText?: ReactNode;
   /** The size of the component. */
-  size?: TextFieldProps['size'];
+  size?: FormFieldProps['size'];
+  /** The variant of the component. */
+  variant?: FormFieldProps['variant'];
 
   /** Props applied to the `Autocomplete` element. */
   InputProps?: Partial<
@@ -34,10 +33,10 @@ export type AutocompleteFieldProps<T> = {
       | 'groupBy'
     >
   >;
-  /** Props applied to the `InputLabel` element. */
-  InputLabelProps?: InputLabelProps;
-  /** Props applied to the `FormHelperText` element. */
-  FormHelperTextProps?: FormHelperTextProps;
+  /** Props applied to the `FormFieldLabel` element. */
+  InputLabelProps?: FormFieldLabelProps;
+  /** Props applied to the `FormFieldHelperText` element. */
+  FormHelperTextProps?: FormFieldHelperTextProps;
 } & (
   | {
       value: T | null;
@@ -52,13 +51,11 @@ export type AutocompleteFieldProps<T> = {
       multiple: true;
     }
 ) &
+  Pick<FormFieldProps, 'disabled' | 'error' | 'fullWidth' | 'required'> &
   Pick<
     AutocompleteProps<T>,
     | 'autoFocus'
-    | 'disabled'
-    | 'error'
     | 'footer'
-    | 'fullWidth'
     | 'getOptionDisabled'
     | 'getOptionLabel'
     | 'getOptionValue'
@@ -73,6 +70,5 @@ export type AutocompleteFieldProps<T> = {
     | 'open'
     | 'options'
     | 'placeholder'
-    | 'required'
     | 'onBlur'
   >;

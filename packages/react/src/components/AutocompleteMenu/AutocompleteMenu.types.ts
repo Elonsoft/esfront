@@ -1,10 +1,9 @@
 import { CSSProperties, ForwardedRef, ReactNode, Ref } from 'react';
 
-import { TextFieldProps } from '@mui/material';
-
 import { TransitionProps } from '../../transitions';
 import { MenuGroupProps } from '../MenuGroup';
 import { PopperProps } from '../Popper';
+import { TextFieldProps } from '../TextField';
 import { TooltipEllipsisProps } from '../TooltipEllipsis';
 
 export interface AutocompleteMenuImperativeActions {

@@ -1,5 +1,3 @@
-@use '../helpers/typography';
-
 @mixin include() {
   .es-autocomplete-menu {
     z-index: 1300;
@@ -62,34 +60,38 @@
     }
 
     &__search {
-      &.MuiTextField-root {
+      &.es-form-field {
         border-bottom: 1px solid var(--es-mono-a-a100);
       }
 
-      & .MuiOutlinedInput-root.MuiInputBase-adornedEnd {
-        padding-right: 8px;
+      & .es-form-field-field {
+        --es-form-field-field-adornment-color: var(--es-mono-a-a500);
+
+        &:not(.es-form-field-field--disabled) {
+          &:hover,
+          &.es-form-field-field--focused {
+            --es-form-field-field-adornment-color: var(--es-mono-a-a600);
+          }
+        }
       }
 
-      & .MuiInputLabel-root {
-        opacity: 0;
-      }
-
-      & .MuiInputAdornment-positionStart {
+      & .es-form-field-input::placeholder {
         color: var(--es-mono-a-a500);
       }
 
-      &:hover .MuiInputAdornment-positionStart .es-svg-icon {
-        color: var(--es-mono-a-a600);
+      & .es-form-field-adornment--size--500.es-form-field-adornment--position--start {
+        padding: 0 8px 0 12px;
       }
 
-      & .MuiInputAdornment-positionEnd {
-        margin-left: 6px;
+      & .es-form-field-adornment--size--500.es-form-field-adornment--position--end {
+        padding: 0 12px 0 6px;
 
         & .es-button {
           flex-shrink: 0;
           height: 40px;
 
           --icon: var(--es-mono-a-a400);
+          --es-form-field-field-adornment-color: var(--icon);
 
           & .es-button-base__wrapper {
             padding: 0 7px;
@@ -110,16 +112,8 @@
         }
       }
 
-      & .MuiOutlinedInput-notchedOutline {
+      & .es-form-field-field__outline {
         border: none;
-
-        &.MuiInputBase-adornedEnd {
-          padding-right: 4px;
-        }
-      }
-
-      & .MuiOutlinedInput-input {
-        @include typography.level('body100');
       }
     }
   }

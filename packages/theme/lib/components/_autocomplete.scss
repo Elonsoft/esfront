@@ -1,14 +1,23 @@
 @mixin include() {
+  // The autocomplete is a `FormFieldField` whose control is a button rather than an input, so it points at the menu it
+  // opens instead of at a text caret.
   .es-autocomplete {
     cursor: pointer;
 
     & .es-autocomplete__input {
       align-items: center;
       display: inline-flex;
+      flex-grow: 1;
+      height: 100%;
+      min-width: 0;
       outline: none;
       overflow: hidden;
       white-space: nowrap;
       width: 100%;
+    }
+
+    &.es-form-field-field--disabled {
+      cursor: default;
     }
 
     &__menu {

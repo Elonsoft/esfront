@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 
-import { TextFieldProps } from '@mui/material';
-
+import { TextFieldProps } from '../TextField';
 import { TooltipProps } from '../Tooltip';
 
 export type PasswordFieldProps = {

@@ -8,23 +8,6 @@ const meta: Meta<typeof PasswordField> = {
   parameters: {
     references: ['PasswordField'],
   },
-  argTypes: {
-    focused: {
-      table: {
-        disable: true,
-      },
-    },
-    hiddenLabel: {
-      table: {
-        disable: true,
-      },
-    },
-    margin: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 };
 
 export default meta;

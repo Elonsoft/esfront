@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { TextFieldProps } from '@mui/material';
+import { TextFieldProps } from '../TextField';
 
 export type SearchProps = {
   /** Callback fired when the clear button is clicked. If prop is passed clear button will appear. */

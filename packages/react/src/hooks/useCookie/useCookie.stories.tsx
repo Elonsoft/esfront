@@ -1,10 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { useCookie } from './useCookie';
 
 import { Button } from '../../components/Button';
+import { TextField } from '../../components/TextField';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -28,8 +27,9 @@ export const Demo: Story = {
           fullWidth
           aria-label="Cookie"
           helperText="This input's value is saved inside the 'useCookie' cookie."
-          size="40"
+          size="500"
           value={cookie}
+          variant="outlined"
           onChange={(event) => updateCookie(event.target.value)}
         />
         <Button color="primary" size="400" variant="contained" onClick={removeCookie}>

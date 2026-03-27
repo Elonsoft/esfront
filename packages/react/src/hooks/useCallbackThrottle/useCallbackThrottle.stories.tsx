@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { useCallbackThrottle } from './useCallbackThrottle';
+
+import { TextField } from '../../components/TextField';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -29,7 +29,7 @@ export const Demo: Story = {
     return (
       <div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '320px' }}>
-          <TextField fullWidth label="Value" size="40" onChange={onChange} />
+          <TextField fullWidth label="Value" size="500" onChange={onChange} />
         </div>
 
         <div className="body200 mt-8">Throttled value: {throttledValue}</div>

@@ -5,16 +5,15 @@ import { SearchProps } from './Search.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
 
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
 import { Button } from '../Button';
+import { FormFieldAdornment } from '../FormField';
+import { TextField } from '../TextField';
 
 /** The text field that can be used to search, find, or filter. */
 export const Search = memo(function Search(inProps: SearchProps) {
   const {
-    classes: inClasses,
     className,
 
     value,
@@ -27,34 +26,36 @@ export const Search = memo(function Search(inProps: SearchProps) {
     iconClear = <IconCloseLineW350 />,
     iconSearch = <IconMagnify2LineW400 />,
 
+    startAdornment = iconSearch,
+    endAdornment,
+
     ...props
   } = useDefaultProps({
     props: inProps,
     name: 'ESSearch',
   });
 
+  const end =
+    endAdornment ??
+    (onClear && !!value && (
+      <Button aria-label={labelClear} className="es-search__clear" color="mono-a" size="300" onClick={onClear}>
+        {iconClear}
+      </Button>
+    ));
+
   return (
     <TextField
       fullWidth
       aria-label={ariaLabel}
+      endAdornment={!!end && <FormFieldAdornment position="end">{end}</FormFieldAdornment>}
       placeholder={placeholder}
-      size="32"
+      size="400"
+      startAdornment={!!startAdornment && <FormFieldAdornment position="start">{startAdornment}</FormFieldAdornment>}
       type="search"
       value={value}
+      variant="outlined"
       {...props}
-      InputProps={{
-        startAdornment: <InputAdornment position="start">{iconSearch}</InputAdornment>,
-        endAdornment: onClear && !!value && (
-          <InputAdornment position="end" onClick={onClear}>
-            <Button aria-label={labelClear} className="es-search__clear" color="mono-a" size="300">
-              {iconClear}
-            </Button>
-          </InputAdornment>
-        ),
-        ...props.InputProps,
-      }}
       className={clsx('es-search', className)}
-      classes={inClasses}
     />
   );
 });

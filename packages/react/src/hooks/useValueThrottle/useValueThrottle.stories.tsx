@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import TextField from '@mui/material/TextField';
-
 import { useValueThrottle } from './useValueThrottle';
+
+import { TextField } from '../../components/TextField';
 
 const meta: Meta = {
   tags: ['autodocs'],
@@ -30,7 +30,7 @@ export const Demo: Story = {
           <TextField
             fullWidth
             label="Value"
-            size="40"
+            size="500"
             value={value}
             onChange={(event) => setValue(event.target.value)}
           />
