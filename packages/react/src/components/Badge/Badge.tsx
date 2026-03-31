@@ -28,7 +28,7 @@ export const Badge: OverridableComponent<BadgeTypeMap> = (inProps: BadgeProps) =
         `es-badge--color--${color}`,
         `es-badge--size--${size}`,
         clickable && 'es-badge--clickable',
-        size === '400' ? 'mini100-bold' : 'mini200',
+        size === '400' ? 'mini100-w50' : 'mini200',
         className
       )}
       component={component}

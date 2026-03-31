@@ -32,7 +32,7 @@ export const FiltersFilter = (inProps: FiltersFilterProps) => {
     <div className={clsx('es-filters-filter', className)} style={style}>
       <div className="es-filters-filter__header">
         <div className="es-filters-filter__container">
-          <div className="es-filters-filter__title body200-medium" onClick={toggleOpen}>
+          <div className="es-filters-filter__title body200-w40" onClick={toggleOpen}>
             {title}
             {!!children && (
               <button aria-label={open ? labelHide : labelShow} className="es-filters-filter__toggle">
