@@ -217,7 +217,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
             </span>
             <div className="es-sorting-menu__direction-button-badge">
               {item.direction === 'asc' ? iconItemAsc : iconItemDesc}
-              {isMultiple && <span className="mini100-bold">{i + 1}</span>}
+              {isMultiple && <span className="mini100-w50">{i + 1}</span>}
             </div>
           </Button>
         )}

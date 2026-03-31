@@ -12,7 +12,7 @@ export const SFSFiltersGroup = (inProps: SFSFiltersGroupProps) => {
 
   return (
     <div className={clsx('es-sfs-filters-group', className)} style={style}>
-      {!!title && <div className="es-sfs-filters-group__title body200-medium">{title}</div>}
+      {!!title && <div className="es-sfs-filters-group__title body200-w40">{title}</div>}
       {children}
     </div>
   );
