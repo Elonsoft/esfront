@@ -218,14 +218,14 @@ $typography: (
   subtitle1: $subtitle1,
   subtitle2: $subtitle2,
   body400: $body400,
-  body400-medium:
+  body400-w40:
     map.merge(
       $body400,
       (
         font-weight: 500,
       )
     ),
-  body400-bold:
+  body400-w50:
     map.merge(
       $body400,
       (
@@ -233,14 +233,14 @@ $typography: (
       )
     ),
   body300: $body300,
-  body300-medium:
+  body300-w40:
     map.merge(
       $body300,
       (
         font-weight: 500,
       )
     ),
-  body300-bold:
+  body300-w50:
     map.merge(
       $body300,
       (
@@ -248,14 +248,14 @@ $typography: (
       )
     ),
   body200: $body200,
-  body200-medium:
+  body200-w40:
     map.merge(
       $body200,
       (
         font-weight: 500,
       )
     ),
-  body200-bold:
+  body200-w50:
     map.merge(
       $body200,
       (
@@ -263,14 +263,14 @@ $typography: (
       )
     ),
   body100: $body100,
-  body100-medium:
+  body100-w40:
     map.merge(
       $body100,
       (
         font-weight: 500,
       )
     ),
-  body100-bold:
+  body100-w50:
     map.merge(
       $body100,
       (
@@ -279,7 +279,7 @@ $typography: (
     ),
   mini200: $mini200,
   mini100: $mini100,
-  mini100-bold:
+  mini100-w50:
     map.merge(
       $mini100,
       (
@@ -289,14 +289,14 @@ $typography: (
   micro: $micro,
   button: $button,
   caption: $caption,
-  caption-medium:
+  caption-w40:
     map.merge(
       $caption,
       (
         font-weight: 500,
       )
     ),
-  caption-bold:
+  caption-w50:
     map.merge(
       $caption,
       (

@@ -176,7 +176,7 @@
         --pressed: var(--es-mono-a-a150);
 
         &.es-calendar-button__button--today {
-          @include typography.level('body100-bold');
+          @include typography.level('body100-w50');
 
           border: 1px solid var(--es-mono-a-a400);
         }

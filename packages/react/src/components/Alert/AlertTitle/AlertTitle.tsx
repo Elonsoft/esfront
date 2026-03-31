@@ -11,7 +11,7 @@ export const AlertTitle = (inProps: AlertTitleProps) => {
   });
 
   return (
-    <div className={clsx(className, 'es-alert-title', 'body100-bold')} style={style}>
+    <div className={clsx(className, 'es-alert-title', 'body100-w50')} style={style}>
       {children}
     </div>
   );

@@ -11,7 +11,7 @@ export const BannerTitle = (inProps: BannerTitleProps) => {
   });
 
   return (
-    <div className={clsx('es-banner-title', 'body100-bold', className)} style={style}>
+    <div className={clsx('es-banner-title', 'body100-w50', className)} style={style}>
       {children}
     </div>
   );
