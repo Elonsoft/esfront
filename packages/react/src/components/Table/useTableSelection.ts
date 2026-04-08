@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { MouseEvent, useCallback, useMemo, useRef, useState } from 'react';
 
 /**
  * The hook that manages selection of the table rows.
@@ -15,6 +15,7 @@ export const useTableSelection = <T extends object, K extends keyof T>(
   type V = T[K];
 
   const [selected, setSelected] = useState<Array<V>>(options.initialState || []);
+  const lastValue = useRef<V | null>(null);
 
   const isAllSelected = useMemo(() => {
     return data.every((row) => selected.includes(row[options.key]));
@@ -25,18 +26,37 @@ export const useTableSelection = <T extends object, K extends keyof T>(
   }, [data, selected, isAllSelected, options.key]);
 
   const toggle = useCallback(
-    (value: V, isSelected?: boolean) => {
-      const index = selected.indexOf(value);
+    (value: V, params: { isSelected?: boolean; event?: React.ChangeEvent<HTMLInputElement> } = {}) => {
+      const isSelected = params.isSelected ?? selected.indexOf(value) === -1;
 
-      if (isSelected ?? index === -1) {
-        setSelected(selected.concat(value));
-      } else {
-        const newSelected = selected.slice();
-        newSelected.splice(index, 1);
+      const currentIndex = data.findIndex((row) => row[options.key] === value);
+
+      let lastIndex =
+        params.event && (params.event.nativeEvent as unknown as MouseEvent).shiftKey && lastValue.current !== value
+          ? data.findIndex((row) => row[options.key] === lastValue.current)
+          : currentIndex;
+
+      if (lastIndex === -1) {
+        lastIndex = currentIndex;
+      }
+
+      const start = Math.min(currentIndex, lastIndex);
+      const end = Math.max(currentIndex, lastIndex);
+
+      lastValue.current = value;
+
+      if (start > -1 && end > -1) {
+        const range = data.slice(start, end + 1).map((row) => row[options.key]);
+        let newSelected = selected.filter((id) => !range.includes(id));
+
+        if (isSelected) {
+          newSelected = newSelected.concat(range);
+        }
+
         setSelected(newSelected);
       }
     },
-    [selected]
+    [data, selected, options.key]
   );
 
   const toggleAll = useCallback(
