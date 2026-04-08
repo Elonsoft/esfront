@@ -46,6 +46,7 @@ export * from './locale';
 export * from './MadeBy';
 export * from './MenuGroup';
 export * from './MenuItem';
+export * from './OptionSwatch';
 export * from './PageHGroup';
 export * from './Pagination';
 export * from './PasswordField';
