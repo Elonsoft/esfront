@@ -10,6 +10,7 @@ import { useForkRef } from '@mui/material/utils';
 import { useTableHeadContext } from './TableHead.context';
 
 import { useIntersectionObserver } from '../../../hooks';
+import { useTableContext } from '../Table.context';
 import { TableCellContext } from '../TableCell';
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
@@ -30,6 +31,7 @@ export const TableHead = memo(
 
     const [isStuck, setStuck] = useState(false);
 
+    const { columns } = useTableContext();
     const { ref, setRef } = useTableHeadContext();
     const rootRef = useForkRef(setRef, inRef);
 
@@ -63,7 +65,9 @@ export const TableHead = memo(
             } as React.CSSProperties
           }
         >
-          <div className="es-table-head__container">{children}</div>
+          <div className="es-table-head__container" style={{ gridTemplateColumns: columns.join(' ') }}>
+            {children}
+          </div>
         </div>
       </TableCellContext.Provider>
     );

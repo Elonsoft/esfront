@@ -9,6 +9,7 @@ import { useForkRef } from '@mui/material/utils';
 
 import { useTableBodyContext } from './TableBody.context';
 
+import { useTableContext } from '../Table.context';
 import { TableCellContext } from '../TableCell';
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
@@ -27,6 +28,7 @@ export const TableBody = memo(
       name: 'ESTableBody',
     });
 
+    const { columns } = useTableContext();
     const { setRef } = useTableBodyContext();
 
     const rootRef = useForkRef(setRef, ref);
@@ -43,7 +45,9 @@ export const TableBody = memo(
           role="rowgroup"
           style={style}
         >
-          <div className="es-table-body__container">{children}</div>
+          <div className="es-table-body__container" style={{ gridTemplateColumns: columns.join(' ') }}>
+            {children}
+          </div>
         </div>
       </TableCellContext.Provider>
     );
