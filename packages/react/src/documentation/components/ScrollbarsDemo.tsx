@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { OverlayScrollbars } from '../../components/OverlayScrollbars';
+
 const ScrollbarsDemoName = ({ children }: { children: ReactNode }) => {
   return (
     <code
@@ -120,8 +122,7 @@ export const ScrollbarsDemo = () => {
         {content}
       </div>
       <ScrollbarsDemoName>overlayMonoA</ScrollbarsDemoName>
-      <div
-        className="scrollbar-overlay-mono-a"
+      <OverlayScrollbars
         style={{
           height: '150px',
           backgroundColor: 'var(--es-mono-b-a75)',
@@ -129,10 +130,10 @@ export const ScrollbarsDemo = () => {
         }}
       >
         {content}
-      </div>
+      </OverlayScrollbars>
       <ScrollbarsDemoName>overlayMonoB</ScrollbarsDemoName>
-      <div
-        className="scrollbar-overlay-mono-b"
+      <OverlayScrollbars
+        color="mono-b"
         style={{
           height: '150px',
           backgroundColor: 'var(--es-mono-a-a800)',
@@ -140,10 +141,10 @@ export const ScrollbarsDemo = () => {
         }}
       >
         {content}
-      </div>
+      </OverlayScrollbars>
       <ScrollbarsDemoName>overlayBlack</ScrollbarsDemoName>
-      <div
-        className="scrollbar-overlay-black"
+      <OverlayScrollbars
+        color="black"
         style={{
           height: '150px',
           backgroundColor: 'var(--es-white-a800)',
@@ -151,10 +152,10 @@ export const ScrollbarsDemo = () => {
         }}
       >
         {content}
-      </div>
+      </OverlayScrollbars>
       <ScrollbarsDemoName>overlayWhite</ScrollbarsDemoName>
-      <div
-        className="scrollbar-overlay-white"
+      <OverlayScrollbars
+        color="white"
         style={{
           height: '150px',
           backgroundColor: 'var(--es-black-a800)',
@@ -162,7 +163,7 @@ export const ScrollbarsDemo = () => {
         }}
       >
         {content}
-      </div>
+      </OverlayScrollbars>
     </div>
   );
 };

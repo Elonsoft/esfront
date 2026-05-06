@@ -259,6 +259,7 @@
 
     &__tooltip-title {
       max-height: 100vh;
+      overflow: hidden;
 
       &--children {
         padding-bottom: 8px;

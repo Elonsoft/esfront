@@ -14,6 +14,8 @@ import {
 
 import { AutocompleteMenuProps } from './AutocompleteMenu.types';
 
+import { useOverlayScrollbars } from 'overlayscrollbars-react';
+
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
@@ -32,6 +34,7 @@ import { Checkbox } from '../Checkbox';
 import { Divider } from '../Divider';
 import { MenuGroup } from '../MenuGroup';
 import { MenuItem } from '../MenuItem';
+import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';
 import { SpinnerRing } from '../Spinner';
 import { TooltipEllipsis } from '../TooltipEllipsis';
 
@@ -100,6 +103,8 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
   const menuListRef = useRef<HTMLUListElement | null>(null);
   const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
 
+  const [initialize, instance] = useOverlayScrollbars({ options: OVERLAY_SCROLLBARS_OPTIONS, defer: true });
+
   const trapFocusEnabled = useRef(true);
 
   useImperativeHandle(
@@ -159,6 +164,12 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
   };
 
   const onEnter = useCallback(() => {
+    setTimeout(() => {
+      if (initialize && menuListRef.current) {
+        initialize(menuListRef.current);
+      }
+    });
+
     if (menuListRef.current && !disableAutoScrollToSelected) {
       const element = menuListRef.current.querySelector('.es-list-item--selected') as HTMLElement;
 
@@ -167,7 +178,11 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
           element.offsetTop + element.clientHeight / 2 - menuListRef.current.clientHeight / 2;
       }
     }
-  }, [disableAutoScrollToSelected]);
+  }, [initialize, disableAutoScrollToSelected]);
+
+  const onExited = () => {
+    instance()?.destroy();
+  };
 
   const groupedOptions: ReactNode[] = [];
   let tabIndex = true;
@@ -307,6 +322,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
             inTransitionProps?.onEnter?.(...args);
           }}
           onExited={(...args) => {
+            onExited();
             TransitionProps?.onExited?.();
             inTransitionProps?.onExited?.(...args);
           }}
@@ -372,7 +388,10 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                         <SpinnerRing color="mono-a" size={16} /> {labelLoading}
                       </div>
                     ) : options.length ? (
-                      <MenuList ref={menuListRef} className="es-autocomplete-menu__menu-list scrollbar-overlay-mono-a">
+                      <MenuList
+                        ref={menuListRef}
+                        className="es-autocomplete-menu__menu-list es-overlay-scrollbars es-overlay-scrollbars--color--mono-a"
+                      >
                         {groupedOptions}
                         {!!onLoadMore && (
                           <MenuItem

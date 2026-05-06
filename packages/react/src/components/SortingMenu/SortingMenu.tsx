@@ -2,6 +2,8 @@ import React, { memo, useRef, useState } from 'react';
 
 import { SortingMenuDirection, SortingMenuOptionMap, SortingMenuProps, SortingMenuValue } from './SortingMenu.types';
 
+import { useOverlayScrollbars } from 'overlayscrollbars-react';
+
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
@@ -17,6 +19,7 @@ import { Kbd } from '../Kbd';
 import { Link } from '../Link';
 import { ListItemText } from '../ListItem';
 import { MenuItem } from '../MenuItem';
+import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';
 import { Switch } from '../Switch';
 import { Tooltip } from '../Tooltip';
 
@@ -69,7 +72,10 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
   const isTouchScreen = useMediaQuery('(hover: none) and (pointer: coarse)');
   const [isMultiple, setMultiple] = useState(props.multiple && values.length > 1);
 
+  const paperRef = useRef<HTMLDivElement | null>(null);
   const menuListRef = useRef<HTMLUListElement | null>(null);
+
+  const [initialize, instance] = useOverlayScrollbars({ options: OVERLAY_SCROLLBARS_OPTIONS, defer: true });
 
   const sortMap: Record<string, SortingMenuOptionMap> = {};
   const valuesMap: Record<string, { i: number; direction: SortingMenuDirection }> = {};
@@ -234,7 +240,18 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
       {...PopoverProps}
       TransitionProps={{
         ...PopoverProps.TransitionProps,
+        onEnter: (...args) => {
+          setTimeout(() => {
+            if (initialize && paperRef.current) {
+              initialize(paperRef.current);
+            }
+          });
+
+          PopoverProps.TransitionProps?.onEnter?.(...args);
+        },
         onExited: (...args) => {
+          instance()?.destroy();
+
           if (isMultiple && values.length === 1) {
             setMultiple(false);
           }
@@ -243,7 +260,15 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
         },
       }}
       className={clsx('es-sorting-menu', PopoverProps.className)}
-      classes={{ ...PopoverProps.classes, paper: clsx('scrollbar-overlay-mono-a', PopoverProps.classes?.paper) }}
+      classes={{
+        ...PopoverProps.classes,
+        paper: clsx('es-overlay-scrollbars es-overlay-scrollbars--color--mono-a', PopoverProps.classes?.paper),
+      }}
+      slotProps={{
+        paper: {
+          ref: paperRef,
+        },
+      }}
     >
       <div className="es-sorting-menu__header">
         <span className="es-sorting-menu__caption caption">
