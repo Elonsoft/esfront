@@ -13,7 +13,7 @@ export default [
             ['^react'],
             ['^\\.\\./\\.\\./testing'],
             ['^.+\\.types$'],
-            ['^(@testing-library|@storybook|@date-io|date-fns)'],
+            ['^(@testing-library|@storybook|@date-io|date-fns|overlayscrollbars)'],
             ['^clsx', '^.+\\.classes$'],
             ['^@mui/base'],
             ['^@mui/material/styles', '^@mui/system', '^@mui/material', '^@mui/utils'],

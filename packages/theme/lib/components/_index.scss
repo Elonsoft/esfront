@@ -40,6 +40,7 @@
 @use './made-by';
 @use './menu-group';
 @use './menu-item';
+@use './overlay-scrollbars';
 @use './page-h-group';
 @use './pagination';
 @use './password-field';
@@ -110,6 +111,7 @@
   @include made-by.include;
   @include menu-group.include;
   @include menu-item.include;
+  @include overlay-scrollbars.include;
   @include page-h-group.include;
   @include pagination.include;
   @include password-field.include;

@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';
 
+import { useOverlayScrollbars } from 'overlayscrollbars-react';
+
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
@@ -16,6 +18,7 @@ import { Button } from '../../Button';
 import { Divider } from '../../Divider';
 import { ListItem, ListItemIcon, ListItemText } from '../../ListItem';
 import { MenuItem } from '../../MenuItem';
+import { OVERLAY_SCROLLBARS_OPTIONS } from '../../OverlayScrollbars';
 import { Tooltip } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';
 import { useSidebarMenuContext } from '../SidebarMenu/SidebarMenu.context';
@@ -58,6 +61,21 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
   const behaviour = isTouchDevice ? 'click' : inBehaviour;
 
   const component = (props as any).component as React.ElementType;
+
+  const [initialize, instance] = useOverlayScrollbars({ options: OVERLAY_SCROLLBARS_OPTIONS, defer: true });
+
+  useEffect(() => {
+    if (!isTooltipOpen) {
+      instance()?.destroy();
+      return;
+    }
+
+    setTimeout(() => {
+      if (refTooltip.current) {
+        initialize(refTooltip.current);
+      }
+    });
+  }, [initialize, isTooltipOpen]);
 
   useResizeObserver(ref, () => {
     if (ref.current && component) {
@@ -173,8 +191,9 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
           disablePadding
           className={clsx(
             'es-sidebar-item__tooltip-title',
-            'scrollbar-overlay-mono-a',
-            !!children && 'es-sidebar-item__tooltip-title--children'
+            !!children && 'es-sidebar-item__tooltip-title--children',
+            'es-overlay-scrollbars',
+            'es-overlay-scrollbars--color--mono-a'
           )}
           onKeyDown={onTooltipKeyDown}
           onMouseDown={onMouseDown}
