@@ -153,7 +153,7 @@ export interface Localization {
       defaultProps: Pick<TableActionsProps, 'label'>;
     };
     ESTableCell: {
-      defaultProps: Pick<TableCellProps, 'labelResize'>;
+      defaultProps: Pick<TableCellProps, 'labelResize' | 'labelEditAccept' | 'labelEditCancel'>;
     };
     ESMadeBy: {
       defaultProps: Pick<MadeByProps, 'text'>;
@@ -379,6 +379,8 @@ export const en: Localization = {
     ESTableCell: {
       defaultProps: {
         labelResize: 'Resize',
+        labelEditAccept: 'Accept',
+        labelEditCancel: 'Cancel',
       },
     },
     ESMadeBy: {
@@ -607,6 +609,8 @@ export const ru: Localization = {
     ESTableCell: {
       defaultProps: {
         labelResize: 'Изменить ширину',
+        labelEditAccept: 'Принять',
+        labelEditCancel: 'Отмена',
       },
     },
     ESMadeBy: {

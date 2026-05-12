@@ -122,6 +122,36 @@ export default meta;
 
 type Story = StoryObj<Args>;
 
+const TableCellAge = ({ value, onEditAccept }: { value: number; onEditAccept: (value: number) => void }) => {
+  const [inputValue, setInputValue] = useState(value.toString());
+
+  return (
+    <TableCell
+      editable
+      align="flex-end"
+      error={!inputValue || !Number.isInteger(+inputValue) || +inputValue > 150}
+      inputProps={{
+        inputMode: 'numeric',
+        value: inputValue,
+        onChange: (e) => {
+          setInputValue(e.target.value);
+        },
+      }}
+      onEdit={() => {
+        setInputValue(value.toString());
+      }}
+      onEditAccept={(input) => {
+        onEditAccept(+input.value);
+      }}
+      onEditCancel={() => {
+        setInputValue(value.toString());
+      }}
+    >
+      <TableText>{value}</TableText>
+    </TableCell>
+  );
+};
+
 export const Demo: Story = {
   render: function Render(args, context) {
     const { striped, colDividers, rowDividers } = args;
@@ -130,6 +160,7 @@ export const Demo: Story = {
     const ref = useRef<HTMLDivElement | null>(null);
     const rowRef = useRef<HTMLDivElement | null>(null);
 
+    const [data, setData] = useState(DATA);
     const [fields] = useState<Array<keyof (typeof DATA)['en'][0]>>(['id', 'name', 'age', 'status', 'city']);
     const [columns, setColumns] = useState([
       '56px',
@@ -182,6 +213,7 @@ export const Demo: Story = {
             {fields.map((field, index) => (
               <TableCell
                 key={field}
+                align={field === 'age' ? 'flex-end' : 'flex-start'}
                 minWidth={field === 'name' ? 130 : 90}
                 onResize={onResize(index + 1)}
                 onResizeCommit={onResizeCommit(index + 1)}
@@ -194,7 +226,7 @@ export const Demo: Story = {
           </TableRow>
         </TableHead>
         <TableBody colDividers={colDividers} rowDividers={rowDividers} striped={striped}>
-          {DATA[locale].map((row) => {
+          {data[locale].map((row, i) => {
             const isSelected = selected.indexOf(row.id) !== -1;
             const labelId = `story-usage-checkbox-${row.id}`;
 
@@ -224,11 +256,21 @@ export const Demo: Story = {
                 {fields.map(
                   (field) =>
                     field !== 'name' &&
-                    field !== 'id' && (
+                    field !== 'id' &&
+                    (field === 'age' ? (
+                      <TableCellAge
+                        key={field}
+                        value={row[field]}
+                        onEditAccept={(value) => {
+                          data[locale][i][field as 'age'] = value;
+                          setData({ ...data });
+                        }}
+                      />
+                    ) : (
                       <TableCell key={field}>
                         <TableText>{row[field]}</TableText>
                       </TableCell>
-                    )
+                    ))
                 )}
                 <TableCell padding="none" />
                 <TableCell overlap align="flex-end">
