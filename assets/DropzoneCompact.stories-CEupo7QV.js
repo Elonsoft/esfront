@@ -1,0 +1,15 @@
+import{j as t}from"./jsx-runtime-BTJTZTIL.js";import{r as _}from"./index-Wm5baAvf.js";import{c as L}from"./clsx.m-C7bORDfW.js";import{u as O}from"./DefaultPropsProvider-BaGbio7E.js";import{u as b}from"./useDragOver-DkcbCBz_.js";import{B as N}from"./Button-BRu9apcn.js";import"./index-ChsGqxH_.js";import"./_commonjsHelpers-gnU0ypJ3.js";import"./ButtonBase-BhCJPokL.js";import"./useForkRef-CGhsnMYO.js";const n=_.forwardRef(function(r,s){const{className:D,style:g,children:v,onDragEnter:p,onDragLeave:l,onDragOver:c,onDrop:i}=O({props:r,name:"ESDropzoneCompact"}),{isDragOver:f,onDragEnter:y,onDragLeave:x,onDrop:E}=b(),z=e=>{y(),p==null||p(e)},h=e=>{x(),l==null||l(e)},T=e=>{e.preventDefault(),c==null||c(e)},C=e=>{e.preventDefault(),E(),i==null||i(e)};return t.jsx("div",{ref:s,className:L(D,"es-dropzone-compact",f&&"es-dropzone-compact--drag-over","caption"),style:g,onDragEnter:z,onDragLeave:h,onDragOver:T,onDrop:C,children:v})});try{n.displayName="DropzoneCompact",n.__docgenInfo={description:"This component allows to create droppable area when using dnd.",displayName:"DropzoneCompact",props:{className:{defaultValue:null,description:"Class applied to the root element.",name:"className",required:!1,type:{name:"string"}},style:{defaultValue:null,description:"Style applied to the root element.",name:"style",required:!1,type:{name:"CSSProperties"}},onDragEnter:{defaultValue:null,description:"",name:"onDragEnter",required:!1,type:{name:"((event: DragEvent<HTMLDivElement>) => void)"}},onDragLeave:{defaultValue:null,description:"",name:"onDragLeave",required:!1,type:{name:"((event: DragEvent<HTMLDivElement>) => void)"}},onDragOver:{defaultValue:null,description:"",name:"onDragOver",required:!1,type:{name:"((event: DragEvent<HTMLDivElement>) => void)"}},onDrop:{defaultValue:null,description:"",name:"onDrop",required:!1,type:{name:"((event: DragEvent<HTMLDivElement>) => void)"}}}}}catch{}const j=(o,r)=>o.children||(r.globals.locale==="en"?"Drag over this area":"Переместите в эту область"),q=o=>o.globals.locale==="en"?"Drag this button":"Переместите кнопку",A={tags:["autodocs"],component:n,parameters:{references:["DropzoneCompact"]},argTypes:{children:{control:{type:"text"}}}},a={render:(o,r)=>{const s=()=>{console.info("DROP")};return t.jsxs(t.Fragment,{children:[t.jsx(N,{disableTouchRipple:!0,draggable:!0,color:"tertiary",size:"500",variant:"contained",children:q(r)}),t.jsx(n,{...o,className:"mt-16",onDrop:s,children:j(o,r)})]})}};var m,d,u;a.parameters={...a.parameters,docs:{...(m=a.parameters)==null?void 0:m.docs,source:{originalSource:`{
+  render: (args, context) => {
+    const onDrop = () => {
+      console.info('DROP');
+    };
+    return <>
+        <Button disableTouchRipple draggable color="tertiary" size="500" variant="contained">
+          {getButtonText(context)}
+        </Button>
+        <DropzoneCompact {...args} className="mt-16" onDrop={onDrop}>
+          {getText(args, context)}
+        </DropzoneCompact>
+      </>;
+  }
+}`,...(u=(d=a.parameters)==null?void 0:d.docs)==null?void 0:u.source}}};const G=["Demo"];export{a as Demo,G as __namedExportsOrder,A as default};

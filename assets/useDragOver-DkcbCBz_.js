@@ -1,0 +1,1 @@
+import{r}from"./index-Wm5baAvf.js";const u=()=>{const[e,t]=r.useState(0),o=r.useCallback(()=>{t(a=>a+1)},[]),s=r.useCallback(()=>{t(a=>a-1)},[]),n=r.useCallback(()=>{t(0)},[]);return{onDragEnter:o,onDragLeave:s,onDrop:n,isDragOver:e>0}};export{u};
