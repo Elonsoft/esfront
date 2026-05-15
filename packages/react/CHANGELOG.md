@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.15.2...@esfront/react@0.16.0) (2026-05-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **theme,alert:** add root breakpoint
+* **theme:** change medium and bold typography level names
+
+### Features
+
+* **react,Calendar:** fill all available space with next month dates ([2c039dd](https://github.com/Elonsoft/esfront/commit/2c039dd906d50d2db76bf1e72d1839c9957db719))
+* **react,ClearButton:** add new component ([6df6a8e](https://github.com/Elonsoft/esfront/commit/6df6a8e74938041d38050c59aba83ab7cac28e6c))
+* **react,DropzoneCompact:** add new component ([e0c0a0d](https://github.com/Elonsoft/esfront/commit/e0c0a0dbdc90e0191b72edad3c3389992edcf78d))
+* **react,SidebarItem:** add closePopoverAfterClick prop ([1f9e370](https://github.com/Elonsoft/esfront/commit/1f9e37089138609b5d3fa69ba5447543ec80ce87))
+* **react,SortingMenu:** add desktop multisort information tooltip ([bdba346](https://github.com/Elonsoft/esfront/commit/bdba346820831b10c308a689cb636fc4c0a78367))
+* **react,TableCell:** add editable table cells ([71f2761](https://github.com/Elonsoft/esfront/commit/71f276142d7135c0d796fe248de5a4c123286456))
+* **react,useScrollSpy:** add new hook ([9dfb3a4](https://github.com/Elonsoft/esfront/commit/9dfb3a4b9728c1d99e89129e03237ff43ec931b5))
+* **theme,alert:** add root breakpoint ([618cc59](https://github.com/Elonsoft/esfront/commit/618cc59f9e3431fefa80f49773d7f4810b620364))
+* **theme,kbd:** add new variants ([d5cd6ac](https://github.com/Elonsoft/esfront/commit/d5cd6ac38c5c5683110819e2375d68d3b0f64306))
+* **theme:** change medium and bold typography level names ([3903b05](https://github.com/Elonsoft/esfront/commit/3903b055de25e5a947bc03eae9cd9a786c67f0ae))
+
+
+
 ## [0.15.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.15.1...@esfront/react@0.15.2) (2026-03-20)
 
 

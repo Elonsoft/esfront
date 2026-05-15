@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.1.1...@esfront/theme@0.2.0) (2026-05-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **theme,alert:** add root breakpoint
+* **theme:** change medium and bold typography level names
+
+### Features
+
+* **react,ClearButton:** add new component ([6df6a8e](https://github.com/Elonsoft/esfront/commit/6df6a8e74938041d38050c59aba83ab7cac28e6c))
+* **react,DropzoneCompact:** add new component ([e0c0a0d](https://github.com/Elonsoft/esfront/commit/e0c0a0dbdc90e0191b72edad3c3389992edcf78d))
+* **react,SortingMenu:** add desktop multisort information tooltip ([bdba346](https://github.com/Elonsoft/esfront/commit/bdba346820831b10c308a689cb636fc4c0a78367))
+* **react,TableCell:** add editable table cells ([71f2761](https://github.com/Elonsoft/esfront/commit/71f276142d7135c0d796fe248de5a4c123286456))
+* **theme,alert:** add root breakpoint ([618cc59](https://github.com/Elonsoft/esfront/commit/618cc59f9e3431fefa80f49773d7f4810b620364))
+* **theme,kbd:** add new variants ([d5cd6ac](https://github.com/Elonsoft/esfront/commit/d5cd6ac38c5c5683110819e2375d68d3b0f64306))
+* **theme:** change medium and bold typography level names ([3903b05](https://github.com/Elonsoft/esfront/commit/3903b055de25e5a947bc03eae9cd9a786c67f0ae))
+
+
+
 ## [0.1.1](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.1.0...@esfront/theme@0.1.1) (2026-03-13)
 
 
