@@ -16,6 +16,8 @@
 
         .es-button-base__wrapper {
           @include typography.level('caption');
+
+          font-variant-numeric: tabular-nums;
         }
       }
     }

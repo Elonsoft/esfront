@@ -44,44 +44,45 @@ export const Chips = (inProps: ChipsProps) => {
       return;
     }
 
+    let lineCount = 1;
+    let totalWidth = 0;
+    let hiddenCount = 0;
+
     const chips = ref.current.querySelectorAll('.es-chip');
     chips.forEach((chip) => (chip as HTMLElement).style.removeProperty('display'));
 
-    if (!open) {
-      let lineCount = 1;
-      let hiddenCount = 0;
-      let totalWidth = 0;
+    const containerWidth = ref.current.getBoundingClientRect().width;
+    const columnGap = parseInt(window.getComputedStyle(ref.current).columnGap);
 
-      const containerWidth = ref.current.getBoundingClientRect().width;
-      const columnGap = parseInt(window.getComputedStyle(ref.current).columnGap);
+    const button = ref.current.querySelector('.es-chips__button') as HTMLButtonElement;
+    const buttonWidth = button.getBoundingClientRect().width;
+    button.style.display = 'flex';
 
-      const button = ref.current.querySelector('.es-chips__button') as HTMLButtonElement;
-      const buttonWidth = button.getBoundingClientRect().width;
+    chips.forEach((chip, index) => {
+      const chipWidth = chip.getBoundingClientRect().width;
 
-      setCollapsed(false);
+      if (
+        totalWidth +
+          columnGap +
+          chipWidth +
+          (!open && index < chips.length - 1 && lineCount >= maxLines ? columnGap + buttonWidth : 0) >=
+        containerWidth
+      ) {
+        lineCount += 1;
+        totalWidth = chipWidth;
+      } else {
+        totalWidth += columnGap + chipWidth;
+      }
 
-      chips.forEach((chip) => {
-        const chipWidth = chip.getBoundingClientRect().width;
+      if (!open && lineCount > maxLines) {
+        (chip as HTMLElement).style.display = 'none';
+        hiddenCount += 1;
+      }
+    });
 
-        if (
-          totalWidth + columnGap + chipWidth + (lineCount >= maxLines ? columnGap + buttonWidth : 0) >=
-          containerWidth
-        ) {
-          lineCount += 1;
-          totalWidth = chipWidth;
-        } else {
-          totalWidth += chipWidth + columnGap;
-        }
-
-        if (lineCount > maxLines) {
-          setCollapsed(true);
-          (chip as HTMLElement).style.display = 'none';
-          hiddenCount += 1;
-        }
-      });
-
-      setHiddenCount(hiddenCount);
-    }
+    setHiddenCount(hiddenCount);
+    setCollapsed(lineCount > maxLines);
+    button.style.display = lineCount > maxLines ? 'flex' : 'none';
   };
 
   useResizeObserver(ref, onResize);
