@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { Children, Fragment, useRef, useState } from 'react';
 
 import { ChipsProps } from './Chips.types';
 
@@ -63,15 +63,21 @@ export const Chips = (inProps: ChipsProps) => {
 
       if (
         totalWidth +
-          columnGap +
           chipWidth +
           (!open && index < chips.length - 1 && lineCount >= maxLines ? columnGap + buttonWidth : 0) >=
         containerWidth
       ) {
         lineCount += 1;
-        totalWidth = chipWidth;
+        totalWidth = chipWidth + columnGap;
+
+        if (
+          totalWidth + (!open && index < chips.length - 1 && lineCount >= maxLines ? buttonWidth : 0) >=
+          containerWidth
+        ) {
+          lineCount += 1;
+        }
       } else {
-        totalWidth += columnGap + chipWidth;
+        totalWidth += chipWidth + columnGap;
       }
 
       if (!open && lineCount > maxLines) {
@@ -91,21 +97,42 @@ export const Chips = (inProps: ChipsProps) => {
     onResize();
   }, [open]);
 
+  const button = (
+    <Button
+      key={`${open}`}
+      aria-label={open ? undefined : labelShow}
+      className="es-chips__button"
+      color="mono-a"
+      endIcon={open ? iconHide : iconShow}
+      size="300"
+      style={{ display: isCollapsed ? 'flex' : 'none' }}
+      onClick={toggleOpen}
+    >
+      {open ? labelHide : `+${hiddenCount}`}
+    </Button>
+  );
+
   return (
     <div ref={ref} className={clsx('es-chips', className)} style={style}>
-      {children}
-      <Button
-        key={`${open}`}
-        aria-label={open ? undefined : labelShow}
-        className="es-chips__button"
-        color="mono-a"
-        endIcon={open ? iconHide : iconShow}
-        size="300"
-        style={{ display: isCollapsed ? 'flex' : 'none' }}
-        onClick={toggleOpen}
-      >
-        {open ? labelHide : `+${hiddenCount}`}
-      </Button>
+      {Children.map(children, (child: any, i: number) => {
+        const isLastChild = i === Children.count(children) - 1;
+
+        if (open && isLastChild) {
+          return (
+            <div key={i} className="es-chips__wrapper">
+              {child}
+              {button}
+            </div>
+          );
+        }
+
+        return (
+          <Fragment key={i}>
+            {child}
+            {!open && isLastChild && button}
+          </Fragment>
+        );
+      })}
     </div>
   );
 };
