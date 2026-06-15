@@ -15,6 +15,7 @@ export default {
       sourcemap: true,
       preserveModules: true,
       preserveModulesRoot: 'src',
+      banner: "'use client';",
     },
     {
       dir: 'lib',
@@ -23,6 +24,7 @@ export default {
       sourcemap: true,
       preserveModules: true,
       preserveModulesRoot: 'src',
+      banner: "'use client';",
     },
   ],
   plugins: [
