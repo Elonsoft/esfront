@@ -22,6 +22,10 @@ import { usePaginationContext } from '../Pagination.context';
 
 const REGEX = /^[0-9]*$/;
 
+const isMacintosh = () => {
+  return navigator.userAgent.indexOf('Macintosh') > 0;
+};
+
 export const PaginationPages = memo(function PaginationPages(inProps: PaginationPagesProps) {
   const {
     className,
@@ -68,7 +72,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
   };
 
   useDocumentEventListener('keydown', (event) => {
-    if (event.ctrlKey) {
+    if (event.metaKey || event.ctrlKey) {
       if (event.key === 'ArrowLeft') {
         onPageChange(Math.max(1, page - 1));
       } else if (event.key === 'ArrowRight') {
@@ -112,7 +116,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
                   slotProps={{ popper: { className: 'es-pagination-pages__tooltip' } }}
                   title={
                     <>
-                      {iconTooltipPrevPage} Ctrl {iconTooltipNextPage}
+                      {iconTooltipPrevPage} {isMacintosh() ? '⌘' : 'Ctrl'} {iconTooltipNextPage}
                     </>
                   }
                 >
