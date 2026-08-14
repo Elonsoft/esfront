@@ -20,6 +20,7 @@ export { useMenuVisibility } from './useMenuVisibility';
 export { useMutationObserver } from './useMutationObserver';
 export { useOnLine } from './useOnLine';
 export { usePagination } from './usePagination';
+export { usePermission } from './usePermission';
 export { usePreviousValue } from './usePreviousValue';
 export { useResizeObserver } from './useResizeObserver';
 export { useScrollDirection } from './useScrollDirection';
