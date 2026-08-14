@@ -36,6 +36,8 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     iconEllipsis = <IconDotsHorizontalLineW100 />,
     iconTooltipPrevPage = <IconArrowLeft2LineW300 />,
     iconTooltipNextPage = <IconArrowRight2LineW300 />,
+    slots,
+    slotProps,
     ...props
   } = useDefaultProps({
     props: inProps,
@@ -91,17 +93,28 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
     <div className={clsx('es-pagination-pages', className)} style={style}>
       <ul className="es-pagination-pages__pagination">
         {items.map((item) => {
+          const {
+            className: itemClassName,
+            onClick: itemOnClick,
+            ...itemProps
+          } = slotProps?.[item.type as keyof typeof slotProps]?.(item) || {};
+
           return (
             <Fragment key={`${item.type}${item.page}`}>
               {item.type === 'previous' || item.type === 'next' ? (
                 <Button
                   aria-label={`${item.type === 'next' ? labelNextPage : labelPrevPage}`}
-                  className="es-pagination-pages__button"
+                  className={clsx('es-pagination-pages__button', itemClassName)}
                   disabled={item.disabled}
                   size="400"
-                  onClick={item.onClick}
+                  {...itemProps}
+                  component={(item.type === 'next' ? slots?.next : slots?.previous) ?? 'button'}
+                  onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                    item.onClick(event);
+                    itemOnClick?.(event);
+                  }}
                 >
-                  {item.type === 'previous' ? iconPrevPage : iconNextPage}
+                  {item.type === 'next' ? iconNextPage : iconPrevPage}
                 </Button>
               ) : item.type === 'start-ellipsis' || item.type === 'end-ellipsis' ? (
                 <div className="es-pagination-pages__ellipsis">{iconEllipsis}</div>
@@ -120,11 +133,17 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
                     className={clsx(
                       'es-pagination-pages__pagination-item',
                       item.selected && 'es-pagination-pages__pagination-item--selected',
-                      'caption'
+                      'caption',
+                      itemClassName
                     )}
                     data-selected={item.selected}
                     disabled={item.disabled}
-                    onClick={item.onClick}
+                    {...itemProps}
+                    component={slots?.page ?? 'button'}
+                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                      item.onClick(event);
+                      itemOnClick?.(event);
+                    }}
                   >
                     {item.page}
                   </ButtonBase>

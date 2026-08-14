@@ -19,6 +19,7 @@ export { useMenuAim } from './useMenuAim';
 export { useMenuVisibility } from './useMenuVisibility';
 export { useMutationObserver } from './useMutationObserver';
 export { useOnLine } from './useOnLine';
+export type { UsePaginationItem, UsePaginationProps, UsePaginationResult } from './usePagination';
 export { usePagination } from './usePagination';
 export { usePermission } from './usePermission';
 export { usePreviousValue } from './usePreviousValue';

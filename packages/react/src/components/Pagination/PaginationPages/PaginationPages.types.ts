@@ -1,4 +1,6 @@
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, ElementType, ReactNode } from 'react';
+
+import { UsePaginationItem } from '../../../hooks/usePagination';
 
 export interface PaginationPagesProps {
   children?: ReactNode;
@@ -30,4 +32,25 @@ export interface PaginationPagesProps {
   iconTooltipPrevPage?: React.ReactNode;
   /** Icon for the next page hint in tooltip. */
   iconTooltipNextPage?: React.ReactNode;
+
+  /**
+   * The components used for each slot inside.
+   * @default {}
+   */
+  slots?: {
+    page?: ElementType;
+    previous?: ElementType;
+    next?: ElementType;
+  };
+
+  /**
+   * The extra props for the slot components.
+   * You can override the existing props or add new ones.
+   * @default {}
+   */
+  slotProps?: {
+    page?: (item: UsePaginationItem) => Record<string, any>;
+    previous?: (item: UsePaginationItem) => Record<string, any>;
+    next?: (item: UsePaginationItem) => Record<string, any>;
+  };
 }
