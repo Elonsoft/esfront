@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryMetaSeparator = (inProps: GalleryMetaSeparatorProps) => {
   const { className, style } = useDefaultProps({
     props: inProps,

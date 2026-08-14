@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryMetaText = (inProps: GalleryMetaTextProps) => {
   const { children, className, style, primary } = useDefaultProps({
     props: inProps,

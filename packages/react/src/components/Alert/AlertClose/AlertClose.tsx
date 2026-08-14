@@ -8,6 +8,9 @@ import { IconCloseLineW500 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+/**
+ * @see `Alert`
+ */
 export const AlertClose = (inProps: AlertCloseProps) => {
   const {
     className,

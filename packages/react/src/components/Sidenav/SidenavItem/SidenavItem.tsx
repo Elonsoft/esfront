@@ -13,6 +13,9 @@ import { useSidebarContext } from '../../Sidebar/Sidebar.context';
 import { Tooltip } from '../../Tooltip';
 import { useSidenavContext } from '../Sidenav.context';
 
+/**
+ * @see `Sidenav`
+ */
 export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: SidenavItemProps) => {
   const {
     className,

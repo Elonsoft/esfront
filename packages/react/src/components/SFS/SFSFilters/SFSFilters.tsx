@@ -12,6 +12,9 @@ import { Button } from '../../Button';
 import { Drawer } from '../../Drawer';
 import { SFSButton } from '../SFSButton';
 
+/**
+ * @see `SFS`
+ */
 export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
   const {
     children,

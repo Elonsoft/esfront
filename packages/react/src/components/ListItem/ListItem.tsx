@@ -11,6 +11,9 @@ import { useDefaultProps } from '../../theming';
 import { OverridableComponent } from '../../types';
 import { ButtonBase } from '../ButtonBase';
 
+/**
+ * Displays a single row of a list. It can be rendered as a button to make the row interactive.
+ */
 export const ListItem = forwardRef(function ListItem(inProps, ref) {
   const props = useDefaultProps({ props: inProps, name: 'ESListItem' });
   const {

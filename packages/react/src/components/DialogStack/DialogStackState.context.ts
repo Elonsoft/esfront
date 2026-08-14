@@ -18,6 +18,8 @@ export interface DialogStackStateContextValue {
 export const DialogStackStateContext = createContext<DialogStackStateContextValue | null>(null);
 
 /**
+ * Returns the dialogs the closest `DialogStackProvider` holds open, and how many of them there are. Throws outside of
+ * one.
  * @deprecated Use `useDialogStackStateV2` instead.
  */
 export const useDialogStackState = () => {

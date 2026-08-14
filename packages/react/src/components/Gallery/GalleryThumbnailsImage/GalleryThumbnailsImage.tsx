@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryThumbnailsImage = (inProps: GalleryThumbnailsImageProps) => {
   const { className, style, src, alt } = useDefaultProps({
     props: inProps,

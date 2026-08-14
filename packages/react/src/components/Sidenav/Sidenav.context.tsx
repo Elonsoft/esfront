@@ -21,6 +21,9 @@ export interface SidenavContextValue {
 
 export const SidenavContext = createContext<SidenavContextValue | null>(null);
 
+/**
+ * The hook that returns the sidenav context. Throws when used outside of `Sidenav`.
+ */
 export const useSidenavContext = () => {
   const value = useContext(SidenavContext);
 

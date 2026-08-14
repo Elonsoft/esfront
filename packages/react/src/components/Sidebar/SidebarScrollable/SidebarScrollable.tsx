@@ -12,6 +12,9 @@ import { useResizeObserver } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { OverlayScrollbars } from '../..//OverlayScrollbars';
 
+/**
+ * @see `Sidebar`
+ */
 export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
   const { className, style, beforeScroll, afterScroll, children } = useDefaultProps({
     props: inProps,

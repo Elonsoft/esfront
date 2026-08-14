@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `FileInfo`
+ */
 export const FileInfoMetaSeparator = (inProps: FileInfoMetaSeparatorProps) => {
   const { className, style } = useDefaultProps({ props: inProps, name: 'ESFileInfoMetaSeparator' });
 

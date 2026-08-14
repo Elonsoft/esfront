@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `FileIcon`
+ */
 export const FileIconText = (inProps: FileIconTextProps) => {
   const { className, style, children } = useDefaultProps({
     props: inProps,

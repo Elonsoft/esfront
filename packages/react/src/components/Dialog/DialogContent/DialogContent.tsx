@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Dialog`
+ */
 export const DialogContent = (inProps: DialogContentProps) => {
   const { className, style, children } = useDefaultProps({
     props: inProps,

@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryActionsButtonGroup = (inProps: GalleryActionsButtonGroupProps) => {
   const { children, className, style } = useDefaultProps({
     props: inProps,

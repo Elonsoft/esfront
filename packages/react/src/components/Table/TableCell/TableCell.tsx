@@ -27,6 +27,9 @@ const onStopPropagation = (e: React.MouseEvent) => {
   e.stopPropagation();
 };
 
+/**
+ * @see `Table`
+ */
 export const TableCell = memo(
   forwardRef<HTMLDivElement, TableCellProps>(function TableCell(inProps, inRef) {
     const context = useTableCellContext();

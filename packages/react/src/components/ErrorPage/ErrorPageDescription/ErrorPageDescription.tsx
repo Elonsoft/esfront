@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `ErrorPage`
+ */
 export const ErrorPageDescription = (inProps: ErrorPageDescriptionProps) => {
   const { children, className, style } = useDefaultProps({
     props: inProps,

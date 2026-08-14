@@ -13,6 +13,9 @@ import { useDefaultProps } from '../../../theming';
 import { Link } from '../../Link';
 import { OverlayScrollbars } from '../../OverlayScrollbars';
 
+/**
+ * @see `Filters`
+ */
 export const FiltersFormGroup = (inProps: FiltersFormGroupProps) => {
   const { children, header, className, style, maxLines, labelShow, labelHide } = useDefaultProps({
     props: inProps,

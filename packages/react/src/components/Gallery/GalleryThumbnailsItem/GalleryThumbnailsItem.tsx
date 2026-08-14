@@ -7,6 +7,9 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../../theming';
 import { ButtonBase } from '../../ButtonBase';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {
   const { className, style, isActive, onClick, children } = useDefaultProps({
     props: inProps,

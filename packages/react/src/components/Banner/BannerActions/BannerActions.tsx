@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Banner`
+ */
 export const BannerActions = (inProps: BannerActionsProps) => {
   const { className, style, children } = useDefaultProps({
     props: inProps,

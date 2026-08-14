@@ -10,6 +10,11 @@ import { useForkRef } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { useFormFieldContext } from '../FormField.context';
 
+/**
+ * The box of a field, drawing its border and the notch its label shrinks into, and holding the control together with
+ * the adornments around it.
+ * @see `FormField`
+ */
 export const FormFieldField = forwardRef<HTMLDivElement, FormFieldFieldProps>(function FormFieldField(
   inProps: FormFieldFieldProps,
   ref

@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import { DialogStackContextValue, useDialogStackContext } from './DialogStack.context';
 
 /**
+ * Opens and closes the dialogs of the stack, closing the ones the calling component opened once it unmounts.
  * @deprecated Use `useDialogStackV2` instead.
  */
 export const useDialogStack = (): DialogStackContextValue => {

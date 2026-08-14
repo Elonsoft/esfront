@@ -13,6 +13,9 @@ import { Tooltip } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';
 import { SidebarDivider } from '../SidebarDivider';
 
+/**
+ * @see `Sidebar`
+ */
 export const SidebarToggle = (inProps: SidebarToggleProps) => {
   const {
     className,

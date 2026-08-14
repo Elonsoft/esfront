@@ -25,9 +25,6 @@ const styles: Partial<Record<TransitionStatus, CSSProperties>> = {
   },
 };
 
-/**
- * The Grow transition scales and fades a single child element in and out.
- */
 const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref) {
   const {
     addEndListener,
@@ -148,6 +145,9 @@ const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref)
   );
 });
 
+/**
+ * The Grow transition scales and fades a single child element in and out.
+ */
 export const Grow = Object.assign(GrowComponent, {
   /**
    * The following flag tells components, such as Popover, that the transition supports `timeout="auto"`.

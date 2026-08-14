@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Sidebar`
+ */
 export const SidebarSpacer = (inProps: SidebarSpacerProps) => {
   const { className, style } = useDefaultProps({
     props: inProps,

@@ -13,6 +13,9 @@ import { useResizeObserver } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { useGalleryContext } from '../Gallery.context';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryPanel = (inProps: GalleryPanelProps) => {
   const { children, className, style, position, direction } = useDefaultProps({
     props: inProps,

@@ -11,6 +11,9 @@ import RadioGroupContext from './RadioGroup.context';
 import { useControlled, useForkRef, useId } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 
+/**
+ * Groups radio buttons so that only one of them can be selected at a time.
+ */
 export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(function RadioGroup(
   inProps: RadioGroupProps,
   ref

@@ -11,6 +11,10 @@ import { FormFieldContext } from './FormField.context';
 import { useForkRef, useId } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 
+/**
+ * A form field lays a control out together with its label, helper text and adornments, and shares the state they are
+ * drawn from: the variant and size of the field, and whether its control is required, disabled, filled or focused.
+ */
 export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(function FormField(inProps: FormFieldProps, ref) {
   const {
     children,

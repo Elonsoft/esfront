@@ -11,6 +11,10 @@ import { useDefaultProps } from '../../theming';
 import { ButtonBase } from '../ButtonBase';
 import { FormFieldContext } from '../FormField';
 
+/**
+ * The base component of `Checkbox`, `Radio` and `Switch`. It handles the checked state, the icons and the button
+ * behaviour they share.
+ */
 export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(function SwitchBase(
   inProps: SwitchBaseProps,
   ref

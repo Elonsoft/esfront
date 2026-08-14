@@ -10,6 +10,7 @@ import { useDefaultProps } from '../../../theming';
 
 /**
  * This component displays actions for the selected table rows.
+ * @see `Table`
  */
 export const TableActions = memo(
   forwardRef<HTMLDivElement, TableActionsProps>(function TableActions(inProps, ref) {

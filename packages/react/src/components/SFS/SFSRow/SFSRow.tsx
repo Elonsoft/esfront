@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `SFS`
+ */
 export const SFSRow = (inProps: SFSRowProps) => {
   const { children, className, style } = useDefaultProps({
     props: inProps,

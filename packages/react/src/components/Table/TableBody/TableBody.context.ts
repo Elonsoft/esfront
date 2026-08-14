@@ -9,6 +9,9 @@ export interface TableBodyContextValue {
 
 export const TableBodyContext = createContext<TableBodyContextValue | null>(null);
 
+/**
+ * The hook that returns the table body context. Throws when used outside of `Table`.
+ */
 export const useTableBodyContext = () => {
   const value = useContext(TableBodyContext);
 

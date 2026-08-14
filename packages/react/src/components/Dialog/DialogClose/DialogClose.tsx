@@ -8,6 +8,9 @@ import { IconCloseLineW600 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+/**
+ * @see `Dialog`
+ */
 export const DialogClose = (inProps: DialogCloseProps) => {
   const {
     className,

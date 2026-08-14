@@ -8,6 +8,9 @@ import { useDefaultProps } from '../../theming';
 import { OverridableComponent } from '../../types';
 import { ButtonBase } from '../ButtonBase';
 
+/**
+ * A badge is a small label that highlights the status or the category of the element it is attached to.
+ */
 export const Badge: OverridableComponent<BadgeTypeMap> = (inProps: BadgeProps) => {
   const {
     className,

@@ -7,6 +7,9 @@ import { TooltipEllipsisProps } from './TooltipEllipsis.types';
 import { useResizeObserver } from '../../hooks';
 import { Tooltip } from '../Tooltip';
 
+/**
+ * A tooltip that is shown only when the content of the child element is truncated with an ellipsis.
+ */
 export const TooltipEllipsis = ({ children, ...props }: TooltipEllipsisProps) => {
   const [overflow, setOverflow] = useState(false);
 

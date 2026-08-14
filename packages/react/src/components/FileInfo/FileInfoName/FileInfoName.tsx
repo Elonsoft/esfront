@@ -8,6 +8,9 @@ import { IconCloseLineW350 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+/**
+ * @see `FileInfo`
+ */
 export const FileInfoName = (inProps: FileInfoNameProps) => {
   const {
     children,

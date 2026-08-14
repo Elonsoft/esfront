@@ -8,6 +8,9 @@ import { useDefaultProps } from '../../../theming';
 import { OverridableComponent } from '../../../types';
 import { Button } from '../../Button';
 
+/**
+ * @see `TabBar`
+ */
 export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: TabBarItemProps) => {
   const {
     className,

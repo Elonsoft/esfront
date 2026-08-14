@@ -10,6 +10,9 @@ import { useDefaultProps } from '../../theming';
 import { OverridableComponent } from '../../types';
 import { ListItem } from '../ListItem';
 
+/**
+ * An item of a dropdown menu, built on top of `ListItem`.
+ */
 export const MenuItem = forwardRef(function MenuItem(inProps, ref) {
   const {
     className,

@@ -11,6 +11,9 @@ import { useTableScrollbarContext } from './TableScrollbar.context';
 import { useForkRef } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Table`
+ */
 export const TableScrollbar = memo(
   forwardRef<HTMLDivElement, TableScrollbarProps>(function TableScrollbar(inProps, inRef) {
     const { className, style } = useDefaultProps({

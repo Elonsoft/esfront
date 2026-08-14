@@ -8,6 +8,9 @@ import { useDefaultProps } from '../../theming';
 import { OverridableComponent } from '../../types';
 import { ButtonBase } from '../ButtonBase';
 
+/**
+ * A badge shaped like a ribbon, anchored to the left or the right edge of its container.
+ */
 export const RibbonBadge: OverridableComponent<RibbonBadgeTypeMap> = (inProps: RibbonBadgeProps) => {
   const {
     className,

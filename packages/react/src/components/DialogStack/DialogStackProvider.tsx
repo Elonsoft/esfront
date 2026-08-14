@@ -10,6 +10,7 @@ import { DialogStackStateContext } from './DialogStackState.context';
 import { useLatest, useWindowEventListener } from '../../hooks';
 
 /**
+ * Renders the dialogs opened through `useDialogStack` as a stack over the tree it wraps.
  * @deprecated Use the `DialogStack` component instead. It renders the dialogs opened through `useDialogStackV2` and
  * does not have to wrap the tree.
  */

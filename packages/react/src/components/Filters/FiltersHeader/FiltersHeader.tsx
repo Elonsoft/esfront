@@ -7,6 +7,9 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+/**
+ * @see `Filters`
+ */
 export const FiltersHeader = (inProps: FiltersHeaderProps) => {
   const { children, className, style, onClear, labelFilters, labelReset } = useDefaultProps({
     props: inProps,

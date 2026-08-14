@@ -8,6 +8,9 @@ import { IconCloseLineW350 } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { ButtonBase } from '../ButtonBase';
 
+/**
+ * A button that clears the value of the field it is placed in.
+ */
 export const ClearButton = (inProps: ClearButtonProps) => {
   const {
     className,

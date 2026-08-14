@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Filters`
+ */
 export const FiltersFooter = (inProps: FiltersFooterProps) => {
   const { children, className, style } = useDefaultProps({ props: inProps, name: 'ESFiltersFooter' });
 
