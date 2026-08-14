@@ -41,6 +41,9 @@ import { TooltipEllipsis } from '../TooltipEllipsis';
 
 import { flip, hide, limitShift, Middleware, offset as offsetMiddleware, shift } from '@floating-ui/react-dom';
 
+/**
+ * A dropdown menu that provides the popup layer for autocomplete-style fields.
+ */
 export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, ref) {
   const {
     paperRef,

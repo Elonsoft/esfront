@@ -8,7 +8,10 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
-/** The days list for the calendar. */
+/**
+ * The days list for the calendar.
+ * @see `Calendar`
+ */
 export const CalendarHead = (inProps: CalendarHeadProps) => {
   const {
     className,

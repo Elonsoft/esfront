@@ -19,7 +19,7 @@ import { Modal } from '../Modal';
 
 const transitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
 
-/*
+/**
  * `Gallery` is a component for displaying a fullscreen list of images or any other type of content.
  */
 export const Gallery = (inProps: GalleryProps) => {

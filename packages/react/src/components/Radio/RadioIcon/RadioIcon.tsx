@@ -8,6 +8,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Radio`
+ */
 export const RadioIcon = (inProps: RadioIconProps) => {
   const { className, style } = useDefaultProps({ props: inProps, name: 'ESRadioIcon' });
 

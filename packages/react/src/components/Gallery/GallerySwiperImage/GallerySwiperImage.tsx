@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Gallery`
+ */
 export const GallerySwiperImage = (inProps: GallerySwiperImageProps) => {
   const { className, style, src, alt } = useDefaultProps({
     props: inProps,

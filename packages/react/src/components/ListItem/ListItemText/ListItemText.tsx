@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `ListItem`
+ */
 export const ListItemText = (inProps: ListItemTextProps) => {
   const {
     children,

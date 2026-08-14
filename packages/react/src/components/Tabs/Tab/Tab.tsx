@@ -9,6 +9,9 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../../theming';
 import { ButtonBase } from '../../ButtonBase';
 
+/**
+ * @see `Tabs`
+ */
 export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps: TabProps, ref) {
   const {
     className,

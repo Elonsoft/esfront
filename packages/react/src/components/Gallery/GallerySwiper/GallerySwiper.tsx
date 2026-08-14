@@ -67,6 +67,9 @@ const GallerySwiperButtonNext = ({ icon, label }: { icon: ReactNode; label?: str
   );
 };
 
+/**
+ * @see `Gallery`
+ */
 export const GallerySwiper = (inProps: GallerySwiperProps) => {
   const {
     children,

@@ -1,0 +1,23 @@
+{
+  "name": "@esfront/claude-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npm --prefix ../react run typedoc && node build.cjs",
+    "prepack": "npm run build"
+  },
+  "files": [
+    ".claude-plugin",
+    "skills"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elonsoft/esfront.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Elonsoft/esfront/issues"
+  },
+  "homepage": "https://github.com/Elonsoft/esfront#readme"
+}

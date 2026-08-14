@@ -69,19 +69,18 @@
   }
 
   $min: map.get(settings.$breakpoints, $name);
-  $next: breakpoint-next($name, settings.$breakpoints);
-  $max: map.get(settings.$breakpoints, $next);
+  $next: breakpoint-next($name);
 
-  @if $min != null and $max != null {
-    @media (#{$min} <= width < #{$max}px) {
+  @if not $next {
+    @include up($name) {
       @content;
     }
-  } @else if $max == null {
-    @include up($name, settings.$breakpoints) {
+  } @else if $min == 0 {
+    @include down($next) {
       @content;
     }
-  } @else if $min == null {
-    @include down($next, settings.$breakpoints) {
+  } @else {
+    @include between($name, $next) {
       @content;
     }
   }

@@ -2,6 +2,9 @@ import clsx from 'clsx';
 
 import { Tooltip, TooltipProps } from '../../Tooltip';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryTooltip = (props: TooltipProps) => {
   return (
     <Tooltip

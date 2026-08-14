@@ -4,6 +4,10 @@ import { cloneElement, Fragment, isValidElement, useSyncExternalStore } from 're
 
 import { dialogStackState } from './DialogStack.state';
 
+/**
+ * Renders the dialogs opened through `useDialogStackV2` as a stack. It reads them from a store rather than a context,
+ * so it is mounted once anywhere in the tree instead of wrapping it.
+ */
 export const DialogStack = () => {
   const dialogs = useSyncExternalStore(
     dialogStackState.subscribe,

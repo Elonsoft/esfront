@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Checkbox`
+ */
 export const CheckboxIcon = (inProps: CheckboxIconProps) => {
   const { className, ...props } = useDefaultProps({ props: inProps, name: 'ESCheckboxIcon' });
 

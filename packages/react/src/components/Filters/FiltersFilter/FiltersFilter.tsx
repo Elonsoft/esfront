@@ -10,6 +10,9 @@ import { useDefaultProps } from '../../../theming';
 import { InformationIcon } from '../../InformationIcon';
 import { Tooltip } from '../../Tooltip';
 
+/**
+ * @see `Filters`
+ */
 export const FiltersFilter = (inProps: FiltersFilterProps) => {
   const {
     children,

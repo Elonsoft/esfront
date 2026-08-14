@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `SFS`
+ */
 export const SFSFiltersGroup = (inProps: SFSFiltersGroupProps) => {
   const { className, children, style, title } = useDefaultProps({
     props: inProps,

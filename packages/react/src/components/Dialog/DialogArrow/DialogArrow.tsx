@@ -8,6 +8,9 @@ import { IconArrowLeftLineW500, IconArrowRightLineW500 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+/**
+ * @see `Dialog`
+ */
 export const DialogArrow = (inProps: DialogArrowProps) => {
   const {
     className,

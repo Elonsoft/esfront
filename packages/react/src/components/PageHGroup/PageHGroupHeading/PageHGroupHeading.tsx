@@ -7,6 +7,9 @@ import clsx from 'clsx';
 import { TooltipEllipsis } from '../../../components/TooltipEllipsis';
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `PageHGroup`
+ */
 export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
   const {
     className,

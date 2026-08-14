@@ -10,6 +10,9 @@ import { SidebarMenuContext } from './SidebarMenu.context';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Sidebar`
+ */
 export const SidebarMenu = (inProps: SidebarMenuProps) => {
   const {
     className,

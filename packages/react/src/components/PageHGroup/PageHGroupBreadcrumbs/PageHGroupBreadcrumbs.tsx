@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `PageHGroup`
+ */
 export const PageHGroupBreadcrumbs = (inProps: PageHGroupBreadcrumbsProps) => {
   const { className, children, style } = useDefaultProps({
     props: inProps,

@@ -11,6 +11,9 @@ import { useDefaultProps } from '../../../theming';
 import { ButtonBase } from '../../ButtonBase';
 import { Divider } from '../../Divider';
 
+/**
+ * @see `Tabs`
+ */
 export const TabScrollButton = forwardRef<HTMLDivElement, TabScrollButtonProps>(function TabScrollButton(
   inProps: TabScrollButtonProps,
   ref

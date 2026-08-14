@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `ListItem`
+ */
 export const ListItemIcon = (inProps: ListItemIconProps) => {
   const { className, style, children } = useDefaultProps({
     props: inProps,

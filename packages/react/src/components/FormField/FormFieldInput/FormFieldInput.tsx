@@ -15,6 +15,11 @@ import { useFormFieldContext } from '../FormField.context';
 const AUTO_FILL_KEYFRAMES = 'es-form-field-auto-fill-keyframes';
 const AUTO_FILL_CANCEL_KEYFRAMES = 'es-form-field-auto-fill-cancel-keyframes';
 
+/**
+ * The `input` or `textarea` control of a field, reporting to the field whether it is filled, focused or filled in by
+ * the browser.
+ * @see `FormField`
+ */
 export const FormFieldInput = forwardRef<FormFieldInputElement, FormFieldInputProps>(function FormFieldInput(
   inProps: FormFieldInputProps,
   ref

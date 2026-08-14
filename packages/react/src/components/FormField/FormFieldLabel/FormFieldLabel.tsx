@@ -10,6 +10,10 @@ import { useForkRef } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { useFormFieldContext } from '../FormField.context';
 
+/**
+ * The label of a field, shrinking out of the control once that control is focused or filled.
+ * @see `FormField`
+ */
 export const FormFieldLabel = forwardRef<HTMLLabelElement, FormFieldLabelProps>(function FormFieldLabel(
   inProps: FormFieldLabelProps,
   ref

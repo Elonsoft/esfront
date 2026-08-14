@@ -8,6 +8,10 @@ import { useId } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 import { FormField, FormFieldField, FormFieldHelperText, FormFieldInput, FormFieldLabel } from '../FormField';
 
+/**
+ * The text field is used to type text in, on a single line or over several of them. It assembles a `FormField` out of
+ * a label, a control and helper text, which is what to reach for instead when a field needs a different control.
+ */
 export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(function TextField(inProps: TextFieldProps, ref) {
   const {
     className,

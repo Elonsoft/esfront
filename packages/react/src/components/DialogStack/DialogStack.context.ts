@@ -33,6 +33,8 @@ export interface DialogStackContextValue {
 export const DialogStackContext = createContext<DialogStackContextValue | null>(null);
 
 /**
+ * Returns the dialog stack of the closest `DialogStackProvider`, which opens and closes its dialogs. Throws outside
+ * of one.
  * @deprecated Use the `dialogStackState` store directly, or `useDialogStackV2` inside a component.
  */
 export const useDialogStackContext = () => {

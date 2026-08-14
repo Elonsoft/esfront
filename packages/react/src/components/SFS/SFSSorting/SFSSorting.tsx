@@ -11,6 +11,9 @@ import { useDefaultProps } from '../../../theming';
 import { SortingMenu } from '../../SortingMenu';
 import { SFSButton } from '../SFSButton';
 
+/**
+ * @see `SFS`
+ */
 export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
   const {
     className,

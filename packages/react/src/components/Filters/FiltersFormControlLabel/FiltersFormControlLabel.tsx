@@ -7,6 +7,9 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../../theming';
 import { FormControlLabel } from '../../FormControlLabel';
 
+/**
+ * @see `Filters`
+ */
 export const FiltersFormControlLabel = (inProps: FiltersFormControlLabelProps) => {
   const { className, label, count, ...props } = useDefaultProps({ props: inProps, name: 'ESFiltersFormControlLabel' });
 

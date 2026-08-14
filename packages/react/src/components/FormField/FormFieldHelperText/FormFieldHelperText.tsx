@@ -10,6 +10,10 @@ import { useForkRef } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { useFormFieldContext } from '../FormField.context';
 
+/**
+ * The text under a field, describing what the field expects or the error it is in.
+ * @see `FormField`
+ */
 export const FormFieldHelperText = forwardRef<HTMLDivElement, FormFieldHelperTextProps>(function FormFieldHelperText(
   inProps: FormFieldHelperTextProps,
   ref

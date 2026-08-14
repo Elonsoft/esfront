@@ -15,6 +15,9 @@ export interface SidebarMenuContextValue {
 
 export const SidebarMenuContext = createContext<SidebarMenuContextValue | null>(null);
 
+/**
+ * The hook that returns the sidebar menu context. Throws when used outside of `SidebarMenu`.
+ */
 export const useSidebarMenuContext = () => {
   const value = useContext(SidebarMenuContext);
 

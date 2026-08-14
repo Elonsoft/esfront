@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `FileInfo`
+ */
 export const FileInfoMeta = (inProps: FileInfoMetaProps) => {
   const { children, className, style } = useDefaultProps({ props: inProps, name: 'ESFileInfoMeta' });
 

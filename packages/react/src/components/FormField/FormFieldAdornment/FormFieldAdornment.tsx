@@ -29,6 +29,10 @@ const getResizeObserver = () => {
   return resizeObserver;
 };
 
+/**
+ * An element placed before or after the control of a field, such as an icon, a unit or a button.
+ * @see `FormField`
+ */
 export const FormFieldAdornment = forwardRef<HTMLDivElement, FormFieldAdornmentProps>(function FormFieldAdornment(
   inProps: FormFieldAdornmentProps,
   ref

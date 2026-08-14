@@ -9,6 +9,9 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../../theming';
 import { TooltipEllipsis } from '../../TooltipEllipsis';
 
+/**
+ * @see `Table`
+ */
 export const TableText = memo(
   forwardRef<HTMLDivElement, TableTextProps>(function TableText(inProps, ref) {
     const {

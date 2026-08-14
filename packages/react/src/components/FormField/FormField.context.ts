@@ -34,6 +34,10 @@ export interface FormFieldContextValue {
 
 export const FormFieldContext = createContext<FormFieldContextValue | null>(null);
 
+/**
+ * Returns the state of the closest `FormField`: its variant and size, and whether its control is required, disabled,
+ * in error, filled or focused. Throws outside of a field.
+ */
 export const useFormFieldContext = () => {
   const value = useContext(FormFieldContext);
 

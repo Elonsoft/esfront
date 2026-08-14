@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../theming';
 
+/**
+ * The layout container of a full-page error screen, composed from the `ErrorPage*` parts.
+ */
 export const ErrorPage = (inProps: ErrorPageProps) => {
   const { children, className, style } = useDefaultProps({
     props: inProps,

@@ -12,6 +12,9 @@ import { Button } from '../../Button';
 import { FormFieldAdornment } from '../../FormField';
 import { TextField } from '../../TextField';
 
+/**
+ * @see `SFS`
+ */
 export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
   const {
     className,

@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `AutocompleteMenu`
+ */
 export const AutocompleteMenuHeader = (inProps: AutocompleteMenuHeaderProps) => {
   const {
     className,

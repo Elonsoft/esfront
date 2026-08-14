@@ -7,6 +7,9 @@ import clsx from 'clsx';
 import { useStuckSentinel } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Dialog`
+ */
 export const DialogTitle = (inProps: DialogTitleProps) => {
   const { className, style, sticky, children } = useDefaultProps({
     props: inProps,

@@ -1,6 +1,8 @@
 node_modules/
 storybook-static/
 typedoc.json
+packages/claude-plugin*/.claude-plugin/
+packages/claude-plugin*/skills/
 .env
 .npmrc
 yarn-error.log

@@ -9,6 +9,9 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../../theming';
 import { Button, ExtendButton } from '../../Button';
 
+/**
+ * @see `SFS`
+ */
 export const SFSButton = forwardRef(function SFSButton(inProps, ref) {
   const { active, ...props } = useDefaultProps({ props: inProps, name: 'ESSFSButton' });
 

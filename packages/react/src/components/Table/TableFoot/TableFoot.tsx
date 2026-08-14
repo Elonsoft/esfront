@@ -9,6 +9,9 @@ import clsx from 'clsx';
 import { useForkRef, useIntersectionObserver } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Table`
+ */
 export const TableFoot = memo(
   forwardRef<HTMLDivElement, TableFootProps>(function TableFoot(inProps, inRef) {
     const { children, className, sticky, style } = useDefaultProps({

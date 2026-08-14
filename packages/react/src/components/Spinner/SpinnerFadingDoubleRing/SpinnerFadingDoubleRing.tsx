@@ -8,6 +8,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Spinner`
+ */
 export const SpinnerFadingDoubleRing = (inProps: SpinnerProps) => {
   const {
     className,

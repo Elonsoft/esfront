@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+/**
+ * @see `Alert`
+ */
 export const AlertActions = (inProps: AlertActionsProps) => {
   const { className, children, style } = useDefaultProps({
     props: inProps,

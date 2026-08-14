@@ -10,6 +10,9 @@ import { useDefaultProps } from '../../../theming';
 import { OverridableComponent } from '../../../types';
 import { useTableContext } from '../Table.context';
 
+/**
+ * @see `Table`
+ */
 export const TableRow = memo(
   forwardRef(function TableRow(inProps: TableRowProps, ref) {
     const {
