@@ -13,6 +13,9 @@ import { TableCellContext } from '../TableCell';
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
+/**
+ * @see `Table`
+ */
 export const TableBody = memo(
   forwardRef<HTMLDivElement, TableBodyProps>(function TableBody(inProps, ref) {
     const {

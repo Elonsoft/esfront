@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `PageHGroup`
+ */
 export const PageHGroupStatus = (inProps: PageHGroupStatusProps) => {
   const { className, children, style } = useDefaultProps({
     props: inProps,

@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `AutocompleteMenu`
+ */
 export const AutocompleteMenuFooter = (inProps: AutocompleteMenuFooterProps) => {
   const {
     className,

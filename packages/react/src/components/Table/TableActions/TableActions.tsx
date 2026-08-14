@@ -8,6 +8,7 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 /**
  * This component displays actions for the selected table rows.
+ * @see `Table`
  */
 export const TableActions = memo(
   forwardRef<HTMLDivElement, TableActionsProps>(function TableActions(inProps, ref) {

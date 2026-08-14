@@ -6,6 +6,9 @@ export interface BottomSheetContextValue {
 
 export const BottomSheetContext = createContext<BottomSheetContextValue | null>(null);
 
+/**
+ * The hook that returns the bottom sheet context. Throws when used outside of `BottomSheet`.
+ */
 export const useBottomSheetContext = () => {
   const value = useContext(BottomSheetContext);
 

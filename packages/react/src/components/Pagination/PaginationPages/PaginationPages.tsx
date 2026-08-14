@@ -26,6 +26,9 @@ const isMacintosh = () => {
   return navigator.userAgent.indexOf('Macintosh') > 0;
 };
 
+/**
+ * @see `Pagination`
+ */
 export const PaginationPages = memo(function PaginationPages(inProps: PaginationPagesProps) {
   const {
     className,

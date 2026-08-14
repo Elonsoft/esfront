@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryMetaText = (inProps: GalleryMetaTextProps) => {
   const { children, className, style, primary } = useDefaultProps({
     props: inProps,

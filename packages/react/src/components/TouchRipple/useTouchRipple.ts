@@ -55,6 +55,11 @@ enum State {
 // Delay reacting to touch so that we do not show the ripple for a swipe or scroll interaction.
 const TOUCH_DELAY_MS = 150;
 
+/**
+ * The hook that drives the touch ripple effect of an element, following the pointer and press state.
+ * @param params The ripple options.
+ * @returns The ref to attach to the ripple element and its current press state.
+ */
 export const useTouchRipple = ({
   center,
   disabled,

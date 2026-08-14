@@ -9,6 +9,9 @@ import { IconChevronDownLineW300, IconChevronUpLineW300 } from '../../../icons';
 import { InformationIcon } from '../../InformationIcon';
 import { Tooltip } from '../../Tooltip';
 
+/**
+ * @see `Filters`
+ */
 export const FiltersFilter = (inProps: FiltersFilterProps) => {
   const {
     children,

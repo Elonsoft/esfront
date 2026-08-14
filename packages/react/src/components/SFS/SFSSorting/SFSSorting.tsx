@@ -10,6 +10,9 @@ import { IconSortAscending2LineW100, IconSortDescending2LineW100, IconSortOffLin
 import { SortingMenu } from '../../SortingMenu';
 import { SFSButton } from '../SFSButton';
 
+/**
+ * @see `SFS`
+ */
 export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
   const {
     className,

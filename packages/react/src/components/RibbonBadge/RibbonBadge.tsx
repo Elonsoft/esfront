@@ -7,6 +7,9 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 import { ButtonBase } from '../ButtonBase';
 
+/**
+ * A badge shaped like a ribbon, anchored to the left or the right edge of its container.
+ */
 export const RibbonBadge: OverridableComponent<RibbonBadgeTypeMap> = (inProps: RibbonBadgeProps) => {
   const {
     className,

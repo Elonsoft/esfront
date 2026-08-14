@@ -6,6 +6,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { useStuckSentinel } from '../../../hooks';
 
+/**
+ * @see `Dialog`
+ */
 export const DialogTitle = (inProps: DialogTitleProps) => {
   const { className, style, sticky, children } = useDefaultProps({
     props: inProps,

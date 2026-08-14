@@ -9,6 +9,9 @@ import { useForkRef } from '@mui/material/utils';
 
 import { useIntersectionObserver } from '../../../hooks';
 
+/**
+ * @see `Table`
+ */
 export const TableFoot = memo(
   forwardRef<HTMLDivElement, TableFootProps>(function TableFoot(inProps, inRef) {
     const { children, className, sticky, style } = useDefaultProps({

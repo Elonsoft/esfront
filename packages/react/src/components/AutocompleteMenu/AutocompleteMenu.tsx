@@ -38,6 +38,9 @@ import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';
 import { SpinnerRing } from '../Spinner';
 import { TooltipEllipsis } from '../TooltipEllipsis';
 
+/**
+ * A dropdown menu that provides the popup layer for autocomplete-style fields.
+ */
 export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, ref) {
   const {
     paperRef,

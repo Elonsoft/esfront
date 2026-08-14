@@ -9,6 +9,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useSwiperContext } from '../Swiper.context';
 import { SwiperPaginationItem } from '../SwiperPaginationItem';
 
+/**
+ * @see `Swiper`
+ */
 export const SwiperPagination = (inProps: SwiperPaginationProps) => {
   const {
     className,

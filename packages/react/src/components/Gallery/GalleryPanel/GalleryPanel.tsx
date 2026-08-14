@@ -12,6 +12,9 @@ import { useGalleryPanelsContext } from './GalleryPanels.context';
 import { useResizeObserver } from '../../../hooks';
 import { useGalleryContext } from '../Gallery.context';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryPanel = (inProps: GalleryPanelProps) => {
   const { children, className, style, position, direction } = useDefaultProps({
     props: inProps,

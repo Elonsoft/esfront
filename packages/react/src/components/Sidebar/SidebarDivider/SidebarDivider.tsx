@@ -7,6 +7,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { Divider } from '../../Divider';
 import { useSidebarContext } from '../Sidebar.context';
 
+/**
+ * @see `Sidebar`
+ */
 export const SidebarDivider = (inProps: SidebarDividerProps) => {
   const { className, style } = useDefaultProps({
     props: inProps,

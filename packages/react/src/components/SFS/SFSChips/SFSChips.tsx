@@ -8,6 +8,9 @@ import { IconCloseLineW400 } from '../../../icons';
 import { Button } from '../../Button';
 import { Tooltip } from '../../Tooltip';
 
+/**
+ * @see `SFS`
+ */
 export const SFSChips = (inProps: SFSChipsProps) => {
   const {
     className,

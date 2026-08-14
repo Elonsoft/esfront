@@ -12,6 +12,9 @@ const PAGINATION_ITEM_HIDDEN = {
   width: 0,
 };
 
+/**
+ * @see `Swiper`
+ */
 export const SwiperPaginationItem = ({
   index,
   active,

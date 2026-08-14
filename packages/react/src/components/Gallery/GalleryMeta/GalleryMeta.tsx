@@ -9,6 +9,9 @@ import { useGalleryContext } from '../Gallery.context';
 import { GalleryActionsButton } from '../GalleryActionsButton';
 import { GalleryTooltip } from '../GalleryTooltip';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryMeta = (inProps: GalleryMetaProps) => {
   const {
     children,

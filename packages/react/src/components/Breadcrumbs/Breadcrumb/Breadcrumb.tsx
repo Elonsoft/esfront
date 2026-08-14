@@ -9,6 +9,9 @@ import { IconBreadcrumbArrowRightLineW500 } from '../../../icons';
 import { Button } from '../../Button';
 import { TooltipEllipsis } from '../../TooltipEllipsis';
 
+/**
+ * @see `Breadcrumbs`
+ */
 export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: BreadcrumbProps) => {
   const {
     children,

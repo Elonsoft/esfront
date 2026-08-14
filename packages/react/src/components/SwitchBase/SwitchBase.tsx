@@ -10,6 +10,10 @@ import { useFormControl } from '@mui/material';
 import { useControlled } from '../../hooks';
 import { ButtonBase } from '../ButtonBase';
 
+/**
+ * The base component of `Checkbox`, `Radio` and `Switch`. It handles the checked state, the icons and the button
+ * behaviour they share.
+ */
 export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(function SwitchBase(
   inProps: SwitchBaseProps,
   ref

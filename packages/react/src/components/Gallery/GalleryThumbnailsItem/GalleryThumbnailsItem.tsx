@@ -6,6 +6,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { ButtonBase } from '../../ButtonBase';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {
   const { className, style, isActive, onClick, children } = useDefaultProps({
     props: inProps,

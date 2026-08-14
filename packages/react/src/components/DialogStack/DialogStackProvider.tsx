@@ -7,6 +7,11 @@ import { DialogStackStateContext } from './DialogStackState.context';
 
 import { useLatest, useWindowEventListener } from '../../hooks';
 
+/**
+ * The provider that holds the stack of dialogs opened through `useDialogStack` and renders them above the page.
+ * With `enableHistoryOverride` it also pushes a history entry per dialog, so that going back closes the topmost
+ * one.
+ */
 export const DialogStackProvider = ({ children, enableHistoryOverride }: DialogStackProviderProps) => {
   const [dialogs, setDialogs] = useState<
     Array<{

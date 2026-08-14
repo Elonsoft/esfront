@@ -7,6 +7,10 @@ export interface GalleryThumbnailsContextValue {
 
 export const GalleryThumbnailsContext = createContext<GalleryThumbnailsContextValue | null>(null);
 
+/**
+ * The hook that returns the gallery thumbnails context. Throws when used outside of
+ * `GalleryThumbnailsProvider`.
+ */
 export const useGalleryThumbnailsContext = () => {
   const value = useContext(GalleryThumbnailsContext);
 

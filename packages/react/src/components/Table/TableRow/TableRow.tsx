@@ -9,6 +9,9 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 import { useTableContext } from '../Table.context';
 
+/**
+ * @see `Table`
+ */
 export const TableRow = memo(
   forwardRef(function TableRow(inProps: TableRowProps, ref) {
     const {

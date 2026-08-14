@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Checkbox`
+ */
 export const CheckboxIcon = (inProps: CheckboxIconProps) => {
   const { className, ...props } = useDefaultProps({ props: inProps, name: 'ESCheckboxIcon' });
 

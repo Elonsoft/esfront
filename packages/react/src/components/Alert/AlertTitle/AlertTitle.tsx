@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Alert`
+ */
 export const AlertTitle = (inProps: AlertTitleProps) => {
   const { className, children, style } = useDefaultProps({
     props: inProps,

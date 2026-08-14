@@ -14,6 +14,9 @@ import { usePaginationContext } from '../Pagination.context';
 
 const OPTIONS = [10, 25, 100];
 
+/**
+ * @see `Pagination`
+ */
 export const PaginationRange = memo(function PaginationRange(inProps: PaginationRangeProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);

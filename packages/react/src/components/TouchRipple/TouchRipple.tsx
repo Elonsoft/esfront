@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 /**
- * The TouchRipple.
+ * The touch ripple for ButtonBase component.
  */
 export const TouchRipple = forwardRef<HTMLDivElement, TouchRippleProps>(function TouchRipple(inProps, ref) {
   const { className, style } = useDefaultProps({

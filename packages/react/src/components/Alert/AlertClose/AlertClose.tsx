@@ -7,6 +7,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { IconCloseLineW500 } from '../../../icons';
 import { Button } from '../../Button';
 
+/**
+ * @see `Alert`
+ */
 export const AlertClose = (inProps: AlertCloseProps) => {
   const {
     className,

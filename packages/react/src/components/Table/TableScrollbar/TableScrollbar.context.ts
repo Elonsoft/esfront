@@ -9,6 +9,9 @@ export interface TableScrollbarContextValue {
 
 export const TableScrollbarContext = createContext<TableScrollbarContextValue | null>(null);
 
+/**
+ * The hook that returns the table scrollbar context. Throws when used outside of `Table`.
+ */
 export const useTableScrollbarContext = () => {
   const value = useContext(TableScrollbarContext);
 

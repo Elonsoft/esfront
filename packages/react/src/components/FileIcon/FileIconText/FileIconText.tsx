@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `FileIcon`
+ */
 export const FileIconText = (inProps: FileIconTextProps) => {
   const { className, style, children } = useDefaultProps({
     props: inProps,

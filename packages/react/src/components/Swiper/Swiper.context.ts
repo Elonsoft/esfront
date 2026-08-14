@@ -25,6 +25,9 @@ export interface SwiperContextValue {
 
 export const SwiperContext = createContext<SwiperContextValue | null>(null);
 
+/**
+ * The hook that returns the swiper context. Throws when used outside of `Swiper`.
+ */
 export const useSwiperContext = () => {
   const value = useContext(SwiperContext);
 

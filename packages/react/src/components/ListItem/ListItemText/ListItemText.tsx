@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `ListItem`
+ */
 export const ListItemText = (inProps: ListItemTextProps) => {
   const {
     children,

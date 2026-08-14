@@ -11,6 +11,11 @@ const setRef = <T>(
   }
 };
 
+/**
+ * The hook that merges several refs into one.
+ * @param refs The refs to merge.
+ * @returns A ref callback that updates every given ref, or `null` if all of them are `null`.
+ */
 export const useForkRef = <Instance>(...refs: Array<Ref<Instance> | undefined>): RefCallback<Instance> | null => {
   /**
    * This will create a new function if the refs passed to this hook change and are all defined.

@@ -1,0 +1,12 @@
+{
+  "name": "esfront-react",
+  "description": "Reference for the esfront design system — the @esfront/react component and hook library and the @esfront/theme SCSS styling layer.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Elonsoft"
+  },
+  "homepage": "https://github.com/Elonsoft/esfront/blob/master/packages/claude-plugins/esfront/README.md",
+  "repository": "https://github.com/Elonsoft/esfront",
+  "license": "MIT",
+  "keywords": ["react", "components", "hooks", "ui", "scss", "sass", "theme", "styles", "design-system", "esfront"]
+}

@@ -11,6 +11,9 @@ import { useBoolean, useResizeObserver } from '../../hooks';
 import { IconChevronDownLineW200, IconChevronUpLineW200 } from '../../icons';
 import { Button } from '../Button';
 
+/**
+ * Lays out a collection of chips clamped to a number of lines, with a button that reveals the hidden ones.
+ */
 export const Chips = (inProps: ChipsProps) => {
   const {
     children,

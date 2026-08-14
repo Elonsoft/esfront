@@ -9,6 +9,10 @@ export interface DialogStackStateContextValue {
 
 export const DialogStackStateContext = createContext<DialogStackStateContextValue | null>(null);
 
+/**
+ * The hook that returns the currently opened dialogs and their number. Throws when used outside of
+ * `DialogStackProvider`.
+ */
 export const useDialogStackState = () => {
   const value = useContext(DialogStackStateContext);
 

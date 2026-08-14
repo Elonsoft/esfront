@@ -7,6 +7,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { IconCloseLineW600 } from '../../../icons';
 import { Button } from '../../Button';
 
+/**
+ * @see `Dialog`
+ */
 export const DialogClose = (inProps: DialogCloseProps) => {
   const {
     className,

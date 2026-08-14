@@ -1,5 +1,14 @@
 import { useMemo } from 'react';
 
+/**
+ * The hook that builds the day grid of a month, together with the trailing days of the previous month and the
+ * leading days of the next one that fill the first and the last week.
+ * @param year The full year.
+ * @param month The zero-based month.
+ * @param weekStart The zero-based day the week starts on.
+ * @param rows Whether the grid always spans six weeks (`max`) or only as many as the month needs (`auto`).
+ * @returns The days of the month and the adjacent days that pad it.
+ */
 export const useCalendar = (
   year: number,
   month: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11,
