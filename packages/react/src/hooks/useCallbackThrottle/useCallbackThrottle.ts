@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from 'react';
 
 import { useLatest } from '../useLatest';
 /**
- * TThe hook that creates a throttled function.
+ * The hook that creates a throttled function.
  * @param callback The callback to call.
  * @param delay The number of milliseconds to delay.
  * @returns The throttled callback.

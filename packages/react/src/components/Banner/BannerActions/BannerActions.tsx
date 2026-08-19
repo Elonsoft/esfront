@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Banner`
+ */
 export const BannerActions = (inProps: BannerActionsProps) => {
   const { className, style, children } = useDefaultProps({
     props: inProps,

@@ -9,6 +9,9 @@ export interface GallerySwiperContextValue {
 
 export const GallerySwiperContext = createContext<GallerySwiperContextValue | null>(null);
 
+/**
+ * The hook that returns the gallery swiper context. Throws when used outside of `GallerySwiperProvider`.
+ */
 export const useGallerySwiperContext = () => {
   const value = useContext(GallerySwiperContext);
 

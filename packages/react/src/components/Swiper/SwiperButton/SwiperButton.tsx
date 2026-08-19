@@ -13,6 +13,9 @@ import {
 import { Button } from '../../Button';
 import { useSwiperContext } from '../Swiper.context';
 
+/**
+ * @see `Swiper`
+ */
 export const SwiperButton = (inProps: SwiperButtonProps) => {
   const {
     className,

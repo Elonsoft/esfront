@@ -7,6 +7,9 @@ export interface AudioPlayerContextValue {
 
 export const AudioPlayerContext = createContext<AudioPlayerContextValue | null>(null);
 
+/**
+ * The hook that returns the audio player context. Throws when used outside of `AudioPlayerProvider`.
+ */
 export const useAudioPlayerContext = () => {
   const value = useContext(AudioPlayerContext);
 

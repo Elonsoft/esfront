@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Radio`
+ */
 export const RadioIcon = (inProps: RadioIconProps) => {
   const { className, style } = useDefaultProps({ props: inProps, name: 'ESRadioIcon' });
 

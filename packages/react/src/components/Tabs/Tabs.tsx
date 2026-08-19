@@ -145,6 +145,9 @@ const moveFocus = (
 const defaultIndicatorStyle: { [key: string]: number } = {};
 let warnedOnceTabPresent = false;
 
+/**
+ * Tabs organize content across different screens and views, and let the user navigate between them.
+ */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps: TabsProps, ref) {
   const {
     'aria-label': ariaLabel,

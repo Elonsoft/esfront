@@ -7,6 +7,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { IconArrowLeftLineW500, IconArrowRightLineW500 } from '../../../icons';
 import { Button } from '../../Button';
 
+/**
+ * @see `Dialog`
+ */
 export const DialogArrow = (inProps: DialogArrowProps) => {
   const {
     className,

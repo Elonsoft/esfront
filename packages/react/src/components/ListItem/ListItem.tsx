@@ -11,6 +11,9 @@ import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import { useForkRef } from '../../hooks';
 import { ButtonBase } from '../ButtonBase';
 
+/**
+ * Displays a single row of a list. It can be rendered as a button to make the row interactive.
+ */
 export const ListItem = forwardRef(function ListItem(inProps, ref) {
   const props = useDefaultProps({ props: inProps, name: 'ESListItem' });
   const {

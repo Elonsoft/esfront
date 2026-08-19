@@ -5,6 +5,7 @@
   "description": "",
   "private": true,
   "workspaces": [
+    "packages/claude-plugins",
     "packages/configs/cspell-config",
     "packages/configs/eslint-config",
     "packages/configs/prettier-config",

@@ -9,6 +9,9 @@ export interface DateAdapterContextValue {
 
 export const DateAdapterContext = createContext<DateAdapterContextValue | null>(null);
 
+/**
+ * The hook that returns the date adapter context. Throws when used outside of `DateAdapterProvider`.
+ */
 export const useDateAdapterContext = () => {
   const value = useContext(DateAdapterContext);
 

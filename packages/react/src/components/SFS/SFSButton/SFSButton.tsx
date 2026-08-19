@@ -8,6 +8,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { Button, ExtendButton } from '../../Button';
 
+/**
+ * @see `SFS`
+ */
 export const SFSButton = forwardRef(function SFSButton(inProps, ref) {
   const { active, ...props } = useDefaultProps({ props: inProps, name: 'ESSFSButton' });
 

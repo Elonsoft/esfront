@@ -13,6 +13,9 @@ export const OVERLAY_SCROLLBARS_OPTIONS: OverlayScrollbarsComponentProps['option
   scrollbars: { autoHide: 'leave', autoHideDelay: 0 },
 };
 
+/**
+ * A scrollable container that replaces the native scrollbars with themed ones overlaying the content.
+ */
 export const OverlayScrollbars = forwardRef<
   OverlayScrollbarsComponentRef,
   OverlayScrollbarsComponentProps & { color?: 'mono-a' | 'mono-b' | 'white' | 'black' }

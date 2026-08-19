@@ -10,6 +10,9 @@ import { GalleryActionsButton } from '../GalleryActionsButton';
 import { useGalleryThumbnailsContext } from '../GalleryThumbnails';
 import { GalleryTooltip } from '../GalleryTooltip';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryActions = (inProps: GalleryActionsProps) => {
   const {
     children,

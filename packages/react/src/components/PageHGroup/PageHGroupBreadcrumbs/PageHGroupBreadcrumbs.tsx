@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `PageHGroup`
+ */
 export const PageHGroupBreadcrumbs = (inProps: PageHGroupBreadcrumbsProps) => {
   const { className, children, style } = useDefaultProps({
     props: inProps,

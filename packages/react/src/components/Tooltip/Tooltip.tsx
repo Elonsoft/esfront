@@ -58,6 +58,9 @@ const defaultArrowIconMapping = {
   '10': { icon: <IconPolygon3 />, width: 16 },
 };
 
+/**
+ * Tooltips display informative text when the user hovers over, focuses on, or taps an element.
+ */
 export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
   const {
     arrow = true,

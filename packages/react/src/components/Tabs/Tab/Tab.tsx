@@ -8,6 +8,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { ButtonBase } from '../../ButtonBase';
 
+/**
+ * @see `Tabs`
+ */
 export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps: TabProps, ref) {
   const {
     className,

@@ -54,6 +54,9 @@ const defaultIndeterminateIcon = {
   ),
 };
 
+/**
+ * Checkboxes allow the user to select one or more items from a set, or to turn an option on or off.
+ */
 export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(function Checkbox(inProps, ref) {
   const props = useDefaultProps({ props: inProps, name: 'ESCheckbox' });
   const {

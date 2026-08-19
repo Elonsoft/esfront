@@ -24,6 +24,9 @@ const calculateTransform = (
   }
 };
 
+/**
+ * Positions a badge over one of the corners of the element it wraps.
+ */
 export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
   const {
     badge,

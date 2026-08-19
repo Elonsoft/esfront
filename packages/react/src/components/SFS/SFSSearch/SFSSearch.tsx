@@ -11,6 +11,9 @@ import TextField from '@mui/material/TextField';
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../../icons';
 import { Button } from '../../Button';
 
+/**
+ * @see `SFS`
+ */
 export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
   const {
     className,

@@ -24,6 +24,10 @@ export interface DialogStackContextValue {
 
 export const DialogStackContext = createContext<DialogStackContextValue | null>(null);
 
+/**
+ * The hook that returns the dialog stack context. Prefer `useDialogStack`, which additionally closes the
+ * dialogs a component opened when that component unmounts. Throws when used outside of `DialogStackProvider`.
+ */
 export const useDialogStackContext = () => {
   const value = useContext(DialogStackContext);
 

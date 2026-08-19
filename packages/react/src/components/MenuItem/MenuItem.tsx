@@ -9,6 +9,9 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 import { ListItem } from '../ListItem';
 
+/**
+ * An item of a dropdown menu, built on top of `ListItem`.
+ */
 export const MenuItem = forwardRef(function MenuItem(inProps, ref) {
   const {
     className,

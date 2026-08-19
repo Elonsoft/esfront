@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Sidebar`
+ */
 export const SidebarSpacer = (inProps: SidebarSpacerProps) => {
   const { className, style } = useDefaultProps({
     props: inProps,

@@ -25,6 +25,9 @@ const IconDoubleChevronUp = (props: SvgIconProps) => {
   );
 };
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
   const galleryPanelContext = useGalleryPanelContext();
 

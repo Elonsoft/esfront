@@ -8,6 +8,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { SidebarMenuContext } from './SidebarMenu.context';
 
+/**
+ * @see `Sidebar`
+ */
 export const SidebarMenu = (inProps: SidebarMenuProps) => {
   const {
     className,

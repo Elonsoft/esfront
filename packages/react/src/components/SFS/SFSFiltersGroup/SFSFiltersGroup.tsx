@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `SFS`
+ */
 export const SFSFiltersGroup = (inProps: SFSFiltersGroupProps) => {
   const { className, children, style, title } = useDefaultProps({
     props: inProps,

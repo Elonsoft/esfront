@@ -7,6 +7,9 @@ import { unstable_useId as useId } from '@mui/utils';
 
 import RadioGroupContext from './RadioGroup.context';
 
+/**
+ * Groups radio buttons so that only one of them can be selected at a time.
+ */
 export const RadioGroup = React.forwardRef<HTMLButtonElement, RadioGroupProps>(function RadioGroup(props, ref) {
   const { children, defaultValue, name: nameProp, onChange, value: valueProp, ...other } = props;
   const rootRef = React.useRef(null);

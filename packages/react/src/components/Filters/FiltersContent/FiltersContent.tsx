@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Filters`
+ */
 export const FiltersContent = (inProps: FiltersContentProps) => {
   const { children, className, style } = useDefaultProps({ props: inProps, name: 'ESFiltersContent' });
 

@@ -7,6 +7,9 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 import { Button } from '../../Button';
 
+/**
+ * @see `TabBar`
+ */
 export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: TabBarItemProps) => {
   const {
     className,

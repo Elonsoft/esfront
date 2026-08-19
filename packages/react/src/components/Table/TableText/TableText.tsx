@@ -8,6 +8,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { TooltipEllipsis } from '../../TooltipEllipsis';
 
+/**
+ * @see `Table`
+ */
 export const TableText = memo(
   forwardRef<HTMLDivElement, TableTextProps>(function TableText(inProps, ref) {
     const {

@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Gallery`
+ */
 export const GallerySwiperImage = (inProps: GallerySwiperImageProps) => {
   const { className, style, src, alt } = useDefaultProps({
     props: inProps,

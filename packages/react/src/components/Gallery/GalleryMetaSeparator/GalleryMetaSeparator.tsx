@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryMetaSeparator = (inProps: GalleryMetaSeparatorProps) => {
   const { className, style } = useDefaultProps({
     props: inProps,

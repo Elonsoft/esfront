@@ -4,6 +4,10 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * A heading that labels a group of items inside a dropdown menu. It can stick to the top of the menu while the list
+ * scrolls.
+ */
 export const MenuGroup = (inProps: MenuGroupProps) => {
   const {
     children,

@@ -9,6 +9,9 @@ import { useForkRef } from '@mui/material/utils';
 
 import { useTableScrollbarContext } from './TableScrollbar.context';
 
+/**
+ * @see `Table`
+ */
 export const TableScrollbar = memo(
   forwardRef<HTMLDivElement, TableScrollbarProps>(function TableScrollbar(inProps, inRef) {
     const { className, style } = useDefaultProps({

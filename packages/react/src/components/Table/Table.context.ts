@@ -6,6 +6,9 @@ export interface TableContextValue {
 
 export const TableContext = createContext<TableContextValue | null>(null);
 
+/**
+ * The hook that returns the table context. Throws when used outside of `Table`.
+ */
 export const useTableContext = () => {
   const value = useContext(TableContext);
 

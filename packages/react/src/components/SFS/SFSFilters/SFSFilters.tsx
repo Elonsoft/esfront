@@ -11,6 +11,9 @@ import { IconCloseLineW600, IconFilterLineW300 } from '../../../icons';
 import { Button } from '../../Button';
 import { SFSButton } from '../SFSButton';
 
+/**
+ * @see `SFS`
+ */
 export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
   const {
     children,

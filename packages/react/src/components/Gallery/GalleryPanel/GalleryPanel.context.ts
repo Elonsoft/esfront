@@ -8,6 +8,9 @@ export interface GalleryPanelContextValue {
 
 export const GalleryPanelContext = createContext<GalleryPanelContextValue | null>(null);
 
+/**
+ * The hook that returns the gallery panel context, or `null` when used outside of `GalleryPanel`.
+ */
 export const useGalleryPanelContext = () => {
   return useContext(GalleryPanelContext);
 };

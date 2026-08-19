@@ -77,6 +77,11 @@ export interface UsePaginationResult {
   items: UsePaginationItem[];
 }
 
+/**
+ * The hook that builds the items of a pagination component: the page numbers, the ellipses and the navigation buttons.
+ * @param props The pagination options.
+ * @returns The list of items to render.
+ */
 export const usePagination = (props: UsePaginationProps): UsePaginationResult => {
   const {
     boundaryCount = 1,

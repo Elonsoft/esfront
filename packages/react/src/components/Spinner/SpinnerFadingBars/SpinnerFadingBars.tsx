@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Spinner`
+ */
 export const SpinnerFadingBars = (inProps: SpinnerProps) => {
   const {
     className,

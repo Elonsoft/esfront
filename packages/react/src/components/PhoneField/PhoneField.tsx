@@ -36,6 +36,9 @@ const getDefaultCountryDisplayName = (code: CountryCode) => {
   return regionNames.of(code);
 };
 
+/**
+ * A text field for entering a phone number, with a country selector and per-country formatting.
+ */
 export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
   const {
     className,

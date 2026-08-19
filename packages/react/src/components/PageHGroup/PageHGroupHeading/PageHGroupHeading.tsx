@@ -6,6 +6,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { TooltipEllipsis } from '../../../components/TooltipEllipsis';
 
+/**
+ * @see `PageHGroup`
+ */
 export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
   const {
     className,

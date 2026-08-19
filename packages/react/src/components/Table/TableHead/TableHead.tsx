@@ -14,6 +14,9 @@ import { TableCellContext } from '../TableCell';
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };
 
+/**
+ * @see `Table`
+ */
 export const TableHead = memo(
   forwardRef<HTMLDivElement, TableHeadProps>(function TableHead(inProps, inRef) {
     const {

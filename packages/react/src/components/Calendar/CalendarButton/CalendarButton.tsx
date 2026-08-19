@@ -7,6 +7,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { ButtonBase } from '../../ButtonBase';
 import { Tooltip } from '../../Tooltip';
 
+/**
+ * @see `Calendar`
+ */
 export const CalendarButton = (inProps: CalendarButtonProps) => {
   const {
     children,

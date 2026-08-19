@@ -64,6 +64,9 @@ const GalleryThumbnailsButtonNext = ({ icon, label }: { icon: ReactNode; label?:
   );
 };
 
+/**
+ * @see `Gallery`
+ */
 export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
   const {
     children,

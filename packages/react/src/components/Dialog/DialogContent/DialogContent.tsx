@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Dialog`
+ */
 export const DialogContent = (inProps: DialogContentProps) => {
   const { className, style, children } = useDefaultProps({
     props: inProps,

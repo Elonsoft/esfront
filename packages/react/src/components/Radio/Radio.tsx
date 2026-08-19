@@ -24,6 +24,9 @@ function areEqualValues(a: any, b: any) {
 const defaultCheckedIcon = <RadioIcon />;
 const defaultIcon = <RadioIcon />;
 
+/**
+ * Radio buttons allow the user to select a single option from a set.
+ */
 export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(function Radio(inProps, ref) {
   const props = useDefaultProps({ props: inProps, name: 'ESRadio' });
   const {

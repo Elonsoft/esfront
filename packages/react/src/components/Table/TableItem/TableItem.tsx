@@ -6,6 +6,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `Table`
+ */
 export const TableItem = forwardRef<HTMLDivElement, TableItemProps>(function TableItem(inProps, ref) {
   const { className, style, avatar, primary, secondary } = useDefaultProps({
     props: inProps,

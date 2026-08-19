@@ -4,6 +4,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
+/**
+ * @see `ErrorPage`
+ */
 export const ErrorPageLogo = (inProps: ErrorPageLogoProps) => {
   const { children, className, style } = useDefaultProps({
     props: inProps,

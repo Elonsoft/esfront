@@ -7,6 +7,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { IconCloseLineW350 } from '../../../icons';
 import { Button } from '../../Button';
 
+/**
+ * @see `Snackbar`
+ */
 export const SnackbarClose = (inProps: SnackbarCloseProps) => {
   const {
     className,
