@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 import { ImageZoomImperativeActions } from './ImageZoom.types';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ImageZoom } from '.';
 

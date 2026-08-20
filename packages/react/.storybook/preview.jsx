@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Controls, Description, DocsContainer, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
+import { Controls, Description, DocsContainer, Primary, Stories, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 import { ReferencesList } from './components/ReferencesList';
 import { themeDark, themeLight } from './themes';

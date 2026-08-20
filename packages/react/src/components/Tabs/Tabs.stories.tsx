@@ -1,6 +1,6 @@
 import { SyntheticEvent, useRef, useState } from 'react';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 // eslint-disable-next-line no-restricted-imports
 import Box from '@mui/material/Box';

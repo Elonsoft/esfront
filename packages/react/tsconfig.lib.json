@@ -3,7 +3,10 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "lib",
-    "rootDir": "src"
+    "rootDir": "src",
+    // rollup-plugin-typescript2 loads the root typescript@4.9.4, which predates
+    // "bundler". The lib sources resolve fine under node10, so pin it back here.
+    "moduleResolution": "node"
   },
   "exclude": [
     "node_modules",

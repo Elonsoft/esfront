@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-import { Meta, StoryContext, StoryObj } from '@storybook/react';
+import { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
 import { Dialog } from './Dialog';
 import { DialogActions } from './DialogActions';

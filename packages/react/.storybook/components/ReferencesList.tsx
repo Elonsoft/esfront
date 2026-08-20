@@ -1,7 +1,7 @@
 import React from 'react';
 
+import { useOf } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
-import { useOf } from '@storybook/blocks';
 
 export const ReferencesList = ({ of }: { of?: Parameters<typeof useOf>[0] }) => {
   const resolvedOf = useOf(of || 'story', ['story']);

@@ -1,4 +1,4 @@
-import { Meta, StoryContext, StoryObj } from '@storybook/react';
+import { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
 import { ClickAwayListener } from '@mui/material';
 
