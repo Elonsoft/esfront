@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Controls, Description, Markdown, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
-import { Meta, StoryContext, StoryObj } from '@storybook/react';
+import { Controls, Description, Markdown, Primary, Stories, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
 import { capitalize } from '@mui/material/utils';
 

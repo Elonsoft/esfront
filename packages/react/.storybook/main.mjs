@@ -1,13 +1,15 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'path';
-const path = require('path');
-
 import remarkGfm from 'remark-gfm';
+
+const require = createRequire(import.meta.url);
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const getAbsolutePath = (value) => dirname(require.resolve(join(value, 'package.json')));
 
-module.exports = {
+export default {
   stories: [
     '../src/**/*.mdx',
     '../src/documentation/**/*.stories.tsx',
@@ -19,23 +21,18 @@ module.exports = {
       titlePrefix: 'Components',
     },
   ],
+
   staticDirs: ['./assets'],
 
   addons: [
     {
-      name: '@storybook/addon-docs',
+      name: getAbsolutePath('@storybook/addon-docs'),
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
             remarkPlugins: [remarkGfm],
           },
         },
-      },
-    },
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false,
       },
     },
     getAbsolutePath('@storybook/addon-links'),
@@ -50,23 +47,28 @@ module.exports = {
       plugins: [],
       resolve: {
         alias: {
-          '~storybook': path.resolve(__dirname),
+          '~storybook': __dirname,
         },
       },
     });
   },
+
   core: {
     disableTelemetry: true,
   },
+
   // https://github.com/storybookjs/storybook/issues/26496
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
+
+  features: {
+    backgrounds: false,
+    sidebarOnboardingChecklist: false,
   },
 };

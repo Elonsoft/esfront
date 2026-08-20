@@ -28,7 +28,11 @@ export default {
   plugins: [
     external(),
     resolve(),
-    typescript({ tsconfig: './tsconfig.lib.json', useTsconfigDeclarationDir: true }),
+    typescript({
+      tsconfig: './tsconfig.lib.json',
+      useTsconfigDeclarationDir: true,
+      include: ['*.ts', '*.tsx', '**/*.ts', '**/*.tsx'],
+    }),
     commonjs(),
     copy({
       targets: [{ src: ['./src/overrides.d.ts'], dest: './lib/' }],
