@@ -39,6 +39,7 @@ import {
   DialogTitleProps,
 } from './components/Dialog';
 import { DividerProps } from './components/Divider';
+import { DrawerProps } from './components/Drawer';
 import { DropzoneProps } from './components/Dropzone';
 import { DropzoneCompactProps } from './components/DropzoneCompact';
 import { EmptyStateProps } from './components/EmptyState';
@@ -208,6 +209,7 @@ declare module '@mui/material/styles/props' {
     ESDialogContent: DialogContentProps;
     ESDialogTitle: DialogTitleProps;
     ESDivider: DividerProps;
+    ESDrawer: DrawerProps;
     ESDropzone: DropzoneProps;
     ESDropzoneCompact: DropzoneCompactProps;
     ESEmptyState: EmptyStateProps;
@@ -446,6 +448,9 @@ declare module '@mui/material/styles/components' {
     };
     ESDivider?: {
       defaultProps?: ComponentsProps['ESDivider'];
+    };
+    ESDrawer?: {
+      defaultProps?: ComponentsProps['ESDrawer'];
     };
     ESEmptyState?: {
       defaultProps?: ComponentsProps['ESEmptyState'];

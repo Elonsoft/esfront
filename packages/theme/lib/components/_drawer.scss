@@ -1,0 +1,84 @@
+@use '../helpers/scrollbars';
+
+@mixin include() {
+  .es-drawer {
+    &--temporary {
+      @media print {
+        // Use !important to override the Modal inline-style.
+        position: absolute !important;
+      }
+    }
+
+    &__backdrop.MuiBackdrop-root {
+      background-color: var(--es-overlay-700);
+      z-index: -1;
+    }
+
+    &__paper {
+      @include scrollbars.scrollbar-thin-mono-a;
+
+      background-color: var(--es-surface-600);
+      display: flex;
+      flex-direction: column;
+      outline: 0;
+      overflow-y: auto;
+    }
+
+    &--temporary &__paper {
+      bottom: 0;
+      max-width: 100%;
+      position: fixed;
+      top: 0;
+      width: var(--es-drawer-width);
+
+      &--anchor--left {
+        box-shadow: var(--es-shadow-right-700);
+        left: 0;
+      }
+
+      &--anchor--right {
+        box-shadow: var(--es-shadow-left-700);
+        right: 0;
+      }
+
+      @media print {
+        box-shadow: none;
+      }
+    }
+
+    &--docked {
+      flex: 0 0 auto;
+      overflow: hidden;
+      transition: width var(--es-drawer-transition-duration) ease;
+      width: 0;
+
+      & .es-drawer__paper {
+        height: 100%;
+        position: relative;
+
+        // Hide the collapsed content from assistive technologies and the tab order, but only once
+        // the collapse transition is over.
+        transition: visibility 0s linear var(--es-drawer-transition-duration);
+        visibility: hidden;
+        width: var(--es-drawer-width);
+
+        &--anchor--left {
+          border-right: 1px solid var(--es-mono-a-a100);
+        }
+
+        &--anchor--right {
+          border-left: 1px solid var(--es-mono-a-a100);
+        }
+      }
+
+      &.es-drawer--open {
+        width: var(--es-drawer-width);
+
+        & .es-drawer__paper {
+          transition-delay: 0s;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
