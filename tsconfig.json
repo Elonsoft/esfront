@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "target": "es6",
     "typeRoots": ["node_modules/@types"],
@@ -15,5 +15,5 @@
     },
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "lib", "./*.js"]
+  "exclude": ["node_modules", "**/node_modules", "lib", "packages/*/lib", "packages/react/storybook-static", "./*.js"]
 }
