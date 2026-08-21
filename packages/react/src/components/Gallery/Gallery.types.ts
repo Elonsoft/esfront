@@ -1,7 +1,8 @@
 import { CSSProperties, ReactNode } from 'react';
 
 import { ModalProps } from '@mui/material/Modal';
-import { TransitionProps } from '@mui/material/transitions';
+
+import { TransitionProps } from '../../transitions';
 
 export interface GalleryProps {
   children?: ReactNode;

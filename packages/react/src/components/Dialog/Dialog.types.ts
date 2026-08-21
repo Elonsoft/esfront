@@ -1,7 +1,8 @@
 import { CSSProperties } from 'react';
 
 import { ModalProps } from '@mui/material/Modal';
-import { TransitionProps } from '@mui/material/transitions';
+
+import { TransitionProps } from '../../transitions';
 
 export interface DialogProps {
   /** Class applied to the root element. */

@@ -1,0 +1,45 @@
+@mixin include() {
+  .es-collapse {
+    height: 0;
+    overflow: hidden;
+    transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.es-collapse--horizontal {
+      height: auto;
+      transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0;
+    }
+
+    &.es-collapse--entered {
+      height: auto;
+      overflow: visible;
+
+      &.es-collapse--horizontal {
+        width: auto;
+      }
+    }
+
+    &.es-collapse--hidden {
+      visibility: hidden;
+    }
+  }
+
+  .es-collapse__wrapper {
+    display: flex;
+    width: 100%;
+
+    &.es-collapse__wrapper--horizontal {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .es-collapse__wrapper-inner {
+    width: 100%;
+
+    &.es-collapse__wrapper-inner--horizontal {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
