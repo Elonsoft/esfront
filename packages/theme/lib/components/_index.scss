@@ -19,6 +19,7 @@
 @use './clear-button';
 @use './dialog';
 @use './divider';
+@use './drawer';
 @use './dropzone';
 @use './dropzone-compact';
 @use './empty-state-compact';
@@ -90,6 +91,7 @@
   @include clear-button.include;
   @include dialog.include;
   @include divider.include;
+  @include drawer.include;
   @include dropzone.include;
   @include dropzone-compact.include;
   @include empty-state-compact.include;
