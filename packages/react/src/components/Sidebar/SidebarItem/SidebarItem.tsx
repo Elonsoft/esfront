@@ -8,13 +8,13 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
-import Collapse from '@mui/material/Collapse';
 import MenuList from '@mui/material/MenuList';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 import { useResizeObserver } from '../../../hooks';
 import { IconChevronLeftLineW200 } from '../../../icons';
 import { Button } from '../../Button';
+import { Collapse } from '../../Collapse';
 import { Divider } from '../../Divider';
 import { ListItem, ListItemIcon, ListItemText } from '../../ListItem';
 import { MenuItem } from '../../MenuItem';

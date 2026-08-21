@@ -30,6 +30,7 @@ import { CheckboxProps, CheckboxIconProps } from './components/Checkbox';
 import { ChipProps } from './components/Chip';
 import { ChipsProps } from './components/Chips';
 import { ClearButtonProps } from './components/ClearButton';
+import { CollapseProps } from './components/Collapse';
 import {
   DialogActionsProps,
   DialogArrowProps,
@@ -52,6 +53,7 @@ import {
   ErrorPageProps,
   ErrorPageStatusProps,
 } from './components/ErrorPage';
+import { FadeProps } from './components/Fade';
 import { FileIconBadgeProps, FileIconProps, FileIconTextProps } from './components/FileIcon';
 import {
   FileInfoContentProps,
@@ -86,6 +88,7 @@ import {
   GalleryThumbnailsItemProps,
   GalleryThumbnailsProps,
 } from './components/Gallery';
+import { GrowProps } from './components/Grow';
 import { ImageZoomProps } from './components/ImageZoom';
 import { InformationIconProps } from './components/InformationIcon';
 import { KbdProps } from './components/Kbd';
@@ -132,6 +135,7 @@ import {
   SidebarToggleProps,
 } from './components/Sidebar';
 import { SidenavItemProps, SidenavProps } from './components/Sidenav';
+import { SlideProps } from './components/Slide';
 import { SnackbarProps, SnackbarCloseProps } from './components/Snackbar';
 import { SortingMenuProps } from './components/SortingMenu';
 import {
@@ -163,6 +167,7 @@ import { TagProps } from './components/Tag';
 import { TabProps, TabScrollButtonProps, TabsProps } from './components/Tabs';
 import { TextFieldGroupProps } from './components/TextFieldGroup';
 import { TouchRippleProps } from './components/TouchRipple';
+import { ZoomProps } from './components/Zoom';
 import { TooltipProps } from './components/Tooltip';
 import { AvatarProps } from './components';
 import { BadgeProps } from './components/Badge';
@@ -201,6 +206,7 @@ declare module '@mui/material/styles/props' {
     ESChip: ChipProps;
     ESChips: ChipsProps;
     ESClearButton: ClearButtonProps;
+    ESCollapse: CollapseProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
     ESDialogArrow: DialogArrowProps;
@@ -213,6 +219,7 @@ declare module '@mui/material/styles/props' {
     ESEmptyState: EmptyStateProps;
     ESEmptyStateCompact: EmptyStateCompactProps;
     ESErrorPage: ErrorPageProps;
+    ESFade: FadeProps;
     ESErrorPageActions: ErrorPageActionsProps;
     ESErrorPageDescription: ErrorPageDescriptionProps;
     ESErrorPageFooter: ErrorPageFooterProps;
@@ -250,6 +257,7 @@ declare module '@mui/material/styles/props' {
     ESGalleryThumbnails: GalleryThumbnailsProps;
     ESGalleryThumbnailsImage: GalleryThumbnailsImageProps;
     ESGalleryThumbnailsItem: GalleryThumbnailsItemProps;
+    ESGrow: GrowProps;
     ESImageZoom: ImageZoomProps;
     ESInformationIcon: InformationIconProps;
     ESKbd: KbdProps;
@@ -286,6 +294,7 @@ declare module '@mui/material/styles/props' {
     ESSidebarScrollable: SidebarScrollableProps;
     ESSidenav: SidenavProps;
     ESSidenavItem: SidenavItemProps;
+    ESSlide: SlideProps;
     ESSFS: SFSProps;
     ESSFSButton: SFSButtonProps;
     ESSFSChips: SFSChipsProps;
@@ -328,6 +337,7 @@ declare module '@mui/material/styles/props' {
     ESTouchRipple: TouchRippleProps;
     ESTextFieldGroup: TextFieldGroupProps;
     ESTooltip: TooltipProps;
+    ESZoom: ZoomProps;
   }
 }
 
@@ -426,6 +436,9 @@ declare module '@mui/material/styles/components' {
     ESClearButton?: {
       defaultProps?: ComponentsProps['ESClearButton'];
     };
+    ESCollapse?: {
+      defaultProps?: ComponentsProps['ESCollapse'];
+    };
     ESDialog?: {
       defaultProps?: ComponentsProps['ESDialog'];
     };
@@ -455,6 +468,9 @@ declare module '@mui/material/styles/components' {
     };
     ESErrorPage?: {
       defaultProps?: ComponentsProps['ESErrorPage'];
+    };
+    ESFade?: {
+      defaultProps?: ComponentsProps['ESFade'];
     };
     ESErrorPageActions?: {
       defaultProps?: ComponentsProps['ESErrorPageActions'];
@@ -512,6 +528,9 @@ declare module '@mui/material/styles/components' {
     };
     ESGalleryThumbnailsItem?: {
       defaultProps?: ComponentsProps['ESGalleryThumbnailsItem'];
+    };
+    ESGrow?: {
+      defaultProps?: ComponentsProps['ESGrow'];
     };
     ESImageZoom?: {
       defaultProps?: ComponentsProps['ESImageZoom'];
@@ -801,11 +820,17 @@ declare module '@mui/material/styles/components' {
     ESSidenavItem?: {
       defaultProps?: ComponentsProps['ESSidenavItem'];
     };
+    ESSlide?: {
+      defaultProps?: ComponentsProps['ESSlide'];
+    };
     ESTextFieldGroup?: {
       defaultProps?: ComponentsProps['ESTextFieldGroup'];
     };
     ESTooltip?: {
       defaultProps?: ComponentsProps['ESTooltip'];
+    };
+    ESZoom?: {
+      defaultProps?: ComponentsProps['ESZoom'];
     };
   }
 }

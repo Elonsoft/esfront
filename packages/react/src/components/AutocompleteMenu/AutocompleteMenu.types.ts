@@ -1,8 +1,8 @@
 import { CSSProperties, ForwardedRef, ReactNode, Ref } from 'react';
 
 import { PopperProps, TextFieldProps } from '@mui/material';
-import { TransitionProps } from '@mui/material/transitions';
 
+import { TransitionProps } from '../../transitions';
 import { MenuGroupProps } from '../MenuGroup';
 import { TooltipEllipsisProps } from '../TooltipEllipsis';
 

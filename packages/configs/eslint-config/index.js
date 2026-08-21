@@ -78,12 +78,15 @@ export default tseslint.config(
                 'Button',
                 'ButtonBase',
                 'Checkbox',
+                'Collapse',
                 'Dialog',
                 'DialogActions',
                 'DialogContent',
                 'DialogContentText',
                 'DialogTitle',
                 'Divider',
+                'Fade',
+                'Grow',
                 'IconButton',
                 'LinearProgress',
                 'Link',
@@ -96,6 +99,7 @@ export default tseslint.config(
                 'Pagination',
                 'PaginationItem',
                 'Radio',
+                'Slide',
                 'SvgIcon',
                 'Switch',
                 'Table',
@@ -108,6 +112,7 @@ export default tseslint.config(
                 'TableText',
                 'Tooltip',
                 'Typography',
+                'Zoom',
               ],
             },
             {
@@ -155,6 +160,10 @@ export default tseslint.config(
               importNames: ['default'],
             },
             {
+              group: ['@mui/material/Collapse'],
+              importNames: ['default'],
+            },
+            {
               group: ['@mui/material/Dialog'],
               importNames: ['default'],
             },
@@ -176,6 +185,14 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/Divider'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Fade'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Grow'],
               importNames: ['default'],
             },
             {
@@ -224,6 +241,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/Radio'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Slide'],
               importNames: ['default'],
             },
             {
@@ -276,6 +297,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/Typography'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Zoom'],
               importNames: ['default'],
             },
           ],

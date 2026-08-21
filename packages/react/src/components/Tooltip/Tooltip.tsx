@@ -18,7 +18,6 @@ import { TooltipProps } from './Tooltip.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Fade from '@mui/material/Fade';
 import Popper from '@mui/material/Popper';
 import appendOwnerState from '@mui/utils/appendOwnerState';
 import useControlled from '@mui/utils/useControlled';
@@ -29,6 +28,7 @@ import useTimeout, { Timeout } from '@mui/utils/useTimeout';
 import { IconPolygon, IconPolygon2, IconPolygon3 } from './icons';
 
 import { useEvent, useForkRef } from '../../hooks';
+import { Fade } from '../Fade';
 
 let hystersisOpen = false;
 const hystersisTimer = new Timeout();
