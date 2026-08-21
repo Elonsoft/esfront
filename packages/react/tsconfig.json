@@ -16,5 +16,5 @@
     },
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "../../node_modules", "lib", "./*.js"]
+  "exclude": ["node_modules", "../../node_modules", "lib", "storybook-static", "./*.js"]
 }
