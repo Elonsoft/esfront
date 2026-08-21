@@ -4,12 +4,13 @@ import { DialogProps } from './Dialog.types';
 
 import clsx from 'clsx';
 
-import { duration } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Backdrop from '@mui/material/Backdrop';
-import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import { unstable_useId as useId } from '@mui/utils';
+
+import { duration } from '../../transitions';
+import { Fade } from '../Fade';
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
 

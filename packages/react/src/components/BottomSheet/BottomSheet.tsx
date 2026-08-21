@@ -4,17 +4,17 @@ import { BottomSheetProps } from './BottomSheet.types';
 
 import clsx from 'clsx';
 
-import { duration } from '@mui/material/styles';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import Backdrop from '@mui/material/Backdrop';
-import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
-import Slide from '@mui/material/Slide';
 import { unstable_useId as useId } from '@mui/utils';
 
 import { BottomSheetContext } from './BottomSheet.context';
 
 import { useIntersectionObserver, useResizeObserver, useWindowEventListener } from '../../hooks';
+import { duration } from '../../transitions';
+import { Fade } from '../Fade';
+import { Slide } from '../Slide';
 
 import { useDrag } from '@use-gesture/react';
 

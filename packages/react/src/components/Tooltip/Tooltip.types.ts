@@ -5,7 +5,8 @@ import { ElementType, HTMLProps, JSXElementConstructor, ReactNode, SyntheticEven
 import { MUIStyledCommonProps, SxProps } from '@mui/system';
 import { Theme } from '@mui/material';
 import { PopperProps } from '@mui/material/Popper';
-import { TransitionProps } from '@mui/material/transitions';
+
+import { TransitionProps } from '../../transitions';
 
 import { OverridableStringUnion } from '@mui/types';
 

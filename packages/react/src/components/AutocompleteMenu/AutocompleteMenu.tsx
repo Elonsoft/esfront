@@ -20,7 +20,6 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Grow from '@mui/material/Grow';
 import InputAdornment from '@mui/material/InputAdornment';
 import MenuList from '@mui/material/MenuList';
 import Popper from '@mui/material/Popper';
@@ -32,6 +31,7 @@ import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { Divider } from '../Divider';
+import { Grow } from '../Grow';
 import { MenuGroup } from '../MenuGroup';
 import { MenuItem } from '../MenuItem';
 import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';

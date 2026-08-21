@@ -17,6 +17,7 @@
 @use './chip';
 @use './chips';
 @use './clear-button';
+@use './collapse';
 @use './dialog';
 @use './divider';
 @use './dropzone';
@@ -88,6 +89,7 @@
   @include chip.include;
   @include chips.include;
   @include clear-button.include;
+  @include collapse.include;
   @include dialog.include;
   @include divider.include;
   @include dropzone.include;
