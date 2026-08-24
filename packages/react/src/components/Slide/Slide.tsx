@@ -8,10 +8,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useForkRef } from '../../hooks';
 import { createTransition, duration, easing } from '../../transitions';
 import { debounce } from '../../transitions/debounce';
-import { getReactElementRef } from '../../transitions/getReactElementRef';
-import { ownerWindow } from '../../transitions/ownerWindow';
 import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
 import { getTransitionProps, omitOwnerState, reflow } from '../../transitions/utils';
+import { getReactElementRef, ownerWindow } from '../../utils';
 
 const defaultEasing = {
   enter: easing.easeOut,

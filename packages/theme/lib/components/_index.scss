@@ -5,6 +5,7 @@
 @use './autocomplete';
 @use './avatar-group';
 @use './avatar';
+@use './backdrop';
 @use './badge-placement-control';
 @use './badge';
 @use './banner';
@@ -41,6 +42,7 @@
 @use './made-by';
 @use './menu-group';
 @use './menu-item';
+@use './modal';
 @use './overlay-scrollbars';
 @use './page-h-group';
 @use './pagination';
@@ -77,6 +79,7 @@
   @include autocomplete.include;
   @include avatar-group.include;
   @include avatar.include;
+  @include backdrop.include;
   @include badge-placement-control.include;
   @include badge.include;
   @include banner.include;
@@ -113,6 +116,7 @@
   @include made-by.include;
   @include menu-group.include;
   @include menu-item.include;
+  @include modal.include;
   @include overlay-scrollbars.include;
   @include page-h-group.include;
   @include pagination.include;

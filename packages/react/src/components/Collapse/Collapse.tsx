@@ -7,10 +7,9 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
-import { useForkRef } from '../../hooks';
+import { useForkRef, useTimeout } from '../../hooks';
 import { duration, getAutoHeightDuration } from '../../transitions';
 import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
-import { useTimeout } from '../../transitions/useTimeout';
 import { getTransitionProps, omitOwnerState } from '../../transitions/utils';
 
 /**

@@ -20,6 +20,7 @@ import {
   AutocompleteMenuProps,
 } from './components/AutocompleteMenu';
 import { AvatarGroupProps } from './components/AvatarGroup';
+import { BackdropProps } from './components/Backdrop';
 import { BannerActionsProps, BannerProps, BannerTitleProps } from './components/Banner';
 import { BottomSheetProps } from './components/BottomSheet';
 import { BreadcrumbProps, BreadcrumbsProps } from './components/Breadcrumbs';
@@ -71,6 +72,7 @@ import {
   FiltersFormGroupProps,
   FiltersHeaderProps,
 } from './components/Filters';
+import { FocusTrapProps } from './components/FocusTrap';
 import { FormatDateProps } from './components/FormatDate';
 import { FormatSizeProps } from './components/FormatSize';
 import {
@@ -98,6 +100,7 @@ import { LoadingButtonProps } from './components/LoadingButton';
 import { MadeByProps } from './components/MadeBy';
 import { MenuGroupProps } from './components/MenuGroup';
 import { MenuItemProps } from './components/MenuItem';
+import { ModalProps } from './components/Modal';
 import {
   PageHGroupActionsProps,
   PageHGroupBreadcrumbsProps,
@@ -115,6 +118,7 @@ import { RadioGroupProps } from './components/RadioGroup';
 import { RibbonBadgeProps } from './components/RibbonBadge';
 import { SearchProps } from './components/Search';
 import { PhoneFieldProps } from './components/PhoneField';
+import { PortalProps } from './components/Portal';
 import {
   SFSButtonProps,
   SFSChipsProps,
@@ -188,6 +192,7 @@ declare module '@mui/material/styles/props' {
     ESAutocompleteMenu: AutocompleteMenuProps<any>;
     ESAutocompleteMenuFooter: AutocompleteMenuFooterProps;
     ESAutocompleteMenuHeader: AutocompleteMenuHeaderProps;
+    ESBackdrop: BackdropProps;
     ESBanner: BannerProps;
     ESBannerActions: BannerActionsProps;
     ESBannerTitle: BannerTitleProps;
@@ -241,6 +246,7 @@ declare module '@mui/material/styles/props' {
     ESFiltersFormControlLabel: FiltersFormControlLabelProps;
     ESFiltersFormGroup: FiltersFormGroupProps;
     ESFiltersHeader: FiltersHeaderProps;
+    ESFocusTrap: FocusTrapProps;
     ESFormatDate: FormatDateProps;
     ESFormatSize: FormatSizeProps;
     ESFormControlLabel: FormControlLabelProps;
@@ -267,6 +273,7 @@ declare module '@mui/material/styles/props' {
     ESMenuItem: MenuItemProps;
     ESMenuGroup: MenuGroupProps;
     ESMadeBy: MadeByProps;
+    ESModal: ModalProps;
     ESPageHGroup: PageHGroupProps;
     ESPageHGroupActions: PageHGroupActionsProps;
     ESPageHGroupBreadcrumbs: PageHGroupBreadcrumbsProps;
@@ -278,6 +285,7 @@ declare module '@mui/material/styles/props' {
     ESPaginationRange: PaginationRangeProps;
     ESPasswordField: PasswordFieldProps;
     ESPhoneField: PhoneFieldProps;
+    ESPortal: PortalProps;
     ESProperty: PropertyProps;
     ESPrice: PriceProps;
     ESRadio: RadioProps;
@@ -381,6 +389,9 @@ declare module '@mui/material/styles/components' {
     };
     ESAutocompleteMenuHeader?: {
       defaultProps?: ComponentsProps['ESAutocompleteMenuHeader'];
+    };
+    ESBackdrop?: {
+      defaultProps?: ComponentsProps['ESBackdrop'];
     };
     ESBanner?: {
       defaultProps?: ComponentsProps['ESBanner'];
@@ -604,6 +615,9 @@ declare module '@mui/material/styles/components' {
     ESFiltersHeader?: {
       defaultProps?: ComponentsProps['ESFiltersHeader'];
     };
+    ESFocusTrap?: {
+      defaultProps?: ComponentsProps['ESFocusTrap'];
+    };
     ESFormatDate?: {
       defaultProps?: ComponentsProps['ESFormatDate'];
     };
@@ -633,6 +647,9 @@ declare module '@mui/material/styles/components' {
     };
     ESMadeBy?: {
       defaultProps?: ComponentsProps['ESMadeBy'];
+    };
+    ESModal?: {
+      defaultProps?: ComponentsProps['ESModal'];
     };
     ESPageHGroup?: {
       defaultProps?: ComponentsProps['ESPageHGroup'];
@@ -666,6 +683,9 @@ declare module '@mui/material/styles/components' {
     };
     ESPhoneField?: {
       defaultProps?: ComponentsProps['ESPhoneField'];
+    };
+    ESPortal?: {
+      defaultProps?: ComponentsProps['ESPortal'];
     };
     ESProperty?: {
       defaultProps?: ComponentsProps['ESProperty'];

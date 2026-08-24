@@ -1,0 +1,96 @@
+import {
+  AriaAttributes,
+  AriaRole,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  ReactElement,
+  Ref,
+  RefCallback,
+} from 'react';
+
+import { PortalProps } from '../Portal';
+
+export interface UseModalRootSlotOwnProps {
+  role: AriaRole;
+  onKeyDown: KeyboardEventHandler;
+  ref: RefCallback<Element> | null;
+}
+
+export interface UseModalBackdropSlotOwnProps {
+  'aria-hidden': AriaAttributes['aria-hidden'];
+  onClick: MouseEventHandler;
+  open?: boolean;
+}
+
+export type UseModalRootSlotProps<TOther = object> = TOther & UseModalRootSlotOwnProps;
+
+export type UseModalBackdropSlotProps<TOther = object> = TOther & UseModalBackdropSlotOwnProps;
+
+export type UseModalParameters = {
+  'aria-hidden'?: AriaAttributes['aria-hidden'];
+  /** A single child content element. */
+  children: ReactElement<any, any> | undefined | null;
+  /**
+   * When set to true the Modal waits until a nested Transition is completed before closing.
+   * @default false
+   */
+  closeAfterTransition?: boolean;
+  /**
+   * An HTML element or function that returns one. The `container` will have the portal children appended to it.
+   *
+   * You can also provide a callback, which is called in a react layout effect. This lets you set the container from a
+   * ref, and also makes server-side rendering possible.
+   *
+   * By default, it uses the body of the top-level document object, so it's simply `document.body` most of the time.
+   */
+  container?: PortalProps['container'];
+  /**
+   * If `true`, hitting escape will not fire the `onClose` callback.
+   * @default false
+   */
+  disableEscapeKeyDown?: boolean;
+  /**
+   * Disable the scroll lock behavior.
+   * @default false
+   */
+  disableScrollLock?: boolean;
+  /**
+   * Callback fired when the component requests to be closed. The `reason` parameter can optionally be used to control
+   * the response to `onClose`.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
+   */
+  onClose?: {
+    bivarianceHack(event: object, reason: 'backdropClick' | 'escapeKeyDown'): void;
+  }['bivarianceHack'];
+  onKeyDown?: KeyboardEventHandler;
+  /** A function called when a transition enters. */
+  onTransitionEnter?: () => void;
+  /** A function called when a transition has exited. */
+  onTransitionExited?: () => void;
+  /** If `true`, the component is shown. */
+  open: boolean;
+  rootRef: Ref<Element>;
+};
+
+export interface UseModalReturnValue {
+  /** Resolver for the root slot's props. */
+  getRootProps: <TOther extends Record<string, any> = object>(externalProps?: TOther) => UseModalRootSlotProps<TOther>;
+  /** Resolver for the backdrop slot's props. */
+  getBackdropProps: <TOther extends Record<string, any> = object>(
+    externalProps?: TOther
+  ) => UseModalBackdropSlotProps<TOther>;
+  /** Resolver for the transition related props. */
+  getTransitionProps: () => { onEnter: () => void; onExited: () => void };
+  /** A ref to the component's root DOM element. */
+  rootRef: RefCallback<Element> | null;
+  /** A ref to the component's portal DOM element. */
+  portalRef: RefCallback<Element> | null;
+  /** If `true`, the modal is the top most one. */
+  isTopModal: () => boolean;
+  /** If `true`, the exiting transition finished (to be used for unmounting the component). */
+  exited: boolean;
+  /** If `true`, the component's child is a transition component. */
+  hasTransition: boolean;
+}

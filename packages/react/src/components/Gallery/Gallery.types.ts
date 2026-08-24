@@ -1,8 +1,7 @@
 import { CSSProperties, ReactNode } from 'react';
 
-import { ModalProps } from '@mui/material/Modal';
-
 import { TransitionProps } from '../../transitions';
+import { BackdropProps } from '../Backdrop';
 
 export interface GalleryProps {
   children?: ReactNode;
@@ -20,7 +19,7 @@ export interface GalleryProps {
   onClose?: () => void;
 
   /** Props applied to the backdrop element. */
-  BackdropProps?: ModalProps['BackdropProps'];
+  BackdropProps?: Partial<BackdropProps>;
   /** Props applied to the transition element. */
   TransitionProps?: TransitionProps;
 }

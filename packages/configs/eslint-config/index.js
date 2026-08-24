@@ -73,6 +73,7 @@ export default tseslint.config(
                 'Autocomplete',
                 'Avatar',
                 'AvatarGroup',
+                'Backdrop',
                 'Box',
                 'Breadcrumbs',
                 'Button',
@@ -95,9 +96,11 @@ export default tseslint.config(
                 'ListItemIcon',
                 'ListItemText',
                 'MenuItem',
+                'Modal',
                 'FormControlLabel',
                 'Pagination',
                 'PaginationItem',
+                'Portal',
                 'Radio',
                 'Slide',
                 'SvgIcon',
@@ -137,6 +140,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/AvatarGroup'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Backdrop'],
               importNames: ['default'],
             },
             {
@@ -232,11 +239,19 @@ export default tseslint.config(
               importNames: ['default'],
             },
             {
+              group: ['@mui/material/Modal'],
+              importNames: ['default'],
+            },
+            {
               group: ['@mui/material/Pagination'],
               importNames: ['default'],
             },
             {
               group: ['@mui/material/PaginationItem'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Portal'],
               importNames: ['default'],
             },
             {

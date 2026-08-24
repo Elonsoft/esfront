@@ -5,7 +5,6 @@ import { GalleryProps } from './Gallery.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { Modal } from '@mui/material';
 
 import { GalleryContext } from './Gallery.context';
 import { GalleryPanelsProvider } from './GalleryPanel';
@@ -15,6 +14,7 @@ import { GalleryThumbnailsProvider } from './GalleryThumbnails';
 import { useDocumentEventListener } from '../../hooks';
 import { duration } from '../../transitions';
 import { Fade } from '../Fade';
+import { Modal } from '../Modal';
 
 const transitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
 

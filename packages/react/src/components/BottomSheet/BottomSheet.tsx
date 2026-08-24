@@ -5,15 +5,15 @@ import { BottomSheetProps } from './BottomSheet.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Backdrop from '@mui/material/Backdrop';
-import Modal from '@mui/material/Modal';
 import { unstable_useId as useId } from '@mui/utils';
 
 import { BottomSheetContext } from './BottomSheet.context';
 
 import { useIntersectionObserver, useResizeObserver, useWindowEventListener } from '../../hooks';
 import { duration } from '../../transitions';
+import { Backdrop } from '../Backdrop';
 import { Fade } from '../Fade';
+import { Modal } from '../Modal';
 import { Slide } from '../Slide';
 
 import { useDrag } from '@use-gesture/react';
@@ -286,14 +286,16 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
     <Modal
       ref={ref}
       closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        className: 'es-bottom-sheet__backdrop',
-        transitionDuration,
-      }}
       className={clsx('es-bottom-sheet', className)}
       disableEscapeKeyDown={disableEscapeKeyDown}
       open={open}
+      slotProps={{
+        backdrop: {
+          className: 'es-bottom-sheet__backdrop',
+          transitionDuration,
+        },
+      }}
+      slots={{ backdrop: Backdrop }}
       style={
         {
           '--es-bottom-sheet-snap-point': snapPoint,

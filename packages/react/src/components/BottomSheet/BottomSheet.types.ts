@@ -1,8 +1,7 @@
 import { CSSProperties } from 'react';
 
-import { ModalProps } from '@mui/material/Modal';
-
 import { TransitionProps } from '../../transitions';
+import { ModalProps } from '../Modal';
 
 export interface BottomSheetProps {
   /** Class applied to the root element. */
