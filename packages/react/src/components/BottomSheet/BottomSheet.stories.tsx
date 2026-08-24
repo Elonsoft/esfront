@@ -111,10 +111,10 @@ export const Demo: Story = {
             </div>
           </DialogContent>
           <DialogActions sticky>
-            <Button fullWidth color="mono-a" size="500" variant="outlined" onClick={onClose}>
+            <Button color="mono-a" size="500" variant="outlined" onClick={onClose}>
               {getCancelButtonText(context)}
             </Button>
-            <Button fullWidth color="primary" size="500" variant="contained">
+            <Button color="primary" size="500" variant="contained">
               {getCreateButtonText(context)}
             </Button>
           </DialogActions>

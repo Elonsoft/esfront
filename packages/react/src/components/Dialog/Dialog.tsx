@@ -5,12 +5,12 @@ import { DialogProps } from './Dialog.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Backdrop from '@mui/material/Backdrop';
-import Modal from '@mui/material/Modal';
 import { unstable_useId as useId } from '@mui/utils';
 
 import { duration } from '../../transitions';
+import { Backdrop } from '../Backdrop';
 import { Fade } from '../Fade';
+import { Modal } from '../Modal';
 
 const defaultTransitionDuration = { enter: duration.enteringScreen, exit: duration.leavingScreen };
 
@@ -73,15 +73,17 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
     <Modal
       ref={ref}
       closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        transitionDuration,
-        ...BackdropProps,
-        className: clsx('es-dialog__backdrop', BackdropProps?.className),
-      }}
       className={clsx('es-dialog', className)}
       disableEscapeKeyDown={disableEscapeKeyDown}
       open={open || false}
+      slotProps={{
+        backdrop: {
+          transitionDuration,
+          ...BackdropProps,
+          className: clsx('es-dialog__backdrop', BackdropProps?.className),
+        },
+      }}
+      slots={{ backdrop: Backdrop }}
       onClick={onDialogBackdropClick}
       onClose={onClose}
       {...other}

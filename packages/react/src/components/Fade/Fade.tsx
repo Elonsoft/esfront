@@ -7,9 +7,9 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
 import { useForkRef } from '../../hooks';
 import { createTransition, duration } from '../../transitions';
-import { getReactElementRef } from '../../transitions/getReactElementRef';
 import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
 import { getTransitionProps, omitOwnerState, reflow } from '../../transitions/utils';
+import { getReactElementRef } from '../../utils';
 
 const defaultTimeout = {
   enter: duration.enteringScreen,

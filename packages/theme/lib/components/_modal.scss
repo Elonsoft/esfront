@@ -1,0 +1,15 @@
+@mixin include() {
+  .es-modal {
+    inset: 0;
+    position: fixed;
+    z-index: 1300;
+
+    &.es-modal--hidden {
+      visibility: hidden;
+    }
+
+    & > .es-backdrop {
+      z-index: -1;
+    }
+  }
+}

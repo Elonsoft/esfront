@@ -5,11 +5,6 @@
       position: absolute !important;
     }
 
-    &__backdrop.MuiBackdrop-root {
-      background-color: var(--es-overlay-700);
-      z-index: -1;
-    }
-
     &__container {
       height: 100%;
       outline: 0;

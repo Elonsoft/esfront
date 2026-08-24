@@ -1,8 +1,8 @@
 import { CSSProperties } from 'react';
 
-import { ModalProps } from '@mui/material/Modal';
-
 import { TransitionProps } from '../../transitions';
+import { BackdropProps } from '../Backdrop';
+import { ModalProps } from '../Modal';
 
 export interface DialogProps {
   /** Class applied to the root element. */
@@ -63,7 +63,7 @@ export interface DialogProps {
    */
   open?: ModalProps['open'];
   /** Props applied to the backdrop element. */
-  BackdropProps?: ModalProps['BackdropProps'];
+  BackdropProps?: Partial<BackdropProps>;
   /** The component used for the transition. */
   TransitionComponent?: React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
   /** Props applied to the transition element. */

@@ -18,7 +18,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-    exclude: /^(classes|className|style|component|ref|sx|slots|slotProps|(on|icon|label)[A-Z].*)$/,
+    exclude:
+      /^(children|classes|className|style|component|ref|sx|slots|slotProps|TransitionComponent|TransitionProps|transitionDuration|(on|icon|label)[A-Z].*)$/,
   },
   darkMode: {
     light: themeLight,
