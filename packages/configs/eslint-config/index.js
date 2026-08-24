@@ -107,6 +107,7 @@ export default tseslint.config(
                 'Portal',
                 'Radio',
                 'Slide',
+                'Slider',
                 'SvgIcon',
                 'Switch',
                 'Table',
@@ -280,6 +281,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/Slide'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Slider'],
               importNames: ['default'],
             },
             {

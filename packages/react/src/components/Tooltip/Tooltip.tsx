@@ -18,15 +18,11 @@ import { TooltipProps } from './Tooltip.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import appendOwnerState from '@mui/utils/appendOwnerState';
-import useControlled from '@mui/utils/useControlled';
-import useId from '@mui/utils/useId';
-import useIsFocusVisible from '@mui/utils/useIsFocusVisible';
-import useTimeout, { Timeout } from '@mui/utils/useTimeout';
 
 import { IconPolygon, IconPolygon2, IconPolygon3 } from './icons';
 
-import { useEvent, useForkRef, useLatest } from '../../hooks';
+import { useControlled, useEvent, useForkRef, useId, useIsFocusVisible, useLatest, useTimeout } from '../../hooks';
+import { appendOwnerState, Timeout } from '../../utils';
 import { Fade } from '../Fade';
 import { Popper, PopperActions } from '../Popper';
 
@@ -108,12 +104,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
   const leaveTimer = useTimeout();
   const touchTimer = useTimeout();
 
-  const [openState, setOpenState] = useControlled({
-    controlled: openProp,
-    default: false,
-    name: 'Tooltip',
-    state: 'open',
-  });
+  const [openState, setOpenState] = useControlled(false, openProp);
 
   let open = openState;
 

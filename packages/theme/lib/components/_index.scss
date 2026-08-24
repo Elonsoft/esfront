@@ -59,6 +59,7 @@
 @use './sfs';
 @use './sidebar';
 @use './sidenav';
+@use './slider';
 @use './snackbar';
 @use './sorting-menu';
 @use './spinner';
@@ -136,6 +137,7 @@
   @include sfs.include;
   @include sidebar.include;
   @include sidenav.include;
+  @include slider.include;
   @include snackbar.include;
   @include sorting-menu.include;
   @include spinner.include;

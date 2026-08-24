@@ -3,9 +3,10 @@ import * as React from 'react';
 import { RadioGroupProps } from './RadioGroup.types';
 
 import { FormGroup, useControlled, useForkRef } from '@mui/material';
-import { unstable_useId as useId } from '@mui/utils';
 
 import RadioGroupContext from './RadioGroup.context';
+
+import { useId } from '../../hooks';
 
 export const RadioGroup = React.forwardRef<HTMLButtonElement, RadioGroupProps>(function RadioGroup(props, ref) {
   const { children, defaultValue, name: nameProp, onChange, value: valueProp, ...other } = props;

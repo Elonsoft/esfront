@@ -143,6 +143,7 @@ import {
 } from './components/Sidebar';
 import { SidenavItemProps, SidenavProps } from './components/Sidenav';
 import { SlideProps } from './components/Slide';
+import { SliderProps } from './components/Slider';
 import { SnackbarProps, SnackbarCloseProps } from './components/Snackbar';
 import { SortingMenuProps } from './components/SortingMenu';
 import {
@@ -310,6 +311,7 @@ declare module '@mui/material/styles/props' {
     ESSidenav: SidenavProps;
     ESSidenavItem: SidenavItemProps;
     ESSlide: SlideProps;
+    ESSlider: SliderProps;
     ESSFS: SFSProps;
     ESSFSButton: SFSButtonProps;
     ESSFSChips: SFSChipsProps;
@@ -861,6 +863,9 @@ declare module '@mui/material/styles/components' {
     };
     ESSlide?: {
       defaultProps?: ComponentsProps['ESSlide'];
+    };
+    ESSlider?: {
+      defaultProps?: ComponentsProps['ESSlider'];
     };
     ESTextFieldGroup?: {
       defaultProps?: ComponentsProps['ESTextFieldGroup'];

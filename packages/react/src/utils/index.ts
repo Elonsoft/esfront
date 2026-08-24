@@ -1,10 +1,17 @@
+export type { AppendOwnerStateReturnType } from './appendOwnerState';
+export { appendOwnerState } from './appendOwnerState';
+export { clamp } from './clamp';
 export { createChainedFunction } from './createChainedFunction';
 export type { EventHandlers } from './extractEventHandlers';
 export { extractEventHandlers } from './extractEventHandlers';
 export { getActiveElement } from './getActiveElement';
 export { getReactElementRef } from './getReactElementRef';
 export { getScrollbarSize } from './getScrollbarSize';
+export { isFocusVisible } from './isFocusVisible';
+export { isHostComponent } from './isHostComponent';
 export { lockScroll } from './lockScroll';
 export { ownerDocument } from './ownerDocument';
 export { ownerWindow } from './ownerWindow';
 export { setRef } from './setRef';
+export { Timeout } from './Timeout';
+export { visuallyHidden } from './visuallyHidden';

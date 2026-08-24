@@ -5,7 +5,7 @@ export interface MenuListActions {
    * Adds a padding compensating the scrollbar of the container, so the items are not shifted when it appears.
    * Ignored when the list has an explicit width.
    */
-  adjustStyleForScrollbar: (containerElement: HTMLElement, options: { direction: 'ltr' | 'rtl' }) => HTMLElement | null;
+  adjustStyleForScrollbar: (containerElement: HTMLElement) => HTMLElement | null;
 }
 
 export interface MenuListProps extends HTMLAttributes<HTMLUListElement> {

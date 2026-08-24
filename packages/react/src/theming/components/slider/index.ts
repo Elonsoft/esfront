@@ -1,1 +1,0 @@
-export { createSlider } from './slider';

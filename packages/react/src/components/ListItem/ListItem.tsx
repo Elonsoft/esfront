@@ -6,9 +6,8 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
-import { useForkRef } from '../../hooks';
+import { useEnhancedEffect, useForkRef } from '../../hooks';
 import { ButtonBase } from '../ButtonBase';
 
 export const ListItem = forwardRef(function ListItem(inProps, ref) {

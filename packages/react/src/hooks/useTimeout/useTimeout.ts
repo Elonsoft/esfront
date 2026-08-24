@@ -1,23 +1,18 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+
+import { Timeout } from '../../utils';
 
 /** A timeout that is automatically cleared when the component unmounts. */
-export const useTimeout = () => {
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+export const useTimeout = (): Timeout => {
+  const timeoutRef = useRef<Timeout | null>(null);
 
-  const timeout = useMemo(
-    () => ({
-      clear: () => {
-        clearTimeout(timeoutRef.current);
-      },
-      start: (delay: number, callback: () => void) => {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = setTimeout(callback, delay);
-      },
-    }),
-    []
-  );
+  if (timeoutRef.current === null) {
+    timeoutRef.current = Timeout.create();
+  }
 
-  useEffect(() => timeout.clear, [timeout]);
+  const timeout = timeoutRef.current;
+
+  useEffect(timeout.disposeEffect, [timeout]);
 
   return timeout;
 };

@@ -153,7 +153,7 @@ export const MenuList = forwardRef<HTMLUListElement, MenuListProps>(function Men
   useImperativeHandle(
     actions,
     () => ({
-      adjustStyleForScrollbar: (containerElement, { direction }) => {
+      adjustStyleForScrollbar: (containerElement) => {
         const list = listRef.current;
 
         if (!list) {
@@ -166,7 +166,7 @@ export const MenuList = forwardRef<HTMLUListElement, MenuListProps>(function Men
         if (containerElement.clientHeight < list.clientHeight && noExplicitWidth) {
           const scrollbarSize = `${getScrollbarSize(ownerWindow(containerElement))}px`;
 
-          list.style[direction === 'rtl' ? 'paddingLeft' : 'paddingRight'] = scrollbarSize;
+          list.style.paddingRight = scrollbarSize;
           list.style.width = `calc(100% + ${scrollbarSize})`;
         }
 

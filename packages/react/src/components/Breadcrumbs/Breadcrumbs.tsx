@@ -5,11 +5,10 @@ import { BreadcrumbsProps } from './Breadcrumbs.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
 import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 
-import { useResizeObserver } from '../../hooks';
+import { useEnhancedEffect, useResizeObserver } from '../../hooks';
 import { IconDotsHorizontal2LineW300 } from '../../icons';
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
