@@ -5,7 +5,6 @@ import { AudioPlayerProps } from './AudioPlayer.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import MenuList from '@mui/material/MenuList';
 import Slider, { sliderClasses } from '@mui/material/Slider';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
@@ -28,6 +27,7 @@ import {
 import { Button } from '../Button';
 import { Divider } from '../Divider';
 import { ListItemIcon, ListItemText } from '../ListItem';
+import { MenuList } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { PopperActions } from '../Popper';
 import { Tooltip } from '../Tooltip';

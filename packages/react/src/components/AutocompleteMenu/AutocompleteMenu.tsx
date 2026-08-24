@@ -21,7 +21,6 @@ import clsx from 'clsx';
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import InputAdornment from '@mui/material/InputAdornment';
-import MenuList from '@mui/material/MenuList';
 import TextField from '@mui/material/TextField';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
@@ -31,6 +30,7 @@ import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { Divider } from '../Divider';
 import { Grow } from '../Grow';
+import { MenuList } from '../Menu';
 import { MenuGroup } from '../MenuGroup';
 import { MenuItem } from '../MenuItem';
 import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';

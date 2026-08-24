@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { PopoverProps } from '@mui/material';
+import { PopoverProps } from '../Popover';
 
 export type SortingMenuDirection = 'asc' | 'desc';
 

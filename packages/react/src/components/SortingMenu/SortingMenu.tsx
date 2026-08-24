@@ -8,8 +8,6 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
-import MenuList from '@mui/material/MenuList';
-import Popover from '@mui/material/Popover';
 
 import { IconSortAscendingLineW200, IconSortDescendingLineW200 } from '../../icons';
 import { Button } from '../Button';
@@ -18,8 +16,10 @@ import { InformationIcon } from '../InformationIcon';
 import { Kbd } from '../Kbd';
 import { Link } from '../Link';
 import { ListItemText } from '../ListItem';
+import { MenuList } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';
+import { Popover } from '../Popover';
 import { Switch } from '../Switch';
 import { Tooltip } from '../Tooltip';
 
@@ -260,13 +260,15 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
         },
       }}
       className={clsx('es-sorting-menu', PopoverProps.className)}
-      classes={{
-        ...PopoverProps.classes,
-        paper: clsx('es-overlay-scrollbars es-overlay-scrollbars--color--mono-a', PopoverProps.classes?.paper),
-      }}
       slotProps={{
+        ...PopoverProps.slotProps,
         paper: {
+          ...PopoverProps.slotProps?.paper,
           ref: paperRef,
+          className: clsx(
+            'es-overlay-scrollbars es-overlay-scrollbars--color--mono-a',
+            PopoverProps.slotProps?.paper?.className
+          ),
         },
       }}
     >

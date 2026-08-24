@@ -1,0 +1,15 @@
+@mixin include() {
+  .es-menu-list {
+    list-style: none;
+    margin: 0;
+
+    // We disable the focus ring for mouse, touch and keyboard users.
+    outline: 0;
+    padding: 8px 0;
+    position: relative;
+
+    &--disable-padding {
+      padding: 0;
+    }
+  }
+}
