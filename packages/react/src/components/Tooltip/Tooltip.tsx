@@ -18,7 +18,6 @@ import { TooltipProps } from './Tooltip.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Popper from '@mui/material/Popper';
 import appendOwnerState from '@mui/utils/appendOwnerState';
 import useControlled from '@mui/utils/useControlled';
 import useId from '@mui/utils/useId';
@@ -27,8 +26,11 @@ import useTimeout, { Timeout } from '@mui/utils/useTimeout';
 
 import { IconPolygon, IconPolygon2, IconPolygon3 } from './icons';
 
-import { useEvent, useForkRef } from '../../hooks';
+import { useEvent, useForkRef, useLatest } from '../../hooks';
 import { Fade } from '../Fade';
+import { Popper, PopperActions } from '../Popper';
+
+import { arrow as arrowMiddleware, flip, hide, limitShift, Middleware, offset, shift } from '@floating-ui/react-dom';
 
 let hystersisOpen = false;
 const hystersisTimer = new Timeout();
@@ -329,7 +331,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     open = false;
   }
 
-  const popperRef = useRef<any>(null);
+  const popperRef = useRef<PopperActions | null>(null);
 
   const handleMouseMove = (event: MouseEvent) => {
     const childrenProps = children.props;
@@ -430,80 +432,77 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     }
   }
 
-  const popperOptions = useMemo(() => {
-    let tooltipModifiers = [
-      {
-        name: 'arrow',
-        enabled: Boolean(arrowRef),
-        options: {
-          element: arrowRef,
-          padding: 4,
-        },
-      },
-      {
-        name: 'offset',
-        options: {
-          offset: ({ placement, reference, popper }: { placement: any; reference: any; popper: any }) => {
-            const padding = 8;
-            const arrowOffsetX = 14;
-            const arrowOffsetY = 7;
-            const arrowHalfWidth = arrowIconMapping[arrowSize].width / 2;
+  // `useFloating` gates middleware updates on a `deepEqual` that treats two functions with the same source as equal, so
+  // recreating the `offset` middleware below with a different `arrowSize` would silently keep the previous closure. The
+  // closure therefore reads its inputs from refs that are always current instead of capturing them.
+  const arrowSizeRef = useLatest(arrowSize);
+  const arrowIconMappingRef = useLatest(arrowIconMapping);
 
-            if (placement === 'top-end' || placement === 'bottom-end') {
-              return [
-                Math.min(
-                  -(reference.width / 2 - arrowHalfWidth - padding - arrowOffsetX),
-                  -(reference.width / 2 - popper.width / 2)
-                ),
-                0,
-              ];
-            }
+  const middleware = useMemo(() => {
+    const items: Middleware[] = [
+      offset(({ placement: currentPlacement, rects }) => {
+        const padding = 8;
+        const arrowOffsetX = 14;
+        const arrowOffsetY = 7;
+        const arrowHalfWidth = arrowIconMappingRef.current[arrowSizeRef.current].width / 2;
+        const { reference, floating } = rects;
 
-            if (placement === 'top-start' || placement === 'bottom-start') {
-              return [
-                Math.max(
-                  reference.width / 2 - arrowHalfWidth - padding - arrowOffsetX,
-                  reference.width / 2 - popper.width / 2
-                ),
-                0,
-              ];
-            }
+        if (currentPlacement === 'top-end' || currentPlacement === 'bottom-end') {
+          return {
+            crossAxis: Math.min(
+              -(reference.width / 2 - arrowHalfWidth - padding - arrowOffsetX),
+              -(reference.width / 2 - floating.width / 2)
+            ),
+          };
+        }
 
-            if (placement === 'right-end' || placement === 'left-end') {
-              return [
-                Math.min(
-                  -(reference.height / 2 - arrowHalfWidth - padding - arrowOffsetY),
-                  -(reference.height / 2 - popper.height / 2)
-                ),
-                0,
-              ];
-            }
+        if (currentPlacement === 'top-start' || currentPlacement === 'bottom-start') {
+          return {
+            crossAxis: Math.max(
+              reference.width / 2 - arrowHalfWidth - padding - arrowOffsetX,
+              reference.width / 2 - floating.width / 2
+            ),
+          };
+        }
 
-            if (placement === 'right-start' || placement === 'left-start') {
-              return [
-                Math.max(
-                  reference.height / 2 - arrowHalfWidth - padding - arrowOffsetY,
-                  reference.height / 2 - popper.height / 2
-                ),
-                0,
-              ];
-            }
+        if (currentPlacement === 'right-end' || currentPlacement === 'left-end') {
+          return {
+            crossAxis: Math.min(
+              -(reference.height / 2 - arrowHalfWidth - padding - arrowOffsetY),
+              -(reference.height / 2 - floating.height / 2)
+            ),
+          };
+        }
 
-            return [0, 0];
-          },
-        },
-      },
+        if (currentPlacement === 'right-start' || currentPlacement === 'left-start') {
+          return {
+            crossAxis: Math.max(
+              reference.height / 2 - arrowHalfWidth - padding - arrowOffsetY,
+              reference.height / 2 - floating.height / 2
+            ),
+          };
+        }
+
+        return {};
+      }),
+      flip(),
+      // `limitShift` keeps the tooltip tethered to its anchor, the way popper.js's `preventOverflow` `tether` did.
+      shift({ limiter: limitShift() }),
     ];
 
-    if (PopperProps.popperOptions?.modifiers) {
-      tooltipModifiers = tooltipModifiers.concat(PopperProps.popperOptions.modifiers);
+    if (arrowRef) {
+      items.push(arrowMiddleware({ element: arrowRef, padding: 4 }));
     }
 
-    return {
-      ...PopperProps.popperOptions,
-      modifiers: tooltipModifiers,
-    };
-  }, [arrowRef, PopperProps, distance, arrowSize]);
+    if (PopperProps.middleware) {
+      items.push(...(PopperProps.middleware.filter(Boolean) as Middleware[]));
+    }
+
+    // `hide` powers the `[data-es-reference-hidden]` rules in the sidebar, sidenav and gallery themes.
+    items.push(hide());
+
+    return items;
+  }, [arrowRef, PopperProps.middleware]);
 
   const PopperComponent = slots.popper ?? PopperComponentProp ?? Popper;
   const TransitionComponent = slots.transition ?? TransitionComponentProp ?? Fade;
@@ -592,16 +591,24 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
         popperRef={popperRef}
         {...interactiveWrapperListeners}
         {...popperProps}
-        popperOptions={popperOptions}
+        middleware={middleware}
       >
-        {({ TransitionProps: TransitionPropsInner }) => (
+        {({ middlewareData, TransitionProps: TransitionPropsInner }) => (
           // eslint-disable-next-line
           // @ts-ignore
           <TransitionComponent timeout={200} {...TransitionPropsInner} {...transitionProps}>
             <TooltipComponent {...tooltipProps}>
               {title}
               {arrow ? (
-                <ArrowComponent {...tooltipArrowProps} ref={setArrowRef}>
+                <ArrowComponent
+                  {...tooltipArrowProps}
+                  ref={setArrowRef}
+                  style={{
+                    left: middlewareData.arrow?.x === undefined ? undefined : `${middlewareData.arrow.x}px`,
+                    top: middlewareData.arrow?.y === undefined ? undefined : `${middlewareData.arrow.y}px`,
+                    ...tooltipArrowProps.style,
+                  }}
+                >
                   {!slots.arrow && arrowIconMapping[arrowSize].icon}
                 </ArrowComponent>
               ) : null}

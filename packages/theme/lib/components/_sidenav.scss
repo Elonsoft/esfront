@@ -120,14 +120,14 @@
     }
 
     &__tooltip {
-      &[data-popper-placement*='right'] .es-tooltip__tooltip {
+      &[data-es-placement*='right'] .es-tooltip__tooltip {
         @include typography.level('caption');
 
         max-width: 288px;
         padding: 4px 8px;
       }
 
-      &[data-popper-reference-hidden] {
+      &[data-es-reference-hidden] {
         opacity: 0;
         pointer-events: none;
       }

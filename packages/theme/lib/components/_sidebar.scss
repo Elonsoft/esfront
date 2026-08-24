@@ -237,7 +237,7 @@
     }
 
     &__tooltip {
-      &[data-popper-placement*='right'] .es-tooltip__tooltip {
+      &[data-es-placement*='right'] .es-tooltip__tooltip {
         background: var(--es-surface-400);
         border-radius: 4px;
         box-shadow: var(--es-shadow-down-600);
@@ -251,7 +251,7 @@
         }
       }
 
-      &[data-popper-reference-hidden] {
+      &[data-es-reference-hidden] {
         opacity: 0;
         pointer-events: none;
       }

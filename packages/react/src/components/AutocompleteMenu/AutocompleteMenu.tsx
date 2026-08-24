@@ -22,7 +22,6 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import InputAdornment from '@mui/material/InputAdornment';
 import MenuList from '@mui/material/MenuList';
-import Popper from '@mui/material/Popper';
 import TextField from '@mui/material/TextField';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
@@ -35,8 +34,11 @@ import { Grow } from '../Grow';
 import { MenuGroup } from '../MenuGroup';
 import { MenuItem } from '../MenuItem';
 import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';
+import { Popper } from '../Popper';
 import { SpinnerRing } from '../Spinner';
 import { TooltipEllipsis } from '../TooltipEllipsis';
+
+import { flip, hide, limitShift, Middleware, offset as offsetMiddleware, shift } from '@floating-ui/react-dom';
 
 export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, ref) {
   const {
@@ -286,25 +288,17 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
       placement="bottom"
       style={style}
       {...PopperProps}
-      modifiers={[
-        {
-          name: 'offset',
-          options: {
-            offset,
-          },
-        },
-        ...(disableScrollLock
-          ? []
-          : [
-              {
-                name: 'preventOverflow',
-                options: {
-                  altAxis: true,
-                  padding: { top: 8, bottom: 8 },
-                },
-              },
-            ]),
-        ...(PopperProps?.modifiers || []),
+      middleware={[
+        offsetMiddleware({ crossAxis: offset[0], mainAxis: offset[1] }),
+        flip(),
+        // `limitShift` keeps the menu tethered to its anchor, the way popper.js's `preventOverflow` `tether` did.
+        disableScrollLock
+          ? shift({ limiter: limitShift() })
+          : shift({ crossAxis: true, limiter: limitShift(), padding: { top: 8, bottom: 8 } }),
+        ...((PopperProps?.middleware ?? []).filter(Boolean) as Middleware[]),
+        // `hide` populates the `[data-es-reference-hidden]` attribute for consumers styling the detached menu. It was a
+        // default modifier under popper.js, so it is added explicitly to keep the attribute available.
+        hide(),
       ]}
       onKeyDown={(e) => {
         onMenuKeyDown(e);
