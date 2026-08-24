@@ -5,7 +5,6 @@ import { AudioPlayerProps } from './AudioPlayer.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Slider, { sliderClasses } from '@mui/material/Slider';
 import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
 import { useAudioPlayerContext } from './AudioPlayer.context';
@@ -30,6 +29,7 @@ import { ListItemIcon, ListItemText } from '../ListItem';
 import { MenuList } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { PopperActions } from '../Popper';
+import { Slider } from '../Slider';
 import { Tooltip } from '../Tooltip';
 
 const DEFAULT_RATES = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
@@ -148,13 +148,13 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   });
 
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
-  const sliderRef = useRef<HTMLElement | null>(null);
+  const sliderRef = useRef<HTMLSpanElement | null>(null);
   const popperRef = useRef<PopperActions | null>(null);
 
   const onFocus = () => {
     requestAnimationFrame(() => {
       if (sliderRef.current) {
-        const focusedThumb = sliderRef.current.querySelector(`.${sliderClasses.thumb}.${sliderClasses.focusVisible}`);
+        const focusedThumb = sliderRef.current.querySelector('.es-slider__thumb.es-slider__thumb--focus-visible');
         setFocused(!!focusedThumb);
       }
     });
@@ -579,7 +579,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
     const animation = () => {
       if (sliderRef.current && popperRef.current) {
-        const thumb = sliderRef.current.querySelector(`.${sliderClasses.thumb}`);
+        const thumb = sliderRef.current.querySelector('.es-slider__thumb');
 
         if (thumb) {
           const { top, bottom } = sliderRef.current.getBoundingClientRect();
@@ -605,7 +605,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
   useEffect(() => {
     if (sliderRef.current) {
-      const thumb = sliderRef.current.querySelector(`.${sliderClasses.thumb}`);
+      const thumb = sliderRef.current.querySelector('.es-slider__thumb');
 
       if (thumb) {
         const onMouseEnter = () => {

@@ -5,11 +5,10 @@ import { BottomSheetProps } from './BottomSheet.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { unstable_useId as useId } from '@mui/utils';
 
 import { BottomSheetContext } from './BottomSheet.context';
 
-import { useIntersectionObserver, useResizeObserver, useWindowEventListener } from '../../hooks';
+import { useId, useIntersectionObserver, useResizeObserver, useWindowEventListener } from '../../hooks';
 import { duration } from '../../transitions';
 import { Backdrop } from '../Backdrop';
 import { Fade } from '../Fade';

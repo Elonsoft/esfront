@@ -19,11 +19,11 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { debounce, ownerDocument, ownerWindow, useEventCallback } from '@mui/material/utils';
-import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
 import { animate } from './animate';
 import { TabScrollButton } from './TabScrollButton';
 
+import { useEnhancedEffect } from '../../hooks';
 import { Divider } from '../Divider';
 
 type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
@@ -173,7 +173,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     rounded,
     visibleScrollbar = false,
   } = useDefaultProps({ props: inProps, name: 'ESTabs' });
-  const isRtl = false;
 
   const scrollable = variant === 'scrollable';
 
@@ -182,7 +181,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
   const end = 'right';
   const clientSize = 'clientWidth';
   const size = 'width';
-  const startIndicator: 'right' | 'left' = isRtl ? 'right' : 'left';
 
   if (centered && scrollable) {
     console.error(
@@ -283,7 +281,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     let modifiedIndicatorWidth = 0;
 
     if (tabMeta && tabsMeta) {
-      startValue = (isRtl ? -1 : 1) * (tabMeta[startIndicator] - tabsMeta[startIndicator] + tabsMeta.scrollLeft);
+      startValue = tabMeta[start] - tabsMeta[start] + tabsMeta.scrollLeft;
     }
 
     if (tabMeta && indicatorStyle[size] && TabIndicatorAlignment) {
@@ -312,16 +310,16 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     }
 
     const newIndicatorStyle = {
-      [startIndicator]: startValue,
+      [start]: startValue,
       // May be wrong until the font is loaded.
       [size]: tabMeta ? (TabIndicatorWidth ? modifiedIndicatorWidth : tabMeta[size]) : 0,
     };
 
     // IE11 support, replace with Number.isNaN
-    if (isNaN(indicatorStyle[startIndicator]) || isNaN(indicatorStyle[size])) {
+    if (isNaN(indicatorStyle[start]) || isNaN(indicatorStyle[size])) {
       setIndicatorStyle(newIndicatorStyle);
     } else {
-      const dStart = Math.abs(indicatorStyle[startIndicator] - newIndicatorStyle[startIndicator]);
+      const dStart = Math.abs(indicatorStyle[start] - newIndicatorStyle[start]);
       const dSize = Math.abs(indicatorStyle[size] - newIndicatorStyle[size]);
 
       if (dStart >= 1 || dSize >= 1) {
@@ -344,7 +342,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     if (tabsRef.current) {
       let scrollValue = tabsRef.current[scrollStart];
 
-      scrollValue += delta * (isRtl ? -1 : 1);
+      scrollValue += delta;
 
       scroll(scrollValue);
     }
@@ -416,7 +414,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
 
     conditionalElements.scrollButtonStart = showScrollButtons ? (
       <ScrollButtonComponent
-        direction={isRtl ? 'right' : 'left'}
+        direction="left"
         disabled={!displayStartScroll}
         slots={{ StartScrollButtonIcon: slots.StartScrollButtonIcon }}
         tabListHeight={tabListHeight}
@@ -432,7 +430,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
 
     conditionalElements.scrollButtonEnd = showScrollButtons ? (
       <ScrollButtonComponent
-        direction={isRtl ? 'left' : 'right'}
+        direction="right"
         disabled={!displayEndScroll}
         slots={{ EndScrollButtonIcon: slots.EndScrollButtonIcon }}
         tabListHeight={tabListHeight}
@@ -601,7 +599,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
 
   const indicator = (
     <span
-      key={TabIndicatorSlidingAnimation === 'expand' ? indicatorStyle[startIndicator] : undefined}
+      key={TabIndicatorSlidingAnimation === 'expand' ? indicatorStyle[start] : undefined}
       {...TabIndicatorProps}
       className={clsx(
         'es-tabs__indicator',
@@ -653,14 +651,8 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
         return;
       }
 
-      let previousItemKey = 'ArrowLeft';
-      let nextItemKey = 'ArrowRight';
-
-      if (isRtl) {
-        // swap previousItemKey with nextItemKey
-        previousItemKey = 'ArrowRight';
-        nextItemKey = 'ArrowLeft';
-      }
+      const previousItemKey = 'ArrowLeft';
+      const nextItemKey = 'ArrowRight';
 
       switch (event.key) {
         case previousItemKey:

@@ -5,8 +5,8 @@ import { DialogProps } from './Dialog.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { unstable_useId as useId } from '@mui/utils';
 
+import { useId } from '../../hooks';
 import { duration } from '../../transitions';
 import { Backdrop } from '../Backdrop';
 import { Fade } from '../Fade';

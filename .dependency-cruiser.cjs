@@ -213,7 +213,7 @@ module.exports = {
     // includeOnly : [''],
 
     /* dependency-cruiser will include modules matching against the focus
-       regular expression in its output, as well as their direct neighbours 
+       regular expression in its output, as well as their direct neighbors 
        (dependencies and dependents)
     */
     // focus : '',

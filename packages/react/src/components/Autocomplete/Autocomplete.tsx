@@ -8,9 +8,8 @@ import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useFormControl } from '@mui/material/FormControl';
 import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { useForkRef } from '@mui/material/utils';
-import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
-import { useControlled, usePreviousValue } from '../../hooks';
+import { useControlled, useEnhancedEffect, usePreviousValue } from '../../hooks';
 import { AutocompleteMenu, AutocompleteMenuImperativeActions } from '../AutocompleteMenu';
 
 const AutocompleteRoot = OutlinedInput as unknown as FC<OutlinedInputProps & { children?: ReactNode }>;

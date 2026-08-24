@@ -5,8 +5,8 @@ import { LoadingButtonTypeMap } from './LoadingButton.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { unstable_useId as useId } from '@mui/utils';
 
+import { useId } from '../../hooks';
 import { Button, ButtonOwnProps, ExtendButton } from '../Button';
 import { SpinnerFadingDots } from '../Spinner';
 

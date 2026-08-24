@@ -1,8 +1,5 @@
 import { Components, CssVarsTheme, Theme, TypographyVariantsOptions } from '@mui/material/styles';
 
-import { createSlider } from './slider';
-export { createSlider } from './slider';
-
 import {
   createFormControl,
   createFormHelperText,
@@ -26,8 +23,6 @@ import { createList, createMenu } from './menu';
 export { createMenu } from './menu';
 
 export const createComponents = (theme: Theme, typography: TypographyVariantsOptions) => {
-  const MuiSlider = createSlider(theme, typography);
-
   const MuiFormControl = createFormControl(theme, typography);
   const MuiFormHelperText = createFormHelperText(theme, typography);
   const MuiFormLabel = createFormLabel(theme, typography);
@@ -41,8 +36,6 @@ export const createComponents = (theme: Theme, typography: TypographyVariantsOpt
   const MuiList = createList(theme, typography);
 
   const components: Components<Omit<Theme, 'components' | 'palette'> & CssVarsTheme> = {
-    MuiSlider,
-
     MuiFormControl,
     MuiFormHelperText,
     MuiFormLabel,

@@ -5,9 +5,8 @@ import { ChipsProps } from './Chips.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 
-import { useBoolean, useResizeObserver } from '../../hooks';
+import { useBoolean, useEnhancedEffect, useResizeObserver } from '../../hooks';
 import { IconChevronDownLineW200, IconChevronUpLineW200 } from '../../icons';
 import { Button } from '../Button';
 

@@ -1,0 +1,358 @@
+@mixin include() {
+  .es-slider {
+    border-radius: 8px;
+    box-sizing: content-box;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+
+    @media print {
+      color-adjust: exact;
+    }
+
+    &--color--primary {
+      color: var(--es-primary-300);
+
+      & .es-slider__thumb {
+        &:hover {
+          box-shadow: 0 0 0 8px var(--es-primary-a150);
+
+          @media (hover: none) {
+            box-shadow: none;
+          }
+        }
+      }
+
+      & .es-slider__thumb--focus-visible {
+        box-shadow: 0 0 0 8px var(--es-primary-a400);
+      }
+
+      & .es-slider__thumb--active {
+        box-shadow: 0 0 0 6px var(--es-primary-a300);
+      }
+    }
+
+    &--color--secondary {
+      color: var(--es-secondary-300);
+
+      & .es-slider__thumb {
+        &:hover {
+          box-shadow: 0 0 0 8px var(--es-secondary-a150);
+
+          @media (hover: none) {
+            box-shadow: none;
+          }
+        }
+      }
+
+      & .es-slider__thumb--focus-visible {
+        box-shadow: 0 0 0 8px var(--es-secondary-a400);
+      }
+
+      & .es-slider__thumb--active {
+        box-shadow: 0 0 0 6px var(--es-secondary-a300);
+      }
+    }
+
+    &--orientation--horizontal {
+      height: 4px;
+      padding: 13px 0;
+      width: 100%;
+
+      // The primary input mechanism of the device includes a pointing device of limited accuracy: reach a 42px touch
+      // target, about ~8mm on screen.
+      @media (pointer: coarse) {
+        padding: 20px 0;
+      }
+
+      &.es-slider--size--small {
+        height: 2px;
+      }
+
+      &.es-slider--marked {
+        margin-bottom: 20px;
+      }
+
+      & .es-slider__rail {
+        height: inherit;
+        top: 50%;
+        transform: translateX(-3px) translateY(-50%);
+        width: calc(100% + 6px);
+      }
+
+      & .es-slider__track {
+        height: inherit;
+        padding-right: 3px;
+        top: 50%;
+        transform: translateX(-3px) translateY(-50%);
+      }
+
+      & .es-slider__thumb {
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      & .es-slider__mark {
+        top: 50%;
+        transform: translate(-1px, -50%);
+      }
+
+      & .es-slider__mark-label {
+        top: 30px;
+        transform: translateX(-50%);
+
+        @media (pointer: coarse) {
+          top: 40px;
+        }
+      }
+
+      & .es-slider__value-label {
+        top: -9px;
+        transform: translateY(-100%) scale(0);
+        transform-origin: bottom center;
+
+        &::before {
+          border-color: var(--es-mono-a-a600) transparent transparent transparent;
+          border-width: 5px 5px 0;
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%, 100%);
+        }
+      }
+
+      & .es-slider__value-label--open {
+        transform: translateY(-100%) scale(1);
+      }
+
+      & .es-slider__thumb--focus-visible .es-slider__value-label {
+        top: -8px;
+      }
+
+      & .es-slider__thumb--active .es-slider__value-label {
+        top: -7px;
+      }
+    }
+
+    &--orientation--vertical {
+      height: 100%;
+      padding: 0 13px;
+      width: 4px;
+
+      @media (pointer: coarse) {
+        padding: 0 20px;
+      }
+
+      &.es-slider--size--small {
+        width: 2px;
+      }
+
+      &.es-slider--marked {
+        margin-right: 44px;
+      }
+
+      & .es-slider__rail {
+        height: calc(100% + 6px);
+        left: 50%;
+        transform: translateY(-3px) translateX(-50%);
+        width: inherit;
+      }
+
+      & .es-slider__track {
+        left: 50%;
+        padding-top: 3px;
+        transform: translateY(3px) translateX(-50%);
+        width: inherit;
+      }
+
+      & .es-slider__thumb {
+        left: 50%;
+        transform: translate(-50%, 50%);
+      }
+
+      & .es-slider__mark {
+        left: 50%;
+        transform: translate(-50%, 1px);
+      }
+
+      & .es-slider__mark-label {
+        left: 36px;
+        transform: translateY(50%);
+
+        @media (pointer: coarse) {
+          left: 44px;
+        }
+      }
+
+      // The label is anchored to the edge of the thumb so that it does not shift when the thumb grows.
+      & .es-slider__value-label {
+        right: calc(100% + 4px);
+        top: 50%;
+        transform: translateY(-50%) scale(0);
+        transform-origin: right center;
+
+        &::before {
+          border-color: transparent transparent transparent var(--es-mono-a-a600);
+          border-width: 5px 0 5px 5px;
+          right: 0;
+          top: 50%;
+          transform: translate(100%, -50%);
+        }
+      }
+
+      & .es-slider__value-label--open {
+        transform: translateY(-50%) scale(1);
+      }
+    }
+
+    &--track--false {
+      & .es-slider__track {
+        display: none;
+      }
+    }
+
+    &--dragging {
+      & .es-slider__thumb,
+      & .es-slider__track {
+        transition: none;
+      }
+    }
+
+    &--disabled {
+      color: var(--es-mono-a-a200);
+      cursor: default;
+      pointer-events: none;
+
+      & .es-slider__rail {
+        background-color: var(--es-mono-a-a200);
+      }
+
+      & .es-slider__track {
+        display: none;
+      }
+
+      & .es-slider__thumb {
+        backdrop-filter: blur(100px);
+        box-shadow: 0 0 0 2px var(--es-mono-b-500);
+        height: 10px;
+        width: 10px;
+      }
+    }
+
+    &__rail {
+      background-color: var(--es-mono-a-a400);
+      border-radius: inherit;
+      display: block;
+      opacity: 1;
+      position: absolute;
+    }
+
+    &__track {
+      background-color: currentcolor;
+      border: 0;
+      border-radius: inherit;
+      display: block;
+      position: absolute;
+      transition-duration: 150ms;
+      transition-property: bottom, height, left, width;
+      transition-timing-function: linear;
+    }
+
+    &__thumb {
+      align-items: center;
+      background-color: currentcolor;
+      border-radius: 50%;
+      box-sizing: border-box;
+      display: flex;
+      height: 12px;
+      justify-content: center;
+      outline: 0;
+      position: absolute;
+      transition-duration: 150ms;
+      transition-property: box-shadow, bottom, height, left, opacity, width;
+      transition-timing-function: linear;
+      width: 12px;
+
+      &::before {
+        border-radius: inherit;
+        box-shadow: none;
+        content: '';
+        height: 100%;
+        position: absolute;
+        width: 100%;
+      }
+
+      // 42px is the hit target.
+      &::after {
+        border-radius: 50%;
+        content: '';
+        height: 42px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 42px;
+      }
+    }
+
+    &__thumb--focus-visible {
+      height: 14px;
+      width: 14px;
+    }
+
+    &__thumb--active {
+      height: 16px;
+      width: 16px;
+    }
+
+    &__mark {
+      background-color: var(--es-mono-a-a400);
+      border-radius: 1px;
+      height: 2px;
+      opacity: 1;
+      position: absolute;
+      width: 2px;
+    }
+
+    &__mark--active {
+      background-color: var(--es-mono-a-a400);
+    }
+
+    &__mark-label {
+      color: var(--es-mono-a-a600);
+      position: absolute;
+      white-space: nowrap;
+    }
+
+    &__mark-label--active {
+      color: var(--es-mono-a-a900);
+    }
+
+    &__value-label {
+      align-items: center;
+      background-color: var(--es-mono-a-a600);
+      border-radius: 4px;
+      color: var(--es-mono-b-500);
+      display: flex;
+      justify-content: center;
+      min-width: 22px;
+      padding: 4px;
+      position: absolute;
+      transition-duration: 150ms;
+      transition-property: right, top, transform;
+      transition-timing-function: linear;
+      white-space: nowrap;
+      z-index: 1;
+
+      &::before {
+        background: none;
+        border-style: solid;
+        content: '';
+        height: 0;
+        position: absolute;
+        width: 0;
+      }
+    }
+  }
+}

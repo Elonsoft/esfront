@@ -71,6 +71,7 @@ export * from './SFS';
 export * from './Sidebar';
 export * from './Sidenav';
 export * from './Slide';
+export * from './Slider';
 export * from './Snackbar';
 export * from './SortingMenu';
 export * from './Spinner';

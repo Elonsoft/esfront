@@ -7,9 +7,8 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import { textFieldClasses } from '@mui/material/TextField';
-import { unstable_useId as useId } from '@mui/utils';
 
-import { useControlled } from '../../hooks';
+import { useControlled, useId } from '../../hooks';
 import { Autocomplete } from '../Autocomplete';
 
 /** The autocomplete is used to choose an item from a collection of options. */

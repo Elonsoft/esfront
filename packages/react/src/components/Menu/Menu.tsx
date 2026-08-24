@@ -5,14 +5,13 @@ import { MenuProps } from './Menu.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { useRtl } from '@mui/system/RtlProvider';
 
 import { MenuList, MenuListActions } from './MenuList';
 
 import { Popover, PopoverOrigin } from '../Popover';
 
-const RTL_ORIGIN: PopoverOrigin = { vertical: 'top', horizontal: 'right' };
-const LTR_ORIGIN: PopoverOrigin = { vertical: 'top', horizontal: 'left' };
+const ANCHOR_ORIGIN: PopoverOrigin = { vertical: 'bottom', horizontal: 'left' };
+const TRANSFORM_ORIGIN: PopoverOrigin = { vertical: 'top', horizontal: 'left' };
 
 /**
  * The Menu displays a list of choices on a temporary surface, anchored to an element.
@@ -36,8 +35,6 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(inProps,
     name: 'ESMenu',
   });
 
-  const isRtl = useRtl();
-
   const autoFocusItem = autoFocus && !disableAutoFocusItem && open;
 
   const menuListActionsRef = useRef<MenuListActions | null>(null);
@@ -47,7 +44,7 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(inProps,
 
   const onEntering = (node: HTMLElement, isAppearing: boolean) => {
     if (menuListActionsRef.current) {
-      menuListActionsRef.current.adjustStyleForScrollbar(node, { direction: isRtl ? 'rtl' : 'ltr' });
+      menuListActionsRef.current.adjustStyleForScrollbar(node);
     }
 
     transitionProps.onEntering?.(node, isAppearing);
@@ -89,8 +86,8 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(inProps,
 
   return (
     <Popover
-      anchorOrigin={{ vertical: 'bottom', horizontal: isRtl ? 'right' : 'left' }}
-      transformOrigin={isRtl ? RTL_ORIGIN : LTR_ORIGIN}
+      anchorOrigin={ANCHOR_ORIGIN}
+      transformOrigin={TRANSFORM_ORIGIN}
       {...props}
       ref={ref}
       className={clsx(className, 'es-menu')}
