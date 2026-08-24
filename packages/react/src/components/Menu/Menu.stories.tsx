@@ -2,8 +2,7 @@ import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
-import List from '@mui/material/List';
-import Menu from '@mui/material/Menu';
+import { Menu } from './Menu';
 
 import { IconUploadFillW500 } from '../../icons';
 import { Button } from '../Button';
@@ -39,6 +38,9 @@ type Args = ComponentProps<typeof ListItem>;
 
 const meta: Meta<Args> = {
   title: 'Menu',
+  parameters: {
+    references: ['Menu', 'MenuList'],
+  },
   argTypes: {
     size: {
       control: {
@@ -137,7 +139,7 @@ export const DemoList: Story = {
           borderRadius: '4px',
         }}
       >
-        <List>
+        <ul style={{ listStyle: 'none', margin: 0, padding: '8px 0' }}>
           <ListItem size={args.size}>
             <ListItemIcon>
               <IconUploadFillW500 />
@@ -163,7 +165,7 @@ export const DemoList: Story = {
           <ListItem size={args.size}>
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItem>
-        </List>
+        </ul>
       </div>
     );
   },
@@ -180,7 +182,7 @@ export const DemoListButton: Story = {
           borderRadius: '4px',
         }}
       >
-        <List>
+        <ul style={{ listStyle: 'none', margin: 0, padding: '8px 0' }}>
           <ListItem button selected size={args.size}>
             <ListItemIcon>
               <IconUploadFillW500 />
@@ -206,7 +208,7 @@ export const DemoListButton: Story = {
           <ListItem button size={args.size}>
             <ListItemText inset>{getActionText(context)}</ListItemText>
           </ListItem>
-        </List>
+        </ul>
       </div>
     );
   },

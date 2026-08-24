@@ -1,6 +1,6 @@
 @mixin include() {
   .es-sorting-menu {
-    & .MuiPopover-paper {
+    & .es-popover__paper {
       background-color: var(--es-surface-400);
       background-image: none;
       box-shadow: var(--es-shadow-down-600);
@@ -9,7 +9,7 @@
       padding-bottom: 6px;
       user-select: none;
 
-      & .MuiList-root {
+      & .es-menu-list {
         padding: 0;
         width: 320px;
       }

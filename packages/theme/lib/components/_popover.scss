@@ -1,0 +1,21 @@
+@mixin include() {
+  .es-popover {
+    &__paper {
+      background-color: var(--es-surface-400);
+      border-radius: 4px;
+      box-shadow: var(--es-shadow-down-600);
+      color: var(--es-mono-a-a900);
+      max-height: calc(100% - 32px);
+      max-width: calc(100% - 32px);
+
+      // So we see the popover when it's empty.
+      min-height: 16px;
+      min-width: 16px;
+
+      // We disable the focus ring for mouse, touch and keyboard users.
+      outline: 0;
+      overflow: hidden auto;
+      position: absolute;
+    }
+  }
+}

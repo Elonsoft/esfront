@@ -19,12 +19,12 @@
     }
 
     &__menu {
-      & .MuiMenu-list {
+      & .es-menu__list {
         max-width: 240px;
         padding: 4px 0;
       }
 
-      & .MuiPaper-root {
+      & .es-menu__paper {
         margin-top: 4px;
       }
     }

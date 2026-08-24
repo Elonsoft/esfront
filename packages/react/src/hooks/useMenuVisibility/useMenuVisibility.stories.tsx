@@ -1,10 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import Menu from '@mui/material/Menu';
-
 import { useMenuVisibility } from './useMenuVisibility';
 
 import { Button } from '../../components/Button';
+import { Menu } from '../../components/Menu';
 import { MenuItem } from '../../components/MenuItem';
 import { useMenu } from '../useMenu';
 

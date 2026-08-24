@@ -98,6 +98,7 @@ import { LinearProgressProps } from './components/LinearProgress';
 import { LinkProps } from './components/Link';
 import { LoadingButtonProps } from './components/LoadingButton';
 import { MadeByProps } from './components/MadeBy';
+import { MenuProps, MenuListProps } from './components/Menu';
 import { MenuGroupProps } from './components/MenuGroup';
 import { MenuItemProps } from './components/MenuItem';
 import { ModalProps } from './components/Modal';
@@ -118,6 +119,7 @@ import { RadioGroupProps } from './components/RadioGroup';
 import { RibbonBadgeProps } from './components/RibbonBadge';
 import { SearchProps } from './components/Search';
 import { PhoneFieldProps } from './components/PhoneField';
+import { PopoverProps } from './components/Popover';
 import { PopperProps } from './components/Popper';
 import { PortalProps } from './components/Portal';
 import {
@@ -271,8 +273,10 @@ declare module '@mui/material/styles/props' {
     ESLinearProgress: LinearProgressProps;
     ESLink: LinkProps;
     ESLoadingButton: LoadingButtonProps;
+    ESMenu: MenuProps;
     ESMenuItem: MenuItemProps;
     ESMenuGroup: MenuGroupProps;
+    ESMenuList: MenuListProps;
     ESMadeBy: MadeByProps;
     ESModal: ModalProps;
     ESPageHGroup: PageHGroupProps;
@@ -286,6 +290,7 @@ declare module '@mui/material/styles/props' {
     ESPaginationRange: PaginationRangeProps;
     ESPasswordField: PasswordFieldProps;
     ESPhoneField: PhoneFieldProps;
+    ESPopover: PopoverProps;
     ESPopper: PopperProps;
     ESPortal: PortalProps;
     ESProperty: PropertyProps;
@@ -641,11 +646,17 @@ declare module '@mui/material/styles/components' {
     ESLoadingButton?: {
       defaultProps?: ComponentsProps['ESLoadingButton'];
     };
+    ESMenu?: {
+      defaultProps?: ComponentsProps['ESMenu'];
+    };
     ESMenuItem?: {
       defaultProps?: ComponentsProps['ESMenuItem'];
     };
     ESMenuGroup?: {
       defaultProps?: ComponentsProps['ESMenuGroup'];
+    };
+    ESMenuList?: {
+      defaultProps?: ComponentsProps['ESMenuList'];
     };
     ESMadeBy?: {
       defaultProps?: ComponentsProps['ESMadeBy'];
@@ -685,6 +696,9 @@ declare module '@mui/material/styles/components' {
     };
     ESPhoneField?: {
       defaultProps?: ComponentsProps['ESPhoneField'];
+    };
+    ESPopover?: {
+      defaultProps?: ComponentsProps['ESPopover'];
     };
     ESPopper?: {
       defaultProps?: ComponentsProps['ESPopper'];

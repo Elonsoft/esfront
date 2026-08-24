@@ -95,11 +95,15 @@ export default tseslint.config(
                 'ListItemButton',
                 'ListItemIcon',
                 'ListItemText',
+                'Menu',
                 'MenuItem',
+                'MenuList',
                 'Modal',
                 'FormControlLabel',
                 'Pagination',
                 'PaginationItem',
+                'Popover',
+                'Popper',
                 'Portal',
                 'Radio',
                 'Slide',
@@ -231,7 +235,15 @@ export default tseslint.config(
               importNames: ['default'],
             },
             {
+              group: ['@mui/material/Menu'],
+              importNames: ['default'],
+            },
+            {
               group: ['@mui/material/MenuItem'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/MenuList'],
               importNames: ['default'],
             },
             {
@@ -248,6 +260,14 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/PaginationItem'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Popover'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Popper'],
               importNames: ['default'],
             },
             {

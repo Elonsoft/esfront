@@ -1,0 +1,10 @@
+@mixin include() {
+  .es-menu {
+    &__paper {
+      // The maximum height of a menu should be one or more rows less than the view height. This ensures a tappable area
+      // outside of the menu with which to dismiss it.
+      max-height: calc(100% - 96px);
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}

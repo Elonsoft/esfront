@@ -5,10 +5,10 @@ import { PaginationRangeProps } from './PaginationRange.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Menu from '@mui/material/Menu';
 
 import { IconMenuDownFillW300 } from '../../../icons';
 import { Button } from '../../Button';
+import { Menu } from '../../Menu';
 import { MenuItem } from '../../MenuItem';
 import { usePaginationContext } from '../Pagination.context';
 

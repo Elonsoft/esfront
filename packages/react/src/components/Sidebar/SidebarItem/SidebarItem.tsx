@@ -8,7 +8,6 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { useMediaQuery } from '@mui/material';
-import MenuList from '@mui/material/MenuList';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 import { useResizeObserver } from '../../../hooks';
@@ -17,6 +16,7 @@ import { Button } from '../../Button';
 import { Collapse } from '../../Collapse';
 import { Divider } from '../../Divider';
 import { ListItem, ListItemIcon, ListItemText } from '../../ListItem';
+import { MenuList } from '../../Menu';
 import { MenuItem } from '../../MenuItem';
 import { OVERLAY_SCROLLBARS_OPTIONS } from '../../OverlayScrollbars';
 import { Tooltip } from '../../Tooltip';
