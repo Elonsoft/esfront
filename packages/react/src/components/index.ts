@@ -57,6 +57,7 @@ export * from './PageHGroup';
 export * from './Pagination';
 export * from './PasswordField';
 export * from './PhoneField';
+export * from './Popper';
 export * from './Portal';
 export * from './Price';
 export * from './Property';

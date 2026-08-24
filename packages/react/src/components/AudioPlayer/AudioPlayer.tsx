@@ -29,9 +29,8 @@ import { Button } from '../Button';
 import { Divider } from '../Divider';
 import { ListItemIcon, ListItemText } from '../ListItem';
 import { MenuItem } from '../MenuItem';
+import { PopperActions } from '../Popper';
 import { Tooltip } from '../Tooltip';
-
-import { Instance } from '@popperjs/core';
 
 const DEFAULT_RATES = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
 
@@ -150,7 +149,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const sliderRef = useRef<HTMLElement | null>(null);
-  const popperRef = useRef<Instance | null>(null);
+  const popperRef = useRef<PopperActions | null>(null);
 
   const onFocus = () => {
     requestAnimationFrame(() => {

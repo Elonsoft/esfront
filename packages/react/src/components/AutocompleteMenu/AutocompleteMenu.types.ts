@@ -1,9 +1,10 @@
 import { CSSProperties, ForwardedRef, ReactNode, Ref } from 'react';
 
-import { PopperProps, TextFieldProps } from '@mui/material';
+import { TextFieldProps } from '@mui/material';
 
 import { TransitionProps } from '../../transitions';
 import { MenuGroupProps } from '../MenuGroup';
+import { PopperProps } from '../Popper';
 import { TooltipEllipsisProps } from '../TooltipEllipsis';
 
 export interface AutocompleteMenuImperativeActions {
@@ -27,10 +28,10 @@ export type AutocompleteMenuProps<T> = {
   container?: HTMLElement;
 
   /**
-   * An HTML element, [virtualElement](https://popper.js.org/docs/v2/virtual-elements/),
+   * An HTML element, [virtual element](https://floating-ui.com/docs/virtual-elements),
    * or a function that returns either.
    * It's used to set the position of the popper.
-   * The return value will passed as the reference object of the Popper instance.
+   * The return value will passed as the anchor of the popper.
    */
   anchorEl: PopperProps['anchorEl'];
 

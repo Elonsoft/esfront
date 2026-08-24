@@ -118,6 +118,7 @@ import { RadioGroupProps } from './components/RadioGroup';
 import { RibbonBadgeProps } from './components/RibbonBadge';
 import { SearchProps } from './components/Search';
 import { PhoneFieldProps } from './components/PhoneField';
+import { PopperProps } from './components/Popper';
 import { PortalProps } from './components/Portal';
 import {
   SFSButtonProps,
@@ -285,6 +286,7 @@ declare module '@mui/material/styles/props' {
     ESPaginationRange: PaginationRangeProps;
     ESPasswordField: PasswordFieldProps;
     ESPhoneField: PhoneFieldProps;
+    ESPopper: PopperProps;
     ESPortal: PortalProps;
     ESProperty: PropertyProps;
     ESPrice: PriceProps;
@@ -683,6 +685,9 @@ declare module '@mui/material/styles/components' {
     };
     ESPhoneField?: {
       defaultProps?: ComponentsProps['ESPhoneField'];
+    };
+    ESPopper?: {
+      defaultProps?: ComponentsProps['ESPopper'];
     };
     ESPortal?: {
       defaultProps?: ComponentsProps['ESPortal'];

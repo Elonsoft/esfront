@@ -437,7 +437,7 @@
   }
 
   .es-gallery-tooltip {
-    &[data-popper-reference-hidden] {
+    &[data-es-reference-hidden] {
       opacity: 0;
       pointer-events: none;
     }

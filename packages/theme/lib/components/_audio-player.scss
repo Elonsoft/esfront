@@ -173,11 +173,11 @@
         }
       }
 
-      &[data-popper-placement*='top'] .es-tooltip__tooltip {
+      &[data-es-placement*='top'] .es-tooltip__tooltip {
         box-shadow: var(--es-shadow-down-600);
       }
 
-      &[data-popper-placement*='bottom'] .es-tooltip__tooltip {
+      &[data-es-placement*='bottom'] .es-tooltip__tooltip {
         box-shadow: var(--es-shadow-up-600);
       }
     }
