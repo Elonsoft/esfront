@@ -1,0 +1,15 @@
+@mixin include() {
+  .es-backdrop {
+    align-items: center;
+    background-color: var(--es-overlay-700);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    position: fixed;
+    -webkit-tap-highlight-color: transparent;
+
+    &.es-backdrop--invisible {
+      background-color: transparent;
+    }
+  }
+}

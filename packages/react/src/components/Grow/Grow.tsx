@@ -5,12 +5,11 @@ import { GrowProps } from './Grow.types';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 
-import { useForkRef } from '../../hooks';
+import { useForkRef, useTimeout } from '../../hooks';
 import { createTransition, getAutoHeightDuration } from '../../transitions';
-import { getReactElementRef } from '../../transitions/getReactElementRef';
 import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
-import { useTimeout } from '../../transitions/useTimeout';
 import { getTransitionProps, omitOwnerState, reflow } from '../../transitions/utils';
+import { getReactElementRef } from '../../utils';
 
 const getScale = (value: number) => `scale(${value}, ${value ** 2})`;
 
