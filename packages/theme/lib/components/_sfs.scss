@@ -109,13 +109,12 @@
     position: relative;
 
     &__drawer {
-      & .MuiBackdrop-root {
+      & .es-backdrop {
         background-color: var(--es-overlay-200);
       }
 
-      & .MuiPaper-root {
+      & .es-drawer__paper {
         background-color: var(--es-surface-200);
-        background-image: none;
         border-left: 1px solid var(--es-mono-a-a100);
         box-shadow: var(--es-shadow-left-800);
         max-width: 337px;

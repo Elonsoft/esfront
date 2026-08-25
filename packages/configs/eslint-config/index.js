@@ -86,6 +86,7 @@ export default tseslint.config(
                 'DialogContentText',
                 'DialogTitle',
                 'Divider',
+                'Drawer',
                 'Fade',
                 'Grow',
                 'IconButton',
@@ -197,6 +198,10 @@ export default tseslint.config(
             },
             {
               group: ['@mui/material/Divider'],
+              importNames: ['default'],
+            },
+            {
+              group: ['@mui/material/Drawer'],
               importNames: ['default'],
             },
             {

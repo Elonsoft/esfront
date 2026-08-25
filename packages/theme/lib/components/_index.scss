@@ -21,6 +21,7 @@
 @use './collapse';
 @use './dialog';
 @use './divider';
+@use './drawer';
 @use './dropzone';
 @use './dropzone-compact';
 @use './empty-state-compact';
@@ -99,6 +100,7 @@
   @include collapse.include;
   @include dialog.include;
   @include divider.include;
+  @include drawer.include;
   @include dropzone.include;
   @include dropzone-compact.include;
   @include empty-state-compact.include;
