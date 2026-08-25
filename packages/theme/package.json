@@ -10,6 +10,9 @@
     "./*": {
       "sass": "./lib/*"
     },
+    "./baseline": {
+      "sass": "./lib/baseline/_index.scss"
+    },
     "./components": {
       "sass": "./lib/components/_index.scss"
     },

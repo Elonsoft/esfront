@@ -1,0 +1,50 @@
+@mixin include() {
+  html {
+    box-sizing: border-box;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+
+    // Fix font resize problem in iOS.
+    // stylelint-disable-next-line property-no-vendor-prefix
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    color: var(--es-mono-a-a900);
+    margin: 0;
+
+    // Add support for document.body.requestFullScreen().
+    // Other elements, if background transparent, are not supported.
+    &::backdrop {
+      background-color: var(--es-surface-background);
+    }
+
+    @media print {
+      background-color: var(--es-white-500);
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+}

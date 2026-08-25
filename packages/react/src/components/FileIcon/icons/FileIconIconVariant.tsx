@@ -7,7 +7,7 @@ export const FileIconIconVariant = React.forwardRef<SVGPathElement, SvgIconProps
     return (
       <SvgIcon
         height={props.height}
-        style={{ width: `${props.width}px`, height: `${props.height}px`, fill: 'none', overflow: 'visible' }}
+        style={{ width: props.width, height: props.height, fill: 'none', overflow: 'visible' }}
         viewBox="0 0 36 48"
         width={props.width}
         {...props}
