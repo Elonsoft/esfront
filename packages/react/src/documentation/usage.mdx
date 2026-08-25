@@ -18,6 +18,7 @@ Here's a quick example to get you started:
 ```scss
 @use '@esfront/theme/settings';
 
+@use '@esfront/theme/baseline';
 @use '@esfront/theme/components';
 @use '@esfront/theme/utilities';
 
@@ -26,6 +27,7 @@ Here's a quick example to get you started:
 
 @include settings.include;
 
+@include baseline.include;
 @include components.include;
 @include utilities.include;
 
@@ -34,6 +36,15 @@ html {
 
   @include colorsPresets.light;
   @include shadowsPresets.light;
+}
+```
+
+The `baseline` layer is an opt-in set of global element styles. It does not set a font family, so declare the one your
+theme uses yourself:
+
+```scss
+body {
+  font-family: 'Nunito Sans', sans-serif;
 }
 ```
 

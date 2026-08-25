@@ -30,6 +30,7 @@
   )
 );
 
+@use '../lib/baseline';
 @use '../lib/utilities';
 @use '../lib/components';
 
@@ -37,6 +38,7 @@
 @use '../lib/presets/shadows' as shadowsPresets;
 
 @include settings.include;
+@include baseline.include;
 @include utilities.include;
 @include components.include;
 

@@ -18,6 +18,7 @@ npx install-peerdeps --dev @esfront/theme
 
 ```scss
 @use '@esfront/theme/settings';
+@use '@esfront/theme/baseline';
 @use '@esfront/theme/utilities';
 @use '@esfront/theme/components';
 
@@ -25,6 +26,7 @@ npx install-peerdeps --dev @esfront/theme
 @use '@esfront/theme/presets/shadows' as shadowsPresets;
 
 @include settings.include;
+@include baseline.include;
 @include components.include;
 @include utilities.include;
 
@@ -38,6 +40,17 @@ npx install-peerdeps --dev @esfront/theme
     @include colorsPresets.dark;
     @include shadowsPresets.dark;
   }
+}
+```
+
+### Baseline
+
+The `baseline` layer is an opt-in set of global element styles. It does not set a font family or any typography level,
+so an application is free to define its own:
+
+```scss
+body {
+  font-family: 'Nunito Sans', sans-serif;
 }
 ```
 

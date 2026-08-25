@@ -2,6 +2,7 @@
 
 @use '@esfront/theme/settings';
 
+@use '@esfront/theme/baseline';
 @use '@esfront/theme/components';
 @use '@esfront/theme/utilities';
 
@@ -10,8 +11,13 @@
 
 @include settings.include;
 
+@include baseline.include;
 @include components.include;
 @include utilities.include;
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
 
 html {
   @include colorsPresets.common;
