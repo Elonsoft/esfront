@@ -5,10 +5,10 @@ import { SFSFiltersProps } from './SFSFilters.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import Drawer from '@mui/material/Drawer';
 
 import { IconCloseLineW600, IconFilterLineW300 } from '../../../icons';
 import { Button } from '../../Button';
+import { Drawer } from '../../Drawer';
 import { SFSButton } from '../SFSButton';
 
 export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {

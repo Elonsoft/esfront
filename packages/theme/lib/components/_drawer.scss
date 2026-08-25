@@ -1,0 +1,87 @@
+@mixin include() {
+  .es-drawer {
+    &--docked {
+      display: flex;
+      flex: 0 0 auto;
+
+      &.es-drawer--anchor-top,
+      &.es-drawer--anchor-bottom {
+        flex-direction: column;
+      }
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &__paper {
+      background-color: var(--es-surface-600);
+      display: flex;
+      flex-direction: column;
+
+      // We disable the focus ring for mouse, touch and keyboard users.
+      outline: 0;
+      overflow-y: auto;
+
+      &--temporary {
+        position: fixed;
+
+        &.es-drawer__paper--anchor-left {
+          box-shadow: var(--es-shadow-right-700);
+          height: 100%;
+          left: 0;
+          top: 0;
+        }
+
+        &.es-drawer__paper--anchor-right {
+          box-shadow: var(--es-shadow-left-700);
+          height: 100%;
+          right: 0;
+          top: 0;
+        }
+
+        &.es-drawer__paper--anchor-top {
+          box-shadow: var(--es-shadow-down-700);
+          left: 0;
+          max-height: 100%;
+          right: 0;
+          top: 0;
+        }
+
+        &.es-drawer__paper--anchor-bottom {
+          bottom: 0;
+          box-shadow: var(--es-shadow-up-700);
+          left: 0;
+          max-height: 100%;
+          right: 0;
+        }
+
+        @media print {
+          box-shadow: none;
+        }
+      }
+
+      // Unlike the temporary variant, a docked paper takes part in the regular document flow, so that a persistent
+      // drawer can be laid out next to the page content without being positioned by hand.
+      &--docked {
+        position: relative;
+
+        &.es-drawer__paper--anchor-left {
+          border-right: 1px solid var(--es-mono-a-a100);
+        }
+
+        &.es-drawer__paper--anchor-right {
+          border-left: 1px solid var(--es-mono-a-a100);
+        }
+
+        &.es-drawer__paper--anchor-top {
+          border-bottom: 1px solid var(--es-mono-a-a100);
+        }
+
+        &.es-drawer__paper--anchor-bottom {
+          border-top: 1px solid var(--es-mono-a-a100);
+        }
+      }
+    }
+  }
+}
