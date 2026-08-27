@@ -18,6 +18,7 @@ export type { UseIsFocusVisibleResult } from './useIsFocusVisible';
 export { useIsFocusVisible } from './useIsFocusVisible';
 export { useLatest } from './useLatest';
 export { useLocalStorage } from './useLocalStorage';
+export { useMediaQuery } from './useMediaQuery';
 export { useMenu } from './useMenu';
 export { useMenuAim } from './useMenuAim';
 export { useMenuVisibility } from './useMenuVisibility';
