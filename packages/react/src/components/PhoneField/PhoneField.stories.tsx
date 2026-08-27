@@ -3,13 +3,12 @@ import { useState } from 'react';
 import { Controls, Description, Markdown, Primary, Stories, Subtitle, Title } from '@storybook/addon-docs/blocks';
 import { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
-import { capitalize } from '@mui/material/utils';
-
 import requirements from './PhoneField.stories.requirements.md?raw';
 import { PhoneField } from '.';
 
 import { ReferencesList } from '../../../.storybook/components/ReferencesList';
 import { IconGlobalLineW500 } from '../../icons';
+import { capitalize } from '../../utils';
 import { Button } from '../Button';
 import * as Flags from '../Flags/icons';
 

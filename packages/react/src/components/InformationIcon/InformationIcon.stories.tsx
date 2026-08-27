@@ -1,11 +1,9 @@
 import { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 
-import { ClickAwayListener } from '@mui/material';
-
-// import Tooltip from '@mui/material/Tooltip';
 import { InformationIcon } from './InformationIcon';
 
 import { useBoolean } from '../../hooks';
+import { ClickAwayListener } from '../ClickAwayListener';
 import { Tooltip } from '../Tooltip';
 
 const getTooltipText = (context: StoryContext<unknown>) => {

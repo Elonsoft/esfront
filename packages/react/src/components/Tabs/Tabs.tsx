@@ -18,12 +18,12 @@ import { TabsProps } from './Tabs.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { debounce, ownerDocument, ownerWindow, useEventCallback } from '@mui/material/utils';
 
 import { animate } from './animate';
 import { TabScrollButton } from './TabScrollButton';
 
-import { useEnhancedEffect } from '../../hooks';
+import { useEnhancedEffect, useEvent } from '../../hooks';
+import { debounce, ownerDocument, ownerWindow } from '../../utils';
 import { Divider } from '../Divider';
 
 type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
@@ -275,7 +275,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     return { tabsMeta, tabMeta };
   };
 
-  const updateIndicatorState = useEventCallback(() => {
+  const updateIndicatorState = useEvent(() => {
     const { tabsMeta, tabMeta } = getTabsMeta();
     let startValue = 0;
     let modifiedIndicatorWidth = 0;
@@ -447,7 +447,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     return conditionalElements;
   };
 
-  const scrollSelectedIntoView = useEventCallback((animation) => {
+  const scrollSelectedIntoView = useEvent((animation: boolean) => {
     const { tabsMeta, tabMeta } = getTabsMeta();
     const tabScrollButtonOffset = document.querySelector('es-tab-scroll-button')?.getBoundingClientRect().width;
 
@@ -466,7 +466,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     }
   });
 
-  const updateScrollButtonState = useEventCallback(() => {
+  const updateScrollButtonState = useEvent(() => {
     if (scrollable && scrollButtons !== false) {
       setUpdateScrollObserver(!updateScrollObserver);
     }

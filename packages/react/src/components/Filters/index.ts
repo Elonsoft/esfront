@@ -1,6 +1,4 @@
 export { Filters } from './Filters';
-export type { FiltersClasses, FiltersClassKey } from './Filters.classes';
-export { filtersClasses } from './Filters.classes';
 export type { FiltersProps } from './Filters.types';
 export * from './FiltersContent';
 export * from './FiltersFilter';

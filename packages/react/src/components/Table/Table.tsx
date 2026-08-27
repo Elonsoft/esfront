@@ -5,7 +5,6 @@ import { TableProps } from './Table.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { useForkRef } from '@mui/material/utils';
 
 import { TableContext } from './Table.context';
 import { TableBodyContext } from './TableBody';
@@ -14,6 +13,8 @@ import { TableHeadContext } from './TableHead';
 import { TableScrollbarContext } from './TableScrollbar';
 import { useTableScrollSync } from './useTableScrollSync';
 import { useTableStickyOffset } from './useTableStickyOffset';
+
+import { useForkRef } from '../../hooks';
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 

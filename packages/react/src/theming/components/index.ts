@@ -1,17 +1,8 @@
 import { Components, CssVarsTheme, Theme, TypographyVariantsOptions } from '@mui/material/styles';
 
-import { createList, createMenu } from './menu';
-export { createMenu } from './menu';
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const createComponents = (theme: Theme, typography: TypographyVariantsOptions) => {
-  const MuiMenu = createMenu(theme, typography);
-
-  const MuiList = createList(theme, typography);
-
-  const components: Components<Omit<Theme, 'components' | 'palette'> & CssVarsTheme> = {
-    MuiMenu,
-    MuiList,
-  };
+  const components: Components<Omit<Theme, 'components' | 'palette'> & CssVarsTheme> = {};
 
   return components;
 };

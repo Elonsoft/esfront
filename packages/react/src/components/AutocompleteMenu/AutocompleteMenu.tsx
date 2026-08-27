@@ -19,14 +19,14 @@ import { useOverlayScrollbars } from 'overlayscrollbars-react';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
 import { useIntersectionObserver, useScrollLock } from '../../hooks';
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
+import { ClickAwayListener } from '../ClickAwayListener';
 import { Divider } from '../Divider';
+import { FocusTrap } from '../FocusTrap';
 import { FormFieldAdornment, FormFieldInputElement } from '../FormField';
 import { Grow } from '../Grow';
 import { MenuList } from '../Menu';
@@ -322,7 +322,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
           }}
         >
           <div>
-            <TrapFocus
+            <FocusTrap
               disableAutoFocus={disableAutoFocus}
               disableEnforceFocus={disableEnforceFocus}
               disableRestoreFocus={disableRestoreFocus}
@@ -410,7 +410,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                   </div>
                 </ClickAwayListener>
               </div>
-            </TrapFocus>
+            </FocusTrap>
           </div>
         </Grow>
       )}

@@ -28,6 +28,7 @@ import { CheckboxProps, CheckboxIconProps } from './components/Checkbox';
 import { ChipProps } from './components/Chip';
 import { ChipsProps } from './components/Chips';
 import { ClearButtonProps } from './components/ClearButton';
+import { ClickAwayListenerProps } from './components/ClickAwayListener';
 import { CollapseProps } from './components/Collapse';
 import {
   DialogActionsProps,
@@ -222,6 +223,7 @@ declare module '@mui/material/styles/props' {
     ESChip: ChipProps;
     ESChips: ChipsProps;
     ESClearButton: ClearButtonProps;
+    ESClickAwayListener: ClickAwayListenerProps;
     ESCollapse: CollapseProps;
     ESDialog: DialogProps;
     ESDialogActions: DialogActionsProps;
@@ -470,6 +472,9 @@ declare module '@mui/material/styles/components' {
     };
     ESClearButton?: {
       defaultProps?: ComponentsProps['ESClearButton'];
+    };
+    ESClickAwayListener?: {
+      defaultProps?: ComponentsProps['ESClickAwayListener'];
     };
     ESCollapse?: {
       defaultProps?: ComponentsProps['ESCollapse'];

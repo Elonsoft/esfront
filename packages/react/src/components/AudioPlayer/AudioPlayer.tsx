@@ -5,7 +5,6 @@ import { AudioPlayerProps } from './AudioPlayer.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import TrapFocus from '@mui/material/Unstable_TrapFocus';
 
 import { useAudioPlayerContext } from './AudioPlayer.context';
 
@@ -25,6 +24,7 @@ import {
 } from '../../icons';
 import { Button } from '../Button';
 import { Divider } from '../Divider';
+import { FocusTrap } from '../FocusTrap';
 import { ListItemIcon, ListItemText } from '../ListItem';
 import { MenuList } from '../Menu';
 import { MenuItem } from '../MenuItem';
@@ -742,7 +742,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
         placement="top"
         title={
           isRateMenuOpen ? (
-            <TrapFocus open={isMenuOpen}>
+            <FocusTrap open={isMenuOpen}>
               <div style={{ outline: 'none' }} tabIndex={-1} onKeyDown={onRateMenuKeyDown} onMouseDown={onMouseDown}>
                 <MenuList className="es-audio-player__menu-list">
                   <MenuItem autoFocus className="es-audio-player__menu-item" size="100" onClick={onRateMenuClose}>
@@ -767,9 +767,9 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
                   ))}
                 </MenuList>
               </div>
-            </TrapFocus>
+            </FocusTrap>
           ) : (
-            <TrapFocus open={isMenuOpen}>
+            <FocusTrap open={isMenuOpen}>
               <MenuList className="es-audio-player__menu-list" tabIndex={-1} onMouseDown={onMouseDown}>
                 <MenuItem
                   autoFocus
@@ -797,7 +797,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
                   </MenuItem>
                 )}
               </MenuList>
-            </TrapFocus>
+            </FocusTrap>
           )
         }
         onClose={onMenuClose}
