@@ -9,23 +9,25 @@ import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 # Localization
 
-The default locale is English. If you want to use other locales, use the theme to configure the locale text globally:
+The default locale is English. If you want to use other locales, pass the locale components to the
+`DefaultPropsProvider` to configure the locale text globally:
 
 ```tsx
-import { useMemo } from 'react';
-
-import { ThemeProvider, FormatSize, ru } from '@esfront/react';
-import { ruRU } from '@mui/material/locale';
+import { DefaultPropsProvider, FormatSize, ru } from '@esfront/react';
 
 const Application = () => {
-  const theme = createTheme({}, { ...ruRU, ru });
-
   return (
-    <ThemeProvider theme={theme}>
+    <DefaultPropsProvider value={ru.components}>
       <FormatSize>1024</FormatSize>
-    </ThemeProvider>
+    </DefaultPropsProvider>
   );
 };
+```
+
+A locale is an ordinary provider value, so spread it before your own defaults if you have any:
+
+```tsx
+<DefaultPropsProvider value={{ ...ru.components, ESDrawer: { defaultProps: { anchor: 'right' } } }}>
 ```
 
 You can [find the source](https://github.com/Elonsoft/esfront/blob/master/packages/react/src/components/locale/index.ts)

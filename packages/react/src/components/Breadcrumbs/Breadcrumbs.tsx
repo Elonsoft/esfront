@@ -4,12 +4,11 @@ import { BreadcrumbsProps } from './Breadcrumbs.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { Breadcrumb } from './Breadcrumb/Breadcrumb';
 
 import { useEnhancedEffect, useResizeObserver } from '../../hooks';
 import { IconDotsHorizontal2LineW300 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { TooltipEllipsis } from '../TooltipEllipsis';

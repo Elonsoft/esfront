@@ -4,9 +4,8 @@ import { SwitchBaseProps } from './SwitchBase.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useControlled } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { ButtonBase } from '../ButtonBase';
 import { FormFieldContext } from '../FormField';
 

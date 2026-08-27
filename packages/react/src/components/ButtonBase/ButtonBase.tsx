@@ -4,10 +4,9 @@ import { ButtonBaseProps, ButtonBaseTypeMap } from './ButtonBase.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
 import { useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 import { TouchRipple, useTouchRipple } from '../TouchRipple';
 
 /**

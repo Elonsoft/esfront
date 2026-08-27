@@ -2,7 +2,7 @@
 
 import { CSSProperties, ReactNode } from 'react';
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
+import { OverrideProps } from '../../types';
 
 export interface LinkTypeMap<P = {}, D extends React.ElementType = 'a'> {
   props: P & {

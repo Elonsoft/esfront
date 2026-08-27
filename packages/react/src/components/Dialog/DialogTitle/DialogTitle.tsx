@@ -2,9 +2,8 @@ import { DialogTitleProps } from './DialogTitle.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useStuckSentinel } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 
 export const DialogTitle = (inProps: DialogTitleProps) => {
   const { className, style, sticky, children } = useDefaultProps({

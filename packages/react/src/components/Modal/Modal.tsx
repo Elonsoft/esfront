@@ -4,10 +4,9 @@ import { ModalProps } from './Modal.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useModal } from './useModal';
 
+import { useDefaultProps } from '../../theming';
 import { Backdrop } from '../Backdrop';
 import { FocusTrap } from '../FocusTrap';
 import { Portal } from '../Portal';

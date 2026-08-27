@@ -2,9 +2,8 @@ import { cloneElement, FocusEvent, Fragment, useEffect, useRef } from 'react';
 
 import { FocusTrapProps } from './FocusTrap.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { getActiveElement, getReactElementRef, ownerDocument } from '../../utils';
 
 // Inspired by https://github.com/focus-trap/tabbable

@@ -4,12 +4,11 @@ import { GalleryThumbnailsProps } from './GalleryThumbnails.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useGalleryThumbnailsContext } from './GalleryThumbnails.context';
 
 import { useForkRef } from '../../../hooks';
 import { IconChevronLeftLineW400, IconChevronRightLineW400 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { Swiper, SwiperImperativeActions, useSwiperContext } from '../../Swiper';
 import { useGalleryContext } from '../Gallery.context';

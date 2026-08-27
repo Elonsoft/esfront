@@ -4,9 +4,8 @@ import { TableFootProps } from './TableFoot.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef, useIntersectionObserver } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 
 export const TableFoot = memo(
   forwardRef<HTMLDivElement, TableFootProps>(function TableFoot(inProps, inRef) {

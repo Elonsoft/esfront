@@ -4,7 +4,7 @@ import { TableItemProps } from './TableItem.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const TableItem = forwardRef<HTMLDivElement, TableItemProps>(function TableItem(inProps, ref) {
   const { className, style, avatar, primary, secondary } = useDefaultProps({

@@ -2,7 +2,7 @@ import { FileInfoMetaSeparatorProps } from './FileInfoMetaSeparator.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const FileInfoMetaSeparator = (inProps: FileInfoMetaSeparatorProps) => {
   const { className, style } = useDefaultProps({ props: inProps, name: 'ESFileInfoMetaSeparator' });

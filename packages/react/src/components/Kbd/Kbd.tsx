@@ -2,7 +2,7 @@ import { KbdProps } from './Kbd.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * Display keyboard button or keys combination.

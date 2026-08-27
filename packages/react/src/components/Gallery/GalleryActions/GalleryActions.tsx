@@ -2,9 +2,8 @@ import { GalleryActionsProps } from './GalleryActions.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconCloseLineW600, IconImageMultipleLineW500 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { useGalleryContext } from '../Gallery.context';
 import { GalleryActionsButton } from '../GalleryActionsButton';
 import { useGalleryThumbnailsContext } from '../GalleryThumbnails';

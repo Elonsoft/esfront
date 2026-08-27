@@ -4,10 +4,9 @@ import { ChipsProps } from './Chips.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useBoolean, useEnhancedEffect, useResizeObserver } from '../../hooks';
 import { IconChevronDownLineW200, IconChevronUpLineW200 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
 
 export const Chips = (inProps: ChipsProps) => {

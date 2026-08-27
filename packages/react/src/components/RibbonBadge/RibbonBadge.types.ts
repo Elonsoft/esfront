@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
-
-import { OverridableStringUnion } from '@mui/types';
+import { OverridableStringUnion, OverrideProps } from '../../types';
 
 export interface RibbonBadgePropsOrientationOverrides {}
 

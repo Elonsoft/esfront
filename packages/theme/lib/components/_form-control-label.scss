@@ -11,7 +11,7 @@
       flex-shrink: 0;
     }
 
-    &:has(.Mui-disabled, .es-checkbox--disabled, .es-radio--disabled) {
+    &:has(.es-checkbox--disabled, .es-radio--disabled) {
       cursor: not-allowed;
 
       & .es-form-control-label__label {

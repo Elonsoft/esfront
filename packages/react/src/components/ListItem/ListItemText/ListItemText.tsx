@@ -2,7 +2,7 @@ import { ListItemTextProps } from './ListItemText.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const ListItemText = (inProps: ListItemTextProps) => {
   const {

@@ -1,6 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
-import copy from 'rollup-plugin-copy';
 import external from 'rollup-plugin-peer-deps-external';
 import progress from 'rollup-plugin-progress';
 import typescript from 'rollup-plugin-typescript2';
@@ -34,9 +33,6 @@ export default {
       include: ['*.ts', '*.tsx', '**/*.ts', '**/*.tsx'],
     }),
     commonjs(),
-    copy({
-      targets: [{ src: ['./src/overrides.d.ts'], dest: './lib/' }],
-    }),
     progress(),
   ],
   onwarn: (warning, warn) => {

@@ -2,8 +2,7 @@ import { CalendarButtonProps } from './CalendarButton.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../../theming';
 import { ButtonBase } from '../../ButtonBase';
 import { Tooltip } from '../../Tooltip';
 

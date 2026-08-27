@@ -4,7 +4,7 @@ import { CalendarHeadProps } from './CalendarHead.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 /** The days list for the calendar. */
 export const CalendarHead = (inProps: CalendarHeadProps) => {

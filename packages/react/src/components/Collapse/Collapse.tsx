@@ -5,12 +5,11 @@ import { CollapseProps } from './Collapse.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef, useTimeout } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { duration, getAutoHeightDuration } from '../../transitions';
 import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
-import { getTransitionProps, omitOwnerState } from '../../transitions/utils';
+import { getTransitionProps } from '../../transitions/utils';
 
 /**
  * The Collapse transition expands a container from a collapsed size to the size of its content.
@@ -144,8 +143,6 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(function Colla
       {...other}
     >
       {(state, childProps) => {
-        const restChildProps = omitOwnerState(childProps);
-
         return (
           <div
             ref={handleRef}
@@ -157,7 +154,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(function Colla
               state === 'exited' && !inProp && collapsedSize === '0px' && 'es-collapse--hidden'
             )}
             style={{ [isHorizontal ? 'minWidth' : 'minHeight']: collapsedSize, ...style }}
-            {...(restChildProps as HTMLAttributes<HTMLDivElement>)}
+            {...(childProps as HTMLAttributes<HTMLDivElement>)}
           >
             <div ref={wrapperRef} className={clsx('es-collapse__wrapper', `es-collapse__wrapper--${orientation}`)}>
               <div className={clsx('es-collapse__wrapper-inner', `es-collapse__wrapper-inner--${orientation}`)}>

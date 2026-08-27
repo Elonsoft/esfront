@@ -4,9 +4,8 @@ import { DropzoneCompactProps } from './DropzoneCompact.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useDragOver } from '../../hooks/useDragOver';
+import { useDefaultProps } from '../../theming';
 
 /**
  * This component allows to create droppable area when using dnd.

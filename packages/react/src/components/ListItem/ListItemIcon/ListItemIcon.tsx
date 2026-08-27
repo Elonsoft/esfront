@@ -2,7 +2,7 @@ import { ListItemIconProps } from './ListItemIcon.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const ListItemIcon = (inProps: ListItemIconProps) => {
   const { className, style, children } = useDefaultProps({

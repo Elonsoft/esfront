@@ -2,7 +2,7 @@ import { PageHGroupBreadcrumbsProps } from './PageHGroupBreadcrumbs.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const PageHGroupBreadcrumbs = (inProps: PageHGroupBreadcrumbsProps) => {
   const { className, children, style } = useDefaultProps({

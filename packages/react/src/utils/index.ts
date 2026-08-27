@@ -1,5 +1,3 @@
-export type { AppendOwnerStateReturnType } from './appendOwnerState';
-export { appendOwnerState } from './appendOwnerState';
 export { capitalize } from './capitalize';
 export { clamp } from './clamp';
 export { createChainedFunction } from './createChainedFunction';
@@ -12,10 +10,10 @@ export { getReactElementRef } from './getReactElementRef';
 export { getScrollbarSize } from './getScrollbarSize';
 export { isFilled } from './isFilled';
 export { isFocusVisible } from './isFocusVisible';
-export { isHostComponent } from './isHostComponent';
 export { lockScroll } from './lockScroll';
 export { ownerDocument } from './ownerDocument';
 export { ownerWindow } from './ownerWindow';
+export { resolveProps } from './resolveProps';
 export { setRef } from './setRef';
 export { Timeout } from './Timeout';
 export { visuallyHidden } from './visuallyHidden';

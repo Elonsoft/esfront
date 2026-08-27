@@ -2,7 +2,7 @@ import { GalleryMetaTextProps } from './GalleryMetaText.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const GalleryMetaText = (inProps: GalleryMetaTextProps) => {
   const { children, className, style, primary } = useDefaultProps({

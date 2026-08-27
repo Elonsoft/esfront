@@ -4,9 +4,9 @@ import { PaginationProps } from './Pagination.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { PaginationContext } from './Pagination.context';
+
+import { useDefaultProps } from '../../theming';
 
 /**
  * The Pagination component enables the user to select a specific page from a range of pages.

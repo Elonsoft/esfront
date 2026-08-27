@@ -4,9 +4,8 @@ import { PopoverAnchorEl, PopoverOrigin, PopoverProps } from './Popover.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { debounce } from '../../transitions/debounce';
 import { ownerDocument, ownerWindow } from '../../utils';
 import { Grow } from '../Grow';
@@ -261,7 +260,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(function Popover
 
   let transitionDuration: PopoverProps['transitionDuration'] = transitionDurationProp;
 
-  if (transitionDurationProp === 'auto' && !(Transition as typeof Grow).muiSupportAuto) {
+  if (transitionDurationProp === 'auto' && !(Transition as typeof Grow).esSupportAuto) {
     transitionDuration = undefined;
   }
 

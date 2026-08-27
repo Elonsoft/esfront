@@ -4,9 +4,9 @@ import { AvatarGroupProps } from './AvatarGroup.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { getCuttingOffset, getMaskImage } from './AvatarGroup.utils';
+
+import { useDefaultProps } from '../../theming';
 
 /**
  * AvatarGroup renders its children as a stack.

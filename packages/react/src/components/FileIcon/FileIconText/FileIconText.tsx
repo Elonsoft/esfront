@@ -2,7 +2,7 @@ import { FileIconTextProps } from './FileIconText.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const FileIconText = (inProps: FileIconTextProps) => {
   const { className, style, children } = useDefaultProps({

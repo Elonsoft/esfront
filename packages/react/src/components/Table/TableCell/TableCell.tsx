@@ -4,13 +4,12 @@ import { TableCellProps } from './TableCell.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useTableCellContext } from './TableCell.context';
 
 import { useForkRef } from '../../../hooks';
 import { useLatest } from '../../../hooks/useLatest';
 import { IconCheckLineW400, IconCloseLineW350, IconPencilFillW300 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
 const RESIZE_STEPS: Record<string, number | undefined> = {

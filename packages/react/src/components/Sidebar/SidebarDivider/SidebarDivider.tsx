@@ -2,8 +2,7 @@ import { SidebarDividerProps } from './SidebarDivider.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../../theming';
 import { Divider } from '../../Divider';
 import { useSidebarContext } from '../Sidebar.context';
 

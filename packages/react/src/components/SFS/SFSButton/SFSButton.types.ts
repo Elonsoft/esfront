@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
-
+import { OverrideProps } from '../../../types';
 import { ExtendButtonTypeMap } from '../../Button';
 
 export interface SFSButtonOwnProps {

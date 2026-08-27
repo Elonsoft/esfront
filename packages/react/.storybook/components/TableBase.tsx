@@ -1,41 +1,21 @@
-/* eslint-disable no-restricted-imports, no-use-before-define */
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../src/overrides.d.ts" />
-
-import { styled } from '@mui/material/styles';
-import { tableCellClasses } from '@mui/material';
-import MuiTableContainer from '@mui/material/TableContainer';
-import MuiTableRow, { tableRowClasses } from '@mui/material/TableRow';
+/* eslint-disable no-use-before-define */
+import { ReactNode } from 'react';
 
 import json from '../../src/typedoc.json';
 
-export const TableContainer = styled(MuiTableContainer)(() => ({
-  fontFamily: 'monospace',
-}));
+import './Table.scss';
 
-export const TableRow = styled(MuiTableRow)(() => ({
-  [`&.${tableRowClasses.head}`]: {
-    backgroundColor: 'var(--es-mono-a-a50)',
-  },
-  [`& .${tableCellClasses.root}`]: {
-    borderBottom: `1px solid var(--es-mono-a-a150)`,
-  },
-  [`&.${tableRowClasses.head}:last-child .${tableCellClasses.root}`]: {
-    borderBottom: `1px solid var(--es-mono-a-a150)`,
-  },
-}));
+export const TableContainer = ({ children }: { children: ReactNode }) => (
+  <div className="sb-table-container">
+    <table className="sb-table">{children}</table>
+  </div>
+);
 
-export const TableDescription = styled('div')(() => ({
-  marginBottom: 4,
-}));
+export const TableDescription = ({ children }: { children: ReactNode }) => (
+  <div className="sb-table__description">{children}</div>
+);
 
-export const TableCode = styled('code')(() => ({
-  display: 'inline-block',
-  padding: '3px 5px',
-  borderRadius: 3,
-  backgroundColor: 'var(--es-mono-a-a50)',
-  border: `1px solid var(--es-mono-a-a150)`,
-}));
+export const TableCode = ({ children }: { children: ReactNode }) => <code className="sb-table__code">{children}</code>;
 
 export const getDescription = (c) => {
   return c.comment?.summary?.map((e) => e.text).join('') || null;

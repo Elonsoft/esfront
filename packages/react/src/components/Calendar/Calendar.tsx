@@ -2,11 +2,10 @@ import { CalendarProps } from './Calendar.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { CalendarButton, CalendarButtonProps } from './CalendarButton';
 import { useCalendar } from './useCalendar';
 
+import { useDefaultProps } from '../../theming';
 import { useDateAdapterContext } from '../DateAdapter';
 
 /** The calendar allows users to pick a date or a range of dates. */

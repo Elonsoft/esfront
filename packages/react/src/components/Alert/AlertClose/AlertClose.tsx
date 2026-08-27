@@ -2,9 +2,8 @@ import { AlertCloseProps } from './AlertClose.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconCloseLineW500 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
 export const AlertClose = (inProps: AlertCloseProps) => {

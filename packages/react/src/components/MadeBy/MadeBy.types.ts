@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
+import { OverrideProps } from '../../types';
 
 export interface MadeByTypeMap<P = {}, D extends React.ElementType = 'div'> {
   props: P & {

@@ -4,9 +4,8 @@ import { LoadingButtonTypeMap } from './LoadingButton.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useId } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { Button, ButtonOwnProps, ExtendButton } from '../Button';
 import { SpinnerFadingDots } from '../Spinner';
 

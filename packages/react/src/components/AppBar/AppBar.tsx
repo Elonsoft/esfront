@@ -4,9 +4,8 @@ import { AppBarProps } from './AppBar.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useIntersectionObserver, useResizeObserver, useStuckSentinel } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 
 /**
  * The AppBar displays information and actions relating to the current screen.

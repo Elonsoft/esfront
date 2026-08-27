@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { OverridableComponent, OverridableTypeMap, OverrideProps } from '@mui/material/OverridableComponent';
-
+import { OverridableComponent, OverridableTypeMap, OverrideProps } from '../../types';
 import { TouchRippleParams } from '../TouchRipple';
 
 export interface ButtonBaseOwnProps {

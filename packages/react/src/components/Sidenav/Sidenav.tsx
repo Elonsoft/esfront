@@ -4,11 +4,10 @@ import { SidenavProps } from './Sidenav.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { SidenavContext } from './Sidenav.context';
 
 import { useLatest, useMenuAim, useWindowEventListener } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 
 /**
  * The Sidenav component is a fixed-position toggleable slide out box.

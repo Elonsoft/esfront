@@ -4,9 +4,8 @@ import { SFSFiltersProps } from './SFSFilters.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconCloseLineW600, IconFilterLineW300 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { Drawer } from '../../Drawer';
 import { SFSButton } from '../SFSButton';

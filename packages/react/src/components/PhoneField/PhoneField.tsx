@@ -4,8 +4,6 @@ import { PhoneFieldProps } from './PhoneField.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { usePhoneFieldContext } from './PhoneField.context';
 import {
   adjustSelection,
@@ -18,6 +16,7 @@ import {
 
 import { useControlled, useEvent, useLatest, useMenu, useMenuVisibility } from '../../hooks';
 import { IconGlobalLineW500, IconMenuDownFillW300 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { AutocompleteMenu } from '../AutocompleteMenu';
 import { Button } from '../Button';
 import { FormFieldAdornment, FormFieldInputElement } from '../FormField';

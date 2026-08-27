@@ -4,7 +4,7 @@ import { AvatarProps } from './Avatar.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 function useLoaded(src: string): 'loaded' | 'error' | null {
   const [loaded, setLoaded] = useState<'loaded' | 'error' | null>(null);

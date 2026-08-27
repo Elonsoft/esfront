@@ -4,15 +4,14 @@ import { InformationIconProps, InformationIconTypeMap } from './InformationIcon.
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
 import {
   IconInformationFillW200,
   IconInformationLineW200,
   IconQuestionFillW200,
   IconQuestionLineW200,
 } from '../../icons';
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 
 const defaultIconMapping = {
   info: IconInformationLineW200,

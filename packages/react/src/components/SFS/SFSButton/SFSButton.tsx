@@ -4,8 +4,7 @@ import { SFSButtonTypeMap } from './SFSButton.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../../theming';
 import { Button, ExtendButton } from '../../Button';
 
 export const SFSButton = forwardRef(function SFSButton(inProps, ref) {

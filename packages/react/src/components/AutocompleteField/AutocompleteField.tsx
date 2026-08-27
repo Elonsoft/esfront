@@ -2,9 +2,8 @@ import { AutocompleteFieldProps } from './AutocompleteField.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useControlled, useId } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { Autocomplete } from '../Autocomplete';
 import { FormField, FormFieldHelperText, FormFieldLabel } from '../FormField';
 

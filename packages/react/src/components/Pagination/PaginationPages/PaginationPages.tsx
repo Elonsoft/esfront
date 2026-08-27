@@ -4,8 +4,6 @@ import { PaginationPagesProps } from './PaginationPages.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useDocumentEventListener, usePagination } from '../../../hooks';
 import {
   IconArrowLeft2LineW300,
@@ -14,6 +12,7 @@ import {
   IconChevronRightLineW400,
   IconDotsHorizontalLineW100,
 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { ButtonBase } from '../../ButtonBase';
 import { TextField } from '../../TextField';

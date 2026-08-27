@@ -4,9 +4,8 @@ import { TabScrollButtonProps } from './TabScrollButton.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconChevronLeftLineW400, IconChevronRightLineW400 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { ButtonBase } from '../../ButtonBase';
 import { Divider } from '../../Divider';
 

@@ -4,9 +4,9 @@ import { SidebarMenuProps } from './SidebarMenu.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { SidebarMenuContext } from './SidebarMenu.context';
+
+import { useDefaultProps } from '../../../theming';
 
 export const SidebarMenu = (inProps: SidebarMenuProps) => {
   const {

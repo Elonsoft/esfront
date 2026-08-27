@@ -4,11 +4,10 @@ import { ChipProps, ChipTypeMap } from './Chip.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
 import { useForkRef } from '../../hooks';
 import { IconCloseLineW350 } from '../../icons';
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 import { Button } from '../Button';
 import { ButtonBase } from '../ButtonBase';
 

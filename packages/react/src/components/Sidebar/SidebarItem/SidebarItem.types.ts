@@ -2,7 +2,7 @@
 
 import { ElementType, ReactNode } from 'react';
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
+import { OverrideProps } from '../../../types';
 
 export interface SidebarItemTypeMap<P = {}, D extends ElementType = `li`> {
   props: P & {

@@ -2,9 +2,8 @@ import { DialogArrowProps } from './DialogArrow.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconArrowLeftLineW500, IconArrowRightLineW500 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
 export const DialogArrow = (inProps: DialogArrowProps) => {

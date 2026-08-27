@@ -2,9 +2,8 @@ import { forwardRef } from 'react';
 
 import { TextFieldProps } from './TextField.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useId } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { FormField, FormFieldField, FormFieldHelperText, FormFieldInput, FormFieldLabel } from '../FormField';
 
 export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(function TextField(inProps: TextFieldProps, ref) {

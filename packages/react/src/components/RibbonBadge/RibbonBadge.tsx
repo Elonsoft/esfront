@@ -2,9 +2,8 @@ import { RibbonBadgeProps, RibbonBadgeTypeMap } from './RibbonBadge.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 import { ButtonBase } from '../ButtonBase';
 
 export const RibbonBadge: OverridableComponent<RibbonBadgeTypeMap> = (inProps: RibbonBadgeProps) => {

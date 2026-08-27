@@ -2,7 +2,7 @@ import { ErrorPageLogoProps } from './ErrorPageLogo.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const ErrorPageLogo = (inProps: ErrorPageLogoProps) => {
   const { children, className, style } = useDefaultProps({

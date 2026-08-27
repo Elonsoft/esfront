@@ -2,7 +2,7 @@ import { FiltersProps } from './Filters.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /** The collection of components for building a ecommerce filters. */
 export const Filters = (inProps: FiltersProps) => {

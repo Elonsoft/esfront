@@ -4,8 +4,7 @@ import { TableTextProps } from './TableText.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../../theming';
 import { TooltipEllipsis } from '../../TooltipEllipsis';
 
 export const TableText = memo(

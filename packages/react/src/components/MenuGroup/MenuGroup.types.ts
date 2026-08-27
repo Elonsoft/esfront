@@ -2,7 +2,7 @@
 
 import { CSSProperties, ReactNode } from 'react';
 
-import { OverridableStringUnion } from '@mui/types';
+import { OverridableStringUnion } from '../../types';
 
 export interface MenuGroupPaddingBottomOverrides {}
 

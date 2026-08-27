@@ -4,8 +4,7 @@ import { DrawerAnchor, DrawerProps } from './Drawer.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../theming';
 import { duration, TransitionProps } from '../../transitions';
 import { createChainedFunction } from '../../utils';
 import { Backdrop } from '../Backdrop';

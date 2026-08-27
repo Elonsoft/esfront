@@ -4,9 +4,8 @@ import { SwitchProps } from './Switch.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useControlled } from '../../hooks/useControlled';
+import { useDefaultProps } from '../../theming';
 import { ButtonBase } from '../ButtonBase';
 
 /**

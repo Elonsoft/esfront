@@ -2,7 +2,7 @@ import { TextFieldGroupProps } from './TextFieldGroup.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * This component allows to group multiple text fields for related information.

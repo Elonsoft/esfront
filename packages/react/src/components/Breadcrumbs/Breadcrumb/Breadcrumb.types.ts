@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 import { ReactNode } from 'react';
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
-
+import { OverrideProps } from '../../../types';
 import { Button } from '../../Button';
 
 export interface BreadcrumbTypeMap<P = {}, D extends React.ElementType = typeof Button> {

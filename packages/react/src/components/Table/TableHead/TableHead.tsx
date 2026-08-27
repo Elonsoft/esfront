@@ -4,11 +4,10 @@ import { TableHeadProps } from './TableHead.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useTableHeadContext } from './TableHead.context';
 
 import { useForkRef, useIntersectionObserver } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { TableCellContext } from '../TableCell';
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'head' as const };

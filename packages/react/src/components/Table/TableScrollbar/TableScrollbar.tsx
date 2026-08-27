@@ -4,11 +4,10 @@ import { TableScrollbarProps } from './TableScrollbar.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useTableScrollbarContext } from './TableScrollbar.context';
 
 import { useForkRef } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 
 export const TableScrollbar = memo(
   forwardRef<HTMLDivElement, TableScrollbarProps>(function TableScrollbar(inProps, inRef) {

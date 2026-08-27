@@ -4,11 +4,10 @@ import { DropzoneProps, FileError, FileRejection } from './Dropzone.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { validateFileType } from './validateFileType';
 
 import { useDocumentEventListener, useDragOver } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { ButtonBase } from '../ButtonBase';
 
 /**

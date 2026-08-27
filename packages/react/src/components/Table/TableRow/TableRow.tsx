@@ -4,9 +4,8 @@ import { TableRowProps, TableRowTypeMap } from './TableRow.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
+import { useDefaultProps } from '../../../theming';
+import { OverridableComponent } from '../../../types';
 import { useTableContext } from '../Table.context';
 
 export const TableRow = memo(

@@ -2,9 +2,8 @@ import { DialogActionsProps } from './DialogActions.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useStuckSentinel } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 
 export const DialogActions = (inProps: DialogActionsProps) => {
   const { className, style, sticky, children } = useDefaultProps({

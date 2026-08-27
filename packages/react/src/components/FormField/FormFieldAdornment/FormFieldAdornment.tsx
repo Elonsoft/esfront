@@ -4,9 +4,8 @@ import { FormFieldAdornmentProps } from './FormFieldAdornment.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useEnhancedEffect, useForkRef } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { useFormFieldContext } from '../FormField.context';
 
 let resizeObserver: ResizeObserver | null = null;

@@ -2,7 +2,7 @@ import { GalleryMetaSeparatorProps } from './GalleryMetaSeparator.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const GalleryMetaSeparator = (inProps: GalleryMetaSeparatorProps) => {
   const { className, style } = useDefaultProps({

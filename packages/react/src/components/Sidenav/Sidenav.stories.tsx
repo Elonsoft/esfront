@@ -2,7 +2,7 @@ import { ComponentProps, Fragment, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { styled } from '@mui/material/styles';
+import clsx from 'clsx';
 
 import { Sidenav } from './Sidenav';
 import { SidenavContext } from './Sidenav.context';
@@ -19,31 +19,11 @@ import { SidebarSpacer } from '../Sidebar/SidebarSpacer';
 import { SidebarToggle } from '../Sidebar/SidebarToggle';
 import { TextField } from '../TextField';
 
-const SearchField = styled(TextField)(() => ({
-  '&.es-form-field': {
-    margin: '12px 16px 16px',
+import './Sidenav.stories.scss';
 
-    '& .es-form-field-field': {
-      padding: '0 4px',
-
-      '& .es-button': {
-        '--icon': 'var(--es-mono-a-a500)',
-      },
-    },
-
-    '& .es-form-field-adornment--position--start': {
-      padding: '0 4px 0 0',
-
-      '& .es-svg-icon': {
-        color: 'var(--es-mono-a-a400)',
-      },
-    },
-
-    '& .es-form-field-input::placeholder': {
-      color: 'var(--es-mono-a-a500)',
-    },
-  },
-}));
+const SearchField = (props: ComponentProps<typeof TextField>) => (
+  <TextField {...props} className={clsx('sidenav-story-search', props.className)} />
+);
 
 const SidebarHeading = (props: { title: string }) => (
   <>
@@ -63,19 +43,8 @@ const SidebarCaption = (props: { title: string }) => (
   </div>
 );
 
-const SidebarMenuItem = styled(SidebarItem)(() => ({
-  margin: '0 16px',
-
-  [`& .es-list-item.es-sidebar-item__button`]: {
-    padding: '4px',
-  },
-}));
-
-const Content = styled('div')<{ ownerState: { isOpen?: boolean; width?: number } }>(
-  ({ ownerState: { isOpen, width } }) => ({
-    transition: 'padding-left 0.2s',
-    paddingLeft: `${isOpen ? width : 0}px`,
-  })
+const SidebarMenuItem = (props: ComponentProps<typeof SidebarItem>) => (
+  <SidebarItem {...props} className={clsx('sidenav-story-menu-item', props.className)} />
 );
 
 const MIN_WIDTH = 220;
@@ -141,8 +110,6 @@ export const Demo: Story = {
     const [page, setPage] = useState(1);
 
     const ref = useRef<HTMLDivElement | null>(null);
-
-    const ownerState = { isOpen, width };
 
     const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
       if ((event.target as HTMLInputElement).selectionStart !== 0) {
@@ -380,7 +347,7 @@ export const Demo: Story = {
           </Sidebar>
         </Sidenav>
 
-        <Content ref={ref} ownerState={ownerState}>
+        <div ref={ref} style={{ transition: 'padding-left 0.2s', paddingLeft: `${isOpen ? width : 0}px` }}>
           <h2>{page}</h2>
 
           <p>
@@ -478,7 +445,7 @@ export const Demo: Story = {
             dolor quia eaque expedita nulla debitis quis rem minima, impedit porro eius culpa cumque quas ratione
             eligendi eveniet optio itaque, necessitatibus commodi omnis quibusdam magnam cupiditate laboriosam.
           </p>
-        </Content>
+        </div>
       </div>
     );
   },

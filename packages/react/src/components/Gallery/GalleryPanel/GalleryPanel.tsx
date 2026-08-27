@@ -4,12 +4,11 @@ import { GalleryPanelProps } from './GalleryPanel.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { GalleryPanelContext } from './GalleryPanel.context';
 import { useGalleryPanelsContext } from './GalleryPanels.context';
 
 import { useResizeObserver } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { useGalleryContext } from '../Gallery.context';
 
 export const GalleryPanel = (inProps: GalleryPanelProps) => {

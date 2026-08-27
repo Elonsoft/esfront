@@ -2,7 +2,7 @@
 
 import { ElementType, ReactNode } from 'react';
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
+import { OverrideProps } from '../../../types';
 
 export interface TabBarItemTypeMap<P = {}, D extends ElementType = `button`> {
   props: P & {

@@ -4,9 +4,8 @@ import { MenuItemTypeMap } from './MenuItem.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 import { ListItem } from '../ListItem';
 
 export const MenuItem = forwardRef(function MenuItem(inProps, ref) {

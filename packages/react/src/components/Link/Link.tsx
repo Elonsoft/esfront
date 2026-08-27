@@ -2,8 +2,8 @@ import { LinkProps, LinkTypeMap } from './Link.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 
 /**
  * The Link component allows you to easily customize anchor elements with your theme colors and typography styles.

@@ -2,7 +2,7 @@ import { EmptyStateCompactProps } from './EmptyStateCompact.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * This component is a placeholder to use on pages without content.

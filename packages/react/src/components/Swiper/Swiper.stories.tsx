@@ -1,8 +1,6 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
-
-import { styled } from '@mui/material/styles';
 
 import { useSwiperContext } from './Swiper.context';
 import { Swiper, SwiperPagination, SwiperPaginationProps } from '.';
@@ -228,25 +226,22 @@ export const Vertical: Story = {
   },
 };
 
-const CustomizationButton = styled(Button)<{ prev?: boolean; next?: boolean }>(({ prev, next }) => ({
+const customizationButtonStyle = {
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
   borderRadius: '50%',
-
-  ...(prev && {
-    left: 8,
-  }),
-  ...(next && {
-    right: 8,
-  }),
-
   backdropFilter: 'blur(10px)',
+  '--background': 'var(--es-white-a600)',
+} as CSSProperties;
 
-  [`&.es-button.es-button--variant--text.es-button--color--black`]: {
-    '--background': 'var(--es-white-a600)',
-  },
-}));
+const CustomizationButton = ({
+  prev,
+  next,
+  ...props
+}: ComponentProps<typeof Button> & { prev?: boolean; next?: boolean }) => (
+  <Button {...props} style={{ ...customizationButtonStyle, ...(prev && { left: 8 }), ...(next && { right: 8 }) }} />
+);
 
 const CustomizationButtonPrev = () => {
   const { active, setActiveSlide } = useSwiperContext();

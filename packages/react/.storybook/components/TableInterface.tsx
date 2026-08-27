@@ -1,26 +1,9 @@
 // Waiting for storybook implementation of this feature.
 // https://github.com/storybookjs/storybook/issues/15008
 
-/* eslint-disable no-restricted-imports */
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../src/overrides.d.ts" />
-
 import { useMemo } from 'react';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-
-import {
-  getDefault,
-  getDescription,
-  getField,
-  TableCode,
-  TableContainer,
-  TableDescription,
-  TableRow,
-} from './TableBase';
+import { getDefault, getDescription, getField, TableCode, TableContainer, TableDescription } from './TableBase';
 
 import { Theme } from '../../src/testing';
 import json from '../../src/typedoc.json';
@@ -75,37 +58,35 @@ const TableInterfaceBase = ({ name, variant }: TableInterfaceProps) => {
 
   return (
     <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={variant === 'props' ? 3 : 2}>
-              <code className="body100">{name}</code>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell style={{ width: '200px' }}>Name</TableCell>
-            <TableCell>Description</TableCell>
-            {variant === 'props' && <TableCell>Default</TableCell>}
-          </TableRow>
-          {data.map((e) => (
-            <TableRow key={e.id}>
-              <TableCell>
-                <code className="body100">
-                  {e.name}
-                  {variant === 'props' && !e.isOptional && '*'}
-                </code>
-              </TableCell>
-              <TableCell>
-                <TableDescription>{e.description}</TableDescription>
-                {variant === 'props' && <TableCode>{e.type}</TableCode>}
-              </TableCell>
-              {variant === 'props' && <TableCell>{!!e.default && <TableCode>{e.default}</TableCode>}</TableCell>}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <thead>
+        <tr>
+          <th colSpan={variant === 'props' ? 3 : 2}>
+            <code className="body100">{name}</code>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style={{ width: '200px' }}>Name</td>
+          <td>Description</td>
+          {variant === 'props' && <td>Default</td>}
+        </tr>
+        {data.map((e) => (
+          <tr key={e.id}>
+            <td>
+              <code className="body100">
+                {e.name}
+                {variant === 'props' && !e.isOptional && '*'}
+              </code>
+            </td>
+            <td>
+              <TableDescription>{e.description}</TableDescription>
+              {variant === 'props' && <TableCode>{e.type}</TableCode>}
+            </td>
+            {variant === 'props' && <td>{!!e.default && <TableCode>{e.default}</TableCode>}</td>}
+          </tr>
+        ))}
+      </tbody>
     </TableContainer>
   );
 };

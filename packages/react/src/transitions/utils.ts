@@ -48,14 +48,3 @@ export const getTransitionProps = (
     delay: style.transitionDelay,
   };
 };
-
-/**
- * Removes `ownerState`, an internal styling prop of MUI, from the props a parent passes down through the transition.
- * It is meant for internal styling only and must never reach the DOM.
- */
-export const omitOwnerState = (childProps: Record<string, unknown> = {}) => {
-  const rest = { ...childProps };
-  delete rest.ownerState;
-
-  return rest;
-};

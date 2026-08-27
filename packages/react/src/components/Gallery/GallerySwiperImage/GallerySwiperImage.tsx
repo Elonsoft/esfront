@@ -2,7 +2,7 @@ import { GallerySwiperImageProps } from './GallerySwiperImage.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const GallerySwiperImage = (inProps: GallerySwiperImageProps) => {
   const { className, style, src, alt } = useDefaultProps({

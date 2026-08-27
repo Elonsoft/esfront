@@ -3,13 +3,12 @@ import { Transition } from 'react-transition-group';
 
 import { SlideDirection, SlideProps } from './Slide.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { createTransition, duration, easing } from '../../transitions';
 import { debounce } from '../../transitions/debounce';
 import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
-import { getTransitionProps, omitOwnerState, reflow } from '../../transitions/utils';
+import { getTransitionProps, reflow } from '../../transitions/utils';
 import { getReactElementRef, ownerWindow } from '../../utils';
 
 const defaultEasing = {
@@ -209,8 +208,6 @@ export const Slide = forwardRef<unknown, SlideProps>(function Slide(inProps, ref
       {...other}
     >
       {(state, childProps) => {
-        const restChildProps = omitOwnerState(childProps);
-
         return cloneElement(children, {
           ref: handleRef,
           style: {
@@ -218,7 +215,7 @@ export const Slide = forwardRef<unknown, SlideProps>(function Slide(inProps, ref
             ...style,
             ...children.props.style,
           },
-          ...restChildProps,
+          ...childProps,
         });
       }}
     </Transition>

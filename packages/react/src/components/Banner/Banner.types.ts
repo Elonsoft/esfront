@@ -1,7 +1,5 @@
 import { CSSProperties, ReactNode } from 'react';
 
-import { Breakpoint } from '@mui/material/styles';
-
 export interface BannerProps {
   children?: ReactNode;
 
@@ -30,10 +28,8 @@ export interface BannerProps {
    */
   color?: 'success' | 'warning' | 'error' | 'info' | 'mono-a' | 'primary' | 'secondary';
 
-  /** The screen width at which the flex items are ordered along the cross axis.
-   * @default 'tabletXS'
-   */
-  breakpoint?: number | Breakpoint;
+  /** The breakpoint at which the flex items are ordered along the cross axis. */
+  breakpoint?: string | null;
 
   /**
    * The action to display. It renders after the message, at the end of the alert.

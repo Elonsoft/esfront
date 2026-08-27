@@ -4,9 +4,8 @@ import { SidenavItemProps, SidenavItemTypeMap } from './SidenavItem.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
+import { useDefaultProps } from '../../../theming';
+import { OverridableComponent } from '../../../types';
 import { ListItem, ListItemIcon } from '../../ListItem';
 import { useSidebarContext } from '../../Sidebar/Sidebar.context';
 import { Tooltip } from '../../Tooltip';

@@ -2,7 +2,7 @@ import { PropertyProps } from './Property.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * Display attributes are characteristics that describe a entity.

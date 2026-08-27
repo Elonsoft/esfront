@@ -2,9 +2,8 @@ import { AlertProps } from './Alert.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconAlertFillW500, IconCheckCircleFillW500, IconErrorFillW500, IconInformation2FillW500 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 
 const defaultIconMapping = {
   success: <IconCheckCircleFillW500 />,
