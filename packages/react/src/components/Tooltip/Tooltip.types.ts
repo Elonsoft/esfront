@@ -2,13 +2,9 @@
 
 import { ElementType, HTMLProps, JSXElementConstructor, ReactNode, SyntheticEvent } from 'react';
 
-import { MUIStyledCommonProps, SxProps } from '@mui/system';
-import { Theme } from '@mui/material';
-
 import { TransitionProps } from '../../transitions';
+import { OverridableStringUnion } from '../../types';
 import { PopperProps } from '../Popper';
-
-import { OverridableStringUnion } from '@mui/types';
 
 export interface TooltipComponentsPropsOverrides {}
 
@@ -172,8 +168,8 @@ export interface TooltipProps {
   slotProps?: {
     popper?: Partial<PopperProps> & TooltipComponentsPropsOverrides;
     transition?: TransitionProps & TooltipComponentsPropsOverrides;
-    tooltip?: HTMLProps<HTMLDivElement> & MUIStyledCommonProps<Theme> & TooltipComponentsPropsOverrides;
-    arrow?: HTMLProps<HTMLSpanElement> & MUIStyledCommonProps<Theme> & TooltipComponentsPropsOverrides;
+    tooltip?: HTMLProps<HTMLDivElement> & TooltipComponentsPropsOverrides;
+    arrow?: HTMLProps<HTMLSpanElement> & TooltipComponentsPropsOverrides;
   };
   /**
    * The components used for each slot inside.
@@ -185,10 +181,6 @@ export interface TooltipProps {
     tooltip?: ElementType;
     arrow?: ElementType;
   };
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: SxProps<Theme>;
   /**
    * Tooltip title. Zero-length titles string, undefined, null and false are never displayed.
    */

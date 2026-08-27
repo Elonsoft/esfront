@@ -2,9 +2,8 @@ import { BadgeProps, BadgeTypeMap } from './Badge.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 import { ButtonBase } from '../ButtonBase';
 
 export const Badge: OverridableComponent<BadgeTypeMap> = (inProps: BadgeProps) => {

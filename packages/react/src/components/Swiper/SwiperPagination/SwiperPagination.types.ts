@@ -1,4 +1,4 @@
-import { CSSProperties } from '@mui/material';
+import { CSSProperties } from 'react';
 
 export interface SwiperPaginationProps {
   /** Class applied to the root element. */

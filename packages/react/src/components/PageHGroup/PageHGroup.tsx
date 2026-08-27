@@ -2,7 +2,7 @@ import { PageHGroupProps } from './PageHGroup.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * This component represents a heading and related content.

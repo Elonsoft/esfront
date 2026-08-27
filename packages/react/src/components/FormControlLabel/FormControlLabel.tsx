@@ -2,7 +2,7 @@ import { FormControlLabelProps } from './FormControlLabel.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * Use this component if you want to display an extra label for the Checkbox or Radio.

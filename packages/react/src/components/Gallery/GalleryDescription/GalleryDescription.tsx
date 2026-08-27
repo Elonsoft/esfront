@@ -4,10 +4,9 @@ import { GalleryDescriptionProps } from './GalleryDescription.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useWindowEventListener } from '../../../hooks';
 import { IconCloseLineW350 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { SvgIcon, SvgIconProps } from '../../SvgIcon';
 import { useGalleryPanelContext, useGalleryPanelsContext } from '../GalleryPanel';

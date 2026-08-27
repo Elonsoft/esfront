@@ -2,8 +2,7 @@ import { useMemo } from 'react';
 
 import { FormatDateProps } from './FormatDate.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../theming';
 import { useDateAdapterContext } from '../DateAdapter';
 
 /**

@@ -4,7 +4,7 @@ import { LinearProgressProps } from './LinearProgress.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /** Express an unspecified wait time or display the length of a process. */
 export const LinearProgress = forwardRef<HTMLButtonElement, LinearProgressProps>(function LinearProgress(

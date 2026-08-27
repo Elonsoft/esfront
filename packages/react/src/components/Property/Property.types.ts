@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 
-import { OverridableStringUnion } from '@mui/types';
+import { OverridableStringUnion } from '../../types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PropertyPropsSizeOverrides {}

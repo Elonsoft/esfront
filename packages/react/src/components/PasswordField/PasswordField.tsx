@@ -4,10 +4,9 @@ import { PasswordFieldProps } from './PasswordField.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useControlled } from '../../hooks';
 import { IconEyeLineW500, IconEyeOffLineW500 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
 import { FormFieldAdornment } from '../FormField';
 import { TextField } from '../TextField';

@@ -2,10 +2,9 @@ import { FiltersFilterProps } from './FiltersFilter.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useBoolean } from '../../../hooks';
 import { IconChevronDownLineW300, IconChevronUpLineW300 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { InformationIcon } from '../../InformationIcon';
 import { Tooltip } from '../../Tooltip';
 

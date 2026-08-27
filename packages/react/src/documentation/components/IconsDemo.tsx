@@ -1,38 +1,38 @@
-import { styled } from '@mui/material/styles';
+import { CSSProperties } from 'react';
 
 import { Tooltip } from '../../components/Tooltip';
 import * as icons from '../../icons';
 
-const IconsDemoRoot = styled('div')(() => ({
+const rootStyle: CSSProperties = {
   display: 'flex',
   flexWrap: 'wrap',
   gap: '8px',
-}));
+};
 
-const IconsDemoIcon = styled('div')(() => ({
+const iconStyle: CSSProperties = {
   width: '48px',
   height: '48px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '2px',
-  border: `1px solid var(--es-mono-a-a100)`,
-}));
+  border: '1px solid var(--es-mono-a-a100)',
+};
 
 export const IconsDemo = () => {
   return (
-    <IconsDemoRoot>
+    <div style={rootStyle}>
       {Object.keys(icons).map((name) => {
         const Icon = icons[name as keyof typeof icons];
 
         return (
           <Tooltip key={name} arrow title={<code>{name}</code>}>
-            <IconsDemoIcon>
+            <div style={iconStyle}>
               <Icon />
-            </IconsDemoIcon>
+            </div>
           </Tooltip>
         );
       })}
-    </IconsDemoRoot>
+    </div>
   );
 };

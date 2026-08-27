@@ -4,11 +4,10 @@ import { SidebarProps } from './Sidebar.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { SidebarContext } from './Sidebar.context';
 
 import { useDocumentEventListener, useLatest, useWindowEventListener } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 
 /**
  * The Sidebar component is a fixed-position toggleable slide out box.

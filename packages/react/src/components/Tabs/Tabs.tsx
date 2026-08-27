@@ -17,12 +17,11 @@ import { TabsProps } from './Tabs.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { animate } from './animate';
 import { TabScrollButton } from './TabScrollButton';
 
 import { useEnhancedEffect, useEvent } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { debounce, ownerDocument, ownerWindow } from '../../utils';
 import { Divider } from '../Divider';
 

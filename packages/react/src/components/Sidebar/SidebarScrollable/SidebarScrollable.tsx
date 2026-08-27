@@ -6,9 +6,8 @@ import { OverlayScrollbarsComponentRef } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useResizeObserver } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { OverlayScrollbars } from '../..//OverlayScrollbars';
 
 export const SidebarScrollable = (inProps: SidebarScrollableProps) => {

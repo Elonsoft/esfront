@@ -4,9 +4,8 @@ import { FormFieldFieldProps } from './FormFieldField.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { useFormFieldContext } from '../FormField.context';
 
 export const FormFieldField = forwardRef<HTMLDivElement, FormFieldFieldProps>(function FormFieldField(

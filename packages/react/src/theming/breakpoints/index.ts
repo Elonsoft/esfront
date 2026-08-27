@@ -1,1 +1,0 @@
-export { breakpoints } from './breakpoints';

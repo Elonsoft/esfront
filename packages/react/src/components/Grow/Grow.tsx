@@ -3,12 +3,11 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 
 import { GrowProps } from './Grow.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef, useTimeout } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { createTransition, getAutoHeightDuration } from '../../transitions';
 import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
-import { getTransitionProps, omitOwnerState, reflow } from '../../transitions/utils';
+import { getTransitionProps, reflow } from '../../transitions/utils';
 import { getReactElementRef } from '../../utils';
 
 const getScale = (value: number) => `scale(${value}, ${value ** 2})`;
@@ -130,8 +129,6 @@ const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref)
       {...other}
     >
       {(state, childProps) => {
-        const restChildProps = omitOwnerState(childProps);
-
         return cloneElement(children, {
           ref: handleRef,
           style: {
@@ -142,7 +139,7 @@ const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref)
             ...style,
             ...children.props.style,
           },
-          ...restChildProps,
+          ...childProps,
         });
       }}
     </Transition>
@@ -151,7 +148,7 @@ const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref)
 
 export const Grow = Object.assign(GrowComponent, {
   /**
-   * The following flag tells MUI components, such as Popover, that the transition supports `timeout="auto"`.
+   * The following flag tells components, such as Popover, that the transition supports `timeout="auto"`.
    */
-  muiSupportAuto: true,
+  esSupportAuto: true,
 });

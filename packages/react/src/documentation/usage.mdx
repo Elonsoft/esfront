@@ -49,48 +49,59 @@ body {
 ```
 
 ```tsx
-import {} from '@esfront/react/lib/overrides';
-
 import ReactDOM from 'react-dom';
 
-import { ThemeProvider, EmptyState } from '@esfront/react';
-import Button from '@mui/material/Button';
+import { DefaultPropsProvider, en, EmptyState } from '@esfront/react';
 
 import './theme.scss';
 
 const Application = () => {
   return (
-    <ThemeProvider>
-      <Button variant="contained">Hello World</Button>
+    <DefaultPropsProvider value={en.components}>
       <EmptyState heading="There are no entities yet" subheading="Do you want to create the first entity?" />
-    </ThemeProvider>
+    </DefaultPropsProvider>
   );
 };
 
 ReactDOM.render(<Application />, document.querySelector('#root'));
 ```
 
-Then follow the usage instructions for [MUI](https://mui.com/getting-started/usage/). You may also want to see
-documentation for [server rendering](https://mui.com/guides/server-rendering/).
+## Default props
+
+Every component falls back to the default props supplied by the closest `DefaultPropsProvider`, keyed by the component
+name. Props passed to a component always win over the ones coming from the provider.
+
+```tsx
+<DefaultPropsProvider
+  value={{
+    ...en.components,
+    ESDrawer: { defaultProps: { anchor: 'right' } },
+  }}
+>
+  <Application />
+</DefaultPropsProvider>
+```
+
+A nested provider replaces the value of the outer one rather than merging with it, so a subtree has to restate every
+default it needs. The value is passed to the context as is, therefore it should be memoized.
+
+The localization objects, `en` and `ru`, are ordinary provider values. Spread the one you need before your own defaults,
+as shown above.
 
 ## Typescript
 
-There are three ways to load the types overrides for MUI.
-
-The easiest one, if your `tsconfig.json` already has a `"types"` array in the `"compilerOptions"` section, is to add
-`"@esfront/react/lib/overrides"` to the `"types"` array.
-
-Alternatively, a specific import syntax can to be used from a typescript file. This module does not exist in reality,
-which is why the `{}` is important:
+The default props of every component are typed through the `ComponentsPropsList` interface, which is loaded for you when
+you import from `@esfront/react`. To register a component of your own, augment the module that declares the interface:
 
 ```ts
-import {} from '@esfront/react/lib/overrides';
+import { MyButtonProps } from './MyButton';
+
+declare module '@esfront/react/lib/theming/DefaultPropsProvider/DefaultPropsProvider.types' {
+  interface ComponentsPropsList {
+    MyButton: MyButtonProps;
+  }
+}
 ```
 
-It is also possible to include it through a triple-slash reference:
-
-```ts
-/// <reference types="@esfront/react/lib/overrides" />
-```
-
-Either the import or the reference only needs to appear once, anywhere in the project.
+`MyButton` then becomes a valid key of the `DefaultPropsProvider` value, and `useDefaultProps` accepts it as a name. The
+augmentation only needs to appear once, anywhere in the project.

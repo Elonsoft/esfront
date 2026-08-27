@@ -4,8 +4,6 @@ import { CheckboxProps } from './Checkbox.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { CheckboxIcon } from './CheckboxIcon';
 import {
   IconCheckLarge,
@@ -16,6 +14,7 @@ import {
   IconIndeterminateSmall,
 } from './icons';
 
+import { useDefaultProps } from '../../theming';
 import { SwitchBase } from '../SwitchBase';
 
 const defaultIcon = {

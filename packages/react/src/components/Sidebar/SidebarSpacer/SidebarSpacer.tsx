@@ -2,7 +2,7 @@ import { SidebarSpacerProps } from './SidebarSpacer.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const SidebarSpacer = (inProps: SidebarSpacerProps) => {
   const { className, style } = useDefaultProps({

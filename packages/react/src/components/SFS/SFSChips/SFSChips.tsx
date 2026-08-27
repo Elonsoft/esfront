@@ -2,9 +2,8 @@ import { SFSChipsProps } from './SFSChips.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconCloseLineW400 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { Tooltip } from '../../Tooltip';
 

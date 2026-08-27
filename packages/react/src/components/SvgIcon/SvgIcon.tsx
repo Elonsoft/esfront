@@ -2,7 +2,7 @@ import { SvgIconProps } from './SvgIcon.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * Wrapper component for the svg icons.

@@ -3,9 +3,8 @@ import { createPortal } from 'react-dom';
 
 import { PortalProps } from './Portal.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useEnhancedEffect, useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { getReactElementRef, setRef } from '../../utils';
 
 const getContainer = (container: PortalProps['container']) => {

@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
-
+import { OverridableStringUnion, OverrideProps } from '../../types';
 import { SvgIconProps } from '../SvgIcon';
-
-import { OverridableStringUnion } from '@mui/types';
 
 export interface InformationIconPropsVariantOverrides {}
 

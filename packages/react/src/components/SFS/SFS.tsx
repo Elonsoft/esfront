@@ -2,7 +2,7 @@ import { SFSProps } from './SFS.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * The set of components for searching, filtering and sorting.

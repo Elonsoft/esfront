@@ -4,8 +4,6 @@ import { TableProps } from './Table.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { TableContext } from './Table.context';
 import { TableBodyContext } from './TableBody';
 import { TableCellContext } from './TableCell';
@@ -15,6 +13,7 @@ import { useTableScrollSync } from './useTableScrollSync';
 import { useTableStickyOffset } from './useTableStickyOffset';
 
 import { useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 

@@ -6,11 +6,10 @@ import { useOverlayScrollbars } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
 import { useMediaQuery, useResizeObserver } from '../../../hooks';
 import { IconChevronLeftLineW200 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
+import { OverridableComponent } from '../../../types';
 import { Button } from '../../Button';
 import { Collapse } from '../../Collapse';
 import { Divider } from '../../Divider';

@@ -2,9 +2,8 @@ import { ClearButtonProps } from './ClearButton.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconCloseLineW350 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { ButtonBase } from '../ButtonBase';
 
 export const ClearButton = (inProps: ClearButtonProps) => {

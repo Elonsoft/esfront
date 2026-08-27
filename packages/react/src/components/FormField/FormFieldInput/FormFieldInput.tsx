@@ -4,9 +4,8 @@ import { FormFieldInputElement, FormFieldInputProps } from './FormFieldInput.typ
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useEnhancedEffect, useForkRef } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { isFilled } from '../../../utils';
 import { useFormFieldContext } from '../FormField.context';
 

@@ -43,7 +43,7 @@ export default [
         {
           groups: [
             ['^react'],
-            ['^@mui/base', '^@mui/material/styles', '^@mui/system', '^@mui/material', '^@mui/utils'],
+            ['^@esfront/react'],
             ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
             ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
           ],

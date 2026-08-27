@@ -13,9 +13,8 @@ import { MenuListProps } from './MenuList.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useEnhancedEffect, useForkRef } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { getActiveElement, getScrollbarSize, ownerDocument, ownerWindow } from '../../../utils';
 
 interface TextCriteria {
@@ -261,8 +260,8 @@ export const MenuList = forwardRef<HTMLUListElement, MenuListProps>(function Men
       return;
     }
 
-    const childProps = child.props as { disabled?: boolean; selected?: boolean; muiSkipListHighlight?: boolean };
-    const childType = child.type as { muiSkipListHighlight?: boolean };
+    const childProps = child.props as { disabled?: boolean; selected?: boolean; esSkipListHighlight?: boolean };
+    const childType = child.type as { esSkipListHighlight?: boolean };
 
     if (!childProps.disabled) {
       if (variant === 'selectedMenu' && childProps.selected) {
@@ -274,7 +273,7 @@ export const MenuList = forwardRef<HTMLUListElement, MenuListProps>(function Men
 
     if (
       activeItemIndex === index &&
-      (childProps.disabled || childProps.muiSkipListHighlight || childType.muiSkipListHighlight)
+      (childProps.disabled || childProps.esSkipListHighlight || childType.esSkipListHighlight)
     ) {
       activeItemIndex += 1;
 

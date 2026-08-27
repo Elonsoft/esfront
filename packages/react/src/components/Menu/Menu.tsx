@@ -4,10 +4,9 @@ import { MenuProps } from './Menu.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { MenuList, MenuListActions } from './MenuList';
 
+import { useDefaultProps } from '../../theming';
 import { Popover, PopoverOrigin } from '../Popover';
 
 const ANCHOR_ORIGIN: PopoverOrigin = { vertical: 'bottom', horizontal: 'left' };

@@ -4,7 +4,7 @@ import { TableActionsProps } from './TableActions.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 /**
  * This component displays actions for the selected table rows.

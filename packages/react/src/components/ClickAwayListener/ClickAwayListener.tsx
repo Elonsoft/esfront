@@ -2,9 +2,8 @@ import { cloneElement, useEffect, useRef } from 'react';
 
 import { ClickAwayListenerProps } from './ClickAwayListener.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useEvent, useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { getReactElementRef, ownerDocument } from '../../utils';
 
 /** Turns a react event prop name (`onMouseDown`) into a native event name (`mousedown`). */

@@ -4,11 +4,10 @@ import { RadioGroupProps } from './RadioGroup.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import RadioGroupContext from './RadioGroup.context';
 
 import { useControlled, useForkRef, useId } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 
 export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(function RadioGroup(
   inProps: RadioGroupProps,

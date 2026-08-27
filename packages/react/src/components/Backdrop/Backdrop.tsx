@@ -4,8 +4,7 @@ import { BackdropProps } from './Backdrop.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../theming';
 import { Fade } from '../Fade';
 
 /**

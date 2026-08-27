@@ -4,13 +4,12 @@ import { SwiperProps } from './Swiper.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { SwiperContext } from './Swiper.context';
 import { SwiperButton } from './SwiperButton';
 import { usePropertiesMapping } from './usePropertiesMapping';
 
 import { useDocumentEventListener, useLatest, useResizeObserver } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 
 /**
  * `Swiper` is a component for cycling through elements - images or slides of text - like a carousel.

@@ -2,10 +2,9 @@ import { MadeByProps, MadeByTypeMap } from './MadeBy.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
 import { IconElonsoft } from '../../icons';
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 
 /** The MadeBy component displays name of the developer. */
 export const MadeBy: OverridableComponent<MadeByTypeMap> = (inProps: MadeByProps) => {

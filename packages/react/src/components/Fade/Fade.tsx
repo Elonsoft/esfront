@@ -3,12 +3,11 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 
 import { FadeProps } from './Fade.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { createTransition, duration } from '../../transitions';
 import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
-import { getTransitionProps, omitOwnerState, reflow } from '../../transitions/utils';
+import { getTransitionProps, reflow } from '../../transitions/utils';
 import { getReactElementRef } from '../../utils';
 
 const defaultTimeout = {
@@ -102,8 +101,6 @@ export const Fade = forwardRef<unknown, FadeProps>(function Fade(inProps, ref) {
       {...other}
     >
       {(state, childProps) => {
-        const restChildProps = omitOwnerState(childProps);
-
         return cloneElement(children, {
           ref: handleRef,
           style: {
@@ -113,7 +110,7 @@ export const Fade = forwardRef<unknown, FadeProps>(function Fade(inProps, ref) {
             ...style,
             ...children.props.style,
           },
-          ...restChildProps,
+          ...childProps,
         });
       }}
     </Transition>

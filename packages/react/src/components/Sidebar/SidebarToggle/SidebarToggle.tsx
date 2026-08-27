@@ -4,9 +4,8 @@ import { SidebarToggleProps } from './SidebarToggle.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconChevronLeftLineW300 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { Tooltip } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';

@@ -2,7 +2,7 @@ import { DividerProps } from './Divider.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * The Divider is a thin line that groups content in lists and layouts.
@@ -47,6 +47,6 @@ export const Divider = (inProps: DividerProps) => {
 
 /**
  * The following flag is used to ensure that this component isn't tabbable i.e.
- * does not get highlight/focus inside of MUI List.
+ * does not get highlight/focus inside of MenuList.
  */
-Divider.muiSkipListHighlight = true;
+Divider.esSkipListHighlight = true;

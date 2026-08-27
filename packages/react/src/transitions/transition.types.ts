@@ -24,9 +24,6 @@ export type TransitionKeys =
 
 /**
  * The props shared by every transition component.
- *
- * It is structurally compatible with `TransitionProps` from `@mui/material/transitions`, so components typed with
- * this interface still accept transitions coming from MUI.
  */
 export interface TransitionProps
   extends TransitionActions,

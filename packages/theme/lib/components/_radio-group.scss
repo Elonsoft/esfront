@@ -1,8 +1,7 @@
 @mixin include() {
   .es-radio-group {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
 
     &--row {
       flex-direction: row;

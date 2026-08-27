@@ -2,9 +2,8 @@ import { GalleryMetaProps } from './GalleryMeta.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconArrowLeftLineW500 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { useGalleryContext } from '../Gallery.context';
 import { GalleryActionsButton } from '../GalleryActionsButton';
 import { GalleryTooltip } from '../GalleryTooltip';

@@ -2,9 +2,8 @@
 
 import { ReactNode } from 'react';
 
+import { OverridableStringUnion } from '../../types';
 import { SwitchBaseProps } from '../SwitchBase';
-
-import { OverridableStringUnion } from '@mui/types';
 
 export interface CheckboxPropsVariantOverrides {}
 

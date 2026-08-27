@@ -2,10 +2,9 @@ import { BreadcrumbProps, BreadcrumbTypeMap } from './Breadcrumb.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
 import { IconBreadcrumbArrowRightLineW500 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
+import { OverridableComponent } from '../../../types';
 import { Button } from '../../Button';
 import { TooltipEllipsis } from '../../TooltipEllipsis';
 

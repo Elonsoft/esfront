@@ -4,9 +4,8 @@ import { SearchProps } from './Search.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
 import { FormFieldAdornment } from '../FormField';
 import { TextField } from '../TextField';

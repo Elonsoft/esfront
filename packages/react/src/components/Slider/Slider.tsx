@@ -4,10 +4,10 @@ import { SliderProps } from './Slider.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { SliderValueLabel } from './SliderValueLabel';
 import { identity, useSlider, valueToPercent } from './useSlider';
+
+import { useDefaultProps } from '../../theming';
 
 const asRecord = (props?: object): Record<string, unknown> => ({ ...props });
 

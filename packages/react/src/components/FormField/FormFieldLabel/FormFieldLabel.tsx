@@ -4,9 +4,8 @@ import { FormFieldLabelProps } from './FormFieldLabel.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { useFormFieldContext } from '../FormField.context';
 
 export const FormFieldLabel = forwardRef<HTMLLabelElement, FormFieldLabelProps>(function FormFieldLabel(

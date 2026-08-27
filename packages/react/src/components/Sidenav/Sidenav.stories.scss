@@ -1,0 +1,33 @@
+.sidenav-story-search {
+  &.es-form-field {
+    margin: 12px 16px 16px;
+
+    .es-form-field-field {
+      padding: 0 4px;
+
+      .es-button {
+        --icon: var(--es-mono-a-a500);
+      }
+    }
+
+    .es-form-field-adornment--position--start {
+      padding: 0 4px 0 0;
+
+      .es-svg-icon {
+        color: var(--es-mono-a-a400);
+      }
+    }
+
+    .es-form-field-input::placeholder {
+      color: var(--es-mono-a-a500);
+    }
+  }
+}
+
+.sidenav-story-menu-item {
+  margin: 0 16px;
+
+  .es-list-item.es-sidebar-item__button {
+    padding: 4px;
+  }
+}

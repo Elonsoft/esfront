@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { FormatSizeProps } from './FormatSize.types';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * This component formats the size based on the metric or binary unit prefix.

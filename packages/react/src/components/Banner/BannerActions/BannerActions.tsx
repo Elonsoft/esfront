@@ -2,7 +2,7 @@ import { BannerActionsProps } from './BannerActions.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const BannerActions = (inProps: BannerActionsProps) => {
   const { className, style, children } = useDefaultProps({

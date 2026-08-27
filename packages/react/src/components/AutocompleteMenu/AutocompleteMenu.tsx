@@ -18,10 +18,9 @@ import { useOverlayScrollbars } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useIntersectionObserver, useScrollLock } from '../../hooks';
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { ClickAwayListener } from '../ClickAwayListener';

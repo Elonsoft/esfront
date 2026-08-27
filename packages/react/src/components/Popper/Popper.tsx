@@ -4,9 +4,8 @@ import { PopperAnchorEl, PopperChildrenProps, PopperProps, PopperTransitionProps
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { ownerDocument } from '../../utils';
 import { Portal } from '../Portal';
 
@@ -28,8 +27,6 @@ const isElement = (value: Element | VirtualElement): value is Element => {
 type PopperRootProps = PopperProps & {
   display?: 'none';
   transitionProps?: PopperTransitionProps;
-  /** Not a prop of this component — it can be injected by a parent, e.g. MUI's `appendOwnerState`. */
-  ownerState?: unknown;
 };
 
 const PopperRoot = forwardRef<HTMLDivElement, PopperRootProps>(function PopperRoot(props, ref) {
@@ -57,9 +54,6 @@ const PopperRoot = forwardRef<HTMLDivElement, PopperRootProps>(function PopperRo
   delete other.disablePortal;
   delete other.keepMounted;
   delete other.transition;
-  // `ownerState` is not a prop of this component at all, but a parent may spread it in (MUI's `appendOwnerState` adds it
-  // to the props of any non-host slot). Drop it too, otherwise React warns about an unknown DOM attribute.
-  delete other.ownerState;
 
   const reference = useMemo(() => resolveAnchorEl(anchorEl) ?? null, [anchorEl]);
 

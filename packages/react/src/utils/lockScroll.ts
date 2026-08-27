@@ -19,7 +19,7 @@ const getPaddingRight = (element: Element) => {
 /**
  * Prevents the container from scrolling and compensates the width of the scrollbar that disappears.
  *
- * Elements marked with the `.es-fixed` or the `.mui-fixed` class are compensated as well, which keeps position fixed
+ * Elements marked with the `.es-fixed` class are compensated as well, which keeps position fixed
  * elements from shifting.
  *
  * @returns A function restoring the styles that have been changed.
@@ -40,7 +40,7 @@ export const lockScroll = (container: HTMLElement): (() => void) => {
     // Use computed style, here to get the real padding to add our scrollbar width.
     container.style.paddingRight = `${getPaddingRight(container) + scrollbarSize}px`;
 
-    const fixedElements = ownerDocument(container).querySelectorAll('.es-fixed, .mui-fixed');
+    const fixedElements = ownerDocument(container).querySelectorAll('.es-fixed');
 
     [].forEach.call(fixedElements, (element: HTMLElement | SVGElement) => {
       restoreStyle.push({

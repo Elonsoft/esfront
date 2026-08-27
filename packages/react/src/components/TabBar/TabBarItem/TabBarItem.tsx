@@ -2,9 +2,8 @@ import { TabBarItemProps, TabBarItemTypeMap } from './TabBarItem.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
+import { useDefaultProps } from '../../../theming';
+import { OverridableComponent } from '../../../types';
 import { Button } from '../../Button';
 
 export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: TabBarItemProps) => {

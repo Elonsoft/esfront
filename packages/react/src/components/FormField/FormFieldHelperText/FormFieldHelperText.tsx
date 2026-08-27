@@ -4,9 +4,8 @@ import { FormFieldHelperTextProps } from './FormFieldHelperText.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useForkRef } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { useFormFieldContext } from '../FormField.context';
 
 export const FormFieldHelperText = forwardRef<HTMLDivElement, FormFieldHelperTextProps>(function FormFieldHelperText(

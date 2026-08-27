@@ -2,7 +2,7 @@ import { PageHGroupMainProps } from './PageHGroupMain.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const PageHGroupMain = (inProps: PageHGroupMainProps) => {
   const { className, children, style } = useDefaultProps({

@@ -2,7 +2,7 @@ import { GalleryActionsButtonGroupProps } from './GalleryActionsButtonGroup.type
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const GalleryActionsButtonGroup = (inProps: GalleryActionsButtonGroupProps) => {
   const { children, className, style } = useDefaultProps({

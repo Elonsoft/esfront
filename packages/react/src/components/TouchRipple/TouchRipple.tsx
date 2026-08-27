@@ -4,7 +4,7 @@ import { TouchRippleProps } from './TouchRipple.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 /**
  * The TouchRipple.

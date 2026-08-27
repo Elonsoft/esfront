@@ -2,9 +2,7 @@
 
 import { ElementType, ReactNode } from 'react';
 
-import { OverrideProps } from '@mui/material/OverridableComponent';
-
-import { OverridableStringUnion } from '@mui/types';
+import { OverridableStringUnion, OverrideProps } from '../../types';
 
 export interface ChipPropsSizeOverrides {}
 

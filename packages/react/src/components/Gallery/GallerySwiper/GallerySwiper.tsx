@@ -4,12 +4,11 @@ import { GallerySwiperProps } from './GallerySwiper.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useGallerySwiperContext } from './GallerySwiper.context';
 
 import { useForkRef } from '../../../hooks';
 import { IconChevronLeftLineW400, IconChevronRightLineW400 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { Swiper, useSwiperContext } from '../../Swiper';
 import { useGalleryContext } from '../Gallery.context';

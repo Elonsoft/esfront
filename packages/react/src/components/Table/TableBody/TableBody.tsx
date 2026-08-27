@@ -4,11 +4,10 @@ import { TableBodyProps } from './TableBody.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useTableBodyContext } from './TableBody.context';
 
 import { useForkRef } from '../../../hooks';
+import { useDefaultProps } from '../../../theming';
 import { TableCellContext } from '../TableCell';
 
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };

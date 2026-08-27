@@ -4,9 +4,8 @@ import { SFSSortingProps } from './SFSSorting.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconSortAscending2LineW100, IconSortDescending2LineW100, IconSortOffLineW200 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { SortingMenu } from '../../SortingMenu';
 import { SFSButton } from '../SFSButton';
 

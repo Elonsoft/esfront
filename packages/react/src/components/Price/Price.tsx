@@ -2,7 +2,7 @@ import { PriceProps } from './Price.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 const getCurrencySymbol = (locales: Intl.LocalesArgument, currency: string) => {
   return Number(0)

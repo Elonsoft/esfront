@@ -1,13 +1,4 @@
-/* eslint-disable no-restricted-imports */
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../src/overrides.d.ts" />
-
 import { useMemo } from 'react';
-
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
 
 import {
   getDescription,
@@ -16,7 +7,6 @@ import {
   TableCode,
   TableContainer,
   TableDescription,
-  TableRow,
 } from './TableBase';
 
 import { Theme } from '../../src/testing';
@@ -74,56 +64,54 @@ const TableFunctionBase = ({ name }: TableFunctionProps) => {
 
   return (
     <TableContainer>
-      <Table>
-        {!!data.params.length && (
-          <>
-            <TableHead>
-              <TableRow>
-                <TableCell colSpan={3}>
-                  <code className="body100">Arguments</code>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell style={{ width: '200px' }}>Name</TableCell>
-                <TableCell>Description</TableCell>
-                <TableCell>Default</TableCell>
-              </TableRow>
-              {data.params.map((e) => (
-                <TableRow key={e.id}>
-                  <TableCell>
-                    <code className="body100">
-                      {e.name}
-                      {e.isOptional && '*'}
-                    </code>
-                  </TableCell>
-                  <TableCell>
-                    <TableDescription>{e.description}</TableDescription>
-                    <TableCode>{e.type}</TableCode>
-                  </TableCell>
-                  <TableCell>{!!e.default && <TableCode>{e.default}</TableCode>}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </>
-        )}
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={3}>
-              <code className="body100">Return Value</code>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell colSpan={3}>
-              <TableDescription>{data.returns.description}</TableDescription>
-              <TableCode>{data.returns.type}</TableCode>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      {!!data.params.length && (
+        <>
+          <thead>
+            <tr>
+              <th colSpan={3}>
+                <code className="body100">Arguments</code>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{ width: '200px' }}>Name</td>
+              <td>Description</td>
+              <td>Default</td>
+            </tr>
+            {data.params.map((e) => (
+              <tr key={e.id}>
+                <td>
+                  <code className="body100">
+                    {e.name}
+                    {e.isOptional && '*'}
+                  </code>
+                </td>
+                <td>
+                  <TableDescription>{e.description}</TableDescription>
+                  <TableCode>{e.type}</TableCode>
+                </td>
+                <td>{!!e.default && <TableCode>{e.default}</TableCode>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </>
+      )}
+      <thead>
+        <tr>
+          <th colSpan={3}>
+            <code className="body100">Return Value</code>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colSpan={3}>
+            <TableDescription>{data.returns.description}</TableDescription>
+            <TableCode>{data.returns.type}</TableCode>
+          </td>
+        </tr>
+      </tbody>
     </TableContainer>
   );
 };

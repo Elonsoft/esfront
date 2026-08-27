@@ -2,7 +2,7 @@ import { FileIconBadgeProps } from './FileIconBadge.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const FileIconBadge = (inProps: FileIconBadgeProps) => {
   const {

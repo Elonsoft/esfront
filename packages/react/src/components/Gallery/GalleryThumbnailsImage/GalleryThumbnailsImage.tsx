@@ -2,7 +2,7 @@ import { GalleryThumbnailsImageProps } from './GalleryThumbnailsImage.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const GalleryThumbnailsImage = (inProps: GalleryThumbnailsImageProps) => {
   const { className, style, src, alt } = useDefaultProps({

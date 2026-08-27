@@ -6,10 +6,9 @@ import { useOverlayScrollbars } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useMediaQuery } from '../../hooks';
 import { IconSortAscendingLineW200, IconSortDescendingLineW200 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
 import { Divider } from '../Divider';
 import { InformationIcon } from '../InformationIcon';

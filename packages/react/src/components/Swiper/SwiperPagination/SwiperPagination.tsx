@@ -4,8 +4,7 @@ import { SwiperPaginationProps } from './SwiperPagination.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../../theming';
 import { useSwiperContext } from '../Swiper.context';
 import { SwiperPaginationItem } from '../SwiperPaginationItem';
 

@@ -4,7 +4,7 @@ import { ImageZoomProps } from './ImageZoom.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../theming';
 
 import { animated, useSpring } from '@react-spring/web';
 import { createUseGesture, dragAction, moveAction, pinchAction } from '@use-gesture/react';

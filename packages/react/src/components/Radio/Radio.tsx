@@ -4,10 +4,9 @@ import { RadioProps } from './Radio.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { RadioIcon } from './RadioIcon';
 
+import { useDefaultProps } from '../../theming';
 import { createChainedFunction } from '../../utils';
 import { useRadioGroup } from '../RadioGroup';
 import { SwitchBase } from '../SwitchBase';

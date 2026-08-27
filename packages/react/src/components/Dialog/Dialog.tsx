@@ -4,9 +4,8 @@ import { DialogProps } from './Dialog.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useId } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { duration } from '../../transitions';
 import { Backdrop } from '../Backdrop';
 import { Fade } from '../Fade';
@@ -18,7 +17,7 @@ const defaultTransitionDuration = { enter: duration.enteringScreen, exit: durati
  * Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
  */
 export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Dialog(inProps, ref) {
-  const props = useDefaultProps({ props: inProps, name: 'MuiDialog' });
+  const props = useDefaultProps({ props: inProps, name: 'ESDialog' });
   const {
     'aria-describedby': ariaDescribedby,
     'aria-labelledby': ariaLabelledbyProp,

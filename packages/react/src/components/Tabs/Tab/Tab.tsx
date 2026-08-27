@@ -4,8 +4,7 @@ import { TabProps } from './Tab.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
+import { useDefaultProps } from '../../../theming';
 import { ButtonBase } from '../../ButtonBase';
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps: TabProps, ref) {

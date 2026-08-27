@@ -4,9 +4,8 @@ import { AutocompleteProps } from './Autocomplete.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useControlled, useEnhancedEffect, useForkRef, usePreviousValue } from '../../hooks';
+import { useDefaultProps } from '../../theming';
 import { AutocompleteMenu, AutocompleteMenuImperativeActions } from '../AutocompleteMenu';
 import { FormFieldAdornment, FormFieldField, useFormFieldContext } from '../FormField';
 

@@ -2,7 +2,7 @@ import { ErrorPageFooterProps } from './ErrorPageFooter.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
+import { useDefaultProps } from '../../../theming';
 
 export const ErrorPageFooter = (inProps: ErrorPageFooterProps) => {
   const { children, className, style } = useDefaultProps({

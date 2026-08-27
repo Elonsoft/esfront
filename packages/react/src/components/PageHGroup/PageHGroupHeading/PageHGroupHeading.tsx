@@ -2,9 +2,8 @@ import { PageHGroupHeadingProps } from './PageHGroupHeading.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { TooltipEllipsis } from '../../../components/TooltipEllipsis';
+import { useDefaultProps } from '../../../theming';
 
 export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
   const {

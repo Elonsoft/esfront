@@ -4,8 +4,6 @@ import { AudioPlayerProps } from './AudioPlayer.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { useAudioPlayerContext } from './AudioPlayer.context';
 
 import { useLatest, useWindowEventListener } from '../../hooks';
@@ -22,6 +20,7 @@ import {
   IconVolumeLowFillW500,
   IconVolumeMuteFillW500,
 } from '../../icons';
+import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
 import { Divider } from '../Divider';
 import { FocusTrap } from '../FocusTrap';

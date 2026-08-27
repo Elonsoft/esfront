@@ -2,9 +2,8 @@ import { DialogCloseProps } from './DialogClose.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconCloseLineW600 } from '../../../icons';
+import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
 export const DialogClose = (inProps: DialogCloseProps) => {

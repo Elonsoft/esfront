@@ -17,12 +17,11 @@ import { TooltipProps } from './Tooltip.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-
 import { IconPolygon, IconPolygon2, IconPolygon3 } from './icons';
 
 import { useControlled, useEvent, useForkRef, useId, useIsFocusVisible, useLatest, useTimeout } from '../../hooks';
-import { appendOwnerState, Timeout } from '../../utils';
+import { useDefaultProps } from '../../theming';
+import { Timeout } from '../../utils';
 import { Fade } from '../Fade';
 import { Popper, PopperActions } from '../Popper';
 
@@ -365,11 +364,11 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
   };
 
   if (process.env.NODE_ENV !== 'production') {
-    childrenProps['data-mui-internal-clone-element'] = true;
+    childrenProps['data-es-internal-clone-element'] = true;
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-      if (childNode && !childNode.getAttribute('data-mui-internal-clone-element')) {
+      if (childNode && !childNode.getAttribute('data-es-internal-clone-element')) {
         console.error(
           [
             'The `children` component of the Tooltip is not forwarding its props correctly.',
@@ -500,55 +499,43 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
   const TooltipComponent = slots.tooltip ?? 'div';
   const ArrowComponent = slots.arrow ?? 'span';
 
-  const popperProps = appendOwnerState(
-    PopperComponent,
-    {
-      ...PopperProps,
-      ...slotProps.popper,
-      className: clsx(
-        'es-tooltip__popper',
-        !disableInteractive && 'es-tooltip__popper--interactive',
-        arrow && 'es-tooltip__popper--arrow',
-        arrowSize && `es-tooltip__popper--arrow-size--${arrowSize}`,
-        PopperProps?.className,
-        slotProps.popper?.className
-      ),
-      style: {
-        '--es-tooltip-distance': `${distance || 0}px`,
-        ...PopperProps?.style,
-        ...slotProps.popper?.style,
-      } as React.CSSProperties,
-    },
-    {}
-  );
+  const popperProps = {
+    ...PopperProps,
+    ...slotProps.popper,
+    className: clsx(
+      'es-tooltip__popper',
+      !disableInteractive && 'es-tooltip__popper--interactive',
+      arrow && 'es-tooltip__popper--arrow',
+      arrowSize && `es-tooltip__popper--arrow-size--${arrowSize}`,
+      PopperProps?.className,
+      slotProps.popper?.className
+    ),
+    style: {
+      '--es-tooltip-distance': `${distance || 0}px`,
+      ...PopperProps?.style,
+      ...slotProps.popper?.style,
+    } as React.CSSProperties,
+  };
 
-  const transitionProps = appendOwnerState(TransitionComponent, { ...TransitionProps, ...slotProps.transition }, {});
+  const transitionProps = { ...TransitionProps, ...slotProps.transition };
 
-  const tooltipProps = appendOwnerState(
-    TooltipComponent,
-    {
-      ...slotProps.tooltip,
-      className: clsx(
-        'es-tooltip__tooltip',
-        arrow && 'es-tooltip__tooltip--arrow',
-        ignoreNonTouchEvents.current && 'es-tooltip__tooltip--touch',
-        placement && `es-tooltip__tooltip--placement--${placement}`,
-        color && `es-tooltip__tooltip--color--${color}`,
-        'caption',
-        slotProps.tooltip?.className
-      ),
-    },
-    {}
-  );
+  const tooltipProps = {
+    ...slotProps.tooltip,
+    className: clsx(
+      'es-tooltip__tooltip',
+      arrow && 'es-tooltip__tooltip--arrow',
+      ignoreNonTouchEvents.current && 'es-tooltip__tooltip--touch',
+      placement && `es-tooltip__tooltip--placement--${placement}`,
+      color && `es-tooltip__tooltip--color--${color}`,
+      'caption',
+      slotProps.tooltip?.className
+    ),
+  };
 
-  const tooltipArrowProps = appendOwnerState(
-    ArrowComponent,
-    {
-      ...slotProps.arrow,
-      className: clsx('es-tooltip__arrow', color && `es-tooltip__arrow--color--${color}`, slotProps.arrow?.className),
-    },
-    {}
-  );
+  const tooltipArrowProps = {
+    ...slotProps.arrow,
+    className: clsx('es-tooltip__arrow', color && `es-tooltip__arrow--color--${color}`, slotProps.arrow?.className),
+  };
 
   return (
     <>

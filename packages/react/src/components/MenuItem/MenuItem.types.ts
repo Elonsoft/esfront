@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import { OverridableTypeMap, OverrideProps } from '@mui/material/OverridableComponent';
-
+import { OverridableTypeMap, OverrideProps } from '../../types';
 import { ListItemTypeMap } from '../ListItem';
 
 export interface ExtendMenuItemTypeMap<TypeMap extends OverridableTypeMap> {

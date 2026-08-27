@@ -4,10 +4,9 @@ import { ListItemTypeMap } from './ListItem.types';
 
 import clsx from 'clsx';
 
-import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-
 import { useEnhancedEffect, useForkRef } from '../../hooks';
+import { useDefaultProps } from '../../theming';
+import { OverridableComponent } from '../../types';
 import { ButtonBase } from '../ButtonBase';
 
 export const ListItem = forwardRef(function ListItem(inProps, ref) {
@@ -33,7 +32,7 @@ export const ListItem = forwardRef(function ListItem(inProps, ref) {
       if (listItemRef.current) {
         listItemRef.current.focus();
       } else if (process.env.NODE_ENV !== 'production') {
-        console.error('MUI: Unable to set focus to a ListItem whose component has not been rendered.');
+        console.error('Unable to set focus to a ListItem whose component has not been rendered.');
       }
     }
   }, [autoFocus]);

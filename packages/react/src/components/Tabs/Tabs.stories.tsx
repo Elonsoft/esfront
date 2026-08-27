@@ -1,13 +1,12 @@
-import { SyntheticEvent, useRef, useState } from 'react';
+import { CSSProperties, SyntheticEvent, useRef, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
-
-// eslint-disable-next-line no-restricted-imports
-import Box from '@mui/material/Box';
 
 import { Tab, Tabs } from '.';
 
 import { IconAtLineW500 } from '../../icons';
+
+import './Tabs.stories.scss';
 
 const meta: Meta<typeof Tabs> = {
   tags: ['autodocs'],
@@ -131,7 +130,7 @@ export const Demo: Story = {
     };
 
     return (
-      <Box sx={{ '& .es-tabs__flex-container': { gap: `${gap}px` } }}>
+      <div className="tabs-story-gap" style={{ '--tabs-story-gap': `${gap}px` } as CSSProperties}>
         <Tabs {...args} value={value} onChange={handleChange}>
           {(locale === 'en' ? tabsData.en : tabsData.ru).map((label, index) => (
             <Tab
@@ -145,7 +144,7 @@ export const Demo: Story = {
             />
           ))}
         </Tabs>
-      </Box>
+      </div>
     );
   },
 };
