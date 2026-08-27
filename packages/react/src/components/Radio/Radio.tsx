@@ -5,10 +5,10 @@ import { RadioProps } from './Radio.types';
 import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
-import { createChainedFunction } from '@mui/material';
 
 import { RadioIcon } from './RadioIcon';
 
+import { createChainedFunction } from '../../utils';
 import { useRadioGroup } from '../RadioGroup';
 import { SwitchBase } from '../SwitchBase';
 

@@ -19,6 +19,7 @@ export * from './Checkbox';
 export * from './Chip';
 export * from './Chips';
 export * from './ClearButton';
+export * from './ClickAwayListener';
 export * from './Collapse';
 export * from './DateAdapter';
 export * from './Dialog';

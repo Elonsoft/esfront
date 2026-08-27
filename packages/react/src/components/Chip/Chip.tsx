@@ -6,8 +6,8 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '@mui/system/DefaultPropsProvider';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import { useForkRef } from '@mui/material/utils';
 
+import { useForkRef } from '../../hooks';
 import { IconCloseLineW350 } from '../../icons';
 import { Button } from '../Button';
 import { ButtonBase } from '../ButtonBase';

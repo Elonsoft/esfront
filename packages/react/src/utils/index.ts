@@ -1,7 +1,10 @@
 export type { AppendOwnerStateReturnType } from './appendOwnerState';
 export { appendOwnerState } from './appendOwnerState';
+export { capitalize } from './capitalize';
 export { clamp } from './clamp';
 export { createChainedFunction } from './createChainedFunction';
+export type { DebouncedFunction } from './debounce';
+export { debounce } from './debounce';
 export type { EventHandlers } from './extractEventHandlers';
 export { extractEventHandlers } from './extractEventHandlers';
 export { getActiveElement } from './getActiveElement';
