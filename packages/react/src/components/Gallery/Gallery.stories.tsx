@@ -2,8 +2,6 @@ import { useCallback, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Theme, useMediaQuery } from '@mui/material';
-
 import {
   Gallery,
   GalleryActions,
@@ -21,6 +19,7 @@ import {
   GalleryTooltip,
 } from '.';
 
+import { useMediaQuery } from '../../hooks';
 import { IconDotsVerticalLineW500, IconDownloadLineW400, IconShareLineW400 } from '../../icons';
 import { Button } from '../Button';
 import { FormatDate } from '../FormatDate';
@@ -118,7 +117,7 @@ export const Demo: Story = {
     const locale = context.globals.locale as 'en' | 'ru';
     const { t } = useI18N(locale);
 
-    const isTablet = useMediaQuery((theme: Theme) => theme.breakpoints.up('tabletXS'));
+    const isTablet = useMediaQuery('(min-width: 640px)');
     const [isOpen, setOpen] = useState(false);
 
     const onOpen = () => {
