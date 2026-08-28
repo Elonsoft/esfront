@@ -1,5 +1,10 @@
 # Migration Guide
 
+- [0.16.0 → 0.17.0](#0160--0170)
+  - [MUI Removal](#mui-removal)
+  - [Theme Replacement](#theme-replacement)
+  - [Baseline Styles](#baseline-styles)
+  - [New Components](#new-components)
 - [0.14.0 → 0.15.0](#0140--0150)
   - [Theme Package](#theme-package)
   - [Class Names](#class-names)
@@ -10,6 +15,102 @@
   - [Package Name](#package-name)
   - [CSS Theme Variables](#css-theme-variables)
   - [Components Replacement](#components-replacement)
+
+## 0.16.0 → 0.17.0
+
+### MUI Removal
+
+The library no longer depends on MUI. `@mui/material`, `@mui/system`, `@emotion/react` and `@emotion/styled` are removed
+from the peer dependencies, so you can drop them from your project unless you use them on your own.
+
+Two new peer dependencies have to be installed instead:
+
+```bash
+npm install @floating-ui/react-dom react-transition-group
+```
+
+### Theme Replacement
+
+`createTheme`, `ThemeProvider`, `breakpoints` and `createTypography` are removed. Default props and localization are now
+supplied by the `DefaultPropsProvider` component, and all design tokens live in `@esfront/theme`.
+
+If your setup looks like this:
+
+```tsx
+const theme = createTheme(
+  {
+    paletteLight: {
+      ...palettes.common,
+      ...palettes.light,
+    },
+  },
+  { ...ruRU, ru }
+);
+
+const Application = () => <ThemeProvider theme={theme}>{/* ... */}</ThemeProvider>;
+```
+
+Please migrate it to look like this instead:
+
+```tsx
+const Application = () => <DefaultPropsProvider value={ru.components}>{/* ... */}</DefaultPropsProvider>;
+```
+
+To customize a component globally, spread the locale before your own defaults:
+
+```tsx
+<DefaultPropsProvider value={{ ...ru.components, ESDrawer: { defaultProps: { anchor: 'right' } } }}>
+```
+
+Any remaining usage of the MUI theme, such as `theme.vars.palette`, `sx` or `styled`, has to be replaced with the scss
+variables and mixins of `@esfront/theme`.
+
+### Baseline Styles
+
+`ThemeProvider` used to render MUI `CssBaseline` for you. Include the new `baseline` layer of `@esfront/theme` instead,
+and declare the font family yourself, because the layer does not set one:
+
+```scss
+@use '@esfront/theme/settings';
+@use '@esfront/theme/baseline';
+@use '@esfront/theme/components';
+@use '@esfront/theme/utilities';
+
+@include settings.include;
+@include baseline.include;
+@include components.include;
+@include utilities.include;
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+```
+
+### New Components
+
+The components previously used from `@mui/material` have been reimplemented:
+
+- `Backdrop`
+- `ClickAwayListener`
+- `Collapse`
+- `Drawer`
+- `Fade`
+- `FocusTrap`
+- `FormField`
+- `Grow`
+- `Menu`
+- `Modal`
+- `Popover`
+- `Popper`
+- `Portal`
+- `Slide`
+- `Slider`
+- `TextField`
+- `Zoom`
+
+The `useMediaQuery` hook and the transition helpers `createTransition`, `duration` and `easing` are provided as well.
+Please import all of them from `@esfront/react`. Some breaking changes expected to occur, since the props and the markup
+of these components differ from their MUI counterparts.
 
 ## 0.14.0 → 0.15.0
 
