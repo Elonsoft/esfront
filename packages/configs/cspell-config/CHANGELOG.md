@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.1.0...@esfront/cspell-config@0.2.0) (2026-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **react,Slider:** add new component
+
+### Features
+
+* **react,Slider:** add new component ([db491ec](https://github.com/Elonsoft/esfront/commit/db491ec308d983d0f410e044ef263314b6bf2c1f))
+
+
+
 ## [0.1.0](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.0.7...@esfront/cspell-config@0.1.0) (2025-12-08)
 
 

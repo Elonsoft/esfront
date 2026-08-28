@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.16.0...@esfront/react@0.17.0) (2026-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove mui dependency
+* **react,ClickAwayListener:** add new component
+* **react,useMediaQuery:** add new hook
+* **react,FormField:** add new component
+* **react,Drawer:** add new component
+* **theme:** add baseline
+* **react,Slider:** add new component
+* **react:** add menu components
+* **react,Popper:** add new component
+* **react:** add modal components
+* **react:** add transition components
+
+### Features
+
+* **react,ClickAwayListener:** add new component ([8d39d7b](https://github.com/Elonsoft/esfront/commit/8d39d7be34e958f754b2b8ee742329ea8d537e87))
+* **react,Drawer:** add new component ([fe95d7c](https://github.com/Elonsoft/esfront/commit/fe95d7cf924bd21762dc607b0880d083c7840c6f))
+* **react,FormField:** add new component ([6ccb32f](https://github.com/Elonsoft/esfront/commit/6ccb32f78de9ebce0344fd715ed432cd056c8feb))
+* **react,OverlayScrollbars:** add new component ([ac3f691](https://github.com/Elonsoft/esfront/commit/ac3f691e5a49dcd9dcc06400963fb03af410d1a5))
+* **react,PaginationPages:** add button slots ([b6dc76e](https://github.com/Elonsoft/esfront/commit/b6dc76ea3d6880cbea7f0683c85a3b97f715d867))
+* **react,Popper:** add new component ([3366fc8](https://github.com/Elonsoft/esfront/commit/3366fc8b741dabb3fa1836aa938ce34440f279dc))
+* **react,Slider:** add new component ([db491ec](https://github.com/Elonsoft/esfront/commit/db491ec308d983d0f410e044ef263314b6bf2c1f))
+* **react,useMediaQuery:** add new hook ([5ef3535](https://github.com/Elonsoft/esfront/commit/5ef35354f6251d98080fcefe87e4028910003e4e))
+* **react:** add menu components ([0da4225](https://github.com/Elonsoft/esfront/commit/0da4225494a6b62a604d3f0fcb502f9d79de584a))
+* **react:** add modal components ([7810a32](https://github.com/Elonsoft/esfront/commit/7810a32664edcfc9734d5c779728fdbf2ae8ac3c))
+* **react:** add transition components ([fc0d1e7](https://github.com/Elonsoft/esfront/commit/fc0d1e7e6e6fcd5bd1ccda9a2e2576ec615c17a4))
+* **react:** add validateFileType export ([e10b36e](https://github.com/Elonsoft/esfront/commit/e10b36efcf7bf6f0d40a489e5cf6f7263d1ccfd4))
+* remove mui dependency ([04d69f8](https://github.com/Elonsoft/esfront/commit/04d69f811b2f1093ada3351ea3e7cf7da2bcce75))
+* **theme:** add baseline ([b628b82](https://github.com/Elonsoft/esfront/commit/b628b829d5e50a9fe17f51df423ab808cbef54e2))
+
+
+### Bug Fixes
+
+* **react,Chips:** collapse algorithm improvements ([863974d](https://github.com/Elonsoft/esfront/commit/863974d98af8ee7b6b6855bcdadd75cff162771b))
+* **react,PaginationPages:** use metaKey on mac ([c404a0e](https://github.com/Elonsoft/esfront/commit/c404a0e167eaa3e309ecd5d142143b444a1963f2))
+* **react,usePermission:** add hook to index export ([bc3792c](https://github.com/Elonsoft/esfront/commit/bc3792c11dacb27c1912024c9189c1eb76dc2280))
+
+
+
 ## [0.16.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.15.2...@esfront/react@0.16.0) (2026-05-15)
 
 

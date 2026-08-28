@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.2.0...@esfront/theme@0.3.0) (2026-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove mui dependency
+* **react,FormField:** add new component
+* **react,Drawer:** add new component
+* **theme:** add baseline
+* **react,Slider:** add new component
+* **react:** add menu components
+* **react,Popper:** add new component
+* **react:** add modal components
+* **react:** add transition components
+
+### Features
+
+* **react,Drawer:** add new component ([fe95d7c](https://github.com/Elonsoft/esfront/commit/fe95d7cf924bd21762dc607b0880d083c7840c6f))
+* **react,FormField:** add new component ([6ccb32f](https://github.com/Elonsoft/esfront/commit/6ccb32f78de9ebce0344fd715ed432cd056c8feb))
+* **react,OverlayScrollbars:** add new component ([ac3f691](https://github.com/Elonsoft/esfront/commit/ac3f691e5a49dcd9dcc06400963fb03af410d1a5))
+* **react,Popper:** add new component ([3366fc8](https://github.com/Elonsoft/esfront/commit/3366fc8b741dabb3fa1836aa938ce34440f279dc))
+* **react,Slider:** add new component ([db491ec](https://github.com/Elonsoft/esfront/commit/db491ec308d983d0f410e044ef263314b6bf2c1f))
+* **react:** add menu components ([0da4225](https://github.com/Elonsoft/esfront/commit/0da4225494a6b62a604d3f0fcb502f9d79de584a))
+* **react:** add modal components ([7810a32](https://github.com/Elonsoft/esfront/commit/7810a32664edcfc9734d5c779728fdbf2ae8ac3c))
+* **react:** add transition components ([fc0d1e7](https://github.com/Elonsoft/esfront/commit/fc0d1e7e6e6fcd5bd1ccda9a2e2576ec615c17a4))
+* remove mui dependency ([04d69f8](https://github.com/Elonsoft/esfront/commit/04d69f811b2f1093ada3351ea3e7cf7da2bcce75))
+* **theme:** add baseline ([b628b82](https://github.com/Elonsoft/esfront/commit/b628b829d5e50a9fe17f51df423ab808cbef54e2))
+
+
+### Bug Fixes
+
+* **react,Chips:** collapse algorithm improvements ([863974d](https://github.com/Elonsoft/esfront/commit/863974d98af8ee7b6b6855bcdadd75cff162771b))
+
+
+
 ## [0.2.0](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.1.1...@esfront/theme@0.2.0) (2026-05-15)
 
 

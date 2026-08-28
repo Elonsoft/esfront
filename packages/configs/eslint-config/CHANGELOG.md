@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.2.0...@esfront/eslint-config@0.3.0) (2026-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove mui dependency
+* **react,ClickAwayListener:** add new component
+* **react,FormField:** add new component
+* **react,Drawer:** add new component
+* **react,Slider:** add new component
+* **react:** add menu components
+* **react:** add modal components
+* **react:** add transition components
+
+### Features
+
+* **react,ClickAwayListener:** add new component ([8d39d7b](https://github.com/Elonsoft/esfront/commit/8d39d7be34e958f754b2b8ee742329ea8d537e87))
+* **react,Drawer:** add new component ([fe95d7c](https://github.com/Elonsoft/esfront/commit/fe95d7cf924bd21762dc607b0880d083c7840c6f))
+* **react,FormField:** add new component ([6ccb32f](https://github.com/Elonsoft/esfront/commit/6ccb32f78de9ebce0344fd715ed432cd056c8feb))
+* **react,Slider:** add new component ([db491ec](https://github.com/Elonsoft/esfront/commit/db491ec308d983d0f410e044ef263314b6bf2c1f))
+* **react:** add menu components ([0da4225](https://github.com/Elonsoft/esfront/commit/0da4225494a6b62a604d3f0fcb502f9d79de584a))
+* **react:** add modal components ([7810a32](https://github.com/Elonsoft/esfront/commit/7810a32664edcfc9734d5c779728fdbf2ae8ac3c))
+* **react:** add transition components ([fc0d1e7](https://github.com/Elonsoft/esfront/commit/fc0d1e7e6e6fcd5bd1ccda9a2e2576ec615c17a4))
+* remove mui dependency ([04d69f8](https://github.com/Elonsoft/esfront/commit/04d69f811b2f1093ada3351ea3e7cf7da2bcce75))
+
+
+
 ## [0.2.0](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.1.4...@esfront/eslint-config@0.2.0) (2026-02-24)
 
 
