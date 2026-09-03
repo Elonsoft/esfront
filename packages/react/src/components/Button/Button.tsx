@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef } from 'react';
 
 import { ExtendButtonBase } from '../ButtonBase/ButtonBase.types';

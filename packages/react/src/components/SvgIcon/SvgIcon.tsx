@@ -1,3 +1,5 @@
+'use client';
+
 import { SvgIconProps } from './SvgIcon.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { AutocompleteMenuHeaderProps } from './AutocompleteMenuHeader.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { FileInfoMetaSeparatorProps } from './FileInfoMetaSeparator.types';
 
 import clsx from 'clsx';

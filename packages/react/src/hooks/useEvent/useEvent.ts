@@ -1,3 +1,5 @@
+'use client';
+
 // https://www.npmjs.com/package/react-use-event-hook
 
 import React from 'react';

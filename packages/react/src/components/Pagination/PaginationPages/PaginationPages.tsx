@@ -1,3 +1,5 @@
+'use client';
+
 import { Fragment, memo, useState } from 'react';
 
 import { PaginationPagesProps } from './PaginationPages.types';

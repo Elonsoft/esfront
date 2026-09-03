@@ -1,3 +1,5 @@
+'use client';
+
 import { MadeByProps, MadeByTypeMap } from './MadeBy.types';
 
 import clsx from 'clsx';

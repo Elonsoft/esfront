@@ -1,3 +1,5 @@
+'use client';
+
 import { cloneElement, forwardRef, isValidElement, ReactElement, ReactNode, useRef } from 'react';
 
 import { ChipProps, ChipTypeMap } from './Chip.types';

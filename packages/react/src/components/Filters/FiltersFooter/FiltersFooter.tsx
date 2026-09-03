@@ -1,3 +1,5 @@
+'use client';
+
 import { FiltersFooterProps } from './FiltersFooter.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { ErrorPageStatusProps } from './ErrorPageStatus.types';
 
 import clsx from 'clsx';

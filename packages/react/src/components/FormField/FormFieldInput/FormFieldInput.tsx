@@ -1,3 +1,5 @@
+'use client';
+
 import { AnimationEvent, CSSProperties, forwardRef, useCallback, useEffect, useRef } from 'react';
 
 import { FormFieldInputElement, FormFieldInputProps } from './FormFieldInput.types';

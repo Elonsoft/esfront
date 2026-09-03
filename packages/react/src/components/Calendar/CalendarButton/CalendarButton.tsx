@@ -1,3 +1,5 @@
+'use client';
+
 import { CalendarButtonProps } from './CalendarButton.types';
 
 import clsx from 'clsx';

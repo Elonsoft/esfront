@@ -1,3 +1,5 @@
+'use client';
+
 import { SwiperButtonProps } from './SwiperButton.types';
 
 import clsx from 'clsx';

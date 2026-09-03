@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 
 export interface TableBodyContextValue {

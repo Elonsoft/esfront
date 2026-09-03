@@ -1,3 +1,5 @@
+'use client';
+
 import { SidebarDividerProps } from './SidebarDivider.types';
 
 import clsx from 'clsx';

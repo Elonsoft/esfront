@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, memo, useMemo } from 'react';
 
 import { TableBodyProps } from './TableBody.types';

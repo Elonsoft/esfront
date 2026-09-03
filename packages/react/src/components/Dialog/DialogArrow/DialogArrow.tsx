@@ -1,3 +1,5 @@
+'use client';
+
 import { DialogArrowProps } from './DialogArrow.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext } from 'react';
 
 import { Components, DefaultPropsProviderProps } from './DefaultPropsProvider.types';

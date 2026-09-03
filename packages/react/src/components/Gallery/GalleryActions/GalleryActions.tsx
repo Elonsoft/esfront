@@ -1,3 +1,5 @@
+'use client';
+
 import { GalleryActionsProps } from './GalleryActions.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 // Based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
 
 import { FocusEvent, MutableRefObject, RefCallback, useCallback, useRef } from 'react';

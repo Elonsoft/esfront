@@ -1,3 +1,5 @@
+'use client';
+
 import { RibbonBadgeProps, RibbonBadgeTypeMap } from './RibbonBadge.types';
 
 import clsx from 'clsx';

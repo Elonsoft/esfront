@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Returns the width of the vertical scrollbar of a window.
  *

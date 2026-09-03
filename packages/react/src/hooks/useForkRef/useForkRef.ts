@@ -1,3 +1,5 @@
+'use client';
+
 import { Ref, RefCallback, useMemo } from 'react';
 
 const setRef = <T>(

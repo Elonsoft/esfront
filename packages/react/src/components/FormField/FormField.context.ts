@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, Dispatch, MutableRefObject, SetStateAction, useContext } from 'react';
 
 import { FormFieldSize, FormFieldVariant } from './FormField.types';

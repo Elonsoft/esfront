@@ -1,3 +1,5 @@
+'use client';
+
 import { memo, useState } from 'react';
 
 import { PaginationRangeProps } from './PaginationRange.types';

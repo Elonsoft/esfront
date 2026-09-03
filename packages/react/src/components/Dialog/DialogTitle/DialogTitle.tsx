@@ -1,3 +1,5 @@
+'use client';
+
 import { DialogTitleProps } from './DialogTitle.types';
 
 import clsx from 'clsx';

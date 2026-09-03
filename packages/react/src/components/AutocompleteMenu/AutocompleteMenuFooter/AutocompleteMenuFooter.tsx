@@ -1,3 +1,5 @@
+'use client';
+
 import { AutocompleteMenuFooterProps } from './AutocompleteMenuFooter.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { ListItemTextProps } from './ListItemText.types';
 
 import clsx from 'clsx';

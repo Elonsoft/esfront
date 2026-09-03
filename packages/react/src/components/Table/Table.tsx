@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, memo, useMemo, useRef } from 'react';
 
 import { TableProps } from './Table.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import { cloneElement, Fragment, isValidElement, ReactElement, useMemo, useState } from 'react';
 
 import { DialogStackProviderComponentInterface, DialogStackProviderProps } from './DialogStackProvider.types';

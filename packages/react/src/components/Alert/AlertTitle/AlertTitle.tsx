@@ -1,3 +1,5 @@
+'use client';
+
 import { AlertTitleProps } from './AlertTitle.types';
 
 import clsx from 'clsx';

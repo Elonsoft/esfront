@@ -1,3 +1,5 @@
+'use client';
+
 import { FiltersFormControlLabelProps } from './FiltersFormControlLabel.types';
 
 import clsx from 'clsx';

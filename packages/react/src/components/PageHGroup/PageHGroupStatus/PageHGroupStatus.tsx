@@ -1,3 +1,5 @@
+'use client';
+
 import { PageHGroupStatusProps } from './PageHGroupStatus.types';
 
 import clsx from 'clsx';

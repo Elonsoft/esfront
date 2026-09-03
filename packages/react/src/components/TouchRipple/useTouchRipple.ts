@@ -1,3 +1,5 @@
+'use client';
+
 // https://github.com/material-components/material-web/blob/main/ripple/internal/ripple.ts
 
 import { useRef, useState } from 'react';

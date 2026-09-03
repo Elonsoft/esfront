@@ -1,3 +1,5 @@
+'use client';
+
 import { PropertyProps } from './Property.types';
 
 import clsx from 'clsx';

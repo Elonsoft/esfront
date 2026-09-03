@@ -1,3 +1,5 @@
+'use client';
+
 import { useId as useReactId } from 'react';
 
 /**
