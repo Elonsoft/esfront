@@ -1,3 +1,5 @@
+'use client';
+
 import { lockScroll } from '../../utils';
 import { useEnhancedEffect } from '../useEnhancedEffect';
 

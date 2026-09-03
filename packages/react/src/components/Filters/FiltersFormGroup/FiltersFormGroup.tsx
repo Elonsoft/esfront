@@ -1,3 +1,5 @@
+'use client';
+
 import { Children, useRef, useState } from 'react';
 
 import { FiltersFormGroupProps } from './FiltersFormGroup.types';

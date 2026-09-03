@@ -1,3 +1,5 @@
+'use client';
+
 import { FileInfoMetaProps } from './FileInfoMeta.types';
 
 import clsx from 'clsx';

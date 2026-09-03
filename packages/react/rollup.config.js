@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import external from 'rollup-plugin-peer-deps-external';
 import progress from 'rollup-plugin-progress';
 import typescript from 'rollup-plugin-typescript2';
+import preserveDirectives from 'rollup-preserve-directives';
 
 export default {
   input: './src/index.ts',
@@ -33,6 +34,7 @@ export default {
       include: ['*.ts', '*.tsx', '**/*.ts', '**/*.tsx'],
     }),
     commonjs(),
+    preserveDirectives(),
     progress(),
   ],
   onwarn: (warning, warn) => {

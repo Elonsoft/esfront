@@ -1,3 +1,5 @@
+'use client';
+
 import { DependencyList, useEffect, useRef } from 'react';
 
 import { useLatest } from '../useLatest';

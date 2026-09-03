@@ -1,3 +1,5 @@
+'use client';
+
 import { GalleryMetaProps } from './GalleryMeta.types';
 
 import clsx from 'clsx';

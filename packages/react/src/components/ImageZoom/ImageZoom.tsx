@@ -1,3 +1,5 @@
+'use client';
+
 import { useImperativeHandle, useRef } from 'react';
 
 import { ImageZoomProps } from './ImageZoom.types';

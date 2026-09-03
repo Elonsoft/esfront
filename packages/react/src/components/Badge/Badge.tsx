@@ -1,3 +1,5 @@
+'use client';
+
 import { BadgeProps, BadgeTypeMap } from './Badge.types';
 
 import clsx from 'clsx';

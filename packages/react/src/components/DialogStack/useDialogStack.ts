@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 
 import { DialogStackContextValue, useDialogStackContext } from './DialogStack.context';

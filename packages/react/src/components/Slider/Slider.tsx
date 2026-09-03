@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, Fragment } from 'react';
 
 import { SliderProps } from './Slider.types';

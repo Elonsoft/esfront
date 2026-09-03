@@ -1,3 +1,5 @@
+'use client';
+
 import { SnackbarCloseProps } from './SnackbarClose.types';
 
 import clsx from 'clsx';

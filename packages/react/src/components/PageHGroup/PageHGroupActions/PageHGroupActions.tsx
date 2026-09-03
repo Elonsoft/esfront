@@ -1,3 +1,5 @@
+'use client';
+
 import { PageHGroupActionsProps } from './PageHGroupActions.types';
 
 import clsx from 'clsx';

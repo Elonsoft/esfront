@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import { AudioPlayerProps } from './AudioPlayer.types';

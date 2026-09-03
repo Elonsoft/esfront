@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SidenavItemProps, SidenavItemTypeMap } from './SidenavItem.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import { AlertCloseProps } from './AlertClose.types';
 
 import clsx from 'clsx';

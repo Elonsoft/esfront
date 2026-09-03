@@ -1,3 +1,5 @@
+'use client';
+
 import { Children, cloneElement, CSSProperties, Fragment, isValidElement, useRef, useState } from 'react';
 
 import { BreadcrumbsProps } from './Breadcrumbs.types';

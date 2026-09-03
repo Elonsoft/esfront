@@ -1,3 +1,5 @@
+'use client';
+
 import { MutableRefObject, useEffect } from 'react';
 
 const getStickyOffset = (element: HTMLElement | null, pin: 'left' | 'right') => {

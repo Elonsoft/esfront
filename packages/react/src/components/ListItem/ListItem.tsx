@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useRef } from 'react';
 
 import { ListItemTypeMap } from './ListItem.types';

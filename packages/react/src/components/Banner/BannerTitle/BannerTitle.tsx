@@ -1,3 +1,5 @@
+'use client';
+
 import { BannerTitleProps } from './BannerTitle.types';
 
 import clsx from 'clsx';

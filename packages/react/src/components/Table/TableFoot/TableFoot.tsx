@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, memo, useRef, useState } from 'react';
 
 import { TableFootProps } from './TableFoot.types';

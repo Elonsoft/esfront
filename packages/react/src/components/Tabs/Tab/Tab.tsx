@@ -1,3 +1,5 @@
+'use client';
+
 import { FocusEvent, forwardRef, MouseEvent } from 'react';
 
 import { TabProps } from './Tab.types';

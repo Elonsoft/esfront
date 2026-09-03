@@ -1,3 +1,5 @@
+'use client';
+
 import React, { memo, useRef, useState } from 'react';
 
 import { SortingMenuDirection, SortingMenuOptionMap, SortingMenuProps, SortingMenuValue } from './SortingMenu.types';

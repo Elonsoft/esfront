@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, ReactElement, useContext } from 'react';
 
 import { DialogStackProviderComponentInterface } from './DialogStackProvider.types';

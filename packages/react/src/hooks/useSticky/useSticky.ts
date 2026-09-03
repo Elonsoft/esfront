@@ -1,3 +1,5 @@
+'use client';
+
 import { MutableRefObject, useEffect, useLayoutEffect } from 'react';
 
 import { useLatest } from '../useLatest';

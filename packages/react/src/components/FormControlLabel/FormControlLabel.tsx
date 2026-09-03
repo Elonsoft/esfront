@@ -1,3 +1,5 @@
+'use client';
+
 import { FormControlLabelProps } from './FormControlLabel.types';
 
 import clsx from 'clsx';

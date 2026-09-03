@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, MouseEvent, useRef } from 'react';
 
 import { FormFieldFieldProps } from './FormFieldField.types';

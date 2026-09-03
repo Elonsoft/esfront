@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useCallback, useMemo, useRef, useState } from 'react';
 
 import { FormFieldProps } from './FormField.types';

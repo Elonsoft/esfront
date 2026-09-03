@@ -1,3 +1,5 @@
+'use client';
+
 import { TextFieldGroupProps } from './TextFieldGroup.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { DialogActionsProps } from './DialogActions.types';
 
 import clsx from 'clsx';

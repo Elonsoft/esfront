@@ -1,3 +1,5 @@
+'use client';
+
 import { CalendarProps } from './Calendar.types';
 
 import clsx from 'clsx';

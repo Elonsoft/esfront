@@ -1,3 +1,5 @@
+'use client';
+
 import { MenuGroupProps } from './MenuGroup.types';
 
 import clsx from 'clsx';

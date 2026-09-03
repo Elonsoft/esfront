@@ -1,3 +1,5 @@
+'use client';
+
 import { ClearButtonProps } from './ClearButton.types';
 
 import clsx from 'clsx';

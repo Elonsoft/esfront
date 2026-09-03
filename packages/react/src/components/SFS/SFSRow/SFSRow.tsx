@@ -1,3 +1,5 @@
+'use client';
+
 import { SFSRowProps } from './SFSRow.types';
 
 import clsx from 'clsx';

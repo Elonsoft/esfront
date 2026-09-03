@@ -1,3 +1,5 @@
+'use client';
+
 import { SFSFiltersGroupProps } from './SFSFiltersGroup.types';
 
 import clsx from 'clsx';

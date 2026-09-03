@@ -1,3 +1,5 @@
+'use client';
+
 // https://github.com/jaredLunde/react-hook/tree/master/packages/latest
 
 import { useEffect, useRef } from 'react';
