@@ -2,5 +2,16 @@
   "import": ["@esfront/cspell-config", "@cspell/dict-lorem-ipsum/cspell-ext.json"],
   "dictionaries": ["lorem-ipsum"],
   "ignorePaths": ["**/lib/**", "**/storybook-static/**", "packages/react/src/typedoc.json", "lerna.json"],
-  "words": ["bivariance", "libphonenumber", "nojekyll", "vite", "Svyatoslav", "Daria", "Alekhina", "Yakshov"]
+  "words": [
+    "bivariance",
+    "dotless",
+    "libphonenumber",
+    "nojekyll",
+    "vite",
+    "нояб",
+    "Svyatoslav",
+    "Daria",
+    "Alekhina",
+    "Yakshov"
+  ]
 }

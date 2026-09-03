@@ -6,7 +6,7 @@ import { IUtils } from '@date-io/core/IUtils';
 
 export interface DateAdapterContextValue {
   /** The instance of date-io adapter. */
-  adapter?: IUtils<Date>;
+  adapter?: IUtils<Date, any>;
 }
 
 export const DateAdapterContext = createContext<DateAdapterContextValue | null>(null);

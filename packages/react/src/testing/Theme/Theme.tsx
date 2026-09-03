@@ -3,7 +3,8 @@ import { useEffect, useMemo } from 'react';
 import { IThemeProps } from './Theme.types';
 
 import DateFnsAdapter from '@date-io/date-fns';
-import { enUS as dateEN, ru as dateRU } from 'date-fns/locale';
+import { ru as dateRU } from '@esfront/date-fns';
+import { enUS as dateEN } from 'date-fns/locale';
 
 import { DateAdapterProvider, en, ru } from '../../components';
 import { DialogStackProvider } from '../../components/DialogStack';

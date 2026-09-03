@@ -1,0 +1,46 @@
+{
+  "name": "@esfront/date-fns",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "sideEffects": false,
+  "main": "lib/node/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/node/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "rimraf ./lib && rollup -c rollup.config.js",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elonsoft/esfront.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Elonsoft/esfront/issues"
+  },
+  "homepage": "https://github.com/Elonsoft/esfront#readme",
+  "devDependencies": {
+    "date-fns": "^4.1.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.62.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.31.1"
+  },
+  "peerDependencies": {
+    "date-fns": "^4.1.0"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "lib"
+  ]
+}

@@ -13,6 +13,7 @@
     "commitlint",
     "crossorigin",
     "csvg",
+    "date-fns",
     "depcruise",
     "describedby",
     "docgen",

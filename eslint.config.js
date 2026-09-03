@@ -13,7 +13,7 @@ export default [
             ['^react'],
             ['^\\.\\./\\.\\./testing'],
             ['^.+\\.types$'],
-            ['^(@testing-library|@storybook|@date-io|date-fns|overlayscrollbars)'],
+            ['^(@testing-library|@storybook|@date-io|@esfront/date-fns|date-fns|overlayscrollbars)'],
             ['^clsx'],
             ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
             ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
