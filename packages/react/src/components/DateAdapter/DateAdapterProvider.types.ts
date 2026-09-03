@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { DateIOFormats, IUtils } from '@date-io/core/IUtils';
 
 interface DateAdapterProviderAdapter {
-  new (options?: { formats?: DateIOFormats; locale?: any; instance?: any }): IUtils<Date>;
+  new (options?: { formats?: DateIOFormats; locale?: any; instance?: any }): IUtils<Date, any>;
 }
 
 export interface DateAdapterProviderProps {

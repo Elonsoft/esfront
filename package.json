@@ -9,6 +9,7 @@
     "packages/configs/eslint-config",
     "packages/configs/prettier-config",
     "packages/configs/stylelint-config",
+    "packages/date-fns",
     "packages/react",
     "packages/theme"
   ],

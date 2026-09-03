@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "lib",
+    "rootDir": "src"
+  },
+  "exclude": ["node_modules", "../../node_modules", "lib", "./*.js"]
+}

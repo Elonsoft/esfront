@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "strict": true,
+    "target": "esnext",
+    "typeRoots": ["node_modules/@types", "../../node_modules/@types"],
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "../../node_modules", "lib"]
+}
