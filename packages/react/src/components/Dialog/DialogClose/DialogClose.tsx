@@ -1,3 +1,5 @@
+'use client';
+
 import { DialogCloseProps } from './DialogClose.types';
 
 import clsx from 'clsx';

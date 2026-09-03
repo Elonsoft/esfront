@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, HTMLAttributes, useRef } from 'react';
 import { Transition } from 'react-transition-group';
 

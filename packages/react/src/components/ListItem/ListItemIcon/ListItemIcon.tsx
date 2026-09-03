@@ -1,3 +1,5 @@
+'use client';
+
 import { ListItemIconProps } from './ListItemIcon.types';
 
 import clsx from 'clsx';

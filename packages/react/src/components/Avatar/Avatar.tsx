@@ -1,3 +1,5 @@
+'use client';
+
 import { CSSProperties, ReactNode, useEffect, useState } from 'react';
 
 import { AvatarProps } from './Avatar.types';

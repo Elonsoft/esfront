@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useRef } from 'react';
 
 import { FormFieldAdornmentProps } from './FormFieldAdornment.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import { SFSChipsProps } from './SFSChips.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { cloneElement, forwardRef, useCallback, useEffect, useRef } from 'react';
 import { Transition } from 'react-transition-group';
 

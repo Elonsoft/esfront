@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 
 import { BottomSheetProps } from './BottomSheet.types';

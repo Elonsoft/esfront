@@ -1,3 +1,5 @@
+'use client';
+
 import { FiltersFilterProps } from './FiltersFilter.types';
 
 import clsx from 'clsx';

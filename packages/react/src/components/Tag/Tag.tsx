@@ -1,3 +1,5 @@
+'use client';
+
 import { TagProps } from './Tag.types';
 
 import clsx from 'clsx';

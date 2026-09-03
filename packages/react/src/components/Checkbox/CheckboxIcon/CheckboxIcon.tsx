@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckboxIconProps } from './CheckboxIcon.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { cloneElement, FocusEvent, Fragment, useEffect, useRef } from 'react';
 
 import { FocusTrapProps } from './FocusTrap.types';

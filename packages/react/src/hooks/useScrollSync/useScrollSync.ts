@@ -1,3 +1,5 @@
+'use client';
+
 import { useLayoutEffect, useRef } from 'react';
 
 import { useLatest } from '../useLatest';

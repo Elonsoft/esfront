@@ -1,3 +1,5 @@
+'use client';
+
 import { cloneElement, forwardRef } from 'react';
 
 import { ModalProps } from './Modal.types';

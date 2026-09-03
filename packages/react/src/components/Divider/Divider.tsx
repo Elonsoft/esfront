@@ -1,3 +1,5 @@
+'use client';
+
 import { DividerProps } from './Divider.types';
 
 import clsx from 'clsx';

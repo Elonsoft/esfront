@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo, useRef, useState } from 'react';
 
 import { GalleryProps } from './Gallery.types';

@@ -1,3 +1,5 @@
+'use client';
+
 /** Returns whether the element matches the `:focus-visible` pseudo class. */
 export const isFocusVisible = (element: Element): boolean => {
   try {

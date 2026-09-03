@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import { PopoverAnchorEl, PopoverOrigin, PopoverProps } from './Popover.types';

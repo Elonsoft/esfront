@@ -1,3 +1,5 @@
+'use client';
+
 import { MutableRefObject, useRef } from 'react';
 
 const MOUSE_LOCS_TRACKED = 3;

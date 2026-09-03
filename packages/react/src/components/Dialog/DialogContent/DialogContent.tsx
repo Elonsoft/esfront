@@ -1,3 +1,5 @@
+'use client';
+
 import { DialogContentProps } from './DialogContent.types';
 
 import clsx from 'clsx';

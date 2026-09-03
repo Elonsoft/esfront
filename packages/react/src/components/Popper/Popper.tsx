@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useImperativeHandle, useMemo, useState } from 'react';
 
 import { PopperAnchorEl, PopperChildrenProps, PopperProps, PopperTransitionProps } from './Popper.types';

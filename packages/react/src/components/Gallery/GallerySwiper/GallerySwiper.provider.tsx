@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode, useMemo, useState } from 'react';
 
 import { GallerySwiperContext } from './GallerySwiper.context';

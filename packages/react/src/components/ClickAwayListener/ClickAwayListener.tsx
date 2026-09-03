@@ -1,3 +1,5 @@
+'use client';
+
 import { cloneElement, useEffect, useRef } from 'react';
 
 import { ClickAwayListenerProps } from './ClickAwayListener.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import { DependencyList, EffectCallback, useEffect, useRef } from 'react';
 
 /**

@@ -1,3 +1,5 @@
+'use client';
+
 import { BannerActionsProps } from './BannerActions.types';
 
 import clsx from 'clsx';

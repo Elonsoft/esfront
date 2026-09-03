@@ -1,3 +1,5 @@
+'use client';
+
 import { ErrorPageHeadingProps } from './ErrorPageHeading.types';
 
 import clsx from 'clsx';

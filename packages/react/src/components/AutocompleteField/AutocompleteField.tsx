@@ -1,3 +1,5 @@
+'use client';
+
 import { AutocompleteFieldProps } from './AutocompleteField.types';
 
 import clsx from 'clsx';

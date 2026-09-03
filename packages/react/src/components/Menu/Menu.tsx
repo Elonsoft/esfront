@@ -1,3 +1,5 @@
+'use client';
+
 import { Children, forwardRef, isValidElement, KeyboardEvent, useRef } from 'react';
 
 import { MenuProps } from './Menu.types';

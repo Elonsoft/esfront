@@ -1,3 +1,5 @@
+'use client';
+
 import { Children, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 
 import { SwiperProps } from './Swiper.types';

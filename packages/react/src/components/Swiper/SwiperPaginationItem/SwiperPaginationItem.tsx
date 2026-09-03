@@ -1,3 +1,5 @@
+'use client';
+
 import { SwiperPaginationItemProps } from './SwiperPaginationItem.types';
 
 import clsx from 'clsx';

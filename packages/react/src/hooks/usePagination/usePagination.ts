@@ -1,3 +1,5 @@
+'use client';
+
 import { useControlled } from '../useControlled';
 
 export interface UsePaginationProps {

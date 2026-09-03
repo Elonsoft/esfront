@@ -1,3 +1,5 @@
+'use client';
+
 import { ErrorPageDescriptionProps } from './ErrorPageDescription.types';
 
 import clsx from 'clsx';

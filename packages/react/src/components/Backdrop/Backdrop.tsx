@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef } from 'react';
 
 import { BackdropProps } from './Backdrop.types';

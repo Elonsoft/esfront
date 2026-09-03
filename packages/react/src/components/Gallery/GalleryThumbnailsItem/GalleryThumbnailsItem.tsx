@@ -1,3 +1,5 @@
+'use client';
+
 import { GalleryThumbnailsItemProps } from './GalleryThumbnailsItem.types';
 
 import clsx from 'clsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, memo } from 'react';
 
 import { TableScrollbarProps } from './TableScrollbar.types';

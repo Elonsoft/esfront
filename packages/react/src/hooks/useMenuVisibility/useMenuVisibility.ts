@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useState } from 'react';
 
 /** The hooks that returns the common state and callbacks for tracking visibility state of dropdown menus. */

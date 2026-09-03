@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, Dispatch, useContext } from 'react';
 
 export interface SidenavContextValue {
