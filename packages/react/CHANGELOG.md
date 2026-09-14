@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.17.0...@esfront/react@0.17.1) (2026-09-14)
+
+
+### Features
+
+* **date-fns:** add new package ([909839c](https://github.com/Elonsoft/esfront/commit/909839c582e3b561946509bcc27459c66391fa63))
+* **react,DateInput:** add new component ([56af5bb](https://github.com/Elonsoft/esfront/commit/56af5bb31e2d6095f3adeb122d8be31d9a50df48))
+* **react,DialogStack:** add new component ([b0090f6](https://github.com/Elonsoft/esfront/commit/b0090f690a5eb3556e339ee6083be592010768de))
+* **react:** add writeInitialValue option for storage hooks ([db192c2](https://github.com/Elonsoft/esfront/commit/db192c2ebe8edca9b62873e11d9fda257913ea67))
+
+
+
 ## [0.17.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.16.0...@esfront/react@0.17.0) (2026-08-28)
 
 

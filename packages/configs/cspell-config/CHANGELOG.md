@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.2.0...@esfront/cspell-config@0.2.1) (2026-09-14)
+
+
+### Features
+
+* **date-fns:** add new package ([909839c](https://github.com/Elonsoft/esfront/commit/909839c582e3b561946509bcc27459c66391fa63))
+* **react,DateInput:** add new component ([56af5bb](https://github.com/Elonsoft/esfront/commit/56af5bb31e2d6095f3adeb122d8be31d9a50df48))
+
+
+
 ## [0.2.0](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.1.0...@esfront/cspell-config@0.2.0) (2026-08-28)
 
 

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.3.0...@esfront/theme@0.3.1) (2026-09-14)
+
+
+### Features
+
+* **react,DateInput:** add new component ([56af5bb](https://github.com/Elonsoft/esfront/commit/56af5bb31e2d6095f3adeb122d8be31d9a50df48))
+
+
+
 ## [0.3.0](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.2.0...@esfront/theme@0.3.0) (2026-08-28)
 
 

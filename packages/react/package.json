@@ -1,6 +1,6 @@
 {
   "name": "@esfront/react",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "description": "",
   "main": "lib/node/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
     "@babel/preset-react": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
     "@date-io/date-fns": "^3.2.1",
-    "@esfront/date-fns": "*",
+    "@esfront/date-fns": "^0.0.1",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@storybook/addon-a11y": "^10.5.10",
