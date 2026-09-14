@@ -1,0 +1,1 @@
+import{a,r as c}from"./iframe-Bc8-Q25v.js";const m=(e,n,r)=>{const s=a(n);c.useEffect(()=>{const t=o=>s.current(o);return document.addEventListener(e,t,r),()=>{document.removeEventListener(e,t)}},[])};export{m as u};

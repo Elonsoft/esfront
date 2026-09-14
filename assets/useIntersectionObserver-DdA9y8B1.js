@@ -1,0 +1,1 @@
+import{a,r as u}from"./iframe-Bc8-Q25v.js";const f=(e,c,r)=>{const s=a(c);u.useEffect(()=>{if(e.current){const t=new IntersectionObserver(n=>{s.current(n)},r);return t.observe(e.current),()=>{t.disconnect()}}},[e.current,r==null?void 0:r.rootMargin])};export{f as u};

@@ -1,0 +1,1 @@
+import{a as n,r as o}from"./iframe-Bc8-Q25v.js";const i=(r,s,t)=>{const c=n(s);o.useEffect(()=>{if(r.current){const e=new ResizeObserver(a=>{c.current(a)});return e.observe(r.current,t),()=>{e.disconnect()}}},[r.current])};export{i as u};

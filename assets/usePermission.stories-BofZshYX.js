@@ -1,0 +1,16 @@
+import{r as p,j as e}from"./iframe-Bc8-Q25v.js";import{A as d}from"./AutocompleteField-BEeCkNU4.js";import"./preload-helper-Dp1pzeXC.js";import"./clsx.m-CH7BE6MN.js";import"./useDefaultProps-lGeK2dpt.js";import"./useControlled-BKv9s01-.js";import"./useId-DYzkOzzt.js";import"./FormFieldHelperText-X0lQ8AlZ.js";import"./FormField.context-BjwhPGAJ.js";import"./useForkRef-rVwNGtGZ.js";import"./FormFieldLabel-CXp2Zlgj.js";import"./useEnhancedEffect-CCpIorDQ.js";import"./FormFieldAdornment-CW6zT670.js";import"./AutocompleteMenu-ByRFNImO.js";import"./OverlayScrollbars-BQ9U6_9k.js";import"./Popper-DYg-78L5.js";import"./ownerDocument-By9UUC6B.js";import"./Portal-BW-pjcFK.js";import"./createTransition-BIZAeqwx.js";import"./utils-xjkStw31.js";import"./IconMagnify2LineW400-eFX5tPSL.js";import"./SvgIcon-CMA3Mbq7.js";import"./IconCloseLineW350-D9tW2UJT.js";import"./lockScroll-qqOLVCfx.js";import"./getScrollbarSize-Bz_XAsBO.js";import"./ownerWindow-DZnlFwEW.js";import"./useIntersectionObserver-DdA9y8B1.js";import"./TooltipEllipsis-DwqUeLsm.js";import"./useResizeObserver-BcWsStiT.js";import"./Tooltip-BgInsn7H.js";import"./Fade-Cz0N_mL7.js";import"./useTimeout-DowuL8C4.js";import"./useEvent-CCPOMy0K.js";import"./Grow-s7Bol92u.js";import"./getAutoHeightDuration-Bbk0NHdI.js";import"./FocusTrap-cBv2YN9d.js";import"./ClickAwayListener-BPRQJxlH.js";import"./TextField-j8tsbYSO.js";import"./Button-BCRxDX6B.js";import"./ButtonBase-BBaKRXh4.js";import"./SpinnerRing-Co6VQLU7.js";import"./MenuItem-8wSZO-ML.js";import"./Checkbox-B74rhBu5.js";import"./SwitchBase-C6cffuB5.js";import"./Divider-COoXnJWy.js";const g=s=>{const[o,m]=p.useState("");return p.useEffect(()=>{let i=!0,t=null;const n=()=>{i&&m(()=>(t==null?void 0:t.state)??"")};return navigator.permissions.query(s).then(c=>{t=c,t.addEventListener("change",n),n()}),()=>{t&&t.removeEventListener("change",n),i=!1,t=null}},[s]),o},f=["camera","geolocation","microphone","midi","notifications","persistent-storage","push","screen-wake-lock","speaker","xr-spatial-tracking"],nt={tags:["autodocs"],title:"Hooks/usePermission",parameters:{references:["usePermission"]}},r={render:function(){const[o,m]=p.useState("camera"),i=g({name:o});return e.jsxs(e.Fragment,{children:[e.jsx("div",{style:{maxWidth:"320px"},children:e.jsx(d,{fullWidth:!0,getOptionLabel:t=>t,getOptionValue:t=>t,label:"Permission",options:f,size:"500",value:o,onChange:t=>m(t)})}),e.jsxs("div",{className:"body200 mt-8",children:["Permission status: ",JSON.stringify(i,null,2)]})]})}};var a,l,u;r.parameters={...r.parameters,docs:{...(a=r.parameters)==null?void 0:a.docs,source:{originalSource:`{
+  render: function Render() {
+    const [permission, setPermission] = useState<any>('camera');
+    const state = usePermission({
+      name: permission
+    });
+    return <>
+        <div style={{
+        maxWidth: '320px'
+      }}>
+          <AutocompleteField fullWidth getOptionLabel={(option: string) => option} getOptionValue={(option: string) => option} label="Permission" options={PERMISSIONS} size="500" value={permission} onChange={value => setPermission(value)} />
+        </div>
+        <div className="body200 mt-8">Permission status: {JSON.stringify(state, null, 2)}</div>
+      </>;
+  }
+}`,...(u=(l=r.parameters)==null?void 0:l.docs)==null?void 0:u.source}}};const pt=["Demo"];export{r as Demo,pt as __namedExportsOrder,nt as default};

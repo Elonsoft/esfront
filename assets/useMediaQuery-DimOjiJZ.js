@@ -1,0 +1,1 @@
+import{r as t}from"./iframe-Bc8-Q25v.js";const i=e=>{const n=t.useCallback(s=>{const a=window.matchMedia(e);return a.addEventListener("change",s),()=>{a.removeEventListener("change",s)}},[e]),r=t.useCallback(()=>window.matchMedia(e).matches,[e]),c=()=>!1;return t.useSyncExternalStore(n,r,c)};export{i as u};

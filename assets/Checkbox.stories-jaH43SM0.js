@@ -1,0 +1,5 @@
+import{j as i}from"./iframe-Bc8-Q25v.js";import{C as a}from"./Checkbox-B74rhBu5.js";import"./preload-helper-Dp1pzeXC.js";import"./clsx.m-CH7BE6MN.js";import"./useDefaultProps-lGeK2dpt.js";import"./SwitchBase-C6cffuB5.js";import"./useControlled-BKv9s01-.js";import"./FormField.context-BjwhPGAJ.js";import"./ButtonBase-BBaKRXh4.js";import"./useForkRef-rVwNGtGZ.js";import"./SvgIcon-CMA3Mbq7.js";const h={tags:["autodocs"],component:a,parameters:{references:["Checkbox"]},argTypes:{checkedIcon:{table:{disable:!0}},icon:{table:{disable:!0}},indeterminateIcon:{table:{disable:!0}},inputProps:{table:{disable:!0}},inputRef:{table:{disable:!0}},value:{table:{disable:!0}}},args:{color:"primary"}},e={render:s=>i.jsx(a,{...s})};var r,t,o;e.parameters={...e.parameters,docs:{...(r=e.parameters)==null?void 0:r.docs,source:{originalSource:`{
+  render: args => {
+    return <Checkbox {...args} />;
+  }
+}`,...(o=(t=e.parameters)==null?void 0:t.docs)==null?void 0:o.source}}};const k=["Demo"];export{e as Demo,k as __namedExportsOrder,h as default};

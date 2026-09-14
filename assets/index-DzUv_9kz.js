@@ -1,3 +1,0 @@
-var t={},g;function p(){if(g)return t;g=1,Object.defineProperty(t,"__esModule",{value:!0}),t.dedent=void 0;function o(a){for(var s=[],n=1;n<arguments.length;n++)s[n-1]=arguments[n];var e=Array.from(typeof a=="string"?[a]:a);e[e.length-1]=e[e.length-1].replace(/\r?\n([\t ]*)$/,"");var c=e.reduce(function(r,u){var f=u.match(/\n([\t ]+|(?!\s).)/g);return f?r.concat(f.map(function(h){var i,d;return(d=(i=h.match(/[\t ]/g))===null||i===void 0?void 0:i.length)!==null&&d!==void 0?d:0})):r},[]);if(c.length){var l=new RegExp(`
-[	 ]{`+Math.min.apply(Math,c)+"}","g");e=e.map(function(r){return r.replace(l,`
-`)})}e[0]=e[0].replace(/^\r?\n/,"");var v=e[0];return s.forEach(function(r,u){v+=r+e[u+1]}),v}return t.dedent=o,t.default=o,t}var m=p();export{m as d};

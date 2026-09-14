@@ -1,0 +1,1 @@
+const o=e=>{var n;let t=e.activeElement;for(;(n=t==null?void 0:t.shadowRoot)!=null&&n.activeElement;)t=t.shadowRoot.activeElement;return t},c=(e=window)=>{const t=e.document.documentElement.clientWidth;return e.innerWidth-t};export{c as a,o as g};
