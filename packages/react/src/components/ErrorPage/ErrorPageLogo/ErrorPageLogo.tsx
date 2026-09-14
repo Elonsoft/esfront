@@ -1,5 +1,3 @@
-'use client';
-
 import { ErrorPageLogoProps } from './ErrorPageLogo.types';
 
 import clsx from 'clsx';

@@ -1,5 +1,3 @@
-'use client';
-
 import { ErrorPageFooterProps } from './ErrorPageFooter.types';
 
 import clsx from 'clsx';

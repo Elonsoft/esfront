@@ -1,5 +1,3 @@
-'use client';
-
 import { ErrorPageActionsProps } from './ErrorPageActions.types';
 
 import clsx from 'clsx';
