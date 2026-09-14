@@ -1,5 +1,3 @@
-'use client';
-
 import { LinkProps, LinkTypeMap } from './Link.types';
 
 import clsx from 'clsx';
