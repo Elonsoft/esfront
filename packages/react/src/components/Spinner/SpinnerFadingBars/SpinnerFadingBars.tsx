@@ -1,5 +1,3 @@
-'use client';
-
 import { SpinnerProps } from '../Spinner.types';
 
 import clsx from 'clsx';
