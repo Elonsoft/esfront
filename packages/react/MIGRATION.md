@@ -1,5 +1,7 @@
 # Migration Guide
 
+- [Unreleased](#unreleased)
+  - [Package Exports](#package-exports)
 - [0.16.0 → 0.17.0](#0160--0170)
   - [MUI Removal](#mui-removal)
   - [Theme Replacement](#theme-replacement)
@@ -15,6 +17,16 @@
   - [Package Name](#package-name)
   - [CSS Theme Variables](#css-theme-variables)
   - [Components Replacement](#components-replacement)
+
+## Unreleased
+
+### Package Exports
+
+The package now declares an `exports` map. Deep imports such as `@esfront/react/icons/IconMenuLineW500` keep resolving
+through a `"./*"` wildcard subpath, so no changes are required on your side.
+
+Bundlers and runtimes that support the `react-server` export condition, such as the Next.js App Router, resolve a
+server-safe build automatically. There is nothing to configure; the condition selects the build.
 
 ## 0.16.0 → 0.17.0
 
