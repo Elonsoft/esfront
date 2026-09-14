@@ -13,6 +13,7 @@
     "./*.ts",
     "src/documentation",
     "src/testing",
-    "src/**/*.spec.tsx"
+    "src/**/*.spec.tsx",
+    "src/**/*.stories.tsx"
   ]
 }
