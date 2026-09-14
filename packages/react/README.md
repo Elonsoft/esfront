@@ -12,9 +12,11 @@ For a full list of components and usage examples check out our
 
 `DefaultPropsProvider` works in both a server and a client tree, with two differences on the server.
 
-Nested providers do not nest. Server components read the value from a store scoped to the request rather than to the
-subtree, so a nested provider overwrites the outer one for every server component rendered after it. Client components
-below the nested provider still see the nested value.
+Use exactly one `DefaultPropsProvider`, at the root of the server tree. Server components read the value from a store
+scoped to the request rather than to the subtree, and the Flight renderer interleaves subtrees whenever an async server
+component suspends, so with a second provider anywhere in the tree the value a given server component reads depends on
+suspension timing and is not deterministic. Client components below a nested provider do still observe its value through
+context.
 
 Code that runs outside the render tree — `generateMetadata`, route handlers, server actions — never passes through a
 provider, so components rendered there fall back to the props they are given.
@@ -33,10 +35,10 @@ message:
 
 Not every component renders on the server — some still depend on client-only APIs (hooks, browser APIs), `forwardRef`,
 or inline event handlers, and keep the `'use client'` directive. Rather than list them here, where the list would drift
-from the code, derive it yourself:
+from the code, derive it yourself. The `--list` flag prints the modules that render on the server, one path per line:
 
 ```bash
-cd packages/react && npm run check:rsc
+cd packages/react && npm run check:rsc -- --list
 ```
 
 ## Contributing
