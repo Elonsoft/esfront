@@ -31,7 +31,8 @@
     "build": "rimraf ./lib && rollup -c rollup.config.js",
     "build:storybook": "npm run typedoc && cross-env NODE_OPTIONS=--max-old-space-size=8192 storybook build",
     "typedoc": "typedoc src/index.ts --json src/typedoc.json",
-    "import-icons": "node ./import-icons.js"
+    "import-icons": "node ./import-icons.js",
+    "check:rsc": "node ./scripts/check-rsc.mjs"
   },
   "repository": {
     "type": "git",

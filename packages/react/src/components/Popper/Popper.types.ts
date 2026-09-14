@@ -2,7 +2,7 @@ import { CSSProperties, ElementType, HTMLAttributes, ReactNode, Ref } from 'reac
 
 import { PortalProps } from '../Portal';
 
-import { Middleware, MiddlewareData, Placement, Strategy, VirtualElement } from '@floating-ui/react-dom';
+import type { Middleware, MiddlewareData, Placement, Strategy, VirtualElement } from '@floating-ui/react-dom';
 
 export type PopperPlacement = Placement;
 
