@@ -18,21 +18,19 @@
       "default": "./lib/index.js"
     },
     "./package.json": "./package.json",
-    "./*": [
-      "./lib/*",
-      "./lib/*.js",
-      "./lib/*/index.js"
-    ]
+    "./lib/*": "./lib/*",
+    "./*": "./lib/*"
   },
   "sideEffects": false,
   "scripts": {
     "start": "storybook dev -p 8000",
     "start:typedoc": "npm run typedoc && npm run start",
-    "build": "rimraf ./lib && rollup -c rollup.config.js",
+    "build": "npm run check:rsc && rimraf ./lib && rollup -c rollup.config.js && npm run check:exports",
     "build:storybook": "npm run typedoc && cross-env NODE_OPTIONS=--max-old-space-size=8192 storybook build",
     "typedoc": "typedoc src/index.ts --json src/typedoc.json",
     "import-icons": "node ./import-icons.js",
-    "check:rsc": "node ./scripts/check-rsc.mjs"
+    "check:rsc": "node ./scripts/check-rsc.mjs",
+    "check:exports": "node ./scripts/check-exports.mjs"
   },
   "repository": {
     "type": "git",
