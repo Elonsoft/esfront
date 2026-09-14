@@ -9,6 +9,7 @@
     "node_modules",
     "storybook-static",
     "lib",
+    "scripts",
     "./*.js",
     "./*.ts",
     "src/documentation",
