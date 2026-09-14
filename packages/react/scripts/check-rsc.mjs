@@ -201,4 +201,10 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`check:rsc passed — ${roots.length} server modules checked against ${modules.size} scanned.`);
+if (process.argv.includes('--list')) {
+  for (const module of roots.map((root) => path.relative(ROOT, root)).sort()) {
+    console.log(module);
+  }
+} else {
+  console.log(`check:rsc passed — ${roots.length} server modules checked against ${modules.size} scanned.`);
+}
