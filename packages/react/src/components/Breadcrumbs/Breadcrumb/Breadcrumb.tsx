@@ -1,5 +1,3 @@
-'use client';
-
 import { BreadcrumbProps, BreadcrumbTypeMap } from './Breadcrumb.types';
 
 import clsx from 'clsx';

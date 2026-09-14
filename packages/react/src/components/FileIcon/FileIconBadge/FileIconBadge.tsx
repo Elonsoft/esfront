@@ -1,5 +1,3 @@
-'use client';
-
 import { FileIconBadgeProps } from './FileIconBadge.types';
 
 import clsx from 'clsx';
