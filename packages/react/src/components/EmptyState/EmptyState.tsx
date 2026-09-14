@@ -1,5 +1,3 @@
-'use client';
-
 import { EmptyStateProps } from './EmptyState.types';
 
 import clsx from 'clsx';

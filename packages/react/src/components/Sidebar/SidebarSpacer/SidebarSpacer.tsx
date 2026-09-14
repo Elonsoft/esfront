@@ -1,5 +1,3 @@
-'use client';
-
 import { SidebarSpacerProps } from './SidebarSpacer.types';
 
 import clsx from 'clsx';

@@ -1,5 +1,3 @@
-'use client';
-
 import { BadgePlacementControlProps } from './BadgePlacementControl.types';
 
 import clsx from 'clsx';

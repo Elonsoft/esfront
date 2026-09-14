@@ -1,5 +1,3 @@
-'use client';
-
 import { DateInputProviderProps } from './DateInputProvider.types';
 
 import { DateInputContext } from '../DateInput.context';
