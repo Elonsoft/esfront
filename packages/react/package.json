@@ -6,6 +6,24 @@
   "module": "lib/index.js",
   "jsnext:main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "react-server": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/react-server/index.js"
+      },
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/node/index.js",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./*": [
+      "./lib/*",
+      "./lib/*.js",
+      "./lib/*/index.js"
+    ]
+  },
   "sideEffects": false,
   "scripts": {
     "start": "storybook dev -p 8000",
