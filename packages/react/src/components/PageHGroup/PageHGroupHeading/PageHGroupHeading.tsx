@@ -1,5 +1,3 @@
-'use client';
-
 import { PageHGroupHeadingProps } from './PageHGroupHeading.types';
 
 import clsx from 'clsx';
