@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.17.1...@esfront/react@0.17.2) (2026-09-14)
+
+
+### Bug Fixes
+
+* **react:** declare react-dom as a peer dependency ([a2c3c1e](https://github.com/Elonsoft/esfront/commit/a2c3c1e56e35cc044a6b6a48d7822ada3512e1c6))
+
+
+
 ## [0.17.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.17.0...@esfront/react@0.17.1) (2026-09-14)
 
 
