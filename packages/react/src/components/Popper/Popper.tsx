@@ -47,15 +47,15 @@ const PopperRoot = forwardRef<HTMLDivElement, PopperRootProps>(function PopperRo
     transitionProps,
     slots = {},
     slotProps = {},
+    // `container`, `disablePortal`, `keepMounted` and `transition` are part of `PopperProps` (they arrive here through
+    // the `{...props}` spread in `Popper` below) but are not valid DOM attributes — drop them so they never reach
+    // `Root`.
+    container: _container,
+    disablePortal: _disablePortal,
+    keepMounted: _keepMounted,
+    transition: _transition,
     ...other
   } = props;
-
-  // `container`, `disablePortal`, `keepMounted` and `transition` are part of `PopperProps` (they arrive here through the
-  // `{...props}` spread in `Popper` below) but are not valid DOM attributes — drop them so they never reach `Root`.
-  delete other.container;
-  delete other.disablePortal;
-  delete other.keepMounted;
-  delete other.transition;
 
   const reference = useMemo(() => resolveAnchorEl(anchorEl) ?? null, [anchorEl]);
 

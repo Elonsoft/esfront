@@ -17,7 +17,7 @@ export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: Tab
     icon,
     label,
     selected,
-    // eslint-disable-next-line
+
     color,
     ...props
   } = useDefaultProps({

@@ -33,8 +33,20 @@ let hystersisOpen = false;
 const hystersisTimer = new Timeout();
 let cursorPosition = { x: 0, y: 0 };
 
+const setHystersisOpen = (value: boolean) => {
+  hystersisOpen = value;
+};
+
+const setCursorPosition = (value: { x: number; y: number }) => {
+  cursorPosition = value;
+};
+
+const setBodyUserSelect = (value: string | undefined) => {
+  (document.body.style as any).WebkitUserSelect = value;
+};
+
 export function testReset() {
-  hystersisOpen = false;
+  setHystersisOpen(false);
   hystersisTimer.clear();
 }
 
@@ -112,31 +124,31 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   let open = openState;
 
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { current: isControlled } = useRef(openProp !== undefined);
+  const { current: isControlled } = useRef(openProp !== undefined);
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-      if (
-        childNode &&
-        (childNode as HTMLButtonElement).disabled &&
-        !isControlled &&
-        title !== '' &&
-        childNode.tagName.toLowerCase() === 'button'
-      ) {
-        console.error(
-          [
-            'You are providing a disabled `button` child to the Tooltip component.',
-            'A disabled element does not fire events.',
-            "Tooltip needs to listen to the child element's events to display the title.",
-            '',
-            'Add a simple wrapper element, such as a `span`.',
-          ].join('\n')
-        );
-      }
-    }, [title, childNode, isControlled]);
-  }
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      return;
+    }
+
+    if (
+      childNode &&
+      (childNode as HTMLButtonElement).disabled &&
+      !isControlled &&
+      title !== '' &&
+      childNode.tagName.toLowerCase() === 'button'
+    ) {
+      console.error(
+        [
+          'You are providing a disabled `button` child to the Tooltip component.',
+          'A disabled element does not fire events.',
+          "Tooltip needs to listen to the child element's events to display the title.",
+          '',
+          'Add a simple wrapper element, such as a `span`.',
+        ].join('\n')
+      );
+    }
+  }, [title, childNode, isControlled]);
 
   const id = useId(idProp);
 
@@ -144,7 +156,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   const stopTouchInteraction = useEvent(() => {
     if (prevUserSelect.current !== undefined) {
-      (document.body.style as any).WebkitUserSelect = prevUserSelect.current;
+      setBodyUserSelect(prevUserSelect.current);
       prevUserSelect.current = undefined;
     }
 
@@ -159,7 +171,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   const handleOpen = (event: MouseEvent | FocusEvent | TouchEvent) => {
     hystersisTimer.clear();
-    hystersisOpen = true;
+    setHystersisOpen(true);
 
     // The mouseover event will trigger for every nested element in the tooltip.
     // We can skip rerendering when the tooltip is already open.
@@ -173,7 +185,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   const handleClose = useEvent((event: MouseEvent | FocusEvent | TouchEvent | KeyboardEvent) => {
     hystersisTimer.start(800 + leaveDelay, () => {
-      hystersisOpen = false;
+      setHystersisOpen(false);
     });
 
     setOpenState(false);
@@ -272,10 +284,10 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
     prevUserSelect.current = (document.body.style as any).WebkitUserSelect;
     // Prevent iOS text selection on long-tap.
-    (document.body.style as any).WebkitUserSelect = 'none';
+    setBodyUserSelect('none');
 
     touchTimer.start(enterTouchDelay, () => {
-      (document.body.style as any).WebkitUserSelect = prevUserSelect.current;
+      setBodyUserSelect(prevUserSelect.current);
       handleMouseOver(event);
     });
   };
@@ -335,7 +347,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
       childrenProps.onMouseMove(event);
     }
 
-    cursorPosition = { x: event.clientX, y: event.clientY };
+    setCursorPosition({ x: event.clientX, y: event.clientY });
 
     if (popperRef.current) {
       popperRef.current.update();
@@ -366,23 +378,23 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     onTouchStart: detectTouchStart,
     ref: handleRef,
     ...(followCursor ? { onMouseMove: handleMouseMove } : {}),
+    ...(process.env.NODE_ENV === 'production' ? {} : { 'data-es-internal-clone-element': true }),
   };
 
-  if (process.env.NODE_ENV !== 'production') {
-    childrenProps['data-es-internal-clone-element'] = true;
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      return;
+    }
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-      if (childNode && !childNode.getAttribute('data-es-internal-clone-element')) {
-        console.error(
-          [
-            'The `children` component of the Tooltip is not forwarding its props correctly.',
-            'Please make sure that props are spread on the same element that the ref is applied to.',
-          ].join('\n')
-        );
-      }
-    }, [childNode]);
-  }
+    if (childNode && !childNode.getAttribute('data-es-internal-clone-element')) {
+      console.error(
+        [
+          'The `children` component of the Tooltip is not forwarding its props correctly.',
+          'Please make sure that props are spread on the same element that the ref is applied to.',
+        ].join('\n')
+      );
+    }
+  }, [childNode]);
 
   const interactiveWrapperListeners: {
     onMouseOver?: (event: MouseEvent | FocusEvent | TouchEvent) => void;
