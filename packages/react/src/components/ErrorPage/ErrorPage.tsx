@@ -1,5 +1,3 @@
-'use client';
-
 import { ErrorPageProps } from './ErrorPage.types';
 
 import clsx from 'clsx';

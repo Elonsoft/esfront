@@ -1,5 +1,3 @@
-'use client';
-
 import { FileInfoProps } from './FileInfo.types';
 
 import clsx from 'clsx';

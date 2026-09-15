@@ -1,5 +1,3 @@
-'use client';
-
 import { PageHGroupBreadcrumbsProps } from './PageHGroupBreadcrumbs.types';
 
 import clsx from 'clsx';

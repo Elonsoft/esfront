@@ -1,5 +1,3 @@
-'use client';
-
 import { PriceProps } from './Price.types';
 
 import clsx from 'clsx';

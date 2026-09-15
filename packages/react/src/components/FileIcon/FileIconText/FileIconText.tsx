@@ -1,5 +1,3 @@
-'use client';
-
 import { FileIconTextProps } from './FileIconText.types';
 
 import clsx from 'clsx';
