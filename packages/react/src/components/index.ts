@@ -95,4 +95,5 @@ export * from './TextFieldGroup';
 export * from './Tooltip';
 export * from './TooltipEllipsis';
 export * from './TouchRipple';
+export * from './Tour';
 export * from './Zoom';

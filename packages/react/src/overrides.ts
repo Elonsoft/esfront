@@ -174,6 +174,7 @@ import { TextFieldProps } from './components/TextField';
 import { TextFieldGroupProps } from './components/TextFieldGroup';
 import { TooltipProps } from './components/Tooltip';
 import { TouchRippleProps } from './components/TouchRipple';
+import { TourProps } from './components/Tour';
 import { ZoomProps } from './components/Zoom';
 import { AvatarProps } from './components';
 
@@ -363,6 +364,7 @@ declare module './theming/DefaultPropsProvider/DefaultPropsProvider.types' {
     ESTextField: TextFieldProps;
     ESTextFieldGroup: TextFieldGroupProps;
     ESTooltip: TooltipProps;
+    ESTour: TourProps;
     ESZoom: ZoomProps;
   }
 }

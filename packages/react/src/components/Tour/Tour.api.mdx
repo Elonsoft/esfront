@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+import { TableInterface } from '~storybook/components/TableInterface';
+
+<Meta title="Components API/Tour" />
+
+# Tour API
+
+```js
+import { Tour } from '@esfront/react';
+```
+
+## Component name
+
+The name `ESTour` can be used when providing default props.
+
+## Props
+
+<TableInterface name="TourProps" variant="props" />
+
+<br />
+
+## Step
+
+Each entry of the `steps` prop describes one stop of the tour.
+
+<TableInterface name="TourStep" variant="props" />
+
+<br />
+
+## Content
+
+The `content` of a step may be a function, in which case it receives the navigation handles.
+
+<TableInterface name="TourContentProps" variant="props" />
+
+<br />
+
+## Step context
+
+The `before` and `after` callbacks of a step receive the step the tour is moving to.
+
+<TableInterface name="TourStepContext" variant="props" />
+
+<br />
+
+## Demos
+
+<ul>
+  <li>
+    <LinkTo kind="components-Tour" story="demo">
+      <code>Tour</code>
+    </LinkTo>
+  </li>
+</ul>

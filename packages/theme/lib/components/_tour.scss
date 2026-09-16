@@ -1,0 +1,116 @@
+@mixin include() {
+  .es-tour {
+    --es-tour-rect-top: 0px;
+    --es-tour-rect-left: 0px;
+    --es-tour-rect-width: 0px;
+    --es-tour-rect-height: 0px;
+    --es-tour-padding: 8px;
+    --es-tour-gap-top: 9999px;
+    --es-tour-gap-right: 9999px;
+    --es-tour-gap-bottom: 9999px;
+    --es-tour-gap-left: 9999px;
+    --es-tour-padding-top: min(var(--es-tour-padding), var(--es-tour-gap-top));
+    --es-tour-padding-right: min(var(--es-tour-padding), var(--es-tour-gap-right));
+    --es-tour-padding-bottom: min(var(--es-tour-padding), var(--es-tour-gap-bottom));
+    --es-tour-padding-left: min(var(--es-tour-padding), var(--es-tour-gap-left));
+    --es-tour-radius: 4px;
+    --es-tour-radius-top-left: var(--es-tour-radius);
+    --es-tour-radius-top-right: var(--es-tour-radius);
+    --es-tour-radius-bottom-right: var(--es-tour-radius);
+    --es-tour-radius-bottom-left: var(--es-tour-radius);
+    --es-tour-distance: 8px;
+
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 1400;
+
+    &__spotlight {
+      border-radius: var(--es-tour-radius-top-left) var(--es-tour-radius-top-right) var(--es-tour-radius-bottom-right)
+        var(--es-tour-radius-bottom-left);
+      box-shadow: 0 0 0 9999px var(--es-overlay-300);
+      height: calc(var(--es-tour-rect-height) + var(--es-tour-padding-top) + var(--es-tour-padding-bottom));
+      left: calc(var(--es-tour-rect-left) - var(--es-tour-padding-left));
+      pointer-events: none;
+      position: absolute;
+      top: calc(var(--es-tour-rect-top) - var(--es-tour-padding-top));
+      width: calc(var(--es-tour-rect-width) + var(--es-tour-padding-left) + var(--es-tour-padding-right));
+    }
+
+    &__blocker {
+      pointer-events: auto;
+      position: absolute;
+
+      &--full {
+        inset: 0;
+
+        .es-tour--dimmed & {
+          background-color: var(--es-overlay-300);
+        }
+      }
+
+      &--top {
+        height: calc(var(--es-tour-rect-top) - var(--es-tour-padding-top));
+        left: 0;
+        right: 0;
+        top: 0;
+      }
+
+      &--bottom {
+        inset: calc(var(--es-tour-rect-top) + var(--es-tour-rect-height) + var(--es-tour-padding-bottom)) 0 0;
+      }
+
+      &--left {
+        height: calc(var(--es-tour-rect-height) + var(--es-tour-padding-top) + var(--es-tour-padding-bottom));
+        left: 0;
+        top: calc(var(--es-tour-rect-top) - var(--es-tour-padding-top));
+        width: calc(var(--es-tour-rect-left) - var(--es-tour-padding-left));
+      }
+
+      &--right {
+        height: calc(var(--es-tour-rect-height) + var(--es-tour-padding-top) + var(--es-tour-padding-bottom));
+        left: calc(var(--es-tour-rect-left) + var(--es-tour-rect-width) + var(--es-tour-padding-right));
+        right: 0;
+        top: calc(var(--es-tour-rect-top) - var(--es-tour-padding-top));
+      }
+    }
+
+    &__popper {
+      z-index: 1;
+
+      &[data-es-placement*='bottom'] {
+        padding-top: var(--es-tour-distance);
+      }
+
+      &[data-es-placement*='top'] {
+        padding-bottom: var(--es-tour-distance);
+      }
+
+      &[data-es-placement*='right'] {
+        padding-left: var(--es-tour-distance);
+      }
+
+      &[data-es-placement*='left'] {
+        padding-right: var(--es-tour-distance);
+      }
+    }
+
+    &__center {
+      align-items: center;
+      display: flex;
+      inset: 0;
+      justify-content: center;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    &__card {
+      background-color: var(--es-surface-400);
+      border-radius: 6px;
+      box-shadow: var(--es-shadow-down-600);
+      color: var(--es-mono-a-a900);
+      outline: 0;
+      pointer-events: auto;
+    }
+  }
+}
