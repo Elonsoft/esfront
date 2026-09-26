@@ -1,5 +1,3 @@
-'use client';
-
 import { TabBarItemProps, TabBarItemTypeMap } from './TabBarItem.types';
 
 import clsx from 'clsx';

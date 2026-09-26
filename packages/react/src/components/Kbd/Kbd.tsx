@@ -1,5 +1,3 @@
-'use client';
-
 import { KbdProps } from './Kbd.types';
 
 import clsx from 'clsx';

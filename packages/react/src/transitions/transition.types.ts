@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { TransitionActions, TransitionProps as BaseTransitionProps } from 'react-transition-group/Transition';
+import type { TransitionActions, TransitionProps as BaseTransitionProps } from 'react-transition-group/Transition';
 
 export type TransitionHandlerKeys = 'onEnter' | 'onEntering' | 'onEntered' | 'onExit' | 'onExiting' | 'onExited';
 

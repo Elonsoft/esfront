@@ -1,5 +1,3 @@
-'use client';
-
 import { GalleryMetaSeparatorProps } from './GalleryMetaSeparator.types';
 
 import clsx from 'clsx';

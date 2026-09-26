@@ -1,5 +1,3 @@
-'use client';
-
 import { AlertProps } from './Alert.types';
 
 import clsx from 'clsx';

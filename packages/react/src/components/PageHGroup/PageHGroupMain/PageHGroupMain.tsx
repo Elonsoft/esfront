@@ -1,5 +1,3 @@
-'use client';
-
 import { PageHGroupMainProps } from './PageHGroupMain.types';
 
 import clsx from 'clsx';

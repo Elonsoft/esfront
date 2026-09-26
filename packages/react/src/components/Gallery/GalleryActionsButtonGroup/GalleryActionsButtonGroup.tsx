@@ -1,5 +1,3 @@
-'use client';
-
 import { GalleryActionsButtonGroupProps } from './GalleryActionsButtonGroup.types';
 
 import clsx from 'clsx';

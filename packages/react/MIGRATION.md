@@ -1,5 +1,8 @@
 # Migration Guide
 
+- [Unreleased](#unreleased)
+  - [Server Components and DefaultPropsProvider](#server-components-and-defaultpropsprovider)
+  - [Package Exports](#package-exports)
 - [0.16.0 → 0.17.0](#0160--0170)
   - [MUI Removal](#mui-removal)
   - [Theme Replacement](#theme-replacement)
@@ -15,6 +18,82 @@
   - [Package Name](#package-name)
   - [CSS Theme Variables](#css-theme-variables)
   - [Components Replacement](#components-replacement)
+
+## Unreleased
+
+### Server Components and DefaultPropsProvider
+
+Most components no longer carry the `'use client'` directive, so in a framework that understands the `react-server`
+export condition — the Next.js App Router, for instance — they now render as server components. A server component
+cannot read React context, so it takes its defaults from a request-scoped store that `DefaultPropsProvider` fills only
+when the provider is itself rendered from a server module.
+
+**If your `DefaultPropsProvider` is rendered inside a `'use client'` module, move it into a server component.** Before
+this release every component was a client component, so a provider placed in a client-side providers module worked. It
+no longer does, and nothing tells you: the store stays empty, and every server component below falls back to the props
+given at its call site, dropping your locale and your global default props.
+
+Do not do this:
+
+```tsx
+// app/providers.tsx
+'use client';
+
+import { DefaultPropsProvider } from '@esfront/react';
+
+export const Providers = ({ children }: { children: ReactNode }) => (
+  <DefaultPropsProvider value={ru.components}>{children}</DefaultPropsProvider>
+);
+
+// app/layout.tsx
+const RootLayout = ({ children }: { children: ReactNode }) => (
+  <html>
+    <body>
+      <Providers>{children}</Providers>
+    </body>
+  </html>
+);
+```
+
+Render the provider from the server layout instead:
+
+```tsx
+// app/layout.tsx
+import { DefaultPropsProvider } from '@esfront/react';
+
+const RootLayout = ({ children }: { children: ReactNode }) => (
+  <html>
+    <body>
+      <DefaultPropsProvider value={ru.components}>{children}</DefaultPropsProvider>
+    </body>
+  </html>
+);
+```
+
+Client components below the provider keep reading the value through context in both shapes, so a purely client-side
+application needs no change.
+
+### Package Exports
+
+The package now declares an `exports` map. These specifier shapes are supported:
+
+- `@esfront/react` — the package root, in every consumer.
+- `@esfront/react/lib/<path>.js` — unchanged from before this release.
+- `@esfront/react/<path>.js` — new, and equivalent to the line above. `@esfront/react/icons/IconMenuLineW500.js` and
+  `@esfront/react/lib/icons/IconMenuLineW500.js` resolve to the same file.
+
+Deep imports written without the file extension, and directory-style deep imports, such as
+`@esfront/react/icons/IconMenuLineW500` or `@esfront/react/components/Badge`, are **not** supported, and never were. The
+build emits one module per source file and no per-directory barrels, so there is no `lib/components/Badge/index.js` to
+resolve to. Watch out for this one: TypeScript resolves such a specifier to the adjacent `index.d.ts`, reports no error,
+and lets the bundler fail instead. Always write the `.js` extension.
+
+Bundlers and runtimes that support the `react-server` export condition, such as the Next.js App Router, resolve a
+server-safe build automatically. There is nothing to configure; the condition selects the build.
+
+The map also changes how Node ESM resolves the package root: it used to go through `main` to the CommonJS
+`lib/node/index.js` and now goes to the ES module `lib/index.js`, so `import esfront from '@esfront/react'` throws a
+`SyntaxError` instead of yielding a namespace object. Named imports are unaffected.
 
 ## 0.16.0 → 0.17.0
 

@@ -1,5 +1,3 @@
-'use client';
-
 import { TabBarProps } from './TabBar.types';
 
 import clsx from 'clsx';

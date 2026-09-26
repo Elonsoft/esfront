@@ -1,5 +1,3 @@
-'use client';
-
 import { GallerySwiperImageProps } from './GallerySwiperImage.types';
 
 import clsx from 'clsx';

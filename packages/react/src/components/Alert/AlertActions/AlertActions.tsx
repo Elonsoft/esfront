@@ -1,5 +1,3 @@
-'use client';
-
 import { AlertActionsProps } from './AlertActions.types';
 
 import clsx from 'clsx';

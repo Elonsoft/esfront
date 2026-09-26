@@ -1,5 +1,3 @@
-'use client';
-
 import { GalleryMetaTextProps } from './GalleryMetaText.types';
 
 import clsx from 'clsx';

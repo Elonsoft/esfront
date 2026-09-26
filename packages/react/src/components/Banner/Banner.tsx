@@ -1,5 +1,3 @@
-'use client';
-
 import { BannerProps } from './Banner.types';
 
 import clsx from 'clsx';

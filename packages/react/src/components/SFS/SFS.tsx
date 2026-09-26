@@ -1,5 +1,3 @@
-'use client';
-
 import { SFSProps } from './SFS.types';
 
 import clsx from 'clsx';
