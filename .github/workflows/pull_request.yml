@@ -16,6 +16,8 @@ jobs:
         uses: wagoid/commitlint-github-action@v1
       - name: Lint code
         run: npm run eslint
+      - name: Lint styles
+        run: npm run stylelint
       - name: Check formatting
         run: npm run prettier:check
       - name: Check spelling

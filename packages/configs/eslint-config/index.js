@@ -2,7 +2,6 @@ import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import prettier from 'eslint-plugin-prettier/recommended';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
-import reactCompiler from 'eslint-plugin-react-compiler';
 import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
@@ -13,16 +12,15 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   prettier,
   reactRecommended,
+  reactHooks.configs.flat['recommended-latest'],
   {
     plugins: {
-      'react-compiler': reactCompiler,
-      'react-hooks': reactHooks,
       'simple-import-sort': simpleImportSort,
       '@stylistic': stylistic,
     },
     settings: {
       react: {
-        version: 'detect',
+        version: '18.2',
       },
     },
     languageOptions: {
@@ -165,8 +163,13 @@ export default tseslint.config(
         },
       ],
 
-      'react-compiler/react-compiler': 'error',
+      'react-hooks/exhaustive-deps': 'off',
       'react-hooks/rules-of-hooks': 'error',
+
+      'react-hooks/immutability': 'warn',
+      'react-hooks/purity': 'warn',
+      'react-hooks/refs': 'warn',
+      'react-hooks/set-state-in-effect': 'warn',
 
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
