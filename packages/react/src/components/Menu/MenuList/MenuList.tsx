@@ -178,14 +178,17 @@ export const MenuList = forwardRef<HTMLUListElement, MenuListProps>(function Men
   );
 
   const handleKeyDown = (event: KeyboardEvent<HTMLUListElement>) => {
-    const list = listRef.current;
     const key = event.key;
     const isModifierKeyPressed = event.ctrlKey || event.metaKey || event.altKey;
+
+    let list = listRef.current;
 
     if (!list || isModifierKeyPressed) {
       onKeyDown?.(event);
       return;
     }
+
+    list = list.querySelector('[data-overlayscrollbars-viewport]') || list;
 
     const currentFocus = getActiveElement(ownerDocument(list));
 
