@@ -14,7 +14,11 @@
     @error "Breakpoint #{$name} is not defined.";
   }
 
-  @return if($n < list.length($breakpoint-names), list.nth($breakpoint-names, $n + 1), null);
+  @if $n < list.length($breakpoint-names) {
+    @return list.nth($breakpoint-names, $n + 1);
+  }
+
+  @return null;
 }
 
 @mixin adaptive-classes() {
