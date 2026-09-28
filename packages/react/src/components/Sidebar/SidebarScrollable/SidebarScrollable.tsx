@@ -26,19 +26,24 @@ export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
   const [isAfterScroll, setAfterScroll] = useState(true);
 
   const ref = useRef<OverlayScrollbarsComponentRef | null>(null);
-  const current = ref.current?.osInstance()?.elements().viewport || null;
 
-  useResizeObserver({ current }, () => {
-    if (current) {
-      setScrollable(current?.scrollHeight > current?.clientHeight);
+  // The viewport is published from `onInitialized` rather than read off the ref during render, which
+  // would have made the observed element depend on a value that cannot trigger a re-render.
+  const [viewport, setViewport] = useState<HTMLElement | null>(null);
+
+  useResizeObserver({ current: viewport }, () => {
+    if (viewport) {
+      setScrollable(viewport.scrollHeight > viewport.clientHeight);
     }
   });
 
   const onInitialized = (instance: NonNullable<ReturnType<OverlayScrollbarsComponentRef['osInstance']>>) => {
-    const viewport = instance.elements().viewport;
+    const element = instance.elements().viewport;
 
-    if (viewport) {
-      setScrollable(viewport.scrollHeight > viewport.clientHeight);
+    setViewport(element ?? null);
+
+    if (element) {
+      setScrollable(element.scrollHeight > element.clientHeight);
     }
   };
 

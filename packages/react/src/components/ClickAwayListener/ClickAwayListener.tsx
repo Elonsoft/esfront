@@ -148,5 +148,8 @@ export const ClickAwayListener = (inProps: ClickAwayListenerProps) => {
     };
   }, [handleClickAway, mouseEvent]);
 
+  // `childrenProps` carries the forked ref that lets this component observe the child's node without
+  // taking it over from the caller. Handing a ref to `cloneElement` is the only way to do that.
+  // eslint-disable-next-line react-hooks/refs
   return <>{cloneElement(children, childrenProps)}</>;
 };

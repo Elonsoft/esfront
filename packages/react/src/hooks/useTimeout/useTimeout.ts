@@ -1,18 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Timeout } from '../../utils';
 
 /** A timeout that is automatically cleared when the component unmounts. */
 export const useTimeout = (): Timeout => {
-  const timeoutRef = useRef<Timeout | null>(null);
-
-  if (timeoutRef.current === null) {
-    timeoutRef.current = Timeout.create();
-  }
-
-  const timeout = timeoutRef.current;
+  const [timeout] = useState(() => Timeout.create());
 
   useEffect(timeout.disposeEffect, [timeout]);
 

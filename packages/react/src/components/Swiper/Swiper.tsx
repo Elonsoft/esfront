@@ -347,9 +347,12 @@ export const Swiper = (inProps: SwiperProps) => {
     }
   };
 
-  useImperativeHandle(actions, () => ({ setActiveSlide, setActiveSlideByStep }), [container.current]);
+  useImperativeHandle(actions, () => ({ setActiveSlide, setActiveSlideByStep }));
 
   useEffect(() => {
+    // Both read the committed DOM to recompute the active slide and pagination window, so they can only
+    // run after the slide count has been laid out. The follow-up render is intended.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     onScroll();
     getPaginationRange();
   }, [Children.toArray(children).filter(Boolean).length]);

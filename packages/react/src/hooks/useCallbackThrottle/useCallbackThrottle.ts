@@ -11,6 +11,10 @@ import { useLatest } from '../useLatest';
  */
 
 export const useCallbackThrottle = <T extends any[]>(callback: (...args: T) => void, delay: number) => {
+  // Seeded with the mount time so the first run is throttled relative to mount. "Time of mount" is not
+  // obtainable without reading the clock during render; deferring the seed to an effect would let the
+  // first invocation fire immediately, which is a different contract.
+  // eslint-disable-next-line react-hooks/purity
   const lastRun = useRef(Date.now());
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 

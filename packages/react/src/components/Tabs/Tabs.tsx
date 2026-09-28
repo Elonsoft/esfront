@@ -598,6 +598,10 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
   }, [scrollable, scrollButtons, updateScrollObserver, childrenProp]);
 
   useEffect(() => {
+    // Before mount the indicator renders inside the selected tab so server markup and hydration agree;
+    // afterwards it moves to a sibling that can be positioned from measured geometry. The extra render
+    // is what performs that hand-off.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -694,6 +698,9 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     }
   };
 
+  // Builds the scroll buttons from the measured geometry of the tab list, so it reads refs during
+  // render by design; the values it produces are only ever used for presentation.
+  // eslint-disable-next-line react-hooks/refs
   const conditionalElements = getConditionalElements();
 
   return (

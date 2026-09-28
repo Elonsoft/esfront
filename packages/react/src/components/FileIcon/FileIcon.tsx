@@ -38,7 +38,7 @@ export const FileIcon = (inProps: FileIconProps) => {
       const rootIconTop = rootIconRef.current.getBoundingClientRect().top;
       setPaddingTop(iconHeight + (iconTop - rootIconTop));
     }
-  }, [iconRef.current, rootIconRef.current, width, height]);
+  }, [width, height]);
 
   return (
     <div ref={rootIconRef} className={clsx('es-file-icon', className)} style={style}>

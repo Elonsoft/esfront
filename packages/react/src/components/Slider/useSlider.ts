@@ -460,7 +460,9 @@ export function useSlider(parameters: UseSliderParameters): UseSliderReturnValue
 
     // Cancel move in case some other element consumed a mouseup event and it was not fired.
     if (nativeEvent.type === 'mousemove' && (nativeEvent as MouseEvent).buttons === 0) {
-      // eslint-disable-next-line no-use-before-define
+      // handleTouchMove, handleTouchEnd and stopListening form a cycle, so no declaration order avoids
+      // a forward reference. Each is wrapped in useEvent, so the lookup happens at call time.
+      // eslint-disable-next-line no-use-before-define, react-hooks/immutability
       handleTouchEnd(nativeEvent);
       return;
     }
@@ -501,7 +503,8 @@ export function useSlider(parameters: UseSliderParameters): UseSliderReturnValue
 
     touchId.current = undefined;
 
-    // eslint-disable-next-line no-use-before-define
+    // See the note on handleTouchEnd above: the three handlers reference each other cyclically.
+    // eslint-disable-next-line no-use-before-define, react-hooks/immutability
     stopListening();
   });
 

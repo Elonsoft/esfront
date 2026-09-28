@@ -9,14 +9,12 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../theming';
 
 function useLoaded(src: string): 'loaded' | 'error' | null {
-  const [loaded, setLoaded] = useState<'loaded' | 'error' | null>(null);
+  const [result, setResult] = useState<{ src: string; status: 'loaded' | 'error' } | null>(null);
 
   useEffect(() => {
     if (!src) {
       return undefined;
     }
-
-    setLoaded(null);
 
     let active = true;
     const image = new Image();
@@ -26,7 +24,7 @@ function useLoaded(src: string): 'loaded' | 'error' | null {
         return;
       }
 
-      setLoaded('loaded');
+      setResult({ src, status: 'loaded' });
     };
 
     image.onerror = () => {
@@ -34,7 +32,7 @@ function useLoaded(src: string): 'loaded' | 'error' | null {
         return;
       }
 
-      setLoaded('error');
+      setResult({ src, status: 'error' });
     };
 
     image.src = src;
@@ -44,7 +42,9 @@ function useLoaded(src: string): 'loaded' | 'error' | null {
     };
   }, [src]);
 
-  return loaded;
+  // The result carries the `src` it belongs to, so a result left over from a previous `src` reads as
+  // "not loaded yet" instead of having to be cleared by a synchronous setState in the effect.
+  return result?.src === src ? result.status : null;
 }
 
 /** Avatar is used to represent users or things. */

@@ -26,6 +26,9 @@ export const useValueDebounce = <T>(
       isLeading.current = false;
 
       if (leading) {
+        // Publishing immediately is the leading-edge contract, so the extra render is intended here
+        // rather than an accidental cascade.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setDebouncedValue(value);
       }
     }
