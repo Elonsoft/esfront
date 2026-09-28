@@ -16,6 +16,10 @@ export const useValueGate = <T>(value: T, signal: boolean, options: { rising?: b
   const state = useRef(value);
   const prevSignal = useRef(signal);
 
+  // The gate compares the current signal against the previous render's signal and latches the value in
+  // the same pass, so both refs are necessarily read and written during render. Under StrictMode's
+  // double render the latch runs twice, which is idempotent here: it re-latches the same value.
+  /* eslint-disable react-hooks/refs */
   if (
     (!rising && !falling && signal) ||
     (rising && signal === true && prevSignal.current === false) ||
@@ -27,4 +31,5 @@ export const useValueGate = <T>(value: T, signal: boolean, options: { rising?: b
   prevSignal.current = signal;
 
   return state.current;
+  /* eslint-enable react-hooks/refs */
 };

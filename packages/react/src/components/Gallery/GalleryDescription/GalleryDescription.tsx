@@ -102,7 +102,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
 
   useEffect(() => {
     onResize();
-  }, [textRef.current, children]);
+  }, [children]);
 
   return (
     <div

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 /**
  * The hook that allows to have controlled internal state inside the uncontrolled component.
@@ -10,7 +10,7 @@ export function useControlled<T>(defaultValue: T, controlled?: T): [T, (value: T
 export function useControlled<T>(defaultValue?: T, controlled?: T): [T | undefined, (value: T) => void];
 
 export function useControlled<T>(defaultValue?: T, controlled?: T): [T | undefined, (value: T) => void] {
-  const { current: isControlled } = useRef(controlled !== undefined);
+  const [isControlled] = useState(controlled !== undefined);
   const [valueState, setValue] = useState(defaultValue);
 
   const setUncontrolled = useCallback((value: T) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { SidenavItemProps, SidenavItemTypeMap } from './SidenavItem.types';
 
@@ -36,7 +36,11 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
   const { open, hover, itemId, setHover, setItemId, disableItemHover } = useSidenavContext();
   const { color } = useSidebarContext();
 
-  const [isTooltipOpen, setTooltipOpen] = useState(false);
+  const [isTooltipRequested, setTooltipRequested] = useState(false);
+
+  // Becoming the active item hides the tooltip. Deriving that here rather than clearing the state in
+  // an effect keeps it to a single render.
+  const isTooltipOpen = isTooltipRequested && !(id && id === itemId);
 
   const ref = useRef<HTMLLIElement | null>(null);
   const shouldSkipClick = useRef(false);
@@ -101,20 +105,14 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
   };
 
   const onTooltipClose = useCallback(() => {
-    setTooltipOpen(false);
+    setTooltipRequested(false);
   }, []);
 
   const onTooltipOpen = () => {
     if (text && (!id || (id !== itemId && open && disableItemHover))) {
-      setTooltipOpen(true);
+      setTooltipRequested(true);
     }
   };
-
-  useEffect(() => {
-    if (isTooltipOpen && id && id === itemId) {
-      setTooltipOpen(false);
-    }
-  }, [isTooltipOpen, id, itemId]);
 
   return (
     <Tooltip

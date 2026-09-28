@@ -114,9 +114,14 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
 
   const { volume, setVolume } = useAudioPlayerContext();
 
-  const [audio] = useState(new Audio());
+  // `audio` is an imperative DOM handle, so the assignments to `audio.volume`, `audio.src` and friends
+  // below are the HTMLMediaElement API rather than state mutations. React Compiler freezes values that
+  // reach it through `useState` and has no way to express "externally owned mutable handle", so those
+  // assignments carry `react-hooks/immutability` suppressions.
+  const [audio] = useState(() => new Audio());
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     audio.volume = volume / 100;
   }, [audio]);
 
@@ -234,6 +239,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const onToggleMute = () => {
     if (audio.muted || volume === 0) {
       if (volume === 0) {
+        // eslint-disable-next-line react-hooks/immutability
         audio.volume = 1;
       }
 
@@ -266,6 +272,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
       onSeeked();
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     audio.currentTime = event.type === 'change' ? (value as number) : currentChanging;
     setChanging(false);
     setCurrent(audio.currentTime);
@@ -273,6 +280,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   };
 
   const onVolumeInputChange = (_: unknown, value: number | number[]) => {
+    // eslint-disable-next-line react-hooks/immutability
     audio.muted = false;
     audio.volume = (value as number) / 100;
   };
@@ -320,6 +328,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   });
 
   const onEndedLatest = useLatest((event: Event) => {
+    // eslint-disable-next-line react-hooks/immutability
     audio.currentTime = 0;
     setPlaying(false);
     setCurrentVisible(false);
@@ -558,14 +567,17 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   }, [audio]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     audio.volume = volume / 100;
   }, [audio, volume]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     audio.src = src;
   }, [audio, src]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     audio.loop = !!loop;
   }, [audio, loop]);
 
@@ -626,7 +638,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
         };
       }
     }
-  }, [sliderRef.current]);
+  }, []);
 
   useWindowEventListener('pointermove', onPointerMove);
 

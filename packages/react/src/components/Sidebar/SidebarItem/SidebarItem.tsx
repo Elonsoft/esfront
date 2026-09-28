@@ -47,7 +47,12 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     name: 'ESSidebarItem',
   });
 
-  const [isTooltipOpen, setTooltipOpen] = useState(false);
+  // The tooltip records which `open` state it was shown for, so toggling the sidebar collapses it
+  // without a synchronous setState in an effect.
+  const [tooltip, setTooltip] = useState<{ isOpen: boolean; shownFor?: boolean }>({
+    isOpen: false,
+    shownFor: false,
+  });
   const [width, setWidth] = useState<number>(0);
 
   const ref = useRef<HTMLDivElement | null>(null);
@@ -57,6 +62,8 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
 
   const { color, open } = useSidebarContext();
   const { openedItems, onOpen, behaviour: inBehaviour, onClose } = useSidebarMenuContext();
+
+  const isTooltipOpen = tooltip.isOpen && tooltip.shownFor === open;
 
   const isNestedMenuOpen = id ? openedItems.includes(id) : null;
 
@@ -87,18 +94,14 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
     }
   });
 
-  useEffect(() => {
-    setTooltipOpen(false);
-  }, [open]);
-
   const onTooltipOpen = () => {
     if (!open && text) {
-      setTooltipOpen(true);
+      setTooltip({ isOpen: true, shownFor: open });
     }
   };
 
   const onTooltipClose = useCallback(() => {
-    setTooltipOpen(false);
+    setTooltip((prev) => ({ isOpen: false, shownFor: prev.shownFor }));
   }, []);
 
   const onTooltipKeyDown = (event: React.KeyboardEvent) => {

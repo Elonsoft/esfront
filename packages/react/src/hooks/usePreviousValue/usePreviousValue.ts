@@ -18,5 +18,9 @@ export const usePreviousValue = <T>(value: T) => {
     };
   });
 
+  // The contract is "the value from the previous render", which is not derivable from the current
+  // props or state, so the ref has to be read during render. A state-based version would return the
+  // previous *distinct* value instead, which is a different hook.
+  // eslint-disable-next-line react-hooks/refs
   return previous.current;
 };

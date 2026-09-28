@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { SidebarToggleProps } from './SidebarToggle.types';
 
@@ -30,16 +30,16 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
     name: 'ESSidebarToggle',
   });
 
-  const [isTooltipOpen, setTooltipOpen] = useState(false);
+  // The tooltip records which `open` state it was shown for, so toggling the sidebar collapses it
+  // without a synchronous setState in an effect.
+  const [tooltip, setTooltip] = useState({ isOpen: false, shownFor: open });
+
+  const isTooltipOpen = tooltip.isOpen && tooltip.shownFor === open;
 
   const { color } = useSidebarContext();
 
-  useEffect(() => {
-    setTooltipOpen(false);
-  }, [open]);
-
   const onCloseTooltip = () => {
-    setTooltipOpen(false);
+    setTooltip({ isOpen: false, shownFor: open });
   };
 
   const onClickToggle = () => {
@@ -66,7 +66,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
         }}
         title={<>{open ? labelHide : labelOpen}</>}
         onClose={onCloseTooltip}
-        onOpen={() => setTooltipOpen(true)}
+        onOpen={() => setTooltip({ isOpen: true, shownFor: open })}
       >
         <Button
           aria-label={open ? labelHide : labelOpen}

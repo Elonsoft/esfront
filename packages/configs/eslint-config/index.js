@@ -166,10 +166,10 @@ export default tseslint.config(
       'react-hooks/exhaustive-deps': 'off',
       'react-hooks/rules-of-hooks': 'error',
 
-      'react-hooks/immutability': 'warn',
-      'react-hooks/purity': 'warn',
-      'react-hooks/refs': 'warn',
-      'react-hooks/set-state-in-effect': 'warn',
+      'react-hooks/immutability': 'error',
+      'react-hooks/purity': 'error',
+      'react-hooks/refs': 'error',
+      'react-hooks/set-state-in-effect': 'error',
 
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',

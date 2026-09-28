@@ -62,6 +62,15 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
 
   const ref = useRef<HTMLDivElement | null>(null);
 
+  // The menu anchor is kept in state as well as in the ref: reading `ref.current` during render left
+  // `anchorEl` null on the first render with no re-render to correct it.
+  const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
+
+  const setField = useCallback((node: HTMLDivElement | null) => {
+    ref.current = node;
+    setAnchorEl(node);
+  }, []);
+
   const paperRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLDivElement | null>(null);
   // The field focuses whatever sits in the context ref when its padding is clicked, so the control registers itself.
@@ -222,7 +231,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   return (
     <>
       <FormFieldField
-        ref={ref}
+        ref={setField}
         className={clsx(className, 'es-autocomplete')}
         endAdornment={!!endAdornment && <FormFieldAdornment position="end">{endAdornment}</FormFieldAdornment>}
         label={label}
@@ -288,7 +297,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
         MenuGroupProps={MenuGroupProps}
         SearchProps={SearchProps}
         actions={actions}
-        anchorEl={ref.current}
+        anchorEl={anchorEl}
         className={clsx('es-autocomplete__menu', inlineSearch && 'es-autocomplete__menu--inline-search')}
         disableAutoFocus={!!inlineSearch}
         disableScrollLock={!!inlineSearch}
