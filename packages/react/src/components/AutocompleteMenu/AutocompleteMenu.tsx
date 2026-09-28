@@ -20,7 +20,7 @@ import { useOverlayScrollbars } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useIntersectionObserver, useScrollLock } from '../../hooks';
+import { useForkRef, useIntersectionObserver, useScrollLock } from '../../hooks';
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
@@ -106,6 +106,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
   });
 
   const searchInputRef = useRef<FormFieldInputElement | null>(null);
+  const handleSearchInputRef = useForkRef(searchInputRef, SearchProps?.inputRef);
   const menuListRef = useRef<HTMLUListElement | null>(null);
   const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
 
@@ -176,6 +177,10 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
       }
     });
 
+    if (searchInputRef.current && !disableAutoFocus) {
+      searchInputRef.current.focus({ preventScroll: true });
+    }
+
     if (menuListRef.current && !disableAutoScrollToSelected) {
       const element = menuListRef.current.querySelector('.es-list-item--selected') as HTMLElement;
 
@@ -184,7 +189,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
           element.offsetTop + element.clientHeight / 2 - menuListRef.current.clientHeight / 2;
       }
     }
-  }, [initialize, disableAutoScrollToSelected]);
+  }, [initialize, disableAutoFocus, disableAutoScrollToSelected]);
 
   const onExited = () => {
     instance()?.destroy();
@@ -348,9 +353,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                     {!!SearchProps && !inlineSearch && (
                       <TextField
                         fullWidth
-                        autoFocus={!disableAutoFocus}
                         className="es-autocomplete-menu__search"
-                        inputRef={searchInputRef}
                         placeholder={labelSearch}
                         size="500"
                         variant="outlined"
@@ -378,6 +381,7 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
                             </FormFieldAdornment>
                           ))
                         }
+                        inputRef={handleSearchInputRef}
                         startAdornment={
                           SearchProps.startAdornment ?? (
                             <FormFieldAdornment position="start">{iconSearch}</FormFieldAdornment>

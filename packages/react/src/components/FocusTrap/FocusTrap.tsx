@@ -165,7 +165,7 @@ export const FocusTrap = (inProps: FocusTrapProps) => {
       }
 
       if (activated.current) {
-        rootRef.current.focus();
+        rootRef.current.focus({ preventScroll: true });
       }
     }
 
