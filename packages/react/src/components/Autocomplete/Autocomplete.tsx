@@ -132,7 +132,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
             ) as HTMLElement | null;
 
             if (element) {
-              element.focus();
+              element.focus({ preventScroll: true });
             }
           }
         }, 0);
