@@ -52,7 +52,6 @@ export const ListItem = forwardRef(function ListItem(inProps, ref) {
           tabIndex: disabled ? -1 : 0,
           disabled,
           component: 'li',
-          type: false,
           'aria-disabled': disabled,
         } as any))}
       {...other}
