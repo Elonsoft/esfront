@@ -21,7 +21,7 @@ export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProp
     className,
     disabled,
     disableTouchRipple,
-    type = 'button',
+    type = Component === 'button' ? 'button' : undefined,
     onClick,
     onContextMenu,
     onPointerCancel,
