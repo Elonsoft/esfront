@@ -1,19 +1,29 @@
 name: Pull Request
 on:
   push:
+    branches: [master]
   pull_request:
-    types: [opened reopened syncronize]
+    types: [opened, reopened, synchronize]
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .tool-versions
+          cache: npm
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Lint commit messages
-        uses: wagoid/commitlint-github-action@v1
+        uses: wagoid/commitlint-github-action@v6
+        with:
+          configFile: commitlint.config.cjs
       - name: Lint code
         run: npm run eslint
       - name: Lint styles
@@ -29,12 +39,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - uses: actions/setup-node@v3
+        uses: actions/checkout@v7
         with:
-          node-version: 22
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .tool-versions
+          cache: npm
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Chromatic
         uses: chromaui/action@v18
         with:

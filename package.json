@@ -25,6 +25,11 @@
     "husky": "husky install",
     "release": "lerna version --no-push"
   },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
+  },
+  "packageManager": "npm@11.19.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Elonsoft/esfront.git"
