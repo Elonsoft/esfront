@@ -78,6 +78,7 @@
 @use './text-field-group';
 @use './tooltip';
 @use './touch-ripple';
+@use './tour';
 
 @mixin include() {
   @include alert.include;
@@ -160,4 +161,5 @@
   @include text-field-group.include;
   @include tooltip.include;
   @include touch-ripple.include;
+  @include tour.include;
 }
