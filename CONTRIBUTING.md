@@ -4,23 +4,35 @@
 
 ### Prerequisites
 
-Please have the following versions of the required tools on your machine:
+The Node version is pinned in `.tool-versions`, which both `asdf` and `mise` read:
 
 ```
-node ^16.0.0
+nodejs 26.8.1
 ```
+
+The floor enforced by `engines` is Node 22 and npm 10. CI installs the pinned version through `actions/setup-node`'s
+`node-version-file`, so keeping `.tool-versions` up to date keeps local and CI Node versions in step.
 
 ### Development Workflow
 
-After cloning the repo, run `npm run install` to fetch its dependencies and then run `npm run husky` in order to install
-git hooks. Make sure to run `npm run typedoc` before the first start - this will generate API documentation for the
-components and hooks. Then, you can run `npm run start` in order to start storybook.
+After cloning the repo, run `npm ci` to install dependencies from the lock file, then `npm run husky` to install the git
+hooks.
+
+Storybook lives in the `packages/react` workspace and needs generated API documentation before its first run:
+
+```bash
+npm run start:typedoc --workspace=packages/react
+```
+
+That generates the typedoc JSON and then starts Storybook. Once the documentation exists,
+`npm run start --workspace=packages/react` is enough for later runs. To preview the theme package instead, run
+`npm run start --workspace=packages/theme`.
 
 ### Components requirements
 
 Follow this requirements when building new or updating existing components.
 
-- Add new components to `overrides.d.ts`.
+- Add new components to `packages/react/src/overrides.ts`.
 - Include a storybook demonstration.
 - Document props in JSDoc format.
 - Include RU and EN localization if the component contains any text.
@@ -30,14 +42,16 @@ Follow this requirements when building new or updating existing components.
 
 ### Coding style
 
-Please follow the coding style of the project. We use eslint and prettier, so if possible, enable linting in your editor
-to get real-time feedback.
+Please follow the coding style of the project. We use eslint, stylelint and prettier, so if possible, enable linting in
+your editor to get real-time feedback.
 
-- `npm run lint` checks the code style.
-- `npm run prettier:check` checks the code formatting.
-- `npm run prettier:write` reformats the code.
+- `npm run eslint` checks the code style; `npm run eslint:fix` applies the fixable parts.
+- `npm run stylelint` checks the stylesheets.
+- `npm run prettier:check` checks the code formatting; `npm run prettier:write` reformats the code.
+- `npm run cspell` checks spelling.
+- `npm run depcruise` checks the dependency rules.
 
-When you submit a Pull Request, they are run again by our continuous integration tools.
+All five run on the pre-commit hook, and again in CI on every push to a pull request.
 
 ## Branching
 
@@ -78,9 +92,10 @@ docs: update LICENSE date
 
 ### Type
 
-Must be one of the following:
+Must be one of the following, as enforced by `type-enum` in `commitlint.config.cjs`:
 
 - build: Changes that affect the build system or external dependencies
+- chore: Changes that fit none of the other types and do not affect the published packages
 - ci: Changes to our CI configuration files and scripts
 - docs: Documentation only changes
 - feat: A new feature
