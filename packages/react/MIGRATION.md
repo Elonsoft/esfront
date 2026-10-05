@@ -1,5 +1,7 @@
 # Migration Guide
 
+- [0.17.0 → 0.18.0](#0170--0180)
+  - [React 19](#react-19)
 - [0.16.0 → 0.17.0](#0160--0170)
   - [MUI Removal](#mui-removal)
   - [Theme Replacement](#theme-replacement)
@@ -15,6 +17,21 @@
   - [Package Name](#package-name)
   - [CSS Theme Variables](#css-theme-variables)
   - [Components Replacement](#components-replacement)
+
+## 0.17.0 → 0.18.0
+
+### React 19
+
+React 18 is no longer supported. The `react` and `react-dom` peer dependencies require `^19.0.0`, so upgrade your
+project first:
+
+```bash
+npm install react@^19 react-dom@^19
+npm install --save-dev @types/react@^19 @types/react-dom@^19
+```
+
+Follow the [official React 19 upgrade guide](https://react.dev/blog/2024/04/25/react-19-upgrade-guide) for the changes
+it requires in your own code. The components and hooks of the library keep their current API.
 
 ## 0.16.0 → 0.17.0
 

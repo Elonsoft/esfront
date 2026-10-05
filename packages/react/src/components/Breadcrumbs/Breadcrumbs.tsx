@@ -122,7 +122,7 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
             return null;
           }
 
-          const { children, ...rest } = child.props;
+          const { children, ...rest } = child.props as Record<string, any>;
 
           if (idx >= 1 && idx < lastIndex) {
             return (
@@ -133,7 +133,12 @@ export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
                 title={<span className="caption">{children}</span>}
               >
                 {({ ref, childrenRef }) => (
-                  <MenuItem ref={ref} className={clsx('es-breadcrumbs__menu-item')} size="100" {...rest}>
+                  <MenuItem
+                    ref={ref as React.Ref<HTMLLIElement>}
+                    className={clsx('es-breadcrumbs__menu-item')}
+                    size="100"
+                    {...rest}
+                  >
                     <span ref={childrenRef} style={{ textWrap: 'nowrap' }}>
                       {children}
                     </span>

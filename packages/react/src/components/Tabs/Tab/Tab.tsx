@@ -57,7 +57,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps:
       aria-selected={selected}
       className={clsx(
         'es-tab',
-        (!!startIcon || !!endIcon) && label && 'es-tab--label-icon',
+        (!!startIcon || !!endIcon) && !!label && 'es-tab--label-icon',
         fullWidth && 'es-tab--full-width',
         rounded && 'es-tab--rounded',
         selected && 'es-tab--selected',

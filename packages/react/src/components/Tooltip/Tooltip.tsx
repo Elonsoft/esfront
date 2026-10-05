@@ -6,7 +6,6 @@ import {
   forwardRef,
   isValidElement,
   MouseEvent,
-  MutableRefObject,
   SyntheticEvent,
   TouchEvent,
   useEffect,
@@ -23,7 +22,7 @@ import { IconPolygon, IconPolygon2, IconPolygon3 } from './icons';
 
 import { useControlled, useEvent, useForkRef, useId, useIsFocusVisible, useLatest, useTimeout } from '../../hooks';
 import { useDefaultProps } from '../../theming';
-import { Timeout } from '../../utils';
+import { getReactElementRef, Timeout } from '../../utils';
 import { Fade } from '../Fade';
 import { Popper, PopperActions } from '../Popper';
 
@@ -152,7 +151,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   const id = useId(idProp);
 
-  const prevUserSelect = useRef<string>();
+  const prevUserSelect = useRef<string | undefined>(undefined);
 
   const stopTouchInteraction = useEvent(() => {
     if (prevUserSelect.current !== undefined) {
@@ -326,12 +325,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     };
   }, [handleClose, open]);
 
-  const handleRef = useForkRef(
-    (children as JSX.Element & { ref: MutableRefObject<unknown> }).ref,
-    focusVisibleRef,
-    setChildNode,
-    ref
-  );
+  const handleRef = useForkRef(getReactElementRef(children), focusVisibleRef, setChildNode, ref);
 
   // There is no point in displaying an empty tooltip.
   if (!title && title !== 0) {

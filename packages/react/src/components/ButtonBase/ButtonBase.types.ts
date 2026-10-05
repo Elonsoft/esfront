@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 
+import { JSX } from 'react';
+
 import { OverridableComponent, OverridableTypeMap, OverrideProps } from '../../types';
 import { TouchRippleParams } from '../TouchRipple';
 

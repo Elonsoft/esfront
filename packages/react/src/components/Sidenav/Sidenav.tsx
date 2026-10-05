@@ -131,7 +131,7 @@ export const Sidenav = (inProps: SidenavProps) => {
     <SidenavContext.Provider value={value}>
       <div className={clsx('es-sidenav', className)} style={style}>
         <div className="es-sidenav__container" onMouseLeave={onMouseLeaveSidenav}>
-          {React.Children.map(children as React.ReactElement[], (child, idx: number) => {
+          {React.Children.map(children as React.ReactElement<any>[], (child, idx: number) => {
             if (idx) {
               return (
                 <div

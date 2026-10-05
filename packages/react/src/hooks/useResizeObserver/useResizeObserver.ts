@@ -11,7 +11,7 @@ import { useLatest } from '../useLatest';
  * @param options An options object allowing you to set options for the observation.
  */
 export const useResizeObserver = (
-  element: RefObject<Element>,
+  element: RefObject<Element | null>,
   callback: (entries: ResizeObserverEntry[]) => void,
   options?: ResizeObserverOptions
 ) => {

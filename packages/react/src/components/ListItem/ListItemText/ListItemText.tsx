@@ -41,7 +41,7 @@ export const ListItemText = (inProps: ListItemTextProps) => {
         className,
         'es-list-item-text',
         inset && 'es-list-item-text--inset',
-        primary && secondary && 'es-list-item-text--multiline'
+        !!primary && !!secondary && 'es-list-item-text--multiline'
       )}
       style={style}
     >
