@@ -2,7 +2,7 @@
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
-import { PopoverAnchorEl, PopoverOrigin, PopoverProps } from './Popover.types';
+import { PopoverActions, PopoverAnchorEl, PopoverOrigin, PopoverProps } from './Popover.types';
 
 import clsx from 'clsx';
 
@@ -219,7 +219,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(function Popover
     }
   });
 
-  useImperativeHandle(
+  useImperativeHandle<PopoverActions | null, PopoverActions | null>(
     action,
     () =>
       open

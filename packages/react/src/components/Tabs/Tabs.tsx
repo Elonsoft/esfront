@@ -6,6 +6,7 @@ import {
   CSSProperties,
   forwardRef,
   isValidElement,
+  JSX,
   KeyboardEvent,
   ReactElement,
   useCallback,
@@ -212,7 +213,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
     let index = 0;
 
     Children.forEach(childrenProp, (child) => {
-      if (!isValidElement(child)) {
+      if (!isValidElement<{ value?: unknown }>(child)) {
         return;
       }
 
@@ -647,7 +648,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
       const childValue = child.props.value === undefined ? childIndex : child.props.value;
       const selected = childValue === value;
 
-      return cloneElement(child as ReactElement, {
+      return cloneElement(child, {
         fullWidth: variant === 'full-width',
         indicator: selected && !mounted && indicator,
         selected,

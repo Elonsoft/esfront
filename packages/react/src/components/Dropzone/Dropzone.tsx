@@ -15,7 +15,7 @@ import { ButtonBase } from '../ButtonBase';
 /**
  * This component allows to select files on click or by drag and drop.
  */
-export const Dropzone = (inProps: DropzoneProps): JSX.Element => {
+export const Dropzone = (inProps: DropzoneProps): React.JSX.Element => {
   const {
     className,
     style,

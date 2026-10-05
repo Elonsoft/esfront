@@ -3,6 +3,7 @@
 import {
   ForwardedRef,
   forwardRef,
+  JSX,
   KeyboardEvent,
   MutableRefObject,
   ReactNode,

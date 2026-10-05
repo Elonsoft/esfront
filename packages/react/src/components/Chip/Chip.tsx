@@ -1,6 +1,14 @@
 'use client';
 
-import { cloneElement, forwardRef, isValidElement, ReactElement, ReactNode, useRef } from 'react';
+import {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  MouseEventHandler,
+  PointerEventHandler,
+  ReactNode,
+  useRef,
+} from 'react';
 
 import { ChipProps, ChipTypeMap } from './Chip.types';
 
@@ -12,6 +20,12 @@ import { useDefaultProps } from '../../theming';
 import { OverridableComponent } from '../../types';
 import { Button } from '../Button';
 import { ButtonBase } from '../ButtonBase';
+
+type ChipIconProps = {
+  className?: string;
+  onClick?: MouseEventHandler;
+  onPointerDown?: PointerEventHandler;
+};
 
 function isDeleteKeyboardEvent(event: React.KeyboardEvent) {
   return event.key === 'Backspace' || event.key === 'Delete';
@@ -114,8 +128,8 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
   if (onDelete) {
     deleteIcon = (
       <div className="es-chip__delete-icon-wrapper">
-        {inIconDelete && isValidElement(inIconDelete) ? (
-          cloneElement(inIconDelete as ReactElement, {
+        {inIconDelete && isValidElement<ChipIconProps>(inIconDelete) ? (
+          cloneElement(inIconDelete, {
             className: clsx(inIconDelete.props.className, 'es-chip__delete-icon'),
             onClick: handleDeleteIconClick,
             onPointerDown: onStopRipple,
@@ -138,16 +152,16 @@ export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
 
   let startIcon: ReactNode | null = null;
 
-  if (inStartIcon && isValidElement(inStartIcon)) {
-    startIcon = cloneElement(inStartIcon as ReactElement, {
+  if (inStartIcon && isValidElement<ChipIconProps>(inStartIcon)) {
+    startIcon = cloneElement(inStartIcon, {
       className: clsx(inStartIcon.props.className, 'es-chip__start-icon'),
     });
   }
 
   let endIcon: ReactNode | null = null;
 
-  if (inEndIcon && isValidElement(inEndIcon)) {
-    endIcon = cloneElement(inEndIcon as ReactElement, {
+  if (inEndIcon && isValidElement<ChipIconProps>(inEndIcon)) {
+    endIcon = cloneElement(inEndIcon, {
       className: clsx(inEndIcon.props.className, 'es-chip__end-icon'),
     });
   }

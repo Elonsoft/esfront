@@ -1,6 +1,6 @@
 'use client';
 
-import { Reducer, useReducer } from 'react';
+import { useReducer } from 'react';
 
 const toggleReducer = (state: boolean, nextValue?: any) => (typeof nextValue === 'boolean' ? nextValue : !state);
 
@@ -10,4 +10,4 @@ const toggleReducer = (state: boolean, nextValue?: any) => (typeof nextValue ===
  * @returns The stateful value and a callback to update it.
  */
 export const useBoolean = (initialValue: boolean): [boolean, (nextValue?: any) => void] =>
-  useReducer<Reducer<boolean, any>>(toggleReducer, initialValue);
+  useReducer<boolean, [any]>(toggleReducer, initialValue);

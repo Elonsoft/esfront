@@ -49,7 +49,7 @@ body {
 ```
 
 ```tsx
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { DefaultPropsProvider, en, EmptyState } from '@esfront/react';
 
@@ -63,7 +63,7 @@ const Application = () => {
   );
 };
 
-ReactDOM.render(<Application />, document.querySelector('#root'));
+createRoot(document.querySelector('#root')).render(<Application />);
 ```
 
 ## Default props
