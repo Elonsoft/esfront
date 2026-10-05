@@ -1,11 +1,12 @@
 'use client';
 
-import { useImperativeHandle, useRef } from 'react';
+import { RefAttributes, useImperativeHandle, useRef } from 'react';
 
 import { ImageZoomProps } from './ImageZoom.types';
 
 import clsx from 'clsx';
 
+import { useForkRef } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 
 import { animated, useSpring } from '@react-spring/web';
@@ -36,7 +37,7 @@ function clamp(x: number, min: number, max: number) {
 /**
  * Component for zooming, panning and pinching of images.
  */
-export const ImageZoom = (inProps: ImageZoomProps) => {
+export const ImageZoom = ({ ref: inRef, ...inProps }: ImageZoomProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -52,6 +53,7 @@ export const ImageZoom = (inProps: ImageZoomProps) => {
   } = useDefaultProps({ props: inProps, name: 'ESImageZoom' });
 
   const ref = useRef<HTMLDivElement>(null);
+  const rootRef = useForkRef(ref, inRef);
   const transformRef = useRef<HTMLDivElement>(null);
 
   const timer = useRef<NodeJS.Timeout | null>(null);
@@ -256,7 +258,7 @@ export const ImageZoom = (inProps: ImageZoomProps) => {
   );
 
   return (
-    <div ref={ref} className={clsx('es-image-zoom', className)} style={props.style}>
+    <div ref={rootRef} className={clsx('es-image-zoom', className)} style={props.style}>
       <animated.div ref={transformRef} className="es-image-zoom__transform" style={style}>
         {children}
       </animated.div>

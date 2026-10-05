@@ -1,8 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
-
-import { MenuItemTypeMap } from './MenuItem.types';
+import { MenuItemProps, MenuItemTypeMap } from './MenuItem.types';
 
 import clsx from 'clsx';
 
@@ -13,7 +11,7 @@ import { ListItem } from '../ListItem';
 /**
  * An item of a dropdown menu, built on top of `ListItem`.
  */
-export const MenuItem = forwardRef(function MenuItem(inProps, ref) {
+export const MenuItem = (({ ref, ...inProps }: MenuItemProps) => {
   const {
     className,
     tabIndex: inTabIndex,

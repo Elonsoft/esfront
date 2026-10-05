@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { RefAttributes, useEffect, useRef, useState } from 'react';
 
 import { DrawerAnchor, DrawerProps } from './Drawer.types';
 
@@ -27,7 +27,7 @@ const oppositeDirection: Record<DrawerAnchor, SlideDirection> = {
  * The Drawer is a panel anchored to an edge of the screen. The `temporary` variant renders above the page inside a
  * modal, the `persistent` one is docked into the regular document flow.
  */
-export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(inProps, ref) {
+export const Drawer = ({ ref, ...inProps }: DrawerProps & RefAttributes<HTMLDivElement>) => {
   const props = useDefaultProps({ props: inProps, name: 'ESDrawer' });
 
   const {
@@ -58,6 +58,10 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(in
   const [exited, setExited] = useState(!open);
 
   const isDocked = variant === 'persistent';
+
+  // The flag is read during render on purpose: a change of it must not re-render the drawer.
+  // eslint-disable-next-line react-hooks/refs
+  const appear = mounted.current;
 
   const RootSlot = slots.root || Modal;
   const DockedSlot = slots.docked || 'div';
@@ -92,7 +96,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(in
 
   const transition = (
     <TransitionSlot
-      appear={mounted.current}
+      appear={appear}
       direction={oppositeDirection[anchor]}
       in={open}
       timeout={transitionDuration}
@@ -139,4 +143,4 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(in
       {transition}
     </RootSlot>
   );
-});
+};

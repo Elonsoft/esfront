@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { PageHGroupHeadingProps } from './PageHGroupHeading.types';
 
 import clsx from 'clsx';
@@ -10,7 +12,7 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `PageHGroup`
  */
-export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
+export const PageHGroupHeading = ({ ref, ...inProps }: PageHGroupHeadingProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -24,7 +26,7 @@ export const PageHGroupHeading = (inProps: PageHGroupHeadingProps) => {
   });
 
   return (
-    <div className={clsx(className, 'es-page-h-group-heading', 'h2')}>
+    <div ref={ref} className={clsx(className, 'es-page-h-group-heading', 'h2')}>
       <TooltipEllipsis
         arrow
         disableInteractive

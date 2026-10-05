@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { FormControlLabelProps } from './FormControlLabel.types';
 
 import clsx from 'clsx';
@@ -9,7 +11,7 @@ import { useDefaultProps } from '../../theming';
 /**
  * Use this component if you want to display an extra label for the Checkbox or Radio.
  */
-export const FormControlLabel = (inProps: FormControlLabelProps) => {
+export const FormControlLabel = ({ ref, ...inProps }: FormControlLabelProps & RefAttributes<HTMLLabelElement>) => {
   const {
     className,
     style,
@@ -29,6 +31,7 @@ export const FormControlLabel = (inProps: FormControlLabelProps) => {
 
   return (
     <label
+      ref={ref}
       className={clsx(className, 'es-form-control-label', `es-form-control-label--label-placement--${labelPlacement}`)}
       style={style}
     >

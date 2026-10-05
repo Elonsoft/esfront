@@ -1,18 +1,18 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { RefAttributes, useRef, useState } from 'react';
 
 import { AppBarProps } from './AppBar.types';
 
 import clsx from 'clsx';
 
-import { useIntersectionObserver, useResizeObserver, useStuckSentinel } from '../../hooks';
+import { useForkRef, useIntersectionObserver, useResizeObserver, useStuckSentinel } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 
 /**
  * The AppBar displays information and actions relating to the current screen.
  */
-export const AppBar = (inProps: AppBarProps) => {
+export const AppBar = ({ ref: inRef, ...inProps }: AppBarProps & RefAttributes<HTMLDivElement>) => {
   const { className, style, children, startAdornment, endAdornment, prominent } = useDefaultProps({
     props: inProps,
     name: 'ESAppBar',
@@ -20,6 +20,7 @@ export const AppBar = (inProps: AppBarProps) => {
 
   const ref = useRef<HTMLDivElement | null>(null);
   const prominentRef = useRef<HTMLDivElement | null>(null);
+  const rootRef = useForkRef(ref, inRef);
 
   const [height, setHeight] = useState(0);
   const [prominentHeight, setProminentHeight] = useState(0);
@@ -48,7 +49,7 @@ export const AppBar = (inProps: AppBarProps) => {
   return (
     <>
       {sentinel}
-      <div ref={ref} className={clsx(className, 'es-app-bar', stuck && 'es-app-bar--stuck', 'h6')} style={style}>
+      <div ref={rootRef} className={clsx(className, 'es-app-bar', stuck && 'es-app-bar--stuck', 'h6')} style={style}>
         {startAdornment && <div className="es-app-bar__adornment">{startAdornment}</div>}
         <div className="es-app-bar__title">{!prominent || isTitleVisible ? children : '\u00A0'}</div>
         {endAdornment && <div className="es-app-bar__adornment">{endAdornment}</div>}

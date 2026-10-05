@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { RefAttributes, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AutocompleteProps } from './Autocomplete.types';
 
@@ -13,7 +13,7 @@ import { AutocompleteMenu, AutocompleteMenuImperativeActions } from '../Autocomp
 import { FormFieldAdornment, FormFieldField, useFormFieldContext } from '../FormField';
 
 /** The autocomplete is used to choose an item from a collection of options. */
-export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
+export const Autocomplete = <T,>({ ref: inRef, ...inProps }: AutocompleteProps<T> & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -70,6 +70,8 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
     ref.current = node;
     setAnchorEl(node);
   }, []);
+
+  const fieldRef = useForkRef(setField, inRef);
 
   const paperRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLDivElement | null>(null);
@@ -231,7 +233,7 @@ export const Autocomplete = <T,>(inProps: AutocompleteProps<T>) => {
   return (
     <>
       <FormFieldField
-        ref={setField}
+        ref={fieldRef}
         className={clsx(className, 'es-autocomplete')}
         endAdornment={!!endAdornment && <FormFieldAdornment position="end">{endAdornment}</FormFieldAdornment>}
         label={label}

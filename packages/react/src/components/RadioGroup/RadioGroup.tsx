@@ -14,10 +14,7 @@ import { useDefaultProps } from '../../theming';
 /**
  * Groups radio buttons so that only one of them can be selected at a time.
  */
-export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(function RadioGroup(
-  inProps: RadioGroupProps,
-  ref
-) {
+export const RadioGroup = ({ ref, ...inProps }: RadioGroupProps & React.RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -67,4 +64,4 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(func
       </div>
     </RadioGroupContext.Provider>
   );
-});
+};

@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, Fragment } from 'react';
+import { Fragment, RefAttributes } from 'react';
 
 import { SliderProps } from './Slider.types';
 
@@ -14,7 +14,7 @@ import { useDefaultProps } from '../../theming';
 const asRecord = (props?: object): Record<string, unknown> => ({ ...props });
 
 /** Sliders allow the user to select a value or a range of values from a given range. */
-export const Slider = forwardRef<HTMLSpanElement, SliderProps>(function Slider(inProps, ref) {
+export const Slider = ({ ref, ...inProps }: SliderProps & RefAttributes<HTMLSpanElement>) => {
   const {
     'aria-label': ariaLabel,
     'aria-labelledby': ariaLabelledby,
@@ -228,4 +228,4 @@ export const Slider = forwardRef<HTMLSpanElement, SliderProps>(function Slider(i
       })}
     </RootSlot>
   );
-});
+};

@@ -1,12 +1,10 @@
 'use client';
 
 import {
-  ForwardedRef,
-  forwardRef,
   JSX,
   KeyboardEvent,
-  MutableRefObject,
   ReactNode,
+  RefAttributes,
   RefObject,
   useCallback,
   useImperativeHandle,
@@ -45,7 +43,7 @@ import { flip, hide, limitShift, Middleware, offset as offsetMiddleware, shift }
 /**
  * A dropdown menu that provides the popup layer for autocomplete-style fields.
  */
-export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, ref) {
+export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any> & RefAttributes<HTMLDivElement>) => {
   const {
     paperRef,
 
@@ -236,8 +234,8 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
         ref,
         childrenRef,
       }: {
-        ref?: MutableRefObject<HTMLElement | null>;
-        childrenRef?: MutableRefObject<HTMLElement | null>;
+        ref?: RefObject<HTMLElement | null>;
+        childrenRef?: RefObject<HTMLElement | null>;
       } = {}) => (
         <MenuItem
           ref={ref && (ref as RefObject<HTMLLIElement>)}
@@ -426,4 +424,4 @@ export const AutocompleteMenu = forwardRef(function AutocompleteMenu(inProps, re
     </Popper>
   );
   // eslint-disable-next-line no-use-before-define
-}) as <T>(props: AutocompleteMenuProps<T> & { ref?: ForwardedRef<HTMLDivElement> }) => JSX.Element;
+}) as <T>(props: AutocompleteMenuProps<T> & RefAttributes<HTMLDivElement>) => JSX.Element;

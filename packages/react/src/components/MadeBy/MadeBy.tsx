@@ -9,7 +9,7 @@ import { useDefaultProps } from '../../theming';
 import { OverridableComponent } from '../../types';
 
 /** The MadeBy component displays name of the developer. */
-export const MadeBy: OverridableComponent<MadeByTypeMap> = (inProps: MadeByProps) => {
+export const MadeBy: OverridableComponent<MadeByTypeMap> = ({ ref, ...inProps }: MadeByProps) => {
   const {
     className,
     clickable: inClickable,
@@ -26,6 +26,7 @@ export const MadeBy: OverridableComponent<MadeByTypeMap> = (inProps: MadeByProps
 
   return (
     <div
+      ref={ref}
       className={clsx(className, 'es-made-by', 'caption', clickable && 'es-made-by--clickable')}
       onClick={onClick}
       {...props}

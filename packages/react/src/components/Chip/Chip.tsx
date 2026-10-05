@@ -1,14 +1,6 @@
 'use client';
 
-import {
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  MouseEventHandler,
-  PointerEventHandler,
-  ReactNode,
-  useRef,
-} from 'react';
+import { cloneElement, isValidElement, MouseEventHandler, PointerEventHandler, ReactNode, useRef } from 'react';
 
 import { ChipProps, ChipTypeMap } from './Chip.types';
 
@@ -35,7 +27,7 @@ function isDeleteKeyboardEvent(event: React.KeyboardEvent) {
  *
  * Chips are compact elements that represent an input, attribute, or action.
  */
-export const Chip = forwardRef(function Chip(inProps: ChipProps, ref) {
+export const Chip = (({ ref, ...inProps }: ChipProps) => {
   const {
     className,
     children,

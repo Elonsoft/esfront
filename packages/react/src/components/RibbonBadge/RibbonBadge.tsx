@@ -11,7 +11,7 @@ import { ButtonBase } from '../ButtonBase';
 /**
  * A badge shaped like a ribbon, anchored to the left or the right edge of its container.
  */
-export const RibbonBadge: OverridableComponent<RibbonBadgeTypeMap> = (inProps: RibbonBadgeProps) => {
+export const RibbonBadge: OverridableComponent<RibbonBadgeTypeMap> = ({ ref, ...inProps }: RibbonBadgeProps) => {
   const {
     className,
     color = 'success',
@@ -27,6 +27,7 @@ export const RibbonBadge: OverridableComponent<RibbonBadgeTypeMap> = (inProps: R
 
   return (
     <ButtonBase
+      ref={ref}
       className={clsx(
         'es-ribbon-badge',
         `es-ribbon-badge--color--${color}`,

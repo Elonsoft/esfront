@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useState } from 'react';
+import { memo, RefAttributes, useState } from 'react';
 
 import { SFSFiltersProps } from './SFSFilters.types';
 
@@ -15,7 +15,10 @@ import { SFSButton } from '../SFSButton';
 /**
  * @see `SFS`
  */
-export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
+export const SFSFilters = memo(function SFSFilters({
+  ref,
+  ...inProps
+}: SFSFiltersProps & RefAttributes<HTMLDivElement>) {
   const {
     children,
     button,
@@ -51,7 +54,7 @@ export const SFSFilters = memo(function SFSFilters(inProps: SFSFiltersProps) {
   };
 
   return (
-    <div className={clsx(className, 'es-sfs-filters')} color="tertiary" style={style}>
+    <div ref={ref} className={clsx(className, 'es-sfs-filters')} color="tertiary" style={style}>
       {button ? (
         button({ open: isOpen, setOpen })
       ) : (

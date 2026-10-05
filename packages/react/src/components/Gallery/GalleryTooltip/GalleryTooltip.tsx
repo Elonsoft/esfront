@@ -1,3 +1,5 @@
+import { RefAttributes } from 'react';
+
 import clsx from 'clsx';
 
 import { Tooltip, TooltipProps } from '../../Tooltip';
@@ -5,9 +7,10 @@ import { Tooltip, TooltipProps } from '../../Tooltip';
 /**
  * @see `Gallery`
  */
-export const GalleryTooltip = (props: TooltipProps) => {
+export const GalleryTooltip = ({ ref, ...props }: TooltipProps & RefAttributes<unknown>) => {
   return (
     <Tooltip
+      ref={ref}
       {...props}
       slotProps={{
         ...props.slotProps,

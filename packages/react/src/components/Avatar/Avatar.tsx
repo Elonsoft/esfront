@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties, ReactNode, useEffect, useState } from 'react';
+import { CSSProperties, ReactNode, RefAttributes, useEffect, useState } from 'react';
 
 import { AvatarProps } from './Avatar.types';
 
@@ -48,7 +48,7 @@ function useLoaded(src: string): 'loaded' | 'error' | null {
 }
 
 /** Avatar is used to represent users or things. */
-export const Avatar = (inProps: AvatarProps) => {
+export const Avatar = ({ ref, ...inProps }: AvatarProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -78,6 +78,7 @@ export const Avatar = (inProps: AvatarProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(className, 'es-avatar', `es-avatar--variant--${variant}`, outlined && 'es-avatar--outlined')}
       style={{ '--es-avatar-size': `${size}px`, ...style } as CSSProperties}
     >

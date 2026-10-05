@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { CalendarButtonProps } from './CalendarButton.types';
 
 import clsx from 'clsx';
@@ -11,7 +13,7 @@ import { Tooltip } from '../../Tooltip';
 /**
  * @see `Calendar`
  */
-export const CalendarButton = (inProps: CalendarButtonProps) => {
+export const CalendarButton = ({ ref, ...inProps }: CalendarButtonProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -32,6 +34,7 @@ export const CalendarButton = (inProps: CalendarButtonProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         'es-calendar-button',
         selected && 'es-calendar-button--selected',

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo, useState } from 'react';
+import React, { memo, RefAttributes, useState } from 'react';
 
 import { SFSSortingProps } from './SFSSorting.types';
 
@@ -14,7 +14,10 @@ import { SFSButton } from '../SFSButton';
 /**
  * @see `SFS`
  */
-export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
+export const SFSSorting = memo(function SFSSorting({
+  ref,
+  ...inProps
+}: SFSSortingProps & RefAttributes<HTMLDivElement>) {
   const {
     className,
     style,
@@ -45,7 +48,7 @@ export const SFSSorting = memo(function SFSSorting(inProps: SFSSortingProps) {
   };
 
   return (
-    <div className={clsx('es-sfs-sorting', className)} style={style}>
+    <div ref={ref} className={clsx('es-sfs-sorting', className)} style={style}>
       <SFSButton active={!!values[0]} className="es-sfs-sorting__button" onClick={onMenuOpen}>
         <div className="body100">
           {values.length === 1 ? options.find((o) => o.value === values[0].value)?.label : labelButton}

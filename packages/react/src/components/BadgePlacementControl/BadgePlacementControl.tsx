@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { BadgePlacementControlProps } from './BadgePlacementControl.types';
 
 import clsx from 'clsx';
@@ -29,7 +31,10 @@ const calculateTransform = (
 /**
  * Positions a badge over one of the corners of the element it wraps.
  */
-export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
+export const BadgePlacementControl = ({
+  ref,
+  ...inProps
+}: BadgePlacementControlProps & RefAttributes<HTMLDivElement>) => {
   const {
     badge,
     children,
@@ -48,6 +53,7 @@ export const BadgePlacementControl = (inProps: BadgePlacementControlProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         className,
         'es-badge-placement-control',

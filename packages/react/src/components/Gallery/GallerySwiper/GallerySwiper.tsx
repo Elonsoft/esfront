@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, RefAttributes } from 'react';
 
 import { GallerySwiperProps } from './GallerySwiper.types';
 
@@ -70,7 +70,7 @@ const GallerySwiperButtonNext = ({ icon, label }: { icon: ReactNode; label?: str
 /**
  * @see `Gallery`
  */
-export const GallerySwiper = (inProps: GallerySwiperProps) => {
+export const GallerySwiper = ({ ref, ...inProps }: GallerySwiperProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -102,7 +102,7 @@ export const GallerySwiper = (inProps: GallerySwiperProps) => {
   const actionsRef = useForkRef(setActions, SwiperProps?.actions);
 
   return (
-    <div className={clsx('es-gallery-swiper', className)} style={style} {...bind()}>
+    <div ref={ref} className={clsx('es-gallery-swiper', className)} style={style} {...bind()}>
       <Swiper
         snap
         buttonNext={<GallerySwiperButtonNext icon={iconNext} label={labelNext} />}

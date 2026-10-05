@@ -12,11 +12,6 @@ export interface TabProps {
    */
   disabled?: boolean;
   /**
-   * If `true`, the  keyboard focus ripple is disabled.
-   * @default true
-   */
-  disableFocusRipple?: boolean;
-  /**
    * The label element.
    */
   label?: ReactNode;

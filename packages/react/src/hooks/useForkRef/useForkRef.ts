@@ -3,7 +3,7 @@
 import { Ref, RefCallback, useMemo } from 'react';
 
 const setRef = <T>(
-  ref: React.MutableRefObject<T | null> | ((instance: T | null) => void) | null | undefined,
+  ref: React.RefObject<T | null> | ((instance: T | null) => void) | null | undefined,
   value: T | null
 ) => {
   if (typeof ref === 'function') {

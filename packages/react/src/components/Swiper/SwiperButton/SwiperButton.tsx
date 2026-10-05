@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { SwiperButtonProps } from './SwiperButton.types';
 
 import clsx from 'clsx';
@@ -17,7 +19,7 @@ import { useSwiperContext } from '../Swiper.context';
 /**
  * @see `Swiper`
  */
-export const SwiperButton = (inProps: SwiperButtonProps) => {
+export const SwiperButton = ({ ref, ...inProps }: SwiperButtonProps & RefAttributes<HTMLButtonElement>) => {
   const {
     className,
     style,
@@ -41,6 +43,7 @@ export const SwiperButton = (inProps: SwiperButtonProps) => {
 
   return (
     <Button
+      ref={ref}
       aria-label={step < 0 ? labelPrev : labelNext}
       className={clsx(
         'es-swiper-button',

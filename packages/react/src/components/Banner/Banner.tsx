@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { BannerProps } from './Banner.types';
 
 import clsx from 'clsx';
@@ -17,7 +19,7 @@ const defaultIconMapping = {
 /**
  * An banner displays a short, important message in a way that attracts the user's attention without interrupting the user's task.
  */
-export const Banner = (inProps: BannerProps) => {
+export const Banner = ({ ref, ...inProps }: BannerProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -37,6 +39,7 @@ export const Banner = (inProps: BannerProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         'es-banner',
         `es-banner--color--${color || severity}`,

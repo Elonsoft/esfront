@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { FiltersFormControlLabelProps } from './FiltersFormControlLabel.types';
 
 import clsx from 'clsx';
@@ -10,11 +12,15 @@ import { FormControlLabel } from '../../FormControlLabel';
 /**
  * @see `Filters`
  */
-export const FiltersFormControlLabel = (inProps: FiltersFormControlLabelProps) => {
+export const FiltersFormControlLabel = ({
+  ref,
+  ...inProps
+}: FiltersFormControlLabelProps & RefAttributes<HTMLLabelElement>) => {
   const { className, label, count, ...props } = useDefaultProps({ props: inProps, name: 'ESFiltersFormControlLabel' });
 
   return (
     <FormControlLabel
+      ref={ref}
       className={clsx('es-filters-form-control-label', className)}
       label={
         <>

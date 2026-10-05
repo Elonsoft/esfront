@@ -14,7 +14,7 @@ import { useDefaultProps } from '../../theming';
 /**
  * The Sidenav component is a fixed-position toggleable slide out box.
  */
-export const Sidenav = (inProps: SidenavProps) => {
+export const Sidenav = ({ ref, ...inProps }: SidenavProps & React.RefAttributes<HTMLDivElement>) => {
   const { className, style, children, open, disableEscapeKeyDown, disableItemHover, onClose } = useDefaultProps({
     props: inProps,
     name: 'ESSidenav',
@@ -129,7 +129,7 @@ export const Sidenav = (inProps: SidenavProps) => {
 
   return (
     <SidenavContext.Provider value={value}>
-      <div className={clsx('es-sidenav', className)} style={style}>
+      <div ref={ref} className={clsx('es-sidenav', className)} style={style}>
         <div className="es-sidenav__container" onMouseLeave={onMouseLeaveSidenav}>
           {React.Children.map(children as React.ReactElement<any>[], (child, idx: number) => {
             if (idx) {

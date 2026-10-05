@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { RefAttributes, useMemo } from 'react';
 
 import { SwiperPaginationProps } from './SwiperPagination.types';
 
@@ -14,7 +14,7 @@ import { SwiperPaginationItem } from '../SwiperPaginationItem';
 /**
  * @see `Swiper`
  */
-export const SwiperPagination = (inProps: SwiperPaginationProps) => {
+export const SwiperPagination = ({ ref, ...inProps }: SwiperPaginationProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -63,6 +63,7 @@ export const SwiperPagination = (inProps: SwiperPaginationProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         'es-swiper-pagination',
         `es-swiper-pagination--direction--${direction}`,

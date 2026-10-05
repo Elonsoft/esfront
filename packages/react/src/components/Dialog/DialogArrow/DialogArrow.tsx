@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { DialogArrowProps } from './DialogArrow.types';
 
 import clsx from 'clsx';
@@ -11,7 +13,7 @@ import { Button } from '../../Button';
 /**
  * @see `Dialog`
  */
-export const DialogArrow = (inProps: DialogArrowProps) => {
+export const DialogArrow = ({ ref, ...inProps }: DialogArrowProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -27,7 +29,7 @@ export const DialogArrow = (inProps: DialogArrowProps) => {
   });
 
   return (
-    <div className={clsx('es-dialog-arrow', `es-dialog-arrow--${direction}`, className)} style={style}>
+    <div ref={ref} className={clsx('es-dialog-arrow', `es-dialog-arrow--${direction}`, className)} style={style}>
       <Button
         aria-label={direction === 'prev' ? labelPrev : labelNext}
         className="es-dialog-arrow__button"

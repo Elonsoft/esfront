@@ -1,6 +1,6 @@
 'use client';
 
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, RefAttributes } from 'react';
 
 import { AvatarGroupProps } from './AvatarGroup.types';
 
@@ -13,7 +13,7 @@ import { useDefaultProps } from '../../theming';
 /**
  * AvatarGroup renders its children as a stack.
  */
-export const AvatarGroup = (inProps: AvatarGroupProps) => {
+export const AvatarGroup = ({ ref, ...inProps }: AvatarGroupProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -29,6 +29,7 @@ export const AvatarGroup = (inProps: AvatarGroupProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx('es-avatar-group', `es-avatar-group--direction--${direction}`, className)}
       style={
         {

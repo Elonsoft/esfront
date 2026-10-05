@@ -1,6 +1,6 @@
 'use client';
 
-import { cloneElement, forwardRef, useCallback, useEffect, useRef } from 'react';
+import { cloneElement, RefAttributes, useCallback, useEffect, useRef } from 'react';
 import { Transition } from 'react-transition-group';
 
 import { SlideDirection, SlideProps } from './Slide.types';
@@ -9,7 +9,7 @@ import { useForkRef } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 import { createTransition, duration, easing } from '../../transitions';
 import { debounce } from '../../transitions/debounce';
-import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
+import { useTransitionCallbacks } from '../../transitions/useTransitionCallbacks';
 import { getTransitionProps, reflow } from '../../transitions/utils';
 import { getReactElementRef, ownerWindow } from '../../utils';
 
@@ -87,7 +87,7 @@ const setTranslateValue = (direction: SlideDirection, node: HTMLElement, contain
 /**
  * The Slide transition moves a single child element in from the edge of the screen or of a container.
  */
-export const Slide = forwardRef<unknown, SlideProps>(function Slide(inProps, ref) {
+export const Slide = ({ ref, ...inProps }: SlideProps & RefAttributes<unknown>) => {
   const {
     addEndListener,
     appear = true,
@@ -113,7 +113,7 @@ export const Slide = forwardRef<unknown, SlideProps>(function Slide(inProps, ref
   const nodeRef = useRef<HTMLElement>(null);
   const handleRef = useForkRef(nodeRef, getReactElementRef(children), ref);
 
-  const callbacks = createTransitionCallbacks(nodeRef);
+  const callbacks = useTransitionCallbacks(nodeRef);
 
   const handleEnter = callbacks.enter((node, isAppearing) => {
     setTranslateValue(direction, node, container);
@@ -222,4 +222,4 @@ export const Slide = forwardRef<unknown, SlideProps>(function Slide(inProps, ref
       }}
     </Transition>
   );
-});
+};

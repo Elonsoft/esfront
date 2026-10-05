@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useState } from 'react';
+import { memo, RefAttributes, useState } from 'react';
 
 import { PaginationRangeProps } from './PaginationRange.types';
 
@@ -18,7 +18,10 @@ const OPTIONS = [10, 25, 100];
 /**
  * @see `Pagination`
  */
-export const PaginationRange = memo(function PaginationRange(inProps: PaginationRangeProps) {
+export const PaginationRange = memo(function PaginationRange({
+  ref,
+  ...inProps
+}: PaginationRangeProps & RefAttributes<HTMLDivElement>) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -52,7 +55,7 @@ export const PaginationRange = memo(function PaginationRange(inProps: Pagination
   };
 
   return (
-    <div className={clsx('es-pagination-range', className)} style={style}>
+    <div ref={ref} className={clsx('es-pagination-range', className)} style={style}>
       <div className="es-pagination-range__label caption">{labelItemsPerPage}</div>
 
       <Button

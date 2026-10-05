@@ -1,12 +1,12 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { RefAttributes, useRef, useState } from 'react';
 
 import { ChipsProps } from './Chips.types';
 
 import clsx from 'clsx';
 
-import { useBoolean, useEnhancedEffect, useResizeObserver } from '../../hooks';
+import { useBoolean, useEnhancedEffect, useForkRef, useResizeObserver } from '../../hooks';
 import { IconChevronDownLineW200, IconChevronUpLineW200 } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
@@ -14,7 +14,7 @@ import { Button } from '../Button';
 /**
  * Lays out a collection of chips clamped to a number of lines, with a button that reveals the hidden ones.
  */
-export const Chips = (inProps: ChipsProps) => {
+export const Chips = ({ ref: inRef, ...inProps }: ChipsProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
 
@@ -88,6 +88,8 @@ export const Chips = (inProps: ChipsProps) => {
     button.style.display = lineCount > maxLines ? 'flex' : 'none';
   };
 
+  const rootRef = useForkRef(ref, inRef);
+
   useResizeObserver(ref, onResize);
 
   useEnhancedEffect(() => {
@@ -95,7 +97,7 @@ export const Chips = (inProps: ChipsProps) => {
   }, [open]);
 
   return (
-    <div ref={ref} className={clsx('es-chips', className)} style={style}>
+    <div ref={rootRef} className={clsx('es-chips', className)} style={style}>
       {children}
       <Button
         key={`${open}`}

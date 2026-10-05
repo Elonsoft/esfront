@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { DividerProps } from './Divider.types';
 
 import clsx from 'clsx';
@@ -9,7 +11,7 @@ import { useDefaultProps } from '../../theming';
 /**
  * The Divider is a thin line that groups content in lists and layouts.
  */
-export const Divider = (inProps: DividerProps) => {
+export const Divider = ({ ref, ...inProps }: DividerProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -26,6 +28,7 @@ export const Divider = (inProps: DividerProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         className,
         `es-divider--${orientation}`,

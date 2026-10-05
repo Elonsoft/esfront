@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { GalleryMetaProps } from './GalleryMeta.types';
 
 import clsx from 'clsx';
@@ -13,7 +15,7 @@ import { GalleryTooltip } from '../GalleryTooltip';
 /**
  * @see `Gallery`
  */
-export const GalleryMeta = (inProps: GalleryMetaProps) => {
+export const GalleryMeta = ({ ref, ...inProps }: GalleryMetaProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -28,7 +30,7 @@ export const GalleryMeta = (inProps: GalleryMetaProps) => {
   const { onClose } = useGalleryContext();
 
   return (
-    <div className={clsx('es-gallery-meta', className)} style={style}>
+    <div ref={ref} className={clsx('es-gallery-meta', className)} style={style}>
       <GalleryTooltip arrow color="white-a600" distance={8} title={labelClose || ''}>
         <GalleryActionsButton
           aria-label={labelClose}

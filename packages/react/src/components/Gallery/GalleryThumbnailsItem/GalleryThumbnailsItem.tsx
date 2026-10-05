@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { GalleryThumbnailsItemProps } from './GalleryThumbnailsItem.types';
 
 import clsx from 'clsx';
@@ -10,7 +12,10 @@ import { ButtonBase } from '../../ButtonBase';
 /**
  * @see `Gallery`
  */
-export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {
+export const GalleryThumbnailsItem = ({
+  ref,
+  ...inProps
+}: GalleryThumbnailsItemProps & RefAttributes<HTMLButtonElement>) => {
   const { className, style, isActive, onClick, children } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryThumbnailsItem',
@@ -18,6 +23,7 @@ export const GalleryThumbnailsItem = (inProps: GalleryThumbnailsItemProps) => {
 
   return (
     <ButtonBase
+      ref={ref}
       className={clsx('es-gallery-thumbnails-item', isActive && 'es-gallery-thumbnails-item--active', className)}
       style={style}
       onClick={onClick}

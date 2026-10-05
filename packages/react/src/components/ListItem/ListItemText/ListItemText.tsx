@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { ListItemTextProps } from './ListItemText.types';
 
 import clsx from 'clsx';
@@ -9,7 +11,7 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `ListItem`
  */
-export const ListItemText = (inProps: ListItemTextProps) => {
+export const ListItemText = ({ ref, ...inProps }: ListItemTextProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -37,6 +39,7 @@ export const ListItemText = (inProps: ListItemTextProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         className,
         'es-list-item-text',

@@ -13,7 +13,7 @@ import { TooltipEllipsis } from '../../TooltipEllipsis';
 /**
  * @see `Breadcrumbs`
  */
-export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: BreadcrumbProps) => {
+export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = ({ ref: inRef, ...inProps }: BreadcrumbProps) => {
   const {
     children,
     itemContent,
@@ -53,6 +53,7 @@ export const Breadcrumb: OverridableComponent<BreadcrumbTypeMap> = (inProps: Bre
         {({ ref, childrenRef }) => (
           <div ref={ref as never} style={{ minWidth: 0 }}>
             <Button
+              ref={inRef}
               className="es-breadcrumb__content"
               color="mono-a"
               disabled={disabled}

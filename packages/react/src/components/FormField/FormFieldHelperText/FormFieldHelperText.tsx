@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useRef } from 'react';
+import { RefAttributes, useRef } from 'react';
 
 import { FormFieldHelperTextProps } from './FormFieldHelperText.types';
 
@@ -14,10 +14,7 @@ import { useFormFieldContext } from '../FormField.context';
  * The text under a field, describing what the field expects or the error it is in.
  * @see `FormField`
  */
-export const FormFieldHelperText = forwardRef<HTMLDivElement, FormFieldHelperTextProps>(function FormFieldHelperText(
-  inProps: FormFieldHelperTextProps,
-  ref
-) {
+export const FormFieldHelperText = ({ ref, ...inProps }: FormFieldHelperTextProps & RefAttributes<HTMLDivElement>) => {
   const { children, className, style, id } = useDefaultProps({
     props: inProps,
     name: 'ESFormFieldHelperText',
@@ -44,4 +41,4 @@ export const FormFieldHelperText = forwardRef<HTMLDivElement, FormFieldHelperTex
       {children}
     </div>
   );
-});
+};

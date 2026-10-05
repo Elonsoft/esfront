@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { RefAttributes, useEffect, useRef, useState } from 'react';
 
 import { FileIconProps } from './FileIcon.types';
 
@@ -8,12 +8,13 @@ import clsx from 'clsx';
 
 import { FileIconIcon } from './icons';
 
+import { useForkRef } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 
 /**
  * This component is for displaying file extensions.
  */
-export const FileIcon = (inProps: FileIconProps) => {
+export const FileIcon = ({ ref: inRef, ...inProps }: FileIconProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -28,6 +29,7 @@ export const FileIcon = (inProps: FileIconProps) => {
 
   const iconRef = useRef<SVGPathElement>(null);
   const rootIconRef = useRef<HTMLDivElement>(null);
+  const rootRef = useForkRef(rootIconRef, inRef);
   const [paddingTop, setPaddingTop] = useState(0);
   const Icon = icon;
 
@@ -41,7 +43,7 @@ export const FileIcon = (inProps: FileIconProps) => {
   }, [width, height]);
 
   return (
-    <div ref={rootIconRef} className={clsx('es-file-icon', className)} style={style}>
+    <div ref={rootRef} className={clsx('es-file-icon', className)} style={style}>
       <Icon ref={iconRef} className="es-file-icon__icon" height={`${height}px`} width={`${width}px`} />
       {!!children && (
         <div className="es-file-icon__children" style={{ paddingTop: `${Math.round(paddingTop)}px` }}>

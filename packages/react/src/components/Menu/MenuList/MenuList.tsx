@@ -3,10 +3,10 @@
 import {
   Children,
   cloneElement,
-  forwardRef,
   isValidElement,
   KeyboardEvent,
   ReactElement,
+  RefAttributes,
   useImperativeHandle,
   useRef,
 } from 'react';
@@ -119,7 +119,7 @@ const moveFocus = (
  * The MenuList is a permanently displayed menu. It is exposed to help customizing the Menu — when used on its own the
  * focus has to be moved into the component manually. Once the focus is inside, it is fully keyboard accessible.
  */
-export const MenuList = forwardRef<HTMLUListElement, MenuListProps>(function MenuList(inProps, ref) {
+export const MenuList = ({ ref, ...inProps }: MenuListProps & RefAttributes<HTMLUListElement>) => {
   const {
     actions,
     autoFocus = false,
@@ -319,4 +319,4 @@ export const MenuList = forwardRef<HTMLUListElement, MenuListProps>(function Men
       {items}
     </ul>
   );
-});
+};

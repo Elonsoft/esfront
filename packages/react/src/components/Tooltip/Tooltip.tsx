@@ -3,9 +3,9 @@
 import {
   cloneElement,
   FocusEvent,
-  forwardRef,
   isValidElement,
   MouseEvent,
+  RefAttributes,
   SyntheticEvent,
   TouchEvent,
   useEffect,
@@ -71,7 +71,7 @@ const defaultArrowIconMapping = {
 /**
  * Tooltips display informative text when the user hovers over, focuses on, or taps an element.
  */
-export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
+export const Tooltip = ({ ref, ...inProps }: TooltipProps & RefAttributes<unknown>) => {
   const {
     arrow = true,
     arrowSize = '6',
@@ -121,9 +121,10 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   const [openState, setOpenState] = useControlled(false, openProp);
 
-  let open = openState;
+  // There is no point in displaying an empty tooltip.
+  const open = openState && (!!title || title === 0);
 
-  const { current: isControlled } = useRef(openProp !== undefined);
+  const [isControlled] = useState(openProp !== undefined);
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
@@ -168,7 +169,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     };
   }, [stopTouchInteraction]);
 
-  const handleOpen = (event: MouseEvent | FocusEvent | TouchEvent) => {
+  const handleOpen = useEvent((event: MouseEvent | FocusEvent | TouchEvent) => {
     hystersisTimer.clear();
     setHystersisOpen(true);
 
@@ -180,7 +181,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     if (onOpen && !open) {
       onOpen(event);
     }
-  };
+  });
 
   const handleClose = useEvent((event: MouseEvent | FocusEvent | TouchEvent | KeyboardEvent) => {
     hystersisTimer.start(800 + leaveDelay, () => {
@@ -198,7 +199,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     });
   });
 
-  const handleMouseOver = (event: MouseEvent | FocusEvent | TouchEvent) => {
+  const handleMouseOver = useEvent((event: MouseEvent | FocusEvent | TouchEvent) => {
     if (ignoreNonTouchEvents.current && event.type !== 'touchstart') {
       return;
     }
@@ -220,15 +221,15 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     } else {
       handleOpen(event);
     }
-  };
+  });
 
-  const handleMouseLeave = (event: MouseEvent | FocusEvent) => {
+  const handleMouseLeave = useEvent((event: MouseEvent | FocusEvent) => {
     enterTimer.clear();
 
     leaveTimer.start(leaveDelay, () => {
       handleClose(event);
     });
-  };
+  });
 
   const {
     isFocusVisibleRef,
@@ -240,16 +241,16 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
   // We just need to re-render the Tooltip if the focus-visible state changes.
   const [, setChildIsFocusVisible] = useState(false);
 
-  const handleBlur = (event: FocusEvent) => {
+  const handleBlur = useEvent((event: FocusEvent) => {
     handleBlurVisible(event);
 
     if (isFocusVisibleRef.current === false) {
       setChildIsFocusVisible(false);
       handleMouseLeave(event);
     }
-  };
+  });
 
-  const handleFocus = (event: FocusEvent) => {
+  const handleFocus = useEvent((event: FocusEvent) => {
     // Workaround for https://github.com/facebook/react/issues/7769
     // The autoFocus of React might trigger the event before the componentDidMount.
     // We need to account for this eventuality.
@@ -263,9 +264,9 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
       setChildIsFocusVisible(true);
       handleMouseOver(event);
     }
-  };
+  });
 
-  const detectTouchStart = (event: TouchEvent) => {
+  const detectTouchStart = useEvent((event: TouchEvent) => {
     ignoreNonTouchEvents.current = true;
 
     const childrenProps = children.props;
@@ -273,9 +274,9 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     if (childrenProps.onTouchStart) {
       childrenProps.onTouchStart(event);
     }
-  };
+  });
 
-  const handleTouchStart = (event: TouchEvent) => {
+  const handleTouchStart = useEvent((event: TouchEvent) => {
     detectTouchStart(event);
     leaveTimer.clear();
     closeTimer.clear();
@@ -289,9 +290,9 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
       setBodyUserSelect(prevUserSelect.current);
       handleMouseOver(event);
     });
-  };
+  });
 
-  const handleTouchEnd = (event: TouchEvent) => {
+  const handleTouchEnd = useEvent((event: TouchEvent) => {
     if (children.props.onTouchEnd) {
       children.props.onTouchEnd(event);
     }
@@ -301,7 +302,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     leaveTimer.start(leaveTouchDelay, () => {
       handleClose(event);
     });
-  };
+  });
 
   useEffect(() => {
     if (!open) {
@@ -327,14 +328,9 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   const handleRef = useForkRef(getReactElementRef(children), focusVisibleRef, setChildNode, ref);
 
-  // There is no point in displaying an empty tooltip.
-  if (!title && title !== 0) {
-    open = false;
-  }
-
   const popperRef = useRef<PopperActions | null>(null);
 
-  const handleMouseMove = (event: MouseEvent) => {
+  const handleMouseMove = useEvent((event: MouseEvent) => {
     const childrenProps = children.props;
 
     if (childrenProps.onMouseMove) {
@@ -346,7 +342,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     if (popperRef.current) {
       popperRef.current.update();
     }
-  };
+  });
 
   const nameOrDescProps: {
     title?: string | null;
@@ -441,6 +437,7 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
 
   const middleware = useMemo(() => {
     const items: Middleware[] = [
+      // eslint-disable-next-line react-hooks/refs -- the refs are read when the middleware runs, never during render
       offset(({ placement: currentPlacement, rects }) => {
         const padding = 8;
         const arrowOffsetX = 14;
@@ -535,6 +532,8 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
     className: clsx(
       'es-tooltip__tooltip',
       arrow && 'es-tooltip__tooltip--arrow',
+      // The flag is read during render on purpose: a change of it must not re-render the tooltip on its own.
+      // eslint-disable-next-line react-hooks/refs
       ignoreNonTouchEvents.current && 'es-tooltip__tooltip--touch',
       placement && `es-tooltip__tooltip--placement--${placement}`,
       color && `es-tooltip__tooltip--color--${color}`,
@@ -607,4 +606,4 @@ export const Tooltip = forwardRef(function Tooltip(inProps: TooltipProps, ref) {
       </PopperComponent>
     </>
   );
-});
+};

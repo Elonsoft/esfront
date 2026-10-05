@@ -8,7 +8,7 @@ import { useOverlayScrollbars } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useMediaQuery, useResizeObserver } from '../../../hooks';
+import { useForkRef, useMediaQuery, useResizeObserver } from '../../../hooks';
 import { IconChevronLeftLineW200 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { OverridableComponent } from '../../../types';
@@ -26,7 +26,7 @@ import { useSidebarMenuContext } from '../SidebarMenu/SidebarMenu.context';
 /**
  * @see `Sidebar`
  */
-export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: SidebarItemProps) => {
+export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = ({ ref: inRef, ...inProps }: SidebarItemProps) => {
   const {
     children,
     className,
@@ -58,6 +58,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
   const ref = useRef<HTMLDivElement | null>(null);
   const refTooltip = useRef<HTMLUListElement | null>(null);
   const refItem = useRef<HTMLLIElement | null>(null);
+  const itemRef = useForkRef(refItem, inRef);
   const shouldSkipClick = useRef(false);
 
   const { color, open } = useSidebarContext();
@@ -259,7 +260,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = (inProps: S
       >
         <div className="es-sidebar-item__wrapper">
           <ListItem
-            ref={refItem}
+            ref={itemRef}
             button
             className={clsx('es-sidebar-item__button', `es-sidebar-item__button--color--${color}`)}
             onClick={onItemClick}

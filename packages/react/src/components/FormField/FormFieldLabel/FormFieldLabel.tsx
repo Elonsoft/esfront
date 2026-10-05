@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useRef } from 'react';
+import { RefAttributes, useRef } from 'react';
 
 import { FormFieldLabelProps } from './FormFieldLabel.types';
 
@@ -14,10 +14,7 @@ import { useFormFieldContext } from '../FormField.context';
  * The label of a field, shrinking out of the control once that control is focused or filled.
  * @see `FormField`
  */
-export const FormFieldLabel = forwardRef<HTMLLabelElement, FormFieldLabelProps>(function FormFieldLabel(
-  inProps: FormFieldLabelProps,
-  ref
-) {
+export const FormFieldLabel = ({ ref, ...inProps }: FormFieldLabelProps & RefAttributes<HTMLLabelElement>) => {
   const {
     children,
     className,
@@ -69,4 +66,4 @@ export const FormFieldLabel = forwardRef<HTMLLabelElement, FormFieldLabelProps>(
       {children} {!!required && <span className="es-form-field-label__asterisk">*</span>}
     </label>
   );
-});
+};

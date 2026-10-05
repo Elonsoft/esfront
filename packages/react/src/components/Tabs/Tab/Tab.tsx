@@ -1,6 +1,6 @@
 'use client';
 
-import { FocusEvent, forwardRef, MouseEvent } from 'react';
+import { FocusEvent, MouseEvent, RefAttributes } from 'react';
 
 import { TabProps } from './Tab.types';
 
@@ -12,7 +12,7 @@ import { ButtonBase } from '../../ButtonBase';
 /**
  * @see `Tabs`
  */
-export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps: TabProps, ref) {
+export const Tab = ({ ref, ...inProps }: TabProps & RefAttributes<HTMLButtonElement>) => {
   const {
     className,
     disabled = false,
@@ -77,4 +77,4 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(inProps:
       {indicator}
     </ButtonBase>
   );
-});
+};

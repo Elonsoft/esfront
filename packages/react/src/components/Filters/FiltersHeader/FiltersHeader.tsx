@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { FiltersHeaderProps } from './FiltersHeader.types';
 
 import clsx from 'clsx';
@@ -10,14 +12,14 @@ import { Button } from '../../Button';
 /**
  * @see `Filters`
  */
-export const FiltersHeader = (inProps: FiltersHeaderProps) => {
+export const FiltersHeader = ({ ref, ...inProps }: FiltersHeaderProps & RefAttributes<HTMLDivElement>) => {
   const { children, className, style, onClear, labelFilters, labelReset } = useDefaultProps({
     props: inProps,
     name: 'ESFiltersHeader',
   });
 
   return (
-    <div className={clsx('es-filters-header', className)} style={style}>
+    <div ref={ref} className={clsx('es-filters-header', className)} style={style}>
       <div className="es-filters-header__title h5">
         {labelFilters}
         {!!onClear && (

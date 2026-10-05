@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useRef } from 'react';
+import { useRef } from 'react';
 
 import { ButtonBaseProps, ButtonBaseTypeMap } from './ButtonBase.types';
 
@@ -14,7 +14,7 @@ import { TouchRipple, useTouchRipple } from '../TouchRipple';
 /**
  * The Button allows users to take actions, and make choices, with a single tap.
  */
-export const ButtonBase = forwardRef(function ButtonBase(inProps: ButtonBaseProps, ref) {
+export const ButtonBase = (({ ref, ...inProps }: ButtonBaseProps) => {
   const {
     component: Component = 'button',
     children,

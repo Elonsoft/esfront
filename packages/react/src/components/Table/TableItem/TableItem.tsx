@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { RefAttributes } from 'react';
 
 import { TableItemProps } from './TableItem.types';
 
@@ -11,7 +11,7 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `Table`
  */
-export const TableItem = forwardRef<HTMLDivElement, TableItemProps>(function TableItem(inProps, ref) {
+export const TableItem = ({ ref, ...inProps }: TableItemProps & RefAttributes<HTMLDivElement>) => {
   const { className, style, avatar, primary, secondary } = useDefaultProps({
     props: inProps,
     name: 'ESTableItem',
@@ -26,4 +26,4 @@ export const TableItem = forwardRef<HTMLDivElement, TableItemProps>(function Tab
       </div>
     </div>
   );
-});
+};

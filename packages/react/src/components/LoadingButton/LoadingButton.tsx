@@ -1,8 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
-
-import { LoadingButtonTypeMap } from './LoadingButton.types';
+import { LoadingButtonProps, LoadingButtonTypeMap } from './LoadingButton.types';
 
 import clsx from 'clsx';
 
@@ -26,7 +24,7 @@ export const getLoadingButtonSpinnerSize = (size: ButtonOwnProps['size']) => {
 };
 
 /** LoadingButton shows loading state and disables interactions. */
-export const LoadingButton = forwardRef(function LoadingButton(inProps, ref) {
+export const LoadingButton = (({ ref, ...inProps }: LoadingButtonProps) => {
   const {
     children,
     id: inId,

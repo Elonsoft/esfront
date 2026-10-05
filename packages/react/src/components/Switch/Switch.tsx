@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { RefAttributes } from 'react';
 
 import { SwitchProps } from './Switch.types';
 
@@ -13,7 +13,7 @@ import { ButtonBase } from '../ButtonBase';
 /**
  * Switches toggle the state of a single setting on or off.
  */
-export const Switch = (inProps: SwitchProps) => {
+export const Switch = ({ ref, ...inProps }: SwitchProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     checked: checkedProp,
@@ -59,6 +59,7 @@ export const Switch = (inProps: SwitchProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         'es-switch',
         checked && 'es-switch--checked',

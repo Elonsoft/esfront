@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { RefAttributes } from 'react';
 
 import { RadioIconProps } from './RadioIcon.types';
 
@@ -11,11 +11,11 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `Radio`
  */
-export const RadioIcon = (inProps: RadioIconProps) => {
+export const RadioIcon = ({ ref, ...inProps }: RadioIconProps & RefAttributes<HTMLDivElement>) => {
   const { className, style } = useDefaultProps({ props: inProps, name: 'ESRadioIcon' });
 
   return (
-    <div className={clsx('es-radio-icon', className)} style={style}>
+    <div ref={ref} className={clsx('es-radio-icon', className)} style={style}>
       <div className="es-radio-icon__circle" />
     </div>
   );

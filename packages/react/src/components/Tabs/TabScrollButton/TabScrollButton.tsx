@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { RefAttributes } from 'react';
 
 import { TabScrollButtonProps } from './TabScrollButton.types';
 
@@ -14,10 +14,7 @@ import { Divider } from '../../Divider';
 /**
  * @see `Tabs`
  */
-export const TabScrollButton = forwardRef<HTMLDivElement, TabScrollButtonProps>(function TabScrollButton(
-  inProps: TabScrollButtonProps,
-  ref
-) {
+export const TabScrollButton = ({ ref, ...inProps }: TabScrollButtonProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     direction,
@@ -66,4 +63,4 @@ export const TabScrollButton = forwardRef<HTMLDivElement, TabScrollButtonProps>(
       )}
     </ButtonBase>
   );
-});
+};

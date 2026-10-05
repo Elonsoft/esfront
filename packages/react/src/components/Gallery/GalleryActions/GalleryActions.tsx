@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { GalleryActionsProps } from './GalleryActions.types';
 
 import clsx from 'clsx';
@@ -14,7 +16,7 @@ import { GalleryTooltip } from '../GalleryTooltip';
 /**
  * @see `Gallery`
  */
-export const GalleryActions = (inProps: GalleryActionsProps) => {
+export const GalleryActions = ({ ref, ...inProps }: GalleryActionsProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -36,7 +38,7 @@ export const GalleryActions = (inProps: GalleryActionsProps) => {
   };
 
   return (
-    <div className={clsx('es-gallery-actions', className)} style={style}>
+    <div ref={ref} className={clsx('es-gallery-actions', className)} style={style}>
       <GalleryTooltip color="white-a600" distance={8} title={labelThumbnails || ''}>
         <GalleryActionsButton
           aria-label={labelThumbnails}

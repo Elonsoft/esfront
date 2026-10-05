@@ -1,22 +1,22 @@
 'use client';
 
-import { forwardRef, HTMLAttributes, useRef } from 'react';
+import { HTMLAttributes, RefAttributes, useRef } from 'react';
 import { Transition } from 'react-transition-group';
 
 import { CollapseProps } from './Collapse.types';
 
 import clsx from 'clsx';
 
-import { useForkRef, useTimeout } from '../../hooks';
+import { useEvent, useForkRef, useTimeout } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 import { duration, getAutoHeightDuration } from '../../transitions';
-import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
+import { useTransitionCallbacks } from '../../transitions/useTransitionCallbacks';
 import { getTransitionProps } from '../../transitions/utils';
 
 /**
  * The Collapse transition expands a container from a collapsed size to the size of its content.
  */
-export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(function Collapse(inProps, ref) {
+export const Collapse = ({ ref, ...inProps }: CollapseProps & RefAttributes<HTMLDivElement>) => {
   const {
     addEndListener,
     children,
@@ -50,12 +50,13 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(function Colla
   const isHorizontal = orientation === 'horizontal';
   const size = isHorizontal ? 'width' : 'height';
 
-  const callbacks = createTransitionCallbacks(nodeRef);
+  const callbacks = useTransitionCallbacks(nodeRef);
 
-  const getWrapperSize = () =>
-    wrapperRef.current ? wrapperRef.current[isHorizontal ? 'clientWidth' : 'clientHeight'] : 0;
+  const getWrapperSize = useEvent(() =>
+    wrapperRef.current ? wrapperRef.current[isHorizontal ? 'clientWidth' : 'clientHeight'] : 0
+  );
 
-  const setTransitionDuration = (node: HTMLElement, wrapperSize: number, mode: 'enter' | 'exit') => {
+  const setTransitionDuration = useEvent((node: HTMLElement, wrapperSize: number, mode: 'enter' | 'exit') => {
     const { duration: transitionDuration, easing: transitionTimingFunction } = getTransitionProps(
       { style, timeout, easing },
       { mode }
@@ -72,32 +73,36 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(function Colla
     if (transitionTimingFunction) {
       node.style.transitionTimingFunction = transitionTimingFunction;
     }
-  };
-
-  const handleEnter = callbacks.enter((node, isAppearing) => {
-    if (wrapperRef.current && isHorizontal) {
-      // Set an absolute position to be able to measure the size of the collapsed content.
-      wrapperRef.current.style.position = 'absolute';
-    }
-
-    node.style[size] = collapsedSize;
-
-    onEnter?.(node, isAppearing);
   });
 
-  const handleEntering = callbacks.enter((node, isAppearing) => {
-    const wrapperSize = getWrapperSize();
+  const handleEnter = callbacks.enter(
+    useEvent((node: HTMLElement, isAppearing: boolean) => {
+      if (wrapperRef.current && isHorizontal) {
+        // Set an absolute position to be able to measure the size of the collapsed content.
+        wrapperRef.current.style.position = 'absolute';
+      }
 
-    if (wrapperRef.current && isHorizontal) {
-      // After the size is read reset the position back to the default one.
-      wrapperRef.current.style.position = '';
-    }
+      node.style[size] = collapsedSize;
 
-    setTransitionDuration(node, wrapperSize, 'enter');
-    node.style[size] = `${wrapperSize}px`;
+      onEnter?.(node, isAppearing);
+    })
+  );
 
-    onEntering?.(node, isAppearing);
-  });
+  const handleEntering = callbacks.enter(
+    useEvent((node: HTMLElement, isAppearing: boolean) => {
+      const wrapperSize = getWrapperSize();
+
+      if (wrapperRef.current && isHorizontal) {
+        // After the size is read reset the position back to the default one.
+        wrapperRef.current.style.position = '';
+      }
+
+      setTransitionDuration(node, wrapperSize, 'enter');
+      node.style[size] = `${wrapperSize}px`;
+
+      onEntering?.(node, isAppearing);
+    })
+  );
 
   const handleEntered = callbacks.enter((node, isAppearing) => {
     node.style[size] = 'auto';
@@ -168,4 +173,4 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(function Colla
       }}
     </Transition>
   );
-});
+};

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { RefAttributes, useRef, useState } from 'react';
 
 import { SidebarScrollableProps } from './SidebarScrollable.types';
 
@@ -8,14 +8,17 @@ import { OverlayScrollbarsComponentRef } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useResizeObserver } from '../../../hooks';
+import { useForkRef, useResizeObserver } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { OverlayScrollbars } from '../..//OverlayScrollbars';
 
 /**
  * @see `Sidebar`
  */
-export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
+export const SidebarScrollable = ({
+  ref: inRef,
+  ...inProps
+}: SidebarScrollableProps & RefAttributes<OverlayScrollbarsComponentRef>) => {
   const { className, style, beforeScroll, afterScroll, children } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarScrollable',
@@ -26,6 +29,7 @@ export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
   const [isAfterScroll, setAfterScroll] = useState(true);
 
   const ref = useRef<OverlayScrollbarsComponentRef | null>(null);
+  const rootRef = useForkRef(ref, inRef);
 
   // The viewport is published from `onInitialized` rather than read off the ref during render, which
   // would have made the observed element depend on a value that cannot trigger a re-render.
@@ -67,7 +71,7 @@ export const SidebarScrollable = (inProps: SidebarScrollableProps) => {
     <>
       {isScrollable && beforeScroll}
       <OverlayScrollbars
-        ref={ref}
+        ref={rootRef}
         className={clsx(
           'es-sidebar-scrollable',
           isScrollable && 'es-sidebar-scrollable--scrollable',

@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { RefAttributes, useEffect, useRef, useState } from 'react';
 
 import { GalleryDescriptionProps } from './GalleryDescription.types';
 
 import clsx from 'clsx';
 
-import { useWindowEventListener } from '../../../hooks';
+import { useForkRef, useWindowEventListener } from '../../../hooks';
 import { IconCloseLineW350 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
@@ -29,7 +29,10 @@ const IconDoubleChevronUp = (props: SvgIconProps) => {
 /**
  * @see `Gallery`
  */
-export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
+export const GalleryDescription = ({
+  ref: inRef,
+  ...inProps
+}: GalleryDescriptionProps & RefAttributes<HTMLDivElement>) => {
   const galleryPanelContext = useGalleryPanelContext();
 
   const {
@@ -49,6 +52,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
   const { rectTop, rectBottom } = useGalleryPanelsContext();
 
   const rootRef = useRef<HTMLDivElement>(null);
+  const descriptionRef = useForkRef(rootRef, inRef);
   const textRef = useRef<HTMLDivElement>(null);
 
   const [isExpanded, setExpanded] = useState(false);
@@ -106,7 +110,7 @@ export const GalleryDescription = (inProps: GalleryDescriptionProps) => {
 
   return (
     <div
-      ref={rootRef}
+      ref={descriptionRef}
       className={clsx('es-gallery-description', `es-gallery-description--position--${position}`, 'caption', className)}
       style={style}
       onClick={onClick}

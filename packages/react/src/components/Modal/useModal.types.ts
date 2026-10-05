@@ -71,7 +71,7 @@ export type UseModalParameters = {
   onTransitionExited?: () => void;
   /** If `true`, the component is shown. */
   open: boolean;
-  rootRef: Ref<Element>;
+  rootRef?: Ref<HTMLDivElement>;
 };
 
 export interface UseModalReturnValue {

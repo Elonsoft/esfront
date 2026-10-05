@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useEffect, useRef } from 'react';
+import { RefAttributes, useEffect, useRef } from 'react';
 
 import { SnackbarProps, SnackbarPropsColor, SnackbarPropsSeverity } from './Snackbar.types';
 
@@ -27,7 +27,7 @@ const defaultIconMapping = {
 };
 
 /** Snackbar is used for brief notifications of processes that have been or will be performed. */
-export const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(function Snackbar(inProps, ref) {
+export const Snackbar = ({ ref, ...inProps }: SnackbarProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -108,4 +108,4 @@ export const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(function Snack
       </div>
     </div>
   );
-});
+};

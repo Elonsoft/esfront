@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { RefAttributes, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import { AudioPlayerProps } from './AudioPlayer.types';
 
@@ -48,7 +48,7 @@ const AudioPlayerTimeValue = ({ time }: { time: number }) => {
 /**
  * This component is used to embed sound content in documents.
  */
-export const AudioPlayer = (inProps: AudioPlayerProps) => {
+export const AudioPlayer = ({ ref, ...inProps }: AudioPlayerProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -645,7 +645,7 @@ export const AudioPlayer = (inProps: AudioPlayerProps) => {
   const isOverTrack = duration * hover < current;
 
   return (
-    <div className={clsx('es-audio-player', className)} style={style}>
+    <div ref={ref} className={clsx('es-audio-player', className)} style={style}>
       <Button
         aria-label={isPlaying ? labelPause : labelPlay}
         className="es-audio-player__icon-button"

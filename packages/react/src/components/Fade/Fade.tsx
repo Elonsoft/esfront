@@ -1,6 +1,6 @@
 'use client';
 
-import { cloneElement, CSSProperties, forwardRef, useRef } from 'react';
+import { cloneElement, CSSProperties, RefAttributes, useRef } from 'react';
 import { Transition, TransitionStatus } from 'react-transition-group';
 
 import { FadeProps } from './Fade.types';
@@ -8,7 +8,7 @@ import { FadeProps } from './Fade.types';
 import { useForkRef } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 import { createTransition, duration } from '../../transitions';
-import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
+import { useTransitionCallbacks } from '../../transitions/useTransitionCallbacks';
 import { getTransitionProps, reflow } from '../../transitions/utils';
 import { getReactElementRef } from '../../utils';
 
@@ -29,7 +29,7 @@ const styles: Partial<Record<TransitionStatus, CSSProperties>> = {
 /**
  * The Fade transition animates the opacity of a single child element.
  */
-export const Fade = forwardRef<unknown, FadeProps>(function Fade(inProps, ref) {
+export const Fade = ({ ref, ...inProps }: FadeProps & RefAttributes<unknown>) => {
   const {
     addEndListener,
     appear = true,
@@ -53,7 +53,7 @@ export const Fade = forwardRef<unknown, FadeProps>(function Fade(inProps, ref) {
   const nodeRef = useRef<HTMLElement>(null);
   const handleRef = useForkRef(nodeRef, getReactElementRef(children), ref);
 
-  const callbacks = createTransitionCallbacks(nodeRef);
+  const callbacks = useTransitionCallbacks(nodeRef);
 
   const handleEnter = callbacks.enter((node, isAppearing) => {
     // So the animation always starts from the start.
@@ -117,4 +117,4 @@ export const Fade = forwardRef<unknown, FadeProps>(function Fade(inProps, ref) {
       }}
     </Transition>
   );
-});
+};

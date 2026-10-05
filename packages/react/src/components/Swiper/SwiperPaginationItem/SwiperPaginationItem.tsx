@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { SwiperPaginationItemProps } from './SwiperPaginationItem.types';
 
 import clsx from 'clsx';
@@ -18,6 +20,7 @@ const PAGINATION_ITEM_HIDDEN = {
  * @see `Swiper`
  */
 export const SwiperPaginationItem = ({
+  ref,
   index,
   active,
   from,
@@ -27,12 +30,13 @@ export const SwiperPaginationItem = ({
   name,
   transition,
   onSlideChange,
-}: SwiperPaginationItemProps) => {
+}: SwiperPaginationItemProps & RefAttributes<HTMLLabelElement>) => {
   const small = (index === siblingFrom && siblingFrom > from) || (index === siblingTo && siblingTo < to);
 
   return (
     <label
       key={index}
+      ref={ref}
       aria-label={`${index}`}
       className={clsx('es-swiper-pagination-item', index === active && 'es-swiper-pagination-item--active')}
       style={index < siblingFrom || index > siblingTo ? { ...PAGINATION_ITEM_HIDDEN, ...transition } : transition}

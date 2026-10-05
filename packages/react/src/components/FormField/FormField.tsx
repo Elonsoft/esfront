@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useCallback, useMemo, useRef, useState } from 'react';
+import { RefAttributes, useCallback, useMemo, useRef, useState } from 'react';
 
 import { FormFieldProps } from './FormField.types';
 
@@ -15,7 +15,7 @@ import { useDefaultProps } from '../../theming';
  * A form field lays a control out together with its label, helper text and adornments, and shares the state they are
  * drawn from: the variant and size of the field, and whether its control is required, disabled, filled or focused.
  */
-export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(function FormField(inProps: FormFieldProps, ref) {
+export const FormField = ({ ref, ...inProps }: FormFieldProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
 
@@ -132,4 +132,4 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(function For
       <FormFieldContext.Provider value={value}>{children}</FormFieldContext.Provider>
     </div>
   );
-});
+};

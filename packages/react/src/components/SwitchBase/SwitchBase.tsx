@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useContext } from 'react';
+import { RefAttributes, useContext } from 'react';
 
 import { SwitchBaseProps } from './SwitchBase.types';
 
@@ -15,10 +15,7 @@ import { FormFieldContext } from '../FormField';
  * The base component of `Checkbox`, `Radio` and `Switch`. It handles the checked state, the icons and the button
  * behaviour they share.
  */
-export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(function SwitchBase(
-  inProps: SwitchBaseProps,
-  ref
-) {
+export const SwitchBase = ({ ref, ...inProps }: SwitchBaseProps & RefAttributes<HTMLButtonElement | null>) => {
   const {
     autoFocus,
     checked: checkedProp,
@@ -26,7 +23,7 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
     className,
     defaultChecked,
     disabled: disabledProp,
-    disableFocusRipple = false,
+    disableRipple,
     edge = false,
     icon,
     id,
@@ -100,7 +97,6 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
   return (
     <ButtonBase
       ref={ref}
-      centerRipple
       className={clsx(
         className,
         'es-switch-base',
@@ -109,8 +105,8 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
         edge && `es-switch-base--edge--${edge}`
       )}
       component="span"
+      disableTouchRipple={disableRipple}
       disabled={disabled}
-      focusRipple={!disableFocusRipple}
       role={undefined}
       tabIndex={null}
       onBlur={handleBlur}
@@ -138,4 +134,4 @@ export const SwitchBase = forwardRef<HTMLButtonElement | null, SwitchBaseProps>(
       {checked ? checkedIcon : icon}
     </ButtonBase>
   );
-});
+};

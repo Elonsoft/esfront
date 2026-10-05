@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { RefAttributes, useState } from 'react';
 
 import { SidebarToggleProps } from './SidebarToggle.types';
 
@@ -16,7 +16,7 @@ import { SidebarDivider } from '../SidebarDivider';
 /**
  * @see `Sidebar`
  */
-export const SidebarToggle = (inProps: SidebarToggleProps) => {
+export const SidebarToggle = ({ ref, ...inProps }: SidebarToggleProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -48,7 +48,7 @@ export const SidebarToggle = (inProps: SidebarToggleProps) => {
   };
 
   return (
-    <div className={clsx('es-sidebar-toggle', className)} style={style}>
+    <div ref={ref} className={clsx('es-sidebar-toggle', className)} style={style}>
       <SidebarDivider />
 
       <Tooltip

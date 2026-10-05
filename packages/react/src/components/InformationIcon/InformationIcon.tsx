@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import {} from 'react';
 
 import { InformationIconProps, InformationIconTypeMap } from './InformationIcon.types';
 
@@ -28,10 +28,10 @@ const defaultActiveIconMapping = {
 /**
  * This component is for displaying information icon.
  */
-export const InformationIcon = forwardRef(function InformationIcon(
-  inProps: InformationIconProps,
-  ref: React.ForwardedRef<HTMLDivElement>
-) {
+export const InformationIcon = (({
+  ref,
+  ...inProps
+}: InformationIconProps & { ref?: React.ForwardedRef<HTMLDivElement> }) => {
   const {
     component: Component = 'div',
     className,

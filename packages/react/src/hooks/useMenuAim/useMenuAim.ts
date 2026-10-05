@@ -1,6 +1,6 @@
 'use client';
 
-import { MutableRefObject, useRef } from 'react';
+import { RefObject, useRef } from 'react';
 
 const MOUSE_LOCS_TRACKED = 3;
 const DELAY = 300;
@@ -14,7 +14,7 @@ const DELAY = 300;
  * @returns The onMouseMove, onMouseOver and onMouseLeave handlers.
  */
 export const useMenuAim = (
-  ref: MutableRefObject<HTMLElement | null>,
+  ref: RefObject<HTMLElement | null>,
   position: string,
   isActive: boolean,
   callback: (target: HTMLElement) => void

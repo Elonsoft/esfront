@@ -14,7 +14,7 @@ import { useDefaultProps } from '../../theming';
 /**
  * The Sidebar component is a fixed-position toggleable slide out box.
  */
-export const Sidebar = (inProps: SidebarProps) => {
+export const Sidebar = ({ ref: inRef, ...inProps }: SidebarProps & React.RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -128,6 +128,7 @@ export const Sidebar = (inProps: SidebarProps) => {
   return (
     <SidebarContext.Provider value={value}>
       <div
+        ref={inRef}
         className={clsx(
           'es-sidebar',
           open && 'es-sidebar--open',

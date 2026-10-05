@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, Dispatch, MutableRefObject, SetStateAction, useContext } from 'react';
+import { createContext, Dispatch, RefObject, SetStateAction, useContext } from 'react';
 
 import { FormFieldSize, FormFieldVariant } from './FormField.types';
 
@@ -11,7 +11,7 @@ export interface FormFieldContextValue {
    * Points at the control of the field. Used to focus it when the field itself is clicked. The control is not always an
    * input, a component such as the autocomplete registers the element it renders instead.
    */
-  inputRef: MutableRefObject<HTMLElement | null>;
+  inputRef: RefObject<HTMLElement | null>;
 
   variant: FormFieldVariant;
   size: FormFieldSize;

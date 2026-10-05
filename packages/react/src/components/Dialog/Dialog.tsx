@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useRef } from 'react';
+import { RefAttributes, useRef } from 'react';
 
 import { DialogProps } from './Dialog.types';
 
@@ -18,7 +18,7 @@ const defaultTransitionDuration = { enter: duration.enteringScreen, exit: durati
 /**
  * Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
  */
-export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Dialog(inProps, ref) {
+export const Dialog = ({ ref, ...inProps }: DialogProps & RefAttributes<HTMLDivElement | null>) => {
   const props = useDefaultProps({ props: inProps, name: 'ESDialog' });
   const {
     'aria-describedby': ariaDescribedby,
@@ -122,4 +122,4 @@ export const Dialog = forwardRef<HTMLDivElement | null, DialogProps>(function Di
       </TransitionComponent>
     </Modal>
   );
-});
+};

@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { ClearButtonProps } from './ClearButton.types';
 
 import clsx from 'clsx';
@@ -11,7 +13,7 @@ import { ButtonBase } from '../ButtonBase';
 /**
  * A button that clears the value of the field it is placed in.
  */
-export const ClearButton = (inProps: ClearButtonProps) => {
+export const ClearButton = ({ ref, ...inProps }: ClearButtonProps & RefAttributes<HTMLButtonElement>) => {
   const {
     className,
     style,
@@ -38,6 +40,7 @@ export const ClearButton = (inProps: ClearButtonProps) => {
 
   return (
     <ButtonBase
+      ref={ref}
       disableTouchRipple
       aria-label={label}
       className={clsx('es-clear-button', className)}

@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { RefAttributes } from 'react';
 
 import { LinearProgressProps } from './LinearProgress.types';
 
@@ -9,10 +9,7 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../theming';
 
 /** Express an unspecified wait time or display the length of a process. */
-export const LinearProgress = forwardRef<HTMLButtonElement, LinearProgressProps>(function LinearProgress(
-  inProps: LinearProgressProps,
-  ref
-) {
+export const LinearProgress = ({ ref, ...inProps }: LinearProgressProps & RefAttributes<HTMLButtonElement>) => {
   const props = useDefaultProps({ props: inProps, name: 'ESLinearProgress' });
 
   const { className, width = 4, color = 'primary', value, valueBuffer, variant = 'indeterminate', ...other } = props;
@@ -92,4 +89,4 @@ export const LinearProgress = forwardRef<HTMLButtonElement, LinearProgressProps>
       )}
     </span>
   );
-});
+};

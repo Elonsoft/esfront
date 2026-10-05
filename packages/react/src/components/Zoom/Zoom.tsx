@@ -1,6 +1,6 @@
 'use client';
 
-import { cloneElement, CSSProperties, forwardRef, useRef } from 'react';
+import { cloneElement, CSSProperties, RefAttributes, useRef } from 'react';
 import { Transition, TransitionStatus } from 'react-transition-group';
 
 import { ZoomProps } from './Zoom.types';
@@ -8,7 +8,7 @@ import { ZoomProps } from './Zoom.types';
 import { useForkRef } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 import { createTransition, duration } from '../../transitions';
-import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
+import { useTransitionCallbacks } from '../../transitions/useTransitionCallbacks';
 import { getTransitionProps, reflow } from '../../transitions/utils';
 import { getReactElementRef } from '../../utils';
 
@@ -29,7 +29,7 @@ const styles: Partial<Record<TransitionStatus, CSSProperties>> = {
 /**
  * The Zoom transition scales a single child element in and out.
  */
-export const Zoom = forwardRef<unknown, ZoomProps>(function Zoom(inProps, ref) {
+export const Zoom = ({ ref, ...inProps }: ZoomProps & RefAttributes<unknown>) => {
   const {
     addEndListener,
     appear = true,
@@ -53,7 +53,7 @@ export const Zoom = forwardRef<unknown, ZoomProps>(function Zoom(inProps, ref) {
   const nodeRef = useRef<HTMLElement>(null);
   const handleRef = useForkRef(nodeRef, getReactElementRef(children), ref);
 
-  const callbacks = createTransitionCallbacks(nodeRef);
+  const callbacks = useTransitionCallbacks(nodeRef);
 
   const handleEnter = callbacks.enter((node, isAppearing) => {
     // So the animation always starts from the start.
@@ -117,4 +117,4 @@ export const Zoom = forwardRef<unknown, ZoomProps>(function Zoom(inProps, ref) {
       }}
     </Transition>
   );
-});
+};

@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { PriceProps } from './Price.types';
 
 import clsx from 'clsx';
@@ -21,7 +23,7 @@ const getCurrencySymbol = (locales: Intl.LocalesArgument, currency: string) => {
 /**
  * Display price of the product.
  */
-export const Price = (inProps: PriceProps) => {
+export const Price = ({ ref, ...inProps }: PriceProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -38,7 +40,11 @@ export const Price = (inProps: PriceProps) => {
   });
 
   return (
-    <div className={clsx(className, 'es-price', old && 'es-price--old', old ? 'body100' : 'h5')} style={style}>
+    <div
+      ref={ref}
+      className={clsx(className, 'es-price', old && 'es-price--old', old ? 'body100' : 'h5')}
+      style={style}
+    >
       {!old && !disableMicrodata && (
         <>
           <meta content={currency} itemProp="priceCurrency" />

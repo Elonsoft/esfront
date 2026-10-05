@@ -1,6 +1,6 @@
 'use client';
 
-import { cloneElement, ForwardedRef, forwardRef, isValidElement, useState } from 'react';
+import { cloneElement, ForwardedRef, isValidElement, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { PortalProps } from './Portal.types';
@@ -17,7 +17,7 @@ const getContainer = (container: PortalProps['container']) => {
  * Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the
  * parent component.
  */
-export const Portal = forwardRef(function Portal(inProps: PortalProps, ref: ForwardedRef<Element>) {
+export const Portal = ({ ref, ...inProps }: PortalProps & { ref?: ForwardedRef<Element> }) => {
   const {
     children,
     container,
@@ -56,4 +56,4 @@ export const Portal = forwardRef(function Portal(inProps: PortalProps, ref: Forw
   }
 
   return mountNode ? createPortal(children, mountNode) : mountNode;
-});
+};

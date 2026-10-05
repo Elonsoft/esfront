@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { RefAttributes } from 'react';
 
 import { DropzoneCompactProps } from './DropzoneCompact.types';
 
@@ -12,7 +12,7 @@ import { useDefaultProps } from '../../theming';
 /**
  * This component allows to create droppable area when using dnd.
  */
-export const DropzoneCompact = forwardRef<HTMLDivElement, DropzoneCompactProps>(function DropzoneCompact(inProps, ref) {
+export const DropzoneCompact = ({ ref, ...inProps }: DropzoneCompactProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -62,4 +62,4 @@ export const DropzoneCompact = forwardRef<HTMLDivElement, DropzoneCompactProps>(
       {children}
     </div>
   );
-});
+};
