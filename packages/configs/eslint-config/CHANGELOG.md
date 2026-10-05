@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.3.0...@esfront/eslint-config@0.3.1) (2026-10-05)
+
+
+### Features
+
+* **react:** conform react compiler requirements ([3346bed](https://github.com/Elonsoft/esfront/commit/3346bed88782767a44c4b27a6c96dcfff81e1914))
+
+
+### Style Changes
+
+* add eslint-plugin-react-compiler plugin ([0fbd22a](https://github.com/Elonsoft/esfront/commit/0fbd22af7961809bba628ef2bf89385c5aa84e33))
+* update eslint and stylelint configs ([8cdfd17](https://github.com/Elonsoft/esfront/commit/8cdfd1797fb28a68cd41e2ef2bef80ba9eaa6182))
+
+
+
 ## [0.3.0](https://github.com/Elonsoft/esfront/compare/@esfront/eslint-config@0.2.0...@esfront/eslint-config@0.3.0) (2026-08-28)
 
 

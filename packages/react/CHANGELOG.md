@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.4](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.17.3...@esfront/react@0.17.4) (2026-10-05)
+
+
+### Features
+
+* **react,Tour:** add new component ([dc297fb](https://github.com/Elonsoft/esfront/commit/dc297fbab24048f3ba08c92fcf2f4575770ef995))
+* **react:** conform react compiler requirements ([3346bed](https://github.com/Elonsoft/esfront/commit/3346bed88782767a44c4b27a6c96dcfff81e1914))
+* **theme:** change if from function to at-rule ([3372b34](https://github.com/Elonsoft/esfront/commit/3372b348b0ddaf2ed4399f9729ae43260711af9c))
+* update dependency rules and exports map ([9e28121](https://github.com/Elonsoft/esfront/commit/9e28121a48e656b6ac89936f5c1dd6142a463344))
+
+
+### Bug Fixes
+
+* **react,AutocompleteMenu:** prevent page scroll on open ([2d1461a](https://github.com/Elonsoft/esfront/commit/2d1461a92925ff38f60d4bc18d692503ea0268b5))
+* **react,ButtonBase:** apply type only to button element ([11d3310](https://github.com/Elonsoft/esfront/commit/11d3310c7cd1bfa34aa448a04bf8434f8aa20f6f))
+* **react,MenuList:** add check for nested overlay scrollbars ([e1ceb3a](https://github.com/Elonsoft/esfront/commit/e1ceb3a622b17ab4803de962da3427c21edffc49))
+
+
+### Style Changes
+
+* add eslint-plugin-react-compiler plugin ([0fbd22a](https://github.com/Elonsoft/esfront/commit/0fbd22af7961809bba628ef2bf89385c5aa84e33))
+* update eslint and stylelint configs ([8cdfd17](https://github.com/Elonsoft/esfront/commit/8cdfd1797fb28a68cd41e2ef2bef80ba9eaa6182))
+
+
+
 ## [0.17.3](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.17.2...@esfront/react@0.17.3) (2026-09-15)
 
 

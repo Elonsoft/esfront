@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.3.2...@esfront/theme@0.3.3) (2026-10-05)
+
+
+### Features
+
+* **react,Tour:** add new component ([dc297fb](https://github.com/Elonsoft/esfront/commit/dc297fbab24048f3ba08c92fcf2f4575770ef995))
+* **theme:** change if from function to at-rule ([3372b34](https://github.com/Elonsoft/esfront/commit/3372b348b0ddaf2ed4399f9729ae43260711af9c))
+* update dependency rules and exports map ([9e28121](https://github.com/Elonsoft/esfront/commit/9e28121a48e656b6ac89936f5c1dd6142a463344))
+
+
+
 ## [0.3.2](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.3.1...@esfront/theme@0.3.2) (2026-09-15)
 
 
