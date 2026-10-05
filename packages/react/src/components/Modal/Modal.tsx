@@ -1,6 +1,6 @@
 'use client';
 
-import { cloneElement, forwardRef } from 'react';
+import { cloneElement, RefAttributes } from 'react';
 
 import { ModalProps } from './Modal.types';
 
@@ -17,7 +17,7 @@ import { Portal } from '../Portal';
  * The Modal is a lower-level construct that renders its children above the rest of the page, locks the focus inside of
  * them and dims the content behind. Prefer the Dialog or the BottomSheet when building a dialog.
  */
-export const Modal = forwardRef<HTMLDivElement, ModalProps>(function Modal(inProps, ref) {
+export const Modal = ({ ref, ...inProps }: ModalProps & RefAttributes<HTMLDivElement>) => {
   const props = useDefaultProps({ props: inProps, name: 'ESModal' });
 
   const {
@@ -96,4 +96,4 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(function Modal(inPro
       </Root>
     </Portal>
   );
-});
+};

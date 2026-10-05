@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { FileInfoNameProps } from './FileInfoName.types';
 
 import clsx from 'clsx';
@@ -11,7 +13,7 @@ import { Button } from '../../Button';
 /**
  * @see `FileInfo`
  */
-export const FileInfoName = (inProps: FileInfoNameProps) => {
+export const FileInfoName = ({ ref, ...inProps }: FileInfoNameProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -25,7 +27,7 @@ export const FileInfoName = (inProps: FileInfoNameProps) => {
   });
 
   return (
-    <div className={clsx(className, 'es-file-info-name')}>
+    <div ref={ref} className={clsx(className, 'es-file-info-name')}>
       {children}
       {!!onDelete && (
         <Button

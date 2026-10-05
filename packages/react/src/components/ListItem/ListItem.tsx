@@ -1,8 +1,8 @@
 'use client';
 
-import { forwardRef, useRef } from 'react';
+import { useRef } from 'react';
 
-import { ListItemTypeMap } from './ListItem.types';
+import { ListItemProps, ListItemTypeMap } from './ListItem.types';
 
 import clsx from 'clsx';
 
@@ -14,7 +14,7 @@ import { ButtonBase } from '../ButtonBase';
 /**
  * Displays a single row of a list. It can be rendered as a button to make the row interactive.
  */
-export const ListItem = forwardRef(function ListItem(inProps, ref) {
+export const ListItem = (({ ref, ...inProps }: ListItemProps) => {
   const props = useDefaultProps({ props: inProps, name: 'ESListItem' });
   const {
     className,

@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { TagProps } from './Tag.types';
 
 import clsx from 'clsx';
@@ -10,7 +12,7 @@ import { ButtonBase } from '../ButtonBase';
 /**
  * The Tag component is used to categorize content.
  */
-export const Tag = (inProps: TagProps) => {
+export const Tag = ({ ref, ...inProps }: TagProps & RefAttributes<HTMLElement>) => {
   const {
     children,
     className,
@@ -30,6 +32,7 @@ export const Tag = (inProps: TagProps) => {
 
   return (
     <ButtonBase
+      ref={ref}
       className={clsx(
         className,
         'es-tag',

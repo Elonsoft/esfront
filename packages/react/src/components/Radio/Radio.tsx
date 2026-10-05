@@ -28,7 +28,7 @@ const defaultIcon = <RadioIcon />;
 /**
  * Radio buttons allow the user to select a single option from a set.
  */
-export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(function Radio(inProps, ref) {
+export const Radio = ({ ref, ...inProps }: RadioProps & React.RefAttributes<HTMLButtonElement>) => {
   const props = useDefaultProps({ props: inProps, name: 'ESRadio' });
   const {
     checkedIcon = defaultCheckedIcon,
@@ -88,4 +88,4 @@ export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(function Ra
       {...other}
     />
   );
-});
+};

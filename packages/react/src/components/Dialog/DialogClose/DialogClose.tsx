@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { DialogCloseProps } from './DialogClose.types';
 
 import clsx from 'clsx';
@@ -11,7 +13,7 @@ import { Button } from '../../Button';
 /**
  * @see `Dialog`
  */
-export const DialogClose = (inProps: DialogCloseProps) => {
+export const DialogClose = ({ ref, ...inProps }: DialogCloseProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -25,7 +27,7 @@ export const DialogClose = (inProps: DialogCloseProps) => {
   });
 
   return (
-    <div className={clsx('es-dialog-close', className)} style={style}>
+    <div ref={ref} className={clsx('es-dialog-close', className)} style={style}>
       <Button aria-label={label} className="es-dialog-close__button" color="white" onClick={onClick}>
         {icon}
         <div className="es-dialog-close__escape-key caption">{labelEscapeKey}</div>

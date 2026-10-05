@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, MouseEvent, useRef } from 'react';
+import { MouseEvent, RefAttributes, useRef } from 'react';
 
 import { FormFieldFieldProps } from './FormFieldField.types';
 
@@ -15,10 +15,7 @@ import { useFormFieldContext } from '../FormField.context';
  * the adornments around it.
  * @see `FormField`
  */
-export const FormFieldField = forwardRef<HTMLDivElement, FormFieldFieldProps>(function FormFieldField(
-  inProps: FormFieldFieldProps,
-  ref
-) {
+export const FormFieldField = ({ ref, ...inProps }: FormFieldFieldProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -85,4 +82,4 @@ export const FormFieldField = forwardRef<HTMLDivElement, FormFieldFieldProps>(fu
       </fieldset>
     </div>
   );
-});
+};

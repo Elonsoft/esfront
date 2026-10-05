@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
+import { RefAttributes, useEffect, useMemo, useRef, useState } from 'react';
 
 import { BottomSheetProps } from './BottomSheet.types';
 
@@ -53,7 +53,7 @@ const getPixelsFromCssUnits = (cssValue: string) => {
 /**
  * Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.
  */
-export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(function BottomSheet(inProps, ref) {
+export const BottomSheet = ({ ref, ...inProps }: BottomSheetProps & RefAttributes<HTMLDivElement | null>) => {
   const props = useDefaultProps({ props: inProps, name: 'ESBottomSheet' });
   const {
     'aria-describedby': ariaDescribedby,
@@ -343,4 +343,4 @@ export const BottomSheet = forwardRef<HTMLDivElement | null, BottomSheetProps>(f
       </TransitionComponent>
     </Modal>
   );
-});
+};

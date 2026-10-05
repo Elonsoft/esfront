@@ -31,7 +31,7 @@ npm install --save-dev @types/react@^19 @types/react-dom@^19
 ```
 
 Follow the [official React 19 upgrade guide](https://react.dev/blog/2024/04/25/react-19-upgrade-guide) for the changes
-it requires in your own code. The components and hooks of the library keep their current API.
+it requires in your own code.
 
 ## 0.16.0 → 0.17.0
 

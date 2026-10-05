@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { EmptyStateProps } from './EmptyState.types';
 
 import clsx from 'clsx';
@@ -9,7 +11,7 @@ import { useDefaultProps } from '../../theming';
 /**
  * This component is a placeholder to use on pages without content.
  */
-export const EmptyState = (inProps: EmptyStateProps) => {
+export const EmptyState = ({ ref, ...inProps }: EmptyStateProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -24,7 +26,7 @@ export const EmptyState = (inProps: EmptyStateProps) => {
   });
 
   return (
-    <div className={clsx(`es-empty-state es-empty-state--${size}`, className)} style={style}>
+    <div ref={ref} className={clsx(`es-empty-state es-empty-state--${size}`, className)} style={style}>
       {!!icon && <div className="es-empty-state__icon">{icon}</div>}
       <div className="es-empty-state__text">
         {!!heading && (

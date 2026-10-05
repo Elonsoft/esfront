@@ -1,8 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
-
-import { SFSButtonTypeMap } from './SFSButton.types';
+import { SFSButtonProps, SFSButtonTypeMap } from './SFSButton.types';
 
 import clsx from 'clsx';
 
@@ -12,7 +10,7 @@ import { Button, ExtendButton } from '../../Button';
 /**
  * @see `SFS`
  */
-export const SFSButton = forwardRef(function SFSButton(inProps, ref) {
+export const SFSButton = (({ ref, ...inProps }: SFSButtonProps) => {
   const { active, ...props } = useDefaultProps({ props: inProps, name: 'ESSFSButton' });
 
   return (

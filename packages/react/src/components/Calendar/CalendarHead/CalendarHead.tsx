@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { RefAttributes, useMemo } from 'react';
 
 import { CalendarHeadProps } from './CalendarHead.types';
 
@@ -12,7 +12,7 @@ import { useDefaultProps } from '../../../theming';
  * The days list for the calendar.
  * @see `Calendar`
  */
-export const CalendarHead = (inProps: CalendarHeadProps) => {
+export const CalendarHead = ({ ref, ...inProps }: CalendarHeadProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -34,7 +34,7 @@ export const CalendarHead = (inProps: CalendarHeadProps) => {
   }, [weekStart, getWeekDays]);
 
   return (
-    <div className={clsx('es-calendar-head', className)} style={style}>
+    <div ref={ref} className={clsx('es-calendar-head', className)} style={style}>
       {days.map((day, index) => (
         <div key={index} className="es-calendar-head__day caption">
           {day}

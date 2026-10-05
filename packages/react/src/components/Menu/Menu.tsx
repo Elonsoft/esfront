@@ -1,6 +1,6 @@
 'use client';
 
-import { Children, forwardRef, isValidElement, KeyboardEvent, useRef } from 'react';
+import { Children, isValidElement, KeyboardEvent, RefAttributes, useRef } from 'react';
 
 import { MenuProps } from './Menu.types';
 
@@ -17,7 +17,7 @@ const TRANSFORM_ORIGIN: PopoverOrigin = { vertical: 'top', horizontal: 'left' };
 /**
  * The Menu displays a list of choices on a temporary surface, anchored to an element.
  */
-export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(inProps, ref) {
+export const Menu = ({ ref, ...inProps }: MenuProps & RefAttributes<HTMLDivElement>) => {
   const {
     autoFocus = true,
     children,
@@ -123,4 +123,4 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(inProps,
       </List>
     </Popover>
   );
-});
+};

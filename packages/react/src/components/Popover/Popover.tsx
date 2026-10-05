@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { RefAttributes, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import { PopoverActions, PopoverAnchorEl, PopoverOrigin, PopoverProps } from './Popover.types';
 
@@ -56,7 +56,7 @@ const resolveAnchorEl = (anchorEl: PopoverAnchorEl | undefined) => {
  * The Popover displays content on top of the page, anchored to an element. It is a lower-level construct — prefer the
  * Menu when building a list of actions.
  */
-export const Popover = forwardRef<HTMLDivElement, PopoverProps>(function Popover(inProps, ref) {
+export const Popover = ({ ref, ...inProps }: PopoverProps & RefAttributes<HTMLDivElement>) => {
   const props = useDefaultProps({ props: inProps, name: 'ESPopover' });
 
   const {
@@ -305,4 +305,4 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(function Popover
       </Transition>
     </Root>
   );
-});
+};

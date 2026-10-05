@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { DialogActionsProps } from './DialogActions.types';
 
 import clsx from 'clsx';
@@ -10,7 +12,7 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `Dialog`
  */
-export const DialogActions = (inProps: DialogActionsProps) => {
+export const DialogActions = ({ ref, ...inProps }: DialogActionsProps & RefAttributes<HTMLDivElement>) => {
   const { className, style, sticky, children } = useDefaultProps({
     props: inProps,
     name: 'ESDialogActions',
@@ -21,6 +23,7 @@ export const DialogActions = (inProps: DialogActionsProps) => {
   return (
     <>
       <div
+        ref={ref}
         className={clsx(
           'es-dialog-actions',
           sticky && 'es-dialog-actions--sticky',

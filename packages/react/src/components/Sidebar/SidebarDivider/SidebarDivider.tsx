@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { SidebarDividerProps } from './SidebarDivider.types';
 
 import clsx from 'clsx';
@@ -11,7 +13,7 @@ import { useSidebarContext } from '../Sidebar.context';
 /**
  * @see `Sidebar`
  */
-export const SidebarDivider = (inProps: SidebarDividerProps) => {
+export const SidebarDivider = ({ ref, ...inProps }: SidebarDividerProps & RefAttributes<HTMLDivElement>) => {
   const { className, style } = useDefaultProps({
     props: inProps,
     name: 'ESSidebarDivider',
@@ -20,7 +22,7 @@ export const SidebarDivider = (inProps: SidebarDividerProps) => {
   const { color, open } = useSidebarContext();
 
   return (
-    <div className={clsx(className, 'es-sidebar-divider', open && 'es-sidebar-divider--open')} style={style}>
+    <div ref={ref} className={clsx(className, 'es-sidebar-divider', open && 'es-sidebar-divider--open')} style={style}>
       <Divider className={clsx('es-sidebar-divider__line', `'es-sidebar-divider__line--color--${color}'`)} />
     </div>
   );

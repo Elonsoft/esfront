@@ -1,6 +1,6 @@
 'use client';
 
-import { MutableRefObject, useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 
 const getStickyOffset = (element: HTMLElement | null, pin: 'left' | 'right') => {
   let width = 0;
@@ -38,7 +38,7 @@ const getStickyOffset = (element: HTMLElement | null, pin: 'left' | 'right') => 
  * @internal
  * The hook that sets left and right offsets for sticky (pinned) cells.
  */
-export const useTableStickyOffset = (ref: MutableRefObject<HTMLDivElement | null>) => {
+export const useTableStickyOffset = (ref: RefObject<HTMLDivElement | null>) => {
   useEffect(() => {
     if (ref.current) {
       const resizeObserver = new ResizeObserver(() => {

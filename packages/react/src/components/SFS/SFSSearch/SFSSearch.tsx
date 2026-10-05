@@ -1,6 +1,6 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, RefAttributes } from 'react';
 
 import { SFSSearchProps } from './SFSSearch.types';
 
@@ -15,7 +15,7 @@ import { TextField } from '../../TextField';
 /**
  * @see `SFS`
  */
-export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
+export const SFSSearch = memo(function SFSSearch({ ref, ...inProps }: SFSSearchProps & RefAttributes<HTMLDivElement>) {
   const {
     className,
     style,
@@ -32,7 +32,7 @@ export const SFSSearch = memo(function SFSSearch(inProps: SFSSearchProps) {
   });
 
   return (
-    <div className={clsx('es-sfs-search', className)} style={style}>
+    <div ref={ref} className={clsx('es-sfs-search', className)} style={style}>
       <TextField
         {...props}
         fullWidth

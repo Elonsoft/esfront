@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties, forwardRef, useEffect, useMemo, useRef, useState } from 'react';
+import { CSSProperties, RefAttributes, useEffect, useMemo, useRef, useState } from 'react';
 
 import { TourContentProps, TourDirection, TourProps } from './Tour.types';
 
@@ -47,7 +47,7 @@ const toClientRect = (rect: TourRect) => ({
 /**
  * The Tour walks the user through the interface, highlighting one element at a time and showing a card next to it.
  */
-export const Tour = forwardRef<HTMLDivElement, TourProps>(function Tour(inProps, ref) {
+export const Tour = ({ ref, ...inProps }: TourProps & RefAttributes<HTMLDivElement>) => {
   const {
     steps,
     open,
@@ -163,6 +163,8 @@ export const Tour = forwardRef<HTMLDivElement, TourProps>(function Tour(inProps,
       controllerRef.current?.abort();
       controllerRef.current = null;
       pendingRef.current = null;
+      // The tour has to drop the resolved step as soon as it closes, so the reset cannot wait for an event.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActive(null);
       setLoading(false);
       return;
@@ -352,6 +354,8 @@ export const Tour = forwardRef<HTMLDivElement, TourProps>(function Tour(inProps,
           <div className="es-tour__blocker es-tour__blocker--full" />
         )}
         {isTargetPresent &&
+          // The anchor reads the spotlight ref when floating-ui measures it, never during render.
+          // eslint-disable-next-line react-hooks/refs
           (anchorEl ? (
             <Popper
               disablePortal
@@ -370,4 +374,4 @@ export const Tour = forwardRef<HTMLDivElement, TourProps>(function Tour(inProps,
       </Root>
     </Portal>
   );
-});
+};

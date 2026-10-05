@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { memo, RefAttributes, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { PhoneFieldProps } from './PhoneField.types';
 
@@ -16,7 +16,7 @@ import {
   PhoneFieldPatch,
 } from './PhoneField.functions';
 
-import { useControlled, useEvent, useLatest, useMenu, useMenuVisibility } from '../../hooks';
+import { useControlled, useEvent, useForkRef, useLatest, useMenu, useMenuVisibility } from '../../hooks';
 import { IconGlobalLineW500, IconMenuDownFillW300 } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { AutocompleteMenu } from '../AutocompleteMenu';
@@ -40,7 +40,10 @@ const getDefaultCountryDisplayName = (code: CountryCode) => {
 /**
  * A text field for entering a phone number, with a country selector and per-country formatting.
  */
-export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
+export const PhoneField = memo(function PhoneField({
+  ref: inRef,
+  ...inProps
+}: PhoneFieldProps & RefAttributes<HTMLDivElement>) {
   const {
     className,
 
@@ -89,6 +92,7 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
   const [search, setSearch] = useState('');
 
   const ref = useRef<HTMLDivElement | null>(null);
+  const rootRef = useForkRef(ref, inRef);
   const [inputRef, setInputRefState] = useState<HTMLInputElement | null>(null);
   // The field never renders a textarea, so the control it reports back is always an input.
   const setInputRef = useCallback((node: FormFieldInputElement | null) => {
@@ -449,7 +453,7 @@ export const PhoneField = memo(function PhoneField(inProps: PhoneFieldProps) {
   return (
     <>
       <TextField
-        ref={ref}
+        ref={rootRef}
         className={clsx('es-phone-field', className)}
         inputRef={setInputRef}
         name={name}

@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { RefAttributes } from 'react';
 
 import { TextFieldProps } from './TextField.types';
 
@@ -12,7 +12,7 @@ import { FormField, FormFieldField, FormFieldHelperText, FormFieldInput, FormFie
  * The text field is used to type text in, on a single line or over several of them. It assembles a `FormField` out of
  * a label, a control and helper text, which is what to reach for instead when a field needs a different control.
  */
-export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(function TextField(inProps: TextFieldProps, ref) {
+export const TextField = ({ ref, ...inProps }: TextFieldProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -67,4 +67,4 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(function Tex
       {!!helperText && <FormFieldHelperText id={helperTextId}>{helperText}</FormFieldHelperText>}
     </FormField>
   );
-});
+};

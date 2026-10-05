@@ -1,6 +1,6 @@
 'use client';
 
-import { MutableRefObject, useEffect, useLayoutEffect } from 'react';
+import { RefObject, useEffect, useLayoutEffect } from 'react';
 
 import { useLatest } from '../useLatest';
 import { useResizeObserver } from '../useResizeObserver';
@@ -18,7 +18,7 @@ const setTransform = (element: HTMLElement, transform: string) => {
  * @param options.relativeTo The scrolling ancestor for the sticky element.
  */
 export const useSticky = (
-  ref: MutableRefObject<HTMLElement | null>,
+  ref: RefObject<HTMLElement | null>,
   options: { top?: number; bottom?: number; relativeTo?: HTMLElement | null }
 ) => {
   const update = () => {

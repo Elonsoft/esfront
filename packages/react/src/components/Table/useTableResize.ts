@@ -1,6 +1,6 @@
 'use client';
 
-import { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import { Dispatch, RefObject, SetStateAction } from 'react';
 
 /**
  * The hook that manages resizing of the table columns.
@@ -11,8 +11,8 @@ import { Dispatch, MutableRefObject, SetStateAction } from 'react';
  * @returns The `onResize` and `onResizeCommit` functions taking column index and colSpan and returning callbacks for the corresponding `TableCell`.
  */
 export const useTableResize = (
-  ref: MutableRefObject<HTMLDivElement | null>,
-  rowRef: MutableRefObject<HTMLDivElement | null>,
+  ref: RefObject<HTMLDivElement | null>,
+  rowRef: RefObject<HTMLDivElement | null>,
   columns: string[],
   setColumns: Dispatch<SetStateAction<string[]>>
 ) => {

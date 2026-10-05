@@ -11,7 +11,7 @@ import { ButtonBase } from '../ButtonBase';
 /**
  * A badge is a small label that highlights the status or the category of the element it is attached to.
  */
-export const Badge: OverridableComponent<BadgeTypeMap> = (inProps: BadgeProps) => {
+export const Badge: OverridableComponent<BadgeTypeMap> = ({ ref, ...inProps }: BadgeProps) => {
   const {
     className,
     color = 'mono-a',
@@ -27,6 +27,7 @@ export const Badge: OverridableComponent<BadgeTypeMap> = (inProps: BadgeProps) =
 
   return (
     <ButtonBase
+      ref={ref}
       className={clsx(
         'es-badge',
         `es-badge--color--${color}`,

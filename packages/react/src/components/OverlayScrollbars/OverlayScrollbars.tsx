@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { RefAttributes } from 'react';
 
 import {
   OverlayScrollbarsComponent,
@@ -18,10 +18,12 @@ export const OVERLAY_SCROLLBARS_OPTIONS: OverlayScrollbarsComponentProps['option
 /**
  * A scrollable container that replaces the native scrollbars with themed ones overlaying the content.
  */
-export const OverlayScrollbars = forwardRef<
-  OverlayScrollbarsComponentRef,
-  OverlayScrollbarsComponentProps & { color?: 'mono-a' | 'mono-b' | 'white' | 'black' }
->(function OverlayScrollbars({ color = 'mono-a', ...props }, ref) {
+export const OverlayScrollbars = ({
+  ref,
+  color = 'mono-a',
+  ...props
+}: OverlayScrollbarsComponentProps &
+  RefAttributes<OverlayScrollbarsComponentRef> & { color?: 'mono-a' | 'mono-b' | 'white' | 'black' }) => {
   return (
     <OverlayScrollbarsComponent
       ref={ref}
@@ -39,4 +41,4 @@ export const OverlayScrollbars = forwardRef<
       }}
     />
   );
-});
+};

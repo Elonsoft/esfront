@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { RefAttributes, useEffect, useMemo, useRef, useState } from 'react';
 
 import { GalleryPanelProps } from './GalleryPanel.types';
 
@@ -9,14 +9,14 @@ import clsx from 'clsx';
 import { GalleryPanelContext } from './GalleryPanel.context';
 import { useGalleryPanelsContext } from './GalleryPanels.context';
 
-import { useResizeObserver } from '../../../hooks';
+import { useForkRef, useResizeObserver } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { useGalleryContext } from '../Gallery.context';
 
 /**
  * @see `Gallery`
  */
-export const GalleryPanel = (inProps: GalleryPanelProps) => {
+export const GalleryPanel = ({ ref: inRef, ...inProps }: GalleryPanelProps & RefAttributes<HTMLDivElement>) => {
   const { children, className, style, position, direction } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryPanel',
@@ -29,6 +29,7 @@ export const GalleryPanel = (inProps: GalleryPanelProps) => {
   const [isFocused, setFocused] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const handleRef = useForkRef(rootRef, inRef);
 
   const onMouseEnter = () => {
     setHovered(true);
@@ -85,7 +86,7 @@ export const GalleryPanel = (inProps: GalleryPanelProps) => {
   return (
     <GalleryPanelContext.Provider value={value}>
       <div
-        ref={rootRef}
+        ref={handleRef}
         className={clsx('es-gallery-panel', `es-gallery-panel--position--${position}`, className)}
         style={{ [position]: 0, ...style }}
         onBlur={onBlur}

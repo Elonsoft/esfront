@@ -11,7 +11,7 @@ import { Button } from '../../Button';
 /**
  * @see `TabBar`
  */
-export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: TabBarItemProps) => {
+export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = ({ ref, ...inProps }: TabBarItemProps) => {
   const {
     className,
     icon,
@@ -27,6 +27,7 @@ export const TabBarItem: OverridableComponent<TabBarItemTypeMap> = (inProps: Tab
 
   return (
     <Button
+      ref={ref}
       className={clsx(className, 'es-tab-bar-item', selected && 'es-tab-bar-item--selected')}
       color="tertiary"
       {...props}

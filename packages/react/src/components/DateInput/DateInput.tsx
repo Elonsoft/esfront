@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { RefAttributes, useRef } from 'react';
 
 import { DateInputProps } from './DateInput.types';
 
@@ -16,12 +16,13 @@ import { useDateInputSelection } from './useDateInputSelection';
 import { useDateInputState } from './useDateInputState';
 import { getDefaultFieldLabel, MAX_DATE, MIN_DATE } from './utils';
 
+import { useForkRef } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 
 /**
  * The date input is used to type a date in, one field of it at a time.
  */
-export const DateInput = (inProps: DateInputProps) => {
+export const DateInput = ({ ref: inRef, ...inProps }: DateInputProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -69,6 +70,8 @@ export const DateInput = (inProps: DateInputProps) => {
     required: requiredProp,
     error: errorProp,
   });
+
+  const rootRef = useForkRef(handleRef, inRef);
 
   const { parts, sequence, formatters } = useDateInputFormat({ registry, format });
 
@@ -133,7 +136,7 @@ export const DateInput = (inProps: DateInputProps) => {
   return (
     <>
       <div
-        ref={handleRef}
+        ref={rootRef}
         suppressContentEditableWarning
         aria-activedescendant={selection.activeId ?? undefined}
         aria-describedby={ariaDescribedby}

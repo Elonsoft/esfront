@@ -6,6 +6,7 @@ import { SidenavItemProps, SidenavItemTypeMap } from './SidenavItem.types';
 
 import clsx from 'clsx';
 
+import { useForkRef } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { OverridableComponent } from '../../../types';
 import { ListItem, ListItemIcon } from '../../ListItem';
@@ -16,7 +17,7 @@ import { useSidenavContext } from '../Sidenav.context';
 /**
  * @see `Sidenav`
  */
-export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: SidenavItemProps) => {
+export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = ({ ref: inRef, ...inProps }: SidenavItemProps) => {
   const {
     className,
     id = null,
@@ -43,6 +44,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
   const isTooltipOpen = isTooltipRequested && !(id && id === itemId);
 
   const ref = useRef<HTMLLIElement | null>(null);
+  const itemRef = useForkRef(ref, inRef);
   const shouldSkipClick = useRef(false);
 
   const onItemTouchStart = (event: React.TouchEvent<HTMLLIElement>) => {
@@ -134,7 +136,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = (inProps: S
     >
       <div className="es-sidenav-item__wrapper" data-id={id}>
         <ListItem
-          ref={ref}
+          ref={itemRef}
           button
           className={clsx('es-sidenav-item', `es-sidenav-item--color--${color}`, className)}
           data-id={id}

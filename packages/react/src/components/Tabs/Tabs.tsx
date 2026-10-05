@@ -4,11 +4,11 @@ import {
   Children,
   cloneElement,
   CSSProperties,
-  forwardRef,
   isValidElement,
   JSX,
   KeyboardEvent,
   ReactElement,
+  RefAttributes,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -151,7 +151,7 @@ let warnedOnceTabPresent = false;
 /**
  * Tabs organize content across different screens and views, and let the user navigate between them.
  */
-export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps: TabsProps, ref) {
+export const Tabs = ({ ref, ...inProps }: TabsProps & RefAttributes<HTMLDivElement>) => {
   const {
     'aria-label': ariaLabel,
     'aria-labelledby': ariaLabelledBy,
@@ -738,4 +738,4 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(inProps:
       {conditionalElements.scrollButtonEnd}
     </Component>
   );
-});
+};

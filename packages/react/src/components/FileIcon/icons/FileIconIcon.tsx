@@ -4,7 +4,10 @@ import React from 'react';
 
 import { SvgIcon, SvgIconProps } from '../../SvgIcon';
 
-export const FileIconIcon = React.forwardRef<SVGPathElement, SvgIconProps>(function FileIconIcon(props, ref) {
+export const FileIconIcon = ({
+  ref,
+  ...props
+}: React.PropsWithoutRef<SvgIconProps> & React.RefAttributes<SVGPathElement>) => {
   return (
     <SvgIcon
       height={props.height}
@@ -28,4 +31,4 @@ export const FileIconIcon = React.forwardRef<SVGPathElement, SvgIconProps>(funct
       />
     </SvgIcon>
   );
-});
+};

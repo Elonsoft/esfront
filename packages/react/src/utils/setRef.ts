@@ -1,4 +1,4 @@
-import { MutableRefObject } from 'react';
+import { RefObject } from 'react';
 
 /**
  * Assigns a value to a ref, no matter whether it is a callback or an object ref. Falsy refs are a no-op.
@@ -7,7 +7,7 @@ import { MutableRefObject } from 'react';
  * changes.
  */
 export const setRef = <T>(
-  ref: MutableRefObject<T | null> | ((instance: T | null) => void) | null | undefined,
+  ref: RefObject<T | null> | ((instance: T | null) => void) | null | undefined,
   value: T | null
 ): void => {
   if (typeof ref === 'function') {

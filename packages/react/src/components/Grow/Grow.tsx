@@ -1,14 +1,14 @@
 'use client';
 
-import { cloneElement, CSSProperties, forwardRef, useRef } from 'react';
+import { cloneElement, CSSProperties, RefAttributes, useRef } from 'react';
 import { Transition, TransitionStatus } from 'react-transition-group';
 
 import { GrowProps } from './Grow.types';
 
-import { useForkRef, useTimeout } from '../../hooks';
+import { useEvent, useForkRef, useTimeout } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 import { createTransition, getAutoHeightDuration } from '../../transitions';
-import { createTransitionCallbacks } from '../../transitions/transitionCallbacks';
+import { useTransitionCallbacks } from '../../transitions/useTransitionCallbacks';
 import { getTransitionProps, reflow } from '../../transitions/utils';
 import { getReactElementRef } from '../../utils';
 
@@ -25,7 +25,7 @@ const styles: Partial<Record<TransitionStatus, CSSProperties>> = {
   },
 };
 
-const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref) {
+const GrowComponent = ({ ref, ...inProps }: GrowProps & RefAttributes<unknown>) => {
   const {
     addEndListener,
     appear = true,
@@ -52,9 +52,9 @@ const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref)
   const nodeRef = useRef<HTMLElement>(null);
   const handleRef = useForkRef(nodeRef, getReactElementRef(children), ref);
 
-  const callbacks = createTransitionCallbacks(nodeRef);
+  const callbacks = useTransitionCallbacks(nodeRef);
 
-  const getStyleTransition = (node: HTMLElement, mode: 'enter' | 'exit') => {
+  const getStyleTransition = useEvent((node: HTMLElement, mode: 'enter' | 'exit') => {
     const {
       duration: transitionDuration,
       delay,
@@ -78,7 +78,7 @@ const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref)
         easing: transitionTimingFunction,
       }),
     ].join(',');
-  };
+  });
 
   const handleEnter = callbacks.enter((node, isAppearing) => {
     // So the animation always starts from the start.
@@ -143,7 +143,7 @@ const GrowComponent = forwardRef<unknown, GrowProps>(function Grow(inProps, ref)
       }}
     </Transition>
   );
-});
+};
 
 /**
  * The Grow transition scales and fades a single child element in and out.

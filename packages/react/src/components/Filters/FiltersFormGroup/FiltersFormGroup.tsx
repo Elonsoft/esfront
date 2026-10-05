@@ -1,6 +1,6 @@
 'use client';
 
-import { Children, useRef, useState } from 'react';
+import { Children, RefAttributes, useRef, useState } from 'react';
 
 import { FiltersFormGroupProps } from './FiltersFormGroup.types';
 
@@ -16,7 +16,7 @@ import { OverlayScrollbars } from '../../OverlayScrollbars';
 /**
  * @see `Filters`
  */
-export const FiltersFormGroup = (inProps: FiltersFormGroupProps) => {
+export const FiltersFormGroup = ({ ref: inRef, ...inProps }: FiltersFormGroupProps & RefAttributes<HTMLDivElement>) => {
   const { children, header, className, style, maxLines, labelShow, labelHide } = useDefaultProps({
     props: inProps,
     name: 'ESFiltersFormGroup',
@@ -67,7 +67,7 @@ export const FiltersFormGroup = (inProps: FiltersFormGroupProps) => {
   };
 
   return (
-    <div className={clsx('es-filters-form-group', className)} style={style}>
+    <div ref={inRef} className={clsx('es-filters-form-group', className)} style={style}>
       {!!header && <div className="es-filters-form-group__header">{header}</div>}
       <OverlayScrollbars
         ref={ref}

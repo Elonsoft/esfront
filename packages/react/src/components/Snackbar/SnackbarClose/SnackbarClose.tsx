@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { SnackbarCloseProps } from './SnackbarClose.types';
 
 import clsx from 'clsx';
@@ -11,7 +13,7 @@ import { Button } from '../../Button';
 /**
  * @see `Snackbar`
  */
-export const SnackbarClose = (inProps: SnackbarCloseProps) => {
+export const SnackbarClose = ({ ref, ...inProps }: SnackbarCloseProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -26,7 +28,7 @@ export const SnackbarClose = (inProps: SnackbarCloseProps) => {
   });
 
   return (
-    <div className={clsx(className, 'es-snackbar-close')}>
+    <div ref={ref} className={clsx(className, 'es-snackbar-close')}>
       <Button
         aria-label={label}
         className="es-snackbar-close__button"

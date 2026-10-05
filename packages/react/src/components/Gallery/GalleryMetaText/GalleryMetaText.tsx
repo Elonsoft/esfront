@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { GalleryMetaTextProps } from './GalleryMetaText.types';
 
 import clsx from 'clsx';
@@ -9,7 +11,7 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `Gallery`
  */
-export const GalleryMetaText = (inProps: GalleryMetaTextProps) => {
+export const GalleryMetaText = ({ ref, ...inProps }: GalleryMetaTextProps & RefAttributes<HTMLDivElement>) => {
   const { children, className, style, primary } = useDefaultProps({
     props: inProps,
     name: 'ESGalleryMetaText',
@@ -17,6 +19,7 @@ export const GalleryMetaText = (inProps: GalleryMetaTextProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         'es-gallery-meta-text',
         primary ? 'es-gallery-meta-text--primary body200 sm:body100' : 'caption',

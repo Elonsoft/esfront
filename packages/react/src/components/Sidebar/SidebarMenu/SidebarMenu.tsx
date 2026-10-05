@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { RefAttributes, useMemo, useState } from 'react';
 
 import { SidebarMenuProps } from './SidebarMenu.types';
 
@@ -13,7 +13,7 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `Sidebar`
  */
-export const SidebarMenu = (inProps: SidebarMenuProps) => {
+export const SidebarMenu = ({ ref, ...inProps }: SidebarMenuProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -46,7 +46,7 @@ export const SidebarMenu = (inProps: SidebarMenuProps) => {
 
   return (
     <SidebarMenuContext.Provider value={value}>
-      <div className={clsx(className, 'es-sidebar-menu')} style={style}>
+      <div ref={ref} className={clsx(className, 'es-sidebar-menu')} style={style}>
         {children}
       </div>
     </SidebarMenuContext.Provider>

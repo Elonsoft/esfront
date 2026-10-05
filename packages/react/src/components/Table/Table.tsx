@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, memo, useMemo, useRef } from 'react';
+import { memo, RefAttributes, useMemo, useRef } from 'react';
 
 import { TableProps } from './Table.types';
 
@@ -20,37 +20,35 @@ import { useDefaultProps } from '../../theming';
 const TABLE_CELL_CONTEXT_VALUE = { variant: 'body' as const };
 
 /** Tables display information in a way that's easy to scan, so that users can look for patterns and insights. */
-export const Table = memo(
-  forwardRef<HTMLDivElement, TableProps>(function Table(inProps, inRef) {
-    const { children, className, columns, style } = useDefaultProps({
-      props: inProps,
-      name: 'ESTable',
-    });
+export const Table = memo(function Table({ ref: inRef, ...inProps }: TableProps & RefAttributes<HTMLDivElement>) {
+  const { children, className, columns, style } = useDefaultProps({
+    props: inProps,
+    name: 'ESTable',
+  });
 
-    const ref = useRef<HTMLDivElement | null>(null);
-    const rootRef = useForkRef(ref, inRef);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const rootRef = useForkRef(ref, inRef);
 
-    const value = useMemo(() => {
-      return { columns };
-    }, [columns]);
+  const value = useMemo(() => {
+    return { columns };
+  }, [columns]);
 
-    const { bodyContextValue, headContextValue, scrollbarContextValue } = useTableScrollSync();
-    useTableStickyOffset(ref);
+  const { bodyContextValue, headContextValue, scrollbarContextValue } = useTableScrollSync();
+  useTableStickyOffset(ref);
 
-    return (
-      <TableContext.Provider value={value}>
-        <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
-          <TableBodyContext.Provider value={bodyContextValue}>
-            <TableHeadContext.Provider value={headContextValue}>
-              <TableScrollbarContext.Provider value={scrollbarContextValue}>
-                <div ref={rootRef} className={clsx('es-table', className)} role="table" style={style}>
-                  {children}
-                </div>
-              </TableScrollbarContext.Provider>
-            </TableHeadContext.Provider>
-          </TableBodyContext.Provider>
-        </TableCellContext.Provider>
-      </TableContext.Provider>
-    );
-  })
-);
+  return (
+    <TableContext.Provider value={value}>
+      <TableCellContext.Provider value={TABLE_CELL_CONTEXT_VALUE}>
+        <TableBodyContext.Provider value={bodyContextValue}>
+          <TableHeadContext.Provider value={headContextValue}>
+            <TableScrollbarContext.Provider value={scrollbarContextValue}>
+              <div ref={rootRef} className={clsx('es-table', className)} role="table" style={style}>
+                {children}
+              </div>
+            </TableScrollbarContext.Provider>
+          </TableHeadContext.Provider>
+        </TableBodyContext.Provider>
+      </TableCellContext.Provider>
+    </TableContext.Provider>
+  );
+});

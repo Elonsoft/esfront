@@ -10,7 +10,7 @@ import { OverridableComponent } from '../../types';
 /**
  * The Link component allows you to easily customize anchor elements with your theme colors and typography styles.
  */
-export const Link: OverridableComponent<LinkTypeMap> = (inProps: LinkProps) => {
+export const Link: OverridableComponent<LinkTypeMap> = ({ ref, ...inProps }: LinkProps) => {
   const {
     component: Component = 'a',
     children,
@@ -30,6 +30,7 @@ export const Link: OverridableComponent<LinkTypeMap> = (inProps: LinkProps) => {
 
   return (
     <Component
+      ref={ref}
       className={clsx(
         'es-link',
         `es-link--underline--${underline}`,

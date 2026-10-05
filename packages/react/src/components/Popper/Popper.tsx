@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useImperativeHandle, useMemo, useState } from 'react';
+import { RefAttributes, useImperativeHandle, useMemo, useState } from 'react';
 
 import { PopperAnchorEl, PopperChildrenProps, PopperProps, PopperTransitionProps } from './Popper.types';
 
@@ -31,7 +31,7 @@ type PopperRootProps = PopperProps & {
   transitionProps?: PopperTransitionProps;
 };
 
-const PopperRoot = forwardRef<HTMLDivElement, PopperRootProps>(function PopperRoot(props, ref) {
+const PopperRoot = ({ ref, ...props }: PopperRootProps & RefAttributes<HTMLDivElement>) => {
   const {
     anchorEl,
     children,
@@ -94,13 +94,13 @@ const PopperRoot = forwardRef<HTMLDivElement, PopperRootProps>(function PopperRo
       {typeof children === 'function' ? children(childProps) : children}
     </Root>
   );
-});
+};
 
 /**
  * The Popper positions a floating element next to an anchor. It is a lower-level construct — prefer the Tooltip or the
  * AutocompleteMenu when building an overlay.
  */
-export const Popper = forwardRef<HTMLDivElement, PopperProps>(function Popper(inProps, ref) {
+export const Popper = ({ ref, ...inProps }: PopperProps & RefAttributes<HTMLDivElement>) => {
   const props = useDefaultProps({ props: inProps, name: 'ESPopper' });
 
   const {
@@ -151,4 +151,4 @@ export const Popper = forwardRef<HTMLDivElement, PopperProps>(function Popper(in
       />
     </Portal>
   );
-});
+};

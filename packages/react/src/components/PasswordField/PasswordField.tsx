@@ -17,7 +17,7 @@ import { Tooltip } from '../Tooltip';
 /**
  * The PasswordField allows users to input passwords with ability to toggle password visibility.
  */
-export const PasswordField = (inProps: PasswordFieldProps) => {
+export const PasswordField = ({ ref, ...inProps }: PasswordFieldProps & React.RefAttributes<HTMLDivElement>) => {
   const {
     className,
 
@@ -80,6 +80,7 @@ export const PasswordField = (inProps: PasswordFieldProps) => {
 
   return (
     <TextField
+      ref={ref}
       className={clsx('es-password-field', className)}
       endAdornment={!!end && <FormFieldAdornment position="end">{end}</FormFieldAdornment>}
       type={visible ? 'text' : 'password'}

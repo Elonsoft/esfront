@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, RefAttributes, useEffect, useRef } from 'react';
 
 import { GalleryThumbnailsProps } from './GalleryThumbnails.types';
 
@@ -68,7 +68,7 @@ const GalleryThumbnailsButtonNext = ({ icon, label }: { icon: ReactNode; label?:
 /**
  * @see `Gallery`
  */
-export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
+export const GalleryThumbnails = ({ ref, ...inProps }: GalleryThumbnailsProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -109,7 +109,11 @@ export const GalleryThumbnails = (inProps: GalleryThumbnailsProps) => {
   const actionsRef = useForkRef(actions, SwiperProps?.actions);
 
   return (
-    <div className={clsx('es-gallery-thumbnails', className)} style={{ display: isVisible ? 'block' : '', ...style }}>
+    <div
+      ref={ref}
+      className={clsx('es-gallery-thumbnails', className)}
+      style={{ display: isVisible ? 'block' : '', ...style }}
+    >
       <Swiper
         draggable
         buttonNext={<GalleryThumbnailsButtonNext icon={iconNext} label={labelNext} />}

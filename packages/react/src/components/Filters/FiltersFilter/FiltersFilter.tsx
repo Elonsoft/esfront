@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { FiltersFilterProps } from './FiltersFilter.types';
 
 import clsx from 'clsx';
@@ -13,7 +15,7 @@ import { Tooltip } from '../../Tooltip';
 /**
  * @see `Filters`
  */
-export const FiltersFilter = (inProps: FiltersFilterProps) => {
+export const FiltersFilter = ({ ref, ...inProps }: FiltersFilterProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -33,7 +35,7 @@ export const FiltersFilter = (inProps: FiltersFilterProps) => {
   const [open, toggleOpen] = useBoolean(true);
 
   return (
-    <div className={clsx('es-filters-filter', className)} style={style}>
+    <div ref={ref} className={clsx('es-filters-filter', className)} style={style}>
       <div className="es-filters-filter__header">
         <div className="es-filters-filter__container">
           <div className="es-filters-filter__title body200-w40" onClick={toggleOpen}>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { RefAttributes, useMemo, useRef, useState } from 'react';
 
 import { GalleryProps } from './Gallery.types';
 
@@ -22,7 +22,7 @@ const transitionDuration = { enter: duration.enteringScreen, exit: duration.leav
 /**
  * `Gallery` is a component for displaying a fullscreen list of images or any other type of content.
  */
-export const Gallery = (inProps: GalleryProps) => {
+export const Gallery = ({ ref, ...inProps }: GalleryProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -62,6 +62,7 @@ export const Gallery = (inProps: GalleryProps) => {
         <GalleryPanelsProvider>
           <GalleryThumbnailsProvider>
             <Modal
+              ref={ref}
               className={clsx('es-gallery', className)}
               open={open}
               slotProps={{ backdrop: BackdropProps }}

@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { CalendarProps } from './Calendar.types';
 
 import clsx from 'clsx';
@@ -11,7 +13,7 @@ import { useDefaultProps } from '../../theming';
 import { useDateAdapterContext } from '../DateAdapter';
 
 /** The calendar allows users to pick a date or a range of dates. */
-export const Calendar = (inProps: CalendarProps) => {
+export const Calendar = ({ ref, ...inProps }: CalendarProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -101,7 +103,7 @@ export const Calendar = (inProps: CalendarProps) => {
   };
 
   return (
-    <div className={clsx('es-calendar', `es-calendar--rows--${rows}`, className)} style={style}>
+    <div ref={ref} className={clsx('es-calendar', `es-calendar--rows--${rows}`, className)} style={style}>
       {prevDates.map((date) =>
         showPrevMonth ? (
           <CalendarButton key={date} inactive {...getButtonProps(year, month - 1, date)}>

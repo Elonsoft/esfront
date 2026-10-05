@@ -1,19 +1,18 @@
 'use client';
 
-import { forwardRef } from 'react';
-
 import { ExtendButtonBase } from '../ButtonBase/ButtonBase.types';
 import { ButtonTypeMap } from './Button.types';
 
 import clsx from 'clsx';
 
 import { useDefaultProps } from '../../theming';
+import { DefaultComponentProps } from '../../types';
 import { ButtonBase } from '../ButtonBase';
 
 /**
  * The Button allows users to take actions, and make choices, with a single tap.
  */
-export const Button = forwardRef(function Button(inProps, ref) {
+export const Button = (({ ref, ...inProps }: DefaultComponentProps<ButtonTypeMap>) => {
   const {
     children,
     className,

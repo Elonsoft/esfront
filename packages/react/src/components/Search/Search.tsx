@@ -1,6 +1,6 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, RefAttributes } from 'react';
 
 import { SearchProps } from './Search.types';
 
@@ -13,7 +13,7 @@ import { FormFieldAdornment } from '../FormField';
 import { TextField } from '../TextField';
 
 /** The text field that can be used to search, find, or filter. */
-export const Search = memo(function Search(inProps: SearchProps) {
+export const Search = memo(function Search({ ref, ...inProps }: SearchProps & RefAttributes<HTMLDivElement>) {
   const {
     className,
 
@@ -46,6 +46,7 @@ export const Search = memo(function Search(inProps: SearchProps) {
 
   return (
     <TextField
+      ref={ref}
       fullWidth
       aria-label={ariaLabel}
       endAdornment={!!end && <FormFieldAdornment position="end">{end}</FormFieldAdornment>}

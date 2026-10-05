@@ -1,10 +1,7 @@
-import { MutableRefObject, ReactElement } from 'react';
+import { ReactElement, RefObject } from 'react';
 
 import { TooltipProps } from '../Tooltip';
 
 export type TooltipEllipsisProps = Omit<TooltipProps, 'children'> & {
-  children: (props: {
-    ref: MutableRefObject<HTMLElement | null>;
-    childrenRef: MutableRefObject<HTMLElement | null>;
-  }) => ReactElement;
+  children: (props: { ref: RefObject<HTMLElement | null>; childrenRef: RefObject<HTMLElement | null> }) => ReactElement;
 };

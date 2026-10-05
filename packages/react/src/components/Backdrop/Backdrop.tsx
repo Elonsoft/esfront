@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { RefAttributes } from 'react';
 
 import { BackdropProps } from './Backdrop.types';
 
@@ -12,7 +12,7 @@ import { Fade } from '../Fade';
 /**
  * The Backdrop dims the content behind an overlay, signalling that the rest of the interface is not available.
  */
-export const Backdrop = forwardRef<HTMLDivElement, BackdropProps>(function Backdrop(inProps, ref) {
+export const Backdrop = ({ ref, ...inProps }: BackdropProps & RefAttributes<HTMLDivElement>) => {
   const {
     children,
     className,
@@ -43,4 +43,4 @@ export const Backdrop = forwardRef<HTMLDivElement, BackdropProps>(function Backd
       </Root>
     </Transition>
   );
-});
+};

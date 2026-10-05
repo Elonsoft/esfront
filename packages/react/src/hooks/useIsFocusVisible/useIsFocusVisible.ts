@@ -2,7 +2,7 @@
 
 // Based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
 
-import { FocusEvent, MutableRefObject, RefCallback, useCallback, useRef } from 'react';
+import { FocusEvent, RefCallback, RefObject, useCallback, useRef } from 'react';
 
 import { Timeout } from '../../utils';
 
@@ -106,7 +106,7 @@ const isEventFocusVisible = (event: FocusEvent): boolean => {
 };
 
 export interface UseIsFocusVisibleResult {
-  isFocusVisibleRef: MutableRefObject<boolean>;
+  isFocusVisibleRef: RefObject<boolean>;
   onBlur: (event: FocusEvent<any>) => boolean;
   onFocus: (event: FocusEvent<any>) => boolean;
   ref: RefCallback<Element>;

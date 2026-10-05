@@ -1,4 +1,6 @@
-import { CSSProperties, ReactNode } from 'react';
+import { ComponentType, CSSProperties, PropsWithoutRef, ReactNode, RefAttributes } from 'react';
+
+import { SvgIconProps } from '../SvgIcon';
 
 export interface FileIconProps {
   children?: ReactNode;
@@ -20,5 +22,5 @@ export interface FileIconProps {
   height?: number;
 
   /** The background icon component. */
-  icon?: React.FC;
+  icon?: ComponentType<PropsWithoutRef<SvgIconProps> & RefAttributes<SVGPathElement>>;
 }

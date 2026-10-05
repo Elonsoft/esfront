@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo, useRef, useState } from 'react';
+import React, { memo, RefAttributes, useRef, useState } from 'react';
 
 import { SortingMenuDirection, SortingMenuOptionMap, SortingMenuProps, SortingMenuValue } from './SortingMenu.types';
 
@@ -41,7 +41,10 @@ const getNextItem = (elem: HTMLLIElement): HTMLLIElement | undefined => {
 /**
  * The SortingMenu allow users to sort list of items by one or multiple properties.
  */
-export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) {
+export const SortingMenu = memo(function SortingMenu({
+  ref,
+  ...inProps
+}: SortingMenuProps & RefAttributes<HTMLDivElement>) {
   const {
     PopoverProps,
 
@@ -238,6 +241,7 @@ export const SortingMenu = memo(function SortingMenu(inProps: SortingMenuProps) 
 
   return (
     <Popover
+      ref={ref}
       {...PopoverProps}
       TransitionProps={{
         ...PopoverProps.TransitionProps,

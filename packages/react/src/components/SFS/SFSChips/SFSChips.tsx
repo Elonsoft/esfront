@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { SFSChipsProps } from './SFSChips.types';
 
 import clsx from 'clsx';
@@ -12,7 +14,7 @@ import { Tooltip } from '../../Tooltip';
 /**
  * @see `SFS`
  */
-export const SFSChips = (inProps: SFSChipsProps) => {
+export const SFSChips = ({ ref, ...inProps }: SFSChipsProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     children,
@@ -27,7 +29,7 @@ export const SFSChips = (inProps: SFSChipsProps) => {
   });
 
   return (
-    <div className={clsx('es-sfs-chips', className)} style={style}>
+    <div ref={ref} className={clsx('es-sfs-chips', className)} style={style}>
       {children}
       {!!onDelete && (
         <Tooltip distance={2} placement="left" title={labelDelete} {...TooltipProps}>

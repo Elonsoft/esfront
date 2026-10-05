@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { SpinnerProps } from '../Spinner.types';
 
 import clsx from 'clsx';
@@ -10,7 +12,7 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `Spinner`
  */
-export const SpinnerFadingDoubleRing = (inProps: SpinnerProps) => {
+export const SpinnerFadingDoubleRing = ({ ref, ...inProps }: SpinnerProps & RefAttributes<SVGSVGElement>) => {
   const {
     className,
     style,
@@ -25,6 +27,7 @@ export const SpinnerFadingDoubleRing = (inProps: SpinnerProps) => {
 
   return (
     <svg
+      ref={ref}
       className={clsx('es-spinner', `es-spinner--color--${color}`, 'es-spinner-fading-double-ring', className)}
       fill="none"
       height={size}

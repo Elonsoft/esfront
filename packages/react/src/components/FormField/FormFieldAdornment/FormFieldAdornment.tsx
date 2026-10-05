@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useRef } from 'react';
+import { RefAttributes, useRef } from 'react';
 
 import { FormFieldAdornmentProps } from './FormFieldAdornment.types';
 
@@ -33,10 +33,7 @@ const getResizeObserver = () => {
  * An element placed before or after the control of a field, such as an icon, a unit or a button.
  * @see `FormField`
  */
-export const FormFieldAdornment = forwardRef<HTMLDivElement, FormFieldAdornmentProps>(function FormFieldAdornment(
-  inProps: FormFieldAdornmentProps,
-  ref
-) {
+export const FormFieldAdornment = ({ ref, ...inProps }: FormFieldAdornmentProps & RefAttributes<HTMLDivElement>) => {
   const { children, className, style, position } = useDefaultProps({
     props: inProps,
     name: 'ESFormFieldAdornment',
@@ -84,4 +81,4 @@ export const FormFieldAdornment = forwardRef<HTMLDivElement, FormFieldAdornmentP
       {children}
     </div>
   );
-});
+};

@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { AutocompleteFieldProps } from './AutocompleteField.types';
 
 import clsx from 'clsx';
@@ -10,7 +12,10 @@ import { Autocomplete } from '../Autocomplete';
 import { FormField, FormFieldHelperText, FormFieldLabel } from '../FormField';
 
 /** The autocomplete is used to choose an item from a collection of options. */
-export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
+export const AutocompleteField = <T,>({
+  ref,
+  ...inProps
+}: AutocompleteFieldProps<T> & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     style,
@@ -62,6 +67,7 @@ export const AutocompleteField = <T,>(inProps: AutocompleteFieldProps<T>) => {
 
   return (
     <FormField
+      ref={ref}
       className={clsx('es-autocomplete-field', className)}
       disabled={disabled}
       error={error}

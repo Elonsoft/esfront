@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimationEvent, CSSProperties, forwardRef, useCallback, useEffect, useRef } from 'react';
+import { AnimationEvent, CSSProperties, RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
 
 import { FormFieldInputElement, FormFieldInputProps } from './FormFieldInput.types';
 
@@ -20,10 +20,7 @@ const AUTO_FILL_CANCEL_KEYFRAMES = 'es-form-field-auto-fill-cancel-keyframes';
  * the browser.
  * @see `FormField`
  */
-export const FormFieldInput = forwardRef<FormFieldInputElement, FormFieldInputProps>(function FormFieldInput(
-  inProps: FormFieldInputProps,
-  ref
-) {
+export const FormFieldInput = ({ ref, ...inProps }: FormFieldInputProps & RefAttributes<FormFieldInputElement>) => {
   const {
     className,
     multiline = false,
@@ -49,7 +46,7 @@ export const FormFieldInput = forwardRef<FormFieldInputElement, FormFieldInputPr
   const handleRef = useForkRef(ref, innerRef, setControl);
 
   // A controlled input receives its value as a prop, so the very first render decides the mode for the whole lifetime.
-  const { current: isControlled } = useRef(props.value !== null && props.value !== undefined);
+  const [isControlled] = useState(props.value !== null && props.value !== undefined);
 
   const checkDirty = useCallback(
     (input?: { value?: unknown } | null) => {
@@ -131,4 +128,4 @@ export const FormFieldInput = forwardRef<FormFieldInputElement, FormFieldInputPr
   }
 
   return <input {...controlProps} type={type} />;
-});
+};

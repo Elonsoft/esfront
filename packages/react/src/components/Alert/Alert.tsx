@@ -1,5 +1,7 @@
 'use client';
 
+import { RefAttributes } from 'react';
+
 import { AlertProps } from './Alert.types';
 
 import clsx from 'clsx';
@@ -17,7 +19,7 @@ const defaultIconMapping = {
 /**
  * An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task.
  */
-export const Alert = (inProps: AlertProps) => {
+export const Alert = ({ ref, ...inProps }: AlertProps & RefAttributes<HTMLDivElement>) => {
   const {
     className,
     children,
@@ -38,6 +40,7 @@ export const Alert = (inProps: AlertProps) => {
 
   return (
     <div
+      ref={ref}
       className={clsx(
         className,
         'es-alert',

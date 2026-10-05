@@ -8,7 +8,7 @@ export type ESExitCallback = (node: HTMLElement) => void;
  * Adapts the public transition callbacks, which receive the animated node, to the signature `react-transition-group`
  * uses when a `nodeRef` is provided.
  */
-export const createTransitionCallbacks = (nodeRef: RefObject<HTMLElement | null>) => ({
+export const useTransitionCallbacks = (nodeRef: RefObject<HTMLElement | null>) => ({
   enter: (callback?: ESEnterCallback) => (isAppearing: boolean) => {
     if (callback && nodeRef.current) {
       callback(nodeRef.current, isAppearing);

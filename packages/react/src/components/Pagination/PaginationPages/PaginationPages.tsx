@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, memo, useState } from 'react';
+import { Fragment, memo, RefAttributes, useState } from 'react';
 
 import { PaginationPagesProps } from './PaginationPages.types';
 
@@ -30,7 +30,10 @@ const isMacintosh = () => {
 /**
  * @see `Pagination`
  */
-export const PaginationPages = memo(function PaginationPages(inProps: PaginationPagesProps) {
+export const PaginationPages = memo(function PaginationPages({
+  ref,
+  ...inProps
+}: PaginationPagesProps & RefAttributes<HTMLDivElement>) {
   const {
     className,
     style,
@@ -98,7 +101,7 @@ export const PaginationPages = memo(function PaginationPages(inProps: Pagination
   });
 
   return (
-    <div className={clsx('es-pagination-pages', className)} style={style}>
+    <div ref={ref} className={clsx('es-pagination-pages', className)} style={style}>
       <ul className="es-pagination-pages__pagination">
         {items.map((item) => {
           const {
