@@ -2,6 +2,7 @@ import { Editor, Location } from 'slate';
 
 import { decreaseListItemDepth } from './decrease-list-item-depth';
 
+import { forEachPath } from '../../../utils';
 import { getSelectedListItems } from '../checks';
 
 /**
@@ -23,15 +24,9 @@ export const decreaseDepth = (editor: Editor, at: Location | null = editor.selec
   let changed = false;
 
   editor.withoutNormalizing(() => {
-    const refs = listItems.map(([, path]) => editor.pathRef(path));
-
-    for (const ref of refs) {
-      if (ref.current && decreaseListItemDepth(editor, ref.current)) {
-        changed = true;
-      }
-    }
-
-    refs.forEach((ref) => ref.unref());
+    forEachPath(editor, listItems, (path) => {
+      changed = decreaseListItemDepth(editor, path) || changed;
+    });
   });
 
   return changed;

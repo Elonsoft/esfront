@@ -1,6 +1,7 @@
-import { Editor, Element, Location, NodeEntry, Path, Range } from 'slate';
+import { Editor, Element, Location, NodeEntry, Path } from 'slate';
 
 import { getNodeId } from '../../plugins/ids';
+import { normalizeLocation } from '../../utils';
 
 /**
  * Returns the top level blocks within the location, defaulting to the current selection.
@@ -15,7 +16,7 @@ export const getBlocks = (editor: Editor, at: Location | null = editor.selection
 
   return Array.from(
     editor.nodes<Element>({
-      at: Range.isRange(at) ? Editor.unhangRange(editor, at) : at,
+      at: normalizeLocation(editor, at),
       match: (node, path) => {
         return path.length === 1 && Element.isElement(node);
       },

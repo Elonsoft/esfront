@@ -1,5 +1,6 @@
 import { Editor, Location, Path } from 'slate';
 
+import { forEachPath } from '../../utils';
 import { findBlockById, getBlocks } from '../checks';
 
 /**
@@ -15,15 +16,9 @@ export const moveBlocksUp = (editor: Editor, at: Location | null = editor.select
   }
 
   editor.withoutNormalizing(() => {
-    const refs = blocks.map(([, path]) => editor.pathRef(path));
-
-    for (const ref of refs) {
-      if (ref.current) {
-        editor.moveNodes({ at: ref.current, to: Path.previous(ref.current) });
-      }
-    }
-
-    refs.forEach((ref) => ref.unref());
+    forEachPath(editor, blocks, (path) => {
+      editor.moveNodes({ at: path, to: Path.previous(path) });
+    });
   });
 
   return true;
@@ -42,16 +37,15 @@ export const moveBlocksDown = (editor: Editor, at: Location | null = editor.sele
   }
 
   editor.withoutNormalizing(() => {
-    const refs = blocks.map(([, path]) => editor.pathRef(path));
-
     // Last first, so that each block moves into a position the ones after it have already left.
-    for (const ref of [...refs].reverse()) {
-      if (ref.current) {
-        editor.moveNodes({ at: ref.current, to: Path.next(ref.current) });
-      }
-    }
-
-    refs.forEach((ref) => ref.unref());
+    forEachPath(
+      editor,
+      blocks,
+      (path) => {
+        editor.moveNodes({ at: path, to: Path.next(path) });
+      },
+      { reverse: true }
+    );
   });
 
   return true;

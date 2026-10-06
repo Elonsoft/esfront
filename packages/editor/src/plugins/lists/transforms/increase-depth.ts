@@ -2,6 +2,7 @@ import { Editor, Location } from 'slate';
 
 import { increaseListItemDepth } from './increase-list-item-depth';
 
+import { forEachPath } from '../../../utils';
 import { getSelectedListItems } from '../checks';
 
 /**
@@ -23,16 +24,9 @@ export const increaseDepth = (editor: Editor, at: Location | null = editor.selec
   let changed = false;
 
   editor.withoutNormalizing(() => {
-    // Moving one list item shifts the paths of the ones after it, so each is tracked by a ref.
-    const refs = listItems.map(([, path]) => editor.pathRef(path));
-
-    for (const ref of refs) {
-      if (ref.current && increaseListItemDepth(editor, ref.current)) {
-        changed = true;
-      }
-    }
-
-    refs.forEach((ref) => ref.unref());
+    forEachPath(editor, listItems, (path) => {
+      changed = increaseListItemDepth(editor, path) || changed;
+    });
   });
 
   return changed;

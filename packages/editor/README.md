@@ -95,6 +95,19 @@ const editor = withLists(LISTS_SCHEMA)(
 `withLists` is `withListsSchema` followed by `withListsNormalization`. Use the two separately only to order the
 normalizations differently against another plugin's.
 
+#### When a plugin is missing
+
+A helper reaches for its plugin's schema, so calling one on an editor that was never given that plugin is a wiring
+mistake. The rule is:
+
+- **Helpers throw**, with an error naming the plugin to add — `ListsEditor.toggleList` on an editor without `withLists`
+  says so rather than silently doing nothing.
+- **Key handlers never throw.** `onListsKeyDown` is one link of a chain, so on an editor without the plugin it delegates
+  to the rest of the chain instead of taking it down.
+- **`BlocksEditor` works without the lists plugin**, apart from converting to or from a list, which needs it.
+
+`withBase` is a prerequisite of the other plugins: they fall back to its default text node.
+
 ### List normalization
 
 The lists transforms rely on an invariant: a list contains nothing but list items, a list item contains its text node

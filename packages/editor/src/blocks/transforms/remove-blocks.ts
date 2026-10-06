@@ -1,6 +1,7 @@
 import { Editor, Location } from 'slate';
 
 import { BaseEditor } from '../../plugins/base';
+import { forEachPath } from '../../utils';
 import { getBlocks } from '../checks';
 
 /**
@@ -19,15 +20,9 @@ export const removeBlocks = (editor: Editor, at: Location | null = editor.select
   }
 
   editor.withoutNormalizing(() => {
-    const refs = blocks.map(([, path]) => editor.pathRef(path));
-
-    for (const ref of refs) {
-      if (ref.current) {
-        editor.removeNodes({ at: ref.current });
-      }
-    }
-
-    refs.forEach((ref) => ref.unref());
+    forEachPath(editor, blocks, (path) => {
+      editor.removeNodes({ at: path });
+    });
 
     BaseEditor.addNodeForEmptyEditor(editor);
   });

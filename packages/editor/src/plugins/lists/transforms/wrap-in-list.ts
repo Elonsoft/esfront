@@ -1,6 +1,6 @@
-import { Editor, Element, Location, Range } from 'slate';
+import { Editor, Element, Location } from 'slate';
 
-import { setElementType } from '../../../utils';
+import { normalizeLocation, setElementType } from '../../../utils';
 import {
   createListItemNode,
   createListNode,
@@ -25,7 +25,7 @@ export const wrapInList = (editor: Editor, type: string, at: Location | null = e
   const candidates = pickSubtreesRoots(
     Array.from(
       editor.nodes<Element>({
-        at: Range.isRange(at) ? Editor.unhangRange(editor, at) : at,
+        at: normalizeLocation(editor, at),
         match: (node, path) => {
           return path.length === 1 && isConvertibleToListTextNode(editor, node);
         },

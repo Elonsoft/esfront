@@ -3,7 +3,7 @@ import { Editor, Element, Location, Node, NodeEntry, Path, Point, Range, Span } 
 import * as Registry from './base.registry';
 import type { BaseSchema } from './base.types';
 
-import { isElementType, setElementType } from '../../utils';
+import { isElementType, normalizeLocation, setElementType } from '../../utils';
 
 const schema = (editor: Editor) => {
   return Registry.get(editor);
@@ -119,7 +119,7 @@ export const BaseEditor = {
 
     return Array.from(
       editor.nodes<Element>({
-        at: Range.isRange(at) ? Editor.unhangRange(editor, at) : at,
+        at: normalizeLocation(editor, at),
         match: (node, path) => {
           return path.length === 1 && BaseEditor.isTextBlock(editor, node);
         },

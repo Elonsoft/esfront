@@ -2,44 +2,35 @@ import { Editor, Element, Location, Node, NodeEntry, Path, Range, Text } from 's
 
 import { isListItemNode, isListItemTextNode, isListNode } from './schema';
 
+import { normalizeLocation } from '../../../utils';
 import { BaseEditor } from '../../base';
 import { NESTED_LIST_PATH_INDEX, TEXT_PATH_INDEX } from '../lists.constants';
 import { pickSubtreesRoots } from '../utils';
+
+const getElementsMatching = (
+  editor: Editor,
+  at: Location | null,
+  match: (node: Node) => boolean
+): NodeEntry<Element>[] => {
+  if (!at) {
+    return [];
+  }
+
+  return Array.from(editor.nodes<Element>({ at: normalizeLocation(editor, at), match }));
+};
 
 /**
  * Returns every list within the given location, defaulting to the current selection.
  */
 export const getLists = (editor: Editor, at: Location | null = editor.selection): NodeEntry<Element>[] => {
-  if (!at) {
-    return [];
-  }
-
-  return Array.from(
-    editor.nodes<Element>({
-      at: Range.isRange(at) ? Editor.unhangRange(editor, at) : at,
-      match: (node) => {
-        return isListNode(editor, node);
-      },
-    })
-  );
+  return getElementsMatching(editor, at, (node) => isListNode(editor, node));
 };
 
 /**
  * Returns every list item within the given location, defaulting to the current selection.
  */
 export const getListItems = (editor: Editor, at: Location | null = editor.selection): NodeEntry<Element>[] => {
-  if (!at) {
-    return [];
-  }
-
-  return Array.from(
-    editor.nodes<Element>({
-      at: Range.isRange(at) ? Editor.unhangRange(editor, at) : at,
-      match: (node) => {
-        return isListItemNode(editor, node);
-      },
-    })
-  );
+  return getElementsMatching(editor, at, (node) => isListItemNode(editor, node));
 };
 
 /**
