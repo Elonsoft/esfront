@@ -1,15 +1,20 @@
-import { MouseEvent, ReactNode, useRef, useState } from 'react';
+import { ChangeEvent, MouseEvent, ReactNode, useMemo, useRef, useState } from 'react';
 
 import { BaseSelection, createEditor, Descendant } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, ReactEditor, RenderElementProps, RenderLeafProps, Slate, useSlate, withReact } from 'slate-react';
 
 import { DEFAULT_LABELS, EditorLabels } from './Editor.labels';
+import { ElementFile } from './ElementFile';
 
-import { BASE_SCHEMA, ElementType, LINKS_SCHEMA, LISTS_SCHEMA } from '../testing';
+import { BASE_SCHEMA, ElementType, ENTITIES_SCHEMA, LINKS_SCHEMA, LISTS_SCHEMA, UploadedFile } from '../testing';
 import {
   BaseEditor,
   composeKeyDown,
+  createEntityStore,
+  EntitiesEditor,
+  EntityState,
+  EntityUploader,
   isElementType,
   isValidHttpUrl,
   LinksEditor,
@@ -17,6 +22,7 @@ import {
   onBaseKeyDown,
   onListsKeyDown,
   withBase,
+  withEntities,
   withLinks,
   withLists,
   withNodeId,
@@ -25,6 +31,7 @@ import {
 import {
   Button,
   Divider,
+  IconAttachmentLineW500,
   IconFormatBoldFillW500,
   IconFormatClearFillW500,
   IconFormatHeader1FillW500,
@@ -49,6 +56,8 @@ export interface EditorProps {
   labels?: Partial<EditorLabels>;
   /** Called with the document whenever it changes. Selection-only changes are filtered out. */
   onChange?: (value: Descendant[]) => void;
+  /** Uploads an attached file. Without one, attachments stay pending. */
+  upload?: EntityUploader<UploadedFile>;
 }
 
 const EMPTY_VALUE: Descendant[] = [{ type: ElementType.PARAGRAPH, children: [{ text: '' }] }];
@@ -59,38 +68,45 @@ const preventDefault = (event: MouseEvent<HTMLElement>) => {
   event.preventDefault();
 };
 
-const renderElement = ({ attributes, children, element }: RenderElementProps) => {
-  switch (element.type) {
-    case ElementType.H1:
-      return <h1 {...attributes}>{children}</h1>;
-    case ElementType.H2:
-      return <h2 {...attributes}>{children}</h2>;
-    case ElementType.H3:
-      return <h3 {...attributes}>{children}</h3>;
-    case ElementType.H4:
-      return <h4 {...attributes}>{children}</h4>;
-    case ElementType.H5:
-      return <h5 {...attributes}>{children}</h5>;
-    case ElementType.H6:
-      return <h6 {...attributes}>{children}</h6>;
-    case ElementType.ORDERED_LIST:
-      return <ol {...attributes}>{children}</ol>;
-    case ElementType.UNORDERED_LIST:
-      return <ul {...attributes}>{children}</ul>;
-    case ElementType.LIST_ITEM:
-      return <li {...attributes}>{children}</li>;
-    case ElementType.LIST_ITEM_TEXT:
-      return <div {...attributes}>{children}</div>;
-    case ElementType.LINK:
-      return (
-        <a {...attributes} href={element.url}>
-          {children}
-        </a>
-      );
-    default:
-      return <p {...attributes}>{children}</p>;
-  }
-};
+const createRenderElement = (labels: EditorLabels) =>
+  function RenderElement({ attributes, children, element }: RenderElementProps) {
+    switch (element.type) {
+      case ElementType.H1:
+        return <h1 {...attributes}>{children}</h1>;
+      case ElementType.H2:
+        return <h2 {...attributes}>{children}</h2>;
+      case ElementType.H3:
+        return <h3 {...attributes}>{children}</h3>;
+      case ElementType.H4:
+        return <h4 {...attributes}>{children}</h4>;
+      case ElementType.H5:
+        return <h5 {...attributes}>{children}</h5>;
+      case ElementType.H6:
+        return <h6 {...attributes}>{children}</h6>;
+      case ElementType.ORDERED_LIST:
+        return <ol {...attributes}>{children}</ol>;
+      case ElementType.UNORDERED_LIST:
+        return <ul {...attributes}>{children}</ul>;
+      case ElementType.LIST_ITEM:
+        return <li {...attributes}>{children}</li>;
+      case ElementType.LIST_ITEM_TEXT:
+        return <div {...attributes}>{children}</div>;
+      case ElementType.LINK:
+        return (
+          <a {...attributes} href={element.url}>
+            {children}
+          </a>
+        );
+      case ElementType.FILE:
+        return (
+          <ElementFile attributes={attributes} element={element} labels={labels}>
+            {children}
+          </ElementFile>
+        );
+      default:
+        return <p {...attributes}>{children}</p>;
+    }
+  };
 
 const renderLeaf = ({ attributes, children, leaf }: RenderLeafProps) => {
   let content: ReactNode = children;
@@ -214,17 +230,52 @@ const ListButton = ({ children, label, type }: ListButtonProps) => {
  * toolbar, the element renderers and the schemas all belong to the application, because they are
  * where the document shape is decided.
  */
-export const Editor = ({ defaultValue = EMPTY_VALUE, labels: labelsProp, onChange }: EditorProps) => {
-  const labels = { ...DEFAULT_LABELS, ...labelsProp };
+export const Editor = ({ defaultValue = EMPTY_VALUE, labels: labelsProp, onChange, upload }: EditorProps) => {
+  const labels = useMemo(() => ({ ...DEFAULT_LABELS, ...labelsProp }), [labelsProp]);
+
+  // One store per editor, holding what must not reach the document: the files and their progress.
+  const [store] = useState(() => createEntityStore<EntityState<UploadedFile>>());
 
   const [editor] = useState(() => {
-    return withLists(LISTS_SCHEMA)(
-      withLinks(LINKS_SCHEMA)(withBase(BASE_SCHEMA)(withNodeId(withReact(withHistory(createEditor())))))
+    // Entities outermost of the two that wrap `insertData`, so a dropped file is taken as a file before
+    // the links plugin gets a chance to read the paste as text.
+    const next = withEntities({ schema: ENTITIES_SCHEMA, store, upload })(
+      withLists(LISTS_SCHEMA)(
+        withLinks(LINKS_SCHEMA)(withBase(BASE_SCHEMA)(withNodeId(withReact(withHistory(createEditor())))))
+      )
     );
+
+    // A document arriving with entities already in it has them nowhere but on its nodes, so the store is
+    // seeded from there. Done before the first paint rather than in an effect, so that a restored file
+    // renders straight away.
+    next.children = defaultValue;
+
+    EntitiesEditor.restoreEntities(next, (node) => (node.type === ElementType.FILE ? node.uploaded : undefined));
+
+    return next;
   });
+
+  const renderElement = useMemo(() => createRenderElement(labels), [labels]);
 
   const [linkUrl, setLinkUrl] = useState<string | null>(null);
   const linkSelection = useRef<BaseSelection>(null);
+  const fileInput = useRef<HTMLInputElement>(null);
+
+  const onAttachClick = useEvent(() => {
+    fileInput.current?.click();
+  });
+
+  const onAttachChange = useEvent((event: ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files ?? []);
+
+    event.target.value = '';
+
+    editor.withoutNormalizing(() => {
+      for (const file of files) {
+        EntitiesEditor.insertEntityNode(editor, file);
+      }
+    });
+  });
 
   const onKeyDown = useEvent(composeKeyDown(editor, [onListsKeyDown, onBaseKeyDown]));
 
@@ -317,6 +368,22 @@ export const Editor = ({ defaultValue = EMPTY_VALUE, labels: labelsProp, onChang
           <ToolbarButton label={labels.unlink} onClick={onUnlink}>
             <IconLinkOffLineW500 />
           </ToolbarButton>
+
+          <Divider flexItem orientation="vertical" />
+
+          <ToolbarButton label={labels.fileAttach} onClick={onAttachClick}>
+            <IconAttachmentLineW500 />
+          </ToolbarButton>
+
+          {/* Dropping or pasting a file onto the editable works without any of this; the button is
+              here for the case where there is nothing to drop. */}
+          <input
+            ref={fileInput}
+            multiple
+            className="es-editor-demo__file-input"
+            type="file"
+            onChange={onAttachChange}
+          />
         </div>
 
         {linkUrl !== null && (

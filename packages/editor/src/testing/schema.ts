@@ -1,8 +1,9 @@
 import { Element } from 'slate';
 
-import { EditorElement, ElementType } from './types';
+import { EditorElement, ElementType, UploadedFile } from './types';
 
 import { BaseSchema } from '../plugins/base';
+import { EntitiesSchema } from '../plugins/entities';
 import { LinkProps, LinksSchema } from '../plugins/links';
 import { ListsSchema } from '../plugins/lists';
 
@@ -29,6 +30,20 @@ export const BASE_SCHEMA: BaseSchema = {
   },
   createDefaultTextNode(props) {
     return createNode(ElementType.PARAGRAPH, props);
+  },
+};
+
+export const ENTITIES_SCHEMA: EntitiesSchema<UploadedFile> = {
+  isEntityNode(node) {
+    return Element.isElementType(node, ElementType.FILE);
+  },
+  createEntityNode(entityId) {
+    return { type: ElementType.FILE, entityId, children: [{ text: '' }] };
+  },
+  createUploadedProps(payload) {
+    // The whole response, so that a saved document carries everything needed to render it again. Right
+    // while the urls are stable; a presigned one would have to be resolved from the id on load instead.
+    return { uploaded: payload };
   },
 };
 

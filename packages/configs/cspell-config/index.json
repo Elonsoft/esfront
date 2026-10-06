@@ -82,6 +82,7 @@
     "testid",
     "toggleable",
     "tseslint",
+    "undoable",
     "undos",
     "unhang",
     "unitless",

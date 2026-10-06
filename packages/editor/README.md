@@ -291,6 +291,109 @@ operation. `getNodeId` reads one back without the application having to declare 
 import { createNodeId, getNodeId } from '@esfront/editor';
 ```
 
+### File uploads
+
+A void block whose payload arrives asynchronously — an attachment, an image — cannot hold that payload itself. The file
+is not serializable, and the progress of its upload would land in the undo history and in whatever the document is saved
+as. So the node carries an `entityId`, and everything transient lives beside the document in a store keyed by it.
+
+The payload is whatever your upload resolves to, which is usually the whole API response — an id and a url to render,
+say. All of it goes in the store, because a view needs more of it than the document does. What reaches the node is up to
+`createUploadedProps`, and that is worth deciding deliberately:
+
+```ts
+const ENTITIES_SCHEMA: EntitiesSchema<UploadedFile> = {
+  isEntityNode: (node) => Element.isElementType(node, 'file'),
+  createEntityNode: (entityId) => ({ type: 'file', entityId, children: [{ text: '' }] }),
+  // Only the id. A url can expire, and the document outlives the session that fetched it.
+  createUploadedProps: (payload) => ({ fileId: payload.id }),
+};
+```
+
+Record the url on the node as well if it is stable, and resolve urls from ids when loading a document if they are not: a
+presigned url saved into a document is a url that stops working.
+
+#### Saving and restoring
+
+A document that was loaded rather than typed has its entities nowhere but on its nodes: the store is new and empty.
+`restoreEntities` seeds it back, reading the payload off each node the same way the schema put it there:
+
+```ts
+restoreEntities(editor, (node) => node.uploaded);
+```
+
+That is what lets a view read the store and nothing else. Without it every entity view needs two paths — the store for a
+file uploaded this session, the node for one that came out of storage — and the `entityId` indirection stops paying for
+itself. An entity the store already holds is left alone, so calling it cannot interrupt an upload in flight.
+
+Keeping the whole response on the node makes this a round trip with no server involved: save the value, load it,
+restore, render. If your urls expire, keep the id on the node instead and pass a payload you fetched into the same call.
+
+```ts
+import { createEntityStore, withEntities } from '@esfront/editor';
+
+const store = createEntityStore<EntityState<UploadedFile>>();
+
+const editor = withEntities({ schema: ENTITIES_SCHEMA, store, upload, accept })(
+  withLists(LISTS_SCHEMA)(withLinks(LINKS_SCHEMA)(withBase(BASE_SCHEMA)(withReact(withHistory(createEditor())))))
+);
+```
+
+| Option        | What it does                                                                         |
+| ------------- | ------------------------------------------------------------------------------------ |
+| `schema`      | Which nodes carry an entity, how to make one, and how to record a finished upload.   |
+| `store`       | Holds the state of those entities.                                                   |
+| `upload`      | Performs the upload. Left out, entities stay `pending` and uploading is yours to do. |
+| `accept`      | Decides whether a dropped or pasted file becomes an entity.                          |
+| `concurrency` | How many uploads run at once. Defaults to 3.                                         |
+
+Place `withEntities` outside `withLinks` if you use both: both wrap `insertData`, and a dropped file should be taken as
+a file before the links plugin reads the paste as text.
+
+#### The store
+
+Framework-free, because the package ships no components. Binding it to a view is yours:
+
+```ts
+const entities = useSyncExternalStore(store.subscribe, store.getSnapshot);
+```
+
+The snapshot is replaced rather than mutated on every change, so its identity changes exactly when its contents do —
+which is what `useSyncExternalStore` needs in order to neither miss an update nor loop. An entity nobody touched keeps
+its own object reference, so one upload progressing does not invalidate every bound view.
+
+#### Uploads
+
+An inserted entity is queued automatically. That hangs off the `insert_node` operation rather than the insert transform,
+so an undo putting a node back starts its upload again.
+
+| Helper                               | What it does                                              |
+| ------------------------------------ | --------------------------------------------------------- |
+| `EntitiesEditor.insertEntityNode`    | Inserts a node for a file and seeds its state.            |
+| `EntitiesEditor.enqueueEntityUpload` | Queues one, doing nothing if it is already under way.     |
+| `EntitiesEditor.retryEntityUpload`   | Queues a failed one again, clearing the error.            |
+| `EntitiesEditor.abortEntityUpload`   | Abandons one, leaving it waiting to be tried again.       |
+| `EntitiesEditor.findEntityNode`      | Finds a node by entity id.                                |
+| `EntitiesEditor.restoreEntities`     | Seeds the store from the nodes of a loaded document.      |
+| `EntitiesEditor.getOrphanPayloads`   | What the removed entities uploaded and nothing else uses. |
+
+An upload resolves long after it started, so its result is written to the node found by id at that moment — never
+through a path captured when it began. The write happens outside the history, because undo takes back what the user did
+and the user did not upload anything; recorded, one undo would strip the payload off a node the store still reports as
+uploaded. That is why `slate-history` is a peer dependency.
+
+Removing a node aborts its upload and leaves the entity `pending`, keeping the file: removing a node is undoable, so the
+entity has to survive being brought back.
+
+#### Cleaning up
+
+Nothing is ever deleted for you. `getOrphanEntityIds` reports state no node points at any more, but clean up by
+`getOrphanPayloads` instead: duplicating a block gives the copy its own entity id while both keep pointing at the one
+upload, so an orphaned id alone is no evidence that what it uploaded is unused.
+
+Duplicating or pasting an entity block gives the copy a fresh `entityId` of its own. A finished upload is shared rather
+than repeated; one still in flight cannot be, so the copy starts over.
+
 ## Serialization
 
 The package does not serialize. A document is a plain slate value, and turning it into HTML, markdown or anything else

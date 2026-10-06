@@ -26,4 +26,42 @@
       color: var(--es-common-link);
     }
   }
+
+  &__file {
+    align-items: center;
+    background-color: var(--es-mono-a-a50);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+  }
+
+  &__file-preview {
+    border-radius: 4px;
+    display: block;
+    max-height: 120px;
+    max-width: 100%;
+  }
+
+  &__file-name {
+    font-weight: 600;
+  }
+
+  &__file-status {
+    color: var(--es-mono-a-a700);
+
+    &--error {
+      color: var(--es-error-a700);
+    }
+  }
+
+  &__file-input {
+    height: 0;
+    left: -9999px;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+  }
 }

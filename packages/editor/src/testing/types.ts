@@ -19,7 +19,20 @@ export enum ElementType {
   LIST_ITEM = 'list-item',
   LIST_ITEM_TEXT = 'list-item-text',
   LINK = 'link',
+  FILE = 'file',
 }
+
+export type EditorText = {
+  text: string;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+  lineThrough?: boolean;
+  // A mark does not have to be on or off; these hold a value, which is what `getMarkValue` and the
+  // `value` argument of `toggleMark` exist for.
+  color?: string;
+  backgroundColor?: string;
+};
 
 export type ParagraphElement = { type: ElementType.PARAGRAPH; children: Descendant[] };
 
@@ -38,6 +51,27 @@ export type ListItemTextElement = { type: ElementType.LIST_ITEM_TEXT; children: 
 
 export type LinkElement = { type: ElementType.LINK; url?: string; children: Descendant[] };
 
+/**
+ * What an upload resolves to: a whole API response rather than just an id, because the parts of it a view
+ * needs — a url to render, say — are not the part the document keeps.
+ */
+export type UploadedFile = { id: string; name: string; type: string; url: string };
+
+/**
+ * A void block whose payload is uploaded separately. It holds the `entityId` the state is keyed by, and
+ * the identifier the upload resolved to once there is one.
+ */
+export type FileElement = {
+  type: ElementType.FILE;
+  entityId: string;
+  /**
+   * The whole response the upload answered with. Kept on the node so that a saved document can be
+   * rendered again without asking the server what its files are.
+   */
+  uploaded?: UploadedFile;
+  children: EditorText[];
+};
+
 export type EditorElement =
   | ParagraphElement
   | HeadingElement
@@ -45,19 +79,8 @@ export type EditorElement =
   | UnorderedListElement
   | ListItemElement
   | ListItemTextElement
-  | LinkElement;
-
-export type EditorText = {
-  text: string;
-  bold?: boolean;
-  italic?: boolean;
-  underline?: boolean;
-  lineThrough?: boolean;
-  // A mark does not have to be on or off; these hold a value, which is what `getMarkValue` and the
-  // `value` argument of `toggleMark` exist for.
-  color?: string;
-  backgroundColor?: string;
-};
+  | LinkElement
+  | FileElement;
 
 // Slate resolves `Element` and `Text` through module augmentation, so the document shape can only
 // be declared once per application. That is why `@esfront/editor` never ships an augmentation of

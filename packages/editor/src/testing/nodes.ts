@@ -2,12 +2,14 @@ import { Descendant, Path, Point, Range } from 'slate';
 
 import {
   ElementType,
+  FileElement,
   HeadingElement,
   ListItemElement,
   ListItemTextElement,
   OrderedListElement,
   ParagraphElement,
   UnorderedListElement,
+  UploadedFile,
 } from './types';
 
 /** Builds a paragraph, i.e. the default text node of the test schema. */
@@ -41,6 +43,16 @@ export const ul = (...children: Descendant[]): UnorderedListElement => {
 /** Builds an ordered list. */
 export const ol = (...children: Descendant[]): OrderedListElement => {
   return { type: ElementType.ORDERED_LIST, children };
+};
+
+/** Builds a void block whose payload lives in the entity store, keyed by `entityId`. */
+export const file = (entityId: string, uploaded?: UploadedFile): FileElement => {
+  return {
+    type: ElementType.FILE,
+    entityId,
+    ...(uploaded === undefined ? {} : { uploaded }),
+    children: [{ text: '' }],
+  };
 };
 
 /**

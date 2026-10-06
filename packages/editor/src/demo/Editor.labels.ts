@@ -15,6 +15,12 @@ export interface EditorLabels {
   linkUrl: string;
   linkApply: string;
   linkCancel: string;
+  fileAttach: string;
+  fileUploading: string;
+  fileDone: string;
+  fileFailed: string;
+  fileRetry: string;
+  fileUnknown: string;
 }
 
 export const DEFAULT_LABELS: EditorLabels = {
@@ -34,6 +40,12 @@ export const DEFAULT_LABELS: EditorLabels = {
   linkUrl: 'Link address',
   linkApply: 'Apply',
   linkCancel: 'Cancel',
+  fileAttach: 'Attach file',
+  fileUploading: 'Uploading',
+  fileDone: 'Uploaded',
+  fileFailed: 'Upload failed',
+  fileRetry: 'Try again',
+  fileUnknown: 'File',
 };
 
 export const LABELS_RU: EditorLabels = {
@@ -53,4 +65,10 @@ export const LABELS_RU: EditorLabels = {
   linkUrl: 'Адрес ссылки',
   linkApply: 'Применить',
   linkCancel: 'Отмена',
+  fileAttach: 'Прикрепить файл',
+  fileUploading: 'Загрузка',
+  fileDone: 'Загружено',
+  fileFailed: 'Не удалось загрузить',
+  fileRetry: 'Повторить',
+  fileUnknown: 'Файл',
 };

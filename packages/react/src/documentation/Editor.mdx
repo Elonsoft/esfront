@@ -226,6 +226,62 @@ const onKeyDown = composeKeyDown(editor, [onListsKeyDown, onBaseKeyDown]);
 `ListsEditor.isDeleteBackwardAllowed` decides. At the start of a list item the merge would pull the item's text into the
 enclosing list, so the key outdents instead.
 
+## File uploads
+
+A void block whose payload arrives asynchronously cannot hold that payload itself: a file is not serializable, and the
+progress of its upload would land in the undo history and in whatever the document is saved as. So the node carries an
+`entityId`, and everything transient lives beside the document in a store keyed by it.
+
+The payload is whatever your upload resolves to, which is usually the whole API response — an id and a url to render,
+say. All of it goes in the store, because a view needs more of it than the document does. What reaches the node is up to
+`createUploadedProps`: record the id, and the url too only if it is stable, because a presigned url saved into a
+document is a url that stops working.
+
+A document that was loaded rather than typed has its entities nowhere but on its nodes, so the store starts empty.
+`restoreEntities(editor, (node) => node.uploaded)` seeds it back, which is what lets a view read the store and nothing
+else — otherwise every entity view needs one path for a file uploaded this session and another for one out of storage.
+The
+
+<LinkTo kind="editor-editor" story="restore">
+  <code>Restore</code>
+</LinkTo>
+story puts a document through `JSON.stringify` into a fresh editor to show the round trip.
+
+```ts
+const store = createEntityStore<EntityState<UploadedFile>>();
+
+const editor = withEntities({ schema: ENTITIES_SCHEMA, store, upload, accept })(
+  withLists(LISTS_SCHEMA)(withLinks(LINKS_SCHEMA)(withBase(BASE_SCHEMA)(withReact(withHistory(createEditor())))))
+);
+```
+
+Place `withEntities` outside `withLinks` if you use both: both wrap `insertData`, and a dropped file should be taken as
+a file before the links plugin reads the paste as text.
+
+The store is framework-free, because the package ships no components. Binding it to a view is yours —
+`useSyncExternalStore(store.subscribe, store.getSnapshot)`. Its snapshot is replaced rather than mutated on every
+change, so its identity changes exactly when its contents do, and an entity nobody touched keeps its own object
+reference so one upload progressing does not invalidate every bound view.
+
+An inserted entity is queued automatically, off the `insert_node` operation rather than the insert transform — which is
+what makes an undo putting a node back start its upload again. The result is written to the node found by id at that
+moment, never through a path captured when the upload began, and outside the history: undo takes back what the user did,
+and the user did not upload anything. That is why `slate-history` is a peer dependency.
+
+Removing a node aborts its upload and leaves the entity `pending`, keeping the file, because removing a node is
+undoable.
+
+Nothing is ever deleted for you. Clean up by `getOrphanPayloads` rather than `getOrphanEntityIds`: duplicating a block
+gives the copy its own entity id while both keep pointing at the one upload, so an orphaned id alone is no evidence that
+what it uploaded is unused.
+
+See the
+
+<LinkTo kind="editor-editor" story="uploads">
+  <code>Uploads</code>
+</LinkTo>
+story, which runs all of this against an uploader that reports progress without a network.
+
 ## Utilities
 
 | Utility          | What it does                                                         |

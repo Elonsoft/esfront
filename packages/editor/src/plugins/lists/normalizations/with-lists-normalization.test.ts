@@ -1,4 +1,4 @@
-import { Editor } from 'slate';
+import { Descendant, Editor } from 'slate';
 
 import { createTestEditor, ElementType, li, lic, ol, p, ul } from '../../../testing';
 
@@ -63,7 +63,7 @@ describe('withListsNormalization', () => {
   });
 
   it('merges a second nested list into the first', () => {
-    const listItem = {
+    const listItem: Descendant = {
       type: ElementType.LIST_ITEM,
       children: [lic('one'), ul(li('first')), ul(li('second'))],
     };
@@ -72,7 +72,7 @@ describe('withListsNormalization', () => {
   });
 
   it('moves a list out of a list item text', () => {
-    const listItem = {
+    const listItem: Descendant = {
       type: ElementType.LIST_ITEM,
       children: [{ type: ElementType.LIST_ITEM_TEXT, children: [{ text: 'one' }, ul(li('nested'))] }],
     };
@@ -81,7 +81,7 @@ describe('withListsNormalization', () => {
   });
 
   it('flattens a block that ended up inside a list item text', () => {
-    const listItem = {
+    const listItem: Descendant = {
       type: ElementType.LIST_ITEM,
       children: [{ type: ElementType.LIST_ITEM_TEXT, children: [p('one')] }],
     };

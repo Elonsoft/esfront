@@ -6,10 +6,12 @@ import { Descendant } from 'slate';
 
 import { Editor } from './Editor';
 import { DEFAULT_LABELS, LABELS_RU } from './Editor.labels';
+import { createFakeUploader } from './fake-uploader';
 
 import { ElementType } from '../testing';
 
 import './Editor.stories.scss';
+import { Button } from '@esfront/react';
 
 const meta: Meta<typeof Editor> = {
   title: 'Editor/Editor',
@@ -91,6 +93,11 @@ const INITIAL_VALUE: Descendant[] = [
 const getLabels = (context: StoryContext<unknown>) => {
   return context.globals.locale === 'ru' ? LABELS_RU : DEFAULT_LABELS;
 };
+
+// Built once rather than per render: `withEntities` captures its options when the editor is created, so
+// a fresh uploader on every render would not be the one actually in use.
+const UPLOAD = createFakeUploader();
+const UPLOAD_FAILING = createFakeUploader({ fail: true });
 
 export const Demo: Story = {
   args: {
@@ -190,5 +197,96 @@ export const MixedNesting: Story = {
   },
   render: (args, context) => {
     return <Editor {...args} labels={getLabels(context)} />;
+  },
+};
+
+/**
+ * Attaching a file inserts a void block holding nothing but a reference. Use the toolbar button, or drop
+ * a file onto the editable.
+ *
+ * Watch the value below while it uploads. The file name and the progress never appear in it — they live
+ * in the entity store beside the document — and the value stays still until the upload finishes, at which
+ * point the whole response lands on the node — which is what lets a saved document be rendered again.
+ */
+export const Uploads: Story = {
+  args: {
+    defaultValue: [{ type: ElementType.PARAGRAPH, children: [{ text: 'Attach a file, or drop one here.' }] }],
+  },
+  render: (args, context) => {
+    const [value, setValue] = useState<Descendant[]>(args.defaultValue ?? []);
+
+    return (
+      <div>
+        <Editor {...args} labels={getLabels(context)} upload={UPLOAD} onChange={setValue} />
+        <pre className="mt-16">{JSON.stringify(value, null, 2)}</pre>
+      </div>
+    );
+  },
+};
+
+/**
+ * The same, with an uploader that always fails. The block reports the failure and offers to try again,
+ * while the value below never gains an `uploaded`: there is nothing to record until an upload succeeds.
+ */
+export const UploadFailure: Story = {
+  args: {
+    defaultValue: [{ type: ElementType.PARAGRAPH, children: [{ text: 'Attach a file to watch it fail.' }] }],
+  },
+  render: (args, context) => {
+    const [value, setValue] = useState<Descendant[]>(args.defaultValue ?? []);
+
+    return (
+      <div>
+        <Editor {...args} labels={getLabels(context)} upload={UPLOAD_FAILING} onChange={setValue} />
+        <pre className="mt-16">{JSON.stringify(value, null, 2)}</pre>
+      </div>
+    );
+  },
+};
+
+/**
+ * The round trip the arrangement exists for. Attach a file, then press the button: the value is put
+ * through `JSON.stringify` and a brand new editor is built from it, with an empty store.
+ *
+ * The file still renders, because the response is on the node and `restoreEntities` puts it back into the
+ * store on load. Nothing re-uploads, and the view reads the store either way — it never needs to know
+ * whether a file arrived this session or last.
+ */
+export const Restore: Story = {
+  args: {
+    defaultValue: [{ type: ElementType.PARAGRAPH, children: [{ text: 'Attach a file, then reload below.' }] }],
+  },
+  render: (args, context) => {
+    const [value, setValue] = useState<Descendant[]>(args.defaultValue ?? []);
+    const [loaded, setLoaded] = useState<Descendant[]>(args.defaultValue ?? []);
+    const [generation, setGeneration] = useState(0);
+
+    return (
+      <div>
+        {/* A new key builds a new editor, and with it a new store — the same as a page load. */}
+        <Editor
+          {...args}
+          key={generation}
+          defaultValue={loaded}
+          labels={getLabels(context)}
+          upload={UPLOAD}
+          onChange={setValue}
+        />
+
+        <Button
+          className="mt-16"
+          size="400"
+          variant="outlined"
+          onClick={() => {
+            setLoaded(JSON.parse(JSON.stringify(value)) as Descendant[]);
+            setGeneration((previous) => previous + 1);
+          }}
+        >
+          Save and reload
+        </Button>
+
+        <pre className="mt-16">{JSON.stringify(value, null, 2)}</pre>
+      </div>
+    );
   },
 };
