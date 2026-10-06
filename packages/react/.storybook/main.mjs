@@ -20,6 +20,10 @@ export default {
       files: '**/*.stories.tsx',
       titlePrefix: 'Components',
     },
+    // `@esfront/editor` has no Storybook of its own, so its demo is picked up from there. Its docs
+    // page lives in `src/documentation` instead: the import MDX compiles to cannot be resolved from
+    // outside this workspace.
+    '../../editor/src/demo/**/*.stories.tsx',
   ],
 
   staticDirs: ['./assets'],

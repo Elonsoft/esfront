@@ -1,62 +1,75 @@
-import { LinksSchema } from './links.types';
-
-import { Editor, Element, Node, Transforms } from 'slate';
+import { Editor, Element, Node, Text } from 'slate';
+import { DOMEditor } from 'slate-dom';
 
 import { LinksEditor } from './links.editor';
 import * as Registry from './links.registry';
-import { isValidHttpUrl } from './utils';
+import type { LinksSchema } from './links.types';
+import { isValidHttpUrl, linkifyBeforeCursor } from './utils';
 
 import { BaseEditor } from '../base';
 
-export const withLinks = (schema: LinksSchema) => (editor: Editor) => {
-  Registry.register(editor, schema);
+/**
+ * Links are inlines, and pasting one relies on `insertData`, so the plugin expects an editor that
+ * is attached to the DOM.
+ */
+export const withLinks =
+  (schema: LinksSchema) =>
+  <T extends Editor & Pick<DOMEditor, 'insertData'>>(editor: T) => {
+    Registry.register(editor, schema);
 
-  const { insertData, insertText, isInline, normalizeNode } = editor;
+    const { insertData, insertText, isInline, normalizeNode } = editor;
 
-  editor.isInline = (element) => schema.isLinkNode(element) || isInline(element);
+    editor.isInline = (element) => schema.isLinkNode(element) || isInline(element);
 
-  editor.insertText = (text) => {
-    if (text && isValidHttpUrl(text)) {
-      LinksEditor.wrapLink(editor, text);
-    } else {
-      insertText(text);
-    }
-  };
+    editor.insertText = (text, options) => {
+      insertText(text, options);
 
-  editor.insertData = (data) => {
-    const text = data.getData('text/plain');
+      if (/\s/.test(text)) {
+        linkifyBeforeCursor(editor);
+      }
+    };
 
-    if (text && isValidHttpUrl(text)) {
-      LinksEditor.wrapLink(editor, text);
-    } else {
+    editor.insertData = (data) => {
+      const text = data.getData('text/plain');
+
+      if (text && isValidHttpUrl(text)) {
+        LinksEditor.wrapLink(editor, text);
+        return;
+      }
+
       insertData(data);
-    }
-  };
+    };
 
-  editor.normalizeNode = (entry) => {
-    const [node, path] = entry;
+    editor.normalizeNode = (entry, options) => {
+      const [node, path] = entry;
 
-    if (Element.isElement(node) && BaseEditor.isDefaultTextNode(editor, node)) {
-      const children = Array.from(Node.children(editor, path));
+      if (Element.isElement(node) && BaseEditor.isDefaultTextNode(editor, node)) {
+        const children = Array.from(Node.children(editor, path));
 
-      for (const [child, childPath] of children) {
-        // Remove link nodes whose text value is empty string.
-        // Empty text links happen when you move from link to next line or delete link line.
-        if (Element.isElement(child) && schema.isLinkNode(child) && child.children[0].text === '') {
-          if (children.length === 1) {
-            Transforms.removeNodes(editor, { at: path });
-            Transforms.insertNodes(editor, BaseEditor.createDefaultTextNode(editor));
-          } else {
-            Transforms.removeNodes(editor, { at: childPath });
+        for (const [child, childPath] of children) {
+          if (!Element.isElement(child) || !schema.isLinkNode(child)) {
+            continue;
           }
 
-          return;
+          const [first] = child.children;
+
+          // Remove link nodes whose text value is an empty string. Empty text links happen when you
+          // move from a link to the next line or delete a link line.
+          if (Text.isText(first) && first.text === '') {
+            if (children.length === 1) {
+              editor.removeNodes({ at: path });
+              editor.insertNodes(BaseEditor.createDefaultTextNode(editor));
+            } else {
+              editor.removeNodes({ at: childPath });
+            }
+
+            return;
+          }
         }
       }
-    }
 
-    normalizeNode(entry);
+      normalizeNode(entry, options);
+    };
+
+    return editor;
   };
-
-  return editor;
-};

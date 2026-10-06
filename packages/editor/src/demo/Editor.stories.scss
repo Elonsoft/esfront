@@ -1,0 +1,29 @@
+.es-editor-demo {
+  &__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__link {
+    align-items: flex-end;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__editable {
+    border: 1px solid var(--es-mono-a-a200);
+    border-radius: 8px;
+    padding: 12px;
+
+    &:focus {
+      outline: none;
+    }
+
+    a {
+      color: var(--es-common-link);
+    }
+  }
+}

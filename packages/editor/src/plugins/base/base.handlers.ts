@@ -1,37 +1,54 @@
 import { KeyboardEvent, KeyboardEventHandler } from 'react';
 
-import { Editor, Element, Node, Transforms } from 'slate';
+import { Editor, Element, Path, Range } from 'slate';
 
 import { BaseEditor } from './base.editor';
 
-export const onBaseKeyDown = (editor: Editor, func: KeyboardEventHandler<HTMLElement>) => {
+import { setElementType } from '../../utils';
+
+/**
+ * Handles `Enter` within a text block: `Shift+Enter` inserts a soft break, `Enter` starts a new
+ * default text node, so that pressing it at the end of a heading does not produce another heading.
+ */
+export const onBaseKeyDown = (editor: Editor, next: KeyboardEventHandler<HTMLElement>) => {
   return (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key === 'Enter') {
+    const { selection } = editor;
+
+    if (event.key === 'Enter' && selection && Range.isCollapsed(selection)) {
       if (event.shiftKey) {
         event.preventDefault();
         editor.insertText('\n');
         return;
       }
 
-      if (editor.selection) {
-        const descendant = Node.descendant(editor, editor.selection.anchor.path.slice(0, -1));
+      const block = editor.above<Element>({
+        match: (node) => {
+          return BaseEditor.isTextBlock(editor, node);
+        },
+      });
 
-        if (Element.isElement(descendant)) {
-          event.preventDefault();
-          const leaf = Node.descendant(editor, editor.selection.anchor.path);
+      if (block) {
+        const [, blockPath] = block;
 
-          if (leaf.text.length === editor.selection.anchor.offset) {
-            Transforms.insertNodes(editor, BaseEditor.createDefaultTextNode(editor));
-          } else {
-            Transforms.splitNodes(editor);
-            Transforms.setNodes(editor, { type: BaseEditor.getDefaultTextNodeType(editor) });
-          }
+        event.preventDefault();
 
-          return;
+        if (Editor.isEnd(editor, selection.anchor, blockPath)) {
+          editor.insertNodes(BaseEditor.createDefaultTextNode(editor));
+        } else {
+          editor.splitNodes({
+            at: selection.anchor,
+            match: (node) => {
+              return BaseEditor.isTextBlock(editor, node);
+            },
+          });
+
+          setElementType(editor, BaseEditor.getDefaultTextNodeType(editor), { at: Path.next(blockPath) });
         }
+
+        return;
       }
     }
 
-    func(event);
+    next(event);
   };
 };

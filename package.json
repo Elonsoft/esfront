@@ -22,7 +22,7 @@
     "prettier:write": "prettier --write .",
     "stylelint": "stylelint '**/*.{css,scss}'",
     "cspell": "cspell --no-progress .",
-    "depcruise": "depcruise packages/react/src",
+    "depcruise": "depcruise packages/editor/src packages/react/src",
     "husky": "husky install",
     "release": "lerna version --no-push"
   },

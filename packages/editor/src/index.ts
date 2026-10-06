@@ -1,2 +1,2 @@
-export * from './EntityState';
 export * from './plugins';
+export * from './utils';

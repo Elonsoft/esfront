@@ -1,8 +1,12 @@
+/**
+ * Checks whether the string is an `http` or `https` url.
+ */
 export const isValidHttpUrl = (url: string) => {
   try {
-    const u = new URL(url);
-    return u.protocol === 'http:' || u.protocol === 'https:';
-  } catch (_) {
+    const { protocol } = new URL(url);
+
+    return protocol === 'http:' || protocol === 'https:';
+  } catch {
     return false;
   }
 };
