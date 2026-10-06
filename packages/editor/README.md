@@ -116,7 +116,8 @@ several passes.
 
 ### Editors
 
-`BaseEditor`, `LinksEditor` and `ListsEditor` are namespaces of helpers that take the editor as their first argument.
+`BaseEditor`, `BlocksEditor`, `LinksEditor` and `ListsEditor` are namespaces of helpers that take the editor as their
+first argument.
 
 Note that `BaseEditor` is unrelated to slate's own `BaseEditor` type, which is why the snippets above import the latter
 under an alias.
@@ -128,8 +129,92 @@ BaseEditor.toggleMark(editor, 'bold');
 ListsEditor.toggleList(editor, 'ul');
 ```
 
+Every helper that reads or changes blocks takes an optional location as its last argument and falls back to the current
+selection. Pass one when the action comes from somewhere other than the caret — a drag handle on a hovered block, for
+instance, whose path comes from `ReactEditor.findPath`.
+
+```ts
+BaseEditor.toggleBlock(editor, 'h2', ReactEditor.findPath(editor, element));
+```
+
 `BaseEditor.toggleBlock` and `BaseEditor.getTextBlocks` only consider top level blocks. The text of a list item is left
-alone on purpose: changing its type would break the structure the lists plugin expects.
+alone on purpose: changing its type would break the structure the lists plugin expects — use `BlocksEditor.setBlock`,
+which handles the list case properly.
+
+### Marks
+
+A mark does not have to be on or off. One that holds a value — a color, say — is read with `getMarkValue` and switched
+by passing the value along:
+
+```ts
+BaseEditor.toggleMark(editor, 'bold'); // on or off
+BaseEditor.toggleMark(editor, 'color', 'red'); // switches to red, or clears red
+BaseEditor.getMarkValue(editor, 'color'); // 'red'
+BaseEditor.isMarkActive(editor, 'color', 'red'); // true
+```
+
+Toggling a different value replaces it; only toggling the value that is already applied clears the mark. `setMark` and
+`removeMark` are there for the cases that should not toggle.
+
+Marks take no location argument: slate resolves them against the selection alone.
+
+### Blocks
+
+`BlocksEditor` works on whole blocks, i.e. the direct children of the editor, which is the unit a block based interface
+moves and duplicates. A list counts as one block, however many items it holds.
+
+| Helper                                | What it does                                                             |
+| ------------------------------------- | ------------------------------------------------------------------------ |
+| `getBlocks(editor, at?)`              | The top level blocks within the location.                                |
+| `getPositionAfterBlocks(editor, at?)` | Where a block inserted from those blocks belongs.                        |
+| `findBlockById(editor, id)`           | The block carrying the id `withNodeId` gave it.                          |
+| `setBlock(editor, type, at?)`         | Converts blocks to a type, across the list divide in either direction.   |
+| `insertBlock(editor, block, at?)`     | Inserts a block and moves the caret into it.                             |
+| `removeBlocks(editor, at?)`           | Removes blocks, leaving a default text node if the document would empty. |
+| `duplicateBlocks(editor, at?)`        | Inserts a copy of each block right after them.                           |
+| `moveBlocksUp(editor, at?)`           | Moves blocks one position up.                                            |
+| `moveBlocksDown(editor, at?)`         | Moves blocks one position down.                                          |
+| `moveBlockToIndex(editor, id, index)` | Moves a block by id to a top level index, for drag and drop.             |
+
+`setBlock` is the "turn this block into that" primitive a block menu is built from. A list is not a type a block can be
+set to — it is a structure the block gets wrapped in or lifted out of — so the conversion routes through the lists
+transforms in both directions, and works whether the target type is a list or not.
+
+Converting to or out of a list needs `withLists`, because the lists schema is the only thing that knows which types are
+lists. Without it every type is treated as a plain block type, so asking for a list sets the type literally and leaves a
+list node holding text instead of list items. Everything else in `BlocksEditor` works on an editor without the lists
+plugin.
+
+Drag and drop works in ids rather than paths, because a path stops referring to the same node as soon as anything above
+it moves:
+
+```ts
+BlocksEditor.moveBlockToIndex(editor, activeId, overIndex);
+```
+
+`duplicateBlocks` deep clones, and `withNodeId` gives each inserted block a fresh id — but nodes nested inside keep the
+ids they were cloned with, so an application that puts ids on nested nodes has to replace them itself.
+
+### Placeholders
+
+`createPlaceholderDecorate` builds a `decorate` function that marks empty blocks, which is how a block gets a prompt of
+its own rather than one placeholder for the whole editor:
+
+```tsx
+const decorate = createPlaceholderDecorate(editor, {
+  getPlaceholder: ({ node, isCursorInside }) =>
+    node.type === 'paragraph' ? (isCursorInside ? 'Type something' : undefined) : node.type,
+});
+
+<Editable decorate={decorate} renderLeaf={renderLeaf} />;
+```
+
+The decoration sets a `placeholder` property on the leaf at the start of the block, which `renderLeaf` renders however
+it likes — usually an absolutely positioned span that is not editable. Pass `key` to use a different property name.
+
+Only blocks that hold text directly are considered: a list is empty by the same measure, but its path is not a position
+a decoration can sit at. `isCursorInside` is what keeps a prompt on every empty paragraph of a document from showing at
+once.
 
 The lists transforms come in two tiers. The location based ones act on everything the selection covers and are what a
 toolbar or a key handler should call; the path based ones act on one list item and are the building blocks underneath.
@@ -182,6 +267,16 @@ const onKeyDown = composeKeyDown(editor, [onListsKeyDown, onBaseKeyDown]);
 `Backspace` is claimed only where deleting backward would break the list structure, which
 `ListsEditor.isDeleteBackwardAllowed` decides. At the start of a list item the merge would pull the item's text into the
 enclosing list, so the key outdents instead.
+
+### Node ids
+
+`withNodeId` assigns a UUID to every block it inserts. `createNodeId` is the generator behind it, for the nodes an
+application builds itself — an initial value, or a document loaded from storage, neither of which goes through an insert
+operation. `getNodeId` reads one back without the application having to declare `id` on its element types.
+
+```ts
+import { createNodeId, getNodeId } from '@esfront/editor';
+```
 
 ## Serialization
 

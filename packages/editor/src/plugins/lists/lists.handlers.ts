@@ -2,7 +2,7 @@ import { KeyboardEvent, KeyboardEventHandler } from 'react';
 
 import { Editor } from 'slate';
 
-import { isAtEmptyListItem, isAtStartOfListItem, isDeleteBackwardAllowed, isInList } from './checks';
+import { isAtEmptyListItem, isAtStartOfListItem, isDeleteBackwardAllowed, isInList, isListsEnabled } from './checks';
 import { decreaseDepth, increaseDepth, splitListItem } from './transforms';
 
 /**
@@ -15,7 +15,10 @@ import { decreaseDepth, increaseDepth, splitListItem } from './transforms';
  */
 export const onListsKeyDown = (editor: Editor, next: KeyboardEventHandler<HTMLElement>) => {
   return (event: KeyboardEvent<HTMLElement>) => {
-    if (!editor.selection || !isInList(editor)) {
+    // Every check below reaches for the lists schema, which throws when the plugin is not registered.
+    // The handler composes into a chain, so an editor without lists has to fall through rather than
+    // take the whole chain down with it.
+    if (!isListsEnabled(editor) || !editor.selection || !isInList(editor)) {
       next(event);
       return;
     }

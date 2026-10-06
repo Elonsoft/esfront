@@ -3,28 +3,24 @@ import { p } from '../../testing';
 import { createEditor, Editor } from 'slate';
 
 import { withNodeId } from './ids';
-import { getNodeId } from './utils';
+import { createNodeId, getNodeId } from './utils';
 
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 
-const idOf = (node: unknown) => {
-  return (node as { id?: unknown }).id;
-};
-
-describe('getNodeId', () => {
+describe('createNodeId', () => {
   afterEach(() => {
     vi.unstubAllGlobals();
   });
 
   it('returns a v4 UUID', () => {
-    expect(getNodeId()).toMatch(UUID);
+    expect(createNodeId()).toMatch(UUID);
   });
 
   // A counter would restart on every load and reissue ids the saved document already carries.
   it('does not repeat itself', () => {
-    const ids = new Set(Array.from({ length: 1000 }, getNodeId));
+    const ids = new Set(Array.from({ length: 1000 }, createNodeId));
 
     expect(ids.size).toBe(1000);
   });
@@ -36,14 +32,14 @@ describe('getNodeId', () => {
 
     vi.stubGlobal('crypto', { getRandomValues });
 
-    expect(getNodeId()).toBe('07070707-0707-4707-8707-070707070707');
+    expect(createNodeId()).toBe('07070707-0707-4707-8707-070707070707');
     expect(getRandomValues).toHaveBeenCalled();
   });
 
   it('falls back to Math.random when there is no web crypto', () => {
     vi.stubGlobal('crypto', undefined);
 
-    const ids = new Set(Array.from({ length: 1000 }, getNodeId));
+    const ids = new Set(Array.from({ length: 1000 }, createNodeId));
 
     expect(Array.from(ids).every((id) => UUID.test(id))).toBe(true);
     expect(ids.size).toBe(1000);
@@ -57,7 +53,7 @@ describe('withNodeId', () => {
     editor.children = [];
     editor.insertNodes(p('one'), { at: [0] });
 
-    expect(idOf(editor.children[0])).toMatch(UUID);
+    expect(getNodeId(editor.children[0])).toMatch(UUID);
   });
 
   it('gives two inserted blocks different ids', () => {
@@ -67,7 +63,7 @@ describe('withNodeId', () => {
     editor.insertNodes(p('one'), { at: [0] });
     editor.insertNodes(p('two'), { at: [1] });
 
-    expect(idOf(editor.children[0])).not.toBe(idOf(editor.children[1]));
+    expect(getNodeId(editor.children[0])).not.toBe(getNodeId(editor.children[1]));
   });
 
   it('leaves the ids of existing nodes alone', () => {
@@ -80,6 +76,6 @@ describe('withNodeId', () => {
     editor.children = [existing];
     Editor.normalize(editor, { force: true });
 
-    expect(idOf(editor.children[0])).toBe('kept');
+    expect(getNodeId(editor.children[0])).toBe('kept');
   });
 });

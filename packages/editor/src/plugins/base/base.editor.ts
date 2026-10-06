@@ -1,4 +1,4 @@
-import { Editor, Element, Node, NodeEntry, Path, Point, Range, Span } from 'slate';
+import { Editor, Element, Location, Node, NodeEntry, Path, Point, Range, Span } from 'slate';
 
 import * as Registry from './base.registry';
 import type { BaseSchema } from './base.types';
@@ -96,7 +96,7 @@ export const BaseEditor = {
    * Checks whether the node is a block that holds text directly, i.e. every child is either a
    * text node or an inline element. Containers such as lists and list items are not text blocks.
    */
-  isTextBlock: (editor: Editor, node: Node) => {
+  isTextBlock: (editor: Editor, node: Node): node is Element => {
     if (!Element.isElement(node) || editor.isInline(node) || editor.isVoid(node)) {
       return false;
     }
@@ -107,21 +107,19 @@ export const BaseEditor = {
   },
 
   /**
-   * Returns the top level text blocks within the current selection.
+   * Returns the top level text blocks within the location, defaulting to the current selection.
    *
    * Nested text blocks, such as the text of a list item, are deliberately left out: changing
    * their type would break the structure the owning plugin expects.
    */
-  getTextBlocks: (editor: Editor): NodeEntry<Element>[] => {
-    const { selection } = editor;
-
-    if (!selection) {
+  getTextBlocks: (editor: Editor, at: Location | null = editor.selection): NodeEntry<Element>[] => {
+    if (!at) {
       return [];
     }
 
     return Array.from(
       editor.nodes<Element>({
-        at: Editor.unhangRange(editor, selection),
+        at: Range.isRange(at) ? Editor.unhangRange(editor, at) : at,
         match: (node, path) => {
           return path.length === 1 && BaseEditor.isTextBlock(editor, node);
         },
@@ -130,10 +128,10 @@ export const BaseEditor = {
   },
 
   /**
-   * Checks whether every top level text block within the selection is of the given type.
+   * Checks whether every top level text block within the location is of the given type.
    */
-  isBlockActive: (editor: Editor, type: string) => {
-    const blocks = BaseEditor.getTextBlocks(editor);
+  isBlockActive: (editor: Editor, type: string, at: Location | null = editor.selection) => {
+    const blocks = BaseEditor.getTextBlocks(editor, at);
 
     return (
       blocks.length > 0 &&
@@ -144,15 +142,28 @@ export const BaseEditor = {
   },
 
   /**
-   * Checks whether the given mark is applied to the text at the current selection.
+   * Returns the value of the given mark on the text at the current selection, or `undefined` when
+   * the mark is not applied.
+   *
+   * Marks take no location: slate resolves them against the selection alone.
    */
-  isMarkActive: (editor: Editor, mark: string) => {
+  getMarkValue: (editor: Editor, mark: string) => {
     // `Editor.marks(editor)`, not `editor.marks`: the latter is the stored set of marks waiting to be
     // applied to the next inserted text, which is null most of the time, while the former is the
     // marks the text at the selection actually carries.
     const marks = Editor.marks(editor);
 
-    return marks ? (marks as Record<string, unknown>)[mark] === true : false;
+    return marks ? (marks as Record<string, unknown>)[mark] : undefined;
+  },
+
+  /**
+   * Checks whether the given mark is applied to the text at the current selection.
+   *
+   * A mark may hold a value rather than only be on or off — a color, for instance — in which case
+   * pass the value to compare against. The default of `true` is what a plain on/off mark carries.
+   */
+  isMarkActive: (editor: Editor, mark: string, value: unknown = true) => {
+    return BaseEditor.getMarkValue(editor, mark) === value;
   },
 
   // Transformations
@@ -164,17 +175,17 @@ export const BaseEditor = {
   },
 
   /**
-   * Changes the type of every top level text block within the selection to the given type, or
-   * back to the default text node type when they already are of that type.
+   * Changes the type of every top level text block within the location to the given type, or back to
+   * the default text node type when they already are of that type.
    */
-  toggleBlock: (editor: Editor, type: string) => {
-    const blocks = BaseEditor.getTextBlocks(editor);
+  toggleBlock: (editor: Editor, type: string, at: Location | null = editor.selection) => {
+    const blocks = BaseEditor.getTextBlocks(editor, at);
 
     if (!blocks.length) {
       return;
     }
 
-    const nextType = BaseEditor.isBlockActive(editor, type) ? schema(editor).getDefaultTextNodeType() : type;
+    const nextType = BaseEditor.isBlockActive(editor, type, at) ? schema(editor).getDefaultTextNodeType() : type;
 
     editor.withoutNormalizing(() => {
       for (const [, path] of blocks) {
@@ -183,11 +194,32 @@ export const BaseEditor = {
     });
   },
 
-  toggleMark: (editor: Editor, mark: string) => {
-    if (BaseEditor.isMarkActive(editor, mark)) {
-      editor.removeMark(mark);
+  /**
+   * Applies the given mark to the text at the current selection.
+   */
+  setMark: (editor: Editor, mark: string, value: unknown = true) => {
+    editor.addMark(mark, value);
+  },
+
+  /**
+   * Removes the given mark from the text at the current selection.
+   */
+  removeMark: (editor: Editor, mark: string) => {
+    editor.removeMark(mark);
+  },
+
+  /**
+   * Applies the given mark to the text at the current selection, or removes it when that exact value
+   * is already applied.
+   *
+   * Passing a value is how a mark that holds one — a color, for instance — is switched from one
+   * value to another: only a second toggle of the same value clears it.
+   */
+  toggleMark: (editor: Editor, mark: string, value: unknown = true) => {
+    if (BaseEditor.isMarkActive(editor, mark, value)) {
+      BaseEditor.removeMark(editor, mark);
     } else {
-      editor.addMark(mark, true);
+      BaseEditor.setMark(editor, mark, value);
     }
   },
 };

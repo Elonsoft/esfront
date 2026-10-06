@@ -1,6 +1,6 @@
 import { Editor, Element } from 'slate';
 
-import { getNodeId } from './utils';
+import { createNodeId } from './utils';
 
 // `Element` carries no `id` in its base shape, so the property is attached through a cast. An
 // application that wants to read the id declares it on its own element types.
@@ -20,13 +20,13 @@ export const withNodeId = <T extends Editor>(editor: T) => {
 
   editor.apply = (operation) => {
     if (operation.type === 'insert_node' && Element.isElement(operation.node) && !editor.isInline(operation.node)) {
-      apply({ ...operation, node: withId(operation.node, getNodeId()) });
+      apply({ ...operation, node: withId(operation.node, createNodeId()) });
       return;
     }
 
     // A split produces a second node that would otherwise carry the id of the first one.
     if (operation.type === 'split_node' && 'id' in operation.properties) {
-      apply({ ...operation, properties: withId(operation.properties, getNodeId()) });
+      apply({ ...operation, properties: withId(operation.properties, createNodeId()) });
       return;
     }
 

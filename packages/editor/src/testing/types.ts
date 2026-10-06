@@ -53,6 +53,10 @@ export type EditorText = {
   italic?: boolean;
   underline?: boolean;
   lineThrough?: boolean;
+  // A mark does not have to be on or off; these hold a value, which is what `getMarkValue` and the
+  // `value` argument of `toggleMark` exist for.
+  color?: string;
+  backgroundColor?: string;
 };
 
 // Slate resolves `Element` and `Text` through module augmentation, so the document shape can only

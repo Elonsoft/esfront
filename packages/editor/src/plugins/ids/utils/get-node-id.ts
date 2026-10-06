@@ -1,3 +1,5 @@
+import { Node } from 'slate';
+
 const BYTE_LENGTH = 16;
 const BYTE_VALUES = 256;
 
@@ -38,7 +40,7 @@ const toHex = (bytes: Uint8Array) => {
  * Falls back from `crypto.randomUUID`, which needs a secure context, to `crypto.getRandomValues`,
  * which does not, and finally to `Math.random` where there is no web crypto at all.
  */
-export const getNodeId = () => {
+export const createNodeId = () => {
   const webCrypto = getCrypto();
 
   if (typeof webCrypto?.randomUUID === 'function') {
@@ -54,4 +56,16 @@ export const getNodeId = () => {
   const hex = toHex(bytes);
 
   return [hex.slice(0, 8), hex.slice(8, 12), hex.slice(12, 16), hex.slice(16, 20), hex.slice(20)].join('-');
+};
+
+/**
+ * Returns the id {@link withNodeId} assigned to the node, or `undefined` when it has none.
+ *
+ * Reading it through this helper means an application does not have to declare `id` on its element
+ * types just to look a node up by it.
+ */
+export const getNodeId = (node: Node): string | undefined => {
+  const { id } = node as Node & Record<'id', unknown>;
+
+  return typeof id === 'string' ? id : undefined;
 };

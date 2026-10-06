@@ -2,6 +2,7 @@ import { Descendant, Path, Point, Range } from 'slate';
 
 import {
   ElementType,
+  HeadingElement,
   ListItemElement,
   ListItemTextElement,
   OrderedListElement,
@@ -15,7 +16,7 @@ export const p = (text = ''): ParagraphElement => {
 };
 
 /** Builds a heading, which the test schema reports as convertible to a list item text. */
-export const h2 = (text = ''): Descendant => {
+export const h2 = (text = ''): HeadingElement => {
   return { type: ElementType.H2, children: [{ text }] };
 };
 
@@ -40,6 +41,14 @@ export const ul = (...children: Descendant[]): UnorderedListElement => {
 /** Builds an ordered list. */
 export const ol = (...children: Descendant[]): OrderedListElement => {
   return { type: ElementType.ORDERED_LIST, children };
+};
+
+/**
+ * Attaches an id to a node the way `withNodeId` does, for tests that look a block up by it. The id is
+ * not declared on the test element types, so it goes on through a cast.
+ */
+export const withId = <T extends Descendant>(node: T, id: string): T => {
+  return { ...node, id } as T;
 };
 
 /** Builds a point. */
