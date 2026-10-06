@@ -1,9 +1,7 @@
-import { p } from '../../testing';
-
 import { createEditor, Editor } from 'slate';
 
-import { withNodeId } from './ids';
-import { createNodeId, getNodeId } from './utils';
+import { createNodeId, getNodeId, withNodeId } from '../src';
+import { p } from '../src/testing';
 
 import { afterEach, describe, expect, it, vi } from 'vitest';
 

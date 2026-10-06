@@ -5,14 +5,5 @@
     "declarationDir": "lib",
     "rootDir": "src"
   },
-  "exclude": [
-    "node_modules",
-    "../../node_modules",
-    "lib",
-    "./*.js",
-    "./*.ts",
-    "src/demo",
-    "src/testing",
-    "src/**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "../../node_modules", "lib", "./*.js", "./*.ts", "src/demo", "src/testing", "tests"]
 }

@@ -2,7 +2,7 @@ import { KeyboardEvent, KeyboardEventHandler } from 'react';
 
 import { Editor, Element, Path, Range } from 'slate';
 
-import { BaseEditor } from './base.editor';
+import { createDefaultTextNode, getDefaultTextNodeType, isTextBlock } from './checks';
 
 import { setElementType } from '../../utils';
 
@@ -23,7 +23,7 @@ export const onBaseKeyDown = (editor: Editor, next: KeyboardEventHandler<HTMLEle
 
       const block = editor.above<Element>({
         match: (node) => {
-          return BaseEditor.isTextBlock(editor, node);
+          return isTextBlock(editor, node);
         },
       });
 
@@ -33,16 +33,16 @@ export const onBaseKeyDown = (editor: Editor, next: KeyboardEventHandler<HTMLEle
         event.preventDefault();
 
         if (Editor.isEnd(editor, selection.anchor, blockPath)) {
-          editor.insertNodes(BaseEditor.createDefaultTextNode(editor));
+          editor.insertNodes(createDefaultTextNode(editor));
         } else {
           editor.splitNodes({
             at: selection.anchor,
             match: (node) => {
-              return BaseEditor.isTextBlock(editor, node);
+              return isTextBlock(editor, node);
             },
           });
 
-          setElementType(editor, BaseEditor.getDefaultTextNodeType(editor), { at: Path.next(blockPath) });
+          setElementType(editor, getDefaultTextNodeType(editor), { at: Path.next(blockPath) });
         }
 
         return;

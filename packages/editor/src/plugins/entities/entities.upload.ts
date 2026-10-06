@@ -1,7 +1,8 @@
 import { Editor, Element } from 'slate';
 import { HistoryEditor } from 'slate-history';
 
-import { createUploadedProps, findEntityNode, getEntitiesOptions, getEntityStore } from './checks';
+import { findEntityNode, getEntityStore } from './checks';
+import { createUploadedProps, getEntitiesOptions } from './entities.options';
 import type { EntityState } from './entities.types';
 
 const DEFAULT_CONCURRENCY = 3;
@@ -26,10 +27,6 @@ const getQueue = (editor: Editor): Queue => {
   }
 
   return queue;
-};
-
-const isHistoryEditor = (editor: Editor): editor is Editor & HistoryEditor => {
-  return 'history' in editor && 'undo' in editor;
 };
 
 const patch = <TPayload>(editor: Editor, entityId: string, changes: Partial<EntityState<TPayload>>) => {
@@ -65,7 +62,7 @@ const writeUploadedProps = <TPayload>(editor: Editor, entityId: string, payload:
     editor.setNodes<Element>(props, { at: entry[1] });
   };
 
-  if (isHistoryEditor(editor)) {
+  if (HistoryEditor.isHistoryEditor(editor)) {
     HistoryEditor.withoutSaving(editor, write);
   } else {
     write();

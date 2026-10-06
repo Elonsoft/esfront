@@ -166,7 +166,7 @@ BaseEditor.getMarkValue(editor, 'color'); // 'red'
 BaseEditor.isMarkActive(editor, 'color', 'red'); // true
 ```
 
-Toggling a different value replaces it; only toggling the value that is already applied clears the mark. `setMark` and
+Toggling a different value replaces it; only toggling the value that is already applied clears the mark. `addMark` and
 `removeMark` are there for the cases that should not toggle.
 
 Marks take no location argument: slate resolves them against the selection alone.

@@ -1,9 +1,9 @@
 import { Editor, Element, Node, Text } from 'slate';
 import { DOMEditor } from 'slate-dom';
 
-import { LinksEditor } from './links.editor';
 import * as Registry from './links.registry';
 import type { LinksSchema } from './links.types';
+import { wrapLink } from './transforms';
 import { isValidHttpUrl, linkifyBeforeCursor } from './utils';
 
 import { BaseEditor } from '../base';
@@ -33,7 +33,7 @@ export const withLinks =
       const text = data.getData('text/plain');
 
       if (text && isValidHttpUrl(text)) {
-        LinksEditor.wrapLink(editor, text);
+        wrapLink(editor, text);
         return;
       }
 

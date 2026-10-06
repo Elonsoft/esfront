@@ -1,8 +1,7 @@
 import { KeyboardEvent } from 'react';
 
-import { createBaseTestEditor, createTestEditor, cursor, li, p, ul } from '../../testing';
-
-import { onListsKeyDown } from './lists.handlers';
+import { onListsKeyDown } from '../src';
+import { createBaseTestEditor, createTestEditor, cursor, li, p, ul } from '../src/testing';
 
 import { describe, expect, it, vi } from 'vitest';
 

@@ -8,20 +8,4 @@ import * as transforms from './transforms';
  * every structure a block can be: `setBlock` converts between lists and text blocks, which neither
  * plugin can do on its own.
  */
-export const BlocksEditor = {
-  // Checks & Getters
-
-  getBlocks: checks.getBlocks,
-  getPositionAfterBlocks: checks.getPositionAfterBlocks,
-  findBlockById: checks.findBlockById,
-
-  // Transformations
-
-  setBlock: transforms.setBlock,
-  insertBlock: transforms.insertBlock,
-  removeBlocks: transforms.removeBlocks,
-  duplicateBlocks: transforms.duplicateBlocks,
-  moveBlocksUp: transforms.moveBlocksUp,
-  moveBlocksDown: transforms.moveBlocksDown,
-  moveBlockToIndex: transforms.moveBlockToIndex,
-};
+export const BlocksEditor = { ...checks, ...transforms };

@@ -1,6 +1,6 @@
 import { Descendant, Editor } from 'slate';
 
-import { createTestEditor, ElementType, li, lic, ol, p, ul } from '../../../testing';
+import { createTestEditor, ElementType, li, lic, ol, p, ul } from '../src/testing';
 
 import { describe, expect, it } from 'vitest';
 

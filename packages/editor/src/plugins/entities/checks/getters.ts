@@ -26,23 +26,18 @@ export const getEntityId = (node: Node): string | undefined => {
 export const getEntityIdsIn = (editor: Editor, node: Node): string[] => {
   const ids: string[] = [];
 
-  const visit = (current: Node) => {
-    if (!Element.isElement(current)) {
-      return;
+  // Includes the node itself when it is an element, and yields nothing at all for a text node.
+  for (const [element] of Node.elements(node)) {
+    if (!isEntityNode(editor, element)) {
+      continue;
     }
 
-    if (isEntityNode(editor, current)) {
-      const entityId = getEntityId(current);
+    const entityId = getEntityId(element);
 
-      if (entityId !== undefined) {
-        ids.push(entityId);
-      }
+    if (entityId !== undefined) {
+      ids.push(entityId);
     }
-
-    current.children.forEach(visit);
-  };
-
-  visit(node);
+  }
 
   return ids;
 };

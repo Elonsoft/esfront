@@ -2,7 +2,8 @@ import { Editor, Range, Text } from 'slate';
 
 import { isValidHttpUrl } from './is-valid-http-url';
 
-import { LinksEditor } from '../links.editor';
+import { getLink } from '../checks';
+import { wrapLink } from '../transforms';
 
 const WORD_BEFORE_CURSOR = /(\S+)\s$/;
 
@@ -15,7 +16,7 @@ const WORD_BEFORE_CURSOR = /(\S+)\s$/;
 export const linkifyBeforeCursor = (editor: Editor) => {
   const { selection } = editor;
 
-  if (!selection || !Range.isCollapsed(selection) || LinksEditor.getLink(editor)) {
+  if (!selection || !Range.isCollapsed(selection) || getLink(editor)) {
     return;
   }
 
@@ -33,7 +34,7 @@ export const linkifyBeforeCursor = (editor: Editor) => {
 
   const offset = selection.anchor.offset - match[0].length;
 
-  LinksEditor.wrapLink(editor, match[1], {
+  wrapLink(editor, match[1], {
     anchor: { path, offset },
     focus: { path, offset: offset + match[1].length },
   });

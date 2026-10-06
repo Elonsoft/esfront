@@ -1,29 +1,20 @@
-import { EntitiesOptions } from './entities.types';
-
 import { Editor } from 'slate';
 
-const EDITOR_ENTITIES_OPTIONS = new WeakMap<Editor, EntitiesOptions<never>>();
+import type { EntitiesOptions } from './entities.types';
+
+import { createSchemaRegistry } from '../../utils';
+
+// The payload type cannot be stored, because one registry holds the options of every editor and each of
+// them may have been given a different one. It is erased on the way in and restored on the way out, so
+// the generics below are the whole reason this is not the plain registry the other plugins use.
+const registry = createSchemaRegistry<EntitiesOptions<never>>({ schema: 'Entities' });
+
+export const { unregister, has } = registry;
 
 export function register<T>(editor: Editor, options: EntitiesOptions<T>): void {
-  EDITOR_ENTITIES_OPTIONS.set(editor, options as EntitiesOptions<never>);
-}
-
-export function unregister(editor: Editor): void {
-  EDITOR_ENTITIES_OPTIONS.delete(editor);
-}
-
-export function has(editor: Editor) {
-  return EDITOR_ENTITIES_OPTIONS.has(editor);
+  registry.register(editor, options as EntitiesOptions<never>);
 }
 
 export function get<T>(editor: Editor): EntitiesOptions<T> {
-  const options = EDITOR_ENTITIES_OPTIONS.get(editor);
-
-  if (!options) {
-    throw new Error(
-      'This editor instance does not have an EntitiesSchema associated. Make sure you initialize it with withEntities() before using EntitiesEditor functionality.'
-    );
-  }
-
-  return options as EntitiesOptions<T>;
+  return registry.get(editor) as EntitiesOptions<T>;
 }

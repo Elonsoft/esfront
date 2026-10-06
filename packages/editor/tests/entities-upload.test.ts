@@ -1,3 +1,7 @@
+import { createEditor } from 'slate';
+import { withHistory } from 'slate-history';
+
+import { createEntityStore, EntitiesEditor, EntityState, withBase, withEntities } from '../src';
 import {
   BASE_SCHEMA,
   createDeferredUploader,
@@ -8,27 +12,12 @@ import {
   file,
   flush,
   p,
+  stateOf,
   UploadedFile,
   uploadedFile,
-} from '../../testing';
-
-import { createEditor } from 'slate';
-import { withHistory } from 'slate-history';
-
-import { getEntity, getEntityNodes } from './checks';
-import { withEntities } from './entities';
-import { createEntityStore } from './entities.store';
-import type { EntityState } from './entities.types';
-import { abortEntityUpload, enqueueEntityUpload, retryEntityUpload } from './entities.upload';
-import { insertEntityNode } from './transforms';
-
-import { withBase } from '../base';
+} from '../src/testing';
 
 import { describe, expect, it } from 'vitest';
-
-const stateOf = (editor: Parameters<typeof getEntity>[0], entityId: string) => {
-  return getEntity<EntityState<UploadedFile>>(editor, entityId) as EntityState<UploadedFile>;
-};
 
 const uploadedIdOf = (node: unknown) => {
   return (node as { uploaded?: { id: string } }).uploaded?.id;
@@ -40,7 +29,7 @@ describe('the upload queue', () => {
     const { editor } = createEntitiesTestEditor([p('one')], { upload });
     const dropped = fakeFile('a.txt');
 
-    const entityId = insertEntityNode(editor, dropped, [0]) as string;
+    const entityId = EntitiesEditor.insertEntityNode(editor, dropped, [0]) as string;
 
     await flush();
 
@@ -52,65 +41,65 @@ describe('the upload queue', () => {
   it('does nothing without an uploader, leaving the entity pending', async () => {
     const { editor } = createEntitiesTestEditor([p('one')]);
 
-    const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+    const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
     await flush();
 
-    expect(stateOf(editor, entityId).status).toBe('pending');
+    expect(stateOf(editor, entityId)?.status).toBe('pending');
   });
 
   it('reports progress', async () => {
     const { upload, calls } = createDeferredUploader<UploadedFile>();
     const { editor } = createEntitiesTestEditor([p('one')], { upload });
 
-    const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+    const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
     await flush();
     calls[0].onProgress(0.4);
 
-    expect(stateOf(editor, entityId).progress).toBe(0.4);
+    expect(stateOf(editor, entityId)?.progress).toBe(0.4);
   });
 
   it('records the payload on the node when it resolves', async () => {
     const { upload, calls } = createDeferredUploader<UploadedFile>();
     const { editor } = createEntitiesTestEditor([p('one')], { upload });
 
-    const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+    const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
     await flush();
     calls[0].resolve(uploadedFile('file-1'));
     await flush();
 
     expect(stateOf(editor, entityId)).toMatchObject({ status: 'done', progress: 1, payload: uploadedFile('file-1') });
-    expect(uploadedIdOf(getEntityNodes(editor)[0][0])).toBe('file-1');
+    expect(uploadedIdOf(EntitiesEditor.getEntityNodes(editor)[0][0])).toBe('file-1');
   });
 
   it('keeps the error when it rejects, leaving the node alone', async () => {
     const { upload, calls } = createDeferredUploader<UploadedFile>();
     const { editor } = createEntitiesTestEditor([p('one')], { upload });
 
-    const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+    const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
     await flush();
     calls[0].reject(new Error('nope'));
     await flush();
 
     expect(stateOf(editor, entityId)).toMatchObject({ status: 'error', progress: null });
-    expect(stateOf(editor, entityId).error).toBeInstanceOf(Error);
-    expect(uploadedIdOf(getEntityNodes(editor)[0][0])).toBeUndefined();
+    expect(stateOf(editor, entityId)?.error).toBeInstanceOf(Error);
+    expect(uploadedIdOf(EntitiesEditor.getEntityNodes(editor)[0][0])).toBeUndefined();
   });
 
   it('tries again on retry, clearing the error', async () => {
     const { upload, calls } = createDeferredUploader<UploadedFile>();
     const { editor } = createEntitiesTestEditor([p('one')], { upload });
 
-    const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+    const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
     await flush();
     calls[0].reject(new Error('nope'));
     await flush();
 
-    retryEntityUpload(editor, entityId);
+    EntitiesEditor.retryEntityUpload(editor, entityId);
     await flush();
 
     expect(calls).toHaveLength(2);
@@ -121,10 +110,10 @@ describe('the upload queue', () => {
     const { upload, calls } = createDeferredUploader<UploadedFile>();
     const { editor } = createEntitiesTestEditor([p('one')], { upload });
 
-    const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+    const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
     await flush();
-    enqueueEntityUpload(editor, entityId);
+    EntitiesEditor.enqueueEntityUpload(editor, entityId);
     await flush();
 
     expect(calls).toHaveLength(1);
@@ -151,7 +140,7 @@ describe('the upload queue', () => {
       const { upload, calls } = createDeferredUploader<UploadedFile>();
       const { editor } = createEntitiesTestEditor([p('one')], { upload });
 
-      insertEntityNode(editor, fakeFile('a.txt'), [0]);
+      EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]);
 
       await flush();
 
@@ -167,7 +156,7 @@ describe('the upload queue', () => {
       const { upload, calls } = createDeferredUploader<UploadedFile>();
       const { editor, store } = createEntitiesTestEditor([p('one')], { upload });
 
-      const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+      const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
       await flush();
       editor.removeNodes({ at: [0] });
@@ -182,21 +171,21 @@ describe('the upload queue', () => {
       const { upload, calls } = createDeferredUploader<UploadedFile>();
       const { editor } = createEntitiesTestEditor([p('one')], { upload });
 
-      insertEntityNode(editor, fakeFile('a.txt'), [0]);
+      EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]);
 
       await flush();
       editor.removeNodes({ at: [0] });
       calls[0].resolve(uploadedFile('file-1'));
 
       await expect(flush()).resolves.toBeUndefined();
-      expect(getEntityNodes(editor)).toEqual([]);
+      expect(EntitiesEditor.getEntityNodes(editor)).toEqual([]);
     });
 
     it('ignores progress reported after an abort', async () => {
       const { upload, calls } = createDeferredUploader<UploadedFile>();
       const { editor, store } = createEntitiesTestEditor([p('one')], { upload });
 
-      const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+      const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
       await flush();
       editor.removeNodes({ at: [0] });
@@ -209,11 +198,11 @@ describe('the upload queue', () => {
       const { upload } = createDeferredUploader<UploadedFile>();
       const { editor, store } = createEntitiesTestEditor([p('one')], { upload, concurrency: 1 });
 
-      const first = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
-      const second = insertEntityNode(editor, fakeFile('b.txt'), [0]) as string;
+      const first = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+      const second = EntitiesEditor.insertEntityNode(editor, fakeFile('b.txt'), [0]) as string;
 
       await flush();
-      abortEntityUpload(editor, second);
+      EntitiesEditor.abortEntityUpload(editor, second);
 
       expect(store.get(first)?.status).toBe('uploading');
       expect(store.get(second)?.status).toBe('pending');
@@ -225,9 +214,9 @@ describe('the upload queue', () => {
       const { upload, calls } = createDeferredUploader<UploadedFile>();
       const { editor } = createEntitiesTestEditor([p('one')], { upload, concurrency: 2 });
 
-      insertEntityNode(editor, fakeFile('a.txt'), [0]);
-      insertEntityNode(editor, fakeFile('b.txt'), [0]);
-      insertEntityNode(editor, fakeFile('c.txt'), [0]);
+      EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]);
+      EntitiesEditor.insertEntityNode(editor, fakeFile('b.txt'), [0]);
+      EntitiesEditor.insertEntityNode(editor, fakeFile('c.txt'), [0]);
 
       await flush();
 
@@ -238,8 +227,8 @@ describe('the upload queue', () => {
       const { upload, calls } = createDeferredUploader<UploadedFile>();
       const { editor } = createEntitiesTestEditor([p('one')], { upload, concurrency: 1 });
 
-      insertEntityNode(editor, fakeFile('a.txt'), [0]);
-      insertEntityNode(editor, fakeFile('b.txt'), [0]);
+      EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]);
+      EntitiesEditor.insertEntityNode(editor, fakeFile('b.txt'), [0]);
 
       await flush();
       expect(calls).toHaveLength(1);
@@ -275,17 +264,17 @@ describe('the upload queue', () => {
       const { upload, calls } = createDeferredUploader<UploadedFile>();
       const { editor } = createHistoryEditor(upload);
 
-      insertEntityNode(editor, fakeFile('a.txt'), [0]);
+      EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]);
 
       await flush();
       calls[0].resolve(uploadedFile('file-1'));
       await flush();
 
-      expect(uploadedIdOf(getEntityNodes(editor)[0][0])).toBe('file-1');
+      expect(uploadedIdOf(EntitiesEditor.getEntityNodes(editor)[0][0])).toBe('file-1');
 
       editor.undo();
 
-      expect(getEntityNodes(editor)).toEqual([]);
+      expect(EntitiesEditor.getEntityNodes(editor)).toEqual([]);
     });
 
     // Removing the node aborts the upload and leaves the entity waiting, so putting the node back has
@@ -295,7 +284,7 @@ describe('the upload queue', () => {
       const { upload, calls } = createDeferredUploader<UploadedFile>();
       const { editor, store } = createHistoryEditor(upload);
 
-      const entityId = insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
+      const entityId = EntitiesEditor.insertEntityNode(editor, fakeFile('a.txt'), [0]) as string;
 
       await flush();
       editor.removeNodes({ at: [0] });

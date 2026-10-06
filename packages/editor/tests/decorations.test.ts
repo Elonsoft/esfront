@@ -1,8 +1,7 @@
 import { Editor, Range } from 'slate';
 
-import { createPlaceholderDecorate } from './placeholder';
-
-import { createTestEditor, cursor, ElementType, h2, li, p, point, range, ul } from '../testing';
+import { createPlaceholderDecorate } from '../src';
+import { createTestEditor, cursor, ElementType, h2, li, p, point, range, ul } from '../src/testing';
 
 import { describe, expect, it } from 'vitest';
 

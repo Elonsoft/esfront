@@ -1,9 +1,7 @@
-import { BASE_SCHEMA, ElementType, point, range } from '../../testing';
-
 import { createEditor, Descendant, Editor, Range } from 'slate';
 
-import { withBase } from './base';
-import { BaseEditor } from './base.editor';
+import { BaseEditor, withBase } from '../src';
+import { BASE_SCHEMA, ElementType, point, range } from '../src/testing';
 
 import { describe, expect, it } from 'vitest';
 
@@ -106,7 +104,7 @@ describe('marks that hold a value', () => {
   it('sets the value', () => {
     const editor = createMarksEditor([plain('one')], whole('one'));
 
-    BaseEditor.setMark(editor, 'color', 'red');
+    BaseEditor.addMark(editor, 'color', 'red');
 
     expect(editor.children).toEqual([coloured('one', 'red')]);
   });

@@ -132,7 +132,7 @@ which handles the list case properly.
 
 A mark does not have to be on or off. One that holds a value — a color, say — is read with `getMarkValue` and switched
 by passing the value along. Toggling a different value replaces it; only toggling the value already applied clears the
-mark. `setMark` and `removeMark` are there for the cases that should not toggle.
+mark. `addMark` and `removeMark` are there for the cases that should not toggle.
 
 ```ts
 BaseEditor.toggleMark(editor, 'bold'); // on or off
