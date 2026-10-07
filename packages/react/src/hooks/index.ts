@@ -7,6 +7,7 @@ export { useCookie } from './useCookie';
 export { useDebounce } from './useDebounce';
 export { useDocumentEventListener } from './useDocumentEventListener';
 export { useDragOver } from './useDragOver';
+export { useElementEventListener } from './useElementEventListener';
 export { useEnhancedEffect } from './useEnhancedEffect';
 export { useEvent } from './useEvent';
 export { useForceUpdate } from './useForceUpdate';

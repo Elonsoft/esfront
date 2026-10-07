@@ -16,7 +16,16 @@ import {
   PhoneFieldPatch,
 } from './PhoneField.functions';
 
-import { useControlled, useEvent, useForkRef, useLatest, useMenu, useMenuVisibility } from '../../hooks';
+import {
+  useControlled,
+  useElementEventListener,
+  useEvent,
+  useForkRef,
+  useLatest,
+  useMenu,
+  useMenuVisibility,
+  useRefState,
+} from '../../hooks';
 import { IconGlobalLineW500, IconMenuDownFillW300 } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { AutocompleteMenu } from '../AutocompleteMenu';
@@ -93,7 +102,7 @@ export const PhoneField = memo(function PhoneField({
 
   const ref = useRef<HTMLDivElement | null>(null);
   const rootRef = useForkRef(ref, inRef);
-  const [inputRef, setInputRefState] = useState<HTMLInputElement | null>(null);
+  const [inputRef, setInputRefState] = useRefState<HTMLInputElement>();
   // The field never renders a textarea, so the control it reports back is always an input.
   const setInputRef = useCallback((node: FormFieldInputElement | null) => {
     setInputRefState(node as HTMLInputElement | null);
@@ -182,11 +191,13 @@ export const PhoneField = memo(function PhoneField({
 
     event.preventDefault();
 
-    if (!inputRef) {
+    const input = inputRef.current;
+
+    if (!input) {
       return;
     }
 
-    const { selectionStart, selectionEnd, value } = inputRef;
+    const { selectionStart, selectionEnd, value } = input;
 
     if (selectionStart === null || selectionEnd === null) {
       return;
@@ -273,7 +284,7 @@ export const PhoneField = memo(function PhoneField({
       onChange?.({ target: { name, value: phone } } as React.ChangeEvent<HTMLInputElement>);
 
       requestAnimationFrame(() => {
-        inputRef.setSelectionRange(newSelectionStart, newSelectionEnd);
+        input.setSelectionRange(newSelectionStart, newSelectionEnd);
       });
     }
   });
@@ -315,17 +326,8 @@ export const PhoneField = memo(function PhoneField({
     }
   });
 
-  useEffect(() => {
-    if (inputRef) {
-      inputRef.addEventListener('beforeinput', onBeforeInput);
-      inputRef.addEventListener('input', onInput);
-
-      return () => {
-        inputRef.removeEventListener('beforeinput', onBeforeInput);
-        inputRef.removeEventListener('input', onInput);
-      };
-    }
-  }, [inputRef]);
+  useElementEventListener(inputRef, 'beforeinput', onBeforeInput);
+  useElementEventListener(inputRef, 'input', onInput);
 
   const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDownProp?.(e);
@@ -362,7 +364,9 @@ export const PhoneField = memo(function PhoneField({
   ).text;
 
   const onCheckCaretPosition = useEvent((e: React.SyntheticEvent<HTMLElement>) => {
-    if (inputRef && inputRef.selectionStart === inputRef.selectionEnd) {
+    const input = inputRef.current;
+
+    if (input && input.selectionStart === input.selectionEnd) {
       let min = 1;
 
       if (countries.length === 1) {
@@ -373,9 +377,9 @@ export const PhoneField = memo(function PhoneField({
         }
       }
 
-      if (inputRef.selectionStart !== null && inputRef.selectionStart < min) {
+      if (input.selectionStart !== null && input.selectionStart < min) {
         e.preventDefault();
-        inputRef.setSelectionRange(min, min);
+        input.setSelectionRange(min, min);
       }
     }
   });
@@ -427,9 +431,7 @@ export const PhoneField = memo(function PhoneField({
       onChange?.({ target: { name, value: newValue } } as React.ChangeEvent<HTMLInputElement>);
 
       requestAnimationFrame(() => {
-        if (inputRef) {
-          inputRef.focus();
-        }
+        inputRef.current?.focus();
       });
     }
   };
@@ -483,7 +485,7 @@ export const PhoneField = memo(function PhoneField({
             onExited();
 
             setTimeout(() => {
-              if (inputRef !== document.activeElement) {
+              if (inputRef.current !== document.activeElement) {
                 onBlurProp?.({} as never);
               }
             }, 1);
