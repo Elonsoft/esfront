@@ -106,6 +106,7 @@ import { MenuListProps, MenuProps } from './components/Menu';
 import { MenuGroupProps } from './components/MenuGroup';
 import { MenuItemProps } from './components/MenuItem';
 import { ModalProps } from './components/Modal';
+import { NoSsrProps } from './components/NoSsr';
 import {
   PageHGroupActionsProps,
   PageHGroupBreadcrumbsProps,
@@ -289,6 +290,7 @@ declare module './theming/DefaultPropsProvider/DefaultPropsProvider.types' {
     ESMenuList: MenuListProps;
     ESMadeBy: MadeByProps;
     ESModal: ModalProps;
+    ESNoSsr: NoSsrProps;
     ESPageHGroup: PageHGroupProps;
     ESPageHGroupActions: PageHGroupActionsProps;
     ESPageHGroupBreadcrumbs: PageHGroupBreadcrumbsProps;
