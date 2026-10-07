@@ -2,6 +2,7 @@
 
 import { RefObject, useEffect, useState } from 'react';
 
+import { useElementEventListener } from '../useElementEventListener';
 import { useEvent } from '../useEvent';
 import { useMutationObserver } from '../useMutationObserver';
 import { useResizeObserver } from '../useResizeObserver';
@@ -27,6 +28,8 @@ export type UseScrollPositionResult = {
 };
 
 const MUTATION_OBSERVER_OPTIONS: MutationObserverInit = { childList: true, subtree: true };
+
+const SCROLL_LISTENER_OPTIONS: AddEventListenerOptions = { passive: true };
 
 const INITIAL_RESULT: UseScrollPositionResult = {
   isScrollableX: false,
@@ -86,19 +89,10 @@ export const useScrollPosition = (
 
   useResizeObserver(element, update);
   useMutationObserver(element, update, MUTATION_OBSERVER_OPTIONS);
+  useElementEventListener(element, 'scroll', update, SCROLL_LISTENER_OPTIONS);
 
   useEffect(() => {
     update();
-
-    const target = element.current;
-
-    if (target) {
-      target.addEventListener('scroll', update, { passive: true });
-
-      return () => {
-        target.removeEventListener('scroll', update);
-      };
-    }
   }, [element.current, threshold]);
 
   return result;

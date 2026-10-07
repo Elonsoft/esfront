@@ -1,6 +1,6 @@
 'use client';
 
-import { KeyboardEventHandler, RefObject, useEffect } from 'react';
+import { KeyboardEventHandler, RefObject } from 'react';
 
 import { DateInputFormatter } from './DateInput.types';
 
@@ -8,7 +8,7 @@ import { DateInputSelection } from './useDateInputSelection';
 import { DateInputState } from './useDateInputState';
 import { isDigit } from './utils';
 
-import { useEvent } from '../../hooks';
+import { useElementEventListener, useEvent } from '../../hooks';
 
 /** The keys the input acts on itself. Everything else is left to the browser and to the form around it. */
 const CONSUMED_KEYS = new Set([
@@ -274,19 +274,7 @@ export const useDateInputKeyboard = ({
     }
   });
 
-  useEffect(() => {
-    const node = ref.current;
-
-    if (!node) {
-      return;
-    }
-
-    node.addEventListener('beforeinput', onBeforeInput);
-
-    return () => {
-      node.removeEventListener('beforeinput', onBeforeInput);
-    };
-  }, [onBeforeInput]);
+  useElementEventListener(ref, 'beforeinput', onBeforeInput);
 
   return { onKeyDown };
 };
