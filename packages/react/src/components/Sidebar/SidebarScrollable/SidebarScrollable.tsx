@@ -1,6 +1,6 @@
 'use client';
 
-import { RefAttributes, useState } from 'react';
+import { RefAttributes } from 'react';
 
 import { SidebarScrollableProps } from './SidebarScrollable.types';
 
@@ -8,7 +8,7 @@ import { OverlayScrollbarsComponentRef } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useScrollPosition } from '../../../hooks';
+import { useRefState, useScrollPosition } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { OverlayScrollbars } from '../..//OverlayScrollbars';
 
@@ -26,9 +26,9 @@ export const SidebarScrollable = ({
 
   // The viewport is published from `onInitialized` rather than read off the ref during render, which
   // would have made the observed element depend on a value that cannot trigger a re-render.
-  const [viewport, setViewport] = useState<HTMLElement | null>(null);
+  const [viewport, setViewport] = useRefState<HTMLElement>();
 
-  const { isScrollableY, isAtTop, isAtBottom } = useScrollPosition({ current: viewport });
+  const { isScrollableY, isAtTop, isAtBottom } = useScrollPosition(viewport);
 
   const onInitialized = (instance: NonNullable<ReturnType<OverlayScrollbarsComponentRef['osInstance']>>) => {
     setViewport(instance.elements().viewport ?? null);
