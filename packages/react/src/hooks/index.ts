@@ -25,6 +25,8 @@ export { useMenuAim } from './useMenuAim';
 export { useMenuVisibility } from './useMenuVisibility';
 export { useMutationObserver } from './useMutationObserver';
 export { useOnLine } from './useOnLine';
+export type { UseOverflowOptions, UseOverflowResult } from './useOverflow';
+export { useOverflow } from './useOverflow';
 export type { UsePaginationItem, UsePaginationProps, UsePaginationResult } from './usePagination';
 export { usePagination } from './usePagination';
 export { usePermission } from './usePermission';
