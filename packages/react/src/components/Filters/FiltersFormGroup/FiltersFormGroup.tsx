@@ -1,6 +1,6 @@
 'use client';
 
-import { Children, RefAttributes, useState } from 'react';
+import { Children, RefAttributes } from 'react';
 
 import { FiltersFormGroupProps } from './FiltersFormGroup.types';
 
@@ -8,7 +8,7 @@ import { OverlayScrollbarsComponentRef } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useBoolean, useScrollPosition } from '../../../hooks';
+import { useBoolean, useRefState, useScrollPosition } from '../../../hooks';
 import { useDefaultProps } from '../../../theming';
 import { Link } from '../../Link';
 import { OverlayScrollbars } from '../../OverlayScrollbars';
@@ -26,9 +26,9 @@ export const FiltersFormGroup = ({ ref: inRef, ...inProps }: FiltersFormGroupPro
 
   // The viewport is published from `onInitialized` rather than read off the ref during render, which
   // would have made the observed element depend on a value that cannot trigger a re-render.
-  const [viewport, setViewport] = useState<HTMLElement | null>(null);
+  const [viewport, setViewport] = useRefState<HTMLElement>();
 
-  const { isScrollableY, isAtTop, isAtBottom } = useScrollPosition({ current: viewport });
+  const { isScrollableY, isAtTop, isAtBottom } = useScrollPosition(viewport);
 
   const onInitialized = (instance: NonNullable<ReturnType<OverlayScrollbarsComponentRef['osInstance']>>) => {
     setViewport(instance.elements().viewport ?? null);

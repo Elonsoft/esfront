@@ -10,7 +10,6 @@ import {
   useImperativeHandle,
   useMemo,
   useRef,
-  useState,
 } from 'react';
 
 import { AutocompleteMenuProps } from './AutocompleteMenu.types';
@@ -19,7 +18,7 @@ import { useOverlayScrollbars } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
-import { useForkRef, useIntersectionObserver, useScrollLock } from '../../hooks';
+import { useForkRef, useIntersectionObserver, useRefState, useScrollLock } from '../../hooks';
 import { IconCloseLineW350, IconMagnify2LineW400 } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
@@ -107,7 +106,7 @@ export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any
   const searchInputRef = useRef<FormFieldInputElement | null>(null);
   const handleSearchInputRef = useForkRef(searchInputRef, SearchProps?.inputRef);
   const menuListRef = useRef<HTMLUListElement | null>(null);
-  const [sentinelRef, setSentinelRef] = useState<HTMLElement | null>(null);
+  const [sentinelRef, setSentinelRef] = useRefState<HTMLElement>();
 
   const [initialize, instance] = useOverlayScrollbars({ options: OVERLAY_SCROLLBARS_OPTIONS, defer: true });
 
@@ -137,7 +136,7 @@ export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any
     }, {});
   }, [valueArray]);
 
-  useIntersectionObserver({ current: sentinelRef }, (entries) => {
+  useIntersectionObserver(sentinelRef, (entries) => {
     if (onLoadMore && entries[0].isIntersecting) {
       onLoadMore();
     }

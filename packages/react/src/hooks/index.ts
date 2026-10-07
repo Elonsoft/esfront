@@ -28,6 +28,7 @@ export type { UsePaginationItem, UsePaginationProps, UsePaginationResult } from 
 export { usePagination } from './usePagination';
 export { usePermission } from './usePermission';
 export { usePreviousValue } from './usePreviousValue';
+export { useRefState } from './useRefState';
 export { useResizeObserver } from './useResizeObserver';
 export { useScrollDirection } from './useScrollDirection';
 export { useScrollLock } from './useScrollLock';
