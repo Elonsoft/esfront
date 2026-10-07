@@ -6,7 +6,7 @@ import { GalleryDescriptionProps } from './GalleryDescription.types';
 
 import clsx from 'clsx';
 
-import { useForkRef, useWindowEventListener } from '../../../hooks';
+import { useForkRef, useOverflow } from '../../../hooks';
 import { IconCloseLineW350 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
@@ -56,8 +56,11 @@ export const GalleryDescription = ({
   const textRef = useRef<HTMLDivElement>(null);
 
   const [isExpanded, setExpanded] = useState(false);
-  const [isTruncated, setTruncated] = useState(false);
   const [maxHeight, setMaxHeight] = useState(32);
+
+  const { isOverflowX } = useOverflow(textRef);
+
+  const isTruncated = isExpanded || isOverflowX;
 
   const onClick = () => {
     if (isTruncated) {
@@ -88,25 +91,6 @@ export const GalleryDescription = ({
       }
     }
   }, [position, rectTop, rectBottom]);
-
-  const onResize = () => {
-    if (textRef.current) {
-      const isTruncated = textRef.current.scrollWidth > textRef.current.clientWidth;
-      setTruncated(isTruncated);
-
-      if (isExpanded && !isTruncated) {
-        setExpanded(false);
-      }
-    }
-  };
-
-  useWindowEventListener('resize', () => {
-    onResize();
-  });
-
-  useEffect(() => {
-    onResize();
-  }, [children]);
 
   return (
     <div

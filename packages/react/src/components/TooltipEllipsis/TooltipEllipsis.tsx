@@ -1,30 +1,23 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import { TooltipEllipsisProps } from './TooltipEllipsis.types';
 
-import { useResizeObserver } from '../../hooks';
+import { useOverflow } from '../../hooks';
 import { Tooltip } from '../Tooltip';
 
 /**
  * A tooltip that is shown only when the content of the child element is truncated with an ellipsis.
  */
 export const TooltipEllipsis = ({ children, ...props }: TooltipEllipsisProps) => {
-  const [overflow, setOverflow] = useState(false);
-
   const ref = useRef<HTMLElement | null>(null);
   const childrenRef = useRef<HTMLElement | null>(null);
 
-  useResizeObserver(ref, () => {
-    const isOverflow =
-      (childrenRef.current && childrenRef.current.scrollWidth > childrenRef.current.offsetWidth) ||
-      (ref.current && ref.current.scrollWidth > ref.current.offsetWidth) ||
-      (childrenRef.current && childrenRef.current.scrollHeight > childrenRef.current.offsetHeight) ||
-      (ref.current && ref.current.scrollHeight > ref.current.offsetHeight);
+  const root = useOverflow(ref);
+  const child = useOverflow(childrenRef);
 
-    setOverflow(!!isOverflow);
-  });
+  const overflow = root.isOverflowX || root.isOverflowY || child.isOverflowX || child.isOverflowY;
 
   return (
     <Tooltip
