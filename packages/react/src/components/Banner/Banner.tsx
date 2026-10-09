@@ -51,9 +51,7 @@ export const Banner = ({ ref, ...inProps }: BannerProps & RefAttributes<HTMLDivE
       <div className="es-banner__wrapper">
         {icon !== false && <div className="es-banner__icon">{icon || iconMapping[severity]}</div>}
         <div className={clsx('es-banner__content', breakpoint && `es-banner__content--breakpoint--${breakpoint}`)}>
-          <div className="es-banner__message body100" color="inherit">
-            {children}
-          </div>
+          <div className="es-banner__message body100">{children}</div>
           {actions}
         </div>
         {!!action && <div className="es-banner__action">{action}</div>}

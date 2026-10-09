@@ -11,12 +11,12 @@ import { useDefaultProps } from '../../../theming';
 /**
  * @see `Radio`
  */
-export const RadioIcon = ({ ref, ...inProps }: RadioIconProps & RefAttributes<HTMLDivElement>) => {
+export const RadioIcon = ({ ref, ...inProps }: RadioIconProps & RefAttributes<HTMLSpanElement>) => {
   const { className, style } = useDefaultProps({ props: inProps, name: 'ESRadioIcon' });
 
   return (
-    <div ref={ref} className={clsx('es-radio-icon', className)} style={style}>
-      <div className="es-radio-icon__circle" />
-    </div>
+    <span ref={ref} className={clsx('es-radio-icon', className)} style={style}>
+      <span className="es-radio-icon__circle" />
+    </span>
   );
 };

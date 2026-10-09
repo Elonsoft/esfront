@@ -142,20 +142,20 @@ export const Dropzone = (inProps: DropzoneProps): React.JSX.Element => {
         onDragOver={onDragOver}
         onDrop={onDropzoneDrop}
       >
-        <div className="es-dropzone__heading">
-          {!!icon && !(isDragOverDocument && !!dragHeading) && <div className="es-dropzone__icon">{icon}</div>}
+        <span className="es-dropzone__heading">
+          {!!icon && !(isDragOverDocument && !!dragHeading) && <span className="es-dropzone__icon">{icon}</span>}
 
           {isDragOverDocument && !!dragHeading ? (
-            <div className="es-dropzone__heading-text body200">{dragHeading}</div>
+            <span className="es-dropzone__heading-text body200">{dragHeading}</span>
           ) : (
-            !!heading && <div className="es-dropzone__heading-text body100">{heading}</div>
+            !!heading && <span className="es-dropzone__heading-text body100">{heading}</span>
           )}
-        </div>
+        </span>
 
         {isDragOverDocument && !!dragSubheading ? (
-          <div className="es-dropzone__subheading caption">{dragSubheading}</div>
+          <span className="es-dropzone__subheading caption">{dragSubheading}</span>
         ) : (
-          !!subheading && <div className="es-dropzone__subheading caption">{subheading}</div>
+          !!subheading && <span className="es-dropzone__subheading caption">{subheading}</span>
         )}
       </ButtonBase>
 
@@ -166,7 +166,7 @@ export const Dropzone = (inProps: DropzoneProps): React.JSX.Element => {
       )}
       <input
         ref={inputRef}
-        accept={accept}
+        accept={accept === '*' ? undefined : accept}
         className="es-dropzone__input"
         multiple={multiple}
         type="file"

@@ -71,7 +71,7 @@ export const useTouchRipple = ({
 
   ...rest
 }: TouchRippleParams) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLSpanElement | null>(null);
 
   const [pressed, setPressed] = useState(false);
 

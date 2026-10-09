@@ -40,7 +40,7 @@ export const SvgIcon = (inProps: SvgIconProps) => {
 
   if (container) {
     return (
-      <div
+      <span
         className={clsx('es-svg-icon', className)}
         {...ContainerProps}
         style={{
@@ -51,7 +51,7 @@ export const SvgIcon = (inProps: SvgIconProps) => {
         }}
       >
         {svg}
-      </div>
+      </span>
     );
   }
 

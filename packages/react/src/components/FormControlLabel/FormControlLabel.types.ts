@@ -23,7 +23,7 @@ export interface FormControlLabelProps {
    * @default {}
    */
   slotProps?: {
-    typography?: Partial<HTMLAttributes<HTMLDivElement>>;
+    typography?: Partial<HTMLAttributes<HTMLSpanElement>>;
   };
   /**
    * The components used for each slot inside.

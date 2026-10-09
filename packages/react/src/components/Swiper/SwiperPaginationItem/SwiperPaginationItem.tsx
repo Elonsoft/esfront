@@ -49,7 +49,7 @@ export const SwiperPaginationItem = ({
         value={index}
         onChange={onSlideChange}
       />
-      <div
+      <span
         className={clsx(
           'es-swiper-pagination-item__bullet',
           index === active && 'es-swiper-pagination-item__bullet--active',

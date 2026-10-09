@@ -1,6 +1,7 @@
 @mixin include() {
   .es-touch-ripple {
     border-radius: inherit;
+    display: block;
     inset: 0;
     overflow: hidden;
     pointer-events: none;

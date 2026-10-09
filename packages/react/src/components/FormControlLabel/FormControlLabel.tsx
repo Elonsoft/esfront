@@ -22,7 +22,7 @@ export const FormControlLabel = ({ ref, ...inProps }: FormControlLabelProps & Re
     slotProps = {},
   } = useDefaultProps({ props: inProps, name: 'ESFormControlLabel' });
 
-  const LabelComponent = slots.typography ?? 'div';
+  const LabelComponent = slots.typography ?? 'span';
 
   const labelProps = {
     ...slotProps.typography,

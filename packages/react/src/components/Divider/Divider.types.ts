@@ -1,7 +1,15 @@
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, ElementType, ReactNode } from 'react';
 
 export interface DividerProps {
   children?: ReactNode;
+
+  /**
+   * The component used for the root node.
+   */
+  component?: ElementType;
+
+  /** The aria role of the root element. */
+  role?: string;
 
   /** Class applied to the root element. */
   className?: string;
