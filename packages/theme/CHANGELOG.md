@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.3.3...@esfront/theme@0.4.0) (2026-10-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **react:** produce valid html markup
+
+### Features
+
+* **react,ConfirmationDialog:** add new component ([9ff7632](https://github.com/Elonsoft/esfront/commit/9ff76328e4cb4da1428c5a3dec2518b2380870ce))
+
+
+### Bug Fixes
+
+* **react:** produce valid html markup ([604bc6f](https://github.com/Elonsoft/esfront/commit/604bc6fba5486f4ba4f7d246624b413e691cbcbc))
+
+
+
 ## [0.3.3](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.3.2...@esfront/theme@0.3.3) (2026-10-05)
 
 

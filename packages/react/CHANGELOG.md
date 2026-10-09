@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.17.4...@esfront/react@0.18.0) (2026-10-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **react:** produce valid html markup
+* **react:** upgrade react to v19
+
+### Features
+
+* **react,ConfirmationDialog:** add new component ([9ff7632](https://github.com/Elonsoft/esfront/commit/9ff76328e4cb4da1428c5a3dec2518b2380870ce))
+* **react,NoSsr:** add new component ([6b05b6e](https://github.com/Elonsoft/esfront/commit/6b05b6e1124a74165dd2849f5526c7afe1f630af))
+* **react,useElementEventListener:** add new hook ([505053d](https://github.com/Elonsoft/esfront/commit/505053de2569d6e6c22b1b5c0e73e9f8e60fcb8b))
+* **react,useRefState:** add new hook ([94461b7](https://github.com/Elonsoft/esfront/commit/94461b7ffdab7dd4f657cc0d188ca590dbc7ef9d))
+* **react,useScrollPosition:** add new hook ([07f1926](https://github.com/Elonsoft/esfront/commit/07f1926880e33032f1f71554112b7eb75b3bbacb))
+* **react:** migrate to ref-as-prop ([abf0ac0](https://github.com/Elonsoft/esfront/commit/abf0ac03d1f9e32cfdce086b5012386404decbd9))
+* **rect,useOverflow:** add new hook ([ab64018](https://github.com/Elonsoft/esfront/commit/ab64018e02065d29226bf18b4d06de5d050010da))
+
+
+### Bug Fixes
+
+* **react:** produce valid html markup ([604bc6f](https://github.com/Elonsoft/esfront/commit/604bc6fba5486f4ba4f7d246624b413e691cbcbc))
+
+
+### Build Changes
+
+* **react:** upgrade react to v19 ([599ccb0](https://github.com/Elonsoft/esfront/commit/599ccb0e1f437c34c81455636692d98648873dbc))
+
+
+
 ## [0.17.4](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.17.3...@esfront/react@0.17.4) (2026-10-05)
 
 
