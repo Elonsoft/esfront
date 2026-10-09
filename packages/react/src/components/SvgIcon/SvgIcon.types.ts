@@ -30,5 +30,5 @@ export type SvgIconProps = {
   title?: string;
 
   /** Props applied to the container element. */
-  ContainerProps?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+  ContainerProps?: DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
 } & SVGProps<SVGSVGElement>;

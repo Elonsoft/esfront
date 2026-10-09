@@ -320,6 +320,7 @@
       background-color: var(--es-common-switch);
       border: 2px solid currentcolor;
       border-radius: 50%;
+      display: block;
       transition: 150ms;
       transition-property: width, height, border, border-radius;
     }

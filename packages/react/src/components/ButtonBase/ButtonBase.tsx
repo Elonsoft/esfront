@@ -11,6 +11,29 @@ import { useDefaultProps } from '../../theming';
 import { OverridableComponent } from '../../types';
 import { TouchRipple, useTouchRipple } from '../TouchRipple';
 
+const FORM_ELEMENTS = ['button', 'fieldset', 'input', 'optgroup', 'option', 'select', 'textarea'];
+
+const FLOW_CONTENT_ELEMENTS = [
+  'address',
+  'article',
+  'aside',
+  'blockquote',
+  'dd',
+  'div',
+  'fieldset',
+  'figcaption',
+  'figure',
+  'footer',
+  'form',
+  'header',
+  'li',
+  'main',
+  'nav',
+  'section',
+  'td',
+  'th',
+];
+
 /**
  * The Button allows users to take actions, and make choices, with a single tap.
  */
@@ -35,6 +58,9 @@ export const ButtonBase = (({ ref, ...inProps }: ButtonBaseProps) => {
     props: inProps,
     name: 'ESButtonBase',
   });
+
+  const Wrapper = typeof Component === 'string' && FLOW_CONTENT_ELEMENTS.includes(Component) ? 'div' : 'span';
+  const isDisabledSupported = typeof Component !== 'string' || FORM_ELEMENTS.includes(Component);
 
   const buttonRef = useRef<HTMLButtonElement | HTMLLinkElement | null>(null);
   const handleRef = useForkRef(ref, buttonRef);
@@ -94,12 +120,12 @@ export const ButtonBase = (({ ref, ...inProps }: ButtonBaseProps) => {
         disableTouchRipple && 'es-button-base--disable-touch-ripple',
         pressed && 'es-button-base--pressed'
       )}
-      disabled={disabled}
+      disabled={isDisabledSupported ? disabled : undefined}
       type={type}
       {...props}
       {...bind}
     >
-      <div className="es-button-base__wrapper">{children}</div>
+      <Wrapper className="es-button-base__wrapper">{children}</Wrapper>
       <TouchRipple ref={touchRippleRef} />
     </Component>
   );

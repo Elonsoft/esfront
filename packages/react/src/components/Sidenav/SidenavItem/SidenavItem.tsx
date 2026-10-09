@@ -139,6 +139,7 @@ export const SidenavItem: OverridableComponent<SidenavItemTypeMap> = ({ ref: inR
           ref={itemRef}
           button
           className={clsx('es-sidenav-item', `es-sidenav-item--color--${color}`, className)}
+          {...({ component: 'div' } as any)}
           data-id={id}
           selected={selected}
           onClick={onItemClick}

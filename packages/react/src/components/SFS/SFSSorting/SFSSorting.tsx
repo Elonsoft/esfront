@@ -50,17 +50,17 @@ export const SFSSorting = memo(function SFSSorting({
   return (
     <div ref={ref} className={clsx('es-sfs-sorting', className)} style={style}>
       <SFSButton active={!!values[0]} className="es-sfs-sorting__button" onClick={onMenuOpen}>
-        <div className="body100">
+        <span className="body100">
           {values.length === 1 ? options.find((o) => o.value === values[0].value)?.label : labelButton}
-        </div>
+        </span>
         {iconSort}
         {values.length === 1 && (
-          <div className="es-sfs-button-badge es-sfs-sorting__button-badge">
+          <span className="es-sfs-button-badge es-sfs-sorting__button-badge">
             {values[0].direction === 'asc' ? iconAsc : iconDesc}
-          </div>
+          </span>
         )}
         {values.length > 1 && (
-          <div className="es-sfs-button-badge  es-sfs-sorting__button-badge mini200">{values.length}</div>
+          <span className="es-sfs-button-badge  es-sfs-sorting__button-badge mini200">{values.length}</span>
         )}
       </SFSButton>
       <SortingMenu

@@ -229,10 +229,10 @@ export const SortingMenu = memo(function SortingMenu({
                 ? sortMap[item.value].labelAsc || labelAsc
                 : sortMap[item.value].labelDesc || labelDesc}
             </span>
-            <div className="es-sorting-menu__direction-button-badge">
+            <span className="es-sorting-menu__direction-button-badge">
               {item.direction === 'asc' ? iconItemAsc : iconItemDesc}
               {isMultiple && <span className="mini100-w50">{i + 1}</span>}
-            </div>
+            </span>
           </Button>
         )}
       </MenuItem>

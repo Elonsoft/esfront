@@ -86,7 +86,7 @@ export const Switch = ({ ref, ...inProps }: SwitchProps & RefAttributes<HTMLDivE
           onChange={onSwitchChange}
           onKeyDown={type === 'button' ? onKeyDown : undefined}
         />
-        <div className="es-switch__thumb" />
+        <span className="es-switch__thumb" />
       </ButtonBase>
       <div className="es-switch__track" />
     </div>

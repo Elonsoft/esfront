@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, memo, RefAttributes, useState } from 'react';
+import { memo, RefAttributes, useState } from 'react';
 
 import { PaginationPagesProps } from './PaginationPages.types';
 
@@ -111,7 +111,7 @@ export const PaginationPages = memo(function PaginationPages({
           } = slotProps?.[item.type as keyof typeof slotProps]?.(item) || {};
 
           return (
-            <Fragment key={`${item.type}${item.page}`}>
+            <li key={`${item.type}${item.page}`} className="es-pagination-pages__item">
               {item.type === 'previous' || item.type === 'next' ? (
                 <Button
                   aria-label={`${item.type === 'next' ? labelNextPage : labelPrevPage}`}
@@ -160,7 +160,7 @@ export const PaginationPages = memo(function PaginationPages({
                   </ButtonBase>
                 </Tooltip>
               )}
-            </Fragment>
+            </li>
           );
         })}
       </ul>

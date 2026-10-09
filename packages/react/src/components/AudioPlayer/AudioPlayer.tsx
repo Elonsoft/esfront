@@ -762,7 +762,7 @@ export const AudioPlayer = ({ ref, ...inProps }: AudioPlayerProps & RefAttribute
                     <ListItemIcon className="es-audio-player__list-item-icon">{iconBack}</ListItemIcon>
                     <ListItemText className="es-audio-player__list-item-text" primary={labelBack} />
                   </MenuItem>
-                  <Divider className="es-audio-player__list-divider" />
+                  <Divider className="es-audio-player__list-divider" component="li" role="presentation" />
                   {rates.map((r) => (
                     <MenuItem
                       key={r}

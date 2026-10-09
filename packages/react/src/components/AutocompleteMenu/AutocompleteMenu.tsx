@@ -209,7 +209,12 @@ export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any
     if (!!groupBy && (index === 0 || group !== groupBy(options[index - 1]))) {
       if (index > 0) {
         groupedOptions.push(
-          <Divider key={`${value}-${group}-divider`} className="es-autocomplete-menu__menu-group-divider" />
+          <Divider
+            key={`${value}-${group}-divider`}
+            className="es-autocomplete-menu__menu-group-divider"
+            component="li"
+            role="presentation"
+          />
         );
       }
 

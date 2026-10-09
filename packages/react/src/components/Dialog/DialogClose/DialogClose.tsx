@@ -30,7 +30,7 @@ export const DialogClose = ({ ref, ...inProps }: DialogCloseProps & RefAttribute
     <div ref={ref} className={clsx('es-dialog-close', className)} style={style}>
       <Button aria-label={label} className="es-dialog-close__button" color="white" onClick={onClick}>
         {icon}
-        <div className="es-dialog-close__escape-key caption">{labelEscapeKey}</div>
+        <span className="es-dialog-close__escape-key caption">{labelEscapeKey}</span>
       </Button>
     </div>
   );

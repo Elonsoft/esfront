@@ -54,14 +54,14 @@ export const SFSFilters = memo(function SFSFilters({
   };
 
   return (
-    <div ref={ref} className={clsx(className, 'es-sfs-filters')} color="tertiary" style={style}>
+    <div ref={ref} className={clsx(className, 'es-sfs-filters')} style={style}>
       {button ? (
         button({ open: isOpen, setOpen })
       ) : (
         <SFSButton active={!!count} className="es-sfs-filters__button" onClick={onOpen}>
-          <div className="body100">{labelButton}</div>
+          <span className="body100">{labelButton}</span>
           {iconFilters}
-          {!!count && <div className="es-sfs-button-badge es-sfs-filters__button-badge mini200">{count}</div>}
+          {!!count && <span className="es-sfs-button-badge es-sfs-filters__button-badge mini200">{count}</span>}
         </SFSButton>
       )}
       <Drawer anchor="right" className="es-sfs-filters__drawer" open={isOpen} onClose={onClose}>

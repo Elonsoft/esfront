@@ -11,8 +11,9 @@ import { useDefaultProps } from '../../theming';
 /**
  * The Divider is a thin line that groups content in lists and layouts.
  */
-export const Divider = ({ ref, ...inProps }: DividerProps & RefAttributes<HTMLDivElement>) => {
+export const Divider = ({ ref, ...inProps }: DividerProps & RefAttributes<HTMLElement>) => {
   const {
+    component: Component = 'div',
     className,
     style,
     children,
@@ -21,13 +22,14 @@ export const Divider = ({ ref, ...inProps }: DividerProps & RefAttributes<HTMLDi
     orientation = 'horizontal',
     textAlign = 'center',
     flexItem,
+    role,
   } = useDefaultProps({
     props: inProps,
     name: 'ESDivider',
   });
 
   return (
-    <div
+    <Component
       ref={ref}
       className={clsx(
         className,
@@ -37,6 +39,7 @@ export const Divider = ({ ref, ...inProps }: DividerProps & RefAttributes<HTMLDi
         !!children && `es-divider--with-children`,
         !!flexItem && `es-divider--flex-item`
       )}
+      role={role}
       style={
         {
           '--es-divider-color': color,
@@ -46,7 +49,7 @@ export const Divider = ({ ref, ...inProps }: DividerProps & RefAttributes<HTMLDi
       }
     >
       {children ? <span className="es-divider__wrapper caption">{children}</span> : null}
-    </div>
+    </Component>
   );
 };
 

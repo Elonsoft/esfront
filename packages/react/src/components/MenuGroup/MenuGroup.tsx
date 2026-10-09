@@ -12,7 +12,7 @@ import { useDefaultProps } from '../../theming';
  * A heading that labels a group of items inside a dropdown menu. It can stick to the top of the menu while the list
  * scrolls.
  */
-export const MenuGroup = ({ ref, ...inProps }: MenuGroupProps & RefAttributes<HTMLDivElement>) => {
+export const MenuGroup = ({ ref, ...inProps }: MenuGroupProps & RefAttributes<HTMLLIElement>) => {
   const {
     children,
 
@@ -27,7 +27,7 @@ export const MenuGroup = ({ ref, ...inProps }: MenuGroupProps & RefAttributes<HT
   });
 
   return (
-    <div
+    <li
       ref={ref}
       className={clsx(
         className,
@@ -36,9 +36,15 @@ export const MenuGroup = ({ ref, ...inProps }: MenuGroupProps & RefAttributes<HT
         sticky && 'es-menu-group--sticky',
         'caption'
       )}
+      role="presentation"
       {...props}
     >
       {children}
-    </div>
+    </li>
   );
 };
+
+/**
+ * The group is a heading, not an item, so `MenuList` must not make it focusable.
+ */
+MenuGroup.esSkipListHighlight = true;

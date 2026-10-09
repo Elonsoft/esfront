@@ -224,7 +224,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = ({ ref: inR
             <span className="body100">{text}</span>
           </MenuItem>
 
-          {!!children && <Divider className="es-sidebar-item__tooltip-divider" />}
+          {!!children && <Divider className="es-sidebar-item__tooltip-divider" component="li" role="presentation" />}
           {!!children &&
             React.Children.map(children, (child: any, idx: number) => {
               const { text, inset, onClick, ...rest } = child.props;
@@ -263,6 +263,7 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = ({ ref: inR
             ref={itemRef}
             button
             className={clsx('es-sidebar-item__button', `es-sidebar-item__button--color--${color}`)}
+            {...({ component: 'div' } as any)}
             onClick={onItemClick}
             onKeyDown={onItemKeyDown}
             onTouchStart={onItemTouchStart}

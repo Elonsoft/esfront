@@ -74,7 +74,8 @@
     }
 
     &--disabled {
-      & div {
+      & div,
+      & .es-button-base__wrapper {
         cursor: not-allowed;
         overflow: hidden;
         text-overflow: ellipsis;
