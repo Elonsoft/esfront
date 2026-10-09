@@ -1,0 +1,1 @@
+import{b as o,r as u}from"./iframe-WZaTcFld.js";const b=(r,s,t)=>{const c=o(s);u.useEffect(()=>{if(r.current){const e=new ResizeObserver(n=>{c.current(n)});return e.observe(r.current,t),()=>{e.disconnect()}}},[r.current])};export{b as u};

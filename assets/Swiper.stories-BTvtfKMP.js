@@ -1,0 +1,90 @@
+import{j as e,r as j}from"./iframe-WZaTcFld.js";import{u as h,S as x}from"./Swiper-DVb7v1MU.js";import{c as f}from"./clsx.m-CH7BE6MN.js";import{u as O}from"./useDefaultProps-BZnal23W.js";import{u as Y}from"./useId-Cowwq5kl.js";import{I as J}from"./IconChevronLeftLineW400-CPUiAMuh.js";import{I as K}from"./IconChevronRightLineW400-BehMRCA7.js";import{B as Q}from"./Button-DX7vCFDA.js";import"./preload-helper-Dp1pzeXC.js";import"./IconArrowRightLineW500-sA-82M9F.js";import"./SvgIcon-CImGifIE.js";import"./IconArrowUpLineW500-DbAr7rPL.js";import"./IconArrowLeftLineW500-C6E6bfpW.js";import"./useDocumentEventListener-DF4sX5o5.js";import"./useResizeObserver-DfGkp_cm.js";import"./ButtonBase-A8DfStIe.js";import"./useForkRef-B9g_LZ2g.js";const U={height:0,margin:0,minHeight:0,minWidth:0,opacity:0,padding:0,width:0},b=({ref:r,index:i,active:t,from:g,to:c,siblingFrom:l,siblingTo:a,name:w,transition:u,onSlideChange:s})=>{const p=i===l&&l>g||i===a&&a<c;return e.jsxs("label",{ref:r,"aria-label":`${i}`,className:f("es-swiper-pagination-item",i===t&&"es-swiper-pagination-item--active"),style:i<l||i>a?{...U,...u}:u,children:[e.jsx("input",{checked:i===t,className:"es-swiper-pagination-item__input",name:w,type:"radio",value:i,onChange:s}),e.jsx("span",{className:f("es-swiper-pagination-item__bullet",i===t&&"es-swiper-pagination-item__bullet--active",p&&"es-swiper-pagination-item__bullet--small"),style:u})]},i)};try{b.displayName="SwiperPaginationItem",b.__docgenInfo={description:"",displayName:"SwiperPaginationItem",filePath:"/home/runner/work/esfront/esfront/packages/react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.tsx",methods:[],props:{index:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"index",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"number"}},active:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"active",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"number"}},from:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"from",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"number"}},to:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"to",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"number"}},siblingFrom:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"siblingFrom",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"number"}},siblingTo:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"siblingTo",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"number"}},name:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"name",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"string"}},transition:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"transition",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"{ transitionDuration?: string | undefined; }"}},onSlideChange:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"}],description:"",name:"onSlideChange",parent:{fileName:"react/src/components/Swiper/SwiperPaginationItem/SwiperPaginationItem.types.ts",name:"SwiperPaginationItemProps"},required:!0,tags:{},type:{name:"(event: ChangeEvent<HTMLInputElement, Element>) => void"}}},tags:{see:"`Swiper`"}}}catch{}const y=({ref:r,...i})=>{const{className:t,style:g,position:c="end",variant:l="small",siblingCount:a,transitionDuration:w}=O({props:i,name:"ESSwiperPagination"}),{direction:u,from:s,to:p,active:m,setActiveSlide:A}=h(),G=`pagination-${Y().replace(/:/g,"")}`,$=w||w===0?{transitionDuration:`${w}ms`}:{},F=j.useMemo(()=>{const o=[];for(let S=s;S<=p;S++)o.push(S);return o},[s,p]),{siblingFrom:L,siblingTo:R}=j.useMemo(()=>{const o=a?Math.max(s,m-a-Math.max(0,m+a-p)):s,S=a?Math.min(p,m+a+Math.max(0,s-(m-a))):p;return{siblingFrom:o,siblingTo:S}},[s,p,m,a]),H=o=>{A(+o.target.value)};return p<=s?null:e.jsx("div",{ref:r,className:f("es-swiper-pagination",`es-swiper-pagination--direction--${u}`,`es-swiper-pagination--position--${c}`,`es-swiper-pagination--variant--${l}`,t),style:g,children:F.map(o=>e.jsx(b,{active:m,from:s,index:o,name:G,siblingFrom:L,siblingTo:R,to:p,transition:$,onSlideChange:H},o))})};try{y.displayName="SwiperPagination",y.__docgenInfo={description:"",displayName:"SwiperPagination",filePath:"/home/runner/work/esfront/esfront/packages/react/src/components/Swiper/SwiperPagination/SwiperPagination.tsx",methods:[],props:{className:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"}],description:"Class applied to the root element.",name:"className",parent:{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"},required:!1,tags:{},type:{name:"string"}},style:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"}],description:"Style applied to the root element.",name:"style",parent:{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"},required:!1,tags:{},type:{name:"CSSProperties"}},position:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"}],description:"The pagination position.",name:"position",parent:{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"},required:!1,tags:{},type:{name:"enum",raw:'"start" | "end"',value:[{value:'"start"'},{value:'"end"'}]}},variant:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"}],description:"The pagination variant.",name:"variant",parent:{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"},required:!1,tags:{},type:{name:"enum",raw:'"big" | "small" | "long"',value:[{value:'"big"'},{value:'"small"'},{value:'"long"'}]}},siblingCount:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"}],description:"Number of always visible items before and after active slide.",name:"siblingCount",parent:{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"},required:!1,tags:{},type:{name:"number"}},transitionDuration:{defaultValue:null,declarations:[{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"}],description:"The length of time a transition animation should take to complete.",name:"transitionDuration",parent:{fileName:"react/src/components/Swiper/SwiperPagination/SwiperPagination.types.ts",name:"SwiperPaginationProps"},required:!1,tags:{},type:{name:"number"}}},tags:{see:"`Swiper`"}}}catch{}const n=r=>e.jsx("img",{height:"160px",src:r.src,style:{objectFit:"cover",borderRadius:"8px",minWidth:r.width||"160px"},width:r.width||"160px"}),Ie={tags:["autodocs"],component:x,parameters:{references:["Swiper","SwiperButton","SwiperPagination"]},argTypes:{direction:{table:{disable:!0}},alignment:{table:{category:"General"},options:["center","start"],control:{type:"select"}},snap:{table:{category:"General"},defaultValue:!0},snapStop:{table:{category:"General"},options:["normal","always"],control:{type:"select"}},draggable:{table:{category:"General"},defaultValue:!0},gap:{table:{category:"General"}},loop:{table:{category:"General"}},autoPlay:{table:{category:"AutoPlay"}},autoPlayCount:{table:{category:"AutoPlay"}},buttonPrev:{table:{disable:!0}},buttonNext:{table:{disable:!0}},pagination:{table:{disable:!0}},SwiperPaginationPosition:{name:"SwiperPagination.position",description:"The position of the `SwiperPagination` component.",table:{category:"Pagination",defaultValue:{summary:"end"}},options:["start","end"],control:{type:"select"}},SwiperPaginationVariant:{name:"SwiperPagination.variant",description:"The variant of the `SwiperPagination` component.",table:{category:"Pagination",defaultValue:{summary:"small"}},options:["small","long","big"],control:{type:"select"}},SwiperPaginationSiblingCount:{name:"SwiperPagination.siblingCount",description:"Number of always visible items before and after active slide.",table:{category:"Pagination"},control:{type:"number"}},SwiperPaginationTransitionDuration:{name:"SwiperPagination.transitionDuration",description:"The length of time in ms a transition animation should take to complete.",table:{category:"Pagination"},control:{type:"number"}},actions:{table:{disable:!0}}},args:{}},I={render:({SwiperPaginationPosition:r,SwiperPaginationVariant:i,SwiperPaginationSiblingCount:t,SwiperPaginationTransitionDuration:g,...c})=>e.jsxs(x,{...c,pagination:e.jsx(y,{position:r,siblingCount:t,transitionDuration:g,variant:i}),children:[e.jsx(n,{src:"./swiper/1.png"}),e.jsx(n,{src:"./swiper/2.png",width:"320px"}),e.jsx(n,{src:"./swiper/3.png"}),e.jsx(n,{src:"./swiper/4.png"}),e.jsx(n,{src:"./swiper/1.png"}),e.jsx(n,{src:"./swiper/2.png",width:"320px"}),e.jsx(n,{src:"./swiper/3.png"}),e.jsx(n,{src:"./swiper/4.png"}),e.jsx(n,{src:"./swiper/1.png"}),e.jsx(n,{src:"./swiper/2.png"}),e.jsx(n,{src:"./swiper/3.png"}),e.jsx(n,{src:"./swiper/4.png"})]})},P={render:({SwiperPaginationPosition:r,SwiperPaginationVariant:i,SwiperPaginationSiblingCount:t,SwiperPaginationTransitionDuration:g,...c})=>e.jsx("div",{style:{height:"min(512px, calc(100vh - 2rem))"},children:e.jsxs(x,{...c,direction:"vertical",pagination:e.jsx(y,{position:r,siblingCount:t,transitionDuration:g,variant:i}),children:[e.jsx(n,{src:"./swiper/1.png"}),e.jsx(n,{src:"./swiper/2.png"}),e.jsx(n,{src:"./swiper/3.png"}),e.jsx(n,{src:"./swiper/4.png"}),e.jsx(n,{src:"./swiper/1.png"}),e.jsx(n,{src:"./swiper/2.png"}),e.jsx(n,{src:"./swiper/3.png"}),e.jsx(n,{src:"./swiper/4.png"}),e.jsx(n,{src:"./swiper/1.png"}),e.jsx(n,{src:"./swiper/2.png"}),e.jsx(n,{src:"./swiper/3.png"}),e.jsx(n,{src:"./swiper/4.png"})]})})},X={position:"absolute",top:"50%",transform:"translateY(-50%)",borderRadius:"50%",backdropFilter:"blur(10px)","--background":"var(--es-white-a600)"},W=({prev:r,next:i,...t})=>e.jsx(Q,{...t,style:{...X,...r&&{left:8},...i&&{right:8}}}),Z=()=>{const{active:r,setActiveSlide:i}=h(),t=()=>{i(r-1)};return e.jsx(W,{prev:!0,color:"black",onClick:t,children:e.jsx(J,{})})},ee=()=>{const{active:r,setActiveSlide:i}=h(),t=()=>{i(r+1)};return e.jsx(W,{next:!0,color:"black",onClick:t,children:e.jsx(K,{})})},d={render:r=>{const i=t=>e.jsx("img",{height:"56px",src:t.src,style:{minWidth:"56px"},width:"56px"});return e.jsxs(x,{...r,buttonNext:e.jsx(ee,{}),buttonPrev:e.jsx(Z,{}),gap:8,children:[e.jsx(i,{src:"./swiper/2-1.png"}),e.jsx(i,{src:"./swiper/2-2.png"}),e.jsx(i,{src:"./swiper/2-3.png"}),e.jsx(i,{src:"./swiper/2-4.png"}),e.jsx(i,{src:"./swiper/2-5.png"}),e.jsx(i,{src:"./swiper/2-6.png"}),e.jsx(i,{src:"./swiper/2-7.png"}),e.jsx(i,{src:"./swiper/2-8.png"}),e.jsx(i,{src:"./swiper/2-9.png"}),e.jsx(i,{src:"./swiper/2-1.png"}),e.jsx(i,{src:"./swiper/2-2.png"}),e.jsx(i,{src:"./swiper/2-3.png"}),e.jsx(i,{src:"./swiper/2-4.png"}),e.jsx(i,{src:"./swiper/2-5.png"}),e.jsx(i,{src:"./swiper/2-6.png"}),e.jsx(i,{src:"./swiper/2-7.png"}),e.jsx(i,{src:"./swiper/2-8.png"}),e.jsx(i,{src:"./swiper/2-9.png"}),e.jsx(i,{src:"./swiper/2-1.png"}),e.jsx(i,{src:"./swiper/2-2.png"}),e.jsx(i,{src:"./swiper/2-3.png"}),e.jsx(i,{src:"./swiper/2-4.png"}),e.jsx(i,{src:"./swiper/2-5.png"}),e.jsx(i,{src:"./swiper/2-6.png"}),e.jsx(i,{src:"./swiper/2-7.png"}),e.jsx(i,{src:"./swiper/2-8.png"}),e.jsx(i,{src:"./swiper/2-9.png"})]})}};var v,N,C;I.parameters={...I.parameters,docs:{...(v=I.parameters)==null?void 0:v.docs,source:{originalSource:`{
+  render: ({
+    SwiperPaginationPosition,
+    SwiperPaginationVariant,
+    SwiperPaginationSiblingCount,
+    SwiperPaginationTransitionDuration,
+    ...args
+  }) => {
+    return <Swiper {...args} pagination={<SwiperPagination position={SwiperPaginationPosition} siblingCount={SwiperPaginationSiblingCount} transitionDuration={SwiperPaginationTransitionDuration} variant={SwiperPaginationVariant} />}>
+        <Image src="./swiper/1.png" />
+        <Image src="./swiper/2.png" width="320px" />
+        <Image src="./swiper/3.png" />
+        <Image src="./swiper/4.png" />
+        <Image src="./swiper/1.png" />
+        <Image src="./swiper/2.png" width="320px" />
+        <Image src="./swiper/3.png" />
+        <Image src="./swiper/4.png" />
+        <Image src="./swiper/1.png" />
+        <Image src="./swiper/2.png" />
+        <Image src="./swiper/3.png" />
+        <Image src="./swiper/4.png" />
+      </Swiper>;
+  }
+}`,...(C=(N=I.parameters)==null?void 0:N.docs)==null?void 0:C.source}}};var _,V,D,T,q;P.parameters={...P.parameters,docs:{...(_=P.parameters)==null?void 0:_.docs,source:{originalSource:`{
+  render: ({
+    SwiperPaginationPosition,
+    SwiperPaginationVariant,
+    SwiperPaginationSiblingCount,
+    SwiperPaginationTransitionDuration,
+    ...args
+  }) => {
+    return <div style={{
+      height: 'min(512px, calc(100vh - 2rem))'
+    }}>
+        <Swiper {...args} direction="vertical" pagination={<SwiperPagination position={SwiperPaginationPosition} siblingCount={SwiperPaginationSiblingCount} transitionDuration={SwiperPaginationTransitionDuration} variant={SwiperPaginationVariant} />}>
+          <Image src="./swiper/1.png" />
+          <Image src="./swiper/2.png" />
+          <Image src="./swiper/3.png" />
+          <Image src="./swiper/4.png" />
+          <Image src="./swiper/1.png" />
+          <Image src="./swiper/2.png" />
+          <Image src="./swiper/3.png" />
+          <Image src="./swiper/4.png" />
+          <Image src="./swiper/1.png" />
+          <Image src="./swiper/2.png" />
+          <Image src="./swiper/3.png" />
+          <Image src="./swiper/4.png" />
+        </Swiper>
+      </div>;
+  }
+}`,...(D=(V=P.parameters)==null?void 0:V.docs)==null?void 0:D.source},description:{story:"We can create vertical swiper.",...(q=(T=P.parameters)==null?void 0:T.docs)==null?void 0:q.description}}};var k,z,B,E,M;d.parameters={...d.parameters,docs:{...(k=d.parameters)==null?void 0:k.docs,source:{originalSource:`{
+  render: args => {
+    const Image = (props: {
+      src: string;
+    }) => {
+      return <img height="56px" src={props.src} style={{
+        minWidth: '56px'
+      }} width="56px" />;
+    };
+    return <Swiper {...args} buttonNext={<CustomizationButtonNext />} buttonPrev={<CustomizationButtonPrev />} gap={8}>
+        <Image src="./swiper/2-1.png" />
+        <Image src="./swiper/2-2.png" />
+        <Image src="./swiper/2-3.png" />
+        <Image src="./swiper/2-4.png" />
+        <Image src="./swiper/2-5.png" />
+        <Image src="./swiper/2-6.png" />
+        <Image src="./swiper/2-7.png" />
+        <Image src="./swiper/2-8.png" />
+        <Image src="./swiper/2-9.png" />
+        <Image src="./swiper/2-1.png" />
+        <Image src="./swiper/2-2.png" />
+        <Image src="./swiper/2-3.png" />
+        <Image src="./swiper/2-4.png" />
+        <Image src="./swiper/2-5.png" />
+        <Image src="./swiper/2-6.png" />
+        <Image src="./swiper/2-7.png" />
+        <Image src="./swiper/2-8.png" />
+        <Image src="./swiper/2-9.png" />
+        <Image src="./swiper/2-1.png" />
+        <Image src="./swiper/2-2.png" />
+        <Image src="./swiper/2-3.png" />
+        <Image src="./swiper/2-4.png" />
+        <Image src="./swiper/2-5.png" />
+        <Image src="./swiper/2-6.png" />
+        <Image src="./swiper/2-7.png" />
+        <Image src="./swiper/2-8.png" />
+        <Image src="./swiper/2-9.png" />
+      </Swiper>;
+  }
+}`,...(B=(z=d.parameters)==null?void 0:z.docs)==null?void 0:B.source},description:{story:"Swiper is highly customizable. We can adjust `gap` between slides, override styles for swiper, swiper buttons and\npagination, or provide our own components via `buttonPrev`, `buttonNext` and `pagination` props.",...(M=(E=d.parameters)==null?void 0:E.docs)==null?void 0:M.description}}};const ye=["Demo","Vertical","Customization"];export{d as Customization,I as Demo,P as Vertical,ye as __namedExportsOrder,Ie as default};

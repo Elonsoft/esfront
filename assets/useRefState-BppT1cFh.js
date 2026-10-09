@@ -1,0 +1,1 @@
+import{r as s}from"./iframe-WZaTcFld.js";import{u}from"./useForceUpdate-Bnb30UZl.js";const n=(o=null)=>{const e=s.useRef(o),r=u(),c=s.useCallback(t=>{e.current!==t&&(e.current=t,r())},[r]);return[e,c]};export{n as u};

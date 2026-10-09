@@ -1,0 +1,1 @@
+import{b as a,r as n}from"./iframe-WZaTcFld.js";const b=(r,s,t)=>{const c=a(s);n.useEffect(()=>{if(r.current){const e=new MutationObserver(u=>{c.current(u)});return e.observe(r.current,t),()=>{e.disconnect()}}},[r.current,t])};export{b as u};

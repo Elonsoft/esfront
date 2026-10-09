@@ -1,0 +1,1 @@
+import{b as c,r as u}from"./iframe-WZaTcFld.js";const m=(e,n,r)=>{const s=c(n);u.useEffect(()=>{const t=o=>s.current(o);return document.addEventListener(e,t,r),()=>{document.removeEventListener(e,t)}},[])};export{m as u};
