@@ -13,7 +13,14 @@ import { useDefaultProps } from '../../../theming';
  * @see `Dialog`
  */
 export const DialogActions = ({ ref, ...inProps }: DialogActionsProps & RefAttributes<HTMLDivElement>) => {
-  const { className, style, sticky, children } = useDefaultProps({
+  const {
+    className,
+    style,
+    sticky,
+    direction = 'horizontal',
+    fullWidth = false,
+    children,
+  } = useDefaultProps({
     props: inProps,
     name: 'ESDialogActions',
   });
@@ -26,6 +33,8 @@ export const DialogActions = ({ ref, ...inProps }: DialogActionsProps & RefAttri
         ref={ref}
         className={clsx(
           'es-dialog-actions',
+          `es-dialog-actions--direction--${direction}`,
+          fullWidth && 'es-dialog-actions--full-width',
           sticky && 'es-dialog-actions--sticky',
           stuck && 'es-dialog-actions--stuck',
           className

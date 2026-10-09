@@ -9,4 +9,11 @@ export interface DialogTitleProps {
   style?: CSSProperties;
   /** Whether the title should be sticky. */
   sticky?: boolean;
+  /** The icon displayed next to the title. */
+  icon?: ReactNode;
+  /**
+   * The title layout. `center` stacks the icon above the text and centers both.
+   * @default 'start'
+   */
+  align?: 'start' | 'center';
 }

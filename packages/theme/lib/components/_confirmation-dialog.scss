@@ -1,0 +1,85 @@
+@use '../helpers/breakpoints';
+
+@mixin include() {
+  .es-confirmation-dialog {
+    &--severity--error .es-dialog-title__icon {
+      color: var(--es-error-300);
+    }
+
+    &--severity--primary .es-dialog-title__icon {
+      color: var(--es-primary-300);
+    }
+
+    & .es-dialog__paper {
+      position: relative;
+    }
+
+    & .es-dialog-close {
+      display: none;
+
+      @include breakpoints.up('sm') {
+        display: flex;
+      }
+    }
+
+    &__close {
+      --icon: var(--es-mono-a-a700);
+
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      z-index: 1;
+
+      @include breakpoints.up('sm') {
+        display: none;
+      }
+    }
+
+    & .es-dialog-title {
+      padding: 32px 16px 12px;
+
+      @include breakpoints.up('sm') {
+        align-items: center;
+        flex-direction: row;
+        gap: 8px;
+        padding: 22px 24px 14px;
+        text-align: left;
+      }
+    }
+
+    & .es-dialog-title__icon .es-svg-icon {
+      height: 56px !important;
+      width: 56px !important;
+
+      @include breakpoints.up('sm') {
+        height: 24px !important;
+        width: 24px !important;
+      }
+    }
+
+    & .es-dialog-content {
+      color: var(--es-mono-a-a800);
+      padding: 0 16px;
+      text-align: center;
+
+      @include breakpoints.up('sm') {
+        padding: 0 24px;
+        text-align: left;
+      }
+    }
+
+    & .es-dialog-actions {
+      padding: 20px 16px 16px;
+
+      @include breakpoints.up('sm') {
+        padding: 16px 24px 24px;
+      }
+
+      & > * {
+        @include breakpoints.up('sm') {
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+}
