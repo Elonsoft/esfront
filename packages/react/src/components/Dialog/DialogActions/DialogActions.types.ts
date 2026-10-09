@@ -8,4 +8,14 @@ export interface DialogActionsProps {
   style?: CSSProperties;
   /** Whether the actions should be sticky. */
   sticky?: boolean;
+  /**
+   * The direction the actions are laid out in.
+   * @default 'horizontal'
+   */
+  direction?: 'horizontal' | 'vertical';
+  /**
+   * If `true`, the actions stretch to fill the available space instead of hugging their content.
+   * @default false
+   */
+  fullWidth?: boolean;
 }

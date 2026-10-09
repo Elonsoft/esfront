@@ -21,6 +21,7 @@ export * from './Chips';
 export * from './ClearButton';
 export * from './ClickAwayListener';
 export * from './Collapse';
+export * from './ConfirmationDialog';
 export * from './DateAdapter';
 export * from './DateInput';
 export * from './Dialog';
