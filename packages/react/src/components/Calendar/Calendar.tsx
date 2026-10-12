@@ -54,25 +54,25 @@ export const Calendar = ({ ref, ...inProps }: CalendarProps & RefAttributes<HTML
       const end = selection[1] ? new Date(selection[1]) : null;
 
       let range = [start, end] as [Date, Date | null];
-      let rangeHover = [start, end || hover] as [Date, Date | null];
+      let rangeHover = hover;
 
       if (range[0] && range[1] && range[0] > range[1]) {
         range = range.reverse() as [Date, Date];
       }
 
-      if (rangeHover[0] && rangeHover[1] && rangeHover[0] > rangeHover[1]) {
+      if (rangeHover && rangeHover[0] && rangeHover[1] && rangeHover[0] > rangeHover[1]) {
         rangeHover = rangeHover.reverse() as [Date, Date];
       }
 
-      if (rangeHover[1] && adapter.isWithinRange(current, rangeHover as [Date, Date])) {
+      if (rangeHover && rangeHover[1] && adapter.isWithinRange(current, rangeHover as [Date, Date])) {
         position = 'between';
       }
 
-      if (adapter.isSameDay(rangeHover[0], current)) {
+      if (rangeHover && adapter.isSameDay(rangeHover[0], current)) {
         position = 'start';
       }
 
-      if (rangeHover[1] && adapter.isSameDay(rangeHover[1], current)) {
+      if (rangeHover && rangeHover[1] && adapter.isSameDay(rangeHover[1], current)) {
         position = 'end';
       }
 
@@ -83,7 +83,7 @@ export const Calendar = ({ ref, ...inProps }: CalendarProps & RefAttributes<HTML
         selected = true;
       }
 
-      if (hover && rangeHover[1] && !adapter.isSameDay(rangeHover[0], rangeHover[1])) {
+      if (hover && rangeHover && rangeHover[1] && !adapter.isSameDay(rangeHover[0], rangeHover[1])) {
         hovered = adapter.isWithinRange(current, rangeHover as [Date, Date]);
       }
     }
