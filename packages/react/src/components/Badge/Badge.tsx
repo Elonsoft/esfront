@@ -23,7 +23,7 @@ export const Badge: OverridableComponent<BadgeTypeMap> = ({ ref, ...inProps }: B
     name: 'ESBadge',
   });
 
-  const component = clickable ? ButtonBase : 'div';
+  const component = clickable ? ButtonBase : 'span';
 
   return (
     <ButtonBase
