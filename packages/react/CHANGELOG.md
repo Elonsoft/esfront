@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.0...@esfront/react@0.18.1) (2026-10-12)
+
+
+### Bug Fixes
+
+* **react,Badge:** change div elements to span ([d19de5a](https://github.com/Elonsoft/esfront/commit/d19de5ac467c0b7b118a660b71ae183a8ca0cd1b))
+
+
+
 ## [0.18.0](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.17.4...@esfront/react@0.18.0) (2026-10-09)
 
 
