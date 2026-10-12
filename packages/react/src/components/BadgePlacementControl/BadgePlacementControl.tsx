@@ -52,7 +52,7 @@ export const BadgePlacementControl = ({
   const transform = calculateTransform(placement, offset);
 
   return (
-    <div
+    <span
       ref={ref}
       className={clsx(
         className,
@@ -62,10 +62,10 @@ export const BadgePlacementControl = ({
       )}
       style={style}
     >
-      <div className="es-badge-placement-control__wrapper" style={{ transform }}>
+      <span className="es-badge-placement-control__wrapper" style={{ transform }}>
         {badge}
-      </div>
+      </span>
       {children}
-    </div>
+    </span>
   );
 };
