@@ -347,7 +347,10 @@ export const Swiper = (inProps: SwiperProps) => {
     }
   };
 
-  useImperativeHandle(actions, () => ({ setActiveSlide, setActiveSlideByStep }));
+  useImperativeHandle(actions, () => ({ setActiveSlide, setActiveSlideByStep }), [
+    setActiveSlide,
+    setActiveSlideByStep,
+  ]);
 
   useEffect(() => {
     // Both read the committed DOM to recompute the active slide and pagination window, so they can only
