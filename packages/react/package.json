@@ -1,6 +1,6 @@
 {
   "name": "@esfront/react",
-  "version": "0.18.1",
+  "version": "0.18.2",
   "description": "",
   "type": "module",
   "main": "./lib/node/index.cjs",

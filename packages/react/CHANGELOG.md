@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.1...@esfront/react@0.18.2) (2026-10-26)
+
+
+### Bug Fixes
+
+* **react,Swiper:** add deps to useImperativeHandle ([32a536c](https://github.com/Elonsoft/esfront/commit/32a536c1e8d6ef528d97684dbb9f963bf0c9dd5f))
+
+
+
 ## [0.18.1](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.0...@esfront/react@0.18.1) (2026-10-12)
 
 
