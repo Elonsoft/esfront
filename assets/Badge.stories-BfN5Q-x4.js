@@ -1,5 +1,0 @@
-import{j as a}from"./iframe-BYc7QBr5.js";import{B as s}from"./Badge-DTUdKAqw.js";import"./preload-helper-Dp1pzeXC.js";import"./clsx.m-CH7BE6MN.js";import"./useDefaultProps-DBegVBAf.js";import"./ButtonBase-CQOMMh1y.js";import"./useForkRef-DB7gLYYj.js";const u={tags:["autodocs"],component:s,parameters:{references:["Badge"]},argTypes:{component:{table:{disable:!0}},size:{options:["100","200","300","400","500","600","700"],control:{type:"select"}},color:{options:["success","warning","error","info","secondary","primary","mono-a","mono-b","mono-b-500"],control:{type:"select"}},clickable:{control:{type:"boolean"}},children:{control:{type:"text"}}},args:{children:"1",size:"700",color:"mono-a"}},o={render:n=>a.jsx(s,{...n})};var e,r,t;o.parameters={...o.parameters,docs:{...(e=o.parameters)==null?void 0:e.docs,source:{originalSource:`{
-  render: args => {
-    return <Badge {...args} />;
-  }
-}`,...(t=(r=o.parameters)==null?void 0:r.docs)==null?void 0:t.source}}};const y=["Demo"];export{o as Demo,y as __namedExportsOrder,u as default};
