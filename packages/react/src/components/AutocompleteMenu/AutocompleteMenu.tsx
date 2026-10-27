@@ -14,7 +14,7 @@ import {
 
 import { AutocompleteMenuProps } from './AutocompleteMenu.types';
 
-import { useOverlayScrollbars } from 'overlayscrollbars-react';
+import type { EventListeners as OverlayScrollbarsEventListeners } from 'overlayscrollbars';
 
 import clsx from 'clsx';
 
@@ -31,7 +31,7 @@ import { Grow } from '../Grow';
 import { MenuList } from '../Menu';
 import { MenuGroup } from '../MenuGroup';
 import { MenuItem } from '../MenuItem';
-import { OVERLAY_SCROLLBARS_OPTIONS } from '../OverlayScrollbars';
+import { OverlayScrollbars } from '../OverlayScrollbars';
 import { Popper } from '../Popper';
 import { SpinnerRing } from '../Spinner';
 import { TextField } from '../TextField';
@@ -108,8 +108,6 @@ export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any
   const menuListRef = useRef<HTMLUListElement | null>(null);
   const [sentinelRef, setSentinelRef] = useRefState<HTMLElement>();
 
-  const [initialize, instance] = useOverlayScrollbars({ options: OVERLAY_SCROLLBARS_OPTIONS, defer: true });
-
   const trapFocusEnabled = useRef(true);
 
   useImperativeHandle(
@@ -168,30 +166,32 @@ export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any
     }
   };
 
-  const onEnter = useCallback(() => {
-    setTimeout(() => {
-      if (initialize && menuListRef.current) {
-        initialize(menuListRef.current);
-      }
-    });
+  const menuListEvents = useMemo<OverlayScrollbarsEventListeners>(
+    () => ({
+      initialized: (osInstance) => {
+        if (disableAutoScrollToSelected) {
+          return;
+        }
 
+        const element = menuListRef.current?.querySelector('.es-list-item--selected') as HTMLElement | null;
+
+        if (!element) {
+          return;
+        }
+
+        const viewport = osInstance.elements().viewport;
+
+        viewport.scrollTop = element.offsetTop + element.clientHeight / 2 - viewport.clientHeight / 2;
+      },
+    }),
+    [disableAutoScrollToSelected]
+  );
+
+  const onEnter = useCallback(() => {
     if (searchInputRef.current && !disableAutoFocus) {
       searchInputRef.current.focus({ preventScroll: true });
     }
-
-    if (menuListRef.current && !disableAutoScrollToSelected) {
-      const element = menuListRef.current.querySelector('.es-list-item--selected') as HTMLElement;
-
-      if (element) {
-        menuListRef.current.scrollTop =
-          element.offsetTop + element.clientHeight / 2 - menuListRef.current.clientHeight / 2;
-      }
-    }
-  }, [initialize, disableAutoFocus, disableAutoScrollToSelected]);
-
-  const onExited = () => {
-    instance()?.destroy();
-  };
+  }, [disableAutoFocus]);
 
   const groupedOptions: ReactNode[] = [];
   let tabIndex = true;
@@ -328,7 +328,6 @@ export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any
             inTransitionProps?.onEnter?.(...args);
           }}
           onExited={(...args) => {
-            onExited();
             TransitionProps?.onExited?.();
             inTransitionProps?.onExited?.(...args);
           }}
@@ -398,20 +397,19 @@ export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any
                         <SpinnerRing color="mono-a" size={16} /> {labelLoading}
                       </div>
                     ) : options.length ? (
-                      <MenuList
-                        ref={menuListRef}
-                        className="es-autocomplete-menu__menu-list es-overlay-scrollbars es-overlay-scrollbars--color--mono-a"
-                      >
-                        {groupedOptions}
-                        {!!onLoadMore && (
-                          <MenuItem
-                            ref={setSentinelRef}
-                            disabled
-                            className="es-autocomplete-menu__sentinel"
-                            tabIndex={-1}
-                          />
-                        )}
-                      </MenuList>
+                      <OverlayScrollbars className="es-autocomplete-menu__menu-list" events={menuListEvents}>
+                        <MenuList ref={menuListRef}>
+                          {groupedOptions}
+                          {!!onLoadMore && (
+                            <MenuItem
+                              ref={setSentinelRef}
+                              disabled
+                              className="es-autocomplete-menu__sentinel"
+                              tabIndex={-1}
+                            />
+                          )}
+                        </MenuList>
+                      </OverlayScrollbars>
                     ) : (
                       <div className={clsx('es-autocomplete-menu__empty-state', 'caption')}>
                         {SearchProps?.value ? labelNoMatches : labelNoOptions}

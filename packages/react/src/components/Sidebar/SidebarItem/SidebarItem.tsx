@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 import { SidebarItemProps, SidebarItemTypeMap } from './SidebarItem.types';
-
-import { useOverlayScrollbars } from 'overlayscrollbars-react';
 
 import clsx from 'clsx';
 
@@ -18,7 +16,7 @@ import { Divider } from '../../Divider';
 import { ListItem, ListItemIcon, ListItemText } from '../../ListItem';
 import { MenuList } from '../../Menu';
 import { MenuItem } from '../../MenuItem';
-import { OVERLAY_SCROLLBARS_OPTIONS } from '../../OverlayScrollbars';
+import { OverlayScrollbars } from '../../OverlayScrollbars';
 import { Tooltip } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';
 import { useSidebarMenuContext } from '../SidebarMenu/SidebarMenu.context';
@@ -72,21 +70,6 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = ({ ref: inR
   const behaviour = isTouchDevice ? 'click' : inBehaviour;
 
   const component = (props as any).component as React.ElementType;
-
-  const [initialize, instance] = useOverlayScrollbars({ options: OVERLAY_SCROLLBARS_OPTIONS, defer: true });
-
-  useEffect(() => {
-    if (!isTooltipOpen) {
-      instance()?.destroy();
-      return;
-    }
-
-    setTimeout(() => {
-      if (refTooltip.current) {
-        initialize(refTooltip.current);
-      }
-    });
-  }, [initialize, isTooltipOpen]);
 
   useResizeObserver(ref, () => {
     if (ref.current && component) {
@@ -193,62 +176,55 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = ({ ref: inR
         },
       }}
       title={
-        <MenuList
-          ref={refTooltip}
-          disablePadding
-          className={clsx(
-            'es-sidebar-item__tooltip-title',
-            !!children && 'es-sidebar-item__tooltip-title--children',
-            'es-overlay-scrollbars',
-            'es-overlay-scrollbars--color--mono-a'
-          )}
-          onKeyDown={onTooltipKeyDown}
-          onMouseDown={onMouseDown}
+        <OverlayScrollbars
+          className={clsx('es-sidebar-item__tooltip-title', !!children && 'es-sidebar-item__tooltip-title--children')}
         >
-          <MenuItem
-            className="es-sidebar-item__tooltip-item"
-            component={component}
-            disabled={!onClick}
-            size="100"
-            tabIndex={-1}
-            {...props}
-            selected={false}
-            onClick={(e: React.MouseEvent<HTMLLIElement>) => {
-              onClick?.(e);
+          <MenuList ref={refTooltip} disablePadding onKeyDown={onTooltipKeyDown} onMouseDown={onMouseDown}>
+            <MenuItem
+              className="es-sidebar-item__tooltip-item"
+              component={component}
+              disabled={!onClick}
+              size="100"
+              tabIndex={-1}
+              {...props}
+              selected={false}
+              onClick={(e: React.MouseEvent<HTMLLIElement>) => {
+                onClick?.(e);
 
-              if (closePopoverAfterClick) {
-                onTooltipClose();
-              }
-            }}
-          >
-            <span className="body100">{text}</span>
-          </MenuItem>
+                if (closePopoverAfterClick) {
+                  onTooltipClose();
+                }
+              }}
+            >
+              <span className="body100">{text}</span>
+            </MenuItem>
 
-          {!!children && <Divider className="es-sidebar-item__tooltip-divider" component="li" role="presentation" />}
-          {!!children &&
-            React.Children.map(children, (child: any, idx: number) => {
-              const { text, inset, onClick, ...rest } = child.props;
+            {!!children && <Divider className="es-sidebar-item__tooltip-divider" component="li" role="presentation" />}
+            {!!children &&
+              React.Children.map(children, (child: any, idx: number) => {
+                const { text, inset, onClick, ...rest } = child.props;
 
-              return (
-                <MenuItem
-                  key={idx}
-                  className="es-sidebar-item__tooltip-item"
-                  size="100"
-                  tabIndex={idx}
-                  {...rest}
-                  onClick={(e: React.MouseEvent<HTMLLIElement>) => {
-                    onClick?.(e);
+                return (
+                  <MenuItem
+                    key={idx}
+                    className="es-sidebar-item__tooltip-item"
+                    size="100"
+                    tabIndex={idx}
+                    {...rest}
+                    onClick={(e: React.MouseEvent<HTMLLIElement>) => {
+                      onClick?.(e);
 
-                    if (closePopoverAfterClick) {
-                      onTooltipClose();
-                    }
-                  }}
-                >
-                  <span className="body100">{text}</span>
-                </MenuItem>
-              );
-            })}
-        </MenuList>
+                      if (closePopoverAfterClick) {
+                        onTooltipClose();
+                      }
+                    }}
+                  >
+                    <span className="body100">{text}</span>
+                  </MenuItem>
+                );
+              })}
+          </MenuList>
+        </OverlayScrollbars>
       }
       onClose={onTooltipClose}
       onOpen={onTooltipOpen}
