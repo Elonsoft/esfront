@@ -277,58 +277,60 @@ export const SortingMenu = memo(function SortingMenu({
         },
       }}
     >
-      <div className="es-sorting-menu__header">
-        <span className="es-sorting-menu__caption caption">
-          {isMultiple && !!values.length ? labelSortOrder : labelSortTooltip}
-        </span>
-        {!!values.length && (
-          <Link
-            autoFocus
-            className="es-sorting-menu__reset-button"
-            component="button"
-            underline="hover"
-            variant="caption"
-            onClick={onResetSort}
-          >
-            {labelResetButton}
-          </Link>
+      <div className="es-sorting-menu__content">
+        <div className="es-sorting-menu__header">
+          <span className="es-sorting-menu__caption caption">
+            {isMultiple && !!values.length ? labelSortOrder : labelSortTooltip}
+          </span>
+          {!!values.length && (
+            <Link
+              autoFocus
+              className="es-sorting-menu__reset-button"
+              component="button"
+              underline="hover"
+              variant="caption"
+              onClick={onResetSort}
+            >
+              {labelResetButton}
+            </Link>
+          )}
+        </div>
+        <MenuList ref={menuListRef} autoFocusItem={!values.length}>
+          {isMultiple && values.map((item, i) => renderItem(sortMap[item.value], i, true))}
+          {isMultiple && !!values.length && values.length !== options.length && (
+            <MenuItem key="middleSortingDivider" disabled className="es-sorting-menu__menu-item">
+              <Divider />
+              <div className="es-sorting-menu__caption es-sorting-menu__sort-tooltip caption">{labelSortTooltip}</div>
+            </MenuItem>
+          )}
+          {isMultiple &&
+            options.filter((v) => !sortMap[v.value].direction).map((o, i) => renderItem(sortMap[o.value], i))}
+          {!isMultiple && options.map((option, i) => renderItem(sortMap[option.value], i, true))}
+        </MenuList>
+        {props.multiple && (
+          <div className="es-sorting-menu__footer">
+            {isTouchScreen ? (
+              <span className="es-sorting-menu__caption caption">
+                {isMultiple ? labelMultisortMobileOn : labelMultisortMobileOff}
+              </span>
+            ) : (
+              <>
+                <Kbd variant="outlined">{isMacintosh() ? '⌘' : 'Ctrl'}</Kbd>
+                <span className="es-sorting-menu__plus-sign caption">+</span>
+                <Kbd variant="outlined">{labelMultisortLMB}</Kbd>
+                <span className="es-sorting-menu__caption caption">{labelMultisortTitle}</span>
+                <Tooltip
+                  className="es-sorting-menu__information-icon"
+                  title={isMacintosh() ? labelMultisortTooltipMacintosh : labelMultisortTooltip}
+                >
+                  <InformationIcon variant="question" />
+                </Tooltip>
+              </>
+            )}
+            <Switch checked={isMultiple} size="small" type="button" onChange={onChangeSortMode} />
+          </div>
         )}
       </div>
-      <MenuList ref={menuListRef} autoFocusItem={!values.length}>
-        {isMultiple && values.map((item, i) => renderItem(sortMap[item.value], i, true))}
-        {isMultiple && !!values.length && values.length !== options.length && (
-          <MenuItem key="middleSortingDivider" disabled className="es-sorting-menu__menu-item">
-            <Divider />
-            <div className="es-sorting-menu__caption es-sorting-menu__sort-tooltip caption">{labelSortTooltip}</div>
-          </MenuItem>
-        )}
-        {isMultiple &&
-          options.filter((v) => !sortMap[v.value].direction).map((o, i) => renderItem(sortMap[o.value], i))}
-        {!isMultiple && options.map((option, i) => renderItem(sortMap[option.value], i, true))}
-      </MenuList>
-      {props.multiple && (
-        <div className="es-sorting-menu__footer">
-          {isTouchScreen ? (
-            <span className="es-sorting-menu__caption caption">
-              {isMultiple ? labelMultisortMobileOn : labelMultisortMobileOff}
-            </span>
-          ) : (
-            <>
-              <Kbd variant="outlined">{isMacintosh() ? '⌘' : 'Ctrl'}</Kbd>
-              <span className="es-sorting-menu__plus-sign caption">+</span>
-              <Kbd variant="outlined">{labelMultisortLMB}</Kbd>
-              <span className="es-sorting-menu__caption caption">{labelMultisortTitle}</span>
-              <Tooltip
-                className="es-sorting-menu__information-icon"
-                title={isMacintosh() ? labelMultisortTooltipMacintosh : labelMultisortTooltip}
-              >
-                <InformationIcon variant="question" />
-              </Tooltip>
-            </>
-          )}
-          <Switch checked={isMultiple} size="small" type="button" onChange={onChangeSortMode} />
-        </div>
-      )}
     </Popover>
   );
 });
