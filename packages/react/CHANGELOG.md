@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.3](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.2...@esfront/react@0.18.3) (2026-10-27)
+
+
+### Bug Fixes
+
+* **react:** replace useOverlayScrollbars with OverlayScrollbars ([066f659](https://github.com/Elonsoft/esfront/commit/066f659b247c5e298eb94f8c8d02fd525757cac4))
+
+
+
 ## [0.18.2](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.1...@esfront/react@0.18.2) (2026-10-26)
 
 
