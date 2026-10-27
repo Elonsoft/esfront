@@ -1,0 +1,5 @@
+import{j as i}from"./iframe-DIMiXZkL.js";import{R as a}from"./Radio-I2UxSkkO.js";import"./preload-helper-Dp1pzeXC.js";import"./clsx.m-CH7BE6MN.js";import"./useDefaultProps-CQ2vN7PH.js";import"./createChainedFunction-Cp_t5fpS.js";import"./SwitchBase-B-qGAv_Q.js";import"./useControlled-V-CCDtrK.js";import"./FormField.context-BGx9jYzc.js";import"./ButtonBase-GQvGf2x8.js";import"./useForkRef-AZ5KJT18.js";const x={tags:["autodocs"],component:a,parameters:{references:["Radio"]},argTypes:{checkedIcon:{table:{disable:!0}},icon:{table:{disable:!0}},inputProps:{table:{disable:!0}},inputRef:{table:{disable:!0}},value:{table:{disable:!0}}},args:{color:"primary"}},r={render:s=>i.jsx(a,{...s})};var e,t,o;r.parameters={...r.parameters,docs:{...(e=r.parameters)==null?void 0:e.docs,source:{originalSource:`{
+  render: args => {
+    return <Radio {...args} />;
+  }
+}`,...(o=(t=r.parameters)==null?void 0:t.docs)==null?void 0:o.source}}};const j=["Demo"];export{r as Demo,j as __namedExportsOrder,x as default};
