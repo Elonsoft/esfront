@@ -1,6 +1,0 @@
-import{r as n,j as i}from"./iframe-DIMiXZkL.js";import{S as s}from"./Search-E4eENTWL.js";import"./preload-helper-Dp1pzeXC.js";import"./clsx.m-CH7BE6MN.js";import"./useDefaultProps-CQ2vN7PH.js";import"./IconCloseLineW350-DEuwEiCh.js";import"./SvgIcon-DijRRPMl.js";import"./IconMagnify2LineW400-VbPBQ7jW.js";import"./TextField-NZ9SeiFp.js";import"./useId-CXM3-UVf.js";import"./FormFieldHelperText-C1PbgRgg.js";import"./FormField.context-BGx9jYzc.js";import"./useForkRef-AZ5KJT18.js";import"./FormFieldLabel-dEzWh-bq.js";import"./setRef-B4em79P6.js";import"./useEnhancedEffect-DDywECfU.js";import"./FormFieldAdornment-hLKsj4iB.js";import"./Button-Ccz4Bnbg.js";import"./ButtonBase-GQvGf2x8.js";const T={tags:["autodocs"],component:s,parameters:{references:["Search"]},argTypes:{}},e={render:()=>{const[m,r]=n.useState("");return i.jsx(s,{value:m,onChange:p=>r(p.target.value),onClear:()=>r("")})}};var t,o,a;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:`{
-  render: () => {
-    const [value, setValue] = useState('');
-    return <Search value={value} onChange={e => setValue(e.target.value)} onClear={() => setValue('')} />;
-  }
-}`,...(a=(o=e.parameters)==null?void 0:o.docs)==null?void 0:a.source}}};const b=["Demo"];export{e as Demo,b as __namedExportsOrder,T as default};

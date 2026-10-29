@@ -1,1 +1,0 @@
-import{r as s}from"./iframe-DIMiXZkL.js";import{u}from"./useForceUpdate-BzoSuXdV.js";const n=(o=null)=>{const e=s.useRef(o),r=u(),c=s.useCallback(t=>{e.current!==t&&(e.current=t,r())},[r]);return[e,c]};export{n as u};
