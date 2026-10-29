@@ -47,6 +47,10 @@ const meta: Meta<Args> = {
         disable: true,
       },
     },
+    severity: {
+      options: ['error', 'warning', 'primary'],
+      control: { type: 'select' },
+    },
     action: {
       table: {
         disable: true,

@@ -8,7 +8,7 @@ import { DialogProps } from '../Dialog';
 export interface ConfirmationDialogPropsSeverityOverrides {}
 
 export type ConfirmationDialogSeverity = OverridableStringUnion<
-  'error' | 'primary',
+  'error' | 'warning' | 'primary',
   ConfirmationDialogPropsSeverityOverrides
 >;
 

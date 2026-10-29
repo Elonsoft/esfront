@@ -14,6 +14,7 @@ import { LoadingButton } from '../LoadingButton';
 
 const defaultIconMapping: Record<string, React.ReactNode> = {
   error: <IconAlertFillW500 />,
+  warning: <IconAlertFillW500 />,
   primary: <IconInformation2FillW500 />,
 };
 

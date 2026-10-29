@@ -6,6 +6,10 @@
       color: var(--es-error-300);
     }
 
+    &--severity--warning .es-dialog-title__icon {
+      color: var(--es-warning-300);
+    }
+
     &--severity--primary .es-dialog-title__icon {
       color: var(--es-primary-300);
     }
