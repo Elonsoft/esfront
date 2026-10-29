@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.4.0...@esfront/theme@0.4.1) (2026-10-29)
+
+
+### Features
+
+* **react,ConfirmationDialog:** add warning severity ([9095a19](https://github.com/Elonsoft/esfront/commit/9095a195754797059727e5ef564347f25ac7bf05))
+
+
+
 ## [0.4.0](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.3.3...@esfront/theme@0.4.0) (2026-10-09)
 
 

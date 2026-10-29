@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.4](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.3...@esfront/react@0.18.4) (2026-10-29)
+
+
+### Features
+
+* **react,ConfirmationDialog:** add warning severity ([9095a19](https://github.com/Elonsoft/esfront/commit/9095a195754797059727e5ef564347f25ac7bf05))
+
+
+
 ## [0.18.3](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.2...@esfront/react@0.18.3) (2026-10-27)
 
 
