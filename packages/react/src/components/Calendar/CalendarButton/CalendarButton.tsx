@@ -33,6 +33,7 @@ export const CalendarButton = ({ ref, ...inProps }: CalendarButtonProps & RefAtt
   });
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events -- the nested button receives the keyboard activation and bubbles it here
     <div
       ref={ref}
       className={clsx(

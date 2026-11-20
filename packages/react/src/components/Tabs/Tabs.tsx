@@ -728,6 +728,7 @@ export const Tabs = ({ ref, ...inProps }: TabsProps & RefAttributes<HTMLDivEleme
           aria-labelledby={ariaLabelledBy}
           className={clsx('es-tabs__flex-container', centered && 'es-tabs__flex-container--centered')}
           role="tablist"
+          tabIndex={-1}
           onKeyDown={handleKeyDown}
         >
           {children}

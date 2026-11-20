@@ -51,6 +51,7 @@ export const FormFieldField = ({ ref, ...inProps }: FormFieldFieldProps & RefAtt
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- a click on the padding only focuses the control, keyboard users tab to it directly
     <div
       ref={handleRef}
       className={clsx(

@@ -29,6 +29,7 @@ const GalleryThumbnailsButtonPrev = ({ icon, label }: { icon: ReactNode; label?:
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events -- the nested button receives the keyboard activation and bubbles it here
     <div
       className="es-gallery-thumbnails__button es-gallery-thumbnails__button--prev"
       onClick={onClick}
@@ -53,6 +54,7 @@ const GalleryThumbnailsButtonNext = ({ icon, label }: { icon: ReactNode; label?:
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events -- the nested button receives the keyboard activation and bubbles it here
     <div
       className="es-gallery-thumbnails__button es-gallery-thumbnails__button--next"
       onClick={onClick}

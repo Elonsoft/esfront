@@ -426,6 +426,7 @@ export const Swiper = (inProps: SwiperProps) => {
         <div className="es-swiper__wrapper" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           {isPrevVisible && !!buttonPrev && buttonPrev}
           {isNextVisible && !!buttonNext && buttonNext}
+          {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions -- dragging is pointer-only, the pagination and buttons provide keyboard control */}
           <div
             ref={container}
             className={clsx(

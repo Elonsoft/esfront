@@ -41,6 +41,7 @@ export const FormFieldLabel = ({ ref, ...inProps }: FormFieldLabelProps & RefAtt
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- a label is activated natively, the handler only focuses custom controls
     <label
       ref={handleRef}
       className={clsx(

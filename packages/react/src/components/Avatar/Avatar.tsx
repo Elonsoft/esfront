@@ -69,7 +69,7 @@ export const Avatar = ({ ref, ...inProps }: AvatarProps & RefAttributes<HTMLDivE
   let child: ReactNode = null;
 
   if (hasImgNotFailing) {
-    child = <img className="es-avatar__image" src={src} />;
+    child = <img alt={alt} className="es-avatar__image" src={src} />;
   } else if (!!children || children === 0) {
     child = children;
   } else if (src && alt) {

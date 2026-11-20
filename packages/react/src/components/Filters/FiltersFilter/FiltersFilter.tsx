@@ -38,6 +38,7 @@ export const FiltersFilter = ({ ref, ...inProps }: FiltersFilterProps & RefAttri
     <div ref={ref} className={clsx('es-filters-filter', className)} style={style}>
       <div className="es-filters-filter__header">
         <div className="es-filters-filter__container">
+          {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events -- the nested toggle button receives the keyboard activation and bubbles it here */}
           <div className="es-filters-filter__title body200-w40" onClick={toggleOpen}>
             {title}
             {!!children && (

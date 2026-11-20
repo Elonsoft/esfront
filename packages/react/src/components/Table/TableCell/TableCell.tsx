@@ -189,6 +189,7 @@ export const TableCell = memo(function TableCell({
   }, [isResizing]);
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events -- keyboard users enter edit mode through the focusable edit link
     <div
       ref={rootRef}
       className={clsx(
@@ -222,11 +223,12 @@ export const TableCell = memo(function TableCell({
       onClick={onClick}
     >
       {editable && (
-        <a className="es-table-cell__edit-enter-link" tabIndex={editing ? -1 : 0} onFocus={onClick}>
+        <button className="es-table-cell__edit-enter-link" tabIndex={editing ? -1 : 0} type="button" onFocus={onClick}>
           <span />
-        </a>
+        </button>
       )}
 
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions -- keeps the cell click from firing while the input is being edited */}
       <div
         className="es-table-cell__wrapper"
         onMouseDown={(e) => {
@@ -279,6 +281,7 @@ export const TableCell = memo(function TableCell({
       )}
 
       {editing && (
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events -- stops the cell handlers from firing on the action buttons
         <div className="es-table-cell__buttons" onClick={onStopPropagation} onMouseDown={onPreventDefault}>
           <Button
             aria-label={labelEditAccept}
