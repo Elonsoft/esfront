@@ -11,6 +11,7 @@ import { Button } from '../Button';
 const Image = (props: { src: string; width?: string }) => {
   return (
     <img
+      alt=""
       height="160px"
       src={props.src}
       style={{ objectFit: 'cover', borderRadius: '8px', minWidth: props.width || '160px' }}
@@ -276,7 +277,7 @@ pagination, or provide our own components via `buttonPrev`, `buttonNext` and `pa
 export const Customization: Story = {
   render: (args) => {
     const Image = (props: { src: string }) => {
-      return <img height="56px" src={props.src} style={{ minWidth: '56px' }} width="56px" />;
+      return <img alt="" height="56px" src={props.src} style={{ minWidth: '56px' }} width="56px" />;
     };
 
     return (

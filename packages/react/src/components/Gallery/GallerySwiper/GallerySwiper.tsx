@@ -32,6 +32,7 @@ const GallerySwiperButtonPrev = ({ icon, label }: { icon: ReactNode; label?: str
 
   return (
     <GalleryTooltip color="white-a600" distance={0} placement="right" title={label || ''}>
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events -- the nested button receives the keyboard activation and bubbles it here */}
       <div
         className="es-gallery-swiper__button es-gallery-swiper__button--prev"
         onClick={onClick}
@@ -56,6 +57,7 @@ const GallerySwiperButtonNext = ({ icon, label }: { icon: ReactNode; label?: str
 
   return (
     <GalleryTooltip color="white-a600" distance={0} placement="left" title={label || ''}>
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events -- the nested button receives the keyboard activation and bubbles it here */}
       <div
         className="es-gallery-swiper__button es-gallery-swiper__button--next"
         onClick={onClick}

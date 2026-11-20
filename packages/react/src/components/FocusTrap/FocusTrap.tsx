@@ -318,10 +318,12 @@ export const FocusTrap = (inProps: FocusTrapProps) => {
 
   return (
     <>
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- the sentinels catch focus leaving the trap */}
       <div ref={sentinelStart} data-testid="sentinelStart" tabIndex={open ? 0 : -1} onFocus={onFocusSentinel} />
       {/* The forked ref lets the trap reach the child's node without taking it over from the caller. */}
       {/* eslint-disable-next-line react-hooks/refs */}
       {cloneElement(children, { ref: handleRef, onFocus })}
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- the sentinels catch focus leaving the trap */}
       <div ref={sentinelEnd} data-testid="sentinelEnd" tabIndex={open ? 0 : -1} onFocus={onFocusSentinel} />
     </>
   );

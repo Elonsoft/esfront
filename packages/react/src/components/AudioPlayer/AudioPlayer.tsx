@@ -756,6 +756,7 @@ export const AudioPlayer = ({ ref, ...inProps }: AudioPlayerProps & RefAttribute
         title={
           isRateMenuOpen ? (
             <FocusTrap open={isMenuOpen}>
+              {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions -- keys are routed to the menu list inside the trap */}
               <div style={{ outline: 'none' }} tabIndex={-1} onKeyDown={onRateMenuKeyDown} onMouseDown={onMouseDown}>
                 <MenuList className="es-audio-player__menu-list">
                   <MenuItem autoFocus className="es-audio-player__menu-item" size="100" onClick={onRateMenuClose}>

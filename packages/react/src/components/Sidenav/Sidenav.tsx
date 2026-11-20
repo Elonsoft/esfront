@@ -134,6 +134,7 @@ export const Sidenav = ({ ref, ...inProps }: SidenavProps & React.RefAttributes<
           {React.Children.map(children as React.ReactElement<any>[], (child, idx: number) => {
             if (idx) {
               return (
+                // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- ArrowLeft moves focus to the rail, the drawer itself is not interactive
                 <div
                   ref={sidenavRef}
                   className={clsx(
@@ -156,6 +157,7 @@ export const Sidenav = ({ ref, ...inProps }: SidenavProps & React.RefAttributes<
                 className="es-sidenav__rail"
                 onMouseLeave={onMouseLeave}
                 onMouseMove={onMouseMove}
+                // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events -- hover intent is a pointer-only enhancement
                 onMouseOver={onMouseOver}
               >
                 {child}
@@ -165,6 +167,7 @@ export const Sidenav = ({ ref, ...inProps }: SidenavProps & React.RefAttributes<
         </div>
         {!open && hover && (
           <div
+            aria-hidden="true"
             className={clsx(
               'es-sidenav__overlay',
               open && 'es-sidenav__overlay--open',

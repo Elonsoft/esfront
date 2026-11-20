@@ -138,6 +138,7 @@ export const Sidebar = ({ ref: inRef, ...inProps }: SidebarProps & React.RefAttr
         style={style}
       >
         {(onWidthChange || onWidthChangeCommitLatest) && (
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- a drag handle is pointer-only
           <div
             className={clsx(
               'es-sidebar__handler',

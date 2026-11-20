@@ -306,6 +306,7 @@ export const BottomSheet = ({ ref, ...inProps }: BottomSheetProps & RefAttribute
       {...other}
     >
       <TransitionComponent appear in={open} role="presentation" timeout={transitionDuration} {...TransitionProps}>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions -- drag-to-resize gesture, closing is available from the keyboard */}
         <div
           ref={containerRef}
           className={clsx(

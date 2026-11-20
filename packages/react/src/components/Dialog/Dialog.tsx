@@ -90,6 +90,7 @@ export const Dialog = ({ ref, ...inProps }: DialogProps & RefAttributes<HTMLDivE
       {...other}
     >
       <TransitionComponent appear in={open} role="presentation" timeout={transitionDuration} {...TransitionProps}>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions -- detects a pointer press outside the dialog; Escape is handled by the modal */}
         <div
           className={clsx('es-dialog__container', fullScreen && 'es-dialog__container--full-screen')}
           onMouseDown={onMouseDown}

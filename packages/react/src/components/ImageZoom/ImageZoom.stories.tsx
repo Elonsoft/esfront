@@ -39,7 +39,7 @@ export const Demo: Story = {
           width: '100%',
         }}
       >
-        <img src="./image-zoom/1.jpg" />
+        <img alt="" src="./image-zoom/1.jpg" />
       </ImageZoom>
     );
   },
@@ -76,7 +76,7 @@ export const ImperativeActions: Story = {
             width: '100%',
           }}
         >
-          <img src="./image-zoom/1.jpg" />
+          <img alt="" src="./image-zoom/1.jpg" />
         </ImageZoom>
       </div>
     );

@@ -1,5 +1,6 @@
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import prettier from 'eslint-plugin-prettier/recommended';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -12,6 +13,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   prettier,
   reactRecommended,
+  jsxA11y.flatConfigs.recommended,
   reactHooks.configs.flat['recommended-latest'],
   {
     plugins: {
@@ -114,6 +116,9 @@ export default tseslint.config(
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_', ignoreRestSiblings: true },
       ],
       '@typescript-eslint/no-var-requires': 'off',
+
+      // `autoFocus` is part of the public component API and is forwarded to the control.
+      'jsx-a11y/no-autofocus': 'off',
 
       // 'react/hook-use-state': 'error',
       // 'react/no-array-index-key': 'error',

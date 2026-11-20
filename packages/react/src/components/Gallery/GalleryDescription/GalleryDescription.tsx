@@ -93,6 +93,7 @@ export const GalleryDescription = ({
   }, [position, rectTop, rectBottom]);
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events -- the nested button receives the keyboard activation and bubbles it here
     <div
       ref={descriptionRef}
       className={clsx('es-gallery-description', `es-gallery-description--position--${position}`, 'caption', className)}
