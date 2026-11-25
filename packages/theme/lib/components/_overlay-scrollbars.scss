@@ -1,7 +1,7 @@
-@use 'sass:meta';
+@use './overlay-scrollbars-vendor' as vendor;
 
 @mixin include() {
-  @include meta.load-css('overlayscrollbars/overlayscrollbars.css');
+  @include vendor.include;
 
   .os-scrollbar {
     // // The size of the scrollbar
