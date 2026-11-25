@@ -1,5 +1,7 @@
 # Migration Guide
 
+- [0.18.0 → 0.19.0](#0180--0190)
+  - [Localization](#localization)
 - [0.17.0 → 0.18.0](#0170--0180)
   - [React 19](#react-19)
 - [0.16.0 → 0.17.0](#0160--0170)
@@ -17,6 +19,77 @@
   - [Package Name](#package-name)
   - [CSS Theme Variables](#css-theme-variables)
   - [Components Replacement](#components-replacement)
+
+## 0.18.0 → 0.19.0
+
+### Localization
+
+Translations are no longer configured through `DefaultPropsProvider`. Replace it with `LocaleProvider` and pass the
+language code:
+
+```tsx
+// before
+<DefaultPropsProvider value={ru.components}>
+  <Application />
+</DefaultPropsProvider>
+
+// after
+<LocaleProvider locale="ru">
+  <Application />
+</LocaleProvider>
+```
+
+The old form still works for client components, and existing global label overrides keep their precedence. Move
+non-localized defaults out of the locale object:
+
+```tsx
+<LocaleProvider locale="ru">
+  <DefaultPropsProvider value={{ ESDrawer: { defaultProps: { anchor: 'right' } } }}>
+    <Application />
+  </DefaultPropsProvider>
+</LocaleProvider>
+```
+
+`DefaultPropsProvider` applies to client components only. Server components receive only the locale defaults.
+
+#### Server components
+
+A server layout has to set the locale for the current request in addition to rendering the provider:
+
+```tsx
+import { LocaleProvider, setLocale } from '@esfront/react';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = 'ru';
+
+  setLocale(locale);
+
+  return (
+    <html lang={locale}>
+      <body>
+        <LocaleProvider locale={locale}>{children}</LocaleProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+Client components switch the locale immediately. Server components need a new request; store the language in a cookie
+and refresh the route after changing it.
+
+#### Custom locales
+
+Register a custom dictionary before rendering:
+
+```ts
+import { registerLocale } from '@esfront/react';
+
+import { kk } from './kk';
+
+registerLocale('kk', kk);
+```
+
+The registration must run in every environment that renders the locale.
 
 ## 0.17.0 → 0.18.0
 

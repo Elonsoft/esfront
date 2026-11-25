@@ -10,18 +10,25 @@ import { IconCloseLineW500 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Alert`
  */
 export const AlertClose = ({ ref, ...inProps }: AlertCloseProps & RefAttributes<HTMLButtonElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESAlertClose',
+  });
+
   const {
     className,
     style,
     label,
     icon = <IconCloseLineW500 container containerSize="20px" />,
     onClick,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESAlertClose',
   });
 

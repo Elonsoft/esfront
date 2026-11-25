@@ -14,6 +14,8 @@ import { IconCheckLineW400, IconCloseLineW350, IconPencilFillW300 } from '../../
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 const RESIZE_STEPS: Record<string, number | undefined> = {
   ArrowLeft: -16,
   ArrowRight: 16,
@@ -35,6 +37,11 @@ export const TableCell = memo(function TableCell({
   ...inProps
 }: TableCellProps & RefAttributes<HTMLDivElement>) {
   const context = useTableCellContext();
+
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESTableCell',
+  });
 
   const {
     children,
@@ -66,8 +73,8 @@ export const TableCell = memo(function TableCell({
     labelResize,
     labelEditAccept,
     labelEditCancel,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESTableCell',
   });
 

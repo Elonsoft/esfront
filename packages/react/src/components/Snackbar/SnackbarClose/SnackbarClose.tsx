@@ -10,10 +10,17 @@ import { IconCloseLineW350 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Snackbar`
  */
 export const SnackbarClose = ({ ref, ...inProps }: SnackbarCloseProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSnackbarClose',
+  });
+
   const {
     className,
     style,
@@ -22,8 +29,8 @@ export const SnackbarClose = ({ ref, ...inProps }: SnackbarCloseProps & RefAttri
     size = '400',
     progress,
     onClick,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSnackbarClose',
   });
 

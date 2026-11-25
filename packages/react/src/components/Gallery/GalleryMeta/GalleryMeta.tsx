@@ -12,18 +12,25 @@ import { useGalleryContext } from '../Gallery.context';
 import { GalleryActionsButton } from '../GalleryActionsButton';
 import { GalleryTooltip } from '../GalleryTooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Gallery`
  */
 export const GalleryMeta = ({ ref, ...inProps }: GalleryMetaProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESGalleryMeta',
+  });
+
   const {
     children,
     className,
     style,
     labelClose,
     iconClose = <IconArrowLeftLineW500 />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESGalleryMeta',
   });
 

@@ -12,6 +12,16 @@
       "import": "./lib/index.js",
       "require": "./lib/node/index.cjs"
     },
+    "./locale": {
+      "react-server": {
+        "types": "./lib/components/locale/server.d.ts",
+        "import": "./lib/components/locale/server.js",
+        "require": "./lib/node/components/locale/server.cjs"
+      },
+      "types": "./lib/components/locale/client.d.ts",
+      "import": "./lib/components/locale/client.js",
+      "require": "./lib/node/components/locale/client.cjs"
+    },
     "./lib/*": "./lib/*",
     "./package.json": "./package.json"
   },

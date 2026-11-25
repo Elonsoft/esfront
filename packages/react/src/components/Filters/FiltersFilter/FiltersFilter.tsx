@@ -12,10 +12,17 @@ import { useDefaultProps } from '../../../theming';
 import { InformationIcon } from '../../InformationIcon';
 import { Tooltip } from '../../Tooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Filters`
  */
 export const FiltersFilter = ({ ref, ...inProps }: FiltersFilterProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESFiltersFilter',
+  });
+
   const {
     children,
     className,
@@ -27,8 +34,8 @@ export const FiltersFilter = ({ ref, ...inProps }: FiltersFilterProps & RefAttri
     labelShow,
     iconHide = <IconChevronDownLineW300 container containerSize="20px" />,
     iconShow = <IconChevronUpLineW300 container containerSize="20px" />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESFiltersFilter',
   });
 

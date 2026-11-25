@@ -17,6 +17,7 @@ import { useGalleryContext } from '../Gallery.context';
 import { useGalleryPanelsContext } from '../GalleryPanel';
 import { GalleryTooltip } from '../GalleryTooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
 import { useDrag } from '@use-gesture/react';
 
 const GallerySwiperButtonPrev = ({ icon, label }: { icon: ReactNode; label?: string }) => {
@@ -73,6 +74,11 @@ const GallerySwiperButtonNext = ({ icon, label }: { icon: ReactNode; label?: str
  * @see `Gallery`
  */
 export const GallerySwiper = ({ ref, ...inProps }: GallerySwiperProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESGallerySwiper',
+  });
+
   const {
     children,
     className,
@@ -82,8 +88,8 @@ export const GallerySwiper = ({ ref, ...inProps }: GallerySwiperProps & RefAttri
     labelPrev,
     iconNext = <IconChevronRightLineW400 />,
     iconPrev = <IconChevronLeftLineW400 />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESGallerySwiper',
   });
 

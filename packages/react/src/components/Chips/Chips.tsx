@@ -11,10 +11,17 @@ import { IconChevronDownLineW200, IconChevronUpLineW200 } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { Button } from '../Button';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * Lays out a collection of chips clamped to a number of lines, with a button that reveals the hidden ones.
  */
 export const Chips = ({ ref: inRef, ...inProps }: ChipsProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESChips',
+  });
+
   const {
     children,
 
@@ -28,8 +35,8 @@ export const Chips = ({ ref: inRef, ...inProps }: ChipsProps & RefAttributes<HTM
 
     iconHide = <IconChevronUpLineW200 container containerSize="16px" />,
     iconShow = <IconChevronDownLineW200 container containerSize="16px" />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESChips',
   });
 

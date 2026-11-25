@@ -37,12 +37,18 @@ import { SpinnerRing } from '../Spinner';
 import { TextField } from '../TextField';
 import { TooltipEllipsis } from '../TooltipEllipsis';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
 import { flip, hide, limitShift, Middleware, offset as offsetMiddleware, shift } from '@floating-ui/react-dom';
 
 /**
  * A dropdown menu that provides the popup layer for autocomplete-style fields.
  */
 export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any> & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESAutocompleteMenu',
+  });
+
   const {
     paperRef,
 
@@ -98,8 +104,8 @@ export const AutocompleteMenu = (({ ref, ...inProps }: AutocompleteMenuProps<any
     iconSearchClear = <IconCloseLineW350 />,
 
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESAutocompleteMenu',
   });
 

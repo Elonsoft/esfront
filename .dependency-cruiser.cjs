@@ -10,6 +10,7 @@ module.exports = {
       from: {},
       to: {
         circular: true,
+        dependencyTypesNot: ['type-only'],
       },
     },
     {
@@ -32,6 +33,8 @@ module.exports = {
           '(^|/)tsconfig[.]json$',
           // other configs
           '(^|/)(?:babel|webpack)[.]config[.](?:js|cjs|mjs|ts|cts|mts|json)$',
+          // package entry points
+          '(^|/)components/locale/(?:client|server)[.]ts$',
         ],
       },
       to: {},

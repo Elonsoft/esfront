@@ -19,10 +19,17 @@ import { getDefaultFieldLabel, MAX_DATE, MIN_DATE } from './utils';
 import { useForkRef } from '../../hooks';
 import { useDefaultProps } from '../../theming';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * The date input is used to type a date in, one field of it at a time.
  */
 export const DateInput = ({ ref: inRef, ...inProps }: DateInputProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESDateInput',
+  });
+
   const {
     className,
     style,
@@ -53,8 +60,8 @@ export const DateInput = ({ ref: inRef, ...inProps }: DateInputProps & RefAttrib
     onFocus: onFocusProp,
     onKeyDown: onKeyDownProp,
     onPaste: onPasteProp,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESDateInput',
   });
 

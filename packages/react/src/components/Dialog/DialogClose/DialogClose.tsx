@@ -10,10 +10,17 @@ import { IconCloseLineW600 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Dialog`
  */
 export const DialogClose = ({ ref, ...inProps }: DialogCloseProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESDialogClose',
+  });
+
   const {
     className,
     style,
@@ -21,8 +28,8 @@ export const DialogClose = ({ ref, ...inProps }: DialogCloseProps & RefAttribute
     label,
     labelEscapeKey,
     icon = <IconCloseLineW600 />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESDialogClose',
   });
 

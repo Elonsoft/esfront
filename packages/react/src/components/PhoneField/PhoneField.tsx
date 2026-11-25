@@ -34,6 +34,7 @@ import { FormFieldAdornment, FormFieldInputElement } from '../FormField';
 import { TextField } from '../TextField';
 import { Tooltip } from '../Tooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
 import { AsYouType, CountryCode, getCountryCallingCode, parsePhoneNumber } from 'libphonenumber-js/core';
 
 const regionNames = new Intl.DisplayNames([], { type: 'region' });
@@ -53,6 +54,11 @@ export const PhoneField = memo(function PhoneField({
   ref: inRef,
   ...inProps
 }: PhoneFieldProps & RefAttributes<HTMLDivElement>) {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESPhoneField',
+  });
+
   const {
     className,
 
@@ -81,8 +87,8 @@ export const PhoneField = memo(function PhoneField({
     MenuProps,
 
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESPhoneField',
   });
 

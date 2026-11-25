@@ -9,12 +9,19 @@ import clsx from 'clsx';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Filters`
  */
 export const FiltersHeader = ({ ref, ...inProps }: FiltersHeaderProps & RefAttributes<HTMLDivElement>) => {
-  const { children, className, style, onClear, labelFilters, labelReset } = useDefaultProps({
+  const resolvedProps = useDefaultProps({
     props: inProps,
+    name: 'ESFiltersHeader',
+  });
+
+  const { children, className, style, onClear, labelFilters, labelReset } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESFiltersHeader',
   });
 

@@ -24,6 +24,8 @@ import { Popover } from '../Popover';
 import { Switch } from '../Switch';
 import { Tooltip } from '../Tooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 const isMacintosh = () => {
   return navigator.userAgent.indexOf('Macintosh') > 0;
 };
@@ -45,6 +47,11 @@ export const SortingMenu = memo(function SortingMenu({
   ref,
   ...inProps
 }: SortingMenuProps & RefAttributes<HTMLDivElement>) {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSortingMenu',
+  });
+
   const {
     PopoverProps,
 
@@ -66,8 +73,8 @@ export const SortingMenu = memo(function SortingMenu({
     iconItemDesc = <IconSortDescendingLineW200 container containerHeight="12px" containerWidth="8px" />,
 
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSortingMenu',
   });
 

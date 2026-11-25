@@ -10,10 +10,17 @@ import { IconArrowLeftLineW500, IconArrowRightLineW500 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Dialog`
  */
 export const DialogArrow = ({ ref, ...inProps }: DialogArrowProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESDialogArrow',
+  });
+
   const {
     className,
     style,
@@ -23,8 +30,8 @@ export const DialogArrow = ({ ref, ...inProps }: DialogArrowProps & RefAttribute
     labelNext,
     iconPrev = <IconArrowLeftLineW500 />,
     iconNext = <IconArrowRightLineW500 />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESDialogArrow',
   });
 

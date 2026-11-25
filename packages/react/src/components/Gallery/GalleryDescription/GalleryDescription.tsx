@@ -13,6 +13,8 @@ import { Button } from '../../Button';
 import { SvgIcon, SvgIconProps } from '../../SvgIcon';
 import { useGalleryPanelContext, useGalleryPanelsContext } from '../GalleryPanel';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 const IconDoubleChevronUp = (props: SvgIconProps) => {
   return (
     <SvgIcon {...props} size="16" viewBox="0 0 16 16">
@@ -35,6 +37,11 @@ export const GalleryDescription = ({
 }: GalleryDescriptionProps & RefAttributes<HTMLDivElement>) => {
   const galleryPanelContext = useGalleryPanelContext();
 
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESGalleryDescription',
+  });
+
   const {
     children,
     className,
@@ -44,8 +51,8 @@ export const GalleryDescription = ({
     labelExpand,
     iconCollapse = <IconCloseLineW350 />,
     iconExpand = <IconDoubleChevronUp />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESGalleryDescription',
   });
 

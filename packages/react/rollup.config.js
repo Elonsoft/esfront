@@ -8,7 +8,7 @@ import preserveDirectives from 'rollup-preserve-directives';
 const isExternal = (id) => !id.startsWith('.') && !id.startsWith('\0') && !path.isAbsolute(id);
 
 export default {
-  input: './src/index.ts',
+  input: ['./src/index.ts', './src/components/locale/client.ts', './src/components/locale/server.ts'],
   external: isExternal,
   output: [
     {
