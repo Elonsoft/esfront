@@ -1,5 +1,6 @@
 packages/date-fns/lib/
 packages/react/lib/
+packages/theme/lib/components/_overlay-scrollbars-vendor.scss
 storybook-static/
 CHANGELOG.md
 typedoc.json
