@@ -1,0 +1,169 @@
+@use '../helpers/typography';
+@use '../settings';
+
+@mixin include() {
+  .es-toggle-button {
+    border-radius: 3px;
+    text-transform: none;
+
+    --hovered: var(--es-mono-a-a50);
+    --icon: var(--es-mono-a-a600);
+    --pressed: var(--es-mono-a-a150);
+    --text: var(--es-mono-a-a700);
+
+    & .es-button-base__wrapper {
+      @include typography.level('body100');
+
+      gap: 0;
+      padding: 0 6px;
+    }
+
+    & .es-svg-icon {
+      color: var(--icon);
+    }
+
+    &.es-button-base--disabled {
+      --icon: var(--es-mono-a-a400);
+      --text: var(--es-mono-a-a400);
+
+      cursor: not-allowed;
+    }
+
+    &.es-toggle-button--full-width {
+      width: 100%;
+    }
+
+    &.es-toggle-button--selected {
+      --background: var(--es-mono-a-a100);
+      --icon: var(--es-mono-a-a900);
+      --text: var(--es-mono-a-a900);
+    }
+
+    &:not(.es-button-base--disabled):focus-visible {
+      box-shadow: inset 0 0 0 2px var(--es-mono-a-500);
+      outline: none;
+    }
+
+    &__end-icon,
+    &__start-icon {
+      display: flex;
+    }
+
+    &__label {
+      display: block;
+      min-width: 32px;
+      overflow: hidden;
+      padding: 0 4px;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &.es-toggle-button--size--400 {
+      height: 32px;
+
+      & .es-button-base__wrapper {
+        gap: 0;
+        padding: 0 6px;
+      }
+
+      &.es-toggle-button--element .es-button-base__wrapper {
+        padding: 0 5px;
+      }
+    }
+
+    &.es-toggle-button--size--500 {
+      height: 40px;
+
+      & .es-button-base__wrapper {
+        gap: 2px;
+        padding: 0 8px;
+      }
+
+      &.es-toggle-button--element .es-button-base__wrapper {
+        padding: 0 7px;
+      }
+    }
+
+    &.es-toggle-button--size--600 {
+      height: 48px;
+
+      & .es-button-base__wrapper {
+        gap: 4px;
+        padding: 0 12px;
+      }
+
+      &.es-toggle-button--element .es-button-base__wrapper {
+        padding: 0 11px;
+      }
+    }
+
+    &.es-toggle-button--size--700 {
+      height: 56px;
+
+      & .es-button-base__wrapper {
+        gap: 4px;
+        padding: 0 16px;
+      }
+
+      &.es-toggle-button--element .es-button-base__wrapper {
+        padding: 0 15px;
+      }
+    }
+  }
+
+  .es-toggle-button-group {
+    border: 1px solid var(--es-mono-a-a200);
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+    width: fit-content;
+
+    & .es-toggle-button {
+      border-radius: 0;
+      flex: 0 0 auto;
+    }
+
+    &--full-width {
+      width: 100%;
+
+      & .es-toggle-button {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+    }
+  }
+
+  .es-toggle-button-group--orientation--horizontal,
+  .es-toggle-button-group--orientation--vertical {
+    flex-direction: column;
+
+    & .es-toggle-button + .es-toggle-button {
+      border-top: 1px solid var(--es-mono-a-a200);
+    }
+  }
+
+  @each $size, $height in (400: 32px, 500: 40px, 600: 48px, 700: 56px) {
+    .es-toggle-button-group--size--#{$size} .es-toggle-button {
+      height: $height;
+    }
+
+    @each $name, $value in settings.$breakpoints {
+      .es-toggle-button-group--orientation--horizontal.es-toggle-button-group--size--#{$size}.es-toggle-button-group--breakpoint--#{$name} {
+        @media (width >= #{$value}px) {
+          flex-direction: row;
+          height: $height;
+
+          & .es-toggle-button {
+            height: 100%;
+
+            & + .es-toggle-button {
+              border-left: 1px solid var(--es-mono-a-a200);
+              border-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
