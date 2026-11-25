@@ -11,6 +11,8 @@ import { useDefaultProps } from '../../../theming';
 import { SortingMenu } from '../../SortingMenu';
 import { SFSButton } from '../SFSButton';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `SFS`
  */
@@ -18,6 +20,11 @@ export const SFSSorting = memo(function SFSSorting({
   ref,
   ...inProps
 }: SFSSortingProps & RefAttributes<HTMLDivElement>) {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSFSSorting',
+  });
+
   const {
     className,
     style,
@@ -30,8 +37,8 @@ export const SFSSorting = memo(function SFSSorting({
     iconDesc = <IconSortDescending2LineW100 container containerSize="16px" />,
 
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSFSSorting',
   });
 

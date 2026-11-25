@@ -8,18 +8,25 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * The days list for the calendar.
  * @see `Calendar`
  */
 export const CalendarHead = ({ ref, ...inProps }: CalendarHeadProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESCalendarHead',
+  });
+
   const {
     className,
     style,
     weekStart = 1,
     getWeekDays,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESCalendarHead',
   });
 

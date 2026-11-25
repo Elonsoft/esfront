@@ -15,18 +15,28 @@ import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { TooltipEllipsis } from '../TooltipEllipsis';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * Breadcrumbs consist of a list of links that help a user visualize a page's location
  * within the hierarchical structure of a website, and allow navigation up to any of its "ancestors".
  */
 export const Breadcrumbs = (inProps: BreadcrumbsProps) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESBreadcrumbs',
+  });
+
   const {
     children,
     className,
     style,
     iconButtonMore = <IconDotsHorizontal2LineW300 />,
     labelButtonMore,
-  } = useDefaultProps({ props: inProps, name: 'ESBreadcrumbs' });
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
+    name: 'ESBreadcrumbs',
+  });
 
   const [lastIndex, setLastIndex] = useState(Children.count(children) - 1);
 

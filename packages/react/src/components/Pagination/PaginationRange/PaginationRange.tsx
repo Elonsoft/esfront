@@ -13,6 +13,8 @@ import { Menu } from '../../Menu';
 import { MenuItem } from '../../MenuItem';
 import { usePaginationContext } from '../Pagination.context';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 const OPTIONS = [10, 25, 100];
 
 /**
@@ -25,6 +27,11 @@ export const PaginationRange = memo(function PaginationRange({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESPaginationRange',
+  });
+
   const {
     className,
     style,
@@ -32,8 +39,8 @@ export const PaginationRange = memo(function PaginationRange({
     labelItemsPerPage,
     labelOf,
     iconItemsPerPage = <IconMenuDownFillW300 container containerSize="16px" />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESPaginationRange',
   });
 

@@ -8,8 +8,15 @@ import { IconElonsoft } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { OverridableComponent } from '../../types';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /** The MadeBy component displays name of the developer. */
 export const MadeBy: OverridableComponent<MadeByTypeMap> = ({ ref, ...inProps }: MadeByProps) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESMadeBy',
+  });
+
   const {
     className,
     clickable: inClickable,
@@ -17,8 +24,8 @@ export const MadeBy: OverridableComponent<MadeByTypeMap> = ({ ref, ...inProps }:
     text,
     icon = <IconElonsoft height="19" width="96px" />,
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESMadeBy',
   });
 

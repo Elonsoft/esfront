@@ -33,6 +33,8 @@ import { PopperActions } from '../Popper';
 import { Slider } from '../Slider';
 import { Tooltip } from '../Tooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 const DEFAULT_RATES = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
 
 const getTimeValue = (time: number) => {
@@ -49,6 +51,11 @@ const AudioPlayerTimeValue = ({ time }: { time: number }) => {
  * This component is used to embed sound content in documents.
  */
 export const AudioPlayer = ({ ref, ...inProps }: AudioPlayerProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESAudioPlayer',
+  });
+
   const {
     className,
     style,
@@ -107,8 +114,8 @@ export const AudioPlayer = ({ ref, ...inProps }: AudioPlayerProps & RefAttribute
     iconVolumeOff = <IconVolumeMuteFillW500 />,
 
     TooltipProps,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESAudioPlayer',
   });
 

@@ -10,10 +10,17 @@ import { IconCloseLineW350 } from '../../icons';
 import { useDefaultProps } from '../../theming';
 import { ButtonBase } from '../ButtonBase';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * A button that clears the value of the field it is placed in.
  */
 export const ClearButton = ({ ref, ...inProps }: ClearButtonProps & RefAttributes<HTMLButtonElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESClearButton',
+  });
+
   const {
     className,
     style,
@@ -22,8 +29,8 @@ export const ClearButton = ({ ref, ...inProps }: ClearButtonProps & RefAttribute
     icon = <IconCloseLineW350 container containerSize="16px" />,
 
     onClick: onClickProp,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESClearButton',
   });
 

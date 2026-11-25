@@ -14,10 +14,17 @@ import { FormFieldAdornment } from '../FormField';
 import { TextField } from '../TextField';
 import { Tooltip } from '../Tooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * The PasswordField allows users to input passwords with ability to toggle password visibility.
  */
 export const PasswordField = ({ ref, ...inProps }: PasswordFieldProps & React.RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESPasswordField',
+  });
+
   const {
     className,
 
@@ -33,8 +40,8 @@ export const PasswordField = ({ ref, ...inProps }: PasswordFieldProps & React.Re
     endAdornment,
     TooltipProps,
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESPasswordField',
   });
 

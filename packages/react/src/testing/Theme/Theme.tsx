@@ -6,7 +6,7 @@ import DateFnsAdapter from '@date-io/date-fns';
 import { ru as dateRU } from '@esfront/date-fns';
 import { enUS as dateEN } from 'date-fns/locale';
 
-import { DateAdapterProvider, DateInputProvider, en, ru } from '../../components';
+import { DateAdapterProvider, DateInputProvider } from '../../components';
 import {
   createDateInputRegistry,
   DATE_INPUT_PLACEHOLDERS_EN,
@@ -14,16 +14,12 @@ import {
 } from '../../components/DateInput';
 import { DialogStackProvider } from '../../components/DialogStack';
 import { DialogStack } from '../../components/DialogStackV2';
+import { LocaleProvider } from '../../components/locale/LocaleProvider.client';
 import { PhoneFieldProvider } from '../../components/PhoneField';
-import { DefaultPropsProvider } from '../../theming';
 
 import metadata from 'libphonenumber-js/max/metadata';
 
 export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
-  const components = useMemo(() => {
-    return locale === 'ru' ? ru.components : en.components;
-  }, [locale]);
-
   const dateInputRegistry = useMemo(() => {
     return createDateInputRegistry(locale === 'ru' ? DATE_INPUT_PLACEHOLDERS_RU : DATE_INPUT_PLACEHOLDERS_EN);
   }, [locale]);
@@ -36,7 +32,7 @@ export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
   }, [isDarkMode]);
 
   return (
-    <DefaultPropsProvider value={components}>
+    <LocaleProvider locale={locale === 'ru' ? 'ru' : 'en'}>
       <DialogStackProvider enableHistoryOverride>
         <DateAdapterProvider adapter={DateFnsAdapter} locale={locale === 'ru' ? dateRU : dateEN}>
           <DateInputProvider registry={dateInputRegistry}>
@@ -47,6 +43,6 @@ export const Theme = ({ children, isDarkMode, locale }: IThemeProps) => {
           </DateInputProvider>
         </DateAdapterProvider>
       </DialogStackProvider>
-    </DefaultPropsProvider>
+    </LocaleProvider>
   );
 };

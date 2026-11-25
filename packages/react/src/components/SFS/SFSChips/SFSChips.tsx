@@ -11,10 +11,17 @@ import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { Tooltip } from '../../Tooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `SFS`
  */
 export const SFSChips = ({ ref, ...inProps }: SFSChipsProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSFSChips',
+  });
+
   const {
     className,
     children,
@@ -23,8 +30,8 @@ export const SFSChips = ({ ref, ...inProps }: SFSChipsProps & RefAttributes<HTML
     iconDelete = <IconCloseLineW400 container containerSize="20px" />,
     onDelete,
     TooltipProps,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSFSChips',
   });
 

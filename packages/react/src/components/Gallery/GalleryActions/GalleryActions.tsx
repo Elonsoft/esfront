@@ -13,10 +13,17 @@ import { GalleryActionsButton } from '../GalleryActionsButton';
 import { useGalleryThumbnailsContext } from '../GalleryThumbnails';
 import { GalleryTooltip } from '../GalleryTooltip';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Gallery`
  */
 export const GalleryActions = ({ ref, ...inProps }: GalleryActionsProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESGalleryActions',
+  });
+
   const {
     children,
     className,
@@ -25,8 +32,8 @@ export const GalleryActions = ({ ref, ...inProps }: GalleryActionsProps & RefAtt
     labelThumbnails,
     iconClose = <IconCloseLineW600 />,
     iconThumbnails = <IconImageMultipleLineW500 />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESGalleryActions',
   });
 

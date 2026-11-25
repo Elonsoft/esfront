@@ -6,17 +6,24 @@ import { FormatSizeProps } from './FormatSize.types';
 
 import { useDefaultProps } from '../../theming';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * This component formats the size based on the metric or binary unit prefix.
  */
 export const FormatSize = (inProps: FormatSizeProps) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESFormatSize',
+  });
+
   const {
     children,
     prefix = 'metric',
     metricUnits,
     binaryUnits,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESFormatSize',
   });
 

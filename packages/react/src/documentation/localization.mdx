@@ -9,29 +9,84 @@ import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 # Localization
 
-The default locale is English. If you want to use other locales, pass the locale components to the
-`DefaultPropsProvider` to configure the locale text globally:
+The default locale is English. To use another locale, wrap the application with `LocaleProvider` and pass the language
+code:
 
 ```tsx
-import { DefaultPropsProvider, FormatSize, ru } from '@esfront/react';
+import { FormatSize, LocaleProvider } from '@esfront/react';
 
 const Application = () => {
   return (
-    <DefaultPropsProvider value={ru.components}>
+    <LocaleProvider locale="ru">
       <FormatSize>1024</FormatSize>
-    </DefaultPropsProvider>
+    </LocaleProvider>
   );
 };
 ```
 
-A locale is an ordinary provider value, so spread it before your own defaults if you have any:
+Built-in locales are `en` and `ru`. Props passed to a component always win over the localized defaults.
+
+## Server components
+
+`LocaleProvider` is a client component. Server components cannot read React context, so a server layout has to also set
+the locale for the current request:
+
+```tsx
+import { LocaleProvider, setLocale } from '@esfront/react';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = 'ru';
+
+  setLocale(locale);
+
+  return (
+    <html lang={locale}>
+      <body>
+        <LocaleProvider locale={locale}>{children}</LocaleProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+Call `setLocale` during the server render, before the components that read it. The value is scoped to the request.
+
+Client components read the locale from `LocaleProvider` and update immediately when its `locale` prop changes. Server
+components only change the locale on a new request. To switch the language of the whole application, store the language
+in a cookie and refresh the route after changing it.
+
+## Reading the locale
+
+```tsx
+import { useLocale } from '@esfront/react';
+
+const { locale, components } = useLocale();
+```
+
+`locale` is the language code, and `components` contains the localized default props of every component.
+
+## Custom locales
+
+Register a dictionary before rendering the application:
+
+```ts
+import { registerLocale } from '@esfront/react';
+
+import { kk } from './kk';
+
+registerLocale('kk', kk);
+```
+
+The registration has to run in every environment that renders the locale: the server tree and the client tree.
+
+You can also keep using `DefaultPropsProvider` for non-localized defaults and for existing locale dictionaries:
 
 ```tsx
 <DefaultPropsProvider value={{ ...ru.components, ESDrawer: { defaultProps: { anchor: 'right' } } }}>
 ```
 
+New code should use `LocaleProvider` for translations and `DefaultPropsProvider` only for non-localized defaults. Server
+components ignore `DefaultPropsProvider`.
+
 You can [find the source](https://github.com/Elonsoft/esfront/blob/master/packages/react/src/components/locale/index.ts)
 in the GitHub repository.
-
-To create your own translation, or to customize the English text, copy this file to your project, make any changes
-needed and import the locale from there.

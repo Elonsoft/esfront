@@ -13,10 +13,17 @@ import { Tooltip } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';
 import { SidebarDivider } from '../SidebarDivider';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Sidebar`
  */
 export const SidebarToggle = ({ ref, ...inProps }: SidebarToggleProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSidebarToggle',
+  });
+
   const {
     className,
     style,
@@ -25,8 +32,8 @@ export const SidebarToggle = ({ ref, ...inProps }: SidebarToggleProps & RefAttri
     labelOpen,
     labelHide,
     onClick,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSidebarToggle',
   });
 

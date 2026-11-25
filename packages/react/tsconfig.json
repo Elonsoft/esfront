@@ -12,7 +12,8 @@
     "target": "esnext",
     "typeRoots": ["node_modules/@types", "../../node_modules/@types"],
     "paths": {
-      "~storybook/*": [".storybook/*"]
+      "~storybook/*": [".storybook/*"],
+      "@esfront/react/locale": ["./src/components/locale/client.ts"]
     },
     "skipLibCheck": true
   },

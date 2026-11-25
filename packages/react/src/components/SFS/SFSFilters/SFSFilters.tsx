@@ -12,6 +12,8 @@ import { Button } from '../../Button';
 import { Drawer } from '../../Drawer';
 import { SFSButton } from '../SFSButton';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `SFS`
  */
@@ -19,6 +21,11 @@ export const SFSFilters = memo(function SFSFilters({
   ref,
   ...inProps
 }: SFSFiltersProps & RefAttributes<HTMLDivElement>) {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSFSFilters',
+  });
+
   const {
     children,
     button,
@@ -38,8 +45,8 @@ export const SFSFilters = memo(function SFSFilters({
     iconClose = <IconCloseLineW600 />,
 
     FooterProps,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSFSFilters',
   });
 

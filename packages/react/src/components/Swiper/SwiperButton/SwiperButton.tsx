@@ -16,10 +16,17 @@ import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 import { useSwiperContext } from '../Swiper.context';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Swiper`
  */
 export const SwiperButton = ({ ref, ...inProps }: SwiperButtonProps & RefAttributes<HTMLButtonElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSwiperButton',
+  });
+
   const {
     className,
     style,
@@ -30,8 +37,8 @@ export const SwiperButton = ({ ref, ...inProps }: SwiperButtonProps & RefAttribu
     iconDown = <IconArrowDownLineW500 />,
     iconLeft = <IconArrowLeftLineW500 />,
     iconRight = <IconArrowRightLineW500 />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSwiperButton',
   });
 

@@ -1,6 +1,6 @@
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
 import remarkGfm from 'remark-gfm';
 
 const require = createRequire(import.meta.url);
@@ -48,6 +48,7 @@ export default {
       resolve: {
         alias: {
           '~storybook': __dirname,
+          '@esfront/react/locale': resolve(__dirname, '../src/components/locale/client.ts'),
         },
       },
     });

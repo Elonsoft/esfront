@@ -21,10 +21,17 @@ import { Tooltip } from '../../Tooltip';
 import { useSidebarContext } from '../Sidebar.context';
 import { useSidebarMenuContext } from '../SidebarMenu/SidebarMenu.context';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Sidebar`
  */
 export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = ({ ref: inRef, ...inProps }: SidebarItemProps) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSidebarItem',
+  });
+
   const {
     children,
     className,
@@ -40,8 +47,8 @@ export const SidebarItem: OverridableComponent<SidebarItemTypeMap> = ({ ref: inR
     text,
     id,
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSidebarItem',
   });
 

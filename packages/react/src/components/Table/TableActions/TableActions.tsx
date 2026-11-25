@@ -8,6 +8,8 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../../theming';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * This component displays actions for the selected table rows.
  * @see `Table`
@@ -16,8 +18,13 @@ export const TableActions = memo(function TableActions({
   ref,
   ...inProps
 }: TableActionsProps & RefAttributes<HTMLDivElement>) {
-  const { className, style, label, count, children } = useDefaultProps({
+  const resolvedProps = useDefaultProps({
     props: inProps,
+    name: 'ESTableActions',
+  });
+
+  const { className, style, label, count, children } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESTableActions',
   });
 

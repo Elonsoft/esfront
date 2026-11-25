@@ -51,15 +51,15 @@ body {
 ```tsx
 import { createRoot } from 'react-dom/client';
 
-import { DefaultPropsProvider, en, EmptyState } from '@esfront/react';
+import { EmptyState, LocaleProvider } from '@esfront/react';
 
 import './theme.scss';
 
 const Application = () => {
   return (
-    <DefaultPropsProvider value={en.components}>
+    <LocaleProvider locale="en">
       <EmptyState heading="There are no entities yet" subheading="Do you want to create the first entity?" />
-    </DefaultPropsProvider>
+    </LocaleProvider>
   );
 };
 
@@ -71,22 +71,28 @@ createRoot(document.querySelector('#root')).render(<Application />);
 Every component falls back to the default props supplied by the closest `DefaultPropsProvider`, keyed by the component
 name. Props passed to a component always win over the ones coming from the provider.
 
+Translations are configured separately with `LocaleProvider`; `DefaultPropsProvider` should only contain non-localized
+defaults:
+
 ```tsx
-<DefaultPropsProvider
-  value={{
-    ...en.components,
-    ESDrawer: { defaultProps: { anchor: 'right' } },
-  }}
->
-  <Application />
-</DefaultPropsProvider>
+<LocaleProvider locale="en">
+  <DefaultPropsProvider
+    value={{
+      ESDrawer: { defaultProps: { anchor: 'right' } },
+    }}
+  >
+    <Application />
+  </DefaultPropsProvider>
+</LocaleProvider>
 ```
 
 A nested provider replaces the value of the outer one rather than merging with it, so a subtree has to restate every
 default it needs. The value is passed to the context as is, therefore it should be memoized.
 
-The localization objects, `en` and `ru`, are ordinary provider values. Spread the one you need before your own defaults,
-as shown above.
+`DefaultPropsProvider` applies to client components. Server components ignore it.
+
+The localization objects, `en` and `ru`, are still ordinary provider values, but new code should use `LocaleProvider`
+instead.
 
 ## Typescript
 

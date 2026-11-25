@@ -8,6 +8,8 @@ import clsx from 'clsx';
 
 import { useDefaultProps } from '../../theming';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 const getCurrencySymbol = (locales: Intl.LocalesArgument, currency: string) => {
   return Number(0)
     .toLocaleString(locales, {
@@ -24,6 +26,11 @@ const getCurrencySymbol = (locales: Intl.LocalesArgument, currency: string) => {
  * Display price of the product.
  */
 export const Price = ({ ref, ...inProps }: PriceProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESPrice',
+  });
+
   const {
     children,
     className,
@@ -34,8 +41,8 @@ export const Price = ({ ref, ...inProps }: PriceProps & RefAttributes<HTMLDivEle
     minimumFractionDigits,
     maximumFractionDigits,
     disableMicrodata,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESPrice',
   });
 

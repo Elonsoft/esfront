@@ -10,10 +10,17 @@ import { IconCloseLineW350 } from '../../../icons';
 import { useDefaultProps } from '../../../theming';
 import { Button } from '../../Button';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `FileInfo`
  */
 export const FileInfoName = ({ ref, ...inProps }: FileInfoNameProps & RefAttributes<HTMLDivElement>) => {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESFileInfoName',
+  });
+
   const {
     children,
     className,
@@ -21,8 +28,8 @@ export const FileInfoName = ({ ref, ...inProps }: FileInfoNameProps & RefAttribu
     onDelete,
     labelDelete,
     iconDelete = <IconCloseLineW350 />,
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESFileInfoName',
   });
 

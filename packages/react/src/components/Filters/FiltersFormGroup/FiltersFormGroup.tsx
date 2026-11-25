@@ -13,12 +13,19 @@ import { useDefaultProps } from '../../../theming';
 import { Link } from '../../Link';
 import { OverlayScrollbars } from '../../OverlayScrollbars';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `Filters`
  */
 export const FiltersFormGroup = ({ ref: inRef, ...inProps }: FiltersFormGroupProps & RefAttributes<HTMLDivElement>) => {
-  const { children, header, className, style, maxLines, labelShow, labelHide } = useDefaultProps({
+  const resolvedProps = useDefaultProps({
     props: inProps,
+    name: 'ESFiltersFormGroup',
+  });
+
+  const { children, header, className, style, maxLines, labelShow, labelHide } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESFiltersFormGroup',
   });
 

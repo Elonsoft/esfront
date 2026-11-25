@@ -21,6 +21,8 @@ import { TextField } from '../../TextField';
 import { Tooltip } from '../../Tooltip';
 import { usePaginationContext } from '../Pagination.context';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 const REGEX = /^[0-9]*$/;
 
 const isMacintosh = () => {
@@ -34,6 +36,11 @@ export const PaginationPages = memo(function PaginationPages({
   ref,
   ...inProps
 }: PaginationPagesProps & RefAttributes<HTMLDivElement>) {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESPaginationPages',
+  });
+
   const {
     className,
     style,
@@ -50,8 +57,8 @@ export const PaginationPages = memo(function PaginationPages({
     slots,
     slotProps,
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESPaginationPages',
   });
 

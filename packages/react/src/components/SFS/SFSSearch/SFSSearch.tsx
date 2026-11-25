@@ -12,10 +12,17 @@ import { Button } from '../../Button';
 import { FormFieldAdornment } from '../../FormField';
 import { TextField } from '../../TextField';
 
+import { useLocaleDefaultProps } from '@esfront/react/locale';
+
 /**
  * @see `SFS`
  */
 export const SFSSearch = memo(function SFSSearch({ ref, ...inProps }: SFSSearchProps & RefAttributes<HTMLDivElement>) {
+  const resolvedProps = useDefaultProps({
+    props: inProps,
+    name: 'ESSFSSearch',
+  });
+
   const {
     className,
     style,
@@ -26,8 +33,8 @@ export const SFSSearch = memo(function SFSSearch({ ref, ...inProps }: SFSSearchP
     iconClear = <IconCloseLineW350 />,
     iconSearch = <IconMagnify2LineW400 />,
     ...props
-  } = useDefaultProps({
-    props: inProps,
+  } = useLocaleDefaultProps({
+    props: resolvedProps,
     name: 'ESSFSSearch',
   });
 
