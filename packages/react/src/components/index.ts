@@ -94,6 +94,7 @@ export * from './Tabs';
 export * from './Tag';
 export * from './TextField';
 export * from './TextFieldGroup';
+export * from './ToggleButtonGroup';
 export * from './Tooltip';
 export * from './TooltipEllipsis';
 export * from './TouchRipple';

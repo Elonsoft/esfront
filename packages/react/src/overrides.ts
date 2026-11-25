@@ -174,6 +174,7 @@ import { TabProps, TabScrollButtonProps, TabsProps } from './components/Tabs';
 import { TagProps } from './components/Tag';
 import { TextFieldProps } from './components/TextField';
 import { TextFieldGroupProps } from './components/TextFieldGroup';
+import { ToggleButtonGroupProps, ToggleButtonOwnProps } from './components/ToggleButtonGroup';
 import { TooltipProps } from './components/Tooltip';
 import { TouchRippleProps } from './components/TouchRipple';
 import { TourProps } from './components/Tour';
@@ -367,6 +368,8 @@ declare module './theming/DefaultPropsProvider/DefaultPropsProvider.types' {
     ESTouchRipple: TouchRippleProps;
     ESTextField: TextFieldProps;
     ESTextFieldGroup: TextFieldGroupProps;
+    ESToggleButton: ToggleButtonOwnProps;
+    ESToggleButtonGroup: ToggleButtonGroupProps;
     ESTooltip: TooltipProps;
     ESTour: TourProps;
     ESZoom: ZoomProps;
