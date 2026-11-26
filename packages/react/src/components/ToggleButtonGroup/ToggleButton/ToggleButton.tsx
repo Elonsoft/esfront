@@ -58,7 +58,6 @@ export const ToggleButton = (({ ref, ...inProps }: ToggleButtonProps & RefAttrib
   return (
     <ButtonBase
       ref={ref}
-      aria-label={value}
       aria-pressed={selected}
       className={clsx(
         className,
