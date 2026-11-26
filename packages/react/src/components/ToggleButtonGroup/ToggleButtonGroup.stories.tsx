@@ -93,7 +93,7 @@ export const Icons: Story = {
   args: {
     exclusive: true,
   },
-  render: function Render(args) {
+  render: function Render(args, context) {
     const [value, setValue] = useState<string | null>(OPTIONS[0]);
 
     const onChange = (_event: MouseEvent, newValue: string | string[] | null) => {
@@ -105,8 +105,14 @@ export const Icons: Story = {
 
     return (
       <ToggleButtonGroup {...args} value={value} onChange={onChange}>
-        {OPTIONS.map((option) => (
-          <ToggleButton key={option} endIcon={endIcon} startIcon={icon} value={option} />
+        {OPTIONS.map((option, index) => (
+          <ToggleButton
+            key={option}
+            aria-label={`${context.globals.locale === 'en' ? 'Icon' : 'Иконка'} ${index + 1}`}
+            endIcon={endIcon}
+            startIcon={icon}
+            value={option}
+          />
         ))}
       </ToggleButtonGroup>
     );
