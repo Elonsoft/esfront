@@ -7,4 +7,7 @@ export interface FiltersFooterProps {
   className?: string;
   /** Style applied to the root element. */
   style?: CSSProperties;
+
+  /** Whether the footer should be sticky. */
+  sticky?: boolean;
 }

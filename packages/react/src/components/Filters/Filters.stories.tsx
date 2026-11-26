@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -7,6 +7,7 @@ import {
   FiltersContent,
   FiltersFilter,
   FiltersFooter,
+  FiltersFooterProps,
   FiltersFormControlLabel,
   FiltersFormGroup,
   FiltersHeader,
@@ -21,7 +22,9 @@ import { TextField } from '../TextField';
 import { TextFieldGroup } from '../TextFieldGroup';
 import { Tooltip } from '../Tooltip';
 
-const meta: Meta<typeof Filters> = {
+type Args = ComponentProps<typeof Filters> & { FiltersFooterSticky?: FiltersFooterProps['sticky'] };
+
+const meta: Meta<Args> = {
   tags: ['autodocs'],
   component: Filters,
   parameters: {
@@ -36,17 +39,32 @@ const meta: Meta<typeof Filters> = {
       'Search',
     ],
   },
-  argTypes: {},
+  argTypes: {
+    FiltersFooterSticky: {
+      name: 'sticky',
+      description: 'Whether the footer should be sticky.',
+      table: {
+        category: 'FiltersFooter',
+      },
+      defaultValue: false,
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
+  args: {
+    FiltersFooterSticky: false,
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Filters>;
+type Story = StoryObj<Args>;
 
 const ITEMS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 export const Demo: Story = {
-  render: (_args, context) => {
+  render: (args, context) => {
     const [search, setSearch] = useState('');
     const [manufacturersSearch, setManufacturersSearch] = useState('');
 
@@ -105,7 +123,7 @@ export const Demo: Story = {
             </FiltersFormGroup>
           </FiltersFilter>
         </FiltersContent>
-        <FiltersFooter>
+        <FiltersFooter sticky={args.FiltersFooterSticky}>
           <Button fullWidth color="primary" size="500" variant="contained">
             {context.globals.locale === 'ru' ? 'Показать' : 'Apply'}
           </Button>

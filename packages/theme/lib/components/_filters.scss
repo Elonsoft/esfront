@@ -92,6 +92,12 @@
     gap: 16px;
     padding: 15px 16px 16px;
 
+    &--sticky {
+      bottom: 0;
+      position: sticky;
+      z-index: 1;
+    }
+
     & .es-button--full-width {
       flex-grow: 1;
       width: auto;
