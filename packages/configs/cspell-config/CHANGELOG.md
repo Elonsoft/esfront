@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.2.2...@esfront/cspell-config@0.2.3) (2026-11-26)
+
+
+### Features
+
+* add eslint-plugin-jsx-a11y plugin ([21c4848](https://github.com/Elonsoft/esfront/commit/21c4848cd527022260100963cb7f60e296892411))
+
+
+
 ## [0.2.2](https://github.com/Elonsoft/esfront/compare/@esfront/cspell-config@0.2.1...@esfront/cspell-config@0.2.2) (2026-09-15)
 
 

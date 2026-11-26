@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.5](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.4...@esfront/react@0.18.5) (2026-11-26)
+
+
+### Features
+
+* add eslint-plugin-jsx-a11y plugin ([21c4848](https://github.com/Elonsoft/esfront/commit/21c4848cd527022260100963cb7f60e296892411))
+* **react,ToggleButton:** add new component ([9bb39dd](https://github.com/Elonsoft/esfront/commit/9bb39ddaa270bf346d8128958f95265832c61de9))
+
+
+
 ## [0.18.4](https://github.com/Elonsoft/esfront/compare/@esfront/react@0.18.3...@esfront/react@0.18.4) (2026-10-29)
 
 

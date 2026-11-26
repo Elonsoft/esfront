@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.4](https://github.com/Elonsoft/esfront/compare/@esfront/claude-plugin@0.0.3...@esfront/claude-plugin@0.0.4) (2026-11-26)
+
+**Note:** Version bump only for package @esfront/claude-plugin
+
+
+
+
+
 ## [0.0.3](https://github.com/Elonsoft/esfront/compare/@esfront/claude-plugin@0.0.2...@esfront/claude-plugin@0.0.3) (2026-10-09)
 
 **Note:** Version bump only for package @esfront/claude-plugin

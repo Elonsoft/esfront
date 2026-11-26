@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.4.1...@esfront/theme@0.4.2) (2026-11-26)
+
+
+### Features
+
+* **react,ToggleButton:** add new component ([9bb39dd](https://github.com/Elonsoft/esfront/commit/9bb39ddaa270bf346d8128958f95265832c61de9))
+
+
+### Bug Fixes
+
+* **theme:** vendor overlay scrollbars styles ([26b6d08](https://github.com/Elonsoft/esfront/commit/26b6d08d6f054093faa5734ad90cf3a637ffa44e))
+
+
+
 ## [0.4.1](https://github.com/Elonsoft/esfront/compare/@esfront/theme@0.4.0...@esfront/theme@0.4.1) (2026-10-29)
 
 
